@@ -1,92 +1,772 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>PARC Lab</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PARC Lab | Physical AI Real-Time Control for Mobility & Robotics</title>
+  <meta name="description" content="PARC Lab homepage for Physical AI, Real-Time Control, EtherCAT, Mobility, and Robotics research." />
+  <style>
+    :root {
+      --bg: #060b14;
+      --panel: rgba(11, 18, 32, 0.82);
+      --panel-2: rgba(16, 25, 42, 0.88);
+      --text: #f5f7fb;
+      --muted: #b8c2d6;
+      --line: rgba(121, 214, 235, 0.28);
+      --cyan: #79d6eb;
+      --green: #64d464;
+      --blue: #1180d8;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.38);
+      --maxw: 1180px;
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b0f1a;
-    color: white;
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(17,128,216,0.14), transparent 28%),
+        radial-gradient(circle at 75% 18%, rgba(100,212,100,0.14), transparent 24%),
+        radial-gradient(circle at 50% 70%, rgba(121,214,235,0.10), transparent 28%),
+        linear-gradient(180deg, #04070d 0%, #08111f 42%, #060b14 100%);
+      line-height: 1.6;
+    }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    background: #0b0f1a;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 12% 18%, rgba(255,255,255,0.75), transparent 60%),
+        radial-gradient(1.8px 1.8px at 24% 72%, rgba(255,255,255,0.55), transparent 60%),
+        radial-gradient(1.6px 1.6px at 48% 30%, rgba(255,255,255,0.45), transparent 60%),
+        radial-gradient(1.7px 1.7px at 76% 22%, rgba(255,255,255,0.6), transparent 60%),
+        radial-gradient(1.6px 1.6px at 86% 58%, rgba(255,255,255,0.55), transparent 60%),
+        radial-gradient(1.8px 1.8px at 64% 82%, rgba(255,255,255,0.48), transparent 60%);
+      opacity: 0.8;
+    }
 
-header h2 {
-    margin: 0;
-}
+    a { color: inherit; text-decoration: none; }
 
-nav a {
-    margin-left: 20px;
-    color: #aaa;
-    text-decoration: none;
-}
+    .container {
+      width: min(var(--maxw), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-nav a:hover {
-    color: #00ffcc;
-}
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(3, 8, 16, 0.72);
+      border-bottom: 1px solid rgba(121,214,235,0.18);
+    }
 
-.hero {
-    text-align: center;
-    padding: 150px 20px;
-}
+    .header-inner {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
 
-.hero h1 {
-    font-size: 60px;
-    margin-bottom: 10px;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
 
-.hero p {
-    font-size: 22px;
-    color: #ccc;
-}
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, rgba(17,128,216,0.95), rgba(100,212,100,0.95));
+      box-shadow: 0 10px 30px rgba(17,128,216,0.28);
+      color: white;
+    }
 
-.highlight {
-    color: #00ffcc;
-}
+    .brand-text { min-width: 0; }
+    .brand-title {
+      font-size: 1.28rem;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+    .brand-subtitle {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 520px;
+    }
 
-.section {
-    padding: 80px 50px;
-    text-align: center;
-}
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+    }
 
-</style>
+    .nav a {
+      color: #dbe6f7;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(121,214,235,0.12);
+      color: var(--cyan);
+    }
+
+    .hero {
+      padding: 72px 0 52px;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 36px 38px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(8,14,26,0.82), rgba(10,18,33,0.70));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -90px auto;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(100,212,100,0.18), transparent 62%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(121,214,235,0.24);
+      background: rgba(121,214,235,0.08);
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 6vw, 4.7rem);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 .grad {
+      background: linear-gradient(90deg, #ffffff, #8be8ef 38%, #7ddd7d 88%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero .tagline {
+      font-size: clamp(1.1rem, 2.1vw, 1.65rem);
+      color: var(--cyan);
+      font-weight: 600;
+      margin: 0 0 14px;
+    }
+
+    .hero .desc {
+      color: var(--muted);
+      font-size: 1.04rem;
+      max-width: 720px;
+      margin: 0 0 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(121,214,235,0.22);
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, rgba(17,128,216,0.95), rgba(100,212,100,0.95));
+      color: #fff;
+      border: none;
+      box-shadow: 0 10px 24px rgba(17,128,216,0.28);
+    }
+
+    .btn.secondary {
+      background: rgba(121,214,235,0.08);
+      color: #e9faff;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(10,18,33,0.92), rgba(9,15,27,0.78));
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(121,214,235,0.18);
+      background: #000;
+    }
+
+    .hero-stats {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 14px 12px;
+      border-radius: 18px;
+      background: rgba(121,214,235,0.06);
+      border: 1px solid rgba(121,214,235,0.14);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.06rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    section.page {
+      padding: 28px 0 22px;
+    }
+
+    .page-card {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(9,15,27,0.86), rgba(10,18,33,0.76));
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .page-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 18px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .page-card h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.15;
+    }
+
+    .page-card p.lead {
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .tile {
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(121,214,235,0.07), rgba(121,214,235,0.03));
+      border: 1px solid rgba(121,214,235,0.16);
+    }
+
+    .tile h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .tile p, .tile li {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .tile ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .person {
+      padding: 22px;
+      border-radius: 22px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(121,214,235,0.08), rgba(121,214,235,0.03));
+      border: 1px solid rgba(121,214,235,0.15);
+    }
+
+    .avatar {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: white;
+      background: linear-gradient(135deg, rgba(17,128,216,0.95), rgba(100,212,100,0.95));
+      box-shadow: 0 10px 24px rgba(17,128,216,0.18);
+    }
+
+    .person h3 {
+      margin: 0 0 6px;
+      font-size: 1.08rem;
+    }
+
+    .person .role {
+      color: var(--cyan);
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .list-item {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(121,214,235,0.05);
+      border: 1px solid rgba(121,214,235,0.14);
+    }
+
+    .list-item strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .list-item span {
+      color: var(--muted);
+      display: block;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .contact-panel {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(121,214,235,0.05);
+      border: 1px solid rgba(121,214,235,0.16);
+    }
+
+    .contact-line {
+      margin: 0 0 10px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 26px 0 42px;
+      color: #95a6c4;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .contact-box,
+      .grid-3,
+      .people-grid { grid-template-columns: 1fr 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 0;
+      }
+      .nav { justify-content: flex-start; }
+      .hero-grid,
+      .grid-3,
+      .people-grid,
+      .contact-box { grid-template-columns: 1fr; }
+      .hero-panel,
+      .page-card { padding: 24px; }
+      .hero { padding-top: 36px; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .brand-subtitle { white-space: normal; }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <div class="brand-mark">PARC</div>
+        <div class="brand-text">
+          <p class="brand-title">PARC Lab</p>
+          <p class="brand-subtitle">Physical AI Real-Time Control for Mobility & Robotics</p>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#research">Research</a>
+        <a href="#people">People</a>
+        <a href="#publications">Publications</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-    <h2>PARC Lab</h2>
-    <nav>
-        <a href="#">Research</a>
-        <a href="#">People</a>
-        <a href="#">Publications</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-panel">
+          <div class="hero-grid">
+            <div>
+              <div class="hero-badge">Hansung University · PARC Lab</div>
+              <h1><span class="grad">PARC Lab</span></h1>
+              <p class="tagline">Physical AI Real-Time Control for Mobility & Robotics</p>
+              <p class="desc">
+                PARC Lab develops intelligent real-time systems that connect Physical AI,
+                EtherCAT-based control, mobility platforms, and advanced robotics for practical deployment in the real world.
+              </p>
+              <div class="hero-actions">
+                <a class="btn primary" href="#research">Explore Research</a>
+                <a class="btn secondary" href="#contact">Contact Us</a>
+              </div>
+            </div>
+            <div class="hero-card">
+              <img src="/image.png" alt="PARC Lab logo" />
+              <div class="hero-stats">
+                <div class="stat">
+                  <strong>Physical AI</strong>
+                  <span>Embodied intelligence</span>
+                </div>
+                <div class="stat">
+                  <strong>EtherCAT</strong>
+                  <span>Real-time control</span>
+                </div>
+                <div class="stat">
+                  <strong>Mobility</strong>
+                  <span>Robotics deployment</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="hero">
-    <h1>PARC Lab</h1>
-    <p class="highlight">
-        Physical AI Real-Time Control for Mobility & Robotics
-    </p>
-    <p>
-        Real-time AI systems based on EtherCAT, Control, and Robotics
-    </p>
-</section>
+    <section class="page" id="research">
+      <div class="container">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Research</div>
+              <h2>Research Areas</h2>
+              <p class="lead">Our research integrates AI intelligence, deterministic communication, control architecture, and robotic deployment into one continuous engineering pipeline.</p>
+            </div>
+          </div>
+          <div class="grid-3">
+            <article class="tile">
+              <h3>Physical AI Systems</h3>
+              <p>Embodied intelligence, perception-planning-control integration, and real-world autonomy for robotic systems.</p>
+            </article>
+            <article class="tile">
+              <h3>Real-Time Control</h3>
+              <p>Deterministic control loops, motion synchronization, and industrial-grade control architecture for safety-critical systems.</p>
+            </article>
+            <article class="tile">
+              <h3>EtherCAT Network</h3>
+              <p>EtherCAT master/slave integration, high-speed communication, distributed I/O, and synchronized fieldbus control.</p>
+            </article>
+            <article class="tile">
+              <h3>Mobility Platforms</h3>
+              <p>Autonomous mobility, smart assistive mobility, and intelligent vehicle platform control for practical environments.</p>
+            </article>
+            <article class="tile">
+              <h3>Robotics</h3>
+              <p>Manipulators, surgical robotics, service robots, and multi-axis motion systems with high precision and safety.</p>
+            </article>
+            <article class="tile">
+              <h3>Digital Twin & HILS</h3>
+              <p>Simulation-to-reality verification, hardware-in-the-loop integration, and digital twin validation workflows.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="section">
-    <h2>Research Areas</h2>
-    <p>Physical AI · Real-Time Control · EtherCAT · Mobility · Robotics</p>
-</section>
+    <section class="page" id="people">
+      <div class="container">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">People</div>
+              <h2>Members</h2>
+              <p class="lead">Replace the sample profiles below with actual faculty, graduate students, undergraduate researchers, and collaborators.</p>
+            </div>
+          </div>
+          <div class="people-grid">
+            <article class="person">
+              <div class="avatar">L</div>
+              <h3>Professor Lee</h3>
+              <div class="role">Director</div>
+              <p>Physical AI, real-time control, EtherCAT, mobility and robotics systems.</p>
+            </article>
+            <article class="person">
+              <div class="avatar">M1</div>
+              <h3>Member 1</h3>
+              <div class="role">Graduate Researcher</div>
+              <p>Research on robotic control, embedded systems, and motion synchronization.</p>
+            </article>
+            <article class="person">
+              <div class="avatar">M2</div>
+              <h3>Member 2</h3>
+              <div class="role">Graduate Researcher</div>
+              <p>Research on digital twin, AI simulation, and intelligent mobility systems.</p>
+            </article>
+            <article class="person">
+              <div class="avatar">M3</div>
+              <h3>Member 3</h3>
+              <div class="role">Undergraduate Researcher</div>
+              <p>Research on ROS2, sensors, and robotic prototyping for physical deployment.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="publications">
+      <div class="container">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Publications</div>
+              <h2>Selected Publications</h2>
+              <p class="lead">Replace the following samples with papers, patents, conference presentations, and project outcomes from the lab.</p>
+            </div>
+          </div>
+          <div class="list">
+            <div class="list-item">
+              <strong>Paper Title 1</strong>
+              <span>Author A, Author B, Author C · Journal / Conference · 2026</span>
+            </div>
+            <div class="list-item">
+              <strong>Paper Title 2</strong>
+              <span>Author A, Author B · Journal / Conference · 2025</span>
+            </div>
+            <div class="list-item">
+              <strong>Patent / Project Output</strong>
+              <span>Technology title or project deliverable · 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="news">
+      <div class="container">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">News</div>
+              <h2>Latest Updates</h2>
+              <p class="lead">Use this section for project announcements, student achievements, invited talks, and lab recruitment news.</p>
+            </div>
+          </div>
+          <div class="grid-2">
+            <article class="tile">
+              <h3>2026.04 · Project Kickoff</h3>
+              <p>PARC Lab launched a new real-time Physical AI research project focused on mobility and robotic deployment.</p>
+            </article>
+            <article class="tile">
+              <h3>2026.03 · Student Recruitment</h3>
+              <p>We are looking for students interested in robotics, EtherCAT control, embedded systems, and AI-based mobility.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="contact">
+      <div class="container">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Contact</div>
+              <h2>Get in Touch</h2>
+              <p class="lead">Update the contact information below with the official lab email, room number, and university address.</p>
+            </div>
+          </div>
+          <div class="contact-box">
+            <div class="contact-panel">
+              <p class="contact-line"><strong>Lab:</strong> PARC Lab</p>
+              <p class="contact-line"><strong>University:</strong> Hansung University</p>
+              <p class="contact-line"><strong>Email:</strong> kblee@hansung.ac.kr</p>
+              <p class="contact-line"><strong>Office:</strong> Update room information</p>
+              <p class="contact-line"><strong>Research Fields:</strong> Physical AI, Real-Time Control, EtherCAT, Mobility, Robotics</p>
+            </div>
+            <div class="contact-panel">
+              <h3 style="margin-top:0;">Homepage Message</h3>
+              <p style="color: var(--muted); margin-bottom:0;">
+                We welcome collaborations in intelligent mobility, robotics, embedded control, digital twin, and real-time industrial systems.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 PARC Lab · Physical AI Real-Time Control for Mobility & Robotics
+  </footer>
+</body>
+</html>
+
+---
+
+## 7) projects.html (프로젝트 페이지 추가)
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>PARC Lab | Projects</title>
+  <style>
+    body { font-family: Arial; background:#0b1320; color:white; margin:40px; }
+    a { color:#6cf; }
+    .card { background:#121c30; padding:20px; margin-bottom:15px; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <h1>Projects</h1>
+  <a href="index.html">← Home</a>
+
+  <div class="card">
+    <h2>Lunar Digital Twin</h2>
+    <p>Isaac Sim 기반 달 탐사 로봇 디지털 트윈 및 HILS 플랫폼 개발</p>
+  </div>
+
+  <div class="card">
+    <h2>EtherCAT Real-Time Controller</h2>
+    <p>EtherCAT master 기반 고속 실시간 제어 시스템 개발</p>
+  </div>
+
+  <div class="card">
+    <h2>Smart Mobility Assist System</h2>
+    <p>이동약자를 위한 AI 기반 보행 보조 및 자율 모빌리티 시스템</p>
+  </div>
 
 </body>
 </html>
+```
+
+---
+
+## 🔥 index.html 메뉴에 Projects 추가
+
+```html
+<a href="projects.html">Projects</a>
+```
+
+👉 네비게이션 바에 이 줄만 추가하면 됩니다.
+
+---
+
+## 🚀 최종 구조
+
+```text
+index.html
+research.html
+projects.html   ⭐ 추가됨
+people.html
+publications.html
+news.html
+contact.html
+image.png
+```
+
+---
+
+원하시면 다음 단계로
+👉 **MIT / NVIDIA 스타일 (애니메이션 + 인터랙션)**
+👉 **논문 자동 업데이트 (Google Scholar 연동)**
+👉 **학생 모집 페이지 (Apply 시스템)**
+
+까지 확장해드리겠습니다.
+
