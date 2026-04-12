@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PARC Lab | Publications</title>
+  <meta name="description" content="PARC Lab publications: papers, patents, conference presentations, and technical reports." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .pub-filter {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .filter-btn {
+      padding: 7px 16px; border-radius: 999px;
+      font-size: 0.86rem; font-weight: 600;
+      border: 1px solid rgba(109,223,245,0.22);
+      background: rgba(109,223,245,0.05);
+      color: var(--muted); cursor: pointer;
+      transition: all 0.18s;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: rgba(109,223,245,0.14);
+      border-color: rgba(109,223,245,0.40);
+      color: var(--cyan);
+    }
+    .pub-year {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--cyan);
+      padding: 14px 0 10px;
+      border-bottom: 1px solid var(--line2);
+      margin-bottom: 14px;
+    }
+    .pub-item {
+      padding: 20px 22px;
+      border-radius: var(--rad-sm);
+      background: rgba(109,223,245,0.04);
+      border: 1px solid var(--line2);
+      border-left: 3px solid var(--cyan2);
+      margin-bottom: 12px;
+      transition: all 0.2s;
+    }
+    .pub-item:hover {
+      background: rgba(109,223,245,0.07);
+      border-left-color: var(--green);
+    }
+    .pub-item .pub-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.04rem; font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .pub-item .pub-authors {
+      color: var(--muted); font-size: 0.92rem;
+      margin-bottom: 6px;
+    }
+    .pub-item .pub-venue {
+      color: var(--dim); font-size: 0.88rem;
+      font-style: italic;
+    }
+    .pub-item .pub-meta {
+      display: flex; align-items: center;
+      flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    }
+    .pub-type {
+      padding: 3px 10px; border-radius: 999px;
+      font-size: 0.76rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .type-journal {
+      background: rgba(26,136,224,0.15);
+      border: 1px solid rgba(26,136,224,0.28);
+      color: #6bb8f5;
+    }
+    .type-conf {
+      background: rgba(94,212,94,0.13);
+      border: 1px solid rgba(94,212,94,0.28);
+      color: var(--green);
+    }
+    .type-patent {
+      background: rgba(255,180,50,0.12);
+      border: 1px solid rgba(255,180,50,0.26);
+      color: #ffd070;
+    }
+    .type-report {
+      background: rgba(109,223,245,0.10);
+      border: 1px solid rgba(109,223,245,0.22);
+      color: var(--cyan);
+    }
+    .placeholder-note {
+      padding: 36px; text-align: center;
+      border: 1px dashed rgba(109,223,245,0.18);
+      border-radius: var(--rad);
+      color: var(--dim);
+    }
+    .placeholder-note p { margin-bottom: 6px; }
+    .placeholder-note .hint { font-size: 0.88rem; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-mark">PARC</div>
+        <div>
+          <div class="brand-title">PARC Lab</div>
+          <div class="brand-sub">Physical AI Real-Time Control for Mobility &amp; Robotics</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="people.html">People</a>
+        <a href="publications.html" class="active">Publications</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div class="eyebrow">Publications</div>
+          <h1><span class="grad">Publications</span></h1>
+          <p>PARC Lab의 논문, 특허, 학술대회 발표, 기술 보고서 목록입니다. 최신 연구 성과를 확인하세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="section-card">
+
+          <!-- Filter bar (visual only – replace with JS if needed) -->
+          <div class="pub-filter">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Journal</button>
+            <button class="filter-btn">Conference</button>
+            <button class="filter-btn">Patent</button>
+            <button class="filter-btn">Technical Report</button>
+          </div>
+
+          <!-- ── 2026 ── -->
+          <div class="pub-year">2026</div>
+
+          <div class="pub-item">
+            <div class="pub-title">논문 제목을 여기에 입력하세요 (Paper Title Here)</div>
+            <div class="pub-authors">이경복, 공저자 A, 공저자 B</div>
+            <div class="pub-venue">저널명 / 학술대회명 (Journal / Conference Name)</div>
+            <div class="pub-meta">
+              <span class="pub-type type-journal">Journal</span>
+              <a class="tag" href="#" style="font-size:0.78rem;">PDF</a>
+              <a class="tag" href="#" style="font-size:0.78rem;">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub-item">
+            <div class="pub-title">Conference Paper Title Here</div>
+            <div class="pub-authors">이경복, 공저자 A</div>
+            <div class="pub-venue">학술대회명, 도시, 2026</div>
+            <div class="pub-meta">
+              <span class="pub-type type-conf">Conference</span>
+              <a class="tag" href="#" style="font-size:0.78rem;">PDF</a>
+            </div>
+          </div>
+
+          <!-- ── 2025 ── -->
+          <div class="pub-year" style="margin-top:20px;">2025</div>
+
+          <div class="pub-item">
+            <div class="pub-title">특허 / 기술 이전 제목 (Patent / Technology Transfer)</div>
+            <div class="pub-authors">이경복, 발명자 A</div>
+            <div class="pub-venue">특허 등록 / 출원 번호: 10-2025-XXXXXXX</div>
+            <div class="pub-meta">
+              <span class="pub-type type-patent">Patent</span>
+            </div>
+          </div>
+
+          <div class="pub-item">
+            <div class="pub-title">Technical Report / 정부 과제 결과보고서</div>
+            <div class="pub-authors">이경복, 공동 연구자</div>
+            <div class="pub-venue">주관 기관 / 과제 번호, 2025</div>
+            <div class="pub-meta">
+              <span class="pub-type type-report">Technical Report</span>
+            </div>
+          </div>
+
+          <!-- Placeholder note -->
+          <div class="placeholder-note" style="margin-top:24px;">
+            <p>📄 위 항목은 샘플입니다.</p>
+            <p class="hint">실제 논문, 특허, 발표 자료로 교체해 주세요.<br>Google Scholar, ORCID, DBLP 링크도 추가하시면 좋습니다.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-brand">PARC Lab</div>
+      <p>Physical AI Real-Time Control for Mobility &amp; Robotics</p>
+      <p style="margin-top:6px;">한성대학교 미래모빌리티학과 · kblee@hansung.ac.kr</p>
+      <p style="margin-top:10px;">© 2026 PARC Lab · Hansung University</p>
+    </div>
+  </footer>
+
+</body>
+</html>

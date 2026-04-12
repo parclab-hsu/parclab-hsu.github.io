@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PARC Lab | Contact</title>
+  <meta name="description" content="Contact PARC Lab at Hansung University – Physical AI, EtherCAT, Mobility and Robotics research." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .info-row {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line2);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      background: rgba(109,223,245,0.10);
+      border: 1px solid rgba(109,223,245,0.18);
+      font-size: 1rem;
+    }
+    .info-label {
+      font-size: 0.80rem; font-weight: 700;
+      color: var(--cyan); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 3px;
+    }
+    .info-value {
+      color: var(--text); font-size: 0.97rem;
+    }
+    .info-value a { color: var(--cyan); }
+    .info-value a:hover { text-decoration: underline; }
+
+    .collab-tile {
+      padding: 22px;
+      border-radius: var(--rad-sm);
+      background: rgba(109,223,245,0.04);
+      border: 1px solid var(--line2);
+    }
+    .collab-tile h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1.02rem;
+      margin-bottom: 8px;
+    }
+    .collab-tile p { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+
+    .apply-card {
+      padding: 36px 32px;
+      border-radius: var(--rad);
+      background: linear-gradient(135deg, rgba(26,136,224,0.10), rgba(94,212,94,0.08));
+      border: 1px solid rgba(109,223,245,0.22);
+      text-align: center;
+    }
+    .apply-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem; font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .apply-card p {
+      color: var(--muted); max-width: 520px;
+      margin: 0 auto 22px; font-size: 0.98rem; line-height: 1.72;
+    }
+    .apply-card .btn-group {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    }
+    .map-placeholder {
+      height: 220px;
+      border-radius: var(--rad-sm);
+      background: rgba(109,223,245,0.04);
+      border: 1px solid var(--line2);
+      display: grid; place-items: center;
+      color: var(--dim); font-size: 0.94rem;
+      text-align: center; padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-mark">PARC</div>
+        <div>
+          <div class="brand-title">PARC Lab</div>
+          <div class="brand-sub">Physical AI Real-Time Control for Mobility &amp; Robotics</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html">News</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div class="eyebrow">Contact</div>
+          <h1><span class="grad">Get in Touch</span></h1>
+          <p>지능형 모빌리티, 로보틱스, 임베디드 제어, 디지털 트윈 분야의 산학 협력 및 공동 연구를 환영합니다. 학생 지원 및 입학 문의도 언제든지 연락해 주세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Info + Map -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-card">
+          <div class="contact-grid">
+            <div>
+              <div class="section-head" style="margin-bottom:18px;">
+                <div class="eyebrow">Lab Info</div>
+                <h2 class="section-title" style="font-size:1.8rem;">연락처 정보</h2>
+              </div>
+              <div>
+                <div class="info-row">
+                  <div class="info-icon">🏫</div>
+                  <div>
+                    <div class="info-label">University</div>
+                    <div class="info-value">한성대학교 (Hansung University)</div>
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">🏢</div>
+                  <div>
+                    <div class="info-label">Department</div>
+                    <div class="info-value">미래모빌리티학과 (Department of Future Mobility)</div>
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">🔬</div>
+                  <div>
+                    <div class="info-label">Lab</div>
+                    <div class="info-value">PARC Lab · Physical AI Real-Time Control for Mobility &amp; Robotics</div>
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">📧</div>
+                  <div>
+                    <div class="info-label">Email</div>
+                    <div class="info-value"><a href="mailto:kblee@hansung.ac.kr">kblee@hansung.ac.kr</a></div>
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">📍</div>
+                  <div>
+                    <div class="info-label">Address</div>
+                    <div class="info-value">서울특별시 성북구 삼선교로 16길 116<br>한성대학교 (우편번호: 02876)</div>
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">🏛️</div>
+                  <div>
+                    <div class="info-label">Office</div>
+                    <div class="info-value">연구실 호실 정보 업데이트 예정</div>
+                  </div>
+                </div>
+                <div class="info-row">
+                  <div class="info-icon">🔭</div>
+                  <div>
+                    <div class="info-label">Research Fields</div>
+                    <div class="info-value">Physical AI · Real-Time Control · EtherCAT · Mobility · Robotics · Digital Twin</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="map-placeholder">
+                📍<br><br>
+                <strong>한성대학교</strong><br>
+                서울특별시 성북구 삼선교로 16길 116<br><br>
+                <span style="font-size:0.82rem;">지도 위젯을 이 곳에 삽입하거나<br>Google Maps 링크를 추가하세요.</span>
+              </div>
+              <div style="margin-top:14px; text-align:center;">
+                <a class="btn btn-outline" style="font-size:0.88rem;" href="https://maps.google.com/?q=한성대학교+서울" target="_blank">Google Maps에서 보기 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collaboration -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-head">
+            <div class="eyebrow">Collaboration</div>
+            <h2 class="section-title">협력 및 문의 분야</h2>
+          </div>
+          <div class="grid-3">
+            <div class="collab-tile">
+              <h4>🏭 산학 협력 (Industry)</h4>
+              <p>로보틱스, 모빌리티, 임베디드 제어, Physical AI 관련 기업과의 공동 연구 및 기술 이전을 환영합니다.</p>
+            </div>
+            <div class="collab-tile">
+              <h4>🎓 대학원 진학 (Graduate)</h4>
+              <p>Physical AI, EtherCAT, 디지털 트윈, 모빌리티 로보틱스 분야 석사/박사 과정 학생을 모집합니다.</p>
+            </div>
+            <div class="collab-tile">
+              <h4>🔬 학부 연구 (Undergraduate)</h4>
+              <p>로봇공학, 임베디드, AI, 모빌리티에 관심 있는 학부생 연구 참여를 환영합니다. 학년 무관.</p>
+            </div>
+            <div class="collab-tile">
+              <h4>🌐 공동 연구 (Joint Research)</h4>
+              <p>국내외 연구기관과의 공동 연구, 정부 과제 컨소시엄 참여 문의를 환영합니다.</p>
+            </div>
+            <div class="collab-tile">
+              <h4>💬 강연 / 자문 (Consulting)</h4>
+              <p>Physical AI, 실시간 제어, EtherCAT, 디지털 트윈 관련 강연 및 기술 자문 요청을 받습니다.</p>
+            </div>
+            <div class="collab-tile">
+              <h4>📝 기타 문의 (Other)</h4>
+              <p>방문 연구, 인턴십, 인터뷰, 미디어 문의 등 기타 문의도 이메일로 연락해 주세요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apply CTA -->
+    <section class="page-section">
+      <div class="container">
+        <div class="apply-card">
+          <h3>연구에 합류하세요</h3>
+          <p>Physical AI와 실시간 제어 기술로 미래 모빌리티와 로보틱스를 함께 연구하고 싶으시다면, 언제든지 연락해 주세요.</p>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="mailto:kblee@hansung.ac.kr">✉ 이메일 보내기</a>
+            <a class="btn btn-outline" href="people.html">연구원 소개 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-brand">PARC Lab</div>
+      <p>Physical AI Real-Time Control for Mobility &amp; Robotics</p>
+      <p style="margin-top:6px;">한성대학교 미래모빌리티학과 · kblee@hansung.ac.kr</p>
+      <p style="margin-top:10px;">© 2026 PARC Lab · Hansung University</p>
+    </div>
+  </footer>
+
+</body>
+</html>

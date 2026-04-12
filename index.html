@@ -4,523 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PARC Lab | Physical AI Real-Time Control for Mobility & Robotics</title>
-  <meta name="description" content="PARC Lab homepage for Physical AI, Real-Time Control, EtherCAT, Mobility, and Robotics research." />
-  <style>
-    :root {
-      --bg: #060b14;
-      --panel: rgba(11, 18, 32, 0.82);
-      --panel-2: rgba(16, 25, 42, 0.88);
-      --text: #f5f7fb;
-      --muted: #b8c2d6;
-      --line: rgba(121, 214, 235, 0.28);
-      --cyan: #79d6eb;
-      --green: #64d464;
-      --blue: #1180d8;
-      --shadow: 0 18px 60px rgba(0, 0, 0, 0.38);
-      --maxw: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: "Segoe UI", Arial, sans-serif;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(17,128,216,0.14), transparent 28%),
-        radial-gradient(circle at 75% 18%, rgba(100,212,100,0.14), transparent 24%),
-        radial-gradient(circle at 50% 70%, rgba(121,214,235,0.10), transparent 28%),
-        linear-gradient(180deg, #04070d 0%, #08111f 42%, #060b14 100%);
-      line-height: 1.6;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(2px 2px at 12% 18%, rgba(255,255,255,0.75), transparent 60%),
-        radial-gradient(1.8px 1.8px at 24% 72%, rgba(255,255,255,0.55), transparent 60%),
-        radial-gradient(1.6px 1.6px at 48% 30%, rgba(255,255,255,0.45), transparent 60%),
-        radial-gradient(1.7px 1.7px at 76% 22%, rgba(255,255,255,0.6), transparent 60%),
-        radial-gradient(1.6px 1.6px at 86% 58%, rgba(255,255,255,0.55), transparent 60%),
-        radial-gradient(1.8px 1.8px at 64% 82%, rgba(255,255,255,0.48), transparent 60%);
-      opacity: 0.8;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(var(--maxw), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(3, 8, 16, 0.72);
-      border-bottom: 1px solid rgba(121,214,235,0.18);
-    }
-
-    .header-inner {
-      min-height: 82px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      background: linear-gradient(135deg, rgba(17,128,216,0.95), rgba(100,212,100,0.95));
-      box-shadow: 0 10px 30px rgba(17,128,216,0.28);
-      color: white;
-    }
-
-    .brand-text { min-width: 0; }
-    .brand-title {
-      font-size: 1.28rem;
-      font-weight: 800;
-      margin: 0;
-      letter-spacing: 0.02em;
-    }
-    .brand-subtitle {
-      margin: 2px 0 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 520px;
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 14px;
-    }
-
-    .nav a {
-      color: #dbe6f7;
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.98rem;
-      transition: 0.2s ease;
-    }
-
-    .nav a:hover {
-      background: rgba(121,214,235,0.12);
-      color: var(--cyan);
-    }
-
-    .hero {
-      padding: 72px 0 52px;
-    }
-
-    .hero-panel {
-      position: relative;
-      overflow: hidden;
-      padding: 40px 36px 38px;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(8,14,26,0.82), rgba(10,18,33,0.70));
-      box-shadow: var(--shadow);
-    }
-
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      inset: auto -60px -90px auto;
-      width: 280px;
-      height: 280px;
-      background: radial-gradient(circle, rgba(100,212,100,0.18), transparent 62%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(121,214,235,0.24);
-      background: rgba(121,214,235,0.08);
-      color: var(--cyan);
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2.4rem, 6vw, 4.7rem);
-      line-height: 1.06;
-      letter-spacing: -0.03em;
-    }
-
-    .hero h1 .grad {
-      background: linear-gradient(90deg, #ffffff, #8be8ef 38%, #7ddd7d 88%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero .tagline {
-      font-size: clamp(1.1rem, 2.1vw, 1.65rem);
-      color: var(--cyan);
-      font-weight: 600;
-      margin: 0 0 14px;
-    }
-
-    .hero .desc {
-      color: var(--muted);
-      font-size: 1.04rem;
-      max-width: 720px;
-      margin: 0 0 26px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(121,214,235,0.22);
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .btn.primary {
-      background: linear-gradient(90deg, rgba(17,128,216,0.95), rgba(100,212,100,0.95));
-      color: #fff;
-      border: none;
-      box-shadow: 0 10px 24px rgba(17,128,216,0.28);
-    }
-
-    .btn.secondary {
-      background: rgba(121,214,235,0.08);
-      color: #e9faff;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-
-    .hero-card {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(10,18,33,0.92), rgba(9,15,27,0.78));
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card img {
-      width: 100%;
-      display: block;
-      border-radius: 18px;
-      border: 1px solid rgba(121,214,235,0.18);
-      background: #000;
-    }
-
-    .hero-stats {
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .stat {
-      padding: 14px 12px;
-      border-radius: 18px;
-      background: rgba(121,214,235,0.06);
-      border: 1px solid rgba(121,214,235,0.14);
-      text-align: center;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.06rem;
-      margin-bottom: 4px;
-    }
-
-    .stat span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    section.page {
-      padding: 28px 0 22px;
-    }
-
-    .page-card {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: linear-gradient(180deg, rgba(9,15,27,0.86), rgba(10,18,33,0.76));
-      box-shadow: var(--shadow);
-      padding: 34px;
-    }
-
-    .page-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 18px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-    }
-
-    .eyebrow {
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.78rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .page-card h2 {
-      margin: 0;
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
-      line-height: 1.15;
-    }
-
-    .page-card p.lead {
-      margin: 10px 0 0;
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .tile {
-      padding: 22px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(121,214,235,0.07), rgba(121,214,235,0.03));
-      border: 1px solid rgba(121,214,235,0.16);
-    }
-
-    .tile h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
-    }
-
-    .tile p, .tile li {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .tile ul {
-      margin: 10px 0 0;
-      padding-left: 18px;
-    }
-
-    .people-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .person {
-      padding: 22px;
-      border-radius: 22px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(121,214,235,0.08), rgba(121,214,235,0.03));
-      border: 1px solid rgba(121,214,235,0.15);
-    }
-
-    .avatar {
-      width: 86px;
-      height: 86px;
-      margin: 0 auto 14px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 1.5rem;
-      color: white;
-      background: linear-gradient(135deg, rgba(17,128,216,0.95), rgba(100,212,100,0.95));
-      box-shadow: 0 10px 24px rgba(17,128,216,0.18);
-    }
-
-    .person h3 {
-      margin: 0 0 6px;
-      font-size: 1.08rem;
-    }
-
-    .person .role {
-      color: var(--cyan);
-      font-weight: 700;
-      margin-bottom: 8px;
-      font-size: 0.92rem;
-    }
-
-    .list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .list-item {
-      padding: 18px 20px;
-      border-radius: 18px;
-      background: rgba(121,214,235,0.05);
-      border: 1px solid rgba(121,214,235,0.14);
-    }
-
-    .list-item strong {
-      display: block;
-      font-size: 1.05rem;
-      margin-bottom: 6px;
-    }
-
-    .list-item span {
-      color: var(--muted);
-      display: block;
-    }
-
-    .contact-box {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-    }
-
-    .contact-panel {
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(121,214,235,0.05);
-      border: 1px solid rgba(121,214,235,0.16);
-    }
-
-    .contact-line {
-      margin: 0 0 10px;
-      color: var(--muted);
-    }
-
-    footer {
-      padding: 26px 0 42px;
-      color: #95a6c4;
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 1080px) {
-      .hero-grid,
-      .contact-box,
-      .grid-3,
-      .people-grid { grid-template-columns: 1fr 1fr; }
-      .grid-2 { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 760px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px 0;
-      }
-      .nav { justify-content: flex-start; }
-      .hero-grid,
-      .grid-3,
-      .people-grid,
-      .contact-box { grid-template-columns: 1fr; }
-      .hero-panel,
-      .page-card { padding: 24px; }
-      .hero { padding-top: 36px; }
-      .hero-stats { grid-template-columns: 1fr; }
-      .brand-subtitle { white-space: normal; }
-    }
-  </style>
+  <meta name="description" content="PARC Lab at Hansung University – Physical AI, Real-Time Control, EtherCAT, Mobility, and Robotics research." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#home">
+      <a class="brand" href="index.html">
         <div class="brand-mark">PARC</div>
-        <div class="brand-text">
-          <p class="brand-title">PARC Lab</p>
-          <p class="brand-subtitle">Physical AI Real-Time Control for Mobility & Robotics</p>
+        <div>
+          <div class="brand-title">PARC Lab</div>
+          <div class="brand-sub">Physical AI Real-Time Control for Mobility &amp; Robotics</div>
         </div>
       </a>
       <nav class="nav">
-        <a href="#research">Research</a>
-        <a href="#people">People</a>
-        <a href="#publications">Publications</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- ── HERO ── -->
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-panel">
           <div class="hero-grid">
             <div>
-              <div class="hero-badge">Hansung University · PARC Lab</div>
+              <div class="hero-badge">한성대학교 · 미래모빌리티학과</div>
               <h1><span class="grad">PARC Lab</span></h1>
-              <p class="tagline">Physical AI Real-Time Control for Mobility & Robotics</p>
-              <p class="desc">
-                PARC Lab develops intelligent real-time systems that connect Physical AI,
-                EtherCAT-based control, mobility platforms, and advanced robotics for practical deployment in the real world.
+              <p class="hero-tagline">Physical AI Real-Time Control<br>for Mobility &amp; Robotics</p>
+              <p class="hero-desc">
+                PARC Lab은 Physical AI, EtherCAT 기반 실시간 제어, 모빌리티 플랫폼,
+                그리고 첨단 로보틱스를 연결하는 지능형 실시간 시스템을 연구합니다.
+                시뮬레이션에서 실제 배포까지, 완전한 엔지니어링 파이프라인을 구축합니다.
               </p>
               <div class="hero-actions">
-                <a class="btn primary" href="#research">Explore Research</a>
-                <a class="btn secondary" href="#contact">Contact Us</a>
+                <a class="btn btn-primary" href="research.html">Research 보기</a>
+                <a class="btn btn-outline" href="contact.html">Contact</a>
               </div>
             </div>
             <div class="hero-card">
-              <img src="/image.png" alt="PARC Lab logo" />
+              <img src="image.png" alt="PARC Lab Logo" />
               <div class="hero-stats">
                 <div class="stat">
                   <strong>Physical AI</strong>
-                  <span>Embodied intelligence</span>
+                  <span>Embodied Intelligence</span>
                 </div>
                 <div class="stat">
                   <strong>EtherCAT</strong>
-                  <span>Real-time control</span>
+                  <span>Real-Time Control</span>
                 </div>
                 <div class="stat">
                   <strong>Mobility</strong>
-                  <span>Robotics deployment</span>
+                  <span>Robotics Deployment</span>
                 </div>
               </div>
             </div>
@@ -529,162 +72,119 @@
       </div>
     </section>
 
-    <section class="page" id="research">
+    <!-- ── RESEARCH OVERVIEW ── -->
+    <section class="page-section">
       <div class="container">
-        <div class="page-card">
-          <div class="page-head">
-            <div>
-              <div class="eyebrow">Research</div>
-              <h2>Research Areas</h2>
-              <p class="lead">Our research integrates AI intelligence, deterministic communication, control architecture, and robotic deployment into one continuous engineering pipeline.</p>
-            </div>
+        <div class="section-card">
+          <div class="section-head">
+            <div class="eyebrow">Research Areas</div>
+            <h2 class="section-title">핵심 연구 분야</h2>
+            <p class="section-lead">AI 지능, 결정론적 통신, 제어 아키텍처, 로봇 배포를 하나의 연속적인 엔지니어링 파이프라인으로 통합합니다.</p>
           </div>
           <div class="grid-3">
             <article class="tile">
+              <div class="tile-icon">🤖</div>
               <h3>Physical AI Systems</h3>
-              <p>Embodied intelligence, perception-planning-control integration, and real-world autonomy for robotic systems.</p>
+              <p>체화 지능, 인식-계획-제어 통합, 그리고 로봇 시스템의 실세계 자율성 연구.</p>
             </article>
             <article class="tile">
+              <div class="tile-icon">⚡</div>
               <h3>Real-Time Control</h3>
-              <p>Deterministic control loops, motion synchronization, and industrial-grade control architecture for safety-critical systems.</p>
+              <p>결정론적 제어 루프, 모션 동기화, 안전 핵심 시스템을 위한 산업용 제어 아키텍처.</p>
             </article>
             <article class="tile">
+              <div class="tile-icon">🔗</div>
               <h3>EtherCAT Network</h3>
-              <p>EtherCAT master/slave integration, high-speed communication, distributed I/O, and synchronized fieldbus control.</p>
+              <p>EtherCAT 마스터/슬레이브 통합, 고속 통신, 분산 I/O, 동기화 필드버스 제어.</p>
             </article>
             <article class="tile">
+              <div class="tile-icon">🚗</div>
               <h3>Mobility Platforms</h3>
-              <p>Autonomous mobility, smart assistive mobility, and intelligent vehicle platform control for practical environments.</p>
+              <p>자율 모빌리티, 스마트 보조 이동, 실용 환경을 위한 지능형 차량 플랫폼 제어.</p>
             </article>
             <article class="tile">
+              <div class="tile-icon">🦾</div>
               <h3>Robotics</h3>
-              <p>Manipulators, surgical robotics, service robots, and multi-axis motion systems with high precision and safety.</p>
+              <p>매니퓰레이터, 수술 로봇, 서비스 로봇, 고정밀·안전 다축 모션 시스템.</p>
             </article>
             <article class="tile">
-              <h3>Digital Twin & HILS</h3>
-              <p>Simulation-to-reality verification, hardware-in-the-loop integration, and digital twin validation workflows.</p>
+              <div class="tile-icon">🌐</div>
+              <h3>Digital Twin &amp; HILS</h3>
+              <p>시뮬레이션-현실 검증, 하드웨어 인 더 루프 통합, 디지털 트윈 검증 워크플로우.</p>
             </article>
+          </div>
+          <div style="margin-top:24px; text-align:right;">
+            <a class="btn btn-outline" href="research.html" style="font-size:0.9rem;">전체 Research →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="page" id="people">
+    <!-- ── PROJECTS PREVIEW ── -->
+    <section class="page-section">
       <div class="container">
-        <div class="page-card">
-          <div class="page-head">
-            <div>
-              <div class="eyebrow">People</div>
-              <h2>Members</h2>
-              <p class="lead">Replace the sample profiles below with actual faculty, graduate students, undergraduate researchers, and collaborators.</p>
-            </div>
-          </div>
-          <div class="people-grid">
-            <article class="person">
-              <div class="avatar">L</div>
-              <h3>Professor Lee</h3>
-              <div class="role">Director</div>
-              <p>Physical AI, real-time control, EtherCAT, mobility and robotics systems.</p>
-            </article>
-            <article class="person">
-              <div class="avatar">M1</div>
-              <h3>Member 1</h3>
-              <div class="role">Graduate Researcher</div>
-              <p>Research on robotic control, embedded systems, and motion synchronization.</p>
-            </article>
-            <article class="person">
-              <div class="avatar">M2</div>
-              <h3>Member 2</h3>
-              <div class="role">Graduate Researcher</div>
-              <p>Research on digital twin, AI simulation, and intelligent mobility systems.</p>
-            </article>
-            <article class="person">
-              <div class="avatar">M3</div>
-              <h3>Member 3</h3>
-              <div class="role">Undergraduate Researcher</div>
-              <p>Research on ROS2, sensors, and robotic prototyping for physical deployment.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="page" id="publications">
-      <div class="container">
-        <div class="page-card">
-          <div class="page-head">
-            <div>
-              <div class="eyebrow">Publications</div>
-              <h2>Selected Publications</h2>
-              <p class="lead">Replace the following samples with papers, patents, conference presentations, and project outcomes from the lab.</p>
-            </div>
-          </div>
-          <div class="list">
-            <div class="list-item">
-              <strong>Paper Title 1</strong>
-              <span>Author A, Author B, Author C · Journal / Conference · 2026</span>
-            </div>
-            <div class="list-item">
-              <strong>Paper Title 2</strong>
-              <span>Author A, Author B · Journal / Conference · 2025</span>
-            </div>
-            <div class="list-item">
-              <strong>Patent / Project Output</strong>
-              <span>Technology title or project deliverable · 2025</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="page" id="news">
-      <div class="container">
-        <div class="page-card">
-          <div class="page-head">
-            <div>
-              <div class="eyebrow">News</div>
-              <h2>Latest Updates</h2>
-              <p class="lead">Use this section for project announcements, student achievements, invited talks, and lab recruitment news.</p>
-            </div>
+        <div class="section-card">
+          <div class="section-head">
+            <div class="eyebrow">Projects</div>
+            <h2 class="section-title">진행 중인 프로젝트</h2>
           </div>
           <div class="grid-2">
-            <article class="tile">
-              <h3>2026.04 · Project Kickoff</h3>
-              <p>PARC Lab launched a new real-time Physical AI research project focused on mobility and robotic deployment.</p>
-            </article>
-            <article class="tile">
-              <h3>2026.03 · Student Recruitment</h3>
-              <p>We are looking for students interested in robotics, EtherCAT control, embedded systems, and AI-based mobility.</p>
-            </article>
+            <div class="project-card">
+              <div class="project-badge badge-active">● 진행중</div>
+              <h3>달 탐사 로봇 디지털 트윈 플랫폼</h3>
+              <p>Isaac Sim + OmniLRS 기반 달 탐사 로버 HILS-RL 디지털 트윈 플랫폼 개발. ROS2 통합 및 KASA 연계 연구.</p>
+              <div class="project-stack">
+                <span class="tag">Isaac Sim</span>
+                <span class="tag">OmniLRS</span>
+                <span class="tag">ROS2</span>
+                <span class="tag">HILS</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-badge badge-active">● 진행중</div>
+              <h3>EtherCAT 실시간 제어 시스템</h3>
+              <p>EtherCAT 마스터 기반 고속 실시간 제어 시스템 개발. 산업용 로봇 및 모빌리티 플랫폼 적용.</p>
+              <div class="project-stack">
+                <span class="tag">EtherCAT</span>
+                <span class="tag">RTOS</span>
+                <span class="tag">C/C++</span>
+                <span class="tag">Linux</span>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:24px; text-align:right;">
+            <a class="btn btn-outline" href="projects.html" style="font-size:0.9rem;">전체 Projects →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="page" id="contact">
+    <!-- ── NEWS PREVIEW ── -->
+    <section class="page-section">
       <div class="container">
-        <div class="page-card">
-          <div class="page-head">
-            <div>
-              <div class="eyebrow">Contact</div>
-              <h2>Get in Touch</h2>
-              <p class="lead">Update the contact information below with the official lab email, room number, and university address.</p>
+        <div class="section-card">
+          <div class="section-head">
+            <div class="eyebrow">Latest News</div>
+            <h2 class="section-title">최신 소식</h2>
+          </div>
+          <div class="list">
+            <div class="news-item">
+              <div class="news-date">2026<br>APR</div>
+              <div>
+                <h4>PARC Lab 공식 출범</h4>
+                <p>한성대학교 미래모빌리티학과 내 PARC Lab(Physical AI Real-Time Control for Mobility &amp; Robotics)이 공식 출범하였습니다.</p>
+              </div>
+            </div>
+            <div class="news-item">
+              <div class="news-date">2026<br>MAR</div>
+              <div>
+                <h4>대학원생 / 학부 연구생 모집</h4>
+                <p>로보틱스, EtherCAT 제어, 임베디드 시스템, AI 기반 모빌리티에 관심 있는 학생을 모집합니다.</p>
+              </div>
             </div>
           </div>
-          <div class="contact-box">
-            <div class="contact-panel">
-              <p class="contact-line"><strong>Lab:</strong> PARC Lab</p>
-              <p class="contact-line"><strong>University:</strong> Hansung University</p>
-              <p class="contact-line"><strong>Email:</strong> kblee@hansung.ac.kr</p>
-              <p class="contact-line"><strong>Office:</strong> Update room information</p>
-              <p class="contact-line"><strong>Research Fields:</strong> Physical AI, Real-Time Control, EtherCAT, Mobility, Robotics</p>
-            </div>
-            <div class="contact-panel">
-              <h3 style="margin-top:0;">Homepage Message</h3>
-              <p style="color: var(--muted); margin-bottom:0;">
-                We welcome collaborations in intelligent mobility, robotics, embedded control, digital twin, and real-time industrial systems.
-              </p>
-            </div>
+          <div style="margin-top:24px; text-align:right;">
+            <a class="btn btn-outline" href="news.html" style="font-size:0.9rem;">전체 News →</a>
           </div>
         </div>
       </div>
@@ -692,81 +192,13 @@
   </main>
 
   <footer>
-    © 2026 PARC Lab · Physical AI Real-Time Control for Mobility & Robotics
+    <div class="container">
+      <div class="footer-brand">PARC Lab</div>
+      <p>Physical AI Real-Time Control for Mobility &amp; Robotics</p>
+      <p style="margin-top:6px;">한성대학교 미래모빌리티학과 · kblee@hansung.ac.kr</p>
+      <p style="margin-top:10px;">© 2026 PARC Lab · Hansung University</p>
+    </div>
   </footer>
-</body>
-</html>
-
----
-
-## 7) projects.html (프로젝트 페이지 추가)
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>PARC Lab | Projects</title>
-  <style>
-    body { font-family: Arial; background:#0b1320; color:white; margin:40px; }
-    a { color:#6cf; }
-    .card { background:#121c30; padding:20px; margin-bottom:15px; border-radius:10px; }
-  </style>
-</head>
-<body>
-  <h1>Projects</h1>
-  <a href="index.html">← Home</a>
-
-  <div class="card">
-    <h2>Lunar Digital Twin</h2>
-    <p>Isaac Sim 기반 달 탐사 로봇 디지털 트윈 및 HILS 플랫폼 개발</p>
-  </div>
-
-  <div class="card">
-    <h2>EtherCAT Real-Time Controller</h2>
-    <p>EtherCAT master 기반 고속 실시간 제어 시스템 개발</p>
-  </div>
-
-  <div class="card">
-    <h2>Smart Mobility Assist System</h2>
-    <p>이동약자를 위한 AI 기반 보행 보조 및 자율 모빌리티 시스템</p>
-  </div>
 
 </body>
 </html>
-```
-
----
-
-## 🔥 index.html 메뉴에 Projects 추가
-
-```html
-<a href="projects.html">Projects</a>
-```
-
-👉 네비게이션 바에 이 줄만 추가하면 됩니다.
-
----
-
-## 🚀 최종 구조
-
-```text
-index.html
-research.html
-projects.html   ⭐ 추가됨
-people.html
-publications.html
-news.html
-contact.html
-image.png
-```
-
----
-
-원하시면 다음 단계로
-👉 **MIT / NVIDIA 스타일 (애니메이션 + 인터랙션)**
-👉 **논문 자동 업데이트 (Google Scholar 연동)**
-👉 **학생 모집 페이지 (Apply 시스템)**
-
-까지 확장해드리겠습니다.
-

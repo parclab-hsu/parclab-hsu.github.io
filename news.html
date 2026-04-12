@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PARC Lab | News</title>
+  <meta name="description" content="PARC Lab latest news, announcements, student achievements, and events." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .news-tag {
+      padding: 3px 10px; border-radius: 999px;
+      font-size: 0.76rem; font-weight: 700;
+      display: inline-block; margin-bottom: 10px;
+    }
+    .news-tag.launch { background: rgba(94,212,94,0.13); border: 1px solid rgba(94,212,94,0.28); color: var(--green); }
+    .news-tag.recruit { background: rgba(109,223,245,0.10); border: 1px solid rgba(109,223,245,0.22); color: var(--cyan); }
+    .news-tag.award { background: rgba(255,180,50,0.12); border: 1px solid rgba(255,180,50,0.26); color: #ffd070; }
+    .news-tag.project { background: rgba(26,136,224,0.14); border: 1px solid rgba(26,136,224,0.28); color: #6bb8f5; }
+    .news-tag.event { background: rgba(200,100,240,0.13); border: 1px solid rgba(200,100,240,0.26); color: #d48aee; }
+
+    .news-card {
+      padding: 26px 28px;
+      border-radius: var(--rad);
+      background: rgba(109,223,245,0.04);
+      border: 1px solid var(--line2);
+      transition: all 0.2s;
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .news-card:hover {
+      background: rgba(109,223,245,0.07);
+      border-color: rgba(109,223,245,0.28);
+    }
+    .news-card-date {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 0.88rem;
+      color: var(--cyan); line-height: 1.5;
+      padding-top: 2px;
+    }
+    .news-card-date .year { color: var(--dim); font-size: 0.78rem; font-weight: 600; }
+    .news-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.12rem; font-weight: 700;
+      margin-bottom: 9px; line-height: 1.35;
+    }
+    .news-card p { color: var(--muted); font-size: 0.96rem; line-height: 1.68; }
+    @media (max-width: 600px) {
+      .news-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-mark">PARC</div>
+        <div>
+          <div class="brand-title">PARC Lab</div>
+          <div class="brand-sub">Physical AI Real-Time Control for Mobility &amp; Robotics</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html" class="active">News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div class="eyebrow">News</div>
+          <h1><span class="grad">Latest Updates</span></h1>
+          <p>PARC Lab의 최신 소식, 프로젝트 공지, 학생 성과, 초청 강연, 모집 공고를 확인하세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2026 -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-head">
+            <div class="eyebrow">2026</div>
+            <h2 class="section-title">2026년 소식</h2>
+          </div>
+          <div class="list">
+
+            <div class="news-card">
+              <div class="news-card-date">
+                <div class="year">2026</div>
+                APR
+              </div>
+              <div>
+                <span class="news-tag launch">출범</span>
+                <h3>PARC Lab 공식 출범</h3>
+                <p>한성대학교 미래모빌리티학과 내 PARC Lab (Physical AI Real-Time Control for Mobility &amp; Robotics)이 공식 출범하였습니다. 이경복 교수님을 지도교수로 Physical AI, EtherCAT 실시간 제어, 모빌리티 로보틱스 분야 연구를 시작합니다.</p>
+              </div>
+            </div>
+
+            <div class="news-card">
+              <div class="news-card-date">
+                <div class="year">2026</div>
+                APR
+              </div>
+              <div>
+                <span class="news-tag project">프로젝트</span>
+                <h3>달 탐사 로봇 Digital Twin 플랫폼 킥오프</h3>
+                <p>Isaac Sim + OmniLRS 기반 달 탐사 로버 HILS-RL 디지털 트윈 플랫폼 개발 프로젝트가 시작되었습니다. KASA 연계 탐사 임무 MBSE/Digital Twin 연구를 병행합니다.</p>
+              </div>
+            </div>
+
+            <div class="news-card">
+              <div class="news-card-date">
+                <div class="year">2026</div>
+                MAR
+              </div>
+              <div>
+                <span class="news-tag recruit">모집</span>
+                <h3>대학원생 / 학부 연구생 모집 공고</h3>
+                <p>로보틱스, EtherCAT 제어, 임베디드 시스템, AI 기반 모빌리티에 관심 있는 대학원생(석사/박사) 및 학부 연구생을 모집합니다. 지원 문의: kblee@hansung.ac.kr</p>
+              </div>
+            </div>
+
+            <div class="news-card">
+              <div class="news-card-date">
+                <div class="year">2026</div>
+                MAR
+              </div>
+              <div>
+                <span class="news-tag project">산학협력</span>
+                <h3>현대자동차 미래기술챌린지 제안서 제출</h3>
+                <p>현대자동차 2026 미래기술챌린지에 "Isaac Sim/ROS2 기반 달 탐사 로버 HILS-RL 디지털 트윈 플랫폼" 제안서를 제출하였습니다.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placeholder for older news -->
+    <section class="page-section">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-head">
+            <div class="eyebrow">Archive</div>
+            <h2 class="section-title">이전 소식</h2>
+          </div>
+          <div style="padding: 36px; text-align:center; border: 1px dashed rgba(109,223,245,0.15); border-radius: var(--rad); color: var(--dim);">
+            <p>이전 소식은 추후 업데이트됩니다.</p>
+            <p style="font-size:0.88rem; margin-top:6px;">학술대회 발표, 수상, 미디어 보도 등의 기록이 이 곳에 추가됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-brand">PARC Lab</div>
+      <p>Physical AI Real-Time Control for Mobility &amp; Robotics</p>
+      <p style="margin-top:6px;">한성대학교 미래모빌리티학과 · kblee@hansung.ac.kr</p>
+      <p style="margin-top:10px;">© 2026 PARC Lab · Hansung University</p>
+    </div>
+  </footer>
+
+</body>
+</html>
