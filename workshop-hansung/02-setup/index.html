@@ -1,0 +1,1213 @@
+﻿
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI 에이전트로 대학 행정 데이터를 분석하고 발표자료를 만드는 워크숍 핸드북">
+      
+      
+      
+        <link rel="canonical" href="/workshop-hansung/02-setup/">
+      
+      
+        <link rel="prev" href="../01-intro/">
+      
+      
+        <link rel="next" href="../03-data-analysis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>02 · 환경 준비 - 한성대학교 교수법 워크숍 핸드북</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/edit-gate.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="한성대학교 교수법 워크숍 핸드북" class="md-header__button md-logo" aria-label="한성대학교 교수법 워크숍 핸드북" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            한성대학교 교수법 워크숍 핸드북
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              02 · 환경 준비
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/taehyeonglim/workshop-hansung" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    taehyeonglim/workshop-hansung
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="한성대학교 교수법 워크숍 핸드북" class="md-nav__button md-logo" aria-label="한성대학교 교수법 워크숍 핸드북" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    한성대학교 교수법 워크숍 핸드북
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/taehyeonglim/workshop-hansung" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    taehyeonglim/workshop-hansung
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · 워크숍 소개
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · 환경 준비
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · 환경 준비
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub는 오늘의 배포 공간입니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub 계정부터 준비합니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        가입 후 확인할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex에서 오늘 할 일은 네 가지입니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex 설치와 접속에서 확인할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex-desktop-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex Desktop App 버튼을 먼저 읽습니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex 화면과 버튼 한눈에 보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Codex 화면과 버튼 한눈에 보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        메인 화면과 입력창
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왼쪽 내비게이션
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        승인·권한 모드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모델·추론 강도
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        새 스레드는 작업 단위로 나눕니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        권한과 보안: 처음에 함께 정할 기준
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        승인 요청은 세 문장으로 읽습니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        첫 프롬프트: 폴더를 열었는지 확인
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-data-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · 데이터 분석
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-build-deck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · 웹 발표자료 제작
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-facilitation-qna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · 운영과 Q&A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-prompt-cards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · 프롬프트 카드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/workshop-hansung/slide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    발표 슬라이드 ↗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub는 오늘의 배포 공간입니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub 계정부터 준비합니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        가입 후 확인할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex에서 오늘 할 일은 네 가지입니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex 설치와 접속에서 확인할 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex-desktop-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex Desktop App 버튼을 먼저 읽습니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex 화면과 버튼 한눈에 보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Codex 화면과 버튼 한눈에 보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        메인 화면과 입력창
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왼쪽 내비게이션
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        승인·권한 모드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모델·추론 강도
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        새 스레드는 작업 단위로 나눕니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        권한과 보안: 처음에 함께 정할 기준
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        승인 요청은 세 문장으로 읽습니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        첫 프롬프트: 폴더를 열었는지 확인
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/taehyeonglim/workshop-hansung/edit/main/docs/02-setup.md" title="이 페이지를 편집" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="_1">환경 준비<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="github">GitHub는 오늘의 배포 공간입니다<a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
+<p>GitHub를 처음 쓴다면 저장소보다 '링크로 나누는 작업 폴더'로 이해하면 편합니다.</p>
+<ul>
+<li><strong>파일 보관</strong> — HTML, CSS, JS 파일을 웹에 올릴 수 있는 공간입니다.
+  오늘 만든 발표자료 파일이 여기에 놓입니다.
+  참가자는 링크 하나로 결과물을 다시 엽니다.</li>
+<li><strong>변경 기록</strong> — 수정할 때마다 어떤 파일이 바뀌었는지 기록됩니다.
+  AI가 만든 결과를 되돌아볼 때 유용합니다.
+  실수했을 때 이전 상태를 확인할 수 있습니다.</li>
+<li><strong>Pages 배포</strong> — 정적 HTML 파일을 별도 서버 없이 웹 주소로 공개할 수 있습니다.
+  수강생은 링크 하나로 결과물을 확인합니다.
+  오늘은 GitHub를 배포 공간으로만 이해해도 충분합니다.</li>
+</ul>
+<blockquote>
+<p><strong>짧은 설명</strong> — GitHub는 개발자만 쓰는 공간이 아니라, 오늘은 웹 발표자료를 올리고 공유하는 장소로 사용합니다.</p>
+</blockquote>
+<h2 id="github_1">GitHub 계정부터 준비합니다<a class="headerlink" href="#github_1" title="Permanent link">&para;</a></h2>
+<p>아래 순서대로 가입과 이메일 인증까지 진행합니다.</p>
+<p><img alt="GitHub 가입 화면" src="/workshop-hansung/slide/assets/github-signup-form.png" /></p>
+<ul>
+<li><strong>가입 순서</strong> — 접속: github.com/signup
+  입력: 계정 정보와 Country/Region
+  생성: Create account 후 이메일 인증</li>
+<li><strong>현장 체크</strong> — 사용자명은 공개 주소에 포함
+  무료 계정으로 충분
+  메일이 없으면 스팸함 확인</li>
+</ul>
+<h2 id="_2">가입 후 확인할 것<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>가입 완료와 실습 가능 상태는 다릅니다.</p>
+<ul>
+<li><strong>로그인</strong> — 우측 상단 프로필 확인
+  안 보이면 로그인부터</li>
+<li><strong>이메일 인증</strong> — 인증 메일 클릭
+  전에는 저장소·배포 제한 가능</li>
+<li><strong>사용자명</strong> — 공개 주소에 포함
+  실명·학번 그대로 사용 금지</li>
+<li><strong>결제 화면</strong> — 무료 계정으로 충분
+  유료 안내는 건너뛰기</li>
+</ul>
+<blockquote>
+<p><strong>막힐 때</strong> — 인증이 늦으면 개인 메일을 써 보세요.</p>
+</blockquote>
+<h2 id="codex">Codex에서 오늘 할 일은 네 가지입니다<a class="headerlink" href="#codex" title="Permanent link">&para;</a></h2>
+<p>기능 목록보다 작업 흐름을 먼저 파악합니다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>작업</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 폴더 열기</td>
+<td>작업 폴더 연결</td>
+</tr>
+<tr>
+<td>2. 자료 읽기</td>
+<td>data 엑셀 확인</td>
+</tr>
+<tr>
+<td>3. 파일 만들기</td>
+<td>slide 파일 생성</td>
+</tr>
+<tr>
+<td>4. 결과 확인</td>
+<td>Browser/Diff 검토</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>기억할 것</strong> — Codex는 채팅창이 아니라 작업 폴더 안에서 파일을 읽고 고치고 확인하는 에이전트입니다.
+  오늘은 data 폴더와 slide 폴더를 오가며 일하게 합니다.</li>
+</ul>
+<h2 id="codex_1">Codex 설치와 접속에서 확인할 것<a class="headerlink" href="#codex_1" title="Permanent link">&para;</a></h2>
+<p>제품 메뉴는 바뀔 수 있으니, 오늘 필요한 개념 위주로 확인합니다.</p>
+<ul>
+<li><strong>계정</strong> — OpenAI 계정으로 로그인되어 있는지 확인합니다. 계정별 기능 차이는 본인 화면을 기준으로 확인하세요.</li>
+<li><strong>작업 폴더</strong> — Codex에서 이 저장소 폴더를 열었는지 확인합니다. 다른 폴더를 열면 data 파일을 찾지 못합니다.</li>
+<li><strong>네트워크</strong> — GitHub, OpenAI, Pages 접속이 기관 네트워크에서 막히지 않는지 확인합니다.</li>
+<li><strong>권한 요청</strong> — 파일 쓰기, 명령 실행, 네트워크 접근 요청이 뜨면 이유와 범위를 읽고 승인합니다.</li>
+</ul>
+<h2 id="codex-desktop-app">Codex Desktop App 버튼을 먼저 읽습니다<a class="headerlink" href="#codex-desktop-app" title="Permanent link">&para;</a></h2>
+<p>화면에서 길을 잃지 않도록 프로젝트, 스레드, 확인 도구, 승인 요청 위치를 먼저 파악합니다.</p>
+<ul>
+<li><strong>처음 볼 곳</strong> — 프로젝트: 오늘 작업 폴더
+  새 스레드: 새 작업 시작
+  Mode: Local/Worktree 선택</li>
+<li><strong>작업 중 볼 곳</strong> — Browser/Terminal: 화면·명령 확인
+  Diff/Approval: 변경·권한 확인</li>
+<li><strong>흐름 요약</strong> — 폴더 열기 → 일 맡기기 → 결과 확인, 권한은 필요한 것만 허용합니다.</li>
+</ul>
+<h2 id="codex_2">Codex 화면과 버튼 한눈에 보기<a class="headerlink" href="#codex_2" title="Permanent link">&para;</a></h2>
+<p>실제 Codex 데스크톱 앱 화면으로 자주 쓰는 버튼만 짚어 봅니다. 앱은 업데이트될 수 있으니 버튼 이름보다 역할 위주로 봐 주세요.</p>
+<h3 id="_3">메인 화면과 입력창<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="Codex 메인 컴포저 화면" src="/workshop-hansung/slide/assets/codex-composer.png" /></p>
+<p>가운데 입력창에 할 일을 자연어로 적고, 아래 버튼으로 작업 방식을 정합니다.</p>
+<ul>
+<li><strong>입력창("무엇이든 해보세요")</strong> — 시킬 일을 한국어로 그대로 적습니다.</li>
+<li><strong>+</strong> — 파일·이미지 등 참고할 자료(컨텍스트)를 추가합니다.</li>
+<li><strong>나 대신 승인</strong> — 권한(승인) 모드를 정합니다. 어디까지 자동으로 허용할지 고르는 곳입니다.</li>
+<li><strong>5.5 매우 높음</strong> — 사용할 모델과 추론(생각의 깊이) 강도를 고릅니다.</li>
+<li><strong>🎤 음성 / ↑ 전송</strong> — 음성으로 입력하거나, 적은 내용을 전송해 작업을 시작합니다.</li>
+<li><strong>프로젝트에서 작업하기</strong> — 작업할 폴더(프로젝트)를 연결합니다. 오늘 작업 폴더가 맞는지 여기서 확인합니다.</li>
+</ul>
+<h3 id="_4">왼쪽 내비게이션<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="Codex 좌측 내비 버튼" src="/workshop-hansung/slide/assets/codex-nav-full.png" /></p>
+<ul>
+<li><strong>새 채팅</strong> — 새 작업(스레드)을 시작합니다. 주제가 바뀌면 새로 엽니다.</li>
+<li><strong>검색</strong> — 지난 스레드와 내용을 찾습니다.</li>
+<li><strong>플러그인</strong> — 외부 앱·도구를 연결합니다.</li>
+<li><strong>자동화</strong> — 반복 작업을 예약하거나 자동으로 실행합니다.</li>
+<li><strong>설정</strong>(맨 아래) — 계정과 환경을 설정합니다.</li>
+</ul>
+<h3 id="_5">승인·권한 모드<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="Codex 승인 권한 모드" src="/workshop-hansung/slide/assets/codex-approval.png" /></p>
+<p>'나 대신 승인'을 누르면 권한 범위를 고를 수 있습니다. AI 에이전트가 파일과 명령을 직접 다루므로, 워크숍에서 가장 중요하게 짚는 화면입니다.</p>
+<ul>
+<li><strong>승인 요청</strong> — 외부 파일 수정·인터넷 사용 시 항상 확인합니다. 가장 보수적입니다.</li>
+<li><strong>나 대신 승인</strong> — 위험하다고 감지된 작업에만 승인을 요청합니다. 오늘 실습의 기본값으로 적당합니다.</li>
+<li><strong>전체 권한</strong> — 인터넷과 모든 파일에 제한 없이 접근합니다. 편하지만 위험하니 워크숍에서는 권하지 않습니다.</li>
+<li><strong>사용자 지정(config.toml)</strong> — 설정 파일로 권한을 세밀하게 정합니다.</li>
+</ul>
+<blockquote>
+<p><strong>워크숍 기준</strong> — '승인 요청' 또는 '나 대신 승인'으로 시작하고, 작업 폴더 밖 접근과 민감정보 접근은 허용하지 않습니다.</p>
+</blockquote>
+<h3 id="_6">모델·추론 강도<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="Codex 모델 추론 강도 선택" src="/workshop-hansung/slide/assets/codex-model.png" /></p>
+<ul>
+<li><strong>추론(낮음·중간·높음·매우 높음)</strong> — 더 깊이 생각할수록 정확해지지만 느려집니다. 어려운 분석은 높게, 간단한 작업은 낮게 둡니다.</li>
+<li><strong>모델(GPT-5.5)</strong> — 사용할 모델을 고릅니다.</li>
+<li><strong>속도</strong> — 응답 속도를 우선하는 옵션입니다.</li>
+</ul>
+<h2 id="_7">새 스레드는 작업 단위로 나눕니다<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>한 스레드에 모든 일을 넣기보다, 목표가 바뀔 때 새로 시작합니다.</p>
+<ul>
+<li><strong>설치 확인 스레드</strong> — 폴더가 열렸는지, data 폴더가 보이는지, 파일 목록을 읽을 수 있는지 확인합니다.
+  완료 기준: 파일 목록 요약이 나온다.</li>
+<li><strong>데이터 분석 스레드</strong> — 엑셀 구조 파악, 정제, 차트 데이터 생성, 검증 질문을 진행합니다.
+  완료 기준: 숫자와 근거가 같이 나온다.</li>
+<li><strong>발표자료 제작 스레드</strong> — 구성안, HTML/CSS/JS 생성, 화면 검수, GitHub Pages 배포 확인을 맡깁니다.
+  완료 기준: 브라우저에서 열린다.</li>
+</ul>
+<blockquote>
+<p><strong>비유</strong> — 스레드는 노트북의 새 페이지처럼 생각하면 됩니다. 주제가 바뀌면 새 페이지를 열어 맥락을 정리합니다.</p>
+</blockquote>
+<h2 id="_8">권한과 보안: 처음에 함께 정할 기준<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>AI 에이전트는 파일과 명령을 다룰 수 있으므로 승인 전 확인을 습관화합니다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 읽기</td>
+<td>파일 내용 파악</td>
+</tr>
+<tr>
+<td>2. 쓰기</td>
+<td>새 파일 생성</td>
+</tr>
+<tr>
+<td>3. 명령 실행</td>
+<td>분석/변환</td>
+</tr>
+<tr>
+<td>4. 승인</td>
+<td>허용 범위 확인</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>함께 지킬 기준</strong> — AI가 요청하는 권한은 왜 필요한지 보고 허용합니다. 오늘은 워크숍 폴더 안의 실습 파일을 읽고 결과물을 만드는 범위에서만 진행합니다.</li>
+<li><strong>민감정보 원칙</strong> — 학생 개인 식별정보, 성적 원자료, 상담 내용, 민감 설문 응답은 익명화 전에는 넣지 않습니다. 공개 가능한 예제 데이터로 먼저 흐름을 익힙니다.</li>
+</ul>
+<h2 id="_9">승인 요청은 세 문장으로 읽습니다<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>허용 버튼을 누르기 전에 범위와 이유를 먼저 확인합니다.</p>
+<ul>
+<li><strong>무엇을 하려는가</strong> — 파일을 읽는지, 파일을 쓰는지, 명령을 실행하는지 먼저 봅니다.
+  예: 엑셀 읽기, HTML 수정, 브라우저 검수</li>
+<li><strong>어디까지 접근하는가</strong> — 워크숍 폴더 안인지, 폴더 밖인지, 네트워크 접근이 필요한지 확인합니다.
+  민감정보 폴더 접근은 허용하지 않습니다.</li>
+<li><strong>왜 필요한가</strong> — 분석, 미리보기, 배포처럼 현재 작업과 직접 연결되는 이유가 있는지 묻습니다.
+  이유가 불명확하면 설명을 다시 요구합니다.</li>
+</ul>
+<p>추가로 다음 세 가지를 기억합니다.</p>
+<ul>
+<li>모르면 거절하는 것이 아니라, Codex에게 왜 필요한지 설명하게 합니다.</li>
+<li>워크숍 중에는 작업 폴더 밖 접근과 민감정보 접근을 허용하지 않습니다.</li>
+<li>승인 과정을 직접 보면 AI 에이전트의 작동 범위를 이해하기 좋습니다.</li>
+</ul>
+<h2 id="_10">첫 프롬프트: 폴더를 열었는지 확인<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>설치가 끝났다면 곧바로 아래 프롬프트로 파일 목록을 읽게 해 봅니다.</p>
+<p><strong>실습 프롬프트:</strong></p>
+<div class="highlight"><pre><span></span><code>data 폴더 안의 파일들을 확인하고,
+각 파일이 어떤 주제와 연도인지 표로 정리해줘.
+파일을 읽기 전에 예상되는 분석 질문도 5개 제안해줘.
+</code></pre></div>
+<ul>
+<li><strong>기대 결과</strong> — 4개 주제 × 3개년 구조를 인식한다.
+  전공과목 성적 분포, 입학전형, 외국학생 현황, 중도탈락을 구분한다.
+  분석 전에 질문을 먼저 만든다.</li>
+<li><strong>확인 포인트</strong> — 파일 경로가 다르면 결과에서 바로 드러납니다.
+  AI가 없는 파일을 말하면 실제 파일명만 근거로 하라고 다시 지시하세요.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../01-intro/" class="md-footer__link md-footer__link--prev" aria-label="이전: 01 · 워크숍 소개">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                01 · 워크숍 소개
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-data-analysis/" class="md-footer__link md-footer__link--next" aria-label="다음: 03 · 데이터 분석">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                03 · 데이터 분석
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "toc.follow", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/edit-gate.js"></script>
+      
+    
+  </body>
+</html>

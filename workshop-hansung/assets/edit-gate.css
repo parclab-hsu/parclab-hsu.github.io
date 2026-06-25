@@ -1,0 +1,3 @@
+/* 편집 진입점은 기본 숨김. body.wh-edit-on 일 때만 GitHub UI 노출 */
+body:not(.wh-edit-on) .md-content__button[href*="/edit/"] { display: none !important; }
+body:not(.wh-edit-on) .md-header__source { display: none !important; }

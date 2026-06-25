@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="한성대학교 교수법 워크숍: AI 에이전트로 데이터 분석 및 발표자료 제작" />
+    <title>한성대학교 교수법 워크숍 | AI 에이전트로 데이터 분석 및 발표자료 제작</title>
+    <link rel="stylesheet" href="./styles.css?v=slides-pdf-1" />
+  </head>
+  <body>
+    <main id="deck" class="deck" aria-live="polite">
+      <section id="stage" class="stage" aria-label="발표 슬라이드"></section>
+    </main>
+
+    <aside id="notesPanel" class="notes-panel" aria-label="진행 메모">
+      <div class="notes-panel__header">
+        <span>진행 메모</span>
+        <button id="closeNotes" class="icon-button" type="button" aria-label="진행 메모 닫기">×</button>
+      </div>
+      <div id="notesBody" class="notes-panel__body"></div>
+    </aside>
+
+    <aside id="overviewPanel" class="overview-panel" aria-label="슬라이드 개요">
+      <div class="overview-panel__header">
+        <span>슬라이드 개요</span>
+        <button id="closeOverview" class="icon-button" type="button" aria-label="슬라이드 개요 닫기">×</button>
+      </div>
+      <div id="overviewList" class="overview-list"></div>
+    </aside>
+
+    <nav class="controls" aria-label="발표 컨트롤">
+      <button id="prevBtn" class="control-button" type="button">이전</button>
+      <div class="slide-meter">
+        <span id="slideNumber">1 / 1</span>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+      </div>
+      <button id="nextBtn" class="control-button" type="button">다음</button>
+      <button id="notesBtn" class="control-button control-button--secondary" type="button">진행 메모</button>
+      <button id="overviewBtn" class="control-button control-button--secondary" type="button">개요</button>
+      <button id="printBtn" class="control-button control-button--secondary" type="button">인쇄</button>
+      <a id="editBtn" class="control-button control-button--secondary" href="https://github.com/taehyeonglim/workshop-hansung/edit/main/발표자료/slide/app.js" target="_blank" rel="noopener" hidden>편집</a>
+    </nav>
+
+    <script src="./app.js?v=slides-pdf-1"></script>
+  </body>
+</html>
+
