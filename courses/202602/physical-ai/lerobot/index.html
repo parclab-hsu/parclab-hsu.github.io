@@ -1,0 +1,1478 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · Physical AI 강의 자료">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/physical-ai/lerobot/">
+      
+      
+        <link rel="prev" href="../week15/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>🤗 LeRobot — 모방학습 & VLA - Physical AI · 2026-2학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lerobot-vla" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-header__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Physical AI · 2026-2학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🤗 LeRobot — 모방학습 & VLA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-nav__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Physical AI · 2026-2학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-snippets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    복사용 실습 코드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 계획 (15주)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    강의 계획 (15주)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · Isaac Sim 설치·활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 물리환경·카메라(RGB/Depth)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 센서(IMU·LiDAR·Radar)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · Isaac Lab 4족 보행 RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · Spot+ATS 시스템 구축
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · SLAM·Nav2 기본
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · Spot+ATS SLAM 연동 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · Spot+ATS SLAM 연동 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · Spot+ATS Vision(YOLOv8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · System-1 Executor 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · System-1 단위 액션 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · System-1 단위 액션 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · System-2 LLM Planner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · System-2 테스트·검증
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    심화 모듈
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    심화 모듈
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤗 LeRobot — 모방학습 & VLA
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤗 LeRobot — 모방학습 & VLA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-lerobot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤗 1. LeRobot이란
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ 모듈 구성 (도서 16장 기준)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 2. 설치 (따라하기)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 3. 모방학습 — 시연 수집 → ACT 학습
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 3. 모방학습 — 시연 수집 → ACT 학습">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모방학습 개념
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — 시뮬레이션에서 시연 데이터 수집
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — ACT 정책 학습
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-vla-smolvla-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗣️ 4. VLA — SmolVLA 평가 (LLM 기반 행동 모델)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 5. 주요 CLI 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://parclab-hsu.github.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 PARC Lab 홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-lerobot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤗 1. LeRobot이란
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ 모듈 구성 (도서 16장 기준)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 2. 설치 (따라하기)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 3. 모방학습 — 시연 수집 → ACT 학습
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 3. 모방학습 — 시연 수집 → ACT 학습">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모방학습 개념
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — 시뮬레이션에서 시연 데이터 수집
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — ACT 정책 학습
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-vla-smolvla-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗣️ 4. VLA — SmolVLA 평가 (LLM 기반 행동 모델)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 5. 주요 CLI 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lerobot-vla">심화 모듈 — LeRobot로 배우는 모방학습 &amp; VLA<a class="headerlink" href="#lerobot-vla" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">학습목표</p>
+<p>HuggingFace <strong>LeRobot</strong> 프레임워크로 <strong>모방학습(Imitation Learning)</strong> 과 <strong>VLA(Vision-Language-Action, LLM 기반 행동 모델)</strong> 를 직접 실습한다. 시뮬레이션에서 <strong>시연 데이터를 수집 → ACT 정책 학습 → 평가</strong>하고, 사전학습 <strong>SmolVLA</strong> 를 불러와 평가한다. 이 모듈은 14·15주차에서 다룬 <strong>System-1의 규칙 기반(Rule-based) 단위 액션을 "학습형 정책(Policy)"으로 고도화</strong>하는 길을 연결한다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Sources)</p>
+<p>본 모듈은 도서 <strong>『피지컬 AI 시스템 설계』 16장 LeRobot 실습</strong>(저자: 엥지유니버스 / ENGI UNIVERSE, 한빛미디어)의 예제와 <strong>HuggingFace LeRobot 공식 문서</strong>를 바탕으로 재구성하였습니다. 예제 코드 저장소: <strong><a href="https://github.com/parclab-hsu/Physical-ai-system-design">parclab-hsu/Physical-ai-system-design</a></strong> (원본: engiengi/Physical-ai-system-design).</p>
+</div>
+<h2 id="1-lerobot">🤗 1. LeRobot이란<a class="headerlink" href="#1-lerobot" title="Permanent link">&para;</a></h2>
+<p>LeRobot은 <strong>실제 로봇을 위한 모델·데이터셋·도구</strong>를 제공하는 PyTorch 기반 오픈소스 라이브러리입니다. 모방학습과 강화학습에 초점을 두며, 사전학습 모델과 사람이 수집한 시연 데이터셋을 <strong>HuggingFace Hub</strong>에서 공유합니다.</p>
+<table>
+<thead>
+<tr>
+<th>분류</th>
+<th>지원 알고리즘 (예)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>모방학습(IL)</strong></td>
+<td><strong>ACT</strong>, <strong>Diffusion Policy</strong>, VQ-BeT</td>
+</tr>
+<tr>
+<td><strong>강화학습(RL)</strong></td>
+<td>HIL-SERL, TDMPC</td>
+</tr>
+<tr>
+<td><strong>VLA(LLM 계열)</strong></td>
+<td><strong>SmolVLA</strong>, <strong>Pi0 / Pi0.5</strong>, GR00T N1.5 등</td>
+</tr>
+<tr>
+<td><strong>데이터셋</strong></td>
+<td><code>LeRobotDataset</code> (MP4 영상 + Parquet 상태/행동), HF Hub 호스팅</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">왜 이 강의에서 LeRobot인가?</p>
+<ul>
+<li><strong>14·15주차</strong>에서 System-2(LLM)는 자연어 → 계획을 만들고, System-1은 <strong>규칙 기반 단위 액션</strong>(<code>move_to</code>·<code>scan</code>·<code>track</code>…)으로 실행했습니다.</li>
+<li>15주차 고도화 §의 <strong>Policy Head(하이브리드)</strong> — <em>"규칙 기반 실행부 일부를 학습 정책으로 교체"</em> — 를 <strong>실제로 구현</strong>하는 도구가 LeRobot입니다.</li>
+<li><strong>VLA</strong>(SmolVLA·Pi0)는 "이미지 + 언어 명령 → 행동"을 직접 생성하는, System-2와 System-1을 잇는 <strong>LLM 기반 행동 모델</strong>입니다.</li>
+</ul>
+</div>
+<h2 id="16">⏱️ 모듈 구성 (도서 16장 기준)<a class="headerlink" href="#16" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>LeRobot + 의존성 설치</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>SmolVLA</strong> 정책을 <strong>LIBERO</strong> 환경에서 평가</td>
+</tr>
+<tr>
+<td>3</td>
+<td>파이썬에서 SmolVLA 정책 불러오기</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>MuJoCo Franka Panda</strong>(gym_hil) 환경에서 시연 데이터 수집</td>
+</tr>
+<tr>
+<td>5</td>
+<td>수집 데이터로 <strong>ACT 정책 학습</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2">🛠️ 2. 설치 (따라하기)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">환경 주의</p>
+<p>LeRobot은 Python 3.12 conda 환경을 권장합니다. <code>PYTHONPATH</code>에 ROS 경로(<code>/opt/ros/...</code>)가 있으면 PyTorch/NumPy import 충돌이 날 수 있으니, 새 터미널에서 <code>export PYTHONPATH=</code> 후 진행하세요.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1) conda 환경 생성 (Python 3.12) + ffmpeg</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>conda<span class="w"> </span>create<span class="w"> </span>-y<span class="w"> </span>-n<span class="w"> </span>lerobot<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>lerobot
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>conda<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="s2">&quot;ffmpeg&gt;=6&quot;</span><span class="w"> </span>-c<span class="w"> </span>conda-forge
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># 2) LeRobot 설치</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>pip<span class="w"> </span>install<span class="w"> </span>lerobot
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>lerobot-info<span class="w">        </span><span class="c1"># 설치/버전 확인</span>
+</code></pre></div>
+<blockquote>
+<p>도서 예제에서는 <code>bash scripts/install_lerobot.sh</code> 한 번으로 위 과정을 자동화합니다.</p>
+</blockquote>
+<h2 id="3-act">🧠 3. 모방학습 — 시연 수집 → ACT 학습<a class="headerlink" href="#3-act" title="Permanent link">&para;</a></h2>
+<h3 id="_1">모방학습 개념<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ACT (Action Chunking Transformer)</strong>: 한 번에 여러 스텝의 행동 묶음(action chunk)을 예측 → 부드럽고 일관된 조작</li>
+<li><strong>Diffusion Policy</strong>: 행동을 디퓨전 과정으로 생성 → 다중 모드(multi-modal) 동작에 강함</li>
+<li>핵심: <strong>전문가 시연(state→action)</strong> 을 지도학습으로 모방 (11주차 System-1·12·13주차 단위 액션의 "학습형" 대안)</li>
+</ul>
+<h3 id="step-1">Step 1 — 시뮬레이션에서 시연 데이터 수집<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>MuJoCo 기반 <strong>Franka Panda</strong>(<code>gym_hil</code>)의 <code>PandaPickCube</code> 과제를 <strong>키보드로 조작</strong>하며 10개 에피소드를 수집합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># configs/gym_hil_record.json 설정으로 데이터 수집(record 모드)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python<span class="w"> </span>-m<span class="w"> </span>lerobot.rl.gym_manipulator<span class="w"> </span>--config_path<span class="w"> </span>configs/gym_hil_record.json
+</code></pre></div>
+<p>수집 설정(<code>gym_hil_record.json</code>) 핵심:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gym_manipulator&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gym_hil&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">           </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PandaPickCubeKeyboard-v0&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;fps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">           </span><span class="nt">&quot;processor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;control_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;keyboard&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                          </span><span class="nt">&quot;gripper&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;use_gripper&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">&quot;dataset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;repo_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;username/sim_pick_cube&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">               </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pick_cube&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;num_episodes_to_record&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">               </span><span class="nt">&quot;push_to_hub&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;record&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</code></pre></div>
+<p>→ 결과는 <strong><code>LeRobotDataset</code> 포맷</strong>(영상 MP4 + 상태/행동 Parquet)으로 저장됩니다.</p>
+<h3 id="step-2-act">Step 2 — ACT 정책 학습<a class="headerlink" href="#step-2-act" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>lerobot-train<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--dataset.repo_id<span class="o">=</span>myname/sim_pick_cube<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--policy.type<span class="o">=</span>act<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--output_dir<span class="o">=</span>outputs/train/act_sim_pick_cube<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--job_name<span class="o">=</span>act_sim_pick_cube<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--policy.device<span class="o">=</span>cuda<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--policy.push_to_hub<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--wandb.enable<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Diffusion Policy로 바꿔보기</p>
+<p><code>--policy.type=act</code> 를 <code>--policy.type=diffusion</code> 으로 바꾸면 동일 데이터로 Diffusion Policy를 학습할 수 있습니다. 두 정책의 성공률·동작 부드러움을 비교해 보세요.</p>
+</div>
+<h2 id="4-vla-smolvla-llm">🗣️ 4. VLA — SmolVLA 평가 (LLM 기반 행동 모델)<a class="headerlink" href="#4-vla-smolvla-llm" title="Permanent link">&para;</a></h2>
+<p><strong>SmolVLA</strong>는 경량 Vision-Language-Action 모델로, <strong>이미지 + 언어 명령 → 로봇 행동</strong>을 생성합니다. 사전학습 모델을 <strong>LIBERO</strong> 시뮬 벤치마크에서 평가합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MUJOCO_GL</span><span class="o">=</span>egl
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>lerobot-eval<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--policy.path<span class="o">=</span>HuggingFaceVLA/smolvla_libero<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--env.type<span class="o">=</span>libero<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span>--env.task<span class="o">=</span>libero_object<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>--eval.batch_size<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>--eval.n_episodes<span class="o">=</span><span class="m">3</span>
+</code></pre></div>
+<p>파이썬에서 정책을 직접 불러와 추론에 사용할 수도 있습니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">lerobot.policies.smolvla.modeling_smolvla</span><span class="w"> </span><span class="kn">import</span> <span class="n">SmolVLAPolicy</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">policy</span> <span class="o">=</span> <span class="n">SmolVLAPolicy</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;HuggingFaceVLA/smolvla_libero&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># observation(이미지·상태·언어 명령) → action 추론</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># action = policy.select_action(observation)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">VLA ↔ System-1/System-2</p>
+<p>14주차의 System-2(LLM 플래너)가 <em>"무엇을 할지"</em> 를 JSON 계획으로 만들었다면, <strong>VLA는 <em>"어떻게 움직일지"</em> 를 연속 행동으로 직접 생성</strong>합니다. 즉 SmolVLA는 15주차 고도화에서 말한 <strong>End-to-End 학습형 System-1</strong>의 한 형태입니다.</p>
+</div>
+<h2 id="5-cli">📋 5. 주요 CLI 요약<a class="headerlink" href="#5-cli" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>명령</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lerobot-info</code></td>
+<td>설치·버전·환경 확인</td>
+</tr>
+<tr>
+<td><code>lerobot-teleoperate</code></td>
+<td>로봇 원격 조작(텔레오퍼레이션)</td>
+</tr>
+<tr>
+<td><code>lerobot-record</code> / <code>lerobot.rl.gym_manipulator</code></td>
+<td>시연 데이터셋 수집</td>
+</tr>
+<tr>
+<td><code>lerobot-train --policy.type=act\|diffusion</code></td>
+<td>정책 학습</td>
+</tr>
+<tr>
+<td><code>lerobot-eval --policy.path=... --env.type=...</code></td>
+<td>정책 평가</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">버전 주의</p>
+<p>LeRobot은 빠르게 업데이트되어 <strong>설치 옵션·설정 형식·CLI 플래그가 달라질 수 있습니다.</strong> 명령이 동작하지 않으면 설치된 버전의 <code>--help</code> 와 공식 문서를 함께 확인하세요. (도서 16장 README의 안내와 동일)</p>
+</div>
+<h2 id="_2">🔗 출처 및 참고자료<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>도서 예제 저장소(본 강의 포크): <a href="https://github.com/parclab-hsu/Physical-ai-system-design">https://github.com/parclab-hsu/Physical-ai-system-design</a> → <code>examples/chapter-16-lerobot/</code></li>
+<li>HuggingFace <strong>LeRobot</strong> — <a href="https://github.com/huggingface/lerobot">https://github.com/huggingface/lerobot</a> · 문서 <a href="https://huggingface.co/docs/lerobot">https://huggingface.co/docs/lerobot</a></li>
+<li>LeRobot 모델/데이터셋 허브 — <a href="https://huggingface.co/lerobot">https://huggingface.co/lerobot</a></li>
+<li>도서: <strong>『피지컬 AI 시스템 설계』 16장</strong>(엥지유니버스, 한빛미디어)</li>
+<li>관련 주차: <a href="../week13/">13주차 단위 액션</a> · <a href="../week14/">14주차 System-2 LLM Planner</a> · <a href="../week15/">15주차 고도화(Policy Head)</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../week15/" class="md-footer__link md-footer__link--prev" aria-label="이전: 15주차 · System-2 테스트·검증">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                15주차 · System-2 테스트·검증
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

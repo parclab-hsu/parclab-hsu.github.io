@@ -68,6 +68,8 @@ nav:
     - 13주차 · System-1 단위 액션 2: week13.md
     - 14주차 · System-2 LLM Planner: week14.md
     - 15주차 · System-2 테스트·검증: week15.md
+  - 심화 모듈:
+    - 🤗 LeRobot — 모방학습 & VLA: lerobot.md
   - 🏠 PARC Lab 홈: https://parclab-hsu.github.io/
 
 extra:

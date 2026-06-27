@@ -404,6 +404,9 @@ System-1 단위 액션 설계 part 2 — 슬라이드 60 (출처: ENGI UNIVERSE)
 - Nav2 (NavigateToPose) — <https://docs.nav2.org>
 - tf2 (좌표 변환) — <https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Tf2.html>
 
+!!! tip "🤗 학습형 대안 — LeRobot"
+    `track`·`move_to` 같은 규칙 기반 단위 액션은 **모방학습 정책(ACT·Diffusion Policy)** 으로도 구현할 수 있습니다. 심화 모듈 **[LeRobot로 배우는 모방학습 & VLA](lerobot.md)** 에서 시연 수집 → ACT 학습을 실습합니다.
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 
