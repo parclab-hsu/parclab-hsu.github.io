@@ -298,6 +298,42 @@ def main():
 | 재계획·협업 | 15% | `report_and_wait` + 운영자 개입 재계획 동작 |
 | 고도화 제안·발표 | 10% | VLA·멀티에이전트·Policy Head 확장안의 타당성 |
 
+## 🏛️ CAIO Forum 2026 연계 — Agentic AI 산업 동향과 응용
+
+!!! quote "산업 동향 연계 (출처)"
+    **매경·KAIST CAIO AI 리더스 포럼 2026** ("AX ROI의 분기점: 에이전트 시대, 도입을 넘어 성과 실현으로") 발표자료 연계.
+
+우리가 구축한 Spot+ATS는 **LLM(System-2)이 계획을 세우고 실행 계층(System-1)이 수행**하는 **Agentic AI** 의 한 형태입니다. 같은 패러다임이 산업 전반으로 확산되고 있습니다.
+
+| 발표 | 핵심 메시지 | 본 강의와의 접점 |
+| --- | --- | --- |
+| The Age of Agentic AI · 도메인 특화 AX (김동환, 42Maru) | 에이전트가 "도구"를 넘어 **도메인 특화** 작업 수행 | System-2 프롬프트에 보안 순찰 도메인 규칙 주입 |
+| Agentic OS for AI-First Enterprise (황성주) | 에이전트가 워크플로우를 자동화하는 **"디지털 인력"** | 15주차 고도화 §의 **멀티 에이전트**(관제 서버) 확장 |
+| AX ROI · Agentic AI NOW (정재헌) | 도입을 넘어 **성과(ROI) 실현** | 단위 액션 + 룰 기반의 **저비용·실용** 설계 철학 |
+
+**에이전트형 AI 응용 시연 사례(CAIO 10기)**
+
+=== "12조 · Blending Master"
+
+    경유 제품 **블렌딩 전문가의 암묵지(노하우)** 를 구조화해 검색·재사용 가능한 **AI 자산**으로 전환 → 배합식 설계·첨가제 최적화에 활용.
+
+    ![CAIO 12조 — Blending Master](img/caio/demo12.jpg){ width="640" }
+    /// caption
+    CAIO Forum 2026 시연 — 전문가 암묵지의 AI 자산화 (12조)
+    ///
+
+=== "14조 · HookMatch AI"
+
+    **콘텐츠 IP를 분석**해 성과형 광고 크리에이티브로 전환하는 에이전트 → 분석·생성·전환을 자동화.
+
+    ![CAIO 14조 — HookMatch AI](img/caio/demo14.jpg){ width="640" }
+    /// caption
+    CAIO Forum 2026 시연 — 콘텐츠 IP 분석·광고 전환 에이전트 (14조)
+    ///
+
+!!! note "한 줄 정리"
+    **Physical AI 로봇 에이전트(System-2)** 와 기업의 **Agentic AI** 는 *"추론(계획) – 실행의 분리 + 출력 검증"* 이라는 **동일한 설계 원리**를 공유합니다. 이 수업에서 만든 구조가 곧 산업 표준 패러다임의 임베디드(로봇) 버전입니다.
+
 ## 🖼️ 원본 강의 슬라이드
 
 ??? note "Physical AI 5강 — System-2 테스트 및 검증 (전체 19매)"

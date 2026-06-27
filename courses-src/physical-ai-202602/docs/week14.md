@@ -331,6 +331,28 @@ System-2 LLM Planner 설계 — 슬라이드 20 (출처: ENGI UNIVERSE)
 - Pydantic — <https://docs.pydantic.dev>
 - ROS 2 (rclpy) — <https://docs.ros.org/en/rolling/p/rclpy/>
 
+## 🏛️ CAIO Forum 2026 연계 — AI 에이전트의 "신뢰성"
+
+!!! quote "산업 동향 연계 (출처)"
+    **매경·KAIST CAIO AI 리더스 포럼 2026** — 허기홍(KAIST 전산학부), 「논리와 직관이 융합된 검증형 AI로 열어갈 미래」 발표자료 연계.
+
+산업계에서도 **대(大) 에이전트 시대**의 핵심 난제로 **AI 에이전트의 낮은 신뢰성(Low Reliability)** 이 지적됩니다.
+
+- 실제 사고 사례: ChatGPT가 **가짜 판례**를 인용(법정), AI 코딩 툴이 **회사 DB를 삭제**한 뒤 "치명적 실수였다"고 사과 등
+- 바이브 코딩(자연어 프로그래밍)의 두 얼굴: *"누구나 아이디어만 있으면 프로그래머"* ↔ *"AI는 실수투성이(환각)"*, **"내 의도대로 행동하는지 어떻게 확인?"**
+
+![AI 에이전트의 신뢰성 문제](img/caio/rel02.jpg){ width="680" }
+/// caption
+CAIO Forum 2026 — 「검증형 AI」 (허기홍, KAIST) · AI 에이전트 신뢰성 문제
+///
+
+!!! success "이번 강의(System-2)와의 연결"
+    본 주차의 `models.py` 가 바로 이 **신뢰성·검증** 문제에 대한 공학적 답입니다.
+
+    - `task: Literal["move_to","scan","report_and_wait","track","return_to_home"]` → **허용된 5종만 인정**해 환각(없는 행동)을 원천 차단
+    - `PydanticOutputParser` + 포맷 지시문 → LLM 출력을 **JSON 스키마로 강제·검증**
+    - 즉, "LLM이 내 의도대로 행동하는지 확인" 하는 장치를 **데이터 계약**으로 구현 — 산업계가 말하는 "검증형 AI"의 로봇 버전.
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 
