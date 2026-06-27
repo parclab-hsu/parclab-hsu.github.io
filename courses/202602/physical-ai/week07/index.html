@@ -10,29 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/physical-ai/">
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/physical-ai/week07/">
       
       
+        <link rel="prev" href="../week06/">
       
-        <link rel="next" href="week01/">
+      
+        <link rel="next" href="../week08/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Physical AI · 2026-2학기</title>
+        <title>7주차 · SLAM과 자율주행 - Physical AI · 2026-2학기</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +53,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#physical-ai" class="md-skip">
+        <a href="#7-slam-nav2" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href="." title="Physical AI · 2026-2학기" class="md-header__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-header__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              강의 개요
+              7주차 · SLAM과 자율주행
             
           </span>
         </div>
@@ -216,7 +218,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Physical AI · 2026-2학기" class="md-nav__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-nav__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -231,37 +233,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    강의 개요
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -277,81 +252,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📌 교과목 정보
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 교과 목표
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🗓️ 주차별 강의계획
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖥️ 실습 환경 안내
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📚 참고자료
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -360,8 +260,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -372,11 +274,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -397,7 +299,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -415,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week01/" class="md-nav__link">
+      <a href="../week01/" class="md-nav__link">
         
   
   
@@ -443,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week02/" class="md-nav__link">
+      <a href="../week02/" class="md-nav__link">
         
   
   
@@ -471,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week03/" class="md-nav__link">
+      <a href="../week03/" class="md-nav__link">
         
   
   
@@ -499,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week04/" class="md-nav__link">
+      <a href="../week04/" class="md-nav__link">
         
   
   
@@ -527,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week05/" class="md-nav__link">
+      <a href="../week05/" class="md-nav__link">
         
   
   
@@ -555,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week06/" class="md-nav__link">
+      <a href="../week06/" class="md-nav__link">
         
   
   
@@ -580,10 +482,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="week07/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · SLAM과 자율주행
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -599,6 +528,136 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ 3시간 구성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 1교시. 이론
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 2교시. 실습 — SLAM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3교시. 실습 — Nav2 자율주행
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크포인트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ PPT 슬라이드 개요
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 평가 루브릭
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧰 사전 준비물 &amp; 트러블슈팅
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -611,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week08/" class="md-nav__link">
+      <a href="../week08/" class="md-nav__link">
         
   
   
@@ -639,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week09/" class="md-nav__link">
+      <a href="../week09/" class="md-nav__link">
         
   
   
@@ -667,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week10/" class="md-nav__link">
+      <a href="../week10/" class="md-nav__link">
         
   
   
@@ -695,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week11/" class="md-nav__link">
+      <a href="../week11/" class="md-nav__link">
         
   
   
@@ -723,7 +782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week12/" class="md-nav__link">
+      <a href="../week12/" class="md-nav__link">
         
   
   
@@ -751,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week13/" class="md-nav__link">
+      <a href="../week13/" class="md-nav__link">
         
   
   
@@ -779,7 +838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week14/" class="md-nav__link">
+      <a href="../week14/" class="md-nav__link">
         
   
   
@@ -807,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="week15/" class="md-nav__link">
+      <a href="../week15/" class="md-nav__link">
         
   
   
@@ -889,10 +948,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ 3시간 구성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 1교시. 이론
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 2교시. 실습 — SLAM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 3교시. 실습 — Nav2 자율주행
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📌 교과목 정보
+        ✅ 체크포인트
       
     </span>
   </a>
@@ -903,7 +1006,18 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 교과 목표
+        📝 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ PPT 슬라이드 개요
       
     </span>
   </a>
@@ -914,7 +1028,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🗓️ 주차별 강의계획
+        📊 평가 루브릭
       
     </span>
   </a>
@@ -925,7 +1039,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🖥️ 실습 환경 안내
+        🧰 사전 준비물 &amp; 트러블슈팅
       
     </span>
   </a>
@@ -936,7 +1050,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📚 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -960,176 +1074,138 @@
 
 
 
-<h1 id="physical-ai">Physical AI — 강의 개요<a class="headerlink" href="#physical-ai" title="Permanent link">&para;</a></h1>
-<div class="admonition info">
-<p class="admonition-title">교과목 한 줄 소개</p>
-<p>인공지능을 물리적 신체(로봇)에 구현하여 <strong>인식·학습·제어</strong>를 통합하는 임베디드 지능 교과목입니다. 시뮬레이션 기반 실습 중심으로 ROS 2부터 강화학습·VLA까지 한 학기 동안 직접 구현합니다.</p>
+<h1 id="7-slam-nav2">7주차 — SLAM과 자율주행 (Nav2)<a class="headerlink" href="#7-slam-nav2" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">학습목표</p>
+<p>SLAM으로 지도를 생성하고, Nav2로 목표지점까지 자율주행하는 파이프라인을 구성한다.</p>
 </div>
-<h2 id="_1">📌 교과목 정보<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="3">⏱️ 3시간 구성<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>항목</th>
+<th>교시</th>
+<th>시간</th>
 <th>내용</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>교과목명</td>
-<td>Physical AI (피지컬 AI)</td>
+<td>1교시</td>
+<td>50분</td>
+<td>이론 — SLAM·점유격자지도·Nav2</td>
 </tr>
 <tr>
-<td>대상</td>
-<td>한성대학교 미래모빌리티학과 3학년</td>
+<td>2교시</td>
+<td>50분</td>
+<td>실습 — SLAM 지도 작성</td>
 </tr>
 <tr>
-<td>학기</td>
-<td>2026학년도 2학기 (202602)</td>
-</tr>
-<tr>
-<td>학점/시수</td>
-<td>3학점 (주 3시간)</td>
-</tr>
-<tr>
-<td>선수과목</td>
-<td>파이썬 프로그래밍, 인공지능 기초, 선형대수</td>
-</tr>
-<tr>
-<td>개발환경</td>
-<td>Ubuntu 22.04 · ROS 2 (Humble) · Gazebo · PyTorch</td>
-</tr>
-<tr>
-<td>실습 환경</td>
-<td><strong>전 주차 Gazebo 시뮬레이션 기준으로 통일</strong></td>
-</tr>
-<tr>
-<td>평가</td>
-<td>출석 10% · 실습/과제 30% · 중간 25% · 기말 프로젝트 35%</td>
+<td>3교시</td>
+<td>50분</td>
+<td>실습 — Nav2 자율주행</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_2">🎯 교과 목표<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="1">📖 1교시. 이론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <ul>
-<li>물리 세계에서 작동하는 AI(임베디드 지능)의 개념과 구성요소를 이해한다.</li>
-<li>ROS 2 기반으로 로봇의 인식–판단–제어 파이프라인을 구현할 수 있다.</li>
-<li>시뮬레이션 환경에서 강화학습·모방학습을 적용하고 Sim-to-Real 개념을 설명할 수 있다.</li>
-<li>VLA(Vision-Language-Action) 등 최신 Foundation Model 기반 로봇 지능을 체험한다.</li>
-<li>인식·학습·제어를 통합한 End-to-End Physical AI 시스템을 팀 프로젝트로 완성한다.</li>
+<li><strong>SLAM</strong>: 위치추정과 지도작성을 동시에 (Cartographer, slam_toolbox)</li>
+<li><strong>점유격자지도(occupancy grid)</strong>: free / occupied / unknown</li>
+<li><strong>Nav2 스택</strong>: 전역계획(global planner) + 지역계획(local planner) + 코스트맵 + AMCL 위치추정</li>
 </ul>
-<h2 id="_3">🗓️ 주차별 강의계획<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="2-slam">🛠️ 2교시. 실습 — SLAM<a class="headerlink" href="#2-slam" title="Permanent link">&para;</a></h2>
+<p><strong>Step 1 — 패키지 설치</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ros-humble-navigation2<span class="w"> </span>ros-humble-nav2-bringup<span class="w"> </span>ros-humble-slam-toolbox
+</code></pre></div>
+<p><strong>Step 2 — 시뮬레이션 + SLAM 실행</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TURTLEBOT3_MODEL</span><span class="o">=</span>burger
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch.py
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># 새 터미널</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py<span class="w"> </span>use_sim_time:<span class="o">=</span>True
+</code></pre></div>
+<p><strong>Step 3 — 텔레오퍼레이션으로 환경 탐색하며 지도 작성</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>teleop_keyboard
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># RViz에서 지도가 채워지는 것을 확인</span>
+</code></pre></div>
+<p><strong>Step 4 — 지도 저장</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>~/cluad_ws/map
+</code></pre></div>
+<h2 id="3-nav2">🛠️ 3교시. 실습 — Nav2 자율주행<a class="headerlink" href="#3-nav2" title="Permanent link">&para;</a></h2>
+<p><strong>Step 5 — 저장한 지도로 자율주행</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_navigation2<span class="w"> </span>navigation2.launch.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>use_sim_time:<span class="o">=</span>True<span class="w"> </span>map:<span class="o">=</span><span class="nv">$HOME</span>/cluad_ws/map.yaml
+</code></pre></div>
+<p><strong>Step 6 — 목표지점 설정</strong></p>
+<ul>
+<li>RViz에서 <code>2D Pose Estimate</code>로 초기 위치 지정</li>
+<li><code>Nav2 Goal</code> 버튼으로 목표지점 클릭 → 로봇이 경로를 따라 자율주행</li>
+</ul>
+<p>✅ 로봇이 장애물을 피해 목표까지 도달하면 성공.</p>
+<h2 id="_1">✅ 체크포인트<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> SLAM 지도가 생성·저장되는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nav2로 목표지점 자율주행이 되는가</li>
+</ul>
+<h2 id="_2">📝 과제<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>서로 다른 목표지점 3곳을 순차 방문하는 시나리오 캡처</li>
+<li>지도 작성 결과(map.pgm) 제출</li>
+</ul>
+<h2 id="ppt">🖼️ PPT 슬라이드 개요<a class="headerlink" href="#ppt" title="Permanent link">&para;</a></h2>
+<ol>
+<li>위치추정과 지도작성 문제</li>
+<li>SLAM 개념(Cartographer, slam_toolbox)</li>
+<li>점유격자지도(occupancy grid)</li>
+<li>Nav2 스택 구조(global/local planner, costmap, AMCL)</li>
+<li>경로계획과 장애물 회피</li>
+<li>실습: 지도작성→저장→자율주행</li>
+</ol>
+<h2 id="_3">📊 평가 루브릭<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>주차</th>
-<th>주제</th>
-<th>학습 내용</th>
-<th>실습</th>
+<th>항목</th>
+<th>배점</th>
+<th>A(우수)</th>
+<th>B(보통)</th>
+<th>C(미흡)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="week01/">1</a></td>
-<td>Physical AI 개요</td>
-<td>임베디드 지능, Digital vs Physical AI</td>
-<td>개발환경 구축</td>
+<td>SLAM 지도작성</td>
+<td>35</td>
+<td>깨끗한 지도·저장</td>
+<td>작성만</td>
+<td>실패</td>
 </tr>
 <tr>
-<td><a href="week02/">2</a></td>
-<td>ROS 2 기초</td>
-<td>노드·토픽·서비스·액션</td>
-<td>퍼블리셔/구독자 작성</td>
+<td>Nav2 자율주행</td>
+<td>35</td>
+<td>목표 도달·회피</td>
+<td>도달만</td>
+<td>미동작</td>
 </tr>
 <tr>
-<td><a href="week03/">3</a></td>
-<td>좌표계와 기구학</td>
-<td>강체 변환·TF2·FK/IK</td>
-<td>TF 브로드캐스트·RViz</td>
-</tr>
-<tr>
-<td><a href="week04/">4</a></td>
-<td>센서와 인식</td>
-<td>LiDAR·카메라·IMU 원리</td>
-<td>센서 토픽 구독·시각화</td>
-</tr>
-<tr>
-<td><a href="week05/">5</a></td>
-<td>로봇 시뮬레이션</td>
-<td>Gazebo·URDF·물리엔진</td>
-<td>로봇 모델링·스폰</td>
-</tr>
-<tr>
-<td><a href="week06/">6</a></td>
-<td>이동로봇 제어</td>
-<td>차동구동 운동학·Odometry</td>
-<td>Teleop·주행 노드</td>
-</tr>
-<tr>
-<td><a href="week07/">7</a></td>
-<td>SLAM과 자율주행</td>
-<td>점유격자지도·SLAM·Nav2</td>
-<td>지도작성·자율주행</td>
-</tr>
-<tr>
-<td><a href="week08/">8</a></td>
-<td>중간고사</td>
-<td>1~7주차 종합 평가</td>
-<td>이론+실기 평가</td>
-</tr>
-<tr>
-<td><a href="week09/">9</a></td>
-<td>컴퓨터 비전·딥러닝</td>
-<td>CNN·객체탐지(YOLO)</td>
-<td>YOLO ROS2 연동</td>
-</tr>
-<tr>
-<td><a href="week10/">10</a></td>
-<td>로봇 매니퓰레이션</td>
-<td>로봇팔 기구학·MoveIt</td>
-<td>모션플래닝·픽앤플레이스</td>
-</tr>
-<tr>
-<td><a href="week11/">11</a></td>
-<td>강화학습 기초</td>
-<td>MDP·정책·PPO·보상설계</td>
-<td>PPO 정책 학습</td>
-</tr>
-<tr>
-<td><a href="week12/">12</a></td>
-<td>모방학습</td>
-<td>Behavior Cloning·Diffusion Policy</td>
-<td>시연 수집·BC 학습</td>
-</tr>
-<tr>
-<td><a href="week13/">13</a></td>
-<td>Sim-to-Real</td>
-<td>Reality Gap·도메인 랜덤화</td>
-<td>도메인 랜덤화 실험</td>
-</tr>
-<tr>
-<td><a href="week14/">14</a></td>
-<td>Foundation Models &amp; VLA</td>
-<td>LLM·VLM·VLA</td>
-<td>언어명령 제어 체험</td>
-</tr>
-<tr>
-<td><a href="week15/">15</a></td>
-<td>종합 프로젝트</td>
-<td>End-to-End 시스템 통합</td>
-<td>통합 프로젝트·시연·발표</td>
+<td>과제(다중 목표)</td>
+<td>30</td>
+<td>순차 방문·제출</td>
+<td>일부</td>
+<td>미제출</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">🖥️ 실습 환경 안내<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">공통 실습 환경</p>
-<p>본 강의 실습은 전 주차 <strong>Gazebo 시뮬레이션</strong> 기준으로 통일합니다. 실물 로봇 없이 <code>~/cluad_ws</code> 워크스페이스에서 모두 수행 가능합니다. (강화학습·모방학습 주차는 가벼운 Gymnasium 시뮬 사용)</p>
-</div>
-<h2 id="_5">📚 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">🧰 사전 준비물 &amp; 트러블슈팅<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><strong>준비물</strong>: navigation2, nav2_bringup, slam_toolbox/cartographer</p>
 <ul>
-<li>ROS 2 Documentation (Humble) — <a href="https://docs.ros.org">https://docs.ros.org</a></li>
-<li>NVIDIA Isaac Sim / Isaac Lab Documentation</li>
-<li><em>Probabilistic Robotics</em>, Thrun et al.</li>
-<li>OpenVLA / RT-2 논문 및 Open X-Embodiment 데이터셋</li>
+<li>❌ 지도가 깨짐 → 천천히 주행, 회전 시 속도↓</li>
+<li>❌ Nav2 위치추정 실패 → <code>2D Pose Estimate</code>로 초기 위치 지정</li>
+<li>❌ <code>use_sim_time</code> 경고 → 시뮬에서는 항상 <code>use_sim_time:=True</code></li>
+</ul>
+<h2 id="_5">🔗 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Nav2 공식 문서 — <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
+<li>slam_toolbox — <a href="https://github.com/SteveMacenski/slam_toolbox">https://github.com/SteveMacenski/slam_toolbox</a></li>
+<li>TurtleBot3 SLAM/Nav — <a href="https://emanual.robotis.com/docs/en/platform/turtlebot3/nav_simulation/">https://emanual.robotis.com/docs/en/platform/turtlebot3/nav_simulation/</a></li>
 </ul>
 
 
@@ -1165,15 +1241,31 @@
       
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
         
+          
+          <a href="../week06/" class="md-footer__link md-footer__link--prev" aria-label="이전: 6주차 · 이동로봇 제어">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                6주차 · 이동로봇 제어
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="week01/" class="md-footer__link md-footer__link--next" aria-label="다음: 1주차 · Physical AI 개요">
+          <a href="../week08/" class="md-footer__link md-footer__link--next" aria-label="다음: 8주차 · 중간고사">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                1주차 · Physical AI 개요
+                8주차 · 중간고사
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1205,10 +1297,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

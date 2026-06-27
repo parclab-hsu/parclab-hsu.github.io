@@ -1,0 +1,70 @@
+site_name: Physical AI · 2026-2학기
+site_description: 한성대학교 미래모빌리티학과 3학년 · Physical AI 강의 자료
+site_url: https://parclab-hsu.github.io/courses/202602/physical-ai/
+site_dir: ../../courses/202602/physical-ai
+docs_dir: docs
+use_directory_urls: true
+
+theme:
+  name: material
+  language: ko
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드로
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드로
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.footer
+    - content.code.copy
+    - search.highlight
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - 강의 개요: index.md
+  - 강의 계획 (15주):
+    - 1주차 · Physical AI 개요: week01.md
+    - 2주차 · ROS 2 기초: week02.md
+    - 3주차 · 좌표계와 기구학: week03.md
+    - 4주차 · 센서와 인식: week04.md
+    - 5주차 · 로봇 시뮬레이션: week05.md
+    - 6주차 · 이동로봇 제어: week06.md
+    - 7주차 · SLAM과 자율주행: week07.md
+    - 8주차 · 중간고사: week08.md
+    - 9주차 · 컴퓨터 비전·딥러닝: week09.md
+    - 10주차 · 로봇 매니퓰레이션: week10.md
+    - 11주차 · 강화학습 기초: week11.md
+    - 12주차 · 모방학습: week12.md
+    - 13주차 · Sim-to-Real: week13.md
+    - 14주차 · Foundation Models & VLA: week14.md
+    - 15주차 · 종합 프로젝트: week15.md
+  - 🏠 PARC Lab 홈: https://parclab-hsu.github.io/
+
+extra:
+  generator: false
