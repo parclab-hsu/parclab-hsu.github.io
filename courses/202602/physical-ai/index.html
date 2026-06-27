@@ -308,7 +308,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 교과 목표
+        💻 시스템 사양
       
     </span>
   </a>
@@ -319,7 +319,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🗓️ 주차별 강의계획
+        🎯 교과 목표
       
     </span>
   </a>
@@ -330,7 +330,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧭 커리큘럼 한눈에 보기
+        🗓️ 주차별 강의계획
       
     </span>
   </a>
@@ -339,6 +339,17 @@
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 커리큘럼 한눈에 보기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 참고자료
@@ -1017,7 +1028,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 교과 목표
+        💻 시스템 사양
       
     </span>
   </a>
@@ -1028,7 +1039,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🗓️ 주차별 강의계획
+        🎯 교과 목표
       
     </span>
   </a>
@@ -1039,7 +1050,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧭 커리큘럼 한눈에 보기
+        🗓️ 주차별 강의계획
       
     </span>
   </a>
@@ -1048,6 +1059,17 @@
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 커리큘럼 한눈에 보기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         📚 참고자료
@@ -1126,7 +1148,72 @@
 <p class="admonition-title">복사 가능한 실습 코드</p>
 <p>슬라이드 이미지 안에 포함된 명령어와 예제 소스는 <a href="code-snippets/">복사용 실습 코드</a> 페이지에 주차별 코드블록으로 따로 모았습니다.</p>
 </div>
-<h2 id="_2">🎯 교과 목표<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">💻 시스템 사양<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">GPU 필수</p>
+<p>NVIDIA Isaac Sim / Isaac Lab은 <strong>RTX 계열 NVIDIA GPU</strong>가 필요합니다(RTX 레이트레이싱·CUDA 사용). 강화학습·VLA 학습 시 <strong>VRAM과 RAM</strong>이 성능을 크게 좌우합니다.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>교안 권장 환경</th>
+<th>Isaac Sim 5.1 최소</th>
+<th>Isaac Sim 5.1 권장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>운영체제</td>
+<td>Ubuntu 22.04 LTS</td>
+<td>Ubuntu 22.04 / 20.04, Windows 10·11</td>
+<td>Ubuntu 22.04 LTS</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Intel i9-14900K</td>
+<td>Intel i7(7세대)·AMD Ryzen 5 이상</td>
+<td>Intel i9 · AMD Ryzen 9</td>
+</tr>
+<tr>
+<td>메모리(RAM)</td>
+<td>64 GB</td>
+<td>32 GB</td>
+<td>64 GB</td>
+</tr>
+<tr>
+<td>그래픽(GPU)</td>
+<td>RTX 4090</td>
+<td>RTX 지원 GPU · VRAM 8 GB</td>
+<td>RTX 4080/4090 · VRAM 16 GB↑</td>
+</tr>
+<tr>
+<td>저장장치</td>
+<td>SSD</td>
+<td>SSD 50 GB↑</td>
+<td>NVMe SSD 100 GB↑</td>
+</tr>
+<tr>
+<td>드라이버</td>
+<td>최신 NVIDIA 드라이버</td>
+<td>권장 드라이버 버전 이상</td>
+<td>최신 스튜디오/프로덕션 드라이버</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>환경 관리</strong>: Miniconda(권장) / Conda 가상환경 — 프로젝트별 Python·패키지를 독립 관리(<code>environment.yml</code>로 환경 복제)</li>
+<li><strong>소프트웨어 스택</strong>: NVIDIA Isaac Sim 5.1 · Isaac Lab · ROS 2 Humble · slam_toolbox·Nav2 · PyTorch · LangChain/LLM · (심화) LeRobot</li>
+<li>정확한 요구사항은 공식 문서를 확인하세요 → <a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/installation/requirements.html">Isaac Sim 5.1.0 System Requirements</a></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">GPU가 없거나 사양이 낮다면</p>
+<ul>
+<li>강화학습/VLA <strong>학습</strong>은 GPU가 필수지만, 일부 <strong>추론·평가</strong>는 시간이 더 걸려도 진행 가능합니다.</li>
+<li>클라우드 GPU(예: 워크스테이션 원격 접속)나 학과 실습실 장비를 활용하세요. LeRobot의 <strong>SmolVLA 평가</strong>처럼 가벼운 작업부터 시작하면 좋습니다.</li>
+</ul>
+</div>
+<h2 id="_3">🎯 교과 목표<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li>NVIDIA Isaac Sim에서 물리 환경과 <strong>센서(카메라·IMU·LiDAR·Radar)</strong> 시뮬레이션을 구성할 수 있다.</li>
 <li><strong>Isaac Lab 강화학습</strong>으로 4족 보행 로봇의 보행 정책을 학습시킬 수 있다.</li>
@@ -1134,7 +1221,7 @@
 <li><strong>System-1(실행)</strong> 단위 액션과 <strong>System-2(LLM 플래너)</strong> 를 설계해 자연어 명령으로 로봇을 제어할 수 있다.</li>
 <li>Isaac Sim–ROS 2–자율주행–AI 추론을 잇는 <strong>현대 로봇 SW 풀스택</strong>을 통합 프로젝트로 완성한다.</li>
 </ul>
-<h2 id="_3">🗓️ 주차별 강의계획<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">🗓️ 주차별 강의계획<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1237,11 +1324,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_4">🧭 커리큘럼 한눈에 보기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">🧭 커리큘럼 한눈에 보기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Isaac Sim 기초·센서]  →  [Isaac Lab RL]  →  [SLAM·자율주행]  →  [Vision]  →  [System-1 실행]  →  [System-2 LLM]  →  [통합 검증]
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   W1~3                     W4~5             W6~7,9            W10         W11~13            W14             W15
 </code></pre></div>
-<h2 id="_5">📚 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">📚 참고자료<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>NVIDIA Isaac Sim 5.1.0 공식 문서</strong> — <a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html">https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html</a></li>
 <li>NVIDIA Isaac Lab Documentation — <a href="https://isaac-sim.github.io/IsaacLab/">https://isaac-sim.github.io/IsaacLab/</a></li>

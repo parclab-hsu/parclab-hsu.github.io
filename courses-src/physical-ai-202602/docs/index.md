@@ -19,6 +19,28 @@
 !!! tip "복사 가능한 실습 코드"
     슬라이드 이미지 안에 포함된 명령어와 예제 소스는 [복사용 실습 코드](code-snippets.md) 페이지에 주차별 코드블록으로 따로 모았습니다.
 
+## 💻 시스템 사양
+
+!!! warning "GPU 필수"
+    NVIDIA Isaac Sim / Isaac Lab은 **RTX 계열 NVIDIA GPU**가 필요합니다(RTX 레이트레이싱·CUDA 사용). 강화학습·VLA 학습 시 **VRAM과 RAM**이 성능을 크게 좌우합니다.
+
+| 구분 | 교안 권장 환경 | Isaac Sim 5.1 최소 | Isaac Sim 5.1 권장 |
+| --- | --- | --- | --- |
+| 운영체제 | Ubuntu 22.04 LTS | Ubuntu 22.04 / 20.04, Windows 10·11 | Ubuntu 22.04 LTS |
+| CPU | Intel i9-14900K | Intel i7(7세대)·AMD Ryzen 5 이상 | Intel i9 · AMD Ryzen 9 |
+| 메모리(RAM) | 64 GB | 32 GB | 64 GB |
+| 그래픽(GPU) | RTX 4090 | RTX 지원 GPU · VRAM 8 GB | RTX 4080/4090 · VRAM 16 GB↑ |
+| 저장장치 | SSD | SSD 50 GB↑ | NVMe SSD 100 GB↑ |
+| 드라이버 | 최신 NVIDIA 드라이버 | 권장 드라이버 버전 이상 | 최신 스튜디오/프로덕션 드라이버 |
+
+- **환경 관리**: Miniconda(권장) / Conda 가상환경 — 프로젝트별 Python·패키지를 독립 관리(`environment.yml`로 환경 복제)
+- **소프트웨어 스택**: NVIDIA Isaac Sim 5.1 · Isaac Lab · ROS 2 Humble · slam_toolbox·Nav2 · PyTorch · LangChain/LLM · (심화) LeRobot
+- 정확한 요구사항은 공식 문서를 확인하세요 → [Isaac Sim 5.1.0 System Requirements](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/installation/requirements.html)
+
+!!! tip "GPU가 없거나 사양이 낮다면"
+    - 강화학습/VLA **학습**은 GPU가 필수지만, 일부 **추론·평가**는 시간이 더 걸려도 진행 가능합니다.
+    - 클라우드 GPU(예: 워크스테이션 원격 접속)나 학과 실습실 장비를 활용하세요. LeRobot의 **SmolVLA 평가**처럼 가벼운 작업부터 시작하면 좋습니다.
+
 ## 🎯 교과 목표
 
 - NVIDIA Isaac Sim에서 물리 환경과 **센서(카메라·IMU·LiDAR·Radar)** 시뮬레이션을 구성할 수 있다.
