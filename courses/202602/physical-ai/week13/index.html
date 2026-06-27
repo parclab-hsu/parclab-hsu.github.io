@@ -27,7 +27,7 @@
     
     
       
-        <title>13주차 · Sim-to-Real - Physical AI · 2026-2학기</title>
+        <title>13주차 · System-1 단위 액션 2 - Physical AI · 2026-2학기</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#13-sim-to-real-transfer" class="md-skip">
+        <a href="#13-system-1-part-2" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              13주차 · Sim-to-Real
+              13주차 · System-1 단위 액션 2
             
           </span>
         </div>
@@ -324,7 +324,7 @@
   <span class="md-ellipsis">
     
   
-    1주차 · Physical AI 개요
+    1주차 · Isaac Sim 설치·활용
   
 
     
@@ -352,7 +352,7 @@
   <span class="md-ellipsis">
     
   
-    2주차 · ROS 2 기초
+    2주차 · 물리환경·카메라(RGB/Depth)
   
 
     
@@ -380,7 +380,7 @@
   <span class="md-ellipsis">
     
   
-    3주차 · 좌표계와 기구학
+    3주차 · 센서(IMU·LiDAR·Radar)
   
 
     
@@ -408,7 +408,7 @@
   <span class="md-ellipsis">
     
   
-    4주차 · 센서와 인식
+    4주차 · Isaac Lab 4족 보행 RL
   
 
     
@@ -436,7 +436,7 @@
   <span class="md-ellipsis">
     
   
-    5주차 · 로봇 시뮬레이션
+    5주차 · Spot+ATS 시스템 구축
   
 
     
@@ -464,7 +464,7 @@
   <span class="md-ellipsis">
     
   
-    6주차 · 이동로봇 제어
+    6주차 · SLAM·Nav2 기본
   
 
     
@@ -492,7 +492,7 @@
   <span class="md-ellipsis">
     
   
-    7주차 · SLAM과 자율주행
+    7주차 · Spot+ATS SLAM 연동 1
   
 
     
@@ -548,7 +548,7 @@
   <span class="md-ellipsis">
     
   
-    9주차 · 컴퓨터 비전·딥러닝
+    9주차 · Spot+ATS SLAM 연동 2
   
 
     
@@ -576,7 +576,7 @@
   <span class="md-ellipsis">
     
   
-    10주차 · 로봇 매니퓰레이션
+    10주차 · Spot+ATS Vision(YOLOv8)
   
 
     
@@ -604,7 +604,7 @@
   <span class="md-ellipsis">
     
   
-    11주차 · 강화학습 기초
+    11주차 · System-1 Executor 설계
   
 
     
@@ -632,7 +632,7 @@
   <span class="md-ellipsis">
     
   
-    12주차 · 모방학습
+    12주차 · System-1 단위 액션 1
   
 
     
@@ -669,7 +669,7 @@
   <span class="md-ellipsis">
     
   
-    13주차 · Sim-to-Real
+    13주차 · System-1 단위 액션 2
   
 
     
@@ -687,7 +687,7 @@
   <span class="md-ellipsis">
     
   
-    13주차 · Sim-to-Real
+    13주차 · System-1 단위 액션 2
   
 
     
@@ -724,10 +724,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-intro-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🧭 1. Intro — 단위 액션 5종 복습
       
     </span>
   </a>
@@ -735,21 +735,193 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-track-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 2교시. 실습 — 도메인 랜덤화
+        🎯 2. track 설계 — 3축 통합 제어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 2. track 설계 — 3축 통합 제어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-depthbuffer-bbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 DepthBuffer — bbox에서 실제 거리 뽑아내기
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#22-tracker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 3교시. 실습 — 강건성 비교
+        2.2 Tracker 인터페이스
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-_control_step-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 _control_step() — track의 제어 루프
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-_thread_main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 _thread_main() — 성공 판정 감독 루프
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 track 테스트 및 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-report_and_wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📡 3. report_and_wait 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📡 3. report_and_wait 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 report — 상황 요약
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-exec_report_and_wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 exec_report_and_wait — 엔트리 포인트
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 결정 대기와 반환
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-scan-report_and_wait-return_to_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 테스트 — scan → report_and_wait → return_to_home
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-return_to_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 4. return_to_home 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏠 4. return_to_home 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 home 좌표 결정 우선순위
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-exec_return_to_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 exec_return_to_home
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 테스트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 5. Wrap-up
       
     </span>
   </a>
@@ -771,18 +943,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
+        📊 평가 루브릭
       
     </span>
   </a>
@@ -793,7 +954,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 평가 루브릭
+        🔗 출처 및 참고자료
       
     </span>
   </a>
@@ -804,18 +965,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 참고자료
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -845,7 +995,7 @@
   <span class="md-ellipsis">
     
   
-    14주차 · Foundation Models & VLA
+    14주차 · System-2 LLM Planner
   
 
     
@@ -873,7 +1023,7 @@
   <span class="md-ellipsis">
     
   
-    15주차 · System-2 테스트 & 검증
+    15주차 · System-2 테스트·검증
   
 
     
@@ -959,10 +1109,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-intro-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🧭 1. Intro — 단위 액션 5종 복습
       
     </span>
   </a>
@@ -970,21 +1120,193 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-track-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 2교시. 실습 — 도메인 랜덤화
+        🎯 2. track 설계 — 3축 통합 제어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 2. track 설계 — 3축 통합 제어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-depthbuffer-bbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 DepthBuffer — bbox에서 실제 거리 뽑아내기
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#22-tracker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 3교시. 실습 — 강건성 비교
+        2.2 Tracker 인터페이스
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-_control_step-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 _control_step() — track의 제어 루프
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-_thread_main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 _thread_main() — 성공 판정 감독 루프
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 track 테스트 및 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-report_and_wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📡 3. report_and_wait 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📡 3. report_and_wait 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 report — 상황 요약
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-exec_report_and_wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 exec_report_and_wait — 엔트리 포인트
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 결정 대기와 반환
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-scan-report_and_wait-return_to_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 테스트 — scan → report_and_wait → return_to_home
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-return_to_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 4. return_to_home 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏠 4. return_to_home 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 home 좌표 결정 우선순위
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-exec_return_to_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 exec_return_to_home
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 테스트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 5. Wrap-up
       
     </span>
   </a>
@@ -1006,18 +1328,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
+        📊 평가 루브릭
       
     </span>
   </a>
@@ -1028,7 +1339,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 평가 루브릭
+        🔗 출처 및 참고자료
       
     </span>
   </a>
@@ -1039,18 +1350,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 참고자료
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -1074,10 +1374,14 @@
 
 
 
-<h1 id="13-sim-to-real-transfer">13주차 — Sim-to-Real Transfer<a class="headerlink" href="#13-sim-to-real-transfer" title="Permanent link">&para;</a></h1>
+<h1 id="13-system-1-part-2">13주차 — System-1 단위 액션 설계 part 2<a class="headerlink" href="#13-system-1-part-2" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">학습목표</p>
-<p>시뮬레이션과 실제의 차이(Reality Gap)를 이해하고, 도메인 랜덤화로 정책의 강건성을 높인다.</p>
+<p>지난 강의에서 정의한 5종의 <strong>단위 액션(Unit Action)</strong> 중, 가장 복잡한 <strong><code>track</code></strong> 을 중심으로 System-1 Executor의 설계를 완성한다. <code>track</code> 이 단순 시야 추적이 아니라 <strong>짐벌(yaw/pitch) + 바디(yaw) + 거리(vx)</strong> 를 동시에 다루는 <strong>3축 통합 제어</strong>임을 이해하고, <code>report_and_wait</code>(보고·대기)와 <code>return_to_home</code>(귀환) 액션의 구조와 테스트 방법까지 정리한다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Source)</p>
+<p>본 자료의 그림·예제는 교안 <strong>「System-1 단위 액션 설계 part 2」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 코드 표현은 교안의 설명을 충실히 따른 <strong>재구성 예제</strong>입니다(원본 소스 비공개).</p>
 </div>
 <h2 id="3">⏱️ 3시간 구성<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
@@ -1086,128 +1390,637 @@
 <th>교시</th>
 <th>시간</th>
 <th>내용</th>
+<th>근거 교안</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1교시</td>
 <td>50분</td>
-<td>이론 — Reality Gap·도메인 랜덤화</td>
+<td>Intro(단위 액션 5종 복습) + <code>track</code> 3축 통합 제어 설계</td>
+<td>§01 Intro · §02 track 설계</td>
 </tr>
 <tr>
 <td>2교시</td>
 <td>50분</td>
-<td>실습 — 도메인 랜덤화 적용</td>
+<td><code>track</code> 내부 구조(DepthBuffer·<code>_control_step</code>·<code>_thread_main</code>) + 테스트</td>
+<td>§02 track 설계/검증</td>
 </tr>
 <tr>
 <td>3교시</td>
 <td>50분</td>
-<td>실습 — 강건성 비교 실험</td>
+<td><code>report_and_wait</code> · <code>return_to_home</code> 설계·테스트 + Wrap-up</td>
+<td>§02 report_and_wait·return_to_home · §03</td>
 </tr>
 </tbody>
 </table>
-<h2 id="1">📖 1교시. 이론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="1-intro-5">🧭 1. Intro — 단위 액션 5종 복습<a class="headerlink" href="#1-intro-5" title="Permanent link">&para;</a></h2>
+<p>지난 강의에서 System-1의 행동을 <strong>더 이상 쪼개기 어려운 최소 행동 단위(단위 액션)</strong> 로 설계했습니다. System-2는 이 블록들을 조합해 플랜을 만들고, <strong>Executor는 이를 예측 가능한 방식으로 실행</strong>합니다.</p>
+<table>
+<thead>
+<tr>
+<th>단위 액션</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>move_to</code></td>
+<td>지도 상 특정 좌표/포즈로 이동</td>
+</tr>
+<tr>
+<td><code>scan</code></td>
+<td>제자리에서 ATS를 회전시키며 주변 탐색</td>
+</tr>
+<tr>
+<td><code>track</code></td>
+<td>카메라 기준으로 대상을 화면 중심·일정 거리 안에 유지</td>
+</tr>
+<tr>
+<td><code>report / wait_for_command</code></td>
+<td>현재 상황을 System-2에 보고 + 새 플랜/명령 대기</td>
+</tr>
+<tr>
+<td><code>return_to_home</code></td>
+<td>사전 정의된 home position으로 복귀</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="단위 액션 5종 개요" src="../img/w13/s03.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 03 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">이번 part 2의 초점</p>
+<p>part 1이 <code>move_to</code>·<code>scan</code> 중심이었다면, part 2는 <strong>가장 복잡한 <code>track</code></strong> 과 시나리오 마무리용 액션 <code>report_and_wait</code>·<code>return_to_home</code> 를 다룹니다.</p>
+</div>
+<hr />
+<h2 id="2-track-3">🎯 2. <code>track</code> 설계 — 3축 통합 제어<a class="headerlink" href="#2-track-3" title="Permanent link">&para;</a></h2>
+<p><code>track</code> 은 <strong>타깃을 화면 중앙에 두고 적정 거리를 유지하며 따라가는 추종 액션</strong>입니다. 핵심은 단순 시야 추적(Tracker)이 아니라 <strong>짐벌 + 바디 + 거리</strong> 를 동시에 다루는 <strong>3축 통합 제어</strong>라는 점입니다.</p>
+<table>
+<thead>
+<tr>
+<th>축</th>
+<th>입력</th>
+<th>제어 대상</th>
+<th>동작 요약</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 짐벌 (yaw/pitch)</td>
+<td>픽셀 오차</td>
+<td>ATS 짐벌 각속도</td>
+<td>타깃이 <strong>화면 한가운데</strong> 오도록 (빠른 응답, 고주파 오차)</td>
+</tr>
+<tr>
+<td>② 바디 yaw (wz)</td>
+<td><code>base_link → camera</code> TF</td>
+<td>Spot 몸체 회전</td>
+<td>카메라 정면과 몸 정면을 <strong>정렬</strong> (느린 응답, 저주파 정렬)</td>
+</tr>
+<tr>
+<td>③ 거리 (vx)</td>
+<td>Depth + 타깃 bbox</td>
+<td>전/후진 선속도</td>
+<td>타깃과 <strong>목표 거리(follow_dist)</strong> 유지</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>Reality Gap</strong>: 물리 파라미터·센서 노이즈·지연 등 시뮬≠실제</li>
-<li><strong>도메인 랜덤화(Domain Randomization)</strong>: 학습 시 물리/시각 파라미터를 무작위화 → 실제를 "학습 분포의 일부"로</li>
-<li><strong>기타 기법</strong>: system identification, domain adaptation, sim-and-real co-training</li>
-<li>사례: OpenAI 루빅스큐브 손, ANYmal 보행</li>
+<li><strong>짐벌(yaw/pitch)</strong>: 타깃이 좌측으로 치우치면 → yaw를 좌(−)로, 화면 아래에 있으면 → pitch를 위(+)로.</li>
+<li><strong>바디 yaw</strong>: 카메라 방향과 몸체 yaw 차이를 계산, 오차가 크면 <code>wz</code> 로 천천히 몸을 회전. 짐벌과 Spot이 <strong>동시에</strong> 회전한다.</li>
+<li><strong>거리(vx)</strong>: 너무 멀면 <code>+vx</code>, 너무 가까우면 <code>−vx</code>. <strong>각도 오차가 크면 안전을 위해 <code>vx = 0</code></strong>.</li>
 </ul>
-<h2 id="2">🛠️ 2교시. 실습 — 도메인 랜덤화<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p><strong>Step 1 — 환경 파라미터 랜덤화 래퍼</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span><span class="o">,</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">RandomizedCartPole</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">):</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="c1"># 중력·질량 등 물리 파라미터를 매 에피소드 랜덤화</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">gravity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">masspole</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="n">obs</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">trunc</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">obs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># 센서 노이즈</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="k">return</span> <span class="n">obs</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">trunc</span><span class="p">,</span> <span class="n">info</span>
-</code></pre></div>
-<p><strong>Step 2 — 랜덤화 환경으로 정책 학습</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3</span><span class="w"> </span><span class="kn">import</span> <span class="n">PPO</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">env</span> <span class="o">=</span> <span class="n">RandomizedCartPole</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;CartPole-v1&#39;</span><span class="p">))</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">PPO</span><span class="p">(</span><span class="s1">&#39;MlpPolicy&#39;</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">50000</span><span class="p">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;ppo_dr&#39;</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="3_1">🛠️ 3교시. 실습 — 강건성 비교<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="track의 3축 통합 제어 — 짐벌·바디·거리" src="../img/w13/s06.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 06 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">역할 분담의 핵심</p>
+<p>System-1은 <strong>"트래킹 제어의 성공 여부"만 판단</strong>하고, 세부 제어는 Tracker 내부에서 처리합니다. Tracker는 주기적으로 <code>_control_step()</code> 을 반복 실행하며 매 틱마다 <strong>바디·짐벌·속도 명령</strong>을 생성합니다.</p>
+</div>
+<h3 id="21-depthbuffer-bbox">2.1 DepthBuffer — bbox에서 실제 거리 뽑아내기<a class="headerlink" href="#21-depthbuffer-bbox" title="Permanent link">&para;</a></h3>
+<p>"화면 중앙"만으로는 부족합니다. <strong>사람(타깃)과 로봇 사이의 실제 거리</strong>를 알아야 <code>vx</code>(전진/후퇴) 제어가 가능합니다. <code>DepthBuffer</code> 는 <code>/depth</code> 이미지를 캐시하고 bbox ROI의 대표 거리값 <code>range_m</code> 을 계산해 Tracker에 제공합니다.</p>
+<p><strong>DepthBuffer 내부 파이프라인</strong></p>
+<p><strong>Step 1 — depth 표현 통일</strong>: 센서별로 다른 depth 형식을 두 가지로 통일해 코드 복잡화·오류를 방지.</p>
 <ul>
-<li>일반 정책(ppo_cartpole) vs 랜덤화 정책(ppo_dr)을 <strong>물리값을 바꾼 환경</strong>에서 평가</li>
-<li>중력/질량을 학습 범위 밖으로 밀어도 랜덤화 정책이 더 잘 버틴다 → Sim-to-Real 효과 체감</li>
+<li><code>32FC1</code> 형태의 float(meter) 값</li>
+<li><code>16UC1</code> 형태의 uint16(mm) 값</li>
 </ul>
-<p>✅ 랜덤화 정책이 변화된 환경에서 더 높은 평균 보상을 받으면 성공.</p>
+<p><strong>Step 2 — 해상도 정렬</strong>: vision 해상도(<code>vision_fw, vision_fh</code>)와 depth 해상도(<code>depth_fw, depth_fh</code>)를 비교하고, vision의 bbox를 depth 좌표계로 <strong>리스케일</strong> → 두 영상이 동일 공간 ROI를 바라보도록 정렬.</p>
+<p><strong>Step 3 — ROI 클리닝 &amp; 크롭</strong>: depth 계산에 치명적인 값을 제거.</p>
+<ul>
+<li>센서 사용 범위를 벗어난 비정상 값</li>
+<li><code>NaN</code>, <code>inf</code> 등 계산 불가능한 값</li>
+<li><code>depth_valid_min</code> 이하 / <code>depth_valid_max</code> 이상의 값</li>
+</ul>
+<p><strong>Step 4 — 대표 거리값 선택</strong>: 남은 값의 <strong>중앙값 혹은 백분위수(percentile)</strong> 를 사용해 튐 값에 강한 안정적인 <code>range_m</code> 산출.</p>
+<figure>
+<p><img alt="DepthBuffer — bbox ROI에서 안정적인 range_m 추출" src="../img/w13/s13.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 13 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p>산출된 <code>range_m</code> 은 ① <code>follow_dist</code> 와 비교해 전진/후퇴 판단, ② <code>vx</code> 계산의 기준값, ③ <strong>yaw가 정렬된 상태에서만 거리 제어를 시작</strong>하는 조건 판단에 쓰입니다.</p>
+<h3 id="22-tracker">2.2 Tracker 인터페이스<a class="headerlink" href="#22-tracker" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">start(params, rules)</label><label for="__tabbed_1_2">wait_initial_success(timeout)</label><label for="__tabbed_1_3">stop(flush=True)</label><label for="__tabbed_1_4">status()</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>"이 타깃을 이런 조건으로 추적해라" 파라미터 전달 → 내부 제어 스레드가 켜지며 짐벌·바디 yaw·거리 동작 시작.</li>
+<li><strong>이미 추적 중이면</strong> 새 스레드를 만들지 않고 <strong>파라미터만 갱신</strong> → 상황 변화에 부드럽게 대응.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>아래 조건이 일정 시간 만족되면 <code>True</code> 반환(초기 lock 완료):</p>
+<ul>
+<li>타깃이 화면 중앙 근처에 들어왔는가?</li>
+<li>바디 yaw 정렬 오차가 기준 이하인가?</li>
+<li>거리가 너무 가깝거나 멀지 않은가?</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>ATS 짐벌/바디에 <strong>0 속도 명령을 여러 번 전송</strong> → 잔여 명령 없이 "멈춘 뒤 안정화"까지 포함된 정지.</p>
+</div>
+<div class="tabbed-block">
+<p>정렬 오차, 최근 depth/range, 현재 속도 명령 등 <strong>내부 스냅샷</strong> 조회.</p>
+</div>
+</div>
+</div>
+<h3 id="23-_control_step-track">2.3 <code>_control_step()</code> — track의 제어 루프<a class="headerlink" href="#23-_control_step-track" title="Permanent link">&para;</a></h3>
+<p>매 틱마다 <strong>비전 정보 읽기 → 타깃 선택 → 오차 계산 → 짐벌 회전 → 바디 정렬 → 거리 유지</strong> 순서로 동작합니다.</p>
+<figure>
+<p><img alt="_control_step의 제어 흐름" src="../img/w13/s20.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 20 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p><strong>① 비전 정보 읽기 / 타깃 선택</strong></p>
+<ul>
+<li><code>vision.snapshot()</code> 으로 같은 시점의 객체 목록(<code>objects</code>, 각 객체의 bbox·center·id·class, <code>frame_w/h</code>)을 정리.</li>
+<li>화면 중심 기준점 계산: <code>cx, cy = frame_w/2, frame_h/2</code>.</li>
+<li><code>_choose_target()</code> : <code>primary_id</code> 가 있고 현재 프레임에 보이면 <strong>무조건 그 ID</strong>, 없으면 <strong>bbox 면적이 가장 큰 객체</strong> 선택.</li>
+<li><code>_update_lock</code> (<strong>sticky lock</strong>): 같은 ID가 계속 보이면 유지, 사라지면 lock 해제 + zero command, ID가 바뀌면 로그 출력 + <strong>PID I항 초기화(anti-windup)</strong> 로 부드럽게 전환(이전 타깃의 누적 오차로 인한 오버슛 방지).</li>
+</ul>
+<p><strong>② 오차 계산 (Gimbal PID)</strong></p>
+<ul>
+<li>타깃 중심 = <code>x + w/2</code>, <code>y + h/2</code> (없으면 <code>center["x"], center["y"]</code>).</li>
+<li>픽셀 오차: <code>err_px_x, err_px_y = 타깃 중심 − 화면 중앙</code>. <code>abs()</code> 값에 <strong>데드밴드</strong>를 적용해 손떨림·센서 지터 수준의 미세 흔들림 억제.</li>
+<li>yaw/pitch 각각 <strong>P·D·I</strong> 항으로 제어:<ul>
+<li><code>derr</code>(미분 D항)에 <code>_yaw_d_lpf</code>(저역통과 필터)를 적용해 sudden jump·미세 진동의 과잉반응 억제.</li>
+<li><code>if k_yaw_i &gt; 0.0 and allow_i</code> : 오차가 작아진 구간에서만 적분을 허용해 <strong>windup 방지</strong>.</li>
+<li>각 항을 합쳐 <code>yaw_rate_cmd</code> 생성.</li>
+</ul>
+</li>
+<li><strong>Slew 제한</strong>: <code>yaw_step</code> 으로 급변 명령에 <code>clamp</code>(slew 제한), <code>yaw_rate_sat</code> 으로 짐벌 제한 속도 초과 방지 → <code>tw_ats.angular.z / .y</code> 로 ATS에 Twist 발행.</li>
+</ul>
+<figure>
+<p><img alt="Gimbal PID + LPF + Slew 제한" src="../img/w13/s27.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 27 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p><strong>③ 바디 정렬 (wz)</strong></p>
+<p>짐벌만 돌리면 카메라는 타깃을 보지만 Spot은 엉뚱한 방향을 본 자세가 유지되어 이동·장애물 회피·거리 유지가 불안정해집니다. → <strong>"카메라가 보는 방향 = Spot 몸 방향"</strong> 이 되도록 바디 yaw도 정렬.</p>
+<ul>
+<li><code>lookup_yaw_rel()</code> : TF 기반으로 카메라–몸체 yaw 관계 계산. <strong>TF 조회 실패(<code>ok_tf</code>) 시 억지 회전 금지</strong> → <code>vx, wz</code> 에 0을 한 번 보내고 안전하게 틱 종료.</li>
+<li><code>yaw_rel</code> : 음수=왼쪽 / 양수=오른쪽. <code>dyaw_dt</code>(변화율)에 <code>_dyaw_lpf</code> 를 적용해 타깃 흔들림·depth jitter로 인한 튐을 억제.</li>
+<li><strong>이중 데드밴드</strong>:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>값</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>yaw_deadband_enter_deg</code></td>
+<td>4.0°</td>
+<td>이하 → "충분히 정렬됨" → <code>wz = 0</code>(회전 정지)</td>
+</tr>
+<tr>
+<td><code>yaw_deadband_exit_deg</code></td>
+<td>6.5°</td>
+<td>4°~6.5° → "거의 정렬" → 최소 보정 / 초과 → P·D 기반 적극 보정</td>
+</tr>
+</tbody>
+</table>
+<p>→ 거의 정렬된 상태에서 불필요한 흔들림은 막고, 크게 틀어지면 확실하게 회전해서 맞춥니다.</p>
+<p><strong>④ 거리 유지 (vx)</strong></p>
+<ul>
+<li><code>self.depth.roi_mean_depth()</code> → <code>range_m</code> 계산(RGB bbox → depth 좌표 스케일링 → 비정상 값 제거 → 중앙부 crop + percentile). <code>range_m = None</code> 이면 <strong>캐싱된 이전 유효값</strong>을 재사용해 부드럽게 연결.</li>
+<li><strong>이동 조건</strong>: <code>if (range_m is not None) and (yaw_err_deg &lt;= move_when_yaw_deg)</code> → 몸이 충분히 타깃 방향을 볼 때만 전진/후퇴 허용.</li>
+<li><code>dist_err = range_m − follow_dist</code> : <code>&gt;0</code> 멀다(<code>+vx</code>), <code>&lt;0</code> 가깝다(<code>−vx</code>).</li>
+<li><code>vx</code> 는 <code>dist_err</code> 에 비례, 상·하한은 <code>vx_cap</code> 으로 제한, <code>vx_min_abs</code> 이하의 자잘한 움직임은 0 처리.</li>
+<li><code>cmd_pub.publish(tw)</code> 로 <code>vx + wz</code> 를 Spot에 전송.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># _control_step() 거리 제어 핵심 (교안 설명 기반 재구성)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">range_m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span><span class="o">.</span><span class="n">roi_mean_depth</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>          <span class="c1"># DepthBuffer에서 대표 거리</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span> <span class="p">(</span><span class="n">range_m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">yaw_err_deg</span> <span class="o">&lt;=</span> <span class="n">move_when_yaw_deg</span><span class="p">):</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">dist_err</span> <span class="o">=</span> <span class="n">range_m</span> <span class="o">-</span> <span class="n">follow_dist</span>               <span class="c1"># +면 멀다 / -면 가깝다</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">vx</span> <span class="o">=</span> <span class="n">clamp</span><span class="p">(</span><span class="n">k_dist</span> <span class="o">*</span> <span class="n">dist_err</span><span class="p">,</span> <span class="o">-</span><span class="n">vx_cap</span><span class="p">,</span> <span class="n">vx_cap</span><span class="p">)</span> <span class="c1"># 비례 + 상하한 제한</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vx</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">vx_min_abs</span><span class="p">:</span>                        <span class="c1"># 자잘한 움직임은 0</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="n">vx</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">vx</span> <span class="o">=</span> <span class="mf">0.0</span>                                        <span class="c1"># 각도 오차 크면 안전상 정지</span>
+</code></pre></div>
+<p><code>_control_step()</code> 은 매 틱마다 <code>aligned, moving, yaw_err, wz, vx, range_m, dist_err</code> 를 반환하고, 상위 루프가 이를 이용해 초기 성공 판정·추적 유지·타임아웃을 판단합니다.</p>
+<h3 id="24-_thread_main">2.4 <code>_thread_main()</code> — 성공 판정 감독 루프<a class="headerlink" href="#24-_thread_main" title="Permanent link">&para;</a></h3>
+<p>yaw 오차와 거리 오차가 <strong>일정 시간 동안 연속으로</strong> 만족되는지 판단해, 순간적으로 조건을 스쳐 지나가는 것을 성공으로 오인하지 않도록 합니다.</p>
+<table>
+<thead>
+<tr>
+<th>변수</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in_yaw</code></td>
+<td>yaw 오차가 <code>success_yaw_deg</code> 이내인가</td>
+</tr>
+<tr>
+<td><code>in_dist</code></td>
+<td><code>range_m</code> 이 <code>follow_dist ± dist_tol_m</code> 이내인가</td>
+</tr>
+<tr>
+<td><code>yaw_hold</code> / <code>dist_hold</code></td>
+<td>각 조건 유지 시간</td>
+</tr>
+<tr>
+<td><code>both_hold</code></td>
+<td>두 조건이 <strong>동시에</strong> 유지된 시간</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>both_hold &gt;= success_hold_sec</code> → <strong>초기 정렬 성공(Initial Success)</strong> 판정 → <code>wait_initial_success()</code> 에서 대기하던 스레드 해제.</li>
+<li>Initial Success 이후에도 <code>_thread_main()</code> 은 계속 동작하며 타깃이 움직여도 <code>_control_step()</code> 을 반복 호출해 추적을 유지. <code>stop()</code> 호출 시 스레드 종료.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">track 요약 — 3축 통합 제어</p>
+<ul>
+<li><strong>짐벌</strong>: 픽셀 오차 → PID + LPF + slew → <code>tw_ats</code> 로 ATS 전송</li>
+<li><strong>바디 yaw</strong>: <code>yaw_rel()</code> 로 카메라–몸체 관계 추정 → <code>wz</code> 제어</li>
+<li><strong>거리</strong>: <code>roi_mean_depth()</code> → <code>range_m</code> → <code>follow_dist</code> 비교 → <code>vx</code></li>
+<li><strong>신뢰도</strong>: <code>_thread_main()</code> 이 성공 조건 <strong>유지 시간</strong>을 보고 보고 시점을 판단</li>
+</ul>
+</div>
+<h3 id="25-track">2.5 track 테스트 및 검증<a class="headerlink" href="#25-track" title="Permanent link">&para;</a></h3>
+<p>System-2 대신 <code>/system2/plan_cmd</code> 에 <code>PlanCommand</code> 를 한 번 발행하고, <code>plan_json</code> 안에 <code>track</code> 단일 스텝 플랜을 JSON으로 넣어 전달합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;mission_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;demo-002&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;intent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;track&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;71&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">&quot;follow_dist&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="nt">&quot;tol&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="nt">&quot;dwell_sec&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">      </span><span class="nt">&quot;max_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="p">}]</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>class="person", id="71"</code></td>
+<td>vision-tracker의 target 선택 기준</td>
+</tr>
+<tr>
+<td><code>follow_dist = 4.0</code></td>
+<td>유지하고 싶은 거리(m), <code>range_m</code> 와 비교해 <code>vx</code> 결정</td>
+</tr>
+<tr>
+<td><code>tol = 1.0</code></td>
+<td>거리 허용 오차(예: 4±1m면 거리 OK)</td>
+</tr>
+<tr>
+<td><code>dwell_sec = 0.8</code></td>
+<td>yaw+거리 조건 0.8초 이상 연속 유지 시 <strong>Initial Success</strong></td>
+</tr>
+<tr>
+<td><code>max_time = 30.0</code></td>
+<td>최대 30초 동작, 초과 시 <strong>TIMEOUT</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Executor 내부 흐름</strong></p>
+<p><strong>Step 1 —</strong> <code>/system2/plan_cmd</code> 수신 → <code>plan_json</code> 파싱 + 스키마 검증 → <code>current_plan</code> 저장.
+<strong>Step 2 —</strong> <code>run_loop()</code> 스레드 시작, 첫 스텝 <code>task == "track"</code>.
+<strong>Step 3 —</strong> <code>tracker.start(params, replan_rules)</code> 로 백그라운드 추적 스레드 시작.
+<strong>Step 4 —</strong> <code>wait_initial_success(timeout=...)</code> 로 초기 정렬 성공 이벤트 대기.
+<strong>Step 5 —</strong> ATS 짐벌이 타깃 추적 + 픽셀 오차 보정, Spot이 카메라 각도에 맞춰 정렬 + 거리 조절 + 로그 출력.</p>
+<div class="admonition note">
+<p class="admonition-title">튜닝</p>
+<p>실제 동작에서 발생하는 파라미터 오차는 <code>track</code> <strong>튜닝</strong>으로 극복합니다.</p>
+</div>
+<hr />
+<h2 id="3-report_and_wait">📡 3. <code>report_and_wait</code> 설계<a class="headerlink" href="#3-report_and_wait" title="Permanent link">&para;</a></h2>
+<p><code>report_and_wait</code> 는 <code>report</code>(상황 보고)와 <code>wait_for_command</code>(다음 명령 대기)를 합친 단위 액션입니다. 정보를 <strong>로그 + 상태 토픽(<code>/ats_state</code>)</strong> 으로 뿌리고 동일 내용을 <strong>JSON으로 System-2에 전달</strong>한 뒤, 의사 결정(새 플랜, 미션 종료 등)이 내려질 때까지 정지합니다.</p>
+<figure>
+<p><img alt="report_and_wait — 보고와 대기의 결합" src="../img/w13/s38.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 38 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="31-report">3.1 report — 상황 요약<a class="headerlink" href="#31-report" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>_summarize_context()</code> : 사람이 읽기 쉬운 <strong>한 줄 요약</strong> 생성. 입력은 <code>mission_id</code>, <code>pose</code>(x, y, yaw, ok), <code>vision_snapshot</code>(primary_id, targets).</li>
+<li><code>targets[0]</code> 을 대표 타깃으로 써 class·<code>range_m</code> 을 얻고 문장화.<ul>
+<li>예) <code>"3개 타겟 감지, 주요 타겟: id=35, person (거리 약 4.2m)"</code> / <code>"감지된 타겟 없음"</code></li>
+</ul>
+</li>
+<li><code>pose_ok</code>(TF 성공 여부)에 따라 다른 로그 → 운용자가 "어디서, 어떤 미션으로, 무엇을 보는지" 한눈에 파악.</li>
+</ul>
+<h3 id="32-exec_report_and_wait">3.2 exec_report_and_wait — 엔트리 포인트<a class="headerlink" href="#32-exec_report_and_wait" title="Permanent link">&para;</a></h3>
+<p>4가지 동작을 수행합니다.</p>
+<p><strong>Step 1 —</strong> 현재 pose + vision 상황을 로그로 출력.
+<strong>Step 2 —</strong> <code>ats_state</code> 를 최신 상태로 퍼블리시(<code>publish_state()</code>, <code>hasattr</code> 로 방어적 호출).
+<strong>Step 3 —</strong> 같은 컨텍스트(pose·vision·state_string)를 JSON으로 System-2에 전달(<code>/system2/report_context</code>).
+<strong>Step 4 —</strong> 다음 명령(decision)을 수락 대기.</p>
+<div class="admonition note">
+<p class="admonition-title">방어적 설계 포인트</p>
+<ul>
+<li><code>pub_report_context</code> 가 <strong>없으면</strong> System-2 미연동으로 간주 → 경고 로그 + <code>fallback_delay_sec</code> 만큼 대기 후 <code>True</code> 반환(플랜을 실패로 만들지 않고 흐름 유지).</li>
+<li><code>ensure_ascii=False</code> → 한글/유니코드 지원.</li>
+<li><code>decision_holder</code> : 콜백 밖에서 값을 공유. <code>mid != mission_id</code> 면 무시, 이미 값이 있으면 이후 메시지 무시(병렬/큐잉 대비).</li>
+</ul>
+</div>
+<h3 id="33">3.3 결정 대기와 반환<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>create_subscription</code> 으로 구독자 생성, <code>wait_timeout_sec</code>(기본 <strong>600초</strong>) 동안 0.1초 간격으로 <code>decision_holder["value"]</code> 를 폴링.</li>
+<li>TIMEOUT 시 경고 로그 + decision 없음 → <code>"continue"</code> 로 간주, <code>destroy_subscription(sub)</code> 로 초기화.</li>
+<li><strong>항상 <code>return True</code></strong> : <code>report_and_wait</code> 는 "현재 플랜의 한 스텝" 역할만 하고, 실제 시나리오 제어는 상위 로직(System-2 + Executor)이 결정.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>decision 값</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"continue"</code></td>
+<td>아무 것도 못 받거나 TIMEOUT일 때</td>
+</tr>
+<tr>
+<td><code>"new_plan"</code></td>
+<td>System-2가 이미 <code>/high_level_plan</code> 을 publish 했다고 가정</td>
+</tr>
+<tr>
+<td><code>"end"</code></td>
+<td>이후 플랜 종료/정리 정책은 Executor 상위 레벨에서 결정</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="report_and_wait 결정 대기 흐름" src="../img/w13/s50.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 50 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="34-scan-report_and_wait-return_to_home">3.4 테스트 — scan → report_and_wait → return_to_home<a class="headerlink" href="#34-scan-report_and_wait-return_to_home" title="Permanent link">&para;</a></h3>
+<p><code>plan_json</code> 에 세 스텝을 넣어 시나리오를 검증합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;mission_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;demo_report_wait_001&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;intent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scan&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">      </span><span class="nt">&quot;sweep_deg&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;yaw_rate_dps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;duration_sec&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="nt">&quot;watch_classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;report_on_found&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}},</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;report_and_wait&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">}},</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;return_to_home&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>scan</code> : −90°~+90° 스윕(180°), 15dps, 최대 10초, <code>person</code> 만 탐지, FOUND 시 <code>/scan_report</code> 발행 + <code>_do_report()</code> 연계.</li>
+<li><code>report_and_wait</code> 의 <code>prompt</code> 는 현재 <code>exec_report_and_wait()</code> 에서 미사용이며 <strong>System-2 UI 인터페이스만 열어둔 상태</strong>.</li>
+</ul>
+<p><strong>실행 흐름</strong>: <code>/system2/plan_cmd</code> → <code>on_plan_cmd()</code> → 파싱·검증 → <code>current_plan</code> 저장 → <code>_run_loop()</code> 스레드 시작 → <code>scan</code>(ok=True) → <code>current_index += 1</code> → <code>report_and_wait</code> → <code>publish_state()</code> 로 <code>/ats_state</code> 최신화 → <code>/system2/report_context</code> 발행 → 결정 대기 → <code>return_to_home</code> 으로 귀환 → <code>queue_status = "done"</code>.</p>
+<p><strong>체크 포인트</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>ros2 topic echo /system2/report_context</code> 를 켜 두고, 맵 좌표·vision 스냅샷·state_string 이 JSON payload에 포함되는지 확인.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 테스트 단계에서 <code>/system1/report_decision</code> 으로 직접 <code>"continue"</code> 결정 발행이 되는지 확인.</li>
+</ul>
+<hr />
+<h2 id="4-return_to_home">🏠 4. <code>return_to_home</code> 설계<a class="headerlink" href="#4-return_to_home" title="Permanent link">&para;</a></h2>
+<p>로봇을 <strong>home 위치</strong>로 돌려보내는 단위 액션입니다. home은 고정 좌표 1개가 아니라 상황에 따라 다르게 정의될 수 있는 개념이므로, <strong>"home 좌표를 어떻게 결정하나"</strong> 와 <strong>"그 좌표로 어떻게 이동하나"</strong> 를 분리합니다.</p>
+<ul>
+<li>좌표 결정: <code>_resolve_home_goal()</code></li>
+<li>실제 이동: 이미 구현된 <code>move_to</code> 재사용(<code>exec_move_to</code>)</li>
+</ul>
+<h3 id="41-home">4.1 home 좌표 결정 우선순위<a class="headerlink" href="#41-home" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>우선순위</th>
+<th>출처</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>params.goal</code></td>
+<td>params 안에 <code>goal</code> 이 dict면 그대로 사용(x,y,yaw를 float 캐스팅)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>node._home_pose</code></td>
+<td>미리 세팅된 값(예: <strong>미션 시작 시점 pose</strong>)이 있으면 사용</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>home_x/y/yaw</code></td>
+<td>런치/YAML 파라미터 읽기, 실패 시 기본값 <code>(0.0, 0.0, 0.0)</code></td>
+</tr>
+</tbody>
+</table>
+<p>→ "플랜이 좌표 넘김" + "노드가 홈을 기억" + "파라미터 파일에 적힌 홈" 을 모두 커버합니다.</p>
+<figure>
+<p><img alt="return_to_home — home 좌표 결정 우선순위" src="../img/w13/s56.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 56 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="42-exec_return_to_home">4.2 exec_return_to_home<a class="headerlink" href="#42-exec_return_to_home" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>_resolve_home_goal()</code> 로 최종 home 좌표를 확정하고 <strong>소수점 셋째 자리까지</strong> 로그로 출력(의도한 홈인지 1차 검증).</li>
+<li><code>return exec_move_to(goal)</code> : 내비게이션 로직은 <code>move_to</code> 와 <strong>완전히 동일</strong>(Nav2 <code>NavigateToPose</code> 호출·경로 추종·재플랜). 성공 시 <code>True</code>, 실패/타임아웃 시 <code>False</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># return_to_home = &quot;홈 좌표 결정&quot; + &quot;move_to 재사용&quot; (교안 설명 기반 재구성)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">exec_return_to_home</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">goal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_home_goal</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>   <span class="c1"># ① params.goal ② _home_pose ③ 파라미터</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="sa">f</span><span class="s2">&quot;[return_to_home] goal=(</span><span class="si">{</span><span class="n">goal</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">goal</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">goal</span><span class="p">[</span><span class="s1">&#39;yaw&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">exec_move_to</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span>           <span class="c1"># 이동 로직은 move_to 하나로 집중 관리</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">캡슐화의 이점</p>
+<p>home 정의를 바꾸고 싶으면 <strong><code>_resolve_home_goal()</code> 만 수정</strong>하면 됩니다. 이동 로직은 <code>move_to</code> 하나에만 집중해 관리합니다.</p>
+</div>
+<h3 id="43">4.3 테스트<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p><code>return_to_home</code> 하나만으로 단위 액션을 검증합니다(<code>mission_id="rtb_demo_001"</code>, <code>intent="rtb_test"</code>, <code>params</code> 는 비워 둠 → 홈 좌표는 <code>_resolve_home_goal()</code> 규칙으로 결정).</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>[return_to_home]</code> 로그가 의도한 home 좌표와 일치하는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nav2 로그 / RViz path가 home 좌표로 수렴하는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 실제 로봇 pose가 home 근처에 도착하고 <code>queue_status = "done"</code> 으로 깔끔히 종료되는가</li>
+</ul>
+<figure>
+<p><img alt="return_to_home 테스트 — Nav2 path 수렴 확인" src="../img/w13/s60.jpg" width="720" /></p>
+<figcaption>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 60 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="5-wrap-up">🧩 5. Wrap-up<a class="headerlink" href="#5-wrap-up" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>track</code></strong> — 짐벌(yaw/pitch) + 바디(yaw) + 거리(vx)의 <strong>3축 통합 제어</strong> 구조와 <code>_control_step()</code>·<code>_thread_main()</code> 의 성공 조건을 이해하고 테스트했다.</li>
+<li><strong><code>report_and_wait</code></strong> — 보고(<code>/ats_state</code>·<code>report_context</code>) + System-2 결정 수신 대기의 흐름을 정리하고 <code>scan → report_and_wait → return_to_home</code> 시나리오로 검증했다.</li>
+<li><strong><code>return_to_home</code></strong> — 좌표 결정(<code>_resolve_home_goal</code>)과 이동(<code>move_to</code> 재사용)을 분리한 귀환 동작을 테스트했다.</li>
+</ul>
 <h2 id="_1">✅ 체크포인트<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 도메인 랜덤화 환경이 동작하는가</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 두 정책의 강건성 차이를 수치로 확인했는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>track</code> 이 짐벌·바디·거리의 3축을 동시에 제어하는 이유를 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> DepthBuffer가 bbox에서 <code>range_m</code> 을 안정적으로 산출하는 과정(통일·정렬·클리닝·percentile)을 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>_thread_main()</code> 이 <code>both_hold &gt;= success_hold_sec</code> 로 Initial Success를 판정하는 원리를 이해한다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>report_and_wait</code> 가 항상 <code>True</code> 를 반환하고 상위에서 시나리오를 제어하는 이유를 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>return_to_home</code> 의 home 좌표 결정 3단계 우선순위를 안다</li>
 </ul>
-<h2 id="_2">📝 과제<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>랜덤화 범위를 넓힐 때/좁힐 때 성능 변화 관찰</li>
-<li>"왜 도메인 랜덤화가 Sim-to-Real에 도움이 되는가"를 10줄로 정리</li>
-</ul>
-<h2 id="ppt">🖼️ PPT 슬라이드 개요<a class="headerlink" href="#ppt" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Sim-to-Real 문제 정의</li>
-<li>Reality Gap의 원인(물리·센서·지연)</li>
-<li>도메인 랜덤화(Domain Randomization)</li>
-<li>system identification·domain adaptation</li>
-<li>사례: 루빅스큐브 손, ANYmal 보행</li>
-<li>실습: 랜덤화 학습·강건성 비교</li>
-</ol>
-<h2 id="_3">📊 평가 루브릭<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">📊 평가 루브릭<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>항목</th>
 <th>배점</th>
-<th>A(우수)</th>
-<th>B(보통)</th>
-<th>C(미흡)</th>
+<th>기준</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>도메인 랜덤화 구현</td>
-<td>40</td>
-<td>물리·노이즈 적용</td>
-<td>일부</td>
-<td>미동작</td>
+<td>track 3축 통합 제어 이해</td>
+<td>30</td>
+<td>짐벌/바디/거리 각 축의 입력·동작·역할 분담을 정확히 설명</td>
 </tr>
 <tr>
-<td>강건성 비교 실험</td>
-<td>30</td>
-<td>수치 비교·해석</td>
-<td>비교만</td>
-<td>미수행</td>
+<td>DepthBuffer·오차 계산</td>
+<td>20</td>
+<td>depth 통일·리스케일·클리닝·percentile, PID+LPF+slew 설명</td>
 </tr>
 <tr>
-<td>과제(범위 실험)</td>
-<td>30</td>
-<td>관찰·제출</td>
-<td>일부</td>
-<td>미제출</td>
+<td>성공 판정 구조</td>
+<td>20</td>
+<td><code>_control_step</code> 반환값과 <code>_thread_main</code> 의 hold 기반 성공 판정</td>
+</tr>
+<tr>
+<td>report_and_wait</td>
+<td>15</td>
+<td>보고·대기·방어적 설계·항상 True 반환 의미</td>
+</tr>
+<tr>
+<td>return_to_home</td>
+<td>15</td>
+<td>좌표 결정 우선순위 + move_to 재사용 캡슐화</td>
+</tr>
+<tr>
+<td><strong>합계</strong></td>
+<td><strong>100</strong></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">🧰 사전 준비물 &amp; 트러블슈팅<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><strong>준비물</strong>: 11주차 정책, gymnasium, stable-baselines3</p>
+<h2 id="_3">🔗 출처 및 참고자료<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li>❌ 랜덤화 후 학습 실패 → 랜덤 범위가 과도, 범위 좁히기</li>
-<li>❌ 두 정책 차이 없음 → 평가 환경의 물리값을 학습 범위 밖으로 설정</li>
-<li>❌ 재현 안 됨 → 시드 고정·환경 버전 확인</li>
+<li>교안 「System-1 단위 액션 설계 part 2」 (제작: ENGI UNIVERSE)</li>
+<li>ROS 2 — <a href="https://docs.ros.org">https://docs.ros.org</a></li>
+<li>Nav2 (NavigateToPose) — <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
+<li>tf2 (좌표 변환) — <a href="https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Tf2.html">https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Tf2.html</a></li>
 </ul>
-<h2 id="_5">🔗 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Domain Randomization 논문 — <a href="https://arxiv.org/abs/1703.06907">https://arxiv.org/abs/1703.06907</a></li>
-<li>OpenAI Dexterity — <a href="https://openai.com/research/learning-dexterity">https://openai.com/research/learning-dexterity</a></li>
-<li>Sim-to-Real 서베이 — <a href="https://arxiv.org/abs/2009.13303">https://arxiv.org/abs/2009.13303</a></li>
-</ul>
+<!-- FULLDECK -->
+<h2 id="_4">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<details class="note">
+<summary>원본 강의 슬라이드 전체 (60매)</summary>
+<p><img alt="슬라이드 01" src="../img/w13/s01.jpg" width="700" />
+<img alt="슬라이드 02" src="../img/w13/s02.jpg" width="700" />
+<img alt="슬라이드 03" src="../img/w13/s03.jpg" width="700" />
+<img alt="슬라이드 04" src="../img/w13/s04.jpg" width="700" />
+<img alt="슬라이드 05" src="../img/w13/s05.jpg" width="700" />
+<img alt="슬라이드 06" src="../img/w13/s06.jpg" width="700" />
+<img alt="슬라이드 07" src="../img/w13/s07.jpg" width="700" />
+<img alt="슬라이드 08" src="../img/w13/s08.jpg" width="700" />
+<img alt="슬라이드 09" src="../img/w13/s09.jpg" width="700" />
+<img alt="슬라이드 10" src="../img/w13/s10.jpg" width="700" />
+<img alt="슬라이드 11" src="../img/w13/s11.jpg" width="700" />
+<img alt="슬라이드 12" src="../img/w13/s12.jpg" width="700" />
+<img alt="슬라이드 13" src="../img/w13/s13.jpg" width="700" />
+<img alt="슬라이드 14" src="../img/w13/s14.jpg" width="700" />
+<img alt="슬라이드 15" src="../img/w13/s15.jpg" width="700" />
+<img alt="슬라이드 16" src="../img/w13/s16.jpg" width="700" />
+<img alt="슬라이드 17" src="../img/w13/s17.jpg" width="700" />
+<img alt="슬라이드 18" src="../img/w13/s18.jpg" width="700" />
+<img alt="슬라이드 19" src="../img/w13/s19.jpg" width="700" />
+<img alt="슬라이드 20" src="../img/w13/s20.jpg" width="700" />
+<img alt="슬라이드 21" src="../img/w13/s21.jpg" width="700" />
+<img alt="슬라이드 22" src="../img/w13/s22.jpg" width="700" />
+<img alt="슬라이드 23" src="../img/w13/s23.jpg" width="700" />
+<img alt="슬라이드 24" src="../img/w13/s24.jpg" width="700" />
+<img alt="슬라이드 25" src="../img/w13/s25.jpg" width="700" />
+<img alt="슬라이드 26" src="../img/w13/s26.jpg" width="700" />
+<img alt="슬라이드 27" src="../img/w13/s27.jpg" width="700" />
+<img alt="슬라이드 28" src="../img/w13/s28.jpg" width="700" />
+<img alt="슬라이드 29" src="../img/w13/s29.jpg" width="700" />
+<img alt="슬라이드 30" src="../img/w13/s30.jpg" width="700" />
+<img alt="슬라이드 31" src="../img/w13/s31.jpg" width="700" />
+<img alt="슬라이드 32" src="../img/w13/s32.jpg" width="700" />
+<img alt="슬라이드 33" src="../img/w13/s33.jpg" width="700" />
+<img alt="슬라이드 34" src="../img/w13/s34.jpg" width="700" />
+<img alt="슬라이드 35" src="../img/w13/s35.jpg" width="700" />
+<img alt="슬라이드 36" src="../img/w13/s36.jpg" width="700" />
+<img alt="슬라이드 37" src="../img/w13/s37.jpg" width="700" />
+<img alt="슬라이드 38" src="../img/w13/s38.jpg" width="700" />
+<img alt="슬라이드 39" src="../img/w13/s39.jpg" width="700" />
+<img alt="슬라이드 40" src="../img/w13/s40.jpg" width="700" />
+<img alt="슬라이드 41" src="../img/w13/s41.jpg" width="700" />
+<img alt="슬라이드 42" src="../img/w13/s42.jpg" width="700" />
+<img alt="슬라이드 43" src="../img/w13/s43.jpg" width="700" />
+<img alt="슬라이드 44" src="../img/w13/s44.jpg" width="700" />
+<img alt="슬라이드 45" src="../img/w13/s45.jpg" width="700" />
+<img alt="슬라이드 46" src="../img/w13/s46.jpg" width="700" />
+<img alt="슬라이드 47" src="../img/w13/s47.jpg" width="700" />
+<img alt="슬라이드 48" src="../img/w13/s48.jpg" width="700" />
+<img alt="슬라이드 49" src="../img/w13/s49.jpg" width="700" />
+<img alt="슬라이드 50" src="../img/w13/s50.jpg" width="700" />
+<img alt="슬라이드 51" src="../img/w13/s51.jpg" width="700" />
+<img alt="슬라이드 52" src="../img/w13/s52.jpg" width="700" />
+<img alt="슬라이드 53" src="../img/w13/s53.jpg" width="700" />
+<img alt="슬라이드 54" src="../img/w13/s54.jpg" width="700" />
+<img alt="슬라이드 55" src="../img/w13/s55.jpg" width="700" />
+<img alt="슬라이드 56" src="../img/w13/s56.jpg" width="700" />
+<img alt="슬라이드 57" src="../img/w13/s57.jpg" width="700" />
+<img alt="슬라이드 58" src="../img/w13/s58.jpg" width="700" />
+<img alt="슬라이드 59" src="../img/w13/s59.jpg" width="700" />
+<img alt="슬라이드 60" src="../img/w13/s60.jpg" width="700" /></p>
+</details>
 
 
 
@@ -1243,7 +2056,7 @@
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
         
           
-          <a href="../week12/" class="md-footer__link md-footer__link--prev" aria-label="이전: 12주차 · 모방학습">
+          <a href="../week12/" class="md-footer__link md-footer__link--prev" aria-label="이전: 12주차 · System-1 단위 액션 1">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1253,20 +2066,20 @@
                 이전
               </span>
               <div class="md-ellipsis">
-                12주차 · 모방학습
+                12주차 · System-1 단위 액션 1
               </div>
             </div>
           </a>
         
         
           
-          <a href="../week14/" class="md-footer__link md-footer__link--next" aria-label="다음: 14주차 · Foundation Models &amp; VLA">
+          <a href="../week14/" class="md-footer__link md-footer__link--next" aria-label="다음: 14주차 · System-2 LLM Planner">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                14주차 · Foundation Models & VLA
+                14주차 · System-2 LLM Planner
               </div>
             </div>
             <div class="md-footer__button md-icon">

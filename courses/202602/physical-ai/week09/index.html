@@ -27,7 +27,7 @@
     
     
       
-        <title>9주차 · 컴퓨터 비전·딥러닝 - Physical AI · 2026-2학기</title>
+        <title>9주차 · Spot+ATS SLAM 연동 2 - Physical AI · 2026-2학기</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#9-yolo" class="md-skip">
+        <a href="#9-spot-ats-slam-part-2-localizationgimp" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              9주차 · 컴퓨터 비전·딥러닝
+              9주차 · Spot+ATS SLAM 연동 2
             
           </span>
         </div>
@@ -324,7 +324,7 @@
   <span class="md-ellipsis">
     
   
-    1주차 · Physical AI 개요
+    1주차 · Isaac Sim 설치·활용
   
 
     
@@ -352,7 +352,7 @@
   <span class="md-ellipsis">
     
   
-    2주차 · ROS 2 기초
+    2주차 · 물리환경·카메라(RGB/Depth)
   
 
     
@@ -380,7 +380,7 @@
   <span class="md-ellipsis">
     
   
-    3주차 · 좌표계와 기구학
+    3주차 · 센서(IMU·LiDAR·Radar)
   
 
     
@@ -408,7 +408,7 @@
   <span class="md-ellipsis">
     
   
-    4주차 · 센서와 인식
+    4주차 · Isaac Lab 4족 보행 RL
   
 
     
@@ -436,7 +436,7 @@
   <span class="md-ellipsis">
     
   
-    5주차 · 로봇 시뮬레이션
+    5주차 · Spot+ATS 시스템 구축
   
 
     
@@ -464,7 +464,7 @@
   <span class="md-ellipsis">
     
   
-    6주차 · 이동로봇 제어
+    6주차 · SLAM·Nav2 기본
   
 
     
@@ -492,7 +492,7 @@
   <span class="md-ellipsis">
     
   
-    7주차 · SLAM과 자율주행
+    7주차 · Spot+ATS SLAM 연동 1
   
 
     
@@ -557,7 +557,7 @@
   <span class="md-ellipsis">
     
   
-    9주차 · 컴퓨터 비전·딥러닝
+    9주차 · Spot+ATS SLAM 연동 2
   
 
     
@@ -575,7 +575,7 @@
   <span class="md-ellipsis">
     
   
-    9주차 · 컴퓨터 비전·딥러닝
+    9주차 · Spot+ATS SLAM 연동 2
   
 
     
@@ -612,10 +612,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-intro" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🧭 1. Intro — 이번 강의의 흐름
       
     </span>
   </a>
@@ -623,29 +623,223 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-yolo" class="md-nav__link">
+  <a href="#2-slam" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 2교시. 실습 — YOLO 추론
+        🗺️ 2. SLAM 모드에서 지도 생성 및 저장하기
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-ros-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ 3교시. 실습 — ROS 2 연동
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="🗺️ 2. SLAM 모드에서 지도 생성 및 저장하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지난 강의 복습 — 실행 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slam_toolbox_paramsyaml-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_toolbox_params.yaml — SLAM 동작 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2_paramsyaml-costmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nav2_params.yaml — 경로·제어·costmap 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지도 파일 생성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-localization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📍 3. Localization 모드로 전환하여 지도 불러오기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📍 3. Localization 모드로 전환하여 지도 불러오기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        두 개의 런치 파일
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실행 및 RViz 전환
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qos-reliability-durability-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QoS 보충 — Reliability / Durability Policy란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        초기 위치(Initial Pose) 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2_localization_paramsyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nav2_localization_params.yaml — 핵심 파라미터
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 4. 맵 저장 이후 발생할 수 있는 문제와 원인 분석
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-gimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 5. GIMP로 지도 파일 직접 수정하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 5. GIMP로 지도 파일 직접 수정하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사용 이유
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일 준비와 색 규칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GIMP 실행 시 확인 사항
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rviz_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RViz에서 경로 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 6. Wrap-up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 체크포인트
@@ -656,29 +850,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         📊 평가 루브릭
@@ -689,10 +861,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
+        🔗 출처 및 참고자료
       
     </span>
   </a>
@@ -700,10 +872,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#isaac-sim-510" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 참고자료
+        📘 Isaac Sim 5.1.0 공식 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -733,7 +916,7 @@
   <span class="md-ellipsis">
     
   
-    10주차 · 로봇 매니퓰레이션
+    10주차 · Spot+ATS Vision(YOLOv8)
   
 
     
@@ -761,7 +944,7 @@
   <span class="md-ellipsis">
     
   
-    11주차 · 강화학습 기초
+    11주차 · System-1 Executor 설계
   
 
     
@@ -789,7 +972,7 @@
   <span class="md-ellipsis">
     
   
-    12주차 · 모방학습
+    12주차 · System-1 단위 액션 1
   
 
     
@@ -817,7 +1000,7 @@
   <span class="md-ellipsis">
     
   
-    13주차 · Sim-to-Real
+    13주차 · System-1 단위 액션 2
   
 
     
@@ -845,7 +1028,7 @@
   <span class="md-ellipsis">
     
   
-    14주차 · Foundation Models & VLA
+    14주차 · System-2 LLM Planner
   
 
     
@@ -873,7 +1056,7 @@
   <span class="md-ellipsis">
     
   
-    15주차 · System-2 테스트 & 검증
+    15주차 · System-2 테스트·검증
   
 
     
@@ -959,10 +1142,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-intro" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🧭 1. Intro — 이번 강의의 흐름
       
     </span>
   </a>
@@ -970,29 +1153,223 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-yolo" class="md-nav__link">
+  <a href="#2-slam" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 2교시. 실습 — YOLO 추론
+        🗺️ 2. SLAM 모드에서 지도 생성 및 저장하기
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-ros-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ 3교시. 실습 — ROS 2 연동
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="🗺️ 2. SLAM 모드에서 지도 생성 및 저장하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지난 강의 복습 — 실행 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slam_toolbox_paramsyaml-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_toolbox_params.yaml — SLAM 동작 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2_paramsyaml-costmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nav2_params.yaml — 경로·제어·costmap 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지도 파일 생성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-localization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📍 3. Localization 모드로 전환하여 지도 불러오기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📍 3. Localization 모드로 전환하여 지도 불러오기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        두 개의 런치 파일
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실행 및 RViz 전환
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qos-reliability-durability-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QoS 보충 — Reliability / Durability Policy란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        초기 위치(Initial Pose) 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2_localization_paramsyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nav2_localization_params.yaml — 핵심 파라미터
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 4. 맵 저장 이후 발생할 수 있는 문제와 원인 분석
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-gimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 5. GIMP로 지도 파일 직접 수정하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 5. GIMP로 지도 파일 직접 수정하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사용 이유
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일 준비와 색 규칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GIMP 실행 시 확인 사항
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rviz_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RViz에서 경로 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 6. Wrap-up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 체크포인트
@@ -1003,29 +1380,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         📊 평가 루브릭
@@ -1036,10 +1391,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
+        🔗 출처 및 참고자료
       
     </span>
   </a>
@@ -1047,10 +1402,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#isaac-sim-510" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 참고자료
+        📘 Isaac Sim 5.1.0 공식 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -1074,10 +1440,14 @@
 
 
 
-<h1 id="9-yolo">9주차 — 컴퓨터 비전과 딥러닝 인식 (YOLO)<a class="headerlink" href="#9-yolo" title="Permanent link">&para;</a></h1>
+<h1 id="9-spot-ats-slam-part-2-localizationgimp">9주차 — Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)<a class="headerlink" href="#9-spot-ats-slam-part-2-localizationgimp" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">학습목표</p>
-<p>CNN과 객체탐지(YOLO) 원리를 이해하고, 카메라 영상을 ROS 2에서 실시간 객체탐지하는 노드를 구현한다.</p>
+<p>지난 주차에 만든 SLAM 지도를 <strong>파일 형태(.pgm/.yaml)로 저장</strong>하고, SLAM 대신 그 완성된 지도를 불러와 위치만 추정하는 <strong>Localization 모드(AMCL + Nav2)</strong> 로 전환하는 과정을 익힌다. 또한 저장된 지도에서 발생할 수 있는 문제와 원인을 분석하고, <strong>GIMP로 지도 파일을 직접 보정</strong>하여 경로 안정성을 높이는 방법을 실습한다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Source)</p>
+<p>본 자료의 그림·예제는 교안 <strong>「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 명령·파라미터는 교안의 설명을 충실히 따르되, 경로는 실습 환경에 맞춰 확인이 필요합니다.</p>
 </div>
 <h2 id="3">⏱️ 3시간 구성<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
@@ -1086,141 +1456,546 @@
 <th>교시</th>
 <th>시간</th>
 <th>내용</th>
+<th>근거 교안</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1교시</td>
 <td>50분</td>
-<td>이론 — CNN·객체탐지·YOLO</td>
+<td>SLAM 모드 복습 + 지도 생성·저장(.pgm/.yaml)</td>
+<td>§01 Intro, §02</td>
 </tr>
 <tr>
 <td>2교시</td>
 <td>50분</td>
-<td>실습 — YOLO 단독 추론</td>
+<td>Localization 모드 전환 · 지도 불러오기 · AMCL/Nav2 파라미터</td>
+<td>§03</td>
 </tr>
 <tr>
 <td>3교시</td>
 <td>50분</td>
-<td>실습 — ROS 2 연동</td>
+<td>맵 저장 후 문제·원인 분석 + GIMP 지도 보정 + Wrap-up</td>
+<td>§04~§06</td>
 </tr>
 </tbody>
 </table>
-<h2 id="1">📖 1교시. 이론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="1-intro">🧭 1. Intro — 이번 강의의 흐름<a class="headerlink" href="#1-intro" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="Spot + ATS SLAM 연동 part 2 표지" src="../img/w09/s01.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP) — 슬라이드 01 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p>지난 강의에서는 Spot + ATS를 Isaac Sim 환경에서 <strong>SLAM 모드</strong>로 실행했습니다.</p>
 <ul>
-<li><strong>CNN</strong>: 합성곱·풀링으로 이미지 특징 추출</li>
-<li><strong>객체탐지</strong>: 위치(bbox) + 클래스 + 신뢰도. 분류 vs 탐지 vs 세그멘테이션</li>
-<li><strong>YOLO</strong>: 1-stage 실시간 탐지기. mAP·FPS 트레이드오프</li>
-<li>로봇에서의 의미: 인식 결과를 3D 좌표(TF)로 옮겨 <strong>판단·제어</strong>에 전달</li>
+<li><code>slam_toolbox</code>(online_async) 사용 → <strong>지도 생성(SLAM) + 위치 추정(Localization)</strong> 동시 수행</li>
+<li>로봇이 아무 지도 없이 주변을 탐색하며 <strong>LiDAR + Odom</strong> 기반으로 점점 더 정밀한 지도(map) 작성</li>
+<li>생성된 지도를 기반으로 Nav2 글로벌/로컬 플래너가 경로를 만들고 <strong>2D Nav Goal → 자율이동</strong>까지 성공</li>
 </ul>
-<h2 id="2-yolo">🛠️ 2교시. 실습 — YOLO 추론<a class="headerlink" href="#2-yolo" title="Permanent link">&para;</a></h2>
-<p><strong>Step 1 — 설치</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>ultralytics<span class="w"> </span>opencv-python
-</code></pre></div>
-<p><strong>Step 2 — 단독 추론 테스트</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ultralytics</span><span class="w"> </span><span class="kn">import</span> <span class="n">YOLO</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s1">&#39;yolov8n.pt&#39;</span><span class="p">)</span>          <span class="c1"># 경량 모델</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="s1">&#39;https://ultralytics.com/images/bus.jpg&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                   <span class="c1"># bbox 시각화</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">cls</span><span class="p">)],</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">conf</span><span class="p">))</span>
-</code></pre></div>
-<h2 id="3-ros-2">🛠️ 3교시. 실습 — ROS 2 연동<a class="headerlink" href="#3-ros-2" title="Permanent link">&para;</a></h2>
-<p><strong>Step 3 — 이미지 구독 + YOLO 탐지 노드</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sensor_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">cv_bridge</span><span class="w"> </span><span class="kn">import</span> <span class="n">CvBridge</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ultralytics</span><span class="w"> </span><span class="kn">import</span> <span class="n">YOLO</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">Detector</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;yolo_detector&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span> <span class="o">=</span> <span class="n">CvBridge</span><span class="p">()</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s1">&#39;yolov8n.pt&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span> <span class="s1">&#39;/camera/image_raw&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cb</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">imgmsg_to_cv2</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s1">&#39;bgr8&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">boxes</span><span class="p">:</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">cls</span><span class="p">)]</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;탐지: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">();</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">Detector</span><span class="p">())</span>
-</code></pre></div>
-<p><strong>Step 4 — 실행</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ros-humble-cv-bridge
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>my_first_pkg<span class="w"> </span>yolo_detector
-</code></pre></div>
-<p>✅ 카메라 영상의 객체 이름과 신뢰도가 로그되면 성공.</p>
-<h2 id="_1">✅ 체크포인트<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> YOLO 단독 추론이 동작하는가</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 카메라 토픽을 받아 실시간 탐지가 되는가</li>
-</ul>
-<h2 id="_2">📝 과제<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>이번 강의에서 할 일:</strong></p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 지도 저장</td>
+<td>SLAM으로 만든 지도를 파일(.pgm/.yaml)로 저장</td>
+</tr>
+<tr>
+<td>② 모드 전환</td>
+<td>SLAM 대신 완성된 지도를 불러와 <strong>위치만 추정</strong>(Localization)</td>
+</tr>
+<tr>
+<td>③ 자율 이동</td>
+<td>지도는 <strong>고정</strong>, 로봇은 그 지도에서 자기 위치를 추적하며 이동</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">SLAM vs Localization 한눈에</p>
 <ul>
-<li>특정 클래스(예: person)만 필터링해 화면 중앙 여부를 판단하는 노드로 확장</li>
-<li>탐지 결과를 <code>/detected_objects</code> 토픽으로 발행</li>
+<li><strong>SLAM 모드</strong>: 지도를 만들면서 동시에 내 위치를 추정 (지도가 계속 변함)</li>
+<li><strong>Localization 모드</strong>: 지도는 고정해 두고, 그 위에서 내 위치만 추정 (AMCL이 담당)</li>
 </ul>
-<h2 id="ppt">🖼️ PPT 슬라이드 개요<a class="headerlink" href="#ppt" title="Permanent link">&para;</a></h2>
+</div>
+<hr />
+<h2 id="2-slam">🗺️ 2. SLAM 모드에서 지도 생성 및 저장하기<a class="headerlink" href="#2-slam" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="SLAM 모드 지도 생성 복습" src="../img/w09/s04.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 04 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="_1">지난 강의 복습 — 실행 순서<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>지도 생성을 위해 먼저 <strong>Isaac Sim → SLAM</strong> 순서로 실행합니다(<em>필히 경로 확인</em>).</p>
+<p><strong>Step 1 —</strong> Isaac Sim 실행 (필히 경로 확인)
+<strong>Step 2 —</strong> SLAM 실행 (필히 경로 확인)
+<strong>Step 3 —</strong> SLAM과 Nav2를 동시 실행 (필히 경로 확인)</p>
+<h3 id="slam_toolbox_paramsyaml-slam"><code>slam_toolbox_params.yaml</code> — SLAM 동작 정의<a class="headerlink" href="#slam_toolbox_paramsyaml-slam" title="Permanent link">&para;</a></h3>
+<p>SLAM은 <code>slam_toolbox_params.yaml</code>을 통해 동작 방식을 정의합니다.</p>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>값</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>map_frame</code> / <code>odom_frame</code> / <code>base_frame</code></td>
+<td>map / odom / <strong>body</strong></td>
+<td>Spot 본체 링크가 <code>body</code>이므로 동일 프레임 구조로 맞춤</td>
+</tr>
+<tr>
+<td><code>scan_topic</code></td>
+<td>scan</td>
+<td>LiDAR가 <code>/scan</code>으로 퍼블리시 → 같은 토픽으로 연결</td>
+</tr>
+<tr>
+<td><code>use_odometry</code></td>
+<td>true</td>
+<td>Isaac Sim이 <code>/odom</code> 제공 → 초기 정합에 활용</td>
+</tr>
+<tr>
+<td><code>publish_tf</code> / <code>provide_odom_frame</code></td>
+<td>true / true</td>
+<td>map → odom → body <strong>TF 체인</strong>을 직접 퍼블리시</td>
+</tr>
+<tr>
+<td><code>resolution</code></td>
+<td>0.05</td>
+<td>지도 해상도 <strong>5cm</strong></td>
+</tr>
+<tr>
+<td><code>max_laser_range</code></td>
+<td>20.0</td>
+<td>LiDAR 유효 범위 <strong>20m</strong> 기준 매핑</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">프레임이 <code>body</code>인 이유</p>
+<p>Isaac Sim에서 Spot의 본체 링크 이름이 <code>body</code>이기 때문에, slam_toolbox·Nav2·AMCL 모두 <code>base_frame</code>(robot_base_frame)을 <code>body</code>로 통일해야 TF 체인이 끊기지 않습니다.</p>
+</div>
+<h3 id="nav2_paramsyaml-costmap"><code>nav2_params.yaml</code> — 경로·제어·costmap 설정<a class="headerlink" href="#nav2_paramsyaml-costmap" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="Nav2와 slam_toolbox 동시 구동" src="../img/w09/s07.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 07 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<ul>
+<li><code>controller_server</code> : plugin은 <strong>RegulatedPurePursuitController</strong> 사용</li>
+<li><code>desired_linear_vel: 2.0</code> : Isaac Sim 환경에서 Spot의 이동 속도</li>
+<li><code>max_angular_accel: 2.0</code></li>
+<li><code>global_costmap</code> / <code>local_costmap</code> : <code>robot_base_frame</code>이 모두 <code>body</code></li>
+<li><code>inflation_layer</code> : 로봇이 벽·장애물로부터 거리를 두도록 설정 (<code>inflation_radius: 0.6</code>)</li>
+</ul>
+<h3 id="_2">지도 파일 생성<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>Step 1 —</strong> SLAM + RViz2 실행
+<strong>Step 2 —</strong> 지도 생성 전 RViz2 확인 — <code>/map</code>, <code>/scan</code>, <code>/odom</code>, <code>/tf</code> 등 Spot 정보 확인
+<strong>Step 3 —</strong> RViz2상의 Spot을 <strong>키보드로 제어</strong>하여 지도 생성 및 정상 동작 확인
+<strong>Step 4 —</strong> ROS2 지도 저장 명령 실행 (<em>필히 경로 확인</em>)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ROS2 지도 저장 (경로/이름은 환경에 맞게 확인)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>~/maps/spot_ats_map
+</code></pre></div>
+<p>저장 결과는 <strong>이미지 파일</strong>과 <strong>메타데이터 파일</strong> 두 개로 생성됩니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>~/maps/spot_ats_map.pgm    # 실제 지도 이미지 (흑백)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>~/maps/spot_ats_map.yaml   # 지도 메타데이터 (해상도, 원점, 임계값 등)
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">체크</p>
+<p><code>.pgm</code>(이미지)과 <code>.yaml</code>(메타데이터)이 한 쌍으로 저장되어야 Localization 모드에서 정상적으로 불러올 수 있습니다.</p>
+</div>
+<hr />
+<h2 id="3-localization">📍 3. Localization 모드로 전환하여 지도 불러오기<a class="headerlink" href="#3-localization" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="지도 기반 Localization 개념" src="../img/w09/s10.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 10 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p>SLAM을 사용하지 않고 <strong>미리 생성된 지도</strong>를 통해 로봇이 자신의 위치를 추정하고 경로를 계획하는 방법입니다. 고정된 위치·범위에서 동작하는 로봇에게 <strong>안정적인 자율보행</strong>이 가능합니다.</p>
+<h3 id="_3">두 개의 런치 파일<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>Localization 모드 Nav2 실행에는 <strong>두 개의 런치 파일</strong>이 필요합니다.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">localization_launch.py</label><label for="__tabbed_1_2">navigation_launch.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>기존 지도를 로딩하고 <strong>AMCL</strong>을 통해 로봇 위치를 추정</p>
+<ul>
+<li><strong>지도</strong>: <code>map_server</code>가 저장된 지도 파일(<code>spot_ats_map.yaml</code>)을 로드하고 <code>map</code> 토픽으로 퍼블리시</li>
+<li><strong>위치 추정</strong>: AMCL이 <code>/scan</code> + <code>/odom</code>을 이용해 현재 로봇 위치를 지도 좌표계에서 추정</li>
+<li>오도메트리가 <strong>odom → body</strong>, AMCL이 <strong>map → odom</strong>을 이어주어 전체 좌표계(<strong>map → odom → body</strong>)가 닫힘</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>경로 계획에 필요한 네비게이션 엔진을 실행</p>
+<ul>
+<li><code>planner_server</code> : 전역 경로 생성</li>
+<li><code>controller_server</code> : 경로 → <code>cmd_vel</code> 속도 명령 변환</li>
+<li><code>smoother_server</code> : 경로 곡률/형태 보정</li>
+<li><code>behavior_server</code> : 회전/후진/복구 동작 처리</li>
+<li><code>bt_navigator</code> : 전체 흐름을 <strong>행동 트리(BT)</strong> 로 조율</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">비용맵 구성</p>
+<p><code>/map</code> → <strong>Static Layer</strong>, <code>/scan</code> → <strong>Obstacle Layer</strong>, <code>inflation_radius</code> → 장애물 주변 완충 영역 확보. 지도는 고정, 위치 추정은 AMCL이 담당 → <strong>역할 분리 / 충돌 방지 / 경로 안정성</strong> 확보.</p>
+</div>
+<h3 id="rviz">실행 및 RViz 전환<a class="headerlink" href="#rviz" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="Localization 모드 실행 — RViz 전환" src="../img/w09/s13.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 13 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<ul>
+<li><code>localization_launch.py</code>와 <code>navigation_launch.py</code> 실행 (<em>필히 경로 확인</em>)</li>
+<li>RViz 전환 → 정적인 지도(<code>spot_ats_map.yaml</code>, <code>spot_ats_map.pgm</code>) <strong>즉시 로딩</strong></li>
+<li>SLAM 수행 X → 공간 참조 고정, <strong>AMCL이 로봇 위치 추정</strong></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">여기서 잠깐! — 지도가 RViz에 안 보일 때</p>
+<p><code>/map</code>이 로드되지 않으면 토픽의 <strong>QoS 정책</strong>을 바꿔줍니다.</p>
+<ul>
+<li><code>/map</code> → 토픽 → <strong>Reliability Policy → Reliable</strong> 변경</li>
+<li>→ <strong>Durability Policy → Transient Local</strong> 변경</li>
+</ul>
+</div>
+<h3 id="qos-reliability-durability-policy">QoS 보충 — Reliability / Durability Policy란?<a class="headerlink" href="#qos-reliability-durability-policy" title="Permanent link">&para;</a></h3>
+<p>RViz에서 지도가 보이지 않는다면 단순히 '지도 데이터가 없어서'가 아니라, RViz가 <code>/map</code> 토픽 메시지를 <strong>제때 받지 못해서</strong>일 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>정책</th>
+<th>의미</th>
+<th>지도에 권장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>메시지를 얼마나 '확실하게' 전달할지</td>
+<td><code>Best Effort</code>(손실 허용) ↔ <code>Reliable</code>(응답까지 재전송) → <strong>Reliable</strong></td>
+</tr>
+<tr>
+<td><strong>Durability</strong></td>
+<td>늦게 구독한 노드가 과거 메시지를 받을 수 있는지</td>
+<td><code>Volatile</code>(과거 미전달) ↔ <code>Transient Local</code>(마지막 메시지 캐시 후 재전송) → <strong>Transient Local</strong></td>
+</tr>
+</tbody>
+</table>
+<p><code>/map</code> 토픽은 보통 오래 전 <strong>한 번만</strong> 퍼블리시되고 끝나는 경우가 많습니다. 기본값(Volatile)이면 늦게 켜진 RViz가 타이밍을 놓쳐 화면이 텅 비게 됩니다. <strong>Transient Local</strong>로 바꾸면 퍼블리셔가 마지막 지도를 캐시에 보관했다가 새 구독자에게 다시 보내주므로, RViz가 늦게 연결되어도 최신 지도를 정상 표시합니다.</p>
+<h3 id="initial-pose">초기 위치(Initial Pose) 설정<a class="headerlink" href="#initial-pose" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="초기 위치 설정 — please set the initial pose" src="../img/w09/s17.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 17 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<ul>
+<li>부팅 시 로그: <strong>"please set the initial pose..."</strong></li>
+<li>프로그램 부팅 시 로봇의 실제 위치 좌표가 모호 → <strong>초기 위치(Initial Pose = AMCL의 초기 추정치)</strong> 설정 필요</li>
+<li>AMCL은 초기 위치 값을 기반으로 <code>/scan</code>, <code>/map</code> 정보를 비교하며 <strong>확률적 위치 추정</strong></li>
+<li>즉, <strong>초기 위치 = 기준점 제시</strong> (RViz의 <strong>2D Pose Estimate</strong>로 지정)</li>
+</ul>
+<h3 id="nav2_localization_paramsyaml"><code>nav2_localization_params.yaml</code> — 핵심 파라미터<a class="headerlink" href="#nav2_localization_paramsyaml" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="nav2_localization_params.yaml AMCL 파라미터" src="../img/w09/s24.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 24 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Planner / Controller</label><label for="__tabbed_2_2">Smoother / Behavior / Costmap</label><label for="__tabbed_2_3">AMCL / map_server</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><code>bt_navigator</code> : <code>navigate_w_replanning_and_recovery.xml</code> → 이동 중 재계획 &amp; 리커버리 자동 수행, <code>use_sim_time: true</code>(Isaac Sim 시간 동기화)</li>
+<li><code>planner_server</code> : <strong>NavfnPlanner</strong>, <code>global_frame: map</code>, <code>expected_planner_frequency: 5.0</code>(초당 5회), <code>tolerance: 0.5</code>(0.5m 이내 도달 처리)</li>
+<li><code>controller_server</code> : <strong>RegulatedPurePursuitController</strong>, <code>controller_frequency: 30.0</code>, <code>desired_linear_vel: 1.2</code>, <code>use_rotate_to_heading: true</code>, <code>rotate_to_heading_min_angle: 0.26</code>, <code>allow_reversing: true</code>, <code>transform_tolerance: 0.2</code></li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>smoother_server</code> : <strong>SimpleSmoother</strong> → 각진 모서리를 부드럽게 보정(조향 안정성 향상)</li>
+<li><code>behavior_server</code> : <code>spin</code>(제자리 회전 후 재스캔), <code>backup</code>(후진 탈출), <code>drive_on_heading</code>(직진 정렬), <code>assisted_teleop</code>, <code>wait</code></li>
+<li><code>global_costmap</code> : <code>global_frame: map</code>, <code>static_layer</code>(저장 맵, <code>map_subscribe_transient_local: true</code>), <code>obstacle_layer</code>(<code>/scan</code> 실시간), <code>inflation_layer</code>(완충 0.6m), <code>robot_base_frame: body</code></li>
+<li><code>local_costmap</code> : <code>global_frame: odom</code>(주변 6×6m), <code>robot_base_frame: body</code></li>
+<li><code>velocity_smoother</code> : <code>smoothing_frequency: 20.0</code>, <code>max_velocity</code>/<code>accel_limit</code>/<code>decel_limit</code> <code>[vx, vy, wz]</code></li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>AMCL(Adaptive Monte Carlo Localization)</strong> — 지도 위 현재 위치를 확률 기반으로 추정</p>
+<ul>
+<li><code>base_frame_id: body</code> / <code>odom_frame_id: odom</code> / <code>global_frame_id: map</code> / <code>scan_topic: scan</code></li>
+<li><code>tf_broadcast: true</code>, <code>transform_tolerance: 0.2</code> → map → odom 변환 안정화</li>
+<li><code>min_particles: 500</code> ~ <code>max_particles: 2000</code> → 위치 가설 폭 &amp; 연산량 균형</li>
+<li><code>update_min_d: 0.05</code> / <code>update_min_a: 0.05</code> → 최소 이동이 있을 때만 관측 업데이트</li>
+<li><code>laser_model_type: "likelihood_field"</code>, <code>z_hit: 0.95</code>, <code>z_rand: 0.05</code>, <code>sigma_hit: 0.2</code>, <code>laser_likelihood_max_dist: 2.0</code></li>
+<li><code>set_initial_pose: false</code> → 초기 위치는 RViz <strong>2D Pose Estimate</strong>로 지정</li>
+</ul>
+<p><strong>map_server</strong> — 고정 지도(<code>/map</code>) 퍼블리시: <code>yaml_filename</code>으로 저장 맵 로드. 단, launch 인자로 <code>map:=...</code>가 들어오면 <strong>그 값이 우선 적용</strong>됩니다.</p>
+</div>
+</div>
+</div>
+<div class="admonition success">
+<p class="admonition-title">실행 확인</p>
+<p>RViz 전환 → <strong>Fixed Frame → map</strong> → 데이터가 정상 표시되는지 확인.</p>
+</div>
+<hr />
+<h2 id="4">🔍 4. 맵 저장 이후 발생할 수 있는 문제와 원인 분석<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="SLAM 지도 문제와 원인" src="../img/w09/s26.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 26 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p><strong>SLAM 지도는 항상 완벽하지 않습니다.</strong> 지도에 오류가 있으면 로봇이 실제와 다른 <strong>"가짜 세계"</strong> 를 보고 판단하게 됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>문제</th>
+<th>원인 / 증상</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>스캔 누락</strong></td>
+<td>LiDAR 스캔이 일부 누락되면 벽이 완전히 연결되지 않음</td>
+</tr>
+<tr>
+<td><strong>얇은 틈(Gap)</strong></td>
+<td>RViz에서는 거의 안 보이지만 Planner가 "통로"로 인식 → 경로가 벽을 관통</td>
+</tr>
+<tr>
+<td><strong>벽 겹침(Loop Closure 실패)</strong></td>
+<td>한 바퀴 돌아왔을 때 정렬 실패 → 같은 벽이 두 줄로 그려짐 → 위치 추정 흔들림</td>
+</tr>
+<tr>
+<td><strong>외곽 노이즈 띠</strong></td>
+<td><code>max_laser_range</code>를 과도하게 크게 설정 → 신뢰도 낮은 먼 스캔이 잡음으로 포함</td>
+</tr>
+<tr>
+<td><strong>지도 기울어짐</strong></td>
+<td>바퀴 슬립·IMU 편향·odom 드리프트 누적 → 지도 전체 비틀림(odometry/TF 불일치)</td>
+</tr>
+<tr>
+<td><strong>계단형 윤곽</strong></td>
+<td><code>use_sim_time</code> 타임싱크가 어긋나면 지도 윤곽이 들쭉날쭉</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">여기서 잠깐! — 반사율이 높으면 데이터를 놓치는 이유</p>
+<p>LiDAR는 레이저 펄스를 쏘고 반사되어 돌아오는 시간을 측정해 거리를 계산합니다. 그런데 표면이 너무 매끄럽고 반사율이 높으면 빛이 정면으로 반사되지 않고 <strong>거울처럼 특정 방향으로 튕겨</strong> 나갑니다. 결국 센서로 되돌아오는 신호가 약해지거나 아예 들어오지 않아 해당 영역이 <strong>"빈 공간"</strong> 으로 인식되고, 실제로 벽이 있어도 그 부분이 비어 있거나 흐릿하게 나타납니다.</p>
+</div>
+<hr />
+<h2 id="5-gimp">🎨 5. GIMP로 지도 파일 직접 수정하기<a class="headerlink" href="#5-gimp" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="GIMP로 지도 보정" src="../img/w09/s29.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 29 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p><strong>GIMP</strong>는 지도 이미지를 열어 직접 벽을 보강하거나 불필요한 노이즈를 제거하는 툴입니다. <strong>사람의 판단으로 지도를 다듬는 과정</strong>입니다.</p>
+<h3 id="_4">사용 이유<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ol>
-<li>컴퓨터 비전과 로봇 인식</li>
-<li>CNN: 합성곱·풀링·특징 추출</li>
-<li>분류 vs 탐지 vs 세그멘테이션</li>
-<li>YOLO 1-stage 탐지 구조</li>
-<li>mAP·FPS 트레이드오프</li>
-<li>실습: YOLO + ROS2 연동</li>
+<li><strong>SLAM 지도 특성</strong> — 반사/투과 재질(유리·금속), 얇은 물체는 스캔이 불안정 → 약하게 표현되거나 누락</li>
+<li><strong>FoV 한계</strong> — 라이다 배치에 따라 상/하/측면 사각지대 발생</li>
+<li><strong>네비게이션 문제</strong> — 비용맵이 얇은 틈을 "통로"로 오인 → 플래너가 직선 경로 생성 → 얇은 틈으로 로봇 진입</li>
 </ol>
-<h2 id="_3">📊 평가 루브릭<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>해결 방안: GIMP 등으로 <code>.pgm</code> 맵을 직접 열어 <strong>"벽(검정)"</strong> 과 <strong>"빈 공간(흰색)"</strong> 을 사람이 명확히 구분해 다시 채워 넣습니다. 불확실한 부분을 사람이 <strong>확실한 장애물로 선언</strong> → 경로 안정성 향상.</p>
+<h3 id="_5">파일 준비와 색 규칙<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>파일</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>map2.yaml</code></td>
+<td>메타데이터(해상도, 원점, 임계값)</td>
+</tr>
+<tr>
+<td><code>map2.pgm</code></td>
+<td>실제 흑백 지도 이미지</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>픽셀 값</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>검정 (0)</strong></td>
+<td>장애물(점유 영역, 지나갈 수 없음)</td>
+</tr>
+<tr>
+<td><strong>흰색 (255)</strong></td>
+<td>자유공간(이동 가능)</td>
+</tr>
+<tr>
+<td><strong>회색 (중간값)</strong></td>
+<td>미확인/애매 영역</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gimp">GIMP 실행 시 확인 사항<a class="headerlink" href="#gimp" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="GIMP 실행 — 편집 규칙" src="../img/w09/s31.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 31 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p><strong>Step 1 — 파일 열기</strong>: File → Open → <code>map2.pgm</code></p>
+<p><strong>Step 2 — 이미지 모드 확인</strong>: Image → Mode → <strong>Grayscale</strong> 인지 확인</p>
+<p><strong>Step 3 — 알파 채널 제거</strong>: Layer → Transparency → <strong>Remove Alpha Channel</strong> (지도 픽셀은 0~255 단일 값)</p>
+<p><strong>Step 4 — 해상도 변경 금지</strong>: Image → <strong>Scale Image 사용 금지</strong></p>
+<p><strong>Step 5 — 벽 그리기</strong>:</p>
+<ul>
+<li><strong>Pencil</strong>(Hardness 100%) 사용, 색상 = 완전 검정 <code>(0,0,0)</code></li>
+<li>직선: 시작점 클릭 → <strong>Shift+클릭</strong>으로 반듯하게 그리기</li>
+<li>해상도 0.05m 기준: 벽 두께 <strong>2~3 px ≈ 약 10~15 cm</strong> → 충분히 벽으로 인식됨</li>
+</ul>
+<p><strong>Step 6 — 내보내기</strong>: File → Export As → <code>*.pgm</code> 유지, Export 옵션에서 <strong>Format = raw</strong> 선택</p>
+<div class="admonition tip">
+<p class="admonition-title">YAML 경로 확인</p>
+<p>GIMP로 수정한 <code>.pgm</code>을 Localization에서 쓰려면 해당 <code>.yaml</code>이 올바른 이미지 파일을 가리키는지 (<em>필히 경로 확인</em>) 점검합니다.</p>
+</div>
+<h3 id="rviz_1">RViz에서 경로 검증<a class="headerlink" href="#rviz_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>RViz → <strong>Fixed Frame = map</strong> → 검정 벽 확인 가능</li>
+<li><strong>2D Nav Goal</strong>로 선반 뒤쪽 등 목적지 지정 → 경로가 검정 벽을 <strong>피해서 우회</strong>하는지 확인</li>
+<li>경로가 여전히 벽을 관통한다면 점검:<ol>
+<li><code>global_costmap</code>의 <code>static_layer</code>가 실제로 <strong>새 맵을 구독</strong>하고 있는지 확인</li>
+<li><code>inflation_layer.inflation_radius</code>가 벽을 너무 가깝게 지나지 않도록 <strong>완충폭 확보</strong></li>
+</ol>
+</li>
+</ul>
+<hr />
+<h2 id="6-wrap-up">🧩 6. Wrap-up<a class="headerlink" href="#6-wrap-up" title="Permanent link">&para;</a></h2>
+<p>오늘 강의 내용 요약:</p>
+<ul>
+<li>✅ <strong>SLAM으로 지도 생성 &amp; 저장</strong> (.pgm / .yaml)</li>
+<li>✅ <strong>AMCL 기반 위치추정 + Nav2 자율주행</strong> 실행 (Localization 모드)</li>
+<li>✅ <strong>GIMP로 지도 보정</strong> → 경로 우회 여부 검증</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">핵심 메시지</p>
+<p>SLAM 모드는 지도를 만드는 단계, Localization 모드는 만들어진 지도를 <strong>고정해 두고 그 위에서 내 위치만 추적</strong>하는 단계입니다. 지도가 완벽하지 않으면 로봇이 "가짜 세계"를 보므로, <strong>사람이 GIMP로 직접 보정</strong>해 경로 안정성을 확보하는 것이 실전에서 매우 중요합니다.</p>
+</div>
+<h2 id="_6">✅ 체크포인트<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>map_saver_cli</code>로 지도를 <code>.pgm</code> + <code>.yaml</code> 한 쌍으로 저장할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>localization_launch.py</code> + <code>navigation_launch.py</code>로 Localization 모드를 실행할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 지도가 RViz에 안 보일 때 <code>/map</code> QoS를 <strong>Reliable / Transient Local</strong>로 바꿀 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> RViz <strong>2D Pose Estimate</strong>로 AMCL 초기 위치를 지정할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> GIMP로 <code>.pgm</code>의 벽(검정)을 보강하고 raw 형식으로 내보내 경로 우회를 검증할 수 있는가</li>
+</ul>
+<h2 id="_7">📊 평가 루브릭<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>항목</th>
 <th>배점</th>
-<th>A(우수)</th>
-<th>B(보통)</th>
-<th>C(미흡)</th>
+<th>기준</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>YOLO 단독 추론</td>
-<td>30</td>
-<td>결과 해석·시각화</td>
-<td>추론만</td>
-<td>미동작</td>
+<td>지도 저장</td>
+<td>20</td>
+<td>SLAM 지도를 <code>.pgm</code>/<code>.yaml</code>로 정확히 저장</td>
 </tr>
 <tr>
-<td>ROS2 연동</td>
-<td>40</td>
-<td>실시간 탐지·로그</td>
-<td>동작</td>
-<td>미동작</td>
+<td>Localization 전환</td>
+<td>25</td>
+<td>localization/navigation 런치 실행 + 지도 로딩 + AMCL 초기 위치 설정</td>
 </tr>
 <tr>
-<td>과제(/detected_objects)</td>
-<td>30</td>
-<td>토픽 발행·제출</td>
-<td>일부</td>
-<td>미제출</td>
+<td>QoS/파라미터 이해</td>
+<td>20</td>
+<td>Reliable·Transient Local QoS 및 AMCL/Nav2 핵심 파라미터 설명</td>
+</tr>
+<tr>
+<td>문제·원인 분석</td>
+<td>15</td>
+<td>스캔 누락·얇은 틈·Loop Closure 등 지도 오류 원인 진단</td>
+</tr>
+<tr>
+<td>GIMP 지도 보정</td>
+<td>20</td>
+<td>색 규칙 준수 보정 + raw 내보내기 + RViz 경로 우회 검증</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">🧰 사전 준비물 &amp; 트러블슈팅<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><strong>준비물</strong>: ultralytics, opencv-python, cv_bridge</p>
+<h2 id="_8">🔗 출처 및 참고자료<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ul>
-<li>❌ <code>cv_bridge</code> import 오류 → <code>sudo apt install ros-humble-cv-bridge</code> 후 재빌드</li>
-<li>❌ 추론이 느림 → yolov8n(nano) 모델 사용, GPU 없으면 정상</li>
-<li>❌ 카메라 토픽 없음 → 시뮬 카메라 플러그인 추가 또는 image_publisher 사용</li>
+<li>교안 <strong>「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」</strong> (제작: <em>ENGI UNIVERSE</em>)</li>
+<li>Nav2 — AMCL &amp; Map Server: <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
+<li>slam_toolbox: <a href="https://github.com/SteveMacenski/slam_toolbox">https://github.com/SteveMacenski/slam_toolbox</a></li>
+<li>GIMP: <a href="https://www.gimp.org">https://www.gimp.org</a></li>
 </ul>
-<h2 id="_5">🔗 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="isaac-sim-510">📘 Isaac Sim 5.1.0 공식 문서<a class="headerlink" href="#isaac-sim-510" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">공식 문서 (NVIDIA Isaac Sim 5.1.0)</p>
+<p>본 주차의 Isaac Sim/ROS 2 API·절차는 아래 공식 문서로 보강·검증할 수 있습니다.</p>
 <ul>
-<li>Ultralytics YOLO 문서 — <a href="https://docs.ultralytics.com">https://docs.ultralytics.com</a></li>
-<li>cv_bridge — <a href="https://github.com/ros-perception/vision_opencv">https://github.com/ros-perception/vision_opencv</a></li>
-<li>YOLO 논문 — <a href="https://arxiv.org/abs/1506.02640">https://arxiv.org/abs/1506.02640</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html">ROS 2 튜토리얼</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/omniverse_usd/intro_to_usd.html">USD로 작업하기</a></li>
 </ul>
+</div>
+<!-- FULLDECK -->
+<h2 id="_9">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<details class="note">
+<summary>원본 강의 슬라이드 전체 (31매)</summary>
+<p><img alt="슬라이드 01" src="../img/w09/s01.jpg" width="700" />
+<img alt="슬라이드 02" src="../img/w09/s02.jpg" width="700" />
+<img alt="슬라이드 03" src="../img/w09/s03.jpg" width="700" />
+<img alt="슬라이드 04" src="../img/w09/s04.jpg" width="700" />
+<img alt="슬라이드 05" src="../img/w09/s05.jpg" width="700" />
+<img alt="슬라이드 06" src="../img/w09/s06.jpg" width="700" />
+<img alt="슬라이드 07" src="../img/w09/s07.jpg" width="700" />
+<img alt="슬라이드 08" src="../img/w09/s08.jpg" width="700" />
+<img alt="슬라이드 09" src="../img/w09/s09.jpg" width="700" />
+<img alt="슬라이드 10" src="../img/w09/s10.jpg" width="700" />
+<img alt="슬라이드 11" src="../img/w09/s11.jpg" width="700" />
+<img alt="슬라이드 12" src="../img/w09/s12.jpg" width="700" />
+<img alt="슬라이드 13" src="../img/w09/s13.jpg" width="700" />
+<img alt="슬라이드 14" src="../img/w09/s14.jpg" width="700" />
+<img alt="슬라이드 15" src="../img/w09/s15.jpg" width="700" />
+<img alt="슬라이드 16" src="../img/w09/s16.jpg" width="700" />
+<img alt="슬라이드 17" src="../img/w09/s17.jpg" width="700" />
+<img alt="슬라이드 18" src="../img/w09/s18.jpg" width="700" />
+<img alt="슬라이드 19" src="../img/w09/s19.jpg" width="700" />
+<img alt="슬라이드 20" src="../img/w09/s20.jpg" width="700" />
+<img alt="슬라이드 21" src="../img/w09/s21.jpg" width="700" />
+<img alt="슬라이드 22" src="../img/w09/s22.jpg" width="700" />
+<img alt="슬라이드 23" src="../img/w09/s23.jpg" width="700" />
+<img alt="슬라이드 24" src="../img/w09/s24.jpg" width="700" />
+<img alt="슬라이드 25" src="../img/w09/s25.jpg" width="700" />
+<img alt="슬라이드 26" src="../img/w09/s26.jpg" width="700" />
+<img alt="슬라이드 27" src="../img/w09/s27.jpg" width="700" />
+<img alt="슬라이드 28" src="../img/w09/s28.jpg" width="700" />
+<img alt="슬라이드 29" src="../img/w09/s29.jpg" width="700" />
+<img alt="슬라이드 30" src="../img/w09/s30.jpg" width="700" />
+<img alt="슬라이드 31" src="../img/w09/s31.jpg" width="700" /></p>
+</details>
 
 
 
@@ -1273,13 +2048,13 @@
         
         
           
-          <a href="../week10/" class="md-footer__link md-footer__link--next" aria-label="다음: 10주차 · 로봇 매니퓰레이션">
+          <a href="../week10/" class="md-footer__link md-footer__link--next" aria-label="다음: 10주차 · Spot+ATS Vision(YOLOv8)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                10주차 · 로봇 매니퓰레이션
+                10주차 · Spot+ATS Vision(YOLOv8)
               </div>
             </div>
             <div class="md-footer__button md-icon">

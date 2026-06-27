@@ -330,7 +330,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🖥️ 실습 환경 안내
+        🧭 커리큘럼 한눈에 보기
       
     </span>
   </a>
@@ -422,7 +422,7 @@
   <span class="md-ellipsis">
     
   
-    1주차 · Physical AI 개요
+    1주차 · Isaac Sim 설치·활용
   
 
     
@@ -450,7 +450,7 @@
   <span class="md-ellipsis">
     
   
-    2주차 · ROS 2 기초
+    2주차 · 물리환경·카메라(RGB/Depth)
   
 
     
@@ -478,7 +478,7 @@
   <span class="md-ellipsis">
     
   
-    3주차 · 좌표계와 기구학
+    3주차 · 센서(IMU·LiDAR·Radar)
   
 
     
@@ -506,7 +506,7 @@
   <span class="md-ellipsis">
     
   
-    4주차 · 센서와 인식
+    4주차 · Isaac Lab 4족 보행 RL
   
 
     
@@ -534,7 +534,7 @@
   <span class="md-ellipsis">
     
   
-    5주차 · 로봇 시뮬레이션
+    5주차 · Spot+ATS 시스템 구축
   
 
     
@@ -562,7 +562,7 @@
   <span class="md-ellipsis">
     
   
-    6주차 · 이동로봇 제어
+    6주차 · SLAM·Nav2 기본
   
 
     
@@ -590,7 +590,7 @@
   <span class="md-ellipsis">
     
   
-    7주차 · SLAM과 자율주행
+    7주차 · Spot+ATS SLAM 연동 1
   
 
     
@@ -646,7 +646,7 @@
   <span class="md-ellipsis">
     
   
-    9주차 · 컴퓨터 비전·딥러닝
+    9주차 · Spot+ATS SLAM 연동 2
   
 
     
@@ -674,7 +674,7 @@
   <span class="md-ellipsis">
     
   
-    10주차 · 로봇 매니퓰레이션
+    10주차 · Spot+ATS Vision(YOLOv8)
   
 
     
@@ -702,7 +702,7 @@
   <span class="md-ellipsis">
     
   
-    11주차 · 강화학습 기초
+    11주차 · System-1 Executor 설계
   
 
     
@@ -730,7 +730,7 @@
   <span class="md-ellipsis">
     
   
-    12주차 · 모방학습
+    12주차 · System-1 단위 액션 1
   
 
     
@@ -758,7 +758,7 @@
   <span class="md-ellipsis">
     
   
-    13주차 · Sim-to-Real
+    13주차 · System-1 단위 액션 2
   
 
     
@@ -786,7 +786,7 @@
   <span class="md-ellipsis">
     
   
-    14주차 · Foundation Models & VLA
+    14주차 · System-2 LLM Planner
   
 
     
@@ -814,7 +814,7 @@
   <span class="md-ellipsis">
     
   
-    15주차 · System-2 테스트 & 검증
+    15주차 · System-2 테스트·검증
   
 
     
@@ -925,7 +925,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🖥️ 실습 환경 안내
+        🧭 커리큘럼 한눈에 보기
       
     </span>
   </a>
@@ -963,7 +963,7 @@
 <h1 id="physical-ai">Physical AI — 강의 개요<a class="headerlink" href="#physical-ai" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">교과목 한 줄 소개</p>
-<p>인공지능을 물리적 신체(로봇)에 구현하여 <strong>인식·학습·제어</strong>를 통합하는 임베디드 지능 교과목입니다. 시뮬레이션 기반 실습 중심으로 ROS 2부터 강화학습·VLA까지 한 학기 동안 직접 구현합니다.</p>
+<p><strong>NVIDIA Isaac Sim</strong> 기반 시뮬레이션 위에서 <strong>센서 → SLAM/자율주행 → 강화학습 → LLM 고수준 제어</strong>까지, 실제 <strong>Spot + ATS</strong> 보안로봇 프로젝트를 한 학기 동안 직접 구축하는 임베디드 지능(Physical AI) 교과목입니다.</p>
 </div>
 <h2 id="_1">📌 교과목 정보<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <table>
@@ -996,11 +996,11 @@
 </tr>
 <tr>
 <td>개발환경</td>
-<td>Ubuntu 22.04 · ROS 2 (Humble) · Gazebo · PyTorch</td>
+<td>Ubuntu 22.04 · <strong>NVIDIA Isaac Sim 5.1 / Isaac Lab</strong> · ROS 2 (Humble) · slam_toolbox·Nav2 · LangChain/LLM</td>
 </tr>
 <tr>
-<td>실습 환경</td>
-<td><strong>전 주차 Gazebo 시뮬레이션 기준으로 통일</strong></td>
+<td>실습 플랫폼</td>
+<td><strong>Spot(4족 보행) + ATS(2축 카메라 시스템)</strong> 시뮬레이션</td>
 </tr>
 <tr>
 <td>평가</td>
@@ -1010,11 +1010,11 @@
 </table>
 <h2 id="_2">🎯 교과 목표<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>물리 세계에서 작동하는 AI(임베디드 지능)의 개념과 구성요소를 이해한다.</li>
-<li>ROS 2 기반으로 로봇의 인식–판단–제어 파이프라인을 구현할 수 있다.</li>
-<li>시뮬레이션 환경에서 강화학습·모방학습을 적용하고 Sim-to-Real 개념을 설명할 수 있다.</li>
-<li>VLA(Vision-Language-Action) 등 최신 Foundation Model 기반 로봇 지능을 체험한다.</li>
-<li>인식·학습·제어를 통합한 End-to-End Physical AI 시스템을 팀 프로젝트로 완성한다.</li>
+<li>NVIDIA Isaac Sim에서 물리 환경과 <strong>센서(카메라·IMU·LiDAR·Radar)</strong> 시뮬레이션을 구성할 수 있다.</li>
+<li><strong>Isaac Lab 강화학습</strong>으로 4족 보행 로봇의 보행 정책을 학습시킬 수 있다.</li>
+<li><strong>SLAM(slam_toolbox)·Nav2</strong>로 지도 작성과 자율주행 파이프라인을 구축할 수 있다.</li>
+<li><strong>System-1(실행)</strong> 단위 액션과 <strong>System-2(LLM 플래너)</strong> 를 설계해 자연어 명령으로 로봇을 제어할 수 있다.</li>
+<li>Isaac Sim–ROS 2–자율주행–AI 추론을 잇는 <strong>현대 로봇 SW 풀스택</strong>을 통합 프로젝트로 완성한다.</li>
 </ul>
 <h2 id="_3">🗓️ 주차별 강의계획<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
@@ -1023,113 +1023,114 @@
 <th>주차</th>
 <th>주제</th>
 <th>학습 내용</th>
-<th>실습</th>
+<th>근거 교안</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="week01/">1</a></td>
-<td>Physical AI 개요</td>
-<td>임베디드 지능, Digital vs Physical AI</td>
-<td>개발환경 구축</td>
+<td>Isaac Sim 설치·활용</td>
+<td>권장 사양, 개발환경 구축, 활용 사례</td>
+<td>Isaac Sim 1강</td>
 </tr>
 <tr>
 <td><a href="week02/">2</a></td>
-<td>ROS 2 기초</td>
-<td>노드·토픽·서비스·액션</td>
-<td>퍼블리셔/구독자 작성</td>
+<td>물리환경·카메라 센서</td>
+<td>Stage/World/Prim, RGB/Depth 카메라</td>
+<td>Isaac Sim 2강</td>
 </tr>
 <tr>
 <td><a href="week03/">3</a></td>
-<td>좌표계와 기구학</td>
-<td>강체 변환·TF2·FK/IK</td>
-<td>TF 브로드캐스트·RViz</td>
+<td>센서 (IMU·LiDAR·Radar)</td>
+<td>RTX LiDAR, Annotator, PointCloud</td>
+<td>Isaac Sim 3강</td>
 </tr>
 <tr>
 <td><a href="week04/">4</a></td>
-<td>센서와 인식</td>
-<td>LiDAR·카메라·IMU 원리</td>
-<td>센서 토픽 구독·시각화</td>
+<td>Isaac Lab 4족 보행 RL</td>
+<td>MDP, Action/Observation, Height Scan</td>
+<td>Isaac Sim 4강</td>
 </tr>
 <tr>
 <td><a href="week05/">5</a></td>
-<td>로봇 시뮬레이션</td>
-<td>Gazebo·URDF·물리엔진</td>
-<td>로봇 모델링·스폰</td>
+<td>Spot+ATS 시스템 구축</td>
+<td>URDF Import, ROS2 연동, RL 재학습</td>
+<td>Isaac Sim 5강</td>
 </tr>
 <tr>
 <td><a href="week06/">6</a></td>
-<td>이동로봇 제어</td>
-<td>차동구동 운동학·Odometry</td>
-<td>Teleop·주행 노드</td>
+<td>SLAM·Nav2 기본</td>
+<td>Odometry, Sensor Fusion, slam_toolbox</td>
+<td>SLAM 1강</td>
 </tr>
 <tr>
 <td><a href="week07/">7</a></td>
-<td>SLAM과 자율주행</td>
-<td>점유격자지도·SLAM·Nav2</td>
-<td>지도작성·자율주행</td>
+<td>Spot+ATS SLAM 연동 1</td>
+<td>ROS2 브릿지, TF 트리, 자율주행</td>
+<td>SLAM 2강</td>
 </tr>
 <tr>
 <td><a href="week08/">8</a></td>
 <td>중간고사</td>
 <td>1~7주차 종합 평가</td>
-<td>이론+실기 평가</td>
+<td>—</td>
 </tr>
 <tr>
 <td><a href="week09/">9</a></td>
-<td>컴퓨터 비전·딥러닝</td>
-<td>CNN·객체탐지(YOLO)</td>
-<td>YOLO ROS2 연동</td>
+<td>Spot+ATS SLAM 연동 2</td>
+<td>지도 저장·Localization·GIMP 수정</td>
+<td>SLAM 3강</td>
 </tr>
 <tr>
 <td><a href="week10/">10</a></td>
-<td>로봇 매니퓰레이션</td>
-<td>로봇팔 기구학·MoveIt</td>
-<td>모션플래닝·픽앤플레이스</td>
+<td>Spot+ATS Vision</td>
+<td>YOLOv8 detector·tracker·debug</td>
+<td>SLAM 4강</td>
 </tr>
 <tr>
 <td><a href="week11/">11</a></td>
-<td>강화학습 기초</td>
-<td>MDP·정책·PPO·보상설계</td>
-<td>PPO 정책 학습</td>
+<td>System-1 Executor 설계</td>
+<td>아키텍처, 단위 액션, Executor Node</td>
+<td>Physical AI 1강</td>
 </tr>
 <tr>
 <td><a href="week12/">12</a></td>
-<td>모방학습</td>
-<td>Behavior Cloning·Diffusion Policy</td>
-<td>시연 수집·BC 학습</td>
+<td>System-1 단위 액션 1</td>
+<td>move_to(Nav2)·scan 설계</td>
+<td>Physical AI 2강</td>
 </tr>
 <tr>
 <td><a href="week13/">13</a></td>
-<td>Sim-to-Real</td>
-<td>Reality Gap·도메인 랜덤화</td>
-<td>도메인 랜덤화 실험</td>
+<td>System-1 단위 액션 2</td>
+<td>track 3축 통합 제어·report·return</td>
+<td>Physical AI 3강</td>
 </tr>
 <tr>
 <td><a href="week14/">14</a></td>
-<td>Foundation Models &amp; VLA</td>
-<td>LLM·VLM·VLA</td>
-<td>언어명령 제어 체험</td>
+<td>System-2 LLM Planner</td>
+<td>models.py·llm_planner.py·system2_node.py</td>
+<td>Physical AI 4강</td>
 </tr>
 <tr>
 <td><a href="week15/">15</a></td>
-<td>System-2 테스트 &amp; 검증</td>
-<td>System-1/System-2 통합·시나리오 검증</td>
-<td>통합 프로젝트·시연·발표</td>
+<td>System-2 테스트·검증</td>
+<td>System-1/2 통합·시나리오 A~D·고도화</td>
+<td>Physical AI 5강</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">🖥️ 실습 환경 안내<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">공통 실습 환경</p>
-<p>본 강의 실습은 전 주차 <strong>Gazebo 시뮬레이션</strong> 기준으로 통일합니다. 실물 로봇 없이 <code>~/cluad_ws</code> 워크스페이스에서 모두 수행 가능합니다. (강화학습·모방학습 주차는 가벼운 Gymnasium 시뮬 사용)</p>
-</div>
+<h2 id="_4">🧭 커리큘럼 한눈에 보기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Isaac Sim 기초·센서]  →  [Isaac Lab RL]  →  [SLAM·자율주행]  →  [Vision]  →  [System-1 실행]  →  [System-2 LLM]  →  [통합 검증]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   W1~3                     W4~5             W6~7,9            W10         W11~13            W14             W15
+</code></pre></div>
 <h2 id="_5">📚 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>NVIDIA Isaac Sim 5.1.0 공식 문서</strong> — <a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html">https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html</a></li>
+<li>NVIDIA Isaac Lab Documentation — <a href="https://isaac-sim.github.io/IsaacLab/">https://isaac-sim.github.io/IsaacLab/</a></li>
 <li>ROS 2 Documentation (Humble) — <a href="https://docs.ros.org">https://docs.ros.org</a></li>
-<li>NVIDIA Isaac Sim / Isaac Lab Documentation</li>
-<li><em>Probabilistic Robotics</em>, Thrun et al.</li>
-<li>OpenVLA / RT-2 논문 및 Open X-Embodiment 데이터셋</li>
+<li>Nav2 — <a href="https://docs.nav2.org">https://docs.nav2.org</a> · slam_toolbox — <a href="https://github.com/SteveMacenski/slam_toolbox">https://github.com/SteveMacenski/slam_toolbox</a></li>
+<li>Ultralytics YOLOv8 — <a href="https://docs.ultralytics.com">https://docs.ultralytics.com</a> · LangChain — <a href="https://python.langchain.com">https://python.langchain.com</a></li>
+<li>강의 교안: <strong>NVIDIA Isaac Sim 1~5강 · SLAM 1~4강 · Physical AI 1~5강</strong> (제작: ENGI UNIVERSE) · Spot+ATS 프로젝트 매뉴얼</li>
 </ul>
 
 
@@ -1167,13 +1168,13 @@
         
         
           
-          <a href="week01/" class="md-footer__link md-footer__link--next" aria-label="다음: 1주차 · Physical AI 개요">
+          <a href="week01/" class="md-footer__link md-footer__link--next" aria-label="다음: 1주차 · Isaac Sim 설치·활용">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                1주차 · Physical AI 개요
+                1주차 · Isaac Sim 설치·활용
               </div>
             </div>
             <div class="md-footer__button md-icon">

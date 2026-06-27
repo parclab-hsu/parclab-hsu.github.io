@@ -27,7 +27,7 @@
     
     
       
-        <title>5주차 · 로봇 시뮬레이션 - Physical AI · 2026-2학기</title>
+        <title>5주차 · Spot+ATS 시스템 구축 - Physical AI · 2026-2학기</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-gazebourdf" class="md-skip">
+        <a href="#5-spot-ats-urdf-importros2-rl" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5주차 · 로봇 시뮬레이션
+              5주차 · Spot+ATS 시스템 구축
             
           </span>
         </div>
@@ -324,7 +324,7 @@
   <span class="md-ellipsis">
     
   
-    1주차 · Physical AI 개요
+    1주차 · Isaac Sim 설치·활용
   
 
     
@@ -352,7 +352,7 @@
   <span class="md-ellipsis">
     
   
-    2주차 · ROS 2 기초
+    2주차 · 물리환경·카메라(RGB/Depth)
   
 
     
@@ -380,7 +380,7 @@
   <span class="md-ellipsis">
     
   
-    3주차 · 좌표계와 기구학
+    3주차 · 센서(IMU·LiDAR·Radar)
   
 
     
@@ -408,7 +408,7 @@
   <span class="md-ellipsis">
     
   
-    4주차 · 센서와 인식
+    4주차 · Isaac Lab 4족 보행 RL
   
 
     
@@ -445,7 +445,7 @@
   <span class="md-ellipsis">
     
   
-    5주차 · 로봇 시뮬레이션
+    5주차 · Spot+ATS 시스템 구축
   
 
     
@@ -463,7 +463,7 @@
   <span class="md-ellipsis">
     
   
-    5주차 · 로봇 시뮬레이션
+    5주차 · Spot+ATS 시스템 구축
   
 
     
@@ -500,40 +500,296 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-intro-ats" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🛰️ 1. Intro — ATS와 이번 강의 로드맵
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-urdf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ 2교시. 실습 — URDF 모델링
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-gazebo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ 3교시. 실습 — Gazebo 스폰 &amp; 확인
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="🛰️ 1. Intro — ATS와 이번 강의 로드맵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이번 강의 학습 로드맵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 2. ATS 기구 구조 이해하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 2. ATS 기구 구조 이해하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ats-urdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATS의 URDF 조인트 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ats-urdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📂 3. ATS URDF 불러오기와 분석하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📂 3. ATS URDF 불러오기와 분석하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-urdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub에서 URDF 패키지 가져오기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urdf-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URDF 구조 분석 — Link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Joint 구조 — 핵심 항목
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ats-urdf-3-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATS URDF 전체 구조 — 링크 3개 + 조인트 2개
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-isaac-sim-urdf-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖥️ 4. Isaac Sim에서 URDF Import 하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖥️ 4. Isaac Sim에서 URDF Import 하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        필수 Import 옵션 (실습 권장값)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시뮬레이션 환경 설정하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ros2-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔌 5. ROS2와 연동해 ATS 제어하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔌 5. ROS2와 연동해 ATS 제어하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        조인트 컨트롤러 파라미터 튜닝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action Graph 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ros2-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS2에서 ATS로 명령 주기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ats-4-spot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐕 6. ATS를 4족 보행 Spot 위에 탑재하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ats-spot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 7. ATS 탑재 Spot 로봇 강화학습하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 7. ATS 탑재 Spot 로봇 강화학습하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왜 재학습이 필요한가?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsl_rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 환경 설정 — rsl_rl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습용 로봇 모델 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정책 학습과 적용
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 8. Wrap-up — 오늘 강의 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 체크포인트
@@ -544,29 +800,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         📊 평가 루브릭
@@ -577,10 +811,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
+        🔗 출처 및 참고자료
       
     </span>
   </a>
@@ -588,10 +822,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#isaac-sim-510" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 참고자료
+        📘 Isaac Sim 5.1.0 공식 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -621,7 +866,7 @@
   <span class="md-ellipsis">
     
   
-    6주차 · 이동로봇 제어
+    6주차 · SLAM·Nav2 기본
   
 
     
@@ -649,7 +894,7 @@
   <span class="md-ellipsis">
     
   
-    7주차 · SLAM과 자율주행
+    7주차 · Spot+ATS SLAM 연동 1
   
 
     
@@ -705,7 +950,7 @@
   <span class="md-ellipsis">
     
   
-    9주차 · 컴퓨터 비전·딥러닝
+    9주차 · Spot+ATS SLAM 연동 2
   
 
     
@@ -733,7 +978,7 @@
   <span class="md-ellipsis">
     
   
-    10주차 · 로봇 매니퓰레이션
+    10주차 · Spot+ATS Vision(YOLOv8)
   
 
     
@@ -761,7 +1006,7 @@
   <span class="md-ellipsis">
     
   
-    11주차 · 강화학습 기초
+    11주차 · System-1 Executor 설계
   
 
     
@@ -789,7 +1034,7 @@
   <span class="md-ellipsis">
     
   
-    12주차 · 모방학습
+    12주차 · System-1 단위 액션 1
   
 
     
@@ -817,7 +1062,7 @@
   <span class="md-ellipsis">
     
   
-    13주차 · Sim-to-Real
+    13주차 · System-1 단위 액션 2
   
 
     
@@ -845,7 +1090,7 @@
   <span class="md-ellipsis">
     
   
-    14주차 · Foundation Models & VLA
+    14주차 · System-2 LLM Planner
   
 
     
@@ -873,7 +1118,7 @@
   <span class="md-ellipsis">
     
   
-    15주차 · System-2 테스트 & 검증
+    15주차 · System-2 테스트·검증
   
 
     
@@ -959,40 +1204,296 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-intro-ats" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🛰️ 1. Intro — ATS와 이번 강의 로드맵
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-urdf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ 2교시. 실습 — URDF 모델링
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-gazebo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🛠️ 3교시. 실습 — Gazebo 스폰 &amp; 확인
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="🛰️ 1. Intro — ATS와 이번 강의 로드맵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이번 강의 학습 로드맵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 2. ATS 기구 구조 이해하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 2. ATS 기구 구조 이해하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ats-urdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATS의 URDF 조인트 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ats-urdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📂 3. ATS URDF 불러오기와 분석하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📂 3. ATS URDF 불러오기와 분석하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-urdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub에서 URDF 패키지 가져오기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urdf-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URDF 구조 분석 — Link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Joint 구조 — 핵심 항목
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ats-urdf-3-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATS URDF 전체 구조 — 링크 3개 + 조인트 2개
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-isaac-sim-urdf-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖥️ 4. Isaac Sim에서 URDF Import 하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖥️ 4. Isaac Sim에서 URDF Import 하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        필수 Import 옵션 (실습 권장값)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시뮬레이션 환경 설정하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ros2-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔌 5. ROS2와 연동해 ATS 제어하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔌 5. ROS2와 연동해 ATS 제어하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        조인트 컨트롤러 파라미터 튜닝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action Graph 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ros2-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS2에서 ATS로 명령 주기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ats-4-spot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐕 6. ATS를 4족 보행 Spot 위에 탑재하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ats-spot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 7. ATS 탑재 Spot 로봇 강화학습하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 7. ATS 탑재 Spot 로봇 강화학습하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왜 재학습이 필요한가?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsl_rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 환경 설정 — rsl_rl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습용 로봇 모델 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정책 학습과 적용
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 8. Wrap-up — 오늘 강의 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 체크포인트
@@ -1003,29 +1504,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         📊 평가 루브릭
@@ -1036,10 +1515,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
+        🔗 출처 및 참고자료
       
     </span>
   </a>
@@ -1047,10 +1526,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#isaac-sim-510" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 참고자료
+        📘 Isaac Sim 5.1.0 공식 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -1074,10 +1564,14 @@
 
 
 
-<h1 id="5-gazebourdf">5주차 — 로봇 시뮬레이션 (Gazebo·URDF)<a class="headerlink" href="#5-gazebourdf" title="Permanent link">&para;</a></h1>
+<h1 id="5-spot-ats-urdf-importros2-rl">5주차 — Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습)<a class="headerlink" href="#5-spot-ats-urdf-importros2-rl" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">학습목표</p>
-<p>시뮬레이션의 역할과 물리엔진을 이해하고, URDF로 로봇을 모델링하여 Gazebo에 스폰한다.</p>
+<p>2축(Yaw/Pitch)으로 회전하는 ATS(탐지·조준·추적) 시스템의 기구학과 URDF 구조를 이해하고, 이를 Isaac Sim으로 Import하여 ROS2로 짐벌을 제어한다. 나아가 ATS를 4족 보행 로봇 Spot에 탑재하고, 바뀐 무게중심에 맞춰 넘어지지 않고 걷도록 보행 정책을 <strong>강화학습으로 재훈련</strong>하는 Physical AI 시스템 설계·최적화 파이프라인 전체를 따라간다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Source)</p>
+<p>본 자료의 그림·예제는 교안 <strong>「Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습)」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 코드·명령은 교안의 설명을 충실히 따른 재구성 예제입니다.</p>
 </div>
 <h2 id="3">⏱️ 3시간 구성<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
@@ -1086,141 +1580,611 @@
 <th>교시</th>
 <th>시간</th>
 <th>내용</th>
+<th>근거 교안</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1교시</td>
 <td>50분</td>
-<td>이론 — 시뮬레이션·URDF·물리엔진</td>
+<td>Intro &amp; ATS 기구 구조·URDF 이해/분석</td>
+<td>§01~03</td>
 </tr>
 <tr>
 <td>2교시</td>
 <td>50분</td>
-<td>실습 — URDF 로봇 모델링</td>
+<td>Isaac Sim URDF Import &amp; ROS2 연동 제어(Yaw/Pitch)</td>
+<td>§04~05</td>
 </tr>
 <tr>
 <td>3교시</td>
 <td>50분</td>
-<td>실습 — Gazebo 스폰 &amp; 제어</td>
+<td>ATS의 Spot 탑재 &amp; 강화학습 재훈련 + Wrap-up</td>
+<td>§06~08</td>
 </tr>
 </tbody>
 </table>
-<h2 id="1">📖 1교시. 이론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="1-intro-ats">🛰️ 1. Intro — ATS와 이번 강의 로드맵<a class="headerlink" href="#1-intro-ats" title="Permanent link">&para;</a></h2>
+<p>지난 강의에서 정의한 <strong>ATS</strong>는 탐지(Detection) → 조준(Aiming) → 추적(Tracking)을 AI가 수행하는 완전 자율 시스템입니다. 사람이 모든 결정과 조작을 맡는 <strong>RCWS(원격 조종 시스템)</strong> 와 달리, ATS는 센서로 위협을 인지하고 AI가 직접 모터를 제어하며 사람과 자연어로 명령·보고를 주고받습니다.</p>
+<div class="admonition note">
+<p class="admonition-title">ATS의 범위</p>
+<p>본 실습의 ATS는 실제 무기 시스템이 아니라 <strong>‘2축으로 회전 가능한 고성능 카메라 시스템’</strong> 입니다.</p>
+</div>
+<figure>
+<p><img alt="ATS 자율 시스템 개념과 RCWS 비교" src="../img/w05/s04.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 04 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="_1">이번 강의 학습 로드맵<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 기구학·URDF 이해</td>
+<td>ATS의 관절 구조, 자유도, 좌표계 정의 분석</td>
+</tr>
+<tr>
+<td>② Isaac Sim Import</td>
+<td>ATS 모델을 시뮬레이션에 배치하고 기본 동작 확인</td>
+</tr>
+<tr>
+<td>③ ROS2 연동 제어</td>
+<td>토픽/명령으로 Yaw/Pitch 짐벌을 실제로 움직여 보기</td>
+</tr>
+<tr>
+<td>④ Spot에 결합</td>
+<td>고정형 포탑 → 이동형 4족 로봇 플랫폼으로 확장</td>
+</tr>
+<tr>
+<td>⑤ 강화학습 재훈련</td>
+<td>ATS 장착으로 바뀐 무게중심에 맞춰 보행 정책 재학습</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">강의 목표</p>
+<p>단순 모델 조립을 넘어서 <strong>물리적 AI(Physical AI) 시스템 설계·최적화 파이프라인 전체</strong>를 따라가 봅니다. 학습 전에는 ATS의 무게로 비틀거리던 Spot이, 재학습 후에는 안정적으로 걷는 모습을 직접 확인합니다.</p>
+</div>
+<hr />
+<h2 id="2-ats">🔧 2. ATS 기구 구조 이해하기<a class="headerlink" href="#2-ats" title="Permanent link">&para;</a></h2>
+<p>ATS는 두 개의 회전축으로 구성된 단순한 구조입니다.</p>
+<table>
+<thead>
+<tr>
+<th>회전축</th>
+<th>동작</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Yaw 축</strong></td>
+<td>좌우 회전</td>
+<td>포탑(또는 카메라)을 왼쪽/오른쪽으로 돌리는 축</td>
+</tr>
+<tr>
+<td><strong>Pitch 축</strong></td>
+<td>위아래 회전</td>
+<td>포신/카메라를 위·아래로 들어 올리고 내리는 축</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="ATS의 2축(Yaw/Pitch) 회전 구조" src="../img/w05/s07.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 07 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">여기서 잠깐 — URDF(Unified Robot Description Format)란?</p>
+<p>ROS2에서 URDF는 로봇을 설명하는 <strong>‘설계도 같은 텍스트 파일’</strong> 입니다. 로봇의 생김새와 구조, 관절이 어떻게 연결돼 있는지를 <strong>XML 형식</strong>으로 정리한 문서로, 각 관절·링크의 길이와 모양, 회전/직선 운동 특성, 센서·카메라가 붙은 위치까지 정의할 수 있습니다. ROS2 툴들은 이 정보를 읽어 시뮬레이션에서 로봇을 똑같이 그리거나, 실제 하드웨어를 제어할 때 구조를 기준으로 동작을 계산합니다.</p>
+</div>
+<h3 id="ats-urdf">ATS의 URDF 조인트 구성<a class="headerlink" href="#ats-urdf" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>조인트 유형</th>
+<th>특성</th>
+<th>ATS 적용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Continuous Joint</strong></td>
+<td>360도 회전 가능 (각도 제한 없음)</td>
+<td><strong>Yaw 축</strong> — "계속 돌아도 되는 회전축"</td>
+</tr>
+<tr>
+<td><strong>Revolute Joint</strong></td>
+<td>정해진 각도 범위 안에서만 회전 (예: +45°~−45°)</td>
+<td><strong>Pitch 축</strong> — 위·아래 각도가 제한된 축</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-ats-urdf">📂 3. ATS URDF 불러오기와 분석하기<a class="headerlink" href="#3-ats-urdf" title="Permanent link">&para;</a></h2>
+<h3 id="github-urdf">GitHub에서 URDF 패키지 가져오기<a class="headerlink" href="#github-urdf" title="Permanent link">&para;</a></h3>
+<p>ATS 패키지 폴더 구조 개요입니다.</p>
+<table>
+<thead>
+<tr>
+<th>폴더</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code></td>
+<td>조인트 컨트롤러 설정</td>
+</tr>
+<tr>
+<td><code>launch</code></td>
+<td>RViz, Gazebo 등에서 로봇을 한 번에 띄우는 런치 파일 모음</td>
+</tr>
+<tr>
+<td><code>meshes</code></td>
+<td>로봇의 3D 형상(STL, DAE 등)</td>
+</tr>
+<tr>
+<td><code>textures</code></td>
+<td>(현재 비어 있음) 추후 색상·질감 표현용 텍스처 위치</td>
+</tr>
+<tr>
+<td><code>urdf</code></td>
+<td>링크·조인트 구조, 관성·질량 등 물리 속성을 정의한 URDF 파일</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="ATS URDF 패키지 폴더 구조" src="../img/w05/s12.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 12 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="urdf-link">URDF 구조 분석 — Link<a class="headerlink" href="#urdf-link" title="Permanent link">&para;</a></h3>
+<p>URDF는 <strong>링크(link) + 조인트(joint)</strong> 구조로 로봇을 표현합니다. Link는 실제 물리 부품, Joint는 두 링크를 연결하고 어떻게 움직일 수 있는지를 정의합니다. 하나의 link는 보통 세 블록으로 구성됩니다.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">inertial (물리)</label><label for="__tabbed_1_2">visual (외형)</label><label for="__tabbed_1_3">collision (충돌)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>물리 시뮬레이션에서 힘·회전 반응을 결정하는 블록.</p>
 <ul>
-<li>왜 시뮬레이션인가: 안전·비용·대량 데이터·반복성. <strong>Sim-to-Real</strong>의 기반</li>
-<li><strong>URDF</strong>: link(강체) + joint(관절)로 로봇 구조 기술. SDF와의 차이</li>
-<li>물리엔진: 질량·관성·마찰·충돌, Gazebo / Isaac Sim 비교</li>
+<li><strong>origin(무게중심)</strong>: 해당 부품의 무게중심 좌표</li>
+<li><strong>mass(질량)</strong>: 링크의 질량(kg 단위)</li>
+<li><strong>inertia(관성모멘트)</strong>: 관성 모멘트 행렬 — 대칭이므로 <strong>6개 값</strong>으로 3×3 행렬 표현</li>
 </ul>
-<h2 id="2-urdf">🛠️ 2교시. 실습 — URDF 모델링<a class="headerlink" href="#2-urdf" title="Permanent link">&para;</a></h2>
-<p><strong>Step 1 — 패키지/의존성</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ros-humble-gazebo-ros-pkgs<span class="w"> </span>ros-humble-xacro
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w"> </span>--build-type<span class="w"> </span>ament_cmake<span class="w"> </span>my_robot_desc
+</div>
+<div class="tabbed-block">
+<p>화면에 보이는 외형을 정의하는 블록.</p>
+<ul>
+<li><strong>origin</strong>: 시각적 모델(mesh)이 위치할 좌표</li>
+<li><strong>geometry</strong>: 외형을 구성하는 3D 모델 파일</li>
+<li><strong>material/color</strong>: 재질 속성 및 RGB/RGBA 색상 정보</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>충돌 감지 전용 형상 정보.</p>
+<ul>
+<li>visual과 비슷하지만 <strong>geometry 기반 충돌 판정 전용</strong></li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="joint">Joint 구조 — 핵심 항목<a class="headerlink" href="#joint" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>조인트 유형 (revolute, continuous, fixed 등)</td>
+</tr>
+<tr>
+<td><code>origin</code></td>
+<td>조인트의 위치·자세 (좌표계 정렬 기준)</td>
+</tr>
+<tr>
+<td><code>parent / child</code></td>
+<td>어떤 링크와 어떤 링크를 연결하는지</td>
+</tr>
+<tr>
+<td><code>axis</code></td>
+<td>회전/이동 방향 벡터 (예: <code>1 0 0</code> → x축)</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>회전 범위, 속도·토크 제한 등 물리적 한계</td>
+</tr>
+<tr>
+<td><code>dynamics</code></td>
+<td>마찰·감쇠처럼 움직임에 걸리는 저항</td>
+</tr>
+<tr>
+<td><code>safety_controller</code></td>
+<td>제어기 차원의 안전 한계 (최대 속도·각도 보호)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ats-urdf-3-2">ATS URDF 전체 구조 — 링크 3개 + 조인트 2개<a class="headerlink" href="#ats-urdf-3-2" title="Permanent link">&para;</a></h3>
+<p>ATS는 <strong>2축 팬-틸트(pan-tilt) 구조</strong>입니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>base_link        ── 기준 몸통 / 좌표계 시작점
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  └─ joint1      ── 좌우 회전 (Yaw, pan), continuous
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>      └─ link1   ── joint1에 연결되어 함께 회전하는 연결체
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>          └─ joint2  ── 상하 회전 (Pitch, tilt), revolute
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>              └─ link2   ── 카메라·센서·장비가 올라가는 탑재부
 </code></pre></div>
-<p><strong>Step 2 — 차동 로봇 URDF</strong> (<code>urdf/robot.urdf</code>)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&lt;robot</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;my_bot&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;visual&gt;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="nt">&lt;geometry&gt;&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.4 0.3 0.1&quot;</span><span class="nt">/&gt;&lt;/geometry&gt;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;blue&quot;</span><span class="nt">&gt;&lt;color</span><span class="w"> </span><span class="na">rgba=</span><span class="s">&quot;0 0 1 1&quot;</span><span class="nt">/&gt;&lt;/material&gt;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">&lt;/visual&gt;</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">&lt;collision&gt;&lt;geometry&gt;&lt;box</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;0.4 0.3 0.1&quot;</span><span class="nt">/&gt;&lt;/geometry&gt;&lt;/collision&gt;</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nt">&lt;inertial&gt;</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="nt">&lt;mass</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;2.0&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">      </span><span class="nt">&lt;inertia</span><span class="w"> </span><span class="na">ixx=</span><span class="s">&quot;0.01&quot;</span><span class="w"> </span><span class="na">iyy=</span><span class="s">&quot;0.01&quot;</span><span class="w"> </span><span class="na">izz=</span><span class="s">&quot;0.01&quot;</span><span class="w"> </span><span class="na">ixy=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">ixz=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">iyz=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nt">&lt;/inertial&gt;</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="nt">&lt;/link&gt;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="nt">&lt;link</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wheel_left&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nt">&lt;visual&gt;&lt;geometry&gt;&lt;cylinder</span><span class="w"> </span><span class="na">radius=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">length=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;&lt;/geometry&gt;&lt;/visual&gt;</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="nt">&lt;/link&gt;</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;j_left&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;continuous&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nt">&lt;parent</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="nt">&lt;child</span><span class="w"> </span><span class="na">link=</span><span class="s">&quot;wheel_left&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0.18 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;1.5708 0 0&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="nt">&lt;axis</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 1&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="nt">&lt;/joint&gt;</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="nt">&lt;/robot&gt;</span>
+<figure>
+<p><img alt="ATS URDF 전체 구조 — 링크 3개·조인트 2개" src="../img/w05/s18.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 18 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="4-isaac-sim-urdf-import">🖥️ 4. Isaac Sim에서 URDF Import 하기<a class="headerlink" href="#4-isaac-sim-urdf-import" title="Permanent link">&para;</a></h2>
+<p><strong>Step 1 —</strong> Isaac Sim 실행 → 상단 메뉴 <code>File → Import → URDF</code> 선택
+<strong>Step 2 —</strong> Git에서 받아둔 ATS URDF 파일 선택
+<strong>Step 3 —</strong> 우측 패널에서 ATS 모델용 옵션을 설정한 뒤 <code>Import</code> 버튼 클릭</p>
+<h3 id="import">필수 Import 옵션 (실습 권장값)<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>권장 선택</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Static Base</strong></td>
+<td>◉ Static Base</td>
+<td>ATS를 고정 상태(차량/구조물 고정)로 배치. Moveable Base 선택 시 바닥에서 미끄러지거나 날아다니는 이상 동작 발생 가능</td>
+</tr>
+<tr>
+<td><strong>Joint Drive Type</strong></td>
+<td>◉ Position</td>
+<td>목표 위치 + 속도 제어 모두 가능 → 실습에 적합. Velocity는 속도만 제어, 목표 각도 지정 불가</td>
+</tr>
+<tr>
+<td><strong>Joint Configuration</strong></td>
+<td>◉ Stiffness</td>
+<td>강성 K·댐핑 C를 직접 지정해 반응 속도·힘을 정밀 제어. Natural Frequency는 고유진동수·감쇠비 기반 전체 안정성 위주 튜닝</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="Isaac Sim URDF Import 옵션 패널" src="../img/w05/s24.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 24 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="_2">시뮬레이션 환경 설정하기<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>Step 1 — 실내 환경 생성</strong>: <code>Create → Environment → Simple Room</code>
+<strong>Step 2 — ATS 불러오기</strong>: Scene Tree의 “ATS” 선택 → Simple Room으로 드래그&amp;드롭
+<strong>Step 3 — 테이블에 고정</strong>: <code>ATS</code>의 하위 <code>root_joint</code> 선택 → Property → <code>Body0</code> → <code>+Add Target</code> → <code>table_low_327</code></p>
+<div class="admonition note">
+<p class="admonition-title">왜 고정하나요?</p>
+<p>이렇게 root_joint를 테이블과 연결하면, 단순히 "공중에 뜬 로봇"이 아니라 <strong>실제 환경에 설치된 시스템처럼 동작</strong>하는 시뮬레이션이 됩니다.</p>
+</div>
+<hr />
+<h2 id="5-ros2-ats">🔌 5. ROS2와 연동해 ATS 제어하기<a class="headerlink" href="#5-ros2-ats" title="Permanent link">&para;</a></h2>
+<p>ROS2에서 명령을 보내고 ATS가 실제로 반응하는지 확인하는 <strong>3단계</strong> 흐름입니다.</p>
+<p><strong>Step 1 — 조인트 컨트롤러 설정 (Isaac Sim 내부)</strong>: 각 조인트의 드라이브 타입/상태 확인, ROS2에서 제어 가능한 형태로 조인트 드라이브 준비
+<strong>Step 2 — OmniGraph로 ROS2 ↔ Isaac Sim 연결</strong>: ROS2 토픽과 Isaac Sim의 조인트·상태 노드를 와이어링(연결)
+<strong>Step 3 — ROS2에서 명령 전송 &amp; 확인</strong>: <code>ros2 topic pub</code> 등으로 조인트 명령을 발행하고 Yaw/Pitch가 의도대로 움직이는지 시각적으로 검증</p>
+<div class="admonition tip">
+<p class="admonition-title">여기서 잠깐 — OmniGraph란?</p>
+<p>OmniGraph는 NVIDIA Isaac Sim과 Omniverse에서 사용하는 <strong>노드 기반 계산 그래프 시스템</strong>입니다. 물리 연산, 로봇 센서 입력, 제어 명령 등 다양한 작업을 그래프 형태로 처리하며 Python과 USD Stage에 직접 연결되어 시뮬레이션과 실시간으로 연동됩니다. 쉽게 말하면, 데이터 흐름과 제어 로직을 <strong>눈으로 보면서 구성·관리</strong>하는 프레임워크입니다.</p>
+</div>
+<h3 id="_3">조인트 컨트롤러 파라미터 튜닝<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><code>ATS</code> 선택 → <code>joints → joint1</code> 선택 → Property 창 → <strong>Drive</strong> 항목에서 설정합니다.</p>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target Position</td>
+<td>목표 각도(위치)</td>
+</tr>
+<tr>
+<td>Target Velocity</td>
+<td>목표 속도</td>
+</tr>
+<tr>
+<td><strong>Stiffness (kp)</strong></td>
+<td>강성 — 목표 위치로 끌어당기는 힘의 세기</td>
+</tr>
+<tr>
+<td><strong>Damping (kv)</strong></td>
+<td>감쇠 — 움직임의 진동을 줄이는 저항</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="조인트 Drive 파라미터(kp/kv) 튜닝" src="../img/w05/s31.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 31 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="action-graph">Action Graph 구성<a class="headerlink" href="#action-graph" title="Permanent link">&para;</a></h3>
+<p>Action Graph는 시뮬레이션 안에서 ROS2 메시지를 주고받기 위한 핵심 시스템입니다. <code>Window → Graph Editors → Action Graph</code>로 열고, 편집 창에서 “New Action Graph”를 클릭해 새 캔버스를 만듭니다.</p>
+<table>
+<thead>
+<tr>
+<th>노드</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On Playback Tick</strong></td>
+<td>시뮬레이션 시간에 맞춰 프레임마다 신호 발생 → 주기적 제어 값 갱신/전달</td>
+</tr>
+<tr>
+<td><strong>Articulation Controller</strong></td>
+<td>ATS 관절을 실제로 움직이는 메인 제어 노드 — 목표 위치에 도달하도록 힘 계산·적용</td>
+</tr>
+<tr>
+<td><strong>ROS2 Subscribe Joint State</strong></td>
+<td>ROS2에서 오는 조인트 명령(목표 위치·속도)을 받는 입구</td>
+</tr>
+<tr>
+<td><strong>ROS2 Publish Joint State</strong></td>
+<td>Isaac Sim 관절 상태를 ROS2로 내보내는 출구 (외부 실시간 모니터링용)</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="ROS2 ↔ Isaac Sim 연결 Action Graph" src="../img/w05/s37.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 37 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="ros2-ats">ROS2에서 ATS로 명령 주기<a class="headerlink" href="#ros2-ats" title="Permanent link">&para;</a></h3>
+<p>조인트 제어는 <code>sensor_msgs/msg/JointState</code> 메시지를 사용합니다. 예시로 Yaw 조인트(joint1)를 <strong>+90도(1.57 rad)</strong> 만큼 회전시킵니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># joint1(Yaw)을 +90도(1.57 rad)로 회전시키는 명령 예시</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/joint_command<span class="w"> </span>sensor_msgs/msg/JointState<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="s2">&quot;{name: [&#39;joint1&#39;], position: [1.57]}&quot;</span>
 </code></pre></div>
-<h2 id="3-gazebo">🛠️ 3교시. 실습 — Gazebo 스폰 &amp; 확인<a class="headerlink" href="#3-gazebo" title="Permanent link">&para;</a></h2>
-<p><strong>Step 3 — Gazebo 실행 및 스폰</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gazebo<span class="w"> </span>--verbose<span class="w"> </span>-s<span class="w"> </span>libgazebo_ros_factory.so<span class="w"> </span><span class="p">&amp;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>gazebo_ros<span class="w"> </span>spawn_entity.py<span class="w"> </span>-entity<span class="w"> </span>my_bot<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>-file<span class="w"> </span>~/cluad_ws/src/my_robot_desc/urdf/robot.urdf
+<div class="admonition success">
+<p class="admonition-title">검증</p>
+<p>명령을 발행한 뒤 Isaac Sim에서 ATS의 Yaw/Pitch가 의도한 각도로 회전하면 ROS2 ↔ 시뮬레이션 제어 파이프라인이 정상 연동된 것입니다.</p>
+</div>
+<hr />
+<h2 id="6-ats-4-spot">🐕 6. ATS를 4족 보행 Spot 위에 탑재하기<a class="headerlink" href="#6-ats-4-spot" title="Permanent link">&para;</a></h2>
+<p><strong>Step 1 — Spot 모델 로드</strong>: <code>Window → Examples → Robotics Examples</code> → 별도 탭의 <code>policy</code> 항목 → <strong>Quadruped 예제 → Load</strong> (보행 정책이 적용된 Spot 모델)
+<strong>Step 2 — ATS 모델 탑재</strong>: <code>File → Import</code> → ATS URDF 로드 → <strong>Spot 항목의 하위로 ATS 편입</strong>
+<strong>Step 3 — 결합 고정</strong>: ATS 쪽 <strong>articulation enable 비활성화</strong> 후, <code>root_joint</code>의 <code>Body0</code> Target을 Spot의 <strong>body 링크</strong>로 지정</p>
+<figure>
+<p><img alt="ATS를 탑재한 Spot 보행 시뮬레이션" src="../img/w05/s42.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 42 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">고정형 포탑 → 이동형 플랫폼</p>
+<p>이 단계로 ATS는 테이블 위 고정형 시스템에서 <strong>4족 로봇이 짊어지고 이동하는 이동형 플랫폼</strong>으로 확장됩니다.</p>
+</div>
+<hr />
+<h2 id="7-ats-spot">🧠 7. ATS 탑재 Spot 로봇 강화학습하기<a class="headerlink" href="#7-ats-spot" title="Permanent link">&para;</a></h2>
+<h3 id="_4">왜 재학습이 필요한가?<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>기존 Spot 보행 Policy는 <strong>"ATS 없는 상태"</strong> 의 질량·관성·무게중심을 기준으로 학습됨</li>
+<li>ATS를 올리면 <strong>질량 분포·무게중심이 완전히 달라짐</strong></li>
+<li>기존 제어기가 새 상황을 반영하지 못하므로, <strong>"ATS를 짊어진 Spot"</strong> 을 대상으로 강화학습을 다시 수행</li>
+</ul>
+<h3 id="rsl_rl">학습 환경 설정 — rsl_rl<a class="headerlink" href="#rsl_rl" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>사용 라이브러리</strong>: <code>rsl_rl</code> (Isaac Lab용 경량 강화학습 라이브러리)</li>
+<li><strong>벡터화 환경</strong>으로 수십~수백 개 시뮬레이션을 병렬 실행</li>
+<li><strong>참고 설정 파일</strong>: <code>velocity_env_cfg.py</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code>velocity_env_cfg.py</code> 주요 클래스</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MySceneCfg</code></td>
+<td>지형·마찰·물리 재질·조명·센서 등 전체 물리 환경 구성</td>
+</tr>
+<tr>
+<td><code>CommandsCfg</code></td>
+<td>속도 명령(random cmd) 생성, <code>lin_vel_x</code>·<code>lin_vel_y</code>·<code>ang_vel_z</code> 범위 정의</td>
+</tr>
+<tr>
+<td><code>ActionsCfg</code></td>
+<td>Joint Position Control 기반 관절 위치 명령 제어</td>
+</tr>
+<tr>
+<td><code>ObservationsCfg</code></td>
+<td>Policy가 보는 관측 벡터 구성</td>
+</tr>
+<tr>
+<td><code>RewardsCfg</code></td>
+<td>보상·페널티 설계</td>
+</tr>
+<tr>
+<td><code>TerminationsCfg</code></td>
+<td>에피소드 종료 기준 정의</td>
+</tr>
+<tr>
+<td><code>CurriculumCfg</code></td>
+<td>난이도 조절(커리큘럼 학습)</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="Spot 강화학습 환경(velocity_env_cfg) 구성" src="../img/w05/s45.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 45 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="_5">학습용 로봇 모델 설정<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>Step 1 — 로봇 루트 정리</strong>: Spot 이름 변경(<code>robot</code>) → world 자식 → 루트 레벨 → 우클릭 → <code>Set as DefaultPrim</code>
+<strong>Step 2 — ATS 조인트 비활성화</strong>: <code>root_joint</code>, <code>joint1</code>, <code>joint2</code> 우클릭 → <code>Deactivate</code>
+<strong>Step 3 — Spot + ATS 고정 결합</strong>: <code>base_link(+ link1, link2)</code> 우클릭 → <code>Create → Physics → Joint → Fixed</code> → Spot body와 ATS base_link 고정 → 원하는 경로에 저장
+<strong>Step 4 — config 수정</strong>: <code>spot.py</code>의 <code>usd_path</code>를 결합 모델로 수정</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a># spot.py — 강화학습 예제 구성 파일의 모델 경로를 결합 모델로 변경
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>usd_path = f&quot;{usd 파일이 저장된 경로}/spot_learnmodel.usd&quot;
 </code></pre></div>
-<p><strong>Step 4 — RViz로 모델 확인</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>robot_state_publisher<span class="w"> </span>robot_state_publisher<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--ros-args<span class="w"> </span>-p<span class="w"> </span>robot_description:<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>~/cluad_ws/src/my_robot_desc/urdf/robot.urdf<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>rviz2<span class="w">   </span><span class="c1"># RobotModel 디스플레이 추가</span>
-</code></pre></div>
-<p>✅ Gazebo와 RViz에 파란 박스 로봇이 보이면 성공.</p>
-<h2 id="_1">✅ 체크포인트<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">여기서 잠깐 — 강화학습인데 왜 ‘데이터 습득’을 따로 하나요?</p>
+<p>강화학습은 지도학습처럼 미리 준비된 정답 데이터셋으로 시작하지 않아 흔히 ‘데이터 없이 학습한다’고 표현합니다. 하지만 실제로는 에이전트가 환경 속에서 수많은 행동을 시도하며 <strong>얻는 상태 변화와 보상 정보가 모두 새로운 데이터</strong>가 됩니다. ATS를 얹은 Spot이 시뮬레이션에서 수천·수만 번 움직여 넘어지기도 하고 균형을 잡기도 하며, 그 모든 시도와 결과가 곧 강화학습의 학습 데이터입니다.</p>
+</div>
+<h3 id="_6">정책 학습과 적용<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>데이터 습득</strong>: 시뮬레이션에서 시도·보상을 수집 — <strong>headless 모드</strong>로 렌더링 자원을 최소화해 효율 극대화</li>
+<li><strong>정책 학습</strong>: 수집한 데이터 기반으로 보행 정책 학습 → 결과를 저장 경로에 보관</li>
+<li><strong>정책 적용</strong>: <code>spot.py</code>를 열어 새로 학습된 정책을 적용하도록 수정 → 테스트 영상으로 안정적 보행 확인</li>
+</ul>
+<figure>
+<p><img alt="headless 모드 병렬 학습 — 데이터 습득" src="../img/w05/s48.jpg" width="720" /></p>
+<figcaption>
+<p>Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 48 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="8-wrap-up">🧩 8. Wrap-up — 오늘 강의 요약<a class="headerlink" href="#8-wrap-up" title="Permanent link">&para;</a></h2>
+<ul>
+<li>✔ ATS의 <strong>기구학적 구조 및 URDF 작업</strong> 이해 (2축 팬-틸트, continuous/revolute joint)</li>
+<li>✔ Isaac Sim 내에서 <strong>Spot + ATS 결합</strong> (URDF Import → 환경 배치 → ROS2 제어 → Spot 탑재)</li>
+<li>✔ <strong>Spot + ATS 강화학습</strong> 과정 진행 (무게중심 변화 대응 보행 정책 재훈련)</li>
+</ul>
+<h2 id="_7">✅ 체크포인트<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> URDF가 오류 없이 파싱되는가 (<code>check_urdf robot.urdf</code>)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Gazebo에 로봇이 스폰되는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ATS의 Yaw(continuous)·Pitch(revolute) 조인트 차이를 URDF 관점에서 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Isaac Sim에서 Static Base·Position·Stiffness 옵션으로 ATS를 Import할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> OmniGraph Action Graph로 ROS2 <code>JointState</code> 명령을 ATS 짐벌에 연결할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ATS를 Spot에 Fixed Joint로 결합하고 학습용 모델로 저장할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>rsl_rl</code>로 ATS 탑재 Spot의 보행 정책을 재학습하는 이유와 절차를 설명할 수 있다</li>
 </ul>
-<h2 id="_2">📝 과제<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>오른쪽 바퀴 joint를 추가하여 양쪽 바퀴 완성</li>
-<li>색상을 빨강으로 변경하고 스크린샷 제출</li>
-</ul>
-<h2 id="ppt">🖼️ PPT 슬라이드 개요<a class="headerlink" href="#ppt" title="Permanent link">&para;</a></h2>
-<ol>
-<li>시뮬레이션의 필요성과 Sim-to-Real</li>
-<li>URDF 구조: link(강체) + joint(관절)</li>
-<li>visual / collision / inertial 요소</li>
-<li>URDF vs SDF, xacro 매크로</li>
-<li>물리엔진(질량·마찰·충돌)</li>
-<li>실습: 차동 로봇 모델링·스폰</li>
-</ol>
-<h2 id="_3">📊 평가 루브릭<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_8">📊 평가 루브릭<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>항목</th>
 <th>배점</th>
-<th>A(우수)</th>
-<th>B(보통)</th>
-<th>C(미흡)</th>
+<th>기준</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>URDF 모델링</td>
-<td>40</td>
-<td>양 바퀴·관성 완성</td>
-<td>기본 형상</td>
-<td>파싱 실패</td>
+<td>URDF 구조 이해</td>
+<td>20</td>
+<td>링크/조인트 구성과 ATS 2축 구조를 정확히 분석</td>
 </tr>
 <tr>
-<td>Gazebo 스폰</td>
-<td>30</td>
-<td>정상 스폰·설명</td>
-<td>스폰만</td>
-<td>실패</td>
+<td>Isaac Sim Import</td>
+<td>20</td>
+<td>Static/Position/Stiffness 옵션을 올바르게 설정·배치</td>
 </tr>
 <tr>
-<td>과제(색상·바퀴 추가)</td>
-<td>30</td>
-<td>완성·제출</td>
-<td>일부</td>
-<td>미제출</td>
+<td>ROS2 연동 제어</td>
+<td>25</td>
+<td>OmniGraph 구성 + <code>JointState</code>로 Yaw/Pitch 제어 검증</td>
+</tr>
+<tr>
+<td>Spot 탑재 결합</td>
+<td>15</td>
+<td>Fixed Joint 결합 및 학습용 모델 저장 수행</td>
+</tr>
+<tr>
+<td>강화학습 재훈련</td>
+<td>20</td>
+<td>재학습 필요성 이해 + <code>velocity_env_cfg</code>/<code>spot.py</code> 수정·학습 진행</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">🧰 사전 준비물 &amp; 트러블슈팅<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><strong>준비물</strong>: gazebo_ros_pkgs, xacro 설치</p>
+<h2 id="_9">🔗 출처 및 참고자료<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <ul>
-<li>❌ <code>check_urdf</code> 오류 → link/joint 이름 중복·parent 누락 확인</li>
-<li>❌ Gazebo에 안 보임 → inertial(질량) 정의 누락 시 물리 불안정</li>
-<li>❌ 모델이 바닥에 가라앉음 → collision 지오메트리와 마찰 계수 확인</li>
+<li>교안 <strong>「Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습)」</strong> (제작: ENGI UNIVERSE)</li>
+<li>NVIDIA Isaac Sim — URDF Importer — <a href="https://docs.isaacsim.omniverse.nvidia.com/latest/robot_setup/import_urdf.html">https://docs.isaacsim.omniverse.nvidia.com/latest/robot_setup/import_urdf.html</a></li>
+<li>ROS2 URDF 튜토리얼 — <a href="https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/URDF-Main.html">https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/URDF-Main.html</a></li>
+<li>Isaac Lab / rsl_rl — <a href="https://github.com/leggedrobotics/rsl_rl">https://github.com/leggedrobotics/rsl_rl</a></li>
 </ul>
-<h2 id="_5">🔗 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="isaac-sim-510">📘 Isaac Sim 5.1.0 공식 문서<a class="headerlink" href="#isaac-sim-510" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">공식 문서 (NVIDIA Isaac Sim 5.1.0)</p>
+<p>본 주차의 Isaac Sim/ROS 2 API·절차는 아래 공식 문서로 보강·검증할 수 있습니다.</p>
 <ul>
-<li>URDF 튜토리얼 — <a href="https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/URDF-Main.html">https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/URDF-Main.html</a></li>
-<li>gazebo_ros_pkgs — <a href="https://github.com/ros-simulation/gazebo_ros_pkgs">https://github.com/ros-simulation/gazebo_ros_pkgs</a></li>
-<li>xacro 문서 — <a href="https://github.com/ros/xacro/wiki">https://github.com/ros/xacro/wiki</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/importer_exporter/ext_isaacsim_asset_importer_urdf.html">URDF Importer</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/importer_exporter/import_urdf.html">URDF Import 튜토리얼</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/ros2_landing_page.html">ROS 2 통합</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html">ROS 2 튜토리얼</a></li>
 </ul>
+</div>
+<!-- FULLDECK -->
+<h2 id="_10">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<details class="note">
+<summary>원본 강의 슬라이드 전체 (50매)</summary>
+<p><img alt="슬라이드 01" src="../img/w05/s01.jpg" width="700" />
+<img alt="슬라이드 02" src="../img/w05/s02.jpg" width="700" />
+<img alt="슬라이드 03" src="../img/w05/s03.jpg" width="700" />
+<img alt="슬라이드 04" src="../img/w05/s04.jpg" width="700" />
+<img alt="슬라이드 05" src="../img/w05/s05.jpg" width="700" />
+<img alt="슬라이드 06" src="../img/w05/s06.jpg" width="700" />
+<img alt="슬라이드 07" src="../img/w05/s07.jpg" width="700" />
+<img alt="슬라이드 08" src="../img/w05/s08.jpg" width="700" />
+<img alt="슬라이드 09" src="../img/w05/s09.jpg" width="700" />
+<img alt="슬라이드 10" src="../img/w05/s10.jpg" width="700" />
+<img alt="슬라이드 11" src="../img/w05/s11.jpg" width="700" />
+<img alt="슬라이드 12" src="../img/w05/s12.jpg" width="700" />
+<img alt="슬라이드 13" src="../img/w05/s13.jpg" width="700" />
+<img alt="슬라이드 14" src="../img/w05/s14.jpg" width="700" />
+<img alt="슬라이드 15" src="../img/w05/s15.jpg" width="700" />
+<img alt="슬라이드 16" src="../img/w05/s16.jpg" width="700" />
+<img alt="슬라이드 17" src="../img/w05/s17.jpg" width="700" />
+<img alt="슬라이드 18" src="../img/w05/s18.jpg" width="700" />
+<img alt="슬라이드 19" src="../img/w05/s19.jpg" width="700" />
+<img alt="슬라이드 20" src="../img/w05/s20.jpg" width="700" />
+<img alt="슬라이드 21" src="../img/w05/s21.jpg" width="700" />
+<img alt="슬라이드 22" src="../img/w05/s22.jpg" width="700" />
+<img alt="슬라이드 23" src="../img/w05/s23.jpg" width="700" />
+<img alt="슬라이드 24" src="../img/w05/s24.jpg" width="700" />
+<img alt="슬라이드 25" src="../img/w05/s25.jpg" width="700" />
+<img alt="슬라이드 26" src="../img/w05/s26.jpg" width="700" />
+<img alt="슬라이드 27" src="../img/w05/s27.jpg" width="700" />
+<img alt="슬라이드 28" src="../img/w05/s28.jpg" width="700" />
+<img alt="슬라이드 29" src="../img/w05/s29.jpg" width="700" />
+<img alt="슬라이드 30" src="../img/w05/s30.jpg" width="700" />
+<img alt="슬라이드 31" src="../img/w05/s31.jpg" width="700" />
+<img alt="슬라이드 32" src="../img/w05/s32.jpg" width="700" />
+<img alt="슬라이드 33" src="../img/w05/s33.jpg" width="700" />
+<img alt="슬라이드 34" src="../img/w05/s34.jpg" width="700" />
+<img alt="슬라이드 35" src="../img/w05/s35.jpg" width="700" />
+<img alt="슬라이드 36" src="../img/w05/s36.jpg" width="700" />
+<img alt="슬라이드 37" src="../img/w05/s37.jpg" width="700" />
+<img alt="슬라이드 38" src="../img/w05/s38.jpg" width="700" />
+<img alt="슬라이드 39" src="../img/w05/s39.jpg" width="700" />
+<img alt="슬라이드 40" src="../img/w05/s40.jpg" width="700" />
+<img alt="슬라이드 41" src="../img/w05/s41.jpg" width="700" />
+<img alt="슬라이드 42" src="../img/w05/s42.jpg" width="700" />
+<img alt="슬라이드 43" src="../img/w05/s43.jpg" width="700" />
+<img alt="슬라이드 44" src="../img/w05/s44.jpg" width="700" />
+<img alt="슬라이드 45" src="../img/w05/s45.jpg" width="700" />
+<img alt="슬라이드 46" src="../img/w05/s46.jpg" width="700" />
+<img alt="슬라이드 47" src="../img/w05/s47.jpg" width="700" />
+<img alt="슬라이드 48" src="../img/w05/s48.jpg" width="700" />
+<img alt="슬라이드 49" src="../img/w05/s49.jpg" width="700" />
+<img alt="슬라이드 50" src="../img/w05/s50.jpg" width="700" /></p>
+</details>
 
 
 
@@ -1256,7 +2220,7 @@
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
         
           
-          <a href="../week04/" class="md-footer__link md-footer__link--prev" aria-label="이전: 4주차 · 센서와 인식">
+          <a href="../week04/" class="md-footer__link md-footer__link--prev" aria-label="이전: 4주차 · Isaac Lab 4족 보행 RL">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1266,20 +2230,20 @@
                 이전
               </span>
               <div class="md-ellipsis">
-                4주차 · 센서와 인식
+                4주차 · Isaac Lab 4족 보행 RL
               </div>
             </div>
           </a>
         
         
           
-          <a href="../week06/" class="md-footer__link md-footer__link--next" aria-label="다음: 6주차 · 이동로봇 제어">
+          <a href="../week06/" class="md-footer__link md-footer__link--next" aria-label="다음: 6주차 · SLAM·Nav2 기본">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                6주차 · 이동로봇 제어
+                6주차 · SLAM·Nav2 기본
               </div>
             </div>
             <div class="md-footer__button md-icon">

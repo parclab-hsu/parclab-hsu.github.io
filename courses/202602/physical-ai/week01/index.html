@@ -27,7 +27,7 @@
     
     
       
-        <title>1주차 · Physical AI 개요 - Physical AI · 2026-2학기</title>
+        <title>1주차 · Isaac Sim 설치·활용 - Physical AI · 2026-2학기</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-physical-ai" class="md-skip">
+        <a href="#1-nvidia-isaac-sim" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1주차 · Physical AI 개요
+              1주차 · Isaac Sim 설치·활용
             
           </span>
         </div>
@@ -333,7 +333,7 @@
   <span class="md-ellipsis">
     
   
-    1주차 · Physical AI 개요
+    1주차 · Isaac Sim 설치·활용
   
 
     
@@ -351,7 +351,7 @@
   <span class="md-ellipsis">
     
   
-    1주차 · Physical AI 개요
+    1주차 · Isaac Sim 설치·활용
   
 
     
@@ -388,44 +388,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#01-intro-isaac-sim" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🧭 01 Intro — Isaac Sim을 왜 공부해야 하는가?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📖 1교시. 이론">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖥️ 02 개발 환경 구축 — 권장 사양
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖥️ 02 개발 환경 구축 — 권장 사양">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#digital-ai-vs-physical-ai" class="md-nav__link">
+  <a href="#miniconda-conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Digital AI vs Physical AI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        구성 요소
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        응용 사례
+        왜 Miniconda / Conda 인가?
       
     </span>
   </a>
@@ -438,10 +427,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#02-miniconda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 2교시. 실습 — 개발환경 구축
+        🧱 02 개발 환경 구축 — Miniconda 설치
       
     </span>
   </a>
@@ -449,10 +438,160 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#03-cuda-nvidia-driver" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 3교시. 실습 — 워크스페이스 만들기
+        🎮 03 개발 환경 구축 — CUDA &amp; NVIDIA Driver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎮 03 개발 환경 구축 — CUDA &amp; NVIDIA Driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        여기서 잠깐! — 내 GPU에 맞는 CUDA·드라이버 고르기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="여기서 잠깐! — 내 GPU에 맞는 CUDA·드라이버 고르기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        상황별 설치 전략 요약
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU 모델별 예시 조합
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuda-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CUDA 12 설치 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvidia-open-vs-nvidia-driver-xxx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nvidia-open vs nvidia-driver-XXX
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔥 02 개발 환경 구축 — PyTorch 설치
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-isaac-sim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤖 02 개발 환경 구축 — Isaac Sim 설치
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 02 개발 환경 구축 — Isaac Lab 설치
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 02 개발 환경 구축 — Isaac Lab 설치">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isaac-sim-vs-isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac Sim vs Isaac Lab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설치 절차
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-nvidia-isaac-sim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌍 03 NVIDIA Isaac Sim의 실제 활용 사례
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 04 Wrap-up
       
     </span>
   </a>
@@ -474,18 +613,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
+        📊 평가 루브릭
       
     </span>
   </a>
@@ -496,7 +624,18 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 평가 루브릭
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isaac-sim-510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Isaac Sim 5.1.0 공식 문서
       
     </span>
   </a>
@@ -507,18 +646,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 참고자료
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -548,7 +676,7 @@
   <span class="md-ellipsis">
     
   
-    2주차 · ROS 2 기초
+    2주차 · 물리환경·카메라(RGB/Depth)
   
 
     
@@ -576,7 +704,7 @@
   <span class="md-ellipsis">
     
   
-    3주차 · 좌표계와 기구학
+    3주차 · 센서(IMU·LiDAR·Radar)
   
 
     
@@ -604,7 +732,7 @@
   <span class="md-ellipsis">
     
   
-    4주차 · 센서와 인식
+    4주차 · Isaac Lab 4족 보행 RL
   
 
     
@@ -632,7 +760,7 @@
   <span class="md-ellipsis">
     
   
-    5주차 · 로봇 시뮬레이션
+    5주차 · Spot+ATS 시스템 구축
   
 
     
@@ -660,7 +788,7 @@
   <span class="md-ellipsis">
     
   
-    6주차 · 이동로봇 제어
+    6주차 · SLAM·Nav2 기본
   
 
     
@@ -688,7 +816,7 @@
   <span class="md-ellipsis">
     
   
-    7주차 · SLAM과 자율주행
+    7주차 · Spot+ATS SLAM 연동 1
   
 
     
@@ -744,7 +872,7 @@
   <span class="md-ellipsis">
     
   
-    9주차 · 컴퓨터 비전·딥러닝
+    9주차 · Spot+ATS SLAM 연동 2
   
 
     
@@ -772,7 +900,7 @@
   <span class="md-ellipsis">
     
   
-    10주차 · 로봇 매니퓰레이션
+    10주차 · Spot+ATS Vision(YOLOv8)
   
 
     
@@ -800,7 +928,7 @@
   <span class="md-ellipsis">
     
   
-    11주차 · 강화학습 기초
+    11주차 · System-1 Executor 설계
   
 
     
@@ -828,7 +956,7 @@
   <span class="md-ellipsis">
     
   
-    12주차 · 모방학습
+    12주차 · System-1 단위 액션 1
   
 
     
@@ -856,7 +984,7 @@
   <span class="md-ellipsis">
     
   
-    13주차 · Sim-to-Real
+    13주차 · System-1 단위 액션 2
   
 
     
@@ -884,7 +1012,7 @@
   <span class="md-ellipsis">
     
   
-    14주차 · Foundation Models & VLA
+    14주차 · System-2 LLM Planner
   
 
     
@@ -912,7 +1040,7 @@
   <span class="md-ellipsis">
     
   
-    15주차 · System-2 테스트 & 검증
+    15주차 · System-2 테스트·검증
   
 
     
@@ -998,44 +1126,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#01-intro-isaac-sim" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🧭 01 Intro — Isaac Sim을 왜 공부해야 하는가?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📖 1교시. 이론">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖥️ 02 개발 환경 구축 — 권장 사양
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖥️ 02 개발 환경 구축 — 권장 사양">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#digital-ai-vs-physical-ai" class="md-nav__link">
+  <a href="#miniconda-conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Digital AI vs Physical AI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        구성 요소
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        응용 사례
+        왜 Miniconda / Conda 인가?
       
     </span>
   </a>
@@ -1048,10 +1165,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#02-miniconda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 2교시. 실습 — 개발환경 구축
+        🧱 02 개발 환경 구축 — Miniconda 설치
       
     </span>
   </a>
@@ -1059,10 +1176,160 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#03-cuda-nvidia-driver" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 3교시. 실습 — 워크스페이스 만들기
+        🎮 03 개발 환경 구축 — CUDA &amp; NVIDIA Driver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎮 03 개발 환경 구축 — CUDA &amp; NVIDIA Driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        여기서 잠깐! — 내 GPU에 맞는 CUDA·드라이버 고르기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="여기서 잠깐! — 내 GPU에 맞는 CUDA·드라이버 고르기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        상황별 설치 전략 요약
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU 모델별 예시 조합
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuda-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CUDA 12 설치 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvidia-open-vs-nvidia-driver-xxx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nvidia-open vs nvidia-driver-XXX
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔥 02 개발 환경 구축 — PyTorch 설치
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-isaac-sim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤖 02 개발 환경 구축 — Isaac Sim 설치
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 02 개발 환경 구축 — Isaac Lab 설치
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 02 개발 환경 구축 — Isaac Lab 설치">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isaac-sim-vs-isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac Sim vs Isaac Lab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설치 절차
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-nvidia-isaac-sim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌍 03 NVIDIA Isaac Sim의 실제 활용 사례
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 04 Wrap-up
       
     </span>
   </a>
@@ -1084,18 +1351,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
+        📊 평가 루브릭
       
     </span>
   </a>
@@ -1106,7 +1362,18 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 평가 루브릭
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isaac-sim-510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Isaac Sim 5.1.0 공식 문서
       
     </span>
   </a>
@@ -1117,18 +1384,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 참고자료
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -1152,10 +1408,14 @@
 
 
 
-<h1 id="1-physical-ai">1주차 — Physical AI 개요 &amp; 개발환경 구축<a class="headerlink" href="#1-physical-ai" title="Permanent link">&para;</a></h1>
+<h1 id="1-nvidia-isaac-sim">1주차 — NVIDIA Isaac Sim 설치 및 활용 사례<a class="headerlink" href="#1-nvidia-isaac-sim" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">학습목표</p>
-<p>Physical AI(임베디드 지능)의 개념과 응용을 이해하고, 한 학기 실습에 사용할 Ubuntu + ROS 2 개발환경을 직접 구축한다.</p>
+<p>Physical AI 개발의 출발점인 <strong>NVIDIA Isaac Sim</strong>을 왜 사용하는지(현실적인 시뮬레이션·비용/시간 절감·광범위한 호환성)를 이해한다. Ubuntu 22.04 + Miniconda(Conda) 가상환경 위에서 <strong>CUDA·NVIDIA 드라이버·PyTorch·Isaac Sim·Isaac Lab</strong>까지 이어지는 개발 환경 구축 절차를 익히고, Isaac Sim이 실제 로봇 연구·산업에서 어떻게 활용되는지 대표 사례를 통해 살펴본다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Source)</p>
+<p>본 자료의 그림·예제는 교안 <strong>「NVIDIA Isaac Sim 설치 및 활용 사례」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 명령어·표는 교안의 설명을 충실히 따른 재구성 예제입니다.</p>
 </div>
 <h2 id="3">⏱️ 3시간 구성<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
@@ -1164,147 +1424,561 @@
 <th>교시</th>
 <th>시간</th>
 <th>내용</th>
+<th>근거 교안</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1교시</td>
 <td>50분</td>
-<td>이론 — Physical AI란 무엇인가</td>
+<td>Intro — Isaac Sim을 왜 공부하는가 / 권장 개발 환경</td>
+<td>01 Intro · 02 개발 환경 구축(사양)</td>
 </tr>
 <tr>
 <td>2교시</td>
 <td>50분</td>
-<td>실습 — Ubuntu/ROS 2 설치 및 검증</td>
+<td>개발 환경 구축 — Miniconda·CUDA·PyTorch·Isaac Sim·Isaac Lab 설치</td>
+<td>02·03 개발 환경 구축</td>
 </tr>
 <tr>
 <td>3교시</td>
 <td>50분</td>
-<td>실습 — 첫 ROS 2 노드 실행</td>
+<td>Isaac Sim 실제 활용 사례 &amp; Wrap-up</td>
+<td>03 활용 사례 · 04 Wrap-up</td>
 </tr>
 </tbody>
 </table>
-<h2 id="1">📖 1교시. 이론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<h3 id="digital-ai-vs-physical-ai">Digital AI vs Physical AI<a class="headerlink" href="#digital-ai-vs-physical-ai" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="01-intro-isaac-sim">🧭 01 Intro — Isaac Sim을 왜 공부해야 하는가?<a class="headerlink" href="#01-intro-isaac-sim" title="Permanent link">&para;</a></h2>
+<p>로봇 알고리즘을 실제 하드웨어에서 바로 시험하면 비용·시간·안전 문제가 큽니다. Isaac Sim은 이를 <strong>가상 환경</strong>에서 먼저 검증하게 해 줍니다.</p>
 <ul>
-<li><strong>Digital AI</strong>: 텍스트·이미지 등 디지털 데이터를 입출력 (ChatGPT, 분류기)</li>
-<li><strong>Physical AI</strong>: 센서로 세계를 인식하고 <strong>물리적 행동</strong>으로 출력 (로봇, 자율주행, 휴머노이드)</li>
-<li>핵심 차이: 실시간성, 불확실성, 안전성, <strong>Sense → Plan → Act 루프</strong></li>
+<li><strong>현실적인 시뮬레이션</strong> — 고품질 물리·렌더링으로 현실에 가까운 환경을 재현</li>
+<li><strong>비용 및 시간 절감</strong> — 실제 로봇·실험 공간 없이 반복 검증이 가능</li>
+<li><strong>다양한 기능과 통합 도구, 광범위한 호환성</strong> — 여러 도구·프레임워크(ROS/ROS2 등)와 폭넓게 연동</li>
 </ul>
-<h3 id="_1">구성 요소<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>인식(Perception) · 상태추정(State Estimation) · 계획(Planning) · 학습(Learning) · 제어(Control). 한 학기 동안 이 요소들을 한 주에 하나씩 쌓아 15주차에 통합한다.</p>
-<h3 id="_2">응용 사례<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>자율주행(인지-판단-제어), 물류로봇(AMR), 협동로봇(Cobot), 휴머노이드(Figure, Optimus).</p>
-<h2 id="2">🛠️ 2교시. 실습 — 개발환경 구축<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="Isaac Sim을 공부하는 이유 — 현실적 시뮬레이션·비용 절감·호환성" src="../img/w01/s03.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 03 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="02">🖥️ 02 개발 환경 구축 — 권장 사양<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<p>교안에서 제시하는 <strong>권장 개발 환경</strong>입니다. Isaac Sim은 RTX 기반 GPU를 전제로 동작하므로 그래픽카드 사양이 특히 중요합니다.</p>
+<table>
+<thead>
+<tr>
+<th>구성 요소</th>
+<th>권장 사양</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>운영체제</td>
+<td>Ubuntu 22.04 LTS</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Intel i9-14900K</td>
+</tr>
+<tr>
+<td>메모리</td>
+<td>64 GB RAM</td>
+</tr>
+<tr>
+<td>그래픽카드</td>
+<td>RTX 4090</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="권장 개발 환경 사양 — Ubuntu 22.04 / i9 / 64GB / RTX 4090" src="../img/w01/s05.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 05 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="miniconda-conda">왜 Miniconda / Conda 인가?<a class="headerlink" href="#miniconda-conda" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Miniconda</strong> — Anaconda의 경량화 버전. Python과 필수 패키지 관리자(<code>conda</code>)를 포함. Anaconda도 사용 가능하지만, <strong>경량화·독립성 확보</strong>를 위해 Miniconda 사용을 권장.</li>
+<li><strong>Conda</strong> — 프로젝트별 Python 버전·패키지 구성을 <strong>완전히 독립적으로</strong> 관리.<ul>
+<li>예) 한 머신에서 Python 3.8 기반 프로젝트와 Python 3.10 기반 프로젝트를 <strong>동시에</strong> 개발·운영</li>
+<li><code>environment.yml</code> 파일로 환경을 간단히 정의하고, <strong>동일한 환경을 복제</strong></li>
+<li>패키지 간 <strong>의존성을 자동 분석</strong>해 충돌을 방지 → 디버깅 비용 절감</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># environment.yml 로 동일한 환경을 복제</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+</code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Ubuntu 22.04 기준. Windows 사용자는 WSL2 또는 듀얼부팅 권장.</p>
+<p class="admonition-title">가상환경의 핵심 가치</p>
+<p>하나의 Python 버전만 쓰면 프로젝트끼리 <strong>패키지 충돌·버전 호환성 문제</strong>가 발생합니다. Conda 가상환경은 프로젝트마다 별도의 Python 실행 환경을 분리해 이러한 문제를 근본적으로 막아 줍니다.</p>
 </div>
-<p><strong>Step 1 — 시스템 업데이트</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<hr />
+<h2 id="02-miniconda">🧱 02 개발 환경 구축 — Miniconda 설치<a class="headerlink" href="#02-miniconda" title="Permanent link">&para;</a></h2>
+<p><strong>Step 1 — 설치 디렉토리 생성</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
 </code></pre></div>
-<p><strong>Step 2 — ROS 2 Humble 설치</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>locales
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>locale-gen<span class="w"> </span>en_US<span class="w"> </span>en_US.UTF-8
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>software-properties-common<span class="w"> </span>curl
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>universe<span class="w"> </span>-y
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>-o<span class="w"> </span>/usr/share/keyrings/ros-archive-keyring.gpg
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s2">http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/ros2.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ros-humble-desktop<span class="w"> </span>python3-colcon-common-extensions
+<ul>
+<li>사용자 홈 디렉토리에 <code>miniconda3</code> 디렉토리를 생성</li>
+<li><code>-p</code> : 상위 디렉토리가 없으면 자동으로 생성</li>
+</ul>
+<p><strong>Step 2 — 설치 스크립트 다운로드</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>~/miniconda3/miniconda.sh
 </code></pre></div>
-<p><strong>Step 3 — 환경 설정</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source /opt/ros/humble/setup.bash&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<ul>
+<li><code>-O</code> : 다운로드된 파일을 저장할 경로·파일명을 명시</li>
+</ul>
+<p><strong>Step 3 — 설치 실행</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash<span class="w"> </span>~/miniconda3/miniconda.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
 </code></pre></div>
-<p><strong>Step 4 — 설치 검증 (talker/listener)</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 터미널 1</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_cpp<span class="w"> </span>talker
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># 터미널 2</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>ros2<span class="w"> </span>run<span class="w"> </span>demo_nodes_py<span class="w"> </span>listener
+<ul>
+<li><code>-b</code> : 비대화 모드 설치(사용자 입력 없이 기본값으로 진행)</li>
+<li><code>-u</code> : 기존 설치 경로에 덮어쓰기 허용</li>
+<li><code>-p</code> : 설치 경로(<code>~/miniconda3</code>) 지정</li>
+</ul>
+<p><strong>Step 4 — 설치 스크립트 삭제</strong> 후, Conda 환경을 초기화하고 가상 환경을 생성합니다.</p>
+<figure>
+<p><img alt="Miniconda 설치 절차 — mkdir / wget / bash 설치" src="../img/w01/s09.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 09 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="03-cuda-nvidia-driver">🎮 03 개발 환경 구축 — CUDA &amp; NVIDIA Driver<a class="headerlink" href="#03-cuda-nvidia-driver" title="Permanent link">&para;</a></h2>
+<h3 id="gpu-cuda">여기서 잠깐! — 내 GPU에 맞는 CUDA·드라이버 고르기<a class="headerlink" href="#gpu-cuda" title="Permanent link">&para;</a></h3>
+<p>GPU 모델마다 지원하는 CUDA 버전과 권장 드라이버가 다릅니다. 설치 전 반드시 호환성을 확인합니다.</p>
+<p><strong>Step 1 —</strong> <code>nvidia-smi</code> 로 GPU 모델 확인</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>nvidia-smi
 </code></pre></div>
-<p>✅ listener에 "I heard: Hello World"가 출력되면 성공.</p>
-<h2 id="3_1">🛠️ 3교시. 실습 — 워크스페이스 만들기<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/cluad_ws/src
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>~/cluad_ws
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>colcon<span class="w"> </span>build
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>ros2<span class="w"> </span>pkg<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
-</code></pre></div>
-<p>✅ 패키지 목록이 출력되면 워크스페이스 준비 완료.</p>
+<p><strong>Step 2 —</strong> NVIDIA 공식 페이지(<em>Why CUDA Compatibility</em>)에서 모델 지원 범위 확인
+<strong>Step 3 —</strong> 드라이버 ↔ CUDA 버전 호환성 매트릭스 확인 (GPU가 CUDA X.Y를 지원하는지, 현재 드라이버가 CUDA X.Y와 호환되는지)</p>
+<h4 id="_1">상황별 설치 전략 요약<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>상황</th>
+<th>조치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>최신 GPU (RTX 30/40 시리즈)</td>
+<td>CUDA 12.x 이상 설치 가능. 최신 드라이버 유지 권장</td>
+</tr>
+<tr>
+<td>구형 GPU (GTX 10/16 시리즈)</td>
+<td>CUDA 11.x 또는 10.x 사용. 최신 CUDA는 비호환 가능성</td>
+</tr>
+<tr>
+<td>리눅스 실시간(RT) 커널 사용</td>
+<td><code>nvidia-open</code> 드라이버 권장. CUDA 일부 기능 제한 가능</td>
+</tr>
+<tr>
+<td>Docker·원격 환경 사용</td>
+<td>NVIDIA Container Toolkit 또는 headless CUDA 설치 권장</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gpu">GPU 모델별 예시 조합<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>GPU 모델</th>
+<th>최대 지원 CUDA</th>
+<th>권장 드라이버</th>
+<th>설치 예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTX 4090</td>
+<td>12.5+</td>
+<td>560.x 이상</td>
+<td>CUDA 12.8 + 드라이버 570</td>
+</tr>
+<tr>
+<td>RTX 3080 Ti</td>
+<td>12.1~12.5</td>
+<td>535.x 이상</td>
+<td>CUDA 12.2 + 드라이버 550</td>
+</tr>
+<tr>
+<td>GTX 1080 Ti</td>
+<td>12.1</td>
+<td>515.x 이상</td>
+<td>CUDA 11.8 + 드라이버 525</td>
+</tr>
+<tr>
+<td>Jetson Xavier NX</td>
+<td>CUDA 11.4</td>
+<td>JetPack 제공 버전</td>
+<td>JetPack SDK 사용</td>
+</tr>
+<tr>
+<td>Quadro P2000</td>
+<td>CUDA 11.x</td>
+<td>470.x 이상</td>
+<td>CUDA 11.4 + 드라이버 470</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="다양한 NVIDIA GPU 사용자를 위한 CUDA &amp; 드라이버 가이드" src="../img/w01/s13.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 13 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="cuda-12">CUDA 12 설치 흐름<a class="headerlink" href="#cuda-12" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>CUDA 저장소 등록</strong> — CUDA 설치 패키지 다운로드 및 저장소 등록</li>
+<li><strong>CUDA Toolkit 패키지 다운로드</strong> — 수동으로 로컬 저장소의 <strong>GPG 키</strong> 등록</li>
+<li><strong>CUDA Toolkit 설치</strong> (방법 1 / 방법 2) → 설치 완료 후 <strong>재부팅</strong> → 설치 확인</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">GPG 키란?</p>
+<p>리눅스에서 소프트웨어 <strong>출처의 신뢰성과 무결성</strong>을 검증하는 공개키 기반 암호화 키입니다.
+- 구성: <strong>공개키 + 개인키</strong>
+- 동작: 공급자가 개인키로 패키지에 디지털 서명 → 사용자가 공개키를 시스템에 등록 → <code>apt</code> 패키지 관리자가 공개키로 서명을 검증</p>
+</div>
+<figure>
+<p><img alt="CUDA 12 &amp; NVIDIA Driver 설치 — 저장소 등록·GPG 키" src="../img/w01/s16.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 16 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="nvidia-open-vs-nvidia-driver-xxx">nvidia-open vs nvidia-driver-XXX<a class="headerlink" href="#nvidia-open-vs-nvidia-driver-xxx" title="Permanent link">&para;</a></h3>
+<p>GPU 드라이버 설치가 확인되지 않으면 드라이버를 선택해 설치합니다. 두 방식의 차이는 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>nvidia-open</th>
+<th>nvidia-driver-XXX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>형식</td>
+<td>오픈소스 (Linux 전용)</td>
+<td>폐쇄형</td>
+</tr>
+<tr>
+<td>커널 통합성</td>
+<td>리눅스 커널과 통합성 우수</td>
+<td>커널 업데이트 시 충돌 가능성</td>
+</tr>
+<tr>
+<td>AI 가속기 지원</td>
+<td>일부 기능 제한 가능성</td>
+<td>CUDA·TensorRT 등 완전 지원</td>
+</tr>
+<tr>
+<td>커널 호환성</td>
+<td>실시간 커널(RT)에서 유리</td>
+<td>제한적</td>
+</tr>
+<tr>
+<td>업데이트 주기</td>
+<td>커뮤니티 기반</td>
+<td>NVIDIA 직접 관리</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="02-pytorch">🔥 02 개발 환경 구축 — PyTorch 설치<a class="headerlink" href="#02-pytorch" title="Permanent link">&para;</a></h2>
+<p>PyTorch는 GPU(CUDA) 버전에 맞춰 설치하며, 설치 중 의존성 오류가 발생할 수 있으므로 단계적으로 해결합니다.</p>
+<ul>
+<li>설치 중 발생 가능한 <strong>의존성 오류(오류 1~3)</strong> 와 해결 방법을 순서대로 적용</li>
+<li>설치 확인은 <strong>Python 인터프리터</strong>에서 직접 import 하여 예상 출력 확인</li>
+</ul>
+<details class="tip">
+<summary>함께 쓰이는 보조 패키지 (코드 품질·통신·런타임)</summary>
+<table>
+<thead>
+<tr>
+<th>패키지</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Black</strong></td>
+<td>Python 코드 자동 정렬·스타일 포맷팅 (들여쓰기·괄호·공백 통일)</td>
+</tr>
+<tr>
+<td><strong>unidiff</strong></td>
+<td>소스 변경(diff) 파싱·조작. <code>ament-black</code> 등 코드 품질 도구에서 사용</td>
+</tr>
+<tr>
+<td><strong>uvloop</strong></td>
+<td>고성능 asyncio 이벤트 루프. Isaac Sim·ROS2 비동기 통신에 사용</td>
+</tr>
+<tr>
+<td><strong>requests</strong></td>
+<td>HTTP 클라이언트. 모델 다운로드·업데이트 확인 등에 사용</td>
+</tr>
+<tr>
+<td><strong>wrapt</strong></td>
+<td>데코레이터 작성·런타임 제어. 디버깅·검증, TensorFlow 내부 활용</td>
+</tr>
+</tbody>
+</table>
+</details>
+<figure>
+<p><img alt="PyTorch 설치 및 의존성 오류 해결" src="../img/w01/s20.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 20 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="02-isaac-sim">🤖 02 개발 환경 구축 — Isaac Sim 설치<a class="headerlink" href="#02-isaac-sim" title="Permanent link">&para;</a></h2>
+<p>설치 명령에는 다음 옵션이 사용됩니다(교안 설명 기준).</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>all</code></td>
+<td>확장 모듈을 포함하여 설치</td>
+</tr>
+<tr>
+<td><code>extscache</code></td>
+<td>로컬 확장 캐시를 활용한 실행 최적화를 포함</td>
+</tr>
+<tr>
+<td><code>--extra-index-url</code></td>
+<td>NVIDIA 공식 패키지 저장소를 추가해 종속성 문제 없이 설치를 유도</td>
+</tr>
+</tbody>
+</table>
+<p><strong>설치 확인 및 초기 실행</strong></p>
+<ul>
+<li>설치 확인 후 실행</li>
+<li><strong>최초 실행 시 라이선스 동의 확인 메시지</strong>가 표시됨 → 동의해야 정상 실행</li>
+</ul>
+<figure>
+<p><img alt="Isaac Sim 설치 — 설치 명령 옵션·최초 실행 라이선스 동의" src="../img/w01/s24.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 24 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="02-isaac-lab">🧪 02 개발 환경 구축 — Isaac Lab 설치<a class="headerlink" href="#02-isaac-lab" title="Permanent link">&para;</a></h2>
+<h3 id="isaac-sim-vs-isaac-lab">Isaac Sim vs Isaac Lab<a class="headerlink" href="#isaac-sim-vs-isaac-lab" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Isaac Sim</th>
+<th>Isaac Lab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>목적</td>
+<td>로봇 시뮬레이션 및 테스트</td>
+<td>대규모 로봇 학습</td>
+</tr>
+<tr>
+<td>물리엔진</td>
+<td>NVIDIA PhysX</td>
+<td>대규모 학습용 NVIDIA PhysX</td>
+</tr>
+<tr>
+<td>강화학습 지원</td>
+<td>일부 지원 (RL 환경 연결 가능)</td>
+<td>대규모 병렬 RL 학습 최적화</td>
+</tr>
+<tr>
+<td>GPU 가속</td>
+<td>CUDA + Omniverse RTX 기반</td>
+<td>CUDA 가속 최적화 (GPU 병렬 학습)</td>
+</tr>
+<tr>
+<td>디지털 트윈 (실시간 동기화)</td>
+<td>가능</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>대규모 병렬학습</td>
+<td>제한적</td>
+<td>가능 (최대 수천 개 시뮬레이션 동시 실행)</td>
+</tr>
+<tr>
+<td>ROS / ROS2 연동</td>
+<td>공식 통합 지원</td>
+<td>미지원 (테스트·학습 분리 운영)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">설치 절차<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>Step 1 —</strong> Isaac Lab 소스 코드를 로컬로 <strong>클론</strong>
+<strong>Step 2 —</strong> 필수 시스템 패키지 설치 (1·2)
+<strong>Step 3 —</strong> 설치 중 발생할 수 있는 <strong>오류</strong>를 해결방안에 따라 처리
+<strong>Step 4 —</strong> 설치 확인 후 <strong>실행 결과</strong> 확인</p>
+<div class="admonition success">
+<p class="admonition-title">환경 구축 체크</p>
+<p>Ubuntu 22.04 → Miniconda(Conda) → CUDA/드라이버 → PyTorch → Isaac Sim → Isaac Lab 순으로 설치가 끝나면, 시뮬레이션(Isaac Sim)과 대규모 학습(Isaac Lab) 양쪽을 모두 다룰 수 있는 개발 환경이 완성됩니다.</p>
+</div>
+<figure>
+<p><img alt="Isaac Lab 설치 및 Isaac Sim과의 비교" src="../img/w01/s28.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 28 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="03-nvidia-isaac-sim">🌍 03 NVIDIA Isaac Sim의 실제 활용 사례<a class="headerlink" href="#03-nvidia-isaac-sim" title="Permanent link">&para;</a></h2>
+<p>교안에서 소개하는 대표 활용 사례입니다.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Sim-to-Real (Fourier 휴머노이드)</label><label for="__tabbed_1_2">Nav2 + Isaac ROS (Spot 4족 보행)</label><label for="__tabbed_1_3">대규모 병렬 학습 (Isaac Gym)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Spotlight: Fourier Trains Humanoid Robots for Real-World Roles Using NVIDIA Isaac Lab</strong></p>
+<ul>
+<li>실제·체험하기 어려운 환경에서도 <strong>시뮬레이션을 통한 효율적인 개발</strong> 수행</li>
+<li>강화 학습을 통한 <strong>동작 훈련</strong> 후, 학습 결과를 실제 로봇으로 이전(<strong>Sim-to-Real Gap</strong> 축소)</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>Integrating the Nav2 Stack with NVIDIA / Spot Quadruped Locomotion with Isaac ROS GEMs</strong></p>
+<ul>
+<li>물리 환경 설정 + 고품질 물리 시뮬레이션</li>
+<li><strong>이미지 처리 및 포인트 클라우드 생성</strong>, <strong>시차(disparity) 필터링을 통한 정확도 향상</strong></li>
+<li>시뮬레이션 결과를 <strong>실제 로봇으로 바로 탑재</strong> 가능</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>NVIDIA Isaac Gym — GPU 기반 병렬 처리</strong></p>
+<ul>
+<li>GPU 기반 병렬 처리로 <strong>대규모 물리 시뮬레이션</strong> 수행</li>
+<li><strong>효율적인 대규모 학습</strong> + 성능 최적화로 개발 시간·비용을 크게 절감</li>
+</ul>
+</div>
+</div>
+</div>
+<figure>
+<p><img alt="Isaac Sim 실제 활용 사례 — Sim-to-Real, Nav2, Isaac Gym" src="../img/w01/s30.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 30 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="04-wrap-up">🧩 04 Wrap-up<a class="headerlink" href="#04-wrap-up" title="Permanent link">&para;</a></h2>
+<p>오늘 강의 내용을 요약합니다.</p>
+<ol>
+<li><strong>NVIDIA Isaac Sim 설치 과정</strong> — Ubuntu 22.04 / Miniconda·Conda 가상환경 / CUDA·드라이버 / PyTorch / Isaac Sim / Isaac Lab</li>
+<li><strong>NVIDIA Isaac Sim 활용 분야</strong> — Sim-to-Real, Nav2 연동 자율주행, GPU 기반 대규모 병렬 학습</li>
+</ol>
+<figure>
+<p><img alt="Wrap-up — 설치 과정과 활용 분야 요약" src="../img/w01/s32.jpg" width="720" /></p>
+<figcaption>
+<p>NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 32 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
 <h2 id="_3">✅ 체크포인트<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>ros2</code> 명령이 동작하는가</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> talker/listener 통신이 되는가</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>~/cluad_ws</code> 빌드가 성공하는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Isaac Sim을 사용하는 세 가지 이유(현실적 시뮬레이션·비용 절감·호환성)를 설명할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 권장 개발 환경(Ubuntu 22.04 / RTX 4090 / 64GB)을 알고, Miniconda·Conda를 쓰는 이유를 설명할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 내 GPU에 맞는 CUDA·드라이버 버전을 <code>nvidia-smi</code>와 호환성 매트릭스로 확인할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Miniconda → CUDA → PyTorch → Isaac Sim → Isaac Lab 설치 순서를 따라 환경을 구축할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Isaac Sim과 Isaac Lab의 차이, 그리고 대표 활용 사례를 구분할 수 있는가</li>
 </ul>
-<h2 id="_4">📝 과제<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li>환경 구축 스크린샷 제출</li>
-<li>"내가 생각하는 Physical AI 응용 1가지"를 5줄로 정리</li>
-</ul>
-<h2 id="ppt">🖼️ PPT 슬라이드 개요<a class="headerlink" href="#ppt" title="Permanent link">&para;</a></h2>
-<ol>
-<li>강의 소개 · 평가 방식 · 15주 로드맵</li>
-<li>Digital AI vs Physical AI (정의·차이)</li>
-<li>Sense → Plan → Act 루프 다이어그램</li>
-<li>Physical AI 응용 사례 (자율주행·휴머노이드·AMR)</li>
-<li>개발환경 구성도 (Ubuntu·ROS2·Gazebo)</li>
-<li>실습 안내 및 과제</li>
-</ol>
-<h2 id="_5">📊 평가 루브릭<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">📊 평가 루브릭<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>항목</th>
 <th>배점</th>
-<th>A(우수)</th>
-<th>B(보통)</th>
-<th>C(미흡)</th>
+<th>기준</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>환경 구축</td>
-<td>40</td>
-<td>ROS2·Gazebo 정상 동작</td>
-<td>일부 경고</td>
-<td>설치 실패</td>
+<td>Isaac Sim 학습 동기 이해</td>
+<td>20</td>
+<td>현실적 시뮬레이션·비용 절감·호환성을 근거로 설명</td>
 </tr>
 <tr>
-<td>talker/listener 검증</td>
-<td>30</td>
-<td>통신 확인·설명</td>
-<td>통신만 확인</td>
-<td>미동작</td>
+<td>개발 환경/사양 이해</td>
+<td>20</td>
+<td>권장 사양과 Miniconda·Conda 가상환경의 필요성 설명</td>
 </tr>
 <tr>
-<td>워크스페이스 빌드</td>
+<td>설치 절차 수행</td>
 <td>30</td>
-<td>빌드·구조 이해</td>
-<td>빌드만 성공</td>
-<td>실패</td>
+<td>Miniconda·CUDA·PyTorch·Isaac Sim·Isaac Lab 설치 절차 재현</td>
+</tr>
+<tr>
+<td>Isaac Sim vs Isaac Lab 비교</td>
+<td>15</td>
+<td>목적·물리엔진·RL·ROS 연동 차이를 표로 정리</td>
+</tr>
+<tr>
+<td>활용 사례 분석</td>
+<td>15</td>
+<td>Sim-to-Real·Nav2·Isaac Gym 사례의 핵심 가치 설명</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_6">🧰 사전 준비물 &amp; 트러블슈팅<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p><strong>준비물</strong>: Ubuntu 22.04 (또는 WSL2/듀얼부팅), RAM 8GB 이상, 안정적 인터넷</p>
+<h2 id="_5">🔗 출처 및 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>❌ <code>locale</code> 오류 → <code>sudo locale-gen en_US en_US.UTF-8</code> 재실행</li>
-<li>❌ apt key 오류 → ros-archive-keyring.gpg 경로 확인 후 저장소 재등록</li>
-<li>❌ <code>ros2: command not found</code> → <code>source /opt/ros/humble/setup.bash</code> 누락, .bashrc 확인</li>
+<li>교안 <strong>「NVIDIA Isaac Sim 설치 및 활용 사례」</strong> (제작: ENGI UNIVERSE) — 강의 슬라이드 원본</li>
+<li>NVIDIA Isaac Sim 공식 문서 — <a href="https://docs.isaac-sim.nvidia.com">https://docs.isaac-sim.nvidia.com</a></li>
+<li>NVIDIA Isaac Lab 공식 문서 — <a href="https://isaac-sim.github.io/IsaacLab">https://isaac-sim.github.io/IsaacLab</a></li>
+<li>Miniconda 설치 가이드 — <a href="https://docs.anaconda.com/miniconda/">https://docs.anaconda.com/miniconda/</a></li>
 </ul>
-<h2 id="_7">🔗 참고자료<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="isaac-sim-510">📘 Isaac Sim 5.1.0 공식 문서<a class="headerlink" href="#isaac-sim-510" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">공식 문서 (NVIDIA Isaac Sim 5.1.0)</p>
+<p>본 주차의 Isaac Sim/ROS 2 API·절차는 아래 공식 문서로 보강·검증할 수 있습니다.</p>
 <ul>
-<li>ROS 2 Humble 설치 문서 — <a href="https://docs.ros.org/en/humble/Installation.html">https://docs.ros.org/en/humble/Installation.html</a></li>
-<li>NVIDIA "What is Physical AI" — <a href="https://blogs.nvidia.com/blog/what-is-physical-ai/">https://blogs.nvidia.com/blog/what-is-physical-ai/</a></li>
-<li>Gazebo 문서 — <a href="https://gazebosim.org/docs">https://gazebosim.org/docs</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/installation/requirements.html">시스템 요구사항</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/installation/quick-install.html">빠른 설치</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/installation/install_workstation.html">워크스테이션 설치</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/introduction/workflows.html">워크플로우(Workflows)</a></li>
 </ul>
+</div>
+<!-- FULLDECK -->
+<h2 id="_6">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<details class="note">
+<summary>원본 강의 슬라이드 전체 (32매)</summary>
+<p><img alt="슬라이드 01" src="../img/w01/s01.jpg" width="700" />
+<img alt="슬라이드 02" src="../img/w01/s02.jpg" width="700" />
+<img alt="슬라이드 03" src="../img/w01/s03.jpg" width="700" />
+<img alt="슬라이드 04" src="../img/w01/s04.jpg" width="700" />
+<img alt="슬라이드 05" src="../img/w01/s05.jpg" width="700" />
+<img alt="슬라이드 06" src="../img/w01/s06.jpg" width="700" />
+<img alt="슬라이드 07" src="../img/w01/s07.jpg" width="700" />
+<img alt="슬라이드 08" src="../img/w01/s08.jpg" width="700" />
+<img alt="슬라이드 09" src="../img/w01/s09.jpg" width="700" />
+<img alt="슬라이드 10" src="../img/w01/s10.jpg" width="700" />
+<img alt="슬라이드 11" src="../img/w01/s11.jpg" width="700" />
+<img alt="슬라이드 12" src="../img/w01/s12.jpg" width="700" />
+<img alt="슬라이드 13" src="../img/w01/s13.jpg" width="700" />
+<img alt="슬라이드 14" src="../img/w01/s14.jpg" width="700" />
+<img alt="슬라이드 15" src="../img/w01/s15.jpg" width="700" />
+<img alt="슬라이드 16" src="../img/w01/s16.jpg" width="700" />
+<img alt="슬라이드 17" src="../img/w01/s17.jpg" width="700" />
+<img alt="슬라이드 18" src="../img/w01/s18.jpg" width="700" />
+<img alt="슬라이드 19" src="../img/w01/s19.jpg" width="700" />
+<img alt="슬라이드 20" src="../img/w01/s20.jpg" width="700" />
+<img alt="슬라이드 21" src="../img/w01/s21.jpg" width="700" />
+<img alt="슬라이드 22" src="../img/w01/s22.jpg" width="700" />
+<img alt="슬라이드 23" src="../img/w01/s23.jpg" width="700" />
+<img alt="슬라이드 24" src="../img/w01/s24.jpg" width="700" />
+<img alt="슬라이드 25" src="../img/w01/s25.jpg" width="700" />
+<img alt="슬라이드 26" src="../img/w01/s26.jpg" width="700" />
+<img alt="슬라이드 27" src="../img/w01/s27.jpg" width="700" />
+<img alt="슬라이드 28" src="../img/w01/s28.jpg" width="700" />
+<img alt="슬라이드 29" src="../img/w01/s29.jpg" width="700" />
+<img alt="슬라이드 30" src="../img/w01/s30.jpg" width="700" />
+<img alt="슬라이드 31" src="../img/w01/s31.jpg" width="700" />
+<img alt="슬라이드 32" src="../img/w01/s32.jpg" width="700" /></p>
+</details>
 
 
 
@@ -1357,13 +2031,13 @@
         
         
           
-          <a href="../week02/" class="md-footer__link md-footer__link--next" aria-label="다음: 2주차 · ROS 2 기초">
+          <a href="../week02/" class="md-footer__link md-footer__link--next" aria-label="다음: 2주차 · 물리환경·카메라(RGB/Depth)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                2주차 · ROS 2 기초
+                2주차 · 물리환경·카메라(RGB/Depth)
               </div>
             </div>
             <div class="md-footer__button md-icon">

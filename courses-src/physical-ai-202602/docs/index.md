@@ -1,7 +1,7 @@
 # Physical AI — 강의 개요
 
 !!! info "교과목 한 줄 소개"
-    인공지능을 물리적 신체(로봇)에 구현하여 **인식·학습·제어**를 통합하는 임베디드 지능 교과목입니다. 시뮬레이션 기반 실습 중심으로 ROS 2부터 강화학습·VLA까지 한 학기 동안 직접 구현합니다.
+    **NVIDIA Isaac Sim** 기반 시뮬레이션 위에서 **센서 → SLAM/자율주행 → 강화학습 → LLM 고수준 제어**까지, 실제 **Spot + ATS** 보안로봇 프로젝트를 한 학기 동안 직접 구축하는 임베디드 지능(Physical AI) 교과목입니다.
 
 ## 📌 교과목 정보
 
@@ -12,46 +12,50 @@
 | 학기 | 2026학년도 2학기 (202602) |
 | 학점/시수 | 3학점 (주 3시간) |
 | 선수과목 | 파이썬 프로그래밍, 인공지능 기초, 선형대수 |
-| 개발환경 | Ubuntu 22.04 · ROS 2 (Humble) · Gazebo · PyTorch |
-| 실습 환경 | **전 주차 Gazebo 시뮬레이션 기준으로 통일** |
+| 개발환경 | Ubuntu 22.04 · **NVIDIA Isaac Sim 5.1 / Isaac Lab** · ROS 2 (Humble) · slam_toolbox·Nav2 · LangChain/LLM |
+| 실습 플랫폼 | **Spot(4족 보행) + ATS(2축 카메라 시스템)** 시뮬레이션 |
 | 평가 | 출석 10% · 실습/과제 30% · 중간 25% · 기말 프로젝트 35% |
 
 ## 🎯 교과 목표
 
-- 물리 세계에서 작동하는 AI(임베디드 지능)의 개념과 구성요소를 이해한다.
-- ROS 2 기반으로 로봇의 인식–판단–제어 파이프라인을 구현할 수 있다.
-- 시뮬레이션 환경에서 강화학습·모방학습을 적용하고 Sim-to-Real 개념을 설명할 수 있다.
-- VLA(Vision-Language-Action) 등 최신 Foundation Model 기반 로봇 지능을 체험한다.
-- 인식·학습·제어를 통합한 End-to-End Physical AI 시스템을 팀 프로젝트로 완성한다.
+- NVIDIA Isaac Sim에서 물리 환경과 **센서(카메라·IMU·LiDAR·Radar)** 시뮬레이션을 구성할 수 있다.
+- **Isaac Lab 강화학습**으로 4족 보행 로봇의 보행 정책을 학습시킬 수 있다.
+- **SLAM(slam_toolbox)·Nav2**로 지도 작성과 자율주행 파이프라인을 구축할 수 있다.
+- **System-1(실행)** 단위 액션과 **System-2(LLM 플래너)** 를 설계해 자연어 명령으로 로봇을 제어할 수 있다.
+- Isaac Sim–ROS 2–자율주행–AI 추론을 잇는 **현대 로봇 SW 풀스택**을 통합 프로젝트로 완성한다.
 
 ## 🗓️ 주차별 강의계획
 
-| 주차 | 주제 | 학습 내용 | 실습 |
+| 주차 | 주제 | 학습 내용 | 근거 교안 |
 | --- | --- | --- | --- |
-| [1](week01.md) | Physical AI 개요 | 임베디드 지능, Digital vs Physical AI | 개발환경 구축 |
-| [2](week02.md) | ROS 2 기초 | 노드·토픽·서비스·액션 | 퍼블리셔/구독자 작성 |
-| [3](week03.md) | 좌표계와 기구학 | 강체 변환·TF2·FK/IK | TF 브로드캐스트·RViz |
-| [4](week04.md) | 센서와 인식 | LiDAR·카메라·IMU 원리 | 센서 토픽 구독·시각화 |
-| [5](week05.md) | 로봇 시뮬레이션 | Gazebo·URDF·물리엔진 | 로봇 모델링·스폰 |
-| [6](week06.md) | 이동로봇 제어 | 차동구동 운동학·Odometry | Teleop·주행 노드 |
-| [7](week07.md) | SLAM과 자율주행 | 점유격자지도·SLAM·Nav2 | 지도작성·자율주행 |
-| [8](week08.md) | 중간고사 | 1~7주차 종합 평가 | 이론+실기 평가 |
-| [9](week09.md) | 컴퓨터 비전·딥러닝 | CNN·객체탐지(YOLO) | YOLO ROS2 연동 |
-| [10](week10.md) | 로봇 매니퓰레이션 | 로봇팔 기구학·MoveIt | 모션플래닝·픽앤플레이스 |
-| [11](week11.md) | 강화학습 기초 | MDP·정책·PPO·보상설계 | PPO 정책 학습 |
-| [12](week12.md) | 모방학습 | Behavior Cloning·Diffusion Policy | 시연 수집·BC 학습 |
-| [13](week13.md) | Sim-to-Real | Reality Gap·도메인 랜덤화 | 도메인 랜덤화 실험 |
-| [14](week14.md) | Foundation Models & VLA | LLM·VLM·VLA | 언어명령 제어 체험 |
-| [15](week15.md) | System-2 테스트 & 검증 | System-1/System-2 통합·시나리오 검증 | 통합 프로젝트·시연·발표 |
+| [1](week01.md) | Isaac Sim 설치·활용 | 권장 사양, 개발환경 구축, 활용 사례 | Isaac Sim 1강 |
+| [2](week02.md) | 물리환경·카메라 센서 | Stage/World/Prim, RGB/Depth 카메라 | Isaac Sim 2강 |
+| [3](week03.md) | 센서 (IMU·LiDAR·Radar) | RTX LiDAR, Annotator, PointCloud | Isaac Sim 3강 |
+| [4](week04.md) | Isaac Lab 4족 보행 RL | MDP, Action/Observation, Height Scan | Isaac Sim 4강 |
+| [5](week05.md) | Spot+ATS 시스템 구축 | URDF Import, ROS2 연동, RL 재학습 | Isaac Sim 5강 |
+| [6](week06.md) | SLAM·Nav2 기본 | Odometry, Sensor Fusion, slam_toolbox | SLAM 1강 |
+| [7](week07.md) | Spot+ATS SLAM 연동 1 | ROS2 브릿지, TF 트리, 자율주행 | SLAM 2강 |
+| [8](week08.md) | 중간고사 | 1~7주차 종합 평가 | — |
+| [9](week09.md) | Spot+ATS SLAM 연동 2 | 지도 저장·Localization·GIMP 수정 | SLAM 3강 |
+| [10](week10.md) | Spot+ATS Vision | YOLOv8 detector·tracker·debug | SLAM 4강 |
+| [11](week11.md) | System-1 Executor 설계 | 아키텍처, 단위 액션, Executor Node | Physical AI 1강 |
+| [12](week12.md) | System-1 단위 액션 1 | move_to(Nav2)·scan 설계 | Physical AI 2강 |
+| [13](week13.md) | System-1 단위 액션 2 | track 3축 통합 제어·report·return | Physical AI 3강 |
+| [14](week14.md) | System-2 LLM Planner | models.py·llm_planner.py·system2_node.py | Physical AI 4강 |
+| [15](week15.md) | System-2 테스트·검증 | System-1/2 통합·시나리오 A~D·고도화 | Physical AI 5강 |
 
-## 🖥️ 실습 환경 안내
+## 🧭 커리큘럼 한눈에 보기
 
-!!! note "공통 실습 환경"
-    본 강의 실습은 전 주차 **Gazebo 시뮬레이션** 기준으로 통일합니다. 실물 로봇 없이 `~/cluad_ws` 워크스페이스에서 모두 수행 가능합니다. (강화학습·모방학습 주차는 가벼운 Gymnasium 시뮬 사용)
+```
+[Isaac Sim 기초·센서]  →  [Isaac Lab RL]  →  [SLAM·자율주행]  →  [Vision]  →  [System-1 실행]  →  [System-2 LLM]  →  [통합 검증]
+   W1~3                     W4~5             W6~7,9            W10         W11~13            W14             W15
+```
 
 ## 📚 참고자료
 
+- **NVIDIA Isaac Sim 5.1.0 공식 문서** — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html>
+- NVIDIA Isaac Lab Documentation — <https://isaac-sim.github.io/IsaacLab/>
 - ROS 2 Documentation (Humble) — <https://docs.ros.org>
-- NVIDIA Isaac Sim / Isaac Lab Documentation
-- *Probabilistic Robotics*, Thrun et al.
-- OpenVLA / RT-2 논문 및 Open X-Embodiment 데이터셋
+- Nav2 — <https://docs.nav2.org> · slam_toolbox — <https://github.com/SteveMacenski/slam_toolbox>
+- Ultralytics YOLOv8 — <https://docs.ultralytics.com> · LangChain — <https://python.langchain.com>
+- 강의 교안: **NVIDIA Isaac Sim 1~5강 · SLAM 1~4강 · Physical AI 1~5강** (제작: ENGI UNIVERSE) · Spot+ATS 프로젝트 매뉴얼

@@ -52,21 +52,21 @@ markdown_extensions:
 nav:
   - 강의 개요: index.md
   - 강의 계획 (15주):
-    - 1주차 · Physical AI 개요: week01.md
-    - 2주차 · ROS 2 기초: week02.md
-    - 3주차 · 좌표계와 기구학: week03.md
-    - 4주차 · 센서와 인식: week04.md
-    - 5주차 · 로봇 시뮬레이션: week05.md
-    - 6주차 · 이동로봇 제어: week06.md
-    - 7주차 · SLAM과 자율주행: week07.md
+    - 1주차 · Isaac Sim 설치·활용: week01.md
+    - 2주차 · 물리환경·카메라(RGB/Depth): week02.md
+    - 3주차 · 센서(IMU·LiDAR·Radar): week03.md
+    - 4주차 · Isaac Lab 4족 보행 RL: week04.md
+    - 5주차 · Spot+ATS 시스템 구축: week05.md
+    - 6주차 · SLAM·Nav2 기본: week06.md
+    - 7주차 · Spot+ATS SLAM 연동 1: week07.md
     - 8주차 · 중간고사: week08.md
-    - 9주차 · 컴퓨터 비전·딥러닝: week09.md
-    - 10주차 · 로봇 매니퓰레이션: week10.md
-    - 11주차 · 강화학습 기초: week11.md
-    - 12주차 · 모방학습: week12.md
-    - 13주차 · Sim-to-Real: week13.md
-    - 14주차 · Foundation Models & VLA: week14.md
-    - 15주차 · System-2 테스트 & 검증: week15.md
+    - 9주차 · Spot+ATS SLAM 연동 2: week09.md
+    - 10주차 · Spot+ATS Vision(YOLOv8): week10.md
+    - 11주차 · System-1 Executor 설계: week11.md
+    - 12주차 · System-1 단위 액션 1: week12.md
+    - 13주차 · System-1 단위 액션 2: week13.md
+    - 14주차 · System-2 LLM Planner: week14.md
+    - 15주차 · System-2 테스트·검증: week15.md
   - 🏠 PARC Lab 홈: https://parclab-hsu.github.io/
 
 extra:

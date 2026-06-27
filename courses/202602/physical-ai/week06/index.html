@@ -27,7 +27,7 @@
     
     
       
-        <title>6주차 · 이동로봇 제어 - Physical AI · 2026-2학기</title>
+        <title>6주차 · SLAM·Nav2 기본 - Physical AI · 2026-2학기</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6-teleopodometry" class="md-skip">
+        <a href="#6-slam-navigation-slam_toolboxnav2" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6주차 · 이동로봇 제어
+              6주차 · SLAM·Nav2 기본
             
           </span>
         </div>
@@ -324,7 +324,7 @@
   <span class="md-ellipsis">
     
   
-    1주차 · Physical AI 개요
+    1주차 · Isaac Sim 설치·활용
   
 
     
@@ -352,7 +352,7 @@
   <span class="md-ellipsis">
     
   
-    2주차 · ROS 2 기초
+    2주차 · 물리환경·카메라(RGB/Depth)
   
 
     
@@ -380,7 +380,7 @@
   <span class="md-ellipsis">
     
   
-    3주차 · 좌표계와 기구학
+    3주차 · 센서(IMU·LiDAR·Radar)
   
 
     
@@ -408,7 +408,7 @@
   <span class="md-ellipsis">
     
   
-    4주차 · 센서와 인식
+    4주차 · Isaac Lab 4족 보행 RL
   
 
     
@@ -436,7 +436,7 @@
   <span class="md-ellipsis">
     
   
-    5주차 · 로봇 시뮬레이션
+    5주차 · Spot+ATS 시스템 구축
   
 
     
@@ -473,7 +473,7 @@
   <span class="md-ellipsis">
     
   
-    6주차 · 이동로봇 제어
+    6주차 · SLAM·Nav2 기본
   
 
     
@@ -491,7 +491,7 @@
   <span class="md-ellipsis">
     
   
-    6주차 · 이동로봇 제어
+    6주차 · SLAM·Nav2 기본
   
 
     
@@ -528,10 +528,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#01-intro" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🗺️ 01. Intro — 이번 강의 목표
       
     </span>
   </a>
@@ -539,10 +539,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-teleop" class="md-nav__link">
+  <a href="#02-slam-odometry-sensor-fusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 2교시. 실습 — Teleop
+        🧭 02. SLAM의 기본 원리 (Odometry · Sensor Fusion)
       
     </span>
   </a>
@@ -550,10 +550,149 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#03-nav2navigation2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 3교시. 실습 — 자동 주행 노드
+        🤖 03. Nav2(Navigation2) 스택 개요
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤖 03. Nav2(Navigation2) 스택 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slam-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SLAM과 Navigation을 위한 패키지 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slam_launchpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_launch.py 소스코드 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-slam_toolbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛰️ 04. slam_toolbox 사용하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛰️ 04. slam_toolbox 사용하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slam_toolbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_toolbox 기본 동작 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slam_toolbox-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_toolbox를 위한 YAML 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚗 05. Nav2 사용하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚗 05. Nav2 사용하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nav2 프레임워크의 명령 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nav2 YAML 구성 요소
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#costmap-global_costmap-local_costmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시야 — Costmap (global_costmap / local_costmap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#velocity-smoother-velocity_smoother" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        속도 — Velocity Smoother (velocity_smoother)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 06. Wrap-up
       
     </span>
   </a>
@@ -575,18 +714,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
+        📊 평가 루브릭
       
     </span>
   </a>
@@ -597,7 +725,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 평가 루브릭
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isaac-sim-510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Isaac Sim 5.1.0 공식 문서
       
     </span>
   </a>
@@ -608,18 +747,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 참고자료
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -649,7 +777,7 @@
   <span class="md-ellipsis">
     
   
-    7주차 · SLAM과 자율주행
+    7주차 · Spot+ATS SLAM 연동 1
   
 
     
@@ -705,7 +833,7 @@
   <span class="md-ellipsis">
     
   
-    9주차 · 컴퓨터 비전·딥러닝
+    9주차 · Spot+ATS SLAM 연동 2
   
 
     
@@ -733,7 +861,7 @@
   <span class="md-ellipsis">
     
   
-    10주차 · 로봇 매니퓰레이션
+    10주차 · Spot+ATS Vision(YOLOv8)
   
 
     
@@ -761,7 +889,7 @@
   <span class="md-ellipsis">
     
   
-    11주차 · 강화학습 기초
+    11주차 · System-1 Executor 설계
   
 
     
@@ -789,7 +917,7 @@
   <span class="md-ellipsis">
     
   
-    12주차 · 모방학습
+    12주차 · System-1 단위 액션 1
   
 
     
@@ -817,7 +945,7 @@
   <span class="md-ellipsis">
     
   
-    13주차 · Sim-to-Real
+    13주차 · System-1 단위 액션 2
   
 
     
@@ -845,7 +973,7 @@
   <span class="md-ellipsis">
     
   
-    14주차 · Foundation Models & VLA
+    14주차 · System-2 LLM Planner
   
 
     
@@ -873,7 +1001,7 @@
   <span class="md-ellipsis">
     
   
-    15주차 · System-2 테스트 & 검증
+    15주차 · System-2 테스트·검증
   
 
     
@@ -959,10 +1087,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#01-intro" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 1교시. 이론
+        🗺️ 01. Intro — 이번 강의 목표
       
     </span>
   </a>
@@ -970,10 +1098,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-teleop" class="md-nav__link">
+  <a href="#02-slam-odometry-sensor-fusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 2교시. 실습 — Teleop
+        🧭 02. SLAM의 기본 원리 (Odometry · Sensor Fusion)
       
     </span>
   </a>
@@ -981,10 +1109,149 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#03-nav2navigation2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 3교시. 실습 — 자동 주행 노드
+        🤖 03. Nav2(Navigation2) 스택 개요
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤖 03. Nav2(Navigation2) 스택 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slam-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SLAM과 Navigation을 위한 패키지 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slam_launchpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_launch.py 소스코드 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-slam_toolbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛰️ 04. slam_toolbox 사용하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛰️ 04. slam_toolbox 사용하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slam_toolbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_toolbox 기본 동작 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slam_toolbox-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_toolbox를 위한 YAML 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚗 05. Nav2 사용하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚗 05. Nav2 사용하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nav2 프레임워크의 명령 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nav2 YAML 구성 요소
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#costmap-global_costmap-local_costmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시야 — Costmap (global_costmap / local_costmap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#velocity-smoother-velocity_smoother" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        속도 — Velocity Smoother (velocity_smoother)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 06. Wrap-up
       
     </span>
   </a>
@@ -1006,18 +1273,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📝 과제
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ppt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🖼️ PPT 슬라이드 개요
+        📊 평가 루브릭
       
     </span>
   </a>
@@ -1028,7 +1284,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📊 평가 루브릭
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isaac-sim-510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Isaac Sim 5.1.0 공식 문서
       
     </span>
   </a>
@@ -1039,18 +1306,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧰 사전 준비물 &amp; 트러블슈팅
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔗 참고자료
+        🖼️ 원본 강의 슬라이드
       
     </span>
   </a>
@@ -1074,10 +1330,14 @@
 
 
 
-<h1 id="6-teleopodometry">6주차 — 이동로봇 제어 (Teleop·Odometry)<a class="headerlink" href="#6-teleopodometry" title="Permanent link">&para;</a></h1>
+<h1 id="6-slam-navigation-slam_toolboxnav2">6주차 — SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)<a class="headerlink" href="#6-slam-navigation-slam_toolboxnav2" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">학습목표</p>
-<p>차동구동 운동학을 이해하고, 속도 명령(cmd_vel)으로 로봇을 제어하며 오도메트리를 해석한다.</p>
+<p>ATS+Spot 자율보행 시뮬레이션에 필요한 <strong>SLAM(동시적 위치추정 및 지도작성)</strong> 의 기본 개념을 파악한다. 특히 SLAM에서 <strong>오도메트리(Odometry)</strong> 와 <strong>센서 융합(Sensor Fusion)</strong> 의 역할을 이해하고, "센서 정보 → 위치 추정 → 지도 작성(Mapping)"으로 이어지는 큰 흐름과 함께 <strong>slam_toolbox</strong> 와 <strong>Nav2(Navigation2)</strong> 스택의 구조 및 YAML 설계 방법을 익힌다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Source)</p>
+<p>본 자료의 그림·예제는 교안 <strong>「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 코드·파라미터는 교안 설명을 충실히 따른 <strong>재구성 예제</strong>입니다.</p>
 </div>
 <h2 id="3">⏱️ 3시간 구성<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
@@ -1086,141 +1346,607 @@
 <th>교시</th>
 <th>시간</th>
 <th>내용</th>
+<th>근거 교안</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1교시</td>
 <td>50분</td>
-<td>이론 — 차동구동 운동학</td>
+<td>SLAM의 기본 원리(Front-end/Back-end, Odometry·Sensor Fusion) + Nav2 스택 개요</td>
+<td>§01~03</td>
 </tr>
 <tr>
 <td>2교시</td>
 <td>50분</td>
-<td>실습 — Teleop 주행</td>
+<td>slam_toolbox 사용하기 (동작 구성·YAML 설계)</td>
+<td>§03~04</td>
 </tr>
 <tr>
 <td>3교시</td>
 <td>50분</td>
-<td>실습 — 자동 주행 노드 작성</td>
+<td>Nav2 사용하기 (BT Navigator·Planner·Controller·Costmap·YAML) + Wrap-up</td>
+<td>§05~06</td>
 </tr>
 </tbody>
 </table>
-<h2 id="1">📖 1교시. 이론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="01-intro">🗺️ 01. Intro — 이번 강의 목표<a class="headerlink" href="#01-intro" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="강의 표지: SLAM과 Navigation 기본 개념" src="../img/w06/s01.jpg" width="720" /></p>
+<figcaption>
+<p>SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 01 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
 <ul>
-<li><strong>차동구동(differential drive)</strong>: 좌우 바퀴 속도 → 선속도 v, 각속도 ω</li>
-<li><code>geometry_msgs/Twist</code> (cmd_vel): linear.x, angular.z</li>
-<li><strong>Odometry</strong>: 바퀴 회전으로 위치 추정, 누적 오차(drift)와 한계</li>
+<li><strong>ATS + Spot 자율보행 시뮬레이션</strong>에 필요한 SLAM의 기본 개념 파악</li>
+<li>SLAM에서 <strong>오도메트리(Odometry)</strong> 와 <strong>센서 융합(Sensor Fusion)</strong> 의 역할 이해</li>
+<li><strong>센서 정보 → 위치 추정 → 지도 작성(Mapping)</strong> 으로 이어지는 큰 구조 파악</li>
 </ul>
-<h2 id="2-teleop">🛠️ 2교시. 실습 — Teleop<a class="headerlink" href="#2-teleop" title="Permanent link">&para;</a></h2>
-<p><strong>Step 1 — 시뮬레이션 실행</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TURTLEBOT3_MODEL</span><span class="o">=</span>burger
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch.py
+<figure>
+<p><img alt="CONTENTS — SLAM 기본 원리부터 Nav2까지" src="../img/w06/s02.jpg" width="720" /></p>
+<figcaption>
+<p>SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 02 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="02-slam-odometry-sensor-fusion">🧭 02. SLAM의 기본 원리 (Odometry · Sensor Fusion)<a class="headerlink" href="#02-slam-odometry-sensor-fusion" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">SLAM이란?</p>
+<p><strong>"나는 지금 어디에 있고(내 위치 파악), 내 주변 환경은 어떻게 생겼는지(지도 그리기)를 동시에 알아내는 기술"</strong> 입니다. <em>Simultaneous Localization And Mapping</em> 의 약자입니다.</p>
+</div>
+<figure>
+<p><img alt="SLAM 개념 — 위치추정과 지도작성을 동시에" src="../img/w06/s04.jpg" width="720" /></p>
+<figcaption>
+<p>SLAM과 Navigation 기본 개념 — 슬라이드 04 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p>SLAM의 구조는 보통 두 단계로 분류됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>역할</th>
+<th>핵심 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>앞단 (Front-end)</strong></td>
+<td>센서 관측 기반 <strong>제약 조건(관측 방정식) 생성</strong></td>
+<td>카메라 → 코너·에지 등 특징점 추출 / LiDAR → 포인트 클라우드로 공간 구조 수집 / IMU → 자세 변화(회전·가속) 추정</td>
+</tr>
+<tr>
+<td><strong>뒷단 (Back-end)</strong></td>
+<td>앞단이 모은 제약 조건들을 <strong>수학적으로 통합</strong></td>
+<td>그래프 최적화 / 확률적 최적화로 궤적과 지도를 동시 정합. 오차 큰 구간 → 궤적 보정. 최종적으로 일관된 <strong>궤적 + 지도</strong> 생성</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">센서별 역할 (Sensor Fusion)</p>
+<p>여러 센서의 정보를 융합해 약점을 서로 보완합니다. LiDAR는 공간 구조, 카메라는 특징점, IMU는 자세 변화를 담당하며, 이들을 제약 조건으로 통합해 정확한 위치·지도를 만듭니다.</p>
+</div>
+<hr />
+<h2 id="03-nav2navigation2">🤖 03. Nav2(Navigation2) 스택 개요<a class="headerlink" href="#03-nav2navigation2" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="Nav2 스택 구조 — Planner·Controller·BT Navigator" src="../img/w06/s06.jpg" width="720" /></p>
+<figcaption>
+<p>Nav2 스택 개요 — 슬라이드 06 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p><strong>NAV2</strong>는 <em>Navigation2</em> 의 약자로, <strong>ROS2에서 사용되는 로봇 자율주행 표준 프레임워크</strong>입니다. 로봇이 스스로 갈 길을 찾고, 장애물을 피하고, 목적지에 도착할 수 있게 해주는 <strong>자율주행 엔진</strong>입니다. ROS1의 <code>move_base</code>를 대체하는 ROS2의 표준 패키지입니다.</p>
+<table>
+<thead>
+<tr>
+<th>구성 요소</th>
+<th>역할</th>
+<th>대표 플러그인</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Planner</strong> (전역 경로)</td>
+<td>A지점 → B지점 최적 경로 탐색. 전역 경로를 그려 <strong>Global Planner</strong>라고도 함</td>
+<td>NavFn, SmacPlanner</td>
+</tr>
+<tr>
+<td><strong>Controller</strong> (이동 제어)</td>
+<td>Planner의 경로를 올바르게 따라가도록 이동 제어. (예: 오른쪽으로 치우침 → 경로 중앙으로 이동 지시)</td>
+<td>RegulatedPurePursuitController</td>
+</tr>
+<tr>
+<td><strong>BT Navigator</strong> (행동 결정)</td>
+<td><em>Behavior Tree Navigator</em>. 다양한 상황에 맞는 행동 결정. (예: 장애물 발견 → 회피 시도 → 실패 시 맵 초기화 → 재계획)</td>
+<td>Behavior Tree(XML)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">Nav2 요약</p>
+<p><strong>Planner(전역 경로 생성) + Controller(이동 제어) + BT Navigator(행동 조합 및 상황 대응)</strong></p>
+</div>
+<h3 id="slam-navigation">SLAM과 Navigation을 위한 패키지 구성<a class="headerlink" href="#slam-navigation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>slam_toolbox 패키지</strong>: 온라인 맵핑, 루프 클로저, 맵 저장과 로드 기능까지 모두 지원<ul>
+<li><code>online_async_launch.py</code>, <code>online_sync_launch.py</code>: 실시간 지도 작성과 동시 자기 위치 추정 런치 → 일반적으로 <strong><code>online_async</code></strong> 를 많이 사용</li>
+<li>slam_toolbox 노드는 YAML의 지정 프레임명(map, odom, base_link)과 센서 토픽을 받아 동작</li>
+<li>YAML은 노드의 모든 동작 방식을 정의하는 설계도 → <strong><code>slam_toolbox_params.yaml</code></strong></li>
+</ul>
+</li>
+<li><strong>Nav2 스택</strong>: 경로 계획·속도 제어·행동 트리 기반 자율주행 로직의 대형 스택<ul>
+<li><strong>Planner Server</strong>: 지도 위에서 목적지까지의 전역 경로 계산 (예: NavFn, SmacPlanner)</li>
+<li><strong>Controller Server</strong>: 경로를 따라가도록 실시간 속도 명령 생성 (예: Regulated Pure Pursuit Controller)</li>
+<li><strong>BT Navigator</strong>: Behavior Tree를 이용해 복잡한 논리 관리</li>
+<li>기타: <code>nav2_bringup</code> → <code>navigation_launch.py</code> (map_server, amcl, waypoint_follower 같은 노드 실행)</li>
+</ul>
+</li>
+</ul>
+<figure>
+<p><img alt="slam_launch.py 소스코드 구조" src="../img/w06/s10.jpg" width="720" /></p>
+<figcaption>
+<p>Nav2 스택 개요 — 슬라이드 10: slam_launch.py 소스코드 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="slam_launchpy"><code>slam_launch.py</code> 소스코드 흐름<a class="headerlink" href="#slam_launchpy" title="Permanent link">&para;</a></h3>
+<p>런치 파일은 SLAM 노드뿐 아니라 <strong>맵 저장 서버(map_saver_server)</strong> 까지 함께 준비합니다.</p>
+<p><strong>Step 1 — 모듈 구성</strong></p>
+<ul>
+<li><code>launch.actions</code> / <code>launch_ros.actions</code> 계열: 실행할 노드를 "파이썬 코드로" 조립해 <code>LaunchDescription</code>으로 반환</li>
+<li><code>RewrittenYaml</code> / <code>ParameterFile</code>: 사용자가 넘긴 YAML 파라미터를 런치 시점에 가공해 노드에 주입</li>
+</ul>
+<p><strong>Step 2 — 변수 및 리스트 선언</strong></p>
+<ul>
+<li><code>LaunchConfiguration()</code>: 런치 인자를 입력하면 지정된 인자를 반환 (런치 인자: <code>namespace</code>, <code>params_file</code>, <code>use_sim_time</code> 등)</li>
+<li><code>lifecycle_nodes</code>: SLAM으로 만든 지도를 맵 저장 서버(<code>map_saver_server</code>)에 올리기 위한 변수 → 라이프사이클 매니저가 리스트 <code>['map_saver']</code>를 넘겨받음</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">여기서 잠깐! — 라이프사이클 노드(Lifecycle Node)란?</p>
+<p>ROS2에서 보통 쓰는 노드는 실행하자마자 바로 동작을 시작합니다(퍼블리셔는 곧바로 토픽 송신, 서브스크라이버는 곧바로 구독). 그런데 <code>map_saver_server</code> 같은 노드는 <strong>아직 SLAM이 초기화되지 않았는데 저장을 시도하면 빈 지도가 나오거나 오류</strong>가 날 수 있습니다.</p>
+<p>이를 막기 위해 <strong>라이프사이클 노드</strong>는 <em>상태(state)</em> 를 가집니다. 처음에는 설정되지 않은 상태로 시작 → 준비가 끝나면 <strong>inactive</strong> → 실제 동작 시작 시 <strong>active</strong> 로 전환되며, 필요하면 다시 비활성화·종료도 가능합니다. 언제 기능을 시작·정지할지 명확히 제어할 수 있어 <strong>시스템 전체의 안정성</strong>을 높입니다.</p>
+</div>
+<p><strong>Step 3 — 패키지 경로 및 YAML 가공</strong></p>
+<ul>
+<li><code>get_package_share_directory()</code>: <code>nav2_bringup</code>, <code>slam_toolbox</code>의 설치 경로 반환</li>
+<li><code>slam_launch_file</code>: 런치 파일 경로를 <code>launch/online_sync_launch.py</code>로 설정</li>
+<li><code>param_substitutions</code>: YAML의 <code>use_sim_time</code> 값을 런치 인자로 덮어쓰기</li>
+<li><code>RewrittenYaml</code>: <code>params_file</code>을 런치 시점에 가공<ul>
+<li><code>root_key=namespace</code>: 네임스페이스가 비면 최상단, 지정하면 해당 키 아래에 파라미터 트리 배치</li>
+<li><code>convert_types=True</code>: <code>"True"</code> 같은 문자열을 실제 타입으로 자동 변환</li>
+</ul>
+</li>
+<li><code>ParameterFile</code>: 주입 가능한 파라미터 세트 객체 (<code>allow_substs=True</code>로 앞선 요소를 parameters로 사용)</li>
+</ul>
+<p><strong>Step 4 — 런치 인자 선언</strong></p>
+<ul>
+<li><code>DeclareLaunchArgument()</code>로 외부에서 조정 가능하게 공개</li>
+<li>입력 인자: <code>namespace</code>, <code>params_file</code>, <code>use_sim_time</code>, <code>autostart</code>, <code>use_respawn</code>, <code>log_level</code></li>
+<li><code>params_file</code> 기본값을 <code>nav2_bringup/params/nav2_params.yaml</code>로 둠 → 사용자가 별도 파일을 주지 않아도 최소 동작하는 <strong>기본 안전 장치</strong></li>
+</ul>
+<p><strong>Step 5 — 노드 정의 &amp; 파라미터 분기</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 맵 저장 서버 노드 (라이프사이클 노드)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">start_map_saver_server_cmd</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_map_server&#39;</span><span class="p">,</span>          <span class="c1"># 패키지 대상 지정</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;map_saver_server&#39;</span><span class="p">,</span>      <span class="c1"># 실행 대상 지정</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">respawn</span><span class="o">=</span><span class="n">use_respawn</span><span class="p">,</span>                <span class="c1"># 크래시 시 재기동 여부를 런치 인자로 제어</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--ros-args&#39;</span><span class="p">,</span> <span class="s1">&#39;--log-level&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="p">],</span>  <span class="c1"># 로깅 레벨 외부 제어</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">configured_params</span><span class="p">],</span>     <span class="c1"># 가공된 YAML 주입</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># 라이프사이클 매니저 노드</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">start_lifecycle_manager_cmd</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_lifecycle_manager&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;lifecycle_manager&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lifecycle_manager_slam&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">:</span> <span class="n">use_sim_time</span><span class="p">,</span>   <span class="c1"># 시뮬레이션 타임 사용 여부</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>                 <span class="s1">&#39;autostart&#39;</span><span class="p">:</span> <span class="n">autostart</span><span class="p">,</span>         <span class="c1"># 런치 후 자동 활성화 전이 여부</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>                 <span class="s1">&#39;node_names&#39;</span><span class="p">:</span> <span class="n">lifecycle_nodes</span><span class="p">}],</span> <span class="c1"># 관리 대상: [&#39;map_saver&#39;]</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">)</span>
 </code></pre></div>
-<p><strong>Step 2 — 키보드 텔레오퍼레이션</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>teleop_keyboard
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># W/X: 전진/후진, A/D: 좌/우회전, S: 정지</span>
+<div class="admonition tip">
+<p class="admonition-title">파라미터 유무에 따른 분기 (HasNodeParams)</p>
+<p><code>HasNodeParams</code>로 <code>params_file</code> 안에 <strong><code>slam_toolbox</code> 섹션</strong>이 있는지 검사합니다. 잘못된 YAML을 전달하면 잘못된 파라미터로 덮여 실행 실패할 수 있으므로 분기합니다.</p>
+<ul>
+<li><code>UnlessCondition()</code> — <code>slam_toolbox</code> 섹션 <strong>없음</strong> → <code>{ 'use_sim_time': use_sim_time }</code> 기본 파라미터로 실행</li>
+<li><code>IfCondition()</code> — <code>slam_toolbox</code> 섹션 <strong>있음</strong> → <code>{ 'use_sim_time': use_sim_time, 'slam_params_file': params_file }</code> 사용자 정의 파라미터 정확히 주입</li>
+</ul>
+</div>
+<p><strong>Step 6 — 런치 설명 반환</strong>: <code>ld.add_action()</code>으로 선언한 인자, 맵 세이버 서버, 라이프사이클 매니저, <code>slam_toolbox_cmd</code>를 모두 등록하고 <code>return ld</code>로 종료합니다.</p>
+<div class="admonition success">
+<p class="admonition-title">소스 전체 구조 요약</p>
+<ul>
+<li><code>map_saver_server</code>를 띄움 → <code>lifecycle_manager</code>가 자동으로 활성화</li>
+<li><code>slam_toolbox</code> 런치 include 분기 → <code>params_file</code>에 섹션 없으면 기본, 있으면 사용자 정의 파라미터 실행</li>
+<li><code>RewrittenYaml</code> + <code>ParameterFile</code> 조합으로 런치 시점에 파라미터 합성 → <strong>런치 인자 한 줄만 바꿔도 전체에 자동 반영</strong></li>
+</ul>
+</div>
+<hr />
+<h2 id="04-slam_toolbox">🛰️ 04. slam_toolbox 사용하기<a class="headerlink" href="#04-slam_toolbox" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="slam_toolbox 기본 동작 구성 — Front-end/Back-end" src="../img/w06/s18.jpg" width="720" /></p>
+<figcaption>
+<p>slam_toolbox 사용하기 — 슬라이드 18 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="slam_toolbox">slam_toolbox 기본 동작 구성<a class="headerlink" href="#slam_toolbox" title="Permanent link">&para;</a></h3>
+<p>SLAM 시스템은 센서를 입력받아 로봇 위치와 지도를 생성합니다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>처리 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Front-end</strong></td>
+<td>센서: LiDAR → <code>/scan</code>, 로봇 이동 추정 → <code>/odom</code>, 좌표 변환 → <code>/tf</code></td>
+</tr>
+<tr>
+<td><strong>Scan Matching</strong></td>
+<td>새 스캔을 이전 스캔과 비교해 로봇의 이동량(포즈 변화) 계산 → 포즈 간 연결 관계(제약 조건) 생성</td>
+</tr>
+<tr>
+<td><strong>Back-end</strong></td>
+<td><strong>Loop Closure</strong>: 장거리 제약 추가 / <strong>Graph Optimization</strong>: 경로와 지도를 일관되게 보정</td>
+</tr>
+<tr>
+<td><strong>출력</strong></td>
+<td><code>/map</code>: 누적 스캔 기반 <strong>점유 격자 지도</strong> 제공 / <code>/tf</code>: <code>map → odom</code> 변환으로 로봇의 절대 위치 계산 가능</td>
+</tr>
+</tbody>
+</table>
+<h3 id="slam_toolbox-yaml">slam_toolbox를 위한 YAML 설계<a class="headerlink" href="#slam_toolbox-yaml" title="Permanent link">&para;</a></h3>
+<p>YAML 필수 구성 요소는 <strong>① 시간동기화 ② 프레임 구조 ③ 센서 토픽 ④ 오도메트리/TF ⑤ 안정화 파라미터 ⑥ 센서 특성</strong> 입니다.</p>
+<p><strong>① 시간동기화</strong> — 모든 노드의 시간을 동기화</p>
+<p><strong>② 프레임 구조</strong> — 모델의 베이스 링크 프레임이나 Xform으로 생성된 중심 프레임 지정</p>
+<ul>
+<li>Spot의 경우 중심 프레임은 보통 <strong><code>body</code></strong></li>
+<li><code>ros2 run tf2_tools view_frames</code> 로 프레임 구조 PDF 출력 가능</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 현재 TF 프레임 구조를 PDF(frames.pdf)로 출력</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>tf2_tools<span class="w"> </span>view_frames
 </code></pre></div>
-<p><strong>Step 3 — cmd_vel 직접 확인</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/cmd_vel
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/odom
+<p><strong>③ 센서 토픽</strong> — 라이다가 출력하는 센서의 토픽명 명시</p>
+<figure>
+<p><img alt="센서 토픽 — LaserScan/PointCloud/MultiEchoLaserScan" src="../img/w06/s22.jpg" width="720" /></p>
+<figcaption>
+<p>slam_toolbox 사용하기 — 슬라이드 22: 센서 토픽 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">LaserScan (2D LiDAR)</label><label for="__tabbed_1_2">PointCloud (3D LiDAR)</label><label for="__tabbed_1_3">MultiEchoLaserScan (다중 반사)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><code>ranges[i]</code> → <code>angle_min + i*angle_increment</code> 방향으로 레이저를 쐈을 때 반사 거리</li>
+<li><code>range_min</code> / <code>range_max</code> → 최소/최대 거리</li>
+<li><code>header.stamp</code> → TF와 시간 동기 맞추는 기준</li>
+<li><code>header.frame_id</code> → 이 스캔이 어느 좌표계에서 측정됐는지 표시</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>3D 점들의 집합. 장치에 따라 <code>intensity</code>, <code>ring</code>, <code>time</code> 등의 필드 추가</li>
+<li>한 프레임에 수만 개의 점 → 바이트 배열 + 메타데이터 구조</li>
+<li>slam_toolbox는 <strong>2D 평면 SLAM</strong> → 3D 점들을 특정 높이 범위로 잘라 바닥 평면에 투영(전처리 노드 필요)</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>한 각도 빔에서 반사가 여러 번 감지되는 LiDAR 장비용 메시지</li>
+<li>필터 노드로 한 개의 거리로 축약(예: 최단거리만 채택)해 일반 LaserScan처럼 사용</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>④ 오도메트리/TF</strong> — <code>map → odom → body</code> 변환으로 위치·자세를 서로 다른 기준에서 표현</p>
+<figure>
+<p><img alt="오도메트리/TF — map→odom→body 좌표계" src="../img/w06/s25.jpg" width="720" /></p>
+<figcaption>
+<p>slam_toolbox 사용하기 — 슬라이드 25: 오도메트리/TF (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>프레임</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>map</strong></td>
+<td>지도 기준 프레임. 시간에 따라 움직이지 않는 <strong>절대 좌표 기준</strong></td>
+</tr>
+<tr>
+<td><strong>odom</strong></td>
+<td>단기 위치 추정 프레임. 시간이 지나면 <strong>오차가 누적</strong>되는 단점</td>
+</tr>
+<tr>
+<td><strong>body (base_link)</strong></td>
+<td>로봇 본체 기준 프레임. 로봇이 움직이면 이 프레임이 실제로 이동</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>map → odom</code>: 지도 좌표계와 오도메트리 좌표계 사이를 연결</li>
+<li><code>odom → body</code>: 변환 주체 선택 가능<ul>
+<li>시뮬레이터/하드웨어가 <code>/odom</code> <strong>전송</strong> → slam_toolbox가 오도메트리 소비</li>
+<li><code>/odom</code> <strong>미전송</strong> → SLAM에서 직접 위치 추정</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">여기서 잠깐! — SLAM은 map 좌표를 어떻게 알까?</p>
+<p>SLAM 노드를 처음 실행하면 내부적으로 <strong>빈 종이 한 장을 꺼내는 것</strong>과 같습니다. 그 빈 종이를 "map 프레임"이라 이름 붙이고, 로봇이 처음 있던 자리를 이 좌표계의 <strong>원점(0,0,0)</strong> 으로 정합니다. 즉 map 좌표계는 외부에서 주어진 게 아니라, SLAM이 자기 기준으로 <em>"여기가 시작점이다"</em> 라고 <strong>선언</strong>하는 좌표계입니다.</p>
+<p>이후 라이다·카메라·IMU 센서 데이터를 모아 이 원점 기준으로 점을 찍고 지도를 확장합니다. <code>odom</code>은 짧은 시간 동안 위치를 잘 추적하지만 시간이 길어지면 조금씩 밀립니다. SLAM은 지도와 센서 관측을 비교하며 <em>"odom이 조금 틀어졌네?"</em> 하고 수정값을 <strong><code>map → odom</code> 변환</strong>으로 퍼블리시 → 지도가 점점 더 일관성 있게 유지됩니다.</p>
+</div>
+<p><strong>⑤ 안정화 파라미터</strong> — 센서 데이터를 TF에 맞춰 정합</p>
+<p>SLAM은 센서값만으로 찍지 않고, 센서 측정과 동시에 로봇 위치 추정 정보를 사용해 좌표를 결정합니다. <code>map → odom → body</code> 관계를 시간에 따라 기록·변환합니다.</p>
+<div class="admonition warning">
+<p class="admonition-title">시간 정합 실패 예시</p>
+<p>LiDAR 스캔은 <code>12:00:00.500</code>에 들어왔는데 <code>odom→body</code> 변환은 <code>12:00:00.400</code>까지만 기록되어 있다면 → SLAM은 스캔이 <strong>어디에서 찍힌 건지 알 수 없음</strong>.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>값</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tf_buffer_duration</code></td>
+<td><code>30.0</code></td>
+<td>최대 30초 전까지 TF 기록을 되돌아가 변환 가능하도록 캐싱</td>
+</tr>
+<tr>
+<td><code>transform_timeout</code></td>
+<td><code>1.0</code></td>
+<td>1초 안에 TF 변환을 못 찾으면 데이터 폐기</td>
+</tr>
+<tr>
+<td><code>queue_size</code></td>
+<td><code>100</code></td>
+<td>라이다가 초당 수십 프레임을 내보낼 때도 버퍼 100개로 여유를 두어 누락 방지</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⑥ 센서 특성</strong> — 센서 스펙 반영, 시뮬레이션 부하 조절 (하드웨어 실제 스펙을 정확히 반영해야 정확히 동작)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># slam_toolbox_params.yaml (센서 특성 발췌)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span><span class="w">        </span><span class="c1"># 한 칸이 5cm짜리인 지도 격자</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">max_laser_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">     </span><span class="c1"># 라이다 실제 최대 감지 거리 20m 한계 반영</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">minimum_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w">      </span><span class="c1"># 라이다 실제 최소 감지 거리 1m 한계 반영</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">throttle_scans</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w">       </span><span class="c1"># 들어오는 스캔 주기를 절반으로 줄여 처리장치 부하 관리</span>
 </code></pre></div>
-<h2 id="3_1">🛠️ 3교시. 실습 — 자동 주행 노드<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
-<p><strong>Step 4 — 사각형 주행 노드</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">geometry_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Twist</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;square_drive&#39;</span><span class="p">)</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tick</span><span class="p">)</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">tick</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="n">cmd</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="c1"># 2초 직진, 1초 회전 반복</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">%</span> <span class="mi">30</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            <span class="n">cmd</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.2</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>            <span class="n">cmd</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.5</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+=</span> <span class="mf">0.1</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">();</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">Square</span><span class="p">())</span>
+<hr />
+<h2 id="05-nav2">🚗 05. Nav2 사용하기<a class="headerlink" href="#05-nav2" title="Permanent link">&para;</a></h2>
+<h3 id="nav2">Nav2 프레임워크의 명령 흐름<a class="headerlink" href="#nav2" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="Nav2 프레임워크 전체 구조" src="../img/w06/s31.jpg" width="720" /></p>
+<figcaption>
+<p>Nav2 사용하기 — 슬라이드 31: Nav2 프레임워크 구조 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<p><strong>Step 1</strong> — 사용자가 <code>NavigateToPose</code> 액션으로 목표 위치 명령
+<strong>Step 2</strong> — 명령은 <strong>BT Navigator Server</strong>로 전달
+<strong>Step 3</strong> — BT는 XML 플러그인을 불러와 <strong>계획 → 제어 → 복구</strong> 순서를 트리 로직으로 관리</p>
+<table>
+<thead>
+<tr>
+<th>내부 구성 요소</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Planner Server</strong></td>
+<td>전역 비용맵(Global Costmap) 기반 <strong>Global Path</strong> 생성</td>
+</tr>
+<tr>
+<td><strong>Controller Server</strong></td>
+<td>전역 경로 + 로컬 비용맵(Local Costmap)으로 <strong><code>cmd_vel</code></strong> 생성 후 로봇 구동</td>
+</tr>
+<tr>
+<td><strong>Recovery Server</strong></td>
+<td>장애·정지 상황 시 후진/회전 등 <strong>복구 행동</strong> 실행</td>
+</tr>
+</tbody>
+</table>
+<p>실시간으로 LaserScan/PointCloud2 센서 입력으로 비용맵을 지속 갱신하고, TF 프레임(<code>odom</code>, <code>map</code>, <code>base_link</code>) 정합을 유지하며, <code>map</code> 토픽의 점유 그리드 맵 정보를 활용합니다.</p>
+<h3 id="nav2-yaml">Nav2 YAML 구성 요소<a class="headerlink" href="#nav2-yaml" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">판단 — BT Navigator (<code>bt_navigator</code>)</label><label for="__tabbed_2_2">계획 — Planner Server (<code>planner_server</code>)</label><label for="__tabbed_2_3">제어 — Controller Server (<code>controller_server</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>핵심은 <em>"어디로 갈까?"</em> 가 아니라 <em>"어떤 논리로 행동할까?"</em></li>
+<li><strong>Behavior Tree</strong>: 로봇 행동 로직을 트리 구조로 (루트 → 조건 검사 → 상황별 행동 선택)</li>
+<li>예: 경로 생성 → 경로 따라가기 → 장애물 감지 시 회피 → 경로 재계획</li>
+<li>Nav2에서 행동 트리를 <strong>XML 파일</strong>로 정의</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>다양한 상황을 고려한 <strong>Global Path</strong> 생성 (맵 + 현재 위치 + 목표 좌표 → 연속된 좌표 포인트)</li>
+<li><strong>NavFn</strong>: Nav2 대표 플래너. A* &amp; Dijkstra 기반, 격자 지도에서 최단 경로 탐색</li>
+<li>주요 파라미터<ul>
+<li><code>expected_planner_frequency: 5.0</code> → 초당 5번 경로 재계획</li>
+<li><code>Tolerance: 0.5</code> → 목표 지점 반경 50cm 안에 들어오면 도착 인정(센서 오차 허용)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>경로 계획 정보만으로는 제어 불가 → <strong>속도 명령(<code>cmd_vel</code>)</strong> 으로 변환 필요</li>
+<li>경로를 실제 주행 명령(선형 속도·각속도)으로 변환</li>
+<li><strong>RegulatedPurePursuitController</strong>: Nav2 대표 컨트롤러. <em>Pure Pursuit(순수 추종)</em> 기반으로 항상 경로 위 일정 거리 앞의 목표점을 바라보며 곡선을 그리듯 추종</li>
+</ul>
+</div>
+</div>
+</div>
+<figure>
+<p><img alt="Nav2 YAML — Costmap 구성" src="../img/w06/s34.jpg" width="720" /></p>
+<figcaption>
+<p>Nav2 사용하기 — 슬라이드 34: Costmap 구성 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="costmap-global_costmap-local_costmap">시야 — Costmap (<code>global_costmap</code> / <code>local_costmap</code>)<a class="headerlink" href="#costmap-global_costmap-local_costmap" title="Permanent link">&para;</a></h3>
+<p><strong>Costmap</strong>은 공간을 위험도나 접근 비용(cost)으로 표기한 지도입니다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>기준 프레임</th>
+<th>특징 &amp; 주요 파라미터</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Global Costmap</strong></td>
+<td><code>map</code></td>
+<td>SLAM이 만든 전역 지도 + 실시간 장애물 정보를 합쳐 생성 → Planner에 반환. <code>static_layer</code>(SLAM 정적 지도 로드), <code>obstacle_layer</code>(LiDAR 등 새 장애물 반영), <code>inflation_layer</code>(장애물 주변 완충 거리 확보)</td>
+</tr>
+<tr>
+<td><strong>Local Costmap</strong></td>
+<td><code>odom</code></td>
+<td>보통 6×6m, 로봇 중심으로 이동. Controller가 즉각적 회피·주행 판단에 사용. <code>rolling_window: true</code>(지도 창이 로봇을 따라다니며 최신 주변 정보만 유지), <code>robot_base_frame: body</code>(<code>body</code>로 지정하지 않으면 맵이 엉뚱한 위치에 생성)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="velocity-smoother-velocity_smoother">속도 — Velocity Smoother (<code>velocity_smoother</code>)<a class="headerlink" href="#velocity-smoother-velocity_smoother" title="Permanent link">&para;</a></h3>
+<p>컨트롤러가 보내는 정보는 물리세계에 바로 적용하기 어렵습니다. (예: 0m/s → 2m/s를 바로 적용하면 급가속) → <strong>정해진 주기대로 점진적인 속도 변화</strong> 명령으로 다듬습니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># velocity_smoother (주요 파라미터)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">smoothing_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span><span class="w">      </span><span class="c1"># 20Hz 주기로 속도 변화 (낮으면 계단식, 높으면 자원 낭비)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">max_velocity</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">2.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># [x, y, θ] → x축 2.0m/s, y축 이동 불가, 회전 2.0rad/s 제한</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">accel_limit</span><span class="p">:</span><span class="w">  </span><span class="p p-Indicator">[</span><span class="nv">2.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># 최대 가속 기울기 제한</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nt">decel_limit</span><span class="p">:</span><span class="w">  </span><span class="p p-Indicator">[</span><span class="nv">2.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.0</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># 최대 감속 기울기 제한</span>
 </code></pre></div>
-<p><strong>Step 5 — 실행</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>my_first_pkg<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>my_first_pkg<span class="w"> </span>square_drive
-</code></pre></div>
-<p>✅ 로봇이 대략 사각형 궤적으로 움직이면 성공.</p>
+<hr />
+<h2 id="06-wrap-up">🧩 06. Wrap-up<a class="headerlink" href="#06-wrap-up" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="Wrap-up — 오늘 강의 요약" src="../img/w06/s37.jpg" width="720" /></p>
+<figcaption>
+<p>Wrap-up — 슬라이드 37 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<div class="admonition success">
+<p class="admonition-title">오늘 강의 내용 요약</p>
+<ul>
+<li>SLAM의 <strong>Front-end / Back-end</strong>, 그리고 <code>map → odom → body</code> <strong>프레임 관계</strong> 이해</li>
+<li><strong>slam_toolbox</strong> 와 <strong>Nav2</strong> 의 구성 요소 이해 (slam_toolbox: 스캔 매칭·루프 클로저·그래프 최적화 / Nav2: BT Navigator·Planner·Controller·Costmap·Velocity Smoother)</li>
+<li>시뮬레이션에 필요한 <strong>YAML 설계</strong> (시간동기화·프레임·센서 토픽·오도메트리/TF·안정화·센서 특성)</li>
+</ul>
+</div>
 <h2 id="_1">✅ 체크포인트<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> cmd_vel로 로봇이 움직이는가</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> /odom에서 위치 변화가 보이는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> SLAM의 Front-end(제약 조건 생성)와 Back-end(그래프 최적화)의 역할을 구분해 설명할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>map → odom → body</code> 좌표계의 차이와 <code>map → odom</code> 변환의 의미를 설명할 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> slam_toolbox YAML의 6대 구성 요소(시간동기화·프레임·센서 토픽·오도메트리/TF·안정화·센서 특성)를 채울 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Nav2의 Planner / Controller / BT Navigator 역할과 대표 플러그인을 짝지을 수 있는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Global Costmap과 Local Costmap의 기준 프레임·용도 차이를 설명할 수 있는가</li>
 </ul>
-<h2 id="_2">📝 과제<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>원형 궤적(일정한 v, ω)으로 주행하도록 수정</li>
-<li>/odom 값을 읽어 이동 거리를 출력하는 기능 추가</li>
-</ul>
-<h2 id="ppt">🖼️ PPT 슬라이드 개요<a class="headerlink" href="#ppt" title="Permanent link">&para;</a></h2>
-<ol>
-<li>이동로봇의 운동학 개요</li>
-<li>차동구동(differential drive) 모델</li>
-<li>cmd_vel(Twist): linear.x, angular.z</li>
-<li>Odometry 원리와 누적 오차(drift)</li>
-<li>Teleop과 자율 주행 노드 비교</li>
-<li>실습: 사각형/원형 주행</li>
-</ol>
-<h2 id="_3">📊 평가 루브릭<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">📊 평가 루브릭<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>항목</th>
 <th>배점</th>
-<th>A(우수)</th>
-<th>B(보통)</th>
-<th>C(미흡)</th>
+<th>기준</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>cmd_vel 제어</td>
-<td>40</td>
-<td>의도 궤적 구현</td>
-<td>단순 이동</td>
-<td>미동작</td>
+<td>SLAM 원리 이해</td>
+<td>25</td>
+<td>Front-end/Back-end, Odometry·Sensor Fusion 역할을 정확히 설명</td>
 </tr>
 <tr>
-<td>odom 해석</td>
-<td>30</td>
-<td>거리 계산·검증</td>
-<td>값 확인</td>
-<td>미확인</td>
+<td>slam_toolbox YAML 설계</td>
+<td>25</td>
+<td>6대 구성 요소를 센서 스펙에 맞게 합리적으로 작성</td>
 </tr>
 <tr>
-<td>과제(원형 주행)</td>
-<td>30</td>
-<td>완성·제출</td>
-<td>일부</td>
-<td>미제출</td>
+<td>Nav2 스택 구조</td>
+<td>25</td>
+<td>Planner·Controller·BT Navigator·Costmap의 역할과 흐름 설명</td>
+</tr>
+<tr>
+<td>좌표계·TF 정합</td>
+<td>15</td>
+<td><code>map→odom→body</code> 관계와 시간 정합 파라미터의 필요성 설명</td>
+</tr>
+<tr>
+<td>종합 적용</td>
+<td>10</td>
+<td>SLAM→Nav2 연계 흐름을 시뮬레이션 관점에서 설명</td>
+</tr>
+<tr>
+<td><strong>합계</strong></td>
+<td><strong>100</strong></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">🧰 사전 준비물 &amp; 트러블슈팅<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><strong>준비물</strong>: turtlebot3_gazebo, <code>TURTLEBOT3_MODEL=burger</code></p>
+<h2 id="_3">🔗 출처 및 참고자료<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li>❌ 로봇이 안 움직임 → <code>/cmd_vel</code> 토픽명·시뮬 실행 확인</li>
-<li>❌ 회전만 함 → linear.x/angular.z 값과 단위(rad/s) 확인</li>
-<li>❌ odom drift 누적 → 정상 현상, 7주차 SLAM으로 보정</li>
+<li>교안 <strong>「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」</strong> (제작: <em>ENGI UNIVERSE</em>)</li>
+<li>slam_toolbox — <a href="https://github.com/SteveMacenski/slam_toolbox">https://github.com/SteveMacenski/slam_toolbox</a></li>
+<li>Nav2 (Navigation2) 공식 문서 — <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
+<li>ROS 2 TF2 (tf2_tools) — <a href="https://docs.ros.org/en/rolling/Concepts/About-Tf2.html">https://docs.ros.org/en/rolling/Concepts/About-Tf2.html</a></li>
 </ul>
-<h2 id="_5">🔗 참고자료<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="isaac-sim-510">📘 Isaac Sim 5.1.0 공식 문서<a class="headerlink" href="#isaac-sim-510" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">공식 문서 (NVIDIA Isaac Sim 5.1.0)</p>
+<p>본 주차의 Isaac Sim/ROS 2 API·절차는 아래 공식 문서로 보강·검증할 수 있습니다.</p>
 <ul>
-<li>geometry_msgs/Twist — <a href="https://docs.ros.org/en/humble/p/geometry_msgs/">https://docs.ros.org/en/humble/p/geometry_msgs/</a></li>
-<li>TurtleBot3 주행 예제 — <a href="https://emanual.robotis.com/docs/en/platform/turtlebot3/basic_operation/">https://emanual.robotis.com/docs/en/platform/turtlebot3/basic_operation/</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/ros2_landing_page.html">ROS 2 통합(랜딩)</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html">ROS 2 튜토리얼</a></li>
 </ul>
+</div>
+<!-- FULLDECK -->
+<h2 id="_4">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<details class="note">
+<summary>원본 강의 슬라이드 전체 (37매)</summary>
+<p><img alt="슬라이드 01" src="../img/w06/s01.jpg" width="700" />
+<img alt="슬라이드 02" src="../img/w06/s02.jpg" width="700" />
+<img alt="슬라이드 03" src="../img/w06/s03.jpg" width="700" />
+<img alt="슬라이드 04" src="../img/w06/s04.jpg" width="700" />
+<img alt="슬라이드 05" src="../img/w06/s05.jpg" width="700" />
+<img alt="슬라이드 06" src="../img/w06/s06.jpg" width="700" />
+<img alt="슬라이드 07" src="../img/w06/s07.jpg" width="700" />
+<img alt="슬라이드 08" src="../img/w06/s08.jpg" width="700" />
+<img alt="슬라이드 09" src="../img/w06/s09.jpg" width="700" />
+<img alt="슬라이드 10" src="../img/w06/s10.jpg" width="700" />
+<img alt="슬라이드 11" src="../img/w06/s11.jpg" width="700" />
+<img alt="슬라이드 12" src="../img/w06/s12.jpg" width="700" />
+<img alt="슬라이드 13" src="../img/w06/s13.jpg" width="700" />
+<img alt="슬라이드 14" src="../img/w06/s14.jpg" width="700" />
+<img alt="슬라이드 15" src="../img/w06/s15.jpg" width="700" />
+<img alt="슬라이드 16" src="../img/w06/s16.jpg" width="700" />
+<img alt="슬라이드 17" src="../img/w06/s17.jpg" width="700" />
+<img alt="슬라이드 18" src="../img/w06/s18.jpg" width="700" />
+<img alt="슬라이드 19" src="../img/w06/s19.jpg" width="700" />
+<img alt="슬라이드 20" src="../img/w06/s20.jpg" width="700" />
+<img alt="슬라이드 21" src="../img/w06/s21.jpg" width="700" />
+<img alt="슬라이드 22" src="../img/w06/s22.jpg" width="700" />
+<img alt="슬라이드 23" src="../img/w06/s23.jpg" width="700" />
+<img alt="슬라이드 24" src="../img/w06/s24.jpg" width="700" />
+<img alt="슬라이드 25" src="../img/w06/s25.jpg" width="700" />
+<img alt="슬라이드 26" src="../img/w06/s26.jpg" width="700" />
+<img alt="슬라이드 27" src="../img/w06/s27.jpg" width="700" />
+<img alt="슬라이드 28" src="../img/w06/s28.jpg" width="700" />
+<img alt="슬라이드 29" src="../img/w06/s29.jpg" width="700" />
+<img alt="슬라이드 30" src="../img/w06/s30.jpg" width="700" />
+<img alt="슬라이드 31" src="../img/w06/s31.jpg" width="700" />
+<img alt="슬라이드 32" src="../img/w06/s32.jpg" width="700" />
+<img alt="슬라이드 33" src="../img/w06/s33.jpg" width="700" />
+<img alt="슬라이드 34" src="../img/w06/s34.jpg" width="700" />
+<img alt="슬라이드 35" src="../img/w06/s35.jpg" width="700" />
+<img alt="슬라이드 36" src="../img/w06/s36.jpg" width="700" />
+<img alt="슬라이드 37" src="../img/w06/s37.jpg" width="700" /></p>
+</details>
 
 
 
@@ -1256,7 +1982,7 @@
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
         
           
-          <a href="../week05/" class="md-footer__link md-footer__link--prev" aria-label="이전: 5주차 · 로봇 시뮬레이션">
+          <a href="../week05/" class="md-footer__link md-footer__link--prev" aria-label="이전: 5주차 · Spot+ATS 시스템 구축">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1266,20 +1992,20 @@
                 이전
               </span>
               <div class="md-ellipsis">
-                5주차 · 로봇 시뮬레이션
+                5주차 · Spot+ATS 시스템 구축
               </div>
             </div>
           </a>
         
         
           
-          <a href="../week07/" class="md-footer__link md-footer__link--next" aria-label="다음: 7주차 · SLAM과 자율주행">
+          <a href="../week07/" class="md-footer__link md-footer__link--next" aria-label="다음: 7주차 · Spot+ATS SLAM 연동 1">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                7주차 · SLAM과 자율주행
+                7주차 · Spot+ATS SLAM 연동 1
               </div>
             </div>
             <div class="md-footer__button md-icon">
