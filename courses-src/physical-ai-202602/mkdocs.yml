@@ -43,6 +43,9 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.blocks.caption
   - pymdownx.tasklist:
       custom_checkbox: true
 
@@ -63,7 +66,7 @@ nav:
     - 12주차 · 모방학습: week12.md
     - 13주차 · Sim-to-Real: week13.md
     - 14주차 · Foundation Models & VLA: week14.md
-    - 15주차 · 종합 프로젝트: week15.md
+    - 15주차 · System-2 테스트 & 검증: week15.md
   - 🏠 PARC Lab 홈: https://parclab-hsu.github.io/
 
 extra:

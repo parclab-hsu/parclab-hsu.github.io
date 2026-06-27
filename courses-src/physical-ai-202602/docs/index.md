@@ -42,7 +42,7 @@
 | [12](week12.md) | 모방학습 | Behavior Cloning·Diffusion Policy | 시연 수집·BC 학습 |
 | [13](week13.md) | Sim-to-Real | Reality Gap·도메인 랜덤화 | 도메인 랜덤화 실험 |
 | [14](week14.md) | Foundation Models & VLA | LLM·VLM·VLA | 언어명령 제어 체험 |
-| [15](week15.md) | 종합 프로젝트 | End-to-End 시스템 통합 | 통합 프로젝트·시연·발표 |
+| [15](week15.md) | System-2 테스트 & 검증 | System-1/System-2 통합·시나리오 검증 | 통합 프로젝트·시연·발표 |
 
 ## 🖥️ 실습 환경 안내
 

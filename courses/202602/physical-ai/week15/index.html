@@ -25,7 +25,7 @@
     
     
       
-        <title>15주차 · 종합 프로젝트 - Physical AI · 2026-2학기</title>
+        <title>15주차 · System-2 테스트 & 검증 - Physical AI · 2026-2학기</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#15" class="md-skip">
+        <a href="#15-system-2" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              15주차 · 종합 프로젝트
+              15주차 · System-2 테스트 & 검증
             
           </span>
         </div>
@@ -723,7 +723,7 @@
   <span class="md-ellipsis">
     
   
-    15주차 · 종합 프로젝트
+    15주차 · System-2 테스트 & 검증
   
 
     
@@ -741,7 +741,7 @@
   <span class="md-ellipsis">
     
   
-    15주차 · 종합 프로젝트
+    15주차 · System-2 테스트 & 검증
   
 
     
@@ -778,10 +778,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#0-system-1-system-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 시스템 아키텍처
+        🧭 0. 프로젝트 전체 그림 — System-1 / System-2
       
     </span>
   </a>
@@ -789,22 +789,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#1-system-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 실습 — 통합 프로젝트
+        🛰️ 1교시. System-2 단독 검증 (공간 지능 테스트)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠️ 실습 — 통합 프로젝트">
+    <nav class="md-nav" aria-label="🛰️ 1교시. System-2 단독 검증 (공간 지능 테스트)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ros-2" class="md-nav__link">
+  <a href="#abcd-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        시스템 구성 (ROS 2 노드)
+        테스트 지도 좌표계 (A/B/C/D 4구역)
       
     </span>
   </a>
@@ -812,10 +812,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실행 절차
+        테스트 명령
       
     </span>
   </a>
@@ -823,10 +823,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#orchestrator" class="md-nav__link">
+  <a href="#modelspy-llm-4-02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        orchestrator 핵심 로직 (예시)
+        models.py — LLM과 로봇 사이의 "계약서" (4강 §02 재구성)
       
     </span>
   </a>
@@ -835,50 +835,155 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-system-2-system-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤝 2교시. System-2 &amp; System-1 연동 테스트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤝 2교시. System-2 &amp; System-1 연동 테스트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-a-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario A — 기초 기동 ("D 구역으로 가줘")
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario B — 인터랙티브 미션 (이동·스캔·보고)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-c-d-c-b-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario C — 장기 순찰 (D, C, B, A 순차 정찰)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario D — 객체 인식 및 동적 추적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_plannerpy-4-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llm_planner.py — 자연어를 검증된 계획으로 (4강 §03 재구성)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system2_nodepy-ros-2-4-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        system2_node.py — ROS 2 런타임 통합 (4강 §04 재구성)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-physical-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 3교시. 고도화 방향 (최신 Physical AI 연구 동향)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 3교시. 고도화 방향 (최신 Physical AI 연구 동향)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#physical-ai-vla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physical AI / VLA와의 연결
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        우리 프로젝트의 확장안
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Wrap-up — 한 학기 풀스택 정리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크포인트
+      
+    </span>
+  </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎤 발표 및 평가
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎤 발표 및 평가">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#10-qa-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        발표 구성 (팀당 10분 + Q&amp;A 5분)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        제출물 (팀별)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         📊 평가 루브릭 (기말 프로젝트)
@@ -889,10 +994,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧭 마무리 — 한 학기 정리
+        🖼️ 원본 강의 슬라이드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 출처 및 참고자료
       
     </span>
   </a>
@@ -980,10 +1096,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#0-system-1-system-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 시스템 아키텍처
+        🧭 0. 프로젝트 전체 그림 — System-1 / System-2
       
     </span>
   </a>
@@ -991,22 +1107,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#1-system-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠️ 실습 — 통합 프로젝트
+        🛰️ 1교시. System-2 단독 검증 (공간 지능 테스트)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠️ 실습 — 통합 프로젝트">
+    <nav class="md-nav" aria-label="🛰️ 1교시. System-2 단독 검증 (공간 지능 테스트)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ros-2" class="md-nav__link">
+  <a href="#abcd-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        시스템 구성 (ROS 2 노드)
+        테스트 지도 좌표계 (A/B/C/D 4구역)
       
     </span>
   </a>
@@ -1014,10 +1130,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실행 절차
+        테스트 명령
       
     </span>
   </a>
@@ -1025,10 +1141,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#orchestrator" class="md-nav__link">
+  <a href="#modelspy-llm-4-02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        orchestrator 핵심 로직 (예시)
+        models.py — LLM과 로봇 사이의 "계약서" (4강 §02 재구성)
       
     </span>
   </a>
@@ -1037,50 +1153,155 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-system-2-system-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤝 2교시. System-2 &amp; System-1 연동 테스트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤝 2교시. System-2 &amp; System-1 연동 테스트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-a-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario A — 기초 기동 ("D 구역으로 가줘")
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario B — 인터랙티브 미션 (이동·스캔·보고)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-c-d-c-b-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario C — 장기 순찰 (D, C, B, A 순차 정찰)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario D — 객체 인식 및 동적 추적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_plannerpy-4-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llm_planner.py — 자연어를 검증된 계획으로 (4강 §03 재구성)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system2_nodepy-ros-2-4-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        system2_node.py — ROS 2 런타임 통합 (4강 §04 재구성)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-physical-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 3교시. 고도화 방향 (최신 Physical AI 연구 동향)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 3교시. 고도화 방향 (최신 Physical AI 연구 동향)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#physical-ai-vla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physical AI / VLA와의 연결
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        우리 프로젝트의 확장안
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Wrap-up — 한 학기 풀스택 정리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크포인트
+      
+    </span>
+  </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎤 발표 및 평가
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎤 발표 및 평가">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#10-qa-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        발표 구성 (팀당 10분 + Q&amp;A 5분)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        제출물 (팀별)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         📊 평가 루브릭 (기말 프로젝트)
@@ -1091,10 +1312,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧭 마무리 — 한 학기 정리
+        🖼️ 원본 강의 슬라이드
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 출처 및 참고자료
       
     </span>
   </a>
@@ -1118,10 +1350,14 @@
 
 
 
-<h1 id="15">15주차 — 종합 프로젝트 &amp; 발표<a class="headerlink" href="#15" title="Permanent link">&para;</a></h1>
+<h1 id="15-system-2">15주차 — System-2 테스트 및 검증 (종합 프로젝트)<a class="headerlink" href="#15-system-2" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">학습목표</p>
-<p>한 학기 동안 배운 <strong>인식(Perception) – 판단/학습(Decision/Learning) – 제어(Control)</strong> 요소를 하나의 임베디드 지능 시스템으로 통합하고, 시뮬레이션에서 실행·시연·발표한다.</p>
+<p>한 학기 동안 구축한 <strong>Spot+ATS 보안 로봇</strong>의 두뇌(System-2, LLM 플래너)와 몸(System-1, 로봇 제어)을 연결하여, 자연어 명령이 <strong>계획 생성 → 실행 → 현장 대응</strong>으로 이어지는 전체 파이프라인을 시뮬레이션에서 검증하고, 최신 Physical AI(VLA) 관점에서 고도화 방향을 논의한다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Sources)</p>
+<p>본 주차의 그림과 예제는 강의 교안 <strong>『Physical AI』 5강 「System-2 테스트 및 검증」</strong>, <strong>4강 「System-2 LLM Planner 설계」</strong>(제작: <em>ENGI UNIVERSE</em>)와 <strong>Spot+ATS 프로젝트 사용 매뉴얼(Rev 1.4)</strong> 을 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 <strong>재구성 예제</strong>입니다(원본 소스 비공개).</p>
 </div>
 <h2 id="3">⏱️ 3시간 구성<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
@@ -1130,128 +1366,339 @@
 <th>교시</th>
 <th>시간</th>
 <th>내용</th>
+<th>근거 교안</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1교시</td>
 <td>50분</td>
-<td>시스템 통합 점검 &amp; 리허설</td>
+<td>System-2 단독 검증 (공간 지능 테스트)</td>
+<td>5강 §02</td>
 </tr>
 <tr>
 <td>2교시</td>
 <td>50분</td>
-<td>팀 발표 &amp; 시연</td>
+<td>System-2 &amp; System-1 연동 테스트 (시나리오 A~D)</td>
+<td>5강 §03</td>
 </tr>
 <tr>
 <td>3교시</td>
 <td>50분</td>
-<td>상호 평가 &amp; 한 학기 정리</td>
+<td>고도화 방향(VLA·멀티에이전트) &amp; Wrap-up</td>
+<td>5강 §04~05</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_1">📖 시스템 아키텍처<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>임베디드 지능의 표준 <strong>Sense → Plan → Act</strong> 루프:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[센서] → [인식] → [상태추정/지도] → [판단/정책] → [동작계획] → [제어]
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Camera   YOLO/CNN   SLAM·Nav2        VLA·RL Policy   경로·모션    구동/매니퓰레이션
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> LiDAR                                               계획
-</code></pre></div>
+<hr />
+<h2 id="0-system-1-system-2">🧭 0. 프로젝트 전체 그림 — System-1 / System-2<a class="headerlink" href="#0-system-1-system-2" title="Permanent link">&para;</a></h2>
+<p>이 프로젝트의 핵심은 <strong>"추론(Brain)"과 "실행(Controller)"의 분리</strong>입니다. 최신 VLA 시스템 아키텍처와 동일한 <strong>모듈러(modular)</strong> 구조입니다.</p>
 <ul>
-<li>각 단계가 한 학기 어느 주차에서 다뤄졌는지 대응시키며 전체 그림을 복기</li>
-<li>동기·비동기 처리, 실시간성, 좌표계(TF) 일관성 등 통합 시 발생하는 문제를 다룸</li>
+<li><strong>System-2 (LLM)</strong>: 자연어 명령 → 고수준 계획(High Level Plan) 생성 — <em>추론 계층</em></li>
+<li><strong>System-1</strong>: 계획을 받아 실제 로봇을 제어하여 동작 수행 — <em>실행 계층</em></li>
 </ul>
-<h2 id="_2">🛠️ 실습 — 통합 프로젝트<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="admonition example">
-<p class="admonition-title">프로젝트 주제: 언어 명령 기반 모바일 매니퓰레이션 에이전트</p>
-<p>사용자의 자연어 명령(예: "빨간 박스를 집어서 테이블로 옮겨")을 받아 <strong>인식 → 내비게이션 → 그래스핑</strong>을 자율 수행하는 통합 에이전트를 시뮬레이션에서 완성.</p>
-</div>
-<h3 id="ros-2">시스템 구성 (ROS 2 노드)<a class="headerlink" href="#ros-2" title="Permanent link">&para;</a></h3>
+<p>System-2는 <strong>규칙 정의(<code>models.py</code>) → 지능 생성(<code>llm_planner.py</code>) → 통신·관리(<code>system2_node.py</code>)</strong> 의 세 축으로 구성됩니다.</p>
+<figure>
+<p><img alt="System-2의 세 가지 축: models.py → llm_planner.py → system2_node.py" src="../img/w15/g4-03.png" width="720" /></p>
+<figcaption>
+<p>교안 4강 §01 — System-2의 3축 구조 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<hr />
+<h2 id="1-system-2">🛰️ 1교시. System-2 단독 검증 (공간 지능 테스트)<a class="headerlink" href="#1-system-2" title="Permanent link">&para;</a></h2>
+<p>로봇(System-1) 없이 <strong>System-2만 실행</strong>해 계획 품질을 먼저 검증합니다. → <em>"로봇 제어 문제"인지 "계획 생성 문제"인지 원인을 분리</em>합니다.</p>
+<h3 id="abcd-4">테스트 지도 좌표계 (A/B/C/D 4구역)<a class="headerlink" href="#abcd-4" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>노드</th>
-<th>역할</th>
-<th>입력 → 출력</th>
+<th>구역</th>
+<th>x</th>
+<th>y</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>perception_node</code></td>
-<td>YOLO 객체탐지 + 3D 위치 추정</td>
-<td><code>/camera/image</code> → <code>/detected_objects</code></td>
+<td>A</td>
+<td>−10.7</td>
+<td>−12.6</td>
 </tr>
 <tr>
-<td><code>command_node</code></td>
-<td>자연어 명령 파싱(VLM/규칙)</td>
-<td>텍스트 → <code>/task_goal</code></td>
+<td>B</td>
+<td>+9.8</td>
+<td>−12.6</td>
 </tr>
 <tr>
-<td><code>nav_node</code></td>
-<td>Nav2 목표지점 이동</td>
-<td><code>/task_goal</code> → <code>/cmd_vel</code></td>
+<td>C</td>
+<td>−10.7</td>
+<td>−18.3</td>
 </tr>
 <tr>
-<td><code>manip_node</code></td>
-<td>MoveIt 그래스핑</td>
-<td>객체 pose → 관절 궤적</td>
-</tr>
-<tr>
-<td><code>orchestrator</code></td>
-<td>behavior tree 태스크 조율</td>
-<td>전체 상태 관리</td>
+<td>D</td>
+<td>+9.8</td>
+<td>−18.3</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_3">실행 절차<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1) 빌드 &amp; 환경 기동</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>~/cluad_ws<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>ros2<span class="w"> </span>launch<span class="w"> </span>capstone_bringup<span class="w"> </span>world.launch.py
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 2) 통합 파이프라인 실행</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>ros2<span class="w"> </span>launch<span class="w"> </span>capstone_bringup<span class="w"> </span>agent.launch.py
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># 3) 자연어 명령 전송</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>--once<span class="w"> </span>/user_command<span class="w"> </span>std_msgs/String<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="s2">&quot;{data: &#39;pick the red box and place it on the table&#39;}&quot;</span>
+<p>LLM은 이 좌표로 구역 <strong>중앙 좌표를 계산</strong>해 <code>goal.x, goal.y, goal.yaw</code> 를 채웁니다.</p>
+<h3 id="_1">테스트 명령<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">쉬움 (단일 액션)</label><label for="__tabbed_1_2">어려움 (복합 + 조건)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>명령: <strong>"A 구역으로 이동해줘"</strong></p>
+<ul>
+<li>핵심: LLM이 A 구역 중앙 좌표를 계산해 <code>goal</code> 을 올바르게 채우는지</li>
+<li>검증: JSON에서 <code>task: move_to</code> 확인, <code>params.goal.{x,y,yaw}</code> 가 A 구역 좌표로 출력 → 성공</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>명령: <strong>"A, C, D 구역을 순서대로 이동하면서 주변을 스캔하고, 만약 사람이 발견되면 보고하고 대기해줘."</strong></p>
+<ul>
+<li>핵심: 여러 단위 액션을 순서대로 생성하고, 특정 액션에 붙은 <strong>조건</strong>(사람 발견 시 <code>report_and_wait</code>)을 지키는지 확인</li>
+</ul>
+</div>
+</div>
+</div>
+<figure>
+<p><img alt="System-2 단독 검증 — 터미널에서 자연어 명령이 HighLevelPlan JSON으로 변환" src="../img/w15/g5-06.png" width="720" /></p>
+<figcaption>
+<p>교안 5강 §02 — System-2 단독 검증(공간 지능 테스트) 콘솔 출력 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="modelspy-llm-4-02"><code>models.py</code> — LLM과 로봇 사이의 "계약서" (4강 §02 재구성)<a class="headerlink" href="#modelspy-llm-4-02" title="Permanent link">&para;</a></h3>
+<p>규격·범위를 벗어난 데이터는 <strong>처음부터 통과시키지 않는</strong> 안전장치입니다. <code>task</code> 는 <strong>5개 문자열만</strong> 허용해 LLM 환각(hallucination)을 차단합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Literal</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Step</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="c1"># 허용된 단위 액션 5가지만 인정 → 나머지는 에러(환각 방지)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">task</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;move_to&quot;</span><span class="p">,</span> <span class="s2">&quot;scan&quot;</span><span class="p">,</span> <span class="s2">&quot;report_and_wait&quot;</span><span class="p">,</span> <span class="s2">&quot;track&quot;</span><span class="p">,</span> <span class="s2">&quot;return_to_home&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{}</span>              <span class="c1"># task별 데이터(좌표/각도/대상 등)에 유연 대응</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">retry</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># 재시도 횟수는 0 이상만 허용</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">class</span><span class="w"> </span><span class="nc">ReplanRules</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">lost_target_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">5.0</span>                       <span class="c1"># 추적 대상 놓치면 최대 5초 재탐색 후 포기</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">battery_rtb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mf">0.18</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>   <span class="c1"># 배터리 18% 이하면 복귀(RTB)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">class</span><span class="w"> </span><span class="nc">HighLevelPlan</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span>          <span class="c1"># 포맷 버전(구/신 구분)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">intent</span><span class="p">:</span> <span class="nb">str</span>                     <span class="c1"># 사람이 읽을 수 있는 미션 의도</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">steps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Step</span><span class="p">]</span>               <span class="c1"># 순서대로 실행할 단위 액션 시나리오</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">replan_rules</span><span class="p">:</span> <span class="n">ReplanRules</span> <span class="o">=</span> <span class="n">ReplanRules</span><span class="p">()</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">class</span><span class="w"> </span><span class="nc">VisionSnapshot</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>               <span class="c1"># 카메라가 본 상황 한 줄 요약</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="k">class</span><span class="w"> </span><span class="nc">System1State</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">mission_id</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">system1_state</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;idle&quot;</span><span class="p">,</span> <span class="s2">&quot;moving&quot;</span><span class="p">,</span> <span class="s2">&quot;working&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="n">current_task</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">step_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>             <span class="c1"># 전체 N단계 중 몇 번째 Step인지(진척도)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="n">pose</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{}</span>                 <span class="c1"># 로봇 현재 위치/자세(x, y, yaw 등)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="n">vision_snapshot</span><span class="p">:</span> <span class="n">VisionSnapshot</span> <span class="o">=</span> <span class="n">VisionSnapshot</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="orchestrator">orchestrator 핵심 로직 (예시)<a class="headerlink" href="#orchestrator" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<div class="admonition success">
+<p class="admonition-title">검증 사항</p>
+<p>System-2가 모호한 자연어 명령을 <strong>구조화된 <code>HighLevelPlan</code> JSON으로 안정적으로 변환</strong>하는 추론 엔진임을 확인 → 이후 System-1과 연결해도 될 만큼 신뢰할 수 있는 상태임을 검증.</p>
+</div>
+<hr />
+<h2 id="2-system-2-system-1">🤝 2교시. System-2 &amp; System-1 연동 테스트<a class="headerlink" href="#2-system-2-system-1" title="Permanent link">&para;</a></h2>
+<p>System-2가 생성한 플랜을 <code>/system2/plan_cmd</code> 로 발행하면 System-1이 해당 단위 액션 서버를 호출합니다. 4가지 시나리오로 통신 파이프라인과 자율 동작을 검증합니다.</p>
+<h3 id="scenario-a-d">Scenario A — 기초 기동 ("D 구역으로 가줘")<a class="headerlink" href="#scenario-a-d" title="Permanent link">&para;</a></h3>
+<ul>
+<li>체크포인트: System-2가 <code>move_to</code> 플랜 생성 후 <code>/system2/plan_cmd</code> 로 전송 → System-1이 <code>move_to</code> 액션 서버 호출</li>
+<li>검증: 통신 파이프라인과 내비게이션 스택이 손실 없이 연동되는지</li>
+</ul>
+<figure>
+<p><img alt="Scenario A — 기초 기동 테스트(D 구역 이동)" src="../img/w15/g5-09.png" width="720" /></p>
+<figcaption>
+<p>교안 5강 §03 — Scenario A: 기초 기동 테스트 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="scenario-b">Scenario B — 인터랙티브 미션 (이동·스캔·보고)<a class="headerlink" href="#scenario-b" title="Permanent link">&para;</a></h3>
+<p>명령: <strong>"지도의 중앙으로 이동해서 사람이 있는지 120도 반경 살펴보고 있다면 보고해줘"</strong></p>
+<ul>
+<li>별도 코딩 없이 추상 표현("중앙")을 <code>move_to</code> 목표 좌표·방향으로 변환하는지</li>
+<li>스캔 중 사람 감지 시 System-1이 System-2에게 <code>Vision.snapshot</code> 을 전달하는지 → <strong>이동 → 스캔 → 보고 → 운용자 응답</strong> 인터랙티브 루프</li>
+</ul>
+<details class="tip">
+<summary>Scenario B 고도화 — 맥락을 이해하는 비전(Context-aware Vision)</summary>
+<ul>
+<li><strong>기존</strong>: YOLO 기반 고정 클래스(Closed-set) — "사람", "소화기" 등만 인식</li>
+<li><strong>확장</strong>: Grounding Vision / VLM(<strong>Grounding DINO, YOLO-World, LLaVA</strong>) 접목 → 상태·행동까지 자연어로 질의·탐지</li>
+<li><strong>현실적 설계 — 엣지·서버 하이브리드</strong><ul>
+<li>엣지(Spot 내장 컴퓨터/Jetson): 가벼운 모델로 1차 이벤트(사람·움직임)만 감지 → 짧은 클립 전송</li>
+<li>서버(고성능 GPU + 대형 VLM, GPT-4o 등): 정밀 판단 후 행동 지침 회신</li>
+<li>→ 로봇 자원(배터리·연산)을 아끼면서 고성능 연산이 가능한 <strong>지능형 보안 관제 솔루션</strong></li>
+</ul>
+</li>
+</ul>
+</details>
+<h3 id="scenario-c-d-c-b-a">Scenario C — 장기 순찰 (D, C, B, A 순차 정찰)<a class="headerlink" href="#scenario-c-d-c-b-a" title="Permanent link">&para;</a></h3>
+<p>명령: <strong>"D, C, B, A 구역 순서대로 이동하면서 정찰해줘."</strong></p>
+<ul>
+<li>System-2가 긴 전체 계획(Full Plan) 생성 → System-1은 <strong>메모리(Task Queue)</strong> 에 저장 후 단위 액션에 참고</li>
+<li>중간 <code>report_and_wait</code> 도달 → 운용자 명령 하달 → System-1은 기존 계획 폐기, <strong>재계획</strong> 저장·실행</li>
+</ul>
+<figure>
+<p><img alt="Scenario C — 장기 순찰 미션(Task Queue·재계획)" src="../img/w15/g5-12.png" width="720" /></p>
+<figcaption>
+<p>교안 5강 §03 — Scenario C: 장기 순찰 미션 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<h3 id="scenario-d">Scenario D — 객체 인식 및 동적 추적<a class="headerlink" href="#scenario-d" title="Permanent link">&para;</a></h3>
+<p>명령: <strong>"주변 60도 반경을 스캔하고, 만약 트럭이 발견되면 추적해줘."</strong></p>
+<ul>
+<li>지정 범위(약 60도) 안에서 <code>scan</code> task 수행 → 타겟 클래스 감지 시 즉시 중단하고 <code>track</code> 으로 전환</li>
+<li>대상이 이동해도 시선을 고정하고 일정 거리를 유지하는 <strong>Visual Servoing</strong> 동작 유지</li>
+</ul>
+<h3 id="llm_plannerpy-4-03"><code>llm_planner.py</code> — 자연어를 검증된 계획으로 (4강 §03 재구성)<a class="headerlink" href="#llm_plannerpy-4-03" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.output_parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">PydanticOutputParser</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.prompts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">HighLevelPlan</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># temperature=0.1 → 창의성을 거의 줄여 경로 흔들림(&quot;어제 오른쪽, 오늘 왼쪽&quot;) 방지</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">parser</span> <span class="o">=</span> <span class="n">PydanticOutputParser</span><span class="p">(</span><span class="n">pydantic_object</span><span class="o">=</span><span class="n">HighLevelPlan</span><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># 시스템 프롬프트 4단계 구조:</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">#  ① 행동 반경 제한(Action)  ② 텍스트 기반 공간 추론(Map)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1">#  ③ 상황별 대응 로직(Logic)  ④ 출력 형식 강제(Format)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">system_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;너는 Spot+ATS 보안 로봇의 작전 플래너(System-2)다.</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s2">[① 사용 가능한 단위 액션] move_to, scan, report_and_wait, track, return_to_home</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s2">[② 지도 좌표] A:(-10.7,-12.6) B:(9.8,-12.6) C:(-10.7,-18.3) D:(9.8,-18.3)</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s2">   구역 중앙 좌표를 계산해 goal.x, goal.y, goal.yaw 로 변환한다.</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s2">[③ 상황 로직] 위험/사람 감지 등 상황을 고려해 플랜을 수정·최적화한다.</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s2">[④ 출력] 아래 JSON 스키마만 출력한다(부가 설명 금지).</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="si">{format_instructions}</span><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">state_to_text</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="c1"># 신호 대 잡음비(SNR) 개선: 필요한 값만 소수점 2자리로 요약</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="n">p</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pose&quot;</span><span class="p">,</span> <span class="p">{})</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;pos=(</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">) battery=</span><span class="si">{</span><span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;battery&#39;</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_plan</span><span class="p">(</span><span class="n">user_cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HighLevelPlan</span><span class="p">:</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    <span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_messages</span><span class="p">(</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>        <span class="p">[(</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="n">system_template</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{state}</span><span class="se">\n</span><span class="s2">명령: </span><span class="si">{cmd}</span><span class="s2">&quot;</span><span class="p">)]</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="p">)</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">format_instructions</span><span class="o">=</span><span class="n">parser</span><span class="o">.</span><span class="n">get_format_instructions</span><span class="p">())</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="n">chain</span> <span class="o">=</span> <span class="n">prompt</span> <span class="o">|</span> <span class="n">llm</span> <span class="o">|</span> <span class="n">parser</span>          <span class="c1"># &#39;모호한 자연어&#39; → &#39;검증된 파이썬 객체&#39;</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="n">state_to_text</span><span class="p">(</span><span class="n">state</span><span class="p">),</span> <span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="n">user_cmd</span><span class="p">})</span>
+</code></pre></div>
+<h3 id="system2_nodepy-ros-2-4-04"><code>system2_node.py</code> — ROS 2 런타임 통합 (4강 §04 재구성)<a class="headerlink" href="#system2_nodepy-ros-2-4-04" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">threading</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">Orchestrator</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;orchestrator&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;/user_command&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;IDLE&#39;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">on_cmd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>        <span class="c1"># 1) 명령 파싱</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">perceive</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>          <span class="c1"># 2) 객체 인식</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">navigate_to</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>       <span class="c1"># 3) 내비게이션</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">grasp_and_place</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>            <span class="c1"># 4) 그래스핑</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;DONE&#39;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Task done: </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">();</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">Orchestrator</span><span class="p">())</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">llm_planner</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_plan</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">System2Node</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;system2_node&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">latest_state</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="c1"># System-1(로봇) 상태 수신 → context-aware 판단에 캐싱</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;/ats_state&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_state</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="c1"># HighLevelPlan을 System-1 Executor로 전달하는 메인 채널</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">plan_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;/system2/plan_cmd&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="c1"># report_and_wait 상태일 때 운영자 지시를 즉시 전달하는 별도 채널</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">decision_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;/system2/decision&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="c1"># spin 블로킹 방지: 운영자 입력은 별도 데몬 스레드(비동기)</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_operator_input_loop</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">on_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">latest_state</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_operator_input_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>            <span class="n">cmd</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;운영자 명령&gt; &#39;</span><span class="p">)</span>                 <span class="c1"># Human-in-the-loop</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>            <span class="n">plan</span> <span class="o">=</span> <span class="n">build_plan</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_state</span><span class="p">)</span>    <span class="c1"># 즉시 (재)계획</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">String</span><span class="p">();</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">()</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">plan_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>                   <span class="c1"># System-1으로 하달</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">();</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">System2Node</span><span class="p">())</span>
 </code></pre></div>
-<h2 id="_4">🎤 발표 및 평가<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="10-qa-5">발표 구성 (팀당 10분 + Q&amp;A 5분)<a class="headerlink" href="#10-qa-5" title="Permanent link">&para;</a></h3>
-<ol>
-<li>문제 정의 및 시나리오</li>
-<li>시스템 아키텍처 및 모듈 설계</li>
-<li>시연 (라이브 또는 영상)</li>
-<li>결과 분석 — 성공률, 실패 원인</li>
-<li>한계와 향후 개선(특히 Sim-to-Real 관점)</li>
-</ol>
-<h3 id="_5">제출물 (팀별)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 동작 시연 영상(2~3분) 또는 라이브 시연</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 시스템 아키텍처 다이어그램(노드/토픽 그래프)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 소스코드 + <code>launch</code> 파일 (재현 가능해야 함)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 발표 슬라이드(문제정의·설계·결과·한계·개선)</li>
+<div class="admonition note">
+<p class="admonition-title">강건성을 높이는 방어적 프로그래밍</p>
+<ul>
+<li><code>normalize_plan_for_schema()</code> : LLM 출력이 스키마와 살짝 다를 때(좌표가 평평한 형태로 올 때 등) 스키마 규격으로 강제 변환 → <strong>무결성 보장</strong></li>
+<li><strong>Multi-threading</strong>: ROS 콜백(spin)과 운영자 입력 루프 분리 → 응답성 유지</li>
+<li><strong>Interactive Callback</strong>: <code>report_context_callback()</code> 으로 운영자 실시간 협업(Teaming)</li>
 </ul>
-<h2 id="_6">📊 평가 루브릭 (기말 프로젝트)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+</div>
+<hr />
+<h2 id="3-physical-ai">🚀 3교시. 고도화 방향 (최신 Physical AI 연구 동향)<a class="headerlink" href="#3-physical-ai" title="Permanent link">&para;</a></h2>
+<h3 id="physical-ai-vla">Physical AI / VLA와의 연결<a class="headerlink" href="#physical-ai-vla" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="Physical AI / VLA 연결 — 객체탐지·세그멘테이션·포인팅·궤적·태스크 진행" src="../img/w15/g5-15.png" width="720" /></p>
+<figcaption>
+<p>교안 5강 §04 — 최신 VLA와 Spot+ATS의 System-1 구현 방식 비교 (출처: ENGI UNIVERSE)</p>
+</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>최신 VLA</th>
+<th>Spot+ATS (본 프로젝트)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>아키텍처</td>
+<td>초기 End-to-end → 모듈러</td>
+<td>모듈러 (System-2 + System-1)</td>
+</tr>
+<tr>
+<td>System-1 구현</td>
+<td>Action Chunking + Diffusion/Flow Matching (연속 관절 궤적 0.1s 단위)</td>
+<td><strong>Unit Action + Rule-based</strong> (이산 단위 액션: move_to/scan/track …)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>왜 Unit Action + Rule-based 인가?</strong></p>
+<ol>
+<li><strong>다양한 폼팩터에 즉각 대응</strong> — Diffusion 정책은 로봇별 관절/기구학이 달라 이식·재학습 부담이 큼. ROS2 표준 인터페이스 기반이라 System-1만 로봇별 단위 액션으로 교체/추가(<strong>Plug &amp; Play</strong>).</li>
+<li><strong>데이터·인프라 장벽 회피</strong> — 최신 VLA는 대규모 시연/합성 데이터와 학습 인프라 요구. 단위 액션은 기능을 작게 쪼개 라이브러리화하고, LLM은 <strong>오케스트레이션(배치·순서·조건)</strong> 에 집중 → 적은 리소스로 구현.</li>
+</ol>
+<h3 id="_2">우리 프로젝트의 확장안<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">① 멀티 에이전트 (Multi-Agent System)</label><label for="__tabbed_2_2">② System-1 진화 — Policy Head(하이브리드)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>System-2를 <strong>관제 서버</strong>로 만들어 Spot/드론/UGV를 동시 스케줄링(누가·언제·어디를)</li>
+<li>추가 모듈: <strong>Robot Registry</strong>(능력/상태) + <strong>Task Allocator</strong>(임무 분배) + <strong>Conflict Resolver</strong>(충돌/우선순위)</li>
+<li>결과: "A는 Spot 순찰, B는 드론 확인" 같은 <strong>팀 전술 플랜</strong> 자동 생성·조정</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>단위 액션은 유지하되 실행부 일부(수학적 규칙)를 <strong>학습 정책</strong>으로 교체(상위는 안전/제약 관리)</li>
+<li>후보 1) <strong>DRL 자율주행 정책</strong> — Nav2 로컬 플래너 대체/보완 → Social Navigation(사람 흐름 예측·좁은 통로 양보)</li>
+<li>후보 2) <strong>End-to-End Visual Servoing 정책</strong> — 폐색(Occlusion) 상황에서도 예측 기반 추적 유지</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">결론</p>
+<p>System-2는 "<strong>전술·협업·재계획</strong>"을 담당하고, System-1은 "<strong>안전하게 실행</strong>"하면서 일부를 Policy로 고도화 → <strong>확장성(멀티로봇) + 유연성(학습형 제어)</strong> 를 동시에 얻는 다음 단계 로드맵.</p>
+</div>
+<hr />
+<h2 id="wrap-up">🧩 Wrap-up — 한 학기 풀스택 정리<a class="headerlink" href="#wrap-up" title="Permanent link">&para;</a></h2>
+<p>이번 강의 커리큘럼은 <strong>시뮬레이션–미들웨어–자율주행–AI 추론</strong>까지 현대 로봇 소프트웨어 풀스택을 하나의 파이프라인으로 연결했습니다.</p>
+<ol>
+<li><strong>Isaac Sim 기초 및 환경 구축</strong> — URDF 임포트 → 물리/센서 설정 → 고정밀 가상 검증 환경</li>
+<li><strong>Isaac Sim ↔ ROS 2 연동</strong> — ROS 2 Bridge로 센서 송신 + 제어 명령 수신(양방향 파이프라인)</li>
+<li><strong>SLAM 및 자율주행(Navigation)</strong> — SLAM으로 지도 생성 → Nav2로 위치추정·경로계획·장애물 회피</li>
+<li><strong>Physical AI (LLM 기반 고수준 제어)</strong> — System-2(자연어→Plan) + System-1(Plan→실행) 결합으로 텍스트 미션 수행·검증</li>
+</ol>
+<h2 id="_3">✅ 체크포인트<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> System-2 단독으로 자연어 명령이 <code>HighLevelPlan</code> JSON으로 변환되는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Scenario A(기초 기동)에서 <code>/system2/plan_cmd</code> → <code>move_to</code> 연동이 되는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Scenario C에서 <code>report_and_wait</code> → 운영자 재계획이 반영되는가</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Scenario D에서 <code>scan</code> → <code>track</code>(Visual Servoing) 전환이 되는가</li>
+</ul>
+<h2 id="_4">📊 평가 루브릭 (기말 프로젝트)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1262,41 +1709,71 @@
 </thead>
 <tbody>
 <tr>
-<td>시스템 완결성</td>
+<td>계획 생성 정확성</td>
 <td>30%</td>
-<td>명령→동작 파이프라인이 끝까지 작동하는가</td>
+<td>자연어 → <code>HighLevelPlan</code>(좌표·조건) 변환의 정확성</td>
 </tr>
 <tr>
-<td>기술 통합도</td>
+<td>System-1/2 연동</td>
 <td>25%</td>
-<td>인식·판단·제어가 유기적으로 연결되는가</td>
+<td><code>/system2/plan_cmd</code> 파이프라인이 손실 없이 동작</td>
 </tr>
 <tr>
-<td>강건성·재현성</td>
-<td>15%</td>
-<td>실패 처리, launch 재현성</td>
+<td>시나리오 수행</td>
+<td>20%</td>
+<td>A~D 시나리오(기동·인터랙티브·순찰·추적) 시연</td>
 </tr>
 <tr>
-<td>발표·문서화</td>
+<td>재계획·협업</td>
 <td>15%</td>
-<td>설계 설명, 다이어그램, 코드 품질</td>
+<td><code>report_and_wait</code> + 운영자 개입 재계획 동작</td>
 </tr>
 <tr>
-<td>창의성·확장성</td>
-<td>15%</td>
-<td>시나리오 독창성, Sim-to-Real 고려</td>
+<td>고도화 제안·발표</td>
+<td>10%</td>
+<td>VLA·멀티에이전트·Policy Head 확장안의 타당성</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_7">🧭 마무리 — 한 학기 정리<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_5">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<details class="note">
+<summary>Physical AI 5강 — System-2 테스트 및 검증 (전체 19매)</summary>
+<p><img alt="5강 슬라이드 01" src="../img/w15/g5-01.png" width="700" />
+<img alt="5강 슬라이드 02" src="../img/w15/g5-02.png" width="700" />
+<img alt="5강 슬라이드 03" src="../img/w15/g5-03.png" width="700" />
+<img alt="5강 슬라이드 04" src="../img/w15/g5-04.png" width="700" />
+<img alt="5강 슬라이드 05" src="../img/w15/g5-05.png" width="700" />
+<img alt="5강 슬라이드 06" src="../img/w15/g5-06.png" width="700" />
+<img alt="5강 슬라이드 07" src="../img/w15/g5-07.png" width="700" />
+<img alt="5강 슬라이드 08" src="../img/w15/g5-08.png" width="700" />
+<img alt="5강 슬라이드 09" src="../img/w15/g5-09.png" width="700" />
+<img alt="5강 슬라이드 10" src="../img/w15/g5-10.png" width="700" />
+<img alt="5강 슬라이드 11" src="../img/w15/g5-11.png" width="700" />
+<img alt="5강 슬라이드 12" src="../img/w15/g5-12.png" width="700" />
+<img alt="5강 슬라이드 13" src="../img/w15/g5-13.png" width="700" />
+<img alt="5강 슬라이드 14" src="../img/w15/g5-14.png" width="700" />
+<img alt="5강 슬라이드 15" src="../img/w15/g5-15.png" width="700" />
+<img alt="5강 슬라이드 16" src="../img/w15/g5-16.png" width="700" />
+<img alt="5강 슬라이드 17" src="../img/w15/g5-17.png" width="700" />
+<img alt="5강 슬라이드 18" src="../img/w15/g5-18.png" width="700" />
+<img alt="5강 슬라이드 19" src="../img/w15/g5-19.png" width="700" /></p>
+</details>
+<details class="note">
+<summary>Physical AI 4강 — System-2 LLM Planner 설계 (핵심)</summary>
+<p><img alt="4강 슬라이드 03 — System-2 3축" src="../img/w15/g4-03.png" width="700" />
+<img alt="4강 슬라이드 09 — models.py 스키마" src="../img/w15/g4-09.png" width="700" />
+<img alt="4강 슬라이드 11 — llm_planner.py" src="../img/w15/g4-11.png" width="700" />
+<img alt="4강 슬라이드 14 — 시스템 프롬프트 4단계" src="../img/w15/g4-14.png" width="700" />
+<img alt="4강 슬라이드 16 — system2_node.py" src="../img/w15/g4-16.png" width="700" /></p>
+</details>
+<h2 id="_6">🔗 출처 및 참고자료<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Digital AI에서 <strong>Physical AI</strong>로: 인지가 물리적 행동으로 이어지는 임베디드 지능의 전체 흐름을 직접 구현해 봄</li>
-<li>다음 단계: 실제 로봇으로의 Sim-to-Real 이전, VLA·Foundation Model 기반 일반화, 멀티로봇 협업</li>
+<li>교안: <strong>『Physical AI』 4강·5강</strong> (제작: ENGI UNIVERSE) — 강의 슬라이드 원본</li>
+<li><strong>Spot+ATS 프로젝트 사용 매뉴얼 (Rev 1.4)</strong> — 로봇 플랫폼·운용 시나리오</li>
+<li>LangChain — <a href="https://python.langchain.com">https://python.langchain.com</a></li>
+<li>Pydantic — <a href="https://docs.pydantic.dev">https://docs.pydantic.dev</a></li>
+<li>Grounding DINO — <a href="https://github.com/IDEA-Research/GroundingDINO">https://github.com/IDEA-Research/GroundingDINO</a> · YOLO-World — <a href="https://github.com/AILab-CVC/YOLO-World">https://github.com/AILab-CVC/YOLO-World</a></li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>프로젝트는 "화려한 단일 모듈"보다 "끝까지 작동하는 통합 파이프라인"이 높은 평가를 받습니다. 먼저 단순한 end-to-end 버전을 완성한 뒤 모듈 품질을 높이세요.</p>
-</div>
 
 
 
