@@ -1,0 +1,2964 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · Physical AI 강의 자료">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/physical-ai/code-snippets/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../week01/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>복사용 실습 코드 - Physical AI · 2026-2학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-header__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Physical AI · 2026-2학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              복사용 실습 코드
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-nav__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Physical AI · 2026-2학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    복사용 실습 코드
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    복사용 실습 코드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-isaac-sim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1주차 · Isaac Sim 설치 및 활용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1주차 · Isaac Sim 설치 및 활용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#miniconda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miniconda 설치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU와 드라이버 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isaac-simisaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac Sim/Isaac Lab 실습 환경 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rgbdepth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2주차 · 물리환경 및 RGB/Depth 카메라
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2주차 · 물리환경 및 RGB/Depth 카메라">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#world-dynamiccuboid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기본 World와 DynamicCuboid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rgb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RGB 카메라 프레임 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth Map 시각화
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-imu-lidar-radar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3주차 · IMU, LiDAR, Radar 센서
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3주차 · IMU, LiDAR, Radar 센서">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IMU 센서 생성 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lidarradar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LiDAR/Radar 토픽 확인 명령
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-isaac-lab-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4주차 · Isaac Lab 4족 보행 강화학습
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4주차 · Isaac Lab 4족 보행 강화학습">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac Lab 학습 실행
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-action-observation-reward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command, Action, Observation, Reward 구성 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-spot-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5주차 · Spot + ATS 시스템 구축
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5주차 · Spot + ATS 시스템 구축">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ros-2-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS 2에서 ATS 조인트 명령 발행
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spot-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spot + ATS 결합 모델 경로 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ats-spot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATS 탑재 Spot 재학습 실행 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-slam-nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6주차 · SLAM과 Nav2 기본
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6주차 · SLAM과 Nav2 기본">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slam_toolbox-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_toolbox 실행용 Launch 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nav2 핵심 파라미터
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-spot-ats-slam-part-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7주차 · Spot + ATS SLAM 연동 part 1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7주차 · Spot + ATS SLAM 연동 part 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isaac-sim-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac Sim 전용 Python 런처 사용
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2-cmd_vel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정책 출력과 Nav2 /cmd_vel 합성 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slamnav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SLAM/Nav2 실행 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8주차 · 중간고사 예시
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8주차 · 중간고사 예시">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실기 채점용 점검 스크립트 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-localization-gimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9주차 · 지도 저장, Localization, GIMP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9주차 · 지도 저장, Localization, GIMP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지도 저장
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localizationnav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localization/Nav2 실행
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amcl-map_server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AMCL과 map_server 핵심 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-spot-ats-visionyolov8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10주차 · Spot + ATS Vision(YOLOv8)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10주차 · Spot + ATS Vision(YOLOv8)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yolov8-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YOLOv8 Launch 파일 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추론 실행
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        트래커 업데이트 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-system-1-executor-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11주차 · System-1 Executor Node
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11주차 · System-1 Executor Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단위 액션 스키마 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executor 콜백 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-system-1-part-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12주차 · System-1 단위 액션 part 1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12주차 · System-1 단위 액션 part 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#move_to" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        move_to 실행 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scan 실행 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-system-1-part-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13주차 · System-1 단위 액션 part 2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13주차 · System-1 단위 액션 part 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        track 테스트 플랜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report_and_wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        report_and_wait 테스트 플랜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return_to_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        return_to_home 실행 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-system-2-llm-planner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14주차 · System-2 LLM Planner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14주차 · System-2 LLM Planner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        models.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_plannerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llm_planner.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system2_nodepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        system2_node.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-system-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15주차 · System-2 테스트 및 검증
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15주차 · System-2 테스트 및 검증">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System-2 단독 테스트 명령
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-a-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario A-D 테스트 명령
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ros-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS 2 통합 검증 명령
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report_and_wait_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        report_and_wait 수동 응답
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 계획 (15주)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    강의 계획 (15주)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · Isaac Sim 설치·활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 물리환경·카메라(RGB/Depth)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 센서(IMU·LiDAR·Radar)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · Isaac Lab 4족 보행 RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · Spot+ATS 시스템 구축
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · SLAM·Nav2 기본
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · Spot+ATS SLAM 연동 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · Spot+ATS SLAM 연동 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · Spot+ATS Vision(YOLOv8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · System-1 Executor 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · System-1 단위 액션 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · System-1 단위 액션 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · System-2 LLM Planner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · System-2 테스트·검증
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://parclab-hsu.github.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 PARC Lab 홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-isaac-sim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1주차 · Isaac Sim 설치 및 활용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1주차 · Isaac Sim 설치 및 활용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#miniconda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miniconda 설치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU와 드라이버 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isaac-simisaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac Sim/Isaac Lab 실습 환경 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rgbdepth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2주차 · 물리환경 및 RGB/Depth 카메라
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2주차 · 물리환경 및 RGB/Depth 카메라">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#world-dynamiccuboid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기본 World와 DynamicCuboid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rgb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RGB 카메라 프레임 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth Map 시각화
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-imu-lidar-radar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3주차 · IMU, LiDAR, Radar 센서
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3주차 · IMU, LiDAR, Radar 센서">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IMU 센서 생성 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lidarradar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LiDAR/Radar 토픽 확인 명령
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-isaac-lab-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4주차 · Isaac Lab 4족 보행 강화학습
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4주차 · Isaac Lab 4족 보행 강화학습">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac Lab 학습 실행
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-action-observation-reward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command, Action, Observation, Reward 구성 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-spot-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5주차 · Spot + ATS 시스템 구축
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5주차 · Spot + ATS 시스템 구축">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ros-2-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS 2에서 ATS 조인트 명령 발행
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spot-ats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spot + ATS 결합 모델 경로 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ats-spot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATS 탑재 Spot 재학습 실행 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-slam-nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6주차 · SLAM과 Nav2 기본
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6주차 · SLAM과 Nav2 기본">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slam_toolbox-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slam_toolbox 실행용 Launch 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nav2 핵심 파라미터
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-spot-ats-slam-part-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7주차 · Spot + ATS SLAM 연동 part 1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7주차 · Spot + ATS SLAM 연동 part 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isaac-sim-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac Sim 전용 Python 런처 사용
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nav2-cmd_vel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정책 출력과 Nav2 /cmd_vel 합성 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slamnav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SLAM/Nav2 실행 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8주차 · 중간고사 예시
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8주차 · 중간고사 예시">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실기 채점용 점검 스크립트 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-localization-gimp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9주차 · 지도 저장, Localization, GIMP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9주차 · 지도 저장, Localization, GIMP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지도 저장
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localizationnav2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localization/Nav2 실행
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amcl-map_server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AMCL과 map_server 핵심 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-spot-ats-visionyolov8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10주차 · Spot + ATS Vision(YOLOv8)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10주차 · Spot + ATS Vision(YOLOv8)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yolov8-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YOLOv8 Launch 파일 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추론 실행
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        트래커 업데이트 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-system-1-executor-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11주차 · System-1 Executor Node
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11주차 · System-1 Executor Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단위 액션 스키마 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executor 콜백 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-system-1-part-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12주차 · System-1 단위 액션 part 1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12주차 · System-1 단위 액션 part 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#move_to" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        move_to 실행 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scan 실행 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-system-1-part-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13주차 · System-1 단위 액션 part 2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13주차 · System-1 단위 액션 part 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#track" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        track 테스트 플랜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report_and_wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        report_and_wait 테스트 플랜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return_to_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        return_to_home 실행 골격
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-system-2-llm-planner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14주차 · System-2 LLM Planner
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14주차 · System-2 LLM Planner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        models.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_plannerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        llm_planner.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system2_nodepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        system2_node.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-system-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15주차 · System-2 테스트 및 검증
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15주차 · System-2 테스트 및 검증">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System-2 단독 테스트 명령
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-a-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario A-D 테스트 명령
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ros-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS 2 통합 검증 명령
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report_and_wait_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        report_and_wait 수동 응답
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">복사용 실습 코드<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>강의 슬라이드 이미지 안에 포함된 명령어와 예제 소스를 복사해서 실습할 수 있도록 주차별로 모았습니다. 각 코드블록 오른쪽 위의 복사 버튼을 사용하면 됩니다.</p>
+<div class="admonition warning">
+<p class="admonition-title">실습 전 확인</p>
+<p>아래 코드는 교안 설명을 바탕으로 한 재구성 예제입니다. 실제 경로, 패키지명, 토픽명, GPU/CUDA 버전, ROS 2 워크스페이스 이름은 실습 PC 환경에 맞게 확인한 뒤 실행하세요.</p>
+</div>
+<hr />
+<h2 id="1-isaac-sim">1주차 · Isaac Sim 설치 및 활용<a class="headerlink" href="#1-isaac-sim" title="Permanent link">&para;</a></h2>
+<h3 id="miniconda">Miniconda 설치<a class="headerlink" href="#miniconda" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>-O<span class="w"> </span>~/miniconda3/miniconda.sh
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>bash<span class="w"> </span>~/miniconda3/miniconda.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>rm<span class="w"> </span>~/miniconda3/miniconda.sh
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>~/miniconda3/bin/conda<span class="w"> </span>init<span class="w"> </span>bash
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+<h3 id="gpu">GPU와 드라이버 확인<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nvidia-smi
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ubuntu-drivers<span class="w"> </span>devices
+</code></pre></div>
+<h3 id="isaac-simisaac-lab">Isaac Sim/Isaac Lab 실습 환경 예시<a class="headerlink" href="#isaac-simisaac-lab" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>env_isaaclab<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10<span class="w"> </span>-y
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>env_isaaclab
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu121
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/isaac-sim/IsaacLab.git
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nb">cd</span><span class="w"> </span>IsaacLab
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>./isaaclab.sh<span class="w"> </span>--install
+</code></pre></div>
+<hr />
+<h2 id="2-rgbdepth">2주차 · 물리환경 및 RGB/Depth 카메라<a class="headerlink" href="#2-rgbdepth" title="Permanent link">&para;</a></h2>
+<h3 id="world-dynamiccuboid">기본 World와 DynamicCuboid<a class="headerlink" href="#world-dynamiccuboid" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">isaacsim</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationApp</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">simulation_app</span> <span class="o">=</span> <span class="n">SimulationApp</span><span class="p">({</span><span class="s2">&quot;headless&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">isaacsim.core.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">World</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">isaacsim.core.api.objects</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamicCuboid</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">(</span><span class="n">stage_units_in_meters</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">world</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">add_default_ground_plane</span><span class="p">()</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">cube</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">DynamicCuboid</span><span class="p">(</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="n">prim_path</span><span class="o">=</span><span class="s2">&quot;/World/cube&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;red_cube&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="n">position</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]),</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="n">color</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="p">)</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">)</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="n">world</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">):</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    <span class="n">world</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">render</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="n">simulation_app</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="rgb">RGB 카메라 프레임 확인<a class="headerlink" href="#rgb" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">isaacsim.sensors.camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">Camera</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">prim_path</span><span class="o">=</span><span class="s2">&quot;/World/camera&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">position</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">]),</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">frequency</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">orientation</span><span class="o">=</span><span class="n">Rotation</span><span class="o">.</span><span class="n">from_euler</span><span class="p">(</span><span class="s2">&quot;xyz&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">degrees</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">as_quat</span><span class="p">(),</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">camera</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">180</span><span class="p">):</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="n">world</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">render</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">60</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="n">rgba</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">get_rgba</span><span class="p">()</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="n">rgb</span> <span class="o">=</span> <span class="n">rgba</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="depth-map">Depth Map 시각화<a class="headerlink" href="#depth-map" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">camera</span><span class="o">.</span><span class="n">add_distance_to_camera_to_frame</span><span class="p">()</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">180</span><span class="p">):</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">world</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">render</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">frame</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">get_current_frame</span><span class="p">()</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="k">if</span> <span class="s2">&quot;distance_to_camera&quot;</span> <span class="ow">in</span> <span class="n">frame</span><span class="p">:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="n">depth</span> <span class="o">=</span> <span class="n">frame</span><span class="p">[</span><span class="s2">&quot;distance_to_camera&quot;</span><span class="p">]</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="k">break</span>
+</code></pre></div>
+<hr />
+<h2 id="3-imu-lidar-radar">3주차 · IMU, LiDAR, Radar 센서<a class="headerlink" href="#3-imu-lidar-radar" title="Permanent link">&para;</a></h2>
+<h3 id="imu">IMU 센서 생성 예시<a class="headerlink" href="#imu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">isaacsim.sensors.physics</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMUSensor</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">imu</span> <span class="o">=</span> <span class="n">IMUSensor</span><span class="p">(</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">prim_path</span><span class="o">=</span><span class="s2">&quot;/World/robot/imu&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;imu_sensor&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">frequency</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">translation</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]),</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">imu</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="n">world</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">render</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="n">frame</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">get_current_frame</span><span class="p">()</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;linear_acceleration:&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="p">[</span><span class="s2">&quot;lin_acc&quot;</span><span class="p">])</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;angular_velocity:&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="p">[</span><span class="s2">&quot;ang_vel&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="lidarradar">LiDAR/Radar 토픽 확인 명령<a class="headerlink" href="#lidarradar" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/scan
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/point_cloud
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/scan
+</code></pre></div>
+<hr />
+<h2 id="4-isaac-lab-4">4주차 · Isaac Lab 4족 보행 강화학습<a class="headerlink" href="#4-isaac-lab-4" title="Permanent link">&para;</a></h2>
+<h3 id="isaac-lab">Isaac Lab 학습 실행<a class="headerlink" href="#isaac-lab" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/IsaacLab
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>source/standalone/workflows/rsl_rl/train.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--task<span class="w"> </span>Isaac-Velocity-Rough-Anymal-D-v0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--num_envs<span class="w"> </span><span class="m">64</span>
+</code></pre></div>
+<h3 id="command-action-observation-reward">Command, Action, Observation, Reward 구성 예시<a class="headerlink" href="#command-action-observation-reward" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">CommandsCfg</span><span class="p">:</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">resampling_time_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">lin_vel_x</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">lin_vel_y</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="n">ang_vel_z</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">ActionsCfg</span><span class="p">:</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="n">joint_pos_scale</span> <span class="o">=</span> <span class="mf">0.2</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="k">class</span><span class="w"> </span><span class="nc">ObservationsCfg</span><span class="p">:</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>    <span class="n">policy_terms</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="s2">&quot;base_linear_velocity&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>        <span class="s2">&quot;base_angular_velocity&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>        <span class="s2">&quot;projected_gravity&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>        <span class="s2">&quot;velocity_commands&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>        <span class="s2">&quot;joint_positions&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>        <span class="s2">&quot;joint_velocities&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>        <span class="s2">&quot;previous_actions&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>        <span class="s2">&quot;height_scan&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>    <span class="p">]</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="k">class</span><span class="w"> </span><span class="nc">RewardsCfg</span><span class="p">:</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>    <span class="n">track_lin_vel_xy_exp</span> <span class="o">=</span> <span class="mf">1.0</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>    <span class="n">track_ang_vel_z_exp</span> <span class="o">=</span> <span class="mf">0.5</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>    <span class="n">lin_vel_z_l2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.0</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>    <span class="n">action_rate_l2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.01</span>
+</code></pre></div>
+<hr />
+<h2 id="5-spot-ats">5주차 · Spot + ATS 시스템 구축<a class="headerlink" href="#5-spot-ats" title="Permanent link">&para;</a></h2>
+<h3 id="ros-2-ats">ROS 2에서 ATS 조인트 명령 발행<a class="headerlink" href="#ros-2-ats" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># joint1(Yaw)을 +90도(1.57 rad)로 회전</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/joint_command<span class="w"> </span>sensor_msgs/msg/JointState<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="s2">&quot;{name: [&#39;joint1&#39;], position: [1.57]}&quot;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># joint2(Pitch)을 -20도(-0.35 rad)로 회전</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/joint_command<span class="w"> </span>sensor_msgs/msg/JointState<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="s2">&quot;{name: [&#39;joint2&#39;], position: [-0.35]}&quot;</span>
+</code></pre></div>
+<h3 id="spot-ats">Spot + ATS 결합 모델 경로 설정<a class="headerlink" href="#spot-ats" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># spot.py</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">ASSET_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;PhysicalAI&quot;</span> <span class="o">/</span> <span class="s2">&quot;assets&quot;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">SPOT_ATS_USD</span> <span class="o">=</span> <span class="n">ASSET_ROOT</span> <span class="o">/</span> <span class="s2">&quot;spot_ats&quot;</span> <span class="o">/</span> <span class="s2">&quot;spot_learnmodel.usd&quot;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">robot_cfg</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="s2">&quot;prim_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/World/robot&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="s2">&quot;usd_path&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">SPOT_ATS_USD</span><span class="p">),</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="ats-spot">ATS 탑재 Spot 재학습 실행 예시<a class="headerlink" href="#ats-spot" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>~/IsaacLab
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>source/standalone/workflows/rsl_rl/train.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--task<span class="w"> </span>Isaac-Velocity-Spot-Ats-v0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>--num_envs<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span>--headless
+</code></pre></div>
+<hr />
+<h2 id="6-slam-nav2">6주차 · SLAM과 Nav2 기본<a class="headerlink" href="#6-slam-nav2" title="Permanent link">&para;</a></h2>
+<h3 id="slam_toolbox-launch">slam_toolbox 실행용 Launch 골격<a class="headerlink" href="#slam_toolbox-launch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">slam_toolbox</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>        <span class="n">package</span><span class="o">=</span><span class="s2">&quot;slam_toolbox&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>        <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;async_slam_toolbox_node&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;slam_toolbox&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        <span class="n">output</span><span class="o">=</span><span class="s2">&quot;screen&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>        <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>            <span class="s2">&quot;use_sim_time&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>            <span class="s2">&quot;map_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;map&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>            <span class="s2">&quot;odom_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;odom&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>            <span class="s2">&quot;base_frame&quot;</span><span class="p">:</span> <span class="s2">&quot;body&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>            <span class="s2">&quot;scan_topic&quot;</span><span class="p">:</span> <span class="s2">&quot;scan&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>            <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;mapping&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>        <span class="p">}],</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>    <span class="p">)</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span><span class="n">slam_toolbox</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="nav2">Nav2 핵심 파라미터<a class="headerlink" href="#nav2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">controller_server</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30.0</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="nt">FollowPath</span><span class="p">:</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">      </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController&quot;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">      </span><span class="nt">desired_linear_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">      </span><span class="nt">lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">      </span><span class="nt">use_rotate_to_heading</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nt">local_costmap</span><span class="p">:</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">  </span><span class="nt">local_costmap</span><span class="p">:</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">      </span><span class="nt">global_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">      </span><span class="nt">robot_base_frame</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">      </span><span class="nt">update_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">      </span><span class="nt">publish_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+</code></pre></div>
+<hr />
+<h2 id="7-spot-ats-slam-part-1">7주차 · Spot + ATS SLAM 연동 part 1<a class="headerlink" href="#7-spot-ats-slam-part-1" title="Permanent link">&para;</a></h2>
+<h3 id="isaac-sim-python">Isaac Sim 전용 Python 런처 사용<a class="headerlink" href="#isaac-sim-python" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">cd</span><span class="w"> </span>~/.local/share/ov/pkg/isaac-sim-5.1.0
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>./python.sh<span class="w"> </span>~/cluad_ws/src/spot_ats_sim/spot_ats_main.py
+</code></pre></div>
+<h3 id="nav2-cmd_vel">정책 출력과 Nav2 <code>/cmd_vel</code> 합성 흐름<a class="headerlink" href="#nav2-cmd_vel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">sim_step</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">obs_builder</span><span class="p">,</span> <span class="n">policy</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">world</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">render</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="n">cmd_vec</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">read_twist_from_graph</span><span class="p">()</span>       <span class="c1"># Nav2 /cmd_vel</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">obs</span> <span class="o">=</span> <span class="n">obs_builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">cmd_vec</span><span class="p">)</span>                   <span class="c1"># 48차원 관측 구성</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="n">action</span> <span class="o">=</span> <span class="n">policy</span><span class="o">.</span><span class="n">infer</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>                         <span class="c1"># 12차원 보행 정책 출력</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="n">ats_cmd</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">read_ats_joint_command</span><span class="p">()</span>      <span class="c1"># ATS yaw/pitch 명령</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="n">controller</span><span class="o">.</span><span class="n">apply_actions</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">ats_cmd</span><span class="p">)</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="n">obs_builder</span><span class="o">.</span><span class="n">update_prev_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">controller</span><span class="o">.</span><span class="n">trigger_graph</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="slamnav2">SLAM/Nav2 실행 확인<a class="headerlink" href="#slamnav2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>spot_ats_nav<span class="w"> </span>slam_launch.py
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>spot_ats_nav<span class="w"> </span>navigation_launch.py
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/cmd_vel
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/tf
+</code></pre></div>
+<hr />
+<h2 id="8">8주차 · 중간고사 예시<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="_2">실기 채점용 점검 스크립트 골격<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">required_topics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/scan&quot;</span><span class="p">,</span> <span class="s2">&quot;/odom&quot;</span><span class="p">,</span> <span class="s2">&quot;/tf&quot;</span><span class="p">,</span> <span class="s2">&quot;/map&quot;</span><span class="p">,</span> <span class="s2">&quot;/cmd_vel&quot;</span><span class="p">]</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">required_topics</span><span class="p">:</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;check topic: </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="c1"># 실제 시험 환경에서는 `ros2 topic list` 출력과 비교해 확인</span>
+</code></pre></div>
+<hr />
+<h2 id="9-localization-gimp">9주차 · 지도 저장, Localization, GIMP<a class="headerlink" href="#9-localization-gimp" title="Permanent link">&para;</a></h2>
+<h3 id="_3">지도 저장<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/maps
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>~/maps/spot_ats_map
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>ls<span class="w"> </span>~/maps/spot_ats_map.pgm
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>ls<span class="w"> </span>~/maps/spot_ats_map.yaml
+</code></pre></div>
+<h3 id="localizationnav2">Localization/Nav2 실행<a class="headerlink" href="#localizationnav2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>spot_ats_nav<span class="w"> </span>localization_launch.py<span class="w"> </span>map:<span class="o">=</span>~/maps/spot_ats_map.yaml
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>spot_ats_nav<span class="w"> </span>navigation_launch.py<span class="w"> </span>map:<span class="o">=</span>~/maps/spot_ats_map.yaml
+</code></pre></div>
+<h3 id="amcl-map_server">AMCL과 map_server 핵심 설정<a class="headerlink" href="#amcl-map_server" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nt">amcl</span><span class="p">:</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nt">base_frame_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="nt">odom_frame_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">odom</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="nt">global_frame_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span><span class="nt">scan_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scan</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">    </span><span class="nt">tf_broadcast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">    </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">    </span><span class="nt">min_particles</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">    </span><span class="nt">max_particles</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">    </span><span class="nt">laser_model_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">likelihood_field</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="w">    </span><span class="nt">set_initial_pose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="nt">map_server</span><span class="p">:</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="w">    </span><span class="nt">yaml_filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/$USER/maps/spot_ats_map.yaml</span>
+</code></pre></div>
+<hr />
+<h2 id="10-spot-ats-visionyolov8">10주차 · Spot + ATS Vision(YOLOv8)<a class="headerlink" href="#10-spot-ats-visionyolov8" title="Permanent link">&para;</a></h2>
+<h3 id="yolov8-launch">YOLOv8 Launch 파일 골격<a class="headerlink" href="#yolov8-launch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch.substitutions</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchConfiguration</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="n">device</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s2">&quot;device&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="n">threshold</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s2">&quot;threshold&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>    <span class="n">input_image_topic</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s2">&quot;input_image_topic&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>        <span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s2">&quot;yolov8n.pt&quot;</span><span class="p">),</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>        <span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="s2">&quot;device&quot;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">),</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>        <span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="s2">&quot;threshold&quot;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s2">&quot;0.5&quot;</span><span class="p">),</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>        <span class="n">DeclareLaunchArgument</span><span class="p">(</span><span class="s2">&quot;input_image_topic&quot;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s2">&quot;/camera/image_raw&quot;</span><span class="p">),</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>        <span class="n">Node</span><span class="p">(</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>            <span class="n">package</span><span class="o">=</span><span class="s2">&quot;yolov8_bringup&quot;</span><span class="p">,</span>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>            <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;yolov8_node&quot;</span><span class="p">,</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;yolov8_node&quot;</span><span class="p">,</span>
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>            <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a>                <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a>                <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span>
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a>                <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="n">threshold</span><span class="p">,</span>
+<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a>            <span class="p">}],</span>
+<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a>            <span class="n">remappings</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;image_raw&quot;</span><span class="p">,</span> <span class="n">input_image_topic</span><span class="p">)],</span>
+<a id="__codelineno-22-27" name="__codelineno-22-27" href="#__codelineno-22-27"></a>        <span class="p">),</span>
+<a id="__codelineno-22-28" name="__codelineno-22-28" href="#__codelineno-22-28"></a>    <span class="p">])</span>
+</code></pre></div>
+<h3 id="_4">추론 실행<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>yolov8_bringup<span class="w"> </span>yolov8.launch.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span>model:<span class="o">=</span>yolov8n.pt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span>device:<span class="o">=</span>cuda:0<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">  </span>threshold:<span class="o">=</span><span class="m">0</span>.45<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span>input_image_topic:<span class="o">=</span>/ats/rgb/image_raw
+</code></pre></div>
+<h3 id="_5">트래커 업데이트 흐름<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">tracks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">det_boxes</span><span class="p">,</span> <span class="n">cv_image</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">for</span> <span class="n">track</span> <span class="ow">in</span> <span class="n">tracks</span><span class="p">:</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="n">src_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">track</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="n">detection</span> <span class="o">=</span> <span class="n">detections</span><span class="o">.</span><span class="n">detections</span><span class="p">[</span><span class="n">src_idx</span><span class="p">]</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    <span class="n">tracked_box</span> <span class="o">=</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">track</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">cv_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>    <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">tracked_box</span><span class="o">.</span><span class="n">xywh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="n">detection</span><span class="o">.</span><span class="n">bbox</span><span class="o">.</span><span class="n">center</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cx</span><span class="p">)</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>    <span class="n">detection</span><span class="o">.</span><span class="n">bbox</span><span class="o">.</span><span class="n">center</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cy</span><span class="p">)</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>    <span class="n">detection</span><span class="o">.</span><span class="n">bbox</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>    <span class="n">detection</span><span class="o">.</span><span class="n">bbox</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>    <span class="k">if</span> <span class="n">tracked_box</span><span class="o">.</span><span class="n">is_track</span><span class="p">:</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>        <span class="n">detection</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tracked_box</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="11-system-1-executor-node">11주차 · System-1 Executor Node<a class="headerlink" href="#11-system-1-executor-node" title="Permanent link">&para;</a></h2>
+<h3 id="_6">단위 액션 스키마 검증<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">UnitAction</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>    <span class="n">task</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;move_to&quot;</span><span class="p">,</span> <span class="s2">&quot;scan&quot;</span><span class="p">,</span> <span class="s2">&quot;report_and_wait&quot;</span><span class="p">,</span> <span class="s2">&quot;track&quot;</span><span class="p">,</span> <span class="s2">&quot;return_to_home&quot;</span><span class="p">]</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>    <span class="n">retry</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="k">class</span><span class="w"> </span><span class="nc">PlanCommand</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="n">mission_id</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>    <span class="n">intent</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>    <span class="n">steps</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UnitAction</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="executor">Executor 콜백 골격<a class="headerlink" href="#executor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_plan_cmd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="n">plan</span> <span class="o">=</span> <span class="n">PlanCommand</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span> <span class="o">=</span> <span class="n">plan</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">current_index</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">queue_status</span> <span class="o">=</span> <span class="s2">&quot;running&quot;</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;new plan: </span><span class="si">{</span><span class="n">plan</span><span class="o">.</span><span class="n">mission_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="12-system-1-part-1">12주차 · System-1 단위 액션 part 1<a class="headerlink" href="#12-system-1-part-1" title="Permanent link">&para;</a></h2>
+<h3 id="move_to">move_to 실행 골격<a class="headerlink" href="#move_to" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">geometry_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">PoseStamped</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">exec_move_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="n">goal</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;goal&quot;</span><span class="p">]</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>    <span class="n">pose</span> <span class="o">=</span> <span class="n">PoseStamped</span><span class="p">()</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    <span class="n">pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s2">&quot;map&quot;</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>    <span class="n">pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>    <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">goal</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">goal</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    <span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="n">yaw_to_quaternion</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">goal</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;yaw&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">nav_client</span><span class="o">.</span><span class="n">wait_for_server</span><span class="p">()</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>    <span class="n">future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nav_client</span><span class="o">.</span><span class="n">send_goal_async</span><span class="p">(</span><span class="n">pose</span><span class="p">)</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>    <span class="k">return</span> <span class="n">wait_nav_result</span><span class="p">(</span><span class="n">future</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;timeout_sec&quot;</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="scan">scan 실행 골격<a class="headerlink" href="#scan" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">exec_scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="n">sweep_deg</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sweep_deg&quot;</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">))</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="n">yaw_rate_dps</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;yaw_rate_dps&quot;</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">))</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">duration_sec</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;duration_sec&quot;</span><span class="p">,</span> <span class="n">sweep_deg</span> <span class="o">/</span> <span class="n">yaw_rate_dps</span><span class="p">))</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    <span class="n">watch_classes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;watch_classes&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">]))</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">ats_controller</span><span class="o">.</span><span class="n">start_sweep</span><span class="p">(</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>        <span class="n">sweep_deg</span><span class="o">=</span><span class="n">sweep_deg</span><span class="p">,</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>        <span class="n">yaw_rate_dps</span><span class="o">=</span><span class="n">yaw_rate_dps</span><span class="p">,</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>        <span class="n">duration_sec</span><span class="o">=</span><span class="n">duration_sec</span><span class="p">,</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>    <span class="p">)</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>    <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ats_controller</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vision_tracker</span><span class="o">.</span><span class="n">primary_target</span><span class="p">()</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>        <span class="k">if</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">target</span><span class="o">.</span><span class="n">class_name</span> <span class="ow">in</span> <span class="n">watch_classes</span><span class="p">:</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">publish_scan_report</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>            <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+<hr />
+<h2 id="13-system-1-part-2">13주차 · System-1 단위 액션 part 2<a class="headerlink" href="#13-system-1-part-2" title="Permanent link">&para;</a></h2>
+<h3 id="track">track 테스트 플랜<a class="headerlink" href="#track" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">{</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span><span class="nt">&quot;mission_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;track_demo_001&quot;</span><span class="p">,</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">  </span><span class="nt">&quot;intent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person tracking&quot;</span><span class="p">,</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span><span class="nt">&quot;steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">      </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;track&quot;</span><span class="p">,</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">      </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">        </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;71&quot;</span><span class="p">,</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="w">        </span><span class="nt">&quot;follow_dist&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">        </span><span class="nt">&quot;tol&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">        </span><span class="nt">&quot;dwell_sec&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">        </span><span class="nt">&quot;max_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="report_and_wait">report_and_wait 테스트 플랜<a class="headerlink" href="#report_and_wait" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="p">{</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">  </span><span class="nt">&quot;mission_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;demo_report_wait_001&quot;</span><span class="p">,</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span><span class="nt">&quot;intent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">  </span><span class="nt">&quot;steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">      </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scan&quot;</span><span class="p">,</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="w">      </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="w">        </span><span class="nt">&quot;sweep_deg&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="w">        </span><span class="nt">&quot;yaw_rate_dps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="w">        </span><span class="nt">&quot;duration_sec&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="w">        </span><span class="nt">&quot;watch_classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">],</span>
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="w">        </span><span class="nt">&quot;report_on_found&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="w">      </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;report_and_wait&quot;</span><span class="p">,</span>
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="w">      </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="w">        </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;현장 상황을 보고하고 다음 명령을 기다린다.&quot;</span>
+<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a><span class="w">      </span><span class="nt">&quot;task&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;return_to_home&quot;</span><span class="p">,</span>
+<a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="w">      </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-30-25" name="__codelineno-30-25" href="#__codelineno-30-25"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-30-26" name="__codelineno-30-26" href="#__codelineno-30-26"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="return_to_home">return_to_home 실행 골격<a class="headerlink" href="#return_to_home" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">exec_return_to_home</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">goal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_home_goal</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>        <span class="sa">f</span><span class="s2">&quot;[return_to_home] goal=(</span><span class="si">{</span><span class="n">goal</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">goal</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">goal</span><span class="p">[</span><span class="s1">&#39;yaw&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="p">)</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">exec_move_to</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="14-system-2-llm-planner">14주차 · System-2 LLM Planner<a class="headerlink" href="#14-system-2-llm-planner" title="Permanent link">&para;</a></h2>
+<h3 id="modelspy">models.py<a class="headerlink" href="#modelspy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">Step</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="n">task</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;move_to&quot;</span><span class="p">,</span> <span class="s2">&quot;scan&quot;</span><span class="p">,</span> <span class="s2">&quot;report_and_wait&quot;</span><span class="p">,</span> <span class="s2">&quot;track&quot;</span><span class="p">,</span> <span class="s2">&quot;return_to_home&quot;</span><span class="p">]</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="n">retry</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="k">class</span><span class="w"> </span><span class="nc">ReplanRules</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>    <span class="n">lost_target_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    <span class="n">battery_rtb</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">HighLevelPlan</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span>
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>    <span class="n">intent</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>    <span class="n">steps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Step</span><span class="p">]</span>
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>    <span class="n">replan_rules</span><span class="p">:</span> <span class="n">ReplanRules</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">ReplanRules</span><span class="p">)</span>
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>
+<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a><span class="k">class</span><span class="w"> </span><span class="nc">VisionSnapshot</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a>    <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a>
+<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a><span class="k">class</span><span class="w"> </span><span class="nc">System1State</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a>    <span class="n">mission_id</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-32-24" name="__codelineno-32-24" href="#__codelineno-32-24"></a>    <span class="n">system1_state</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;idle&quot;</span><span class="p">,</span> <span class="s2">&quot;moving&quot;</span><span class="p">,</span> <span class="s2">&quot;working&quot;</span><span class="p">]</span>
+<a id="__codelineno-32-25" name="__codelineno-32-25" href="#__codelineno-32-25"></a>    <span class="n">current_task</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-32-26" name="__codelineno-32-26" href="#__codelineno-32-26"></a>    <span class="n">step_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-32-27" name="__codelineno-32-27" href="#__codelineno-32-27"></a>    <span class="n">pose</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+<a id="__codelineno-32-28" name="__codelineno-32-28" href="#__codelineno-32-28"></a>    <span class="n">vision_snapshot</span><span class="p">:</span> <span class="n">VisionSnapshot</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">VisionSnapshot</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="llm_plannerpy">llm_planner.py<a class="headerlink" href="#llm_plannerpy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.output_parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">PydanticOutputParser</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.prompts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">HighLevelPlan</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="n">parser</span> <span class="o">=</span> <span class="n">PydanticOutputParser</span><span class="p">(</span><span class="n">pydantic_object</span><span class="o">=</span><span class="n">HighLevelPlan</span><span class="p">)</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="n">system_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;너는 Spot+ATS 보안 로봇의 작전 플래너(System-2)다.</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="s2">[Action] 사용 가능한 단위 액션은 move_to, scan, report_and_wait, track, return_to_home 뿐이다.</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="s2">[Map] A:(-10.7,-12.6), B:(9.8,-12.6), C:(-10.7,-18.3), D:(9.8,-18.3)</span>
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="s2">[Logic] 배터리 부족, 타깃 손실, 사람 감지 상황에서는 안전 규칙을 우선한다.</span>
+<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="s2">[Format] 반드시 아래 JSON 스키마만 출력한다.</span>
+<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="si">{format_instructions}</span>
+<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a>
+<a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">state_to_text</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a>    <span class="n">pose</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pose&quot;</span><span class="p">,</span> <span class="p">{})</span>
+<a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a>    <span class="k">return</span> <span class="p">(</span>
+<a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>        <span class="sa">f</span><span class="s2">&quot;pos=(</span><span class="si">{</span><span class="n">pose</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pose</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">) &quot;</span>
+<a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a>        <span class="sa">f</span><span class="s2">&quot;battery=</span><span class="si">{</span><span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;battery&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a>    <span class="p">)</span>
+<a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a>
+<a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_plan</span><span class="p">(</span><span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HighLevelPlan</span><span class="p">:</span>
+<a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a>    <span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_messages</span><span class="p">([</span>
+<a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a>        <span class="p">(</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="n">system_template</span><span class="p">),</span>
+<a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a>        <span class="p">(</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{state}</span><span class="se">\n</span><span class="s2">명령: </span><span class="si">{cmd}</span><span class="s2">&quot;</span><span class="p">),</span>
+<a id="__codelineno-33-28" name="__codelineno-33-28" href="#__codelineno-33-28"></a>    <span class="p">])</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">format_instructions</span><span class="o">=</span><span class="n">parser</span><span class="o">.</span><span class="n">get_format_instructions</span><span class="p">())</span>
+<a id="__codelineno-33-29" name="__codelineno-33-29" href="#__codelineno-33-29"></a>
+<a id="__codelineno-33-30" name="__codelineno-33-30" href="#__codelineno-33-30"></a>    <span class="n">chain</span> <span class="o">=</span> <span class="n">prompt</span> <span class="o">|</span> <span class="n">llm</span> <span class="o">|</span> <span class="n">parser</span>
+<a id="__codelineno-33-31" name="__codelineno-33-31" href="#__codelineno-33-31"></a>    <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="n">state_to_text</span><span class="p">(</span><span class="n">state</span><span class="p">),</span> <span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="n">cmd</span><span class="p">})</span>
+</code></pre></div>
+<h3 id="system2_nodepy">system2_node.py<a class="headerlink" href="#system2_nodepy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">llm_planner</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_plan</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="k">class</span><span class="w"> </span><span class="nc">System2Node</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;system2_node&quot;</span><span class="p">)</span>
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">latest_state</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s2">&quot;/ats_state&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_state</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">plan_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s2">&quot;/system2/plan_cmd&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">decision_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s2">&quot;/system2/decision&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_operator_input_loop</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">on_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span>
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">latest_state</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_operator_input_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a>            <span class="n">cmd</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;운영자 명령&gt; &quot;</span><span class="p">)</span>
+<a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a>            <span class="n">plan</span> <span class="o">=</span> <span class="n">build_plan</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_state</span><span class="p">)</span>
+<a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
+<a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a>            <span class="n">out</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">()</span>
+<a id="__codelineno-34-28" name="__codelineno-34-28" href="#__codelineno-34-28"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">plan_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a>
+<a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<a id="__codelineno-34-31" name="__codelineno-34-31" href="#__codelineno-34-31"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<a id="__codelineno-34-32" name="__codelineno-34-32" href="#__codelineno-34-32"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">System2Node</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="15-system-2">15주차 · System-2 테스트 및 검증<a class="headerlink" href="#15-system-2" title="Permanent link">&para;</a></h2>
+<h3 id="system-2">System-2 단독 테스트 명령<a class="headerlink" href="#system-2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>A 구역으로 이동해줘
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>A, C, D 구역을 순서대로 이동하면서 주변을 스캔하고, 만약 사람이 발견되면 보고하고 대기해줘.
+</code></pre></div>
+<h3 id="scenario-a-d">Scenario A-D 테스트 명령<a class="headerlink" href="#scenario-a-d" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>Scenario A:
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>D 구역으로 가줘
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>Scenario B:
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>지도의 중앙으로 이동해서 사람이 있는지 120도 반경 살펴보고 있다면 보고해줘
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>Scenario C:
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>D, C, B, A 구역 순서대로 이동하면서 정찰해줘.
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>Scenario D:
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>주변 60도 반경을 스캔하고, 만약 트럭이 발견되면 추적해줘.
+</code></pre></div>
+<h3 id="ros-2">ROS 2 통합 검증 명령<a class="headerlink" href="#ros-2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/ats_state
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/system2/plan_cmd
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/system2/decision
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/system2/report_context
+</code></pre></div>
+<h3 id="report_and_wait_1">report_and_wait 수동 응답<a class="headerlink" href="#report_and_wait_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/system2/decision<span class="w"> </span>std_msgs/msg/String<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">  </span><span class="s2">&quot;{data: &#39;{\&quot;mission_id\&quot;:\&quot;demo_report_wait_001\&quot;,\&quot;decision\&quot;:\&quot;continue\&quot;}&#39;}&quot;</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="이전: 강의 개요">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                강의 개요
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week01/" class="md-footer__link md-footer__link--next" aria-label="다음: 1주차 · Isaac Sim 설치·활용">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                1주차 · Isaac Sim 설치·활용
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

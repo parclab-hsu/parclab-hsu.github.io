@@ -51,6 +51,7 @@ markdown_extensions:
 
 nav:
   - 강의 개요: index.md
+  - 복사용 실습 코드: code-snippets.md
   - 강의 계획 (15주):
     - 1주차 · Isaac Sim 설치·활용: week01.md
     - 2주차 · 물리환경·카메라(RGB/Depth): week02.md
