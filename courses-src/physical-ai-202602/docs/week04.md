@@ -6,6 +6,9 @@
 !!! quote "출처 (Source)"
     본 자료의 그림·예제는 교안 **「Isaac Lab 4족 보행 로봇 강화학습 환경 만들기」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드·명령은 교안 설명을 충실히 따른 **재구성 예제**입니다.
 
+!!! note "강의 흐름 (FLOW)"
+    `Observation` → `Policy` → `Action` → `Reward` → `Update`
+
 ## ⏱️ 3시간 구성
 
 | 교시 | 시간 | 내용 | 근거 교안 |

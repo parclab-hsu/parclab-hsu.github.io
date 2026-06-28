@@ -6,6 +6,9 @@
 !!! quote "출처 (Source)"
     본 자료의 그림·예제는 교안 **「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 명령·파라미터는 교안의 설명을 충실히 따르되, 경로는 실습 환경에 맞춰 확인이 필요합니다.
 
+!!! note "강의 흐름 (FLOW)"
+    `SLAM 지도생성` → `지도 저장` → `Localization` → `맵 수정(GIMP)` → `재주행`
+
 ## ⏱️ 3시간 구성
 
 | 교시 | 시간 | 내용 | 근거 교안 |

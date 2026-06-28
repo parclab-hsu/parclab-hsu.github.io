@@ -6,6 +6,9 @@
 !!! quote "출처 (Source)"
     본 자료의 그림·예제는 교안 **「NVIDIA Isaac Sim 설치 및 활용 사례」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 명령어·표는 교안의 설명을 충실히 따른 재구성 예제입니다.
 
+!!! note "강의 흐름 (FLOW)"
+    `GPU/Driver` → `Conda/Python` → `Isaac Sim` → `Isaac Lab` → `실습 검증`
+
 ## ⏱️ 3시간 구성
 
 | 교시 | 시간 | 내용 | 근거 교안 |

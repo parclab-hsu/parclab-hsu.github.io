@@ -6,6 +6,9 @@
 !!! quote "출처 (Source)"
     본 자료의 그림·예제는 교안 **「Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습)」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드·명령은 교안의 설명을 충실히 따른 재구성 예제입니다.
 
+!!! note "강의 흐름 (FLOW)"
+    `URDF/USD` → `ATS Gimbal` → `Spot Body` → `ROS 2 Bridge` → `RL 재학습`
+
 ## ⏱️ 3시간 구성
 
 | 교시 | 시간 | 내용 | 근거 교안 |

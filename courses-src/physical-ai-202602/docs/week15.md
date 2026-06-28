@@ -6,6 +6,9 @@
 !!! quote "출처 (Sources)"
     본 주차의 그림과 예제는 강의 교안 **『Physical AI』 5강 「System-2 테스트 및 검증」**, **4강 「System-2 LLM Planner 설계」**(제작: *ENGI UNIVERSE*)와 **Spot+ATS 프로젝트 사용 매뉴얼(Rev 1.4)** 을 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 **재구성 예제**입니다(원본 소스 비공개).
 
+!!! note "강의 흐름 (FLOW)"
+    `Natural Lang.` → `LLM Planner` → `Pydantic` → `HighLevelPlan` → `ROS 2 Publish`
+
 ## ⏱️ 3시간 구성
 
 | 교시 | 시간 | 내용 | 근거 교안 |

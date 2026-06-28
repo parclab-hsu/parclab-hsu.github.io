@@ -76,10 +76,25 @@
    W1~3                     W4~5             W6~7,9            W10         W11~13            W14             W15
 ```
 
+## 🧩 심화 트랙 — DLI 워크샵 (선택)
+
+본 강의(Isaac Sim · SLAM · Physical AI) 외에, **NVIDIA DLI(Deep Learning Institute) 워크샵** 자료를 심화 트랙으로 활용할 수 있습니다. 자율주행·매니퓰레이션·합성데이터 파이프라인을 Isaac Sim에서 더 깊이 다룹니다.
+
+| 모듈 | 주제 | 핵심 |
+| --- | --- | --- |
+| USD for Robotics | 로봇 자산을 USD로 | Jetbot·UR·Robotiq 설명 모델, USD 구조 |
+| SIL (Software-in-the-Loop) | ROS 2 ↔ Isaac Sim 통합 검증 | Nova Carter Nav2 창고 주행, Panda MoveIt 매니퓰레이션 |
+| Isaac ROS | GPU 가속 ROS 2 인지 | Isaac ROS 패키지·파이프라인 |
+| SMMG | 합성 데이터·모바일 매니퓰레이션 생성 | HDF5 데이터셋·체크포인트, 모방학습 데이터 |
+
+!!! note "연계"
+    SIL의 **Nav2 자율주행**은 6·7·9주차, **MoveIt 매니퓰레이션**과 **SMMG 합성 데이터**는 11~15주차(System-1/2)·[LeRobot 모듈](lerobot.md)과 자연스럽게 이어집니다. 워크샵 실행은 Linux/ROS 2 Humble 환경에서 진행하세요.
+
 ## 📚 참고자료
 
 - **NVIDIA Isaac Sim 5.1.0 공식 문서** — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html>
 - NVIDIA Isaac Lab Documentation — <https://isaac-sim.github.io/IsaacLab/>
+- NVIDIA Isaac ROS (DLI 심화) — <https://nvidia-isaac-ros.github.io/>
 - ROS 2 Documentation (Humble) — <https://docs.ros.org>
 - Nav2 — <https://docs.nav2.org> · slam_toolbox — <https://github.com/SteveMacenski/slam_toolbox>
 - Ultralytics YOLOv8 — <https://docs.ultralytics.com> · LangChain — <https://python.langchain.com>

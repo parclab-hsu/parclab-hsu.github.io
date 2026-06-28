@@ -6,6 +6,9 @@
 !!! quote "출처 (Source)"
     평가 범위는 교안 **NVIDIA Isaac Sim 1~5강** 및 **SLAM 1~2강**(제작: ENGI UNIVERSE)에 기반한다.
 
+!!! note "강의 흐름 (FLOW)"
+    `Isaac Sim` → `센서` → `Isaac Lab` → `SLAM` → `Nav2`
+
 ## ⏱️ 3시간 구성
 
 | 교시 | 시간 | 내용 |
