@@ -1,0 +1,1690 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · Physical AI 강의 자료">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/physical-ai/dli-sil/">
+      
+      
+        <link rel="prev" href="../dli-usd/">
+      
+      
+        <link rel="next" href="../dli-ros/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>SIL — Nav2 & MoveIt - Physical AI · 2026-2학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dli-sil-software-in-the-loop-nav2-moveit" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-header__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Physical AI · 2026-2학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SIL — Nav2 & MoveIt
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-nav__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Physical AI · 2026-2학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-snippets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    복사용 실습 코드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 계획 (15주)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    강의 계획 (15주)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · Isaac Sim 설치·활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 물리환경·카메라(RGB/Depth)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 센서(IMU·LiDAR·Radar)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · Isaac Lab 4족 보행 RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · Spot+ATS 시스템 구축
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · SLAM·Nav2 기본
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · Spot+ATS SLAM 연동 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · Spot+ATS SLAM 연동 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · Spot+ATS Vision(YOLOv8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · System-1 Executor 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · System-1 단위 액션 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · System-1 단위 액션 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · System-2 LLM Planner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · System-2 테스트·검증
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    심화 모듈
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    심화 모듈
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lerobot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤗 LeRobot — 모방학습 & VLA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DLI 워크샵 심화
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DLI 워크샵 심화
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dli-usd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USD for Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIL — Nav2 & MoveIt
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIL — Nav2 & MoveIt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ 모듈 구성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-gtc25-mega1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 1. 워크스페이스 구조 — gtc25-mega1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-installsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 2. 설치 — install.sh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-carter-nav2-carter_navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚗 3. Carter 창고 자율주행 (Nav2) — carter_navigation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-panda-moveit-isaac_moveit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🦾 4. Panda 매니퓰레이션 (MoveIt) — isaac_moveit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🦾 4. Panda 매니퓰레이션 (MoveIt) — isaac_moveit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        큐브 마커 퍼블리셔
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-checkpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 5. Checkpoint → 완성 패키지 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크포인트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dli-ros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Isaac ROS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dli-smmg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    합성데이터 & 모방학습(SMMG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://parclab-hsu.github.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 PARC Lab 홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ 모듈 구성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-gtc25-mega1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 1. 워크스페이스 구조 — gtc25-mega1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-installsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ 2. 설치 — install.sh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-carter-nav2-carter_navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚗 3. Carter 창고 자율주행 (Nav2) — carter_navigation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-panda-moveit-isaac_moveit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🦾 4. Panda 매니퓰레이션 (MoveIt) — isaac_moveit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🦾 4. Panda 매니퓰레이션 (MoveIt) — isaac_moveit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        큐브 마커 퍼블리셔
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-checkpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 5. Checkpoint → 완성 패키지 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크포인트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="dli-sil-software-in-the-loop-nav2-moveit">DLI 심화 · SIL — Software-in-the-Loop (Nav2 자율주행 + MoveIt 매니퓰레이션)<a class="headerlink" href="#dli-sil-software-in-the-loop-nav2-moveit" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">학습목표</p>
+<p>NVIDIA <strong>Isaac Sim</strong> 시뮬레이터와 <strong>ROS 2 Humble</strong> 스택을 <strong>Software-in-the-Loop(SIL)</strong> 로 연결해, 시뮬레이션 속 로봇을 실제 ROS 2 노드로 제어하는 통합 파이프라인을 구성한다. 완성 워크스페이스 <strong><code>gtc25-mega1</code></strong> 를 빌드하여 <strong>Carter 모바일 로봇의 창고 자율주행(Nav2)</strong> 과 <strong>Franka(Panda) 매니퓰레이터의 모션 플래닝(MoveIt)</strong> 두 가지 SIL 시나리오를 실행한다. 단계별 <strong>Checkpoint</strong> 자산이 어떻게 최종 패키지로 합쳐지는지 흐름을 이해한다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Source)</p>
+<p>본 모듈은 <strong>NVIDIA «Isaac for Accelerated Robotics» (GTC Paris 2025) / NVIDIA DLI 코스 C-OV-05</strong> 의 SIL 실습(<code>DLI/17_SIL</code>)을 바탕으로 재구성하였습니다. 워크스페이스·런치 파일·설치 스크립트는 실제 실습 패키지의 내용을 그대로 반영합니다.</p>
+</div>
+<h2 id="_1">⏱️ 모듈 구성<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>자산</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Checkpoint 2</td>
+<td><code>Checkpoint2_franka/franka</code></td>
+<td>Franka USD + 카메라/센서 자산 (매니퓰레이션 씬 준비)</td>
+</tr>
+<tr>
+<td>Checkpoint 4</td>
+<td><code>Checkpoint4_completed_environment/warehouse_ROS</code></td>
+<td>창고(warehouse) ROS USD/머티리얼 환경 (Nav2 씬 준비)</td>
+</tr>
+<tr>
+<td>Checkpoint 5</td>
+<td><code>Checkpoint5_completed_ros_package/gtc25-mega1</code></td>
+<td>완성 ROS 2 워크스페이스 — <code>install.sh</code>, <code>ros_ws</code>(carter_navigation + isaac_moveit)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Software-in-the-Loop(SIL)이란</p>
+<p>SIL은 <strong>실제 하드웨어 대신 시뮬레이터(Isaac Sim)</strong> 가 센서·액추에이터·물리를 담당하고, <strong>제어 소프트웨어(ROS 2 노드: Nav2·MoveIt)</strong> 는 실물 배포와 동일하게 동작하는 통합 방식입니다. Isaac Sim의 OmniGraph/ROS 2 브리지가 토픽·TF·<code>/clock</code> 을 주고받으므로, ROS 2 측에서는 시뮬레이션을 실제 로봇처럼 다룹니다. 이 때문에 모든 흐름에서 <strong><code>use_sim_time</code> 이 <code>true</code></strong> 로 설정됩니다.</p>
+</div>
+<h2 id="1-gtc25-mega1">📦 1. 워크스페이스 구조 — <code>gtc25-mega1</code><a class="headerlink" href="#1-gtc25-mega1" title="Permanent link">&para;</a></h2>
+<p>최종 실습 패키지는 ROS 2 소스 워크스페이스 하나(<code>ros_ws</code>)와 설치 스크립트로 구성됩니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Checkpoint5_completed_ros_package/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└─ gtc25-mega1/
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   ├─ install.sh                 # 서브모듈 init → ROS 2 Humble → Isaac ROS → colcon build
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   ├─ README.md                  # 루트에서 `bash ./install.sh`
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   └─ ros_ws/
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>      └─ src/
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>         ├─ navigation/
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>         │  └─ carter_navigation/        # Nav2 창고 자율주행
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>         │     ├─ launch/                # carter_warehouse_env / _individual / nova_carter_description_isaac_sim
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>         │     ├─ maps/                  # warehouse_env.yaml + .png
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>         │     ├─ params/                # carter_warehouse_env_params.yaml
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>         │     └─ rviz2/                 # carter_navigation(_namespaced).rviz
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>         └─ manipulation/
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            ├─ isaac_moveit/             # Panda MoveIt + Isaac Sim 통합
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            │  ├─ launch/isaac_moveit.launch.py
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            │  ├─ scripts/publish_cubes.py
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            │  └─ rviz2/panda_moveit_config.rviz
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            └─ moveit_resources/         # 서브모듈(ayushgnv/moveit_resources, branch gtc25)
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>               ├─ panda_description/     # Panda URDF/메시
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>               └─ panda_moveit_config/  # MoveIt 설정 + ros2_controllers.yaml
+</code></pre></div>
+<p><code>moveit_resources</code> 는 <strong>Git 서브모듈</strong>(<code>.gitmodules</code>)입니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[submodule &quot;ros_ws/src/manipulation/moveit_resources&quot;]</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ros_ws/src/manipulation/moveit_resources</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://github.com/ayushgnv/moveit_resources.git</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="na">branch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">gtc25</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">서브모듈 주의</p>
+<p><code>moveit_resources</code> 는 별도 Git 저장소이므로 함부로 편집하지 마세요. 자체 이력/상태를 가질 수 있습니다. 또한 <code>install.sh</code> 는 <strong>Windows PowerShell에서 실행하지 마세요</strong> — Ubuntu(Bash) 전용입니다.</p>
+</div>
+<h2 id="2-installsh">🛠️ 2. 설치 — <code>install.sh</code><a class="headerlink" href="#2-installsh" title="Permanent link">&para;</a></h2>
+<p>워크스페이스 루트(<code>gtc25-mega1/</code>)에서 한 번에 실행합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>gtc25-mega1
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>bash<span class="w"> </span>./install.sh
+</code></pre></div>
+<p>스크립트가 수행하는 작업 순서:</p>
+<ol>
+<li><strong>서브모듈 동기화</strong> — <code>git submodule update --init --recursive</code></li>
+<li><strong>ROS 2 Humble 설치</strong> — 로케일(UTF-8) 설정, <code>universe</code> 저장소, ROS 2 apt 키/소스 등록 후 <code>ros-humble-desktop</code> 설치</li>
+<li><strong>Isaac ROS 저장소 등록</strong> — NVIDIA Isaac ROS <code>release-3.0</code> apt 소스 추가</li>
+<li><strong><code>nova_carter_description</code> 설치</strong> — <code>ros-humble-nova-carter-description</code> (Carter URDF/calibration 패키지)</li>
+<li><strong>워크스페이스 빌드</strong> — <code>rosdep</code> 의존성 설치 후 <code>colcon build</code></li>
+</ol>
+<p>핵심 명령만 발췌하면 다음과 같습니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1) 서브모듈</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 2) ROS 2 Humble apt 소스 + 설치</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sudo<span class="w"> </span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">     </span>-o<span class="w"> </span>/usr/share/keyrings/ros-archive-keyring.gpg
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s2">http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">     </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/ros2.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ros-humble-desktop
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># 3) Isaac ROS apt 소스 (US CDN)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span>https://isaac.download.nvidia.com/isaac-ros/repos.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb https://isaac.download.nvidia.com/isaac-ros/release-3 </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> release-3.0&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">     </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/apt/sources.list
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span>-y
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1"># 4) Nova Carter description</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ros-humble-nova-carter-description
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="c1"># 5) 워크스페이스 빌드</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="nb">cd</span><span class="w"> </span>ros_ws
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>sudo<span class="w"> </span>rosdep<span class="w"> </span>init<span class="w">        </span><span class="c1"># 이미 ROS가 설치된 머신에서는 이미 초기화돼 있을 수 있음</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>rosdep<span class="w"> </span>update
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r<span class="w"> </span>-y
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>colcon<span class="w"> </span>build
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">rosdep init 멱등성</p>
+<p><code>sudo rosdep init</code> 은 멱등(idempotent)하지 않습니다. 이미 ROS가 설치된 머신에서는 <em>"already exists"</em> 오류가 날 수 있는데, 정상이므로 무시하고 <code>rosdep update</code> 로 진행하면 됩니다.</p>
+</div>
+<p>빌드가 끝나면 새 터미널마다 환경을 source 합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">source</span><span class="w"> </span>~/gtc25-mega1/ros_ws/install/setup.bash
+</code></pre></div>
+<h2 id="3-carter-nav2-carter_navigation">🚗 3. Carter 창고 자율주행 (Nav2) — <code>carter_navigation</code><a class="headerlink" href="#3-carter-nav2-carter_navigation" title="Permanent link">&para;</a></h2>
+<p>Isaac Sim에서 <strong>창고(warehouse) 씬 + Nova Carter</strong> 를 띄운 뒤, ROS 2 측에서 Nav2 스택을 실행해 자율주행을 수행합니다. 모든 노드는 <code>carter</code> 네임스페이스로 묶입니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># (사전) Isaac Sim에서 Checkpoint4 warehouse_ROS 씬 + Carter 로봇 재생(Play)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>carter_navigation<span class="w"> </span>carter_warehouse_env.launch.py
+</code></pre></div>
+<p><code>carter_warehouse_env.launch.py</code> 가 구성하는 요소:</p>
+<ul>
+<li><strong>RViz2</strong> — <code>rviz2/carter_navigation_namespaced.rviz</code>, <code>carter</code> 네임스페이스로 기동</li>
+<li><strong>Nav2 브링업</strong> — <code>carter_navigation_individual.launch.py</code> 를 포함(per-robot bringup), 기본 BT는 <code>navigate_w_replanning_and_recovery.xml</code></li>
+<li><strong><code>pointcloud_to_laserscan</code></strong> — Carter의 <code>front_3d_lidar</code> 포인트클라우드(<code>point_cloud</code>)를 2D <code>scan</code> 으로 변환 (AMCL/코스트맵 입력)</li>
+<li><strong>TF relay</strong> — <code>topic_tools/relay</code> 로 <code>/tf</code>·<code>/tf_static</code> 을 <code>/carter/tf</code>·<code>/carter/tf_static</code> 으로 중계(네임스페이스 정합)</li>
+</ul>
+<p>기본 인자(런치 파일에서 선언):</p>
+<table>
+<thead>
+<tr>
+<th>인자</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>map</code></td>
+<td><code>maps/warehouse_env.yaml</code></td>
+</tr>
+<tr>
+<td><code>carter_params_file</code></td>
+<td><code>params/carter_warehouse_env_params.yaml</code></td>
+</tr>
+<tr>
+<td><code>use_sim_time</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>autostart</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>use_rviz</code></td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<p>맵 메타데이터(<code>warehouse_env.yaml</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warehouse_env.png</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-5.975</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-6.975</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0000</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">negate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nt">occupied_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.65</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">free_thresh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.196</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Carter URDF 로딩</p>
+<p><code>nova_carter_description_isaac_sim.launch.py</code> 는 <code>carter</code> 네임스페이스를 push 하고, <code>nova_carter_description</code> 의 <code>urdf/nova_carter.urdf.xacro</code> 를 calibration(<code>/etc/nova/calibration/isaac_calibration.urdf</code>)과 함께 로드합니다. 이 패키지는 <code>install.sh</code> 에서 apt로 설치됩니다.</p>
+</div>
+<p>RViz가 뜨면 <strong>2D Goal Pose</strong> 로 목표 지점을 찍어 Carter가 창고 맵에서 경로를 계획·주행하는 것을 확인합니다.</p>
+<h2 id="4-panda-moveit-isaac_moveit">🦾 4. Panda 매니퓰레이션 (MoveIt) — <code>isaac_moveit</code><a class="headerlink" href="#4-panda-moveit-isaac_moveit" title="Permanent link">&para;</a></h2>
+<p>Isaac Sim에 <strong>Franka(Panda) 씬</strong>(Checkpoint2 자산)을 띄운 뒤, MoveIt 스택을 SIL로 실행합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># (사전) Isaac Sim에서 Checkpoint2 franka 씬 재생(Play)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>isaac_moveit<span class="w"> </span>isaac_moveit.launch.py
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># 하드웨어 인터페이스 기본값: ros2_control_hardware_type:=isaac</span>
+</code></pre></div>
+<p><code>isaac_moveit.launch.py</code> 가 기동하는 노드:</p>
+<ul>
+<li><strong><code>move_group</code></strong> — <code>MoveItConfigsBuilder("moveit_resources_panda")</code> 로 빌드. URDF <code>config/panda.urdf.xacro</code>, SRDF <code>config/panda.srdf</code>, 플래닝 파이프라인 <strong>OMPL + Pilz Industrial Motion Planner</strong></li>
+<li><strong>RViz2</strong> — <code>rviz2/panda_moveit_config.rviz</code> (MotionPlanning 플러그인)</li>
+<li><strong><code>robot_state_publisher</code></strong> — Panda 로봇 디스크립션 퍼블리시</li>
+<li><strong><code>ros2_control_node</code></strong> + 스포너 — <code>joint_state_broadcaster</code>, <code>panda_arm_controller</code>, <code>panda_hand_controller</code> (컨트롤러 설정은 <code>moveit_resources_panda_moveit_config</code> 의 <code>ros2_controllers.yaml</code>)</li>
+<li><strong>정적 TF 2개</strong><ul>
+<li><code>world → panda_link0</code> : <code>(-4.7, -6.1, 0.8)</code> — 창고 좌표계에 로봇 베이스 배치</li>
+<li><code>panda_hand → sim_camera</code> : <code>(0.04, 0.0, 0.04)</code> — 손목 카메라 프레임</li>
+</ul>
+</li>
+<li><strong><code>publish_cubes.py</code></strong> — 조작 대상 큐브 마커 퍼블리셔</li>
+</ul>
+<p><code>ros2_control_hardware_type</code> 인자로 하드웨어 인터페이스를 전환할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Isaac Sim 없이 MoveIt 동작만 확인 (mock 하드웨어)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ros2<span class="w"> </span>launch<span class="w"> </span>isaac_moveit<span class="w"> </span>isaac_moveit.launch.py<span class="w"> </span>ros2_control_hardware_type:<span class="o">=</span>mock_components
+</code></pre></div>
+<h3 id="_2">큐브 마커 퍼블리셔<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><code>publish_cubes.py</code> 는 <code>MarkerArray</code> 를 <code>visualization_marker_array</code> 토픽으로 발행합니다. 각 큐브는 한 변 <strong>0.06m</strong>, <strong>초록색</strong>(RGBA = 0,1,0,1) <code>CUBE</code> 마커이며, 프레임은 <code>nvidia_cube</code>/<code>nvidia_cube_NN</code> 으로 RViz에서 조작 대상의 위치를 시각화합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">visualization_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">MarkerArray</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># ...</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">marker</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">Marker</span><span class="o">.</span><span class="n">CUBE</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">marker</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">marker</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">marker</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.06</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">marker</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mf">0.0</span>
+</code></pre></div>
+<p>RViz의 MotionPlanning 패널에서 목표 자세를 설정하고 <strong>Plan &amp; Execute</strong> 하면, MoveIt이 만든 궤적이 Isaac Sim 속 Panda로 전달되어 실제처럼 움직입니다.</p>
+<h2 id="5-checkpoint">🔄 5. Checkpoint → 완성 패키지 흐름<a class="headerlink" href="#5-checkpoint" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Checkpoint2 (Franka USD/센서)  ┐
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>                               ├─►  Checkpoint5 gtc25-mega1 / ros_ws
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Checkpoint4 (warehouse_ROS)    ┘     ├─ isaac_moveit   ← Franka 씬과 연결
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>                                     └─ carter_navigation ← warehouse 씬과 연결
+</code></pre></div>
+<ul>
+<li><strong>Checkpoint 2</strong> 에서 준비한 Franka 씬·센서가 <strong><code>isaac_moveit</code></strong> 의 매니퓰레이션 SIL 대상이 됩니다.</li>
+<li><strong>Checkpoint 4</strong> 에서 완성한 창고 환경이 <strong><code>carter_navigation</code></strong> 의 Nav2 자율주행 무대가 됩니다.</li>
+<li><strong>Checkpoint 5</strong> 는 위 두 씬을 구동할 <strong>완성 ROS 2 패키지</strong>로, <code>install.sh</code> 와 <code>colcon build</code> 만으로 환경을 재현합니다.</li>
+</ul>
+<h2 id="_3">✅ 체크포인트<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>bash ./install.sh</code> 가 서브모듈 동기화 → ROS 2 Humble → Isaac ROS → <code>nova_carter_description</code> → <code>colcon build</code> 까지 끝까지 완료되는가?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>moveit_resources</code> 서브모듈이 <code>gtc25</code> 브랜치로 정상 체크아웃됐는가? (<code>ros_ws/src/manipulation/moveit_resources</code> 가 비어 있지 않은지 확인)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>carter_warehouse_env.launch.py</code> 실행 후 RViz에서 <strong>2D Goal Pose</strong> 로 Carter가 창고 맵을 자율주행하는가? (<code>pointcloud_to_laserscan</code> 으로 LiDAR→scan 변환, <code>carter</code> 네임스페이스 TF 중계 확인)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>isaac_moveit.launch.py</code> 실행 후 <code>joint_state_broadcaster</code>·<code>panda_arm_controller</code>·<code>panda_hand_controller</code> 가 모두 스폰되고, RViz에서 <strong>Plan &amp; Execute</strong> 가 Isaac Sim의 Panda를 움직이는가?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 모든 흐름에서 <code>use_sim_time:=true</code> 가 적용되고 Isaac Sim의 <code>/clock</code> 과 동기화되는가?</li>
+</ul>
+<h2 id="_4">🔗 출처 및 참고자료<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>NVIDIA DLI <strong>«Isaac for Accelerated Robotics»</strong> (C-OV-05, GTC Paris 2025) — <code>DLI/17_SIL</code></li>
+<li>NVIDIA <strong>Isaac ROS</strong> — <a href="https://nvidia-isaac-ros.github.io/">https://nvidia-isaac-ros.github.io/</a></li>
+<li>NVIDIA <strong>Isaac Sim</strong> (ROS 2 Bridge / Nav2 · MoveIt 튜토리얼) — <a href="https://docs.isaacsim.omniverse.nvidia.com/">https://docs.isaacsim.omniverse.nvidia.com/</a></li>
+<li><strong>Nav2</strong> 공식 문서 — <a href="https://docs.nav2.org/">https://docs.nav2.org/</a></li>
+<li><strong>MoveIt 2</strong> 공식 문서 — <a href="https://moveit.picknik.ai/">https://moveit.picknik.ai/</a></li>
+<li><code>moveit_resources</code> 서브모듈(gtc25) — <a href="https://github.com/ayushgnv/moveit_resources">https://github.com/ayushgnv/moveit_resources</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../dli-usd/" class="md-footer__link md-footer__link--prev" aria-label="이전: USD for Robotics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                USD for Robotics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../dli-ros/" class="md-footer__link md-footer__link--next" aria-label="다음: Isaac ROS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                Isaac ROS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2325 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · Physical AI 강의 자료">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/physical-ai/dli-smmg/">
+      
+      
+        <link rel="prev" href="../dli-ros/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>합성데이터 & 모방학습(SMMG) - Physical AI · 2026-2학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dli-isaac-lab-cosmos" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-header__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Physical AI · 2026-2학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              합성데이터 & 모방학습(SMMG)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Physical AI · 2026-2학기" class="md-nav__button md-logo" aria-label="Physical AI · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Physical AI · 2026-2학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-snippets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    복사용 실습 코드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 계획 (15주)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    강의 계획 (15주)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · Isaac Sim 설치·활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 물리환경·카메라(RGB/Depth)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 센서(IMU·LiDAR·Radar)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · Isaac Lab 4족 보행 RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · Spot+ATS 시스템 구축
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · SLAM·Nav2 기본
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · Spot+ATS SLAM 연동 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · Spot+ATS SLAM 연동 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · Spot+ATS Vision(YOLOv8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · System-1 Executor 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · System-1 단위 액션 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · System-1 단위 액션 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · System-2 LLM Planner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · System-2 테스트·검증
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    심화 모듈
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    심화 모듈
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lerobot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤗 LeRobot — 모방학습 & VLA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DLI 워크샵 심화
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DLI 워크샵 심화
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dli-usd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USD for Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dli-sil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIL — Nav2 & MoveIt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dli-ros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Isaac ROS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    합성데이터 & 모방학습(SMMG)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    합성데이터 & 모방학습(SMMG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ 구성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-physical-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Physical AI와 데이터 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Isaac Lab — 로봇 학습 프레임워크
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Isaac Lab — 로봇 학습 프레임워크">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        로봇 학습이란
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-imitation-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 모방학습(Imitation Learning)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 모방학습(Imitation Learning)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isaac-gr00t-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac GR00T로 데이터 10배 증폭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smmg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SMMG 블루프린트 (합성 조작 모션 생성)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 과제 정의 — 관측/행동 공간
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 과제 정의 — 관측/행동 공간">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation-space-action-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관측 공간(Observation Space) / 행동 공간(Action Space)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-module-1-xr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Module 1 — XR 텔레오퍼레이션으로 시연 수집
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-module-2-gr00t-mimic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Module 2 — GR00T-Mimic으로 합성 데이터 생성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Module 2 — GR00T-Mimic으로 합성 데이터 생성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-annotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — 데이터 주석(Annotation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — 데이터 생성(Generation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-module-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Module 3 — 모방학습으로 정책 학습·배포
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Module 3 — 모방학습으로 정책 학습·배포">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#behavioral-cloning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavioral Cloning 알고리즘
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모델 아키텍처
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 설정 및 평가
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        워크플로 정리 &amp; 이점
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cosmos-world-foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Cosmos World Foundation Models로 영상 증강
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Cosmos World Foundation Models로 영상 증강">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cosmos-transfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cosmos Transfer로 로봇 데이터 증강
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isaac-gr00t-dreams-gr00t-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac GR00T-Dreams &amp; GR00T N
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크포인트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ 원본 워크샵 슬라이드
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://parclab-hsu.github.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 PARC Lab 홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ 구성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-physical-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Physical AI와 데이터 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Isaac Lab — 로봇 학습 프레임워크
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Isaac Lab — 로봇 학습 프레임워크">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        로봇 학습이란
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-imitation-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 모방학습(Imitation Learning)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 모방학습(Imitation Learning)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isaac-gr00t-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac GR00T로 데이터 10배 증폭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smmg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SMMG 블루프린트 (합성 조작 모션 생성)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 과제 정의 — 관측/행동 공간
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 과제 정의 — 관측/행동 공간">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation-space-action-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관측 공간(Observation Space) / 행동 공간(Action Space)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-module-1-xr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Module 1 — XR 텔레오퍼레이션으로 시연 수집
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-module-2-gr00t-mimic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Module 2 — GR00T-Mimic으로 합성 데이터 생성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Module 2 — GR00T-Mimic으로 합성 데이터 생성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-annotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — 데이터 주석(Annotation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — 데이터 생성(Generation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-module-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Module 3 — 모방학습으로 정책 학습·배포
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Module 3 — 모방학습으로 정책 학습·배포">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#behavioral-cloning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behavioral Cloning 알고리즘
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모델 아키텍처
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 설정 및 평가
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        워크플로 정리 &amp; 이점
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cosmos-world-foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Cosmos World Foundation Models로 영상 증강
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Cosmos World Foundation Models로 영상 증강">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cosmos-transfer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cosmos Transfer로 로봇 데이터 증강
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isaac-gr00t-dreams-gr00t-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isaac GR00T-Dreams &amp; GR00T N
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 체크포인트
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 출처 및 참고자료
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ 원본 워크샵 슬라이드
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="dli-isaac-lab-cosmos">DLI 심화 · 합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos)<a class="headerlink" href="#dli-isaac-lab-cosmos" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">학습목표</p>
+<p>Physical AI를 위한 <strong>합성 데이터 생성(SDG)</strong> 파이프라인을 이해한다. 소수의 사람 시연을 <strong>GR00T-Mimic</strong>으로 수백~수천 개의 합성 궤적으로 증강하고, 이를 <strong>모방학습(Behavioral Cloning)</strong> 으로 학습시켜 큐브 쌓기 과제를 수행하는 정책을 만든다. 나아가 <strong>NVIDIA Cosmos</strong> World Foundation Model로 영상을 증강해 sim-to-real 격차를 줄이는 흐름까지 살펴본다.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">출처 (Source)</p>
+<p>본 모듈은 <strong>NVIDIA «Isaac for Accelerated Robotics» (GTC Paris 2025) / NVIDIA DLI 코스 C-OV-05 — Part 4: Synthetic Data Generation for Imitation Learning using NVIDIA Isaac Lab and Cosmos</strong> (Alexander Schwarz, Solutions Architect – Robotics, NVIDIA)의 강의 자료를 바탕으로 재구성하였습니다.</p>
+</div>
+<h2 id="_1">⏱️ 구성<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>개요</td>
+<td>Physical AI · 로보틱스 데이터 과제 · Isaac Lab</td>
+</tr>
+<tr>
+<td><strong>Module 1</strong></td>
+<td>GR00T-Teleop(XR 디바이스)으로 <strong>시연 데이터 수집</strong></td>
+</tr>
+<tr>
+<td><strong>Module 2</strong></td>
+<td><strong>GR00T-Mimic</strong>으로 데이터 주석(Annotation) &amp; 합성 데이터 생성</td>
+</tr>
+<tr>
+<td><strong>Module 3</strong></td>
+<td>Isaac Lab에서 <strong>모방학습(BC-RNN)</strong> 으로 정책 학습·배포</td>
+</tr>
+<tr>
+<td>심화</td>
+<td><strong>Cosmos</strong> World Foundation Model로 영상 증강 · GR00T-N1</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">실습 과제 (Goal of the lab)</p>
+<p><strong>3개의 큐브를 차례로 쌓아 올리는</strong> 로봇을 학습시킨다. Franka 로봇 + Isaac Sim 시뮬레이션 환경에서 진행한다.</p>
+</div>
+<figure>
+<p><img alt="Part 4 타이틀" src="../img/dli-smmg/s04.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 04 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h2 id="1-physical-ai">1. Physical AI와 데이터 과제<a class="headerlink" href="#1-physical-ai" title="Permanent link">&para;</a></h2>
+<p>AI는 <strong>Perception AI → Generative AI → Agentic AI → Physical AI</strong> 로 진화하고 있습니다. Physical AI는 물리 세계에서 동작하므로 개발이 특히 어렵습니다.</p>
+<ul>
+<li><strong>실세계 데이터 수집 비용이 큼</strong> — 방대하고 고품질인 데이터셋을 현실에서 모으는 일은 지루하고, 시간이 오래 걸리며, 비용이 막대합니다.</li>
+<li><strong>물리 테스트는 위험하고 비쌈</strong> — 실제 로봇으로 반복 시험하는 것은 안전·비용 측면에서 부담이 큽니다.</li>
+</ul>
+<p>NVIDIA는 Physical AI 구축을 위한 <strong>3대의 컴퓨터</strong>를 제시합니다.</p>
+<table>
+<thead>
+<tr>
+<th>컴퓨터</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NVIDIA DGX</strong></td>
+<td>모델 학습</td>
+</tr>
+<tr>
+<td><strong>NVIDIA Omniverse + Cosmos (RTX PRO)</strong></td>
+<td>시뮬레이션·합성 데이터 생성</td>
+</tr>
+<tr>
+<td><strong>NVIDIA Jetson AGX</strong></td>
+<td>로봇 온보드 추론(배포)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Physical AI Is Born in Simulation</p>
+<p>로보틱스 데이터는 <strong>인터넷 영상(사전학습)</strong> 과 <strong>사람 시연(후학습)</strong> 만으로는 부족합니다. <strong>물리 시뮬레이션에서의 합성 데이터 생성(SDG)과 강화학습</strong>이 이 간극을 메웁니다.</p>
+</div>
+<figure>
+<p><img alt="3대의 컴퓨터로 만드는 Physical AI" src="../img/dli-smmg/s10.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 10 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h2 id="2-isaac-lab">2. Isaac Lab — 로봇 학습 프레임워크<a class="headerlink" href="#2-isaac-lab" title="Permanent link">&para;</a></h2>
+<p><strong>Isaac Lab</strong>은 시뮬레이션 우선(Simulation-First) 접근으로 로봇 학습을 가능하게 하는 프레임워크입니다. 그 아래에 <strong>Isaac Sim</strong>(테스트·시뮬레이션)과 <strong>NVIDIA Omniverse / OpenUSD · RTX · PhysX</strong> 플랫폼이 있습니다.</p>
+<ul>
+<li><strong>워크플로</strong>: Direct-Based Workflow · Manager-Based Workflow</li>
+<li><strong>학습 알고리즘</strong>: 강화학습(RL) · 모방학습(IL)</li>
+<li><strong>에셋·환경</strong>: Actuators, Controllers, Sensors, Terrain Generation</li>
+<li><strong>데이터/센서/유틸</strong>: SDG, Annotations, Randomization, Writers, Pose Estimation, 스테레오·RGBD·Lidar·IMU·Contact 센서</li>
+<li><strong>인터페이스</strong>: ROS / ROS 2 / Python / OmniGraph / 커스텀, URDF·CAD·Gazebo·MuJoCo</li>
+</ul>
+<blockquote>
+<p>코드: <a href="https://github.com/isaac-sim/IsaacLab">https://github.com/isaac-sim/IsaacLab</a></p>
+</blockquote>
+<figure>
+<p><img alt="Isaac Lab 프레임워크 구조" src="../img/dli-smmg/s16.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 16 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h3 id="_2">로봇 학습이란<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>로봇 학습(Robot Learning)</strong>: 데이터와 환경 상호작용을 통해 로봇이 스스로 과제를 배우게 하는 AI 분야. 수동 프로그래밍을 줄이고 변화하는 환경에 적응하게 합니다.</li>
+<li><strong>모방학습(Imitation Learning)</strong>: 사람 등의 <strong>시연을 모방</strong>하여 학습 (예: 조립 작업, 로코모션).</li>
+<li><strong>강화학습(Reinforcement Learning)</strong>: <strong>시행착오와 보상 최대화</strong>로 학습 (예: 파지, 로코모션, 복잡한 과제).</li>
+</ul>
+<h2 id="3-imitation-learning">3. 모방학습(Imitation Learning)<a class="headerlink" href="#3-imitation-learning" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">왜 모방학습인가?</p>
+<ul>
+<li><strong>장점</strong>: 보상 정책(reward policy)을 정의하는 것보다 <strong>시연을 녹화하는 편이 더 단순</strong>할 수 있다.</li>
+<li><strong>도전 과제</strong>: 완벽한 시연을 만들기 어렵고, 예기치 못한 상황에 로봇이 취약할 수 있다. 또 현실에서 대규모 고품질 데이터를 모으는 일은 지루·고비용이다.</li>
+<li><strong>해법</strong>: <strong>물리적으로 정확한 시뮬레이션에서 생성한 합성 데이터</strong>로 데이터 수집을 가속한다.</li>
+</ul>
+</div>
+<figure>
+<p><img alt="모방학습이란" src="../img/dli-smmg/s22.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 22 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h3 id="isaac-gr00t-10">Isaac GR00T로 데이터 10배 증폭<a class="headerlink" href="#isaac-gr00t-10" title="Permanent link">&para;</a></h3>
+<p>Isaac GR00T는 휴머노이드 로보틱스를 위한 범용 로봇 파운데이션 모델·데이터 파이프라인 플랫폼입니다. <strong>수십 개의 사람 시연을 100만 배(1M X) 학습 데이터로</strong> 증폭합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>수십 개 시연  →  수백 개 합성 모션  →  100만 X 학습 데이터
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>(GR00T-Teleop)   (GR00T-Mimic)       (GR00T-Gen 3D)
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>도구</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Isaac Lab / Omniverse</strong></td>
+<td>데이터 수집 가속(Expedite Data Collection)</td>
+</tr>
+<tr>
+<td><strong>GR00T-Mimic</strong></td>
+<td>더 빠른 반복(Iterate Faster)</td>
+</tr>
+<tr>
+<td><strong>Cosmos</strong></td>
+<td>sim-to-real 격차 감소(Reduce Sim-to-Real Gap)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="smmg">SMMG 블루프린트 (합성 조작 모션 생성)<a class="headerlink" href="#smmg" title="Permanent link">&para;</a></h3>
+<ol>
+<li>사람 시연으로부터 <strong>데이터셋 생성</strong></li>
+<li><strong>GR00T-Mimic</strong> 으로 합성 데이터 생성</li>
+<li><strong>GR00T-Gen</strong> 으로 합성 데이터셋 스케일업</li>
+<li>학습된 모델 <strong>배포(Deploy)</strong></li>
+</ol>
+<figure>
+<p><img alt="GR00T로 시연을 1M X로 증폭" src="../img/dli-smmg/s30.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 30 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h2 id="4">4. 과제 정의 — 관측/행동 공간<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>학습 목표는 로봇이 과제를 완수하도록 <strong>정답(ground-truth) 관측-행동 쌍의 집합을 모방</strong>하는 에이전트를 학습시키는 것입니다.</p>
+<ul>
+<li><strong>정책 모델(Policy Model)</strong>: 출력단에 <strong>GMM(Gaussian Mixture Model)</strong> 레이어를 둔 <strong>LSTM 기반 순환 신경망(RNN)</strong></li>
+<li><strong>알고리즘</strong>: <strong>robomimic</strong> 스위트의 <strong>Behavioral Cloning-RNN (BC-RNN)</strong></li>
+</ul>
+<p>추론·테스트 경로: <code>Model → Action → Inverse Kinematics Controller → Joint Positions → PD Controller</code></p>
+<h3 id="observation-space-action-space">관측 공간(Observation Space) / 행동 공간(Action Space)<a class="headerlink" href="#observation-space-action-space" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Observation Space</th>
+<th>Action Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>End-effector(EEF) XYZ 위치</td>
+<td>EEF Delta XYZ 위치</td>
+</tr>
+<tr>
+<td>EEF 자세(쿼터니언)</td>
+<td>EEF Delta Roll/Pitch/Yaw</td>
+</tr>
+<tr>
+<td>그리퍼 위치(1=열림 / 0=닫힘)</td>
+<td>그리퍼 행동(열기/닫기)</td>
+</tr>
+<tr>
+<td>큐브 절대 포즈</td>
+<td></td>
+</tr>
+<tr>
+<td>EEF와 각 큐브 간 상대 위치</td>
+<td></td>
+</tr>
+<tr>
+<td>큐브 쌍 간 상대 포즈 (cube1–cube2, cube2–cube3)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">이종(heterogeneous) 공간</p>
+<p>포즈는 <strong>연속값</strong>, 그리퍼 행동은 <strong>이산값</strong>입니다. 데이터 파이프라인과 학습 프레임워크는 이러한 <strong>연속·이산이 섞인 이종 공간을 자동으로 처리</strong>합니다.</p>
+</div>
+<figure>
+<p><img alt="관측/행동 공간 정의" src="../img/dli-smmg/s38.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 38 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h2 id="5-module-1-xr">5. Module 1 — XR 텔레오퍼레이션으로 시연 수집<a class="headerlink" href="#5-module-1-xr" title="Permanent link">&para;</a></h2>
+<p><strong>Apple Vision Pro(AVP)</strong> 등 XR 디바이스로 Isaac Sim 안의 로봇을 원격 조작하여 시연을 수집합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Apple Vision Pro  ──(CloudXR)──&gt;  GPU 가속 시스템 + Isaac Lab
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                  (Isaac XR Teleop / CloudXR Runtime)
+</code></pre></div>
+<ol>
+<li><strong>CloudXR로 AVP를 Isaac Sim에 연결</strong></li>
+<li>Isaac Sim과 AVP 간 <strong>텔레오퍼레이션 통신 수립</strong></li>
+<li>AVP로 <strong>텔레오퍼레이션 시연 캡처</strong></li>
+</ol>
+<p>지원 디바이스: <strong>Apple Vision Pro · 키보드 · SpaceMouse</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">성공적인 시연을 위한 팁</p>
+<p>좋은 데이터가 좋은 정책을 만듭니다. 우선은 <strong>성공적인 시연 2개</strong>만 모으면 됩니다.</p>
+<ol>
+<li><strong>짧게</strong> — 시연이 짧을수록 정책이 내려야 할 결정이 줄어 학습이 쉬워집니다.</li>
+<li><strong>직선 경로</strong> — 임의 축을 따라가지 말고 목표를 향해 곧장 움직이세요.</li>
+<li><strong>멈추지 말 것</strong> — 부드럽고 연속적인 동작이 정책이 배우기 쉽습니다.</li>
+</ol>
+</div>
+<figure>
+<p><img alt="Apple Vision Pro 텔레오퍼레이션" src="../img/dli-smmg/s46.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 46 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h2 id="6-module-2-gr00t-mimic">6. Module 2 — GR00T-Mimic으로 합성 데이터 생성<a class="headerlink" href="#6-module-2-gr00t-mimic" title="Permanent link">&para;</a></h2>
+<p><strong>GR00T-Mimic</strong>은 텔레오퍼레이션 시연으로부터 모션 데이터를 생성하는 견고한 워크플로입니다. 소수의 사람 시연을 외삽(extrapolate)해 <strong>방대한 합성 모션 궤적</strong>을 만듭니다.</p>
+<ul>
+<li>데이터 수집 시간을 <strong>100배 단축</strong></li>
+<li>사람 시연 <strong>10개만으로 직접 학습</strong>하면 성공률이 거의 없지만, 이 방식은 <strong>84% 이상의 성공률</strong> 달성</li>
+</ul>
+<h3 id="step-1-annotation">Step 1 — 데이터 주석(Annotation)<a class="headerlink" href="#step-1-annotation" title="Permanent link">&para;</a></h3>
+<p>복잡한 과제를 다룰 수 있는 <strong>하위 과제(subtask)</strong> 로 분해합니다. 큐브 쌓기 예시:</p>
+<ul>
+<li><strong>첫 번째 하위 과제</strong>: 빨간 큐브를 <strong>파지</strong> (객체 기준 = 빨간 큐브)</li>
+<li><strong>두 번째 하위 과제</strong>: 빨간 큐브를 파란 큐브 <strong>위에 놓기</strong> (객체 기준이 파란 큐브로 이동)</li>
+</ul>
+<h3 id="step-2-generation">Step 2 — 데이터 생성(Generation)<a class="headerlink" href="#step-2-generation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>물체·로봇 위치 등 <strong>장면 초기 조건을 무작위화(randomize)</strong></li>
+<li>생성 알고리즘이 캡처한 시연을 <strong>분할·변환</strong>하여 새로운 조건에서의 샘플을 생성</li>
+<li><strong>보간(interpolation)</strong> 으로 합성 궤적을 부드럽고 맥락에 맞게 생성</li>
+<li>생성된 데이터를 <strong>평가·정제</strong>하여 학습 기준을 충족시킴</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Human Demos → Annotation Tooling → Annotated Demos
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>   → GR00T-Mimic (+ Isaac Lab 디지털 트윈/환경 정의)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>   → Successful Demos → Human + Generated Demos
+</code></pre></div>
+<figure>
+<p><img alt="GR00T-Mimic 하위 과제 주석·데이터 생성" src="../img/dli-smmg/s50.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 50 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h2 id="7-module-3">7. Module 3 — 모방학습으로 정책 학습·배포<a class="headerlink" href="#7-module-3" title="Permanent link">&para;</a></h2>
+<h3 id="behavioral-cloning">Behavioral Cloning 알고리즘<a class="headerlink" href="#behavioral-cloning" title="Permanent link">&para;</a></h3>
+<p>전문가 행동을 모방하도록 학습하는 <strong>지도학습</strong> 기법입니다.</p>
+<ol>
+<li><strong>데이터 수집</strong> — 전문가가 과제를 수행하며 상태-행동(state-action) 쌍을 시연 데이터로 수집</li>
+<li><strong>지도학습</strong> — 수집한 데이터셋으로 상태(관측) → 행동을 매핑하도록 모델 학습</li>
+<li><strong>추론(실행)</strong> — 학습된 모델이 새 관측에 대해 행동을 예측, 에이전트가 자율적으로 과제 수행</li>
+</ol>
+<h3 id="_3">모델 아키텍처<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>2-layer LSTM-RNN + 출력단 GMM 레이어</strong></p>
+<ul>
+<li><strong>LSTM-RNN</strong>: 시간에 따른 행동 시퀀스를 모델링. 장기 의존성에 적합("기억" 메커니즘 보유).</li>
+<li><strong>GMM</strong>: 여러 정규분포의 혼합을 표현하는 확률 모델. 단일 결정값 대신 <strong>확률을 가진 여러 결과</strong>를 생성.</li>
+</ul>
+<h3 id="_4">학습 설정 및 평가<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dataset Points</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>Iterations</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>Batch size</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Optimizer</td>
+<td>Adam</td>
+</tr>
+<tr>
+<td>LSTM-RNN Layers</td>
+<td>2</td>
+</tr>
+<tr>
+<td>LSTM-RNN Hidden Dim</td>
+<td>400</td>
+</tr>
+<tr>
+<td>GMM 활성화 함수</td>
+<td>Softplus</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">결과</p>
+<ul>
+<li>학습 속도 약 <strong>50 iterations/sec</strong> (RTX 4090 기준 약 <strong>0.5시간</strong> 학습).</li>
+<li><strong>50회 시도 평균</strong> 으로 스택 과제 <strong>84% 성공률</strong> 달성 (Epoch 100 정책).</li>
+</ul>
+</div>
+<blockquote>
+<p>설정 파일: <code>IsaacLab/.../manager_based/manipulation/stack/config/franka/agents/robomimic/bc_rnn_low_dim.json</code>
+BC-RNN 참고: <a href="https://robomimic.github.io/docs/introduction/implemented_algorithms.html#bc-rnn">https://robomimic.github.io/docs/introduction/implemented_algorithms.html#bc-rnn</a></p>
+</blockquote>
+<figure>
+<p><img alt="BC-RNN 학습 설정과 결과" src="../img/dli-smmg/s56.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 56 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h3 id="_5">워크플로 정리 &amp; 이점<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>이번 실습에서 배운 것: <strong>AVP로 텔레오퍼레이션 시연 수집 → GR00T-Mimic 합성 데이터로 데이터셋 확장 → 모델 학습 후 Isaac Sim의 Franka 로봇에 배포.</strong></p>
+<ul>
+<li><strong>시간 절약</strong> — 데이터 수집을 수 시간에서 수 분으로 단축, 높은 성공률 유지</li>
+<li><strong>사람 노력 감소</strong> — 더 적은 시연으로 높은 성공률</li>
+<li><strong>확장성·비용 효율</strong> — 방대한 수작업 없이 다양한 데이터셋 생성</li>
+<li><strong>다용도</strong> — 큐브 쌓기부터 정밀 조작까지, 매니퓰레이터·휴머노이드 모두 지원</li>
+<li><strong>사실성 향상</strong> — <strong>NVIDIA Cosmos</strong>로 합성 이미지를 포토리얼하게 증강해 sim-to-real 격차 감소</li>
+</ul>
+<h2 id="8-cosmos-world-foundation-models">8. Cosmos World Foundation Models로 영상 증강<a class="headerlink" href="#8-cosmos-world-foundation-models" title="Permanent link">&para;</a></h2>
+<p><strong>NVIDIA Cosmos</strong>는 Physical AI를 위한 World Foundation Model(WFM) 개발 플랫폼입니다 (Cosmos NIMs). 데이터 큐레이션(NeMo Curator), 토큰화(Cosmos Tokenizer), 후학습(NeMo / PyTorch)을 포함합니다.</p>
+<table>
+<thead>
+<tr>
+<th>모델</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cosmos Predict</strong></td>
+<td>멀티모달 입력으로부터 미래 가상 세계 상태 생성</td>
+</tr>
+<tr>
+<td><strong>Cosmos Transfer</strong></td>
+<td>실세계·3D 입력으로 조건화한 <strong>물리 인식(physics-aware) 가상 세계</strong> 생성</td>
+</tr>
+<tr>
+<td><strong>Cosmos Reason</strong></td>
+<td>Physical AI 세계 상태 이해를 위한 <strong>Chain-of-Thought 추론</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cosmos-transfer">Cosmos Transfer로 로봇 데이터 증강<a class="headerlink" href="#cosmos-transfer" title="Permanent link">&para;</a></h3>
+<p><strong>문제</strong>: 휴머노이드가 시뮬레이션에서 과제를 수행하는 ego-view 영상에서, <strong>로봇 형상(foreground)은 보존하면서 배경(background)에 변화(variance)</strong> 를 주려면?</p>
+<p><strong>방법</strong>:</p>
+<ol>
+<li>로봇의 <strong>시맨틱 세그멘테이션(semantic segmentation)</strong> 추출</li>
+<li><strong>깊이(depth) + 세그멘테이션</strong>으로 배경을 조건화</li>
+<li><strong>시공간(spatial-temporal) 제어</strong>로 배경을 수정하되 로봇 전경의 형상·외형은 유지 (foreground는 edge·vis 제어에 더 높은 가중치)</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;In a sleek, high-end kitchen flooded with warm, diffused LED lighti...&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;input_video_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assets/example1_input_video.mp4&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">&quot;vis&quot;</span><span class="p">:</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;control_weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;control_weight_prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;robotic arms . gloves&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">&quot;edge&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;control_weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;control_weight_prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;robotic arms . gloves&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">&quot;depth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;control_weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">&quot;seg&quot;</span><span class="p">:</span><span class="w">   </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;control_weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>코드: <a href="https://github.com/nvidia-cosmos/cosmos-transfer1/tree/main/cosmos_transfer1/auxiliary/robot_augmentation">https://github.com/nvidia-cosmos/cosmos-transfer1/tree/main/cosmos_transfer1/auxiliary/robot_augmentation</a></p>
+</blockquote>
+<figure>
+<p><img alt="Cosmos Transfer 로봇 데이터 증강" src="../img/dli-smmg/s60.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 60 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h3 id="isaac-gr00t-dreams-gr00t-n">Isaac GR00T-Dreams &amp; GR00T N<a class="headerlink" href="#isaac-gr00t-dreams-gr00t-n" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GR00T-Dreams</strong>: 소규모 사람 시연 팀이 수천 명 분량의 일을 해내도록, Cosmos로 합성 모션·궤적 데이터를 생성하고 액션 라벨링.</li>
+<li><strong>GR00T-Mimic on Humanoids</strong>: 사람 시연을 하위 과제(Grasp Left/Right, Pour, Place)로 주석 → <strong>수천 개 합성 모션</strong> 생성 → Fourier <strong>GR-1</strong> 로봇에 학습된 정책 실행.</li>
+<li><strong>Isaac GR00T N1 파운데이션 모델</strong>: Vision-Language-Model + Diffusion Transformer 구조. 오픈·완전 커스터마이즈(실·합성 데이터로 후학습)·<strong>Cross-Embodiment</strong>(여러 휴머노이드에 배포) 지원.</li>
+<li><strong>Isaac Lab 2.2 — N1 Finetuning 파이프라인</strong>: 데이터 생성부터 폐루프(closed-loop) 평가까지 모두 Isaac Lab에서. 과제당 <strong>1K 궤적</strong>, <strong>시연 10개 미만</strong>으로 N1 파인튜닝 (예: Nut Pouring, Pipe Sorting).</li>
+</ul>
+<figure>
+<p><img alt="GR00T-Dreams / GR00T N 파운데이션 모델" src="../img/dli-smmg/s64.jpg" width="720" /></p>
+<figcaption>
+<p>합성 데이터 생성 &amp; 모방학습 (Isaac Lab + Cosmos) — 슬라이드 64 (출처: NVIDIA GTC Paris 2025)</p>
+</figcaption>
+</figure>
+<h2 id="_6">✅ 체크포인트<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Physical AI의 <strong>데이터 과제</strong>(고비용·위험)와, 이를 시뮬레이션 기반 <strong>SDG</strong>로 해결하는 이유를 설명할 수 있다.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>GR00T-Teleop → GR00T-Mimic → 학습</strong>으로 이어지는 데이터 증폭 흐름(수십 시연 → 1M X)을 설명할 수 있다.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 큐브 쌓기 과제의 <strong>관측/행동 공간</strong>과 이종(연속·이산) 공간 처리 개념을 안다.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>BC-RNN(2-layer LSTM + GMM)</strong> 의 구조와 84% 성공률 등 학습 설정을 안다.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Cosmos Transfer</strong>가 로봇 전경을 보존하며 배경을 증강해 <strong>sim-to-real 격차</strong>를 줄이는 원리를 설명할 수 있다.</li>
+</ul>
+<h2 id="_7">🔗 출처 및 참고자료<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li>NVIDIA «Isaac for Accelerated Robotics» (GTC Paris 2025) / DLI <strong>C-OV-05 Part 4</strong></li>
+<li>Isaac Lab — <a href="https://github.com/isaac-sim/IsaacLab">https://github.com/isaac-sim/IsaacLab</a> · 텔레오퍼레이션/모방학습 가이드 <a href="https://isaac-sim.github.io/IsaacLab/main/source/overview/teleop_imitation.html">https://isaac-sim.github.io/IsaacLab/main/source/overview/teleop_imitation.html</a></li>
+<li>robomimic BC-RNN — <a href="https://robomimic.github.io/docs/introduction/implemented_algorithms.html#bc-rnn">https://robomimic.github.io/docs/introduction/implemented_algorithms.html#bc-rnn</a></li>
+<li>Cosmos Transfer1 (robot augmentation) — <a href="https://github.com/nvidia-cosmos/cosmos-transfer1">https://github.com/nvidia-cosmos/cosmos-transfer1</a></li>
+<li>Cosmos Predict 체험 — <a href="https://build.nvidia.com/nvidia/cosmos-predict1-7b">https://build.nvidia.com/nvidia/cosmos-predict1-7b</a></li>
+<li>관련 모듈: <a href="../lerobot/">LeRobot로 배우는 모방학습 &amp; VLA</a></li>
+</ul>
+<!-- FULLDECK -->
+<h2 id="_8">🖼️ 원본 워크샵 슬라이드<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<details class="note">
+<summary>원본 슬라이드 전체 (65매)</summary>
+<p><img alt="슬라이드 01" src="../img/dli-smmg/s01.jpg" width="700" />
+<img alt="슬라이드 02" src="../img/dli-smmg/s02.jpg" width="700" />
+<img alt="슬라이드 03" src="../img/dli-smmg/s03.jpg" width="700" />
+<img alt="슬라이드 04" src="../img/dli-smmg/s04.jpg" width="700" />
+<img alt="슬라이드 05" src="../img/dli-smmg/s05.jpg" width="700" />
+<img alt="슬라이드 06" src="../img/dli-smmg/s06.jpg" width="700" />
+<img alt="슬라이드 07" src="../img/dli-smmg/s07.jpg" width="700" />
+<img alt="슬라이드 08" src="../img/dli-smmg/s08.jpg" width="700" />
+<img alt="슬라이드 09" src="../img/dli-smmg/s09.jpg" width="700" />
+<img alt="슬라이드 10" src="../img/dli-smmg/s10.jpg" width="700" />
+<img alt="슬라이드 11" src="../img/dli-smmg/s11.jpg" width="700" />
+<img alt="슬라이드 12" src="../img/dli-smmg/s12.jpg" width="700" />
+<img alt="슬라이드 13" src="../img/dli-smmg/s13.jpg" width="700" />
+<img alt="슬라이드 14" src="../img/dli-smmg/s14.jpg" width="700" />
+<img alt="슬라이드 15" src="../img/dli-smmg/s15.jpg" width="700" />
+<img alt="슬라이드 16" src="../img/dli-smmg/s16.jpg" width="700" />
+<img alt="슬라이드 17" src="../img/dli-smmg/s17.jpg" width="700" />
+<img alt="슬라이드 18" src="../img/dli-smmg/s18.jpg" width="700" />
+<img alt="슬라이드 19" src="../img/dli-smmg/s19.jpg" width="700" />
+<img alt="슬라이드 20" src="../img/dli-smmg/s20.jpg" width="700" />
+<img alt="슬라이드 21" src="../img/dli-smmg/s21.jpg" width="700" />
+<img alt="슬라이드 22" src="../img/dli-smmg/s22.jpg" width="700" />
+<img alt="슬라이드 23" src="../img/dli-smmg/s23.jpg" width="700" />
+<img alt="슬라이드 24" src="../img/dli-smmg/s24.jpg" width="700" />
+<img alt="슬라이드 25" src="../img/dli-smmg/s25.jpg" width="700" />
+<img alt="슬라이드 26" src="../img/dli-smmg/s26.jpg" width="700" />
+<img alt="슬라이드 27" src="../img/dli-smmg/s27.jpg" width="700" />
+<img alt="슬라이드 28" src="../img/dli-smmg/s28.jpg" width="700" />
+<img alt="슬라이드 29" src="../img/dli-smmg/s29.jpg" width="700" />
+<img alt="슬라이드 30" src="../img/dli-smmg/s30.jpg" width="700" />
+<img alt="슬라이드 31" src="../img/dli-smmg/s31.jpg" width="700" />
+<img alt="슬라이드 32" src="../img/dli-smmg/s32.jpg" width="700" />
+<img alt="슬라이드 33" src="../img/dli-smmg/s33.jpg" width="700" />
+<img alt="슬라이드 34" src="../img/dli-smmg/s34.jpg" width="700" />
+<img alt="슬라이드 35" src="../img/dli-smmg/s35.jpg" width="700" />
+<img alt="슬라이드 36" src="../img/dli-smmg/s36.jpg" width="700" />
+<img alt="슬라이드 37" src="../img/dli-smmg/s37.jpg" width="700" />
+<img alt="슬라이드 38" src="../img/dli-smmg/s38.jpg" width="700" />
+<img alt="슬라이드 39" src="../img/dli-smmg/s39.jpg" width="700" />
+<img alt="슬라이드 40" src="../img/dli-smmg/s40.jpg" width="700" />
+<img alt="슬라이드 41" src="../img/dli-smmg/s41.jpg" width="700" />
+<img alt="슬라이드 42" src="../img/dli-smmg/s42.jpg" width="700" />
+<img alt="슬라이드 43" src="../img/dli-smmg/s43.jpg" width="700" />
+<img alt="슬라이드 44" src="../img/dli-smmg/s44.jpg" width="700" />
+<img alt="슬라이드 45" src="../img/dli-smmg/s45.jpg" width="700" />
+<img alt="슬라이드 46" src="../img/dli-smmg/s46.jpg" width="700" />
+<img alt="슬라이드 47" src="../img/dli-smmg/s47.jpg" width="700" />
+<img alt="슬라이드 48" src="../img/dli-smmg/s48.jpg" width="700" />
+<img alt="슬라이드 49" src="../img/dli-smmg/s49.jpg" width="700" />
+<img alt="슬라이드 50" src="../img/dli-smmg/s50.jpg" width="700" />
+<img alt="슬라이드 51" src="../img/dli-smmg/s51.jpg" width="700" />
+<img alt="슬라이드 52" src="../img/dli-smmg/s52.jpg" width="700" />
+<img alt="슬라이드 53" src="../img/dli-smmg/s53.jpg" width="700" />
+<img alt="슬라이드 54" src="../img/dli-smmg/s54.jpg" width="700" />
+<img alt="슬라이드 55" src="../img/dli-smmg/s55.jpg" width="700" />
+<img alt="슬라이드 56" src="../img/dli-smmg/s56.jpg" width="700" />
+<img alt="슬라이드 57" src="../img/dli-smmg/s57.jpg" width="700" />
+<img alt="슬라이드 58" src="../img/dli-smmg/s58.jpg" width="700" />
+<img alt="슬라이드 59" src="../img/dli-smmg/s59.jpg" width="700" />
+<img alt="슬라이드 60" src="../img/dli-smmg/s60.jpg" width="700" />
+<img alt="슬라이드 61" src="../img/dli-smmg/s61.jpg" width="700" />
+<img alt="슬라이드 62" src="../img/dli-smmg/s62.jpg" width="700" />
+<img alt="슬라이드 63" src="../img/dli-smmg/s63.jpg" width="700" />
+<img alt="슬라이드 64" src="../img/dli-smmg/s64.jpg" width="700" />
+<img alt="슬라이드 65" src="../img/dli-smmg/s65.jpg" width="700" /></p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../dli-ros/" class="md-footer__link md-footer__link--prev" aria-label="이전: Isaac ROS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                Isaac ROS
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
