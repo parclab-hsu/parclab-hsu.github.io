@@ -966,6 +966,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 11주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1698,6 +1709,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 11주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2317,6 +2339,53 @@
 <li>Nav2 (Navigation2) — <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
 <li>Ultralytics YOLO — <a href="https://docs.ultralytics.com">https://docs.ultralytics.com</a></li>
 </ul>
+<h2 id="11">📝 11주차 과제<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">과제 11 — System-1 Executor 골격 설계</p>
+<p><strong>목표</strong>: System-2의 Plan(JSON)을 한 줄씩 실행하는 Executor의 골격을 설계한다. TF 추적·vision 캐시·guard 판단·단위 액션 디스패치 구조를 코드/의사코드로 표현한다.</p>
+</div>
+<p><strong>수행 단계</strong></p>
+<ol>
+<li>Plan(step 시퀀스) 수신·순회 루프 설계</li>
+<li>TF로 현재 pose 추적, vision 컨텍스트 캐시</li>
+<li>guard(실행 가능 여부) 판단 로직</li>
+<li>단위 액션 5종 디스패치 표 작성</li>
+</ol>
+<p><strong>제출물</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Executor 골격 코드/의사코드</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 상태 전이·디스패치 흐름도</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 단위 액션↔핸들러 매핑 표</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 설계 설명 보고서(1쪽)</li>
+</ul>
+<p><strong>평가 (배점 100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>배점</th>
+<th>기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Executor 구조</td>
+<td>40</td>
+<td>Plan 순회·디스패치</td>
+</tr>
+<tr>
+<td>guard·상태관리</td>
+<td>35</td>
+<td>TF/vision/guard 설계</td>
+</tr>
+<tr>
+<td>문서화</td>
+<td>25</td>
+<td>흐름도·설명</td>
+</tr>
+</tbody>
+</table>
+<p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
 <h2 id="_7">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <details class="note">

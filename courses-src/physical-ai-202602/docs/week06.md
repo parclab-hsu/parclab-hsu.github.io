@@ -392,6 +392,35 @@ Wrap-up — 슬라이드 37 (출처: ENGI UNIVERSE)
     - [ROS 2 통합(랜딩)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/ros2_landing_page.html)
     - [ROS 2 튜토리얼](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html)
 
+## 📝 6주차 과제
+
+!!! example "과제 6 — SLAM 지도 작성 & Nav2 자율주행"
+    **목표**: slam_toolbox로 환경 지도를 생성하고 Nav2로 목표지점까지 자율주행시킨다. Odometry/Sensor Fusion의 역할을 설명한다.
+
+**수행 단계**
+
+1. 시뮬레이션 + slam_toolbox 실행
+2. 텔레오퍼레이션으로 환경 탐색하며 지도 작성
+3. Nav2로 2D Goal 지정 → 자율주행
+4. Odometry vs SLAM 차이·drift 설명
+
+**제출물**
+
+- [ ] SLAM 지도 작성 과정 영상/캡처
+- [ ] Nav2 자율주행 영상(목표 도달)
+- [ ] 생성 지도 파일(map.pgm/.yaml)
+- [ ] Odometry·Sensor Fusion 요약(0.5쪽)
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| SLAM 지도작성 | 40 | 깨끗한 지도 생성 |
+| Nav2 자율주행 | 40 | 목표 도달·회피 |
+| 개념 설명 | 20 | drift·센서융합 이해 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

@@ -432,6 +432,35 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 78 (출처: ENGI UNIVERSE)
     - [ROS 2 통합(랜딩)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/ros2_landing_page.html)
     - [ROS 2 튜토리얼](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html)
 
+## 📝 7주차 과제
+
+!!! example "과제 7 — Spot+ATS SLAM 연동 파이프라인 구성"
+    **목표**: Isaac Sim의 Spot+ATS 센서를 ROS2로 퍼블리시하고 TF 트리를 정합하여 SLAM 자율보행 파이프라인을 구성한다.
+
+**수행 단계**
+
+1. Spot+ATS 모델 로드 및 물리 연동
+2. 센서(LiDAR/Odom)를 ROS2 토픽으로 발행
+3. TF 트리 정합 확인(`view_frames`)
+4. SLAM/Nav2와 연동해 자율주행 테스트
+
+**제출물**
+
+- [ ] 노드/토픽 그래프(rqt_graph) 캡처
+- [ ] TF 트리(frames.pdf)
+- [ ] 센서 토픽 echo/hz 로그
+- [ ] 자율보행 시연 영상
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| ROS2 브릿지·센서 발행 | 35 | 토픽 정상 발행 |
+| TF 정합 | 30 | 좌표계 일관성 |
+| 자율주행 연동 | 35 | 파이프라인 동작 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

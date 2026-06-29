@@ -331,6 +331,35 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 32 (출처: ENGI UNIV
     - [워크스테이션 설치](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/installation/install_workstation.html)
     - [워크플로우(Workflows)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/introduction/workflows.html)
 
+## 📝 1주차 과제
+
+!!! example "과제 1 — Isaac Sim 개발환경 구축 및 검증 보고"
+    **목표**: NVIDIA Isaac Sim 실행 환경을 직접 구축하고, 정상 동작을 캡처로 증빙한다. GPU/드라이버·Conda·Isaac Sim 실행까지의 과정을 기록한다.
+
+**수행 단계**
+
+1. GPU/드라이버 확인(`nvidia-smi`) 결과 캡처
+2. Miniconda 가상환경 생성 및 활성화(`conda activate ...`)
+3. Isaac Sim 실행(빈 Stage가 GUI로 뜨는 화면) 캡처
+4. 발생한 오류 1건 이상과 해결 과정을 기록
+
+**제출물**
+
+- [ ] 환경 구축 단계별 스크린샷 6컷 이상(드라이버·conda·Isaac Sim 실행)
+- [ ] `nvidia-smi`·`conda list` 출력 텍스트
+- [ ] 트러블슈팅 기록(증상→원인→해결) 최소 1건
+- [ ] 본인 PC/실습실 사양표(개요의 권장 사양과 비교)
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| 환경 구축 완료 | 50 | Isaac Sim GUI 정상 실행 캡처 |
+| 증빙·기록 | 30 | 단계 캡처·사양표 충실 |
+| 트러블슈팅 | 20 | 오류 분석의 구체성 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

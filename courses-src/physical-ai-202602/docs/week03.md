@@ -439,6 +439,35 @@ Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 26 (출처
     - [RTX Radar](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/sensors/isaacsim_sensors_rtx_radar.html)
     - [Replicator 개요](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/replicator_tutorials/tutorial_replicator_overview.html)
 
+## 📝 3주차 과제
+
+!!! example "과제 3 — IMU·LiDAR·Radar 센서 데이터 획득"
+    **목표**: 동적 물체에 IMU와 RTX LiDAR를 부착하고 데이터를 획득·시각화한다. 센서별 데이터 형식과 용도를 비교한다.
+
+**수행 단계**
+
+1. IMU 부착 후 선형 가속도(`lin_acc`)를 HUD/콘솔로 실시간 출력
+2. RTX LiDAR 생성 + Annotator·PointCloud Writer 연결
+3. 포인트 클라우드 시각화 캡처
+4. IMU/LiDAR/Radar 비교표 작성
+
+**제출물**
+
+- [ ] IMU·LiDAR 실행 스크립트
+- [ ] IMU 가속도 로그(정지/이동 시 값 변화 포함)
+- [ ] LiDAR 포인트 클라우드 시각화 캡처
+- [ ] 센서 3종 비교표(측정 원리·메시지·용도)
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| IMU 시뮬레이션 | 35 | 가속도 실시간 출력 |
+| LiDAR 시뮬레이션 | 45 | 포인트클라우드 시각화 |
+| 비교 분석 | 20 | 센서 특성 비교표 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

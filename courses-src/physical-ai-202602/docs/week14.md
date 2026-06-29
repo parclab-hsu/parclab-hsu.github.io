@@ -356,6 +356,35 @@ CAIO Forum 2026 — 「검증형 AI」 (허기홍, KAIST) · AI 에이전트 신
     - `PydanticOutputParser` + 포맷 지시문 → LLM 출력을 **JSON 스키마로 강제·검증**
     - 즉, "LLM이 내 의도대로 행동하는지 확인" 하는 장치를 **데이터 계약**으로 구현 — 산업계가 말하는 "검증형 AI"의 로봇 버전.
 
+## 📝 14주차 과제
+
+!!! example "과제 14 — System-2 LLM Planner 구현"
+    **목표**: 자연어 명령을 검증된 HighLevelPlan(JSON)으로 변환하는 System-2를 구현한다. models.py 스키마, 시스템 프롬프트 4단계, 실행 체인을 포함한다.
+
+**수행 단계**
+
+1. `models.py`: Step(task 5종 Literal)·HighLevelPlan·System1State 스키마
+2. 시스템 프롬프트 4단계(Action·Map·Logic·Format) 작성
+3. `chain = prompt|llm|parser`로 자연어→검증 객체
+4. 환각(허용 외 task) 차단 테스트
+
+**제출물**
+
+- [ ] models.py/llm_planner 코드(또는 핵심 발췌)
+- [ ] 자연어 명령 3개에 대한 생성 Plan(JSON)
+- [ ] 환각 차단 테스트 결과(허용 외 task 거부 로그)
+- [ ] 프롬프트 4단계 설계 설명
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| 스키마(models.py) | 35 | task 제한·검증 |
+| 프롬프트·체인 | 40 | 자연어→Plan 변환 |
+| 검증 테스트 | 25 | 환각 차단 증빙 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

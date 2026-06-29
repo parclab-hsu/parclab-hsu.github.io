@@ -344,6 +344,35 @@ Policy 추론과 행동 적용 — 시뮬레이션 환경 동작 (출처: ENGI U
     - [Isaac Lab 개요](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/isaac_lab_tutorials/index.html)
     - [정책 배포(Policy Deployment)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/isaac_lab_tutorials/tutorial_policy_deployment.html)
 
+## 📝 4주차 과제
+
+!!! example "과제 4 — Isaac Lab 4족 보행 강화학습 환경 구성"
+    **목표**: Isaac Lab에서 4족 보행 로봇 RL 환경의 Observation·Action·Reward를 설계하고, Height Scan 센서를 적용해 짧은 학습을 수행·관찰한다.
+
+**수행 단계**
+
+1. 사전 정의 4족 환경 배치 및 실행
+2. Observation/Action/Reward 구성요소 정리
+3. Height Scan(RayCaster) 적용 확인
+4. 짧게 학습을 돌려 보상 곡선 관찰(가능 범위)
+
+**제출물**
+
+- [ ] 환경 구성·실행 캡처
+- [ ] Observation·Action·Reward 설계 표(각 항목 의미)
+- [ ] Height Scan 동작 설명+캡처
+- [ ] (가능 시) 학습 보상 변화 그래프/로그
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| 환경 실행 | 30 | 4족 환경 정상 구동 |
+| MDP 설계 정리 | 40 | Obs/Act/Reward 표 충실 |
+| Height Scan·학습 | 30 | 지형 인식·학습 관찰 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

@@ -899,6 +899,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 7주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1788,6 +1799,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 7주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2477,6 +2499,53 @@
 <li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html">ROS 2 튜토리얼</a></li>
 </ul>
 </div>
+<h2 id="7">📝 7주차 과제<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">과제 7 — Spot+ATS SLAM 연동 파이프라인 구성</p>
+<p><strong>목표</strong>: Isaac Sim의 Spot+ATS 센서를 ROS2로 퍼블리시하고 TF 트리를 정합하여 SLAM 자율보행 파이프라인을 구성한다.</p>
+</div>
+<p><strong>수행 단계</strong></p>
+<ol>
+<li>Spot+ATS 모델 로드 및 물리 연동</li>
+<li>센서(LiDAR/Odom)를 ROS2 토픽으로 발행</li>
+<li>TF 트리 정합 확인(<code>view_frames</code>)</li>
+<li>SLAM/Nav2와 연동해 자율주행 테스트</li>
+</ol>
+<p><strong>제출물</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 노드/토픽 그래프(rqt_graph) 캡처</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> TF 트리(frames.pdf)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 센서 토픽 echo/hz 로그</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 자율보행 시연 영상</li>
+</ul>
+<p><strong>평가 (배점 100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>배점</th>
+<th>기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROS2 브릿지·센서 발행</td>
+<td>35</td>
+<td>토픽 정상 발행</td>
+</tr>
+<tr>
+<td>TF 정합</td>
+<td>30</td>
+<td>좌표계 일관성</td>
+</tr>
+<tr>
+<td>자율주행 연동</td>
+<td>35</td>
+<td>파이프라인 동작</td>
+</tr>
+</tbody>
+</table>
+<p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
 <h2 id="_8">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <details class="note">

@@ -1005,6 +1005,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 12주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1720,6 +1731,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 12주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2402,6 +2424,53 @@
 <li>ROS 2 Actions 개념 — <a href="https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html</a></li>
 <li>ROS 2 tf2 (좌표 변환) — <a href="https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Tf2.html">https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Tf2.html</a></li>
 </ul>
+<h2 id="12">📝 12주차 과제<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">과제 12 — 단위 액션 구현 — move_to &amp; scan</p>
+<p><strong>목표</strong>: Nav2 기반 <code>move_to</code>와 ATS 회전 탐색 <code>scan</code>을 설계·구현하고, plan_cmd로 단독 테스트한다. 성공/실패·재시도/재계획 판정을 다룬다.</p>
+</div>
+<p><strong>수행 단계</strong></p>
+<ol>
+<li><code>move_to</code>: 목표 pose 검증·yaw→쿼터니언·Nav2 전송·stuck 판정</li>
+<li><code>scan</code>: ALIGN→SWEEP→FOUND 단계와 vision 연동</li>
+<li>plan_cmd(JSON)로 단위 액션 단독 테스트</li>
+<li>성공/실패 시 retry·replan 흐름 정리</li>
+</ol>
+<p><strong>제출물</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> move_to/scan 구현(또는 의사코드)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 테스트 plan JSON 1개 이상</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 단독 테스트 실행 로그/영상</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> stuck·성공판정 기준 설명</li>
+</ul>
+<p><strong>평가 (배점 100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>배점</th>
+<th>기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>move_to</td>
+<td>40</td>
+<td>이동·stuck 판정</td>
+</tr>
+<tr>
+<td>scan</td>
+<td>35</td>
+<td>단계 전이·탐색</td>
+</tr>
+<tr>
+<td>테스트·판정</td>
+<td>25</td>
+<td>plan 테스트·재시도 로직</td>
+</tr>
+</tbody>
+</table>
+<p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
 <h2 id="_8">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <details class="note">

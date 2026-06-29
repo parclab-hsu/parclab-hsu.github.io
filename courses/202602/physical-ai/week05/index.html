@@ -860,6 +860,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 5주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1822,6 +1833,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 5주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2419,6 +2441,53 @@
 <li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html">ROS 2 튜토리얼</a></li>
 </ul>
 </div>
+<h2 id="5">📝 5주차 과제<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">과제 5 — Spot+ATS 시스템 조립 (URDF→Isaac Sim→ROS2)</p>
+<p><strong>목표</strong>: ATS(2축 짐벌)의 URDF를 분석·Import하고 ROS2로 Yaw/Pitch를 제어한다. ATS를 Spot에 탑재하는 구조를 설명한다.</p>
+</div>
+<p><strong>수행 단계</strong></p>
+<ol>
+<li>ATS URDF의 link/joint·자유도 분석</li>
+<li>Isaac Sim에 URDF Import 후 Warehouse 배치</li>
+<li>ROS2 토픽으로 Yaw/Pitch 명령 → 짐벌 동작 확인</li>
+<li>ATS+Spot 결합 시 무게중심 변화와 RL 재학습 필요성 서술</li>
+</ol>
+<p><strong>제출물</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> URDF 구조 분석 문서(관절 트리 그림)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Import·배치 캡처</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Yaw/Pitch 제어 동작 영상/캡처</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ATS↔Spot 결합·재학습 논의(0.5~1쪽)</li>
+</ul>
+<p><strong>평가 (배점 100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>배점</th>
+<th>기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URDF 분석·Import</td>
+<td>35</td>
+<td>관절 구조 이해·배치</td>
+</tr>
+<tr>
+<td>ROS2 짐벌 제어</td>
+<td>40</td>
+<td>Yaw/Pitch 동작</td>
+</tr>
+<tr>
+<td>결합·재학습 논의</td>
+<td>25</td>
+<td>무게중심·정책 재훈련 이해</td>
+</tr>
+</tbody>
+</table>
+<p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
 <h2 id="_10">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <details class="note">

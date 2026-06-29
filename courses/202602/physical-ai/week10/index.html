@@ -883,6 +883,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 10주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1588,6 +1599,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 10주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2105,6 +2127,53 @@
 <li>ByteTrack — <a href="https://github.com/ifzhang/ByteTrack">https://github.com/ifzhang/ByteTrack</a></li>
 <li>ROS 2 QoS 설정 — <a href="https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html">https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html</a></li>
 </ul>
+<h2 id="10">📝 10주차 과제<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">과제 10 — YOLOv8 Vision을 Spot+ATS에 연동</p>
+<p><strong>목표</strong>: YOLOv8 detector→tracker→debug 파이프라인을 구성하고 카메라 토픽에 연동해 실시간 객체 탐지·추적을 확인한다.</p>
+</div>
+<p><strong>수행 단계</strong></p>
+<ol>
+<li>YOLOv8 단독 추론 테스트</li>
+<li>detector/tracker/debug 노드 네임스페이스 일괄 실행</li>
+<li>카메라 토픽 연동 실시간 탐지 확인</li>
+<li>특정 클래스 탐지 시 이벤트(로그/토픽) 발행</li>
+</ol>
+<p><strong>제출물</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> YOLOv8 연동 코드/런치</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 실시간 탐지·추적 영상</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 탐지 결과 토픽 echo 로그</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 파이프라인 구조도(detector→tracker→debug)</li>
+</ul>
+<p><strong>평가 (배점 100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>배점</th>
+<th>기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YOLOv8 추론</td>
+<td>30</td>
+<td>탐지 동작</td>
+</tr>
+<tr>
+<td>ROS 연동·추적</td>
+<td>45</td>
+<td>실시간 파이프라인</td>
+</tr>
+<tr>
+<td>이벤트 처리</td>
+<td>25</td>
+<td>클래스 조건 발행</td>
+</tr>
+</tbody>
+</table>
+<p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
 <h2 id="_7">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <details class="note">

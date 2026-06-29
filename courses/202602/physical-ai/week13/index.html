@@ -989,6 +989,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 13주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1632,6 +1643,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 13주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2249,6 +2271,53 @@
 <p class="admonition-title">🤗 학습형 대안 — LeRobot</p>
 <p><code>track</code>·<code>move_to</code> 같은 규칙 기반 단위 액션은 <strong>모방학습 정책(ACT·Diffusion Policy)</strong> 으로도 구현할 수 있습니다. 심화 모듈 <strong><a href="../lerobot/">LeRobot로 배우는 모방학습 &amp; VLA</a></strong> 에서 시연 수집 → ACT 학습을 실습합니다.</p>
 </div>
+<h2 id="13">📝 13주차 과제<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">과제 13 — 단위 액션 구현 — track (3축 통합 제어)</p>
+<p><strong>목표</strong>: 타깃을 화면 중앙·일정 거리로 유지하는 <code>track</code>을 짐벌(yaw/pitch)+바디(yaw)+거리(vx) 3축으로 설계한다. DepthBuffer로 거리를 산출한다.</p>
+</div>
+<p><strong>수행 단계</strong></p>
+<ol>
+<li>짐벌 PID(데드밴드·LPF·slew)로 화면 중앙 정렬</li>
+<li>바디 yaw 정렬(TF 기반, 이중 데드밴드)</li>
+<li>DepthBuffer로 range_m 산출 → follow_dist 유지(vx)</li>
+<li>성공 판정(both_hold) 감독 루프 정리</li>
+</ol>
+<p><strong>제출물</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> track 제어 로직 코드/의사코드</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 3축 제어 구조도(입력→제어→출력)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> DepthBuffer ROI 처리 단계 설명</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> (가능 시) 추적 동작 영상</li>
+</ul>
+<p><strong>평가 (배점 100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>배점</th>
+<th>기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>짐벌·바디 정렬</td>
+<td>40</td>
+<td>yaw/pitch·바디 yaw 제어</td>
+</tr>
+<tr>
+<td>거리 유지</td>
+<td>35</td>
+<td>DepthBuffer·vx</td>
+</tr>
+<tr>
+<td>성공판정·문서</td>
+<td>25</td>
+<td>both_hold·구조도</td>
+</tr>
+</tbody>
+</table>
+<p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
 <h2 id="_4">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <details class="note">

@@ -659,6 +659,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 2주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1588,6 +1599,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 2주차 과제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2132,6 +2154,53 @@
 <li><a href="https://docs.isaacsim.omniverse.nvidia.com/5.1.0/sensors/isaacsim_sensors_camera_depth.html">Depth 센서</a></li>
 </ul>
 </div>
+<h2 id="2_1">📝 2주차 과제<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">과제 2 — 물리 환경 + RGB/Depth 카메라 시뮬레이션</p>
+<p><strong>목표</strong>: Isaac Sim에서 World·Ground·DynamicCuboid로 물리 장면을 구성하고 RGB·Depth 카메라를 부착해 프레임을 획득·시각화한다.</p>
+</div>
+<p><strong>수행 단계</strong></p>
+<ol>
+<li><code>World</code>(stage_units=1.0)+Ground Plane 생성</li>
+<li>빨간 <code>DynamicCuboid</code>를 1m 높이에 배치 → 낙하·충돌 확인</li>
+<li>RGB 카메라 + Depth 카메라 부착 후 프레임 캡처</li>
+<li>matplotlib 등으로 RGB/Depth 이미지 저장</li>
+</ol>
+<p><strong>제출물</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 실행 파이썬 스크립트(<code>.py</code>)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 큐브 낙하 장면 캡처(초기/낙하/정지 3컷)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> RGB·Depth 출력 이미지 각 1장</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 코드 핵심부 주석 설명(보고서)</li>
+</ul>
+<p><strong>평가 (배점 100)</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>배점</th>
+<th>기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>물리 장면 구성</td>
+<td>35</td>
+<td>큐브 낙하·충돌 동작</td>
+</tr>
+<tr>
+<td>카메라 RGB/Depth</td>
+<td>45</td>
+<td>두 센서 프레임 획득·시각화</td>
+</tr>
+<tr>
+<td>보고서</td>
+<td>20</td>
+<td>코드 설명·결과 해석</td>
+</tr>
+</tbody>
+</table>
+<p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
 <h2 id="_7">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <details class="note">

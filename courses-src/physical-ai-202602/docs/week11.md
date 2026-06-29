@@ -409,6 +409,35 @@ System-1 Executor Node 설계 — 슬라이드 25 (출처: ENGI UNIVERSE)
 - Nav2 (Navigation2) — <https://docs.nav2.org>
 - Ultralytics YOLO — <https://docs.ultralytics.com>
 
+## 📝 11주차 과제
+
+!!! example "과제 11 — System-1 Executor 골격 설계"
+    **목표**: System-2의 Plan(JSON)을 한 줄씩 실행하는 Executor의 골격을 설계한다. TF 추적·vision 캐시·guard 판단·단위 액션 디스패치 구조를 코드/의사코드로 표현한다.
+
+**수행 단계**
+
+1. Plan(step 시퀀스) 수신·순회 루프 설계
+2. TF로 현재 pose 추적, vision 컨텍스트 캐시
+3. guard(실행 가능 여부) 판단 로직
+4. 단위 액션 5종 디스패치 표 작성
+
+**제출물**
+
+- [ ] Executor 골격 코드/의사코드
+- [ ] 상태 전이·디스패치 흐름도
+- [ ] 단위 액션↔핸들러 매핑 표
+- [ ] 설계 설명 보고서(1쪽)
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| Executor 구조 | 40 | Plan 순회·디스패치 |
+| guard·상태관리 | 35 | TF/vision/guard 설계 |
+| 문서화 | 25 | 흐름도·설명 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

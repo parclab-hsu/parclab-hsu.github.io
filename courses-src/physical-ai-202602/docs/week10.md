@@ -308,6 +308,35 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
 - ByteTrack — <https://github.com/ifzhang/ByteTrack>
 - ROS 2 QoS 설정 — <https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html>
 
+## 📝 10주차 과제
+
+!!! example "과제 10 — YOLOv8 Vision을 Spot+ATS에 연동"
+    **목표**: YOLOv8 detector→tracker→debug 파이프라인을 구성하고 카메라 토픽에 연동해 실시간 객체 탐지·추적을 확인한다.
+
+**수행 단계**
+
+1. YOLOv8 단독 추론 테스트
+2. detector/tracker/debug 노드 네임스페이스 일괄 실행
+3. 카메라 토픽 연동 실시간 탐지 확인
+4. 특정 클래스 탐지 시 이벤트(로그/토픽) 발행
+
+**제출물**
+
+- [ ] YOLOv8 연동 코드/런치
+- [ ] 실시간 탐지·추적 영상
+- [ ] 탐지 결과 토픽 echo 로그
+- [ ] 파이프라인 구조도(detector→tracker→debug)
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| YOLOv8 추론 | 30 | 탐지 동작 |
+| ROS 연동·추적 | 45 | 실시간 파이프라인 |
+| 이벤트 처리 | 25 | 클래스 조건 발행 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

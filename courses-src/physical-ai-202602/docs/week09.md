@@ -360,6 +360,35 @@ Spot + ATS SLAM 연동 part 2 — 슬라이드 31 (출처: ENGI UNIVERSE)
     - [ROS 2 튜토리얼](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html)
     - [USD로 작업하기](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/omniverse_usd/intro_to_usd.html)
 
+## 📝 9주차 과제
+
+!!! example "과제 9 — 지도 저장·Localization·맵 보정(GIMP)"
+    **목표**: 작성한 SLAM 지도를 저장하고 Localization 모드로 전환해 자율주행한다. 지도 결함을 GIMP로 직접 보정한다.
+
+**수행 단계**
+
+1. SLAM 지도 저장(map_saver)
+2. Localization 모드로 저장 지도 로드 후 주행
+3. 지도 결함(노이즈/열린 벽) 1곳 이상 GIMP로 수정
+4. 수정 전/후 자율주행 안정성 비교
+
+**제출물**
+
+- [ ] 저장 지도 파일(.pgm/.yaml)
+- [ ] GIMP 수정 전/후 지도 이미지
+- [ ] Localization 자율주행 영상
+- [ ] 수정 효과 비교 서술
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| 저장·Localization | 40 | 지도 로드·위치추정 주행 |
+| GIMP 보정 | 35 | 결함 수정 결과 |
+| 비교 분석 | 25 | 수정 전후 효과 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 

@@ -466,6 +466,35 @@ System-1 단위 액션 설계 part 1 — 슬라이드 47 (출처: ENGI UNIVERSE)
 - ROS 2 Actions 개념 — <https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html>
 - ROS 2 tf2 (좌표 변환) — <https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Tf2.html>
 
+## 📝 12주차 과제
+
+!!! example "과제 12 — 단위 액션 구현 — move_to & scan"
+    **목표**: Nav2 기반 `move_to`와 ATS 회전 탐색 `scan`을 설계·구현하고, plan_cmd로 단독 테스트한다. 성공/실패·재시도/재계획 판정을 다룬다.
+
+**수행 단계**
+
+1. `move_to`: 목표 pose 검증·yaw→쿼터니언·Nav2 전송·stuck 판정
+2. `scan`: ALIGN→SWEEP→FOUND 단계와 vision 연동
+3. plan_cmd(JSON)로 단위 액션 단독 테스트
+4. 성공/실패 시 retry·replan 흐름 정리
+
+**제출물**
+
+- [ ] move_to/scan 구현(또는 의사코드)
+- [ ] 테스트 plan JSON 1개 이상
+- [ ] 단독 테스트 실행 로그/영상
+- [ ] stuck·성공판정 기준 설명
+
+**평가 (배점 100)**
+
+| 항목 | 배점 | 기준 |
+| --- | --- | --- |
+| move_to | 40 | 이동·stuck 판정 |
+| scan | 35 | 단계 전이·탐색 |
+| 테스트·판정 | 25 | plan 테스트·재시도 로직 |
+
+**제출 형식·마감**: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 `zip` ② 보고서 `PDF`(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).
+
 <!-- FULLDECK -->
 ## 🖼️ 원본 강의 슬라이드
 
