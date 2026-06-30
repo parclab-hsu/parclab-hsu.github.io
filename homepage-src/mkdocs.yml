@@ -1,0 +1,101 @@
+site_name: PARC Lab
+site_description: PARC Lab · Physical AI Real-Time Control for Mobility & Robotics · 한성대학교 미래모빌리티학과
+site_url: https://parclab-hsu.github.io/
+site_author: KyungBok Lee
+copyright: Copyright &copy; 2026 PARC Lab · Hansung University
+
+# 저장소 루트로 바로 빌드되도록 build 스크립트(build.sh)에서 -d 옵션으로 출력 경로를 지정합니다.
+site_dir: ../site
+docs_dir: docs
+use_directory_urls: true
+
+theme:
+  name: material
+  language: ko
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드로
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드로
+  font:
+    text: Noto Sans KR
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.footer
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    - toc.follow
+
+repo_url: https://github.com/parclab-hsu/parclab-hsu.github.io
+repo_name: parclab-hsu.github.io
+edit_uri: ""
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/parclab-hsu
+      name: GitHub
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:kblee@hansung.ac.kr
+      name: Email
+    - icon: fontawesome/solid/graduation-cap
+      link: https://hansung.ac.kr
+      name: 한성대학교
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - 홈: index.md
+  - 연구분야: research.md
+  - 프로젝트: projects.md
+  - 구성원: people.md
+  - 논문·성과: publications.md
+  - 강의: https://parclab-hsu.github.io/courses/
+  - 소식: news.md
+  - 연락처: contact.md

@@ -1,0 +1,178 @@
+/* ===== PARC Lab · Material for MkDocs custom styling ===== */
+
+:root {
+  --parc-teal: #009688;
+  --parc-teal-dark: #00796b;
+  --parc-cyan: #4dd0e1;
+}
+
+/* ---- Hero banner ---- */
+.parc-hero {
+  position: relative;
+  margin: -1.2rem -.8rem 2.5rem;
+  padding: 4rem 1.5rem 3.5rem;
+  border-radius: 0 0 1.2rem 1.2rem;
+  text-align: center;
+  color: #fff;
+  background:
+    radial-gradient(1200px 400px at 50% -10%, rgba(77, 208, 225, .35), transparent 60%),
+    linear-gradient(135deg, #00564d 0%, #00897b 45%, #00acc1 100%);
+  overflow: hidden;
+}
+.parc-hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 0%, #000, transparent 75%);
+  pointer-events: none;
+}
+.parc-hero > * { position: relative; z-index: 1; }
+.parc-hero .headerlink { display: none !important; }
+.parc-hero p:has(> img.parc-logo) { margin: 0; }
+.parc-hero p:has(> .parc-badge) { margin: .2rem 0 0; }
+
+.parc-hero img.parc-logo {
+  width: 92px; height: 92px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.12);
+  padding: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  margin-bottom: 1.1rem;
+}
+.parc-hero .parc-badge {
+  display: inline-block;
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .35rem .9rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  margin-bottom: 1rem;
+}
+.parc-hero h1 {
+  color: #fff;
+  font-size: 2.9rem;
+  font-weight: 800;
+  margin: .2rem 0 .4rem;
+  line-height: 1.1;
+}
+.parc-hero .parc-tagline {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 .9rem;
+  color: rgba(255,255,255,.95);
+}
+.parc-hero .parc-sub {
+  max-width: 680px;
+  margin: 0 auto 1.6rem;
+  font-size: .98rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.85);
+}
+.parc-hero .parc-cta { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+.parc-hero .parc-cta a {
+  display: inline-flex; align-items: center;
+  padding: .65rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700; font-size: .92rem;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.parc-hero .parc-cta a.primary { background: #fff; color: var(--parc-teal-dark); }
+.parc-hero .parc-cta a.ghost { border: 1.5px solid rgba(255,255,255,.6); color: #fff; }
+.parc-hero .parc-cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+
+@media screen and (max-width: 600px) {
+  .parc-hero h1 { font-size: 2.1rem; }
+  .parc-hero .parc-tagline { font-size: 1.05rem; }
+}
+
+/* ---- Stat strip ---- */
+.parc-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 0 0 2.5rem;
+}
+.parc-stats .stat {
+  text-align: center;
+  padding: 1.2rem .8rem;
+  border-radius: .7rem;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+.parc-stats .stat strong {
+  display: block;
+  font-size: 1.45rem;
+  color: var(--parc-teal);
+  font-weight: 800;
+}
+.parc-stats .stat span { font-size: .82rem; color: var(--md-default-fg-color--light); }
+
+/* ---- Section eyebrow heading ---- */
+.parc-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .74rem;
+  font-weight: 800;
+  color: var(--parc-teal);
+  margin-bottom: .2rem;
+}
+
+/* ---- Make grid cards a touch nicer ---- */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  border-radius: .7rem;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--parc-teal);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  transform: translateY(-3px);
+}
+
+/* ---- Member / person cards ---- */
+.parc-pi {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1.4rem;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: .8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: linear-gradient(135deg, rgba(0,150,136,.06), rgba(77,208,225,.04));
+}
+.parc-pi .avatar {
+  width: 110px; height: 110px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 2.4rem; font-weight: 800; color: #fff;
+  background: linear-gradient(135deg, var(--parc-teal), var(--parc-cyan));
+}
+@media screen and (max-width: 500px) {
+  .parc-pi { grid-template-columns: 1fr; text-align: center; }
+  .parc-pi .avatar { margin: 0 auto; }
+}
+
+/* ---- News timeline ---- */
+.parc-news { border-left: 2px solid var(--md-default-fg-color--lightest); padding-left: 1.2rem; }
+.parc-news .item { position: relative; padding-bottom: 1.4rem; }
+.parc-news .item::before {
+  content: ""; position: absolute; left: -1.55rem; top: .3rem;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--parc-teal);
+  border: 2px solid var(--md-default-bg-color);
+}
+.parc-news .date { font-size: .78rem; font-weight: 700; color: var(--parc-teal); letter-spacing: .04em; }
+.parc-news .item h4 { margin: .15rem 0 .3rem; }
+
+/* ---- CTA box ---- */
+.parc-cta-box {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-radius: .9rem;
+  background: linear-gradient(135deg, rgba(0,150,136,.10), rgba(77,208,225,.08));
+  border: 1px solid var(--md-default-fg-color--lightest);
+  margin: 2rem 0;
+}
