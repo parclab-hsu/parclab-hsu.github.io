@@ -74,6 +74,7 @@ nav:
   - 심화·연계:
     - 🤖 C↔ROS2 & Stella N2 로봇: ros2-robot.md
     - 🧠 AI 활용 가이드: ai-literacy.md
+    - 🧩 프로그램 설계 문제: design-problems.md
     - 📊 2026 트렌드 기반 검토: review.md
   - 🏠 PARC Lab 홈: https://parclab-hsu.github.io/
 
