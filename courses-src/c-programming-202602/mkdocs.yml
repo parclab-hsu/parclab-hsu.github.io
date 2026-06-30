@@ -1,0 +1,81 @@
+site_name: C 프로그래밍 · 2026-2학기
+site_description: 한성대학교 미래모빌리티학과 1학년 · C언어 강의 자료 (Arduino R4 + C↔ROS2 + Stella N2)
+site_url: https://parclab-hsu.github.io/courses/202602/c-programming/
+site_dir: ../../courses/202602/c-programming
+docs_dir: docs
+use_directory_urls: true
+
+theme:
+  name: material
+  language: ko
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드로
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드로
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.footer
+    - content.code.copy
+    - search.highlight
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.blocks.caption
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - 강의 개요: index.md
+  - 강의 계획 (15주):
+    - 1주차 · OT·환경설정·왜 C인가: week01.md
+    - 2주차 · 표준 출력(printf): week02.md
+    - 3주차 · 입력·변수·자료형: week03.md
+    - 4주차 · 연산자: week04.md
+    - 5주차 · 조건문 + LED 표정: week05.md
+    - 6주차 · 반복문 + 애니메이션: week06.md
+    - 7주차 · 함수 + 시리얼 제어: week07.md
+    - 8주차 · 중간고사: week08.md
+    - 9주차 · 함수와 변수(스코프): week09.md
+    - 10주차 · 배열(1D) + 막대그래프: week10.md
+    - 11주차 · 배열(2D)·통신 + WiFi: week11.md
+    - 12주차 · 포인터 기초: week12.md
+    - 13주차 · 포인터 활용: week13.md
+    - 14주차 · 구조체 + 연결리스트: week14.md
+    - 15주차 · C↔ROS2·로봇·기말: week15.md
+  - 심화·연계:
+    - 🤖 C↔ROS2 & Stella N2 로봇: ros2-robot.md
+    - 🧠 AI 활용 가이드: ai-literacy.md
+    - 📊 2026 트렌드 기반 검토: review.md
+  - 🏠 PARC Lab 홈: https://parclab-hsu.github.io/
+
+extra:
+  generator: false
