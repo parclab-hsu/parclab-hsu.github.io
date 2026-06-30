@@ -117,3 +117,7 @@ void serialize(const SensorPacket *p, char *out, int n) {
     1. `->` (화살표).
     2. `.`는 **구조체 변수**의 멤버, `->`는 **구조체 포인터**의 멤버 접근. `pp->state == (*pp).state`.
     3. **자기 자신을 가리키는 포인터** 멤버(예: `struct Node *next;`).
+
+    **🖼 그림으로 복습** — 구조체로 센서 데이터 묶기 (SensorPacket)
+
+    ![구조체로 센서 데이터 묶기 (SensorPacket)](img/04_struct_packet.png)

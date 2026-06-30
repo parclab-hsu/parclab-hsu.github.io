@@ -105,3 +105,7 @@ float avg(const float *arr, int n) {              // 배열 첫 주소를 받아
     1. `20` — `*p`로 `a`가 가리키는 값을 직접 변경.
     2. `p[2]`
     3. 잘못된 메모리 접근으로 **프로그램이 충돌**(segmentation fault).
+
+    **🖼 그림으로 복습** — 포인터 = 다른 변수의 '주소'를 담는다
+
+    ![포인터 = 다른 변수의 '주소'를 담는다](img/02_pointer_concept.png)

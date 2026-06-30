@@ -107,3 +107,7 @@ printf("int=%zu float=%zu double=%zu char=%zu\n",
     2. `3.5` — 한쪽을 `(double)`로 캐스팅하면 실수 나눗셈.
     3. `&` (주소 연산자). 예: `scanf_s("%d", &n);`
     4. `%lf`
+
+    **🖼 그림으로 복습** — 변수는 메모리의 한 자리(주소)를 차지한다
+
+    ![변수는 메모리의 한 자리(주소)를 차지한다](img/01_memory_layout.png)

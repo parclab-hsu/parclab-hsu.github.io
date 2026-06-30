@@ -92,3 +92,7 @@ printf("%s\n", state);
     1. `96` — 8 × 12.
     2. `4` — 'R','U','N' + 널 문자 `'\0'`.
     3. `strcmp` (같으면 0을 반환).
+
+    **🖼 그림으로 복습** — 2차원 배열 = 점유격자(occupancy grid) 맵
+
+    ![2차원 배열 = 점유격자(occupancy grid) 맵](img/14_occupancy_grid.png)

@@ -88,3 +88,7 @@ Stella N2 LiDAR(`/scan`) → `analyze_scan()` → 주행(`/cmd_vel`) + 아두이
     1. **publish(발행)** / **subscribe(구독)**.
     2. `/scan` (LiDAR) / `/cmd_vel` (주행 속도 명령).
     3. **rclc** — rcl(C 코어) 위의 MCU용 C API.
+
+    **🖼 그림으로 복습** — 내 C 코드가 진짜 로봇을 움직인다 — 3종 연계
+
+    ![내 C 코드가 진짜 로봇을 움직인다 — 3종 연계](img/10_robot_trio.png)
