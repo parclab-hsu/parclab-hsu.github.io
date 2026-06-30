@@ -439,10 +439,73 @@ Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 26 (출처
     - [RTX Radar](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/sensors/isaacsim_sensors_rtx_radar.html)
     - [Replicator 개요](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/replicator_tutorials/tutorial_replicator_overview.html)
 
+## 📖 핵심 용어 설명
+
+이번 주차 본문에 등장한 핵심 기술 용어를 정리합니다. 처음 보는 용어가 있더라도 아래 설명과 본문 예제를 함께 보면 이해할 수 있습니다.
+
+### IMU (Inertial Measurement Unit, 관성 측정 장치)
+- **정의**: 가속도계와 자이로스코프 등을 결합해 물체의 **선형 가속도·각속도·자세(방향)** 를 측정하는 센서입니다.
+- **역할/왜 중요한가**: 로봇이 "지금 내가 얼마나 빠르게 움직이고, 어느 방향으로 기울어졌는가"를 스스로 파악하게 해 줍니다. 움직임과 자세 변화를 감지하는 인지(perception)의 기초입니다.
+- **맥락·예시**: 본문 2장에서 `DynamicCuboid` 큐브에 IMU를 부착하고, 시뮬레이션 루프에서 `frame["lin_acc"]`(선형 가속도)를 실시간으로 추출해 HUD에 표시했습니다.
+
+### LiDAR (Light Detection and Ranging)
+- **정의**: 레이저(빛) 펄스를 쏘고 반사되어 돌아오는 시간을 측정해 거리를 계산하는 센서로, 주변을 스캔해 정밀한 **3D 점군(포인트 클라우드)** 을 만듭니다.
+- **역할/왜 중요한가**: 카메라보다 거리 정확도가 높아, 로봇이 주변 구조와 장애물의 위치를 정밀하게 3D로 인식할 때 핵심적으로 쓰입니다.
+- **맥락·예시**: 본문 3장에서 `IsaacSensorCreateRtxLidar` 명령으로 RTX LiDAR를 생성하고, 어노테이터·작성기를 연결해 포인트 클라우드를 시각화했습니다. 출력에는 `distance`, `intensity`, `azimuth` 등이 포함됩니다.
+
+### Radar (Radio Detection and Ranging)
+- **정의**: 전파(라디오파)를 발사해 물체에 반사되어 돌아온 신호로 **거리와 속도** 를 측정하는 센서입니다.
+- **역할/왜 중요한가**: 비·안개·먼지 같은 악천후에서도 비교적 잘 동작하고, 도플러 효과로 물체의 속도까지 직접 측정할 수 있어 자율주행·실외 로봇에서 널리 쓰입니다.
+- **맥락·예시**: 본문 4장에서 `IsaacSensorCreateRtxRadar` 로 센서를 생성했고, 출력에 `radialDistance`(거리)·`radialVelocity`(속도)·`rcs`(반사 세기)가 포함됩니다.
+
+### 포인트 클라우드 (Point Cloud)
+- **정의**: 센서가 측정한 수많은 3D 점(각 점은 x, y, z 좌표를 가짐)의 집합으로, 주변 공간을 점들로 표현한 데이터입니다.
+- **역할/왜 중요한가**: LiDAR·Radar의 측정 결과를 사람이 눈으로 보고, 로봇이 공간을 이해(매핑·장애물 인식)하는 데 사용하는 가장 기본적인 표현입니다.
+- **맥락·예시**: 본문에서 `RtxLidarDebugDrawPointCloudBuffer`(LiDAR)와 `RtxRadarDebugDrawPointCloud`(Radar) 작성기가 버퍼 데이터를 점군으로 실시간 렌더링합니다.
+
+### RTX 센서 (RTX Sensor)
+- **정의**: NVIDIA의 RTX(레이 트레이싱) GPU 가속 기술을 활용해 빛/전파의 반사 경로를 물리적으로 시뮬레이션하는 Isaac Sim의 가상 센서입니다.
+- **역할/왜 중요한가**: 실제 센서를 사지 않고도, 광선 추적으로 현실에 가까운 LiDAR·Radar 데이터를 시뮬레이션 안에서 생성할 수 있게 해 줍니다.
+- **맥락·예시**: 본문의 RTX LiDAR(`IsaacSensorCreateRtxLidar`)와 RTX Radar(`IsaacSensorCreateRtxRadar`)가 모두 RTX 기반 센서입니다.
+
+### Render Product (렌더 프로덕트)
+- **정의**: 특정 센서/카메라의 렌더링 결과를 담아 출력하는 뷰포트(출력 포트)를 정의하는 객체입니다. `rep.create.render_product(...)` 로 생성합니다.
+- **역할/왜 중요한가**: 센서가 데이터를 수집해도 곧바로 볼 수 없으며, Render Product가 있어야 렌더링 파이프라인에 연결해 데이터를 어노테이터/작성기로 흘려보낼 수 있습니다.
+- **맥락·예시**: LiDAR 예제에서는 `[1, 1]`(해상도가 아니라 식별자/슬롯 의미)을, Radar 예제에서는 `[512, 512]`(최소 512×512 권장)를 인자로 사용했습니다.
+
+### Annotator (어노테이터)
+- **정의**: 센서나 장면에서 생성된 원시 데이터를 추출·가공해 분석/연동/시각화에 쓸 수 있는 포맷으로 변환하는 중간 모듈입니다.
+- **역할/왜 중요한가**: "시뮬레이션 내부 데이터 → 사용 가능한 출력 데이터"로 바꿔 주는 **브릿지** 역할을 합니다. 어노테이터가 없으면 센서 데이터를 코드에서 다룰 수 없습니다.
+- **맥락·예시**: LiDAR는 `RtxSensorCpuIsaacCreateRTXLidarScanBuffer`, Radar는 `RtxSensorCpuIsaacComputeRTXRadarPointCloud` 어노테이터로 데이터를 추출하고, 루프에서 `annotator.get_data()` 로 최신 데이터를 가져옵니다.
+
+### Writer (작성기)
+- **정의**: 어노테이터가 가공한 데이터를 받아 화면에 시각화하거나 파일로 저장하는 출력 모듈입니다.
+- **역할/왜 중요한가**: 데이터를 사람이 볼 수 있는 형태(예: 3D 점군 그리기)로 만들어 줍니다. 디버깅·결과 확인에 직접 쓰입니다.
+- **맥락·예시**: 본문에서 `RtxLidarDebugDrawPointCloudBuffer`·`RtxRadarDebugDrawPointCloud` 작성기를 Render Product에 `attach` 하여 점군을 실시간 렌더링합니다.
+
+### 그 밖의 용어 (요약표)
+
+| 용어 | 설명 |
+| --- | --- |
+| `SimulationApp` | Isaac Sim을 실행하는 진입점. `{"headless": False}` 면 GUI 모드, `True` 면 화면 없는 백그라운드 전용 모드 |
+| `World` | 물리 엔진이 적용되는 시뮬레이션 공간 객체. `stage_units_in_meters=1.0` 은 1단위=1미터를 의미 |
+| `DynamicCuboid` | 중력·충돌 등 물리가 적용되는 동적 직육면체. 센서를 부착할 대상으로 사용 |
+| 쿼터니언 (Quaternion) | 3D 회전을 4개 값 `(w, x, y, z)` 으로 표현하는 방식. `[1, 0, 0, 0]` 은 회전 없는 기본 자세 |
+| RCS (Radar Cross Section) | 레이더 반사 단면적(m²). 금속처럼 반사율이 높은 물체일수록 값이 큼 |
+| 도플러 (Doppler) | 물체의 움직임으로 반사파 주파수가 바뀌는 현상. Radar가 속도(`radialVelocity`)를 측정하는 원리 |
+| 방위각/고도각 (Azimuth / Elevation) | 센서 기준 수평 방향 각도(방위각)와 수직 방향 각도(고도각). 점의 방향을 나타냄 |
+
 ## 📝 3주차 과제
 
 !!! example "과제 3 — IMU·LiDAR·Radar 센서 데이터 획득"
     **목표**: 동적 물체에 IMU와 RTX LiDAR를 부착하고 데이터를 획득·시각화한다. 센서별 데이터 형식과 용도를 비교한다.
+
+**과제 흐름도**
+
+```mermaid
+graph LR
+  A[IMU 부착] --> B[가속도 출력] --> C[RTX LiDAR] --> D[포인트클라우드] --> E[📦 비교표]
+```
 
 **수행 단계**
 

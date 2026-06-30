@@ -331,10 +331,60 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 32 (출처: ENGI UNIV
     - [워크스테이션 설치](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/installation/install_workstation.html)
     - [워크플로우(Workflows)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/introduction/workflows.html)
 
+## 📖 핵심 용어 설명
+
+이번 주차에 등장한 핵심 기술 용어를 정리합니다. 설치·환경 구축 과정에서 반복적으로 나오므로, 의미를 분명히 잡고 가면 이후 주차의 실습이 훨씬 수월해집니다.
+
+### Isaac Sim (NVIDIA Isaac Sim)
+- **정의**: NVIDIA가 만든 로봇 시뮬레이션 플랫폼으로, 고품질 물리·렌더링을 사용해 현실에 가까운 가상 환경에서 로봇을 테스트하는 도구입니다.
+- **역할/왜 중요한가**: 실제 하드웨어 없이도 로봇 알고리즘을 검증할 수 있어 **비용·시간·안전** 문제를 크게 줄여 줍니다. 본 강의 전체의 출발점이 되는 핵심 소프트웨어입니다.
+- **맥락·예시**: 01 Intro에서 "현실적 시뮬레이션·비용 절감·호환성" 세 가지 이유로 Isaac Sim을 공부한다고 설명합니다. 최초 실행 시 라이선스 동의 후 빈 Stage(작업 공간) GUI가 뜹니다.
+
+### Isaac Lab (NVIDIA Isaac Lab)
+- **정의**: Isaac Sim 위에서 동작하는 **대규모 로봇 학습(특히 강화학습) 전용 프레임워크**입니다.
+- **역할/왜 중요한가**: 수천 개의 시뮬레이션을 GPU에서 동시에 돌려 **대규모 병렬 강화학습**을 가능하게 합니다. Isaac Sim이 "테스트·시뮬레이션"이라면 Isaac Lab은 "학습"에 특화되어 있습니다.
+- **맥락·예시**: 본문 표에서 보듯 Isaac Lab은 대규모 병렬학습이 가능한 대신 디지털 트윈·ROS2 연동은 지원하지 않습니다(테스트와 학습을 분리 운영). 설치는 소스 코드를 클론한 뒤 진행합니다.
+
+### Conda / Miniconda
+- **정의**: **Conda**는 프로젝트별로 Python 버전과 패키지를 독립적으로 관리하는 패키지·가상환경 관리자이고, **Miniconda**는 Conda와 최소 패키지만 담은 Anaconda의 경량 배포판입니다.
+- **역할/왜 중요한가**: 프로젝트마다 Python 실행 환경을 분리해 **패키지 충돌·버전 호환성 문제**를 근본적으로 막아 줍니다. 의존성을 자동 분석해 디버깅 비용도 줄입니다.
+- **맥락·예시**: 02 환경 구축에서 `environment.yml` 파일로 동일한 환경을 복제(`conda env create -f environment.yml`)하고, 한 머신에서 Python 3.8과 3.10 프로젝트를 동시에 운영하는 예가 나옵니다.
+
+### CUDA
+- **정의**: NVIDIA GPU에서 일반 계산(특히 딥러닝·물리 연산)을 수행하도록 해 주는 **병렬 컴퓨팅 플랫폼이자 툴킷**입니다.
+- **역할/왜 중요한가**: PyTorch·Isaac Sim 등 GPU 가속 소프트웨어는 모두 CUDA 위에서 동작합니다. GPU 모델과 드라이버에 맞는 **CUDA 버전 선택**이 환경 구축의 핵심 관문입니다.
+- **맥락·예시**: 03에서 RTX 4090은 CUDA 12.x 이상, GTX 10/16 시리즈는 CUDA 11.x를 권장하는 식으로 GPU별 호환 버전을 매트릭스로 확인합니다.
+
+### Sim-to-Real (Sim-to-Real Gap)
+- **정의**: 시뮬레이션에서 학습·검증한 결과를 **실제 로봇으로 이전(transfer)** 하는 것을 말하며, 그 과정에서 발생하는 가상-현실 간 성능 차이를 **Sim-to-Real Gap**이라고 합니다.
+- **역할/왜 중요한가**: 시뮬레이션의 궁극적 목표는 결국 현실 로봇을 잘 동작시키는 것이므로, 이 Gap을 줄이는 것이 Physical AI의 핵심 과제입니다.
+- **맥락·예시**: 03 활용 사례의 Fourier 휴머노이드 사례에서, 강화학습으로 동작을 훈련한 뒤 실제 로봇으로 이전하며 Sim-to-Real Gap을 축소합니다.
+
+### 그 밖의 주요 용어
+
+| 용어 | 설명 |
+| --- | --- |
+| **PyTorch** | 딥러닝 모델을 만들고 학습시키는 대표 프레임워크. GPU(CUDA) 버전에 맞춰 설치하며, Isaac Lab의 강화학습에 사용됩니다. |
+| **NVIDIA PhysX** | Isaac Sim/Isaac Lab이 사용하는 물리엔진. 충돌·중력·마찰 등 현실적인 물리 계산을 담당합니다. |
+| **Omniverse RTX** | NVIDIA의 실시간 광선추적(RTX) 렌더링 기술. Isaac Sim이 현실에 가까운 고품질 영상을 만드는 기반입니다. |
+| **nvidia-smi** | 설치된 GPU 모델·드라이버 버전·사용량을 확인하는 명령어. CUDA·드라이버 선택의 첫 단계로 사용합니다. |
+| **nvidia-open / nvidia-driver-XXX** | GPU 드라이버의 두 종류. `nvidia-open`은 오픈소스(실시간 커널에 유리), `nvidia-driver-XXX`는 폐쇄형(CUDA·TensorRT 완전 지원). |
+| **GPG 키** | 리눅스에서 소프트웨어 출처의 신뢰성·무결성을 검증하는 공개키 기반 암호화 키. CUDA 저장소 등록 시 `apt`가 서명을 검증하는 데 사용합니다. |
+| **디지털 트윈 (Digital Twin)** | 실제 대상을 가상 공간에 실시간 동기화로 복제한 모델. Isaac Sim은 지원하지만 Isaac Lab은 지원하지 않습니다. |
+| **Nav2 + Isaac ROS** | ROS2의 자율주행 내비게이션 스택(Nav2)과 NVIDIA의 ROS 가속 패키지(Isaac ROS)의 연동. Spot 4족 보행 사례에서 포인트 클라우드 생성·시차(disparity) 필터링에 사용됩니다. |
+| **Isaac Gym** | GPU 기반 병렬 처리로 대규모 물리 시뮬레이션을 수행하는 NVIDIA의 학습 환경. 대규모 강화학습의 시간·비용을 크게 절감합니다. |
+
 ## 📝 1주차 과제
 
 !!! example "과제 1 — Isaac Sim 개발환경 구축 및 검증 보고"
     **목표**: NVIDIA Isaac Sim 실행 환경을 직접 구축하고, 정상 동작을 캡처로 증빙한다. GPU/드라이버·Conda·Isaac Sim 실행까지의 과정을 기록한다.
+
+**과제 흐름도**
+
+```mermaid
+graph LR
+  A[nvidia-smi 확인] --> B[Conda 환경 생성] --> C[Isaac Sim 실행] --> D[검증 캡처] --> E[📦 트러블슈팅 기록]
+```
 
 **수행 단계**
 

@@ -432,10 +432,80 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 78 (출처: ENGI UNIVERSE)
     - [ROS 2 통합(랜딩)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/ros2_landing_page.html)
     - [ROS 2 튜토리얼](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html)
 
+## 📖 핵심 용어 설명
+
+### TF / Transform Tree (좌표 변환 트리)
+
+- **정의**: ROS2에서 여러 좌표계(frame) 사이의 위치·자세 관계를 시간에 따라 표현·관리하는 체계다. 각 좌표계는 노드, 좌표계 간 변환은 엣지로 트리 구조를 이룬다.
+- **역할/왜 중요한가**: SLAM·Navigation 같은 상위 알고리즘은 "센서가 본 점이 지도 어디에 있는가"를 계산해야 하는데, 이때 센서 좌표 → 로봇 몸체 → 오도메트리 → 지도까지 변환이 끊김 없이 연결돼야 한다. 트리가 어긋나면 점군이 지도와 정합되지 않는다.
+- **맥락·예시**: 본 강의의 TF 트리는 `map → odom → body → sensors` 구조다. `slam_toolbox`가 `map` 프레임을, Isaac 오도메트리가 `odom` 프레임을 발행하고, 카메라·IMU·라이다가 각각 `body` 아래 링크로 매달린다.
+
+### Articulation / ArticulationView (아티큘레이션)
+
+- **정의**: 여러 관절(joint)과 링크(link)가 연결된 다관절 강체 구조를 물리 시뮬레이션에서 하나의 제어 단위로 다루는 개념이다. `ArticulationView`는 그 관절 상태를 조회하고 목표치를 설정하는 통로(API)다.
+- **역할/왜 중요한가**: Spot의 다리, ATS의 짐벌처럼 관절이 많은 로봇을 코드로 제어하려면 관절 위치·속도를 읽고 목표각을 쓰는 일관된 인터페이스가 필요하다.
+- **맥락·예시**: 본 강의에서 `self.spot`·`self.ats`를 각각 ArticulationView로 두어 서로 다른 제어 모드를 적용한다. 제어 루프 시작 전에는 `_find_articulation_root()`로 아티큘레이션 루트 프림을 찾아 초기화한다.
+
+### OmniGraph (옴니그래프)
+
+- **정의**: Isaac Sim/Omniverse에서 동작하는 데이터 플로우 기반 실행 그래프다. "어떤 연산을, 어떤 입력·출력으로, 어떤 순서로" 실행할지를 노드와 엣지(연결)로 정의한다.
+- **역할/왜 중요한가**: 센서 데이터를 ROS2 토픽으로 내보내는 파이프라인(카메라 → 변환 → 퍼블리셔)을 코드 한 줄씩이 아니라 그래프로 일괄 구성해 안정적으로 발행할 수 있다.
+- **맥락·예시**: `graph_builder.py`가 카메라·IMU·Odom·TF·LiDAR 퍼블리셔를 OmniGraph로 배선한다. 실행 방식은 매 프레임 자동 실행(per frame)과 필요 시점만 실행(push/ondemand) 두 가지가 있다.
+
+### RenderProduct (렌더 프로덕트)
+
+- **정의**: 카메라(또는 LiDAR) 프림이 만든 결과를 다른 노드가 바로 읽을 수 있게 하는 오프스크린 렌더 타깃(이미지 버퍼)이다.
+- **역할/왜 중요한가**: `UsdGeom.Camera` 프림 자체는 포즈·초점거리 같은 광학 정의만 담는다. 이를 매 프레임 실제 이미지 버퍼(AOV)로 뽑아 ROS2 퍼블리셔가 읽게 하려면 RenderProduct가 필요하다. 뷰포트(UI)와 분리돼 헤드리스 모드에서도 동일 품질 버퍼를 얻는다.
+- **맥락·예시**: 본 강의에서 RTX LiDAR도 2D/3D 각각 전용 RenderProduct(`RP_2D`, `RP_3D`)를 만들어 LiDAR 프림을 바인딩한다. 경로 오타나 조기 생성 시 `Render product not valid` 경고가 발생한다.
+
+### Odometry (오도메트리) / `/odom`
+
+- **정의**: 로봇의 자체 센서(관절 회전, 바디 포즈/속도)로 누적 추정한 이동 거리·방향, 즉 출발점 기준 상대 위치 정보다.
+- **역할/왜 중요한가**: SLAM이 라이다 스캔을 정합할 때 "직전 위치에서 얼마나 움직였는지"를 알려주는 기준이 된다. 누적 기준이라 갑작스러운 점프가 없어야 한다.
+- **맥락·예시**: 본 강의에서 `IsaacComputeOdometry`가 바디 포즈/속도로 `odom → base_link` 변환을 만들고, `ROS2PublishOdometry`가 `/odom` 토픽으로 발행한다(`odomFrameId="odom"`, `chassisFrameId="base_link"`).
+
+### slam_toolbox
+
+- **정의**: 2D 라이다 스캔과 오도메트리를 이용해 지도를 작성하면서 동시에 로봇 위치를 추정(SLAM)하는 ROS2 패키지다.
+- **역할/왜 중요한가**: 사전 지도 없이 미지의 환경을 주행하며 지도와 위치를 함께 만들어내, Nav2 자율주행의 토대가 된다. 스캔 정합 기반 pose graph(노드=위치, 엣지=이동, 루프 클로저)를 유지한다.
+- **맥락·예시**: 본 강의는 `online_async` 모드(실시간성 우선, 매핑+주행 동시)를 사용하며, 실행 시 `map` 프레임을 생성한다.
+
+### Nav2 (Navigation2)
+
+- **정의**: 목표 지점까지의 경로 계획·장애물 회피·속도 명령 생성을 담당하는 ROS2 자율주행 스택이다.
+- **역할/왜 중요한가**: 사람이 RViz에서 목표만 찍으면 경로를 계산해 로봇이 스스로 이동하도록 속도 명령을 만들어준다.
+- **맥락·예시**: 본 강의에서 RViz의 **2D Nav Goal** 클릭 → Nav2가 `/cmd_vel` 퍼블리시 → Isaac의 `SubscribeTwist` 노드가 수신 → 정책 명령과 합성하는 흐름으로 동작한다.
+
+### AMCL (Adaptive Monte Carlo Localization)
+
+- **정의**: 확률(파티클 필터) 기반으로 완성된 지도 위에서 로봇의 현재 위치만 추정하는 방법이다.
+- **역할/왜 중요한가**: 지도를 새로 그릴 때는 SLAM이, 이미 만든 지도에서 내 위치를 찾을 때는 Localization이 필요한데 AMCL이 그 가벼운 표준 방식이다. `.pgm`/`.yaml` 지도만 있으면 동작한다.
+- **맥락·예시**: 본 강의에서 매핑은 `slam_toolbox`의 `online_async`가, 지도 위 주행 위치 추정은 `nav2_bringup`의 `amcl.launch.py`가 담당한다고 비교한다.
+
+### 주요 용어 빠른 참조
+
+| 용어 | 설명 |
+| --- | --- |
+| **DOF (Degree of Freedom, 자유도)** | 로봇이 독립적으로 움직일 수 있는 축의 개수. Spot은 다리 관절 12 DOF, ATS는 상하·좌우 2 DOF. |
+| **ROS2 Bridge (브릿지)** | Isaac Sim 내부 데이터(센서·명령)를 ROS2 토픽/메시지로 양방향 연결하는 통로. 본 강의 파이프라인의 핵심. |
+| **TorchScript 정책** | PyTorch로 학습한 보행 정책을 직렬화한 모델. `torch.jit.load`로 불러와 48차원 관측 → 12차원 액션을 추론(`PolicyRunner`). |
+| **관측 벡터 (Observation, 48차원)** | 몸체 좌표계 기준 선/각속도·중력·명령·관절 각/속도·이전 액션을 한 벡터로 묶은 정책 입력. |
+| **RTX LiDAR** | NVIDIA RTX 레이트레이싱으로 라이다를 시뮬레이션하는 센서. 2D는 `/scan`(LaserScan), 3D는 `/point_cloud`(PointCloud2)로 발행. |
+| **`/cmd_vel`** | 선속도·각속도 속도 명령 토픽(`geometry_msgs/Twist`). Nav2·텔레옵 입력이 이 토픽으로 모인다. |
+| **`use_sim_time`** | 노드가 실제 시각이 아닌 시뮬레이션 시간(`/clock`)을 쓰도록 하는 설정. 모든 노드가 같은 시간축으로 동작하게 함. |
+| **`static_transform_publisher`** | 시간에 따라 변하지 않는 고정 좌표 변환을 TF로 브로드캐스트하는 노드. 카메라·센서 고정 위치 정합에 필요. |
+
 ## 📝 7주차 과제
 
 !!! example "과제 7 — Spot+ATS SLAM 연동 파이프라인 구성"
     **목표**: Isaac Sim의 Spot+ATS 센서를 ROS2로 퍼블리시하고 TF 트리를 정합하여 SLAM 자율보행 파이프라인을 구성한다.
+
+**과제 흐름도**
+
+```mermaid
+graph LR
+  A[모델 로드] --> B[ROS2 센서 발행] --> C[TF 정합] --> D[자율주행] --> E[📦 그래프+영상]
+```
 
 **수행 단계**
 

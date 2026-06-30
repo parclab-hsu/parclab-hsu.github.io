@@ -308,10 +308,79 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
 - ByteTrack — <https://github.com/ifzhang/ByteTrack>
 - ROS 2 QoS 설정 — <https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html>
 
+## 📖 핵심 용어 설명
+
+### YOLOv8 (You Only Look Once v8)
+- **정의**: Ultralytics가 개발한 실시간 객체 검출(Object Detection) 딥러닝 모델로, 한 장의 이미지를 한 번만 신경망에 통과시켜 객체의 위치(바운딩박스)·클래스·신뢰도를 동시에 예측합니다.
+- **역할/왜 중요한가**: 이번 주차 비전 파이프라인의 **눈** 역할을 합니다. SLAM이 "내 위치"를 알려준다면 YOLOv8은 "무엇을 봤는지"를 알려줍니다.
+- **맥락·예시**: `model:=yolov8n`처럼 가중치를 런치 인자로 지정하며, `yolov8n`(nano)은 가볍고 빠른 경량 모델이라 CPU 환경에서도 동작합니다.
+
+### detector → tracker → debug 파이프라인
+- **정의**: 검출(`yolov8_node`) → 추적(`tracking_node`) → 시각화(`debug_node`) 세 노드를 순서대로 연결한 ROS 2 처리 흐름입니다.
+- **역할/왜 중요한가**: 각 단계가 역할을 분담(검출=무엇을 봤나, 추적=같은 객체에 ID 부여, 디버그=화면 확인)하여 모듈화된 비전 시스템을 만듭니다.
+- **맥락·예시**: 본문 2장에서 세 노드를 하나의 네임스페이스(`/yolo/...`) 아래에서 일괄 실행하며, 카메라 토픽만 들어오면 전체 파이프라인이 활성화됩니다.
+
+### 네임스페이스 (namespace)
+- **정의**: ROS 2에서 노드·토픽 이름 앞에 공통 접두어를 붙여 묶는 이름 공간입니다. 예: `/yolo/detections`, `/yolo/tracking`.
+- **역할/왜 중요한가**: 같은 노드를 여러 개 띄워도 이름 충돌 없이 구분할 수 있어 **다중 카메라 확장**이 쉬워집니다.
+- **맥락·예시**: 본문에서 `yolo/cam0`, `yolo/cam1` 식으로 카메라별 파이프라인을 충돌 없이 운영하는 근거가 됩니다.
+
+### DeclareLaunchArgument / LaunchConfiguration
+- **정의**: `DeclareLaunchArgument`는 런치 파일이 외부에서 값을 받는 **입력 포트**를 선언하고, `LaunchConfiguration`은 선언된 그 값을 노드 내부에서 **읽어오는 핸들**입니다.
+- **역할/왜 중요한가**: 토픽명·디바이스·임계값 같은 설정을 코드에 하드코딩하지 않고 **실행 시 커맨드라인 인자**로 바꿀 수 있게 해, 파일 수정 없이 재사용 가능한 런치 구조를 만듭니다.
+- **맥락·예시**: 본문 작동 순서 Step 1~3에서 `model:=yolov8n`, `device:=cuda:0` 같은 값을 선언·참조·주입하는 흐름으로 설명됩니다.
+
+### CvBridge
+- **정의**: ROS의 이미지 메시지(`sensor_msgs/Image`)와 OpenCV 이미지 배열(BGR numpy)을 서로 변환해주는 라이브러리입니다.
+- **역할/왜 중요한가**: ROS로 들어온 카메라 영상을 YOLO/OpenCV가 처리할 수 있는 형식으로 바꿔주는 **다리** 역할입니다.
+- **맥락·예시**: `yolov8_node`의 Step 1에서 `/image_raw`를 구독한 뒤 CvBridge로 변환해 Ultralytics YOLO에 전달합니다.
+
+### DetectionArray (`yolov8_msgs/DetectionArray`)
+- **정의**: 한 프레임에서 검출된 여러 객체의 정보(바운딩박스 중심·크기, 점수, 클래스 ID/이름, 트랙 ID 등)를 담는 ROS 2 커스텀 메시지 타입입니다.
+- **역할/왜 중요한가**: 검출 결과를 표준 포맷으로 묶어 노드 간(detector→tracker→VisionContext)에 일관되게 전달합니다.
+- **맥락·예시**: 본문 3-2의 필드 표(`bbox.center.position.x/y`, `score`, `class_id`, `id` 등)가 이 메시지의 구조입니다.
+
+### ApproximateTimeSynchronizer
+- **정의**: 타임스탬프가 정확히 일치하지 않는 두 개 이상의 토픽을 **근사 시간**으로 짝지어 한 콜백에서 함께 처리하게 하는 ROS 2 메시지 동기화 도구입니다.
+- **역할/왜 중요한가**: 카메라 지연·드리프트 때문에 이미지와 검출 결과의 시각이 완전히 같지 않으므로, 가까운 시각끼리 묶어 추적 입력을 만듭니다.
+- **맥락·예시**: `tracking_node`가 `image_raw` + `detections`를 `slop=0.5s`(허용 시간차 0.5초)로 동기화합니다.
+
+### BYTETrack / BOTSort
+- **정의**: 둘 다 다중 객체 추적(Multi-Object Tracking, MOT) 알고리즘으로, 매 프레임의 검출 결과를 이전 프레임 객체와 연결해 동일 개체에 같은 ID를 유지합니다.
+- **역할/왜 중요한가**: 검출만으로는 "이 사람과 저 사람이 같은 사람인지" 알 수 없는데, 추적기가 프레임 간 **ID 일관성**을 부여해 추종 제어가 가능해집니다.
+- **맥락·예시**: **BYTETrack**은 저신뢰 검출까지 활용해 가려짐에도 ID를 유지하고, **BOTSort**는 ReID 피처를 추가로 사용합니다. `tracking_node`가 `bytetrack.yaml`/`botsort.yaml`을 읽어 둘 중 하나를 생성합니다.
+
+### ReID (Re-Identification)
+- **정의**: 객체의 색상·형태·질감 같은 시각적 특징을 임베딩(숫자 벡터)으로 추출해, 위치가 아니라 **외형 유사성**으로 동일 객체를 다시 식별하는 기법입니다.
+- **역할/왜 중요한가**: 객체가 빠르게 움직이거나 화면에서 사라졌다가 다른 위치에서 재등장해도 같은 ID를 유지할 수 있게 합니다.
+- **맥락·예시**: BOTSort가 BYTETrack 대비 추가로 사용하는 핵심 기능으로 본문 3-2에서 설명됩니다.
+
+### QoS / image_reliability
+- **정의**: QoS(Quality of Service)는 ROS 2에서 메시지 전달 신뢰성·지연 등을 정하는 통신 정책이며, `image_reliability`는 이미지 토픽의 QoS를 런치 인자(정수 0/1/2)로 지정하는 파라미터입니다.
+- **역할/왜 중요한가**: 환경에 맞춰 통신 방식을 선택할 수 있게 합니다. **Best Effort**는 드롭을 허용해 지연을 줄이고, **Reliable**은 손실을 최소화합니다.
+- **맥락·예시**: 무선·시뮬레이터에서는 Best Effort, 로깅·재현이 중요하면 Reliable을 쓰며 파일 수정 없이 인자로 전환합니다.
+
+### VisionContextBuilder
+- **정의**: `/yolo/tracking`(추적 결과)과 `/yolo/image_raw`(영상)를 함께 구독해 "무엇을 봤는가 + 어느 프레임에서 봤는가"를 하나의 **비전 컨텍스트**로 묶는 모듈입니다.
+- **역할/왜 중요한가**: 화면 중심 `(frame_w/2, frame_h/2)` 기준으로 대상과의 오차 **Δx, Δy**를 계산해, 후단 제어기가 해상도와 무관하게 사용할 수 있는 정규화된 정보를 만듭니다.
+- **맥락·예시**: 결과를 사람이 읽는 `/vision_context`와 System-1용 JSON인 `/vision_context_raw` 두 포맷으로 발행합니다(본문 4장).
+
+### closed-loop (`/ats_twist`, `/cmd_vel`)
+- **정의**: closed-loop(폐루프)는 센서로 관측한 결과를 다시 제어 입력으로 되먹임하는 구조입니다. 여기서 `/ats_twist`는 화면 중심에 목표를 맞추는 짐벌/카메라 제어 신호, `/cmd_vel`은 대상을 일정 거리에서 따라가기 위한 로봇 이동 속도 명령입니다.
+- **역할/왜 중요한가**: "보고 → 오차 계산 → 움직여서 보정 → 다시 본다"의 순환을 만들어, Spot+ATS가 대상을 능동적으로 인식·추적·추종하게 합니다.
+- **맥락·예시**: VisionContextBuilder가 산출한 Δx, Δy 오차가 `/ats_twist`·`/cmd_vel` 제어의 입력 근거가 됩니다(본문 4장).
+
 ## 📝 10주차 과제
 
 !!! example "과제 10 — YOLOv8 Vision을 Spot+ATS에 연동"
     **목표**: YOLOv8 detector→tracker→debug 파이프라인을 구성하고 카메라 토픽에 연동해 실시간 객체 탐지·추적을 확인한다.
+
+**과제 흐름도**
+
+```mermaid
+graph LR
+  A[YOLOv8 추론] --> B[노드 실행] --> C[카메라 연동] --> D[이벤트 발행] --> E[📦 영상+구조도]
+```
 
 **수행 단계**
 

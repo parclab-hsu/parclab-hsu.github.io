@@ -360,10 +360,84 @@ Spot + ATS SLAM 연동 part 2 — 슬라이드 31 (출처: ENGI UNIVERSE)
     - [ROS 2 튜토리얼](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html)
     - [USD로 작업하기](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/omniverse_usd/intro_to_usd.html)
 
+## 📖 핵심 용어 설명
+
+### SLAM (Simultaneous Localization and Mapping)
+- **정의**: 로봇이 미리 주어진 지도 없이, 주변을 탐색하면서 **지도를 만드는 동시에 그 지도 안에서 자기 위치를 추정**하는 기법입니다.
+- **역할/왜 중요한가**: 지도와 위치를 서로 의존해 함께 풀어야 하는 "닭과 달걀" 문제를 해결합니다. 이번 강의에서 지도 파일(`.pgm`/`.yaml`)을 만드는 출발점이 됩니다.
+- **맥락·예시**: 지난 주차에 `slam_toolbox`의 online_async 모드로 LiDAR + Odom을 이용해 지도를 작성했습니다. SLAM 모드에서는 지도가 계속 변하지만, 다음 단계인 Localization 모드에서는 지도가 고정됩니다.
+
+### Localization (위치 추정 모드)
+- **정의**: 이미 완성된 지도를 **고정**해 두고, 그 위에서 로봇이 자기 위치만 추정하는 운용 모드입니다.
+- **역할/왜 중요한가**: 지도를 새로 만들 필요가 없으므로 연산이 가볍고, 같은 공간을 반복 주행하는 로봇에게 안정적인 자율보행을 제공합니다.
+- **맥락·예시**: 본문 3절에서 `localization_launch.py` + `navigation_launch.py`를 실행해 저장된 `spot_ats_map.yaml`을 불러오고, 위치 추정은 AMCL이 담당합니다.
+
+### AMCL (Adaptive Monte Carlo Localization)
+- **정의**: 다수의 가설(파티클)을 뿌려 `/scan`과 `/map`을 비교하며 **확률적으로** 로봇 위치를 좁혀가는 위치 추정 알고리즘입니다.
+- **역할/왜 중요한가**: Localization 모드에서 `map → odom` 변환을 만들어 주어, 오도메트리(`odom → body`)와 합쳐 전체 좌표계(`map → odom → body`)를 닫습니다.
+- **맥락·예시**: 본문 `nav2_localization_params.yaml`에서 `min_particles: 500` ~ `max_particles: 2000`, `laser_model_type: "likelihood_field"` 등으로 정확도와 연산량의 균형을 맞춥니다.
+
+### Nav2 (Navigation2)
+- **정의**: ROS 2의 표준 자율주행 스택으로, 경로 계획·제어·복구·비용맵을 통합 관리합니다.
+- **역할/왜 중요한가**: 목적지(2D Nav Goal)가 주어지면 전역/지역 경로를 만들고 속도 명령(`cmd_vel`)까지 생성해 로봇을 이동시킵니다.
+- **맥락·예시**: `planner_server`(전역 경로), `controller_server`(경로→속도), `smoother_server`(경로 보정), `behavior_server`(복구 동작), `bt_navigator`(행동 트리 조율)로 구성됩니다.
+
+### .pgm / .yaml (지도 파일 한 쌍)
+- **정의**: `map_saver_cli`로 지도를 저장하면 나오는 두 파일. `.pgm`은 실제 흑백 지도 **이미지**, `.yaml`은 해상도·원점·임계값 등 **메타데이터**입니다.
+- **역할/왜 중요한가**: Localization 모드의 `map_server`가 이 한 쌍을 읽어 `/map` 토픽으로 퍼블리시합니다. 한 쪽만 있으면 정상 로딩이 안 됩니다.
+- **맥락·예시**: 본문에서 `ros2 run nav2_map_server map_saver_cli -f ~/maps/spot_ats_map` 실행 시 `spot_ats_map.pgm`과 `spot_ats_map.yaml`이 함께 생성됩니다.
+
+### 점유 격자 픽셀 값 (Occupancy / 색 규칙)
+- **정의**: 지도 이미지에서 픽셀 밝기로 공간 상태를 표현하는 규칙. **검정(0)=장애물**, **흰색(255)=자유공간**, **회색(중간값)=미확인 영역**입니다.
+- **역할/왜 중요한가**: 이 값이 비용맵의 통행 가능 여부를 결정합니다. 잘못된 픽셀(예: 벽에 흰 틈)은 플래너가 "통로"로 오인하게 만듭니다.
+- **맥락·예시**: 5절 GIMP 보정에서 사람이 벽을 완전 검정 `(0,0,0)`으로 다시 채워 불확실 영역을 확실한 장애물로 선언합니다.
+
+### TF 체인 (map → odom → body)
+- **정의**: 좌표계 사이의 변환 관계를 시간에 따라 연결하는 ROS의 좌표 변환 트리입니다.
+- **역할/왜 중요한가**: 이 체인이 끊기면 RViz에 데이터가 안 보이거나 위치가 틀어집니다. 각 노드의 기준 프레임을 일치시켜야 합니다.
+- **맥락·예시**: Spot의 본체 링크 이름이 `body`이므로 slam_toolbox·Nav2·AMCL 모두 `base_frame`을 `body`로 통일합니다. 오도메트리가 `odom → body`, AMCL이 `map → odom`을 채웁니다.
+
+### QoS — Reliability / Durability Policy
+- **정의**: ROS 2에서 토픽 통신의 품질을 정하는 정책. **Reliability**는 전달 보장 수준(Best Effort↔Reliable), **Durability**는 늦게 구독한 노드가 과거 메시지를 받을 수 있는지(Volatile↔Transient Local)를 의미합니다.
+- **역할/왜 중요한가**: 정책이 맞지 않으면 데이터가 있어도 화면에 표시되지 않을 수 있습니다.
+- **맥락·예시**: `/map`은 보통 한 번만 퍼블리시되므로, RViz에서 안 보이면 **Reliable + Transient Local**로 바꿔 마지막 지도를 캐시에서 다시 받게 합니다.
+
+### 초기 위치 (Initial Pose / 2D Pose Estimate)
+- **정의**: Localization 시작 시 AMCL에게 알려주는 로봇의 **초기 추정 위치**입니다.
+- **역할/왜 중요한가**: AMCL은 기준점이 있어야 `/scan`과 `/map`을 비교해 확률적 추정을 시작할 수 있습니다. 부팅 시 "please set the initial pose..." 로그가 이를 요청합니다.
+- **맥락·예시**: 본문에서는 `set_initial_pose: false`로 두고, RViz의 **2D Pose Estimate** 버튼으로 사람이 직접 지정합니다.
+
+### 비용맵 레이어 (Static / Obstacle / Inflation Layer)
+- **정의**: Nav2 비용맵을 구성하는 층. **Static Layer**=저장된 고정 지도, **Obstacle Layer**=`/scan` 실시간 장애물, **Inflation Layer**=장애물 주변 완충 영역입니다.
+- **역할/왜 중요한가**: 역할을 분리해 충돌을 막고 경로 안정성을 확보합니다. `inflation_radius`를 충분히 줘야 로봇이 벽에 너무 붙어 지나가지 않습니다.
+- **맥락·예시**: 본문 `inflation_radius: 0.6`(약 60cm 완충). 경로가 벽을 관통하면 static_layer가 새 맵을 구독하는지, 완충폭이 충분한지 점검합니다.
+
+### GIMP
+- **정의**: 무료 오픈소스 이미지 편집 프로그램으로, 여기서는 `.pgm` 지도 이미지를 직접 수정하는 데 사용합니다.
+- **역할/왜 중요한가**: SLAM 지도의 누락된 벽·노이즈를 사람이 판단해 보강함으로써, 비용맵이 얇은 틈을 통로로 오인하는 문제를 막습니다.
+- **맥락·예시**: 본문 절차 — Grayscale 모드 확인 → 알파 채널 제거 → **Scale 금지** → Pencil(Hardness 100%, 검정)로 벽 그리기(Shift+클릭 직선) → Export 시 **Format = raw**로 내보내기.
+
+### Loop Closure (루프 클로저)
+- **정의**: 로봇이 한 바퀴 돌아 이전에 본 장소로 돌아왔을 때, 같은 곳임을 인식해 누적 오차를 보정하는 SLAM 과정입니다.
+- **역할/왜 중요한가**: 실패하면 출발점과 도착점 정렬이 어긋나 **같은 벽이 두 줄로** 그려지고 위치 추정이 흔들립니다.
+- **맥락·예시**: 4절 지도 문제 분석에서 "벽 겹침(Loop Closure 실패)"으로 다룹니다. 바퀴 슬립·odom 드리프트와 함께 지도 비틀림의 원인이 됩니다.
+
+### `max_laser_range`
+- **정의**: SLAM이 매핑에 사용할 LiDAR 스캔의 **최대 유효 거리** 파라미터입니다.
+- **역할/왜 중요한가**: 너무 크게 잡으면 신뢰도 낮은 먼 스캔이 잡음으로 포함되어 지도 외곽에 노이즈 띠가 생깁니다.
+- **맥락·예시**: 본문 `slam_toolbox_params.yaml`에서 `20.0`(20m)으로 설정합니다. 4절에서 과도한 값이 외곽 노이즈의 원인으로 지적됩니다.
+
 ## 📝 9주차 과제
 
 !!! example "과제 9 — 지도 저장·Localization·맵 보정(GIMP)"
     **목표**: 작성한 SLAM 지도를 저장하고 Localization 모드로 전환해 자율주행한다. 지도 결함을 GIMP로 직접 보정한다.
+
+**과제 흐름도**
+
+```mermaid
+graph LR
+  A[지도 저장] --> B[Localization] --> C[GIMP 보정] --> D[비교 주행] --> E[📦 지도+영상]
+```
 
 **수행 단계**
 

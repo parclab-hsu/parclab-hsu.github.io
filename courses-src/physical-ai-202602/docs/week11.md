@@ -409,10 +409,83 @@ System-1 Executor Node 설계 — 슬라이드 25 (출처: ENGI UNIVERSE)
 - Nav2 (Navigation2) — <https://docs.nav2.org>
 - Ultralytics YOLO — <https://docs.ultralytics.com>
 
+## 📖 핵심 용어 설명
+
+### System-2 / System-1 (2계층 아키텍처)
+- **정의**: 로봇 지능을 **생각하는 두뇌(System-2)** 와 **실행하는 몸(System-1)** 으로 나눈 2계층 구조. System-2는 LLM 기반으로 명령을 해석해 고수준 플랜을 만들고, System-1은 ROS2 기반으로 그 플랜을 실제 물리 행동으로 수행한다.
+- **역할/왜 중요한가**: 느리지만 신중한 판단(System-2)과 빠르고 즉각적인 실행(System-1)을 분리하면, 각 계층을 독립적으로 개발·교체·디버깅할 수 있고 전체 시스템의 안정성이 높아진다. 인간 인지의 "느린 사고/빠른 사고"에서 따온 개념이다.
+- **맥락·예시**: 1교시에서 "사람 탐색 후 추종" 명령이 System-2에서 `["scan", "report", "track"]` 시퀀스로 바뀌어 System-1의 Executor로 전달되는 흐름으로 설명된다.
+
+### 단위 액션 (Unit Action)
+- **정의**: **더 이상 쪼갤 수 없는 최소 실행 단위** 로, "하나의 액션 = 하나의 명확한 목적" 원칙을 따르는 행동 블록. 하나가 끝나야 다음으로 진행한다.
+- **역할/왜 중요한가**: 복잡한 임무를 레고처럼 조합해 만들 수 있고, 오류 발생 시 어느 액션에서 실패했는지 추적·재계획(replan)하기 쉽다. 전체 행동 파이프라인을 모듈형으로 유지하는 핵심 개념이다.
+- **맥락·예시**: 2교시의 6개 액션(`scan`/`report`/`wait_for_command`/`return_to_home`/`move_to`/`track`)이 모두 단위 액션이며, System-2의 플랜은 이들의 시퀀스로 구성된다.
+
+### System1ExecutorNode (Executor)
+- **정의**: System-2가 내려준 플랜(JSON)을 **검증 → 실행 가능 상태 유지 → 단위 액션 호출 → 결과 피드백** 하는 System-1의 핵심 ROS2 노드.
+- **역할/왜 중요한가**: 플랜을 그대로 믿고 실행하지 않고, 스키마 검증·guard 조건·TF 신뢰성 등을 점검해 "물리 시스템의 안전장치" 역할을 한다. 비전·추적·내비게이션 기능을 직접 구현하지 않고 위임하므로 범용 실행 엔진으로 유지된다.
+- **맥락·예시**: 3교시 전체가 이 노드의 내부 구조(`on_plan_cmd`, `_run_loop`, `publish_state` 등) 분석이다.
+
+### TF (Transform, 좌표 변환)
+- **정의**: ROS2에서 서로 다른 좌표계(예: `map`, `body`) 사이의 위치·자세 관계를 시간에 따라 추적·변환해 주는 시스템.
+- **역할/왜 중요한가**: 로봇이 "지도상 자기 위치"를 알아야 안전하게 행동할 수 있다. Executor는 1초마다 `map → body` 변환을 조회해 최신 Pose를 캐시하고, 변환 실패 시 `_last_pose["ok"]=False`로 표시해 **'자기 위치를 모르는 위험'을 조기에 감지** 한다.
+- **맥락·예시**: 3교시 "TF 초기화" 절의 `self.tf_listener`, `_last_pose`, `create_timer(1.0, self._log_tf_pose)` 코드 참조.
+
+### Guard 조건 (실행 제약)
+- **정의**: 각 step을 실행하기 전에 평가하는 안전·환경 조건 묶음. 대표 변수로 `ROU_OK`(사용자 규칙 충족), `SAFE_BACKSTOP`(안전구역 확보), `BATTERY_SOC`(배터리 잔량), `MAX_SPEED`(속도 제한)가 있다.
+- **역할/왜 중요한가**: 조건이 하나라도 `False`면 step 실행을 중단하고 상태를 `paused`/`error`로 전환하며, 필요 시 System-2에 재계획을 요청한다. 안전 조건을 만족할 때까지 행동을 **절대 실행하지 않도록** 보장한다.
+- **맥락·예시**: `eval_guard()` 함수와 각 step의 4요소 중 `guard` 항목에서 사용된다.
+
+### queue_status (실행 상태값)
+- **정의**: Executor의 현재 실행 상태를 한눈에 나타내는 상태 변수. 값은 `idle`(새 플랜 대기), `running`(step 수행 중), `paused`(일시 중단), `done`(완료), `error`(재시도 소진 등 실패)가 있다.
+- **역할/왜 중요한가**: 상세 로그를 일일이 읽지 않고도 외부(System-2·UI)가 로봇 상태를 즉시 판단하게 해 준다. 상태 동기화의 기본 단위다.
+- **맥락·예시**: `_run_loop`의 True/False 결과와 guard 평가에 따라 값이 전환되며, `publish_state`로 0.5초마다 브로드캐스트된다.
+
+### True/False 계약 (실행 계약)
+- **정의**: 모든 단위 액션 핸들러가 성공이면 `True`, 실패면 `False`만 반환하기로 정한 약속. `True`면 `current_index += 1`로 다음 step, `False`면 retry 확인 후 재시도하거나 소진 시 `emit_replan` + `error`로 처리한다.
+- **역할/왜 중요한가**: 액션이 늘어나거나 내부 구현이 바뀌어도 `_run_loop` 로직은 고정되며, 실패·재시도·재플랜이 모든 액션에 **일관된 방식** 으로 동작한다.
+- **맥락·예시**: `_run_loop`의 task 분기(`exec_move_to`, `exec_scan`, `_do_track` 등)가 모두 이 계약을 따른다.
+
+### VisionCache / 정규화 (Normalization)
+- **정의**: 다양한 비전 모델의 서로 다른 출력 포맷을 `_normalize_raw_vision()`으로 하나의 표준 구조(`targets`, `primary_id`, `lost_sec`)로 통합해 저장하는 중앙 비전 상태 저장소.
+- **역할/왜 중요한가**: 비전 모델을 교체(YOLOv8→YOLOv10)해도 정규화 함수만 고치면 되어 **모델 독립성** 을 확보한다. 비전 데이터가 일관되어야 System-2의 플랜 품질도 유지된다.
+- **맥락·예시**: `on_vision_raw`가 `/vision_context_raw` 원시 JSON을 받아 정규화 후 `VisionCache`에 반영한다.
+
+### Lock (동시성 제어)
+- **정의**: 여러 스레드·콜백이 동시에 같은 자원에 접근할 때 한 번에 하나만 접근하도록 막는 잠금 장치(`threading.Lock`).
+- **역할/왜 중요한가**: Executor는 `run_loop`(실행), `on_plan_cmd`(플랜 수신), `on_vision_raw`(비전), `publish_state`(상태 발행)가 동시에 돈다. `current_plan`·`current_index`·`vision` 같은 공유 자원의 **무결성** 을 지키려면 Lock이 필수다.
+- **맥락·예시**: `on_plan_cmd`와 `_run_loop`가 `with self.lock:` 블록 안에서 공유 상태를 읽고 쓴다.
+
+### 책임 위임 (Tracker / Nav2Navigator / DepthBuffer)
+- **정의**: Executor가 추적·내비게이션 같은 세부 기능을 직접 구현하지 않고 전담 모듈에 맡기는 설계. `track`은 Tracker(짐벌 pitch·yaw + 본체 vx·wz 계산), `move_to`는 Nav2Navigator(경로·장애물 회피), 거리 조회는 DepthBuffer가 담당한다.
+- **역할/왜 중요한가**: Executor는 "언제 시작·성공/실패 판단·재시도/재플랜할지"만 결정해 복잡도를 최소화한다. 기능이 업데이트돼도 플랜 실행 로직은 수정할 필요가 없다.
+- **맥락·예시**: Executor는 Navigator의 최소 상태(`_nav_feedback`: `distance_remaining`, `stamp`)만 참조한다.
+
+### 주요 약어·구성요소
+
+| 용어 | 설명 |
+| --- | --- |
+| `HIGH_LEVEL_PLAN_SCHEMA` | System-2 플랜(JSON)의 필수 필드·형식을 정의한 검증 스키마. `validator`가 이를 기준으로 필드 누락·오타·미정의 task를 실행 전에 1차 차단 |
+| Nav2 (Navigation2) | ROS2 표준 자율주행 스택. SLAM 지도 기반으로 경로를 생성하고 장애물을 회피. `move_to`/`return_to_home`가 내부적으로 호출 |
+| `slam_toolbox` | ROS2의 SLAM(동시적 위치추정·지도작성) 패키지. 로봇이 맵을 만들고 그 안에서 자기 위치를 추정하게 함 |
+| YOLO (You Only Look Once) | 실시간 객체 탐지 딥러닝 모델. Vision 모듈이 객체의 `class`·`bbox`를 산출하며, 결과는 정규화되어 VisionCache로 들어감 |
+| ATS 짐벌 (Gimbal) | 카메라 자세를 pitch·yaw로 제어하는 장치. `track` 액션에서 Spot 본체와 **동시에** 제어되어 대상을 화면 중심에 유지 |
+| `mission_id` | 각 플랜에 부여되는 고유 ID. "어떤 미션의 어떤 step에서 실패했는지" 추적하는 데 사용 |
+| `publish_state` | 0.5초마다 Executor 전체 상태(`mission_id`, `index`, `queue_status`, guard 값, vision 스냅샷)를 브로드캐스트해 System-1↔System-2 상태를 동기화하는 메커니즘 |
+
+---
+
 ## 📝 11주차 과제
 
 !!! example "과제 11 — System-1 Executor 골격 설계"
     **목표**: System-2의 Plan(JSON)을 한 줄씩 실행하는 Executor의 골격을 설계한다. TF 추적·vision 캐시·guard 판단·단위 액션 디스패치 구조를 코드/의사코드로 표현한다.
+
+**과제 흐름도**
+
+```mermaid
+graph LR
+  A[Plan 수신] --> B[Executor 순회] --> C[guard 판단] --> D[액션 디스패치] --> E[📦 코드+흐름도]
+```
 
 **수행 단계**
 
