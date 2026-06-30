@@ -392,6 +392,10 @@ Wrap-up — 슬라이드 37 (출처: ENGI UNIVERSE)
     - [ROS 2 통합(랜딩)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/ros2_landing_page.html)
     - [ROS 2 튜토리얼](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html)
 
+!!! note "🔬 NVIDIA Isaac 워크샵 연계 (DLI)"
+    DLI **SIL** 워크샵의 `carter_navigation`은 **Nova Carter** 로봇으로 창고 환경에서 Nav2 자율주행을 시연합니다. 3D LiDAR를 `pointcloud_to_laserscan`으로 2D `scan`으로 변환해 Nav2에 입력하는 구조가 핵심입니다 — 이번 주 SLAM·Nav2 파이프라인의 실전 확장판입니다.
+    → 자세한 내용: [DLI · SIL (Nav2 & MoveIt)](dli-sil.md)
+
 ## 📖 핵심 용어 설명
 
 이번 주차 본문에 등장하는 핵심 용어를 정리합니다. SLAM과 Nav2를 처음 접하는 학부생도 이해할 수 있도록 정의·역할·예시 순으로 설명합니다.

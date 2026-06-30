@@ -432,6 +432,10 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 78 (출처: ENGI UNIVERSE)
     - [ROS 2 통합(랜딩)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/ros2_landing_page.html)
     - [ROS 2 튜토리얼](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html)
 
+!!! note "🔬 NVIDIA Isaac 워크샵 연계 (DLI)"
+    단순 ROS 2 브릿지를 넘어, **Isaac ROS**는 **GPU 가속 인지 GEM(30+)** 과 **NITROS**(노드 간 **제로카피** 타입 적응)로 고속 파이프라인을 구성합니다. *“가능하면 최적, 필요하면 호환”* 원칙으로 기존 ROS 2 노드와도 연동됩니다.
+    → 자세한 내용: [DLI · Isaac ROS](dli-ros.md)
+
 ## 📖 핵심 용어 설명
 
 ### TF / Transform Tree (좌표 변환 트리)

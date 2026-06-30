@@ -308,6 +308,10 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
 - ByteTrack — <https://github.com/ifzhang/ByteTrack>
 - ROS 2 QoS 설정 — <https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html>
 
+!!! note "🔬 NVIDIA Isaac 워크샵 연계 (DLI)"
+    YOLOv8 외에도 **Isaac ROS**의 하드웨어 가속 인지 GEM(**Isaac Perceptor** 등)으로 GPU 가속 객체탐지·깊이추정·시각 SLAM을 구성할 수 있습니다. 엣지(Jetson)에서 고FPS 인지가 필요할 때 유리합니다.
+    → 자세한 내용: [DLI · Isaac ROS](dli-ros.md)
+
 ## 📖 핵심 용어 설명
 
 ### YOLOv8 (You Only Look Once v8)

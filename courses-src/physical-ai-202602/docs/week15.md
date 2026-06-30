@@ -340,6 +340,10 @@ def main():
 !!! note "한 줄 정리"
     **Physical AI 로봇 에이전트(System-2)** 와 기업의 **Agentic AI** 는 *"추론(계획) – 실행의 분리 + 출력 검증"* 이라는 **동일한 설계 원리**를 공유합니다. 이 수업에서 만든 구조가 곧 산업 표준 패러다임의 임베디드(로봇) 버전입니다.
 
+!!! note "🔬 NVIDIA Isaac 워크샵 연계 (DLI)"
+    본 프로젝트의 고도화는 DLI 워크샵으로 직접 이어집니다. **매니퓰레이션**은 SIL의 `isaac_moveit`(Panda MoveIt)처럼 확장하고, **학습형 System-1**은 SMMG의 **합성데이터 + 모방학습**(GR00T-Mimic → BC-RNN, Cosmos 영상 증강)으로 강화할 수 있습니다.
+    → 관련: [DLI · SIL](dli-sil.md) · [DLI · SMMG](dli-smmg.md) · [LeRobot 모듈](lerobot.md)
+
 ## 📖 핵심 용어 설명
 
 이번 주차 본문에 등장한 핵심 용어를 학부생 눈높이로 정리합니다.

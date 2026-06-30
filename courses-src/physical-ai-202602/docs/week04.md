@@ -344,6 +344,10 @@ Policy 추론과 행동 적용 — 시뮬레이션 환경 동작 (출처: ENGI U
     - [Isaac Lab 개요](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/isaac_lab_tutorials/index.html)
     - [정책 배포(Policy Deployment)](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/isaac_lab_tutorials/tutorial_policy_deployment.html)
 
+!!! note "🔬 NVIDIA Isaac 워크샵 연계 (DLI)"
+    Isaac Lab은 강화학습뿐 아니라 **합성 데이터 생성(SDG)·모방학습**에도 쓰입니다. NVIDIA DLI 워크샵(SMMG)에서는 Isaac Lab에서 원격조작(teleop)으로 모은 소량 시연을 **GR00T-Mimic**으로 대량 증강하고 **BC-RNN** 정책을 학습합니다(데이터 수집 약 100배 단축).
+    → 자세한 내용: [DLI · 합성데이터 & 모방학습(SMMG)](dli-smmg.md)
+
 ## 📖 핵심 용어 설명
 
 ### Isaac Lab
