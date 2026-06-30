@@ -2,6 +2,7 @@
 > C언어 · 미래모빌리티학과 | CLO2·CLO4 | 교재 Ch11
 
 ![2차원 배열 = 점유격자(occupancy grid) 맵](img/14_occupancy_grid.png)
+![문자열 = char 배열 + '\0'(널 종료)](img/19_string_array.png)
 
 
 ## 학습 목표

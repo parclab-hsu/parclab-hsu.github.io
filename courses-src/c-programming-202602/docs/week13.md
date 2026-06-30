@@ -3,6 +3,7 @@
 
 ![포인터 개념 복습 (&/*)](img/02_pointer_concept.png)
 ![재귀 호출 스택 (factorial)](img/13_recursion.png)
+![값 전달 vs 주소 전달(call-by-reference)](img/21_callby.png)
 
 
 ## 학습 목표

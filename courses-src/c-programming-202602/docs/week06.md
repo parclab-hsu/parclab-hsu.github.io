@@ -2,6 +2,7 @@
 > C언어 · 미래모빌리티학과 | CLO1·CLO3 | 교재 Ch07
 
 ![LED 매트릭스 8×12 좌표 (반복문 표정 애니메이션)](img/07_led_matrix_coord.png)
+![반복문 3종(for/while/do-while) 흐름](img/18_loop_flow.png)
 
 
 ## 학습 목표
