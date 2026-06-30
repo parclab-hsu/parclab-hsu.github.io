@@ -665,6 +665,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1334,6 +1345,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1450,6 +1472,21 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> if/switch 선택 기준 · [ ] 경계값 처리 · [ ] LED 표정 출력 · [ ] fall-through 이해</li>
 </ul>
+<hr />
+<h2 id="_3">연습문제<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>decide_state(20.0)</code> 의 반환값은? (STOP&lt;15, SLOW&lt;30, RUN)</li>
+<li><code>switch</code>에서 <code>case</code> 끝에 <code>break</code>를 빠뜨리면 어떤 일이 일어나는가?</li>
+<li><code>int s = (dist &lt; 15) ? 0 : 25;</code> 에서 <code>dist=10</code>이면 <code>s</code>는?</li>
+</ol>
+<details class="success">
+<summary>정답 및 해설</summary>
+<ol>
+<li><code>"SLOW"</code> — 15 ≤ 20 &lt; 30.</li>
+<li><strong>fall-through</strong> — 다음 <code>case</code>의 코드까지 이어서 실행된다.</li>
+<li><code>0</code> — 조건이 참이므로 <code>?</code> 다음 값.</li>
+</ol>
+</details>
 
 
 

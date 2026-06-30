@@ -878,6 +878,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1312,6 +1323,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1414,6 +1436,21 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> call-by-ref 구현 · [ ] 다중 반환(포인터) · [ ] 포인터=배열 관계 설명</li>
 </ul>
+<hr />
+<h2 id="_3">연습문제<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>swap(&amp;x, &amp;y)</code> 호출 뒤 <code>x</code>, <code>y</code>는 어떻게 되는가?</li>
+<li>함수가 결과를 <strong>2개 이상</strong> 돌려주려면 어떤 방법을 쓰는가?</li>
+<li><code>void calibrate(double *v, double off){ *v += off; }</code> 를 <code>d=40; calibrate(&amp;d,-2.5);</code> 로 부르면 <code>d</code>는?</li>
+</ol>
+<details class="success">
+<summary>정답 및 해설</summary>
+<ol>
+<li>값이 <strong>서로 교환</strong>된다(call by reference).</li>
+<li><strong>포인터 매개변수(출력 매개변수)</strong> 로 내보낸다. <code>return</code>은 1개뿐.</li>
+<li><code>37.5</code> — <code>*v</code>로 원본 <code>d</code>를 직접 수정.</li>
+</ol>
+</details>
 
 
 

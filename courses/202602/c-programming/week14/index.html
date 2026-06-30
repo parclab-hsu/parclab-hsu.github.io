@@ -917,6 +917,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1334,6 +1345,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1459,6 +1481,21 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>.</code>/<code>-&gt;</code> 구분 · [ ] 구조체 배열 순회 · [ ] 직렬화/역직렬화 이해 · [ ] 연결리스트 개념</li>
 </ul>
+<hr />
+<h2 id="_3">연습문제<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li>구조체 <strong>포인터</strong>로 멤버에 접근하는 연산자는?</li>
+<li><code>SensorPacket p;</code> 에서 <code>p.state</code> 와 <code>pp-&gt;state</code>(<code>pp=&amp;p</code>)의 차이는?</li>
+<li>연결리스트에서 다음 노드를 가리키기 위해 구조체가 갖는 멤버는?</li>
+</ol>
+<details class="success">
+<summary>정답 및 해설</summary>
+<ol>
+<li><code>-&gt;</code> (화살표).</li>
+<li><code>.</code>는 <strong>구조체 변수</strong>의 멤버, <code>-&gt;</code>는 <strong>구조체 포인터</strong>의 멤버 접근. <code>pp-&gt;state == (*pp).state</code>.</li>
+<li><strong>자기 자신을 가리키는 포인터</strong> 멤버(예: <code>struct Node *next;</code>).</li>
+</ol>
+</details>
 
 
 

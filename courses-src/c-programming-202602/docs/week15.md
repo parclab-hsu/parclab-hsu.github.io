@@ -76,3 +76,15 @@ Stella N2 LiDAR(`/scan`) → `analyze_scan()` → 주행(`/cmd_vel`) + 아두이
 
 ## 형성평가 체크포인트
 - [ ] 토픽 pub/sub 동작 · [ ] C 로직이 실제 동작을 좌우 · [ ] 안전수칙 준수 · [ ] 발표·문서화
+
+---
+
+## 연습문제
+1. ROS2에서 데이터를 보내는 것과 받는 것을 영어 용어로?
+2. Stella N2에서 LiDAR 거리 데이터 토픽과 주행 명령 토픽의 이름은?
+3. micro-ROS가 보드에서 사용하는 **순수 C** 클라이언트 API의 이름은?
+
+??? success "정답 및 해설"
+    1. **publish(발행)** / **subscribe(구독)**.
+    2. `/scan` (LiDAR) / `/cmd_vel` (주행 속도 명령).
+    3. **rclc** — rcl(C 코어) 위의 MCU용 C API.

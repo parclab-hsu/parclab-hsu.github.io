@@ -794,6 +794,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1312,6 +1323,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1423,6 +1445,21 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 인덱스 경계 처리 · [ ] 배열을 함수에 전달 · [ ] 이동평균 이해 · [ ] 막대그래프 동작</li>
 </ul>
+<hr />
+<h2 id="_3">연습문제<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>int a[6];</code> 일 때 <code>sizeof(a)/sizeof(a[0])</code> 의 값은?</li>
+<li>크기 6 배열의 <strong>유효한 인덱스 범위</strong>는?</li>
+<li>(OX) 배열을 함수에 넘기면 원소 전체가 복사된다.</li>
+</ol>
+<details class="success">
+<summary>정답 및 해설</summary>
+<ol>
+<li><code>6</code> — 전체 바이트 ÷ 한 원소 바이트 = 원소 개수.</li>
+<li><code>0 ~ 5</code> — <code>a[6]</code>은 범위 밖(미정의 동작).</li>
+<li><strong>X</strong> — 배열은 <strong>첫 원소의 주소</strong>로 전달된다(복사 아님). 그래서 길이를 함께 넘긴다.</li>
+</ol>
+</details>
 
 
 

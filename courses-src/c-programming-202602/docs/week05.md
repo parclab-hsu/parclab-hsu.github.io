@@ -87,3 +87,15 @@ else showFace('h');                 // 웃음
 
 ## 형성평가 체크포인트
 - [ ] if/switch 선택 기준 · [ ] 경계값 처리 · [ ] LED 표정 출력 · [ ] fall-through 이해
+
+---
+
+## 연습문제
+1. `decide_state(20.0)` 의 반환값은? (STOP<15, SLOW<30, RUN)
+2. `switch`에서 `case` 끝에 `break`를 빠뜨리면 어떤 일이 일어나는가?
+3. `int s = (dist < 15) ? 0 : 25;` 에서 `dist=10`이면 `s`는?
+
+??? success "정답 및 해설"
+    1. `"SLOW"` — 15 ≤ 20 < 30.
+    2. **fall-through** — 다음 `case`의 코드까지 이어서 실행된다.
+    3. `0` — 조건이 참이므로 `?` 다음 값.

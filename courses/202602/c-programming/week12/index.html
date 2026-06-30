@@ -850,6 +850,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1312,6 +1323,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1430,6 +1452,21 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>&amp;</code>/<code>*</code> 구분 · [ ] 포인터 선언 읽기 · [ ] 배열-포인터 관계 · [ ] 미초기화 위험 인지</li>
 </ul>
+<hr />
+<h2 id="_3">연습문제<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>int a=10; int *p=&amp;a; *p=20;</code> 실행 후 <code>a</code>의 값은?</li>
+<li><code>*(p + 2)</code> 와 같은 의미의 배열 표기는?</li>
+<li>초기화하지 않은(또는 NULL) 포인터를 역참조하면 어떤 일이 생기는가?</li>
+</ol>
+<details class="success">
+<summary>정답 및 해설</summary>
+<ol>
+<li><code>20</code> — <code>*p</code>로 <code>a</code>가 가리키는 값을 직접 변경.</li>
+<li><code>p[2]</code></li>
+<li>잘못된 메모리 접근으로 <strong>프로그램이 충돌</strong>(segmentation fault).</li>
+</ol>
+</details>
 
 
 

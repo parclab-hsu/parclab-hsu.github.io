@@ -766,6 +766,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1312,6 +1323,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        연습문제
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1449,6 +1471,21 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 스코프/수명 설명 · [ ] static 동작 예측 · [ ] 전역 남용 위험 인지</li>
 </ul>
+<hr />
+<h2 id="_3">연습문제<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>static int n=0; n++; printf("%d",n);</code> 인 함수를 3번 호출하면 마지막 출력은?</li>
+<li>지역변수는 함수가 끝나면 어떻게 되는가?</li>
+<li>전역변수와 <code>static</code> 변수는 메모리의 어느 영역에 저장되는가?</li>
+</ol>
+<details class="success">
+<summary>정답 및 해설</summary>
+<ol>
+<li><code>3</code> — <code>static</code>은 호출 사이에도 값을 유지(초기화는 처음 1번).</li>
+<li><strong>소멸</strong>한다(스택에서 사라짐).</li>
+<li><strong>데이터/BSS 영역</strong>(프로그램 종료까지 유지).</li>
+</ol>
+</details>
 
 
 
