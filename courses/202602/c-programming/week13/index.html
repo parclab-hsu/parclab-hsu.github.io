@@ -851,6 +851,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#13-5-ex10_recursionc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 13-5 · 재귀 맛보기 (예제 ex10_recursion.c)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1307,6 +1318,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#13-5-ex10_recursionc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 13-5 · 재귀 맛보기 (예제 ex10_recursion.c)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1451,6 +1473,14 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">analyze</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">avg</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">mx</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">idx</span><span class="p">);</span><span class="w">  </span><span class="c1">// 다중 반환</span>
 </code></pre></div>
 추가 하드웨어 없이 동작(가상 센서).</p>
+<h3 id="13-5-ex10_recursionc">실습 13-5 · 재귀 맛보기 (예제 <code>ex10_recursion.c</code>)<a class="headerlink" href="#13-5-ex10_recursionc" title="Permanent link">&para;</a></h3>
+<p>함수가 자기 자신을 부르는 <strong>재귀</strong>. 핵심은 <em>종료 조건</em> 과 <em>더 작은 문제로 줄이기</em>.
+팩토리얼·거듭제곱·배열 합·하노이탑 이동수(2ⁿ−1)를 재귀로 구현해 본다.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">long</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">              </span><span class="c1">// 종료 조건</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// 더 작은 문제</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
+</code></pre></div></p>
 <hr />
 <h2 id="4">4. 과제<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <ul>

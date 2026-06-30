@@ -72,6 +72,16 @@ void analyze(const float *b, int n, float *avg, float *mx, int *idx);  // 다중
 ```
 추가 하드웨어 없이 동작(가상 센서).
 
+### 실습 13-5 · 재귀 맛보기 (예제 `ex10_recursion.c`)
+함수가 자기 자신을 부르는 **재귀**. 핵심은 *종료 조건* 과 *더 작은 문제로 줄이기*.
+팩토리얼·거듭제곱·배열 합·하노이탑 이동수(2ⁿ−1)를 재귀로 구현해 본다.
+```c
+long factorial(int n) {
+    if (n <= 1) return 1;              // 종료 조건
+    return (long)n * factorial(n - 1); // 더 작은 문제
+}
+```
+
 ---
 
 ## 4. 과제
