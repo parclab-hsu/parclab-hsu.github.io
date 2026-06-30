@@ -812,6 +812,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#12-4-codearduino13_pointer_basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 12-4 · 아두이노 포인터 순회 (code/arduino/13_pointer_basics)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1285,6 +1296,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#12-4-codearduino13_pointer_basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 12-4 · 아두이노 포인터 순회 (code/arduino/13_pointer_basics)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1439,6 +1461,16 @@
 <p><code>*(p+i)</code>로 배열을 순회하며 출력.</p>
 <h3 id="12-3-2">실습 12-3 · 2차원 포인터 실험(도전)<a class="headerlink" href="#12-3-2" title="Permanent link">&para;</a></h3>
 <p><code>int (*p)[3]</code> 등 다중 포인터 개념 맛보기.</p>
+<h3 id="12-4-codearduino13_pointer_basics">실습 12-4 · 아두이노 포인터 순회 (<code>code/arduino/13_pointer_basics</code>)<a class="headerlink" href="#12-4-codearduino13_pointer_basics" title="Permanent link">&para;</a></h3>
+<p>센서 샘플 버퍼를 <strong>인덱스가 아니라 포인터로</strong> 순회해 평균을 구하고 LED 막대로 표시.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">float</span><span class="w"> </span><span class="nf">avg</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">              </span><span class="c1">// 배열 첫 주소를 받아</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">p</span><span class="p">)</span><span class="w">  </span><span class="c1">// ++p로 한 칸씩 전진</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w">                                </span><span class="c1">// *p = 그 자리 값</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
+</code></pre></div>
+추가 하드웨어 없이 동작(가상 센서).</p>
 <hr />
 <h2 id="4">4. 과제<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1446,7 +1478,7 @@
 </ul>
 <h2 id="5">5. 참조<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>교재 Ch12 · 그림 <code>img/02_pointer_concept.png</code>, <code>img/01_memory_layout.png</code></li>
+<li>교재 Ch12 · 아두이노 <code>code/arduino/13_pointer_basics</code> · 그림 <code>img/02_pointer_concept.png</code>, <code>img/01_memory_layout.png</code></li>
 </ul>
 <h2 id="_2">형성평가 체크포인트<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul class="task-list">

@@ -64,13 +64,21 @@ void (*action)(void);   // 함수를 가리키는 포인터 → 명령 디스패
 ### 실습 13-3 · 최댓값+인덱스 반환(도전)
 최댓값과 그 인덱스를 포인터로 함께 반환(연습 5-3).
 
+### 실습 13-4 · 아두이노 call-by-ref (`code/arduino/14_pointer_callbyref`)
+센서값을 **그 자리에서 보정**하고, 평균·최댓값·인덱스를 포인터로 한 번에 돌려받는다.
+```cpp
+void calibrate(float *v, float off) { *v += off; }   // 바깥 변수를 직접 수정
+void analyze(const float *b, int n, float *avg, float *mx, int *idx);  // 다중 반환
+```
+추가 하드웨어 없이 동작(가상 센서).
+
 ---
 
 ## 4. 과제
 - 합·평균 동시 반환, 최댓값+인덱스 반환, (도전) 함수 포인터 테이블.
 
 ## 5. 참조
-- 교재 Ch13 · 예제 `code/c/examples/ex05_pointer.c`
+- 교재 Ch13 · 예제 `code/c/examples/ex05_pointer.c` · 아두이노 `code/arduino/14_pointer_callbyref`
 
 ## 형성평가 체크포인트
 - [ ] call-by-ref 구현 · [ ] 다중 반환(포인터) · [ ] 포인터=배열 관계 설명

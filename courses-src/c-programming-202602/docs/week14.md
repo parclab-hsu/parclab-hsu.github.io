@@ -84,13 +84,24 @@ Pose 구조체를 만들어 직렬화→역직렬화로 왕복 확인.
 ### 실습 14-3 · 연결리스트 2노드(도전)
 노드 2개를 `next`로 잇고 순회 출력.
 
+### 실습 14-4 · 아두이노 구조체 직렬화 (`code/arduino/15_struct_packet`)
+`SensorPacket` 구조체를 채워 `"S,거리,속도,상태"` 한 줄로 직렬화한다.
+이 송신 형식은 15주차 `mobility_node`/ROS2 브리지와 그대로 호환된다(구조체→ROS2 메시지의 씨앗).
+```cpp
+typedef struct { float distance_cm; float speed_cmps; char state[16]; } SensorPacket;
+void serialize(const SensorPacket *p, char *out, int n) {
+    snprintf(out, n, "S,%.1f,%.1f,%s", p->distance_cm, p->speed_cmps, p->state);
+}
+```
+추가 하드웨어 없이 동작(가상 센서).
+
 ---
 
 ## 4. 과제
 - Student 구조체, 두 점 거리(`sqrt`, `-lm`), 구조체 배열 최댓값(연습 6-1~6-3). 기말 팀 구성.
 
 ## 5. 참조
-- 교재 Ch14 · 예제 `code/c/examples/ex06_pose_struct.c` · 그림 `img/04_struct_packet.png`
+- 교재 Ch14 · 예제 `code/c/examples/ex06_pose_struct.c` · 아두이노 `code/arduino/15_struct_packet` · 그림 `img/04_struct_packet.png`
 
 ## 형성평가 체크포인트
 - [ ] `.`/`->` 구분 · [ ] 구조체 배열 순회 · [ ] 직렬화/역직렬화 이해 · [ ] 연결리스트 개념

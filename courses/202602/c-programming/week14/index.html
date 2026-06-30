@@ -879,6 +879,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#14-4-codearduino15_struct_packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 14-4 · 아두이노 구조체 직렬화 (code/arduino/15_struct_packet)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1307,6 +1318,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#14-4-codearduino15_struct_packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 14-4 · 아두이노 구조체 직렬화 (code/arduino/15_struct_packet)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1468,6 +1490,15 @@
 <p>여러 대 차량(fleet)을 배열로 두고 최댓값/평균.</p>
 <h3 id="14-3-2">실습 14-3 · 연결리스트 2노드(도전)<a class="headerlink" href="#14-3-2" title="Permanent link">&para;</a></h3>
 <p>노드 2개를 <code>next</code>로 잇고 순회 출력.</p>
+<h3 id="14-4-codearduino15_struct_packet">실습 14-4 · 아두이노 구조체 직렬화 (<code>code/arduino/15_struct_packet</code>)<a class="headerlink" href="#14-4-codearduino15_struct_packet" title="Permanent link">&para;</a></h3>
+<p><code>SensorPacket</code> 구조체를 채워 <code>"S,거리,속도,상태"</code> 한 줄로 직렬화한다.
+이 송신 형식은 15주차 <code>mobility_node</code>/ROS2 브리지와 그대로 호환된다(구조체→ROS2 메시지의 씨앗).
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">distance_cm</span><span class="p">;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">speed_cmps</span><span class="p">;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">SensorPacket</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">serialize</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SensorPacket</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;S,%.1f,%.1f,%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">distance_cm</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">speed_cmps</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">state</span><span class="p">);</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
+</code></pre></div>
+추가 하드웨어 없이 동작(가상 센서).</p>
 <hr />
 <h2 id="4">4. 과제<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1475,7 +1506,7 @@
 </ul>
 <h2 id="5">5. 참조<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>교재 Ch14 · 예제 <code>code/c/examples/ex06_pose_struct.c</code> · 그림 <code>img/04_struct_packet.png</code></li>
+<li>교재 Ch14 · 예제 <code>code/c/examples/ex06_pose_struct.c</code> · 아두이노 <code>code/arduino/15_struct_packet</code> · 그림 <code>img/04_struct_packet.png</code></li>
 </ul>
 <h2 id="_2">형성평가 체크포인트<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul class="task-list">

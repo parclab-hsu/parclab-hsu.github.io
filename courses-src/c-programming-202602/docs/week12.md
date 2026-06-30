@@ -71,13 +71,25 @@ for (int i = 0; i < 5; i++)
 ### 실습 12-3 · 2차원 포인터 실험(도전)
 `int (*p)[3]` 등 다중 포인터 개념 맛보기.
 
+### 실습 12-4 · 아두이노 포인터 순회 (`code/arduino/13_pointer_basics`)
+센서 샘플 버퍼를 **인덱스가 아니라 포인터로** 순회해 평균을 구하고 LED 막대로 표시.
+```cpp
+float avg(const float *arr, int n) {              // 배열 첫 주소를 받아
+    float sum = 0;
+    for (const float *p = arr; p < arr + n; ++p)  // ++p로 한 칸씩 전진
+        sum += *p;                                // *p = 그 자리 값
+    return sum / n;
+}
+```
+추가 하드웨어 없이 동작(가상 센서).
+
 ---
 
 ## 4. 과제
 - 포인터로 배열 순회, (도전) 다중 포인터 실험. 연습 5-1.
 
 ## 5. 참조
-- 교재 Ch12 · 그림 `img/02_pointer_concept.png`, `img/01_memory_layout.png`
+- 교재 Ch12 · 아두이노 `code/arduino/13_pointer_basics` · 그림 `img/02_pointer_concept.png`, `img/01_memory_layout.png`
 
 ## 형성평가 체크포인트
 - [ ] `&`/`*` 구분 · [ ] 포인터 선언 읽기 · [ ] 배열-포인터 관계 · [ ] 미초기화 위험 인지
