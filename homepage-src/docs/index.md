@@ -5,13 +5,11 @@ hide:
 ---
 
 <div class="parc-hero" markdown>
-<img class="parc-logo" src="assets/logo.png" alt="PARC Lab Logo" />
+<img class="parc-hero-logo" src="assets/logo.png" alt="PARC Lab — Physical AI Real-Time Control for Mobility & Robotics" />
 
 <span class="parc-badge">한성대학교 · 미래모빌리티학과</span>
 
-# PARC Lab
-
-<p class="parc-tagline">Physical AI Real-Time Control<br>for Mobility &amp; Robotics</p>
+<h1 class="parc-visually-hidden">PARC Lab — Physical AI Real-Time Control for Mobility & Robotics</h1>
 
 <p class="parc-sub">
 PARC Lab은 Physical AI, EtherCAT 기반 실시간 제어, 모빌리티 플랫폼, 그리고 첨단 로보틱스를 연결하는
