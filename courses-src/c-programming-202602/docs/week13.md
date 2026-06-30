@@ -1,6 +1,10 @@
 # 13주차 · 포인터 활용
 > C언어 · 미래모빌리티학과 | CLO2 | 교재 Ch13
 
+![포인터 개념 복습 (&/*)](img/02_pointer_concept.png)
+![재귀 호출 스택 (factorial)](img/13_recursion.png)
+
+
 ## 학습 목표
 - **call-by-reference**로 함수가 바깥 변수를 직접 바꾼다.
 - 포인터로 **여러 결과를 동시에 반환**하고, 함수 포인터 개념을 안다.

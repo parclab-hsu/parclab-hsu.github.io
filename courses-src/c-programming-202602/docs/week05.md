@@ -1,6 +1,9 @@
 # 5주차 · 조건문 (if / switch) + LED 표정
 > C언어 · 미래모빌리티학과 | CLO1·CLO3 | 교재 Ch06
 
+![거리→상태 판단을 enum 상태머신으로](img/15_enum_state.png)
+
+
 ![LED 매트릭스 좌표](img/07_led_matrix_coord.png)
 
 ## 학습 목표

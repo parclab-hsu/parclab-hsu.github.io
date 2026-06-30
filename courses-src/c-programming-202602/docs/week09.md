@@ -1,6 +1,9 @@
 # 9주차 · 함수와 변수 (스코프)
 > C언어 · 미래모빌리티학과 | CLO1·CLO2 | 교재 Ch09
 
+![지역/전역/static 변수의 수명](img/11_function_scope.png)
+
+
 ![메모리 구조](img/01_memory_layout.png)
 
 ## 학습 목표
