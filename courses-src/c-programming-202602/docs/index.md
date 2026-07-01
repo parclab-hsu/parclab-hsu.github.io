@@ -19,7 +19,7 @@
 | 교과목 | C 프로그래밍 (전공기초, 1학년 2학기) |
 | 학과 | 미래모빌리티학과 |
 | 보드 | Arduino UNO R4 WiFi (12×8 LED Matrix + Wi-Fi 내장) |
-| 환경 | Visual Studio 2022 · Arduino IDE 2.x · Ubuntu 24.04 + ROS2 Jazzy |
+| 환경 | Visual Studio 2022 · Arduino IDE 2.x · Tinkercad · Ubuntu 24.04 + ROS2 Jazzy |
 | 로봇 | Stella N2 (ROS2 · YDLIDAR · Cartographer) |
 
 ## 학습 성과 (CLO)
@@ -34,11 +34,14 @@
 
 | 항목 | 비율 |
 |------|------|
-| 중간고사 | 25% |
-| 기말고사 | 25% |
-| 주차별 실습/과제 | 25% |
-| 기말 프로젝트(C↔ROS2·로봇) | 20% |
-| 출석/참여 | 5% |
+| 중간고사 | 30% |
+| 기말고사 | 30% |
+| 출석 | 10% |
+| Arduino/ROS2 프로젝트 | 20% |
+| C 프로그램 과제 | 10% |
+
+!!! note "평가 운영 메모"
+    첨부 강의안 기준으로는 중간·기말 각 30%, 출석 10%, 프로젝트 20%, 과제 10%를 기본 예시로 둔다. 실제 학기 운영에서는 수업 공지와 학사 시스템의 확정 평가 기준을 우선한다.
 
 !!! tip "왜 이렇게 배우나? (2026 트렌드)"
     자동차 산업이 **SDV·Physical AI**로 이동하면서, 실시간 제어·ECU·로봇 펌웨어의 핵심은 여전히 **C/C++**다.  
@@ -47,15 +50,17 @@
 ## 처음 보는 학생을 위한 읽는 순서
 
 1. [학습 길잡이](learning-map.md)에서 각 주차가 Arduino·ROS2와 어떻게 이어지는지 본다.
-2. 매주 `이론 → 실습 → 형성평가 → 예제 코드` 순서로 읽는다.
-3. 5·7·11·14·15주차는 보드/ROS2 연동의 핵심 주차이므로 코드를 직접 실행한다.
-4. 기말 프로젝트 전에는 [C↔ROS2 & Stella N2 로봇](ros2-robot.md)과 [예제 코드](code/index.md)를 함께 본다.
+2. 1주차 전에 [환경 설정 상세 가이드](setup-guide.md)를 따라 Visual Studio 2022와 Arduino IDE를 준비한다.
+3. 매주 `이론 → 실습 → 형성평가 → 예제 코드` 순서로 읽는다.
+4. 5·7·11·14·15주차는 보드/ROS2 연동의 핵심 주차이므로 코드를 직접 실행한다.
+5. 기말 프로젝트 전에는 [C↔ROS2 & Stella N2 로봇](ros2-robot.md)과 [예제 코드](code/index.md)를 함께 본다.
 
 ## 빠른 이동
 
 - [15주 강의 계획](week01.md)부터 차례로 보기
 - [학습 길잡이](learning-map.md)
 - [3시간 강의 운영안](teaching-guide-3h.md)
+- [환경 설정 상세 가이드](setup-guide.md)
 - [Arduino R4 예제](code/arduino.md)
 - [C↔ROS2 & Stella N2 로봇 연계](ros2-robot.md)
 - [AI 활용 가이드](ai-literacy.md)

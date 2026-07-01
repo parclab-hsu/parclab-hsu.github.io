@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/c-programming/week15/">
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/c-programming/setup-guide/">
       
       
-        <link rel="prev" href="../week14/">
+        <link rel="prev" href="../teaching-guide-3h/">
       
       
-        <link rel="next" href="../ros2-robot/">
+        <link rel="next" href="../week01/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>15주차 · C↔ROS2·로봇·기말 - C 프로그래밍 · 2026-2학기</title>
+        <title>환경 설정 상세 가이드 - C 프로그래밍 · 2026-2학기</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#15-c-ros2" class="md-skip">
+        <a href="#_1" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              15주차 · C↔ROS2·로봇·기말
+              환경 설정 상세 가이드
             
           </span>
         </div>
@@ -314,10 +314,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../setup-guide/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    환경 설정 상세 가이드
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -333,6 +360,125 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 컴파일러와 IDE의 역할
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-visual-studio-2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Visual Studio 2022 설치
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 첫 C 프로젝트 만들기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-visual-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Visual Studio 기본 설정
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-scanf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. scanf 경고 처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-arduino-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Arduino IDE 설치
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-arduino-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Arduino IDE 화면 구성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-tinkercad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Tinkercad 준비
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 1주차 제출 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -341,8 +487,6 @@
       
   
   
-    
-  
   
   
     
@@ -355,11 +499,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -380,7 +524,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -787,37 +931,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    15주차 · C↔ROS2·로봇·기말
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
         
   
   
@@ -833,214 +950,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        학습 목표
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        강의 해설
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3시간 강의 운영 포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 이론
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 이론">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-ros2-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.1 ROS2와 C의 관계
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.2 두 가지 연동 방식
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-lidar-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.3 LiDAR 배열 → C로 판단 (자율주행의 심장)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 핵심 용어 정리
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 실습
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 실습">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#15-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실습 15-1 · 종합 복습
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-2-cros2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실습 15-2 · C↔ROS2 연동
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실습 15-3 · 로봇 캡스톤
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 기말 프로젝트(캡스톤)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 참조
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        형성평가 체크포인트
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        연습문제
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1561,10 +1470,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1-ide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        학습 목표
+        1. 컴파일러와 IDE의 역할
       
     </span>
   </a>
@@ -1572,10 +1481,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#2-visual-studio-2022" class="md-nav__link">
     <span class="md-ellipsis">
       
-        강의 해설
+        2. Visual Studio 2022 설치
       
     </span>
   </a>
@@ -1583,10 +1492,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#3-c" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3시간 강의 운영 포인트
+        3. 첫 C 프로젝트 만들기
       
     </span>
   </a>
@@ -1594,60 +1503,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#4-visual-studio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 이론
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 이론">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-ros2-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.1 ROS2와 C의 관계
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.2 두 가지 연동 방식
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-lidar-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.3 LiDAR 배열 → C로 판단 (자율주행의 심장)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 핵심 용어 정리
+        4. Visual Studio 기본 설정
       
     </span>
   </a>
@@ -1655,60 +1514,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#5-scanf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 실습
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 실습">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#15-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실습 15-1 · 종합 복습
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-2-cros2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실습 15-2 · C↔ROS2 연동
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        실습 15-3 · 로봇 캡스톤
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 기말 프로젝트(캡스톤)
+        5. scanf 경고 처리
       
     </span>
   </a>
@@ -1716,10 +1525,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#6-arduino-ide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 참조
+        6. Arduino IDE 설치
       
     </span>
   </a>
@@ -1727,10 +1536,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#7-arduino-ide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        형성평가 체크포인트
+        7. Arduino IDE 화면 구성
       
     </span>
   </a>
@@ -1738,10 +1547,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#8-tinkercad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        연습문제
+        8. Tinkercad 준비
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 1주차 제출 체크리스트
       
     </span>
   </a>
@@ -1765,156 +1585,201 @@
 
 
 
-<h1 id="15-c-ros2">15주차 · C ↔ ROS2 · 로봇 · 기말 프로젝트<a class="headerlink" href="#15-c-ros2" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>C언어 · 미래모빌리티학과 | CLO2·CLO4·CLO5</p>
-</blockquote>
-<p><img alt="3종 연계" src="../img/10_robot_trio.png" /></p>
-<h2 id="_1">학습 목표<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>배운 C(구조체·포인터·배열)가 로봇 통신의 핵심 코드임을 체험한다.</li>
-<li>C 프로그램과 ROS2 노드가 데이터를 주고받게 한다.</li>
-<li>(캡스톤) <strong>Arduino + C + Stella N2 로봇</strong>으로 자율 동작을 구현·발표한다.</li>
-</ul>
-<hr />
-<h2 id="_2">강의 해설<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>15주차는 한 학기 동안 배운 문법이 실제 로봇 시스템에서 어떻게 만나는지 확인하는 종합 주차다. 처음에는 <code>printf</code>로 숫자를 출력했지만, 이제는 센서 배열을 분석하고 구조체로 판단 결과를 묶고 ROS2 토픽으로 주행 명령을 내보낸다. 이때 새로 등장하는 ROS2가 주인공처럼 보일 수 있지만, 실제 판단의 중심은 여전히 C로 작성한 함수다.</p>
-<p>ROS2의 토픽은 프로그램들이 데이터를 주고받는 통로다. <code>/scan</code>은 LiDAR 거리 배열을 보내고, <code>/cmd_vel</code>은 로봇의 선속도와 각속도를 보낸다. 여기서 <code>/scan</code>의 <code>ranges[]</code>는 10주차 배열, 가장 가까운 장애물 탐색은 6주차 반복문, 정지/회피 판단은 5주차 조건문, 판단 결과 묶음은 14주차 구조체, 배열 전달은 12~13주차 포인터와 연결된다.</p>
-<p>기말 프로젝트의 목표는 멋진 기능을 많이 붙이는 것이 아니라, 작은 기능을 안전하고 설명 가능하게 완성하는 것이다. 로봇은 실제로 움직이는 장비이므로 코드 품질과 안전 절차가 기능만큼 중요하다. 바퀴를 띄운 상태에서 <code>/cmd_vel</code> 값을 먼저 확인하고, 속도는 작게, 정지거리는 크게 시작한다. 발표에서는 "어떤 C 함수가 어떤 판단을 했고, 그 결과가 어떤 ROS2 메시지로 바뀌었는가"를 설명할 수 있어야 한다.</p>
-<h2 id="3">3시간 강의 운영 포인트<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>0~25분</strong>: 1~14주차 개념을 ROS2 로봇 흐름으로 다시 묶는다. 배열, 포인터, 구조체, 함수가 각각 어디에 쓰이는지 한 장 그림으로 정리한다.</li>
-<li><strong>25~80분</strong>: ROS2 토픽, <code>/scan</code>, <code>/cmd_vel</code>, 시리얼 브리지, micro-ROS 선택지를 설명한다. 새 문법을 늘리기보다 C 함수가 판단의 중심임을 계속 강조한다.</li>
-<li><strong>80~135분</strong>: LiDAR 배열 분석 또는 C↔ROS2 브리지 실습을 진행한다. 먼저 PC에서 C 함수 단위 테스트를 통과시키고, 그다음 로봇 또는 시뮬레이터에 연결한다.</li>
-<li><strong>135~180분</strong>: 기말 프로젝트 발표와 안전 점검을 진행한다. 속도 제한, 정지 조건, 장애물 거리 기준, 실패 시 수동 정지 절차를 발표 항목에 포함한다.</li>
-</ul>
-<h2 id="1">1. 이론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<h3 id="11-ros2-c">1.1 ROS2와 C의 관계<a class="headerlink" href="#11-ros2-c" title="Permanent link">&para;</a></h3>
-<ul>
-<li>ROS2는 로봇 SW의 표준 미들웨어. 노드들이 <strong>토픽(topic)</strong> 으로 데이터를 주고받는다(발행 publish / 구독 subscribe).</li>
-<li>C 진입점: <strong>rcl</strong>(ROS2의 C 코어), <strong>rclc</strong>(MCU용 순수 C, micro-ROS). → 우리가 배운 C가 그대로 쓰인다.</li>
-</ul>
-<h3 id="12">1.2 두 가지 연동 방식<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">방식 A · 시리얼 브리지 (기본)</label><label for="__tabbed_1_2">방식 B · micro-ROS (도전)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>보드는 시리얼 송수신, PC의 C/C++ 브리지가 ROS2로 변환. 설치 간단, C 학습(파싱·구조체) 집중.
-핵심 C 함수: <code>parse_sensor_line()</code>(구조체로 파싱), <code>analyze_scan()</code>(배열 분석).</p>
-</div>
-<div class="tabbed-block">
-<p>보드가 직접 ROS2 노드. <strong>rclc=순수 C</strong>. UNO R4 공식 지원(RAM 32KB라 경량).</p>
-</div>
-</div>
-</div>
-<h3 id="13-lidar-c">1.3 LiDAR 배열 → C로 판단 (자율주행의 심장)<a class="headerlink" href="#13-lidar-c" title="Permanent link">&para;</a></h3>
-<p>Stella N2의 LiDAR는 거리 <strong>배열</strong>을 <code>/scan</code>으로 보낸다. 이를 C로 분석해 주행을 정한다.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ScanResult</span><span class="w"> </span><span class="nf">analyze_scan</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">ranges</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">stop_dist</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">// 1) 배열 순회로 최솟값(가장 가까운 거리) 탐색</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c1">// 2) 거리·방향 → 전진(F)/좌회피(L)/우회피(R)/정지(S)</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
-</code></pre></div></p>
-<blockquote>
-<p>배운 것 총동원: <strong>배열 순회 + 조건 판단 + 구조체 반환 + 포인터 인자</strong>.
-상세: <a href="../ros2-robot/">C↔ROS2 &amp; Stella N2 로봇</a></p>
-</blockquote>
-<hr />
-<h2 id="2">2. 핵심 용어 정리<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h1 id="_1">환경 설정 상세 가이드<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>이 문서는 1주차 PDF 자료의 Visual Studio 2022, Arduino IDE, Tinkercad 설치 내용을 바탕으로 정리한 실습 준비 안내다. 수업 첫 주에는 모든 학생이 <strong>PC에서 C 코드를 컴파일하고</strong>, <strong>Arduino UNO R4 WiFi에 예제를 업로드하고</strong>, <strong>실습 결과를 저장할 준비</strong>를 마치는 것이 목표다.</p>
+<h2 id="1-ide">1. 컴파일러와 IDE의 역할<a class="headerlink" href="#1-ide" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>용어</th>
+<th>구분</th>
+<th>의미</th>
+<th>수업에서의 역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>컴파일러</td>
+<td>C 소스 코드를 컴퓨터가 실행할 수 있는 기계어로 바꾸는 프로그램</td>
+<td><code>.c</code> 파일을 실행파일로 변환</td>
+</tr>
+<tr>
+<td>IDE</td>
+<td>편집, 빌드, 실행, 디버깅을 한곳에서 제공하는 통합 개발 환경</td>
+<td>Visual Studio, Arduino IDE</td>
+</tr>
+<tr>
+<td>프로젝트</td>
+<td>소스 파일, 설정, 실행 정보를 묶은 작업 단위</td>
+<td>과제와 실습을 주차별로 관리</td>
+</tr>
+</tbody>
+</table>
+<p>C 언어는 실행 전에 컴파일이 필요하다. 따라서 C 수업에서는 문법만 아는 것으로 끝나지 않고, 소스 파일을 만들고 빌드하고 오류 메시지를 읽는 환경 사용 능력이 함께 필요하다.</p>
+<h2 id="2-visual-studio-2022">2. Visual Studio 2022 설치<a class="headerlink" href="#2-visual-studio-2022" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://visualstudio.microsoft.com/ko/vs/community/">Visual Studio Community</a> 페이지에 접속한다.</li>
+<li><strong>Community 2022</strong> 설치 파일을 내려받아 실행한다.</li>
+<li>워크로드 선택 화면에서 <strong>C++를 사용한 데스크톱 개발</strong>을 체크한다.</li>
+<li>필요하면 <strong>개별 구성 요소</strong>에서 도움말 뷰어를 선택한다.</li>
+<li>언어팩은 한국어를 기본으로 두고, 필요하면 영어도 함께 선택한다.</li>
+<li>설치를 시작한다. PC 성능과 네트워크 상태에 따라 시간이 오래 걸릴 수 있다.</li>
+<li>첫 실행 시 로그인 화면이 나오면 Microsoft 계정으로 로그인하거나 나중에 로그인을 선택한다.</li>
+<li>개발 설정은 <strong>Visual C++</strong> 계열로 선택하고, 색 테마는 편한 것으로 고른다.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">C 수업인데 왜 C++ 워크로드를 선택하나?</p>
+<p>Visual Studio에서는 C 컴파일에 필요한 도구가 <strong>C++를 사용한 데스크톱 개발</strong> 워크로드 안에 포함되어 있다. C++을 배우기 위한 선택이 아니라, C 컴파일러와 빌드 도구를 설치하기 위한 선택이다.</p>
+</div>
+<h2 id="3-c">3. 첫 C 프로젝트 만들기<a class="headerlink" href="#3-c" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Visual Studio를 실행하고 <strong>새 프로젝트 만들기</strong>를 클릭한다.</li>
+<li><strong>빈 프로젝트</strong> 또는 <strong>Windows 데스크톱 마법사</strong>를 선택한다.</li>
+<li>프로젝트 이름을 예를 들어 <code>HelloWorld</code>로 입력한다.</li>
+<li>저장 위치를 확인하고 프로젝트를 만든다.</li>
+<li>오른쪽 <strong>솔루션 탐색기</strong>에서 <strong>소스 파일</strong>을 마우스 오른쪽 클릭한다.</li>
+<li><strong>추가 → 새 항목</strong>을 선택한다.</li>
+<li><strong>C++ 파일(.cpp)</strong> 항목을 선택하되, 파일 이름은 반드시 <code>Hello.c</code>처럼 <code>.c</code> 확장자로 끝나게 만든다.</li>
+<li>아래 코드를 입력한다.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><strong>디버그하지 않고 시작</strong> 또는 <code>Ctrl + F5</code>로 실행한다.</li>
+<li>콘솔 창에 <code>Hello world!</code>가 출력되는지 확인한다.</li>
+</ol>
+<h2 id="4-visual-studio">4. Visual Studio 기본 설정<a class="headerlink" href="#4-visual-studio" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>설정</th>
+<th>경로</th>
+<th>권장 이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>프로젝트 저장 위치</td>
+<td><code>도구 → 옵션 → 프로젝트 및 솔루션 → 위치</code></td>
+<td>실습 파일을 찾기 쉽게 관리</td>
+</tr>
+<tr>
+<td>색 테마</td>
+<td><code>도구 → 옵션 → 환경 → 일반</code></td>
+<td>장시간 코딩 시 눈 피로 감소</td>
+</tr>
+<tr>
+<td>글꼴</td>
+<td><code>도구 → 옵션 → 환경 → 글꼴 및 색</code></td>
+<td>코드 가독성 향상</td>
+</tr>
+<tr>
+<td>줄 번호</td>
+<td><code>도구 → 옵션 → 텍스트 편집기 → C/C++ → 일반 → 줄 번호</code></td>
+<td>오류 위치와 질문 위치를 정확히 공유</td>
+</tr>
+<tr>
+<td>콘솔 자동 닫기</td>
+<td><code>도구 → 옵션 → 디버깅 → 일반</code></td>
+<td>실행 결과를 확인하기 쉽게 조정</td>
+</tr>
+</tbody>
+</table>
+<p>수업에서는 오류 메시지의 줄 번호를 자주 확인한다. 따라서 줄 번호 표시를 반드시 켜 두는 것이 좋다.</p>
+<h2 id="5-scanf">5. <code>scanf</code> 경고 처리<a class="headerlink" href="#5-scanf" title="Permanent link">&para;</a></h2>
+<p>Visual Studio는 보안상 <code>scanf</code>보다 <code>scanf_s</code> 사용을 권장한다. 이 강의 자료에서는 Visual Studio 환경에 맞추어 기본 예제에서 <code>scanf_s</code>를 우선 사용한다.</p>
+<p>다만 교재나 외부 예제에서 <code>scanf</code>가 그대로 등장할 수 있다. 학습 목적으로 <code>scanf</code> 예제를 컴파일해야 하는 경우에는 파일 맨 위에 다음 줄을 추가하면 경고를 줄일 수 있다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#define _CRT_SECURE_NO_WARNINGS</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">수업 권장</p>
+<p>처음 배우는 학생은 우선 <code>scanf_s("%d", &amp;n);</code>처럼 <code>scanf_s</code>와 주소 연산자 <code>&amp;</code>를 함께 쓰는 습관을 들인다. 교재 예제를 그대로 따라 해야 할 때만 <code>_CRT_SECURE_NO_WARNINGS</code>를 사용한다.</p>
+</div>
+<h2 id="6-arduino-ide">6. Arduino IDE 설치<a class="headerlink" href="#6-arduino-ide" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://www.arduino.cc/en/software/">Arduino Software</a> 페이지에 접속한다.</li>
+<li>Arduino IDE 2.x 최신 버전을 내려받아 설치한다.</li>
+<li>UNO R4 WiFi 보드를 USB 케이블로 PC에 연결한다.</li>
+<li>Arduino IDE에서 보드와 포트를 선택한다.</li>
+<li>아래 스케치를 입력하고 업로드한다.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, Mobility!&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>시리얼 모니터를 열고 속도를 <code>115200</code>으로 맞춘다.</li>
+<li><code>Hello, Mobility!</code>가 보이면 업로드와 시리얼 통신이 정상이다.</li>
+</ol>
+<h2 id="7-arduino-ide">7. Arduino IDE 화면 구성<a class="headerlink" href="#7-arduino-ide" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>기능</th>
 <th>설명</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>ROS2</td>
-<td>로봇 SW 표준 미들웨어</td>
+<td>확인</td>
+<td>작성한 코드의 오류를 검사한다.</td>
 </tr>
 <tr>
-<td>노드/토픽</td>
-<td>실행 단위 / 데이터 통로</td>
+<td>업로드</td>
+<td>코드를 보드에 컴파일해 전송한다.</td>
 </tr>
 <tr>
-<td>publish/subscribe</td>
-<td>발행 / 구독</td>
+<td>스케치북</td>
+<td>저장된 Arduino 스케치를 연다.</td>
 </tr>
 <tr>
-<td><code>/scan</code>, <code>/cmd_vel</code></td>
-<td>LiDAR 거리 / 주행 속도 토픽</td>
+<td>보드/라이브러리 매니저</td>
+<td>필요한 보드 패키지와 라이브러리를 설치한다.</td>
 </tr>
 <tr>
-<td>브리지</td>
-<td>시리얼↔ROS2를 잇는 프로그램</td>
+<td>보드 선택</td>
+<td>연결할 보드와 포트를 고른다.</td>
 </tr>
 <tr>
-<td>micro-ROS / rclc</td>
-<td>MCU용 ROS2 / 순수 C API</td>
+<td>텍스트 입력창</td>
+<td>Arduino C/C++ 코드를 작성한다.</td>
+</tr>
+<tr>
+<td>시리얼 모니터/플로터</td>
+<td>문자 출력과 센서값 변화를 확인한다.</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="3_1">3. 실습<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
-<h3 id="15-1">실습 15-1 · 종합 복습<a class="headerlink" href="#15-1" title="Permanent link">&para;</a></h3>
-<p>배열·포인터·구조체 총정리.</p>
-<h3 id="15-2-cros2">실습 15-2 · C↔ROS2 연동<a class="headerlink" href="#15-2-cros2" title="Permanent link">&para;</a></h3>
-<p>시리얼 브리지로 보드 ↔ ROS2 토픽 pub/sub 확인.</p>
-<p>기본 실행 흐름:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">source</span><span class="w"> </span>/opt/ros/jazzy/setup.bash
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/cprog_ws/src
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>cp<span class="w"> </span>-r<span class="w"> </span>courses-src/c-programming-202602/docs/code/ros2/stella_n2_bridge<span class="w"> </span>~/cprog_ws/src/
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">cd</span><span class="w"> </span>~/cprog_ws
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>stella_n2_bridge
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>ros2<span class="w"> </span>run<span class="w"> </span>stella_n2_bridge<span class="w"> </span>stella_n2_bridge
-</code></pre></div>
-<p>테스트용 <code>/scan</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/scan<span class="w"> </span>sensor_msgs/msg/LaserScan<span class="w"> </span><span class="s2">&quot;{ranges: [1.2, 0.9, 0.4, 0.8, 1.1], range_min: 0.05, range_max: 8.0}&quot;</span><span class="w"> </span>-r<span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/cmd_vel
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">학생이 읽어야 하는 파일</p>
-<p>먼저 <code>scan_logic.c</code>를 읽는다. 이 파일은 ROS2를 몰라도 이해할 수 있는 순수 C 코드다. 그 다음 <code>stella_n2_bridge.cpp</code>를 보면 C 함수의 결과가 <code>/cmd_vel</code> 메시지로 바뀌는 과정을 볼 수 있다.</p>
-</div>
-<h3 id="15-3">실습 15-3 · 로봇 캡스톤<a class="headerlink" href="#15-3" title="Permanent link">&para;</a></h3>
-<p>Stella N2 LiDAR(<code>/scan</code>) → <code>analyze_scan()</code> → 주행(<code>/cmd_vel</code>) + 아두이노 LED 표정.</p>
-<div class="admonition warning">
-<p class="admonition-title">안전 최우선</p>
-<p>로봇 바퀴를 띄워 받침대에서 먼저 시험. 속도는 작게, 정지거리는 크게.</p>
-</div>
-<hr />
-<h2 id="4">4. 기말 프로젝트(캡스톤)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<ul>
-<li>주제 예: 텔레메트리 / 표정로봇 ROS2 제어 / 미니 자율주행 / <strong>Stella N2 장애물 회피 주행</strong></li>
-<li>평가: C 코드 품질(최대 비중) + 기능 + 연동 + <strong>안전(게이트)</strong> + 발표 + AI 리터러시 + 난이도 가산.</li>
-<li>후속 교과(센서처리와 모터제어, 이동로봇과 ROS)의 예고편.</li>
-</ul>
-<h2 id="5">5. 참조<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../ros2-robot/">C↔ROS2 &amp; Stella N2 로봇</a> · <a href="../ai-literacy/">AI 활용 가이드</a> · <a href="../review/">2026 트렌드 검토</a></li>
-<li>코드: <a href="../code/ros2/stella_n2_bridge/"><code>code/ros2/stella_n2_bridge</code></a> · <a href="../code/ros2/microros_uno_r4/"><code>code/ros2/microros_uno_r4</code></a></li>
-</ul>
-<h2 id="_3">형성평가 체크포인트<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>Arduino 실습에서 가장 흔한 문제는 보드 종류, 포트, USB 케이블, 시리얼 모니터 속도 설정이다. 업로드가 안 될 때는 코드보다 이 네 가지를 먼저 확인한다.</p>
+<h2 id="8-tinkercad">8. Tinkercad 준비<a class="headerlink" href="#8-tinkercad" title="Permanent link">&para;</a></h2>
+<p>Tinkercad는 실제 보드가 없거나 회로를 먼저 시뮬레이션하고 싶을 때 유용하다.</p>
+<ol>
+<li><a href="https://www.tinkercad.com/">Tinkercad</a>에 접속한다.</li>
+<li>계정을 만들고 로그인한다.</li>
+<li>Circuits 기능에서 Arduino 회로를 만든다.</li>
+<li>LED, 저항, 버튼 같은 부품을 연결해 간단한 디지털 입출력을 실험한다.</li>
+</ol>
+<p>이 강의의 중심 보드는 UNO R4 WiFi이지만, 기본 입출력 개념을 연습할 때는 Tinkercad 시뮬레이션도 도움이 된다.</p>
+<h2 id="9-1">9. 1주차 제출 체크리스트<a class="headerlink" href="#9-1" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 토픽 pub/sub 동작 · [ ] C 로직이 실제 동작을 좌우 · [ ] 안전수칙 준수 · [ ] 발표·문서화</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Visual Studio 2022 설치 완료</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>C++를 사용한 데스크톱 개발</strong> 워크로드 설치 확인</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>.c</code> 파일로 <code>Hello world!</code> 실행</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Arduino IDE 2.x 설치 완료</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> UNO R4 WiFi 보드와 포트 선택</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>Hello, Mobility!</code> 시리얼 출력 확인</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> GitHub 과제 저장소 생성</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 설치 화면과 실행 결과를 캡처해 저장</li>
 </ul>
-<hr />
-<h2 id="_4">연습문제<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ol>
-<li>ROS2에서 데이터를 보내는 것과 받는 것을 영어 용어로?</li>
-<li>Stella N2에서 LiDAR 거리 데이터 토픽과 주행 명령 토픽의 이름은?</li>
-<li>micro-ROS가 보드에서 사용하는 <strong>순수 C</strong> 클라이언트 API의 이름은?</li>
-</ol>
-<details class="success">
-<summary>정답 및 해설</summary>
-<ol>
-<li><strong>publish(발행)</strong> / <strong>subscribe(구독)</strong>.</li>
-<li><code>/scan</code> (LiDAR) / <code>/cmd_vel</code> (주행 속도 명령).</li>
-<li><strong>rclc</strong> — rcl(C 코어) 위의 MCU용 C API.</li>
-</ol>
-<p><strong>🖼 그림으로 복습</strong> — 내 C 코드가 진짜 로봇을 움직인다 — 3종 연계</p>
-<p><img alt="내 C 코드가 진짜 로봇을 움직인다 — 3종 연계" src="../img/10_robot_trio.png" /></p>
-</details>
 
 
 
@@ -1950,7 +1815,7 @@
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
         
           
-          <a href="../week14/" class="md-footer__link md-footer__link--prev" aria-label="이전: 14주차 · 구조체 + 연결리스트">
+          <a href="../teaching-guide-3h/" class="md-footer__link md-footer__link--prev" aria-label="이전: 3시간 강의 운영안">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1960,20 +1825,20 @@
                 이전
               </span>
               <div class="md-ellipsis">
-                14주차 · 구조체 + 연결리스트
+                3시간 강의 운영안
               </div>
             </div>
           </a>
         
         
           
-          <a href="../ros2-robot/" class="md-footer__link md-footer__link--next" aria-label="다음: C↔ROS2 &amp; Stella N2 로봇">
+          <a href="../week01/" class="md-footer__link md-footer__link--next" aria-label="다음: 1주차 · OT·환경설정·왜 C인가">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                C↔ROS2 & Stella N2 로봇
+                1주차 · OT·환경설정·왜 C인가
               </div>
             </div>
             <div class="md-footer__button md-icon">

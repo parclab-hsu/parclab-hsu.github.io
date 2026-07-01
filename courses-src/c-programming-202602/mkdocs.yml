@@ -57,6 +57,7 @@ nav:
   - 강의 개요: index.md
   - 학습 길잡이: learning-map.md
   - 3시간 강의 운영안: teaching-guide-3h.md
+  - 환경 설정 상세 가이드: setup-guide.md
   - 강의 계획 (15주):
     - 1주차 · OT·환경설정·왜 C인가: week01.md
     - 2주차 · 표준 출력(printf): week02.md
