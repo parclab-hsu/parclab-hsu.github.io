@@ -55,6 +55,7 @@
 
 - [15주 강의 계획](week01.md)부터 차례로 보기
 - [학습 길잡이](learning-map.md)
+- [3시간 강의 운영안](teaching-guide-3h.md)
 - [Arduino R4 예제](code/arduino.md)
 - [C↔ROS2 & Stella N2 로봇 연계](ros2-robot.md)
 - [AI 활용 가이드](ai-literacy.md)
