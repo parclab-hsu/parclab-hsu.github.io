@@ -13,7 +13,7 @@
 | :material-microscope: **Lab** | PARC Lab · Physical AI Real-Time Control for Mobility & Robotics |
 | :material-email: **Email** | [kblee@hansung.ac.kr](mailto:kblee@hansung.ac.kr) |
 | :material-map-marker: **Address** | 서울특별시 성북구 삼선교로 16길 116, 한성대학교 (02876) |
-| :material-door: **Office** | 연구실 호실 정보 업데이트 예정 |
+| :material-door: **Office** | 연구관 816호 (Research Building, Room 816) |
 | :material-telescope: **Research Fields** | Physical AI · Real-Time Control · EtherCAT · Mobility · Robotics · Digital Twin |
 
 [:material-google-maps: Google Maps에서 보기](https://maps.google.com/?q=한성대학교+서울){ .md-button .md-button--primary }
