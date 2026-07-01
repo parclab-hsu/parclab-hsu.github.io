@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/c-programming/exam-written/">
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/c-programming/advanced-notes/">
       
       
-        <link rel="prev" href="../exam-prep/">
+        <link rel="prev" href="../exam-written/">
       
       
-        <link rel="next" href="../advanced-notes/">
+        <link rel="next" href="../review/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>📚 정보처리기사 필기 이론(C) - C 프로그래밍 · 2026-2학기</title>
+        <title>🧬 심화 개념 노트(상위권) - C 프로그래밍 · 2026-2학기</title>
       
     
     
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              📚 정보처리기사 필기 이론(C)
+              🧬 심화 개념 노트(상위권)
             
           </span>
         </div>
@@ -905,6 +905,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam-written/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 정보처리기사 필기 이론(C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -924,7 +952,7 @@
   <span class="md-ellipsis">
     
   
-    📚 정보처리기사 필기 이론(C)
+    🧬 심화 개념 노트(상위권)
   
 
     
@@ -942,7 +970,7 @@
   <span class="md-ellipsis">
     
   
-    📚 정보처리기사 필기 이론(C)
+    🧬 심화 개념 노트(상위권)
   
 
     
@@ -971,7 +999,7 @@
   <a href="#c_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        미래모빌리티학과 · C언어
+        미래모빌리티학과 · "문법을 넘어 C를 이해하기"
       
     </span>
   </a>
@@ -979,10 +1007,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-ub" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 프로그래밍 언어 분류
+        1. 정의되지 않은 동작(UB)과 시퀀스 포인트
       
     </span>
   </a>
@@ -990,10 +1018,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-alignment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 데이터 타입·변수·상수
+        2. 메모리 정렬(alignment)과 구조체 패딩
       
     </span>
   </a>
@@ -1001,10 +1029,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-storage-class" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 기억 클래스 (storage class) — 필기 단골
+        3. 정수의 함정 — 오버플로와 부호 승격
       
     </span>
   </a>
@@ -1012,10 +1040,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-01-02-03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 연산자 우선순위·결합성
+        4. 부동소수점의 진실 — 0.1 + 0.2 != 0.3
       
     </span>
   </a>
@@ -1026,7 +1054,7 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 제어문
+        5. 포인터의 위험 — 이 셋을 반드시 피하라
       
     </span>
   </a>
@@ -1034,10 +1062,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
+  <a href="#6-const-volatile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 배열·포인터·문자열
+        6. 타입 한정자 — const 와 volatile
       
     </span>
   </a>
@@ -1048,7 +1076,7 @@
   <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. 구조체·공용체·열거형
+        7. 전처리기 매크로 함정
       
     </span>
   </a>
@@ -1056,10 +1084,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
+  <a href="#8-big-o" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. 함수와 매개변수 전달 방식 — 필기 단골
+        8. 시간 복잡도(Big-O) — 왜 알고리즘을 고르나
       
     </span>
   </a>
@@ -1070,29 +1098,7 @@
   <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. 진법과 비트 (자주 출제)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. 라이브러리·전처리기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        확인문제 (OX)
+        9. 함수 호출과 스택 프레임 — 재귀의 비용
       
     </span>
   </a>
@@ -1103,7 +1109,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        필기 빈출 체크
+        심화 자기점검
       
     </span>
   </a>
@@ -1114,34 +1120,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../advanced-notes/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🧬 심화 개념 노트(상위권)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1239,7 +1217,7 @@
   <a href="#c_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        미래모빌리티학과 · C언어
+        미래모빌리티학과 · "문법을 넘어 C를 이해하기"
       
     </span>
   </a>
@@ -1247,10 +1225,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-ub" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 프로그래밍 언어 분류
+        1. 정의되지 않은 동작(UB)과 시퀀스 포인트
       
     </span>
   </a>
@@ -1258,10 +1236,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-alignment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 데이터 타입·변수·상수
+        2. 메모리 정렬(alignment)과 구조체 패딩
       
     </span>
   </a>
@@ -1269,10 +1247,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-storage-class" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 기억 클래스 (storage class) — 필기 단골
+        3. 정수의 함정 — 오버플로와 부호 승격
       
     </span>
   </a>
@@ -1280,10 +1258,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-01-02-03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 연산자 우선순위·결합성
+        4. 부동소수점의 진실 — 0.1 + 0.2 != 0.3
       
     </span>
   </a>
@@ -1294,7 +1272,7 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 제어문
+        5. 포인터의 위험 — 이 셋을 반드시 피하라
       
     </span>
   </a>
@@ -1302,10 +1280,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
+  <a href="#6-const-volatile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 배열·포인터·문자열
+        6. 타입 한정자 — const 와 volatile
       
     </span>
   </a>
@@ -1316,7 +1294,7 @@
   <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. 구조체·공용체·열거형
+        7. 전처리기 매크로 함정
       
     </span>
   </a>
@@ -1324,10 +1302,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
+  <a href="#8-big-o" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. 함수와 매개변수 전달 방식 — 필기 단골
+        8. 시간 복잡도(Big-O) — 왜 알고리즘을 고르나
       
     </span>
   </a>
@@ -1338,29 +1316,7 @@
   <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. 진법과 비트 (자주 출제)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. 라이브러리·전처리기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        확인문제 (OX)
+        9. 함수 호출과 스택 프레임 — 재귀의 비용
       
     </span>
   </a>
@@ -1371,7 +1327,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        필기 빈출 체크
+        심화 자기점검
       
     </span>
   </a>
@@ -1395,323 +1351,201 @@
 
 
 
-<h1 id="c">정보처리기사(필기) 이론 요약 — 프로그래밍 언어 활용(C 중심)<a class="headerlink" href="#c" title="Permanent link">&para;</a></h1>
-<h2 id="c_1">미래모빌리티학과 · C언어<a class="headerlink" href="#c_1" title="Permanent link">&para;</a></h2>
+<h1 id="c">C언어 심화 개념 노트 (상위권 심화)<a class="headerlink" href="#c" title="Permanent link">&para;</a></h1>
+<h2 id="c_1">미래모빌리티학과 · "문법을 넘어 C를 이해하기"<a class="headerlink" href="#c_1" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>정보처리기사 <strong>필기</strong>의 「프로그래밍 언어 활용」 과목 중 <strong>C언어·프로그래밍 공통 이론</strong>을 이 수업 범위에 맞춰 원본 정리한 요약이다.
-(자료구조/OS/네트워크 등 과목 전반은 별도 교재로. 여기서는 <strong>C 문법·언어 개념</strong> 핵심만.)
-실습 유형(코드 추적)은 <a href="../exam-prep/">정보처리기사 C 대비</a>, 개념은 각 <a href="../week01/">주차 강의 페이지</a>에서.</p>
+<p>문법을 아는 것과 <strong>왜 그렇게 동작하는지</strong> 아는 것은 다르다.
+이 노트는 시험·실무·면접에서 실력을 가르는 <strong>깊은 개념</strong>을 다룬다. 모든 예제는 <code>gcc</code>로 실행 검증했다.
+선행: <a href="../"><code>C언어_부연설명.md</code></a> · 문제: <a href="../exam-prep/"><code>정보처리기사_C_대비.md</code></a></p>
 </blockquote>
 <hr />
-<h2 id="1">1. 프로그래밍 언어 분류<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h2 id="1-ub">1. 정의되지 않은 동작(UB)과 시퀀스 포인트<a class="headerlink" href="#1-ub" title="Permanent link">&para;</a></h2>
+<p>C는 성능을 위해 많은 것을 <strong>컴파일러 재량</strong>으로 남긴다. 표준이 결과를 규정하지 않는 코드를
+<strong>정의되지 않은 동작(Undefined Behavior)</strong> 이라 하고, 이런 코드는 <strong>정답이 없다</strong>(컴파일러·최적화에 따라 다름).</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">;</span><span class="w">   </span><span class="c1">// ❌ UB — 한 식에서 i를 여러 번 수정</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="w">      </span><span class="c1">// ❌ UB — i 읽기와 수정 순서가 불명확</span>
+</code></pre></div>
+- <strong>시퀀스 포인트</strong>(<code>;</code>, <code>&amp;&amp;</code>, <code>||</code>, <code>?:</code>, 콤마, 함수 호출) 사이에서는 같은 변수를 <strong>한 번만</strong> 수정해야 한다.
+- <code>printf("%d %d", f(), g())</code> 에서 <code>f</code>·<code>g</code>의 <strong>호출 순서도 미정의</strong>다(인자 평가 순서).</p>
+<blockquote>
+<p>💡 <strong>실전 시사점</strong>: "이 코드의 출력은?" 문제에서 UB 표현이 보이면 <strong>함정</strong>이다. 잘 짠 문제는 UB를 쓰지 않는다.
+코드를 짤 때도 한 줄에 부작용(<code>++</code>, 대입)을 몰지 말자.</p>
+</blockquote>
+<hr />
+<h2 id="2-alignment">2. 메모리 정렬(alignment)과 구조체 패딩<a class="headerlink" href="#2-alignment" title="Permanent link">&para;</a></h2>
+<p>CPU는 특정 크기 경계에서 데이터를 읽을 때 가장 빠르다. 그래서 컴파일러는 구조체 멤버 사이에
+보이지 않는 <strong>패딩(padding)</strong> 을 넣어 정렬을 맞춘다. <strong>멤버 순서만 바꿔도 크기가 달라진다.</strong></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w">   </span><span class="c1">// sizeof = 12  (1 + [3패딩] + 4 + 1 + [3패딩])</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w">   </span><span class="c1">// sizeof = 8   (4 + 1 + 1 + [2패딩])</span>
+</code></pre></div>
+- 실행 결과: <code>sizeof(A)=12</code>, <code>sizeof(B)=8</code> — <strong>같은 멤버인데 크기가 다르다</strong>.
+- 큰 멤버부터 배치하면 패딩이 줄어 메모리가 절약된다(임베디드에서 중요).</p>
+<blockquote>
+<p>💡 통신 패킷 구조체를 그대로 바이트로 보내면 패딩 때문에 깨질 수 있다 → 그래서 이 수업은 <strong>문자열 직렬화</strong>(<code>"S,42.0,..."</code>)를 쓴다.</p>
+</blockquote>
+<hr />
+<h2 id="3">3. 정수의 함정 — 오버플로와 부호 승격<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>정수는 유한 비트라 <strong>범위를 넘으면 넘친다(overflow)</strong>. 부호 있는 정수의 오버플로는 사실 UB지만,
+2의 보수 환경에서는 보통 <strong>음수로 순환</strong>한다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INT_MAX</span><span class="p">;</span><span class="w">        </span><span class="c1">// 2147483647</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// -2147483648  (최댓값 + 1 → 최솟값으로 순환)</span>
+</code></pre></div>
+<p>더 은밀한 함정은 <strong>부호 승격(usual arithmetic conversions)</strong> 이다. <code>int</code>와 <code>unsigned</code>를 비교하면
+<code>int</code>가 <code>unsigned</code>로 변환된다.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">u</span><span class="p">));</span><span class="w">   </span><span class="c1">// 0 (거짓!) — -1이 unsigned로 바뀌면 4294967295 (큰 값)</span>
+</code></pre></div>
+- <code>-1 &lt; 1</code> 은 참일 것 같지만, <strong><code>-1</code>이 거대한 unsigned로 승격</strong>되어 거짓이 된다.</p>
+<blockquote>
+<p>💡 배열 인덱스로 <code>size_t</code>(unsigned)를 쓸 때 <code>for (size_t i = n-1; i &gt;= 0; i--)</code> 는 <strong>무한 루프</strong>(unsigned는 음수가 없음).</p>
+</blockquote>
+<hr />
+<h2 id="4-01-02-03">4. 부동소수점의 진실 — <code>0.1 + 0.2 != 0.3</code><a class="headerlink" href="#4-01-02-03" title="Permanent link">&para;</a></h2>
+<p>실수는 2진 분수로 저장되는데, <code>0.1</code>은 2진수로 <strong>무한 반복소수</strong>라 정확히 표현되지 않는다.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.17f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">     </span><span class="c1">// 0.30000000000000004</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span><span class="w"> </span><span class="c1">// 0 (거짓!)</span>
+</code></pre></div>
+- 그래서 실수는 <strong><code>==</code>로 비교하면 안 된다</strong>. 오차 허용치(epsilon)로 비교한다:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.3</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e-9</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 같다고 본다 */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+- 금액·좌표 누적처럼 오차가 쌓이는 계산은 특히 주의(자율주행 위치 추정에서도 실제 이슈).</p>
+<hr />
+<h2 id="5">5. 포인터의 위험 — 이 셋을 반드시 피하라<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>포인터는 강력한 만큼 위험하다. 크래시·보안 취약점의 대부분이 여기서 온다.</p>
 <table>
 <thead>
 <tr>
-<th>패러다임</th>
-<th>특징</th>
+<th>위험</th>
+<th>무엇</th>
 <th>예</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>절차적(명령형)</td>
-<td>순서대로 실행, 함수 단위 분할</td>
-<td><strong>C</strong>, 포트란</td>
+<td><strong>댕글링 포인터</strong></td>
+<td>사라진 대상을 가리킴</td>
+<td>지역변수 주소를 반환</td>
 </tr>
 <tr>
-<td>객체지향</td>
-<td>객체(데이터+메서드), 상속·캡슐화·다형성</td>
-<td>C++, Java, C#</td>
+<td><strong>메모리 누수</strong></td>
+<td><code>malloc</code> 후 <code>free</code> 안 함</td>
+<td>반복될수록 메모리 고갈</td>
 </tr>
 <tr>
-<td>함수형</td>
-<td>함수 조합, 부작용 최소화</td>
-<td>Lisp, Haskell</td>
-</tr>
-<tr>
-<td>스크립트</td>
-<td>인터프리터, 빠른 개발</td>
-<td>Python, JavaScript</td>
+<td><strong>이중 해제/미초기화</strong></td>
+<td>같은 걸 두 번 <code>free</code>, 초기화 안 한 포인터 역참조</td>
+<td>크래시·UB</td>
 </tr>
 </tbody>
 </table>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="nf">bad</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span><span class="w">      </span><span class="c1">// ❌ 함수 끝나면 x는 사라짐 → 반환된 주소는 무효(댕글링)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
+</code></pre></div>
+- 규칙: ① 포인터는 <code>NULL</code>이나 유효 주소로 <strong>초기화</strong>, ② <code>malloc</code> 하면 짝이 되는 <code>free</code>, ③ <code>free</code> 후 <code>NULL</code> 대입.</p>
+<hr />
+<h2 id="6-const-volatile">6. 타입 한정자 — <code>const</code> 와 <code>volatile</code><a class="headerlink" href="#6-const-volatile" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>컴파일러</strong>: 소스 전체를 기계어로 번역 후 실행(C). <strong>인터프리터</strong>: 한 줄씩 해석·실행(Python).</li>
-<li>C의 특징: 절차적 · <strong>포인터로 저수준 메모리 제어</strong> · 이식성이 높아 임베디드/OS에 널리 쓰임.</li>
+<li><strong><code>const</code></strong>: "이 경로로는 못 바꾼다"는 <strong>약속</strong>(컴파일러가 검사). 함수 매개변수에 <code>const</code>를 붙이면
+  "이 함수는 원본을 안 바꾼다"는 계약이 된다 → <code>average(const double *arr, int n)</code>.</li>
+<li><strong><code>volatile</code></strong>: "이 변수는 프로그램 밖(하드웨어·인터럽트)에서 바뀔 수 있으니 <strong>최적화로 캐싱하지 마라</strong>".
+  임베디드의 <strong>레지스터·센서 매핑 주소</strong>에 필수. 없으면 컴파일러가 "안 바뀐다"고 오해해 잘못 최적화한다.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">STATUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="mh">0x40021000</span><span class="p">;</span><span class="w">  </span><span class="c1">// 하드웨어 상태 레지스터</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">*</span><span class="n">STATUS</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x01</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// volatile 없으면 무한 루프로 최적화될 수 있음</span>
+</code></pre></div></li>
 </ul>
 <hr />
-<h2 id="2">2. 데이터 타입·변수·상수<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>기본형</strong>: 정수(<code>char</code> 1B, <code>short</code> 2B, <code>int</code> 4B, <code>long</code> 8B), 실수(<code>float</code> 4B, <code>double</code> 8B), 문자(<code>char</code>).</li>
-<li><strong>부호</strong>: <code>signed</code>(기본)/<code>unsigned</code>. <code>unsigned char</code> 범위 0~255, <code>signed char</code> −128~127.</li>
-<li><strong>상수</strong>: 리터럴(<code>10</code>, <code>3.14</code>, <code>'A'</code>, <code>"hi"</code>), <code>const</code>(수정 불가 변수), <code>#define</code>(전처리 치환), <code>enum</code>(열거 상수).</li>
-<li><strong>변수 명명</strong>: 영문·숫자·<code>_</code>만, 숫자로 시작 불가, 대소문자 구분, 예약어 불가.</li>
-</ul>
+<h2 id="7">7. 전처리기 매크로 함정<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p><code>#define</code>은 <strong>함수가 아니라 글자 치환</strong>이다. 괄호를 빼면 우선순위가 깨진다.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">#define SQ_BAD(x) x*x</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="cp">#define SQ_OK(x)  ((x)*(x))</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">SQ_BAD</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w">   </span><span class="c1">// → 1+2*1+2 = 5   ❌</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">SQ_OK</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w">    </span><span class="c1">// → ((1+2)*(1+2)) = 9  ✅</span>
+</code></pre></div>
+- 매크로 인자와 전체를 <strong>괄호로 감싸라</strong>. 또 <code>SQ(a++)</code> 처럼 부작용 있는 인자는 <strong>두 번 평가</strong>되어 위험.
+- 요즘은 타입 안전한 <code>static inline</code> 함수를 더 권장한다.</p>
 <hr />
-<h2 id="3-storage-class">3. 기억 클래스 (storage class) — 필기 단골<a class="headerlink" href="#3-storage-class" title="Permanent link">&para;</a></h2>
-<p>변수가 <strong>어디에 저장되고, 얼마나 살아있고, 어디서 보이는가</strong>를 정한다.</p>
+<h2 id="8-big-o">8. 시간 복잡도(Big-O) — 왜 알고리즘을 고르나<a class="headerlink" href="#8-big-o" title="Permanent link">&para;</a></h2>
+<p>입력이 커질 때 연산량이 <strong>어떻게 증가하는가</strong>를 나타낸다. 상수는 무시하고 증가율만 본다.</p>
 <table>
 <thead>
 <tr>
-<th>기억 클래스</th>
-<th>저장 위치</th>
-<th>유효 범위(scope)</th>
-<th>생존 기간(lifetime)</th>
-<th>기본 초기값</th>
+<th>표기</th>
+<th>이름</th>
+<th>예</th>
+<th>n=1,000,000 일 때</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>auto</code>(기본 지역)</td>
-<td>스택</td>
-<td>블록 내부</td>
-<td>블록 종료 시 소멸</td>
-<td>쓰레기값</td>
-</tr>
-<tr>
-<td><code>static</code></td>
-<td>데이터 영역</td>
-<td>선언 위치</td>
-<td><strong>프로그램 종료까지 유지</strong></td>
-<td>0</td>
-</tr>
-<tr>
-<td><code>register</code></td>
-<td>(권고) 레지스터</td>
-<td>블록 내부</td>
-<td>블록 종료 시 소멸</td>
-<td>쓰레기값</td>
-</tr>
-<tr>
-<td><code>extern</code></td>
-<td>데이터 영역</td>
-<td>다른 파일에서 참조</td>
-<td>프로그램 종료까지</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>💡 <code>static</code> 지역변수는 값이 <strong>호출 사이에 유지</strong>된다(누적 카운터). 전역변수는 여러 파일에서 <code>extern</code>으로 공유.</p>
-</blockquote>
-<hr />
-<h2 id="4">4. 연산자 우선순위·결합성<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p>우선순위 높은 → 낮은 순(요약):</p>
-<table>
-<thead>
-<tr>
-<th>순위</th>
-<th>연산자</th>
-<th>결합성</th>
-</tr>
-</thead>
-<tbody>
-<tr>
+<td>O(1)</td>
+<td>상수</td>
+<td>배열 인덱스 접근</td>
 <td>1</td>
-<td><code>()</code> <code>[]</code> <code>-&gt;</code> <code>.</code></td>
-<td>좌→우</td>
 </tr>
 <tr>
-<td>2</td>
-<td>단항 <code>!</code> <code>~</code> <code>++</code> <code>--</code> <code>-</code> <code>*</code>(역참조) <code>&amp;</code>(주소)</td>
-<td>우→좌</td>
+<td>O(log n)</td>
+<td>로그</td>
+<td><strong>이진 탐색</strong></td>
+<td>약 20</td>
 </tr>
 <tr>
-<td>3</td>
-<td><code>*</code> <code>/</code> <code>%</code></td>
-<td>좌→우</td>
+<td>O(n)</td>
+<td>선형</td>
+<td>선형 탐색, 합계</td>
+<td>1,000,000</td>
 </tr>
 <tr>
-<td>4</td>
-<td><code>+</code> <code>-</code></td>
-<td>좌→우</td>
+<td>O(n log n)</td>
+<td>선형로그</td>
+<td>좋은 정렬(병합·퀵)</td>
+<td>약 2천만</td>
 </tr>
 <tr>
-<td>5</td>
-<td><code>&lt;&lt;</code> <code>&gt;&gt;</code></td>
-<td>좌→우</td>
-</tr>
-<tr>
-<td>6</td>
-<td><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td>
-<td>좌→우</td>
-</tr>
-<tr>
-<td>7</td>
-<td><code>==</code> <code>!=</code></td>
-<td>좌→우</td>
-</tr>
-<tr>
-<td>8</td>
-<td><code>&amp;</code> → <code>^</code> → <code>\|</code> (비트)</td>
-<td>좌→우</td>
-</tr>
-<tr>
-<td>9</td>
-<td><code>&amp;&amp;</code> → <code>\|\|</code> (논리)</td>
-<td>좌→우</td>
-</tr>
-<tr>
-<td>10</td>
-<td><code>?:</code> (삼항)</td>
-<td>우→좌</td>
-</tr>
-<tr>
-<td>11</td>
-<td><code>=</code> <code>+=</code> <code>-=</code> … (대입)</td>
-<td>우→좌</td>
-</tr>
-<tr>
-<td>12</td>
-<td><code>,</code> (콤마)</td>
-<td>좌→우</td>
+<td>O(n²)</td>
+<td>제곱</td>
+<td><strong>버블 정렬</strong>, 이중 루프</td>
+<td>1조</td>
 </tr>
 </tbody>
 </table>
+<ul>
+<li><code>ex14_sort_search.c</code>에서 <strong>정렬(O(n²)) 후 이진탐색(O(log n))</strong> 을 쓰는 이유가 이것이다.</li>
+<li>데이터가 커질수록 알고리즘 선택이 성능을 좌우한다 → 자율주행의 실시간 처리에서 핵심.</li>
+</ul>
+<hr />
+<h2 id="9">9. 함수 호출과 스택 프레임 — 재귀의 비용<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p>함수를 호출하면 <strong>스택 프레임</strong>(지역변수·복귀주소·인자)이 스택에 쌓이고, 반환하면 걷힌다.
+재귀는 이 프레임이 <strong>깊이만큼 쌓이므로</strong> 메모리를 쓴다.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">long</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="c1">// 이 재귀는 O(2ⁿ) — 같은 값을 수없이 다시 계산</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="mi">-2</span><span class="p">);</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">}</span>
+</code></pre></div>
+- <code>fib(50)</code>은 호출이 폭발해 사실상 멈춘다 → <strong>반복문이나 메모이제이션</strong>으로 바꿔야 한다.
+- 너무 깊은 재귀는 <strong>스택 오버플로</strong>로 크래시. "재귀가 항상 우아한 답은 아니다."</p>
 <blockquote>
-<p>⚠ 산술(<code>* / %</code>)이 비트·논리보다 <strong>먼저</strong>다. 헷갈리면 괄호. 대입·삼항·단항은 <strong>우→좌</strong> 결합.</p>
+<p>💡 <code>ex10_recursion.c</code>의 <code>hanoi_moves</code>처럼 <strong>선형 재귀</strong>는 괜찮지만,
+트리 재귀(fib)는 비용을 항상 따져라.</p>
 </blockquote>
 <hr />
-<h2 id="5">5. 제어문<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>조건</strong>: <code>if / else if / else</code>, <code>switch~case</code>(정수·문자, <code>break</code> 없으면 fall-through), 삼항 <code>조건?A:B</code>.</li>
-<li><strong>반복</strong>: <code>for</code>(횟수), <code>while</code>(조건 선검사), <code>do~while</code>(<strong>최소 1회</strong> 후검사).</li>
-<li><strong>분기</strong>: <code>break</code>(반복/switch 탈출), <code>continue</code>(다음 반복으로), <code>goto</code>(레이블 이동, 지양), <code>return</code>(함수 종료).</li>
-</ul>
-<hr />
-<h2 id="6">6. 배열·포인터·문자열<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>배열</strong>: 같은 자료형의 연속 공간, 인덱스 <strong>0부터</strong>. 배열 이름 = 첫 원소 주소(<code>a == &amp;a[0]</code>).</li>
-<li><strong>포인터</strong>: 주소를 담는 변수. <code>&amp;</code>(주소), <code>*</code>(역참조). <code>p+1</code>은 <strong>가리키는 자료형 크기만큼</strong> 이동.</li>
-<li><code>a[i] == *(a+i)</code>. <strong>이중 포인터</strong> <code>int **pp</code> 는 포인터의 주소.</li>
-<li><strong>문자열</strong>: <code>'\0'</code>로 끝나는 <code>char</code> 배열. <code>strlen</code>(길이), <code>strcpy</code>(복사), <code>strcmp</code>(비교, 0이면 같음), <code>strcat</code>(연결).</li>
-</ul>
-<hr />
-<h2 id="7">7. 구조체·공용체·열거형<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>키워드</th>
-<th>의미</th>
-<th>메모리</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>struct</code></td>
-<td>여러 자료형을 <strong>묶음</strong>(멤버 각각 공간)</td>
-<td>멤버 크기 합(+ 정렬 패딩)</td>
-</tr>
-<tr>
-<td><code>union</code></td>
-<td>멤버가 <strong>같은 공간 공유</strong>(한 번에 하나만)</td>
-<td>가장 큰 멤버 크기</td>
-</tr>
-<tr>
-<td><code>enum</code></td>
-<td>이름 붙은 정수 상수 집합</td>
-<td>보통 <code>int</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>멤버 접근: 값 변수는 <code>.</code>, <strong>포인터는 <code>-&gt;</code></strong>(<code>p-&gt;m == (*p).m</code>).</li>
-<li><code>typedef</code> 로 자료형에 별칭을 준다: <code>typedef struct{...} Pose;</code>.</li>
-</ul>
-<hr />
-<h2 id="8">8. 함수와 매개변수 전달 방식 — 필기 단골<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>방식</th>
-<th>넘기는 것</th>
-<th>원본 변화</th>
-<th>C에서</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>값에 의한 호출(call by value)</td>
-<td>값의 <strong>복사본</strong></td>
-<td>✗ 안 바뀜</td>
-<td>기본</td>
-</tr>
-<tr>
-<td>주소에 의한 호출(call by reference)</td>
-<td>변수의 <strong>주소</strong></td>
-<td>✓ 바뀜</td>
-<td>포인터로 구현</td>
-</tr>
-</tbody>
-</table>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">inc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// 주소를 받아 원본 증가</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">inc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span><span class="w">            </span><span class="c1">// a == 6</span>
-</code></pre></div>
-- <strong>재귀(순환) 함수</strong>: 자기 자신 호출. <strong>종료 조건</strong> 필수(없으면 스택 오버플로).
-- 함수는 <code>return</code> 으로 값 <strong>하나</strong>만 반환 → 여러 결과는 <strong>포인터 매개변수</strong>로.</p>
-<hr />
-<h2 id="9">9. 진법과 비트 (자주 출제)<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
-<ul>
-<li>진법 접두: <code>0x</code>(16진), <code>0</code>(8진), 접두 없음(10진). 예: <code>0x2A == 42</code>, <code>052 == 42</code>.</li>
-<li><strong>보수</strong>: 1의 보수=비트 반전, <strong>2의 보수=1의 보수+1</strong>(음수 표현). <code>signed char -5</code> 의 비트는 <code>1111 1011</code>(= unsigned로 251).</li>
-<li>비트 연산: <code>&amp;</code>(AND) <code>|</code>(OR) <code>^</code>(XOR) <code>~</code>(NOT) <code>&lt;&lt;</code>(왼쪽 시프트=×2ⁿ) <code>&gt;&gt;</code>(오른쪽=÷2ⁿ).</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>5 &amp; 3 = 1     5 | 3 = 7     5 ^ 3 = 6     ~5 = -6     1 &lt;&lt; 4 = 16
-</code></pre></div>
-<hr />
-<h2 id="10">10. 라이브러리·전처리기<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>표준 헤더</strong>: <code>&lt;stdio.h&gt;</code>(입출력), <code>&lt;stdlib.h&gt;</code>(변환·난수·메모리), <code>&lt;string.h&gt;</code>(문자열), <code>&lt;math.h&gt;</code>(수학, 컴파일 <code>-lm</code>).</li>
-<li><strong>전처리기(#)</strong>: <code>#include</code>(헤더 삽입), <code>#define</code>(매크로 치환), <code>#ifdef/#endif</code>(조건부 컴파일).</li>
-<li>컴파일 과정: <strong>전처리 → 컴파일 → 어셈블 → 링크</strong> → 실행파일.</li>
-</ul>
-<hr />
-<h2 id="ox">확인문제 (OX)<a class="headerlink" href="#ox" title="Permanent link">&para;</a></h2>
-<p>각 문장이 맞으면 O, 틀리면 X. <strong>먼저 스스로 판단</strong>한 뒤 정답을 펼치자.</p>
-<ol>
-<li><code>static</code> 지역변수는 함수 호출이 끝나면 값이 사라진다.</li>
-<li>값에 의한 호출(call by value)로 넘기면 함수 안에서 원본 변수를 바꿀 수 있다.</li>
-<li><code>do~while</code> 문은 조건이 처음부터 거짓이면 본문을 한 번도 실행하지 않는다.</li>
-<li>배열 이름은 그 배열 첫 번째 원소의 주소를 의미한다.</li>
-<li><code>union</code>은 모든 멤버가 각각 독립된 메모리 공간을 가진다.</li>
-<li>C에서 <code>int / int</code> 나눗셈은 소수점 이하를 버린다.</li>
-<li>산술 연산자(<code>*</code>,<code>/</code>)는 관계 연산자(<code>&lt;</code>,<code>&gt;</code>)보다 먼저 계산된다.</li>
-<li>2의 보수는 1의 보수에 1을 더한 값이다.</li>
-<li>구조체 <strong>포인터</strong>에서 멤버에 접근할 때는 <code>.</code> 연산자를 쓴다.</li>
-<li><code>register</code>로 선언하면 변수는 반드시 CPU 레지스터에 저장된다.</li>
-<li><code>strcmp(a, b)</code> 가 0을 반환하면 두 문자열이 서로 다르다는 뜻이다.</li>
-<li>전처리기 <code>#define</code> 매크로는 프로그램 실행 중에 함수처럼 호출된다.</li>
-</ol>
-<details class="success">
-<summary>정답 및 해설</summary>
-<ol>
-<li><strong>X</strong> — <code>static</code> 지역변수는 호출이 끝나도 값이 <strong>유지</strong>된다(데이터 영역).</li>
-<li><strong>X</strong> — 복사본이 넘어가므로 <strong>원본은 안 바뀐다</strong>. 바꾸려면 주소(포인터) 전달.</li>
-<li><strong>X</strong> — <code>do~while</code>은 <strong>본문을 먼저 실행</strong>하므로 <strong>최소 1회</strong> 실행된다.</li>
-<li><strong>O</strong> — <code>a == &amp;a[0]</code>. 그래서 <code>a[i] == *(a+i)</code>.</li>
-<li><strong>X</strong> — <code>union</code>은 멤버들이 <strong>같은 공간을 공유</strong>(가장 큰 멤버 크기)한다.</li>
-<li><strong>O</strong> — 정수끼리 나누면 소수를 버린다(<code>7/2==3</code>). 실수는 <code>(double)a/b</code>.</li>
-<li><strong>O</strong> — 우선순위: 산술 &gt; 시프트 &gt; 관계 &gt; 비트 &gt; 논리 &gt; 대입.</li>
-<li><strong>O</strong> — 2의 보수 = (비트 반전=1의 보수) + 1. 음수 표현에 쓴다.</li>
-<li><strong>X</strong> — 포인터는 <code>-&gt;</code>(화살표). <code>.</code>은 구조체 <strong>변수</strong>용. <code>p-&gt;m == (*p).m</code>.</li>
-<li><strong>X</strong> — <code>register</code>는 <strong>권고</strong>일 뿐, 실제 저장 위치는 컴파일러가 정한다.</li>
-<li><strong>X</strong> — <code>strcmp</code>가 0이면 두 문자열이 <strong>같다</strong>는 뜻이다.</li>
-<li><strong>X</strong> — <code>#define</code>은 <strong>컴파일 전(전처리) 글자 치환</strong>이다. 실행 중 호출이 아니다.</li>
-</ol>
-</details>
-<hr />
-<h2 id="_1">필기 빈출 체크<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_1">심화 자기점검<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 기억 클래스 4종(auto/static/register/extern)의 범위·수명</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 값 호출 vs 주소 호출의 차이(원본 변화 여부)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 연산자 우선순위(산술&gt;시프트&gt;관계&gt;비트&gt;논리&gt;대입)와 결합성</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>struct</code>(합) vs <code>union</code>(공유) 메모리</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2의 보수, 진법 변환, 비트 연산 결과</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>do~while</code>은 최소 1회 실행</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>i = i++ + 1</code> 이 왜 UB인지 시퀀스 포인트로 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 멤버 순서로 <code>sizeof(struct)</code>가 달라지는 이유(패딩)를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>-1 &lt; 1U</code> 가 거짓인 이유(부호 승격)를 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 실수를 <code>==</code>로 비교하면 안 되는 이유를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 댕글링 포인터·메모리 누수를 예로 든다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>volatile</code>이 임베디드에서 왜 필요한지 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>#define SQ(x) x*x</code> 의 문제와 해결(괄호)을 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O(n²)과 O(n log n)의 실질 차이를 큰 n에서 설명한다</li>
 </ul>
 <blockquote>
-<p>실행 결과 예측 연습 → <a href="../exam-prep/">정보처리기사 C 대비</a>
-⚠ 필기 이론은 넓다. 여기 요약은 <strong>C·언어 개념 핵심</strong>만 — 과목 전체는 별도 학습.</p>
+<p>개념 그림 <a href="../"><code>C언어_부연설명.md</code></a> · 설계 <a href="../design-problems/"><code>프로그램_설계문제.md</code></a> · 시험 <a href="../exam-prep/"><code>정보처리기사_C_대비.md</code></a></p>
 </blockquote>
 
 
@@ -1748,7 +1582,7 @@
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
         
           
-          <a href="../exam-prep/" class="md-footer__link md-footer__link--prev" aria-label="이전: 📝 정보처리기사 C 대비(실기)">
+          <a href="../exam-written/" class="md-footer__link md-footer__link--prev" aria-label="이전: 📚 정보처리기사 필기 이론(C)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1758,20 +1592,20 @@
                 이전
               </span>
               <div class="md-ellipsis">
-                📝 정보처리기사 C 대비(실기)
+                📚 정보처리기사 필기 이론(C)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../advanced-notes/" class="md-footer__link md-footer__link--next" aria-label="다음: 🧬 심화 개념 노트(상위권)">
+          <a href="../review/" class="md-footer__link md-footer__link--next" aria-label="다음: 📊 2026 트렌드 기반 검토">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                🧬 심화 개념 노트(상위권)
+                📊 2026 트렌드 기반 검토
               </div>
             </div>
             <div class="md-footer__button md-icon">
