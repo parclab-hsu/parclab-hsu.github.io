@@ -55,6 +55,7 @@ markdown_extensions:
 
 nav:
   - 강의 개요: index.md
+  - 학습 길잡이: learning-map.md
   - 강의 계획 (15주):
     - 1주차 · OT·환경설정·왜 C인가: week01.md
     - 2주차 · 표준 출력(printf): week02.md
@@ -72,14 +73,20 @@ nav:
     - 14주차 · 구조체 + 연결리스트: week14.md
     - 15주차 · C↔ROS2·로봇·기말: week15.md
   - 심화·연계:
-    - 🤖 C↔ROS2 & Stella N2 로봇: ros2-robot.md
-    - 🧠 AI 활용 가이드: ai-literacy.md
-    - 🧩 프로그램 설계 문제: design-problems.md
-    - 📝 정보처리기사 C 대비(실기): exam-prep.md
-    - 📚 정보처리기사 필기 이론(C): exam-written.md
-    - 🧬 심화 개념 노트(상위권): advanced-notes.md
-    - 📊 2026 트렌드 기반 검토: review.md
-  - 🏠 PARC Lab 홈: https://parclab-hsu.github.io/
+    - C↔ROS2 & Stella N2 로봇: ros2-robot.md
+    - AI 활용 가이드: ai-literacy.md
+    - 프로그램 설계 문제: design-problems.md
+    - 정보처리기사 C 대비(실기): exam-prep.md
+    - 정보처리기사 필기 이론(C): exam-written.md
+    - 심화 개념 노트(상위권): advanced-notes.md
+    - 2026 트렌드 기반 검토: review.md
+  - 예제 코드:
+    - 코드 사용법: code/index.md
+    - Arduino R4: code/arduino.md
+    - C와 ROS2: code/ros2.md
+    - Stella N2 브리지: code/ros2/stella_n2_bridge/index.md
+    - micro-ROS UNO R4 도전: code/ros2/microros_uno_r4/index.md
+  - PARC Lab 홈: https://parclab-hsu.github.io/
 
 extra:
   generator: false

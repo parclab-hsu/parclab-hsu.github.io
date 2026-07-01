@@ -10,6 +10,14 @@
 
 ---
 
+## 강의 해설
+
+14주차는 서로 다른 종류의 데이터를 하나의 의미 있는 묶음으로 만드는 방법을 배운다. 지금까지 배열은 같은 자료형을 여러 개 담는 데 적합했다. 하지만 실제 센서 패킷은 거리, 속도, 상태 문자열처럼 서로 다른 자료형이 함께 움직인다. 구조체는 이런 값들을 "하나의 사건" 또는 "하나의 메시지"로 묶어 주는 도구다.
+
+구조체를 배우면 프로그램의 표현력이 크게 좋아진다. `distance_cm`, `speed_cmps`, `state`가 따로 흩어져 있으면 이 값들이 서로 관련 있다는 사실을 사람이 기억해야 한다. `SensorPacket`으로 묶으면 코드 자체가 "이 세 값은 함께 전송되는 센서 패킷"이라고 말해 준다. 좋은 구조체 설계는 좋은 변수 이름처럼 프로그램을 읽기 쉽게 만든다.
+
+직렬화와 역직렬화는 구조체를 통신으로 연결하는 핵심 기술이다. 메모리 안의 구조체를 그대로 보내는 대신 `"S,42.0,25.0,RUN"` 같은 문자열로 바꾸면 시리얼, WiFi, 로그에서 쉽게 확인할 수 있다. 반대로 받은 문자열을 다시 구조체로 바꾸면 C 코드가 다루기 쉬운 형태가 된다. 이 과정은 ROS2 메시지를 이해하는 준비 단계이며, `geometry_msgs/Twist` 같은 표준 메시지도 결국 이름 붙은 필드들의 묶음이다.
+
 ## 1. 이론
 
 ### 1.1 구조체란
@@ -95,13 +103,38 @@ void serialize(const SensorPacket *p, char *out, int n) {
 ```
 추가 하드웨어 없이 동작(가상 센서).
 
+### 실습 14-5 · PC에서 먼저 검증하기
+
+구조체 직렬화는 Arduino에 올리기 전에 PC C 코드로 먼저 확인할 수 있다.
+
+```bash
+cd courses-src/c-programming-202602/docs/code/c/examples
+gcc -Wall -Wextra -std=c11 ex06_pose_struct.c -o ex06_pose_struct
+./ex06_pose_struct
+gcc -Wall -Wextra -std=c11 packet_parser.c -o packet_parser
+./packet_parser
+```
+
+예상 출력:
+
+```text
+serialized: P,1.25,-0.40,90.0
+parsed: x=1.25 y=-0.40 yaw=90.0
+distance=42.0 cm
+speed=25.0 cm/s
+state=RUN
+```
+
+!!! tip "구조체와 ROS2 메시지"
+    `SensorPacket`은 우리가 직접 만든 메시지 묶음이고, ROS2의 `geometry_msgs/Twist`도 같은 생각으로 만든 표준 메시지 묶음이다. 이름과 필드가 정해져 있을 뿐, 핵심은 **관련 데이터를 하나로 묶는다**는 점이다.
+
 ---
 
 ## 4. 과제
 - Student 구조체, 두 점 거리(`sqrt`, `-lm`), 구조체 배열 최댓값(연습 6-1~6-3). 기말 팀 구성.
 
 ## 5. 참조
-- 교재 Ch14 · 예제 `code/c/examples/ex06_pose_struct.c` · 아두이노 `code/arduino/15_struct_packet` · 그림 `img/04_struct_packet.png`
+- 교재 Ch14 · 예제 [`code/c/examples/ex06_pose_struct.c`](code/c/examples/ex06_pose_struct.c) · 아두이노 [`code/arduino/15_struct_packet`](code/arduino.md) · 그림 `img/04_struct_packet.png`
 
 ## 형성평가 체크포인트
 - [ ] `.`/`->` 구분 · [ ] 구조체 배열 순회 · [ ] 직렬화/역직렬화 이해 · [ ] 연결리스트 개념

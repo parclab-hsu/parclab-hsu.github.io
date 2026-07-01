@@ -10,6 +10,14 @@
 
 ---
 
+## 강의 해설
+
+15주차는 한 학기 동안 배운 문법이 실제 로봇 시스템에서 어떻게 만나는지 확인하는 종합 주차다. 처음에는 `printf`로 숫자를 출력했지만, 이제는 센서 배열을 분석하고 구조체로 판단 결과를 묶고 ROS2 토픽으로 주행 명령을 내보낸다. 이때 새로 등장하는 ROS2가 주인공처럼 보일 수 있지만, 실제 판단의 중심은 여전히 C로 작성한 함수다.
+
+ROS2의 토픽은 프로그램들이 데이터를 주고받는 통로다. `/scan`은 LiDAR 거리 배열을 보내고, `/cmd_vel`은 로봇의 선속도와 각속도를 보낸다. 여기서 `/scan`의 `ranges[]`는 10주차 배열, 가장 가까운 장애물 탐색은 6주차 반복문, 정지/회피 판단은 5주차 조건문, 판단 결과 묶음은 14주차 구조체, 배열 전달은 12~13주차 포인터와 연결된다.
+
+기말 프로젝트의 목표는 멋진 기능을 많이 붙이는 것이 아니라, 작은 기능을 안전하고 설명 가능하게 완성하는 것이다. 로봇은 실제로 움직이는 장비이므로 코드 품질과 안전 절차가 기능만큼 중요하다. 바퀴를 띄운 상태에서 `/cmd_vel` 값을 먼저 확인하고, 속도는 작게, 정지거리는 크게 시작한다. 발표에서는 "어떤 C 함수가 어떤 판단을 했고, 그 결과가 어떤 ROS2 메시지로 바뀌었는가"를 설명할 수 있어야 한다.
+
 ## 1. 이론
 
 ### 1.1 ROS2와 C의 관계
@@ -57,6 +65,28 @@ ScanResult analyze_scan(const float *ranges, int n, float stop_dist) {
 ### 실습 15-2 · C↔ROS2 연동
 시리얼 브리지로 보드 ↔ ROS2 토픽 pub/sub 확인.
 
+기본 실행 흐름:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+mkdir -p ~/cprog_ws/src
+cp -r courses-src/c-programming-202602/docs/code/ros2/stella_n2_bridge ~/cprog_ws/src/
+cd ~/cprog_ws
+colcon build --packages-select stella_n2_bridge
+source install/setup.bash
+ros2 run stella_n2_bridge stella_n2_bridge
+```
+
+테스트용 `/scan`:
+
+```bash
+ros2 topic pub /scan sensor_msgs/msg/LaserScan "{ranges: [1.2, 0.9, 0.4, 0.8, 1.1], range_min: 0.05, range_max: 8.0}" -r 2
+ros2 topic echo /cmd_vel
+```
+
+!!! note "학생이 읽어야 하는 파일"
+    먼저 `scan_logic.c`를 읽는다. 이 파일은 ROS2를 몰라도 이해할 수 있는 순수 C 코드다. 그 다음 `stella_n2_bridge.cpp`를 보면 C 함수의 결과가 `/cmd_vel` 메시지로 바뀌는 과정을 볼 수 있다.
+
 ### 실습 15-3 · 로봇 캡스톤
 Stella N2 LiDAR(`/scan`) → `analyze_scan()` → 주행(`/cmd_vel`) + 아두이노 LED 표정.
 
@@ -72,7 +102,7 @@ Stella N2 LiDAR(`/scan`) → `analyze_scan()` → 주행(`/cmd_vel`) + 아두이
 
 ## 5. 참조
 - [C↔ROS2 & Stella N2 로봇](ros2-robot.md) · [AI 활용 가이드](ai-literacy.md) · [2026 트렌드 검토](review.md)
-- 코드: `code/ros2/{mobility_bridge, microros_uno_r4, stella_n2_bridge}`
+- 코드: [`code/ros2/stella_n2_bridge`](code/ros2/stella_n2_bridge/index.md) · [`code/ros2/microros_uno_r4`](code/ros2/microros_uno_r4/index.md)
 
 ## 형성평가 체크포인트
 - [ ] 토픽 pub/sub 동작 · [ ] C 로직이 실제 동작을 좌우 · [ ] 안전수칙 준수 · [ ] 발표·문서화

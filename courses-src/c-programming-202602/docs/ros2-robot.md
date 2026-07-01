@@ -1,4 +1,4 @@
-# 🤖 C ↔ ROS2 & Stella N2 로봇 연계
+# C ↔ ROS2 & Stella N2 로봇 연계
 
 > *"내가 짠 C 함수가 진짜 자율주행 로봇을 움직인다."*
 > 손에 쥔 보드(Arduino R4) → 내가 짠 C 다리(bridge) → 진짜 로봇(Stella N2)이 한 줄로 이어진다.
@@ -24,6 +24,9 @@
 
     ![micro-ROS](img/06_arch_microros.png)
 
+!!! note "2026-2 권장 운영"
+    기본 실습은 **Ubuntu 24.04 + ROS2 Jazzy + Serial Bridge**로 진행한다. micro-ROS는 UNO R4 WiFi 지원이 가능하지만, 보드 라이브러리·Agent·네트워크 설정에 따라 시간이 걸릴 수 있으므로 심화/가산점 경로로 둔다.
+
 ## Stella N2 로봇 (NTREX / IdeaRobot)
 | 항목 | 사양 |
 |------|------|
@@ -47,14 +50,71 @@ ScanResult analyze_scan(const float *ranges, int n, float stop_dist) {
 }
 ```
 
+실제 예제: [`code/ros2/stella_n2_bridge`](code/ros2.md)
+
+| 파일 | 역할 | 연결되는 C 개념 |
+|------|------|----------------|
+| `scan_logic.c` | LiDAR 거리 배열 분석 | 배열, 반복문, 조건문 |
+| `scan_logic.h` | 판단 결과 구조체 선언 | `struct`, `enum`, 함수 원형 |
+| `stella_n2_bridge.cpp` | ROS2 `/scan` 구독, `/cmd_vel` 발행 | C 함수 호출, 메시지 변환 |
+
+## 수업용 실행 절차
+
+### 1단계 · C 함수만 먼저 이해
+
+`scan_logic.c`의 핵심은 `ranges[]` 배열에서 가장 가까운 장애물을 찾는 것이다.
+
+```c
+DriveDecision decision = analyze_scan(ranges, count, 0.35f);
+```
+
+이때 학생이 설명할 수 있어야 하는 질문:
+
+- `ranges`는 왜 포인터처럼 함수에 전달되는가?
+- `count`가 없으면 배열 길이를 왜 알 수 없는가?
+- 반환값을 `DriveDecision` 구조체로 묶는 이유는 무엇인가?
+
+### 2단계 · ROS2 토픽으로 감싸기
+
+```bash
+source /opt/ros/jazzy/setup.bash
+mkdir -p ~/cprog_ws/src
+cp -r courses-src/c-programming-202602/docs/code/ros2/stella_n2_bridge ~/cprog_ws/src/
+cd ~/cprog_ws
+colcon build --packages-select stella_n2_bridge
+source install/setup.bash
+ros2 run stella_n2_bridge stella_n2_bridge
+```
+
+### 3단계 · 실제 로봇 없이 토픽 테스트
+
+```bash
+ros2 topic pub /scan sensor_msgs/msg/LaserScan "{ranges: [1.2, 0.9, 0.4, 0.8, 1.1], range_min: 0.05, range_max: 8.0}" -r 2
+ros2 topic echo /cmd_vel
+```
+
+### 4단계 · Stella N2 연결 전 안전 확인
+
+- `/cmd_vel` 값이 예상대로 나오는지 먼저 확인한다.
+- 바퀴를 띄운 상태에서 실행한다.
+- `stop_distance_m` 파라미터를 크게 시작한다.
+- 처음 속도는 `0.12 m/s` 이하로 제한한다.
+
 ## 캡스톤 아이디어 (난이도↑)
 | 난이도 | 프로젝트 |
 |--------|----------|
-| ⭐ | LED 신호등 대시보드 (로봇 상태 표시) |
-| ⭐⭐ | 장애물 회피 주행 / 아두이노 수동 텔레옵 |
-| ⭐⭐⭐ | 추종 주행 / micro-ROS 직결 |
+| 기본 | LED 신호등 대시보드 (로봇 상태 표시) |
+| 중급 | 장애물 회피 주행 / 아두이노 수동 텔레옵 |
+| 심화 | 추종 주행 / micro-ROS 직결 |
 
 !!! warning "안전 최우선"
     처음엔 로봇 바퀴를 바닥에서 띄워 받침대 위에서 시험한다. 속도는 작게, 정지거리(`stop_dist`)는 크게 시작.
 
-> 자세한 실습 절차·코드·채점 루브릭은 강의 저장소(비공개)에서 제공된다. 후속 교과(센서처리와 모터제어, 이동로봇과 ROS)의 예고편이다.
+## 공식 문서 출발점
+
+- [ROS2 Jazzy 설치](https://docs.ros.org/en/jazzy/Installation.html)
+- [ROS2 튜토리얼](https://docs.ros.org/en/jazzy/Tutorials.html)
+- [micro-ROS Arduino](https://github.com/micro-ROS/micro_ros_arduino)
+- [Arduino UNO R4 WiFi](https://docs.arduino.cc/hardware/uno-r4-wifi/)
+
+> 후속 교과(센서처리와 모터제어, 이동로봇과 ROS)의 예고편이다.

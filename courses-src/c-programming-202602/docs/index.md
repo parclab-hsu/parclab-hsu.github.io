@@ -1,13 +1,13 @@
 # C 프로그래밍 · 2026-2학기
 ## 한성대학교 미래모빌리티학과 · 1학년
 
-> **"모빌리티를 움직이는 C언어"** — 자율주행·로봇·임베디드의 기반 언어인 C를,
-> **Arduino UNO R4 WiFi**로 눈에 보이고 손으로 만지는 실습과 함께 익히고,
-> 학기 후반에는 **C ↔ ROS2 연동**과 **Stella N2 자율주행 로봇**까지 확장한다.
+> **"모빌리티를 움직이는 C언어"**  
+> 자율주행·로봇·임베디드의 기반 언어인 C를 **Arduino UNO R4 WiFi**로 눈에 보이고 손으로 만지는 실습과 함께 익히고, 학기 후반에는 **C ↔ ROS2 연동**과 **Stella N2 자율주행 로봇**까지 확장한다.
 
 ![강의 로드맵](img/08_course_roadmap.png)
 
 ## 한 줄 콘셉트
+
 *"내가 1학년 때 짠 C 코드가, 진짜 자율주행 로봇을 움직인다."*
 
 ![3종 연계](img/10_robot_trio.png)
@@ -19,13 +19,14 @@
 | 교과목 | C 프로그래밍 (전공기초, 1학년 2학기) |
 | 학과 | 미래모빌리티학과 |
 | 보드 | Arduino UNO R4 WiFi (12×8 LED Matrix + Wi-Fi 내장) |
-| 환경 | Visual Studio 2022 · Arduino IDE 2.x · (후반) ROS2 |
-| 로봇 | Stella N2 (NTREX/IdeaRobot · ROS2 · YDLIDAR · Cartographer) |
+| 환경 | Visual Studio 2022 · Arduino IDE 2.x · Ubuntu 24.04 + ROS2 Jazzy |
+| 로봇 | Stella N2 (ROS2 · YDLIDAR · Cartographer) |
 
 ## 학습 성과 (CLO)
+
 1. C 기본 문법(변수·연산자·제어문·함수)을 정확히 사용한다.
 2. 배열·포인터·구조체로 데이터를 구조화하고 메모리를 이해한다.
-3. Arduino 보드에서 센서·액추에이터를 C로 제어한다.
+3. Arduino 보드에서 센서·액추에이터를 C/C++ 문법으로 제어한다.
 4. C 프로그램과 ROS2 노드 간 데이터를 주고받는 시스템을 구현한다.
 5. 팀 단위로 모빌리티 응용 SW(로봇 연계)를 설계·구현·발표한다.
 
@@ -40,14 +41,25 @@
 | 출석/참여 | 5% |
 
 !!! tip "왜 이렇게 배우나? (2026 트렌드)"
-    자동차 산업이 **SDV·Physical AI**로 이동하면서, 실시간 제어·ECU·로봇 펌웨어의 핵심은 여전히 **C/C++**다.
-    "AI는 두뇌, C는 신경·근육." 자세한 근거는 [2026 트렌드 검토](review.md) 참고.
+    자동차 산업이 **SDV·Physical AI**로 이동하면서, 실시간 제어·ECU·로봇 펌웨어의 핵심은 여전히 **C/C++**다.  
+    "AI는 두뇌, C는 신경·근육." 자세한 근거는 [2026 트렌드 검토](review.md)를 참고한다.
+
+## 처음 보는 학생을 위한 읽는 순서
+
+1. [학습 길잡이](learning-map.md)에서 각 주차가 Arduino·ROS2와 어떻게 이어지는지 본다.
+2. 매주 `이론 → 실습 → 형성평가 → 예제 코드` 순서로 읽는다.
+3. 5·7·11·14·15주차는 보드/ROS2 연동의 핵심 주차이므로 코드를 직접 실행한다.
+4. 기말 프로젝트 전에는 [C↔ROS2 & Stella N2 로봇](ros2-robot.md)과 [예제 코드](code/index.md)를 함께 본다.
 
 ## 빠른 이동
+
 - [15주 강의 계획](week01.md)부터 차례로 보기
-- [🤖 C↔ROS2 & Stella N2 로봇 연계](ros2-robot.md)
-- [🧠 AI 활용 가이드](ai-literacy.md)
+- [학습 길잡이](learning-map.md)
+- [Arduino R4 예제](code/arduino.md)
+- [C↔ROS2 & Stella N2 로봇 연계](ros2-robot.md)
+- [AI 활용 가이드](ai-literacy.md)
 
 ---
-> 한성대학교 미래모빌리티학과 · PARC Lab(Physical AI Real-Time Control for Mobility & Robotics) 정렬 강의.
-> 실습 코드·시험자료는 강의 저장소(비공개)에서 제공됩니다.
+
+> 한성대학교 미래모빌리티학과 · PARC Lab(Physical AI Real-Time Control for Mobility & Robotics) 정렬 강의.  
+> 실습 코드·시험자료는 강의 저장소에서 제공한다.
