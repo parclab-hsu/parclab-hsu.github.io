@@ -1615,6 +1615,8 @@
 </tbody>
 </table>
 <p>C 언어는 실행 전에 컴파일이 필요하다. 따라서 C 수업에서는 문법만 아는 것으로 끝나지 않고, 소스 파일을 만들고 빌드하고 오류 메시지를 읽는 환경 사용 능력이 함께 필요하다.</p>
+<p><img alt="프로그래밍 언어로 작성한 소스 코드가 컴파일러를 거쳐 실행 파일이 되는 과정을 설명한 원본 강의자료" src="../img/pdf-crops/setup_compiler_concept.png" /></p>
+<p><em>원본 강의자료 크롭: C 수업에서 컴파일러는 선택 사항이 아니라 필수 도구다. 소스 코드를 실행 가능한 형태로 바꾸는 과정을 항상 의식한다.</em></p>
 <h2 id="2-visual-studio-2022">2. Visual Studio 2022 설치<a class="headerlink" href="#2-visual-studio-2022" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://visualstudio.microsoft.com/ko/vs/community/">Visual Studio Community</a> 페이지에 접속한다.</li>
@@ -1626,6 +1628,10 @@
 <li>첫 실행 시 로그인 화면이 나오면 Microsoft 계정으로 로그인하거나 나중에 로그인을 선택한다.</li>
 <li>개발 설정은 <strong>Visual C++</strong> 계열로 선택하고, 색 테마는 편한 것으로 고른다.</li>
 </ol>
+<p><img alt="Visual Studio Community 다운로드 위치와 설치 파일 실행 화면을 보여 주는 원본 강의자료" src="../img/pdf-crops/setup_vs_download.png" /></p>
+<p><em>다운로드 버튼을 누른 뒤 브라우저에서 확인되지 않은 파일 경고가 나오면, 출처가 Visual Studio 공식 사이트인지 확인하고 설치를 진행한다.</em></p>
+<p><img alt="Visual Studio 설치 관리자에서 C++를 사용한 데스크톱 개발 워크로드를 선택하는 원본 강의자료" src="../img/pdf-crops/setup_vs_workload.png" /></p>
+<p><em>C 언어 실습을 하더라도 Visual Studio에서는 C 컴파일 도구가 이 워크로드에 포함되어 있으므로 반드시 선택한다.</em></p>
 <div class="admonition warning">
 <p class="admonition-title">C 수업인데 왜 C++ 워크로드를 선택하나?</p>
 <p>Visual Studio에서는 C 컴파일에 필요한 도구가 <strong>C++를 사용한 데스크톱 개발</strong> 워크로드 안에 포함되어 있다. C++을 배우기 위한 선택이 아니라, C 컴파일러와 빌드 도구를 설치하기 위한 선택이다.</p>
@@ -1652,6 +1658,14 @@
 <li><strong>디버그하지 않고 시작</strong> 또는 <code>Ctrl + F5</code>로 실행한다.</li>
 <li>콘솔 창에 <code>Hello world!</code>가 출력되는지 확인한다.</li>
 </ol>
+<p><img alt="Windows 데스크톱 마법사 또는 빈 프로젝트를 선택하는 원본 강의자료" src="../img/pdf-crops/setup_vs_project_template.png" /></p>
+<p><em>프로젝트 템플릿은 C 코드 실행을 위한 그릇이다. 이후 소스 파일을 직접 추가한다.</em></p>
+<p><img alt="솔루션 탐색기에서 소스 파일 폴더에 새 항목을 추가하는 원본 강의자료" src="../img/pdf-crops/setup_vs_add_source.png" /></p>
+<p><em>소스 파일은 반드시 프로젝트 안에 추가한다. 파일만 따로 만들면 Visual Studio 빌드 대상에 포함되지 않을 수 있다.</em></p>
+<p><img alt="C++ 파일 항목을 선택하고 파일 이름을 .c 확장자로 저장하는 원본 강의자료" src="../img/pdf-crops/setup_vs_c_file.png" /></p>
+<p><em>항목은 C++ 파일로 보이더라도 파일 이름을 <code>Hello.c</code>처럼 <code>.c</code>로 끝내야 C 언어 실습 흐름과 맞다.</em></p>
+<p><img alt="Visual Studio 콘솔 실행 결과가 출력되는 원본 강의자료" src="../img/pdf-crops/setup_vs_run_result.png" /></p>
+<p><em>실행 결과가 바로 닫히면 <code>Ctrl + F5</code>로 실행하거나 디버깅 옵션에서 콘솔 자동 닫기 설정을 확인한다.</em></p>
 <h2 id="4-visual-studio">4. Visual Studio 기본 설정<a class="headerlink" href="#4-visual-studio" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1690,6 +1704,8 @@
 </tbody>
 </table>
 <p>수업에서는 오류 메시지의 줄 번호를 자주 확인한다. 따라서 줄 번호 표시를 반드시 켜 두는 것이 좋다.</p>
+<p><img alt="Visual Studio 옵션에서 C/C++ 줄 번호 표시를 켜는 원본 강의자료" src="../img/pdf-crops/setup_vs_line_numbers.png" /></p>
+<p><em>질문할 때 "오류가 났어요"보다 "17번째 줄에서 오류가 납니다"라고 말할 수 있어야 해결이 빨라진다.</em></p>
 <h2 id="5-scanf">5. <code>scanf</code> 경고 처리<a class="headerlink" href="#5-scanf" title="Permanent link">&para;</a></h2>
 <p>Visual Studio는 보안상 <code>scanf</code>보다 <code>scanf_s</code> 사용을 권장한다. 이 강의 자료에서는 Visual Studio 환경에 맞추어 기본 예제에서 <code>scanf_s</code>를 우선 사용한다.</p>
 <p>다만 교재나 외부 예제에서 <code>scanf</code>가 그대로 등장할 수 있다. 학습 목적으로 <code>scanf</code> 예제를 컴파일해야 하는 경우에는 파일 맨 위에 다음 줄을 추가하면 경고를 줄일 수 있다.</p>
@@ -1720,6 +1736,8 @@
 <li>시리얼 모니터를 열고 속도를 <code>115200</code>으로 맞춘다.</li>
 <li><code>Hello, Mobility!</code>가 보이면 업로드와 시리얼 통신이 정상이다.</li>
 </ol>
+<p><img alt="Arduino IDE 다운로드 페이지와 설치 파일 선택 위치를 보여 주는 원본 강의자료" src="../img/pdf-crops/setup_arduino_download.png" /></p>
+<p><em>Arduino IDE는 보드에 코드를 올리는 도구다. Visual Studio가 PC용 C 실습 중심이라면, Arduino IDE는 보드 실행 확인 중심이다.</em></p>
 <h2 id="7-arduino-ide">7. Arduino IDE 화면 구성<a class="headerlink" href="#7-arduino-ide" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1760,6 +1778,8 @@
 </tbody>
 </table>
 <p>Arduino 실습에서 가장 흔한 문제는 보드 종류, 포트, USB 케이블, 시리얼 모니터 속도 설정이다. 업로드가 안 될 때는 코드보다 이 네 가지를 먼저 확인한다.</p>
+<p><img alt="Arduino IDE의 확인, 업로드, 스케치북, 보드 선택, 시리얼 모니터 위치를 설명한 원본 강의자료" src="../img/pdf-crops/setup_arduino_interface.png" /></p>
+<p><em>수업 중 가장 많이 사용할 버튼은 확인, 업로드, 보드 선택, 시리얼 모니터다. 코드 작성 전 보드와 포트가 맞는지 먼저 본다.</em></p>
 <h2 id="8-tinkercad">8. Tinkercad 준비<a class="headerlink" href="#8-tinkercad" title="Permanent link">&para;</a></h2>
 <p>Tinkercad는 실제 보드가 없거나 회로를 먼저 시뮬레이션하고 싶을 때 유용하다.</p>
 <ol>
@@ -1769,6 +1789,8 @@
 <li>LED, 저항, 버튼 같은 부품을 연결해 간단한 디지털 입출력을 실험한다.</li>
 </ol>
 <p>이 강의의 중심 보드는 UNO R4 WiFi이지만, 기본 입출력 개념을 연습할 때는 Tinkercad 시뮬레이션도 도움이 된다.</p>
+<p><img alt="Autodesk Tinkercad 시작 화면을 보여 주는 원본 강의자료" src="../img/pdf-crops/setup_tinkercad.png" /></p>
+<p><em>실제 보드가 없는 상황에서는 Tinkercad로 LED, 저항, 버튼 연결을 먼저 연습하고, 이후 같은 개념을 UNO R4 WiFi에서 확인한다.</em></p>
 <h2 id="9-1">9. 1주차 제출 체크리스트<a class="headerlink" href="#9-1" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Visual Studio 2022 설치 완료</li>
