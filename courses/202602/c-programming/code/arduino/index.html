@@ -1253,6 +1253,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6주차 예제: 반복문이 애니메이션이 된다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1483,6 +1494,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6주차 예제: 반복문이 애니메이션이 된다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1563,6 +1585,12 @@
 <td>거리 상태에 따라 LED 표정 변경</td>
 </tr>
 <tr>
+<td><code>06_loop_animation</code></td>
+<td>6주차</td>
+<td>반복문, 중첩 반복</td>
+<td>점 스캔, 막대 증가, 테두리 출력</td>
+</tr>
+<tr>
 <td><code>09_face_main</code></td>
 <td>7주차</td>
 <td>함수, 시리얼 명령</td>
@@ -1604,6 +1632,16 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
 </code></pre></div>
 <p>이 코드는 조건문이 단순한 콘솔 출력이 아니라 <strong>장비의 상태 표시</strong>로 이어진다는 점을 보여 준다.</p>
+<h2 id="6">6주차 예제: 반복문이 애니메이션이 된다<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>파일: <code>code/arduino/06_loop_animation/06_loop_animation.ino</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="n">clearFrame</span><span class="p">();</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="n">setPixel</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="n">render</span><span class="p">();</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>이 코드는 열 번호를 반복 변수로 사용해 LED 한 점이 왼쪽에서 오른쪽으로 움직이는 것처럼 보이게 한다.</p>
 <h2 id="7">7주차 예제: 명령 문자를 함수로 연결<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/09_face_main/09_face_main.ino</code></p>
 <p>시리얼 모니터에서 다음 문자를 보낸다.</p>
@@ -1647,7 +1685,7 @@
 <h2 id="14">14주차 예제: 구조체 패킷<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/15_struct_packet/15_struct_packet.ino</code></p>
 <p>출력 예:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>S,42.0,25.0,RUN
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>S,42.0,25.0,RUN
 </code></pre></div>
 <p>이 문자열은 15주차 ROS2 브리지에서 다시 구조체로 파싱할 수 있다.</p>
 <h2 id="_3">공식 문서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
