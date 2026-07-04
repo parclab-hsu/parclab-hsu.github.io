@@ -9,6 +9,7 @@ Arduino UNO R4 WiFi는 수업에서 C 문법을 바로 눈으로 확인하기 �
 | `05_showface` | 5주차 | 조건문, 2차원 배열 | 거리 상태에 따라 LED 표정 변경 |
 | `06_loop_animation` | 6주차 | 반복문, 중첩 반복 | 점 스캔, 막대 증가, 테두리 출력 |
 | `09_face_main` | 7주차 | 함수, 시리얼 명령 | `h`, `a`, `o`, `n` 명령으로 표정 변경 |
+| `09_scope_state` | 9주차 | 전역변수, static 지역변수 | 상태 문자열과 명령 카운터 유지 |
 | `11_wifi_car` | 11주차 | 문자열, WiFi 서버 | 브라우저 버튼으로 LED 상태 제어 |
 | `15_struct_packet` | 14주차 | 구조체, 직렬화 | `S,거리,속도,상태` 패킷 출력 |
 
@@ -66,6 +67,22 @@ for (int c = 0; c < 12; ++c) {
 | `o` | surprised |
 | `n` | neutral |
 | `b` | blink |
+
+## 9주차 예제: 상태를 어디에 저장할까
+
+파일: `code/arduino/09_scope_state/09_scope_state.ino`
+
+```cpp
+char currentState[8] = "IDLE";
+
+void handleCommand(char cmd)
+{
+  static int commandCount = 0;
+  commandCount++;
+}
+```
+
+`currentState`는 여러 함수가 함께 읽는 전역 상태이고, `commandCount`는 명령 처리 함수 내부에서만 필요한 누적값이므로 `static` 지역변수로 둔다.
 
 ## 11주차 예제: WiFi 명령
 

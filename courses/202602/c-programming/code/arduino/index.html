@@ -1275,6 +1275,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9주차 예제: 상태를 어디에 저장할까
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#11-wifi" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1516,6 +1527,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9주차 예제: 상태를 어디에 저장할까
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#11-wifi" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1597,6 +1619,12 @@
 <td><code>h</code>, <code>a</code>, <code>o</code>, <code>n</code> 명령으로 표정 변경</td>
 </tr>
 <tr>
+<td><code>09_scope_state</code></td>
+<td>9주차</td>
+<td>전역변수, static 지역변수</td>
+<td>상태 문자열과 명령 카운터 유지</td>
+</tr>
+<tr>
 <td><code>11_wifi_car</code></td>
 <td>11주차</td>
 <td>문자열, WiFi 서버</td>
@@ -1675,6 +1703,17 @@
 </tr>
 </tbody>
 </table>
+<h2 id="9">9주차 예제: 상태를 어디에 저장할까<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p>파일: <code>code/arduino/09_scope_state/09_scope_state.ino</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">currentState</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;IDLE&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">handleCommand</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">cmd</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">commandCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="n">commandCount</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>currentState</code>는 여러 함수가 함께 읽는 전역 상태이고, <code>commandCount</code>는 명령 처리 함수 내부에서만 필요한 누적값이므로 <code>static</code> 지역변수로 둔다.</p>
 <h2 id="11-wifi">11주차 예제: WiFi 명령<a class="headerlink" href="#11-wifi" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/11_wifi_car/11_wifi_car.ino</code></p>
 <ol>
@@ -1685,7 +1724,7 @@
 <h2 id="14">14주차 예제: 구조체 패킷<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/15_struct_packet/15_struct_packet.ino</code></p>
 <p>출력 예:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>S,42.0,25.0,RUN
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>S,42.0,25.0,RUN
 </code></pre></div>
 <p>이 문자열은 15주차 ROS2 브리지에서 다시 구조체로 파싱할 수 있다.</p>
 <h2 id="_3">공식 문서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
