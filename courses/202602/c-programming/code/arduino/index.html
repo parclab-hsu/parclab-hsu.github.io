@@ -1245,7 +1245,7 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5주차 예제: 조건문이 표정이 된다
+        5주차 예제: 조건문이 표정을 바꾼다
       
     </span>
   </a>
@@ -1256,7 +1256,7 @@
   <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6주차 예제: 반복문이 애니메이션이 된다
+        6주차 예제: 반복문이 애니메이션을 만든다
       
     </span>
   </a>
@@ -1312,6 +1312,17 @@
     <span class="md-ellipsis">
       
         12주차 예제: 포인터로 센서 버퍼 순회
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13주차 예제: 포인터 배열과 함수 포인터 배열
       
     </span>
   </a>
@@ -1519,7 +1530,7 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5주차 예제: 조건문이 표정이 된다
+        5주차 예제: 조건문이 표정을 바꾼다
       
     </span>
   </a>
@@ -1530,7 +1541,7 @@
   <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6주차 예제: 반복문이 애니메이션이 된다
+        6주차 예제: 반복문이 애니메이션을 만든다
       
     </span>
   </a>
@@ -1593,6 +1604,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13주차 예제: 포인터 배열과 함수 포인터 배열
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#14" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1632,7 +1654,7 @@
 
 
 <h1 id="arduino-r4">Arduino R4 예제<a class="headerlink" href="#arduino-r4" title="Permanent link">&para;</a></h1>
-<p>Arduino UNO R4 WiFi는 수업에서 C 문법을 바로 눈으로 확인하기 위한 보드다. 12×8 LED Matrix는 2차원 배열, WiFi는 문자열 명령과 통신 프로토콜을 설명하기 좋다.</p>
+<p>Arduino UNO R4 WiFi는 C 문법을 눈에 보이는 장치 동작으로 확인하기 좋은 보드다. 이 강의에서는 12x8 LED Matrix, 시리얼 명령, WiFi, 문자열 패킷을 사용하여 콘솔에서 배운 문법을 실제 장치 제어 흐름으로 연결한다.</p>
 <h2 id="_1">예제 목록<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1654,7 +1676,7 @@
 <td><code>06_loop_animation</code></td>
 <td>6주차</td>
 <td>반복문, 중첩 반복</td>
-<td>점 스캔, 막대 증가, 테두리 출력</td>
+<td>점 이동, 막대 증가, 테두리 출력</td>
 </tr>
 <tr>
 <td><code>09_face_main</code></td>
@@ -1665,8 +1687,8 @@
 <tr>
 <td><code>09_scope_state</code></td>
 <td>9주차</td>
-<td>전역변수, static 지역변수</td>
-<td>상태 문자열과 명령 카운터 유지</td>
+<td>전역 변수, static 지역 변수</td>
+<td>상태 문자열과 명령 카운트 유지</td>
 </tr>
 <tr>
 <td><code>10_array_bar_graph</code></td>
@@ -1678,13 +1700,19 @@
 <td><code>11_wifi_car</code></td>
 <td>11주차</td>
 <td>2차원 배열, 문자열, WiFi 서버</td>
-<td>브라우저 버튼으로 LED 상태 제어, <code>/packet</code> 문자열 출력</td>
+<td>브라우저 버튼으로 LED 상태 제어</td>
 </tr>
 <tr>
 <td><code>12_pointer_buffer</code></td>
 <td>12주차</td>
 <td>포인터, 배열 순회, 센서 버퍼</td>
 <td>포인터로 가상 센서값 평균을 계산해 LED 막대 표시</td>
+</tr>
+<tr>
+<td><code>13_pointer_dispatch</code></td>
+<td>13주차</td>
+<td>포인터 배열, 함수 포인터 배열</td>
+<td>시리얼 명령 번호를 LED 동작 함수와 연결</td>
 </tr>
 <tr>
 <td><code>15_struct_packet</code></td>
@@ -1703,9 +1731,9 @@
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">LED Matrix를 배열로 보기</p>
-<p>LED Matrix는 <code>frame[8][12]</code>와 같은 2차원 배열로 생각하면 쉽다. <code>frame[행][열] = 1</code>이면 해당 LED를 켠다고 보면 된다.</p>
+<p>LED Matrix를 <code>frame[8][12]</code> 같은 2차원 배열로 생각하면 쉽다. <code>frame[row][col] = 1</code>이면 해당 LED를 켠다고 보면 된다.</p>
 </div>
-<h2 id="5">5주차 예제: 조건문이 표정이 된다<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h2 id="5">5주차 예제: 조건문이 표정을 바꾼다<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/05_showface/05_showface.ino</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance_cm</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">15.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">showFace</span><span class="p">(</span><span class="n">faceSurprised</span><span class="p">);</span>
@@ -1715,8 +1743,8 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="n">showFace</span><span class="p">(</span><span class="n">faceHappy</span><span class="p">);</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
 </code></pre></div>
-<p>이 코드는 조건문이 단순한 콘솔 출력이 아니라 <strong>장비의 상태 표시</strong>로 이어진다는 점을 보여 준다.</p>
-<h2 id="6">6주차 예제: 반복문이 애니메이션이 된다<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>조건문의 결과가 콘솔 출력에 그치지 않고 장치 상태 표시로 이어진다는 점을 보여 준다.</p>
+<h2 id="6">6주차 예제: 반복문이 애니메이션을 만든다<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/06_loop_animation/06_loop_animation.ino</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="n">clearFrame</span><span class="p">();</span>
@@ -1725,10 +1753,9 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
 </code></pre></div>
-<p>이 코드는 열 번호를 반복 변수로 사용해 LED 한 점이 왼쪽에서 오른쪽으로 움직이는 것처럼 보이게 한다.</p>
+<p>열 번호를 반복 변수로 사용해 LED 점이 왼쪽에서 오른쪽으로 움직이는 것처럼 보이게 한다.</p>
 <h2 id="7">7주차 예제: 명령 문자를 함수로 연결<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/09_face_main/09_face_main.ino</code></p>
-<p>시리얼 모니터에서 다음 문자를 보낸다.</p>
 <table>
 <thead>
 <tr>
@@ -1769,13 +1796,13 @@
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="n">commandCount</span><span class="o">++</span><span class="p">;</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </code></pre></div>
-<p><code>currentState</code>는 여러 함수가 함께 읽는 전역 상태이고, <code>commandCount</code>는 명령 처리 함수 내부에서만 필요한 누적값이므로 <code>static</code> 지역변수로 둔다.</p>
+<p><code>currentState</code>는 여러 함수가 함께 읽는 전역 상태이고, <code>commandCount</code>는 명령 처리 함수 안에서만 필요한 누적값이므로 <code>static</code> 지역 변수로 둔다.</p>
 <h2 id="10">10주차 예제: 배열이 막대그래프가 된다<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/10_array_bar_graph/10_array_bar_graph.ino</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scores</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">67</span><span class="p">,</span><span class="w"> </span><span class="mi">89</span><span class="p">,</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">};</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scoreCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 </code></pre></div>
-<p>점수 배열의 각 원소를 LED Matrix의 세로 막대로 표시한다. 배열 원소 개수, 반복문, 함수 전달을 한 번에 확인할 수 있다.</p>
+<p>점수 배열의 각 요소를 LED Matrix의 세로 막대로 표시한다.</p>
 <h2 id="11-wifi">11주차 예제: WiFi 명령<a class="headerlink" href="#11-wifi" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/11_wifi_car/11_wifi_car.ino</code></p>
 <ol>
@@ -1785,22 +1812,24 @@
 <li><code>/run</code>, <code>/slow</code>, <code>/stop</code> 버튼으로 LED Matrix 상태를 바꾼다.</li>
 <li><code>/packet</code> 경로에서 <code>S,42.0,25.0,RUN</code> 형식의 문자열 패킷을 확인한다.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">uint8_t</span><span class="w"> </span><span class="n">frame</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">12</span><span class="p">];</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kt">char</span><span class="w"> </span><span class="n">currentState</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;NEUTRAL&quot;</span><span class="p">;</span>
-</code></pre></div>
-<p>이 예제는 LED Matrix를 2차원 배열로 다루고, HTTP 요청 문자열을 상태 변경 함수와 연결한다. <code>/packet</code> 응답은 뒤쪽 ROS2 브리지에서 센서 패킷을 파싱하는 흐름으로 확장할 수 있다.</p>
 <h2 id="12">12주차 예제: 포인터로 센서 버퍼 순회<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/12_pointer_buffer/12_pointer_buffer.ino</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">float</span><span class="w"> </span><span class="nf">averageOf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">{</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">float</span><span class="w"> </span><span class="nf">averageOf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
 </code></pre></div>
-<p>가상 센서값 배열을 포인터로 순회해 평균과 최댓값을 계산하고, 평균을 LED Matrix 막대로 표시한다. 포인터와 길이(<code>count</code>)를 함께 넘기는 패턴은 ROS2의 LiDAR 배열, 센서 패킷, 메시지 버퍼를 처리할 때 그대로 이어진다.</p>
+<p>가상 센서값 배열을 포인터로 순회해 평균과 최댓값을 계산하고, 평균을 LED Matrix 막대로 표시한다.</p>
+<h2 id="13">13주차 예제: 포인터 배열과 함수 포인터 배열<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p>파일: <code>code/arduino/13_pointer_dispatch/13_pointer_dispatch.ino</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">commandNames</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;clear&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slow&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;stop&quot;</span><span class="p">};</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">handlers</span><span class="p">[])()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">showClear</span><span class="p">,</span><span class="w"> </span><span class="n">showRun</span><span class="p">,</span><span class="w"> </span><span class="n">showSlow</span><span class="p">,</span><span class="w"> </span><span class="n">showStop</span><span class="p">};</span>
+</code></pre></div>
+<p>시리얼 모니터에서 <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>을 입력하면 같은 인덱스의 함수가 호출된다. 명령 이름 배열과 함수 포인터 배열의 순서를 맞추는 것이 핵심이다.</p>
 <h2 id="14">14주차 예제: 구조체 패킷<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/15_struct_packet/15_struct_packet.ino</code></p>
 <p>출력 예:</p>

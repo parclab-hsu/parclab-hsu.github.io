@@ -1239,7 +1239,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        읽는 순서
+        권장 학습 순서
       
     </span>
   </a>
@@ -1475,7 +1475,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        읽는 순서
+        권장 학습 순서
       
     </span>
   </a>
@@ -1500,7 +1500,7 @@
 
 
 <h1 id="_1">예제 코드 사용법<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>이 폴더의 예제는 강의 문서에서 바로 연결되는 <strong>최소 동작 예제</strong>다. 큰 프로젝트를 한 번에 이해하려 하지 말고, 한 파일씩 실행하면서 C 문법이 실제 장비와 ROS2로 어떻게 이어지는지 확인한다.</p>
+<p>이 폴더의 예제는 강의 문서에서 바로 연결되는 최소 동작 예제다. 한 번에 큰 프로젝트를 이해하려고 하기보다, 각 파일을 실행하면서 C 문법이 콘솔, Arduino UNO R4 WiFi, ROS2로 어떻게 이어지는지 확인한다.</p>
 <h2 id="_2">폴더 구성<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1514,7 +1514,7 @@
 <tr>
 <td><code>code/c/examples</code></td>
 <td>PC에서 컴파일하는 순수 C 예제</td>
-<td><code>ex06_pose_struct.c</code></td>
+<td><code>ex12_pointer_basics.c</code></td>
 </tr>
 <tr>
 <td><code>code/arduino</code></td>
@@ -1530,20 +1530,20 @@
 </table>
 <h2 id="pc-c">PC C 예제 실행<a class="headerlink" href="#pc-c" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>courses-src/c-programming-202602/docs/code/c/examples
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>gcc<span class="w"> </span>-Wall<span class="w"> </span>-Wextra<span class="w"> </span>-std<span class="o">=</span>c11<span class="w"> </span>ex06_pose_struct.c<span class="w"> </span>-o<span class="w"> </span>ex06_pose_struct
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./ex06_pose_struct
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>gcc<span class="w"> </span>-Wall<span class="w"> </span>-Wextra<span class="w"> </span>-std<span class="o">=</span>c11<span class="w"> </span>ex13_pointer_applications.c<span class="w"> </span>-o<span class="w"> </span>ex13_pointer_applications
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./ex13_pointer_applications
 </code></pre></div>
-<p>Windows Visual Studio에서는 새 C 콘솔 프로젝트를 만들고 <code>.c</code> 파일 내용을 붙여 넣어 실행해도 된다.</p>
+<p>Windows Visual Studio에서는 C 콘솔 프로젝트를 만든 뒤 <code>.c</code> 파일 내용을 붙여 넣어 실행해도 된다.</p>
 <h2 id="arduino-r4">Arduino R4 예제 실행<a class="headerlink" href="#arduino-r4" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Arduino IDE 2.x를 설치한다.</li>
 <li>보드를 <code>Arduino UNO R4 WiFi</code>로 선택한다.</li>
-<li>스케치 폴더의 <code>.ino</code> 파일을 연다.</li>
+<li>실습 폴더의 <code>.ino</code> 파일을 연다.</li>
 <li>업로드 후 시리얼 모니터를 <code>115200</code> baud로 연다.</li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">WiFi 예제 주의</p>
-<p><code>11_wifi_car</code> 예제는 같은 네트워크에 접속해야 한다. 공개 실습실에서는 공유기 정책 때문에 접속이 막힐 수 있으므로, 먼저 시리얼 모니터에 출력되는 IP 주소를 확인한다.</p>
+<p><code>11_wifi_car</code> 예제는 같은 네트워크에 접속해야 한다. 공용 실습실에서는 공유기 정책 때문에 접속이 막힐 수 있으므로 먼저 시리얼 모니터에 출력되는 IP 주소를 확인한다.</p>
 </div>
 <h2 id="ros2">ROS2 예제 실행<a class="headerlink" href="#ros2" title="Permanent link">&para;</a></h2>
 <p>ROS2 예제는 Ubuntu 24.04 + ROS2 Jazzy 기준이다.</p>
@@ -1555,18 +1555,19 @@
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">source</span><span class="w"> </span>install/setup.bash
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>ros2<span class="w"> </span>run<span class="w"> </span>stella_n2_bridge<span class="w"> </span>stella_n2_bridge
 </code></pre></div>
-<p>별도 터미널에서 <code>/scan</code> 토픽이 없으면 테스트 데이터를 넣는다.</p>
+<p>별도 터미널에서 <code>/scan</code> 토픽에 테스트 데이터를 넣을 수 있다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/scan<span class="w"> </span>sensor_msgs/msg/LaserScan<span class="w"> </span><span class="s2">&quot;{ranges: [1.0, 0.8, 0.6, 0.4, 0.9], range_min: 0.05, range_max: 8.0}&quot;</span><span class="w"> </span>-r<span class="w"> </span><span class="m">2</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/cmd_vel
 </code></pre></div>
-<h2 id="_3">읽는 순서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_3">권장 학습 순서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
-<li><code>ex06_pose_struct.c</code>로 구조체와 직렬화를 이해한다.</li>
-<li><code>15_struct_packet.ino</code>로 같은 패킷을 Arduino에서 출력한다.</li>
-<li><code>packet_parser.c</code>로 문자열 패킷을 다시 구조체로 바꾼다.</li>
-<li><code>stella_n2_bridge</code>로 LiDAR 배열을 분석해 <code>/cmd_vel</code>을 발행한다.</li>
+<li><code>ex12_pointer_basics.c</code>로 주소와 간접 참조를 복습한다.</li>
+<li><code>ex13_pointer_applications.c</code>로 문자열 포인터, 포인터 배열, 배열 포인터를 확인한다.</li>
+<li><code>ex13_function_pointer_menu.c</code>로 함수 포인터 배열을 메뉴 구조로 이해한다.</li>
+<li><code>13_pointer_dispatch.ino</code>로 Arduino 명령과 함수 호출을 연결한다.</li>
+<li><code>packet_parser.c</code>와 <code>stella_n2_bridge</code>로 문자열 패킷과 ROS2 토픽 연결을 확인한다.</li>
 </ol>
-<p>이 순서가 곧 <strong>구조체 → 문자열 → 토픽 → 로봇 주행</strong>의 연결이다.</p>
+<p>이 순서는 <strong>포인터 -&gt; 명령 테이블 -&gt; 문자열 패킷 -&gt; ROS2 콜백</strong>으로 이어진다.</p>
 
 
 

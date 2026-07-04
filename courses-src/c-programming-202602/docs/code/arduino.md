@@ -1,18 +1,19 @@
 # Arduino R4 예제
 
-Arduino UNO R4 WiFi는 수업에서 C 문법을 바로 눈으로 확인하기 위한 보드다. 12×8 LED Matrix는 2차원 배열, WiFi는 문자열 명령과 통신 프로토콜을 설명하기 좋다.
+Arduino UNO R4 WiFi는 C 문법을 눈에 보이는 장치 동작으로 확인하기 좋은 보드다. 이 강의에서는 12x8 LED Matrix, 시리얼 명령, WiFi, 문자열 패킷을 사용하여 콘솔에서 배운 문법을 실제 장치 제어 흐름으로 연결한다.
 
 ## 예제 목록
 
 | 예제 | 주차 | 핵심 개념 | 실행 결과 |
 |------|------|-----------|-----------|
 | `05_showface` | 5주차 | 조건문, 2차원 배열 | 거리 상태에 따라 LED 표정 변경 |
-| `06_loop_animation` | 6주차 | 반복문, 중첩 반복 | 점 스캔, 막대 증가, 테두리 출력 |
+| `06_loop_animation` | 6주차 | 반복문, 중첩 반복 | 점 이동, 막대 증가, 테두리 출력 |
 | `09_face_main` | 7주차 | 함수, 시리얼 명령 | `h`, `a`, `o`, `n` 명령으로 표정 변경 |
-| `09_scope_state` | 9주차 | 전역변수, static 지역변수 | 상태 문자열과 명령 카운터 유지 |
+| `09_scope_state` | 9주차 | 전역 변수, static 지역 변수 | 상태 문자열과 명령 카운트 유지 |
 | `10_array_bar_graph` | 10주차 | 1차원 배열, 평균, 막대그래프 | 점수 배열을 LED Matrix 막대로 표시 |
-| `11_wifi_car` | 11주차 | 2차원 배열, 문자열, WiFi 서버 | 브라우저 버튼으로 LED 상태 제어, `/packet` 문자열 출력 |
+| `11_wifi_car` | 11주차 | 2차원 배열, 문자열, WiFi 서버 | 브라우저 버튼으로 LED 상태 제어 |
 | `12_pointer_buffer` | 12주차 | 포인터, 배열 순회, 센서 버퍼 | 포인터로 가상 센서값 평균을 계산해 LED 막대 표시 |
+| `13_pointer_dispatch` | 13주차 | 포인터 배열, 함수 포인터 배열 | 시리얼 명령 번호를 LED 동작 함수와 연결 |
 | `15_struct_packet` | 14주차 | 구조체, 직렬화 | `S,거리,속도,상태` 패킷 출력 |
 
 ## 공통 체크리스트
@@ -23,9 +24,9 @@ Arduino UNO R4 WiFi는 수업에서 C 문법을 바로 눈으로 확인하기 �
 - WiFi 예제 라이브러리: `WiFiS3.h`
 
 !!! tip "LED Matrix를 배열로 보기"
-    LED Matrix는 `frame[8][12]`와 같은 2차원 배열로 생각하면 쉽다. `frame[행][열] = 1`이면 해당 LED를 켠다고 보면 된다.
+    LED Matrix를 `frame[8][12]` 같은 2차원 배열로 생각하면 쉽다. `frame[row][col] = 1`이면 해당 LED를 켠다고 보면 된다.
 
-## 5주차 예제: 조건문이 표정이 된다
+## 5주차 예제: 조건문이 표정을 바꾼다
 
 파일: `code/arduino/05_showface/05_showface.ino`
 
@@ -39,9 +40,9 @@ if (distance_cm < 15.0) {
 }
 ```
 
-이 코드는 조건문이 단순한 콘솔 출력이 아니라 **장비의 상태 표시**로 이어진다는 점을 보여 준다.
+조건문의 결과가 콘솔 출력에 그치지 않고 장치 상태 표시로 이어진다는 점을 보여 준다.
 
-## 6주차 예제: 반복문이 애니메이션이 된다
+## 6주차 예제: 반복문이 애니메이션을 만든다
 
 파일: `code/arduino/06_loop_animation/06_loop_animation.ino`
 
@@ -54,13 +55,11 @@ for (int c = 0; c < 12; ++c) {
 }
 ```
 
-이 코드는 열 번호를 반복 변수로 사용해 LED 한 점이 왼쪽에서 오른쪽으로 움직이는 것처럼 보이게 한다.
+열 번호를 반복 변수로 사용해 LED 점이 왼쪽에서 오른쪽으로 움직이는 것처럼 보이게 한다.
 
 ## 7주차 예제: 명령 문자를 함수로 연결
 
 파일: `code/arduino/09_face_main/09_face_main.ino`
-
-시리얼 모니터에서 다음 문자를 보낸다.
 
 | 명령 | 동작 |
 |------|------|
@@ -84,7 +83,7 @@ void handleCommand(char cmd)
 }
 ```
 
-`currentState`는 여러 함수가 함께 읽는 전역 상태이고, `commandCount`는 명령 처리 함수 내부에서만 필요한 누적값이므로 `static` 지역변수로 둔다.
+`currentState`는 여러 함수가 함께 읽는 전역 상태이고, `commandCount`는 명령 처리 함수 안에서만 필요한 누적값이므로 `static` 지역 변수로 둔다.
 
 ## 10주차 예제: 배열이 막대그래프가 된다
 
@@ -95,7 +94,7 @@ const int scores[] = {23, 45, 67, 89, 55, 12};
 const int scoreCount = sizeof(scores) / sizeof(scores[0]);
 ```
 
-점수 배열의 각 원소를 LED Matrix의 세로 막대로 표시한다. 배열 원소 개수, 반복문, 함수 전달을 한 번에 확인할 수 있다.
+점수 배열의 각 요소를 LED Matrix의 세로 막대로 표시한다.
 
 ## 11주차 예제: WiFi 명령
 
@@ -106,13 +105,6 @@ const int scoreCount = sizeof(scores) / sizeof(scores[0]);
 3. 업로드 후 시리얼 모니터의 IP 주소를 브라우저에서 연다.
 4. `/run`, `/slow`, `/stop` 버튼으로 LED Matrix 상태를 바꾼다.
 5. `/packet` 경로에서 `S,42.0,25.0,RUN` 형식의 문자열 패킷을 확인한다.
-
-```cpp
-uint8_t frame[8][12];
-char currentState[16] = "NEUTRAL";
-```
-
-이 예제는 LED Matrix를 2차원 배열로 다루고, HTTP 요청 문자열을 상태 변경 함수와 연결한다. `/packet` 응답은 뒤쪽 ROS2 브리지에서 센서 패킷을 파싱하는 흐름으로 확장할 수 있다.
 
 ## 12주차 예제: 포인터로 센서 버퍼 순회
 
@@ -129,7 +121,18 @@ float averageOf(const float *values, int count)
 }
 ```
 
-가상 센서값 배열을 포인터로 순회해 평균과 최댓값을 계산하고, 평균을 LED Matrix 막대로 표시한다. 포인터와 길이(`count`)를 함께 넘기는 패턴은 ROS2의 LiDAR 배열, 센서 패킷, 메시지 버퍼를 처리할 때 그대로 이어진다.
+가상 센서값 배열을 포인터로 순회해 평균과 최댓값을 계산하고, 평균을 LED Matrix 막대로 표시한다.
+
+## 13주차 예제: 포인터 배열과 함수 포인터 배열
+
+파일: `code/arduino/13_pointer_dispatch/13_pointer_dispatch.ino`
+
+```cpp
+const char *commandNames[] = {"clear", "run", "slow", "stop"};
+void (*handlers[])() = {showClear, showRun, showSlow, showStop};
+```
+
+시리얼 모니터에서 `0`, `1`, `2`, `3`을 입력하면 같은 인덱스의 함수가 호출된다. 명령 이름 배열과 함수 포인터 배열의 순서를 맞추는 것이 핵심이다.
 
 ## 14주차 예제: 구조체 패킷
 

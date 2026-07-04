@@ -17,17 +17,17 @@ flowchart LR
 |------|----------|------------------|--------------------|
 | 1~4주 | 출력, 입력, 자료형, 연산자 | 콘솔 출력과 계산 | 센서값을 숫자로 다루는 기초 |
 | 5~7주 | 조건문, 반복문, 함수 | LED 표정, 애니메이션, 시리얼 명령 | 명령을 함수로 분리하는 제어 구조 |
-| 10~11주 | 배열, 문자열 | 8×12 격자, WiFi 명령 | 로봇 지도와 통신 프로토콜의 시작 |
-| 12~14주 | 포인터, 구조체 | 센서 패킷, 직렬화 | ROS2 메시지와 브리지의 핵심 |
+| 10~11주 | 배열, 문자열 | 8x12 격자, WiFi 명령 | 로봇 지도와 통신 프로토콜의 시작 |
+| 12~14주 | 포인터, 구조체 | 센서 버퍼, 명령 테이블, 직렬화 | ROS2 메시지와 브리지의 핵심 |
 | 15주 | 종합 | C 로직이 ROS2 토픽으로 연결 | 기말 프로젝트와 후속 로봇 교과 |
 
 ## C를 처음 배우는 학생이 헷갈리는 지점
 
 | 헷갈리는 말 | 이렇게 이해하기 |
 |-------------|-----------------|
-| 변수 | 센서값, 속도, 상태처럼 이름 붙인 저장칸 |
-| 배열 | 같은 종류의 값을 줄 세운 것. LED 96개, LiDAR 거리 360개를 다룰 때 필요 |
-| 포인터 | 값 자체가 아니라 값이 있는 주소. 큰 배열을 함수에 넘길 때 필요 |
+| 변수 | 센서값, 속도, 상태처럼 이름 붙인 저장 공간 |
+| 배열 | 같은 종류의 값을 줄 세운 것. LED 96개나 LiDAR 거리 360개를 다룰 때 필요 |
+| 포인터 | 값 자체가 아니라 값이 있는 주소. 큰 배열이나 함수를 넘길 때 필요 |
 | 구조체 | 서로 다른 값을 한 묶음으로 만든 패킷. 거리+속도+상태를 함께 보낼 때 필요 |
 | 문자열 | 문자 배열. 통신 명령 `"S,42.0,25.0,RUN"`을 다룰 때 필요 |
 | ROS2 토픽 | 프로그램끼리 데이터를 주고받는 이름 붙은 통로 |
@@ -37,13 +37,12 @@ flowchart LR
 1. **문법 먼저**: 해당 주차의 핵심 문법을 10줄 이하 예제로 이해한다.
 2. **보드로 확인**: 같은 개념이 Arduino R4에서 어떻게 보이는지 확인한다.
 3. **로봇으로 확장**: 그 개념이 ROS2 토픽, 센서 배열, 주행 명령으로 어떻게 바뀌는지 본다.
-4. **체크포인트**: 형성평가 3문제를 스스로 풀어 설명할 수 있으면 다음 주차로 넘어간다.
+4. **체크포인트**: 형성평가 3문제를 스스로 답하고 설명할 수 있으면 다음 주차로 넘어간다.
 
 강의자는 [3시간 강의 운영안](teaching-guide-3h.md)을 함께 보면서 각 주차를 도입, 개념 설명, 라이브 코딩, 학생 실습, 정리 활동으로 나누어 운영한다. 1주차 실습 전에는 [환경 설정 상세 가이드](setup-guide.md)를 먼저 안내해 Visual Studio 2022, Arduino IDE, Tinkercad 준비 상태를 확인한다.
 
 !!! note "공식 기준"
-    Arduino UNO R4 WiFi는 12×8 LED Matrix와 Wi-Fi/Bluetooth 연결을 제공한다.  
-    ROS2 수업 환경은 2026년 기준으로 Ubuntu 24.04와 ROS2 Jazzy를 기본 권장 환경으로 둔다.
+    Arduino UNO R4 WiFi는 12x8 LED Matrix와 Wi-Fi/Bluetooth 연결을 제공한다. ROS2 수업 환경은 2026년 기준으로 Ubuntu 24.04와 ROS2 Jazzy를 기본 권장 환경으로 둔다.
 
 ## 기말 프로젝트까지 필요한 최소 예제
 
@@ -55,12 +54,13 @@ flowchart LR
 | 10주차 | `code/c/examples/ex10_array_stats.c`, `code/arduino/10_array_bar_graph` | 배열 통계와 LED Matrix 막대그래프 확인 |
 | 11주차 | `code/c/examples/ex11_2d_grid_search.c`, `code/arduino/11_wifi_car` | 2차원 배열 격자와 웹/WiFi 명령으로 보드 제어 |
 | 12주차 | `code/c/examples/ex12_pointer_basics.c`, `code/c/examples/ex12_pointer_challenges.c`, `code/arduino/12_pointer_buffer` | 포인터로 값 변경, 배열 순회, 센서 버퍼 평균 계산 |
+| 13주차 | `code/c/examples/ex13_pointer_applications.c`, `code/c/examples/ex13_function_pointer_menu.c`, `code/arduino/13_pointer_dispatch` | 포인터 배열, 배열 포인터, 함수 포인터 배열을 명령 테이블로 연결 |
 | 14주차 | `code/c/examples/ex06_pose_struct.c`, `code/arduino/15_struct_packet` | 구조체와 문자열 패킷 |
 | 15주차 | `code/ros2/stella_n2_bridge` | C 판단 로직을 ROS2 주행 명령으로 연결 |
 
 ## 디버깅 습관
 
 - 컴파일 오류는 **첫 번째 오류**부터 본다. 뒤의 오류는 연쇄 반응일 수 있다.
-- Arduino가 안 보이면 보드 종류, 포트, USB 케이블, 시리얼 모니터 속도(115200)를 확인한다.
+- Arduino가 안 보이면 보드 종류, 포트, USB 케이블, 시리얼 모니터 속도 `115200`을 확인한다.
 - WiFi 예제가 안 되면 SSID/비밀번호, 같은 공유기 접속 여부, 시리얼 출력의 IP 주소를 확인한다.
 - ROS2 토픽이 안 보이면 `source /opt/ros/jazzy/setup.bash`, `ros2 topic list`, `ros2 topic echo` 순서로 확인한다.
