@@ -11,7 +11,7 @@ Arduino UNO R4 WiFi는 수업에서 C 문법을 바로 눈으로 확인하기 �
 | `09_face_main` | 7주차 | 함수, 시리얼 명령 | `h`, `a`, `o`, `n` 명령으로 표정 변경 |
 | `09_scope_state` | 9주차 | 전역변수, static 지역변수 | 상태 문자열과 명령 카운터 유지 |
 | `10_array_bar_graph` | 10주차 | 1차원 배열, 평균, 막대그래프 | 점수 배열을 LED Matrix 막대로 표시 |
-| `11_wifi_car` | 11주차 | 문자열, WiFi 서버 | 브라우저 버튼으로 LED 상태 제어 |
+| `11_wifi_car` | 11주차 | 2차원 배열, 문자열, WiFi 서버 | 브라우저 버튼으로 LED 상태 제어, `/packet` 문자열 출력 |
 | `15_struct_packet` | 14주차 | 구조체, 직렬화 | `S,거리,속도,상태` 패킷 출력 |
 
 ## 공통 체크리스트
@@ -103,6 +103,15 @@ const int scoreCount = sizeof(scores) / sizeof(scores[0]);
 1. `arduino_secrets.h.example`을 `arduino_secrets.h`로 복사한다.
 2. `SECRET_SSID`, `SECRET_PASS`를 수정한다.
 3. 업로드 후 시리얼 모니터의 IP 주소를 브라우저에서 연다.
+4. `/run`, `/slow`, `/stop` 버튼으로 LED Matrix 상태를 바꾼다.
+5. `/packet` 경로에서 `S,42.0,25.0,RUN` 형식의 문자열 패킷을 확인한다.
+
+```cpp
+uint8_t frame[8][12];
+char currentState[16] = "NEUTRAL";
+```
+
+이 예제는 LED Matrix를 2차원 배열로 다루고, HTTP 요청 문자열을 상태 변경 함수와 연결한다. `/packet` 응답은 뒤쪽 ROS2 브리지에서 센서 패킷을 파싱하는 흐름으로 확장할 수 있다.
 
 ## 14주차 예제: 구조체 패킷
 

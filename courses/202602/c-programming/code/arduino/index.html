@@ -1655,8 +1655,8 @@
 <tr>
 <td><code>11_wifi_car</code></td>
 <td>11주차</td>
-<td>문자열, WiFi 서버</td>
-<td>브라우저 버튼으로 LED 상태 제어</td>
+<td>2차원 배열, 문자열, WiFi 서버</td>
+<td>브라우저 버튼으로 LED 상태 제어, <code>/packet</code> 문자열 출력</td>
 </tr>
 <tr>
 <td><code>15_struct_packet</code></td>
@@ -1754,11 +1754,17 @@
 <li><code>arduino_secrets.h.example</code>을 <code>arduino_secrets.h</code>로 복사한다.</li>
 <li><code>SECRET_SSID</code>, <code>SECRET_PASS</code>를 수정한다.</li>
 <li>업로드 후 시리얼 모니터의 IP 주소를 브라우저에서 연다.</li>
+<li><code>/run</code>, <code>/slow</code>, <code>/stop</code> 버튼으로 LED Matrix 상태를 바꾼다.</li>
+<li><code>/packet</code> 경로에서 <code>S,42.0,25.0,RUN</code> 형식의 문자열 패킷을 확인한다.</li>
 </ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">uint8_t</span><span class="w"> </span><span class="n">frame</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">12</span><span class="p">];</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kt">char</span><span class="w"> </span><span class="n">currentState</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;NEUTRAL&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>이 예제는 LED Matrix를 2차원 배열로 다루고, HTTP 요청 문자열을 상태 변경 함수와 연결한다. <code>/packet</code> 응답은 뒤쪽 ROS2 브리지에서 센서 패킷을 파싱하는 흐름으로 확장할 수 있다.</p>
 <h2 id="14">14주차 예제: 구조체 패킷<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/15_struct_packet/15_struct_packet.ino</code></p>
 <p>출력 예:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>S,42.0,25.0,RUN
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>S,42.0,25.0,RUN
 </code></pre></div>
 <p>이 문자열은 15주차 ROS2 브리지에서 다시 구조체로 파싱할 수 있다.</p>
 <h2 id="_3">공식 문서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>

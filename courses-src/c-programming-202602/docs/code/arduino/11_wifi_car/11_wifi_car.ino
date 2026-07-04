@@ -102,11 +102,26 @@ void sendPage(WiFiClient &client) {
   client.print(currentState);
   client.println("</p>");
   client.println("<p><a href='/run'><button>RUN</button></a> <a href='/slow'><button>SLOW</button></a> <a href='/stop'><button>STOP</button></a></p>");
+  client.println("<p><a href='/packet'>Open packet text</a></p>");
   client.println("<p>Packet format: S,distance_cm,speed_cmps,state</p>");
   client.println("</body></html>");
 }
 
-void handleRequest(const String &request) {
+void sendPacket(WiFiClient &client) {
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-Type: text/plain; charset=utf-8");
+  client.println("Connection: close");
+  client.println();
+  client.print("S,42.0,25.0,");
+  client.println(currentState);
+}
+
+bool handleRequest(const String &request, WiFiClient &client) {
+  if (request.indexOf("GET /packet") >= 0) {
+    sendPacket(client);
+    return true;
+  }
+
   if (request.indexOf("GET /run") >= 0) {
     setState("RUN");
   } else if (request.indexOf("GET /slow") >= 0) {
@@ -114,6 +129,8 @@ void handleRequest(const String &request) {
   } else if (request.indexOf("GET /stop") >= 0) {
     setState("STOP");
   }
+
+  return false;
 }
 
 void setup() {
@@ -141,13 +158,15 @@ void loop() {
   }
 
   String request = client.readStringUntil('\r');
-  handleRequest(request);
+  bool responseSent = handleRequest(request, client);
 
   while (client.available()) {
     client.read();
   }
 
-  sendPage(client);
+  if (!responseSent) {
+    sendPage(client);
+  }
   delay(1);
   client.stop();
 }
