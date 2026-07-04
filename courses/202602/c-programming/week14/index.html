@@ -1085,6 +1085,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="13. 예상 문제 해설">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예상 문제 #1 · 문자열 배열과 이중 포인터
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예상 문제 #2 · 구조체 배열과 포인터 연산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예상 문제 풀이 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1935,6 +1974,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="13. 예상 문제 해설">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예상 문제 #1 · 문자열 배열과 이중 포인터
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예상 문제 #2 · 구조체 배열과 포인터 연산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        예상 문제 풀이 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2492,6 +2570,7 @@
 <h2 id="13">13. 예상 문제 해설<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
 <p><img alt="예상 문제 1" src="../img/pdf-crops/week14_14_4_p02.png" /></p>
 <p>예상 문제 #1은 문자열 배열과 이중 포인터 문제다.</p>
+<h3 id="1_1">예상 문제 #1 · 문자열 배열과 이중 포인터<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Tomato&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pasta&quot;</span><span class="w"> </span><span class="p">};</span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
@@ -2499,31 +2578,310 @@
 <a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)));</span>
 <a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
 </code></pre></div>
-<p>풀이:</p>
-<ul>
-<li><code>q</code>는 <code>str[0]</code>, 즉 <code>"Banana"</code>를 가리킨다. <code>**q</code>는 첫 글자 <code>B</code>.</li>
-<li><code>q + 1</code>은 <code>"Tomato"</code>를 가리킨다. 첫 글자는 <code>T</code>.</li>
-<li><code>q + 2</code>는 <code>"Pasta"</code>를 가리킨다. <code>+ 2</code>는 세 번째 글자이므로 <code>s</code>.</li>
-</ul>
+<p>이 문제는 <code>char* str[]</code>와 <code>char** q</code>의 관계를 읽는 문제다. 먼저 자료형을 말로 바꾸면 다음과 같다.</p>
+<table>
+<thead>
+<tr>
+<th>표현</th>
+<th>의미</th>
+<th>가리키는 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td>문자열 포인터 배열의 첫 번째 요소 주소</td>
+<td><code>&amp;str[0]</code></td>
+</tr>
+<tr>
+<td><code>str[0]</code></td>
+<td>첫 번째 문자열의 시작 주소</td>
+<td><code>"Banana"</code></td>
+</tr>
+<tr>
+<td><code>str[1]</code></td>
+<td>두 번째 문자열의 시작 주소</td>
+<td><code>"Tomato"</code></td>
+</tr>
+<tr>
+<td><code>str[2]</code></td>
+<td>세 번째 문자열의 시작 주소</td>
+<td><code>"Pasta"</code></td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td><code>str</code>의 시작 주소를 저장한 이중 포인터</td>
+<td><code>&amp;str[0]</code></td>
+</tr>
+</tbody>
+</table>
+<p>풀이 순서:</p>
+<ol>
+<li><code>q = str;</code>이므로 <code>q</code>는 <code>str[0]</code>의 위치를 가리킨다.</li>
+<li><code>*q</code>는 <code>str[0]</code>, 즉 <code>"Banana"</code>의 시작 주소다.</li>
+<li><code>**q</code>는 <code>"Banana"</code>의 첫 글자이므로 <code>B</code>다.</li>
+<li><code>q + 1</code>은 <code>str[1]</code>의 위치로 이동한다.</li>
+<li><code>*(q + 1)</code>은 <code>"Tomato"</code>의 시작 주소다.</li>
+<li><code>*(*(q + 1))</code>은 <code>"Tomato"</code>의 첫 글자이므로 <code>T</code>다.</li>
+<li><code>q + 2</code>는 <code>str[2]</code>의 위치로 이동한다.</li>
+<li><code>*(q + 2)</code>는 <code>"Pasta"</code>의 시작 주소다.</li>
+<li><code>*(q + 2) + 2</code>는 <code>"Pasta"</code>에서 두 칸 이동한 주소다.</li>
+<li><code>*(*(q + 2) + 2)</code>는 <code>"Pasta"</code>의 세 번째 글자이므로 <code>s</code>다.</li>
+</ol>
 <p>출력:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>B
 <a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>T
 <a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>s
 </code></pre></div>
+<p>시험장에서 이 문제를 풀 때는 <code>q + 1</code>, <code>q + 2</code>를 문자 하나 이동으로 착각하면 안 된다. <code>q</code>는 <code>char**</code>이므로 <code>q + 1</code>은 다음 문자열 포인터 요소로 이동한다. 문자 하나 이동은 <code>*(q + 2) + 2</code>처럼 문자열 시작 주소를 얻은 뒤에 일어난다.</p>
+<table>
+<thead>
+<tr>
+<th>헷갈리는 표현</th>
+<th>읽는 법</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>**q</code></td>
+<td><code>q</code>가 가리키는 문자열의 첫 글자</td>
+<td><code>B</code></td>
+</tr>
+<tr>
+<td><code>*(*(q + 1))</code></td>
+<td>다음 문자열의 첫 글자</td>
+<td><code>T</code></td>
+</tr>
+<tr>
+<td><code>*(*(q + 2) + 2)</code></td>
+<td>세 번째 문자열에서 두 칸 이동 후 문자</td>
+<td><code>s</code></td>
+</tr>
+</tbody>
+</table>
+<p>확인 문제:</p>
+<ol>
+<li><code>printf("%c\n", *(*(q + 0) + 3));</code>의 출력은?</li>
+<li><code>printf("%c\n", *(*(q + 1) + 2));</code>의 출력은?</li>
+<li><code>printf("%s\n", *(q + 2));</code>의 출력은?</li>
+</ol>
+<p>정답:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>a
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>m
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>Pasta
+</code></pre></div>
 <p><img alt="예상 문제 2" src="../img/pdf-crops/week14_14_4_p03.png" /></p>
 <p>예상 문제 #2는 구조체 배열과 포인터 연산 문제다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="p">);</span>
+<h3 id="2_1">예상 문제 #2 · 구조체 배열과 포인터 연산<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="p">);</span>
 </code></pre></div>
-<p>계산:</p>
-<ul>
-<li><code>(p + 1)-&gt;kor</code>는 두 번째 학생의 국어 점수 <code>88</code>.</li>
-<li><code>(p + 2)-&gt;math</code>는 세 번째 학생의 수학 점수 <code>75</code>.</li>
-<li><code>sum = 88 + 75 = 163</code>.</li>
-<li><code>p-&gt;kor</code>와 <code>p-&gt;math</code>는 첫 번째 학생의 <code>90</code>, <code>85</code>.</li>
-<li><code>total = 163 + 90 + 85 = 338</code>.</li>
-<li>최종 출력은 <code>163 + 338 = 501</code>.</li>
+<p>이 문제는 <code>p = &amp;s[0];</code> 이후 포인터 연산이 어느 학생을 가리키는지 확인하는 문제다.</p>
+<table>
+<thead>
+<tr>
+<th>표현</th>
+<th>같은 표현</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p</code></td>
+<td><code>&amp;s[0]</code></td>
+<td>첫 번째 학생</td>
+</tr>
+<tr>
+<td><code>p + 1</code></td>
+<td><code>&amp;s[1]</code></td>
+<td>두 번째 학생</td>
+</tr>
+<tr>
+<td><code>p + 2</code></td>
+<td><code>&amp;s[2]</code></td>
+<td>세 번째 학생</td>
+</tr>
+<tr>
+<td><code>(p + 1)-&gt;kor</code></td>
+<td><code>s[1].kor</code></td>
+<td>두 번째 학생 국어 점수</td>
+</tr>
+<tr>
+<td><code>(p + 2)-&gt;math</code></td>
+<td><code>s[2].math</code></td>
+<td>세 번째 학생 수학 점수</td>
+</tr>
+</tbody>
+</table>
+<p>초기 데이터:</p>
+<table>
+<thead>
+<tr>
+<th>인덱스</th>
+<th>이름</th>
+<th><code>kor</code></th>
+<th><code>math</code></th>
+<th><code>sum</code></th>
+<th><code>total</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s[0]</code></td>
+<td>홍길동</td>
+<td>90</td>
+<td>85</td>
+<td>초기값 0</td>
+<td>초기값 0</td>
+</tr>
+<tr>
+<td><code>s[1]</code></td>
+<td>이순신</td>
+<td>88</td>
+<td>91</td>
+<td>초기값 0</td>
+<td>초기값 0</td>
+</tr>
+<tr>
+<td><code>s[2]</code></td>
+<td>아무개</td>
+<td>80</td>
+<td>75</td>
+<td>초기값 0</td>
+<td>초기값 0</td>
+</tr>
+</tbody>
+</table>
+<p>계산 1단계:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(p + 1)-&gt;kor</code></td>
+<td><code>s[1].kor = 88</code></td>
+</tr>
+<tr>
+<td><code>(p + 2)-&gt;math</code></td>
+<td><code>s[2].math = 75</code></td>
+</tr>
+<tr>
+<td><code>(p + 1)-&gt;sum</code></td>
+<td><code>88 + 75 = 163</code></td>
+</tr>
+</tbody>
+</table>
+<p>계산 2단계:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(p + 1)-&gt;sum</code></td>
+<td><code>163</code></td>
+</tr>
+<tr>
+<td><code>p-&gt;kor</code></td>
+<td><code>s[0].kor = 90</code></td>
+</tr>
+<tr>
+<td><code>p-&gt;math</code></td>
+<td><code>s[0].math = 85</code></td>
+</tr>
+<tr>
+<td><code>(p + 1)-&gt;total</code></td>
+<td><code>163 + 90 + 85 = 338</code></td>
+</tr>
+</tbody>
+</table>
+<p>계산 3단계:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="p">);</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(p + 1)-&gt;sum</code></td>
+<td><code>163</code></td>
+</tr>
+<tr>
+<td><code>(p + 1)-&gt;total</code></td>
+<td><code>338</code></td>
+</tr>
+<tr>
+<td>최종 출력</td>
+<td><code>163 + 338 = 501</code></td>
+</tr>
+</tbody>
+</table>
+<p>따라서 최종 출력은 다음과 같다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>501
+</code></pre></div>
+<p>이 문제의 핵심은 <code>-&gt;</code>가 구조체 포인터의 멤버 접근이라는 점이다. 다음 두 표현은 같은 의미다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)).</span><span class="n">sum</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">sum</span>
+</code></pre></div>
+<p>시험장에서 실수하기 쉬운 지점:</p>
+<table>
+<thead>
+<tr>
+<th>실수</th>
+<th>왜 틀리는가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(p + 1)-&gt;math</code>를 사용하는 줄로 착각</td>
+<td>실제 첫 줄은 <code>(p + 2)-&gt;math</code>를 사용한다</td>
+</tr>
+<tr>
+<td><code>p-&gt;kor</code>를 두 번째 학생으로 착각</td>
+<td><code>p</code>는 여전히 <code>s[0]</code>을 가리킨다</td>
+</tr>
+<tr>
+<td><code>sum</code>과 <code>total</code>이 모든 학생에게 저장된다고 착각</td>
+<td>이 코드에서는 <code>(p + 1)</code>, 즉 <code>s[1]</code>의 <code>sum</code>, <code>total</code>만 바뀐다</td>
+</tr>
+</tbody>
+</table>
+<p>확인 문제:</p>
+<ol>
+<li>첫 줄이 <code>(p + 1)-&gt;sum = p-&gt;kor + (p + 1)-&gt;math;</code>로 바뀌면 <code>sum</code>은 얼마인가?</li>
+<li>둘째 줄이 <code>(p + 2)-&gt;total = (p + 1)-&gt;sum + (p + 2)-&gt;kor;</code>로 바뀌면 어느 학생의 <code>total</code>이 바뀌는가?</li>
+<li><code>printf("%d\n", s[1].sum);</code>을 추가하면 무엇이 출력되는가?</li>
+</ol>
+<p>정답:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>181
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>s[2]
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>163
+</code></pre></div>
+<h3 id="_9">예상 문제 풀이 체크리스트<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>char* str[]</code>는 문자열 배열이 아니라 문자열을 가리키는 포인터 배열임을 설명할 수 있다.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>char** q</code>에서 <code>q + 1</code>은 다음 문자열 포인터로 이동한다는 점을 설명할 수 있다.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>p = &amp;s[0]</code>일 때 <code>p</code>, <code>p + 1</code>, <code>p + 2</code>가 각각 어떤 구조체 원소를 가리키는지 표시할 수 있다.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>-&gt;</code> 표현을 배열 인덱스 표현으로 바꾸어 계산할 수 있다.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 최종 출력 <code>B</code>, <code>T</code>, <code>s</code>, <code>501</code>을 계산 과정과 함께 설명할 수 있다.</li>
 </ul>
 <h2 id="14_1">14. 형성평가 체크포인트<a class="headerlink" href="#14_1" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
