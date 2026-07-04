@@ -55,7 +55,7 @@ flowchart LR
 | 11주차 | `code/c/examples/ex11_2d_grid_search.c`, `code/arduino/11_wifi_car` | 2차원 배열 격자와 웹/WiFi 명령으로 보드 제어 |
 | 12주차 | `code/c/examples/ex12_pointer_basics.c`, `code/c/examples/ex12_pointer_challenges.c`, `code/arduino/12_pointer_buffer` | 포인터로 값 변경, 배열 순회, 센서 버퍼 평균 계산 |
 | 13주차 | `code/c/examples/ex13_pointer_applications.c`, `code/c/examples/ex13_function_pointer_menu.c`, `code/arduino/13_pointer_dispatch` | 포인터 배열, 배열 포인터, 함수 포인터 배열을 명령 테이블로 연결 |
-| 14주차 | `code/c/examples/ex06_pose_struct.c`, `code/arduino/15_struct_packet` | 구조체와 문자열 패킷 |
+| 14주차 | `code/c/examples/ex14_struct_student.c`, `code/c/examples/ex14_struct_packet_list.c`, `code/arduino/15_struct_packet` | 구조체 배열, 구조체 포인터, 문자열 패킷, 연결리스트 맛보기 |
 | 15주차 | `code/ros2/stella_n2_bridge` | C 판단 로직을 ROS2 주행 명령으로 연결 |
 
 ## 디버깅 습관

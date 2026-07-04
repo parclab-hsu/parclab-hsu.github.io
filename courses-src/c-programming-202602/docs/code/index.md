@@ -8,7 +8,7 @@
 |------|------|--------------|
 | `code/c/examples` | PC에서 컴파일하는 순수 C 예제 | `ex12_pointer_basics.c` |
 | `code/arduino` | Arduino UNO R4 WiFi 스케치 | `05_showface/05_showface.ino` |
-| `code/ros2` | ROS2 연동 예제 | `stella_n2_bridge/README.md` |
+| `code/ros2` | ROS2 연동 예제 | `stella_n2_bridge/index.md` |
 
 ## PC C 예제 실행
 
@@ -57,6 +57,8 @@ ros2 topic echo /cmd_vel
 2. `ex13_pointer_applications.c`로 문자열 포인터, 포인터 배열, 배열 포인터를 확인한다.
 3. `ex13_function_pointer_menu.c`로 함수 포인터 배열을 메뉴 구조로 이해한다.
 4. `13_pointer_dispatch.ino`로 Arduino 명령과 함수 호출을 연결한다.
-5. `packet_parser.c`와 `stella_n2_bridge`로 문자열 패킷과 ROS2 토픽 연결을 확인한다.
+5. `ex14_struct_student.c`로 구조체 선언, 배열, 구조체 포인터 인수를 확인한다.
+6. `ex14_struct_packet_list.c`로 구조체 패킷, 직렬화, 연결리스트 맛보기를 확인한다.
+7. `packet_parser.c`와 `stella_n2_bridge`로 문자열 패킷과 ROS2 토픽 연결을 확인한다.
 
-이 순서는 **포인터 -> 명령 테이블 -> 문자열 패킷 -> ROS2 콜백**으로 이어진다.
+이 순서는 **포인터 -> 명령 테이블 -> 구조체 패킷 -> 문자열 직렬화 -> ROS2 콜백**으로 이어진다.
