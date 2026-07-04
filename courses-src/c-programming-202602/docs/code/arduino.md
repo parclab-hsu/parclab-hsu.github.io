@@ -10,6 +10,7 @@ Arduino UNO R4 WiFi는 수업에서 C 문법을 바로 눈으로 확인하기 �
 | `06_loop_animation` | 6주차 | 반복문, 중첩 반복 | 점 스캔, 막대 증가, 테두리 출력 |
 | `09_face_main` | 7주차 | 함수, 시리얼 명령 | `h`, `a`, `o`, `n` 명령으로 표정 변경 |
 | `09_scope_state` | 9주차 | 전역변수, static 지역변수 | 상태 문자열과 명령 카운터 유지 |
+| `10_array_bar_graph` | 10주차 | 1차원 배열, 평균, 막대그래프 | 점수 배열을 LED Matrix 막대로 표시 |
 | `11_wifi_car` | 11주차 | 문자열, WiFi 서버 | 브라우저 버튼으로 LED 상태 제어 |
 | `15_struct_packet` | 14주차 | 구조체, 직렬화 | `S,거리,속도,상태` 패킷 출력 |
 
@@ -83,6 +84,17 @@ void handleCommand(char cmd)
 ```
 
 `currentState`는 여러 함수가 함께 읽는 전역 상태이고, `commandCount`는 명령 처리 함수 내부에서만 필요한 누적값이므로 `static` 지역변수로 둔다.
+
+## 10주차 예제: 배열이 막대그래프가 된다
+
+파일: `code/arduino/10_array_bar_graph/10_array_bar_graph.ino`
+
+```cpp
+const int scores[] = {23, 45, 67, 89, 55, 12};
+const int scoreCount = sizeof(scores) / sizeof(scores[0]);
+```
+
+점수 배열의 각 원소를 LED Matrix의 세로 막대로 표시한다. 배열 원소 개수, 반복문, 함수 전달을 한 번에 확인할 수 있다.
 
 ## 11주차 예제: WiFi 명령
 

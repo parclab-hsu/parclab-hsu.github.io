@@ -52,6 +52,7 @@ flowchart LR
 | 5주차 | `code/arduino/05_showface` | 조건문 결과를 LED 표정으로 확인 |
 | 7주차 | `code/arduino/09_face_main` | 시리얼 명령을 함수 호출로 연결 |
 | 9주차 | `code/c/examples/ex09_scope_lifetime.c`, `code/arduino/09_scope_state` | 지역/전역/static 변수의 수명과 상태 유지 확인 |
+| 10주차 | `code/c/examples/ex10_array_stats.c`, `code/arduino/10_array_bar_graph` | 배열 통계와 LED Matrix 막대그래프 확인 |
 | 11주차 | `code/arduino/11_wifi_car` | 웹/WiFi 명령으로 보드 제어 |
 | 14주차 | `code/c/examples/ex06_pose_struct.c`, `code/arduino/15_struct_packet` | 구조체와 문자열 패킷 |
 | 15주차 | `code/ros2/stella_n2_bridge` | C 판단 로직을 ROS2 주행 명령으로 연결 |
