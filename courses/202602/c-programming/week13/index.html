@@ -827,6 +827,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이론-실습 연결표
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1727,6 +1738,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이론-실습 연결표
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2158,6 +2180,38 @@
 </tbody>
 </table>
 <hr />
+<h2 id="-">이론-실습 연결표<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>이론 개념</th>
+<th>바로 해볼 실습</th>
+<th>확인 질문</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>문자열은 문자 배열 또는 문자 포인터로 다룬다</td>
+<td><code>char sa[]</code>와 <code>char *ps</code> 출력 결과를 비교한다</td>
+<td>두 선언은 메모리 관점에서 무엇이 다른가?</td>
+</tr>
+<tr>
+<td>포인터 배열은 주소 목록이다</td>
+<td>메뉴 문자열 목록을 <code>char *menu[]</code>로 만든다</td>
+<td>각 원소가 문자열 자체가 아니라 주소라는 점을 설명할 수 있는가?</td>
+</tr>
+<tr>
+<td>함수 포인터는 동작을 값처럼 고른다</td>
+<td>계산기 메뉴를 함수 포인터 배열로 호출한다</td>
+<td>명령 번호와 함수 배열 순서가 맞아야 하는 이유는 무엇인가?</td>
+</tr>
+<tr>
+<td>콜백과 디스패치</td>
+<td>Arduino 명령 함수와 ROS2 콜백 구조를 비교한다</td>
+<td>이벤트가 도착했을 때 어떤 함수가 호출되는가?</td>
+</tr>
+</tbody>
+</table>
 <h2 id="1">1. 포인터와 문자열<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>문자열은 문자들의 배열이다. C에는 별도의 <code>string</code> 자료형이 없기 때문에 문자열은 <code>char</code> 배열 또는 <code>char *</code>로 다룬다. 문자열 끝에는 항상 널 문자 <code>'\0'</code>가 들어간다. 그래서 <code>"ABC"</code>는 화면에는 세 글자처럼 보이지만 메모리에는 <code>A</code>, <code>B</code>, <code>C</code>, <code>\0</code> 네 칸이 필요하다.</p>
 <p><img alt="문자열과 포인터 개요" src="../img/pdf-crops/week13_string_array_pointer_intro.png" /></p>

@@ -883,6 +883,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이론-실습 연결표
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3시간 종합 실습 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1005,7 +1027,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#3_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 실습
@@ -1655,6 +1677,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이론-실습 연결표
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3시간 종합 실습 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1777,7 +1821,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#3_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 실습
@@ -1910,6 +1954,74 @@
 <li><strong>80~135분</strong>: LiDAR 배열 분석 또는 C↔ROS2 브리지 실습을 진행한다. 먼저 PC에서 C 함수 단위 테스트를 통과시키고, 그다음 로봇 또는 시뮬레이터에 연결한다.</li>
 <li><strong>135~180분</strong>: 기말 프로젝트 발표와 안전 점검을 진행한다. 속도 제한, 정지 조건, 장애물 거리 기준, 실패 시 수동 정지 절차를 발표 항목에 포함한다.</li>
 </ul>
+<h2 id="-">이론-실습 연결표<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>이론 개념</th>
+<th>바로 해볼 실습</th>
+<th>확인 질문</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>배열은 센서 묶음이다</td>
+<td><code>/scan</code>의 <code>ranges[]</code>를 손으로 추적한다</td>
+<td>가장 가까운 장애물을 찾으려면 어떤 반복문이 필요한가?</td>
+</tr>
+<tr>
+<td>구조체는 판단 결과를 묶는다</td>
+<td><code>ScanResult</code>의 필드가 무엇을 뜻하는지 읽는다</td>
+<td>거리, 방향, 정지 여부를 하나로 묶으면 무엇이 좋아지는가?</td>
+</tr>
+<tr>
+<td>포인터는 큰 데이터를 넘긴다</td>
+<td><code>analyze_scan(const float *ranges, int n, ...)</code>를 해석한다</td>
+<td>포인터와 길이 <code>n</code>을 함께 넘기는 이유는 무엇인가?</td>
+</tr>
+<tr>
+<td>ROS2 토픽은 프로그램 사이의 통로다</td>
+<td>테스트 <code>/scan</code>을 발행하고 <code>/cmd_vel</code>을 관찰한다</td>
+<td>C 함수의 반환값이 어떤 메시지 필드로 바뀌는가?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3_1">3시간 종합 실습 흐름<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>학생 활동</th>
+<th>성공 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C 로직 확인</td>
+<td><code>scan_logic.c</code>에서 최솟값 탐색과 정지 판단을 읽는다</td>
+<td>ROS2 없이도 함수의 입력과 출력을 설명한다</td>
+</tr>
+<tr>
+<td>브리지 확인</td>
+<td><code>stella_n2_bridge.cpp</code>에서 C 결과가 <code>/cmd_vel</code>로 바뀌는 줄을 찾는다</td>
+<td>선속도와 각속도 값이 어디서 정해지는지 표시한다</td>
+</tr>
+<tr>
+<td>토픽 테스트</td>
+<td>안전/주의/정지 3가지 <code>/scan</code> 메시지를 발행한다</td>
+<td><code>/cmd_vel</code> 출력이 상황에 따라 달라진다</td>
+</tr>
+<tr>
+<td>발표 정리</td>
+<td>C 함수, Arduino 표시, ROS2 토픽, 안전 절차를 한 장에 묶는다</td>
+<td>기능보다 판단 근거와 재현 절차를 설명한다</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">실습 안전 게이트</p>
+<p>실제 로봇을 움직이기 전에는 테스트 토픽으로 <code>/cmd_vel</code> 출력만 먼저 확인한다. 바퀴를 띄운 상태에서 첫 실행을 하고, 속도 제한과 수동 정지 방법을 팀원이 모두 알고 있을 때만 바닥 주행으로 넘어간다.</p>
+</div>
 <h2 id="_3">강의 본문 보강<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <h3 id="_4">개념을 더 풀어 설명하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>마지막 주차의 핵심은 ROS2라는 새 기술을 많이 외우는 것이 아니다. 한 학기 동안 배운 C 문법이 실제 로봇 소프트웨어 안에서 다시 등장한다는 사실을 확인하는 것이다. <code>/scan</code>의 <code>ranges[]</code>는 배열이고, 가장 가까운 장애물을 찾는 과정은 반복문이며, 정지와 회피 판단은 조건문이다. 판단 결과를 묶으면 구조체가 되고, 큰 배열을 함수에 넘길 때는 포인터가 쓰인다.</p>
@@ -1996,7 +2108,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="3_1">3. 실습<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
+<h2 id="3_2">3. 실습<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h2>
 <h3 id="15-1">실습 15-1 · 종합 복습<a class="headerlink" href="#15-1" title="Permanent link">&para;</a></h3>
 <p>배열·포인터·구조체 총정리.</p>
 <h3 id="15-2-cros2">실습 15-2 · C↔ROS2 연동<a class="headerlink" href="#15-2-cros2" title="Permanent link">&para;</a></h3>
