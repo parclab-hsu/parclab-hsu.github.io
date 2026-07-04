@@ -54,6 +54,7 @@ flowchart LR
 | 9주차 | `code/c/examples/ex09_scope_lifetime.c`, `code/arduino/09_scope_state` | 지역/전역/static 변수의 수명과 상태 유지 확인 |
 | 10주차 | `code/c/examples/ex10_array_stats.c`, `code/arduino/10_array_bar_graph` | 배열 통계와 LED Matrix 막대그래프 확인 |
 | 11주차 | `code/c/examples/ex11_2d_grid_search.c`, `code/arduino/11_wifi_car` | 2차원 배열 격자와 웹/WiFi 명령으로 보드 제어 |
+| 12주차 | `code/c/examples/ex12_pointer_basics.c`, `code/c/examples/ex12_pointer_challenges.c`, `code/arduino/12_pointer_buffer` | 포인터로 값 변경, 배열 순회, 센서 버퍼 평균 계산 |
 | 14주차 | `code/c/examples/ex06_pose_struct.c`, `code/arduino/15_struct_packet` | 구조체와 문자열 패킷 |
 | 15주차 | `code/ros2/stella_n2_bridge` | C 판단 로직을 ROS2 주행 명령으로 연결 |
 

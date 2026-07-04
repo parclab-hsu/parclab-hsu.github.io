@@ -1308,6 +1308,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12주차 예제: 포인터로 센서 버퍼 순회
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#14" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1571,6 +1582,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12주차 예제: 포인터로 센서 버퍼 순회
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#14" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1657,6 +1679,12 @@
 <td>11주차</td>
 <td>2차원 배열, 문자열, WiFi 서버</td>
 <td>브라우저 버튼으로 LED 상태 제어, <code>/packet</code> 문자열 출력</td>
+</tr>
+<tr>
+<td><code>12_pointer_buffer</code></td>
+<td>12주차</td>
+<td>포인터, 배열 순회, 센서 버퍼</td>
+<td>포인터로 가상 센서값 평균을 계산해 LED 막대 표시</td>
 </tr>
 <tr>
 <td><code>15_struct_packet</code></td>
@@ -1761,10 +1789,22 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kt">char</span><span class="w"> </span><span class="n">currentState</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;NEUTRAL&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p>이 예제는 LED Matrix를 2차원 배열로 다루고, HTTP 요청 문자열을 상태 변경 함수와 연결한다. <code>/packet</code> 응답은 뒤쪽 ROS2 브리지에서 센서 패킷을 파싱하는 흐름으로 확장할 수 있다.</p>
+<h2 id="12">12주차 예제: 포인터로 센서 버퍼 순회<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p>파일: <code>code/arduino/12_pointer_buffer/12_pointer_buffer.ino</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">float</span><span class="w"> </span><span class="nf">averageOf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+</code></pre></div>
+<p>가상 센서값 배열을 포인터로 순회해 평균과 최댓값을 계산하고, 평균을 LED Matrix 막대로 표시한다. 포인터와 길이(<code>count</code>)를 함께 넘기는 패턴은 ROS2의 LiDAR 배열, 센서 패킷, 메시지 버퍼를 처리할 때 그대로 이어진다.</p>
 <h2 id="14">14주차 예제: 구조체 패킷<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
 <p>파일: <code>code/arduino/15_struct_packet/15_struct_packet.ino</code></p>
 <p>출력 예:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>S,42.0,25.0,RUN
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>S,42.0,25.0,RUN
 </code></pre></div>
 <p>이 문자열은 15주차 ROS2 브리지에서 다시 구조체로 파싱할 수 있다.</p>
 <h2 id="_3">공식 문서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>

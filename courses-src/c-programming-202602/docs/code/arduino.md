@@ -12,6 +12,7 @@ Arduino UNO R4 WiFi는 수업에서 C 문법을 바로 눈으로 확인하기 �
 | `09_scope_state` | 9주차 | 전역변수, static 지역변수 | 상태 문자열과 명령 카운터 유지 |
 | `10_array_bar_graph` | 10주차 | 1차원 배열, 평균, 막대그래프 | 점수 배열을 LED Matrix 막대로 표시 |
 | `11_wifi_car` | 11주차 | 2차원 배열, 문자열, WiFi 서버 | 브라우저 버튼으로 LED 상태 제어, `/packet` 문자열 출력 |
+| `12_pointer_buffer` | 12주차 | 포인터, 배열 순회, 센서 버퍼 | 포인터로 가상 센서값 평균을 계산해 LED 막대 표시 |
 | `15_struct_packet` | 14주차 | 구조체, 직렬화 | `S,거리,속도,상태` 패킷 출력 |
 
 ## 공통 체크리스트
@@ -112,6 +113,23 @@ char currentState[16] = "NEUTRAL";
 ```
 
 이 예제는 LED Matrix를 2차원 배열로 다루고, HTTP 요청 문자열을 상태 변경 함수와 연결한다. `/packet` 응답은 뒤쪽 ROS2 브리지에서 센서 패킷을 파싱하는 흐름으로 확장할 수 있다.
+
+## 12주차 예제: 포인터로 센서 버퍼 순회
+
+파일: `code/arduino/12_pointer_buffer/12_pointer_buffer.ino`
+
+```cpp
+float averageOf(const float *values, int count)
+{
+  float sum = 0.0f;
+  for (const float *p = values; p < values + count; ++p) {
+    sum += *p;
+  }
+  return sum / count;
+}
+```
+
+가상 센서값 배열을 포인터로 순회해 평균과 최댓값을 계산하고, 평균을 LED Matrix 막대로 표시한다. 포인터와 길이(`count`)를 함께 넘기는 패턴은 ROS2의 LiDAR 배열, 센서 패킷, 메시지 버퍼를 처리할 때 그대로 이어진다.
 
 ## 14주차 예제: 구조체 패킷
 
