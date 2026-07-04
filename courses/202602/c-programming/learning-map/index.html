@@ -359,7 +359,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        기말 프로젝트까지 필요한 최소 예제
+        주차별 교안 사용 순서
       
     </span>
   </a>
@@ -368,6 +368,17 @@
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기말 프로젝트까지 필요한 최소 예제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         디버깅 습관
@@ -1462,7 +1473,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        기말 프로젝트까지 필요한 최소 예제
+        주차별 교안 사용 순서
       
     </span>
   </a>
@@ -1471,6 +1482,17 @@
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기말 프로젝트까지 필요한 최소 예제
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         디버깅 습관
@@ -1585,6 +1607,8 @@
 </table>
 <h2 id="_3">매주 실습을 읽는 법<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
+<li><strong>학습 목표 확인</strong>: 오늘 끝나기 전에 설명하거나 실행할 수 있어야 하는 항목을 먼저 표시한다.</li>
+<li><strong>이론-실습 연결표 확인</strong>: 이론 개념, 바로 해볼 실습, 확인 질문을 한 줄씩 연결해서 읽는다.</li>
 <li><strong>문법 먼저</strong>: 해당 주차의 핵심 문법을 10줄 이하 예제로 이해한다.</li>
 <li><strong>보드로 확인</strong>: 같은 개념이 Arduino R4에서 어떻게 보이는지 확인한다.</li>
 <li><strong>로봇으로 확장</strong>: 그 개념이 ROS2 토픽, 센서 배열, 주행 명령으로 어떻게 바뀌는지 본다.</li>
@@ -1595,7 +1619,22 @@
 <p class="admonition-title">공식 기준</p>
 <p>Arduino UNO R4 WiFi는 12x8 LED Matrix와 Wi-Fi/Bluetooth 연결을 제공한다. ROS2 수업 환경은 2026년 기준으로 Ubuntu 24.04와 ROS2 Jazzy를 기본 권장 환경으로 둔다.</p>
 </div>
-<h2 id="_4">기말 프로젝트까지 필요한 최소 예제<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_4">주차별 교안 사용 순서<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>학생은 <code>학습 목표</code>에서 오늘 끝나기 전에 할 수 있어야 하는 일을 체크한다.
+   강의자는 목표가 이론, C 실습, Arduino/ROS2 연결을 모두 포함하는지 먼저 짚어 준다.</li>
+<li>학생은 <code>이론-실습 연결표</code>의 첫 행부터 읽고 바로 실행할 실습을 표시한다.
+   강의자는 설명 직후 같은 행의 실습으로 넘어가 학생의 손이 멈추지 않게 한다.</li>
+<li>학생은 코드 예제를 실행하기 전에 예상 출력 또는 상태 변화를 먼저 적는다.
+   강의자는 실행 결과만 보지 말고 왜 그렇게 나왔는지 질문한다.</li>
+<li>학생은 <code>자주 막히는 지점</code>과 <code>형성평가 체크포인트</code>로 제출 전 점검한다.
+   강의자는 막힌 지점을 다음 주 도입 퀴즈 또는 보충 설명으로 회수한다.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">학습 메모</p>
+<p>2026-07-04 후속 보강에서 모든 주차에 <code>이론-실습 연결표</code>를 추가했다. 학생은 이 표를 "오늘 읽을 이론"과 "오늘 실행할 코드"를 연결하는 출발점으로 사용하고, 강의자는 3시간 수업의 실습 전환 지점으로 사용한다.</p>
+</div>
+<h2 id="_5">기말 프로젝트까지 필요한 최소 예제<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1652,7 +1691,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_5">디버깅 습관<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">디버깅 습관<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>컴파일 오류는 <strong>첫 번째 오류</strong>부터 본다. 뒤의 오류는 연쇄 반응일 수 있다.</li>
 <li>Arduino가 안 보이면 보드 종류, 포트, USB 케이블, 시리얼 모니터 속도 <code>115200</code>을 확인한다.</li>
