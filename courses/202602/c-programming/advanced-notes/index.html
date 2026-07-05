@@ -1143,6 +1143,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#5-1-mallocfree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-1. 동적 메모리(malloc/free) — 런타임에 크기를 정하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#6-const-volatile" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1560,6 +1571,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#5-1-mallocfree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-1. 동적 메모리(malloc/free) — 런타임에 크기를 정하기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#6-const-volatile" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1728,23 +1750,74 @@
 </code></pre></div>
 - 규칙: ① 포인터는 <code>NULL</code>이나 유효 주소로 <strong>초기화</strong>, ② <code>malloc</code> 하면 짝이 되는 <code>free</code>, ③ <code>free</code> 후 <code>NULL</code> 대입.</p>
 <hr />
+<h2 id="5-1-mallocfree">5-1. 동적 메모리(malloc/free) — 런타임에 크기를 정하기<a class="headerlink" href="#5-1-mallocfree" title="Permanent link">&para;</a></h2>
+<p>배열은 컴파일 때 크기가 <strong>고정</strong>된다. 실행 중에 크기가 정해지는 데이터(입력받은 개수만큼의 센서 버퍼 등)는
+<strong>힙(heap)</strong> 에 동적 할당한다. 스택의 포인터가 힙의 블록을 가리키는 구조다.</p>
+<p><img alt="동적 메모리" src="../img/24_dynamic_memory.png" /></p>
+<table>
+<thead>
+<tr>
+<th>함수</th>
+<th>하는 일</th>
+<th>초기화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>malloc(크기)</code></td>
+<td>그 바이트만큼 확보</td>
+<td>✗ (쓰레기값)</td>
+</tr>
+<tr>
+<td><code>calloc(개수, 크기)</code></td>
+<td>개수×크기 확보</td>
+<td>✓ <strong>0으로</strong></td>
+</tr>
+<tr>
+<td><code>realloc(p, 새크기)</code></td>
+<td>기존 내용 유지하며 크기 변경</td>
+<td>늘어난 칸은 미초기화</td>
+</tr>
+<tr>
+<td><code>free(p)</code></td>
+<td>확보한 메모리 반납</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">                                  </span><span class="cm">/* 크기를 런타임에 결정 */</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">));</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buf</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 할당 실패 처리 */</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="cm">/* ⚠ 반드시 확인 */</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="cm">/* ... 사용 ... */</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">realloc</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">));</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="w"> </span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span><span class="w">                         </span><span class="cm">/* 성공 시에만 교체(실패 시 원본 보존) */</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">free</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span><span class="w">                                  </span><span class="cm">/* 다 쓰면 해제 */</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w">                                 </span><span class="cm">/* 이중 해제·오용 방지 */</span>
+</code></pre></div>
+- <strong>핵심 규칙</strong>: <code>malloc</code> ↔ <code>free</code> 를 <strong>1:1로 짝</strong>지어라. 안 하면 <strong>누수</strong>, 두 번 하면 <strong>이중 해제 오류</strong>.
+- <code>realloc</code> 결과는 <strong>반드시 임시 포인터로 받는다</strong>(실패 시 <code>NULL</code> 반환 → 바로 대입하면 원본 주소를 잃어 누수).
+- 힙은 스택보다 유연하지만 <strong>직접 관리</strong>해야 한다(자동으로 안 걷힌다).</p>
+<blockquote>
+<p>예제 <code>ex16_dynamic.c</code> 는 <code>-fsanitize=address,leak</code> 로 <strong>누수 없음</strong>을 검증했다.</p>
+</blockquote>
+<hr />
 <h2 id="6-const-volatile">6. 타입 한정자 — <code>const</code> 와 <code>volatile</code><a class="headerlink" href="#6-const-volatile" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><code>const</code></strong>: "이 경로로는 못 바꾼다"는 <strong>약속</strong>(컴파일러가 검사). 함수 매개변수에 <code>const</code>를 붙이면
   "이 함수는 원본을 안 바꾼다"는 계약이 된다 → <code>average(const double *arr, int n)</code>.</li>
 <li><strong><code>volatile</code></strong>: "이 변수는 프로그램 밖(하드웨어·인터럽트)에서 바뀔 수 있으니 <strong>최적화로 캐싱하지 마라</strong>".
   임베디드의 <strong>레지스터·센서 매핑 주소</strong>에 필수. 없으면 컴파일러가 "안 바뀐다"고 오해해 잘못 최적화한다.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">STATUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="mh">0x40021000</span><span class="p">;</span><span class="w">  </span><span class="c1">// 하드웨어 상태 레지스터</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">*</span><span class="n">STATUS</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x01</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// volatile 없으면 무한 루프로 최적화될 수 있음</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">STATUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="mh">0x40021000</span><span class="p">;</span><span class="w">  </span><span class="c1">// 하드웨어 상태 레지스터</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">*</span><span class="n">STATUS</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x01</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// volatile 없으면 무한 루프로 최적화될 수 있음</span>
 </code></pre></div></li>
 </ul>
 <hr />
 <h2 id="7">7. 전처리기 매크로 함정<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <p><code>#define</code>은 <strong>함수가 아니라 글자 치환</strong>이다. 괄호를 빼면 우선순위가 깨진다.</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">#define SQ_BAD(x) x*x</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="cp">#define SQ_OK(x)  ((x)*(x))</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">SQ_BAD</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w">   </span><span class="c1">// → 1+2*1+2 = 5   ❌</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">SQ_OK</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w">    </span><span class="c1">// → ((1+2)*(1+2)) = 9  ✅</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">#define SQ_BAD(x) x*x</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="cp">#define SQ_OK(x)  ((x)*(x))</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">SQ_BAD</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w">   </span><span class="c1">// → 1+2*1+2 = 5   ❌</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">SQ_OK</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w">    </span><span class="c1">// → ((1+2)*(1+2)) = 9  ✅</span>
 </code></pre></div>
 - 매크로 인자와 전체를 <strong>괄호로 감싸라</strong>. 또 <code>SQ(a++)</code> 처럼 부작용 있는 인자는 <strong>두 번 평가</strong>되어 위험.
 - 요즘은 타입 안전한 <code>static inline</code> 함수를 더 권장한다.</p>
@@ -1801,10 +1874,10 @@
 <h2 id="9">9. 함수 호출과 스택 프레임 — 재귀의 비용<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p>함수를 호출하면 <strong>스택 프레임</strong>(지역변수·복귀주소·인자)이 스택에 쌓이고, 반환하면 걷힌다.
 재귀는 이 프레임이 <strong>깊이만큼 쌓이므로</strong> 메모리를 쓴다.</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">long</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="c1">// 이 재귀는 O(2ⁿ) — 같은 값을 수없이 다시 계산</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="mi">-2</span><span class="p">);</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">}</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">long</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="c1">// 이 재귀는 O(2ⁿ) — 같은 값을 수없이 다시 계산</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="mi">-2</span><span class="p">);</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span>
 </code></pre></div>
 - <code>fib(50)</code>은 호출이 폭발해 사실상 멈춘다 → <strong>반복문이나 메모이제이션</strong>으로 바꿔야 한다.
 - 너무 깊은 재귀는 <strong>스택 오버플로</strong>로 크래시. "재귀가 항상 우아한 답은 아니다."</p>
