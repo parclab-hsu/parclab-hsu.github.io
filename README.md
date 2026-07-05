@@ -1,5 +1,14 @@
 # PARC Lab Website
 
+## 외부 재배포 잠금
+
+현재 저장소는 명시 요청 없이 외부 GitHub Pages 재배포가 일어나지 않도록 운영합니다.
+
+- 기본 `mkdocs build` 결과는 `.local-site/`에 생성합니다.
+- 공개 폴더(`courses/`, 저장소 루트 HTML)로 산출물을 복사하지 않습니다.
+- `homepage-src/build.sh`는 `ALLOW_EXTERNAL_REDEPLOY=1`이 없으면 중단됩니다.
+- 공개 재배포가 필요한 경우에만 별도 요청 후 공개 폴더 갱신, 커밋, push를 진행합니다.
+
 **Physical AI Real-Time Control for Mobility & Robotics**
 한성대학교 미래모빌리티학과 · Hansung University
 

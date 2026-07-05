@@ -6,6 +6,18 @@
 # 사용법:  cd homepage-src && ./build.sh
 set -euo pipefail
 
+if [[ "${ALLOW_EXTERNAL_REDEPLOY:-}" != "1" ]]; then
+  cat <<'EOF'
+External redeploy is disabled.
+
+This script copies generated files into the GitHub Pages public root.
+Run it only when the user explicitly asks for deployment:
+
+  ALLOW_EXTERNAL_REDEPLOY=1 ./build.sh
+EOF
+  exit 1
+fi
+
 SRC="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$SRC/.." && pwd)"
 TMP="$(mktemp -d)"
