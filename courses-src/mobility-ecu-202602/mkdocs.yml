@@ -55,6 +55,7 @@ markdown_extensions:
 
 nav:
   - 강의 개요: index.md
+  - 🤖 AX 교육과정 개편: ax-curriculum.md
   - 커리큘럼(15주차): curriculum.md
   - 강의 노트:
       - 2~4주차 · 전자부품·전원회로: 01-components-power.md

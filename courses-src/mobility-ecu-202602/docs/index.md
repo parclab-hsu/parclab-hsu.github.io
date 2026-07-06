@@ -18,6 +18,9 @@
 | 구성 | 이론 40% · 실습 45% · 설계 리뷰/발표 15% |
 | 도구 | STM32(F767/F103), BLDC·인휠 모터 키트, 3상 인버터 보드, EasyEDA, 오실로스코프, UART/Teleplot |
 
+!!! tip "🤖 AX 교육과정으로 운영"
+    본 강의는 **AX(AI Transformation) 교육과정**으로, 기존 임베디드·제어 위에 **AI 도구 활용·데이터 기반 제어·엣지 AI(TinyML)·Physical AI**를 통합한다. 상세는 [AX 교육과정 개편](ax-curriculum.md) 참고.
+
 ## 학습 성과 (CLO)
 
 1. 저항·커패시터·인덕터·다이오드·MOSFET 등 핵심 부품을 회로 목적에 맞게 선정한다.
