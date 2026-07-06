@@ -46,7 +46,7 @@
 ### 구조
 - **헤더/소스 분리**: clock/adc/dac/hall/uart/timer/GPIO.c.
 - **6-step 홀 정류**: 홀 Ha·Hb·Hc(000·111 제외 6가지). **HallSum=Ha·4+Hb·2+Hc**. 섹터별 2,3,1,5,4,6. 홀변화 010→011→001→101→100→110. 홀 EXTI0/1/2 인터럽트로 감지→스위칭패턴.
-- **유니폴라 PWM**: 상단 스위치 PWM, 하단 On. (인휠매핑/소형BLDC매핑 config USE_INWHEEL로 전환, 정/역 dir).
+- **유니폴라 PWM**: 상단 스위치 PWM, 하단 On. (휠매핑/소형BLDC매핑 config USE_INWHEEL로 전환, 정/역 dir).
 
 ### 핵심 코드/수치 (코드 검증됨)
 - **Center Align PWM (TIM1)**: 션트 정확 센싱 위해. **CNT_MAX=5400, PSC=0(216MHz), ARR=CNT_MAX → 216MHz/5400/2 = 20kHz**. Center-aligned mode3(CR1=0x0065), **데드타임 DEADTIME_1us=180**(BDTR). RCR=1(카운터 시작후 설정→언더플로우 업데이트, 100us주기).
@@ -54,7 +54,7 @@
 - **SysTick 스케줄러**: LOAD=(216M/1000)−1=215999 → **1ms 인터럽트**. SysTick_Handler서 msTicks++·Scheduler(). msTicks%N으로 10/100/500/1000ms 태스크 플래그, main while서 실행. Task_10ms(RpmRef/Fdb UART), Task_500ms(BLE 송신).
 - **ADC**: 3상전류(PA0/1/2=ADC1/2/3 동시)·쓰로틀(PA7)은 TIM1 인터럽트서, Vdc(PA3)·NTC(PA6 tempLaw)는 10ms. 전류식 ias=(result−offset)·VREF/FS−OFFSET_Volt)/OPAMP_GAIN. 오프셋=10회평균−2048.
 - **NTC 온도**: MosfetTemp = −11.48·x³+63.23·x²−149.02·x+181.97 (x=tempLaw, 3차 다항식).
-- **T방식 RPM**: TIM2 **54MHz**(PSC=3, ARR=53999999≈1초). SpeedCal(): delta_time=현재−last(오버플로우 보정). **calculated_rpm=(60·54000000)/(Edges_per_Rev·delta_time)**. HALL_EDGES_PER_REV=소형BLDC 24, 인휠 90.
+- **T방식 RPM**: TIM2 **54MHz**(PSC=3, ARR=53999999≈1초). SpeedCal(): delta_time=현재−last(오버플로우 보정). **calculated_rpm=(60·54000000)/(Edges_per_Rev·delta_time)**. HALL_EDGES_PER_REV=소형BLDC 24, 휠 90.
 - **속도→km/h**: RPM_TO_KMH(rpm)=rpm·(π·WHEEL_DIAMETER)·60/1000.
 - **BLE(AT-09)**: UART3, 9600bps, 500ms 송신(Spd/Vdc/MosfetTemp/Flt), 초기PW 000000.
 - **고장 FltFlg**: 0정상/1과전류(OC_LEVEL 35A, 50ms지속)/2과열(MOSFET>100°C, 90°C서 클리어)/3저전압(<32V)/4과전압.

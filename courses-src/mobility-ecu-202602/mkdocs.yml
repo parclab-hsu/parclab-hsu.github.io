@@ -1,5 +1,5 @@
 site_name: 모빌리티 전자제어유닛 실습 · 2026-2학기
-site_description: 한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + UGV 캡스톤
+site_description: 한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + AMR 캡스톤
 site_url: https://parclab-hsu.github.io/courses/202602/mobility-ecu/
 site_dir: ../../.local-site/mobility-ecu
 docs_dir: docs
@@ -63,5 +63,5 @@ nav:
       - 8~10주차 · STM32 펌웨어: 03-stm32-firmware.md
       - 11·13·14·15주차 · PCB·펌웨어 통합: 04-pcb-firmware-integration.md
   - 캡스톤 프로젝트:
-      - UGV 개발 프로젝트: ugv-project.md
-      - UGV 부품표·회로: ugv-bom.md
+      - AMR 개발 프로젝트: ugv-project.md
+      - AMR 부품표·회로: ugv-bom.md
