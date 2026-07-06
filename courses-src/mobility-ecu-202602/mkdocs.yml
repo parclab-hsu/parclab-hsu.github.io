@@ -1,0 +1,66 @@
+site_name: 모빌리티 전자제어유닛 실습 · 2026-2학기
+site_description: 한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + UGV 캡스톤
+site_url: https://parclab-hsu.github.io/courses/202602/mobility-ecu/
+site_dir: ../../.local-site/mobility-ecu
+docs_dir: docs
+use_directory_urls: true
+
+theme:
+  name: material
+  language: ko
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드로
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드로
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.footer
+    - content.code.copy
+    - search.highlight
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.blocks.caption
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - 강의 개요: index.md
+  - 커리큘럼(15주차): curriculum.md
+  - 강의 노트:
+      - 2~4주차 · 전자부품·전원회로: 01-components-power.md
+      - 5·6·7·12주차 · 모터·인버터·제어: 02-motor-inverter-control.md
+      - 8~10주차 · STM32 펌웨어: 03-stm32-firmware.md
+      - 11·13·14·15주차 · PCB·펌웨어 통합: 04-pcb-firmware-integration.md
+  - 캡스톤 프로젝트:
+      - UGV 개발 프로젝트: ugv-project.md
+      - UGV 부품표·회로: ugv-bom.md
