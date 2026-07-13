@@ -1258,6 +1258,7 @@
 <h1 id="15">15주차 · 구동 펌웨어 통합 및 최종 프로젝트 발표<a class="headerlink" href="#15" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p><strong>학습목표</strong> — STM32 모터 구동 펌웨어의 전체 구조(정류·Center PWM·스케줄러·센싱·통신·속도계산)를 분석하고 AMR 주행으로 통합 시연한다.</p>
+<p>💡 <strong>기초 다지기 (쉽게 이해하기)</strong> — <strong>펌웨어 통합이란?</strong> 앞의 모든 내용을 코드로 묶어 실제로 로봇을 움직이는 단계다. 인터럽트로 20kHz마다 전류를 읽어 PWM을 조정하고, 홀/엔코더로 속도를 계산하며, 무선으로 상태를 보내고, 고장을 감지해 멈추는 안전장치까지 포함한다.</p>
 </blockquote>
 <h2 id="_1">🗺️ 한눈에 보는 개념도 — 펌웨어 런타임<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TD
