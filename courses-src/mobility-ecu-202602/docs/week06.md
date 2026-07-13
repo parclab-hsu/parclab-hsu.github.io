@@ -21,6 +21,12 @@ flowchart TD
 
 > IN1/IN2로 방향(정/역/정지/브레이크), PWM으로 속도. AMR 좌·우 모터 각 1개씩.
 
+## 🔺 3상 인버터 (BLDC 구동)
+
+![3상 인버터: 6 MOSFET → BLDC](figures/inverter3ph.svg)
+
+> 하프브리지 3개 = 6 MOSFET. 홀센서 위치에 따라 두 상만 통전(6-step). 고출력 AMR 휠 모터에 사용.
+
 ## 〰️ PWM — 캐리어 비교로 평균전압 만들기
 
 ![PWM: 캐리어 vs 지령 비교로 출력 생성, 평균=듀티](figures/pwm.svg)
