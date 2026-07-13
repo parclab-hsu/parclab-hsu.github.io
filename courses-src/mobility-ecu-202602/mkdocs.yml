@@ -57,6 +57,22 @@ nav:
   - 강의 개요: index.md
   - 🤖 AX 교육과정 개편: ax-curriculum.md
   - 커리큘럼(15주차): curriculum.md
+  - 주차별 강의 자료:
+      - 1주차 · 오리엔테이션·AMR 제어유닛 구조: week01.md
+      - 2주차 · 전자부품 1 · 저항·커패시터·인덕터: week02.md
+      - 3주차 · 전자부품 2 · 다이오드·BJT·MOSFET: week03.md
+      - 4주차 · 전원회로: week04.md
+      - 5주차 · DC/BLDC 모터 원리: week05.md
+      - 6주차 · 인버터·PWM 구동: week06.md
+      - 7주차 · 제어공학·PI 속도제어: week07.md
+      - 8주차 · STM32 GPIO·메모리맵·레지스터: week08.md
+      - 9주차 · 입력·클럭·인터럽트: week09.md
+      - 10주차 · ADC·Timer·UART: week10.md
+      - 11주차 · 요구사항·HSI·시스템 블록도: week11.md
+      - 12주차 · 인버터 하드웨어 설계: week12.md
+      - 13주차 · 회로도·PCB 설계 기초: week13.md
+      - 14주차 · PCB 노이즈·그라운드: week14.md
+      - 15주차 · 구동 펌웨어 통합·최종 발표: week15.md
   - 강의 노트:
       - 2~4주차 · 전자부품·전원회로: 01-components-power.md
       - 5·6·7·12주차 · 모터·인버터·제어: 02-motor-inverter-control.md
