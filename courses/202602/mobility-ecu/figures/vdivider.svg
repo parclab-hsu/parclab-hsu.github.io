@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" font-family="sans-serif"><rect width="300" height="200" fill="#fff"/><text x="150" y="18" font-size="13" text-anchor="middle" fill="#333">전압 분배 (배터리 → ADC)</text>
+<text x="95" y="40" font-size="11" fill="#333">Vin (배터리)</text><line x1="120" y1="45" x2="120" y2="60" stroke="#333" stroke-width="2"/>
+<rect x="105" y="60" width="30" height="45" fill="#fff" stroke="#1c7ed6"/><text x="90" y="86" font-size="11" text-anchor="middle" fill="#1c7ed6">R1</text>
+<line x1="120" y1="105" x2="120" y2="120" stroke="#333" stroke-width="2"/>
+<circle cx="120" cy="120" r="3" fill="#e03131"/><line x1="120" y1="120" x2="200" y2="120" stroke="#e03131" stroke-width="2"/><text x="205" y="118" font-size="11" fill="#e03131">Vout → ADC</text>
+<text x="205" y="133" font-size="10" fill="#888">= R2/(R1+R2)·Vin</text>
+<rect x="105" y="120" width="30" height="45" fill="#fff" stroke="#1c7ed6"/><text x="90" y="146" font-size="11" text-anchor="middle" fill="#1c7ed6">R2</text>
+<line x1="120" y1="165" x2="120" y2="180" stroke="#333" stroke-width="2"/><text x="120" y="195" font-size="11" text-anchor="middle" fill="#333">GND</text></svg>

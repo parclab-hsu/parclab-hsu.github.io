@@ -17,6 +17,16 @@ PARC Lab은 인식–계획–제어를 통합하는 **Physical AI 인재**를 �
 
 <div class="grid cards" markdown>
 
+-   :material-car-electric:{ .lg .middle } __모빌리티 전자제어유닛 실습__
+
+    ---
+
+    AMR·우주청 대회 로버의 전기전자제어유닛 — 전자부품·모터제어·STM32·PCB·펌웨어 15주 실습. AX(엣지 AI·Physical AI) 통합.
+
+    *3학년 · 3학점 · 2026-2학기*
+
+    [강의 자료 →](/courses/202602/mobility-ecu/)
+
 -   :material-robot-outline:{ .lg .middle } __Physical AI__
 
     ---
