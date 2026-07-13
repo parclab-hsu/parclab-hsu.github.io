@@ -27,6 +27,14 @@ flowchart LR
 같은 회로도라도 **레이아웃에 따라 성능이 달라진다.** 8대 용어(PAD·트레이스·실크·카파푸어·솔더마스크)와 레이어 스택업(모터제어기 예: SIG/GND/POWER/SIG)을 이해할 것.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [HSI](glossary.md#hsi), [Zonal Architecture](glossary.md#zonal), [Cybersecurity](glossary.md#cybersecurity) |
+| 도해 | ![SDV와 존 아키텍처 개념도](figures/sdv_zonal.svg) |
+| 최신 기술 연결 | PCB 커넥터·배선 설계는 존 컨트롤러와 액추에이터 ECU를 연결하는 실제 인터페이스 설계로 확장된다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

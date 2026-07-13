@@ -33,6 +33,14 @@ flowchart TD
 **UART** — Start+Data+Parity+Stop, Tx↔Rx 교차, 115200. printf 리타게팅(`__io_putchar`). 원격 명령·Teleplot에 사용.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [ADC](glossary.md#adc), [PWM](glossary.md#pwm), [Teleplot](glossary.md#teleplot) |
+| 도해 | ![모터 제어 데이터와 Edge AI 예지보전 흐름](figures/edge_ai_fault.svg) |
+| 최신 기술 연결 | UART/Teleplot 로그를 ROS 2 또는 클라우드 분석으로 보내기 전, MCU에서 의미 있는 데이터 구조로 만든다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

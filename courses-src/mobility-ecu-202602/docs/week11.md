@@ -60,6 +60,14 @@ flowchart LR
 > 💡 **실무 방법론(chcbaram WIZnet 사례)** — 목표 단순화 → 요구사항 정리 → 시스템 블록도 → To-do → **WBS로 일정 관리**. 업체·Tool: JLCPCB + EasyEDA, 회로 3분할(MCU/게이트드라이버/파워), `EMC = EMS + EMI`.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [HSI](glossary.md#hsi), [SDV](glossary.md#sdv), [Functional Safety](glossary.md#functional-safety) |
+| 도해 | ![ECU 안전·보안 V 모델](figures/safety_security_vmodel.svg) |
+| 최신 기술 연결 | 요구사항과 HSI는 SDV 서비스화, OTA, 안전 검증의 공통 출발점이다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

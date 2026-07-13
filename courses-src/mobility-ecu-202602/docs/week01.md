@@ -37,6 +37,14 @@ flowchart LR
 `원격 명령/센서 → MCU 듀티 계산 → 드라이버 → 휠 모터` 이며, **엔코더·션트·IMU** 피드백이 MCU로 되돌아온다.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [ECU](glossary.md#ecu), [MCU](glossary.md#mcu), [SDV](glossary.md#sdv), [Zonal Architecture](glossary.md#zonal) |
+| 도해 | ![모빌리티 ECU 계층 구조](figures/ecu_layers.svg) |
+| 최신 기술 연결 | [SDV와 존 아키텍처](trends.md#zonal-central-compute)를 AMR 2륜 구동보드의 상위 시스템 관점으로 연결한다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

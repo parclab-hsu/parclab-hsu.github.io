@@ -32,6 +32,14 @@ flowchart TD
 > A가 B보다 먼저 상승하면 CW, 반대면 CCW. 타이머 Encoder 모드로 방향·속도 취득.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [EXTI/NVIC](glossary.md#interrupt), [MCU](glossary.md#mcu), [Functional Safety](glossary.md#functional-safety) |
+| 도해 | ![모빌리티 ECU 계층 구조](figures/ecu_layers.svg) |
+| 최신 기술 연결 | 인터럽트 우선순위와 이벤트 누락 방지는 실시간 제어의 예측 가능성과 연결된다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

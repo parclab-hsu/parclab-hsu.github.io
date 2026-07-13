@@ -32,6 +32,14 @@ flowchart LR
 MCU 레지스터 3분류 — **Control**(설정) / **Status**(플래그) / **Data**(값).
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [MCU](glossary.md#mcu), [HSI](glossary.md#hsi), [Functional Safety](glossary.md#functional-safety) |
+| 도해 | ![ECU 안전·보안 V 모델](figures/safety_security_vmodel.svg) |
+| 최신 기술 연결 | [안전 RTOS와 추적성](trends.md#safety-rtos-traceability) 흐름을 bare-metal 레지스터 실습에도 적용한다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

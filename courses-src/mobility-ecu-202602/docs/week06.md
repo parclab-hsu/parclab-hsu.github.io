@@ -46,6 +46,14 @@ flowchart TD
 - **BLDC 유니폴라 PWM** — 하단 On 유지, 상단만 PWM → **하단 On 구간에 션트로 상전류 정확 센싱**. 스위칭 손실도 최소.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [PWM](glossary.md#pwm), [Dead Time](glossary.md#deadtime), [FOC](glossary.md#foc) |
+| 도해 | ![모빌리티 ECU 계층 구조](figures/ecu_layers.svg) |
+| 최신 기술 연결 | [STM32 MCSDK와 FOC](trends.md#stm32-mcsdk-foc)로 확장할 때 필요한 기초 파형을 다진다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

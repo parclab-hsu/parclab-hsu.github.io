@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+<title id="title">ECU 안전·보안 V 모델</title>
+<desc id="desc">요구사항에서 HSI, 회로, 펌웨어로 내려가고 단위 시험, 통합 시험, 시연 검증으로 올라오는 V 모델에 안전과 보안 활동을 겹쳐 표현</desc>
+<style>
+ text{font-family:Arial,'Noto Sans KR',sans-serif;fill:#172033}.h{font-size:24px;font-weight:700}.m{font-size:16px;font-weight:700}.s{font-size:13px}.box{fill:#f8fafc;stroke:#334155;stroke-width:2}.safety{fill:#fff7ed;stroke:#f97316;stroke-width:2}.security{fill:#eff6ff;stroke:#2563eb;stroke-width:2}.line{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#a)}.guard{stroke:#0f766e;stroke-width:3;stroke-dasharray:9 7;fill:none}
+</style>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect width="960" height="540" fill="#fff"/>
+<text x="34" y="46" class="h">모빌리티 ECU 검증은 요구사항 추적과 안전·보안 검토를 함께 본다</text>
+<rect x="70" y="95" width="190" height="70" rx="10" class="box"/><text x="106" y="125" class="m">요구사항</text><text x="98" y="148" class="s">속도, 전류, 보호 조건</text>
+<rect x="185" y="215" width="190" height="70" rx="10" class="box"/><text x="229" y="245" class="m">HSI/회로</text><text x="212" y="268" class="s">핀맵, 전원, 센싱</text>
+<rect x="330" y="355" width="190" height="70" rx="10" class="box"/><text x="372" y="385" class="m">펌웨어</text><text x="360" y="408" class="s">PWM, ISR, Fault</text>
+<rect x="585" y="355" width="190" height="70" rx="10" class="box"/><text x="625" y="385" class="m">단위 시험</text><text x="617" y="408" class="s">ADC, Timer, UART</text>
+<rect x="715" y="215" width="190" height="70" rx="10" class="box"/><text x="748" y="245" class="m">통합 시험</text><text x="742" y="268" class="s">전류 제한, 로그, 주행</text>
+<rect x="610" y="95" width="220" height="70" rx="10" class="box"/><text x="646" y="125" class="m">최종 검증</text><text x="636" y="148" class="s">요구사항 충족, 회고</text>
+<path d="M260 150 L185 215" class="line"/><path d="M375 285 L330 355" class="line"/><path d="M520 390 H585" class="line"/><path d="M775 355 L715 285" class="line"/><path d="M805 215 L730 165" class="line"/>
+<rect x="90" y="455" width="360" height="48" rx="10" class="safety"/><text x="115" y="486" class="m">Safety: 과전류·과열·저전압을 검출하고 안전 상태로 전이</text>
+<rect x="510" y="455" width="360" height="48" rx="10" class="security"/><text x="535" y="486" class="m">Security: 로그·업데이트·통신 명령은 인증과 추적성을 고려</text>
+<path d="M165 165 C260 320 705 320 720 165" class="guard"/><text x="388" y="305" class="s">요구사항 추적성</text>
+</svg>

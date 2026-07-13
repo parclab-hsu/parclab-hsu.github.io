@@ -38,6 +38,14 @@ flowchart TD
 > 직렬 단일점(간단·전체 영향) / 병렬 단일점(스타·배선↑) / **다중점 병렬(PCB 사용·루프↓)**.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [Zonal Architecture](glossary.md#zonal), [Cybersecurity](glossary.md#cybersecurity), [Functional Safety](glossary.md#functional-safety) |
+| 도해 | ![SDV와 존 아키텍처 개념도](figures/sdv_zonal.svg) |
+| 최신 기술 연결 | 존 구조에서 배선은 줄어도 고속 통신·전원 분배·접지 기준이 더 중요해진다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

@@ -33,6 +33,14 @@ flowchart LR
 - PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [PI 제어](glossary.md#pi-control), [Teleplot](glossary.md#teleplot), [Edge AI/TinyML](glossary.md#edge-ai) |
+| 도해 | ![모터 제어 데이터와 Edge AI 예지보전 흐름](figures/edge_ai_fault.svg) |
+| 최신 기술 연결 | PI 응답 로그는 고전 제어 성능 평가이자 TinyML 학습 데이터의 출발점이다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

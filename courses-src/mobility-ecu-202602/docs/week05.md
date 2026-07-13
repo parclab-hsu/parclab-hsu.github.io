@@ -43,6 +43,14 @@ flowchart TD
 > **AMR·로버 구동부 연결** — 2륜 차동구동 휠 모터. 브러시DC는 엔코더로, BLDC는 홀 6-step으로 위치·속도 취득.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [BLDC](glossary.md#bldc), [FOC](glossary.md#foc), [Edge AI/TinyML](glossary.md#edge-ai) |
+| 도해 | ![모터 제어 데이터와 Edge AI 예지보전 흐름](figures/edge_ai_fault.svg) |
+| 최신 기술 연결 | [AI-defined vehicle](trends.md#ai-defined-vehicle) 관점에서 모터 전류·속도 로그를 진단 데이터로 다시 사용한다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

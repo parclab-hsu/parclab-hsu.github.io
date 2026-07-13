@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+<title id="title">모터 제어 데이터와 Edge AI 예지보전 흐름</title>
+<desc id="desc">전류, 속도, 온도 데이터를 수집해 특징을 만들고 TinyML 모델로 이상을 판단한 뒤 경고와 보호 제어로 연결하는 흐름</desc>
+<style>
+ text{font-family:Arial,'Noto Sans KR',sans-serif;fill:#172033}.h{font-size:24px;font-weight:700}.m{font-size:17px;font-weight:700}.s{font-size:13px}.box{fill:#f8fafc;stroke:#334155;stroke-width:2}.data{fill:#ecfdf5;stroke:#16a34a;stroke-width:2}.ai{fill:#f5f3ff;stroke:#7c3aed;stroke-width:2}.warn{fill:#fff1f2;stroke:#e11d48;stroke-width:2}.line{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#a)}.wave{stroke:#2563eb;stroke-width:3;fill:none}.bad{stroke:#e11d48;stroke-width:3;fill:none}
+</style>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect width="960" height="520" fill="#fff"/>
+<text x="34" y="46" class="h">Edge AI는 제어 데이터를 진단 데이터로 다시 쓰는 흐름</text>
+<rect x="50" y="110" width="180" height="115" rx="12" class="data"/><text x="88" y="145" class="m">센싱</text><text x="82" y="176" class="s">Iq 전류, RPM</text><text x="82" y="200" class="s">온도, 전압, 진동</text>
+<rect x="285" y="110" width="180" height="115" rx="12" class="box"/><text x="324" y="145" class="m">특징 추출</text><text x="318" y="176" class="s">RMS, 피크, 리플</text><text x="318" y="200" class="s">FFT, 이동평균</text>
+<rect x="520" y="110" width="180" height="115" rx="12" class="ai"/><text x="570" y="145" class="m">TinyML</text><text x="552" y="176" class="s">정상/불균형/베어링</text><text x="552" y="200" class="s">분류 또는 이상탐지</text>
+<rect x="755" y="110" width="155" height="115" rx="12" class="warn"/><text x="792" y="145" class="m">대응</text><text x="785" y="176" class="s">경고, 로그</text><text x="785" y="200" class="s">듀티 제한, 정지</text>
+<path d="M230 168 H285" class="line"/><path d="M465 168 H520" class="line"/><path d="M700 168 H755" class="line"/>
+<rect x="90" y="300" width="780" height="130" rx="14" class="box"/><text x="120" y="333" class="m">수업 적용</text><path d="M150 390 C190 330 235 420 280 365 C315 325 360 420 405 375 C440 340 485 390 525 360" class="wave"/><path d="M525 360 C565 330 600 435 650 330 C700 445 735 315 810 405" class="bad"/><text x="145" y="415" class="s">정상 전류 리플</text><text x="600" y="415" class="s">불균형·베어링 이상 후보</text><text x="120" y="360" class="s">Teleplot/CSV 로그를 만들고, 모델 결과는 제어 보호 로직의 입력으로만 사용한다.</text>
+</svg>

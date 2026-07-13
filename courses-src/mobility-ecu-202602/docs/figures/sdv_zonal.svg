@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+<title id="title">SDV와 존 아키텍처 개념도</title>
+<desc id="desc">차량을 물리적 존으로 나누고 센서와 액추에이터를 존 컨트롤러가 모아 중앙 컴퓨트와 이더넷으로 연결하는 구조</desc>
+<style>
+ text{font-family:Arial,'Noto Sans KR',sans-serif;fill:#172033}.h{font-size:24px;font-weight:700}.m{font-size:17px;font-weight:700}.s{font-size:13px}.car{fill:#f8fafc;stroke:#334155;stroke-width:3}.zone{fill:#e0f2fe;stroke:#0284c7;stroke-width:2}.center{fill:#eef2ff;stroke:#4f46e5;stroke-width:2}.cloud{fill:#ecfeff;stroke:#0891b2;stroke-width:2}.ecu{fill:#fff7ed;stroke:#ea580c;stroke-width:2}.line{stroke:#334155;stroke-width:3;fill:none;marker-end:url(#a)}.bus{stroke:#0f766e;stroke-width:4;fill:none}.thin{stroke:#64748b;stroke-width:2;fill:none;stroke-dasharray:7 6;marker-end:url(#a)}
+</style>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#334155"/></marker></defs>
+<rect width="960" height="540" fill="#fff"/>
+<text x="34" y="44" class="h">SDV 흐름: 기능 중심 ECU에서 존·중앙 컴퓨트 구조로 이동</text>
+<path d="M135 135 C210 80 740 80 825 135 L880 250 L820 410 C720 475 240 475 135 410 L80 250 Z" class="car"/>
+<rect x="145" y="155" width="190" height="115" rx="12" class="zone"/><text x="178" y="190" class="m">Front Zone</text><text x="178" y="220" class="s">라이다, 초음파</text><text x="178" y="242" class="s">조향/브레이크 I/O</text>
+<rect x="625" y="155" width="190" height="115" rx="12" class="zone"/><text x="660" y="190" class="m">Rear Zone</text><text x="660" y="220" class="s">후방 센서</text><text x="660" y="242" class="s">모터/램프 I/O</text>
+<rect x="145" y="300" width="190" height="95" rx="12" class="zone"/><text x="178" y="334" class="m">Left Zone</text><text x="178" y="364" class="s">도어, 배선, 전원 분배</text>
+<rect x="625" y="300" width="190" height="95" rx="12" class="zone"/><text x="660" y="334" class="m">Right Zone</text><text x="660" y="364" class="s">센서, 액추에이터 집선</text>
+<rect x="382" y="205" width="205" height="130" rx="14" class="center"/><text x="420" y="242" class="m">Central Compute</text><text x="415" y="272" class="s">서비스, AI, 진단</text><text x="415" y="296" class="s">OTA, 로깅, 통합 테스트</text><text x="415" y="320" class="s">안전 섬/실시간 제어</text>
+<path d="M335 210 H382" class="bus"/><path d="M587 210 H625" class="bus"/><path d="M335 350 C375 350 382 330 410 320" class="bus"/><path d="M625 350 C595 350 585 330 555 320" class="bus"/>
+<rect x="380" y="42" width="210" height="78" rx="14" class="cloud"/><text x="430" y="73" class="m">Cloud / CI</text><text x="414" y="99" class="s">시뮬레이션, OTA, 데이터 분석</text><path d="M485 120 V205" class="thin"/>
+<rect x="380" y="410" width="210" height="65" rx="12" class="ecu"/><text x="424" y="438" class="m">Lab ECU</text><text x="405" y="462" class="s">STM32 모터 제어 보드는 존 내부 액추에이터 ECU 예시</text><path d="M485 335 V410" class="line"/>
+</svg>

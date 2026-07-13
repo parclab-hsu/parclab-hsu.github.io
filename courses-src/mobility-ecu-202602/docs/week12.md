@@ -37,6 +37,14 @@ flowchart TD
 > ⚠️ 게이트드라이버 부품 표기 불일치 — 슬라이드 UCC27211D vs 실물 회로도 IR2101. 실물 기준으로 통일.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [Dead Time](glossary.md#deadtime), [FOC](glossary.md#foc), [Functional Safety](glossary.md#functional-safety) |
+| 도해 | ![모빌리티 ECU 계층 구조](figures/ecu_layers.svg) |
+| 최신 기술 연결 | 게이트드라이버·전류센싱 설계는 6-step 이후 FOC/고효율 구동으로 넘어가는 하드웨어 기반이다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

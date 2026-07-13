@@ -37,6 +37,14 @@ Cgs 충전 → 채널전류 상승 → **Miller Plateau(Vds 급락=턴온)** →
 - 바디다이오드 trr가 길어 필요 시 외부 쇼트키 + **데드타임**으로 shoot-through 방지
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [PWM](glossary.md#pwm), [Dead Time](glossary.md#deadtime), [Functional Safety](glossary.md#functional-safety) |
+| 도해 | ![ECU 안전·보안 V 모델](figures/safety_security_vmodel.svg) |
+| 최신 기술 연결 | MOSFET 손실·암단락 방지는 기능 안전 요구사항과 직접 연결된다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

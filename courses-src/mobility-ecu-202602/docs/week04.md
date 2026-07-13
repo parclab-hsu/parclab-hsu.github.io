@@ -38,6 +38,14 @@ Voltage-second 평형 `(Vin−Vout)·DT = Vout·(1−D)·T` → **`Vout = D·Vin
 > **AMR·로버 구동부 연결** — 벅으로 배터리 전압을 12V/5V로, 이후 LDO로 3.3V. 상세 부품값은 12주차.
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [ECU](glossary.md#ecu), [Functional Safety](glossary.md#functional-safety), [Cybersecurity](glossary.md#cybersecurity) |
+| 도해 | ![모빌리티 ECU 계층 구조](figures/ecu_layers.svg) |
+| 최신 기술 연결 | 전원 안정성은 OTA/통신보다 먼저 만족해야 하는 하드웨어 신뢰성 조건이다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

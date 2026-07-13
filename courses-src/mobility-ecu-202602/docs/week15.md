@@ -37,6 +37,14 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 요구사항명세서 · HSI · 시스템블록도 · 회로도/부품선정 · PCB 배치 검토 · 펌웨어 구조도 · **AMR 2륜 구동코드 분석/주행 시연** · 안전검토 보고서
 
 
+## 용어·도해·트렌드 연결
+
+| 항목 | 수업 중 연결 |
+|---|---|
+| 먼저 볼 용어 | [OTA/FOTA](glossary.md#ota), [Edge AI/TinyML](glossary.md#edge-ai), [Functional Safety](glossary.md#functional-safety) |
+| 도해 | ![모터 제어 데이터와 Edge AI 예지보전 흐름](figures/edge_ai_fault.svg) |
+| 최신 기술 연결 | 최종 통합은 [보안·소프트웨어 업데이트 규제](trends.md#security-software-update), 예지보전, 안전 상태 전이를 함께 설명하는 발표로 마무리한다. |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |
