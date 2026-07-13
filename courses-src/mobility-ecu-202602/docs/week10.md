@@ -32,6 +32,31 @@ flowchart TD
 
 **UART** — Start+Data+Parity+Stop, Tx↔Rx 교차, 115200. printf 리타게팅(`__io_putchar`). 원격 명령·Teleplot에 사용.
 
+
+## ⏱️ 3시간 수업 운영안
+
+| 시간 | 활동 | 학생 산출물 |
+|---|---|---|
+| 0:00-0:25 | 센서·시간·통신 주변장치가 제어루프에 들어가는 위치 확인 | 주변장치 블록도 |
+| 0:25-1:15 | ADC, Timer/PWM, UART 핵심 레지스터와 HAL 사용 흐름 | 설정 순서표 |
+| 1:25-2:25 | ADC 값을 UART/Teleplot으로 보내고 PWM 듀티를 바꾸는 통합 실습 | 시리얼 로그와 파형 |
+| 2:25-3:00 | 센서 데이터셋화와 제어/AI 확장 토의 | CSV 로그 샘플 |
+
+## 📎 수업자료 활용
+
+| 자료 | 수업 중 쓰는 장면 |
+|---|---|
+| [stm32-adc-updated.pdf](attachments/stm32-adc-updated.pdf) | ADC 샘플링·양자화와 입력 회로 설명 |
+| [stm32-tim.pdf](attachments/stm32-tim.pdf) | Timer, PWM, 주기 태스크 자료 |
+| [stm32-serial-communication-updated.pdf](attachments/stm32-serial-communication-updated.pdf) | UART 디버깅과 통신 자료 |
+| figures/adc.svg | ADC 샘플링 개념 설명 |
+
+## ✅ 이해 확인 질문
+
+1. 12bit ADC에서 3.3V 기준 1스텝 전압을 계산한다.
+2. ARR/CCR/PSC가 PWM 주파수와 듀티를 어떻게 결정하는지 설명한다.
+3. UART 로그가 디버깅과 데이터 수집에 동시에 쓰이는 이유를 말한다.
+
 ## 🧪 실습·과제
 
 - [ ] ADC값 UART 출력, 1초 주기 LED 태스크, 시리얼 모니터 캡처

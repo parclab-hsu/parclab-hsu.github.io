@@ -31,6 +31,30 @@ flowchart LR
 
 MCU 레지스터 3분류 — **Control**(설정) / **Status**(플래그) / **Data**(값).
 
+
+## ⏱️ 3시간 수업 운영안
+
+| 시간 | 활동 | 학생 산출물 |
+|---|---|---|
+| 0:00-0:20 | 중간 리뷰 피드백과 펌웨어 주차 목표 연결 | 수정할 요구사항 목록 |
+| 0:20-1:10 | Cortex-M, 메모리맵, 레지스터 접근 원리 해설 | 주소-레지스터 매핑표 |
+| 1:20-2:20 | GPIO LED On/Off: 레지스터 직접접근과 HAL 비교 | 동작 코드와 캡처 |
+| 2:20-3:00 | AI 코드 리뷰로 비트마스크·volatile 오류 찾기 | 수정 전후 코드 |
+
+## 📎 수업자료 활용
+
+| 자료 | 수업 중 쓰는 장면 |
+|---|---|
+| [stm32-lecture-v0.2.pdf](attachments/stm32-lecture-v0.2.pdf) | STM32 레지스터 직접접근 흐름의 주교재 |
+| [stm32-gpio-exti.pdf](attachments/stm32-gpio-exti.pdf) | GPIO 설정과 EXTI 선행 자료 |
+| [stm32-orientation-dev-env.pdf](attachments/stm32-orientation-dev-env.pdf) | 개발환경 점검 자료 |
+
+## ✅ 이해 확인 질문
+
+1. GPIO 출력 전 RCC 클럭을 켜야 하는 이유를 설명한다.
+2. MODER, OTYPER, ODR이 각각 무엇을 설정하는지 말한다.
+3. 레지스터 직접접근 코드에서 volatile이 필요한 이유를 설명한다.
+
 ## 🧪 실습·과제
 
 - [ ] 레퍼런스 매뉴얼 참고해 레지스터 비트 write → LED On/Off

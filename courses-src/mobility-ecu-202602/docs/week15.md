@@ -36,6 +36,30 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 
 요구사항명세서 · HSI · 시스템블록도 · 회로도/부품선정 · PCB 배치 검토 · 펌웨어 구조도 · **AMR 2륜 구동코드 분석/주행 시연** · 안전검토 보고서
 
+
+## ⏱️ 3시간 수업 운영안
+
+| 시간 | 활동 | 학생 산출물 |
+|---|---|---|
+| 0:00-0:25 | 최종 시연 안전 브리핑과 제출물 확인 | 체크리스트 서명 |
+| 0:25-1:10 | 펌웨어 통합 구조: PWM, 센싱, 홀/엔코더, SysTick, 통신, Fault | 구조도 최종본 |
+| 1:20-2:25 | 팀별 주행/벤치 시연과 Teleplot 로그 확인 | 시연 영상과 로그 |
+| 2:25-3:00 | 최종 발표, 회고, 개선 로드맵 정리 | 발표자료와 개선안 |
+
+## 📎 수업자료 활용
+
+| 자료 | 수업 중 쓰는 장면 |
+|---|---|
+| [electric-scooter-firmware-v0.2.pdf](attachments/electric-scooter-firmware-v0.2.pdf) | 통합 펌웨어 구조와 핵심 수치의 주교재 |
+| [speed-control-teleplot.pdf](attachments/speed-control-teleplot.pdf) | 속도제어 로그와 그래프 시연 |
+| [stm32-lecture-v0.2.pdf](attachments/stm32-lecture-v0.2.pdf) | STM32 초기화와 주변장치 코드 복습 |
+
+## ✅ 이해 확인 질문
+
+1. 20kHz PWM 인터럽트, 1ms SysTick, 500ms 통신 태스크가 각각 맡는 일을 구분한다.
+2. Fault code가 발생했을 때 펌웨어가 어떤 순서로 멈춰야 하는지 설명한다.
+3. 최종 프로젝트의 실패 원인을 하드웨어, 펌웨어, 제어 파라미터로 나누어 진단한다.
+
 ## 🧪 실습·과제
 
 - [ ] 정류 → 20kHz PWM 전류센싱 → T방식 RPM → PI 튜닝 → 무선 모니터링 → 고장코드 재현

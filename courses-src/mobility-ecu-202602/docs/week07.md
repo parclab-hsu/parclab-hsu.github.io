@@ -32,6 +32,31 @@ flowchart LR
 - **이득여유 GM**(위상 −180° 지점 이득), **위상여유 PM**(이득 0dB 지점 위상)
 - PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`
 
+
+## ⏱️ 3시간 수업 운영안
+
+| 시간 | 활동 | 학생 산출물 |
+|---|---|---|
+| 0:00-0:25 | PWM으로 만든 입력이 실제 속도 응답으로 이어지는 과정 연결 | 폐루프 블록도 |
+| 0:25-1:15 | 라플라스, Bode, 안정도, P/I/PI 특성 해설 | 개념 요약표 |
+| 1:25-2:25 | PI 이득 변화에 따른 스텝응답과 Teleplot 로그 해석 | 응답 비교 그래프 |
+| 2:25-3:00 | 중간 설계리뷰 준비: 요구사항·블록도·제어 목표 정리 | 리뷰 제출 초안 |
+
+## 📎 수업자료 활용
+
+| 자료 | 수업 중 쓰는 장면 |
+|---|---|
+| [motor-control-inverter-theory.pdf](attachments/motor-control-inverter-theory.pdf) | 제어공학과 PI 속도제어 주교재 |
+| [speed-control-teleplot.pdf](attachments/speed-control-teleplot.pdf) | 속도 로그 시각화와 Teleplot 사용 자료 |
+| figures/pi.svg | P/I/PI 응답 비교 |
+| figures/bode.svg | 주파수 응답과 차단주파수 설명 |
+
+## ✅ 이해 확인 질문
+
+1. P 제어만으로 정상상태 오차가 남는 상황을 예로 든다.
+2. PI 이득을 올릴 때 응답 속도와 오버슈트가 어떻게 달라지는지 설명한다.
+3. Bode 선도에서 -3dB 지점과 위상여유의 의미를 구분한다.
+
 ## 🧪 실습·과제
 
 - [ ] RC LPF 전달함수 → Bode → fc(796Hz) 재현

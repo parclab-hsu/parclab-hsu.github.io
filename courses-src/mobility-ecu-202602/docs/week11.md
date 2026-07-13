@@ -59,6 +59,30 @@ flowchart LR
 
 > 💡 **실무 방법론(chcbaram WIZnet 사례)** — 목표 단순화 → 요구사항 정리 → 시스템 블록도 → To-do → **WBS로 일정 관리**. 업체·Tool: JLCPCB + EasyEDA, 회로 3분할(MCU/게이트드라이버/파워), `EMC = EMS + EMI`.
 
+
+## ⏱️ 3시간 수업 운영안
+
+| 시간 | 활동 | 학생 산출물 |
+|---|---|---|
+| 0:00-0:25 | 1~10주차 기능을 제품 개발 문서로 재정렬 | 기능 목록 |
+| 0:25-1:15 | 요구사항, 사양서, HSI, 시스템 블록도 작성법 해설 | 문서 템플릿 초안 |
+| 1:25-2:25 | 팀별 AMR 2륜 구동 ECU 요구사항·핀맵 작성 | HSI 표와 블록도 |
+| 2:25-3:00 | 설계 리뷰: 누락 센서, 보호 기능, 시험 항목 찾기 | 리뷰 코멘트 |
+
+## 📎 수업자료 활용
+
+| 자료 | 수업 중 쓰는 장면 |
+|---|---|
+| [inverter-hardware-design-v0.1.pdf](attachments/inverter-hardware-design-v0.1.pdf) | 요구사항에서 인버터 하드웨어로 내려가는 설계 흐름 |
+| [electric-scooter-v2-spec-circuit-cost.xlsx](attachments/electric-scooter-v2-spec-circuit-cost.xlsx) | 사양·부품·가격을 요구사항으로 변환하는 연습 |
+| figures/diffdrive.svg | AMR 2륜 구동 요구사항 설명 |
+
+## ✅ 이해 확인 질문
+
+1. 요구사항과 구현 방법을 구분해 작성한다.
+2. HSI 표가 하드웨어와 펌웨어의 계약서인 이유를 설명한다.
+3. 최종 시연을 검증 가능한 시험 항목으로 바꾼다.
+
 ## 🧪 실습·과제
 
 - [ ] AMR 2륜 구동 제어유닛 요구사항 명세서 작성

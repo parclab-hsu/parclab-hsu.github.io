@@ -36,6 +36,30 @@ flowchart TD
 
 > ⚠️ 게이트드라이버 부품 표기 불일치 — 슬라이드 UCC27211D vs 실물 회로도 IR2101. 실물 기준으로 통일.
 
+
+## ⏱️ 3시간 수업 운영안
+
+| 시간 | 활동 | 학생 산출물 |
+|---|---|---|
+| 0:00-0:20 | 요구사항 사양이 실제 부품값으로 내려가는 흐름 복습 | 부품 선정 기준표 |
+| 0:20-1:15 | MCU 주변회로, 벅, 게이트드라이버, 션트 증폭 회로 해설 | 회로 블록별 체크리스트 |
+| 1:25-2:25 | MOSFET 열, 벅 인덕터, 분압/NTC 계산 실습 | 설계 계산서 |
+| 2:25-3:00 | 인버터 보드 회로 리뷰와 위험요소 표시 | 리뷰 보드마크업 |
+
+## 📎 수업자료 활용
+
+| 자료 | 수업 중 쓰는 장면 |
+|---|---|
+| [inverter-hardware-design-v0.1.pdf](attachments/inverter-hardware-design-v0.1.pdf) | 인버터 하드웨어 설계의 주교재 |
+| [motor-control-inverter-theory.pdf](attachments/motor-control-inverter-theory.pdf) | 6~7주차 이론을 회로 설계로 연결 |
+| figures/inverter3ph.svg | 게이트드라이버와 MOSFET 배치 설명 |
+
+## ✅ 이해 확인 질문
+
+1. MCU 3.3V PWM이 직접 MOSFET을 구동하기 어려운 이유를 말한다.
+2. 부트스트랩 회로가 하이사이드 구동에 필요한 이유를 설명한다.
+3. 션트 증폭 회로의 입력 범위와 ADC 범위를 함께 확인한다.
+
 ## 🧪 실습·과제
 
 - [ ] 사양서 → 부품 선정(MOSFET Vds, 인덕터 L, Cout) 계산 재현
