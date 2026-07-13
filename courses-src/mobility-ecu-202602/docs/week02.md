@@ -33,6 +33,8 @@ flowchart TD
 | 커패시터 | `Q=CV`, `Ic=C·dVc/dt` | ESR·ESL, 주파수·용도·온도 |
 | 인덕터 | `VL=−L·dIL/dt` | 포화전류(부하 20~30% 여유), DCR |
 
+![전압 분배 회로 (배터리→ADC)](figures/vdivider.svg)
+
 > **AMR·로버 구동부 연결** — 배터리 전압 분배 ADC 입력, 션트 저항 전류측정, 입력 DC 평활 캡, MCU·드라이버 전원핀 MLCC 디커플링.
 
 ## 🧪 실습·과제

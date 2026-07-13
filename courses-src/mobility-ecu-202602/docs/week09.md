@@ -22,6 +22,12 @@ flowchart TD
 - **EXTI**: EXTI0~15=GPIO핀. `PR`은 1 write로 clear. **엔코더·홀센서 감지**에 활용
 - 레지스터: `SYSCFG_EXTICR`(포트) → `IMR`(마스크) → `RTSR`·`FTSR`(엣지) → `PR`(clear)
 
+## 🔄 엔코더 직교신호
+
+![엔코더 A/B 직교신호 (90° 위상차)](figures/encoder_ab.svg)
+
+> A가 B보다 먼저 상승하면 CW, 반대면 CCW. 타이머 Encoder 모드로 방향·속도 취득.
+
 ## 🧪 실습·과제
 
 - [ ] EXTI 인터럽트로 스위치 입력→LED 제어, NVIC 우선순위 차등

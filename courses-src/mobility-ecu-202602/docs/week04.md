@@ -19,6 +19,10 @@ flowchart TD
 
 Voltage-second 평형 `(Vin−Vout)·DT = Vout·(1−D)·T` → **`Vout = D·Vin`**. 인덕터 전류는 삼각파 리플. 동기식 벅(다이오드→MOSFET)으로 효율↑.
 
+### 벅 컨버터 회로 구성
+
+![벅 컨버터 회로도 (SW·D·L·Cout)](figures/buck_circuit.svg)
+
 ## ⚖️ 리니어 vs 스위칭
 
 | 방식 | 장점 | 단점 | 용도 |

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="230" viewBox="0 0 340 230" font-family="sans-serif"><rect width="340" height="230" fill="#fff"/><text x="170" y="18" font-size="13" text-anchor="middle" fill="#333">2륜 차동구동: vL ≠ vR → 회전</text>
+<rect x="120" y="90" width="100" height="70" rx="8" fill="#e7f5ff" stroke="#1c7ed6" stroke-width="2"/><text x="170" y="130" font-size="12" text-anchor="middle" fill="#1c7ed6">AMR</text>
+<rect x="104" y="95" width="16" height="60" rx="3" fill="#495057"/><rect x="220" y="95" width="16" height="60" rx="3" fill="#495057"/>
+<line x1="112" y1="90" x2="112" y2="55" stroke="#2f9e44" stroke-width="3"/><polygon points="107,60 112,50 117,60" fill="#2f9e44"/><text x="90" y="45" font-size="11" fill="#2f9e44">vL(느림)</text>
+<line x1="228" y1="90" x2="228" y2="35" stroke="#e03131" stroke-width="3"/><polygon points="223,40 228,30 233,40" fill="#e03131"/><text x="215" y="25" font-size="11" fill="#e03131">vR(빠름)</text>
+<path d="M 60 200 A 120 120 0 0 1 280 200" fill="none" stroke="#888" stroke-dasharray="5 4"/><polygon points="272,196 282,200 273,206" fill="#888"/><text x="150" y="218" font-size="11" text-anchor="middle" fill="#888">주행 궤적(좌회전)</text></svg>

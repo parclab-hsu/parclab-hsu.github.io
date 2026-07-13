@@ -15,6 +15,12 @@ flowchart TD
     BLDC --> SH["상단만 PWM → 션트 전류 센싱"]
 ```
 
+## 🔀 H-브리지 회로 (2륜 DC 구동)
+
+![H-브리지 정방향 전류 경로](figures/hbridge.svg)
+
+> IN1/IN2로 방향(정/역/정지/브레이크), PWM으로 속도. AMR 좌·우 모터 각 1개씩.
+
 ## 〰️ PWM — 캐리어 비교로 평균전압 만들기
 
 ![PWM: 캐리어 vs 지령 비교로 출력 생성, 평균=듀티](figures/pwm.svg)

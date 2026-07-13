@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="190" viewBox="0 0 400 190" font-family="sans-serif"><rect width="400" height="190" fill="#fff"/><text x="200" y="18" font-size="13" text-anchor="middle" fill="#333">엔코더 A/B 직교신호 (90° 위상차)</text>
+<text x="15" y="60" font-size="12" fill="#1c7ed6">A</text>
+<polyline points="40,80 40,40 80,40 80,80 120,80 120,40 160,40 160,80 200,80 200,40 240,40 240,80 280,80 280,40 320,40 320,80 360,80" fill="none" stroke="#1c7ed6" stroke-width="2"/>
+<text x="15" y="140" font-size="12" fill="#e8590c">B</text>
+<polyline points="40,160 60,160 60,120 100,120 100,160 140,160 140,120 180,120 180,160 220,160 220,120 260,120 260,160 300,160 300,120 340,120 340,160 360,160" fill="none" stroke="#e8590c" stroke-width="2"/>
+<text x="200" y="182" font-size="10" text-anchor="middle" fill="#888">A가 B보다 먼저 상승 → CW / 반대 → CCW</text></svg>
