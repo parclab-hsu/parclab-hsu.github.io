@@ -43,13 +43,6 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 
 ## 🧠 핵심 이론 보강
 
-!!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/scooter-firmware-p01.png)
-
-    ![주차 핵심 도해](figures/safety_security_vmodel.svg)
-
-    첫 화면에서는 첨부자료 이미지를 보여 주고, 바로 아래 도해로 원리를 단순화한다. 학생에게 “사진 속 실제 부품/단자”와 “도해 속 기능 블록”을 서로 연결하게 하면 추상 개념이 실습 대상으로 바뀐다.
-
 ### 1. 이번 주 이론을 어디에 쓰는가
 
 - 최종 펌웨어는 GPIO, Timer, ADC, UART, 인터럽트, 제어 루프가 같은 시간 기준 안에서 충돌 없이 동작해야 한다.
@@ -81,46 +74,6 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 
 팀별로 정상 주행, 저전압, 통신 끊김, 엔코더 이상 중 하나의 실패 시나리오를 재현하고 안전 정지 로그를 제시한다. 이 활동은 확장 강의자료의 심화노트, 실습 코칭노트, 평가팩, 사례노트와 이어지며, 한 주차 안에서 “이론 설명 → 손으로 확인 → 평가 → 현장 사례”가 끊기지 않도록 구성한다.
 
-## 🖼️ 슬라이드 이미지
-
-!!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![15주차 첨부자료 대표 이미지](figures/attachment-previews/scooter-firmware-p01.png)
-
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
-
-!!! quote "슬라이드 이미지 2 · 핵심 도해"
-    ![15주차 핵심 도해](figures/attachment-previews/speed-teleplot-p01.png)
-
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
-
-!!! quote "슬라이드 이미지 3 · 실습 보조 도해"
-    ![15주차 실습 보조 도해](figures/edge_ai_fault.svg)
-
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
-
-!!! quote "슬라이드 이미지 4 · 평가·사례 도해"
-    ![15주차 평가·사례 도해](figures/safety_security_vmodel.svg)
-
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
-
-## 🎞️ 통합 강의 슬라이드
-> 통합 근거: PCB·펌웨어 통합 기술노트 15주차 + electric-scooter-firmware + speed-control-teleplot 자료.
-
-!!! note "슬라이드 1 · 모든 블록을 시간축으로 통합한다"
-    main() 초기화, TIM1 20kHz 인터럽트, 홀 EXTI, SysTick 1ms, UART/BLE 송신이 동시에 동작한다. 구조도를 시간 우선순위로 다시 그린다.
-
-!!! note "슬라이드 2 · 6-step 정류와 PWM이 코드로 연결된다"
-    HallSum으로 섹터를 판단하고 Set_Phases로 상단 PWM, 하단 스위치 ON, 상 OFF 상태를 만든다. 전기각 표가 실제 함수 호출로 바뀐다.
-
-!!! note "슬라이드 3 · 센싱은 보정 후 제어에 들어간다"
-    전류 오프셋 평균, Vdc/NTC 변환, 쓰로틀 히스테리시스, RPM T방식 계산을 거쳐 의미 있는 제어 변수로 만든다.
-
-!!! note "슬라이드 4 · Fault는 발표의 핵심 시나리오다"
-    과전류, 과열, 저전압, 과전압 플래그가 생기면 PWM을 끄고 로그를 남겨야 한다. 안전하게 멈추는 것도 성공한 제어의 일부다.
-
-!!! note "슬라이드 5 · 최종 발표는 증거 중심으로 구성한다"
-    요구사항, HSI, 회로/PCB, 코드 구조, Teleplot 로그, 주행 영상, 실패 원인 분석을 한 흐름으로 발표한다.
-
 ## 📦 용어 박스
 !!! abstract "이번 주 꼭 설명할 용어"
     - **6-step 펌웨어**: 홀 상태에 따라 두 상을 선택해 PWM을 출력하는 BLDC 구동 코드.
@@ -143,7 +96,6 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-p01.png)
 
 ![주차 핵심 도해](figures/edge_ai_fault.svg)
 
@@ -238,11 +190,6 @@ AI 예지보전이 제어기를 대체한다는 말을 로그 분석 보조 역�
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-p01.png)
-
-![첨부자료 미리보기](figures/attachment-previews/speed-teleplot-p01.png)
-
-![실습 보조 도해](figures/edge_ai_fault.svg)
 
 ###### 오늘의 실습 미션
 
@@ -325,9 +272,6 @@ Fault 발생 시 첫 세 동작을 순서대로 말하게 한다. 다만 최악 
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-p01.png)
-
-![평가 보조 도해](figures/edge_ai_fault.svg)
 
 ###### 10분 퀴즈
 
@@ -404,9 +348,6 @@ Fault 발생 시 첫 세 동작을 순서대로 말하게 한다. 다만 최악 
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-p01.png)
-
-![사례 보조 도해](figures/edge_ai_fault.svg)
 
 ###### 현장 맥락
 
