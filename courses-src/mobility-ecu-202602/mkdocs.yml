@@ -145,6 +145,8 @@ nav:
       - 5·6·7·12주차 · 모터·인버터·제어: 02-motor-inverter-control.md
       - 8~10주차 · STM32 펌웨어: 03-stm32-firmware.md
       - 11·13·14·15주차 · PCB·펌웨어 통합: 04-pcb-firmware-integration.md
+  - 실습 코드:
+      - 교육용 코드 흐름: code/README.md
   - 캡스톤 프로젝트:
       - AMR 개발 프로젝트: ugv-project.md
       - AMR 부품표·회로: ugv-bom.md

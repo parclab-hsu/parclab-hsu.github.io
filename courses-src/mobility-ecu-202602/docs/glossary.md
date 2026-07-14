@@ -65,22 +65,46 @@ Over-the-Air/Firmware-over-the-Air. 차량이나 로봇의 소프트웨어를 �
 ### Cybersecurity {#cybersecurity}
 통신, 업데이트, 로그, 원격 명령이 공격 경로가 되지 않도록 인증, 무결성, 권한, 기록을 관리하는 관점이다.
 
+### AUTOSAR {#autosar}
+Automotive Open System Architecture. 차량 소프트웨어 구조, 인터페이스, 통신, 안전·보안 관련 표준 생태계다. 이 강의에서는 직접 AUTOSAR를 구현하지 않지만, HSI·상태기계·진단 로그가 산업 표준 개발 방식과 어떻게 이어지는지 설명할 때 사용한다.
+
+### V-Model {#v-model}
+요구사항에서 설계·구현·검증으로 내려가고, 다시 시험 결과로 요구사항 충족을 확인하는 개발 모델이다. 11주차 요구사항과 15주차 최종 검증을 연결하는 핵심 프레임이다.
+
+### CSMS/SUMS {#csms-sums}
+Cyber Security Management System / Software Update Management System. 차량 사이버보안과 소프트웨어 업데이트를 조직·프로세스·증거로 관리하는 체계다. 학생 수준에서는 원격 명령, UART/BLE, 업데이트 파일의 신뢰 경계를 이해하는 데 초점을 둔다.
+
+### NPU {#npu}
+Neural Processing Unit. 신경망 추론을 빠르고 효율적으로 실행하기 위한 전용 가속기다. STM32N6처럼 MCU 계열에도 엣지 AI 가속기가 들어가면서, 작은 제어기에서도 이상 탐지나 간단한 인지 기능을 다룰 수 있다.
+
+### Anti-windup {#anti-windup}
+PI 제어기에서 출력이 포화되었는데도 적분항이 계속 쌓여 회복이 늦어지는 문제를 줄이는 기법이다. 7주차 속도제어와 15주차 안전정지에서 함께 다룬다.
+
+### Shunt Resistor {#shunt}
+전류를 측정하기 위해 작은 저항을 전류 경로에 넣고 전압강하를 읽는 부품이다. 모터 전류 보호, 토크 추정, 고장 진단의 기본 센서가 된다.
+
+### Bootstrap Gate Driver {#bootstrap}
+하이사이드 MOSFET을 켜기 위해 스위칭 노드보다 높은 게이트 전압을 만드는 게이트드라이버 회로 방식이다. 12주차 인버터 하드웨어 설계에서 핵심적으로 다룬다.
+
+### Return Current {#return-current}
+신호나 전력 전류가 부하를 지난 뒤 전원으로 되돌아가는 전류다. 돌아오는 경로가 길거나 끊기면 노이즈와 EMI가 커지므로 14주차 PCB 노이즈 수업에서 중요하다.
+
 ## 주차별 빠른 용어 링크
 
 | 주차 | 먼저 볼 용어 | 함께 볼 도해 |
 |---|---|---|
 | 1 | [ECU](#ecu), [MCU](#mcu), [SDV](#sdv), [Zonal Architecture](#zonal) | ECU 계층 구조, SDV 존 구조 |
-| 2 | [ADC](#adc), [ECU](#ecu) | ECU 계층 구조 |
-| 3 | [Dead Time](#deadtime), [PWM](#pwm) | ECU 계층 구조 |
+| 2 | [ADC](#adc), [Shunt Resistor](#shunt), [ECU](#ecu) | ECU 계층 구조 |
+| 3 | [Dead Time](#deadtime), [PWM](#pwm), [Shunt Resistor](#shunt) | ECU 계층 구조 |
 | 4 | [ECU](#ecu), [Functional Safety](#functional-safety) | ECU 계층 구조 |
 | 5 | [BLDC](#bldc), [FOC](#foc) | Edge AI 예지보전 흐름 |
 | 6 | [PWM](#pwm), [Dead Time](#deadtime), [FOC](#foc) | ECU 계층 구조 |
-| 7 | [PI 제어](#pi-control), [Teleplot](#teleplot) | Edge AI 예지보전 흐름 |
+| 7 | [PI 제어](#pi-control), [Anti-windup](#anti-windup), [Teleplot](#teleplot) | Edge AI 예지보전 흐름 |
 | 8 | [MCU](#mcu), [HSI](#hsi) | ECU 안전·보안 V 모델 |
 | 9 | [EXTI/NVIC](#interrupt), [MCU](#mcu) | ECU 계층 구조 |
 | 10 | [ADC](#adc), [PWM](#pwm), [Teleplot](#teleplot) | Edge AI 예지보전 흐름 |
-| 11 | [HSI](#hsi), [Functional Safety](#functional-safety) | ECU 안전·보안 V 모델 |
-| 12 | [Dead Time](#deadtime), [FOC](#foc), [Functional Safety](#functional-safety) | ECU 계층 구조 |
+| 11 | [HSI](#hsi), [V-Model](#v-model), [Functional Safety](#functional-safety) | ECU 안전·보안 V 모델 |
+| 12 | [Bootstrap Gate Driver](#bootstrap), [Dead Time](#deadtime), [Functional Safety](#functional-safety) | ECU 계층 구조 |
 | 13 | [HSI](#hsi), [Cybersecurity](#cybersecurity) | SDV 존 구조 |
-| 14 | [Zonal Architecture](#zonal), [Cybersecurity](#cybersecurity) | SDV 존 구조 |
-| 15 | [OTA/FOTA](#ota), [Edge AI/TinyML](#edge-ai), [Functional Safety](#functional-safety) | Edge AI 예지보전, V 모델 |
+| 14 | [Return Current](#return-current), [Zonal Architecture](#zonal), [Cybersecurity](#cybersecurity) | SDV 존 구조 |
+| 15 | [OTA/FOTA](#ota), [CSMS/SUMS](#csms-sums), [NPU](#npu), [Functional Safety](#functional-safety) | Edge AI 예지보전, V 모델 |
