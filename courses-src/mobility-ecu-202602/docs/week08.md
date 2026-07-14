@@ -40,6 +40,13 @@ MCU 레지스터 3분류 — **Control**(설정) / **Status**(플래그) / **Dat
 | 도해 | ![ECU 안전·보안 V 모델](figures/safety_security_vmodel.svg) |
 | 최신 기술 연결 | [안전 RTOS와 추적성](trends.md#safety-rtos-traceability) 흐름을 bare-metal 레지스터 실습에도 적용한다. |
 
+## 📚 확장 강의자료
+
+- [8주차 심화 강의노트](week08-deep-dive.md): 첨부자료 대표 이미지, 판서 흐름, 오개념 교정, 최신 기술 연결을 포함한 이론 확장 자료.
+- [8주차 실습 코칭노트](week08-lab-coach.md): 팀 실습 절차, 코칭 질문, 평가 루브릭, 보강 과제를 포함한 수업 운영 자료.
+- [8주차 평가·문제팩](week08-assessment-pack.md): 10분 퀴즈, 계산·해석 문제, 구두 발표 질문, 채점 루브릭.
+- [8주차 현장 사례노트](week08-case-note.md): 실제 고장 시나리오, 진단 절차, 보고서 연결 문장.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |
