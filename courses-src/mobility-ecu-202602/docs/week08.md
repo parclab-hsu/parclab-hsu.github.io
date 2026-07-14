@@ -1,5 +1,7 @@
 # 8주차 · STM32 기초 — GPIO·메모리맵·레지스터 접근
 
+> 🔗 **강의 흐름** — 이론(1~7주차)을 이제 **STM32 펌웨어**로 옮긴다. 이번 주는 레지스터 직접 접근(GPIO). 다음 주는 입력·인터럽트.
+
 > **학습목표** — ARM/Cortex-M 구조와 STM32F767 메모리맵을 이해하고, 포인터 기반 레지스터 직접 접근으로 GPIO 출력(LED)을 구현한다.
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **마이크로컨트롤러(MCU)란?** CPU·메모리·입출력이 한 칩에 든 작은 컴퓨터다. "레지스터"라는 설정 스위치 상자에 값을 써서 하드웨어를 직접 제어한다. GPIO는 디지털 핀을 켜고(High) 끄는(Low) 가장 기본 기능이다.
@@ -69,6 +71,61 @@ MCU 레지스터 3분류 — **Control**(설정) / **Status**(플래그) / **Dat
 1. GPIO 출력 전 RCC 클럭을 켜야 하는 이유를 설명한다.
 2. MODER, OTYPER, ODR이 각각 무엇을 설정하는지 말한다.
 3. 레지스터 직접접근 코드에서 volatile이 필요한 이유를 설명한다.
+
+## 💻 실습 코드 (주석 포함) — `code/week08_gpio_led.c`
+
+HAL 없이 레지스터에 직접 값을 써서 LED를 켜는 최소 예제. 클럭→모드→출력 순서가 핵심. [⬇ 전체 코드](code/week08_gpio_led.c)
+
+```c
+/*
+ * [8주차] GPIO 출력 — 레지스터 직접 접근으로 LED 제어 (STM32F767)
+ * ---------------------------------------------------------------
+ * 목표: HAL 함수 없이 "레지스터에 직접 값을 써서" 마이크로프로세서를 이해한다.
+ * 핵심 흐름:  클럭 Enable → 모드 설정 → 출력타입/속도 → 값 쓰기
+ * (교육용 자작 코드. 실제 핀은 보드 회로도에 맞게 수정)
+ */
+#include "stm32f767xx.h"
+
+/* LED가 연결된 핀: 예) PC6 (High=꺼짐, Low=켜짐인 보드도 있으니 회로 확인) */
+#define LED_PORT   GPIOC
+#define LED_PIN    6
+
+void led_gpio_init(void)
+{
+    /* 1) 포트 클럭 Enable — MCU는 클럭이 없으면 그 주변장치가 아예 동작하지 않는다.
+     *    AHB1ENR의 GPIOC 비트를 1로 세팅. */
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
+
+    /* 2) MODER: 핀 모드를 '출력(01)'으로. 핀당 2비트를 차지한다.
+     *    먼저 해당 2비트를 0으로 지우고(&= ~), 출력값(01)을 OR로 세팅. */
+    LED_PORT->MODER &= ~(3U << (LED_PIN * 2));   /* 해당 핀 2비트 클리어 */
+    LED_PORT->MODER |=  (1U << (LED_PIN * 2));   /* 01 = General purpose output */
+
+    /* 3) OTYPER: 출력 타입 = Push-Pull(0). (0으로 두면 됨 — 명시적으로 클리어) */
+    LED_PORT->OTYPER &= ~(1U << LED_PIN);
+
+    /* 4) OSPEEDR: 출력 속도. 빠를수록 좋은 게 아니다 — 빠른 엣지는 EMI(노이즈)를 유발.
+     *    LED 같은 저속 신호는 Low speed(00)면 충분. */
+    LED_PORT->OSPEEDR &= ~(3U << (LED_PIN * 2));
+}
+
+/* 출력 값 쓰기: ODR(Output Data Register)의 해당 비트를 1/0으로. */
+static inline void led_on(void)  { LED_PORT->ODR |=  (1U << LED_PIN); }
+static inline void led_off(void) { LED_PORT->ODR &= ~(1U << LED_PIN); }
+static inline void led_toggle(void){ LED_PORT->ODR ^=  (1U << LED_PIN); }
+
+/* 대략적인 지연 (교육용 busy-wait. 실전은 SysTick/타이머 사용 — 9·10주차) */
+static void crude_delay(volatile uint32_t n){ while(n--) __NOP(); }
+
+int main(void)
+{
+    led_gpio_init();
+    while (1) {
+        led_toggle();          /* 1비트 XOR로 On/Off 반전 */
+        crude_delay(1000000);  /* 눈에 보이도록 잠깐 대기 */
+    }
+}
+```
 
 ## 🧪 실습·과제
 

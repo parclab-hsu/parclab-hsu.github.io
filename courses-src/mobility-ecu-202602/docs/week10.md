@@ -1,5 +1,7 @@
 # 10주차 · STM32 주변장치 — ADC·Timer·UART
 
+> 🔗 **강의 흐름** — 지난주 인터럽트에 이어, 이번 주는 로봇의 감각·구동·통신인 **ADC·Timer·UART**. 다음 주부터 이걸 담을 하드웨어를 설계한다.
+
 > **학습목표** — 명령/센서 ADC 입력, 타이머/상보 PWM, UART 시리얼 통신을 구현하고 주기 태스크를 설계한다.
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **ADC·타이머·UART?** ADC는 센서의 아날로그 전압을 숫자로 바꾸고, 타이머는 정확한 시간·PWM을 만들며, UART는 선 2개로 컴퓨터와 문자를 주고받는다(디버깅·원격 명령). 로봇이 "보고·움직이고·말하는" 3대 기능이다.
@@ -71,6 +73,60 @@ flowchart TD
 1. 12bit ADC에서 3.3V 기준 1스텝 전압을 계산한다.
 2. ARR/CCR/PSC가 PWM 주파수와 듀티를 어떻게 결정하는지 설명한다.
 3. UART 로그가 디버깅과 데이터 수집에 동시에 쓰이는 이유를 말한다.
+
+## 💻 실습 코드 (주석 포함) — `code/week10_adc_timer_uart.c`
+
+센서 읽기(ADC)·모터 속도(PWM)·통신(UART)을 한 루프에 묶은 핵심 예제. [⬇ 전체 코드](code/week10_adc_timer_uart.c)
+
+```c
+/*
+ * [10주차] 주변장치 3종 — ADC(센서) · Timer PWM(모터) · UART(통신)
+ * ---------------------------------------------------------------
+ * 로봇의 "보고(ADC) · 움직이고(PWM) · 말하는(UART)" 기본기.
+ * (교육용 간략 예제 — 실제는 클럭/핀 설정을 CubeMX나 레퍼런스매뉴얼로 맞춘다)
+ */
+#include "stm32f767xx.h"
+#include <stdio.h>
+
+/* ---------------- ADC: 아날로그 전압 → 12비트 숫자(0~4095) ---------------- */
+uint16_t adc_read(void)
+{
+    ADC1->CR2 |= ADC_CR2_SWSTART;                 /* 변환 시작 */
+    while (!(ADC1->SR & ADC_SR_EOC)) { }          /* EOC(변환완료) 플래그 대기(폴링) */
+    return (uint16_t)ADC1->DR;                    /* 결과 읽기 → 플래그 자동 클리어 */
+}
+/* 변환식: 전압 = ADC값 / 4095 * Vref(3.3V). 예: 쓰로틀/배터리 분압 전압 계산 */
+float adc_to_voltage(uint16_t raw){ return (float)raw * 3.3f / 4095.0f; }
+
+/* ---------------- Timer PWM: 모터 속도(듀티) 만들기 ---------------- */
+/* TIM_CCR 값이 듀티를 결정. duty(0.0~1.0) → CCR = ARR * duty */
+void pwm_set_duty(float duty)
+{
+    if (duty < 0) duty = 0; if (duty > 1) duty = 1;   /* 안전 클램프 */
+    TIM3->CCR1 = (uint32_t)((float)TIM3->ARR * duty); /* 좌모터 채널 예시 */
+}
+
+/* ---------------- UART: 문자 1개 송신(디버깅/원격 명령) ---------------- */
+void uart_putc(char c)
+{
+    while (!(USART2->ISR & USART_ISR_TXE)) { }   /* 송신버퍼 빌 때까지 대기 */
+    USART2->TDR = (uint8_t)c;
+}
+/* printf 리타게팅: 이 함수를 정의하면 printf가 UART로 나간다(Teleplot 등) */
+int __io_putchar(int ch){ uart_putc((char)ch); return ch; }
+
+int main(void)
+{
+    /* (init 생략) 아래는 10주차 통합 실습의 핵심 루프 개념 */
+    while (1) {
+        uint16_t raw = adc_read();               /* 1) 쓰로틀/센서 읽기 */
+        float v = adc_to_voltage(raw);
+        float duty = v / 3.3f;                    /* 2) 전압을 듀티로 매핑(예시) */
+        pwm_set_duty(duty);                       /* 3) 모터 PWM 출력 */
+        printf(">throttle:%.2f\n", v);           /* 4) Teleplot 포맷으로 UART 출력 */
+    }
+}
+```
 
 ## 🧪 실습·과제
 
