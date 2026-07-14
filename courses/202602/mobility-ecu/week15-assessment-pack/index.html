@@ -53,6 +53,8 @@
 
 
 
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 
 
@@ -2626,17 +2628,6 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-
-        핵심 평가 초점
-
-    </span>
-  </a>
-
-</li>
-
-        <li class="md-nav__item">
   <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
 
@@ -2648,7 +2639,7 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
 
         계산·해석 문제
@@ -2663,7 +2654,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
 
-        문제 1 · 출력값 예측
+        문제 1 · 입력 조건 정리
 
     </span>
   </a>
@@ -2674,7 +2665,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
 
-        문제 2 · 신호 흐름 표시
+        문제 2 · 결과 예측
 
     </span>
   </a>
@@ -2685,7 +2676,7 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
 
-        문제 3 · 실패 원인 제시
+        문제 3 · 실패 원인 분류
 
     </span>
   </a>
@@ -2709,7 +2700,7 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
 
         구두 발표 질문
@@ -2720,7 +2711,7 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
 
         채점 루브릭
@@ -2792,7 +2783,7 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
 
         보충 문제
@@ -3170,17 +3161,6 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-
-        핵심 평가 초점
-
-    </span>
-  </a>
-
-</li>
-
-        <li class="md-nav__item">
   <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
 
@@ -3192,7 +3172,7 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
 
         계산·해석 문제
@@ -3207,7 +3187,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
 
-        문제 1 · 출력값 예측
+        문제 1 · 입력 조건 정리
 
     </span>
   </a>
@@ -3218,7 +3198,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
 
-        문제 2 · 신호 흐름 표시
+        문제 2 · 결과 예측
 
     </span>
   </a>
@@ -3229,7 +3209,7 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
 
-        문제 3 · 실패 원인 제시
+        문제 3 · 실패 원인 분류
 
     </span>
   </a>
@@ -3253,7 +3233,7 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
 
         구두 발표 질문
@@ -3264,7 +3244,7 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
 
         채점 루브릭
@@ -3336,7 +3316,7 @@
 </li>
 
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
 
         보충 문제
@@ -3365,56 +3345,50 @@
 
 <h1 id="15">15주차 평가·문제팩 · 구동 펌웨어 통합 및 최종 프로젝트 발표<a class="headerlink" href="#15" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>이 자료는 수업 후 이해 확인, 팀별 발표 피드백, 과제 채점에 바로 쓰는 문제 은행이다. 단순 암기보다 계산, 판단, 설명, 증거 제출을 평가한다.</p>
+<p>이 문제팩은 <code>통합 펌웨어와 최종 검증</code> 이해도를 계산, 설명, 진단, 발표 네 관점에서 확인한다.</p>
 </blockquote>
 <h2 id="_1">평가 기준 이미지<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p><img alt="첨부자료 대표 이미지" src="../figures/attachment-previews/scooter-firmware-p01.png" /></p>
-<p><img alt="핵심 도해" src="../figures/edge_ai_fault.svg" /></p>
-<h2 id="_2">핵심 평가 초점<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>평가 주제: 통합 펌웨어와 최종 검증</li>
-<li>학생은 그림에서 입력, 처리, 출력, 위험요소를 표시해야 한다.</li>
-<li>답안에는 수치, 단위, 캡처, 로그, 회로 표시 중 최소 하나가 포함되어야 한다.</li>
-</ul>
+<p><img alt="첨부자료 미리보기" src="../figures/attachment-previews/scooter-firmware-p01.png" /></p>
+<p><img alt="평가 보조 도해" src="../figures/edge_ai_fault.svg" /></p>
 <h2 id="10">10분 퀴즈<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <ol>
-<li>오늘 주제를 최종 AMR ECU 블록도에서 어디에 배치할 수 있는가?</li>
-<li>이 주제에서 가장 위험한 오배선, 오설정, 오해는 무엇인가?</li>
-<li>측정값이 예상과 다를 때 가장 먼저 확인할 기준값은 무엇인가?</li>
-<li>오늘 배운 내용을 SDV, 진단, 안전, OTA 중 하나와 연결해 한 문장으로 설명하라.</li>
+<li>런타임 태스크를 빠른 제어, 느린 통신, 진단으로 분류하게 한다.</li>
+<li>Fault 발생 시 첫 세 동작을 순서대로 말하게 한다.</li>
+<li>최종 보고서에 들어갈 요구사항별 검증표를 완성하게 한다.</li>
+<li><code>통합 펌웨어와 최종 검증</code>를 SDV 진단 데이터와 연결해 한 문장으로 설명하라.</li>
 </ol>
-<h2 id="_3">계산·해석 문제<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="1">문제 1 · 출력값 예측<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>대표 회로 또는 코드의 입력값을 정하고 출력값을 예측한다. 답안에는 식, 대입값, 단위, 결론이 들어가야 한다.</p>
-<h3 id="2">문제 2 · 신호 흐름 표시<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>첨부 이미지 위에 신호 흐름을 표시한다. 전원선, 신호선, 리턴 경로를 구분해야 한다.</p>
-<h3 id="3">문제 3 · 실패 원인 제시<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>실습 결과가 실패한 상황을 가정하고 원인을 3개 제시한다. 하드웨어, 펌웨어, 측정장비로 나누어 쓴다.</p>
+<h2 id="_2">계산·해석 문제<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1">문제 1 · 입력 조건 정리<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>구동 펌웨어 통합 및 최종 프로젝트 발표에서 필요한 입력 조건을 세 개 쓰고, 각 조건의 단위를 붙인다.</p>
+<h3 id="2">문제 2 · 결과 예측<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>초기화, ADC 보정, PWM 시작, 속도 계산, UART 송신을 시간축으로 배열한다. 이때 학생 답안에는 식, 대입값, 단위, 결론이 들어가야 한다.</p>
+<h3 id="3">문제 3 · 실패 원인 분류<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>통신 태스크가 길어지면 제어 주기가 흔들려 속도 응답이 나빠질 수 있다. 이 상황을 하드웨어, 펌웨어, 측정 조건으로 나누어 원인을 추정한다.</p>
 <h3 id="4">문제 4 · 보호 기능 제안<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>실제 차량 ECU라면 추가해야 할 보호 기능을 제안한다. 감지 조건, 안전 상태, 로그 항목을 포함한다.</p>
-<h2 id="_4">구두 발표 질문<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>저전압 상태에서 계속 주행하면 배터리 보호와 모터 제어가 동시에 불안정해진다. 이 문제를 줄이기 위한 감지 조건, 안전 상태, 로그 항목을 제안한다.</p>
+<h2 id="_3">구두 발표 질문<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li>이 값은 어디서 측정했는가?</li>
-<li>기준전압, 클럭, 전류제한은 얼마인가?</li>
-<li>같은 실험을 다른 팀이 재현하려면 무엇을 알려줘야 하는가?</li>
-<li>실패했을 때 안전하게 멈추는 조건은 무엇인가?</li>
+<li><code>통합 펌웨어와 최종 검증</code>에서 학생이 실제로 측정한 값은 무엇인가?</li>
+<li>주행 영상이 있으면 통합이 끝났다는 오해를 반복성, 로그, 안전정지로 교정한다.</li>
+<li>Fault는 예외상황이라 나중에 해도 된다는 생각을 전력부 보호와 연결해 바로잡는다.</li>
+<li>AI 예지보전이 제어기를 대체한다는 말을 로그 분석 보조 역할로 제한한다.</li>
 </ul>
-<h2 id="_5">채점 루브릭<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">채점 루브릭<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="5">5점<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<p>시스템 위치, 수치 근거, 실험 증거, 안전 고려가 모두 명확하다.</p>
+<p>구동 펌웨어 통합 및 최종 프로젝트 발표의 시스템 위치, 수치 근거, 실험 증거, 안전 고려가 모두 명확하다.</p>
 <h3 id="4_1">4점<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
-<p>핵심 원리는 맞고 증거도 있으나 최악 조건 설명이 약하다.</p>
+<p>핵심 원리는 맞고 <code>통합 펌웨어와 최종 검증</code> 증거도 있으나 최악 조건 설명이 약하다.</p>
 <h3 id="3_1">3점<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
-<p>동작 결과는 있으나 계산 또는 재현 절차가 부족하다.</p>
+<p>동작 결과는 있으나 런타임 태스크를 빠른 제어, 느린 통신, 진단으로 분류하게 한는 충분히 설명하지 못한다.</p>
 <h3 id="2_1">2점<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
-<p>용어 설명은 있으나 실제 회로, 코드, 로그와 연결되지 않는다.</p>
+<p>용어 설명은 있으나 실제 회로, 코드, 로그와 <code>통합 펌웨어와 최종 검증</code>를 연결하지 못한다.</p>
 <h3 id="1_1">1점<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
-<p>결과만 제출하고 근거가 없다.</p>
-<h2 id="_6">보충 문제<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>결과만 제출하고 구동 펌웨어 통합 및 최종 프로젝트 발표 판단 근거가 없다.</p>
+<h2 id="_5">보충 문제<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ol>
-<li>오늘 주제에서 학생들이 가장 자주 틀릴 단위를 하나 고르고 이유를 설명하라.</li>
-<li>첨부 PDF 그림을 기준으로 추가 측정 포인트 2개를 제안하라.</li>
-<li>팀 프로젝트 보고서에 넣을 한 문장 결론을 작성하라.</li>
+<li>최종 발표에서 실패 로그를 숨기면 개선 방향을 찾을 수 없다.</li>
+<li><code>electric-scooter-firmware-v0.2.pdf / speed-control-teleplot.pdf</code>의 대표 이미지에서 추가 측정 포인트 두 곳을 제안하라.</li>
+<li>팀 보고서 결론을 <code>통합 펌웨어와 최종 검증</code> 중심으로 한 문장 작성하라.</li>
 </ol>
 
 

@@ -1,0 +1,25 @@
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6,
+.md-typeset p,
+.md-typeset li,
+.md-typeset blockquote,
+.md-typeset figcaption,
+.md-typeset th,
+.md-typeset td {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.md-typeset a {
+  overflow-wrap: anywhere;
+}
+
+.md-typeset code,
+.md-typeset pre {
+  word-break: normal;
+  overflow-wrap: normal;
+}
