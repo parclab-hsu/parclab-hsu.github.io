@@ -2,108 +2,108 @@
 <!doctype html>
 <html lang="ko" class="no-js">
   <head>
-    
+
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      
+
         <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + AMR 캡스톤">
-      
-      
-      
+
+
+
         <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/mobility-ecu/week09/">
-      
-      
+
+
         <link rel="prev" href="../week08/">
-      
-      
+
+
         <link rel="next" href="../week10/">
-      
-      
-        
-      
-      
+
+
+
+
+
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
-    
-    
-      
+
+
+
         <title>9주차 · 입력·클럭·인터럽트 - 모빌리티 전자제어유닛 실습 · 2026-2학기</title>
-      
-    
-    
+
+
+
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
-      
-        
+
+
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
-      
-      
 
 
-    
-    
-      
-    
-    
-      
-        
-        
+
+
+
+
+
+
+
+
+
+
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="../stylesheets/extra.css">
-    
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
 
-    
-    
+
+
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+
+
+
+
+
   </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
-  
-    
+
+
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
+
+
         <a href="#9-stm32" class="md-skip">
           콘텐츠로 이동
         </a>
-      
+
     </div>
     <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
 
-  
+    </div>
+
+
+
+
+
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
     <a href=".." title="모빌리티 전자제어유닛 실습 · 2026-2학기" class="md-header__button md-logo" aria-label="모빌리티 전자제어유닛 실습 · 2026-2학기" data-md-component="logo">
-      
-  
+
+
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      
+
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
@@ -115,49 +115,49 @@
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
-            
+
               9주차 · 입력·클럭·인터럽트
-            
+
           </span>
         </div>
       </div>
     </div>
-    
-      
+
+
         <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
+
+
+
+
     <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
-    
+
       <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
       </label>
-    
-  
-    
-    
-    
+
+
+
+
+
     <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
-    
+
       <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
       </label>
-    
-  
+
+
 </form>
-      
-    
-    
+
+
+
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      
-      
+
+
+
+
+
         <label class="md-header__button md-icon" for="__search">
-          
+
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
@@ -166,19 +166,19 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        
+
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
+
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="검색">
-        
+
         <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
-          
+
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
-      
+
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -192,2998 +192,3142 @@
     </div>
   </div>
 </div>
-      
-    
-    
+
+
+
   </nav>
-  
+
 </header>
-    
+
     <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-        
-      
+
+
+
+
+
+
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
-          
-            
-              
+
+
+
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    
+
 
 
 
 <nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="모빌리티 전자제어유닛 실습 · 2026-2학기" class="md-nav__button md-logo" aria-label="모빌리티 전자제어유닛 실습 · 2026-2학기" data-md-component="logo">
-      
-  
+
+
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     모빌리티 전자제어유닛 실습 · 2026-2학기
   </label>
-  
+
   <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    강의 개요
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    강의 개요
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-    
-      
-      
-  
-  
-  
-  
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../ax-curriculum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🤖 AX 교육과정 개편
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    🤖 AX 교육과정 개편
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-    
-      
-      
-  
-  
-  
-  
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../curriculum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    커리큘럼(15주차)
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    커리큘럼(15주차)
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-    
-      
-      
-  
-  
-  
-  
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../resources/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    첨부자료 활용 가이드
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    첨부자료 활용 가이드
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-    
-      
-      
-  
-  
-  
-  
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../glossary/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    용어·도해 사전
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    용어·도해 사전
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-    
-      
-      
-  
-  
-  
-  
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../trends/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    최신 기술 트렌드
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    최신 기술 트렌드
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    주차별 강의 자료
-  
 
-    
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+
+
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+
+
+
+  <span class="md-ellipsis">
+
+
+    주차별 강의 자료
+
+
+
   </span>
-  
-  
+
+
 
             <span class="md-nav__icon md-icon"></span>
           </label>
-        
+
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
-            
-  
+
+
     주차별 강의 자료
-  
+
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week01/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1주차 · 오리엔테이션·AMR 제어유닛 구조
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    1주차 · 오리엔테이션·AMR 제어유닛 구조
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week02/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2주차 · 전자부품 1 · 저항·커패시터·인덕터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    2주차 · 전자부품 1 · 저항·커패시터·인덕터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week03/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3주차 · 전자부품 2 · 다이오드·BJT·MOSFET
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    3주차 · 전자부품 2 · 다이오드·BJT·MOSFET
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week04/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    4주차 · 전원회로
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    4주차 · 전원회로
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week05/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5주차 · DC/BLDC 모터 원리
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    5주차 · DC/BLDC 모터 원리
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week06/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6주차 · 인버터·PWM 구동
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    6주차 · 인버터·PWM 구동
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week07/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    7주차 · 제어공학·PI 속도제어
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    7주차 · 제어공학·PI 속도제어
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week08/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    8주차 · STM32 GPIO·메모리맵·레지스터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    8주차 · STM32 GPIO·메모리맵·레지스터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9주차 · 입력·클럭·인터럽트
-  
 
-    
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+
+
+
+
+
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+
+
+
+  <span class="md-ellipsis">
+
+
+    9주차 · 입력·클럭·인터럽트
+
+
+
   </span>
-  
-  
+
+
 
           <span class="md-nav__icon md-icon"></span>
         </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9주차 · 입력·클럭·인터럽트
-  
 
-    
+      <a href="./" class="md-nav__link md-nav__link--active">
+
+
+
+  <span class="md-ellipsis">
+
+
+    9주차 · 입력·클럭·인터럽트
+
+
+
   </span>
-  
-  
+
+
 
       </a>
-      
-        
+
+
 
 <nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
+
+
+
+
+
+
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       목차
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
+
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+
         🗺️ 한눈에 보는 개념도
-      
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+
         🔄 엔코더 직교신호
-      
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        용어·도해·트렌드 연결
-      
+
+        🧠 핵심 이론 보강
+
     </span>
   </a>
-  
+
+    <nav class="md-nav" aria-label="🧠 핵심 이론 보강">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        1. 이번 주 이론을 어디에 쓰는가
+
+    </span>
+  </a>
+
 </li>
-      
+
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2. 강의 중 반드시 남길 판서
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. 학생 눈높이 설명 순서
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. 실습 전환 포인트
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        📚 확장 강의자료
-      
+
+        🎞️ 통합 강의 슬라이드
+
     </span>
   </a>
-  
+
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⏱️ 3시간 수업 운영안
-      
-    </span>
-  </a>
-  
-</li>
-      
+
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        📎 수업자료 활용
-      
+
+        📦 용어 박스
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        ✅ 이해 확인 질문
-      
+
+        📚 확장 강의자료
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
-  <a href="#codeweek09_exti_switchc" class="md-nav__link">
+  <a href="#3_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        💻 실습 코드 (주석 포함) — code/week09_exti_switch.c
-      
+
+        ⏱️ 3시간 수업 운영안
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🧪 실습·과제
-      
+
+        📎 수업자료 활용
+
     </span>
   </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+</li>
+
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        ✅ 이해 확인 질문
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#codeweek09_exti_switchc" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💻 실습 코드 (주석 포함) — code/week09_exti_switch.c
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🧪 실습·과제
+
+    </span>
+  </a>
+
+</li>
+
+    </ul>
+
+</nav>
+
+    </li>
+
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week10/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10주차 · ADC·Timer·UART
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    10주차 · ADC·Timer·UART
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week11/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    11주차 · 요구사항·HSI·시스템 블록도
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    11주차 · 요구사항·HSI·시스템 블록도
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week12/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    12주차 · 인버터 하드웨어 설계
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    12주차 · 인버터 하드웨어 설계
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week13/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    13주차 · 회로도·PCB 설계 기초
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    13주차 · 회로도·PCB 설계 기초
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week14/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    14주차 · PCB 노이즈·그라운드
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    14주차 · PCB 노이즈·그라운드
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week15/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    15주차 · 구동 펌웨어 통합·최종 발표
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    15주차 · 구동 펌웨어 통합·최종 발표
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
+
+
+
           </ul>
         </nav>
-      
+
     </li>
-  
 
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    주차별 확장 강의자료
-  
 
-    
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+
+
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+
+
+
+  <span class="md-ellipsis">
+
+
+    주차별 확장 강의자료
+
+
+
   </span>
-  
-  
+
+
 
             <span class="md-nav__icon md-icon"></span>
           </label>
-        
+
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
-            
-  
+
+
     주차별 확장 강의자료
-  
+
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week01-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1주차 심화 · 오리엔테이션 및 AMR 제어유닛 구조
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    1주차 심화 · 오리엔테이션 및 AMR 제어유닛 구조
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week01-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1주차 실습 · 오리엔테이션 및 AMR 제어유닛 구조
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    1주차 실습 · 오리엔테이션 및 AMR 제어유닛 구조
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week01-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1주차 평가 · 오리엔테이션 및 AMR 제어유닛 구조
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    1주차 평가 · 오리엔테이션 및 AMR 제어유닛 구조
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week01-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    1주차 사례 · 오리엔테이션 및 AMR 제어유닛 구조
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    1주차 사례 · 오리엔테이션 및 AMR 제어유닛 구조
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week02-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2주차 심화 · 전자부품 1 · 저항·커패시터·인덕터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    2주차 심화 · 전자부품 1 · 저항·커패시터·인덕터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week02-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2주차 실습 · 전자부품 1 · 저항·커패시터·인덕터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    2주차 실습 · 전자부품 1 · 저항·커패시터·인덕터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week02-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2주차 평가 · 전자부품 1 · 저항·커패시터·인덕터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    2주차 평가 · 전자부품 1 · 저항·커패시터·인덕터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week02-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2주차 사례 · 전자부품 1 · 저항·커패시터·인덕터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    2주차 사례 · 전자부품 1 · 저항·커패시터·인덕터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week03-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3주차 심화 · 전자부품 2 · 다이오드·BJT·MOSFET
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    3주차 심화 · 전자부품 2 · 다이오드·BJT·MOSFET
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week03-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3주차 실습 · 전자부품 2 · 다이오드·BJT·MOSFET
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    3주차 실습 · 전자부품 2 · 다이오드·BJT·MOSFET
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week03-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3주차 평가 · 전자부품 2 · 다이오드·BJT·MOSFET
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    3주차 평가 · 전자부품 2 · 다이오드·BJT·MOSFET
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week03-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3주차 사례 · 전자부품 2 · 다이오드·BJT·MOSFET
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    3주차 사례 · 전자부품 2 · 다이오드·BJT·MOSFET
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week04-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    4주차 심화 · 전원회로
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    4주차 심화 · 전원회로
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week04-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    4주차 실습 · 전원회로
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    4주차 실습 · 전원회로
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week04-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    4주차 평가 · 전원회로
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    4주차 평가 · 전원회로
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week04-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    4주차 사례 · 전원회로
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    4주차 사례 · 전원회로
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week05-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5주차 심화 · DC/BLDC 모터 원리
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    5주차 심화 · DC/BLDC 모터 원리
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week05-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5주차 실습 · DC/BLDC 모터 원리
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    5주차 실습 · DC/BLDC 모터 원리
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week05-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5주차 평가 · DC/BLDC 모터 원리
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    5주차 평가 · DC/BLDC 모터 원리
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week05-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5주차 사례 · DC/BLDC 모터 원리
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    5주차 사례 · DC/BLDC 모터 원리
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week06-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6주차 심화 · 인버터·PWM 구동
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    6주차 심화 · 인버터·PWM 구동
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week06-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6주차 실습 · 인버터·PWM 구동
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    6주차 실습 · 인버터·PWM 구동
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week06-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6주차 평가 · 인버터·PWM 구동
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    6주차 평가 · 인버터·PWM 구동
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week06-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    6주차 사례 · 인버터·PWM 구동
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    6주차 사례 · 인버터·PWM 구동
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week07-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    7주차 심화 · 제어공학·PI 속도제어
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    7주차 심화 · 제어공학·PI 속도제어
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week07-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    7주차 실습 · 제어공학·PI 속도제어
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    7주차 실습 · 제어공학·PI 속도제어
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week07-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    7주차 평가 · 제어공학·PI 속도제어
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    7주차 평가 · 제어공학·PI 속도제어
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week07-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    7주차 사례 · 제어공학·PI 속도제어
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    7주차 사례 · 제어공학·PI 속도제어
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week08-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    8주차 심화 · STM32 GPIO·메모리맵·레지스터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    8주차 심화 · STM32 GPIO·메모리맵·레지스터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week08-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    8주차 실습 · STM32 GPIO·메모리맵·레지스터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    8주차 실습 · STM32 GPIO·메모리맵·레지스터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week08-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    8주차 평가 · STM32 GPIO·메모리맵·레지스터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    8주차 평가 · STM32 GPIO·메모리맵·레지스터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week08-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    8주차 사례 · STM32 GPIO·메모리맵·레지스터
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    8주차 사례 · STM32 GPIO·메모리맵·레지스터
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week09-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9주차 심화 · 입력·클럭·인터럽트
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    9주차 심화 · 입력·클럭·인터럽트
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week09-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9주차 실습 · 입력·클럭·인터럽트
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    9주차 실습 · 입력·클럭·인터럽트
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week09-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9주차 평가 · 입력·클럭·인터럽트
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    9주차 평가 · 입력·클럭·인터럽트
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week09-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    9주차 사례 · 입력·클럭·인터럽트
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    9주차 사례 · 입력·클럭·인터럽트
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week10-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10주차 심화 · ADC·Timer·UART
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    10주차 심화 · ADC·Timer·UART
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week10-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10주차 실습 · ADC·Timer·UART
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    10주차 실습 · ADC·Timer·UART
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week10-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10주차 평가 · ADC·Timer·UART
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    10주차 평가 · ADC·Timer·UART
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week10-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10주차 사례 · ADC·Timer·UART
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    10주차 사례 · ADC·Timer·UART
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week11-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    11주차 심화 · 요구사항·HSI·시스템 블록도
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    11주차 심화 · 요구사항·HSI·시스템 블록도
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week11-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    11주차 실습 · 요구사항·HSI·시스템 블록도
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    11주차 실습 · 요구사항·HSI·시스템 블록도
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week11-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    11주차 평가 · 요구사항·HSI·시스템 블록도
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    11주차 평가 · 요구사항·HSI·시스템 블록도
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week11-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    11주차 사례 · 요구사항·HSI·시스템 블록도
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    11주차 사례 · 요구사항·HSI·시스템 블록도
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week12-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    12주차 심화 · 인버터 하드웨어 설계
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    12주차 심화 · 인버터 하드웨어 설계
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week12-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    12주차 실습 · 인버터 하드웨어 설계
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    12주차 실습 · 인버터 하드웨어 설계
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week12-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    12주차 평가 · 인버터 하드웨어 설계
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    12주차 평가 · 인버터 하드웨어 설계
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week12-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    12주차 사례 · 인버터 하드웨어 설계
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    12주차 사례 · 인버터 하드웨어 설계
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week13-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    13주차 심화 · 회로도·PCB 설계 기초
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    13주차 심화 · 회로도·PCB 설계 기초
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week13-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    13주차 실습 · 회로도·PCB 설계 기초
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    13주차 실습 · 회로도·PCB 설계 기초
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week13-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    13주차 평가 · 회로도·PCB 설계 기초
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    13주차 평가 · 회로도·PCB 설계 기초
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week13-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    13주차 사례 · 회로도·PCB 설계 기초
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    13주차 사례 · 회로도·PCB 설계 기초
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week14-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    14주차 심화 · PCB 노이즈·그라운드
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    14주차 심화 · PCB 노이즈·그라운드
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week14-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    14주차 실습 · PCB 노이즈·그라운드
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    14주차 실습 · PCB 노이즈·그라운드
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week14-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    14주차 평가 · PCB 노이즈·그라운드
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    14주차 평가 · PCB 노이즈·그라운드
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week14-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    14주차 사례 · PCB 노이즈·그라운드
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    14주차 사례 · PCB 노이즈·그라운드
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week15-deep-dive/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    15주차 심화 · 구동 펌웨어 통합 및 최종 프로젝트 발표
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    15주차 심화 · 구동 펌웨어 통합 및 최종 프로젝트 발표
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week15-lab-coach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    15주차 실습 · 구동 펌웨어 통합 및 최종 프로젝트 발표
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    15주차 실습 · 구동 펌웨어 통합 및 최종 프로젝트 발표
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week15-assessment-pack/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    15주차 평가 · 구동 펌웨어 통합 및 최종 프로젝트 발표
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    15주차 평가 · 구동 펌웨어 통합 및 최종 프로젝트 발표
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../week15-case-note/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    15주차 사례 · 구동 펌웨어 통합 및 최종 프로젝트 발표
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    15주차 사례 · 구동 펌웨어 통합 및 최종 프로젝트 발표
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
+
+
+
           </ul>
         </nav>
-      
+
     </li>
-  
 
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    강의 노트
-  
 
-    
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+
+
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+
+
+
+  <span class="md-ellipsis">
+
+
+    강의 노트
+
+
+
   </span>
-  
-  
+
+
 
             <span class="md-nav__icon md-icon"></span>
           </label>
-        
+
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
-            
-  
+
+
     강의 노트
-  
+
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../01-components-power/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2~4주차 · 전자부품·전원회로
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    2~4주차 · 전자부품·전원회로
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../02-motor-inverter-control/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    5·6·7·12주차 · 모터·인버터·제어
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    5·6·7·12주차 · 모터·인버터·제어
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../03-stm32-firmware/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    8~10주차 · STM32 펌웨어
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    8~10주차 · STM32 펌웨어
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../04-pcb-firmware-integration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    11·13·14·15주차 · PCB·펌웨어 통합
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    11·13·14·15주차 · PCB·펌웨어 통합
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
+
+
+
           </ul>
         </nav>
-      
+
     </li>
-  
 
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
-        
-          
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    캡스톤 프로젝트
-  
 
-    
+
+
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+
+
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+
+
+
+  <span class="md-ellipsis">
+
+
+    캡스톤 프로젝트
+
+
+
   </span>
-  
-  
+
+
 
             <span class="md-nav__icon md-icon"></span>
           </label>
-        
+
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
-            
-  
+
+
     캡스톤 프로젝트
-  
+
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../ugv-project/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AMR 개발 프로젝트
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    AMR 개발 프로젝트
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
-              
-                
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
     <li class="md-nav__item">
       <a href="../ugv-bom/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AMR 부품표·회로
-  
 
-    
+
+
+  <span class="md-ellipsis">
+
+
+    AMR 부품표·회로
+
+
+
   </span>
-  
-  
+
+
 
       </a>
     </li>
-  
 
-              
-            
+
+
+
           </ul>
         </nav>
-      
-    </li>
-  
 
-    
+    </li>
+
+
+
   </ul>
 </nav>
                   </div>
                 </div>
               </div>
-            
-            
-              
+
+
+
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    
+
 
 <nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
+
+
+
+
+
+
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       목차
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
+
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+
         🗺️ 한눈에 보는 개념도
-      
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+
         🔄 엔코더 직교신호
-      
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        용어·도해·트렌드 연결
-      
+
+        🧠 핵심 이론 보강
+
     </span>
   </a>
-  
+
+    <nav class="md-nav" aria-label="🧠 핵심 이론 보강">
+      <ul class="md-nav__list">
+
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        1. 이번 주 이론을 어디에 쓰는가
+
+    </span>
+  </a>
+
 </li>
-      
+
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        2. 강의 중 반드시 남길 판서
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        3. 학생 눈높이 설명 순서
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        4. 실습 전환 포인트
+
+    </span>
+  </a>
+
+</li>
+
+      </ul>
+    </nav>
+
+</li>
+
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        📚 확장 강의자료
-      
+
+        🎞️ 통합 강의 슬라이드
+
     </span>
   </a>
-  
+
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⏱️ 3시간 수업 운영안
-      
-    </span>
-  </a>
-  
-</li>
-      
+
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        📎 수업자료 활용
-      
+
+        📦 용어 박스
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        ✅ 이해 확인 질문
-      
+
+        📚 확장 강의자료
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
-  <a href="#codeweek09_exti_switchc" class="md-nav__link">
+  <a href="#3_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        💻 실습 코드 (주석 포함) — code/week09_exti_switch.c
-      
+
+        ⏱️ 3시간 수업 운영안
+
     </span>
   </a>
-  
+
 </li>
-      
+
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        🧪 실습·과제
-      
+
+        📎 수업자료 활용
+
     </span>
   </a>
-  
+
 </li>
-      
+
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        ✅ 이해 확인 질문
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#codeweek09_exti_switchc" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        💻 실습 코드 (주석 포함) — code/week09_exti_switch.c
+
+    </span>
+  </a>
+
+</li>
+
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        🧪 실습·과제
+
+    </span>
+  </a>
+
+</li>
+
     </ul>
-  
+
 </nav>
                   </div>
                 </div>
               </div>
-            
-          
-          
+
+
+
             <div class="md-content" data-md-component="content">
-              
+
               <article class="md-content__inner md-typeset">
-                
-                  
+
+
 
 
 
@@ -3215,37 +3359,119 @@
 <blockquote>
 <p>A가 B보다 먼저 상승하면 CW, 반대면 CCW. 타이머 Encoder 모드로 방향·속도 취득.</p>
 </blockquote>
-<h2 id="_3">용어·도해·트렌드 연결<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_3">🧠 핵심 이론 보강<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">이미지로 설명하기</p>
+<p><img alt="첨부자료 대표 이미지" src="../figures/attachment-previews/stm32-gpio-exti-p01.png" /></p>
+<p><img alt="주차 핵심 도해" src="../figures/encoder_ab.svg" /></p>
+<p>첫 화면에서는 첨부자료 이미지를 보여 주고, 바로 아래 도해로 원리를 단순화한다. 학생에게 “사진 속 실제 부품/단자”와 “도해 속 기능 블록”을 서로 연결하게 하면 추상 개념이 실습 대상으로 바뀐다.</p>
+</div>
+<h3 id="1">1. 이번 주 이론을 어디에 쓰는가<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>클럭 트리는 MCU와 주변장치가 같은 시간 기준으로 동작하게 만드는 기반이다.</li>
+<li>인터럽트는 이벤트가 발생했을 때 CPU 흐름을 잠시 바꾸므로, 짧고 예측 가능하게 작성해야 한다.</li>
+<li>엔코더 A/B상은 위상 차이로 방향과 카운트를 알 수 있으며, 노이즈와 채터링이 속도 계산을 흔든다.</li>
+</ul>
+<h3 id="2">2. 강의 중 반드시 남길 판서<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>항목</th>
-<th>수업 중 연결</th>
+<th>판서 항목</th>
+<th>설명</th>
+<th>실습 연결</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>먼저 볼 용어</td>
-<td><a href="../glossary/#interrupt">EXTI/NVIC</a>, <a href="../glossary/#mcu">MCU</a>, <a href="../glossary/#functional-safety">Functional Safety</a></td>
+<td>핵심 관계식</td>
+<td><code>rpm=(count/CPR)·60/Δt, 방향=AB 위상관계</code></td>
+<td>계산값을 먼저 예측하고 측정값으로 검증한다.</td>
 </tr>
 <tr>
-<td>도해</td>
-<td><img alt="모빌리티 ECU 계층 구조" src="../figures/ecu_layers.svg" /></td>
+<td>입력 조건</td>
+<td>전압, 전류, 주파수, RPM, 핀 상태 중 이번 주 주제에 해당하는 값을 정한다.</td>
+<td>조건이 빠지면 결과 비교가 불가능하다는 점을 강조한다.</td>
 </tr>
 <tr>
-<td>최신 기술 연결</td>
-<td>인터럽트 우선순위와 이벤트 누락 방지는 실시간 제어의 예측 가능성과 연결된다.</td>
+<td>정상/비정상 판단</td>
+<td>정상 범위와 즉시 정지해야 할 조건을 분리한다.</td>
+<td>최종 프로젝트의 안전 상태와 로그 항목으로 이어진다.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">📚 확장 강의자료<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="3">3. 학생 눈높이 설명 순서<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>현상 관찰</strong>: 첨부 이미지에서 실제 부품, 커넥터, 파형, 코드 위치를 먼저 찾는다.</li>
+<li><strong>모델 단순화</strong>: 핵심 도해와 공식으로 “왜 그런 값이 나오는지”를 설명한다.</li>
+<li><strong>설계 판단</strong>: 부품값, 듀티, 샘플링 주기, 보호 기준처럼 학생이 직접 정해야 하는 값을 고른다.</li>
+<li><strong>검증 증거</strong>: 사진, 계산표, 오실로스코프 캡처, UART 로그 중 하나 이상으로 결과를 남긴다.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">학생들이 자주 헷갈리는 지점</p>
+<p>이번 주제는 암기보다 조건 확인이 중요하다. 회로·펌웨어·제어 문제는 같은 증상으로 보일 수 있으므로, 전원 조건 → 신호 조건 → 코드 조건 순서로 좁혀 가게 한다.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">최신 기술 연결</p>
+<p>실시간 제어 ECU는 평균 처리 속도보다 이벤트 지연, 우선순위, 인터럽트 폭주 방지가 중요하다. SDV, Adaptive AUTOSAR, 엣지 AI MCU, 차량 사이버보안, ISO 26262 기능안전은 서로 다른 주제처럼 보이지만 모두 '측정 가능한 요구사항과 검증 가능한 로그'를 요구한다.</p>
+</div>
+<h3 id="4">4. 실습 전환 포인트<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>버튼 EXTI와 엔코더 카운트를 동시에 사용하면서 ISR 안에서 오래 걸리는 작업을 제거한다. 이 활동은 확장 강의자료의 심화노트, 실습 코칭노트, 평가팩, 사례노트와 이어지며, 한 주차 안에서 “이론 설명 → 손으로 확인 → 평가 → 현장 사례”가 끊기지 않도록 구성한다.</p>
+<h2 id="_4">🎞️ 통합 강의 슬라이드<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>통합 근거: STM32 펌웨어 기술노트 9주차 + gpio-exti/tim 자료.</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">슬라이드 1 · 입력은 시간 문제다</p>
+<p>스위치, 엔코더, 홀센서는 언제 변할지 모른다. 계속 확인하는 폴링은 단순하지만 빠른 이벤트를 놓칠 수 있다.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">슬라이드 2 · 인터럽트는 이벤트 기반 구조다</p>
+<p>EXTI가 핀 변화를 감지하고 NVIC가 우선순위에 따라 ISR을 실행한다. ISR은 짧게, 플래그는 확실히 clear한다.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">슬라이드 3 · 클럭 트리는 모든 시간 계산의 기준이다</p>
+<p>HSI/HSE, PLL, HCLK, APB 클럭을 구분한다. APB 프리스케일러가 1이 아니면 타이머 클럭이 PCLK×2가 되는 함정을 강조한다.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">슬라이드 4 · 엔코더 A/B는 방향과 속도를 동시에 준다</p>
+<p>A가 B보다 먼저 올라가면 한 방향, 반대면 역방향이다. 홀센서와 엔코더 모두 위치 이벤트를 속도로 바꾸는 예다.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">슬라이드 5 · 실시간 제어는 우선순위 설계다</p>
+<p>PWM/전류센싱, 홀 이벤트, UART 로그가 동시에 오면 무엇을 먼저 처리할지 정해야 한다. 우선순위가 곧 안전이다.</p>
+</div>
+<h2 id="_5">📦 용어 박스<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">이번 주 꼭 설명할 용어</p>
+<ul>
+<li><strong>폴링</strong>: CPU가 반복적으로 입력 상태를 확인하는 방식.</li>
+<li><strong>인터럽트</strong>: 이벤트가 발생하면 현재 흐름을 멈추고 ISR을 실행하는 방식.</li>
+<li><strong>NVIC</strong>: Cortex-M의 인터럽트 컨트롤러. 우선순위와 enable을 관리한다.</li>
+<li><strong>EXTI</strong>: GPIO 핀 변화 같은 외부 이벤트를 인터럽트로 연결하는 STM32 블록.</li>
+<li><strong>PLL</strong>: 기준 클럭을 체배해 MCU 동작 클럭을 만드는 회로.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">최신 기술 연결</p>
+<p>자율주행/로봇 ECU의 예측 가능성은 단순한 평균 처리 속도보다 이벤트를 놓치지 않는 인터럽트 구조에서 시작된다.</p>
+</div>
+<h2 id="_6">📚 확장 강의자료<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../week09-deep-dive/">9주차 심화 강의노트</a>: 첨부자료 대표 이미지, 판서 흐름, 오개념 교정, 최신 기술 연결을 포함한 이론 확장 자료.</li>
 <li><a href="../week09-lab-coach/">9주차 실습 코칭노트</a>: 팀 실습 절차, 코칭 질문, 평가 루브릭, 보강 과제를 포함한 수업 운영 자료.</li>
 <li><a href="../week09-assessment-pack/">9주차 평가·문제팩</a>: 10분 퀴즈, 계산·해석 문제, 구두 발표 질문, 채점 루브릭.</li>
 <li><a href="../week09-case-note/">9주차 현장 사례노트</a>: 실제 고장 시나리오, 진단 절차, 보고서 연결 문장.</li>
 </ul>
-<h2 id="3">⏱️ 3시간 수업 운영안<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<div class="admonition success">
+<p class="admonition-title">메인 자료와 확장 자료를 함께 쓰는 순서</p>
+<ol>
+<li>메인 페이지의 개념도와 핵심 이론 보강으로 <code>EXTI, 클럭, 엔코더 이벤트</code>의 큰 그림을 설명한다.</li>
+<li>심화 강의노트에서 첨부자료 이미지를 확대해 판서와 계산을 진행한다.</li>
+<li>실습 코칭노트로 팀별 측정·로그·사진 증거를 만들게 한다.</li>
+<li>평가·문제팩과 사례노트로 이해 확인, 고장 진단, 최종 보고서 문장을 연결한다.</li>
+</ol>
+</div>
+<h2 id="3_1">⏱️ 3시간 수업 운영안<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3277,7 +3503,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_5">📎 수업자료 활용<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_7">📎 수업자료 활용<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3300,7 +3526,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_6">✅ 이해 확인 질문<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_8">✅ 이해 확인 질문<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ol>
 <li>폴링과 인터럽트의 차이를 실시간성 관점에서 설명한다.</li>
 <li>APB 프리스케일러가 타이머 클럭에 미치는 영향을 계산한다.</li>
@@ -3356,7 +3582,7 @@
 <a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
 <a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span><span class="w"> </span><span class="n">exti_switch_init</span><span class="p">();</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span><span class="w"> </span><span class="cm">/* CPU는 다른 일을 하거나 대기 */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<h2 id="_7">🧪 실습·과제<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_9">🧪 실습·과제<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> EXTI 인터럽트로 스위치 입력→LED 제어, NVIC 우선순위 차등</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> MCO(PA8)를 로직분석기로 클럭 검증</li>
@@ -3377,32 +3603,32 @@
 
 
 
-                
+
               </article>
             </div>
-          
-          
+
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
+
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
+
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
   맨위로
 </button>
-        
+
       </main>
-      
+
         <footer class="md-footer">
-  
-    
-      
+
+
+
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
-        
-          
+
+
           <a href="../week08/" class="md-footer__link md-footer__link--prev" aria-label="이전: 8주차 · STM32 GPIO·메모리맵·레지스터">
             <div class="md-footer__button md-icon">
-              
+
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
@@ -3414,9 +3640,9 @@
               </div>
             </div>
           </a>
-        
-        
-          
+
+
+
           <a href="../week10/" class="md-footer__link md-footer__link--next" aria-label="다음: 10주차 · ADC·Timer·UART">
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3427,44 +3653,44 @@
               </div>
             </div>
             <div class="md-footer__button md-icon">
-              
+
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
             </div>
           </a>
-        
+
       </nav>
-    
-  
+
+
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-  
-  
+
+
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
       Material for MkDocs
     </a>
-  
+
 </div>
-      
+
     </div>
   </div>
 </footer>
-      
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    
-    
-    
-      
-      
+
+
+
+
+
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
-    
-    
+
+
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
-      
-    
+
+
   </body>
 </html>
