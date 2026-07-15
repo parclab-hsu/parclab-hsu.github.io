@@ -3677,8 +3677,8 @@
 
 <h1 id="15">15주차 · 구동 펌웨어 통합 및 최종 프로젝트 발표<a class="headerlink" href="#15" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>🔗 <strong>강의 흐름</strong> — 1~14주차의 부품·모터·펌웨어·설계를 이번 주 <strong>하나의 펌웨어로 통합</strong>해 AMR을 실제로 주행시킨다. 최종 프로젝트로 마무리.</p>
-<p><strong>학습목표</strong> — STM32 모터 구동 펌웨어의 전체 구조(정류·Center PWM·스케줄러·센싱·통신·속도계산)를 분석하고 AMR 주행으로 통합 시연한다.</p>
+<p>🔗 <strong>강의 흐름</strong> — 1~14주차의 부품·모터·펌웨어·설계를 이번 주 <strong>하나의 펌웨어로 통합</strong>해 로버를 실제로 주행시킨다. 최종 프로젝트로 마무리.</p>
+<p><strong>학습목표</strong> — STM32 모터 구동 펌웨어의 전체 구조(정류·Center PWM·스케줄러·센싱·통신·속도계산)를 분석하고 로버 주행으로 통합 시연한다.</p>
 <p>💡 <strong>기초 다지기 (쉽게 이해하기)</strong> — <strong>펌웨어 통합이란?</strong> 앞의 모든 내용을 코드로 묶어 실제로 로봇을 움직이는 단계다. 인터럽트로 20kHz마다 전류를 읽어 PWM을 조정하고, 홀/엔코더로 속도를 계산하며, 무선으로 상태를 보내고, 고장을 감지해 멈추는 안전장치까지 포함한다.</p>
 </blockquote>
 <div class="admonition danger">
@@ -3731,7 +3731,7 @@
 <p><strong>고장 코드 FltFlg</strong> — 0 정상 / 1 과전류 / 2 과열(&gt;100°C) / 3 저전압 / 4 과전압</p>
 <p>PI 속도제어 초기값 <code>Kp = J·ωc²/KT</code>, <code>Ki = J·ωc²/(5·KT)</code>. Teleplot(<code>&gt;변수:값</code>)으로 실시간 그래프.</p>
 <h2 id="_3">🏁 최종 프로젝트 산출물<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>요구사항명세서 · HSI · 시스템블록도 · 회로도/부품 선정 · PCB 배치 검토 · 펌웨어 구조도 · <strong>AMR 2륜 구동코드 분석/주행 시연</strong> · 안전검토 보고서</p>
+<p>요구사항명세서 · HSI · 시스템블록도 · 회로도/부품 선정 · PCB 배치 검토 · 펌웨어 구조도 · <strong>로버 구동코드 분석/주행 시연</strong> · 안전검토 보고서</p>
 <div class="admonition note">
 <p class="admonition-title">🔗 여기서부터 확장 자료 — 흐름 이어보기</p>
 <p>아래는 위 핵심 개념(개념도·공식·그림)을 더 깊이 파는 <strong>심화·실습·평가·사례</strong> 자료다. 처음 보는 학생은 페이지 맨 위 「💡 기초 다지기」로 큰 그림을 먼저 잡고, 심화 → 실습 → 평가 → 사례 순으로 읽으면 이번 주 흐름이 자연스럽게 이어진다.</p>
@@ -3867,7 +3867,7 @@
 <p><img alt="주차 핵심 도해" src="../figures/edge_ai_fault.svg" /></p>
 <h6 id="_11">강의 핵심 초점<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h6>
 <ul>
-<li>구동 펌웨어 통합 및 최종 프로젝트 발표의 중심 질문은 "통합 펌웨어와 최종 검증이 최종 AMR ECU에서 어떤 문제를 해결하는가"이다.</li>
+<li>구동 펌웨어 통합 및 최종 프로젝트 발표의 중심 질문은 "통합 펌웨어와 최종 검증이 최종 로버 ECU에서 어떤 문제를 해결하는가"이다.</li>
 <li>연결할 첨부자료는 <code>electric-scooter-firmware-v0.2.pdf / speed-control-teleplot.pdf</code>이며, 학생은 그림 위에 입력·처리·출력·위험요소를 직접 표시한다.</li>
 <li>이번 주 설명은 이전 주 산출물과 다음 주 실습으로 이어지는 설계 판단을 남기는 데 초점을 둔다.</li>
 </ul>
@@ -3903,7 +3903,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">슬라이드 D · 최종 프로젝트 연결</p>
-<p>이번 주 산출물은 최종 AMR ECU의 요구사항, HSI, 회로도, 펌웨어 로그 중 하나로 반드시 재사용된다. 학생에게 “15주차 발표에서 이 결과가 어디에 들어가는가”를 한 줄로 쓰게 한다.</p>
+<p>이번 주 산출물은 최종 로버 ECU의 요구사항, HSI, 회로도, 펌웨어 로그 중 하나로 반드시 재사용된다. 학생에게 “15주차 발표에서 이 결과가 어디에 들어가는가”를 한 줄로 쓰게 한다.</p>
 </div>
 <h5 id="_18">교수자 보충 설명<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h5>
 <ul>
@@ -4090,7 +4090,7 @@
 </ul>
 <h5 id="_46">발표 평가 포인트<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h5>
 <ul>
-<li>발표자는 그림을 읽는 수준에서 멈추지 않고, 그림 속 요소가 최종 AMR ECU의 어떤 요구사항을 만족시키는지 말해야 한다.</li>
+<li>발표자는 그림을 읽는 수준에서 멈추지 않고, 그림 속 요소가 최종 로버 ECU의 어떤 요구사항을 만족시키는지 말해야 한다.</li>
 <li>AI 도구를 사용한 경우, AI가 제안한 내용과 학생이 실제 자료로 검증한 내용을 분리해 적게 한다.</li>
 </ul>
 <h6 id="_47">보충 문제<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h6>
@@ -4101,7 +4101,7 @@
 </ol>
 <h3 id="_48">현장 사례노트<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p>이 사례노트는 <code>통합 펌웨어와 최종 검증</code>를 실제 AMR, 전동킥보드, 로버, 차량 ECU 문제로 연결한다.</p>
+<p>이 사례노트는 <code>통합 펌웨어와 최종 검증</code>를 실제 로버, 전동킥보드, 로버, 차량 ECU 문제로 연결한다.</p>
 </blockquote>
 <h6 id="_49">사례 연결 이미지<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h6>
 <p><img alt="첨부자료 미리보기" src="../figures/attachment-previews/scooter-firmware-system-block-p05.png" /></p>
@@ -4137,7 +4137,7 @@
 </ul>
 <h6 id="_54">보고서 연결 문장<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h6>
 <ul>
-<li>"본 실험은 통합 펌웨어와 최종 검증을 AMR ECU 관점에서 검증하기 위해 수행하였다."</li>
+<li>"본 실험은 통합 펌웨어와 최종 검증을 로버 ECU 관점에서 검증하기 위해 수행하였다."</li>
 <li>"측정 결과는 구동 펌웨어 통합 및 최종 프로젝트 발표 설계값과 비교해 하드웨어, 펌웨어, 제어 파라미터 원인으로 나누었다."</li>
 <li>"최종 시스템에서는 통합 펌웨어와 최종 검증 관련 고장 감지 후 안전 상태로 전이하고 로그를 남겨야 한다."</li>
 </ul>
@@ -4271,7 +4271,7 @@
 <h2 id="_62">🧪 실습·과제<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 정류 → 20kHz PWM 전류센싱 → T방식 RPM → PI 튜닝 → 무선 모니터링 → 고장코드 재현</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> AMR 2륜 차동구동 주행 시연 및 발표, 펌웨어 구조도·개선사항 보고서 제출</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 로버 2륜 차동구동 주행 시연 및 발표, 펌웨어 구조도·개선사항 보고서 제출</li>
 </ul>
 <blockquote>
 <p><strong>🤖 AX 연계</strong> — 엣지 AI(TinyML)로 모터 전류·진동 데이터에서 고장을 진단하고 예지보전을 구현한다. 데이터로그→이상탐지 모델을 펌웨어에 통합하고, 실패 시 고전 제어로 폴백하는 페일세이프를 둔다.</p>

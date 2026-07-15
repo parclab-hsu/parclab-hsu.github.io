@@ -3702,7 +3702,7 @@
 </table>
 <p><strong>낮은 임피던스 그라운드</strong> — <code>L ≈ μ0·(l/w)·(ln(2h/w)+0.5)</code> → 길이 짧게·폭 넓게. 접지 3방식: 직렬단일점 / 병렬단일점 / <strong>다중점 병렬(PCB 사용)</strong>.</p>
 <blockquote>
-<p><strong>AMR·로버 구동부 연결</strong> — SMPS+모터 고전류가 그라운드 바운싱 유발 → PGND/AGND를 0Ω 저항 단일점으로 분리. 부품 배치(고전류/스위칭부 vs 예민 신호부)가 가장 중요.</p>
+<p><strong>로버 구동부 연결</strong> — SMPS+모터 고전류가 그라운드 바운싱 유발 → PGND/AGND를 0Ω 저항 단일점으로 분리. 부품 배치(고전류/스위칭부 vs 예민 신호부)가 가장 중요.</p>
 </blockquote>
 <h2 id="3_1">🌐 접지 방식 3가지<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
 <p><img alt="그라운드 접지 방식: 직렬단일점·병렬단일점·다중점병렬" src="../figures/grounding.svg" /></p>
@@ -3834,7 +3834,7 @@
 <p><img alt="주차 핵심 도해" src="../figures/grounding.svg" /></p>
 <h6 id="_9">강의 핵심 초점<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h6>
 <ul>
-<li>PCB 노이즈·그라운드의 중심 질문은 "노이즈와 리턴 전류가 최종 AMR ECU에서 어떤 문제를 해결하는가"이다.</li>
+<li>PCB 노이즈·그라운드의 중심 질문은 "노이즈와 리턴 전류가 최종 로버 ECU에서 어떤 문제를 해결하는가"이다.</li>
 <li>연결할 첨부자료는 <code>pcb-design-lecture-v0.1.pdf</code>이며, 학생은 그림 위에 입력·처리·출력·위험요소를 직접 표시한다.</li>
 <li>이번 주 설명은 이전 주 산출물과 다음 주 실습으로 이어지는 설계 판단을 남기는 데 초점을 둔다.</li>
 </ul>
@@ -3870,7 +3870,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">슬라이드 D · 최종 프로젝트 연결</p>
-<p>이번 주 산출물은 최종 AMR ECU의 요구사항, HSI, 회로도, 펌웨어 로그 중 하나로 반드시 재사용된다. 학생에게 “15주차 발표에서 이 결과가 어디에 들어가는가”를 한 줄로 쓰게 한다.</p>
+<p>이번 주 산출물은 최종 로버 ECU의 요구사항, HSI, 회로도, 펌웨어 로그 중 하나로 반드시 재사용된다. 학생에게 “15주차 발표에서 이 결과가 어디에 들어가는가”를 한 줄로 쓰게 한다.</p>
 </div>
 <h5 id="_16">교수자 보충 설명<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h5>
 <ul>
@@ -4056,7 +4056,7 @@
 </ul>
 <h5 id="_44">발표 평가 포인트<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h5>
 <ul>
-<li>발표자는 그림을 읽는 수준에서 멈추지 않고, 그림 속 요소가 최종 AMR ECU의 어떤 요구사항을 만족시키는지 말해야 한다.</li>
+<li>발표자는 그림을 읽는 수준에서 멈추지 않고, 그림 속 요소가 최종 로버 ECU의 어떤 요구사항을 만족시키는지 말해야 한다.</li>
 <li>AI 도구를 사용한 경우, AI가 제안한 내용과 학생이 실제 자료로 검증한 내용을 분리해 적게 한다.</li>
 </ul>
 <h6 id="_45">보충 문제<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h6>
@@ -4067,7 +4067,7 @@
 </ol>
 <h3 id="_46">현장 사례노트<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p>이 사례노트는 <code>노이즈와 리턴 전류</code>를 실제 AMR, 전동킥보드, 로버, 차량 ECU 문제로 연결한다.</p>
+<p>이 사례노트는 <code>노이즈와 리턴 전류</code>를 실제 로버, 전동킥보드, 로버, 차량 ECU 문제로 연결한다.</p>
 </blockquote>
 <h6 id="_47">사례 연결 이미지<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h6>
 <p><img alt="첨부자료 미리보기" src="../figures/attachment-previews/pcb-design-noise-thermal-p57.png" /></p>
@@ -4103,7 +4103,7 @@
 </ul>
 <h6 id="_52">보고서 연결 문장<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h6>
 <ul>
-<li>"본 실험은 노이즈와 리턴 전류를 AMR ECU 관점에서 검증하기 위해 수행하였다."</li>
+<li>"본 실험은 노이즈와 리턴 전류를 로버 ECU 관점에서 검증하기 위해 수행하였다."</li>
 <li>"측정 결과는 PCB 노이즈·그라운드 설계값과 비교해 하드웨어, 펌웨어, 제어 파라미터 원인으로 나누었다."</li>
 <li>"최종 시스템에서는 노이즈와 리턴 전류 관련 고장 감지 후 안전 상태로 전이하고 로그를 남겨야 한다."</li>
 </ul>

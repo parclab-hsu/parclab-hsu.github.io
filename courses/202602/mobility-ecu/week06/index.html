@@ -3741,12 +3741,12 @@
 <h2 id="h-2-dc">🔀 H-브리지 회로 (2륜 DC 구동)<a class="headerlink" href="#h-2-dc" title="Permanent link">&para;</a></h2>
 <p><img alt="H-브리지 정방향 전류 경로" src="../figures/hbridge.svg" /></p>
 <blockquote>
-<p>IN1/IN2로 방향(정/역/정지/브레이크), PWM으로 속도. AMR 좌·우 모터 각 1개씩.</p>
+<p>IN1/IN2로 방향(정/역/정지/브레이크), PWM으로 속도. 로버 좌·우 모터 각 1개씩.</p>
 </blockquote>
 <h2 id="3-bldc">🔺 3상 인버터 (BLDC 구동)<a class="headerlink" href="#3-bldc" title="Permanent link">&para;</a></h2>
 <p><img alt="3상 인버터: 6 MOSFET → BLDC" src="../figures/inverter3ph.svg" /></p>
 <blockquote>
-<p>하프브리지 3개 = 6 MOSFET. 홀센서 위치에 따라 두 상만 통전(6-step). 고출력 AMR 휠 모터에 사용.</p>
+<p>하프브리지 3개 = 6 MOSFET. 홀센서 위치에 따라 두 상만 통전(6-step). 고출력 로버 휠 모터에 사용.</p>
 </blockquote>
 <h2 id="pwm">〰️ PWM — 캐리어 비교로 평균전압 만들기<a class="headerlink" href="#pwm" title="Permanent link">&para;</a></h2>
 <p><img alt="PWM: 캐리어 vs 지령 비교로 출력 생성, 평균=듀티" src="../figures/pwm.svg" /></p>
@@ -3755,7 +3755,7 @@
 <p><img alt="데드타임: 상보 게이트가 겹치지 않도록 둘 다 OFF 구간 삽입" src="../figures/deadtime.svg" /></p>
 <p>상보 스위치가 동시에 켜지면(<strong>Arm short</strong>) 단락 대전류. 두 게이트 사이에 <strong>둘 다 OFF인 데드타임</strong>을 넣어 방지.</p>
 <ul>
-<li><strong>H-브리지(풀브리지)</strong> = DC 모터 양방향 제어(정/역). AMR 2륜 구동의 기본.</li>
+<li><strong>H-브리지(풀브리지)</strong> = DC 모터 양방향 제어(정/역). 로버 구동의 기본.</li>
 <li><strong>BLDC 유니폴라 PWM</strong> — 하단 스위치 ON 유지, 상단만 PWM → <strong>하단 스위치 ON 구간에 션트로 상전류 정확 센싱</strong>. 스위칭 손실도 최소.</li>
 </ul>
 <div class="admonition note">
@@ -3893,7 +3893,7 @@
 <p><img alt="주차 핵심 도해" src="../figures/inverter3ph.svg" /></p>
 <h6 id="_10">강의 핵심 초점<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h6>
 <ul>
-<li>인버터·PWM 구동의 중심 질문은 "3상 인버터와 PWM이 최종 AMR ECU에서 어떤 문제를 해결하는가"이다.</li>
+<li>인버터·PWM 구동의 중심 질문은 "3상 인버터와 PWM이 최종 로버 ECU에서 어떤 문제를 해결하는가"이다.</li>
 <li>연결할 첨부자료는 <code>inverter-hardware-design-v0.1.pdf / motor-control-inverter-theory.pdf</code>이며, 학생은 그림 위에 입력·처리·출력·위험요소를 직접 표시한다.</li>
 <li>이번 주 설명은 이전 주 산출물과 다음 주 실습으로 이어지는 설계 판단을 남기는 데 초점을 둔다.</li>
 </ul>
@@ -3929,7 +3929,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">슬라이드 D · 최종 프로젝트 연결</p>
-<p>이번 주 산출물은 최종 AMR ECU의 요구사항, HSI, 회로도, 펌웨어 로그 중 하나로 반드시 재사용된다. 학생에게 “15주차 발표에서 이 결과가 어디에 들어가는가”를 한 줄로 쓰게 한다.</p>
+<p>이번 주 산출물은 최종 로버 ECU의 요구사항, HSI, 회로도, 펌웨어 로그 중 하나로 반드시 재사용된다. 학생에게 “15주차 발표에서 이 결과가 어디에 들어가는가”를 한 줄로 쓰게 한다.</p>
 </div>
 <h5 id="_17">교수자 보충 설명<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h5>
 <ul>
@@ -4115,7 +4115,7 @@
 </ul>
 <h5 id="_45">발표 평가 포인트<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h5>
 <ul>
-<li>발표자는 그림을 읽는 수준에서 멈추지 않고, 그림 속 요소가 최종 AMR ECU의 어떤 요구사항을 만족시키는지 말해야 한다.</li>
+<li>발표자는 그림을 읽는 수준에서 멈추지 않고, 그림 속 요소가 최종 로버 ECU의 어떤 요구사항을 만족시키는지 말해야 한다.</li>
 <li>AI 도구를 사용한 경우, AI가 제안한 내용과 학생이 실제 자료로 검증한 내용을 분리해 적게 한다.</li>
 </ul>
 <h6 id="_46">보충 문제<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h6>
@@ -4126,7 +4126,7 @@
 </ol>
 <h3 id="_47">현장 사례노트<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p>이 사례노트는 <code>3상 인버터와 PWM</code>를 실제 AMR, 전동킥보드, 로버, 차량 ECU 문제로 연결한다.</p>
+<p>이 사례노트는 <code>3상 인버터와 PWM</code>를 실제 로버, 전동킥보드, 로버, 차량 ECU 문제로 연결한다.</p>
 </blockquote>
 <h6 id="_48">사례 연결 이미지<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h6>
 <p><img alt="첨부자료 미리보기" src="../figures/attachment-previews/inverter-hardware-system-block-p05.png" /></p>
@@ -4162,7 +4162,7 @@
 </ul>
 <h6 id="_53">보고서 연결 문장<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h6>
 <ul>
-<li>"본 실험은 3상 인버터와 PWM을 AMR ECU 관점에서 검증하기 위해 수행하였다."</li>
+<li>"본 실험은 3상 인버터와 PWM을 로버 ECU 관점에서 검증하기 위해 수행하였다."</li>
 <li>"측정 결과는 인버터·PWM 구동 설계값과 비교해 하드웨어, 펌웨어, 제어 파라미터 원인으로 나누었다."</li>
 <li>"최종 시스템에서는 3상 인버터와 PWM 관련 고장 감지 후 안전 상태로 전이하고 로그를 남겨야 한다."</li>
 </ul>
