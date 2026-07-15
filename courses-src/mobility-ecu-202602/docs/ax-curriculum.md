@@ -22,6 +22,19 @@ flowchart LR
 - **엣지 AI(Edge AI/TinyML)**: MCU 위에서 추론(고장 진단·상태 예측·인지)
 - **Physical AI**: 인지→판단→제어 파이프라인을 실물 모빌리티에 구현
 
+## AX·Physical AI 시각 로드맵
+
+![AX 데이터 파이프라인](figures/notebooklm-previews/pa-ax-pipeline-p05.jpg)
+
+AI 도구 활용은 보고서 자동화가 아니라 **데이터 취득 → AI 전처리 → 실시간 제어/추론**으로 이어지는 개발 방식의 변화다. 10주차 ADC·Timer·UART 로그가 15주차 Edge AI 이상탐지의 입력 데이터가 되도록 설계한다.
+
+![AX 브리지: 초저지연 데이터 파이프라인](figures/notebooklm-previews/ax-bridge-p10.jpg)
+
+!!! tip "강의 운영 포인트"
+    학생에게 AI를 별도 주제로 가르치기보다, 각 주차 산출물에 “AI가 검토할 데이터”와 “사람이 검증할 안전 기준”을 동시에 남기게 한다.
+
+![Data-Driven Autonomous Rover](figures/notebooklm-previews/edge-autonomous-loop-p09.jpg)
+
 ## 학습 성과(CLO) 추가
 
 기존 CLO 1~5(부품·모터·STM32·설계·펌웨어)에 다음을 추가한다.

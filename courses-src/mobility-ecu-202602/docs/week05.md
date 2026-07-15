@@ -110,6 +110,25 @@ flowchart TD
 
     홀센서 120도 배치와 상태 전이를 통전표에 대응시켜 펌웨어 상태표로 옮긴다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · BLDC 구조 비교"
+    ![BLDC 구조 비교](figures/notebooklm-previews/ecu-bldc-p05.jpg)
+
+    DC 모터와 BLDC의 차이를 회전자, 고정자, 인버터 제어 관점으로 비교해 6-step 제어의 필요성을 도입한다.
+
+    출처: `Space_Rover_ECU_Design (1).pdf p.5`
+
+!!! quote "적용 이미지 2 · Hall 위치 검출"
+    ![Hall 위치 검출](figures/notebooklm-previews/ecu-hall-p07.jpg)
+
+    120도 Hall 센서 상태가 회전자 위치와 통전표로 바뀌는 과정을 학생이 직접 따라가게 한다.
+
+    출처: `Space_Rover_ECU_Design (1).pdf p.7`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 모터·인버터·제어 기술노트 5주차 + BLDC/홀/전기각 도해.
 

@@ -100,6 +100,25 @@ ADC 샘플링 주기와 PWM 주기를 표로 정리하고, UART 로그가 제어
 
     샘플링, 양자화, 기준전압, 필터링 개념을 ADC 변환 흐름으로 묶어 센서값 신뢰도를 판단하게 한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · DMA-ADC 고속도로"
+    ![DMA-ADC 고속도로](figures/notebooklm-previews/ax-dma-adc-p04.jpg)
+
+    ADC polling 한계를 DMA로 해결해 CPU 부하를 줄이고 센서 데이터를 일정 주기로 모으는 구조를 설명한다.
+
+    출처: `Space_Rover_AX_Pipeline.pdf p.4`
+
+!!! quote "적용 이미지 2 · ADC 하드웨어 트리거"
+    ![ADC 하드웨어 트리거](figures/notebooklm-previews/ax-adc-trigger-p09.jpg)
+
+    PWM/Timer 이벤트와 ADC 샘플링을 동기화해 스위칭 노이즈가 적은 시점에 데이터를 읽는 이유를 보여 준다.
+
+    출처: `Space_Rover_AX_Pipeline.pdf p.9`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: STM32 펌웨어 기술노트 10주차 + ADC/TIM/UART 첨부자료.
 

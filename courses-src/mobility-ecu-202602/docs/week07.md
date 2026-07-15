@@ -95,6 +95,25 @@ Kp와 Ki를 한 번에 바꾸지 말고 로그의 상승시간, 오버슈트, �
 
     P항과 I항이 오차, 정상상태 편차, 과도응답에 미치는 영향을 속도 제어 루프와 연결한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · 데이터 기반 폐루프"
+    ![데이터 기반 폐루프](figures/notebooklm-previews/edge-closed-loop-p08.jpg)
+
+    PI 속도제어를 Teleplot 로그와 연결하고, 오버슈트와 정착시간을 데이터 기반 튜닝의 입력으로 쓰게 한다.
+
+    출처: `Edge_AI_Rover_Integration.pdf p.8`
+
+!!! quote "적용 이미지 2 · 자율 루프"
+    ![자율 루프](figures/notebooklm-previews/edge-autonomous-loop-p09.jpg)
+
+    Sense-Think-Act 루프를 고전 제어 위에 얹어 Physical AI가 제어기를 대체하는 것이 아니라 보완하는 구조임을 설명한다.
+
+    출처: `Edge_AI_Rover_Integration.pdf p.9`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 모터·인버터·제어 기술노트 7주차 + PI/Bode/Teleplot 자료.
 

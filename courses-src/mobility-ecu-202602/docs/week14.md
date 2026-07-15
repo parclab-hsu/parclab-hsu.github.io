@@ -95,6 +95,25 @@ flowchart TD
 
     스타 접지, 전류 루프 면적, 센서 기준점을 비교해 측정 노이즈를 줄이는 배치 원칙을 정리한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · EMI 대책"
+    ![EMI 대책](figures/notebooklm-previews/blueprint-emi-p08.jpg)
+
+    차동모드/공통모드 노이즈를 구분하고 커패시터, 트위스트 페어, 페라이트 비드 같은 억제 수단을 비교한다.
+
+    출처: `Mobility_ECU_Blueprint.pdf p.8`
+
+!!! quote "적용 이미지 2 · Edge AI 현장 데이터"
+    ![Edge AI 현장 데이터](figures/notebooklm-previews/edge-data-preprocess-p07.jpg)
+
+    PCB 노이즈와 센서 데이터 품질이 Edge AI 학습/추론 성능까지 영향을 준다는 점을 데이터 전처리 관점으로 연결한다.
+
+    출처: `Edge_AI_Rover_Integration.pdf p.7`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: PCB·펌웨어 통합 기술노트 14주차 + 노이즈/그라운드 도해.
 

@@ -60,3 +60,17 @@
 ## 원본 자료 사용 메모
 
 원본 자료의 전동킥보드 사양은 더 큰 전압·전류의 BLDC 구동 사례다. 수업에서는 이를 AMR/로버의 좌우 휠 구동 ECU로 축소 적용하며, 실제 실습 전압과 전류 제한은 강의실 장비 기준을 우선한다.
+
+## NotebookLM 기반 우주 로버·AX 시각자료
+
+새로 첨부된 NotebookLM PDF는 사이트에 원문 PDF를 직접 배포하지 않고, 강의에 바로 쓸 수 있는 대표 슬라이드 이미지만 `figures/notebooklm-previews/`에 추출해 주차별 자료에 연결했다.
+
+| 자료 | 강의 적용 위치 | 핵심 활용 |
+|---|---|---|
+| `Physical_AI_Space_Rover_ECU_Engineering.pdf` | 개요, AX, 1·4·8·13·15주차 | Physical AI 개편 철학, 15주 포트폴리오, 최종 미션 |
+| `Space_Rover_ECU_Design (1).pdf` | 3·5·6·8·10·12주차 | 모터 모델, BLDC, 인버터, STM32/DMA/Timer |
+| `Space_Rover_AX_Pipeline.pdf` | 9·10·11주차, AX 페이지 | JTAG/SWD, DMA-ADC, Timer 동기화, NVIC |
+| `Mobility_ECU_Blueprint.pdf` | 2·4·12·13·14주차 | 임피던스, 그라운드, EMI, 레이아웃, Kelvin 측정 |
+| `Edge_AI_Rover_Integration.pdf` / `Space_Rover_Edge_AI.pdf` | 7·14·15주차 | 데이터 기반 제어, Edge AI 전처리, 자율 루프 |
+| `Space_Rover_Final_Validation.pdf` | 15주차 | V-Model, 미션 시나리오, 평가 루브릭, 최종 보고서 |
+| `Space_Rover_ECU_Design_and_Debugging.pdf` | 11·15주차 | HSI, 설계 리뷰, JTAG/GDB, Logic Analyzer 디버깅 |

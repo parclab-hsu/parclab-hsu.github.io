@@ -104,6 +104,32 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 
     최종 발표에서 요구사항, 구현 결과, 검증 증거가 서로 맞물려야 함을 V-모델로 재확인한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · 최종 미션 시나리오"
+    ![최종 미션 시나리오](figures/notebooklm-previews/pa-week15-mission-p11.jpg)
+
+    험지, 경사, 장애물 시나리오를 최종 시연 요구사항으로 읽고, 통합 펌웨어의 상태 전이를 발표 흐름에 맞춘다.
+
+    출처: `Physical_AI_Space_Rover_ECU_Engineering.pdf p.11`
+
+!!! quote "적용 이미지 2 · 검증 루브릭"
+    ![검증 루브릭](figures/notebooklm-previews/validation-rubric-p07.jpg)
+
+    주행 성공만이 아니라 MCU 제어 이해도와 미션 성취도를 50:50으로 평가한다는 기준을 명확히 보여 준다.
+
+    출처: `Space_Rover_Final_Validation.pdf p.7`
+
+!!! quote "적용 이미지 3 · 최종 보고서"
+    ![최종 보고서](figures/notebooklm-previews/validation-report-p08.jpg)
+
+    로그, 파형, 코드, 실패 분석을 최종 포트폴리오에 어떤 형식으로 남겨야 하는지 제출 가이드로 연결한다.
+
+    출처: `Space_Rover_Final_Validation.pdf p.8`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: PCB·펌웨어 통합 기술노트 15주차 + electric-scooter-firmware + speed-control-teleplot 자료.
 

@@ -99,6 +99,25 @@ Cgs 충전 → 채널전류 상승 → **Miller Plateau(Vds 급락=턴온)** →
 
     MOSFET 한 개의 스위칭 원리가 하프브리지와 모터 전류 방향 제어로 확장되는 흐름을 보여 준다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · 모터 전기 모델"
+    ![모터 전기 모델](figures/notebooklm-previews/ecu-motor-model-p03.jpg)
+
+    MOSFET 스위칭 소자가 실제로 구동하는 대상이 저항, 인덕턴스, 역기전력을 가진 모터 모델임을 보여 준다.
+
+    출처: `Space_Rover_ECU_Design (1).pdf p.3`
+
+!!! quote "적용 이미지 2 · 전류 센싱 비교"
+    ![전류 센싱 비교](figures/notebooklm-previews/blueprint-kelvin-p12.jpg)
+
+    MOSFET/션트 주변에서는 mΩ 단위 저항과 배선 저항이 측정 오차가 되므로 Kelvin 연결과 보호 회로가 필요함을 설명한다.
+
+    출처: `Mobility_ECU_Blueprint.pdf p.12`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 전자부품·전원회로 기술노트 3주차 + MOSFET/데드타임 도해.
 

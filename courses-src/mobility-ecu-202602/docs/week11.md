@@ -122,6 +122,25 @@ flowchart LR
 
     SDV·존 아키텍처 흐름 속에서 소형 ECU 실습이 차량 전장 구조의 축소 모델임을 연결한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · HSI 브리지"
+    ![HSI 브리지](figures/notebooklm-previews/debug-hsi-bridge-p03.jpg)
+
+    HSI 문서가 하드웨어 핀, 펌웨어 코드, 디버깅 관측점을 연결하는 계약서임을 설계 리뷰 관점으로 보여 준다.
+
+    출처: `Space_Rover_ECU_Design_and_Debugging.pdf p.3`
+
+!!! quote "적용 이미지 2 · 설계 워크플로우"
+    ![설계 워크플로우](figures/notebooklm-previews/systems-workflow-p09.jpg)
+
+    Schematic, footprint, PCB layout, DRC, export가 요구사항에서 제작 파일까지 이어지는 전체 흐름임을 정리한다.
+
+    출처: `Space_Rover_Systems_Blueprint.pdf p.9`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: PCB·펌웨어 통합 기술노트 11주차 + 인버터 하드웨어 개발 프로세스.
 

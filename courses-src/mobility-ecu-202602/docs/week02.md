@@ -98,6 +98,25 @@ flowchart TD
 
     배터리 전압을 ADC 입력 범위로 낮추는 전압분배 계산을 R1·R2 위치와 함께 판서한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · 임피던스와 배선"
+    ![임피던스와 배선](figures/notebooklm-previews/blueprint-impedance-p03.jpg)
+
+    저항, 커패시터, 인덕터가 PCB에서는 임피던스, 리턴 경로, 구리 폭으로 나타난다는 점을 회로 기초와 연결한다.
+
+    출처: `Mobility_ECU_Blueprint.pdf p.3`
+
+!!! quote "적용 이미지 2 · 전원 무결성"
+    ![전원 무결성](figures/notebooklm-previews/blueprint-power-integrity-p07.jpg)
+
+    디커플링과 전원/아날로그 그라운드 분리가 센서 ADC 안정도에 미치는 영향을 RLC 관점으로 설명한다.
+
+    출처: `Mobility_ECU_Blueprint.pdf p.7`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 전자부품·전원회로 기술노트 2주차 + practical-circuits + BOM 자료.
 

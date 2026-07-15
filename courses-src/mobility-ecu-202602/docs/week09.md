@@ -89,6 +89,25 @@ flowchart TD
 
     A/B상 위상차로 방향과 카운트를 판별하는 과정을 타이밍 파형 위에 표시한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · RCC 클럭 제어"
+    ![RCC 클럭 제어](figures/notebooklm-previews/stm32-rcc-p04.jpg)
+
+    클럭을 켜야 주변장치 레지스터가 살아난다는 점을 RCC, GPIO, EXTI 실습의 첫 번째 원칙으로 제시한다.
+
+    출처: `STM32_Bare_Metal_Mastery.pdf p.4`
+
+!!! quote "적용 이미지 2 · NVIC Tail-Chaining"
+    ![NVIC Tail-Chaining](figures/notebooklm-previews/ax-nvic-p11.jpg)
+
+    인터럽트가 연속으로 들어올 때 지연을 줄이는 구조를 보며 EXTI/NVIC 우선순위와 ISR 시간을 함께 설명한다.
+
+    출처: `Space_Rover_AX_Pipeline.pdf p.11`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: STM32 펌웨어 기술노트 9주차 + gpio-exti/tim 자료.
 

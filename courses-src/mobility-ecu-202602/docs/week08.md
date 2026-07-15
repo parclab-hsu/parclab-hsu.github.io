@@ -94,6 +94,25 @@ LED 토글 코드를 HAL과 레지스터 방식으로 비교하고, 디버거에
 
     ECU를 하드웨어, 드라이버, 제어 로직, 진단 계층으로 나누어 실습 코드가 어느 층에 속하는지 정리한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · 레지스터 직접 제어 이유"
+    ![레지스터 직접 제어 이유](figures/notebooklm-previews/stm32-why-register-p02.jpg)
+
+    HAL 없이 레지스터를 직접 다루는 이유를 지연시간, 결정성, 실시간성 관점에서 설명한다.
+
+    출처: `STM32_Bare_Metal_Mastery.pdf p.2`
+
+!!! quote "적용 이미지 2 · 메모리 맵"
+    ![메모리 맵](figures/notebooklm-previews/stm32-memory-map-p03.jpg)
+
+    GPIO, RCC, Timer가 메모리 주소로 매핑되어 있다는 사실을 구조적으로 보여 주고 포인터 접근의 의미를 연결한다.
+
+    출처: `STM32_Bare_Metal_Mastery.pdf p.3`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: STM32 펌웨어 기술노트 8주차 + STM32 lecture/orientation/gpio-exti 자료.
 

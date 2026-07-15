@@ -99,6 +99,25 @@ flowchart LR
 
     좌우 휠 속도 차이가 직진·회전·제자리 회전을 만드는 원리를 식과 함께 설명한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · 개편 미션"
+    ![개편 미션](figures/notebooklm-previews/pa-kasa-mission-p02.jpg)
+
+    KASA 우주 로버 미션을 험지 주행, 경사 극복, 실시간 판단 문제로 제시하고, 전자제어유닛이 단순 모터 보드가 아니라 Physical AI 실험 플랫폼임을 연결한다.
+
+    출처: `Physical_AI_Space_Rover_ECU_Engineering.pdf p.2`
+
+!!! quote "적용 이미지 2 · 전체 시스템"
+    ![전체 시스템](figures/notebooklm-previews/systems-rover-title-p01.jpg)
+
+    1주차 오리엔테이션에서 학생이 앞으로 만들 ECU가 로버의 구동 펌웨어와 하드웨어 설계로 이어진다는 전체 그림을 보여 준다.
+
+    출처: `Space_Rover_Systems_Blueprint.pdf p.1`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 기본 자료 + kit-guide + STM32 개발환경 + ECU 계층/차동구동 도해.
 

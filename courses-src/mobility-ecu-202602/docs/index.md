@@ -21,6 +21,17 @@
 !!! tip "🤖 AX 교육과정으로 운영"
     본 강의는 **AX(AI Transformation) 교육과정**으로, 기존 임베디드·제어 위에 **AI 도구 활용·데이터 기반 제어·엣지 AI(TinyML)·Physical AI**를 통합한다. 상세는 [AX 교육과정 개편](ax-curriculum.md) 참고.
 
+## 🚀 2026-2 개편 핵심 시각 요약
+
+![Physical AI 기반 우주 로버 미션](figures/notebooklm-previews/pa-kasa-mission-p02.jpg)
+
+!!! success "개편 핵심"
+    - **AX 교육과정 통합**: AI 도구 활용, 데이터 기반 제어, Edge AI, Physical AI를 기존 전자부품·제어·펌웨어 흐름 위에 얹는다.
+    - **캡스톤 고도화**: AMR 2륜 구동을 KASA 우주 로버 미션형 설계·디버깅·검증 프로젝트로 확장한다.
+    - **안전·검증 강화**: 모터 구동 전 전압/전류 제한, 바퀴 고정, 발열 부품 접촉 금지, Fault 로그 제출을 수업 운영 기준으로 삼는다.
+
+![15주 누적 포트폴리오 파이프라인](figures/notebooklm-previews/pa-portfolio-p06.jpg)
+
 ## 수업 운영 방식
 
 각 주차는 **3시간 수업**으로 운영한다. 도입에서는 지난 산출물을 오늘의 ECU 블록에 연결하고, 이론에서는 자작 그림과 원본 PDF를 함께 보며 핵심 공식을 정리한다. 실습 시간에는 회로 계산, STM32 코드, Teleplot 로그, PCB 캡처 중 하나 이상을 직접 만들고, 마지막에는 이해 확인 질문으로 다음 주 설계물에 반영한다.

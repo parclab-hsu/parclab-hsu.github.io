@@ -94,6 +94,25 @@ flowchart TD
 
     하프브리지 전류 방향을 기준으로 게이트 시퀀스, 데드타임, 보호 조건을 점검한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · 전류 센서 토폴로지"
+    ![전류 센서 토폴로지](figures/notebooklm-previews/ecu-current-sensor-p08.jpg)
+
+    션트, Hall IC, CT 센서의 차이를 인버터 전류 검출 목적과 ADC 연결 방식으로 비교한다.
+
+    출처: `Space_Rover_ECU_Design (1).pdf p.8`
+
+!!! quote "적용 이미지 2 · 하드웨어 검증"
+    ![하드웨어 검증](figures/notebooklm-previews/blueprint-kelvin-p12.jpg)
+
+    전류 션트와 게이트 드라이버 주변에서 Kelvin 연결, 측정 위치, 보호 판단이 왜 중요한지 설명한다.
+
+    출처: `Mobility_ECU_Blueprint.pdf p.12`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 모터·인버터·제어 기술노트 12주차 + inverter-hardware-design 자료.
 

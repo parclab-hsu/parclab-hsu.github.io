@@ -113,6 +113,25 @@ flowchart TD
 
     하프브리지 전류 경로를 기준으로 PWM ON/OFF, 프리휠링, 회생 상황을 구분한다.
 
+## 🚀 AX·우주로버 적용 슬라이드
+
+!!! info "NotebookLM 기반 시각자료 활용"
+    아래 이미지는 새로 첨부된 우주 로버·AX·Physical AI 자료에서 강의 주제와 직접 연결되는 페이지를 선별한 것이다. 교수자는 기존 개념도 다음에 이 이미지를 보여 주고, 학생에게 실제 로버 ECU에서 같은 개념이 어디에 쓰이는지 말하게 한다.
+
+!!! quote "적용 이미지 1 · 3상 6-step 정류"
+    ![3상 6-step 정류](figures/notebooklm-previews/ecu-inverter-commutation-p06.jpg)
+
+    하이사이드/로우사이드 스위칭 상태가 모터 상전류 방향을 결정하며, arm short 방지를 위해 금지 상태를 먼저 찾게 한다.
+
+    출처: `Space_Rover_ECU_Design (1).pdf p.6`
+
+!!! quote "적용 이미지 2 · PWM 전략"
+    ![PWM 전략](figures/notebooklm-previews/systems-pwm-p06.jpg)
+
+    유니폴라/바이폴라 PWM 비교를 통해 평균전압, 리플, EMI, 스위칭 손실을 함께 토론한다.
+
+    출처: `Space_Rover_Systems_Blueprint.pdf p.6`
+
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 모터·인버터·제어 기술노트 6주차 + H-브리지/3상 인버터/PWM/데드타임 도해.
 

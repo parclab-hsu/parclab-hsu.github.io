@@ -22,6 +22,15 @@
 | 14 | PCB 노이즈·그라운드 | 노이즈3종, 그라운드/접지방식 | PCB설계강의자료 | 04 |
 | 15 | BLDC 펌웨어 통합·최종발표 | Center PWM, Systick, NTC, BLE, T방식 RPM, PI | 전동킥보드펌웨어, 코드 | 04 |
 
+## 2026-2 개편 로드맵 이미지
+
+![15주 로드맵](figures/notebooklm-previews/systems-roadmap-p14.jpg)
+
+!!! note "Part별 운영 관점"
+    1~4주차는 전원·부품 기반, 5~7주차는 모터 동역학과 제어, 8~10주차는 STM32H7 레지스터 직접 제어, 11~14주차는 HSI·PCB·검증, 15주차는 AMR/우주 로버 시연과 포트폴리오 발표로 운영한다.
+
+![Physical AI 15주 누적 포트폴리오](figures/notebooklm-previews/pa-portfolio-p06.jpg)
+
 ## 주차별 통합 운영표
 
 각 주차는 메인 자료만 읽고 끝나는 구조가 아니라, 강의 슬라이드·심화노트·실습 코칭·평가·사례를 한 묶음으로 운영한다. 아래 표는 교수자가 3시간 수업을 준비할 때 확인할 최소 체크리스트다.
