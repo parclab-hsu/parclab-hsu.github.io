@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="720" height="480" fill="#ffffff"/>
+  <text x="360" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#1a1a1a">본 강의의 위치 — 세 가지 세계 표준의 수렴</text>
+  <text x="360" y="58" text-anchor="middle" font-size="13" fill="#666">미국형 교육 포맷 · 중국형 기술 밀도 · 우주 로버 대회 목표를 하나로 통합</text>
+
+  <!-- circles -->
+  <circle cx="285" cy="235" r="150" fill="#2563eb" fill-opacity="0.22" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="435" cy="235" r="150" fill="#ea580c" fill-opacity="0.22" stroke="#ea580c" stroke-width="2"/>
+  <circle cx="360" cy="355" r="150" fill="#16a34a" fill-opacity="0.22" stroke="#16a34a" stroke-width="2"/>
+
+  <!-- A: 미국형 -->
+  <text x="205" y="180" text-anchor="middle" font-size="16" font-weight="700" fill="#1e40af">미국형 교육 포맷</text>
+  <text x="205" y="200" text-anchor="middle" font-size="12" fill="#1e3a8a">메카트로닉스·임베디드</text>
+  <text x="205" y="216" text-anchor="middle" font-size="12" fill="#1e3a8a">프로젝트 랩</text>
+  <text x="205" y="234" text-anchor="middle" font-size="10.5" fill="#3b5ba5">ME210·6.115·18-349</text>
+
+  <!-- B: 중국형 -->
+  <text x="515" y="180" text-anchor="middle" font-size="16" font-weight="700" fill="#b23c06">중국형 기술 밀도</text>
+  <text x="515" y="200" text-anchor="middle" font-size="12" fill="#8a2d04">레지스터급 단일칩</text>
+  <text x="515" y="216" text-anchor="middle" font-size="12" fill="#8a2d04">PID·EMC·PCB</text>
+  <text x="515" y="234" text-anchor="middle" font-size="10.5" fill="#a5501f">NXP컵 지능차·RoboMaster</text>
+
+  <!-- C: Lunabotics형 -->
+  <text x="360" y="425" text-anchor="middle" font-size="16" font-weight="700" fill="#15803d">Lunabotics형 목표 지향</text>
+  <text x="360" y="444" text-anchor="middle" font-size="12" fill="#14532d">우주 로버 대회 · 월면 험지주행 미션</text>
+
+  <!-- center -->
+  <text x="360" y="270" text-anchor="middle" font-size="17" font-weight="800" fill="#111">본 강의</text>
+  <text x="360" y="290" text-anchor="middle" font-size="12" fill="#333">모빌리티 전자제어유닛</text>
+</svg>
