@@ -83,17 +83,17 @@ flowchart LR
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
     ![01주차 첨부자료 대표 이미지](figures/attachment-previews/kit-guide-p01.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    키트 보드의 24~36V 입력, STM32, U/V/W 모터선, JTAG·BT 포트를 함께 짚어 ECU의 전력·신호 경로를 찾게 한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
-    ![01주차 핵심 도해](figures/attachment-previews/stm32-orientation-p01.png)
+    ![01주차 핵심 도해](figures/attachment-previews/stm32-orientation-devtools-p02.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    STM32 개발환경과 보드 연결 구성을 보여 주며, 실습 전에 설치·연결·다운로드 흐름을 확인한다.
 
 !!! quote "슬라이드 이미지 3 · 실습 보조 도해"
     ![01주차 실습 보조 도해](figures/diffdrive.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    좌우 휠 속도 차이가 직진·회전·제자리 회전을 만드는 원리를 식과 함께 설명한다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 기본 자료 + kit-guide + STM32 개발환경 + ECU 계층/차동구동 도해.
@@ -232,7 +232,7 @@ ECU를 MCU 칩 하나로만 보는 오해를 바로잡고 전원부와 구동부
 
 ![첨부자료 미리보기](figures/attachment-previews/kit-guide-p01.png)
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-orientation-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-orientation-devtools-p02.png)
 
 ![실습 보조 도해](figures/diffdrive.svg)
 

@@ -41,7 +41,7 @@ Cgs 충전 → 채널전류 상승 → **Miller Plateau(Vds 급락=턴온)** →
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/practical-circuits-semiconductor-p39.png)
 
     ![주차 핵심 도해](figures/mosfet.svg)
 
@@ -81,19 +81,19 @@ Cgs 충전 → 채널전류 상승 → **Miller Plateau(Vds 급락=턴온)** →
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![03주차 첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-p01.png)
+    ![03주차 첨부자료 대표 이미지](figures/attachment-previews/practical-circuits-semiconductor-p39.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    다이오드·BJT·MOSFET 구동 조건을 실제 회로 기준으로 설명하고, 게이트 신호가 부하 전류를 여는 과정을 연결한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
-    ![03주차 핵심 도해](figures/attachment-previews/practical-circuits-p01.png)
+    ![03주차 핵심 도해](figures/mosfet.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    Vgs, Vds, Id와 Miller plateau를 함께 보며 스위칭 손실과 게이트 구동 타이밍을 설명한다.
 
 !!! quote "슬라이드 이미지 3 · 실습 보조 도해"
-    ![03주차 실습 보조 도해](figures/mosfet.svg)
+    ![03주차 실습 보조 도해](figures/hbridge.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    MOSFET 한 개의 스위칭 원리가 하프브리지와 모터 전류 방향 제어로 확장되는 흐름을 보여 준다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 전자부품·전원회로 기술노트 3주차 + MOSFET/데드타임 도해.
@@ -135,7 +135,7 @@ Cgs 충전 → 채널전류 상승 → **Miller Plateau(Vds 급락=턴온)** →
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/practical-circuits-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/practical-circuits-semiconductor-p39.png)
 
 ![주차 핵심 도해](figures/mosfet.svg)
 
@@ -230,7 +230,7 @@ MOSFET 정격전류 숫자만 보고 고르는 습관을 열 조건과 PCB 구�
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/practical-circuits-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/practical-circuits-semiconductor-p39.png)
 
 ![실습 보조 도해](figures/mosfet.svg)
 
@@ -264,7 +264,7 @@ MOSFET 정격전류 숫자만 보고 고르는 습관을 열 조건과 PCB 구�
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/inverter-hardware-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/practical-circuits-semiconductor-p39.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -315,7 +315,7 @@ I^2R 손실로 MOSFET 발열을 계산하게 한다. 다만 최악 조건이나 
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/practical-circuits-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/practical-circuits-semiconductor-p39.png)
 
 ![평가 보조 도해](figures/mosfet.svg)
 
@@ -394,7 +394,7 @@ LED 직렬저항 계산으로 순방향 전압강하와 전류 제한을 연결�
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/practical-circuits-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/practical-circuits-semiconductor-p39.png)
 
 ![사례 보조 도해](figures/mosfet.svg)
 

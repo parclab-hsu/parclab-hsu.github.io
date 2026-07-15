@@ -37,7 +37,7 @@ flowchart LR
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/speed-teleplot-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/speed-control-teleplot-screen-p03.png)
 
     ![주차 핵심 도해](figures/pi.svg)
 
@@ -77,19 +77,19 @@ Kp와 Ki를 한 번에 바꾸지 말고 로그의 상승시간, 오버슈트, �
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![07주차 첨부자료 대표 이미지](figures/attachment-previews/speed-teleplot-p01.png)
+    ![07주차 첨부자료 대표 이미지](figures/attachment-previews/speed-control-teleplot-screen-p03.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    Teleplot 화면과 모터 배선을 보여 주며 PI 제어 로그가 속도 응답 분석 자료가 되는 과정을 설명한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
     ![07주차 핵심 도해](figures/bode.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    주파수 응답 관점에서 이득·위상 여유가 제어 안정도와 어떤 관계를 갖는지 설명한다.
 
 !!! quote "슬라이드 이미지 3 · 실습 보조 도해"
     ![07주차 실습 보조 도해](figures/pi.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    P항과 I항이 오차, 정상상태 편차, 과도응답에 미치는 영향을 속도 제어 루프와 연결한다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 모터·인버터·제어 기술노트 7주차 + PI/Bode/Teleplot 자료.
@@ -131,7 +131,7 @@ Kp와 Ki를 한 번에 바꾸지 말고 로그의 상승시간, 오버슈트, �
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/speed-teleplot-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/speed-control-teleplot-screen-p03.png)
 
 ![주차 핵심 도해](figures/pi.svg)
 
@@ -226,7 +226,7 @@ PI 값은 한 번 계산하면 끝난다는 오해를 부하와 전압 변화로
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/speed-teleplot-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/speed-control-teleplot-screen-p03.png)
 
 ![실습 보조 도해](figures/pi.svg)
 
@@ -260,7 +260,7 @@ PI 값은 한 번 계산하면 끝난다는 오해를 부하와 전압 변화로
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/speed-teleplot-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/speed-control-teleplot-screen-p03.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -311,7 +311,7 @@ P항과 I항의 역할을 실제 그래프에 표시하게 한다. 또한 실험
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/speed-teleplot-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/speed-control-teleplot-screen-p03.png)
 
 ![평가 보조 도해](figures/pi.svg)
 
@@ -390,7 +390,7 @@ P항과 I항의 역할을 실제 그래프에 표시하게 한다. 또한 실험
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/speed-teleplot-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/speed-control-teleplot-screen-p03.png)
 
 ![사례 보조 도해](figures/pi.svg)
 

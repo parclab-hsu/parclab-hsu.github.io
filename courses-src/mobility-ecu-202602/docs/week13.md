@@ -31,7 +31,7 @@ flowchart LR
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/pcb-design-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/pcb-design-routing-screen-p15.png)
 
     ![주차 핵심 도해](figures/grounding.svg)
 
@@ -71,14 +71,14 @@ flowchart LR
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![13주차 첨부자료 대표 이미지](figures/attachment-previews/pcb-design-p01.png)
+    ![13주차 첨부자료 대표 이미지](figures/attachment-previews/pcb-design-routing-screen-p15.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    EasyEDA 라우팅 화면에서 pad, trace, net, board outline을 짚고 회로도 연결이 PCB 구리 경로로 바뀌는 과정을 설명한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
     ![13주차 핵심 도해](figures/grounding.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    전력 그라운드와 신호 그라운드가 만나는 지점을 기준으로 노이즈가 ADC·통신에 들어오는 경로를 찾게 한다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: PCB·펌웨어 통합 기술노트 13주차 + pcb-design-lecture 자료.
@@ -120,7 +120,7 @@ flowchart LR
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/pcb-design-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/pcb-design-routing-screen-p15.png)
 
 ![주차 핵심 도해](figures/grounding.svg)
 
@@ -215,7 +215,7 @@ ERC와 DRC 경고 중 무시 가능한 예외와 즉시 고칠 오류를 구분�
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/pcb-design-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/pcb-design-routing-screen-p15.png)
 
 ![실습 보조 도해](figures/grounding.svg)
 
@@ -249,7 +249,7 @@ ERC와 DRC 경고 중 무시 가능한 예외와 즉시 고칠 오류를 구분�
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/pcb-design-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/pcb-design-routing-screen-p15.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -300,7 +300,7 @@ ERC와 DRC 경고 중 무시 가능한 예외와 즉시 고칠 오류를 구분�
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/pcb-design-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/pcb-design-routing-screen-p15.png)
 
 ![평가 보조 도해](figures/grounding.svg)
 
@@ -379,7 +379,7 @@ ERC와 DRC 경고 중 무시 가능한 예외와 즉시 고칠 오류를 구분�
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/pcb-design-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/pcb-design-routing-screen-p15.png)
 
 ![사례 보조 도해](figures/grounding.svg)
 

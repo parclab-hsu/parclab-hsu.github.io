@@ -64,7 +64,7 @@ flowchart LR
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-system-block-p05.png)
 
     ![주차 핵심 도해](figures/safety_security_vmodel.svg)
 
@@ -104,19 +104,19 @@ flowchart LR
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![11주차 첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-p01.png)
+    ![11주차 첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-system-block-p05.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    하드웨어 블록도를 요구사항·HSI 관점으로 읽어 PWM, ADC, Hall, UART 신호 방향을 계약처럼 정리한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
     ![11주차 핵심 도해](figures/safety_security_vmodel.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    요구사항, 설계, 구현, 검증이 V-모델에서 서로 대응되는 지점을 기능안전·보안 관점으로 설명한다.
 
 !!! quote "슬라이드 이미지 3 · 실습 보조 도해"
     ![11주차 실습 보조 도해](figures/sdv_zonal.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    SDV·존 아키텍처 흐름 속에서 소형 ECU 실습이 차량 전장 구조의 축소 모델임을 연결한다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: PCB·펌웨어 통합 기술노트 11주차 + 인버터 하드웨어 개발 프로세스.
@@ -158,7 +158,7 @@ flowchart LR
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-system-block-p05.png)
 
 ![주차 핵심 도해](figures/sdv_zonal.svg)
 
@@ -253,7 +253,7 @@ HSI가 하드웨어 팀 문서라는 생각을 펌웨어 변수와 예외처리�
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-system-block-p05.png)
 
 ![실습 보조 도해](figures/sdv_zonal.svg)
 
@@ -287,7 +287,7 @@ HSI가 하드웨어 팀 문서라는 생각을 펌웨어 변수와 예외처리�
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/inverter-hardware-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/inverter-hardware-system-block-p05.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -338,7 +338,7 @@ HSI에 들어갈 열 이름 다섯 개를 쓰게 한다. 다만 최악 조건이
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-system-block-p05.png)
 
 ![평가 보조 도해](figures/sdv_zonal.svg)
 
@@ -417,7 +417,7 @@ HSI에 들어갈 열 이름 다섯 개를 쓰게 한다. 다만 최악 조건이
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-system-block-p05.png)
 
 ![사례 보조 도해](figures/sdv_zonal.svg)
 

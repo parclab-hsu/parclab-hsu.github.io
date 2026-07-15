@@ -47,7 +47,7 @@ flowchart TD
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/motor-control-theory-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/motor-control-bldc-sixstep-p67.png)
 
     ![주차 핵심 도해](figures/bldc.svg)
 
@@ -87,24 +87,24 @@ flowchart TD
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![05주차 첨부자료 대표 이미지](figures/attachment-previews/motor-control-theory-p01.png)
+    ![05주차 첨부자료 대표 이미지](figures/attachment-previews/motor-control-bldc-sixstep-p67.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    6-step 통전표와 홀 상태를 함께 보며 전기각 60도마다 어떤 상이 PWM/ON/OFF가 되는지 설명한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
     ![05주차 핵심 도해](figures/angle.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    기계각과 전기각의 차이를 극쌍수와 연결해 홀센서 순서 해석의 기준을 세운다.
 
 !!! quote "슬라이드 이미지 3 · 실습 보조 도해"
     ![05주차 실습 보조 도해](figures/bldc.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    BLDC 3상 권선과 로터 자속을 보며 토크가 만들어지는 공간적 방향을 설명한다.
 
 !!! quote "슬라이드 이미지 4 · 평가·사례 도해"
     ![05주차 평가·사례 도해](figures/hall120.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    홀센서 120도 배치와 상태 전이를 통전표에 대응시켜 펌웨어 상태표로 옮긴다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 모터·인버터·제어 기술노트 5주차 + BLDC/홀/전기각 도해.
@@ -146,7 +146,7 @@ flowchart TD
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/motor-control-theory-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/motor-control-bldc-sixstep-p67.png)
 
 ![주차 핵심 도해](figures/bldc.svg)
 
@@ -241,7 +241,7 @@ BLDC가 DC 모터보다 항상 단순하다는 오해를 전자식 정류 필요
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/motor-control-theory-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/motor-control-bldc-sixstep-p67.png)
 
 ![실습 보조 도해](figures/bldc.svg)
 
@@ -275,7 +275,7 @@ DC/BLDC 모터 원리 실습 전에는 전원, 커넥터 방향, 공통 그라�
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/motor-control-theory-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/motor-control-bldc-sixstep-p67.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -326,7 +326,7 @@ DC/BLDC 모터 원리의 실행 여부만 적고 수치, 그림, 로그 증거�
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/motor-control-theory-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/motor-control-bldc-sixstep-p67.png)
 
 ![평가 보조 도해](figures/bldc.svg)
 
@@ -405,7 +405,7 @@ DC/BLDC 모터 원리의 시스템 위치, 수치 근거, 실험 증거, 안전 
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/motor-control-theory-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/motor-control-bldc-sixstep-p67.png)
 
 ![사례 보조 도해](figures/bldc.svg)
 

@@ -37,7 +37,7 @@ flowchart TD
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/stm32-adc-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/stm32-adc-sensor-demo-p34.png)
 
     ![주차 핵심 도해](figures/adc.svg)
 
@@ -77,24 +77,24 @@ ADC 샘플링 주기와 PWM 주기를 표로 정리하고, UART 로그가 제어
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![10주차 첨부자료 대표 이미지](figures/attachment-previews/stm32-adc-p01.png)
+    ![10주차 첨부자료 대표 이미지](figures/attachment-previews/stm32-adc-sensor-demo-p34.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    아날로그 조이스틱과 STM32 보드 연결을 보며 센서 전압이 ADC 코드와 UART 로그로 변환되는 흐름을 짚는다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
-    ![10주차 핵심 도해](figures/attachment-previews/stm32-serial-p01.png)
+    ![10주차 핵심 도해](figures/attachment-previews/stm32-serial-uart-i2c-spi-p11.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    UART·I2C·SPI의 배선 수, 동기/비동기, 거리·속도 차이를 비교해 디버깅 통신 선택 기준을 세운다.
 
 !!! quote "슬라이드 이미지 3 · 실습 보조 도해"
-    ![10주차 실습 보조 도해](figures/attachment-previews/stm32-tim-p01.png)
+    ![10주차 실습 보조 도해](figures/attachment-previews/stm32-tim-pwm-mode-p13.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    TIM PWM 모드 파형과 OC 동작을 보며 ARR·CCR·듀티 계산을 실제 레지스터 설정과 연결한다.
 
 !!! quote "슬라이드 이미지 4 · 평가·사례 도해"
     ![10주차 평가·사례 도해](figures/adc.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    샘플링, 양자화, 기준전압, 필터링 개념을 ADC 변환 흐름으로 묶어 센서값 신뢰도를 판단하게 한다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: STM32 펌웨어 기술노트 10주차 + ADC/TIM/UART 첨부자료.
@@ -136,7 +136,7 @@ ADC 샘플링 주기와 PWM 주기를 표로 정리하고, UART 로그가 제어
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-adc-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-adc-sensor-demo-p34.png)
 
 ![주차 핵심 도해](figures/adc.svg)
 
@@ -231,11 +231,11 @@ UART가 연결되면 항상 읽힌다는 믿음을 보레이트와 공통 그라
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-adc-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-adc-sensor-demo-p34.png)
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-tim-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-tim-pwm-mode-p13.png)
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-serial-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-serial-uart-i2c-spi-p11.png)
 
 ![실습 보조 도해](figures/adc.svg)
 
@@ -269,7 +269,7 @@ ADC·Timer·UART 실습 전에는 전원, 커넥터 방향, 공통 그라운드,
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/stm32-adc-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/stm32-adc-sensor-demo-p34.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -320,7 +320,7 @@ ADC·Timer·UART의 실행 여부만 적고 수치, 그림, 로그 증거가 없
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-adc-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-adc-sensor-demo-p34.png)
 
 ![평가 보조 도해](figures/adc.svg)
 
@@ -399,7 +399,7 @@ ADC·Timer·UART의 시스템 위치, 수치 근거, 실험 증거, 안전 고�
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-adc-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-adc-sensor-demo-p34.png)
 
 ![사례 보조 도해](figures/adc.svg)
 

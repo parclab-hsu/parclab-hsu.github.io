@@ -36,7 +36,7 @@ MCU 레지스터 3분류 — **Control**(설정) / **Status**(플래그) / **Dat
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/stm32-gpio-exti-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/stm32-gpio-exti-overview-p02.png)
 
     ![주차 핵심 도해](figures/ecu_layers.svg)
 
@@ -76,19 +76,19 @@ LED 토글 코드를 HAL과 레지스터 방식으로 비교하고, 디버거에
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![08주차 첨부자료 대표 이미지](figures/attachment-previews/stm32-gpio-exti-p01.png)
+    ![08주차 첨부자료 대표 이미지](figures/attachment-previews/stm32-gpio-exti-overview-p02.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    GPIO 입력·출력·대체기능·ADC·EXTI를 한 장에서 분류하고, 핀 설정이 펌웨어 동작을 바꾸는 지점을 찾게 한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
-    ![08주차 핵심 도해](figures/attachment-previews/stm32-lecture-p01.png)
+    ![08주차 핵심 도해](figures/attachment-previews/stm32-lecture-mcu-block-p10.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    CPU, GPIO, ADC, Timer, UART, Clock이 버스로 연결된 구조를 보며 레지스터 접근 위치를 설명한다.
 
 !!! quote "슬라이드 이미지 3 · 실습 보조 도해"
     ![08주차 실습 보조 도해](figures/ecu_layers.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    ECU를 하드웨어, 드라이버, 제어 로직, 진단 계층으로 나누어 실습 코드가 어느 층에 속하는지 정리한다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: STM32 펌웨어 기술노트 8주차 + STM32 lecture/orientation/gpio-exti 자료.
@@ -130,7 +130,7 @@ LED 토글 코드를 HAL과 레지스터 방식으로 비교하고, 디버거에
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-gpio-exti-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-gpio-exti-overview-p02.png)
 
 ![주차 핵심 도해](figures/ecu_layers.svg)
 
@@ -225,9 +225,9 @@ GPIO 출력 전압이 무한한 전류를 낼 수 있다는 생각을 포트 전
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-lecture-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-lecture-mcu-block-p10.png)
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-gpio-exti-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-gpio-exti-overview-p02.png)
 
 ![실습 보조 도해](figures/ecu_layers.svg)
 
@@ -261,7 +261,7 @@ STM32 GPIO·메모리맵·레지스터 실습 전에는 전원, 커넥터 방향
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/stm32-gpio-exti-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/stm32-gpio-exti-overview-p02.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -312,7 +312,7 @@ STM32 GPIO·메모리맵·레지스터의 실행 여부만 적고 수치, 그림
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-gpio-exti-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-gpio-exti-overview-p02.png)
 
 ![평가 보조 도해](figures/ecu_layers.svg)
 
@@ -391,7 +391,7 @@ STM32 GPIO·메모리맵·레지스터의 시스템 위치, 수치 근거, 실�
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/stm32-gpio-exti-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/stm32-gpio-exti-overview-p02.png)
 
 ![사례 보조 도해](figures/ecu_layers.svg)
 

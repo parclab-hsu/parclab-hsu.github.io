@@ -41,7 +41,7 @@ flowchart TD
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-current-loop-p41.png)
 
     ![주차 핵심 도해](figures/hbridge.svg)
 
@@ -81,14 +81,14 @@ flowchart TD
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![12주차 첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-p01.png)
+    ![12주차 첨부자료 대표 이미지](figures/attachment-previews/inverter-hardware-current-loop-p41.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    인버터 전류 루프와 출력 필터·부하 경로를 따라가며 션트 위치, 전류 측정 가능 구간, 보호 판단을 연결한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
     ![12주차 핵심 도해](figures/hbridge.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    하프브리지 전류 방향을 기준으로 게이트 시퀀스, 데드타임, 보호 조건을 점검한다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: 모터·인버터·제어 기술노트 12주차 + inverter-hardware-design 자료.
@@ -130,7 +130,7 @@ flowchart TD
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-current-loop-p41.png)
 
 ![주차 핵심 도해](figures/hbridge.svg)
 
@@ -225,7 +225,7 @@ MOSFET 선정표에 최소 세 개 데이터시트 수치를 넣게 한다.
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-current-loop-p41.png)
 
 ![실습 보조 도해](figures/hbridge.svg)
 
@@ -259,7 +259,7 @@ MOSFET 선정표에 최소 세 개 데이터시트 수치를 넣게 한다.
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/inverter-hardware-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/inverter-hardware-current-loop-p41.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -310,7 +310,7 @@ MOSFET 선정표에 최소 세 개 데이터시트 수치를 넣게 한다. 또�
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-current-loop-p41.png)
 
 ![평가 보조 도해](figures/hbridge.svg)
 
@@ -389,7 +389,7 @@ MOSFET 방열 면적이 부족하면 짧은 벤치 테스트는 통과해도 장
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/inverter-hardware-current-loop-p41.png)
 
 ![사례 보조 도해](figures/hbridge.svg)
 

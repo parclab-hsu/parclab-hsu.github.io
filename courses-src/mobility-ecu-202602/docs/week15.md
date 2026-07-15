@@ -41,7 +41,7 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 ## 🧠 핵심 이론 보강
 
 !!! info "이미지로 설명하기"
-    ![첨부자료 대표 이미지](figures/attachment-previews/scooter-firmware-p01.png)
+    ![첨부자료 대표 이미지](figures/attachment-previews/scooter-firmware-system-block-p05.png)
 
     ![주차 핵심 도해](figures/safety_security_vmodel.svg)
 
@@ -81,24 +81,24 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 ## 🖼️ 슬라이드 이미지
 
 !!! quote "슬라이드 이미지 1 · 첨부자료 대표 이미지"
-    ![15주차 첨부자료 대표 이미지](figures/attachment-previews/scooter-firmware-p01.png)
+    ![15주차 첨부자료 대표 이미지](figures/attachment-previews/scooter-firmware-system-block-p05.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    최종 펌웨어에서 PWM, Hall, ADC, UART가 하나의 구동 루프로 묶이는 구조를 표시한다.
 
 !!! quote "슬라이드 이미지 2 · 핵심 도해"
-    ![15주차 핵심 도해](figures/attachment-previews/speed-teleplot-p01.png)
+    ![15주차 핵심 도해](figures/attachment-previews/speed-control-teleplot-screen-p03.png)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    Teleplot 로그 화면으로 최종 주행 시연의 RPM·명령·오류 상태를 발표 증거로 남기는 방법을 보여 준다.
 
 !!! quote "슬라이드 이미지 3 · 실습 보조 도해"
     ![15주차 실습 보조 도해](figures/edge_ai_fault.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    엣지 AI 기반 이상탐지가 센서 로그와 결합해 예지보전·고장 분류로 확장되는 흐름을 소개한다.
 
 !!! quote "슬라이드 이미지 4 · 평가·사례 도해"
     ![15주차 평가·사례 도해](figures/safety_security_vmodel.svg)
 
-    이 이미지는 강의 슬라이드에서 바로 보여 주는 시각 자료다. 학생에게 실제 부품·파형·코드 위치와 도해 속 기능 블록을 서로 연결해 말하게 한다.
+    최종 발표에서 요구사항, 구현 결과, 검증 증거가 서로 맞물려야 함을 V-모델로 재확인한다.
 
 ## 🎞️ 통합 강의 슬라이드
 > 통합 근거: PCB·펌웨어 통합 기술노트 15주차 + electric-scooter-firmware + speed-control-teleplot 자료.
@@ -140,7 +140,7 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
 
 ###### 수업에서 바로 보여줄 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-system-block-p05.png)
 
 ![주차 핵심 도해](figures/edge_ai_fault.svg)
 
@@ -235,9 +235,9 @@ AI 예지보전이 제어기를 대체한다는 말을 로그 분석 보조 역�
 
 ###### 실습에서 바로 띄울 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-system-block-p05.png)
 
-![첨부자료 미리보기](figures/attachment-previews/speed-teleplot-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/speed-control-teleplot-screen-p03.png)
 
 ![실습 보조 도해](figures/edge_ai_fault.svg)
 
@@ -271,7 +271,7 @@ AI 예지보전이 제어기를 대체한다는 말을 로그 분석 보조 역�
 
 ##### 수업 전 5분 준비
 
-- 메인 페이지의 핵심 도해와 `figures/attachment-previews/scooter-firmware-p01.png` 이미지를 같은 화면에 열어 둔다.
+- 메인 페이지의 핵심 도해와 `figures/attachment-previews/scooter-firmware-system-block-p05.png` 이미지를 같은 화면에 열어 둔다.
 - 팀별로 오늘 확인할 입력 조건, 예상값, 위험 조건을 한 줄씩 적게 한다.
 - 측정 장비가 없거나 시간이 부족한 팀은 첨부자료 이미지 위에 신호 흐름을 표시하는 대체 활동을 수행한다.
 
@@ -322,7 +322,7 @@ Fault 발생 시 첫 세 동작을 순서대로 말하게 한다. 다만 최악 
 
 ###### 평가 기준 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-system-block-p05.png)
 
 ![평가 보조 도해](figures/edge_ai_fault.svg)
 
@@ -401,7 +401,7 @@ Fault 발생 시 첫 세 동작을 순서대로 말하게 한다. 다만 최악 
 
 ###### 사례 연결 이미지
 
-![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-p01.png)
+![첨부자료 미리보기](figures/attachment-previews/scooter-firmware-system-block-p05.png)
 
 ![사례 보조 도해](figures/edge_ai_fault.svg)
 
