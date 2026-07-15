@@ -58,6 +58,7 @@ markdown_extensions:
 
 nav:
   - 강의 개요: index.md
+  - 🧭 강의 전체 흐름: 00-course-flow.md
   - 🤖 AX 교육과정 개편: ax-curriculum.md
   - 커리큘럼(15주차): curriculum.md
   - 첨부자료 활용 가이드: resources.md
