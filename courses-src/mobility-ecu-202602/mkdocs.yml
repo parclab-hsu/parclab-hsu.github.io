@@ -65,6 +65,7 @@ nav:
   - 첨부자료 활용 가이드: resources.md
   - 용어·도해 사전: glossary.md
   - 최신 기술 트렌드: trends.md
+  - 🌍 국내외 대학·대회 동향: global-benchmark.md
   - 주차별 강의 자료:
       - 1주차 · 오리엔테이션·로버 제어유닛 구조: week01.md
       - 2주차 · 전자부품 1 · 저항·커패시터·인덕터: week02.md
@@ -89,5 +90,5 @@ nav:
   - 실습 코드:
       - 교육용 코드 흐름: code/README.md
   - 캡스톤 프로젝트:
-      - 로버(AMR) 개발 프로젝트: ugv-project.md
-      - 로버(AMR) 부품표·회로: ugv-bom.md
+      - 로버 개발 프로젝트: ugv-project.md
+      - 로버 부품표·회로: ugv-bom.md

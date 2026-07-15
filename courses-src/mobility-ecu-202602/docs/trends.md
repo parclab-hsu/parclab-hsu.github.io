@@ -16,7 +16,7 @@ SDV는 차량 기능을 하드웨어 결선이 아니라 소프트웨어, 데이
 
 ![SDV와 존 아키텍처 개념도](figures/sdv_zonal.svg)
 
-- 수업 연결: 1주차 로버(AMR) 전장 구조, 11주차 시스템 블록도, 14주차 그라운드·노이즈
+- 수업 연결: 1주차 로버 전장 구조, 11주차 시스템 블록도, 14주차 그라운드·노이즈
 - 학생 질문: "로버에서 좌우 휠 제어 보드를 존 컨트롤러 가까이에 둘 때 배선과 노이즈는 어떻게 달라질까?"
 
 ## 3. AI-defined Vehicle과 Physical AI {#ai-defined-vehicle}
@@ -44,9 +44,9 @@ ST의 STM32 Motor Control 생태계는 6-step BLDC와 PMSM FOC를 위한 펌웨�
 - 수업 연결: 5주차 BLDC, 6주차 인버터/PWM, 7주차 PI, 12주차 게이트드라이버
 - 학생 질문: "6-step과 FOC는 어떤 센싱과 연산이 더 필요한가?"
 
-## 6. ROS 2 LTS와 로버(AMR) 시스템 통합 {#ros2-amr-integration}
+## 6. ROS 2 LTS와 로버 시스템 통합 {#ros2-amr-integration}
 
-ROS 2 Jazzy는 장기 지원 배포판으로 AMR 상위 제어, 시뮬레이션, 데이터 로깅과 연결된다. MCU 보드는 ROS 2 노드가 아니라, 상위 컴퓨터와 직렬/CAN/Ethernet으로 연결되는 저수준 제어기다.
+ROS 2 Jazzy는 장기 지원 배포판으로 로버 상위 제어, 시뮬레이션, 데이터 로깅과 연결된다. MCU 보드는 ROS 2 노드가 아니라, 상위 컴퓨터와 직렬/CAN/Ethernet으로 연결되는 저수준 제어기다.
 
 - 수업 연결: 1주차 로버 구조, 10주차 UART, 15주차 최종 시연
 - 학생 질문: "상위 ROS 2 명령과 하위 MCU 안전 제한이 충돌하면 누가 우선인가?"

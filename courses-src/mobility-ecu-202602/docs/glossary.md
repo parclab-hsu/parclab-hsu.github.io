@@ -15,7 +15,7 @@
 ## 핵심 용어
 
 ### ECU {#ecu}
-Electronic Control Unit. 센서·명령 입력을 받아 MCU가 판단하고, 드라이버와 인버터를 통해 모터·액추에이터를 구동하는 제어 장치다. 이 강의의 AMR 구동보드는 모터 ECU의 축소 실습 모델이다.
+Electronic Control Unit. 센서·명령 입력을 받아 MCU가 판단하고, 드라이버와 인버터를 통해 모터·액추에이터를 구동하는 제어 장치다. 이 강의의 로버 구동보드는 모터 ECU의 축소 실습 모델이다.
 
 ### MCU {#mcu}
 Microcontroller Unit. CPU, 메모리, GPIO, ADC, Timer, UART 같은 주변장치를 한 칩에 넣은 작은 컴퓨터다. STM32는 이 강의의 주 MCU 계열이다.
