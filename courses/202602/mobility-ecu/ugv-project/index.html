@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#amr" class="md-skip">
+        <a href="#_1" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -1354,10 +1354,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#amr_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AMR 시스템 블록도
+        로버 시스템 블록도
       
     </span>
   </a>
@@ -1365,10 +1365,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#amr_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        강의 → AMR 지식 연계
+        강의 → 로버 지식 연계
       
     </span>
   </a>
@@ -1376,7 +1376,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         데이터시트 기반 직접 제어 (자신감의 핵심)
@@ -1398,7 +1398,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         단계별 미션 (예시)
@@ -1512,10 +1512,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#amr_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AMR 시스템 블록도
+        로버 시스템 블록도
       
     </span>
   </a>
@@ -1523,10 +1523,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#amr_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        강의 → AMR 지식 연계
+        강의 → 로버 지식 연계
       
     </span>
   </a>
@@ -1534,7 +1534,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         데이터시트 기반 직접 제어 (자신감의 핵심)
@@ -1556,7 +1556,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         단계별 미션 (예시)
@@ -1594,8 +1594,8 @@
 
 
 
-<h1 id="amr">AMR 개발 프로젝트 — 직접 만들며 배우는 마이크로프로세서 (캡스톤)<a class="headerlink" href="#amr" title="Permanent link">&para;</a></h1>
-<p>무인 지상 로봇(AMR, Unmanned Ground Vehicle)를 직접 기획·설계·제작하며 마이크로프로세서를 체득하는 통합 프로젝트. WIZnet IoT 스피커 프로젝트(chcbaram)의 "처음부터 끝까지 과정을 공개하며 완주"하는 개발 방식을 지상 로봇으로 각색한다.</p>
+<h1 id="_1">로버 개발 프로젝트 — 직접 만들며 배우는 마이크로프로세서 (캡스톤)<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>지상 로버(UGV, Unmanned Ground Vehicle)를 직접 기획·설계·제작하며 마이크로프로세서를 체득하는 통합 프로젝트. WIZnet IoT 스피커 프로젝트(chcbaram)의 "처음부터 끝까지 과정을 공개하며 완주"하는 개발 방식을 지상 로봇으로 각색한다.</p>
 <blockquote>
 <p>참고 사례: WIZnet Maker — IoT Speaker (chcbaram). 개발 <em>방법론·구조</em>를 참고해 UGV로 재구성했으며, 오디오/네트워크 구현 대신 이 과정에서 배운 모터제어·센서·통신으로 치환.</p>
 </blockquote>
@@ -1610,7 +1610,7 @@
 <tr>
 <th>원칙</th>
 <th>IoT 스피커 사례</th>
-<th>AMR 적용</th>
+<th>로버 적용</th>
 </tr>
 </thead>
 <tbody>
@@ -1641,7 +1641,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="amr_1">AMR 시스템 블록도<a class="headerlink" href="#amr_1" title="Permanent link">&para;</a></h2>
+<h2 id="_2">로버 시스템 블록도<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
     BAT["배터리"] --&gt; PWR["전원(벅·LDO)"]
     PWR --&gt; MCU["STM32 MCU"]
@@ -1653,11 +1653,11 @@
     ENC["엔코더/홀"] --&gt;|"속도"| MCU
     US["초음파/IMU"] --&gt;|"ADC/I2C"| MCU
     MCU --&gt;|"UART/BLE"| REMOTE["원격제어 앱"]</code></pre>
-<h2 id="amr_2">강의 → AMR 지식 연계<a class="headerlink" href="#amr_2" title="Permanent link">&para;</a></h2>
+<h2 id="_3">강의 → 로버 지식 연계<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>AMR 구성</th>
+<th>로버 구성</th>
 <th>연계 주차</th>
 </tr>
 </thead>
@@ -1684,7 +1684,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_1">데이터시트 기반 직접 제어 (자신감의 핵심)<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_4">데이터시트 기반 직접 제어 (자신감의 핵심)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>모터 PWM</strong> — TIM 레지스터(PSC/ARR/CCR) 직접 설정</li>
 <li><strong>속도 측정</strong> — 엔코더/홀 입력을 EXTI·타이머 캡처로 T방식 계산</li>
@@ -1697,7 +1697,7 @@
     P2 --&gt; P3["Phase 3 · 펌웨어&lt;br&gt;GPIO·PWM 구동·센서·속도제어"]
     P3 --&gt; P4["Phase 4 · 원격제어 SW&lt;br&gt;명령 프로토콜·앱/Teleplot"]
     P4 --&gt; P5["Phase 5 · 통합·검증&lt;br&gt;주행 테스트·장애복구·발표"]</code></pre>
-<h2 id="_2">단계별 미션 (예시)<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_5">단계별 미션 (예시)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Mission 1 — 바퀴 1개 PWM 구동(전진/정지)</li>
 <li>Mission 2 — 좌·우 모터 차동구동(전진·후진·제자리회전)</li>
@@ -1709,7 +1709,7 @@
 <h2 id="2-codeamr_2wheel_drivec">💻 실습 코드 (주석 포함) — 2륜 차동구동 <code>code/amr_2wheel_drive.c</code><a class="headerlink" href="#2-codeamr_2wheel_drivec" title="Permanent link">&para;</a></h2>
 <p>TB6612 H-브리지로 좌/우 모터를 제어한다. <code>amr_drive(v, w)</code>에 전진 v·회전 w를 주면 차동구동 믹싱으로 주행한다. <a href="../code/amr_2wheel_drive.c">⬇ 전체 코드</a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/*</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm"> * [AMR 실습] 2륜 차동구동 — TB6612 H-브리지로 좌/우 모터 제어</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm"> * [로버 실습] 2륜 차동구동 — TB6612 H-브리지로 좌/우 모터 제어</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm"> * ----------------------------------------------------------</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm"> * 브러시 DC 모터 2개를 각각 H-브리지 1채널로 구동한다.</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cm"> *   IN1/IN2 : 회전 방향,  PWM : 속도(듀티)</span>

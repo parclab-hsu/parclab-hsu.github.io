@@ -545,7 +545,7 @@
   <a href="#ros2-amr-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. ROS 2 LTS와 AMR 시스템 통합
+        6. ROS 2 LTS와 로버 시스템 통합
       
     </span>
   </a>
@@ -1557,7 +1557,7 @@
   <a href="#ros2-amr-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. ROS 2 LTS와 AMR 시스템 통합
+        6. ROS 2 LTS와 로버 시스템 통합
       
     </span>
   </a>
@@ -1629,8 +1629,8 @@
 <p>존 아키텍처는 센서와 액추에이터를 물리적 구역별로 모아 배선과 전력 분배를 단순화하고 중앙 컴퓨트와 연결한다. 실습 보드는 존 내부의 모터 액추에이터 ECU로 해석할 수 있다.</p>
 <p><img alt="SDV와 존 아키텍처 개념도" src="../figures/sdv_zonal.svg" /></p>
 <ul>
-<li>수업 연결: 1주차 AMR 전장 구조, 11주차 시스템 블록도, 14주차 그라운드·노이즈</li>
-<li>학생 질문: "AMR에서 좌우 휠 제어 보드를 존 컨트롤러 가까이에 둘 때 배선과 노이즈는 어떻게 달라질까?"</li>
+<li>수업 연결: 1주차 로버 전장 구조, 11주차 시스템 블록도, 14주차 그라운드·노이즈</li>
+<li>학생 질문: "로버에서 좌우 휠 제어 보드를 존 컨트롤러 가까이에 둘 때 배선과 노이즈는 어떻게 달라질까?"</li>
 </ul>
 <h2 id="ai-defined-vehicle">3. AI-defined Vehicle과 Physical AI<a class="headerlink" href="#ai-defined-vehicle" title="Permanent link">&para;</a></h2>
 <p>AI-defined vehicle은 인지·판단·제어가 실시간 AI와 중앙/이기종 컴퓨트 위에서 결합되는 방향이다. ST는 STM32Cube.AI와 STM32N6 Neural-ART Accelerator를 통해 MCU 수준 엣지 AI 개발 흐름을 제공한다. 3학년 실습에서는 대형 ADAS를 만들기보다, 센서 로그와 제어 로그를 작은 진단 AI로 연결한다.</p>
@@ -1653,10 +1653,10 @@
 <li>수업 연결: 5주차 BLDC, 6주차 인버터/PWM, 7주차 PI, 12주차 게이트드라이버</li>
 <li>학생 질문: "6-step과 FOC는 어떤 센싱과 연산이 더 필요한가?"</li>
 </ul>
-<h2 id="ros2-amr-integration">6. ROS 2 LTS와 AMR 시스템 통합<a class="headerlink" href="#ros2-amr-integration" title="Permanent link">&para;</a></h2>
-<p>ROS 2 Jazzy는 장기 지원 배포판으로 AMR 상위 제어, 시뮬레이션, 데이터 로깅과 연결된다. MCU 보드는 ROS 2 노드가 아니라, 상위 컴퓨터와 직렬/CAN/Ethernet으로 연결되는 저수준 제어기다.</p>
+<h2 id="ros2-amr-integration">6. ROS 2 LTS와 로버 시스템 통합<a class="headerlink" href="#ros2-amr-integration" title="Permanent link">&para;</a></h2>
+<p>ROS 2 Jazzy는 장기 지원 배포판으로 로버 상위 제어, 시뮬레이션, 데이터 로깅과 연결된다. MCU 보드는 ROS 2 노드가 아니라, 상위 컴퓨터와 직렬/CAN/Ethernet으로 연결되는 저수준 제어기다.</p>
 <ul>
-<li>수업 연결: 1주차 AMR 구조, 10주차 UART, 15주차 최종 시연</li>
+<li>수업 연결: 1주차 로버 구조, 10주차 UART, 15주차 최종 시연</li>
 <li>학생 질문: "상위 ROS 2 명령과 하위 MCU 안전 제한이 충돌하면 누가 우선인가?"</li>
 </ul>
 <h2 id="safety-rtos-traceability">7. 안전 RTOS와 추적성<a class="headerlink" href="#safety-rtos-traceability" title="Permanent link">&para;</a></h2>
@@ -1667,7 +1667,7 @@
 <li>학생 질문: "LED가 켜지는 코드와 모터가 도는 코드는 검증 수준이 왜 달라야 하는가?"</li>
 </ul>
 <h2 id="teaching-checkpoints">8. 2026 수업 적용 체크포인트<a class="headerlink" href="#teaching-checkpoints" title="Permanent link">&para;</a></h2>
-<p>최신 트렌드는 이름을 외우는 과제가 아니라, 학생이 만든 AMR ECU 결과물을 산업 언어로 설명하게 만드는 도구다. 각 팀은 최종 발표에서 아래 질문 중 최소 3개에 답한다.</p>
+<p>최신 트렌드는 이름을 외우는 과제가 아니라, 학생이 만든 로버 ECU 결과물을 산업 언어로 설명하게 만드는 도구다. 각 팀은 최종 발표에서 아래 질문 중 최소 3개에 답한다.</p>
 <table>
 <thead>
 <tr>
