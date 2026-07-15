@@ -6,8 +6,8 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **ADC·타이머·UART?** ADC는 센서의 아날로그 전압을 숫자로 바꾸고, 타이머는 정확한 시간·PWM을 만들며, UART는 선 2개로 컴퓨터와 문자를 주고받는다(디버깅·원격 명령). 로봇이 "보고·움직이고·말하는" 3대 기능이다.
 
-!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
-    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+!!! warning "저작권 유의 — 원본 자료 사용 범위 확인"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 수업 활용 범위와 외부 배포 가능 여부를 확인해 사용한다. 공개 배포 전에는 인용 허가, 출처 표기, 자작 대체 자료 여부를 점검한다.
 
 
 ## 🗺️ 한눈에 보는 개념도
@@ -293,7 +293,7 @@ ADC·Timer·UART 실습 전에는 전원, 커넥터 방향, 공통 그라운드,
 1. ADC, Timer, UART 통합에서 지금 조작하는 값은 입력인가, 처리 결과인가, 보호 조건인가?
 2. 전압분배 출력값을 ADC 코드로 예측하고 실제 측정값과 비교한다. 결과가 예상과 다르면 어떤 측정점부터 확인할 것인가?
 3. Timer PWM 듀티를 바꾸며 오실로스코프 듀티와 코드 값을 맞춘다. 과정에서 하드웨어 원인과 펌웨어 원인을 어떻게 분리할 것인가?
-4. UART 보레이트를 일부러 틀리게 설정해 깨진 문자를 관찰한 뒤 복구한다. 결과를 다음 주차 설계에 어떻게 반영할 것인가?
+4. UART 보레이트를 일부러 틀리게 설정해 깨진 문자를 관찰한 뒤 복구한다. 결과를 다음 주차 산출물에 어떻게 반영할 것인가?
 
 ###### 강의자료-실습 통합 절차
 
@@ -511,9 +511,9 @@ UART 보레이트를 일부러 틀리게 설정해 깨진 문자를 관찰한 �
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [stm32-adc-updated.pdf](attachments/stm32-adc-updated.pdf) **(변경 필요)** | ADC 샘플링·양자화와 입력 회로 설명 |
-| [stm32-tim.pdf](attachments/stm32-tim.pdf) **(변경 필요)** | Timer, PWM, 주기 태스크 자료 |
-| [stm32-serial-communication-updated.pdf](attachments/stm32-serial-communication-updated.pdf) **(변경 필요)** | UART 디버깅과 통신 자료 |
+| [stm32-adc-updated.pdf](attachments/stm32-adc-updated.pdf) **(원본 자료)** | ADC 샘플링·양자화와 입력 회로 설명 |
+| [stm32-tim.pdf](attachments/stm32-tim.pdf) **(원본 자료)** | Timer, PWM, 주기 태스크 자료 |
+| [stm32-serial-communication-updated.pdf](attachments/stm32-serial-communication-updated.pdf) **(원본 자료)** | UART 디버깅과 통신 자료 |
 | figures/adc.svg | ADC 샘플링 개념 설명 |
 
 ## ✅ 이해 확인 질문

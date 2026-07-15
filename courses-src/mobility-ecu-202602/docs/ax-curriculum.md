@@ -63,9 +63,9 @@ AI 도구 활용은 보고서 자동화가 아니라 **데이터 취득 → AI �
 | 14 | PCB 노이즈·그라운드 | EMI 예측·데이터 기반 진단 |
 | 15 | BLDC 펌웨어 통합 | **엣지 AI(TinyML) 고장 진단·예지보전**, 데이터로그→이상탐지 모델 통합 |
 
-## AX 캡스톤 — AI-Enabled AMR (Physical AI)
+## AX 캡스톤 — AI-Enabled Rover/AMR (Physical AI)
 
-기존 AMR 캡스톤을 인지·학습·판단이 결합된 **Physical AI 로봇**으로 확장.
+기존 AMR 캡스톤을 우주 로버 미션형 **Physical AI 로봇**으로 확장한다. 본 과목의 AI 활용은 자율주행 전체 구현보다, 센서·구동 로그를 해석하고 제어 파라미터와 고장 원인을 설명하는 수준에 초점을 둔다.
 
 ```mermaid
 flowchart LR

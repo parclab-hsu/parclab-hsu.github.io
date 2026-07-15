@@ -1,5 +1,5 @@
 site_name: 모빌리티 전자제어유닛 실습 · 2026-2학기
-site_description: 한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + AMR 캡스톤
+site_description: 한성대학교 미래모빌리티학과 3학년 · 로버 구동 전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + 우주 로버 캡스톤
 site_url: https://parclab-hsu.github.io/courses/202602/mobility-ecu/
 site_dir: ../../.local-site/mobility-ecu
 docs_dir: docs
@@ -66,14 +66,14 @@ nav:
   - 용어·도해 사전: glossary.md
   - 최신 기술 트렌드: trends.md
   - 주차별 강의 자료:
-      - 1주차 · 오리엔테이션·AMR 제어유닛 구조: week01.md
+      - 1주차 · 오리엔테이션·로버 제어유닛 구조: week01.md
       - 2주차 · 전자부품 1 · 저항·커패시터·인덕터: week02.md
       - 3주차 · 전자부품 2 · 다이오드·BJT·MOSFET: week03.md
       - 4주차 · 전원회로: week04.md
       - 5주차 · DC/BLDC 모터 원리: week05.md
       - 6주차 · 인버터·PWM 구동: week06.md
       - 7주차 · 제어공학·PI 속도제어: week07.md
-      - 8주차 · STM32 GPIO·메모리맵·레지스터: week08.md
+      - 8주차 · STM32 GPIO·레지스터 기초: week08.md
       - 9주차 · 입력·클럭·인터럽트: week09.md
       - 10주차 · ADC·Timer·UART: week10.md
       - 11주차 · 요구사항·HSI·시스템 블록도: week11.md
@@ -89,5 +89,5 @@ nav:
   - 실습 코드:
       - 교육용 코드 흐름: code/README.md
   - 캡스톤 프로젝트:
-      - AMR 개발 프로젝트: ugv-project.md
-      - AMR 부품표·회로: ugv-bom.md
+      - 로버(AMR) 개발 프로젝트: ugv-project.md
+      - 로버(AMR) 부품표·회로: ugv-bom.md
