@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **하드웨어 설계란?** 이론(PWM·전원)을 실제 부품값(저항·인덕터·IC)으로 확정하는 단계다. 게이트드라이버는 MCU의 약한 3.3V 신호를 MOSFET을 확실히 켤 만큼(12~15V) 증폭해 주는 부품이다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 ## 🗺️ 한눈에 보는 개념도
 
@@ -475,8 +478,8 @@ MOSFET 방열 면적이 부족하면 짧은 벤치 테스트는 통과해도 장
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [inverter-hardware-design-v0.1.pdf](attachments/inverter-hardware-design-v0.1.pdf) | 인버터 하드웨어 설계의 주교재 |
-| [motor-control-inverter-theory.pdf](attachments/motor-control-inverter-theory.pdf) | 6~7주차 이론을 회로 설계로 연결 |
+| [inverter-hardware-design-v0.1.pdf](attachments/inverter-hardware-design-v0.1.pdf) **(변경 필요)** | 인버터 하드웨어 설계의 주교재 |
+| [motor-control-inverter-theory.pdf](attachments/motor-control-inverter-theory.pdf) **(변경 필요)** | 6~7주차 이론을 회로 설계로 연결 |
 | figures/inverter3ph.svg | 게이트드라이버와 MOSFET 배치 설명 |
 
 ## ✅ 이해 확인 질문
@@ -484,6 +487,9 @@ MOSFET 방열 면적이 부족하면 짧은 벤치 테스트는 통과해도 장
 1. MCU 3.3V PWM이 직접 MOSFET을 구동하기 어려운 이유를 말한다.
 2. 부트스트랩 회로가 하이사이드 구동에 필요한 이유를 설명한다.
 3. 션트 증폭 회로의 입력 범위와 ADC 범위를 함께 확인한다.
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    게이트드라이버 **부트스트랩 커패시터·다이오드** 값을 확인하고 MOSFET **정션온도 여유**를 둔다.
 
 ## 🧪 실습·과제
 

@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **PCB란?** 부품을 올리고 구리 선로(트레이스)로 연결하는 기판이다. 같은 회로도라도 배선 방식(레이아웃)에 따라 성능이 달라진다. 3W룰은 신호선끼리 간섭을 줄이려 간격을 넓히는 규칙이다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 ## 🗺️ 한눈에 보는 개념도
 
@@ -465,14 +468,17 @@ ERC와 DRC 경고 중 무시 가능한 예외와 즉시 고칠 오류를 구분�
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [pcb-design-lecture-v0.1.pdf](attachments/pcb-design-lecture-v0.1.pdf) | EasyEDA, 레이어, 배선 규칙의 주교재 |
-| [inverter-hardware-design-v0.1.pdf](attachments/inverter-hardware-design-v0.1.pdf) | 구동보드 회로 블록을 PCB로 옮기는 참고 자료 |
+| [pcb-design-lecture-v0.1.pdf](attachments/pcb-design-lecture-v0.1.pdf) **(변경 필요)** | EasyEDA, 레이어, 배선 규칙의 주교재 |
+| [inverter-hardware-design-v0.1.pdf](attachments/inverter-hardware-design-v0.1.pdf) **(변경 필요)** | 구동보드 회로 블록을 PCB로 옮기는 참고 자료 |
 
 ## ✅ 이해 확인 질문
 
 1. 회로도가 맞아도 PCB에서 문제가 생길 수 있는 이유를 예로 든다.
 2. 트레이스폭과 전류용량을 연결해 설명한다.
 3. DRC가 잡아주는 오류와 사람이 검토해야 하는 오류를 구분한다.
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    첫 발주 전 **DRC + 3D 뷰**로 기구 간섭·커넥터 방향을 확인한다. 실크에 극성·핀1을 표시한다.
 
 ## 🧪 실습·과제
 

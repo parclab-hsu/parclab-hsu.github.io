@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **PWM이란?** 스위치를 아주 빠르게 켰다 껐다 하는 비율(듀티)로 "평균 전압"을 조절하는 기술이다. 50%만 켜면 평균 전압도 절반 → 모터 속도가 절반. 인버터는 이 스위치들을 묶어 DC를 모터용 파형으로 바꾸는 장치다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 ## 🗺️ 한눈에 보는 개념도
 
@@ -494,7 +497,7 @@ PWM 주파수와 ARR 값의 관계를 계산하게 한다. 다만 최악 조건�
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [motor-control-inverter-theory.pdf](attachments/motor-control-inverter-theory.pdf) | 인버터와 PWM 이론의 주교재 |
+| [motor-control-inverter-theory.pdf](attachments/motor-control-inverter-theory.pdf) **(변경 필요)** | 인버터와 PWM 이론의 주교재 |
 | figures/hbridge.svg | DC 모터 정/역 구동 흐름 |
 | figures/inverter3ph.svg | BLDC 3상 인버터 구조 |
 | figures/pwm.svg | 캐리어 비교 PWM 설명 |
@@ -556,6 +559,9 @@ void hall_isr(uint8_t ha, uint8_t hb, uint8_t hc, uint16_t throttle_duty)
     apply_phase(commutation_fwd(g_hall), throttle_duty);
 }
 ```
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    데드타임이 **너무 짧으면 암단락, 너무 길면 토크 리플**. 소자 스위칭 시간을 기준으로 설정한다.
 
 ## 🧪 실습·과제
 

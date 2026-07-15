@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **마이크로컨트롤러(MCU)란?** CPU·메모리·입출력이 한 칩에 든 작은 컴퓨터다. "레지스터"라는 설정 스위치 상자에 값을 써서 하드웨어를 직접 제어한다. GPIO는 디지털 핀을 켜고(High) 끄는(Low) 가장 기본 기능이다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 > 🧭 **하드웨어 3계열 주의** — 자료는 F767(레지스터 직접접근)·F103(HAL)·ESP32(Arduino)로 나뉜다. 8~10주차는 **레지스터로 원리(F767) → HAL로 생산성(F103)** 흐름.
 
@@ -477,9 +480,9 @@ HAL 코드 한 줄이 어떤 레지스터 비트와 대응되는지 주석으로
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [stm32-lecture-v0.2.pdf](attachments/stm32-lecture-v0.2.pdf) | STM32 레지스터 직접접근 흐름의 주교재 |
-| [stm32-gpio-exti.pdf](attachments/stm32-gpio-exti.pdf) | GPIO 설정과 EXTI 선행 자료 |
-| [stm32-orientation-dev-env.pdf](attachments/stm32-orientation-dev-env.pdf) | 개발환경 점검 자료 |
+| [stm32-lecture-v0.2.pdf](attachments/stm32-lecture-v0.2.pdf) **(변경 필요)** | STM32 레지스터 직접접근 흐름의 주교재 |
+| [stm32-gpio-exti.pdf](attachments/stm32-gpio-exti.pdf) **(변경 필요)** | GPIO 설정과 EXTI 선행 자료 |
+| [stm32-orientation-dev-env.pdf](attachments/stm32-orientation-dev-env.pdf) **(변경 필요)** | 개발환경 점검 자료 |
 
 ## ✅ 이해 확인 질문
 
@@ -541,6 +544,9 @@ int main(void)
     }
 }
 ```
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    레지스터 접근 전 **클럭 Enable 필수**(안 하면 Hard Fault). 하드웨어 레지스터 포인터엔 **volatile**을 쓴다.
 
 ## 🧪 실습·과제
 

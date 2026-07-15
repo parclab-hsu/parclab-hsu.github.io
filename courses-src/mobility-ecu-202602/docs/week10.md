@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **ADC·타이머·UART?** ADC는 센서의 아날로그 전압을 숫자로 바꾸고, 타이머는 정확한 시간·PWM을 만들며, UART는 선 2개로 컴퓨터와 문자를 주고받는다(디버깅·원격 명령). 로봇이 "보고·움직이고·말하는" 3대 기능이다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 ## 🗺️ 한눈에 보는 개념도
 
@@ -485,9 +488,9 @@ UART 보레이트를 일부러 틀리게 설정해 깨진 문자를 관찰한 �
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [stm32-adc-updated.pdf](attachments/stm32-adc-updated.pdf) | ADC 샘플링·양자화와 입력 회로 설명 |
-| [stm32-tim.pdf](attachments/stm32-tim.pdf) | Timer, PWM, 주기 태스크 자료 |
-| [stm32-serial-communication-updated.pdf](attachments/stm32-serial-communication-updated.pdf) | UART 디버깅과 통신 자료 |
+| [stm32-adc-updated.pdf](attachments/stm32-adc-updated.pdf) **(변경 필요)** | ADC 샘플링·양자화와 입력 회로 설명 |
+| [stm32-tim.pdf](attachments/stm32-tim.pdf) **(변경 필요)** | Timer, PWM, 주기 태스크 자료 |
+| [stm32-serial-communication-updated.pdf](attachments/stm32-serial-communication-updated.pdf) **(변경 필요)** | UART 디버깅과 통신 자료 |
 | figures/adc.svg | ADC 샘플링 개념 설명 |
 
 ## ✅ 이해 확인 질문
@@ -549,6 +552,9 @@ int main(void)
     }
 }
 ```
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    ADC는 **기준전압(Vref)**과 샘플링 시간을 확인하고 노이즈는 평균/필터. UART는 **양쪽 보드레이트 일치** + Tx↔Rx 교차.
 
 ## 🧪 실습·과제
 

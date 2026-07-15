@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **요구사항·설계란?** 만들기 전에 "무엇을, 어떤 성능으로" 정하는 단계다. HSI는 MCU 핀마다 역할을 적은 계약서, 블록도는 전체 그림이다. 좋은 제품은 코딩이 아니라 여기서 시작한다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 ## 🗺️ 개발 프로세스
 
@@ -503,7 +506,7 @@ HSI의 핀명과 펌웨어 변수명을 서로 대응시킨다. 이 결과를 �
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [inverter-hardware-design-v0.1.pdf](attachments/inverter-hardware-design-v0.1.pdf) | 요구사항에서 인버터 하드웨어로 내려가는 설계 흐름 |
+| [inverter-hardware-design-v0.1.pdf](attachments/inverter-hardware-design-v0.1.pdf) **(변경 필요)** | 요구사항에서 인버터 하드웨어로 내려가는 설계 흐름 |
 | [electric-scooter-v2-spec-circuit-cost.xlsx](attachments/electric-scooter-v2-spec-circuit-cost.xlsx) | 사양·부품·가격을 요구사항으로 변환하는 연습 |
 | figures/diffdrive.svg | AMR 2륜 구동 요구사항 설명 |
 
@@ -512,6 +515,9 @@ HSI의 핀명과 펌웨어 변수명을 서로 대응시킨다. 이 결과를 �
 1. 요구사항과 구현 방법을 구분해 작성한다.
 2. HSI 표가 하드웨어와 펌웨어의 계약서인 이유를 설명한다.
 3. 최종 시연을 검증 가능한 시험 항목으로 바꾼다.
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    요구사항은 **측정 가능한 숫자**로 쓴다. HSI 핀 충돌은 CubeMX로 미리 점검한다.
 
 ## 🧪 실습·과제
 

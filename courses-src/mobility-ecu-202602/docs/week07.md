@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **제어(피드백)란?** 목표값(예: 1000RPM)과 실제값을 계속 비교해 그 차이(오차)를 줄이도록 자동으로 출력을 조정하는 것이다. PI 제어가 대표적이며, "빠르면서도 오차 없이" 목표를 따라가게 만든다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 ## 🗺️ 한눈에 보는 개념도 (폐루프 제어)
 
@@ -476,8 +479,8 @@ Ki 추가 후 정상상태오차가 줄었는지 그래프 위에서 확인한�
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [motor-control-inverter-theory.pdf](attachments/motor-control-inverter-theory.pdf) | 제어공학과 PI 속도제어 주교재 |
-| [speed-control-teleplot.pdf](attachments/speed-control-teleplot.pdf) | 속도 로그 시각화와 Teleplot 사용 자료 |
+| [motor-control-inverter-theory.pdf](attachments/motor-control-inverter-theory.pdf) **(변경 필요)** | 제어공학과 PI 속도제어 주교재 |
+| [speed-control-teleplot.pdf](attachments/speed-control-teleplot.pdf) **(변경 필요)** | 속도 로그 시각화와 Teleplot 사용 자료 |
 | figures/pi.svg | P/I/PI 응답 비교 |
 | figures/bode.svg | 주파수 응답과 차단주파수 설명 |
 
@@ -524,6 +527,9 @@ float pi_update(pi_t *c, float ref, float meas, float dt)
     return out;                          /* → PWM 듀티 지령으로 사용 */
 }
 ```
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    PI 게인은 **작게 시작해 조금씩 키운다**(발산 방지). **적분 와인드업**을 반드시 제한(anti-windup)한다.
 
 ## 🧪 실습·과제
 

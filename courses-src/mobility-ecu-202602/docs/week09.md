@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **인터럽트란?** 평소 일을 하다가 "벨이 울리면" 하던 일을 멈추고 즉시 처리한 뒤 돌아오는 방식이다. 계속 확인하는 폴링보다 효율적이라 스위치·엔코더 신호를 놓치지 않는다. 클럭은 칩의 심장박동(동작 속도)이다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 ## 🗺️ 한눈에 보는 개념도
 
@@ -470,8 +473,8 @@ A/B 엔코더 파형에서 방향을 판별하게 한다. 하지만 재현 절�
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [stm32-gpio-exti.pdf](attachments/stm32-gpio-exti.pdf) | GPIO 입력, EXTI, NVIC 실습 자료 |
-| [stm32-tim.pdf](attachments/stm32-tim.pdf) | 타이머/엔코더 모드 선행 자료 |
+| [stm32-gpio-exti.pdf](attachments/stm32-gpio-exti.pdf) **(변경 필요)** | GPIO 입력, EXTI, NVIC 실습 자료 |
+| [stm32-tim.pdf](attachments/stm32-tim.pdf) **(변경 필요)** | 타이머/엔코더 모드 선행 자료 |
 | figures/encoder_ab.svg | A/B 직교신호 방향 판별 설명 |
 
 ## ✅ 이해 확인 질문
@@ -533,6 +536,9 @@ void EXTI15_10_IRQHandler(void)
 
 int main(void){ exti_switch_init(); while(1){ /* CPU는 다른 일을 하거나 대기 */ } }
 ```
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    인터럽트 **Pending 플래그를 클리어**하지 않으면 무한 재진입. ISR은 짧게, 무거운 처리는 main으로 넘긴다.
 
 ## 🧪 실습·과제
 

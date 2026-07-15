@@ -6,6 +6,9 @@
 
 > 💡 **기초 다지기 (쉽게 이해하기)** — **펌웨어 통합이란?** 앞의 모든 내용을 코드로 묶어 실제로 로봇을 움직이는 단계다. 인터럽트로 20kHz마다 전류를 읽어 PWM을 조정하고, 홀/엔코더로 속도를 계산하며, 무선으로 상태를 보내고, 고장을 감지해 멈추는 안전장치까지 포함한다.
 
+!!! danger "🔴 (변경 필요) — 저작권 검토 대상"
+    이 주차의 **원본 첨부 PDF 링크·슬라이드 미리보기 이미지**(chcbaram 원본 자료)는 저작권상 공개 배포 전 **자작 자료로 교체하거나 인용 허가**가 필요하다. 정식 공개 시 반드시 변경한다.
+
 
 ## 🗺️ 한눈에 보는 개념도 — 펌웨어 런타임
 
@@ -487,9 +490,9 @@ Fault 발생 시 첫 세 동작을 순서대로 말하게 한다. 다만 최악 
 
 | 자료 | 수업 중 쓰는 장면 |
 |---|---|
-| [electric-scooter-firmware-v0.2.pdf](attachments/electric-scooter-firmware-v0.2.pdf) | 통합 펌웨어 구조와 핵심 수치의 주교재 |
-| [speed-control-teleplot.pdf](attachments/speed-control-teleplot.pdf) | 속도제어 로그와 그래프 시연 |
-| [stm32-lecture-v0.2.pdf](attachments/stm32-lecture-v0.2.pdf) | STM32 초기화와 주변장치 코드 복습 |
+| [electric-scooter-firmware-v0.2.pdf](attachments/electric-scooter-firmware-v0.2.pdf) **(변경 필요)** | 통합 펌웨어 구조와 핵심 수치의 주교재 |
+| [speed-control-teleplot.pdf](attachments/speed-control-teleplot.pdf) **(변경 필요)** | 속도제어 로그와 그래프 시연 |
+| [stm32-lecture-v0.2.pdf](attachments/stm32-lecture-v0.2.pdf) **(변경 필요)** | STM32 초기화와 주변장치 코드 복습 |
 
 ## ✅ 이해 확인 질문
 
@@ -540,6 +543,9 @@ int main(void)
     }
 }
 ```
+
+!!! tip "📌 보충 설명 — 실전 팁·주의점"
+    통합은 **한 기능씩 검증**(빅뱅 통합 금지). **페일세이프(고장→즉시 정지)**를 가장 먼저 구현한다.
 
 ## 🧪 실습·과제
 
