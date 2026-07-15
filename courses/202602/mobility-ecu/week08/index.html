@@ -3859,6 +3859,10 @@
 <li>실제 차량 ECU에 적용한다면 어떤 진단 코드나 보호 동작을 추가해야 하는가?</li>
 </ol>
 <h3 id="_23">실습 코칭노트<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">📌 실전 팁·주의점 (현장에서 자주 하는 실수)</p>
+<p>레지스터 접근 전 <strong>클럭 Enable 필수</strong>(안 하면 Hard Fault). 하드웨어 레지스터 포인터엔 <strong>volatile</strong>을 쓴다.</p>
+</div>
 <blockquote>
 <p>8주차 실습은 <code>레지스터와 GPIO 초기화</code>를 학생 손으로 확인하게 만드는 운영 자료다.</p>
 </blockquote>
