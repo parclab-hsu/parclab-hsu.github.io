@@ -2,108 +2,108 @@
 <!doctype html>
 <html lang="ko" class="no-js">
   <head>
-
+    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-
+      
         <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + AMR 캡스톤">
-
-
-
+      
+      
+      
         <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/mobility-ecu/week02/">
-
-
+      
+      
         <link rel="prev" href="../week01/">
-
-
+      
+      
         <link rel="next" href="../week03/">
-
-
-
-
-
+      
+      
+        
+      
+      
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
-
-
-
+    
+    
+      
         <title>2주차 · 전자부품 1 · 저항·커패시터·인덕터 - 모빌리티 전자제어유닛 실습 · 2026-2학기</title>
-
-
-
+      
+    
+    
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
-
-
+      
+        
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
 
-
-
-
-
-
-
-
-
-
-
+    
+    
+      
+    
+    
+      
+        
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-
-
-
+      
+    
+    
       <link rel="stylesheet" href="../stylesheets/extra.css">
-
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-
-
-
-
+    
+    
   </head>
-
-
-
-
-
-
-
-
-
+  
+  
+    
+    
+      
+    
+    
+    
+    
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
-
-
+  
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-
-
+      
+        
         <a href="#2-1" class="md-skip">
           콘텐츠로 이동
         </a>
-
+      
     </div>
     <div data-md-component="announce">
-
+      
     </div>
+    
+    
+      
 
-
-
-
-
+  
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
     <a href=".." title="모빌리티 전자제어유닛 실습 · 2026-2학기" class="md-header__button md-logo" aria-label="모빌리티 전자제어유닛 실습 · 2026-2학기" data-md-component="logo">
-
-
+      
+  
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-
+      
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
@@ -115,49 +115,49 @@
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
-
+            
               2주차 · 전자부품 1 · 저항·커패시터·인덕터
-
+            
           </span>
         </div>
       </div>
     </div>
-
-
+    
+      
         <form class="md-header__option" data-md-component="palette">
-
-
-
-
+  
+    
+    
+    
     <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
-
+    
       <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
       </label>
-
-
-
-
-
+    
+  
+    
+    
+    
     <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
-
+    
       <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
       </label>
-
-
+    
+  
 </form>
-
-
-
+      
+    
+    
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-
-
-
-
-
+    
+    
+    
+      
+      
         <label class="md-header__button md-icon" for="__search">
-
+          
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
@@ -166,19 +166,19 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-
+        
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-
+        
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="검색">
-
+        
         <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
-
+          
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
-
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -192,3486 +192,3513 @@
     </div>
   </div>
 </div>
-
-
-
+      
+    
+    
   </nav>
-
+  
 </header>
-
+    
     <div class="md-container" data-md-component="container">
-
-
-
-
-
-
+      
+      
+        
+          
+        
+      
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
-
-
-
+          
+            
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-
+                    
 
 
 
 <nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="모빌리티 전자제어유닛 실습 · 2026-2학기" class="md-nav__button md-logo" aria-label="모빌리티 전자제어유닛 실습 · 2026-2학기" data-md-component="logo">
-
-
+      
+  
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     모빌리티 전자제어유닛 실습 · 2026-2학기
   </label>
-
+  
   <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     강의 개요
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../syllabus/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     📋 강의계획서(Syllabus)
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../00-course-flow/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     🧭 강의 전체 흐름
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../ax-curriculum/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     🤖 AX 교육과정 개편
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../curriculum/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     커리큘럼(15주차)
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../resources/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     첨부자료 활용 가이드
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../glossary/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     용어·도해 사전
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../trends/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     최신 기술 트렌드
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-
-
-
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
-
-
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
-
-
-
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global-benchmark/" class="md-nav__link">
+        
+  
+  
   <span class="md-ellipsis">
+    
+  
+    🌍 국내외 대학·대회 동향
+  
 
-
-    주차별 강의 자료
-
-
-
+    
   </span>
+  
+  
 
+      </a>
+    </li>
+  
 
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 강의 자료
+  
+
+    
+  </span>
+  
+  
 
             <span class="md-nav__icon md-icon"></span>
           </label>
-
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9">
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
-
-
+            
+  
     주차별 강의 자료
-
+  
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week01/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
+    
+  
+    1주차 · 오리엔테이션·로버 제어유닛 구조
+  
 
-
-    1주차 · 오리엔테이션·AMR 제어유닛 구조
-
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
-
+      
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-
-
-
-
-
+      
+      
+        
+      
+      
         <label class="md-nav__link md-nav__link--active" for="__toc">
-
-
-
+          
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     2주차 · 전자부품 1 · 저항·커패시터·인덕터
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
           <span class="md-nav__icon md-icon"></span>
         </label>
-
+      
       <a href="./" class="md-nav__link md-nav__link--active">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     2주차 · 전자부품 1 · 저항·커패시터·인덕터
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
-
-
+      
+        
 
 <nav class="md-nav md-nav--secondary" aria-label="목차">
-
-
-
-
-
-
+  
+  
+  
+    
+  
+  
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       목차
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-
+      
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🗺️ 한눈에 보는 개념도
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🧱 세 가지 수동소자
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         📐 핵심 공식·선정 기준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🧠 핵심 이론 보강
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="🧠 핵심 이론 보강">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         1. 이번 주 이론을 어디에 쓰는가
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         2. 강의 중 반드시 남길 판서
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3. 학생 눈높이 설명 순서
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         4. 실습 전환 포인트
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🖼️ 슬라이드 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#ax" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🚀 AX·우주로버 적용 슬라이드
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🎞️ 통합 강의 슬라이드
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         📦 용어 박스
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         📚 통합 확장 강의자료
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="📚 통합 확장 강의자료">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         심화 강의노트
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="심화 강의노트">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         수업에서 바로 보여줄 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         강의 핵심 초점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         교수자 설명 스크립트
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         판서 흐름
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         도입 판서
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         원리 판서
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         검증 판서
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="검증 판서">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         이론 보강 슬라이드 세트
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         교수자 보충 설명
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="교수자 보충 설명">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#3_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3시간 수업 확장안
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#000-020" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         0:00-0:20 · 이전 산출물 연결
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#020-055" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         0:20-0:55 · 첨부자료 해설
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#105-140" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         1:05-1:40 · 핵심 계산과 판단
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#140-225" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         1:40-2:25 · 팀별 적용
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#225-300" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         2:25-3:00 · 결과 공유
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="2:25-3:00 · 결과 공유">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         오개념 교정
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         첫 번째 오개념
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         두 번째 오개념
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         세 번째 오개념
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="세 번째 오개념">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         최신 기술 연결
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         마무리 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습 코칭노트
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="실습 코칭노트">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습에서 바로 띄울 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         오늘의 실습 미션
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습 전 확인
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         장비와 배선
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         예측값 작성
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_31" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         안전 조건
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="안전 조건">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_32" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         코칭 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#-" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         강의자료-실습 통합 절차
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         수업 전 5분 준비
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_33" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습 중 코칭 기준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습 후 정리
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="실습 후 정리">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         팀 활동 절차
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         평가 루브릭
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#a" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         A 수준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#b" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         B 수준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#c" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         C 수준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#d" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         D 수준
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="D 수준">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_37" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         보강 과제
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_38" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         평가·문제팩
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="평가·문제팩">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_39" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         평가 기준 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         10분 퀴즈
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_40" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         계산·해석 문제
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         문제 1 · 입력 조건 정리
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         문제 2 · 결과 예측
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         문제 3 · 실패 원인 분류
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         문제 4 · 보호 기능 제안
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="문제 4 · 보호 기능 제안">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_41" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         구두 발표 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_42" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         채점 루브릭
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#5_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         5점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         4점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         2점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#1_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         1점
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="1점">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_43" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         슬라이드 기반 평가 문항 설계
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_44" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         즉답형 확인
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_45" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         서술형 확인
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_46" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         발표 평가 포인트
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="발표 평가 포인트">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_47" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         보충 문제
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_48" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         현장 사례노트
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="현장 사례노트">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_49" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 연결 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_50" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         현장 맥락
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_51" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 시나리오
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#1_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 1 · 초기 증상
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 2 · 반복 증상
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3_4" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 3 · 현장 진단
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 4 · 팀 프로젝트 연결
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="사례 4 · 팀 프로젝트 연결">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_52" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         교수자 설명 포인트
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_53" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         토론 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_54" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         보고서 연결 문장
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_55" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 분석 보강
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_56" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         현장 진단 프레임
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_57" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         이번 주 사례 연결
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_58" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         최신 기술 관점 질문
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="최신 기술 관점 질문">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_59" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         다음 단계
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#3_5" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         ⏱️ 3시간 수업 운영안
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_60" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         📎 수업자료 활용
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_61" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         ✅ 이해 확인 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_62" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🧪 실습·과제
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
     </ul>
-
+  
 </nav>
-
+      
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week03/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     3주차 · 전자부품 2 · 다이오드·BJT·MOSFET
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week04/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     4주차 · 전원회로
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week05/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     5주차 · DC/BLDC 모터 원리
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week06/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     6주차 · 인버터·PWM 구동
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week07/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     7주차 · 제어공학·PI 속도제어
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week08/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     8주차 · STM32 GPIO·메모리맵·레지스터
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week09/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     9주차 · 입력·클럭·인터럽트
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week10/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     10주차 · ADC·Timer·UART
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week11/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     11주차 · 요구사항·HSI·시스템 블록도
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week12/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     12주차 · 인버터 하드웨어 설계
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week13/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     13주차 · 회로도·PCB 설계 기초
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week14/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     14주차 · PCB 노이즈·그라운드
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../week15/" class="md-nav__link">
-
-
-
+        
+  
+  
   <span class="md-ellipsis">
-
-
+    
+  
     15주차 · 구동 펌웨어 통합·최종 발표
+  
 
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
+              
+            
           </ul>
         </nav>
-
+      
     </li>
+  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-
-
-
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
-
-
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
-
-
-
-  <span class="md-ellipsis">
-
-
-    강의 노트
-
-
-
-  </span>
-
-
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-
-
-    강의 노트
-
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
-    <li class="md-nav__item">
-      <a href="../01-components-power/" class="md-nav__link">
-
-
-
-  <span class="md-ellipsis">
-
-
-    2~4주차 · 전자부품·전원회로
-
-
-
-  </span>
-
-
-
-      </a>
-    </li>
-
-
-
-
-
-
-
-
-
-
-    <li class="md-nav__item">
-      <a href="../02-motor-inverter-control/" class="md-nav__link">
-
-
-
-  <span class="md-ellipsis">
-
-
-    5·6·7·12주차 · 모터·인버터·제어
-
-
-
-  </span>
-
-
-
-      </a>
-    </li>
-
-
-
-
-
-
-
-
-
-
-    <li class="md-nav__item">
-      <a href="../03-stm32-firmware/" class="md-nav__link">
-
-
-
-  <span class="md-ellipsis">
-
-
-    8~10주차 · STM32 펌웨어
-
-
-
-  </span>
-
-
-
-      </a>
-    </li>
-
-
-
-
-
-
-
-
-
-
-    <li class="md-nav__item">
-      <a href="../04-pcb-firmware-integration/" class="md-nav__link">
-
-
-
-  <span class="md-ellipsis">
-
-
-    11·13·14·15주차 · PCB·펌웨어 통합
-
-
-
-  </span>
-
-
-
-      </a>
-    </li>
-
-
-
-
-          </ul>
-        </nav>
-
-    </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-
-
-
+      
+        
+        
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
-
-
+        
+          
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
-
-
-
+            
+  
+  
   <span class="md-ellipsis">
+    
+  
+    강의 노트
+  
 
-
-    실습 코드
-
-
-
+    
   </span>
-
-
+  
+  
 
             <span class="md-nav__icon md-icon"></span>
           </label>
-
+        
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
-
-
-    실습 코드
-
+            
+  
+    강의 노트
+  
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../code/" class="md-nav__link">
-
-
-
+      <a href="../01-components-power/" class="md-nav__link">
+        
+  
+  
   <span class="md-ellipsis">
+    
+  
+    2~4주차 · 전자부품·전원회로
+  
 
-
-    교육용 코드 흐름
-
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-motor-inverter-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5·6·7·12주차 · 모터·인버터·제어
+  
 
+    
+  </span>
+  
+  
 
+      </a>
+    </li>
+  
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-stm32-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8~10주차 · STM32 펌웨어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-pcb-firmware-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11·13·14·15주차 · PCB·펌웨어 통합
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
-
+      
     </li>
+  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-
-
-
+      
+        
+        
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
-
-
+        
+          
           <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
-
-
-
+            
+  
+  
   <span class="md-ellipsis">
+    
+  
+    실습 코드
+  
 
-
-    캡스톤 프로젝트
-
-
-
+    
   </span>
-
-
+  
+  
 
             <span class="md-nav__icon md-icon"></span>
           </label>
-
+        
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
-
-
-    캡스톤 프로젝트
-
+            
+  
+    실습 코드
+  
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-
-
-
-
-
-
-
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../ugv-project/" class="md-nav__link">
-
-
-
+      <a href="../code/" class="md-nav__link">
+        
+  
+  
   <span class="md-ellipsis">
+    
+  
+    교육용 코드 흐름
+  
 
-
-    AMR 개발 프로젝트
-
-
-
+    
   </span>
-
-
+  
+  
 
       </a>
     </li>
+  
 
-
-
-
-
-
-
-
-
-
-    <li class="md-nav__item">
-      <a href="../ugv-bom/" class="md-nav__link">
-
-
-
-  <span class="md-ellipsis">
-
-
-    AMR 부품표·회로
-
-
-
-  </span>
-
-
-
-      </a>
-    </li>
-
-
-
-
+              
+            
           </ul>
         </nav>
-
+      
     </li>
+  
 
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    캡스톤 프로젝트
+  
 
+    
+  </span>
+  
+  
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    캡스톤 프로젝트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ugv-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    로버 개발 프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ugv-bom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    로버 부품표·회로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
                 </div>
               </div>
-
-
-
+            
+            
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-
+                    
 
 <nav class="md-nav md-nav--secondary" aria-label="목차">
-
-
-
-
-
-
+  
+  
+  
+    
+  
+  
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       목차
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-
+      
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🗺️ 한눈에 보는 개념도
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🧱 세 가지 수동소자
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         📐 핵심 공식·선정 기준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🧠 핵심 이론 보강
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="🧠 핵심 이론 보강">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         1. 이번 주 이론을 어디에 쓰는가
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         2. 강의 중 반드시 남길 판서
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3. 학생 눈높이 설명 순서
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         4. 실습 전환 포인트
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🖼️ 슬라이드 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#ax" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🚀 AX·우주로버 적용 슬라이드
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🎞️ 통합 강의 슬라이드
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         📦 용어 박스
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         📚 통합 확장 강의자료
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="📚 통합 확장 강의자료">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         심화 강의노트
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="심화 강의노트">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         수업에서 바로 보여줄 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         강의 핵심 초점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         교수자 설명 스크립트
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         판서 흐름
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         도입 판서
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         원리 판서
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         검증 판서
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="검증 판서">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         이론 보강 슬라이드 세트
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         교수자 보충 설명
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="교수자 보충 설명">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#3_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3시간 수업 확장안
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#000-020" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         0:00-0:20 · 이전 산출물 연결
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#020-055" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         0:20-0:55 · 첨부자료 해설
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#105-140" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         1:05-1:40 · 핵심 계산과 판단
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#140-225" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         1:40-2:25 · 팀별 적용
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#225-300" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         2:25-3:00 · 결과 공유
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="2:25-3:00 · 결과 공유">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         오개념 교정
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         첫 번째 오개념
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         두 번째 오개념
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         세 번째 오개념
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="세 번째 오개념">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         최신 기술 연결
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         마무리 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습 코칭노트
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="실습 코칭노트">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습에서 바로 띄울 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         오늘의 실습 미션
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습 전 확인
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         장비와 배선
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         예측값 작성
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_31" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         안전 조건
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="안전 조건">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_32" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         코칭 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#-" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         강의자료-실습 통합 절차
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         수업 전 5분 준비
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_33" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습 중 코칭 기준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         실습 후 정리
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="실습 후 정리">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         팀 활동 절차
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         평가 루브릭
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#a" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         A 수준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#b" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         B 수준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#c" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         C 수준
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#d" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         D 수준
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="D 수준">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_37" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         보강 과제
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_38" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         평가·문제팩
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="평가·문제팩">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_39" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         평가 기준 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         10분 퀴즈
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_40" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         계산·해석 문제
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         문제 1 · 입력 조건 정리
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         문제 2 · 결과 예측
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         문제 3 · 실패 원인 분류
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         문제 4 · 보호 기능 제안
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="문제 4 · 보호 기능 제안">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_41" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         구두 발표 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_42" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         채점 루브릭
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#5_1" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         5점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         4점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         3점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         2점
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#1_2" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         1점
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="1점">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_43" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         슬라이드 기반 평가 문항 설계
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_44" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         즉답형 확인
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_45" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         서술형 확인
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_46" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         발표 평가 포인트
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="발표 평가 포인트">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_47" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         보충 문제
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_48" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         현장 사례노트
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="현장 사례노트">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_49" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 연결 이미지
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_50" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         현장 맥락
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_51" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 시나리오
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#1_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 1 · 초기 증상
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#2_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 2 · 반복 증상
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#3_4" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 3 · 현장 진단
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#4_3" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 4 · 팀 프로젝트 연결
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="사례 4 · 팀 프로젝트 연결">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_52" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         교수자 설명 포인트
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_53" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         토론 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_54" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         보고서 연결 문장
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_55" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         사례 분석 보강
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_56" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         현장 진단 프레임
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_57" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         이번 주 사례 연결
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
           <li class="md-nav__item">
   <a href="#_58" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         최신 기술 관점 질문
-
+      
     </span>
   </a>
-
+  
     <nav class="md-nav" aria-label="최신 기술 관점 질문">
       <ul class="md-nav__list">
-
+        
           <li class="md-nav__item">
   <a href="#_59" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         다음 단계
-
+      
     </span>
   </a>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+        
       </ul>
     </nav>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#3_5" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         ⏱️ 3시간 수업 운영안
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_60" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         📎 수업자료 활용
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_61" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         ✅ 이해 확인 질문
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
         <li class="md-nav__item">
   <a href="#_62" class="md-nav__link">
     <span class="md-ellipsis">
-
+      
         🧪 실습·과제
-
+      
     </span>
   </a>
-
+  
 </li>
-
+      
     </ul>
-
+  
 </nav>
                   </div>
                 </div>
               </div>
-
-
-
+            
+          
+          
             <div class="md-content" data-md-component="content">
-
+              
               <article class="md-content__inner md-typeset">
-
-
+                
+                  
 
 
 
@@ -4266,32 +4293,32 @@
 
 
 
-
+                
               </article>
             </div>
-
-
+          
+          
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-
+        
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-
+  
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
   맨위로
 </button>
-
+        
       </main>
-
+      
         <footer class="md-footer">
-
-
-
+  
+    
+      
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
-
-
-          <a href="../week01/" class="md-footer__link md-footer__link--prev" aria-label="이전: 1주차 · 오리엔테이션·AMR 제어유닛 구조">
+        
+          
+          <a href="../week01/" class="md-footer__link md-footer__link--prev" aria-label="이전: 1주차 · 오리엔테이션·로버 제어유닛 구조">
             <div class="md-footer__button md-icon">
-
+              
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
@@ -4299,13 +4326,13 @@
                 이전
               </span>
               <div class="md-ellipsis">
-                1주차 · 오리엔테이션·AMR 제어유닛 구조
+                1주차 · 오리엔테이션·로버 제어유닛 구조
               </div>
             </div>
           </a>
-
-
-
+        
+        
+          
           <a href="../week03/" class="md-footer__link md-footer__link--next" aria-label="다음: 3주차 · 전자부품 2 · 다이오드·BJT·MOSFET">
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -4316,44 +4343,44 @@
               </div>
             </div>
             <div class="md-footer__button md-icon">
-
+              
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
             </div>
           </a>
-
+        
       </nav>
-
-
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-
-
+  
+  
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
       Material for MkDocs
     </a>
-
+  
 </div>
-
+      
     </div>
   </div>
 </footer>
-
+      
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-
-
-
-
-
+    
+    
+    
+      
+      
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
-
-
+    
+    
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
-
-
+      
+    
   </body>
 </html>
