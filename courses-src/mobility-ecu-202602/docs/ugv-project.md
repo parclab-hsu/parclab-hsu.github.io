@@ -1,6 +1,6 @@
 # 로버 개발 프로젝트 — 직접 만들며 배우는 마이크로프로세서 (캡스톤)
 
-자율이동로봇(AMR, Autonomous Mobile Robot) 또는 지상 로버(UGV, Unmanned Ground Vehicle)를 직접 기획·설계·제작하며 마이크로프로세서를 체득하는 통합 프로젝트. WIZnet IoT 스피커 프로젝트(chcbaram)의 "처음부터 끝까지 과정을 공개하며 완주"하는 개발 방식을 지상 로버로 각색한다.
+지상 로버(UGV, Unmanned Ground Vehicle)를 직접 기획·설계·제작하며 마이크로프로세서를 체득하는 통합 프로젝트. WIZnet IoT 스피커 프로젝트(chcbaram)의 "처음부터 끝까지 과정을 공개하며 완주"하는 개발 방식을 지상 로버로 각색한다.
 
 > 참고 사례: WIZnet Maker — IoT Speaker (chcbaram). 개발 *방법론·구조*를 참고해 지상 로버 프로젝트로 재구성했으며, 오디오/네트워크 구현 대신 이 과정에서 배운 모터제어·센서·통신으로 치환.
 
