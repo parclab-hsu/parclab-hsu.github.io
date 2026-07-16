@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + AMR 캡스톤">
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · 로버 구동 전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + 우주 로버 캡스톤">
       
       
       
@@ -736,7 +736,7 @@
   <span class="md-ellipsis">
     
   
-    8주차 · STM32 GPIO·메모리맵·레지스터
+    8주차 · STM32 GPIO·레지스터 기초
   
 
     
@@ -1696,8 +1696,12 @@
 
 <h1 id="stm32-810">STM32 임베디드/센서 실습 기술 노트 (8~10주차)<a class="headerlink" href="#stm32-810" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>근거: UAV개발/STM32_강의자료_Ver0.2.pdf(F767 레지스터), ST마이크로프로세서/(F103 HAL), 모빌리티센서/(ESP32 Arduino)</p>
+<p>근거: UAV개발/STM32_강의자료_Ver0.2.pdf(F767 레지스터 예시), ST마이크로프로세서/(F103 HAL 비교), 모빌리티센서/(ESP32 Arduino 보충)</p>
 </blockquote>
+<div class="admonition note">
+<p class="admonition-title">이번 학기 구현 기준</p>
+<p>실습 기준 MCU는 <strong>STM32H7 계열</strong>이며, HAL 없이 레지스터 직접 제어로 원리를 확인한다. F767·F103·ESP32 첨부자료는 주변장치 구조와 추상화 수준을 비교하기 위한 참고 예시로 사용한다.</p>
+</div>
 <h2 id="3">⚠️ 자료가 3개 하드웨어 계열로 분리됨 (핵심 함정)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1715,8 +1719,8 @@
 </tr>
 <tr>
 <td>UAV개발/STM32_강의자료</td>
-<td>STM32F767 (Cortex-M7, 216MHz) 교육보드</td>
-<td><strong>포인터 레지스터 직접접근</strong></td>
+<td>STM32F767 (Cortex-M7, 216MHz) 교육보드 예시</td>
+<td><strong>포인터 레지스터 직접접근 원리 비교</strong></td>
 </tr>
 <tr>
 <td>모빌리티센서/</td>
@@ -1729,7 +1733,7 @@
 <td></td>
 </tr>
 <tr>
-<td>- 교육흐름 권장: 레지스터로 원리(F767) → HAL로 생산성(F103).</td>
+<td>- 교육흐름 권장: <strong>STM32H7 레지스터 직접 제어</strong>를 구현 기준으로 두고, F767 예시로 메모리맵 사고방식을 비교한 뒤, F103 HAL 자료는 생산성·추상화 수준을 설명할 때만 사용한다.</td>
 <td></td>
 <td></td>
 </tr>

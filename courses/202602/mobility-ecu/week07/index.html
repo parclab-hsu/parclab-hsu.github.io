@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + AMR 캡스톤">
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · 로버 구동 전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + 우주 로버 캡스톤">
       
       
       
@@ -1938,7 +1938,7 @@
   <span class="md-ellipsis">
     
   
-    8주차 · STM32 GPIO·메모리맵·레지스터
+    8주차 · STM32 GPIO·레지스터 기초
   
 
     
@@ -3730,9 +3730,9 @@
 <p><strong>학습목표</strong> — 라플라스·주파수응답·안정도 개념을 이해하고 P/I/PI 제어기를 구성하며, 이득여유·위상여유로 안정성을 판정한다.</p>
 <p>💡 <strong>기초 다지기 (쉽게 이해하기)</strong> — <strong>제어(피드백)란?</strong> 목표값(예: 1000RPM)과 실제값을 계속 비교해 그 차이(오차)를 줄이도록 자동으로 출력을 조정하는 것이다. PI 제어가 대표적이며, "빠르면서도 오차 없이" 목표를 따라가게 만든다.</p>
 </blockquote>
-<div class="admonition danger">
-<p class="admonition-title">🔴 (변경 필요) — 저작권 검토 대상</p>
-<p>이 주차의 <strong>원본 첨부 PDF 링크·슬라이드 미리보기 이미지</strong>(chcbaram 원본 자료)는 저작권상 공개 배포 전 <strong>자작 자료로 교체하거나 인용 허가</strong>가 필요하다. 정식 공개 시 반드시 변경한다.</p>
+<div class="admonition warning">
+<p class="admonition-title">저작권 유의 — 원본 자료 사용 범위 확인</p>
+<p>이 주차의 <strong>원본 첨부 PDF 링크·슬라이드 미리보기 이미지</strong>(chcbaram 원본 자료)는 수업 활용 범위와 외부 배포 가능 여부를 확인해 사용한다. 공개 배포 전에는 인용 허가, 출처 표기, 자작 대체 자료 여부를 점검한다.</p>
 </div>
 <h2 id="_1">🗺️ 한눈에 보는 개념도 (폐루프 제어)<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
@@ -4004,7 +4004,7 @@
 <li>PI 제어와 로그 튜닝에서 지금 조작하는 값은 입력인가, 처리 결과인가, 보호 조건인가?</li>
 <li>목표 RPM을 낮은 값에서 높은 값으로 바꾸며 응답 로그를 저장한다. 결과가 예상과 다르면 어떤 측정점부터 확인할 것인가?</li>
 <li>Kp를 한 단계씩 올리고 진동이 시작되는 지점을 기록한다. 과정에서 하드웨어 원인과 펌웨어 원인을 어떻게 분리할 것인가?</li>
-<li>Ki 추가 후 정상상태오차가 줄었는지 그래프 위에서 확인한다. 결과를 다음 주차 설계에 어떻게 반영할 것인가?</li>
+<li>Ki 추가 후 정상상태오차가 줄었는지 그래프 위에서 확인한다. 결과를 8주차 STM32 펌웨어 구현에서 어떤 변수와 로그 항목으로 옮길 것인가?</li>
 </ol>
 <h6 id="-">강의자료-실습 통합 절차<a class="headerlink" href="#-" title="Permanent link">&para;</a></h6>
 <h5 id="5">수업 전 5분 준비<a class="headerlink" href="#5" title="Permanent link">&para;</a></h5>
@@ -4221,8 +4221,8 @@
 </tr>
 <tr>
 <td>2:25-3:00</td>
-<td>중간 설계리뷰 준비: 요구사항·블록도·제어 목표 정리</td>
-<td>리뷰 제출 초안</td>
+<td>8주차 STM32 구현을 위한 제어 변수·로그 항목 정리</td>
+<td>펌웨어 입력/출력 목록</td>
 </tr>
 </tbody>
 </table>
@@ -4236,11 +4236,11 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../attachments/motor-control-inverter-theory.pdf">motor-control-inverter-theory.pdf</a> <strong>(변경 필요)</strong></td>
+<td><a href="../attachments/motor-control-inverter-theory.pdf">motor-control-inverter-theory.pdf</a> <strong>(원본 자료)</strong></td>
 <td>제어공학과 PI 속도제어 주교재</td>
 </tr>
 <tr>
-<td><a href="../attachments/speed-control-teleplot.pdf">speed-control-teleplot.pdf</a> <strong>(변경 필요)</strong></td>
+<td><a href="../attachments/speed-control-teleplot.pdf">speed-control-teleplot.pdf</a> <strong>(원본 자료)</strong></td>
 <td>속도 로그 시각화와 Teleplot 사용 자료</td>
 </tr>
 <tr>
@@ -4358,13 +4358,13 @@
         
         
           
-          <a href="../week08/" class="md-footer__link md-footer__link--next" aria-label="다음: 8주차 · STM32 GPIO·메모리맵·레지스터">
+          <a href="../week08/" class="md-footer__link md-footer__link--next" aria-label="다음: 8주차 · STM32 GPIO·레지스터 기초">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                8주차 · STM32 GPIO·메모리맵·레지스터
+                8주차 · STM32 GPIO·레지스터 기초
               </div>
             </div>
             <div class="md-footer__button md-icon">

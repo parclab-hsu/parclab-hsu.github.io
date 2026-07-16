@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + AMR 캡스톤">
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · 로버 구동 전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + 우주 로버 캡스톤">
       
       
       
@@ -893,7 +893,7 @@
   <a href="#000-020" class="md-nav__link">
     <span class="md-ellipsis">
       
-        0:00-0:20 · 이전 산출물 연결
+        0:00-0:20 · 사전지식 진단
       
     </span>
   </a>
@@ -1938,7 +1938,7 @@
   <span class="md-ellipsis">
     
   
-    8주차 · STM32 GPIO·메모리맵·레지스터
+    8주차 · STM32 GPIO·레지스터 기초
   
 
     
@@ -2853,7 +2853,7 @@
   <a href="#000-020" class="md-nav__link">
     <span class="md-ellipsis">
       
-        0:00-0:20 · 이전 산출물 연결
+        0:00-0:20 · 사전지식 진단
       
     </span>
   </a>
@@ -3730,9 +3730,9 @@
 <p><strong>학습목표</strong> — 로버(2륜 차동구동 베이스)·우주 로버 대회의 전기전자제어유닛(ECU) 전체 구조와 신호 흐름을 설명하고, 실습 키트 구성과 안전 수칙을 숙지한다.</p>
 <p>💡 <strong>기초 다지기 (쉽게 이해하기)</strong> — <strong>제어유닛(ECU)이란?</strong> 로봇의 "두뇌+신경"이다. 사람/센서가 준 정보를 MCU가 판단해 모터를 움직이는 전자 시스템으로, 이 과정은 그 시스템을 밑바닥부터 직접 만드는 것이다.</p>
 </blockquote>
-<div class="admonition danger">
-<p class="admonition-title">🔴 (변경 필요) — 저작권 검토 대상</p>
-<p>이 주차의 <strong>원본 첨부 PDF 링크·슬라이드 미리보기 이미지</strong>(chcbaram 원본 자료)는 저작권상 공개 배포 전 <strong>자작 자료로 교체하거나 인용 허가</strong>가 필요하다. 정식 공개 시 반드시 변경한다.</p>
+<div class="admonition warning">
+<p class="admonition-title">저작권 유의 — 원본 자료 사용 범위 확인</p>
+<p>이 주차의 <strong>원본 첨부 PDF 링크·슬라이드 미리보기 이미지</strong>(chcbaram 원본 자료)는 수업 활용 범위와 외부 배포 가능 여부를 확인해 사용한다. 공개 배포 전에는 인용 허가, 출처 표기, 자작 대체 자료 여부를 점검한다.</p>
 </div>
 <h2 id="_1">🗺️ 한눈에 보는 개념도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
@@ -3907,7 +3907,7 @@
 <ul>
 <li>오리엔테이션 및 로버 제어유닛 구조의 중심 질문은 "ECU 전체 구조와 2륜 차동구동이 최종 로버 ECU에서 어떤 문제를 해결하는가"이다.</li>
 <li>연결할 첨부자료는 <code>kit-guide.pdf / stm32-orientation-dev-env.pdf</code>이며, 학생은 그림 위에 입력·처리·출력·위험요소를 직접 표시한다.</li>
-<li>이번 주 설명은 이전 주 산출물과 다음 주 실습으로 이어지는 설계 판단을 남기는 데 초점을 둔다.</li>
+<li>이번 주 설명은 선수지식 진단, 실습 안전, 15주 프로젝트 구조를 하나의 로버 ECU 개발 흐름으로 묶는 데 초점을 둔다.</li>
 </ul>
 <h6 id="_12">교수자 설명 스크립트<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h6>
 <ol>
@@ -3950,8 +3950,8 @@
 <li>오류가 나면 정답을 바로 주기보다 전원, 기준전위, 신호 방향, 시간 기준, 보호 조건 중 어느 축의 문제인지 분류하게 한다.</li>
 </ul>
 <h6 id="3_1">3시간 수업 확장안<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h6>
-<h5 id="000-020">0:00-0:20 · 이전 산출물 연결<a class="headerlink" href="#000-020" title="Permanent link">&para;</a></h5>
-<p>오리엔테이션 및 로버 제어유닛 구조 수업은 지난 주 결과 중 오늘의 <code>ECU 전체 구조와 2륜 차동구동</code>와 직접 연결되는 오류 하나를 골라 시작한다.</p>
+<h5 id="000-020">0:00-0:20 · 사전지식 진단<a class="headerlink" href="#000-020" title="Permanent link">&para;</a></h5>
+<p>오리엔테이션 및 로버 제어유닛 구조 수업은 학생이 이미 알고 있는 전원, 모터, MCU, 센서 개념을 짧게 확인하며 시작한다. 오늘의 <code>ECU 전체 구조와 2륜 차동구동</code>에서 낯선 용어를 표시하게 하고, 이후 15주 동안 채워 넣을 학습 지도를 만든다.</p>
 <h5 id="020-055">0:20-0:55 · 첨부자료 해설<a class="headerlink" href="#020-055" title="Permanent link">&para;</a></h5>
 <p><code>kit-guide.pdf / stm32-orientation-dev-env.pdf</code>의 대표 이미지를 띄우고, 학생에게 어느 선이 전원·센서·제어·진단 신호인지 표시하게 한다.</p>
 <h5 id="105-140">1:05-1:40 · 핵심 계산과 판단<a class="headerlink" href="#105-140" title="Permanent link">&para;</a></h5>
@@ -4011,7 +4011,7 @@
 <li>ECU 전체 구조와 2륜 차동구동에서 지금 조작하는 값은 입력인가, 처리 결과인가, 보호 조건인가?</li>
 <li>보드를 손에 들고 위험 전압 영역과 손으로 만져도 되는 영역을 구분한다. 결과가 예상과 다르면 어떤 측정점부터 확인할 것인가?</li>
 <li>전원 인가 전 체크리스트를 팀원이 서로 교차 점검한다. 과정에서 하드웨어 원인과 펌웨어 원인을 어떻게 분리할 것인가?</li>
-<li>최종 로버 블록도를 종이에 그리고 각 선을 전원선과 신호선으로 구분한다. 결과를 다음 주차 설계에 어떻게 반영할 것인가?</li>
+<li>최종 로버 블록도를 종이에 그리고 각 선을 전원선과 신호선으로 구분한다. 결과를 2주차 전자부품 학습에서 어떤 회로 블록으로 이어 볼 것인가?</li>
 </ol>
 <h6 id="-">강의자료-실습 통합 절차<a class="headerlink" href="#-" title="Permanent link">&para;</a></h6>
 <h5 id="5">수업 전 5분 준비<a class="headerlink" href="#5" title="Permanent link">&para;</a></h5>
@@ -4243,11 +4243,11 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../attachments/kit-guide.pdf">kit-guide.pdf</a> <strong>(변경 필요)</strong></td>
+<td><a href="../attachments/kit-guide.pdf">kit-guide.pdf</a> <strong>(원본 자료)</strong></td>
 <td>키트 전원·커넥터·구성품 확인 실습의 기준 자료</td>
 </tr>
 <tr>
-<td><a href="../attachments/stm32-orientation-dev-env.pdf">stm32-orientation-dev-env.pdf</a> <strong>(변경 필요)</strong></td>
+<td><a href="../attachments/stm32-orientation-dev-env.pdf">stm32-orientation-dev-env.pdf</a> <strong>(원본 자료)</strong></td>
 <td>개발환경 설치와 보드 연결 점검 자료</td>
 </tr>
 <tr>

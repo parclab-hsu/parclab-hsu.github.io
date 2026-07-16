@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · BLDC 구동 전기전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + AMR 캡스톤">
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · 로버 구동 전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + 우주 로버 캡스톤">
       
       
       
@@ -738,7 +738,7 @@
   <span class="md-ellipsis">
     
   
-    8주차 · STM32 GPIO·메모리맵·레지스터
+    8주차 · STM32 GPIO·레지스터 기초
   
 
     
@@ -3730,9 +3730,9 @@
 <p><strong>학습목표</strong> — STM32 모터 구동 펌웨어의 전체 구조(정류·Center PWM·스케줄러·센싱·통신·속도계산)를 분석하고 로버 주행으로 통합 시연한다.</p>
 <p>💡 <strong>기초 다지기 (쉽게 이해하기)</strong> — <strong>펌웨어 통합이란?</strong> 앞의 모든 내용을 코드로 묶어 실제로 로봇을 움직이는 단계다. 인터럽트로 20kHz마다 전류를 읽어 PWM을 조정하고, 홀/엔코더로 속도를 계산하며, 무선으로 상태를 보내고, 고장을 감지해 멈추는 안전장치까지 포함한다.</p>
 </blockquote>
-<div class="admonition danger">
-<p class="admonition-title">🔴 (변경 필요) — 저작권 검토 대상</p>
-<p>이 주차의 <strong>원본 첨부 PDF 링크·슬라이드 미리보기 이미지</strong>(chcbaram 원본 자료)는 저작권상 공개 배포 전 <strong>자작 자료로 교체하거나 인용 허가</strong>가 필요하다. 정식 공개 시 반드시 변경한다.</p>
+<div class="admonition warning">
+<p class="admonition-title">저작권 유의 — 원본 자료 사용 범위 확인</p>
+<p>이 주차의 <strong>원본 첨부 PDF 링크·슬라이드 미리보기 이미지</strong>(chcbaram 원본 자료)는 수업 활용 범위와 외부 배포 가능 여부를 확인해 사용한다. 공개 배포 전에는 인용 허가, 출처 표기, 자작 대체 자료 여부를 점검한다.</p>
 </div>
 <h2 id="_1">🗺️ 한눈에 보는 개념도 — 펌웨어 런타임<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TD
@@ -3941,7 +3941,7 @@
 <ul>
 <li>구동 펌웨어 통합 및 최종 프로젝트 발표의 중심 질문은 "통합 펌웨어와 최종 검증이 최종 로버 ECU에서 어떤 문제를 해결하는가"이다.</li>
 <li>연결할 첨부자료는 <code>electric-scooter-firmware-v0.2.pdf / speed-control-teleplot.pdf</code>이며, 학생은 그림 위에 입력·처리·출력·위험요소를 직접 표시한다.</li>
-<li>이번 주 설명은 이전 주 산출물과 다음 주 실습으로 이어지는 설계 판단을 남기는 데 초점을 둔다.</li>
+<li>이번 주 설명은 1~14주차 산출물을 최종 시연, 포트폴리오, 개선 계획으로 묶어 설계 판단의 근거를 남기는 데 초점을 둔다.</li>
 </ul>
 <h6 id="_12">교수자 설명 스크립트<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h6>
 <ol>
@@ -4045,7 +4045,7 @@
 <li>통합 펌웨어와 최종 검증에서 지금 조작하는 값은 입력인가, 처리 결과인가, 보호 조건인가?</li>
 <li>최종 펌웨어에서 20kHz ISR과 1ms 태스크가 하는 일을 코드 주석으로 표시한다. 결과가 예상과 다르면 어떤 측정점부터 확인할 것인가?</li>
 <li>Fault를 안전하게 모사하고 모터 출력 차단과 로그 송신을 확인한다. 과정에서 하드웨어 원인과 펌웨어 원인을 어떻게 분리할 것인가?</li>
-<li>팀별 시연 후 요구사항 검증표에 성공, 부분성공, 실패와 근거를 기록한다. 결과를 다음 주차 설계에 어떻게 반영할 것인가?</li>
+<li>팀별 시연 후 요구사항 검증표에 성공, 부분성공, 실패와 근거를 기록한다. 결과를 최종 포트폴리오와 다음 프로젝트 개선안에 어떻게 반영할 것인가?</li>
 </ol>
 <h6 id="-">강의자료-실습 통합 절차<a class="headerlink" href="#-" title="Permanent link">&para;</a></h6>
 <h5 id="5">수업 전 5분 준비<a class="headerlink" href="#5" title="Permanent link">&para;</a></h5>
@@ -4277,15 +4277,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../attachments/electric-scooter-firmware-v0.2.pdf">electric-scooter-firmware-v0.2.pdf</a> <strong>(변경 필요)</strong></td>
+<td><a href="../attachments/electric-scooter-firmware-v0.2.pdf">electric-scooter-firmware-v0.2.pdf</a> <strong>(원본 자료)</strong></td>
 <td>통합 펌웨어 구조와 핵심 수치의 주교재</td>
 </tr>
 <tr>
-<td><a href="../attachments/speed-control-teleplot.pdf">speed-control-teleplot.pdf</a> <strong>(변경 필요)</strong></td>
+<td><a href="../attachments/speed-control-teleplot.pdf">speed-control-teleplot.pdf</a> <strong>(원본 자료)</strong></td>
 <td>속도제어 로그와 그래프 시연</td>
 </tr>
 <tr>
-<td><a href="../attachments/stm32-lecture-v0.2.pdf">stm32-lecture-v0.2.pdf</a> <strong>(변경 필요)</strong></td>
+<td><a href="../attachments/stm32-lecture-v0.2.pdf">stm32-lecture-v0.2.pdf</a> <strong>(원본 자료)</strong></td>
 <td>STM32 초기화와 주변장치 코드 복습</td>
 </tr>
 </tbody>
