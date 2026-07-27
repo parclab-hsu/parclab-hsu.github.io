@@ -72,6 +72,14 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `Collaborative Robot` · `F/T Sensor` · `ArUco` · `ML` · `Quality Inspection`
 
+-   :material-circle-outline:{ style="color:#e0a800" } __계획중 · 한성대 Physical AI 교육 클러스터 (HSU-PAC)__
+
+    ---
+
+    30명 규모 Physical AI 실습을 위한 한성대 전용 GPU 클러스터 구축. RTX PRO 6000 Blackwell 공유 학습 서버(MIG 분할) + 조별 전용 DGX Spark 5대(128GB, Isaac Sim/GR00T 공식 지원) + 10G 백본·NAS 구성. Isaac Sim WebRTC 스트리밍과 JupyterHub로 학생 노트북에서 접속하고, 대규모 학습 피크는 AWS 버스트로 처리하는 하이브리드 운영.
+
+    `RTX PRO 6000` · `DGX Spark ×5` · `Isaac Sim` · `GR00T` · `MIG` · `JupyterHub` · `10G Ethernet` · `AWS Hybrid`
+
 -   :material-circle-outline:{ style="color:#e0a800" } __계획중 · AI 기반 대학 교육 인프라 구축__
 
     ---
