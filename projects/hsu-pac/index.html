@@ -662,7 +662,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        배경
+        왜 필요한가
       
     </span>
   </a>
@@ -678,10 +678,38 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="시스템 아키텍처">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        구성 요소별 역할
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학생은 이렇게 사용합니다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         소프트웨어 스택
@@ -703,10 +731,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15주 커리큘럼 매핑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        운영 원칙
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         추진 로드맵
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기대 효과
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        자주 묻는 질문
       
     </span>
   </a>
@@ -732,123 +804,318 @@
 
 <h1 id="physical-ai-hsu-pac">한성대 Physical AI 교육 클러스터 (HSU-PAC)<a class="headerlink" href="#physical-ai-hsu-pac" title="Permanent link">&para;</a></h1>
 <p><span class="twemoji" style="color:#e0a800"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>계획중</strong> · Hansung University Physical AI Cluster</p>
-<p>30명 규모(6인 × 5조) Physical AI 실습 교육을 위한 한성대 전용 GPU 클러스터 구축 프로젝트입니다.
-학생은 개인 노트북을 <strong>접속 단말</strong>로만 사용하고, 시뮬레이션·학습 등 GPU 연산은 전부 교내
-클러스터에서 수행하는 <strong>서버 실행 + 씬클라이언트</strong> 모델로 운영합니다.</p>
+<div class="admonition abstract">
+<p class="admonition-title">프로젝트 한눈에 보기</p>
+<p>30명 규모(6인 × 5조) Physical AI 실습 교육을 위한 한성대 전용 GPU 클러스터.
+학생 노트북은 <strong>접속 단말</strong>로만 쓰고, 시뮬레이션·AI 학습 등 모든 GPU 연산은 교내
+클러스터가 수행하는 <strong>서버 실행 + 씬클라이언트</strong> 모델입니다. 상시 워크로드는
+온프레미스가 담당하고 학기말 대형 학습만 클라우드로 처리하는 <strong>하이브리드 운영</strong>으로,
+클라우드 전면 운영 대비 수년 운영 시 총비용을 큰 폭으로 절감하도록 설계했습니다.</p>
+</div>
 <hr />
-<h2 id="_1">배경<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>학생 노트북(RTX 4060 Laptop, 8GB)은 Isaac Sim 최소 사양(VRAM 16GB)에 미달 → 원격 GPU 자원 필수</li>
-<li>클라우드 단독 운영은 학기 내내 상시 사용하는 교육 특성상 비용이 불리 → <strong>온프레미스 기본 + 클라우드 피크 버스트</strong> 하이브리드 설계</li>
-<li>NVIDIA DGX Spark는 Isaac Sim / Isaac Lab / GR00T 파인튜닝을 공식 지원하는 최저가 플랫폼으로 조별 전용 노드에 최적</li>
-</ul>
-<h2 id="_2">시스템 아키텍처<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[학생 노트북 ×30] ──(교내망)── WebRTC 스트리밍 / JupyterHub / SSH
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                                    │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                          [10G Ethernet 백본 스위치]
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                                    │
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   [공유 학습 서버]      [DGX Spark ×5 (조별 전용)]      [NAS]
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   RTX PRO 6000 96GB
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   MIG 4분할
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                                    │ (학기말 피크)
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                          [AWS 버스트: 대형 학습 전용]
-</code></pre></div>
+<h2 id="_1">왜 필요한가<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Physical AI 교육의 핵심 도구인 NVIDIA Isaac Sim(로봇 시뮬레이터)과 로봇 파운데이션 모델
+(GR00T 등)은 고사양 GPU를 요구합니다. 학생 개인 장비로는 실습 자체가 불가능합니다.</p>
 <table>
 <thead>
 <tr>
-<th>구성요소</th>
-<th>수량</th>
-<th>역할</th>
+<th>구분</th>
+<th>학생 노트북 (RTX 4060 Laptop)</th>
+<th>Isaac Sim 요구 사양</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RTX PRO 6000 Blackwell 96GB 서버</td>
-<td>1</td>
-<td>MIG 4분할 — Isaac Sim 동시 세션, 공용 학습 큐, 교수 시연</td>
+<td>GPU 메모리(VRAM)</td>
+<td>8GB</td>
+<td><strong>최소 16GB, 권장 32GB+</strong></td>
 </tr>
 <tr>
-<td>NVIDIA DGX Spark (128GB 통합 메모리)</td>
-<td>5</td>
-<td>조별 전용 노드 — Isaac Sim/Lab 실습, GR00T 파인튜닝</td>
-</tr>
-<tr>
-<td>10GbE 백본 + NAS</td>
-<td>1식</td>
-<td>데이터셋·체크포인트·홈디렉터리 공유</td>
-</tr>
-<tr>
-<td>AWS 스팟 버스트</td>
-<td>-</td>
-<td>학기말 대형 멀티GPU 학습만 처리</td>
+<td>판정</td>
+<td><span class="twemoji" style="color:#c62828"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12 6.47 2 12 2m3.59 5L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/></svg></span> 실행 불가</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
-<p>서버 섀시는 다중 GPU 베이로 확보하여 향후 GPU 증설만으로 처리량을 확장할 수 있습니다.</p>
-<h2 id="_3">소프트웨어 스택<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>여기에 세 가지 제약이 더해집니다.</p>
 <ul>
-<li><strong>접속</strong>: JupyterHub · SSH · VS Code Remote — 학생 계정별 컨테이너 환경</li>
-<li><strong>시뮬레이션</strong>: Isaac Sim WebRTC 스트리밍 (노트북 브라우저로 3D 뷰포트 전송)</li>
-<li><strong>학습</strong>: Isaac Lab · LeRobot · PyTorch · GR00T 파인튜닝</li>
-<li><strong>운영</strong>: Docker + NGC 이미지(x86/aarch64), MIG 예약제, DCGM + Grafana 모니터링</li>
+<li><strong>동시성</strong> — 수업 시간에는 30명이 동시에 실습해야 하므로, 고성능 장비 1~2대로는 부족하고 "조별 전용 + 공용 풀"의 이중 구조가 필요합니다.</li>
+<li><strong>비용</strong> — 클라우드 GPU를 학기 내내 상시 사용하면 비용이 누적되어 수년 운영 시 자체 구축 대비 크게 불리합니다. 반대로 학기말에만 필요한 대형 학습을 위해 고가 서버를 보유하면 가동률이 낮아 역시 비효율적입니다.</li>
+<li><strong>생태계</strong> — 실습 도구(Isaac Sim/Isaac Lab · LeRobot · GR00T)가 모두 NVIDIA 생태계이므로, 공식 지원되는 플랫폼으로 구성해야 수업 중 호환성 문제를 피할 수 있습니다.</li>
 </ul>
+<p>이 세 제약을 동시에 푸는 답이 <strong>"조별 전용 소형 AI 노드 + 공유 학습 서버 + 클라우드 버스트"</strong> 구조입니다.</p>
+<h2 id="_2">시스템 아키텍처<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    subgraph CLIENT["학생 노트북 ×30 (접속 단말)"]
+        NB["브라우저 / VS Code / SSH"]
+    end
+    NB --&gt;|"WebRTC 스트리밍 · JupyterHub"| SW["10G Ethernet 백본 스위치"]
+    subgraph ONPREM["교내 클러스터 (온프레미스)"]
+        SW --&gt; SRV["공유 학습 서버&lt;br/&gt;RTX PRO 6000 Blackwell 96GB&lt;br/&gt;MIG 4분할 → 동시 세션 4개"]
+        SW --&gt; S1["DGX Spark #1&lt;br/&gt;(1조 전용)"]
+        SW --&gt; S2["DGX Spark #2&lt;br/&gt;(2조 전용)"]
+        SW --&gt; S3["DGX Spark #3~5&lt;br/&gt;(3~5조 전용)"]
+        SW --&gt; NAS["NAS 30~40TB&lt;br/&gt;데이터셋 · 체크포인트 · 홈디렉터리"]
+    end
+    SRV -.-&gt;|"학기말 피크만"| AWS["AWS 스팟 버스트&lt;br/&gt;대형 멀티GPU 학습 전용"]</code></pre>
+<h3 id="_3">구성 요소별 역할<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">공유 학습 서버</label><label for="__tabbed_1_2">조별 노드 (DGX Spark ×5)</label><label for="__tabbed_1_3">네트워크 · 스토리지</label><label for="__tabbed_1_4">클라우드 버스트 (AWS)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>NVIDIA RTX PRO 6000 Blackwell 96GB × 1</strong> (다중 GPU 확장형 섀시)</p>
+<ul>
+<li>GPU 가상 분할(MIG)로 <strong>24GB 인스턴스 4개</strong>를 만들어 Isaac Sim 동시 세션 4개 제공 — 권장 사양(VRAM 24GB급)을 만족하는 독립 세션</li>
+<li>RT 코어 탑재로 시뮬레이션 <strong>렌더링</strong>까지 담당 (연산 전용 데이터센터 GPU와의 차별점)</li>
+<li>공용 학습 큐, 교수 시연, 과제 채점용 예약제 운영</li>
+<li>섀시는 2~4 GPU 베이 확보 — 수강 확대 시 <strong>GPU 증설만으로 처리량 2~4배</strong></li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>NVIDIA DGX Spark</strong> — GB10 Grace Blackwell, 128GB 통합 메모리, DGX OS</p>
+<ul>
+<li>조당 1대 <strong>학기 내내 고정 배정</strong> — 조별 Isaac Sim/Isaac Lab 실습, 데이터 전처리, 소규모 파인튜닝</li>
+<li>Isaac Sim · Isaac Lab · GR00T 파인튜닝 <strong>공식 지원 플랫폼</strong> — 수업 중 호환성 리스크 최소화</li>
+<li>128GB 통합 메모리로 로봇 파운데이션 모델 로드 가능 — 조 단위 개발·디버깅에 최적</li>
+<li>대규모 고속 학습은 메모리 대역폭 한계로 부적합 → 공유 서버·클라우드로 위임 (역할 분담 설계)</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>10G Ethernet 백본</strong> — 노드 간 데이터셋·체크포인트 이동, WebRTC 스트리밍 트래픽 수용</li>
+<li><strong>NAS 30~40TB (RAID)</strong> — 학생 홈디렉터리(NFS), 공용 데이터셋, 스냅샷 백업</li>
+<li><strong>UPS</strong> — 서버·NAS 정전 보호</li>
+<li>전력 상시 3kW 이하 · 일반 냉방으로 충분 · 12U 랙 1개 — <strong>기존 실습실에 그대로 수용, 별도 시설 공사 불요</strong></li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>학기말 프로젝트의 <strong>대형 멀티GPU 학습만</strong> 스팟 인스턴스로 처리</li>
+<li>데이터셋은 NAS→S3 동기화 스크립트로 이동, 학습 완료 후 자동 종료</li>
+<li>조별 예산 상한 부여로 비용 통제</li>
+<li>가동률 낮은 고가 학습 서버를 보유하지 않기 위한 <strong>가성비 설계의 핵심 장치</strong></li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="_4">학생은 이렇게 사용합니다<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant 학생 as 학생 노트북
+    participant Hub as JupyterHub / WebRTC
+    participant Spark as 조별 DGX Spark
+    participant SRV as 공유 서버 (MIG)
+    학생-&gt;&gt;Hub: 브라우저 접속 (교내망)
+    Hub-&gt;&gt;Spark: 조별 컨테이너 환경 기동
+    Spark--&gt;&gt;학생: Isaac Sim 3D 뷰포트 스트리밍
+    학생-&gt;&gt;Spark: 정책 학습 잡 제출 (소규모)
+    학생-&gt;&gt;SRV: 공용 세션 예약 (렌더링·중형 학습)
+    SRV--&gt;&gt;학생: 학습 결과 · 체크포인트 (NAS 공유)</code></pre>
+<ol>
+<li>노트북 브라우저로 JupyterHub에 로그인 — 개인 설치 없이 즉시 실습 시작</li>
+<li>조별 Spark의 컨테이너 환경에서 코드 작성·시뮬레이션 실행, 3D 화면은 WebRTC로 스트리밍</li>
+<li>더 큰 렌더링·학습이 필요하면 공유 서버 MIG 세션을 예약제로 사용</li>
+<li>학기말 대형 학습은 정리된 잡을 클라우드로 버스트 — 결과는 NAS로 회수</li>
+</ol>
+<h2 id="_5">소프트웨어 스택<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>계층</th>
+<th>구성</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>접속</td>
+<td>JupyterHub · SSH · VS Code Remote</td>
+<td>학생 계정별 격리 컨테이너</td>
+</tr>
+<tr>
+<td>시뮬레이션</td>
+<td>Isaac Sim (WebRTC 스트리밍 모드)</td>
+<td>노트북 사양 무관</td>
+</tr>
+<tr>
+<td>로봇 학습</td>
+<td>Isaac Lab · LeRobot · PyTorch · GR00T 파인튜닝</td>
+<td>모방학습(ACT/디퓨전)·강화학습</td>
+</tr>
+<tr>
+<td>미들웨어</td>
+<td>ROS 2</td>
+<td>실물 로봇 연동</td>
+</tr>
+<tr>
+<td>컨테이너</td>
+<td>Docker + NVIDIA Container Toolkit, NGC 이미지</td>
+<td>x86(서버)/aarch64(Spark) 이원 관리 — <strong>이미지 태그가 곧 교재 버전</strong></td>
+</tr>
+<tr>
+<td>자원 관리</td>
+<td>조 단위 고정 배정 + MIG 예약제 (1차) → Slurm (2차)</td>
+<td>30명 규모엔 고정 배정이 단순·확실</td>
+</tr>
+<tr>
+<td>모니터링</td>
+<td>DCGM + Prometheus/Grafana</td>
+<td>GPU 사용률·온도 대시보드</td>
+</tr>
+</tbody>
+</table>
 <h2 id="3">교육환경 3계층 구조<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>HSU-PAC(연산 계층)은 필요조건이고, 실물 로봇 계층을 보강해 <strong>개발 파이프라인 완주형</strong>
+교육환경을 완성하는 것이 최종 그림입니다.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["1계층&lt;br/&gt;시뮬레이션 · 연산&lt;br/&gt;(HSU-PAC)"] --&gt; B["2계층&lt;br/&gt;실물 로봇&lt;br/&gt;(조별 로봇암 + 공용 플랫폼)"]
+    B --&gt; C["3계층&lt;br/&gt;클라우드 버스트&lt;br/&gt;(대형 파인튜닝)"]
+    C -.-&gt;|"학습된 모델 재배포"| B</code></pre>
 <table>
 <thead>
 <tr>
 <th>계층</th>
 <th>구성</th>
 <th>역할</th>
+<th>상태</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1계층 · 시뮬레이션/연산</td>
-<td>HSU-PAC (본 클러스터)</td>
-<td>전원이 안전하게·병렬로 시행착오를 겪는 층</td>
+<td>1계층 · 시뮬/연산</td>
+<td>HSU-PAC</td>
+<td>전원이 안전하게·병렬로 무제한 시행착오</td>
+<td>계획 확정</td>
 </tr>
 <tr>
 <td>2계층 · 실물 로봇</td>
-<td>조별 로봇암(LeRobot 생태계) + 공용 플랫폼</td>
-<td>sim-to-real 격차를 실물로 검증</td>
+<td>조별 로봇암 5세트(LeRobot 생태계, 리더+팔로워) + 공용 쿼드러페드/휴머노이드 1대</td>
+<td>sim-to-real 격차(마찰·지연·노이즈)를 실물로 체감·검증</td>
+<td>보강 제안</td>
 </tr>
 <tr>
-<td>3계층 · 클라우드 버스트</td>
+<td>3계층 · 클라우드</td>
 <td>AWS 스팟</td>
 <td>학기말 대형 파인튜닝 피크 흡수</td>
+<td>계획 확정</td>
 </tr>
 </tbody>
 </table>
-<p><strong>커리큘럼 매핑(15주)</strong>: 시뮬 기초·정책 학습(1~8주, 1계층) → 텔레옵 데이터 수집·모방학습(9~11주, 2+1계층) → sim-to-real 실물 이전(12~13주, 2계층) → 파운데이션 모델 파인튜닝·캡스톤(14~15주, 3계층).</p>
-<h2 id="_4">추진 로드맵<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>조별 로봇암은 조별 Spark와 <strong>1:1 대응</strong> — 조의 노드에서 학습한 정책을 조의 로봇에 배포하는 완결 루프</li>
+<li>저가·부품 교체형 플랫폼 선택이 교육용으로 오히려 적합 — 학생이 부담 없이 실험하고 파손 시 부품 단위 수리</li>
+</ul>
+<h2 id="15">15주 커리큘럼 매핑<a class="headerlink" href="#15" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>주차</th>
+<th>내용</th>
+<th>사용 계층</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1~4주</td>
+<td>로봇·시뮬 기초: ROS 2, USD/URDF, Isaac Sim 조작</td>
+<td>1계층</td>
+</tr>
+<tr>
+<td>5~8주</td>
+<td>정책 학습: Isaac Lab 강화학습, 모방학습 개념, LeRobot 입문</td>
+<td>1계층</td>
+</tr>
+<tr>
+<td>9~11주</td>
+<td>실물 데이터: 텔레오퍼레이션 수집 → ACT/디퓨전 정책 학습</td>
+<td>2계층 + 1계층</td>
+</tr>
+<tr>
+<td>12~13주</td>
+<td>sim-to-real: 시뮬 검증 정책의 실물 이전, 격차 분석</td>
+<td>2계층</td>
+</tr>
+<tr>
+<td>14~15주</td>
+<td>심화·캡스톤: GR00T 파인튜닝, 공용 플랫폼 데모</td>
+<td>3계층 + 전 계층</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">조달 리스크 완화</p>
+<p>학기 전반(1~8주)은 시뮬레이션만 사용하므로, 실물 로봇(2계층)은 9주차 전 납품이면
+학기 운영에 지장이 없습니다.</p>
+</div>
+<h2 id="_6">운영 원칙<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>교재의 컨테이너화</strong> — 모든 실습을 NGC 기반 컨테이너 이미지로 배포. "내 환경에선 안 돼요"를 구조적으로 제거.</li>
+<li><strong>조 단위 소유권</strong> — 조당 Spark 1대 + 로봇암 1세트 고정 배정. 공유 자원 경합보다 단순하고, 장비에 대한 책임·애착이 학습 동기가 됨.</li>
+<li><strong>인프라 자체가 교육</strong> — 클러스터 모니터링·잡 스케줄링·이미지 빌드를 조교·학생 스태프가 담당 → 운영 부담을 줄이며 MLOps 역량 교육을 겸함.</li>
+</ol>
+<h2 id="_7">추진 로드맵<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>단계</th>
+<th>시점</th>
 <th>내용</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Phase 1</td>
-<td>HSU-PAC 구축 (연산 계층 + 클라우드 버스트 체계) — 시뮬 중심 수업 개시</td>
+<td>예산 확정 후 ~3개월</td>
+<td>HSU-PAC 구축: 발주 → 설치 → 플랫폼 구성 → 동시 30접속 파일럿 → 정식 운영</td>
 </tr>
 <tr>
 <td>Phase 2</td>
-<td>조별 로봇암 도입 — 파이프라인 완주형 커리큘럼 완성</td>
+<td>학기 중반</td>
+<td>조별 로봇암 5세트 도입 — 파이프라인 완주형 커리큘럼 완성</td>
 </tr>
 <tr>
 <td>Phase 3</td>
+<td>2년차</td>
 <td>공용 고급 플랫폼(쿼드러페드/휴머노이드) 도입, 캡스톤·대외 시연</td>
 </tr>
 <tr>
 <td>Phase 4</td>
-<td>GPU 증설, 분산학습 실습, 타 학과 개방 검토</td>
+<td>2~3년차</td>
+<td>GPU 증설(수강 확대 대응), Spark 페어링 분산학습 실습, 타 학과 개방 검토</td>
 </tr>
 </tbody>
 </table>
+<h2 id="_8">기대 효과<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>교육</strong> — 30명 전원이 산업 표준 도구로 "시뮬레이션 → 정책 학습 → 실물 배포"의 전체 Physical AI 개발 파이프라인을 한 학기에 완주</li>
+<li><strong>재정</strong> — 클라우드 전면 운영 대비 수년 운영 시 총비용 대폭 절감, 1회 시설비 + 소액 경상비의 예측 가능한 예산 구조</li>
+<li><strong>안정성</strong> — 전용 자원으로 수업 시간 보장(클라우드 인스턴스 회수·기동 지연 리스크 제거), 교내 10G 스트리밍으로 지연 최소화</li>
+<li><strong>확장</strong> — 방학·야간 유휴 시간 연구 활용, GPU 증설형 설계, 타 교과·타 학과 개방 여력</li>
+<li><strong>특성화</strong> — Physical AI 전용 실습 환경을 보유한 대학으로서 학과 경쟁력·홍보 자산</li>
+</ul>
+<h2 id="_9">자주 묻는 질문<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>학생이 따로 준비할 것이 있나요?</summary>
+<p>없습니다. 브라우저와 교내망 접속만 있으면 됩니다. 개발환경은 전부 서버 쪽 컨테이너로
+제공되며, 첫 수업에서 계정만 배부받으면 바로 실습을 시작합니다.</p>
+</details>
+<details class="question">
+<summary>왜 클라우드로만 운영하지 않나요?</summary>
+<p>학기 내내 상시 사용하는 교육 워크로드는 종량제 클라우드에 매우 불리한 사용 패턴입니다.
+수년 운영 시 총비용이 자체 구축 대비 수 배가 되며, 수업 시간에 인스턴스 회수·기동 지연
+리스크도 있습니다. 반대로 학기말에만 필요한 대형 학습은 클라우드가 유리하므로, 그 부분만
+버스트로 처리하는 하이브리드가 최적입니다.</p>
+</details>
+<details class="question">
+<summary>수강 인원이 늘어나면 어떻게 되나요?</summary>
+<p>공유 서버가 다중 GPU 확장형이므로 GPU 1장을 증설하면 동시 세션이 4→8개로 늘어납니다.
+조별 노드도 대수 추가만으로 선형 확장됩니다. 초기 구축을 다시 할 필요가 없습니다.</p>
+</details>
+<details class="question">
+<summary>다른 수업·연구에도 쓸 수 있나요?</summary>
+<p>네. 수업 시간 외(야간·주말·방학)에는 연구용 학습 큐로 전환할 수 있고, 로드맵 Phase 4에서
+타 교과·타 학과 개방을 검토합니다.</p>
+</details>
 <hr />
-<p><code>RTX PRO 6000</code> · <code>DGX Spark ×5</code> · <code>Isaac Sim</code> · <code>GR00T</code> · <code>MIG</code> · <code>JupyterHub</code> · <code>10G Ethernet</code> · <code>AWS Hybrid</code></p>
+<p><code>RTX PRO 6000</code> · <code>DGX Spark ×5</code> · <code>Isaac Sim</code> · <code>Isaac Lab</code> · <code>LeRobot</code> · <code>GR00T</code> · <code>MIG</code> · <code>JupyterHub</code> · <code>ROS 2</code> · <code>10G Ethernet</code> · <code>AWS Hybrid</code></p>
 <p><a href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 프로젝트 목록으로</a></p>
 
 
