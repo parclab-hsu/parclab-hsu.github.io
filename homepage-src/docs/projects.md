@@ -72,7 +72,7 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `Collaborative Robot` · `F/T Sensor` · `ArUco` · `ML` · `Quality Inspection`
 
--   :material-circle-outline:{ style="color:#e0a800" } __계획중 · 한성대 Physical AI 교육 클러스터 (HSU-PAC)__
+-   :material-circle-outline:{ style="color:#e0a800" } [__계획중 · 한성대 Physical AI 교육 클러스터 (HSU-PAC)__](projects/hsu-pac.md)
 
     ---
 
