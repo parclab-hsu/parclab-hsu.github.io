@@ -147,6 +147,16 @@ flowchart TB
 
 교과목에서 가장 자주 사용하는 핵심 연산 노드입니다.
 
+!!! success "기존 교내 자산 우선 활용 (2026-07 확정)"
+    교내에 기 구축된 GPU 서버(**RTX PRO 6000 Blackwell Max-Q 96GB ×4** — 총 GPU 메모리
+    384GB, 64코어/512GB, Kubernetes 운영 중)를 주 연산 노드로 우선 활용합니다. 신규 GPU
+    서버 구매는 초기 필수항목에서 제외하고, 사용률 실증 후 증설 선택항목으로 조정 —
+    초기 예산을 스토리지·백업·네트워크·플랫폼·DGX Spark에 우선 배정합니다.
+
+    GPU 운영(권장안 A · 교육 균형형): **GPU 0·1 = Full GPU**(Isaac Sim·그래픽·합성데이터),
+    **GPU 2·3 = MIG 4분할 ×2**(개인·조별 AI 연산 8인스턴스). 방학·연구 집중기에는 4GPU
+    통합(DDP)으로 전환. MIG 프로파일은 학기 시작 전 고정, 학기 중 변경 금지.
+
 - Isaac Sim 원격 실행 및 스트리밍
 - Isaac Lab 강화학습, 합성데이터 생성
 - 비전 모델 학습·평가, 디지털 트윈 렌더링
@@ -172,12 +182,12 @@ RTX PRO 6000 Blackwell Server Edition은 96GB GDDR7 메모리와 최대 4개의 
     조달 사양서에는 반드시 **Server Edition**을 명시해야 합니다. Workstation Edition과
     냉각구조 및 서버 적용조건이 다릅니다.
 
-!!! warning "MIG/vGPU 사전 검증(PoC) 필수"
-    MIG는 전통적으로 연산(CUDA) 전용 분할이라, Isaac Sim **렌더링 세션**의 다중 분할은
-    발주 전 PoC로 검증해야 합니다: ① MIG에서 그래픽 세션 지원 여부 확인 → ② 불가 시
-    vGPU(RTX Virtual Workstation, **라이선스 비용·지원 하이퍼바이저 확인 필요**) →
-    ③ 폴백으로 GPU 전체 시분할 예약제(비용 0원) + Headless 학습 CUDA 동시 실행.
-    조달 사양서에 "Isaac Sim 다중 세션 지원 구성 검증 완료" 조건 명시를 권장합니다.
+!!! warning "그래픽 세션 운영 방식 (Max-Q 제약 반영)"
+    Max-Q Workstation Edition은 vGPU 및 그래픽 MIG 가상화를 지원하지 않습니다. 따라서
+    **Isaac Sim·Omniverse 그래픽 세션은 Full GPU 예약 방식**, AI 학습·추론·CUDA 연산만
+    MIG를 사용합니다(라이선스 비용 불요). 개강 전 PoC: Isaac Sim 컨테이너 원격 그래픽
+    출력, WebRTC 동시 사용자 성능, 30명 JupyterHub 동시 로그인, MIG 프로파일·PCIe
+    토폴로지·NCCL 검증. 향후 신규 서버 증설 시에는 **Server Edition**을 명시해 조달합니다.
 
 ### 2. DGX Spark
 
@@ -485,13 +495,16 @@ flowchart LR
 
 초기 구축은 다음 구성을 권장합니다.
 
-- RTX PRO 6000 Blackwell Server Edition 96GB GPU 서버 1대 (향후 GPU 2~4장 확장 가능한 섀시)
-- NVIDIA DGX Spark 1대 (공용 예약 노드 — 사용률 기반 조별 증설)
-- 10GbE Core Network + VLAN 분리
-- 40~80TB급 NAS
-- 30명용 JupyterHub·Docker·GPU 작업 큐
-- AWS GPU 버스트 환경
+- **기존 교내 GPU 서버(RTX PRO 6000 Max-Q 96GB ×4) 우선 활용** — Full GPU 2 + MIG 8인스턴스 혼합 운영, 신규 GPU 서버는 사용률 실증 후 증설 선택항목
+- NVIDIA DGX Spark 1~2대 (공용 예약 노드 — 사용률 기반 조별 증설)
+- 10/25GbE Core Network + VLAN 분리
+- 40~80TB급 NAS + **별도 백업 스토리지** (스냅샷과 분리)
+- 30명용 JupyterHub·Kubernetes(Namespace/Quota/PriorityClass) 접속 플랫폼 — 학생에게 Docker 권한 미부여
+- AWS GPU 버스트 환경 (서버 유지보수 기간 비상 실습환경 겸용)
 - ROS 2 기반 실물 로봇 연계망
+
+초기 투자 우선순위는 신규 GPU 서버보다 **네트워크, NAS·백업, 사용자 접속 플랫폼, GPU
+자원관리, DGX Spark**에 둡니다.
 
 HSU-PAC는 단순한 GPU 장비 구매가 아니라 **학생 노트북–교내 GPU–대형 모델 노드–스토리지–클라우드–실물 로봇을 연결하는 Physical AI 교육·연구 운영체계**로 구축해야 합니다.
 

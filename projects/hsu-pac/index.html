@@ -1198,6 +1198,16 @@
 <h2 id="_5">구성 요소별 역할<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="1-rtx-pro-6000-gpu">1. RTX PRO 6000 공용 GPU 서버<a class="headerlink" href="#1-rtx-pro-6000-gpu" title="Permanent link">&para;</a></h3>
 <p>교과목에서 가장 자주 사용하는 핵심 연산 노드입니다.</p>
+<div class="admonition success">
+<p class="admonition-title">기존 교내 자산 우선 활용 (2026-07 확정)</p>
+<p>교내에 기 구축된 GPU 서버(<strong>RTX PRO 6000 Blackwell Max-Q 96GB ×4</strong> — 총 GPU 메모리
+384GB, 64코어/512GB, Kubernetes 운영 중)를 주 연산 노드로 우선 활용합니다. 신규 GPU
+서버 구매는 초기 필수항목에서 제외하고, 사용률 실증 후 증설 선택항목으로 조정 —
+초기 예산을 스토리지·백업·네트워크·플랫폼·DGX Spark에 우선 배정합니다.</p>
+<p>GPU 운영(권장안 A · 교육 균형형): <strong>GPU 0·1 = Full GPU</strong>(Isaac Sim·그래픽·합성데이터),
+<strong>GPU 2·3 = MIG 4분할 ×2</strong>(개인·조별 AI 연산 8인스턴스). 방학·연구 집중기에는 4GPU
+통합(DDP)으로 전환. MIG 프로파일은 학기 시작 전 고정, 학기 중 변경 금지.</p>
+</div>
 <ul>
 <li>Isaac Sim 원격 실행 및 스트리밍</li>
 <li>Isaac Lab 강화학습, 합성데이터 생성</li>
@@ -1258,12 +1268,12 @@
 냉각구조 및 서버 적용조건이 다릅니다.</p>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">MIG/vGPU 사전 검증(PoC) 필수</p>
-<p>MIG는 전통적으로 연산(CUDA) 전용 분할이라, Isaac Sim <strong>렌더링 세션</strong>의 다중 분할은
-발주 전 PoC로 검증해야 합니다: ① MIG에서 그래픽 세션 지원 여부 확인 → ② 불가 시
-vGPU(RTX Virtual Workstation, <strong>라이선스 비용·지원 하이퍼바이저 확인 필요</strong>) →
-③ 폴백으로 GPU 전체 시분할 예약제(비용 0원) + Headless 학습 CUDA 동시 실행.
-조달 사양서에 "Isaac Sim 다중 세션 지원 구성 검증 완료" 조건 명시를 권장합니다.</p>
+<p class="admonition-title">그래픽 세션 운영 방식 (Max-Q 제약 반영)</p>
+<p>Max-Q Workstation Edition은 vGPU 및 그래픽 MIG 가상화를 지원하지 않습니다. 따라서
+<strong>Isaac Sim·Omniverse 그래픽 세션은 Full GPU 예약 방식</strong>, AI 학습·추론·CUDA 연산만
+MIG를 사용합니다(라이선스 비용 불요). 개강 전 PoC: Isaac Sim 컨테이너 원격 그래픽
+출력, WebRTC 동시 사용자 성능, 30명 JupyterHub 동시 로그인, MIG 프로파일·PCIe
+토폴로지·NCCL 검증. 향후 신규 서버 증설 시에는 <strong>Server Edition</strong>을 명시해 조달합니다.</p>
 </div>
 <h3 id="2-dgx-spark">2. DGX Spark<a class="headerlink" href="#2-dgx-spark" title="Permanent link">&para;</a></h3>
 <p>DGX Spark는 128GB 통합 메모리를 제공하는 소형 Grace Blackwell 시스템입니다. 처리량 중심의 대규모 학습 서버라기보다, 일반 GPU 메모리에 들어가지 않는 모델을 로드하고 검증하는 <strong>대형 모델 개발·실험 노드</strong>로 사용하는 것이 적절합니다.</p>
@@ -1808,14 +1818,16 @@ vGPU(RTX Virtual Workstation, <strong>라이선스 비용·지원 하이퍼바�
 <h2 id="_19">최종 권고안<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <p>초기 구축은 다음 구성을 권장합니다.</p>
 <ul>
-<li>RTX PRO 6000 Blackwell Server Edition 96GB GPU 서버 1대 (향후 GPU 2~4장 확장 가능한 섀시)</li>
-<li>NVIDIA DGX Spark 1대 (공용 예약 노드 — 사용률 기반 조별 증설)</li>
-<li>10GbE Core Network + VLAN 분리</li>
-<li>40~80TB급 NAS</li>
-<li>30명용 JupyterHub·Docker·GPU 작업 큐</li>
-<li>AWS GPU 버스트 환경</li>
+<li><strong>기존 교내 GPU 서버(RTX PRO 6000 Max-Q 96GB ×4) 우선 활용</strong> — Full GPU 2 + MIG 8인스턴스 혼합 운영, 신규 GPU 서버는 사용률 실증 후 증설 선택항목</li>
+<li>NVIDIA DGX Spark 1~2대 (공용 예약 노드 — 사용률 기반 조별 증설)</li>
+<li>10/25GbE Core Network + VLAN 분리</li>
+<li>40~80TB급 NAS + <strong>별도 백업 스토리지</strong> (스냅샷과 분리)</li>
+<li>30명용 JupyterHub·Kubernetes(Namespace/Quota/PriorityClass) 접속 플랫폼 — 학생에게 Docker 권한 미부여</li>
+<li>AWS GPU 버스트 환경 (서버 유지보수 기간 비상 실습환경 겸용)</li>
 <li>ROS 2 기반 실물 로봇 연계망</li>
 </ul>
+<p>초기 투자 우선순위는 신규 GPU 서버보다 <strong>네트워크, NAS·백업, 사용자 접속 플랫폼, GPU
+자원관리, DGX Spark</strong>에 둡니다.</p>
 <p>HSU-PAC는 단순한 GPU 장비 구매가 아니라 <strong>학생 노트북–교내 GPU–대형 모델 노드–스토리지–클라우드–실물 로봇을 연결하는 Physical AI 교육·연구 운영체계</strong>로 구축해야 합니다.</p>
 <hr />
 <h2 id="_20">참고자료<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
