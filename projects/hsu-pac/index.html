@@ -802,6 +802,17 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
+        구조 타당성 시뮬레이션 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         자원 분배·회수 정책
       
     </span>
@@ -815,7 +826,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         소프트웨어 플랫폼
@@ -837,7 +848,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         권장 하이브리드 운영전략
@@ -870,7 +881,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         보안 및 운영정책
@@ -881,7 +892,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         구축 단계 및 일정
@@ -893,7 +904,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         증설 판단 기준
@@ -909,7 +920,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         기대 효과
@@ -920,7 +931,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
         자주 묻는 질문
@@ -931,7 +942,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
         최종 권고안
@@ -1027,6 +1038,11 @@
 </ol>
 <hr />
 <h2 id="_2">권장 시스템 아키텍처<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="HSU-PAC 시스템 블록도" loading="lazy" src="../../assets/hsu-pac-blockdiagram.png" />
+  </p>
+<figcaption>시스템 블록도 — 학생 30명은 서버로 접속(ROS 2·WebRTC), 대용량 모델은 DGX Spark 클러스터(초기 1~2대 → 최대 5대)가 담당</figcaption>
+</figure>
 <pre class="mermaid"><code>flowchart TB
     subgraph STUDENT["학생 실습 계층 · 30명"]
         NB["RTX 4060 노트북 ×30&lt;br/&gt;Windows 또는 Linux"]
@@ -1247,7 +1263,45 @@
 <li>실습 시간을 순환형으로 설계</li>
 <li>사용률 측정 후 RTX PRO 6000 추가 증설</li>
 </ol>
-<h3 id="_8">자원 분배·회수 정책<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_8">구조 타당성 시뮬레이션 검증<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>"30명이 서버에 접속해 ROS 2 통신으로 학습하고, 대용량 모델은 다수의 DGX Spark로 처리하는
+구조가 실제로 동작하는가"를 이산사건 시뮬레이션(수업 3시간 × 30회 반복)으로 검증했습니다.</p>
+<figure>
+<p><img alt="DGX Spark 대수별 대형 모델 잡 대기시간" loading="lazy" src="../../assets/hsupac_sim_spark_wait.png" /></p>
+</figure>
+<figure>
+<p><img alt="10G 네트워크 부하" loading="lazy" src="../../assets/hsupac_sim_network.png" /></p>
+</figure>
+<table>
+<thead>
+<tr>
+<th>검증 질문</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30명 동시 접속 (Jupyter/ROS 2 상시 세션)</td>
+<td><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> 가능 — 단, 서버 CPU는 48코어 이상 권장 (32코어는 시뮬 세션 4개 동시 구동 시 포화)</td>
+</tr>
+<tr>
+<td>MIG 4분할 조별 Isaac Sim 세션</td>
+<td><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> 가능 — 우선순위 예약제 전제, P95 대기 30분 미만</td>
+</tr>
+<tr>
+<td>다수 Spark로 대용량 모델 처리</td>
+<td><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> 가능 — 일반 주차 2대면 양호, 대형 모델 집중 주차(11~14주)는 3~5대 필요 (1~2대는 가동률 97~102% 포화)</td>
+</tr>
+<tr>
+<td>ROS 2 + WebRTC + NAS가 10G 내 수용</td>
+<td><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> 가능 — 피크 약 1.2Gbps로 10G의 12%만 사용</td>
+</tr>
+</tbody>
+</table>
+<p>시뮬레이션이 뒷받침하는 운영 경로: <strong>Spark 초기 1~2대로 시작 → 대형 모델 집중 주차 전
+3~5대로 증설(또는 부족분 AWS 병행)</strong>. RL 학습 잡은 배치 큐로 제출해 수업 후 완료를
+허용하고, ROS 2는 조별 <code>ROS_DOMAIN_ID</code> 분리로 DDS 디스커버리 폭주를 방지합니다.</p>
+<h3 id="_9">자원 분배·회수 정책<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ul>
 <li>MIG 인스턴스 단위 세션 예약제 — VRAM은 하드웨어 격리로 독점 원천 차단</li>
 <li>컨테이너별 CPU·RAM 쿼터(cgroup), GPU-hour 일일 상한</li>
@@ -1255,7 +1309,7 @@
 <li>실시간 사용량 대시보드 제공, 과도 사용 시 관리자 알림</li>
 </ul>
 <hr />
-<h2 id="_9">소프트웨어 플랫폼<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">소프트웨어 플랫폼<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1389,7 +1443,7 @@
 <p><strong>AWS가 유리한 경우</strong> — 학기말 1~2주에만 연산 수요가 급증하는 경우, 여러 GPU가 필요한 대규모 분산학습, 신규 모델의 단기 벤치마크, 장비 구매 전 성능 검증, 일시적인 연구과제 최대부하 처리</p>
 <p>AWS Spot은 비용을 크게 낮출 수 있지만 중단 가능성이 있으므로 체크포인트 저장, 자동 재시작, 인스턴스 자동 종료가 전제되어야 합니다.</p>
 <hr />
-<h2 id="_10">권장 하이브리드 운영전략<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_11">권장 하이브리드 운영전략<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">상시 수업</label><label for="__tabbed_1_2">대형 모델 실습</label><label for="__tabbed_1_3">학기말 캡스톤·연구과제</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1510,7 +1564,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="_11">보안 및 운영정책<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_12">보안 및 운영정책<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <ul>
 <li>학생에게 GPU 서버 관리자 권한을 부여하지 않음</li>
 <li>학생별 계정, 조별 Linux Group, 저장공간 Quota 분리</li>
@@ -1524,7 +1578,7 @@
 <li>GPU 사용률·온도·오류·스토리지 용량 통합 모니터링</li>
 </ul>
 <hr />
-<h2 id="_12">구축 단계 및 일정<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_13">구축 단계 및 일정<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <p>장비 발주 후 납품까지 <strong>2~3개월의 리드타임</strong>이 일반적이므로, 전체 기간은 <strong>6~9개월</strong>로 보수적으로 계획합니다. 납기 대기 기간에는 AWS 파일럿 환경으로 선행 교육·개발을 진행할 수 있습니다.</p>
 <table>
 <thead>
@@ -1562,7 +1616,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="_13">증설 판단 기준<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_14">증설 판단 기준<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>다음 조건 중 하나가 반복되면 GPU 증설을 검토합니다.</p>
 <ul>
 <li>수업 중 GPU 평균 사용률 80% 이상</li>
@@ -1572,7 +1626,7 @@
 <li>수강인원 30명 초과</li>
 </ul>
 <hr />
-<h2 id="_14">기대 효과<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h2 id="_15">기대 효과<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <ul>
 <li>30명이 동일한 표준 개발환경에서 Physical AI 실습</li>
 <li>개인 노트북 성능 차이로 인한 교육격차 완화</li>
@@ -1582,7 +1636,7 @@
 <li>반복 워크로드의 클라우드 비용 누적 방지, 일시적 최대부하만 AWS로 처리하여 과잉투자 방지</li>
 </ul>
 <hr />
-<h2 id="_15">자주 묻는 질문<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h2 id="_16">자주 묻는 질문<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>학생이 따로 준비할 것이 있나요?</summary>
 <p>없습니다. 브라우저와 교내망 접속만 있으면 됩니다. 개발환경은 전부 서버 쪽 컨테이너로
@@ -1605,7 +1659,7 @@
 산학과제에 공동 활용합니다.</p>
 </details>
 <hr />
-<h2 id="_16">최종 권고안<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h2 id="_17">최종 권고안<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <p>초기 구축은 다음 구성을 권장합니다.</p>
 <ul>
 <li>RTX PRO 6000 Blackwell Server Edition 96GB GPU 서버 1대 (향후 GPU 2~4장 확장 가능한 섀시)</li>

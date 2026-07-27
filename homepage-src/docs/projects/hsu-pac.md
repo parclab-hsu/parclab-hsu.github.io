@@ -45,6 +45,11 @@ Physical AI 교육은 일반적인 Python·AI 실습보다 훨씬 많은 연산�
 
 ## 권장 시스템 아키텍처
 
+<figure markdown>
+  ![HSU-PAC 시스템 블록도](../assets/hsu-pac-blockdiagram.png){ loading=lazy }
+  <figcaption>시스템 블록도 — 학생 30명은 서버로 접속(ROS 2·WebRTC), 대용량 모델은 DGX Spark 클러스터(초기 1~2대 → 최대 5대)가 담당</figcaption>
+</figure>
+
 ```mermaid
 flowchart TB
     subgraph STUDENT["학생 실습 계층 · 30명"]
@@ -217,6 +222,30 @@ RTX PRO 6000 한 장으로 30개의 완전 독립된 고해상도 Isaac Sim 세�
 3. Headless 학습과 3D 뷰포트 세션 분리
 4. 실습 시간을 순환형으로 설계
 5. 사용률 측정 후 RTX PRO 6000 추가 증설
+
+### 구조 타당성 시뮬레이션 검증
+
+"30명이 서버에 접속해 ROS 2 통신으로 학습하고, 대용량 모델은 다수의 DGX Spark로 처리하는
+구조가 실제로 동작하는가"를 이산사건 시뮬레이션(수업 3시간 × 30회 반복)으로 검증했습니다.
+
+<figure markdown>
+  ![DGX Spark 대수별 대형 모델 잡 대기시간](../assets/hsupac_sim_spark_wait.png){ loading=lazy }
+</figure>
+
+<figure markdown>
+  ![10G 네트워크 부하](../assets/hsupac_sim_network.png){ loading=lazy }
+</figure>
+
+| 검증 질문 | 판정 |
+|---|---|
+| 30명 동시 접속 (Jupyter/ROS 2 상시 세션) | :material-check-circle:{ style="color:#2e9e44" } 가능 — 단, 서버 CPU는 48코어 이상 권장 (32코어는 시뮬 세션 4개 동시 구동 시 포화) |
+| MIG 4분할 조별 Isaac Sim 세션 | :material-check-circle:{ style="color:#2e9e44" } 가능 — 우선순위 예약제 전제, P95 대기 30분 미만 |
+| 다수 Spark로 대용량 모델 처리 | :material-check-circle:{ style="color:#2e9e44" } 가능 — 일반 주차 2대면 양호, 대형 모델 집중 주차(11~14주)는 3~5대 필요 (1~2대는 가동률 97~102% 포화) |
+| ROS 2 + WebRTC + NAS가 10G 내 수용 | :material-check-circle:{ style="color:#2e9e44" } 가능 — 피크 약 1.2Gbps로 10G의 12%만 사용 |
+
+시뮬레이션이 뒷받침하는 운영 경로: **Spark 초기 1~2대로 시작 → 대형 모델 집중 주차 전
+3~5대로 증설(또는 부족분 AWS 병행)**. RL 학습 잡은 배치 큐로 제출해 수업 후 완료를
+허용하고, ROS 2는 조별 `ROS_DOMAIN_ID` 분리로 DDS 디스커버리 폭주를 방지합니다.
 
 ### 자원 분배·회수 정책
 
