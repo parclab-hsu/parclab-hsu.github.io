@@ -493,6 +493,39 @@ LED 직렬저항 계산으로 순방향 전압강하와 전류 제한을 연결�
 - I^2R 손실로 MOSFET 발열을 계산하게 한다.
 - 바디다이오드가 의도치 않게 전류를 흘리는 상황을 설명하게 한다.
 
+## 설계·검증 심화
+
+### MOSFET 전압·온도 여유
+
+42V 배터리에 40V 또는 50V MOSFET을 적용하면 배선 인덕턴스의 overshoot와 회생 과전압을 버티기 어렵다. 정상 최대전압뿐 아니라 switch-node ringing을 측정하고 TVS, DC-link capacitor, snubber와 함께 전압 여유를 정한다.
+
+데이터시트의 최소 `Rds(on)`은 주로 25°C 조건이다. 실제 접합온도에서 1.5~2배가 될 수 있으므로 온도 특성 곡선을 반영한다.
+
+```text
+Rhot = Rds(on,25°C) × temperature_factor
+Pcond = Irms² × Rhot × conduction_ratio
+Psw ≈ 0.5 × Vds × Id × (tr + tf) × fsw
+Pgate = Qg × Vgate × fsw
+```
+
+20A, 5mΩ, 온도계수 1.7, 도통비 50%라면 한 소자의 근사 도통손실은 `1.7W`이다.
+
+### 게이트 저항의 trade-off
+
+게이트 저항을 줄이면 전환시간과 switching loss가 줄어든다. 대신 ringing, EMI, Miller turn-on, 동시 도통 위험이 커진다. 같은 조건에서 `Vgs`, 스위칭 노드, deadtime, 소자 온도를 측정한다. 측정 결과로 게이트 저항을 정한다.
+
+### 후보 검토표
+
+| 검토 항목 | 데이터시트·측정 근거 |
+|---|---|
+| Vds 여유 | 최대 배터리 + 측정 overshoot |
+| 고온 Rds(on) | normalized curve 적용 |
+| SOA·avalanche | pulse 시간·반복 조건 |
+| Qg·Miller plateau | driver peak current·전환시간 |
+| 열경로 | RθJC, PCB 구리, heatsink, Ta |
+
+전류 정격 한 줄로 후보를 고르지 말고 실제 조건의 손실과 예상 접합온도를 비교한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

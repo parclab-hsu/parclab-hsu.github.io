@@ -488,6 +488,41 @@ MOSFET 방열 면적이 부족하면 짧은 벤치 테스트는 통과해도 장
 - 션트저항 손실과 ADC 입력전압을 동시에 계산하게 한다.
 - 하드웨어 보호와 소프트웨어 보호의 역할 차이를 설명하게 한다.
 
+## 설계·검증 심화
+
+### gate driver 구동 능력
+
+```text
+Igate,avg = Qg × fsw × switching_devices
+Igate,peak ≈ Qg / tswitch
+Cboot ≥ Qtotal / ΔVboot
+```
+
+`Qtotal`에는 MOSFET gate charge뿐 아니라 driver 소비, leakage, margin이 포함된다. bootstrap diode의 reverse voltage·recovery와 capacitor DC bias를 함께 확인한다.
+
+### current sensing 설계
+
+션트는 `Vshunt=I×Rshunt`, 손실은 `P=Irms²×Rshunt`로 계산한다. 작은 전압을 정확히 읽기 위해 전력 패드와 분리된 Kelvin sense를 쓴다. amplifier input common-mode, bandwidth, offset, <span class="keep-together">ADC 전체 범위를 검토한다.</span> software ADC over-current와 빠른 hardware comparator 차단을 구분한다.
+
+### hardware 기본 안전 상태
+
+- MCU가 reset·unpowered일 때 pull-down이 driver input을 off 상태로 유지한다.
+- driver UVLO와 fault output은 PWM enable 조건에 포함한다.
+- 하나의 enable 신호로 모든 phase를 확실히 차단할 수 있다.
+- hardware over-current는 firmware 정지와 무관하게 동작한다.
+- fault 원인과 recovery condition을 LED·UART로 진단할 수 있다.
+
+### 저에너지 bring-up 순서
+
+1. 무전원 상태에서 short와 polarity를 검사한다.
+2. motor 없이 12V·5V·3.3V auxiliary rail을 전류 제한 상태에서 확인한다.
+3. driver enable-off와 fault output을 확인한다.
+4. 낮은 DC-link voltage에서 PWM 입력과 게이트 출력만 측정한다.
+5. half-bridge 스위칭 노드와 deadtime을 확인한다.
+6. 저전압·저 duty·무부하 motor 시험으로 확장한다.
+
+`shunt → amplifier/comparator → fault input → PWM disable → fault latch → communication` 경로를 회로와 code 양쪽에서 추적한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

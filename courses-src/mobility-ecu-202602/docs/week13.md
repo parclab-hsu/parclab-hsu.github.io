@@ -478,6 +478,40 @@ ERC와 DRC 경고 중 무시 가능한 예외와 즉시 고칠 오류를 구분�
 - 전력 트레이스 폭을 결정할 때 고려할 요소를 쓰게 한다.
 - 테스트포인트 네 개의 위치와 측정 목적을 제안하게 한다.
 
+## 설계·검증 심화
+
+### schematic 품질 기준
+
+- 모든 power net에 전압과 최대 전류를 표시한다.
+- connector pin, signal direction, normal range, test point를 명시한다.
+- value뿐 아니라 tolerance, 전압·전력 정격, package를 검토한다.
+- unused pin, no-connect, boot strap, 디버그 커넥터의 의도를 남긴다.
+
+### symbol·footprint 검증
+
+symbol pin과 footprint pad가 실제 package와 일치하는지 top/bottom view 방향을 포함해 확인한다. MOSFET exposed pad, electrolytic polarity, connector pin 1, diode cathode는 실물과 1:1 출력으로 대조한다. 3D model이 맞는 것만으로는 검증이 끝나지 않는다.
+
+### net class와 제조 규칙
+
+<div class="table-scroll" markdown tabindex="0" role="region" aria-label="PCB net class 검토 표">
+
+| net class | 예 | 우선 검토 |
+|---|---|---|
+| high current | Battery·phase U/V/W | width·via·temperature rise |
+| switching | switch node·gate | length·loop area·clearance |
+| analog sense | shunt Kelvin·NTC | return path·noise distance |
+| digital/comm | UART·Hall | reference plane·ESD |
+
+</div>
+
+trace width는 한 개의 고정 숫자가 아니라 copper thickness, inner/outer layer, 허용 temperature rise, 주변 copper, length로 정한다. clearance·creepage는 maximum voltage, pollution environment, manufacturer capability를 근거로 설정한다.
+
+### release package
+
+`schematic PDF, PCB source, Gerber, drill, BOM, pick-and-place, net-class rule, ERC/DRC result, known-issue list`를 같은 버전으로 묶는다. 제조 전 다른 팀이 pin 1, polarity, footprint, unconnected net을 독립 검토한다.
+
+power device copper, thermal via, 방열판 접촉부, airflow를 계획한다. SWD·UART·voltage·current test point는 조립 후에도 접근 가능하게 둔다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

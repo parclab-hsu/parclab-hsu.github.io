@@ -507,6 +507,40 @@ PWM 주파수와 ARR 값의 관계를 계산하게 한다. 다만 최악 조건�
 - PWM 주파수와 ARR 값의 관계를 계산하게 한다.
 - 인버터 Fault 발생 시 MCU가 해야 할 첫 행동을 말하게 한다.
 
+## 설계·검증 심화
+
+### 한 sector의 실제 전류 경로
+
+U상은 PWM high, V상은 low, W상은 floating 상태로 둔다. 이때 전류는 <code>DC+ → U high-side → <span class="keep-together">U/V 권선</span> → V low-side → DC-</code>로 흐른다. PWM off 구간에도 권선 인덕턴스 때문에 전류는 즉시 0이 되지 않고 MOSFET channel 또는 body diode를 통해 freewheel한다.
+
+### PWM timer 계산
+
+```text
+edge-aligned:   fpwm = ftimer / ((PSC+1) × (ARR+1))
+center-aligned: fpwm ≈ ftimer / (2 × (PSC+1) × ARR)
+Duty ≈ CCR / ARR
+```
+
+주파수를 높이면 current ripple과 가청소음이 줄어든다. 대신 MOSFET switching loss와 driver power는 증가한다. motor inductance, loss, audible noise, ADC sampling point를 함께 고려해 결정한다.
+
+### deadtime·bootstrap 제약
+
+- deadtime은 driver delay, MOSFET turn-off, 온도·공차를 포함한다.
+- 너무 짧으면 shoot-through, 너무 길면 body-diode conduction과 torque distortion이 증가한다.
+- bootstrap high-side driver는 스위칭 노드가 낮아지는 충전 시간이 필요하다. 따라서 100% duty를 계속 유지하지 못할 수 있다.
+- 계산값만 믿지 말고 high/low `Vgs`와 스위칭 노드를 동시에 측정한다.
+
+### coast·brake·회생
+
+모든 switch를 끄는 coast와 low/high-side를 이용한 dynamic brake는 전류 경로가 다르다. 감속 중 motor가 발전기로 동작하면 DC-link voltage가 상승한다. battery/BMS가 충전전류를 받지 못하는 조건에서는 over-voltage protection과 감속 제한이 필요하다.
+
+| 측정 채널 | 확인 항목 | 이상 징후 |
+|---|---|---|
+| PWM input | frequency·duty·jitter | pulse 누락 |
+| high-side Vgs | source 기준 gate voltage | 부족한 gate drive |
+| switch node | overshoot·ringing | Vds 정격 접근 |
+| shunt voltage | current ripple·spike | offset·noise |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

@@ -504,6 +504,40 @@ DC/BLDC 모터 원리의 시스템 위치, 수치 근거, 실험 증거, 안전 
 - 홀 신호 조합 하나를 주고 다음 정류 구간을 고르게 한다.
 - 부하 증가 시 전류, 속도, 온도 변화 방향을 예측하게 한다.
 
+## 설계·검증 심화
+
+### 주행 요구에서 모터 토크 역산
+
+경사력만 계산하지 말고 가속력과 구름저항을 포함한다.
+
+```text
+Ftotal = m×a + m×g×sin(θ) + Crr×m×g×cos(θ)
+Twheel = Ftotal × rwheel
+Tmotor = Twheel / (gear_ratio × ηdrivetrain × driven_wheels)
+```
+
+질량 20kg, 경사 15°, 바퀴 반지름 0.1m, `Crr=0.03`, 가속도 0.2m/s², 구동 바퀴 2개, 감속비 10:1, 효율 80%이면:
+
+```text
+Fslope ≈ 50.8N, Froll ≈ 5.7N, Faccel = 4.0N
+Twheel,total ≈ 6.05N·m
+Tmotor,each ≈ 0.378N·m
+```
+
+이는 연속 요구 토크의 출발점이다. 문턱, 토양, 기동을 위한 peak torque와 허용 지속시간은 별도 요구사항으로 둔다.
+
+### 모터 상수와 열 한계
+
+- SI 단위에서 `T = Kt × I`, `E = Ke × ω`로 근사한다.
+- `Kv[rpm/V]`만 제공되면 단위를 변환해 `Kt`와 일관성을 확인한다.
+- 감속비가 커지면 wheel torque는 증가하지만 최고속도와 역구동성은 낮아진다.
+- stall current는 매우 크므로 정지 상태에서 PWM을 오래 인가하지 않는다.
+- motor, gearbox, tire, battery, inverter 중 가장 낮은 한계가 시스템 한계다.
+
+### 선정 산출물
+
+계산한 speed·continuous torque·peak torque·current를 후보 모터의 실제 사양과 대조한다. 충족하지 못한 항목은 추정값으로 숨기지 않고 미검증 risk와 다음 시험으로 기록한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

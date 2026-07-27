@@ -489,6 +489,48 @@ Ki 추가 후 정상상태오차가 줄었는지 그래프 위에서 확인한�
 - 오버슈트가 큰 로그를 보고 Kp와 Ki 중 무엇을 조정할지 말하게 한다.
 - 듀티 포화가 생겼을 때 anti-windup이 필요한 이유를 설명하게 한다.
 
+## 설계·검증 심화
+
+### 이산시간 PI 구현
+
+제어기가 sample period `Ts`마다 실행될 때:
+
+```text
+error[k] = ref[k] - fdb[k]
+I[k] = I[k-1] + Ki × Ts × error[k]
+u_raw[k] = Kp × error[k] + I[k]
+u[k] = clamp(u_raw[k], u_min, u_max)
+```
+
+`Ts`가 바뀌면 적분 속도도 바뀐다. 실제 task 주기와 실행시간을 측정한다. 안전상 `u_min/u_max`는 자료형 범위가 아니라 current·temperature·시험조건으로 허용한 PWM 범위로 둔다.
+
+### anti-windup 선택
+
+- **conditional integration**: 포화 방향으로 오차가 더 커질 때 적분을 멈춘다.
+- **integrator clamp**: `Imin ≤ Iterm ≤ Imax`로 제한한다.
+- **back-calculation**: 포화 전후 출력 차이로 적분항을 되돌린다.
+
+### 속도 측정과 filter
+
+Hall edge interval 기반 RPM은 저속에서 갱신이 드물고 양자화가 크다. 강한 low-pass filter는 noise를 줄이지만 feedback delay로 진동을 만들 수 있다. raw RPM, filtered RPM, reference, duty, current를 같은 시간축에 기록한다.
+
+### 안전한 tuning 절차
+
+1. 바퀴를 지면에서 띄운다. current·duty limit은 낮은 값으로 설정한다.
+2. `Ki=0`과 작은 `Kp`에서 시작해 response와 oscillation을 관찰한다.
+3. steady-state error가 남으면 `Ki`를 높인다. 한 번에 조금씩 조정한다.
+4. command step과 load change에서 rise time, overshoot, settling time, current를 비교한다.
+5. stall·sensor fault에서는 controller보다 protection이 우선하는지 확인한다.
+
+<div class="table-scroll" markdown tabindex="0" role="region" aria-label="PI 튜닝 실험 기록 표">
+
+| 실험 | Kp | Ki | 상승시간 | overshoot | 정착시간 | 정상상태 오차 | 최대전류 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| A | | | | | | | |
+| B | | | | | | | |
+
+</div>
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

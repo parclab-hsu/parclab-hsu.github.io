@@ -494,6 +494,39 @@ LDO 손실전력과 온도 상승 가능성을 계산하게 한다. 또한 실�
 - 벅 컨버터의 빠른 전류 루프를 그림에 표시하게 한다.
 - 전원 인가 전 체크리스트에 들어갈 항목 다섯 개를 쓰게 한다.
 
+## 설계·검증 심화
+
+### 전원은 rail별 예산으로 설계한다
+
+| rail | 부하 예 | 최대전류 | 30% 여유 적용 |
+|---|---|---:|---:|
+| 12V | gate driver·fan | 0.30A | 0.39A |
+| 5V | Hall·통신 모듈 | 0.45A | 0.59A |
+| 3.3V | MCU·logic | 0.25A | 0.33A |
+
+입력전류는 출력전류와 같지 않다. `Pin=Pout/η`로 효율을 적용하고 battery, fuse, connector 정격까지 추적한다.
+
+### 입력 보호와 기동 순서
+
+`connector → fuse → reverse-polarity protection → TVS → input filter → DC/DC` 순으로 검토한다. 대용량 DC-link capacitor는 돌입전류를 만들므로 pre-charge 또는 current limit 필요성을 판단한다. 전원이 천천히 상승하거나 순간 강하할 때 반복 reset을 막기 위해 BOR와 전원 정상 신호(PG)도 확인한다.
+
+### 벅 컨버터 계산
+
+```text
+D ≈ Vout / Vin
+ΔIL ≈ (Vin - Vout) × D / (L × fsw)
+Ipeak ≈ Iout + ΔIL/2
+```
+
+인덕터 saturation current는 계산한 `Ipeak`보다 높아야 한다. 입력 커패시터는 고주파 switching loop를 담당하므로 switch 가까이에 배치하고, 출력 커패시터는 ripple뿐 아니라 load transient와 제어루프 안정성 조건을 만족해야 한다.
+
+### 전원 계측 조건
+
+- 긴 probe GND 대신 ground spring을 사용한다.
+- ripple 캡처에 AC/DC coupling, bandwidth limit, 부하 조건을 기록한다.
+- 무부하, 정상부하, 최대부하, 기동, 모터 급가감속을 나누어 측정한다.
+- 3.3V rail과 함께 reset, driver UVLO, ADC reference를 확인한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

@@ -516,6 +516,50 @@ HSI의 핀명과 펌웨어 변수명을 서로 대응시킨다. 이 결과를 �
 - HSI에 들어갈 열 이름 다섯 개를 쓰게 한다.
 - 시스템 블록도에서 전원과 정보 흐름을 분리해 설명하게 한다.
 
+## 설계·검증 심화
+
+### 요구사항 계층과 양방향 추적
+
+```text
+MIS-001 경사 15° 주행
+ ├─ SYS-DRV-001 바퀴 토크 6N·m 이상
+ ├─ HW-PWR-003 상전류 30A peak 허용
+ └─ SW-SAFE-004 과전류 감지 후 PWM 차단
+```
+
+각 하위 요구사항에는 부모 ID, 설계 요소, 시험 ID를 연결한다. 정방향으로 요구사항에서 회로·코드·시험까지 내려간다. 역방향 추적도 가능해야 한다. 임의의 pin·function·test에서 관련 요구사항으로 올라간다.
+
+### HSI는 interface contract다
+
+pin 번호뿐 아니라 다음을 기록한다.
+
+- 정상·고장 voltage range와 logic polarity
+- pull-up/down, source impedance, input filter
+- reset 중·초기화 전·정상 운전 상태
+- sample period 또는 최대 허용 latency
+- open/short 탐지와 safe state
+- schematic net, firmware symbol, test point
+
+스로틀이 0~3.3V 입력이라는 설명만으로는 부족하다. 정상범위가 0.8~2.8V라면 밖의 값은 단선·단락 fault로 정의하고 PWM을 금지한다.
+
+### 상태와 fault 복구
+
+```text
+POWER_OFF → INIT → READY → RUN
+               └→ FAULT ←─┘
+FAULT → 원인 제거 + 명시적 재시작 → READY
+```
+
+각 상태의 PWM, LED, UART, sensor validity, fault latch 값을 표로 정한다. MCU reset 중에도 gate driver가 켜지지 않도록 hardware default state를 함께 확인한다.
+
+### 리뷰 결함 관리
+
+- **Critical**: 장비·인명 손상 가능 또는 차단 경로 없음
+- **Major**: 요구사항 미충족·interface 충돌
+- **Minor**: 문서 불일치·근거·시험조건 부족
+
+각 결함은 담당자, 기한, 수정 증거, 재검토 결과와 함께 관리한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

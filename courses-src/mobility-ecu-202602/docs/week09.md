@@ -483,6 +483,36 @@ A/B 엔코더 파형에서 방향을 판별하게 한다. 하지만 재현 절�
 - 클럭 주파수가 바뀌면 SysTick과 UART가 어떻게 영향을 받는지 설명하게 한다.
 - A/B 엔코더 파형에서 방향을 판별하게 한다.
 
+## 설계·검증 심화
+
+### clock tree를 끝까지 추적한다
+
+`HSE/HSI → PLL → SYSCLK → AHB → APB1/APB2` 순서로 주파수를 계산한다. STM32 계열은 APB prescaler가 1보다 클 때 timer clock이 PCLK의 2배가 될 수 있다. 해당 MCU의 reference manual에서 이 규칙을 확인한다.
+
+| 설정 오류 | 대표 증상 |
+|---|---|
+| Flash wait state | 고속 동작 불안정·fault |
+| APB prescaler | timer period·UART baud 오차 |
+| EXTI source mapping | 다른 port edge 또는 무반응 |
+| NVIC priority | 높은 우선순위 task 지연 |
+| pending flag 처리 | ISR 반복 진입 |
+
+### EXTI latency와 debounce
+
+button·Hall edge가 들어오면 ISR 시작 시 debug pin을 toggle한다. 입력 edge와 toggle 사이를 logic analyzer로 측정해 latency를 확인한다. mechanical switch는 한 번 눌러도 다중 edge가 생기므로 time-window 또는 state-machine debounce를 적용한다. Hall signal에는 느린 debounce 대신 최소 pulse interval과 유효 state transition 검사를 사용한다.
+
+### ISR 설계 원칙
+
+- source와 pending flag를 확인한다. <span class="keep-together">해당 flag만 clear한다.</span>
+- timestamp·state capture·event flag만 빠르게 처리한다.
+- blocking UART, 긴 loop, 복잡한 floating-point 연산은 main task로 넘긴다.
+- priority는 발생 빈도가 아니라 최대 허용 latency와 시스템 risk로 정한다.
+- ISR과 main이 공유하는 다중 field는 읽는 순간의 일관성을 보장한다.
+
+### 측정 실습
+
+EXTI ISR 시작과 종료에서 각각 debug pin을 toggle한다. 정상 edge, bounce, 불법 Hall 전이, 동시에 발생한 UART interrupt 조건에서 latency와 실행시간을 비교하고 deadline 초과 여부를 기록한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

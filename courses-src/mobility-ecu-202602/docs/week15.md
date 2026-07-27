@@ -507,6 +507,58 @@ Fault 발생 시 첫 세 동작을 순서대로 말하게 한다. 다만 최악 
 - Fault 발생 시 첫 세 동작을 순서대로 말하게 한다.
 - 최종 보고서에 들어갈 요구사항별 검증표를 완성하게 한다.
 
+## 설계·검증 심화
+
+### Hall 정류 상태기계
+
+유효 Hall state는 6개다. 회전 방향에 따라 순서도 바뀐다. 이전 state와 새 state 조합으로 forward, reverse, illegal transition을 판정한다. 모터 상 또는 Hall wiring을 바꾸면 기존 commutation table을 그대로 사용할 수 없다.
+
+```text
+mechanical_rpm = 60 × hall_edge_frequency / (6 × pole_pairs)
+```
+
+low speed에서는 Hall timeout으로 RPM을 0으로 갱신하고, 매우 짧은 pulse는 minimum interval과 valid transition 검사로 제거한다.
+
+```text
+DISABLED → ALIGN/START → RUN → FAULT
+    ↑          │          │       │
+    └──────────┴── STOP ──┴───────┘
+```
+
+FAULT에서는 PWM을 차단하고 원인을 latch하며, 원인 제거와 명시적 restart 전에는 RUN으로 복귀하지 않는다.
+
+### 재현 가능한 최종 시험
+
+시험 명세에는 다음 항목을 포함한다.
+
+- 식별 정보: Test ID, 요구사항 ID, hardware·firmware version
+- 시험 조건: 장비, 초기조건, 입력 절차, safety limit
+- 판정 근거: expected range, actual result, evidence, PASS/FAIL
+
+동작 영상만으로는 current limit과 firmware version을 재현할 수 없다.
+
+### pre-flight와 fault injection
+
+- 기구를 고정한다.
+- 바퀴를 지면에서 띄운다.
+- 비상 정지 버튼을 손이 닿는 곳에 둔다.
+- polarity, fuse, current limit, DC 링크 전압 확인
+- 초기 PWM off, throttle plausibility, Hall 000/111 검사
+- fault LED·UART와 hardware cutoff 통과 후 motor 시험
+- 저전압, Hall 분리, throttle range fault, temperature mock input을 안전하게 주입
+
+실제 hard short 대신 제한된 signal injection이나 low-energy 시험으로 cutoff latency, fault latch, diagnostic message, restart condition을 확인한다.
+
+<div class="table-scroll" markdown tabindex="0" role="region" aria-label="최종 시험 결과 표">
+
+| Test ID | 요구사항 | 입력·조건 | 기대 결과 | 증거 | 판정 |
+|---|---|---|---|---|---|
+| T-PWR-01 | REQ-PWR-001 | min·nominal·max input | 3.3V 허용범위 | DMM·waveform | |
+| T-SAFE-02 | REQ-SAFE-001 | fault signal injection | 제한시간 내 PWM off | logic capture | |
+| T-DRV-03 | REQ-DRV-001 | no-load low-speed | direction·RPM 정상 | log·video | |
+
+</div>
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

@@ -489,6 +489,33 @@ PCB 노이즈·그라운드의 시스템 위치, 수치 근거, 실험 증거, �
 - ADC 값 튐을 배치, 샘플링, 필터 세 관점으로 분류하게 한다.
 - 노이즈 개선안을 커패시터 추가 외에 두 가지 제안하게 한다.
 
+## 설계·검증 심화
+
+### source-path-victim으로 원인 분리
+
+noise 문제를 source(빠른 voltage/current 변화), coupling path(common impedance·parasitic C/L), victim(ADC·Hall·UART)으로 나눈다. 대책은 source edge를 완화하는지, 결합 경로를 줄이는지, victim 내성을 높이는지 명확히 설명한다.
+
+### 공통 임피던스와 return path
+
+power current와 sensor current가 같은 좁은 GND를 공유하면 `Vnoise=I×Zcommon`이 측정 기준 전압을 흔든다. GND plane을 무조건 분리하면 고주파 귀환 전류가 우회해 loop area가 커질 수 있다. 기능별 current가 어디에서 흐르고 합류하는지 먼저 표시한다.
+
+### 민감 신호 배선
+
+- shunt는 전력 패드와 분리된 Kelvin pair로 amplifier에 연결한다.
+- differential pair는 가깝게, 같은 환경을 지나도록 배선한다.
+- ADC RC filter와 protection은 <span class="keep-together">MCU pin 옆에 배치한다.</span>
+- gate loop의 driver-gate-source 경로를 줄인다. common-source inductance도 최소화한다.
+- switch-node copper는 전류·열 요구를 만족하는 범위에서 면적을 최소화한다.
+
+### 대책 A/B 시험
+
+1. PWM off에서 ADC variance와 UART error를 기준값으로 측정한다.
+2. low·medium·maximum allowed duty에서 같은 값을 기록한다.
+3. gate resistor 또는 snubber 한 요소만 변경한다.
+4. switch-node overshoot, ADC standard deviation, MOSFET temperature, efficiency를 비교한다.
+
+접지형 oscilloscope GND를 phase node나 상측 MOSFET source에 연결하지 않는다. probe 종류, 배율, bandwidth limit, load condition을 파형과 함께 기록한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

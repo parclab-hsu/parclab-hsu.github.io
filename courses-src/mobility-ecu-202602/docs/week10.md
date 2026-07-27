@@ -498,6 +498,39 @@ UART 보레이트를 일부러 틀리게 설정해 깨진 문자를 관찰한 �
 - Timer 클럭, PSC, ARR로 주파수를 계산하게 한다.
 - UART 로그 형식을 정하고 Teleplot에 표시될 변수명을 설계하게 한다.
 
+## 설계·검증 심화
+
+### PWM에 동기화한 ADC sampling
+
+switching edge 직후에는 noise가 크다. current가 비교적 안정된 구간을 골라 timer trigger로 ADC를 동기화한다. channel별 sample time과 total conversion time을 계산한다. offset은 PWM off 상태에서 여러 sample을 평균한다.
+
+```text
+Vpin = raw / 4095 × Vref
+Vsensor = (Vpin - Voffset) / gain
+```
+
+### Timer 주기와 실제 실행시간
+
+```text
+fupdate = ftimer / ((PSC+1) × (ARR+1))
+Tupdate = 1 / fupdate
+```
+
+설정값만 제출하지 말고 GPIO toggle 또는 cycle counter로 실제 period와 worst-case execution time을 측정한다. 1ms task가 2ms 걸리면 <span class="keep-together">deadline 미준수다.</span> 결과는 event 누락과 schedule 지연이다.
+
+### UART 처리량 예산
+
+8-N-1 UART는 1byte 전송에 약 10bit가 필요하다. 115200bps의 이론상 처리량은 약 11,520byte/s다. 50byte message를 1kHz로 보내면 `50,000byte/s`가 필요해 전송할 수 없다. rate를 낮추거나 binary packet, ring buffer, interrupt/DMA를 사용한다.
+
+| event | 목표 주기·지연 | 측정 방법 | 실제값 | 판정 |
+|---|---:|---|---:|---|
+| ADC trigger | | PWM·debug pin 비교 | | |
+| control task | | cycle counter | | |
+| UART status | | terminal timestamp | | |
+| Hall EXTI | | logic analyzer | | |
+
+스로틀을 천천히 바꾸며 `ADC raw → calibrated voltage → command duty → UART log`가 한 시간축에서 일관되게 움직이는지 확인한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

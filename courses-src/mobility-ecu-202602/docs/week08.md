@@ -493,6 +493,39 @@ HAL 코드 한 줄이 어떤 레지스터 비트와 대응되는지 주석으로
 - 풀업 입력 회로에서 버튼을 누를 때 논리값이 어떻게 되는지 말하게 한다.
 - HAL과 레지스터 직접 제어의 장단점을 하나씩 쓰게 한다.
 
+## 설계·검증 심화
+
+### read-modify-write와 원자적 GPIO
+
+`GPIOx->ODR ^= mask`는 register를 읽고 수정한 뒤 다시 쓴다. 이때 interrupt가 같은 register를 갱신하면 변경이 유실될 수 있다. `BSRR`은 특정 pin의 set/reset을 단일 write로 처리한다.
+
+```c
+GPIOC->BSRR = (1U << 6);         /* PC6 set */
+GPIOC->BSRR = (1U << (6 + 16));  /* PC6 reset */
+```
+
+하드웨어가 비동기로 바꾸거나 ISR과 main이 공유하는 값에는 `volatile`이 필요할 수 있지만, `volatile`은 atomicity나 mutual exclusion을 보장하지 않는다.
+
+### reset에서 main까지
+
+reset vector는 초기 stack pointer와 `Reset_Handler`를 가리킨다. startup code는 Flash의 초기값을 RAM의 `.data` 영역으로 복사한다. `.bss` 영역은 0으로 만든 뒤 `SystemInit()`과 `main()`으로 이동한다. vector table 함수명과 실제 handler가 다르면 기본 handler로 진입한다.
+
+### GPIO register 진단 순서
+
+1. RCC peripheral clock enable bit를 확인한다.
+2. MODER, alternate function, pull, output type을 register view에서 확인한다.
+3. output command 뒤 ODR/IDR과 실제 pin voltage를 비교한다.
+4. reserved bit를 보존했는지 reference manual과 대조한다.
+5. HAL 코드와 직접 register 코드가 만든 최종 register 값을 비교한다.
+
+| 설정 | 잘못되었을 때 증상 |
+|---|---|
+| GPIO clock | register write 무반응 |
+| MODER | input/output 기능 불일치 |
+| PUPDR | floating input·false edge |
+| OSPEEDR | 느린 edge 또는 불필요한 EMI |
+| alternate function | PWM·UART pin 무출력 |
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |
