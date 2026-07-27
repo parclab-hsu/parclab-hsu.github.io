@@ -373,6 +373,24 @@ AWS Spot은 비용을 크게 낮출 수 있지만 중단 가능성이 있으므�
 
 ---
 
+## 교육·연구 테스트베드 공간 구성
+
+**"생각하고 학습시키는 공간(AI 실습실)"과 "움직이고 검증하는 공간(로봇 실증 테스트베드)"**을
+연결한 공간 구성안입니다. 두 공간은 10/25GbE로 서버실(GPU 서버·NAS·Core Switch·Kubernetes)과
+데이터/제어가 연동됩니다.
+
+<figure markdown>
+  ![Physical AI 교육·연구 테스트베드 공간 구성안](../assets/hsu-pac-testbed-layout.png){ loading=lazy }
+  <figcaption>Physical AI 교육·연구 테스트베드 공간 구성안 — 실습실(조별 5테이블) · 로봇 실증 6존 · Mission 준비존 · 서버실</figcaption>
+</figure>
+
+| 구역 | 구성 | 역할 |
+|---|---|---|
+| Physical AI 실습실 (파랑) | 조별 실습 테이블 5개(6인) · 교수자 시연/전자칠판 · 장비 캐비닛 · JupyterHub/VS Code/ROS 2 | 시뮬레이션·개발 — 서버 접속 실습 |
+| 로봇 실증 공간 (주황) | ① Mobile Robot Arena(AMR·주행 실증) ② Robot Manipulation Cell(협동로봇·F/T 센서) ③ Wearable Robot·HRI ④ Sensor & Perception Studio(RGB-D·LiDAR·캘리브레이션) ⑤ Maker & Rapid Prototyping(3D프린터·전자제작) ⑥ Presentation·Collaboration(발표·전시·기업 미팅) | sim-to-real 검증·실증·시연 |
+| Mission 준비존 (연두) | Mission 1~5: 이동·주행 / 비전·인식 / 센서 캘리브레이션 / 조작·매니퓰레이션 / 통합·협업 학습 | 조별 미션 수행 — 커리큘럼과 1:1 대응 |
+| 서버실·기자재실 | GPU 서버·NAS·Core Switch·Kubernetes / 로봇·센서·부품 보관 | 인프라·자재 |
+
 ## 교육환경 3계층 구조
 
 ```mermaid
