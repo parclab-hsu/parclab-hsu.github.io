@@ -1749,6 +1749,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계·검증 심화
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="설계·검증 심화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mosfet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MOSFET 전압·온도 여유
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        게이트 저항의 trade-off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        후보 검토표
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3_5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1760,7 +1810,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_59" class="md-nav__link">
+  <a href="#_61" class="md-nav__link">
     <span class="md-ellipsis">
       
         📎 수업자료 활용
@@ -1771,7 +1821,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_60" class="md-nav__link">
+  <a href="#_62" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 이해 확인 질문
@@ -1782,7 +1832,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_61" class="md-nav__link">
+  <a href="#_63" class="md-nav__link">
     <span class="md-ellipsis">
       
         🧪 실습·과제
@@ -3642,6 +3692,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계·검증 심화
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="설계·검증 심화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mosfet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MOSFET 전압·온도 여유
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        게이트 저항의 trade-off
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        후보 검토표
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3_5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3653,7 +3753,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_59" class="md-nav__link">
+  <a href="#_61" class="md-nav__link">
     <span class="md-ellipsis">
       
         📎 수업자료 활용
@@ -3664,7 +3764,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_60" class="md-nav__link">
+  <a href="#_62" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 이해 확인 질문
@@ -3675,7 +3775,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_61" class="md-nav__link">
+  <a href="#_63" class="md-nav__link">
     <span class="md-ellipsis">
       
         🧪 실습·과제
@@ -4197,6 +4297,50 @@
 <li>I^2R 손실로 MOSFET 발열을 계산하게 한다.</li>
 <li>바디다이오드가 의도치 않게 전류를 흘리는 상황을 설명하게 한다.</li>
 </ul>
+<h2 id="_59">설계·검증 심화<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h2>
+<h3 id="mosfet">MOSFET 전압·온도 여유<a class="headerlink" href="#mosfet" title="Permanent link">&para;</a></h3>
+<p>42V 배터리에 40V 또는 50V MOSFET을 적용하면 배선 인덕턴스의 overshoot와 회생 과전압을 버티기 어렵다. 정상 최대전압뿐 아니라 switch-node ringing을 측정하고 TVS, DC-link capacitor, snubber와 함께 전압 여유를 정한다.</p>
+<p>데이터시트의 최소 <code>Rds(on)</code>은 주로 25°C 조건이다. 실제 접합온도에서 1.5~2배가 될 수 있으므로 온도 특성 곡선을 반영한다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Rhot = Rds(on,25°C) × temperature_factor
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Pcond = Irms² × Rhot × conduction_ratio
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Psw ≈ 0.5 × Vds × Id × (tr + tf) × fsw
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Pgate = Qg × Vgate × fsw
+</code></pre></div>
+<p>20A, 5mΩ, 온도계수 1.7, 도통비 50%라면 한 소자의 근사 도통손실은 <code>1.7W</code>이다.</p>
+<h3 id="trade-off">게이트 저항의 trade-off<a class="headerlink" href="#trade-off" title="Permanent link">&para;</a></h3>
+<p>게이트 저항을 줄이면 전환시간과 switching loss가 줄어든다. 대신 ringing, EMI, Miller turn-on, 동시 도통 위험이 커진다. 같은 조건에서 <code>Vgs</code>, 스위칭 노드, deadtime, 소자 온도를 측정한다. 측정 결과로 게이트 저항을 정한다.</p>
+<h3 id="_60">후보 검토표<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>검토 항목</th>
+<th>데이터시트·측정 근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vds 여유</td>
+<td>최대 배터리 + 측정 overshoot</td>
+</tr>
+<tr>
+<td>고온 Rds(on)</td>
+<td>normalized curve 적용</td>
+</tr>
+<tr>
+<td>SOA·avalanche</td>
+<td>pulse 시간·반복 조건</td>
+</tr>
+<tr>
+<td>Qg·Miller plateau</td>
+<td>driver peak current·전환시간</td>
+</tr>
+<tr>
+<td>열경로</td>
+<td>RθJC, PCB 구리, heatsink, Ta</td>
+</tr>
+</tbody>
+</table>
+<p>전류 정격 한 줄로 후보를 고르지 말고 실제 조건의 손실과 예상 접합온도를 비교한다.</p>
 <h2 id="3_5">⏱️ 3시간 수업 운영안<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4229,7 +4373,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_59">📎 수업자료 활용<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h2>
+<h2 id="_61">📎 수업자료 활용<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -4252,7 +4396,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_60">✅ 이해 확인 질문<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h2>
+<h2 id="_62">✅ 이해 확인 질문<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h2>
 <ol>
 <li>MOSFET이 단순 스위치처럼 보이지만 게이트드라이버가 필요한 이유를 말한다.</li>
 <li>도통손실과 스위칭손실을 구분한다.</li>
@@ -4262,7 +4406,7 @@
 <p class="admonition-title">📌 보충 설명 — 실전 팁·주의점</p>
 <p>MOSFET은 <strong>정전기(ESD)에 약함</strong> — 게이트 만지기 전 몸을 방전한다. 데이터시트의 SOA(안전동작영역)를 확인한다.</p>
 </div>
-<h2 id="_61">🧪 실습·과제<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h2>
+<h2 id="_63">🧪 실습·과제<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> MOSFET 데이터시트로 정격·<code>Rds(on)</code>·게이트 전하 분석표 작성</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Turn-on 파형에서 Miller Plateau 구간 설명</li>

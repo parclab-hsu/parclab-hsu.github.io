@@ -1878,6 +1878,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계·검증 심화
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="설계·검증 심화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-modify-write-gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read-modify-write와 원자적 GPIO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reset에서 main까지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpio-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPIO register 진단 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3_5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1889,7 +1939,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_58" class="md-nav__link">
+  <a href="#_59" class="md-nav__link">
     <span class="md-ellipsis">
       
         📎 수업자료 활용
@@ -1900,7 +1950,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_59" class="md-nav__link">
+  <a href="#_60" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 이해 확인 질문
@@ -1922,7 +1972,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_60" class="md-nav__link">
+  <a href="#_61" class="md-nav__link">
     <span class="md-ellipsis">
       
         🧪 실습·과제
@@ -3631,6 +3681,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계·검증 심화
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="설계·검증 심화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-modify-write-gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read-modify-write와 원자적 GPIO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reset에서 main까지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpio-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPIO register 진단 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3_5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3642,7 +3742,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_58" class="md-nav__link">
+  <a href="#_59" class="md-nav__link">
     <span class="md-ellipsis">
       
         📎 수업자료 활용
@@ -3653,7 +3753,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_59" class="md-nav__link">
+  <a href="#_60" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 이해 확인 질문
@@ -3675,7 +3775,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_60" class="md-nav__link">
+  <a href="#_61" class="md-nav__link">
     <span class="md-ellipsis">
       
         🧪 실습·과제
@@ -4177,6 +4277,53 @@
 <li>풀업 입력 회로에서 버튼을 누를 때 논리값이 어떻게 되는지 말하게 한다.</li>
 <li>HAL과 레지스터 직접 제어의 장단점을 하나씩 쓰게 한다.</li>
 </ul>
+<h2 id="_58">설계·검증 심화<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h2>
+<h3 id="read-modify-write-gpio">read-modify-write와 원자적 GPIO<a class="headerlink" href="#read-modify-write-gpio" title="Permanent link">&para;</a></h3>
+<p><code>GPIOx-&gt;ODR ^= mask</code>는 register를 읽고 수정한 뒤 다시 쓴다. 이때 interrupt가 같은 register를 갱신하면 변경이 유실될 수 있다. <code>BSRR</code>은 특정 pin의 set/reset을 단일 write로 처리한다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">BSRR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span><span class="w">         </span><span class="cm">/* PC6 set */</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">BSRR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">6</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16</span><span class="p">));</span><span class="w">  </span><span class="cm">/* PC6 reset */</span>
+</code></pre></div>
+<p>하드웨어가 비동기로 바꾸거나 ISR과 main이 공유하는 값에는 <code>volatile</code>이 필요할 수 있지만, <code>volatile</code>은 atomicity나 mutual exclusion을 보장하지 않는다.</p>
+<h3 id="reset-main">reset에서 main까지<a class="headerlink" href="#reset-main" title="Permanent link">&para;</a></h3>
+<p>reset vector는 초기 stack pointer와 <code>Reset_Handler</code>를 가리킨다. startup code는 Flash의 초기값을 RAM의 <code>.data</code> 영역으로 복사한다. <code>.bss</code> 영역은 0으로 만든 뒤 <code>SystemInit()</code>과 <code>main()</code>으로 이동한다. vector table 함수명과 실제 handler가 다르면 기본 handler로 진입한다.</p>
+<h3 id="gpio-register">GPIO register 진단 순서<a class="headerlink" href="#gpio-register" title="Permanent link">&para;</a></h3>
+<ol>
+<li>RCC peripheral clock enable bit를 확인한다.</li>
+<li>MODER, alternate function, pull, output type을 register view에서 확인한다.</li>
+<li>output command 뒤 ODR/IDR과 실제 pin voltage를 비교한다.</li>
+<li>reserved bit를 보존했는지 reference manual과 대조한다.</li>
+<li>HAL 코드와 직접 register 코드가 만든 최종 register 값을 비교한다.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>설정</th>
+<th>잘못되었을 때 증상</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO clock</td>
+<td>register write 무반응</td>
+</tr>
+<tr>
+<td>MODER</td>
+<td>input/output 기능 불일치</td>
+</tr>
+<tr>
+<td>PUPDR</td>
+<td>floating input·false edge</td>
+</tr>
+<tr>
+<td>OSPEEDR</td>
+<td>느린 edge 또는 불필요한 EMI</td>
+</tr>
+<tr>
+<td>alternate function</td>
+<td>PWM·UART pin 무출력</td>
+</tr>
+</tbody>
+</table>
 <h2 id="3_5">⏱️ 3시간 수업 운영안<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4209,7 +4356,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_58">📎 수업자료 활용<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h2>
+<h2 id="_59">📎 수업자료 활용<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -4232,7 +4379,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_59">✅ 이해 확인 질문<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h2>
+<h2 id="_60">✅ 이해 확인 질문<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h2>
 <ol>
 <li>GPIO 출력 전 RCC 클럭을 켜야 하는 이유를 설명한다.</li>
 <li>MODER, OTYPER, ODR이 각각 무엇을 설정하는지 말한다.</li>
@@ -4240,60 +4387,60 @@
 </ol>
 <h2 id="codeweek08_gpio_ledc">💻 실습 코드 (주석 포함) — <code>code/week08_gpio_led.c</code><a class="headerlink" href="#codeweek08_gpio_ledc" title="Permanent link">&para;</a></h2>
 <p>HAL 없이 레지스터에 직접 값을 써서 LED를 켜는 <strong>F767 비교 예제</strong>다. 클럭→모드→출력 순서가 핵심이며, H7 실습에서는 보드 회로도와 레퍼런스 매뉴얼에 맞게 포트·핀·클럭 레지스터를 바꾼다. <a href="../code/week08_gpio_led.c">⬇ 전체 코드</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/*</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm"> * [8주차] GPIO 출력 — 레지스터 직접 접근 F767 비교 예제</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm"> * ---------------------------------------------------------------</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm"> * 목표: HAL 함수 없이 &quot;레지스터에 직접 값을 써서&quot; 마이크로프로세서를 이해한다.</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cm"> * 핵심 흐름:  클럭 Enable → 모드 설정 → 출력타입/속도 → 값 쓰기</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm"> * (교육용 자작 코드. 실제 핀은 보드 회로도에 맞게 수정)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cm"> */</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;stm32f767xx.h&quot;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cm">/* LED가 연결된 핀: 예) PC6 (High=꺼짐, Low=켜짐인 보드도 있으니 회로 확인) */</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cp">#define LED_PORT   GPIOC</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="cp">#define LED_PIN    6</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="kt">void</span><span class="w"> </span><span class="nf">led_gpio_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">{</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="cm">/* 1) 포트 클럭 Enable — MCU는 클럭이 없으면 그 주변장치가 아예 동작하지 않는다.</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="cm">     *    AHB1ENR의 GPIOC 비트를 1로 세팅. */</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOCEN</span><span class="p">;</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="cm">/* 2) MODER: 핀 모드를 &#39;출력(01)&#39;으로. 핀당 2비트를 차지한다.</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="cm">     *    먼저 해당 2비트를 0으로 지우고(&amp;= ~), 출력값(01)을 OR로 세팅. */</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">3U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">LED_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="cm">/* 해당 핀 2비트 클리어 */</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">LED_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="cm">/* 01 = General purpose output */</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="cm">/* 3) OTYPER: 출력 타입 = Push-Pull(0). (0으로 두면 됨 — 명시적으로 클리어) */</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">OTYPER</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">);</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="cm">/* 4) OSPEEDR: 출력 속도. 빠를수록 좋은 게 아니다 — 빠른 엣지는 EMI(노이즈)를 유발.</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="cm">     *    LED 같은 저속 신호는 Low speed(00)면 충분. */</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">3U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">LED_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="p">}</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="cm">/* 출력 값 쓰기: ODR(Output Data Register)의 해당 비트를 1/0으로. */</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">led_on</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">led_off</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">led_toggle</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span><span class="w"> </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w"> </span><span class="o">^=</span><span class="w">  </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="cm">/* 대략적인 지연 (교육용 busy-wait. 실전은 SysTick/타이머 사용 — 9·10주차) */</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">crude_delay</span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="p">){</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="n">__NOP</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="p">{</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="n">led_gpio_init</span><span class="p">();</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">        </span><span class="n">led_toggle</span><span class="p">();</span><span class="w">          </span><span class="cm">/* 1비트 XOR로 On/Off 반전 */</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">        </span><span class="n">crude_delay</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span><span class="w">  </span><span class="cm">/* 눈에 보이도록 잠깐 대기 */</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">/*</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm"> * [8주차] GPIO 출력 — 레지스터 직접 접근 F767 비교 예제</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm"> * ---------------------------------------------------------------</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm"> * 목표: HAL 함수 없이 &quot;레지스터에 직접 값을 써서&quot; 마이크로프로세서를 이해한다.</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cm"> * 핵심 흐름:  클럭 Enable → 모드 설정 → 출력타입/속도 → 값 쓰기</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cm"> * (교육용 자작 코드. 실제 핀은 보드 회로도에 맞게 수정)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cm"> */</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;stm32f767xx.h&quot;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="cm">/* LED가 연결된 핀: 예) PC6 (High=꺼짐, Low=켜짐인 보드도 있으니 회로 확인) */</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="cp">#define LED_PORT   GPIOC</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="cp">#define LED_PIN    6</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="kt">void</span><span class="w"> </span><span class="nf">led_gpio_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">{</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="cm">/* 1) 포트 클럭 Enable — MCU는 클럭이 없으면 그 주변장치가 아예 동작하지 않는다.</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="cm">     *    AHB1ENR의 GPIOC 비트를 1로 세팅. */</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOCEN</span><span class="p">;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="cm">/* 2) MODER: 핀 모드를 &#39;출력(01)&#39;으로. 핀당 2비트를 차지한다.</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="cm">     *    먼저 해당 2비트를 0으로 지우고(&amp;= ~), 출력값(01)을 OR로 세팅. */</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">3U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">LED_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="cm">/* 해당 핀 2비트 클리어 */</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">LED_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="cm">/* 01 = General purpose output */</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="cm">/* 3) OTYPER: 출력 타입 = Push-Pull(0). (0으로 두면 됨 — 명시적으로 클리어) */</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">OTYPER</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">);</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="cm">/* 4) OSPEEDR: 출력 속도. 빠를수록 좋은 게 아니다 — 빠른 엣지는 EMI(노이즈)를 유발.</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="cm">     *    LED 같은 저속 신호는 Low speed(00)면 충분. */</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">3U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">LED_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="p">}</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="cm">/* 출력 값 쓰기: ODR(Output Data Register)의 해당 비트를 1/0으로. */</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">led_on</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">led_off</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">led_toggle</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span><span class="w"> </span><span class="n">LED_PORT</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w"> </span><span class="o">^=</span><span class="w">  </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_PIN</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="cm">/* 대략적인 지연 (교육용 busy-wait. 실전은 SysTick/타이머 사용 — 9·10주차) */</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">crude_delay</span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="p">){</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="n">__NOP</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="p">{</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="n">led_gpio_init</span><span class="p">();</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">        </span><span class="n">led_toggle</span><span class="p">();</span><span class="w">          </span><span class="cm">/* 1비트 XOR로 On/Off 반전 */</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">        </span><span class="n">crude_delay</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span><span class="w">  </span><span class="cm">/* 눈에 보이도록 잠깐 대기 */</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="p">}</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">📌 보충 설명 — 실전 팁·주의점</p>
 <p>레지스터 접근 전 <strong>클럭 Enable 필수</strong>(안 하면 Hard Fault). 하드웨어 레지스터 포인터엔 <strong>volatile</strong>을 쓴다.</p>
 </div>
-<h2 id="_60">🧪 실습·과제<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h2>
+<h2 id="_61">🧪 실습·과제<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 레퍼런스 매뉴얼 참고해 레지스터 비트 write → LED On/Off</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> F103 HAL(<code>HAL_GPIO_TogglePin</code>)과 비교, 레지스터 직접접근 코드 리뷰</li>

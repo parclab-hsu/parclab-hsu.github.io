@@ -2085,6 +2085,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계·검증 심화
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="설계·검증 심화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hall 정류 상태기계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        재현 가능한 최종 시험
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-flight-fault-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pre-flight와 fault injection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3_5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2096,7 +2146,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_60" class="md-nav__link">
+  <a href="#_62" class="md-nav__link">
     <span class="md-ellipsis">
       
         📎 수업자료 활용
@@ -2107,7 +2157,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_61" class="md-nav__link">
+  <a href="#_63" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 이해 확인 질문
@@ -2129,7 +2179,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_62" class="md-nav__link">
+  <a href="#_64" class="md-nav__link">
     <span class="md-ellipsis">
       
         🧪 실습·과제
@@ -3653,6 +3703,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계·검증 심화
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="설계·검증 심화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hall 정류 상태기계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        재현 가능한 최종 시험
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-flight-fault-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pre-flight와 fault injection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3_5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3664,7 +3764,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_60" class="md-nav__link">
+  <a href="#_62" class="md-nav__link">
     <span class="md-ellipsis">
       
         📎 수업자료 활용
@@ -3675,7 +3775,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_61" class="md-nav__link">
+  <a href="#_63" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 이해 확인 질문
@@ -3697,7 +3797,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_62" class="md-nav__link">
+  <a href="#_64" class="md-nav__link">
     <span class="md-ellipsis">
       
         🧪 실습·과제
@@ -4235,6 +4335,76 @@
 <li>Fault 발생 시 첫 세 동작을 순서대로 말하게 한다.</li>
 <li>최종 보고서에 들어갈 요구사항별 검증표를 완성하게 한다.</li>
 </ul>
+<h2 id="_60">설계·검증 심화<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h2>
+<h3 id="hall">Hall 정류 상태기계<a class="headerlink" href="#hall" title="Permanent link">&para;</a></h3>
+<p>유효 Hall state는 6개다. 회전 방향에 따라 순서도 바뀐다. 이전 state와 새 state 조합으로 forward, reverse, illegal transition을 판정한다. 모터 상 또는 Hall wiring을 바꾸면 기존 commutation table을 그대로 사용할 수 없다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mechanical_rpm = 60 × hall_edge_frequency / (6 × pole_pairs)
+</code></pre></div>
+<p>low speed에서는 Hall timeout으로 RPM을 0으로 갱신하고, 매우 짧은 pulse는 minimum interval과 valid transition 검사로 제거한다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>DISABLED → ALIGN/START → RUN → FAULT
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    ↑          │          │       │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    └──────────┴── STOP ──┴───────┘
+</code></pre></div>
+<p>FAULT에서는 PWM을 차단하고 원인을 latch하며, 원인 제거와 명시적 restart 전에는 RUN으로 복귀하지 않는다.</p>
+<h3 id="_61">재현 가능한 최종 시험<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h3>
+<p>시험 명세에는 다음 항목을 포함한다.</p>
+<ul>
+<li>식별 정보: Test ID, 요구사항 ID, hardware·firmware version</li>
+<li>시험 조건: 장비, 초기조건, 입력 절차, safety limit</li>
+<li>판정 근거: expected range, actual result, evidence, PASS/FAIL</li>
+</ul>
+<p>동작 영상만으로는 current limit과 firmware version을 재현할 수 없다.</p>
+<h3 id="pre-flight-fault-injection">pre-flight와 fault injection<a class="headerlink" href="#pre-flight-fault-injection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>기구를 고정한다.</li>
+<li>바퀴를 지면에서 띄운다.</li>
+<li>비상 정지 버튼을 손이 닿는 곳에 둔다.</li>
+<li>polarity, fuse, current limit, DC 링크 전압 확인</li>
+<li>초기 PWM off, throttle plausibility, Hall 000/111 검사</li>
+<li>fault LED·UART와 hardware cutoff 통과 후 motor 시험</li>
+<li>저전압, Hall 분리, throttle range fault, temperature mock input을 안전하게 주입</li>
+</ul>
+<p>실제 hard short 대신 제한된 signal injection이나 low-energy 시험으로 cutoff latency, fault latch, diagnostic message, restart condition을 확인한다.</p>
+<div aria-label="최종 시험 결과 표" class="table-scroll" role="region" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>요구사항</th>
+<th>입력·조건</th>
+<th>기대 결과</th>
+<th>증거</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T-PWR-01</td>
+<td>REQ-PWR-001</td>
+<td>min·nominal·max input</td>
+<td>3.3V 허용범위</td>
+<td>DMM·waveform</td>
+<td></td>
+</tr>
+<tr>
+<td>T-SAFE-02</td>
+<td>REQ-SAFE-001</td>
+<td>fault signal injection</td>
+<td>제한시간 내 PWM off</td>
+<td>logic capture</td>
+<td></td>
+</tr>
+<tr>
+<td>T-DRV-03</td>
+<td>REQ-DRV-001</td>
+<td>no-load low-speed</td>
+<td>direction·RPM 정상</td>
+<td>log·video</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="3_5">⏱️ 3시간 수업 운영안<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4267,7 +4437,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_60">📎 수업자료 활용<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h2>
+<h2 id="_62">📎 수업자료 활용<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -4290,7 +4460,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_61">✅ 이해 확인 질문<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h2>
+<h2 id="_63">✅ 이해 확인 질문<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h2>
 <ol>
 <li>20kHz PWM 인터럽트, 1ms SysTick, 500ms 통신 태스크가 각각 맡는 일을 구분한다.</li>
 <li>Fault code가 발생했을 때 펌웨어가 어떤 순서로 멈춰야 하는지 설명한다.</li>
@@ -4298,49 +4468,49 @@
 </ol>
 <h2 id="codeweek15_schedulerc">💻 실습 코드 (주석 포함) — <code>code/week15_scheduler.c</code><a class="headerlink" href="#codeweek15_schedulerc" title="Permanent link">&para;</a></h2>
 <p>인터럽트(빠른 제어)와 스케줄러(느린 작업)로 전체 펌웨어를 통합하는 골격. 페일세이프 포함. <a href="../code/week15_scheduler.c">⬇ 전체 코드</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/*</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm"> * [15주차] 펌웨어 통합 골격 — SysTick 스케줄러 + 인터럽트 구조</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm"> * ----------------------------------------------------------</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm"> * 여러 주기의 작업을 하나의 프로그램으로 묶는다. 정밀 제어는 인터럽트에서,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cm"> * 느린 작업(모니터링 등)은 스케줄러 플래그로 main 루프에서 처리한다.</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm"> *   - TIM1 20kHz 인터럽트 : 전류/센서 ADC 읽고 PWM 듀티 갱신(가장 빠른 제어)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cm"> *   - 홀/엔코더 EXTI       : 위치 변화 → 속도 계산</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cm"> *   - SysTick 1ms          : 10ms/100ms/1s 주기 태스크 플래그 세팅</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cm"> */</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g_ms</span><span class="p">;</span><span class="w">                 </span><span class="cm">/* 1ms마다 증가하는 시스템 시간 */</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">f_10ms</span><span class="p">,</span><span class="w"> </span><span class="n">f_100ms</span><span class="p">,</span><span class="w"> </span><span class="n">f_1s</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 주기 태스크 실행 요청 플래그 */</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="cm">/* SysTick 인터럽트: 1ms마다 자동 호출 */</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">{</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="n">g_ms</span><span class="o">++</span><span class="p">;</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_ms</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">f_10ms</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">   </span><span class="cm">/* 나머지 연산으로 주기 판별 */</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_ms</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">f_100ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_ms</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">1000</span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">f_1s</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="p">}</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">read_speed_and_control</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"> </span><span class="cm">/* PI 제어 등(빠른 주기는 TIM 인터럽트) */</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">send_telemetry</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w">         </span><span class="cm">/* 속도/전압/온도/고장코드 무선 송신 */</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">extern</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">fault_check</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w">         </span><span class="cm">/* 과전류·과열 감지 → 고장코드 반환 */</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">{</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="cm">/* init: 클럭, GPIO, ADC, TIM(PWM+20kHz), EXTI(홀), UART, SysTick ... */</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f_10ms</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">f_10ms</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">read_speed_and_control</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f_100ms</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">f_100ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fault_check</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 안전정지 */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f_1s</span><span class="p">)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">f_1s</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">send_telemetry</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">        </span><span class="cm">/* 페일세이프: AI/고급제어가 실패해도 여기 고전 제어·하드리밋이 항상 동작 */</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/*</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm"> * [15주차] 펌웨어 통합 골격 — SysTick 스케줄러 + 인터럽트 구조</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm"> * ----------------------------------------------------------</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm"> * 여러 주기의 작업을 하나의 프로그램으로 묶는다. 정밀 제어는 인터럽트에서,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cm"> * 느린 작업(모니터링 등)은 스케줄러 플래그로 main 루프에서 처리한다.</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cm"> *   - TIM1 20kHz 인터럽트 : 전류/센서 ADC 읽고 PWM 듀티 갱신(가장 빠른 제어)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="cm"> *   - 홀/엔코더 EXTI       : 위치 변화 → 속도 계산</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="cm"> *   - SysTick 1ms          : 10ms/100ms/1s 주기 태스크 플래그 세팅</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="cm"> */</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g_ms</span><span class="p">;</span><span class="w">                 </span><span class="cm">/* 1ms마다 증가하는 시스템 시간 */</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">f_10ms</span><span class="p">,</span><span class="w"> </span><span class="n">f_100ms</span><span class="p">,</span><span class="w"> </span><span class="n">f_1s</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 주기 태스크 실행 요청 플래그 */</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="cm">/* SysTick 인터럽트: 1ms마다 자동 호출 */</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">{</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="n">g_ms</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_ms</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w">  </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">f_10ms</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">   </span><span class="cm">/* 나머지 연산으로 주기 판별 */</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_ms</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">f_100ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_ms</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">1000</span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">f_1s</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">}</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">read_speed_and_control</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"> </span><span class="cm">/* PI 제어 등(빠른 주기는 TIM 인터럽트) */</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">send_telemetry</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w">         </span><span class="cm">/* 속도/전압/온도/고장코드 무선 송신 */</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="k">extern</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">fault_check</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w">         </span><span class="cm">/* 과전류·과열 감지 → 고장코드 반환 */</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">{</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="cm">/* init: 클럭, GPIO, ADC, TIM(PWM+20kHz), EXTI(홀), UART, SysTick ... */</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f_10ms</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">f_10ms</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">read_speed_and_control</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f_100ms</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">f_100ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fault_check</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 안전정지 */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f_1s</span><span class="p">)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">f_1s</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">send_telemetry</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">        </span><span class="cm">/* 페일세이프: AI/고급제어가 실패해도 여기 고전 제어·하드리밋이 항상 동작 */</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="p">}</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">📌 보충 설명 — 실전 팁·주의점</p>
 <p>통합은 <strong>한 기능씩 검증</strong>(빅뱅 통합 금지). <strong>페일세이프(고장→즉시 정지)</strong>를 가장 먼저 구현한다.</p>
 </div>
-<h2 id="_62">🧪 실습·과제<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h2>
+<h2 id="_64">🧪 실습·과제<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 정류 → 20kHz PWM 전류센싱 → T방식 RPM → PI 튜닝 → 무선 모니터링 → 고장코드 재현</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 로버 2륜 차동구동 주행 시연 및 발표, 펌웨어 구조도·개선사항 보고서 제출</li>
