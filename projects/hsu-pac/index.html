@@ -1204,9 +1204,10 @@
 384GB, 64코어/512GB, Kubernetes 운영 중)를 주 연산 노드로 우선 활용합니다. 신규 GPU
 서버 구매는 초기 필수항목에서 제외하고, 사용률 실증 후 증설 선택항목으로 조정 —
 초기 예산을 스토리지·백업·네트워크·플랫폼·DGX Spark에 우선 배정합니다.</p>
-<p>GPU 운영(권장안 A · 교육 균형형): <strong>GPU 0·1 = Full GPU</strong>(Isaac Sim·그래픽·합성데이터),
-<strong>GPU 2·3 = MIG 4분할 ×2</strong>(개인·조별 AI 연산 8인스턴스). 방학·연구 집중기에는 4GPU
-통합(DDP)으로 전환. MIG 프로파일은 학기 시작 전 고정, 학기 중 변경 금지.</p>
+<p>GPU 운영(권장안): <strong>GPU 0 = Full GPU</strong>(교수 시연·대형 장면), <strong>GPU 1·2 =
+<code>2g.48gb+gfx</code> MIG ×4</strong>(1~4조 Isaac Sim 격리 세션), <strong>GPU 3 = Full 또는 <code>+gfx</code></strong>
+(5조·학습 큐). 방학·연구 집중기에는 4GPU 통합(DDP)으로 전환. MIG 프로파일은 학기
+시작 전 고정, 학기 중 변경 금지.</p>
 </div>
 <ul>
 <li>Isaac Sim 원격 실행 및 스트리밍</li>
@@ -1268,12 +1269,15 @@
 냉각구조 및 서버 적용조건이 다릅니다.</p>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">그래픽 세션 운영 방식 (Max-Q 제약 반영)</p>
-<p>Max-Q Workstation Edition은 vGPU 및 그래픽 MIG 가상화를 지원하지 않습니다. 따라서
-<strong>Isaac Sim·Omniverse 그래픽 세션은 Full GPU 예약 방식</strong>, AI 학습·추론·CUDA 연산만
-MIG를 사용합니다(라이선스 비용 불요). 개강 전 PoC: Isaac Sim 컨테이너 원격 그래픽
-출력, WebRTC 동시 사용자 성능, 30명 JupyterHub 동시 로그인, MIG 프로파일·PCIe
-토폴로지·NCCL 검증. 향후 신규 서버 증설 시에는 <strong>Server Edition</strong>을 명시해 조달합니다.</p>
+<p class="admonition-title">그래픽 세션 운영 방식 (<code>+gfx</code> MIG 기반)</p>
+<p>RTX PRO 6000 Blackwell은 그래픽 API를 지원하는 <strong>Universal MIG <code>+gfx</code> 프로파일</strong>
+(<code>1g.24gb+gfx</code> · <code>2g.48gb+gfx</code> · <code>4g.96gb+gfx</code>)을 제공합니다 — 조별 Isaac Sim 세션은
+<strong><code>+gfx</code> MIG 컨테이너 격리를 기본안</strong>, 복잡한 장면·교수 시연·대형 학습은 <strong>Full GPU
+예약을 병행안</strong>으로 운영합니다(Max-Q는 vGPU만 미지원 — 라이선스 비용 불요).
+단, 프로파일 지원과 Isaac Sim 운영 보장은 다르므로 개강 전 PoC로 확정합니다:
+대표 수업 장면의 렌더링·NVENC·WebRTC·ROS 2 Bridge·동시접속·장애 복구 실측,
+30명 JupyterHub 동시 로그인, PCIe 토폴로지·NCCL 검증. 향후 신규 서버 증설 시에는
+<strong>Server Edition</strong>을 명시해 조달합니다.</p>
 </div>
 <h3 id="2-dgx-spark">2. DGX Spark<a class="headerlink" href="#2-dgx-spark" title="Permanent link">&para;</a></h3>
 <p>DGX Spark는 128GB 통합 메모리를 제공하는 소형 Grace Blackwell 시스템입니다. 처리량 중심의 대규모 학습 서버라기보다, 일반 GPU 메모리에 들어가지 않는 모델을 로드하고 검증하는 <strong>대형 모델 개발·실험 노드</strong>로 사용하는 것이 적절합니다.</p>

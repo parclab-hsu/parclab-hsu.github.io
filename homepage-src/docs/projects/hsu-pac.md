@@ -153,9 +153,10 @@ flowchart TB
     서버 구매는 초기 필수항목에서 제외하고, 사용률 실증 후 증설 선택항목으로 조정 —
     초기 예산을 스토리지·백업·네트워크·플랫폼·DGX Spark에 우선 배정합니다.
 
-    GPU 운영(권장안 A · 교육 균형형): **GPU 0·1 = Full GPU**(Isaac Sim·그래픽·합성데이터),
-    **GPU 2·3 = MIG 4분할 ×2**(개인·조별 AI 연산 8인스턴스). 방학·연구 집중기에는 4GPU
-    통합(DDP)으로 전환. MIG 프로파일은 학기 시작 전 고정, 학기 중 변경 금지.
+    GPU 운영(권장안): **GPU 0 = Full GPU**(교수 시연·대형 장면), **GPU 1·2 =
+    `2g.48gb+gfx` MIG ×4**(1~4조 Isaac Sim 격리 세션), **GPU 3 = Full 또는 `+gfx`**
+    (5조·학습 큐). 방학·연구 집중기에는 4GPU 통합(DDP)으로 전환. MIG 프로파일은 학기
+    시작 전 고정, 학기 중 변경 금지.
 
 - Isaac Sim 원격 실행 및 스트리밍
 - Isaac Lab 강화학습, 합성데이터 생성
@@ -182,12 +183,15 @@ RTX PRO 6000 Blackwell Server Edition은 96GB GDDR7 메모리와 최대 4개의 
     조달 사양서에는 반드시 **Server Edition**을 명시해야 합니다. Workstation Edition과
     냉각구조 및 서버 적용조건이 다릅니다.
 
-!!! warning "그래픽 세션 운영 방식 (Max-Q 제약 반영)"
-    Max-Q Workstation Edition은 vGPU 및 그래픽 MIG 가상화를 지원하지 않습니다. 따라서
-    **Isaac Sim·Omniverse 그래픽 세션은 Full GPU 예약 방식**, AI 학습·추론·CUDA 연산만
-    MIG를 사용합니다(라이선스 비용 불요). 개강 전 PoC: Isaac Sim 컨테이너 원격 그래픽
-    출력, WebRTC 동시 사용자 성능, 30명 JupyterHub 동시 로그인, MIG 프로파일·PCIe
-    토폴로지·NCCL 검증. 향후 신규 서버 증설 시에는 **Server Edition**을 명시해 조달합니다.
+!!! warning "그래픽 세션 운영 방식 (`+gfx` MIG 기반)"
+    RTX PRO 6000 Blackwell은 그래픽 API를 지원하는 **Universal MIG `+gfx` 프로파일**
+    (`1g.24gb+gfx` · `2g.48gb+gfx` · `4g.96gb+gfx`)을 제공합니다 — 조별 Isaac Sim 세션은
+    **`+gfx` MIG 컨테이너 격리를 기본안**, 복잡한 장면·교수 시연·대형 학습은 **Full GPU
+    예약을 병행안**으로 운영합니다(Max-Q는 vGPU만 미지원 — 라이선스 비용 불요).
+    단, 프로파일 지원과 Isaac Sim 운영 보장은 다르므로 개강 전 PoC로 확정합니다:
+    대표 수업 장면의 렌더링·NVENC·WebRTC·ROS 2 Bridge·동시접속·장애 복구 실측,
+    30명 JupyterHub 동시 로그인, PCIe 토폴로지·NCCL 검증. 향후 신규 서버 증설 시에는
+    **Server Edition**을 명시해 조달합니다.
 
 ### 2. DGX Spark
 
