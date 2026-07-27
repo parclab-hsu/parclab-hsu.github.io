@@ -80,6 +80,8 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `RTX PRO 6000` · `DGX Spark ×5` · `Isaac Sim` · `GR00T` · `MIG` · `JupyterHub` · `10G Ethernet` · `AWS Hybrid`
 
+    [:octicons-arrow-right-24: 자세히 보기](projects/hsu-pac.md)
+
 -   :material-circle-outline:{ style="color:#e0a800" } __계획중 · AI 기반 대학 교육 인프라 구축__
 
     ---
