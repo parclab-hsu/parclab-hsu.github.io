@@ -1215,10 +1215,10 @@
 384GB, 64코어/512GB, Kubernetes 운영 중)를 주 연산 노드로 우선 활용합니다. 신규 GPU
 서버 구매는 초기 필수항목에서 제외하고, 사용률 실증 후 증설 선택항목으로 조정 —
 초기 예산을 스토리지·백업·네트워크·플랫폼·DGX Spark에 우선 배정합니다.</p>
-<p>GPU 운영(권장안): <strong>GPU 0 = Full GPU</strong>(교수 시연·대형 장면), <strong>GPU 1·2 =
-<code>2g.48gb+gfx</code> MIG ×4</strong>(1~4조 Isaac Sim 격리 세션), <strong>GPU 3 = Full 또는 <code>+gfx</code></strong>
-(5조·학습 큐). 방학·연구 집중기에는 4GPU 통합(DDP)으로 전환. MIG 프로파일은 학기
-시작 전 고정, 학기 중 변경 금지.</p>
+<p>GPU 운영(권장 배치): <strong>GPU 0 = <code>4g.96gb+gfx</code></strong>(교수 시연·대형 장면·장애 시 예비),
+<strong>GPU 1·2 = <code>2g.48gb+gfx</code> ×2씩</strong>(1~4조 Isaac Sim 격리 세션), <strong>GPU 3 = Full 또는
+고정 프로파일</strong>(5조·Isaac Lab 학습 큐·합성데이터). 방학·연구 집중기에는 4GPU
+통합(DDP)으로 전환. MIG 프로파일은 학기 시작 전 고정, 학기 중 변경 금지.</p>
 </div>
 <ul>
 <li>Isaac Sim 원격 실행 및 스트리밍</li>
