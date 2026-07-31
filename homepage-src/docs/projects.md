@@ -16,6 +16,16 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `Isaac Sim` · `OmniLRS` · `ROS2` · `HILS` · `Reinforcement Learning` · `SysML` · `Jetson Orin`
 
+-   :material-circle:{ style="color:#2e9e44" } [__진행중 · 현대차 L-Project 달 로버 12축 HILS 시스템__](projects/l-project-hils.md)
+
+    ---
+
+    현대자동차 L-Project팀 과제 — 4륜 독립조향+액티브 서스펜션 12축 로버의 구동계 HILS. Navigation(Jetson)–HILS 보드(STM32H7 micro-ROS)–시뮬레이션 PC 3계층 폐루프, EPOS4 CANopen 에뮬레이터(실물 대체, 12축 프로토콜 시험 통과), 노드 헬스 모니터링.
+
+    `ROS2` · `micro-ROS` · `STM32H7` · `CANopen` · `4WS` · `EPOS4 Emulator` · `Isaac Sim`
+
+    [:octicons-arrow-right-24: 자세히 보기](projects/l-project-hils.md)
+
 -   :material-circle:{ style="color:#2e9e44" } __진행중 · EtherCAT 기반 실시간 모션 제어 시스템__
 
     ---
@@ -110,7 +120,7 @@ PARC Lab은 정부 기관, 기업 파트너, 연구 기관과의 협력을 통�
 
     ---
 
-    2026 미래기술챌린지 Isaac Sim/ROS2 기반 달 탐사 로버 HILS-RL 디지털 트윈 플랫폼 제안.
+    2026 미래기술챌린지 Isaac Sim/ROS2 기반 달 탐사 로버 HILS-RL 디지털 트윈 플랫폼 제안. [L-Project 12축 HILS 시스템](projects/l-project-hils.md) 개발 진행 중.
 
 -   :material-cellphone:{ .lg .middle } __LG Electronics__
 
