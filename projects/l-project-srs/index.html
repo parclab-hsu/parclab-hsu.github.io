@@ -1,0 +1,1881 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PARC Lab · Physical AI Real-Time Control for Mobility & Robotics · 한성대학교 미래모빌리티학과">
+      
+      
+        <meta name="author" content="KyungBok Lee">
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/projects/l-project-srs/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>SRS — 소프트웨어 요구사항 명세서 (LPJ-HILS-SRS-001) - PARC Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#srs-lpj-hils-srs-001" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="PARC Lab" class="md-header__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PARC Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SRS — 소프트웨어 요구사항 명세서 (LPJ-HILS-SRS-001)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연구분야
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  프로젝트
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../people/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  구성원
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  논문·성과
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../courses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  강의
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../news/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  소식
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연락처
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PARC Lab" class="md-nav__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    PARC Lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구분야
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../people/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    구성원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    논문·성과
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소식
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연락처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 서론
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 서론">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 목적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 범위
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 용어 및 약어
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 참조 문서
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 전체 시스템 개요
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 전체 시스템 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-v2-lpj-hils-ad-002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 시스템 구성 (목표 아키텍처 v2 — 상세는 LPJ-HILS-AD-002)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-csci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 소프트웨어 형상 항목 (CSCI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 기능 요구사항
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 기능 요구사항">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-csci-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 주행 명령 처리 (CSCI-1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-epos4-canopen-csci-3-csci-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 EPOS4 CANopen 제어 (CSCI-3, CSCI-6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-csci-1-csci-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 피드백 및 오도메트리 (CSCI-1, CSCI-2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-gui-csci-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 모터드라이버 에뮬레이터 / 모니터 GUI (CSCI-5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-csci-4-csci-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 캘리브레이션 지그 연동 (CSCI-4, CSCI-7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-v2-xrce-dds-drive-interface-a1a5-a6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 아키텍처 v2 — XRCE-DDS / Drive Interface (A1~A5 구현 완료, 실기 검증은 A6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-csci-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 노드 헬스 모니터링 (CSCI-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 비기능 요구사항
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 인터페이스 요구사항
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 인터페이스 요구사항">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-ros2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 ROS2 토픽
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-v3-fl-fr-rl-rr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 축 배치 (v3 계약 — 순서 FL, FR, RL, RR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-canopen-epos4-cia-301402" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 CANopen (EPOS4, CiA 301/402)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53a-rover-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3a /rover/* 토픽 계약 (v2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-udp-9000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 지그 측정 스트림 (UDP :9000)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-cmd-rover-pc-usb-cdc-1mbaud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 cmd 프로토콜 ROVER 명령 (펌웨어 ↔ PC, USB CDC 1Mbaud)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 설계 제약
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="srs-lpj-hils-srs-001">SRS — 소프트웨어 요구사항 명세서 (LPJ-HILS-SRS-001)<a class="headerlink" href="#srs-lpj-hils-srs-001" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">문서 정보</p>
+<p>IEEE 830 준용. 12축 로버 HILS 시스템의 기능·비기능·인터페이스 요구사항 전체를 정의하며, 각 요구사항에는 검증 방법(I/T/D/A)과 현재 검증 상태가 부여되어 있습니다.</p>
+<p>이 페이지는 저장소 <code>l-project-hils-ros2</code>의 <code>docs/SRS.md</code>를 그대로 게재한 것입니다
+(저장소는 비공개·승인제이며, 본 문서는 연구 성과 공개용으로 발췌 없이 수록).
+상위 프로젝트 개요는 <a href="../l-project-hils/">현대차 L-Project 12축 HILS 시스템</a>을 참조하세요.</p>
+</div>
+<hr />
+<p><strong>L-Project HILS 시스템 — 12축(4륜 독립조향 + 액티브 서스펜션) 로버 구동 제어 및 시뮬레이션 소프트웨어</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>문서 번호</td>
+<td>LPJ-HILS-SRS-001</td>
+</tr>
+<tr>
+<td>버전</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>작성일</td>
+<td>2026-07-28 (개정 2026-07-31)</td>
+</tr>
+<tr>
+<td>과제</td>
+<td>현대자동차 L-Project팀 과제 — HILS 시스템 개발</td>
+</tr>
+<tr>
+<td>적용 표준</td>
+<td>IEEE 830 준용</td>
+</tr>
+</tbody>
+</table>
+<p><strong>개정 이력</strong></p>
+<table>
+<thead>
+<tr>
+<th>버전</th>
+<th>일자</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>2026-07-28</td>
+<td>최초 작성</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>2026-07-29</td>
+<td>아키텍처 v2(LPJ-HILS-AD-002) 반영 — 3계층 토폴로지(Ethernet Hub/UDP), XRCE-DDS(micro-ROS), HILS 보드 Drive Interface 추상화, <code>/rover/*</code> 토픽 계약, 3.6절·5.3a절 신설</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>2026-07-30</td>
+<td>최종 검토 반영 — SRS-FR-050~056 상태를 구현완료(A1~A5)로 갱신, 검토 결함 수정 반영(MCU DDS 도메인 42 명시, drive 계층 공통 명령 타임아웃 500ms — FR-055 충족), 제원 갱신 지점 전체 목록화(펌웨어 drive.h 단일 정의)</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>2026-07-30</td>
+<td><strong>12축 개정(v3 계약)</strong> — 실기 로버 = 4륜 독립조향+액티브 서스펜션(AN-001). <code>/rover/axes_cmd</code> 12ch, 4WS(swerve) 기구학, 펌웨어 EPOS 12노드 혼합모드(1-4 PVM/5-12 PPM), 제원 갱신(r0.213/트랙1.26/축거1.5). 8륜 스키드 계약·PC 직결 CAN 백엔드 폐지(벤치는 tools/epos_bench.py)</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>2026-07-31</td>
+<td>전체 검토 — 1.3에서 개정 이력만 반영되고 본문에 남아 있던 8륜/wheel_cmd 잔재를 12축 계약으로 전면 정합화 (2·3·5·6장, NF-004 FreeRTOS 반영, cmd 프로토콜 0x0031/0x0034 12축 페이로드)</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>2026-07-31</td>
+<td><strong>노드 헬스 모니터링 신설</strong> — health_monitor 노드(CSCI-10), 3.7절 SRS-FR-060~064, <code>/diagnostics</code> 인터페이스 (AD-002 v2.3 6a절 연계)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1">1. 서론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 목적<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>본 문서는 L-Project 12축 로버(4륜 독립조향 + 액티브 서스펜션)의 HILS(Hardware-In-the-Loop Simulation) 시스템을 구성하는
+소프트웨어 전체(펌웨어, ROS2 노드, 시뮬레이션/모니터링 도구)의 요구사항을 정의한다.</p>
+<h3 id="12">1.2 범위<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Navigation 스택의 주행 명령(Twist)을 12축(구동 4·조향 4·서스펜션 4)으로 전달하는 실 구동/시뮬레이션 이중 경로</li>
+<li>maxon EPOS4 모터드라이버의 CANopen 제어 및 모터 상태(속도·토크·위치) 피드백 루프</li>
+<li>모터드라이버 에뮬레이션 및 실 버스 모니터링 GUI</li>
+<li>로봇 TCP 캘리브레이션 지그 측정 데이터의 ROS2 연동</li>
+</ul>
+<h3 id="13">1.3 용어 및 약어<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>정의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HILS</td>
+<td>Hardware-In-the-Loop Simulation</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>Tool Center Point (로봇 툴 끝단 기준점)</td>
+</tr>
+<tr>
+<td>PVM</td>
+<td>Profile Velocity Mode (CiA 402 속도 프로파일 모드 — 구동축)</td>
+</tr>
+<tr>
+<td>PPM</td>
+<td>Profile Position Mode (CiA 402 위치 프로파일 모드 — 조향·서스펜션축)</td>
+</tr>
+<tr>
+<td>4WS</td>
+<td>Four Wheel Steering — 4륜 독립조향(swerve) 구동</td>
+</tr>
+<tr>
+<td>SDO / PDO / NMT / EMCY</td>
+<td>CANopen 서비스 (CiA 301)</td>
+</tr>
+<tr>
+<td>RPDO3 / RPDO4 / TPDO3 / TPDO4</td>
+<td>본 시스템에서 사용하는 PDO 채널 (5.3절)</td>
+</tr>
+<tr>
+<td>SIL</td>
+<td>Software-In-the-Loop</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14">1.4 참조 문서<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<ul>
+<li>EPOS4 Firmware Specification (maxon, rel12772) — <code>Driver/EPOS4-Firmware-Specification-En.pdf</code></li>
+<li>EPOS4 Compact 50/8 CAN Hardware Reference — <code>Driver/</code> 폴더</li>
+<li>CiA 301 V4.2, CiA 402 V4.0</li>
+</ul>
+<hr />
+<h2 id="2">2. 전체 시스템 개요<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21-v2-lpj-hils-ad-002">2.1 시스템 구성 (목표 아키텍처 v2 — 상세는 LPJ-HILS-AD-002)<a class="headerlink" href="#21-v2-lpj-hils-ad-002" title="Permanent link">&para;</a></h3>
+<p>Ethernet Hub 단일망(UDP)에 3노드: Navigation(NVIDIA Jetson, Humble), 시뮬레이션 PC(Ubuntu 22.04, Humble), HILS 보드(STM32H7, micro-ROS/XRCE-DDS). <strong>HILS 보드가 Drive Interface 추상 계층을 소유</strong>하여 실 구동(drv_epos: CANopen→EPOS4)과 시뮬레이션(drv_sim: DDS→시뮬 PC)을 백엔드 교체로 전환하고, Navigation은 모드와 무관하게 동일한 <code>/rover/*</code> 인터페이스를 본다.</p>
+<pre class="mermaid"><code>flowchart TB
+    NAV[Nav2 · Jetson] -- /cmd_vel --&gt; RC[rover_control · Jetson&lt;br/&gt;기구학]
+    RC -- "/rover/axes_cmd [12]" --&gt; MCU[rover_mcu · HILS 보드&lt;br/&gt;Drive Interface]
+    MCU -- "real: CANopen RPDO3/4 x12" --&gt; EPOS[EPOS4 x12&lt;br/&gt;1~4 PVM / 5~12 PPM]
+    EPOS -- TPDO3/TPDO4 --&gt; MCU
+    MCU -. "sim: /sim/axes_cmd" .-&gt; SIM[시뮬레이터 · 시뮬 PC]
+    SIM -. /sim/joint_states .-&gt; MCU
+    MCU -- /rover/joint_states --&gt; RS[rover_state · Jetson] -- /odom + TF --&gt; NAV
+    AG[micro_ros_agent · Jetson&lt;br/&gt;udp4 :8888] === MCU
+    JIG[캘리브레이션 지그 hils-fw] -- "UDP $DATA1" --&gt; HB[hils_bridge]</code></pre>
+<p>구 v1 구성(PC 직결 CAN 백엔드)은 12축 개정으로 폐지되었다 — 벤치 시험은 <code>tools/epos_bench.py</code>(EposMaster 단독 CLI, LPJ-HILS-TP-001 v1.1)로 수행한다.</p>
+<h3 id="22-csci">2.2 소프트웨어 형상 항목 (CSCI)<a class="headerlink" href="#22-csci" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>CSCI</th>
+<th>저장소/경로</th>
+<th>언어/플랫폼</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSCI-1 rover_control</td>
+<td><code>hils_rover_control/</code></td>
+<td>Python/ROS2 Humble</td>
+<td>Twist→12축 4WS 명령 분배 (real/sim 모드), 서스펜션 명령 병합</td>
+</tr>
+<tr>
+<td>CSCI-2 rover_state (구 sim_feedback)</td>
+<td><code>hils_rover_control/</code></td>
+<td>Python/ROS2 Humble</td>
+<td><code>/rover/joint_states</code>→4WS 정기구학→<code>/odom</code>+TF</td>
+</tr>
+<tr>
+<td>CSCI-3 epos_master</td>
+<td><code>hils_rover_control/</code></td>
+<td>Python (python-can)</td>
+<td>EPOS4 CANopen 마스터</td>
+</tr>
+<tr>
+<td>CSCI-4 hils_bridge</td>
+<td><code>hils_bridge/</code></td>
+<td>Python/ROS2 Humble</td>
+<td>지그 UDP 측정→ROS2 토픽</td>
+</tr>
+<tr>
+<td>CSCI-5 epos_rover_emulator</td>
+<td><code>tools/epos_rover_emulator/</code></td>
+<td>Python/PySide6</td>
+<td>EPOS4 12노드(PVM/PPM 혼합) 에뮬레이션·모니터링 GUI</td>
+</tr>
+<tr>
+<td>CSCI-6 hils-rover-fw</td>
+<td><code>../l-project-hils/firmware/hils-rover-fw/</code></td>
+<td>C/C++ (STM32H723)</td>
+<td>온보드 CANopen 마스터 펌웨어 → v2에서 <code>rover_mcu</code>(micro-ROS)로 확장</td>
+</tr>
+<tr>
+<td>CSCI-7 hils-fw / hils-boot</td>
+<td><code>../l-project-hils/firmware/</code></td>
+<td>C/C++ (STM32H723)</td>
+<td>캘리브레이션 지그 펌웨어·부트로더</td>
+</tr>
+<tr>
+<td>CSCI-8 rover_mcu</td>
+<td>CSCI-6 확장</td>
+<td>C (micro-ROS/FreeRTOS)</td>
+<td>XRCE-DDS 노드 + Drive Interface 추상화 (drv_epos/drv_sim) — 구현완료(A1~A4)</td>
+</tr>
+<tr>
+<td>CSCI-9 rover_state</td>
+<td>—</td>
+<td>—</td>
+<td>CSCI-2로 병합 (A5에서 sim_feedback을 rover_state로 개명·일반화)</td>
+</tr>
+<tr>
+<td>CSCI-10 health_monitor</td>
+<td><code>hils_rover_control/</code></td>
+<td>Python/ROS2 Humble</td>
+<td>노드·토픽·축 상태 헬스 모니터링 → <code>/diagnostics</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3">3. 기능 요구사항<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>표기: <code>SRS-FR-xxx</code>, 검증(V) — I: 검사, T: 시험, D: 시연, A: 분석</p>
+<h3 id="31-csci-1">3.1 주행 명령 처리 (CSCI-1)<a class="headerlink" href="#31-csci-1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-FR-001</td>
+<td><code>/cmd_vel</code>(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 ±π/2 랩(속도 부호 반전)한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-002</td>
+<td>구동 모드는 <code>real</code>(CAN 실 구동)과 <code>sim</code>(시뮬레이터 전달) 2종을 제공하며 런타임 파라미터로 전환 가능하다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-003</td>
+<td><code>sim</code> 모드에서 12축 명령을 <code>/sim/axes_cmd</code>(Float64MultiArray×12)로 발행한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-004</td>
+<td><code>real</code> 모드에서 12축 명령을 <code>/rover/axes_cmd</code>로 HILS 보드에 전달한다 (rpm·counts 변환은 보드 drv_epos가 수행)</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-005</td>
+<td>cmd_vel이 <code>cmd_timeout</code>(기본 0.5s) 내 미수신 시 구동축(0~3) 명령만 0으로 강제한다 — 조향·서스펜션 각은 유지 (급정지 중 조향 복귀 금지)</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-006</td>
+<td>구동 휠 속도는 <code>max_wheel_speed</code>로, 조향각은 ±π/2, 서스펜션각은 ±π/6로 제한(클램프)한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-007</td>
+<td>기구학 파라미터(휠 반경, 트랙 폭, 축거)는 ROS 파라미터로 설정 가능하다 (기본값은 <code>axes.py</code> 단일 정의)</td>
+<td>I</td>
+<td>검증완료</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-epos4-canopen-csci-3-csci-6">3.2 EPOS4 CANopen 제어 (CSCI-3, CSCI-6)<a class="headerlink" href="#32-epos4-canopen-csci-3-csci-6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-FR-010</td>
+<td>노드 ID 1~12의 EPOS4를 축 역할별 모드로 설정한다 — 구동 1~4: PVM(0x6060=3), 조향 5~8·서스펜션 9~12: PPM(0x6060=1)</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-011</td>
+<td>TPDO4(0x480+id, statusword+실제속도)를 SDO로 활성화한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-012</td>
+<td>구동 노드는 TPDO3을 statusword+토크실제값(0x6077, 4바이트)으로 재매핑 후 활성화하고, 위치 노드는 기본 매핑(statusword+위치실제값, 6바이트)을 그대로 활성화한다. 수신 측은 프레임 길이로 구분한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-013</td>
+<td>CiA 402 시동 시퀀스(Shutdown 0x06 → Enable 0x0F)를 statusword 확인 기반으로 수행하고, Fault 상태이면 Fault Reset(0x80)을 선행한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-014</td>
+<td>속도 명령은 RPDO4(0x500+id, controlword+목표속도[rpm]), 위치 명령은 RPDO3(0x400+id, controlword+목표위치[counts])으로 주기 전송한다 (펌웨어 10ms). PPM 세트포인트는 CW bit4 상승엣지+bit5(immediate)로 래치한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-015</td>
+<td>SDO는 응답 타임아웃(100~200ms)과 재시도(3회)를 가지며, abort 수신 시 오류를 보고한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-016</td>
+<td>EMCY 프레임 수신 시 오류 코드를 기록·보고한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-017</td>
+<td>(펌웨어) TPDO 1초 무수신 노드는 offline 처리 후 재초기화한다</td>
+<td>T</td>
+<td>구현완료</td>
+</tr>
+<tr>
+<td>SRS-FR-018</td>
+<td>(펌웨어) PC와의 명령/피드백은 기존 cmd 프로토콜 ROVER 명령(0x0030~0x0034)으로 제공한다</td>
+<td>T</td>
+<td>구현완료</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-csci-1-csci-2">3.3 피드백 및 오도메트리 (CSCI-1, CSCI-2)<a class="headerlink" href="#33-csci-1-csci-2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-FR-020</td>
+<td>모터 피드백은 <code>/rover/joint_states</code>(JointState 12조인트, USD 조인트명 — 구동: velocity·effort, 조향·서스: position)로 일원화하여 발행한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-021</td>
+<td>joint_states(12조인트)를 구독해 4WS 강체 최소자승 정기구학(vx·vy·wz)으로 오도메트리를 적분한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-022</td>
+<td>오도메트리를 <code>/odom</code>(nav_msgs/Odometry)과 TF(odom→base_link)로 발행한다 (TF는 파라미터로 비활성화 가능)</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-gui-csci-5">3.4 모터드라이버 에뮬레이터 / 모니터 GUI (CSCI-5)<a class="headerlink" href="#34-gui-csci-5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-FR-030</td>
+<td>EPOS4 12노드의 NMT/SDO(expedited)/PDO(기본 매핑·재매핑·COB 활성화)/하트비트/EMCY를 에뮬레이션한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-031</td>
+<td>CiA 402 상태머신과 모터 동역학(사다리꼴 프로파일+1차 지연, 토크 모델)을 모사한다. PPM은 세트포인트 핸드셰이크(CW bit4 래치→SW bit12 ack)와 프로파일 속도 제한 위치 루프를 모사한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-032</td>
+<td>노드별 인디케이터로 게이지(명령 마커+실제 바늘 — PVM: rpm, PPM: deg), Cmd/Act, 위치(inc·rev), 토크(‰), 축 역할·모드([PVM]/[PPM]) 라벨을 표시한다</td>
+<td>D</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-033</td>
+<td>노드별 트렌드 그래프(rpm Cmd/Act, 토크, 10s 창, 자동 스케일)를 표시한다</td>
+<td>D</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-034</td>
+<td>GUI에서 폴트(과전류/저전압/과열) 주입이 가능하며 EMCY 송신·Fault 상태 천이를 수행한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-035</td>
+<td>Emulator/Monitor 2개 모드를 제공한다. Monitor 모드는 실 버스를 수동 청취하여 마스터 명령(RPDO4)과 드라이버 피드백(TPDO1~4, EMCY, 하트비트)을 해석·표시한다</td>
+<td>D</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-036</td>
+<td>CAN 인터페이스로 socketcan(vcan/can), udp_multicast, virtual을 지원한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-037</td>
+<td>로버 탑뷰(4WS 최소자승 자세 적분, 휠별 조향각·상태 색상 표시)를 보조 탭으로 제공한다</td>
+<td>D</td>
+<td>검증완료</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-csci-4-csci-7">3.5 캘리브레이션 지그 연동 (CSCI-4, CSCI-7)<a class="headerlink" href="#35-csci-4-csci-7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-FR-040</td>
+<td>지그의 UDP 측정 문장(<code>$DATA1,...*HH</code>, XOR 체크섬)을 수신·검증한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-041</td>
+<td>측정값을 <code>/hils/tcp_position</code>(PointStamped, m)과 <code>/hils/joint_state</code>(rad·m)로 발행한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-042</td>
+<td>체크섬 오류 문장은 폐기하고 스로틀된 경고를 출력하며, 무수신 시 주기 경고를 출력한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="36-v2-xrce-dds-drive-interface-a1a5-a6">3.6 아키텍처 v2 — XRCE-DDS / Drive Interface (A1~A5 구현 완료, 실기 검증은 A6)<a class="headerlink" href="#36-v2-xrce-dds-drive-interface-a1a5-a6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-FR-050</td>
+<td>HILS 보드는 micro-ROS(XRCE-DDS) 클라이언트 노드 <code>rover_mcu</code>로 ROS2 그래프에 참여한다</td>
+<td>T</td>
+<td>구현완료(A1, 도메인 42)</td>
+</tr>
+<tr>
+<td>SRS-FR-051</td>
+<td>XRCE 전송은 Ethernet Hub 경유 UDP(W5300 커스텀 전송)를 1차로, USB CDC 시리얼을 폴백으로 지원한다</td>
+<td>T</td>
+<td>구현완료(A2)</td>
+</tr>
+<tr>
+<td>SRS-FR-052</td>
+<td>보드는 Drive Interface 추상 계층을 통해 <code>drv_epos</code>(CANopen 실 구동)·<code>drv_sim</code>(DDS 시뮬 연동) 백엔드를 런타임 전환한다. 전환 시 정지 명령을 선행한다</td>
+<td>T</td>
+<td>구현완료(A3·A4)</td>
+</tr>
+<tr>
+<td>SRS-FR-053</td>
+<td>보드는 <code>/rover/axes_cmd</code>(12축)를 구독하고 <code>/rover/joint_states</code>(12조인트)·<code>/rover/status</code>(모드·402상태·EMCY)를 발행한다</td>
+<td>T</td>
+<td>구현완료(A1, 12축 개정)</td>
+</tr>
+<tr>
+<td>SRS-FR-054</td>
+<td>Navigation은 구동 모드와 무관하게 동일한 <code>/rover/*</code>·<code>/odom</code> 인터페이스만 사용한다 (모드 비인지)</td>
+<td>I</td>
+<td>구현완료(A5)</td>
+</tr>
+<tr>
+<td>SRS-FR-055</td>
+<td>보드는 XRCE 세션/에이전트 두절과 무관하게 로컬 명령 타임아웃(0.5s)으로 안전 정지를 보장한다</td>
+<td>T</td>
+<td>구현완료(drive 계층 공통)</td>
+</tr>
+<tr>
+<td>SRS-FR-056</td>
+<td>Linux 노드는 전 머신 동일 RMW·<code>ROS_DOMAIN_ID</code>를 사용하며 설정 파일은 저장소로 형상 관리한다</td>
+<td>I</td>
+<td>구현완료(config/dds)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="37-csci-10">3.7 노드 헬스 모니터링 (CSCI-10)<a class="headerlink" href="#37-csci-10" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-FR-060</td>
+<td>health_monitor는 모드별 필수 토픽(sim: <code>/sim/joint_states</code>·<code>/odom</code> / real: <code>/rover/joint_states</code>·<code>/rover/status</code>·<code>/odom</code>)의 수신 주기와 최종 수신 시각을 감시한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-061</td>
+<td>판정 규칙: 미수신 이력 STALE, 두절(기본 1s 초과) ERROR, 주기 저하(기대의 70% 미만) WARN, 그 외 OK. 문턱은 파라미터로 조정 가능하다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-062</td>
+<td>필수 노드(rover_control, rover_state) 부재를 ERROR로 보고하고, real 모드에서는 <code>/rover/status</code>를 해석해 축별 402 Fault·EMCY를 ERROR, Operation-enabled 미달을 WARN으로 보고한다</td>
+<td>T</td>
+<td>검증완료(SIL — 합성 status로 Fault/EMCY 판정 확인, 실기는 TP-002 IT-1)</td>
+</tr>
+<tr>
+<td>SRS-FR-063</td>
+<td>진단 결과를 ROS2 표준 <code>/diagnostics</code>(DiagnosticArray, 기본 1Hz)로 발행하며, 종합 항목(<code>rover/system</code>)은 최악 레벨과 원인 목록을 포함한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-064</td>
+<td>health_monitor는 제어 루프에 개입하지 않는다(감시·보고 전용) — 명령 경로 토픽은 정보성으로만 보고하고, 안전 정지는 FR-005/FR-055 워치독이 전담한다</td>
+<td>I</td>
+<td>검증완료</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4">4. 비기능 요구사항<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-NF-001</td>
+<td>CAN 비트레이트 1 Mbit/s (EPOS4 기본값과 일치)</td>
+<td>I</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-NF-002</td>
+<td>속도 명령 주기 ≥ 50 Hz (펌웨어 10ms 주기)</td>
+<td>A</td>
+<td>구현완료</td>
+</tr>
+<tr>
+<td>SRS-NF-003</td>
+<td>12노드 시동 시퀀스 완료 시간 ≤ 5 s (8노드 구성 실측 1.2 s — 12노드는 TP-002에서 실측)</td>
+<td>T</td>
+<td>부분검증</td>
+</tr>
+<tr>
+<td>SRS-NF-004</td>
+<td>펌웨어는 FreeRTOS 태스크 구조로 동작하며(A1), 기존 슈퍼루프 모듈은 저우선순위 태스크로 수용한다</td>
+<td>I</td>
+<td>구현완료</td>
+</tr>
+<tr>
+<td>SRS-NF-005</td>
+<td>펌웨어 이미지 크기 ≤ 894 KB (앱 영역, micro-ROS 포함 실측 461 KB)</td>
+<td>I</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-NF-006</td>
+<td>기존 코드베이스의 코딩 스타일(chcbaram C 스타일, hils-gui Qt 스타일)을 유지한다</td>
+<td>I</td>
+<td>검증완료</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5">5. 인터페이스 요구사항<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51-ros2">5.1 ROS2 토픽<a class="headerlink" href="#51-ros2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>토픽</th>
+<th>타입</th>
+<th>방향</th>
+<th>단위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/cmd_vel</code></td>
+<td>geometry_msgs/Twist</td>
+<td>구독</td>
+<td>m/s, rad/s</td>
+</tr>
+<tr>
+<td><code>/sim/axes_cmd</code></td>
+<td>std_msgs/Float64MultiArray[12]</td>
+<td>발행</td>
+<td>구동 rad/s ×4 + 조향 rad ×4 + 서스 rad ×4</td>
+</tr>
+<tr>
+<td><code>/sim/joint_states</code></td>
+<td>sensor_msgs/JointState (12조인트, USD 이름)</td>
+<td>구독</td>
+<td>rad/s·Nm(구동), rad(조향·서스)</td>
+</tr>
+<tr>
+<td><code>/rover/suspension_cmd</code></td>
+<td>std_msgs/Float64MultiArray[4]</td>
+<td>구독</td>
+<td>서스펜션 rad</td>
+</tr>
+<tr>
+<td><code>/odom</code></td>
+<td>nav_msgs/Odometry (+TF)</td>
+<td>발행</td>
+<td>m, rad</td>
+</tr>
+<tr>
+<td><code>/hils/tcp_position</code></td>
+<td>geometry_msgs/PointStamped</td>
+<td>발행</td>
+<td>m</td>
+</tr>
+<tr>
+<td><code>/hils/joint_state</code></td>
+<td>sensor_msgs/JointState</td>
+<td>발행</td>
+<td>rad, m</td>
+</tr>
+<tr>
+<td><code>/diagnostics</code></td>
+<td>diagnostic_msgs/DiagnosticArray</td>
+<td>발행 (health_monitor, 1 Hz)</td>
+<td>표준 진단</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-v3-fl-fr-rl-rr">5.2 축 배치 (v3 계약 — 순서 FL, FR, RL, RR)<a class="headerlink" href="#52-v3-fl-fr-rl-rr" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>노드ID :  1~4  구동(drive)  PVM — 모터 rpm      (휠 반경 0.213 m, 감속비 15:1 가정)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>          5~8  조향(steer)  PPM — 조인트 rad ±90°
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>          9~12 서스(sus)    PPM — 조인트 rad ±30°
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>축 인덱스: axes_cmd[0..3]=구동 rad/s, [4..7]=조향 rad, [8..11]=서스 rad
+</code></pre></div>
+<h3 id="53-canopen-epos4-cia-301402">5.3 CANopen (EPOS4, CiA 301/402)<a class="headerlink" href="#53-canopen-epos4-cia-301402" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>채널</th>
+<th>COB-ID</th>
+<th>내용</th>
+<th>단위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RPDO4 (구동)</td>
+<td>0x500+id</td>
+<td>controlword(u16) + 목표속도(i32)</td>
+<td>rpm</td>
+</tr>
+<tr>
+<td>RPDO3 (위치축)</td>
+<td>0x400+id</td>
+<td>controlword(u16) + 목표위치(i32, 0x607A)</td>
+<td>counts</td>
+</tr>
+<tr>
+<td>TPDO4</td>
+<td>0x480+id</td>
+<td>statusword(u16) + 실제속도(i32)</td>
+<td>rpm</td>
+</tr>
+<tr>
+<td>TPDO3 — 구동(재매핑)</td>
+<td>0x380+id</td>
+<td>statusword(u16) + 토크(i16) — 4바이트</td>
+<td>정격의 ‰</td>
+</tr>
+<tr>
+<td>TPDO3 — 위치축(기본)</td>
+<td>0x380+id</td>
+<td>statusword(u16) + 실제위치(i32) — 6바이트</td>
+<td>counts</td>
+</tr>
+<tr>
+<td>SDO</td>
+<td>0x600/0x580+id</td>
+<td>expedited</td>
+<td>—</td>
+</tr>
+<tr>
+<td>NMT / EMCY / HB</td>
+<td>0x000 / 0x080+id / 0x700+id</td>
+<td>CiA 301 표준</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53a-rover-v2">5.3a <code>/rover/*</code> 토픽 계약 (v2)<a class="headerlink" href="#53a-rover-v2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>토픽</th>
+<th>타입</th>
+<th>발행→구독</th>
+<th>주기</th>
+<th>QoS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/rover/axes_cmd</code></td>
+<td>Float64MultiArray[12] (구동 rad/s + 조향·서스 rad)</td>
+<td>rover_control→rover_mcu</td>
+<td>20~50 Hz</td>
+<td>Best-effort, depth 1</td>
+</tr>
+<tr>
+<td><code>/rover/joint_states</code></td>
+<td>JointState ×12 (USD 조인트명)</td>
+<td>rover_mcu→rover_state 외</td>
+<td>50 Hz</td>
+<td>Best-effort, depth 1</td>
+</tr>
+<tr>
+<td><code>/rover/status</code></td>
+<td>UInt16MultiArray[24] (sw ×12 + emcy ×12)</td>
+<td>rover_mcu→health_monitor·진단</td>
+<td>2 Hz</td>
+<td>Reliable</td>
+</tr>
+</tbody>
+</table>
+<p>네트워크(제안): 192.168.10.0/24 — Jetson .10(agent :8888/udp), 시뮬 PC .20, HILS 보드 .30(W5300 정적 IP)</p>
+<h3 id="54-udp-9000">5.4 지그 측정 스트림 (UDP :9000)<a class="headerlink" href="#54-udp-9000" title="Permanent link">&para;</a></h3>
+<p><code>$DATA1,&lt;posX&gt;,&lt;posY&gt;,&lt;posZ&gt;,&lt;degX&gt;,&lt;degY&gt;,&lt;mmZ&gt;,*&lt;HH&gt;\n</code> — mm/deg, HH = <code>$</code>~<code>*</code> 구간 XOR</p>
+<h3 id="55-cmd-rover-pc-usb-cdc-1mbaud">5.5 cmd 프로토콜 ROVER 명령 (펌웨어 ↔ PC, USB CDC 1Mbaud)<a class="headerlink" href="#55-cmd-rover-pc-usb-cdc-1mbaud" title="Permanent link">&para;</a></h3>
+<p>패킷: <code>[0x02][0xFD][type][cmd:2LE][err:2][len:2][data][cksum]</code>
+| CMD | 이름 | 페이로드 |
+|---|---|---|
+| 0x0030 | INFO | resp <code>{u8 enable, u8 node_max, u8 ready_count}</code> |
+| 0x0031 | AXES | <code>i32[12]</code> — 구동 모터 rpm ×4 + 조향·서스 조인트 mrad ×8 |
+| 0x0032 | TWIST | <code>i32 mm/s, i32 mrad/s</code> (보드 내 4WS 변환) |
+| 0x0033 | ENABLE | <code>u8</code> |
+| 0x0034 | FEEDBACK | resp 12×<code>{u8 online, u8 state402, u16 sw, i32 vel_rpm, i32 pos_mrad, i16 torque‰, u16 emcy}</code> |</p>
+<hr />
+<h2 id="6">6. 설계 제약<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>로버 제원: 휠 반경 0.213 m·트랙 1.26 m·축거 1.50 m (VIPER v4 USD 실측 — AN-001). <strong>가정값(실측 필요)</strong>:
+  감속비 15:1, 정격토크 0.5 Nm, 위치축 65188.9 counts/rad (백로그 B3).
+  갱신 지점(전체): 펌웨어 <code>drive.h</code>(단일 정의 — epos/rover_mcu가 참조), ROS2 <code>hils_rover_control/axes.py</code>
+  (+<code>config/rover_params.yaml</code>), 에뮬레이터 <code>emu_core.py</code>. <code>tools/isaac/rover.urdf</code>(8륜)은 레거시 — 정식 플랜트는 VIPER v4 USD</li>
+<li>EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제</li>
+<li>CAN 종단저항: 버스 양 끝 노드 DIP7 ON</li>
+<li>개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용</li>
+</ul>
+<hr />
+<p><a class="md-button" href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 프로젝트 개요로</a>
+<a class="md-button" href="../l-project-sdp/">:octicons-file-document-16: SDP (개발 계획서) 보기</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 PARC Lab · Hansung University
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/parclab-hsu" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:kblee@hansung.ac.kr" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hansung.ac.kr" target="_blank" rel="noopener" title="한성대학교" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

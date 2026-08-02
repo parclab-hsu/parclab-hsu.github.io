@@ -14,6 +14,26 @@
 
 > **핵심 설계 원칙** — HILS 보드가 항상 루프 안에 있다. 실 구동/시뮬레이션 어느 모드든 Navigation의 명령은 보드의 Drive Interface 추상 계층을 거치므로, 제어 주기·안전 로직·인터페이스가 두 모드에서 동일하게 검증됩니다.
 
+<div class="grid cards" markdown>
+
+-   :material-file-document-outline:{ .lg .middle } __SRS — 요구사항 명세서__
+
+    ---
+
+    IEEE 830 준용. 기능·비기능·인터페이스 요구사항 전체와 요구사항별 검증 상태.
+
+    [:octicons-arrow-right-24: 전문 보기](l-project-srs.md)
+
+-   :material-clipboard-text-outline:{ .lg .middle } __SDP — 개발 계획서__
+
+    ---
+
+    개발 환경·형상 관리·개발 단계(P/A/N)·위험 관리·검증 전략 및 시험 실적.
+
+    [:octicons-arrow-right-24: 전문 보기](l-project-sdp.md)
+
+</div>
+
 ---
 
 ## 시스템 구성 — 3계층 XRCE-DDS 아키텍처
@@ -43,10 +63,113 @@ flowchart TB
     SIM -.-> DSIM
 ```
 
-- **통신**: Ethernet Hub 단일망(UDP) — MCU는 XRCE-DDS(W5300 커스텀 UDP 전송), Linux 간은 Fast DDS
-- **12축 계약**: 구동 4축(속도, PVM) + 조향 4축(±90°, PPM) + 서스펜션 4축(±30°, PPM)
+- **통신**: Ethernet Hub 단일망(UDP) — MCU는 XRCE-DDS(W5300 커스텀 UDP 전송), Linux 간은 Fast DDS(도메인 통일)
+- **12축 계약(v3)**: 구동 4축(속도, PVM) + 조향 4축(±90°, PPM) + 서스펜션 4축(±30°, PPM)
 - **4WS 기구학**: 스워브 정/역기구학(강체 최소자승) — 제자리 회전·crab 주행 지원
 - **안전**: 계층별 워치독(Jetson·보드·드라이버) + 노드 헬스 모니터링(`/diagnostics` 표준)
+
+---
+
+## 저장소 구성
+
+개발 자산은 **ROS2·도구·문서 저장소**와 **펌웨어 저장소** 두 개로 분리해 형상 관리합니다.
+두 저장소 모두 **PRIVATE(승인제)** — 소유자가 초대·승인한 콜라보레이터만 접근합니다.
+
+| 저장소 | 내용 | 규모 |
+|---|---|---|
+| `parclab-hsu/l-project-hils-ros2` | ROS2 패키지, EPOS4 에뮬레이터, Isaac/Nav2 설정, 배포 도구, 문서 15종 | 추적 파일 70개 · 커밋 45 |
+| `parclab-hsu/l-project-hils` | STM32 펌웨어 3종(로버 제어·캘리브레이션 지그·부트로더), PC 도구(GUI/로더) | 추적 파일 3,900여 개 (STM32Cube HAL 포함, 2026-07 git 전환) |
+
+### ROS2 · 도구 저장소 (`l-project-hils-ros2`)
+
+```
+l-project-hils-ros2/
+├── hils_rover_control/          # ROS2 패키지 — 구동 제어·상태·진단
+│   ├── hils_rover_control/
+│   │   ├── axes.py              #   12축 계약 단일 정의 (USD 조인트명·제원)
+│   │   ├── kinematics.py        #   4WS 스워브 정/역기구학 (강체 최소자승)
+│   │   ├── rover_control_node.py#   Twist → 12축 명령 + 워치독
+│   │   ├── rover_state_node.py  #   JointState(12) → /odom + TF
+│   │   ├── health_monitor_node.py#  토픽·노드·축 상태 → /diagnostics
+│   │   ├── epos_master.py       #   EPOS4 CANopen 마스터 (벤치용)
+│   │   └── can_protocol.py      #   CANopen 프레임 헬퍼 (순수 함수)
+│   ├── config/                  #   rover_params.yaml, nav2/nav2_params.yaml
+│   └── launch/                  #   rover_control.launch.py, nav2_hils.launch.py
+├── hils_bridge/                 # ROS2 패키지 — 캘리브레이션 지그 UDP 브리지
+├── tools/
+│   ├── epos_rover_emulator/     #   EPOS4 12노드 에뮬레이터 GUI (PySide6)
+│   │   ├── lib/epos_node.py     #     CiA 301/402 노드 모델 (PVM·PPM·EMCY)
+│   │   ├── lib/emu_core.py      #     버스·12노드 관리, 4WS 자세 적분
+│   │   ├── ui/ui_main.py        #     12축 게이지·트렌드·로버 탑뷰
+│   │   └── test_*.py            #     자체 시험 / SIL / 12축 프로토콜 시험
+│   ├── epos_bench.py            #   실기 벤치 CLI (PVM 구동축)
+│   ├── suspension_cmd.py        #   서스펜션 자세 프리셋 CLI (OP-001)
+│   ├── sim_plant.py             #   시뮬레이터 대역 플랜트 (1차 지연, 50 Hz)
+│   ├── isaac/                   #   Isaac Sim 브리지 어댑터
+│   ├── jetson/ · simpc/         #   배포 스크립트 + systemd 유닛
+│   └── systemd/                 #   vcan0 가상 CAN 영구화
+├── config/dds/                  # Fast DDS/CycloneDDS 프로파일, 도메인 설정
+└── docs/                        # 문서 15종 (아래 표)
+```
+
+### 펌웨어 저장소 (`l-project-hils`)
+
+```
+firmware/
+├── hils-rover-fw/               # 로버 제어 펌웨어 (STM32H723, FreeRTOS)
+│   └── src/ap/modules/
+│       ├── drive/
+│       │   ├── drive.c/.h       #   Drive Interface 추상 계층 + 12축 계약·제원 단일 정의
+│       │   ├── drv_epos.c       #   백엔드 ① CANopen → EPOS4 ×12
+│       │   └── drv_sim.c        #   백엔드 ② DDS → 시뮬레이션 PC
+│       ├── epos/epos.cpp/.h     # CANopen 마스터 (12노드 PVM/PPM 혼합, PDO 재매핑)
+│       └── micro_ros/
+│           ├── rover_mcu.c      #   micro-ROS 노드 (/rover/* 토픽)
+│           ├── uros_transport.c #   W5300 UDP 커스텀 XRCE 전송
+│           └── microros_support.c
+├── hils-fw/ · hils-boot/        # 캘리브레이션 지그 펌웨어 · 부트로더
+└── stm32cube/                   # STM32H7 HAL (벤더 SDK)
+software/
+├── hils-gui/                    # 지그 운용 GUI (PySide6)
+└── hils-loader/                 # 펌웨어 다운로더 (UDP/USB CDC)
+```
+
+### 개발 이력 — 주요 마일스톤
+
+| 단계 | 내용 | 대표 커밋 |
+|---|---|---|
+| P2 | ROS2 구동 구조 설계 (제어·상태 노드, 기구학) | `811aa0c` |
+| P4·P5 | EPOS4 프로토콜 3중 구현(ROS2·펌웨어·에뮬레이터) + SIL 검증 | `e989183` |
+| P7 | 에뮬레이터 GUI 게이지·모니터 모드·트렌드 그래프 | `f833878` · `0ad2519` |
+| A1~A4 | FreeRTOS+micro-ROS 골격 → W5300 UDP 전송 → Drive Interface 추상화 → drv_sim 백엔드 *(펌웨어)* | `d013e3d` · `7730dec` · `4e5394f` · `8ccaf54` |
+| A5 | Jetson 노드 개편 (`/rover/*` 계약, rover_state 신설) | `1689cb3` |
+| v3 | **12축 전면 개정** (4WS + 액티브 서스펜션, 전 계층 동시 개정) | `9c765c7` |
+| B1·B2 | 에뮬레이터 12노드·PPM 지원, 시험 절차서 12축 개정 | `dd293d2` · `8a37c90` |
+| QA | 전체 정합성 검토 → 흐름 검증 → 검토 보고서(RR-001) | `43d65f0` · `2c2f76d` · `421f240` |
+| — | 노드 헬스 모니터링, 서스펜션 정책(OP-001), EPOS4 실물 대체 판정 | `45b219f` · `d756c3e` · `7c08ce4` |
+
+**개발 규칙** — 기능 단위 커밋(영문 요약 + 상세 불릿), `main` 단일 브랜치,
+`build/`·`archive/` 등 산출물 제외, 문서와 코드를 같은 커밋에서 함께 갱신.
+
+---
+
+## 문서 체계
+
+요구사항부터 운용 정책까지 문서 번호 체계로 관리하며, 코드 변경 시 관련 문서를 함께 개정합니다.
+
+| 구분 | 문서 | 내용 |
+|---|---|---|
+| 요구사항 | **[SRS-001](l-project-srs.md)** | 소프트웨어 요구사항 명세서 (IEEE 830 준용) |
+| 계획 | **[SDP-001](l-project-sdp.md)** | 소프트웨어 개발 계획서 |
+| 설계 | AD-002 | 시스템 아키텍처 v2 — XRCE-DDS 3계층, Drive Interface, 헬스 모니터링 |
+| 분석 | AN-001 | VIPER v4 USD 자산 분석 (제원 실측·조인트 계약) |
+| 시험 | TP-001 / TP-002 | EPOS4 벤치 시험 절차 / 3머신 통합 시험 절차 |
+| 배포 | DP-001 / DP-002 | Jetson 배포 절차 / 시뮬레이션 PC 배포 절차 |
+| 연동 | IG-001 / IG-002 / IG-003 | Isaac Sim / Nav2 / NVIDIA Isaac ROS Navigation |
+| 검토 | RR-001 | 검토 보고서 — 결함 11건 목록·수정·검증 및 재발 방지 |
+| 운용 | OP-001 | 서스펜션 제어 정책 (운영자 프리셋·안전 규칙) |
+
+---
 
 ## EPOS4 드라이버 에뮬레이터 — 실물 대체 검증 환경
 
@@ -64,31 +187,33 @@ maxon EPOS4 Compact 50/8의 CANopen 프로토콜(NMT/SDO/PDO/CiA402 상태머신
   <figcaption>수신 명령만으로 적분한 4WS 자세 — 휠별 조향각과 주행 궤적(직진 → 곡선 → 제자리 회전)</figcaption>
 </figure>
 
+**대체 범위와 한계** — 프로토콜 표면(프레임·상태머신·핸드셰이크)은 12축 전체 자동 시험으로
+정합을 유지합니다. 실제 모터 전류/토크 물리, 드라이버 튜닝, STO 하드웨어, 실시간 타이밍은
+에뮬레이터로 확인할 수 없으므로 위험 등록부에 명시하고, 실물 도입 시 원 벤치 절차(TP-001)를
+재수행하도록 계획했습니다.
+
+---
+
 ## 검증 현황
 
 | 시험 | 결과 |
 |---|---|
 | 에뮬레이터 프로토콜 자체 시험 (SDO/PDO/402/PPM/EMCY) | **20 PASS / 0 FAIL** |
 | 12축 전체 프로토콜 시험 (실물 대체 판정) | **11 PASS / 0 FAIL** — 속도 1% 이내, 위치 ±1 count, 세트포인트 핸드셰이크 정확 |
+| SIL — ROS2 마스터 ↔ 에뮬레이터 | **ALL PASS** (4구동 벤치 + PPM 조향 수렴) |
 | ROS2 12축 폐루프 (cmd_vel → 4WS → 플랜트 → /odom) | 명령 복원 오차 < 0.1% |
 | 노드 헬스 모니터링 | 컴포넌트 강제 종료 시 3 s 내 원인 지목(ERROR) |
-| 펌웨어 (FreeRTOS + micro-ROS + 12축 CANopen 마스터) | 빌드 461 KB, 3경로(mcu/can/sim) 시험 통과 |
+| 펌웨어 (FreeRTOS + micro-ROS + 12축 CANopen 마스터) | 빌드 461 KB / 894 KB, 3경로(mcu/can/sim) 시험 통과 |
+
+---
 
 ## 기술 스택
 
 `ROS2 Humble` · `micro-ROS (XRCE-DDS)` · `STM32H7 / FreeRTOS` · `CANopen (CiA 301/402)` ·
-`Isaac Sim` · `Python / PySide6` · `4WS Kinematics` · `Jetson Orin`
-
-## 저장소 · 문서
-
-| 저장소 | 내용 | 접근 |
-|---|---|---|
-| `parclab-hsu/l-project-hils-ros2` | ROS2 패키지, 에뮬레이터, Isaac/Nav2 설정, 문서(SRS·SDP·아키텍처·시험 절차 15종) | 비공개 (승인제) |
-| `parclab-hsu/l-project-hils` | STM32 펌웨어(로버 제어·캘리브레이션 지그·부트로더), PC 도구 | 비공개 (승인제) |
-
-문서 체계: SRS(요구사항) · SDP(개발 계획) · AD(아키텍처) · TP(시험 절차) · DP(배포) ·
-IG(연동 가이드) · AN(자산 분석) · RR(검토 보고) · OP(운용 정책) — 저장소 `docs/`에서 형상 관리.
+`Isaac Sim` · `Python / PySide6` · `4WS Kinematics` · `Jetson Orin` · `Fast DDS` · `Nav2`
 
 ---
 
-[:octicons-arrow-left-24: 프로젝트 목록으로](../projects.md)
+[:octicons-arrow-left-24: 프로젝트 목록으로](../projects.md){ .md-button }
+[:octicons-file-document-16: SRS 전문](l-project-srs.md){ .md-button }
+[:octicons-file-document-16: SDP 전문](l-project-sdp.md){ .md-button }

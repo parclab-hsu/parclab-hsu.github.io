@@ -670,6 +670,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        저장소 구성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="저장소 구성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ros2-l-project-hils-ros2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS2 · 도구 저장소 (l-project-hils-ros2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l-project-hils" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        펌웨어 저장소 (l-project-hils)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개발 이력 — 주요 마일스톤
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        문서 체계
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#epos4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -681,7 +742,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         검증 현황
@@ -692,21 +753,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         기술 스택
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        저장소 · 문서
       
     </span>
   </a>
@@ -745,6 +795,22 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
 <blockquote>
 <p><strong>핵심 설계 원칙</strong> — HILS 보드가 항상 루프 안에 있다. 실 구동/시뮬레이션 어느 모드든 Navigation의 명령은 보드의 Drive Interface 추상 계층을 거치므로, 제어 주기·안전 로직·인터페이스가 두 모드에서 동일하게 검증됩니다.</p>
 </blockquote>
+<div class="grid cards">
+<ul>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg></span> <strong>SRS — 요구사항 명세서</strong></p>
+<hr />
+<p>IEEE 830 준용. 기능·비기능·인터페이스 요구사항 전체와 요구사항별 검증 상태.</p>
+<p><a href="../l-project-srs/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 전문 보기</a></p>
+</li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.25 1.44 12.53.64 11 1.2c-.86.3-1.5.96-1.82 1.8H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-7 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M7 7h10V5h2v14H5V5h2zm10 4H7V9h10zm-2 4H7v-2h8z"/></svg></span> <strong>SDP — 개발 계획서</strong></p>
+<hr />
+<p>개발 환경·형상 관리·개발 단계(P/A/N)·위험 관리·검증 전략 및 시험 실적.</p>
+<p><a href="../l-project-sdp/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 전문 보기</a></p>
+</li>
+</ul>
+</div>
 <hr />
 <h2 id="3-xrce-dds">시스템 구성 — 3계층 XRCE-DDS 아키텍처<a class="headerlink" href="#3-xrce-dds" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TB
@@ -770,11 +836,203 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
     DSIM -.-&gt; SIM
     SIM -.-&gt; DSIM</code></pre>
 <ul>
-<li><strong>통신</strong>: Ethernet Hub 단일망(UDP) — MCU는 XRCE-DDS(W5300 커스텀 UDP 전송), Linux 간은 Fast DDS</li>
-<li><strong>12축 계약</strong>: 구동 4축(속도, PVM) + 조향 4축(±90°, PPM) + 서스펜션 4축(±30°, PPM)</li>
+<li><strong>통신</strong>: Ethernet Hub 단일망(UDP) — MCU는 XRCE-DDS(W5300 커스텀 UDP 전송), Linux 간은 Fast DDS(도메인 통일)</li>
+<li><strong>12축 계약(v3)</strong>: 구동 4축(속도, PVM) + 조향 4축(±90°, PPM) + 서스펜션 4축(±30°, PPM)</li>
 <li><strong>4WS 기구학</strong>: 스워브 정/역기구학(강체 최소자승) — 제자리 회전·crab 주행 지원</li>
 <li><strong>안전</strong>: 계층별 워치독(Jetson·보드·드라이버) + 노드 헬스 모니터링(<code>/diagnostics</code> 표준)</li>
 </ul>
+<hr />
+<h2 id="_1">저장소 구성<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>개발 자산은 <strong>ROS2·도구·문서 저장소</strong>와 <strong>펌웨어 저장소</strong> 두 개로 분리해 형상 관리합니다.
+두 저장소 모두 <strong>PRIVATE(승인제)</strong> — 소유자가 초대·승인한 콜라보레이터만 접근합니다.</p>
+<table>
+<thead>
+<tr>
+<th>저장소</th>
+<th>내용</th>
+<th>규모</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parclab-hsu/l-project-hils-ros2</code></td>
+<td>ROS2 패키지, EPOS4 에뮬레이터, Isaac/Nav2 설정, 배포 도구, 문서 15종</td>
+<td>추적 파일 70개 · 커밋 45</td>
+</tr>
+<tr>
+<td><code>parclab-hsu/l-project-hils</code></td>
+<td>STM32 펌웨어 3종(로버 제어·캘리브레이션 지그·부트로더), PC 도구(GUI/로더)</td>
+<td>추적 파일 3,900여 개 (STM32Cube HAL 포함, 2026-07 git 전환)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ros2-l-project-hils-ros2">ROS2 · 도구 저장소 (<code>l-project-hils-ros2</code>)<a class="headerlink" href="#ros2-l-project-hils-ros2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>l-project-hils-ros2/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── hils_rover_control/          # ROS2 패키지 — 구동 제어·상태·진단
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── hils_rover_control/
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   │   ├── axes.py              #   12축 계약 단일 정의 (USD 조인트명·제원)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   │   ├── kinematics.py        #   4WS 스워브 정/역기구학 (강체 최소자승)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   │   ├── rover_control_node.py#   Twist → 12축 명령 + 워치독
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   │   ├── rover_state_node.py  #   JointState(12) → /odom + TF
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   │   ├── health_monitor_node.py#  토픽·노드·축 상태 → /diagnostics
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   │   ├── epos_master.py       #   EPOS4 CANopen 마스터 (벤치용)
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   │   └── can_protocol.py      #   CANopen 프레임 헬퍼 (순수 함수)
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   ├── config/                  #   rover_params.yaml, nav2/nav2_params.yaml
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   └── launch/                  #   rover_control.launch.py, nav2_hils.launch.py
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>├── hils_bridge/                 # ROS2 패키지 — 캘리브레이션 지그 UDP 브리지
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>├── tools/
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   ├── epos_rover_emulator/     #   EPOS4 12노드 에뮬레이터 GUI (PySide6)
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   │   ├── lib/epos_node.py     #     CiA 301/402 노드 모델 (PVM·PPM·EMCY)
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   │   ├── lib/emu_core.py      #     버스·12노드 관리, 4WS 자세 적분
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│   │   ├── ui/ui_main.py        #     12축 게이지·트렌드·로버 탑뷰
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│   │   └── test_*.py            #     자체 시험 / SIL / 12축 프로토콜 시험
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│   ├── epos_bench.py            #   실기 벤치 CLI (PVM 구동축)
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│   ├── suspension_cmd.py        #   서스펜션 자세 프리셋 CLI (OP-001)
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│   ├── sim_plant.py             #   시뮬레이터 대역 플랜트 (1차 지연, 50 Hz)
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│   ├── isaac/                   #   Isaac Sim 브리지 어댑터
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│   ├── jetson/ · simpc/         #   배포 스크립트 + systemd 유닛
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>│   └── systemd/                 #   vcan0 가상 CAN 영구화
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>├── config/dds/                  # Fast DDS/CycloneDDS 프로파일, 도메인 설정
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>└── docs/                        # 문서 15종 (아래 표)
+</code></pre></div>
+<h3 id="l-project-hils">펌웨어 저장소 (<code>l-project-hils</code>)<a class="headerlink" href="#l-project-hils" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>firmware/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── hils-rover-fw/               # 로버 제어 펌웨어 (STM32H723, FreeRTOS)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   └── src/ap/modules/
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│       ├── drive/
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│       │   ├── drive.c/.h       #   Drive Interface 추상 계층 + 12축 계약·제원 단일 정의
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│       │   ├── drv_epos.c       #   백엔드 ① CANopen → EPOS4 ×12
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│       │   └── drv_sim.c        #   백엔드 ② DDS → 시뮬레이션 PC
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│       ├── epos/epos.cpp/.h     # CANopen 마스터 (12노드 PVM/PPM 혼합, PDO 재매핑)
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│       └── micro_ros/
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│           ├── rover_mcu.c      #   micro-ROS 노드 (/rover/* 토픽)
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│           ├── uros_transport.c #   W5300 UDP 커스텀 XRCE 전송
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│           └── microros_support.c
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>├── hils-fw/ · hils-boot/        # 캘리브레이션 지그 펌웨어 · 부트로더
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>└── stm32cube/                   # STM32H7 HAL (벤더 SDK)
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>software/
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>├── hils-gui/                    # 지그 운용 GUI (PySide6)
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>└── hils-loader/                 # 펌웨어 다운로더 (UDP/USB CDC)
+</code></pre></div>
+<h3 id="_2">개발 이력 — 주요 마일스톤<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+<th>대표 커밋</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2</td>
+<td>ROS2 구동 구조 설계 (제어·상태 노드, 기구학)</td>
+<td><code>811aa0c</code></td>
+</tr>
+<tr>
+<td>P4·P5</td>
+<td>EPOS4 프로토콜 3중 구현(ROS2·펌웨어·에뮬레이터) + SIL 검증</td>
+<td><code>e989183</code></td>
+</tr>
+<tr>
+<td>P7</td>
+<td>에뮬레이터 GUI 게이지·모니터 모드·트렌드 그래프</td>
+<td><code>f833878</code> · <code>0ad2519</code></td>
+</tr>
+<tr>
+<td>A1~A4</td>
+<td>FreeRTOS+micro-ROS 골격 → W5300 UDP 전송 → Drive Interface 추상화 → drv_sim 백엔드 <em>(펌웨어)</em></td>
+<td><code>d013e3d</code> · <code>7730dec</code> · <code>4e5394f</code> · <code>8ccaf54</code></td>
+</tr>
+<tr>
+<td>A5</td>
+<td>Jetson 노드 개편 (<code>/rover/*</code> 계약, rover_state 신설)</td>
+<td><code>1689cb3</code></td>
+</tr>
+<tr>
+<td>v3</td>
+<td><strong>12축 전면 개정</strong> (4WS + 액티브 서스펜션, 전 계층 동시 개정)</td>
+<td><code>9c765c7</code></td>
+</tr>
+<tr>
+<td>B1·B2</td>
+<td>에뮬레이터 12노드·PPM 지원, 시험 절차서 12축 개정</td>
+<td><code>dd293d2</code> · <code>8a37c90</code></td>
+</tr>
+<tr>
+<td>QA</td>
+<td>전체 정합성 검토 → 흐름 검증 → 검토 보고서(RR-001)</td>
+<td><code>43d65f0</code> · <code>2c2f76d</code> · <code>421f240</code></td>
+</tr>
+<tr>
+<td>—</td>
+<td>노드 헬스 모니터링, 서스펜션 정책(OP-001), EPOS4 실물 대체 판정</td>
+<td><code>45b219f</code> · <code>d756c3e</code> · <code>7c08ce4</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>개발 규칙</strong> — 기능 단위 커밋(영문 요약 + 상세 불릿), <code>main</code> 단일 브랜치,
+<code>build/</code>·<code>archive/</code> 등 산출물 제외, 문서와 코드를 같은 커밋에서 함께 갱신.</p>
+<hr />
+<h2 id="_3">문서 체계<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>요구사항부터 운용 정책까지 문서 번호 체계로 관리하며, 코드 변경 시 관련 문서를 함께 개정합니다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>문서</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>요구사항</td>
+<td><strong><a href="../l-project-srs/">SRS-001</a></strong></td>
+<td>소프트웨어 요구사항 명세서 (IEEE 830 준용)</td>
+</tr>
+<tr>
+<td>계획</td>
+<td><strong><a href="../l-project-sdp/">SDP-001</a></strong></td>
+<td>소프트웨어 개발 계획서</td>
+</tr>
+<tr>
+<td>설계</td>
+<td>AD-002</td>
+<td>시스템 아키텍처 v2 — XRCE-DDS 3계층, Drive Interface, 헬스 모니터링</td>
+</tr>
+<tr>
+<td>분석</td>
+<td>AN-001</td>
+<td>VIPER v4 USD 자산 분석 (제원 실측·조인트 계약)</td>
+</tr>
+<tr>
+<td>시험</td>
+<td>TP-001 / TP-002</td>
+<td>EPOS4 벤치 시험 절차 / 3머신 통합 시험 절차</td>
+</tr>
+<tr>
+<td>배포</td>
+<td>DP-001 / DP-002</td>
+<td>Jetson 배포 절차 / 시뮬레이션 PC 배포 절차</td>
+</tr>
+<tr>
+<td>연동</td>
+<td>IG-001 / IG-002 / IG-003</td>
+<td>Isaac Sim / Nav2 / NVIDIA Isaac ROS Navigation</td>
+</tr>
+<tr>
+<td>검토</td>
+<td>RR-001</td>
+<td>검토 보고서 — 결함 11건 목록·수정·검증 및 재발 방지</td>
+</tr>
+<tr>
+<td>운용</td>
+<td>OP-001</td>
+<td>서스펜션 제어 정책 (운영자 프리셋·안전 규칙)</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h2 id="epos4">EPOS4 드라이버 에뮬레이터 — 실물 대체 검증 환경<a class="headerlink" href="#epos4" title="Permanent link">&para;</a></h2>
 <p>maxon EPOS4 Compact 50/8의 CANopen 프로토콜(NMT/SDO/PDO/CiA402 상태머신/PVM/PPM/EMCY)을
 12노드 전부 에뮬레이션하는 PySide6 GUI입니다. 실물 드라이버를 구매하지 않고도 마스터
@@ -789,7 +1047,12 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
   </p>
 <figcaption>수신 명령만으로 적분한 4WS 자세 — 휠별 조향각과 주행 궤적(직진 → 곡선 → 제자리 회전)</figcaption>
 </figure>
-<h2 id="_1">검증 현황<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><strong>대체 범위와 한계</strong> — 프로토콜 표면(프레임·상태머신·핸드셰이크)은 12축 전체 자동 시험으로
+정합을 유지합니다. 실제 모터 전류/토크 물리, 드라이버 튜닝, STO 하드웨어, 실시간 타이밍은
+에뮬레이터로 확인할 수 없으므로 위험 등록부에 명시하고, 실물 도입 시 원 벤치 절차(TP-001)를
+재수행하도록 계획했습니다.</p>
+<hr />
+<h2 id="_4">검증 현황<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -807,6 +1070,10 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
 <td><strong>11 PASS / 0 FAIL</strong> — 속도 1% 이내, 위치 ±1 count, 세트포인트 핸드셰이크 정확</td>
 </tr>
 <tr>
+<td>SIL — ROS2 마스터 ↔ 에뮬레이터</td>
+<td><strong>ALL PASS</strong> (4구동 벤치 + PPM 조향 수렴)</td>
+</tr>
+<tr>
 <td>ROS2 12축 폐루프 (cmd_vel → 4WS → 플랜트 → /odom)</td>
 <td>명령 복원 오차 &lt; 0.1%</td>
 </tr>
@@ -816,39 +1083,18 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
 </tr>
 <tr>
 <td>펌웨어 (FreeRTOS + micro-ROS + 12축 CANopen 마스터)</td>
-<td>빌드 461 KB, 3경로(mcu/can/sim) 시험 통과</td>
+<td>빌드 461 KB / 894 KB, 3경로(mcu/can/sim) 시험 통과</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_2">기술 스택<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><code>ROS2 Humble</code> · <code>micro-ROS (XRCE-DDS)</code> · <code>STM32H7 / FreeRTOS</code> · <code>CANopen (CiA 301/402)</code> ·
-<code>Isaac Sim</code> · <code>Python / PySide6</code> · <code>4WS Kinematics</code> · <code>Jetson Orin</code></p>
-<h2 id="_3">저장소 · 문서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>저장소</th>
-<th>내용</th>
-<th>접근</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>parclab-hsu/l-project-hils-ros2</code></td>
-<td>ROS2 패키지, 에뮬레이터, Isaac/Nav2 설정, 문서(SRS·SDP·아키텍처·시험 절차 15종)</td>
-<td>비공개 (승인제)</td>
-</tr>
-<tr>
-<td><code>parclab-hsu/l-project-hils</code></td>
-<td>STM32 펌웨어(로버 제어·캘리브레이션 지그·부트로더), PC 도구</td>
-<td>비공개 (승인제)</td>
-</tr>
-</tbody>
-</table>
-<p>문서 체계: SRS(요구사항) · SDP(개발 계획) · AD(아키텍처) · TP(시험 절차) · DP(배포) ·
-IG(연동 가이드) · AN(자산 분석) · RR(검토 보고) · OP(운용 정책) — 저장소 <code>docs/</code>에서 형상 관리.</p>
 <hr />
-<p><a href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 프로젝트 목록으로</a></p>
+<h2 id="_5">기술 스택<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><code>ROS2 Humble</code> · <code>micro-ROS (XRCE-DDS)</code> · <code>STM32H7 / FreeRTOS</code> · <code>CANopen (CiA 301/402)</code> ·
+<code>Isaac Sim</code> · <code>Python / PySide6</code> · <code>4WS Kinematics</code> · <code>Jetson Orin</code> · <code>Fast DDS</code> · <code>Nav2</code></p>
+<hr />
+<p><a class="md-button" href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 프로젝트 목록으로</a>
+<a class="md-button" href="../l-project-srs/">:octicons-file-document-16: SRS 전문</a>
+<a class="md-button" href="../l-project-sdp/">:octicons-file-document-16: SDP 전문</a></p>
 
 
 
