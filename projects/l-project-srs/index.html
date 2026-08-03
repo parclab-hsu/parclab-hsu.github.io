@@ -847,6 +847,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#38-csci-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 조이스틱 수동 주행 (CSCI-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -998,7 +1009,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.5</td>
+<td>1.6</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1053,6 +1064,11 @@
 <td>1.5</td>
 <td>2026-07-31</td>
 <td><strong>노드 헬스 모니터링 신설</strong> — health_monitor 노드(CSCI-10), 3.7절 SRS-FR-060~064, <code>/diagnostics</code> 인터페이스 (AD-002 v2.3 6a절 연계)</td>
+</tr>
+<tr>
+<td>1.6</td>
+<td>2026-08-03</td>
+<td><strong>조이스틱 수동 주행 신설</strong> — rover_teleop 노드(CSCI-11), 3.8절 SRS-FR-070~075, <code>/cmd_vel_joy</code> 우선권 중재, 4WS crab(linear.y) 지원 (FR-001 개정)</td>
 </tr>
 </tbody>
 </table>
@@ -1203,6 +1219,12 @@
 <td>Python/ROS2 Humble</td>
 <td>노드·토픽·축 상태 헬스 모니터링 → <code>/diagnostics</code></td>
 </tr>
+<tr>
+<td>CSCI-11 rover_teleop</td>
+<td><code>hils_rover_control/</code></td>
+<td>Python/ROS2 Humble</td>
+<td>조이스틱 수동 주행 (<code>/joy</code> → <code>/cmd_vel_joy</code>, 서스펜션 프리셋)</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1221,7 +1243,7 @@
 <tbody>
 <tr>
 <td>SRS-FR-001</td>
-<td><code>/cmd_vel</code>(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 ±π/2 랩(속도 부호 반전)한다</td>
+<td><code>/cmd_vel</code>(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 ±π/2 랩(속도 부호 반전)하며, <strong>linear.y(crab)를 지원</strong>한다(자율 주행 소스는 0, 수동 주행에서만 사용)</td>
 <td>T</td>
 <td>검증완료</td>
 </tr>
@@ -1552,6 +1574,55 @@
 </tr>
 </tbody>
 </table>
+<h3 id="38-csci-11">3.8 조이스틱 수동 주행 (CSCI-11)<a class="headerlink" href="#38-csci-11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>V</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS-FR-070</td>
+<td>rover_teleop은 <code>/joy</code>(sensor_msgs/Joy)를 구독해 스틱 입력을 Twist로 변환하고 <code>/cmd_vel_joy</code>로 발행한다. 좌스틱=병진(전후 + crab), 우스틱=제자리 회전이며 축·버튼 배치와 속도 스케일은 파라미터로 조정한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-071</td>
+<td><strong>데드맨(enable) 버튼을 누르고 있는 동안에만</strong> 주행 명령을 발행한다. 버튼을 떼면 즉시 0을 발행한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-072</td>
+<td>rover_control은 <code>joy_priority_timeout</code>(기본 1s) 내에 <code>/cmd_vel_joy</code>를 수신하면 <code>/cmd_vel</code>(자율 주행)을 무시한다 — <strong>수동 주행이 자율 주행을 선점</strong>한다</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-073</td>
+<td>데드맨 해제 시 우선권을 유지하여 정지 상태를 지키고, 자율 주행 복귀는 release 버튼으로 명시적으로 반납할 때만 이루어진다 (손을 떼자마자 자율 주행이 재개되는 것을 방지)</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-074</td>
+<td>조이스틱 또는 rover_teleop 두절 시 <code>/cmd_vel_joy</code> 발행이 끊기며, 구동축 정지는 FR-005 워치독이, 자율 주행 복귀는 FR-072 타임아웃이 담당한다</td>
+<td>A</td>
+<td>검증완료</td>
+</tr>
+<tr>
+<td>SRS-FR-075</td>
+<td>버튼으로 서스펜션 프리셋(level/lift/drop)을 <code>/rover/suspension_cmd</code>로 발행한다 (OP-001 정책 준수, 상승 엣지에서만 1회)</td>
+<td>T</td>
+<td>검증완료</td>
+</tr>
+</tbody>
+</table>
 <h2 id="4">4. 비기능 요구사항<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1618,7 +1689,19 @@
 <td><code>/cmd_vel</code></td>
 <td>geometry_msgs/Twist</td>
 <td>구독</td>
-<td>m/s, rad/s</td>
+<td>m/s, rad/s (자율 주행)</td>
+</tr>
+<tr>
+<td><code>/cmd_vel_joy</code></td>
+<td>geometry_msgs/Twist</td>
+<td>발행(teleop)·구독(control)</td>
+<td>m/s, rad/s — linear.y(crab) 포함, <code>/cmd_vel</code>보다 우선</td>
+</tr>
+<tr>
+<td><code>/joy</code></td>
+<td>sensor_msgs/Joy</td>
+<td>구독 (rover_teleop)</td>
+<td>축·버튼</td>
 </tr>
 <tr>
 <td><code>/sim/axes_cmd</code></td>

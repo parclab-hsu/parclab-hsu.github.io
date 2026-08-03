@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.6 |
+| 버전 | 1.7 |
 | 작성일 | 2026-07-28 (개정 2026-07-31) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
@@ -30,6 +30,7 @@
 | 1.4 | 2026-07-31 | 백로그 B1(에뮬레이터 12노드/PPM)·B2(TP-001/002 개정) 완료 반영. 전체 검토 — 본문 8륜 잔재를 12축으로 정합화(1장 개요·위험·rover_mcu 상태) |
 | 1.5 | 2026-07-31 | 노드 헬스 모니터링 산출물 등재 — health_monitor 노드·`/diagnostics` (SRS 3.7절, AD-002 v2.3 6a절), sim 폐루프 검증 실적 추가 |
 | 1.6 | 2026-07-31 | **EPOS4 실물 미구매 — 에뮬레이터 대체 결정** 반영: 12축 전체 프로토콜 시험(test_master_12axis) 등재, N2/N3 성격 변경, B3/B4 재정의, 대체 한계 리스크 등재 |
+| 1.7 | 2026-08-03 | **조이스틱 수동 주행 신설** — rover_teleop 노드·`tools/test_teleop.py` 산출물 등재, SRS 3.8절/AD-002 3b절 연계, 시험 실적 추가 |
 
 ---
 
@@ -60,6 +61,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 | `rover_mcu` (micro-ROS/XRCE-DDS 펌웨어 노드) | CSCI-6 확장 | 완료 (A1~A4) |
 | `rover_state` 노드 · `/rover/*` 토픽 개편 | `hils_rover_control/` | 완료 (A5) |
 | `health_monitor` 노드 (`/diagnostics` 헬스 모니터링) | `hils_rover_control/` | 완료 (sim 폐루프 + real 모드 SIL 검증) |
+| `rover_teleop` 노드 (조이스틱 수동 주행) + `tools/test_teleop.py` | `hils_rover_control/`, `tools/` | 완료 (합성 /joy 자동 시험 5 PASS) |
 | 서스펜션 운용 도구 `suspension_cmd.py` + 정책 OP-001 | `tools/`, `docs/` | 완료 (B5 1단계) |
 
 ---
@@ -211,6 +213,7 @@ source install/setup.bash
 | 헬스 모니터 real 모드 SIL (2026-07-31) | 합성 /rover/status: 전 축 enabled → `rover/axes` OK, 노드3 Fault+EMCY 주입 → ERROR `fault [N3] emcy [N3:0x2310]` 정확 지목 |
 | 서스펜션 정책 (2026-07-31, B5) | 정지 중 프리셋 lift 0.2 rad → axes_cmd[8..11]=0.2 즉시 발행 확인 |
 | **12축 전체 프로토콜 시험** (2026-07-31, 실물 대체 판정) | test_master_12axis **11 PASS / 0 FAIL** — 12노드 시동·PVM 4축 속도(1% 이내)·TPDO3 토크 4B·PPM 8축 위치(±1 cnt)·ack/target-reached·4WS 조향각 일치·EMCY/리셋 |
+| 조이스틱 수동 주행 (2026-08-03) | test_teleop **5 PASS / 0 FAIL** — Nav2 단독 반영 · 조이스틱 선점(2.35 vs Nav2 0.94) · crab 전 축 조향 90.0° · 데드맨 해제 시 정지 유지 · release 후 Nav2 복귀 |
 
 ### 4.3 요구사항 추적
 

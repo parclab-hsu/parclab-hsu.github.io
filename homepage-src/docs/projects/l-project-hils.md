@@ -41,7 +41,8 @@
 ```mermaid
 flowchart TB
     subgraph J["Navigation — NVIDIA Jetson (ROS2 Humble)"]
-        NAV[Nav2 / Isaac ROS] -- /cmd_vel --> RC[rover_control<br/>4WS 기구학]
+        NAV[Nav2 / Isaac ROS] -- /cmd_vel --> RC[rover_control<br/>4WS 기구학 · 명령 중재]
+        JOY[조이스틱<br/>rover_teleop] -- "/cmd_vel_joy (우선)" --> RC
         RC -- "/rover/axes_cmd [12]" --> AG[micro_ros_agent]
         RS[rover_state<br/>오도메트리] -- /odom + TF --> NAV
         HM[health_monitor<br/>/diagnostics]
@@ -66,6 +67,7 @@ flowchart TB
 - **통신**: Ethernet Hub 단일망(UDP) — MCU는 XRCE-DDS(W5300 커스텀 UDP 전송), Linux 간은 Fast DDS(도메인 통일)
 - **12축 계약(v3)**: 구동 4축(속도, PVM) + 조향 4축(±90°, PPM) + 서스펜션 4축(±30°, PPM)
 - **4WS 기구학**: 스워브 정/역기구학(강체 최소자승) — 제자리 회전·crab 주행 지원
+- **주행 입력**: 자율(Nav2)과 수동(조이스틱) 이중 경로 — 수동이 자율을 선점
 - **안전**: 계층별 워치독(Jetson·보드·드라이버) + 노드 헬스 모니터링(`/diagnostics` 표준)
 
 ### 미들웨어 선택 — 왜 MCU는 XRCE-DDS인가
@@ -83,6 +85,26 @@ MCU에서 **완전 DDS(RTPS)를 직접 구동**하는 방안(Cyclone DDS의 Free
 > CycloneDDS가 필요해지면 **에이전트와 Linux 노드의 RMW만 교체**하면 됩니다. 보드 펌웨어는 그대로입니다.
 
 상세 근거와 재검토 조건은 아키텍처 문서(AD-002 5.2a절)에 결정 기록으로 남겨 두었습니다.
+
+### 수동 주행 — 조이스틱 텔레옵과 명령 중재
+
+자율 주행(Nav2)과 별개로 **조이스틱 수동 주행**을 지원합니다. 4WS 로버라 스워브 관례를 따라
+**왼쪽 스틱은 병진(전후 + 게걸음), 오른쪽 스틱은 제자리 회전**에 대응하고, 버튼으로 서스펜션
+자세 프리셋(level/lift/drop)을 함께 조작합니다.
+
+**게걸음(crab) 주행** — 네 바퀴가 모두 같은 방향으로 90° 조향해 차체 방향을 유지한 채 옆으로
+이동하는 기동입니다. 4WS 로버만 할 수 있고 비홀로노믹 자율 주행 스택은 명령하지 않으므로,
+사실상 수동 주행에서만 쓰이는 능력입니다.
+
+| 항목 | 설계 |
+|---|---|
+| **명령 중재** | 별도 mux 노드 없이 `rover_control` 한 곳에서 처리 — 기구학 소유자가 명령 입구도 소유합니다. 조이스틱 명령이 1초 내에 들어오면 자율 주행 명령을 버립니다. |
+| **데드맨** | 지정 버튼을 **누르고 있는 동안에만** 주행 명령이 나갑니다. 손을 떼면 즉시 0을 발행합니다. |
+| **복귀 정책** | 데드맨을 떼도 우선권은 유지해 정지 상태를 지키고, 자율 주행 복귀는 **별도 release 버튼으로 명시 반납**할 때만 일어납니다 — 장애물을 피하려 조종간을 잡았다가 손을 뗀 순간 자율 주행이 다시 모는 상황을 막기 위한 설계입니다. |
+| **두절 대응** | 조이스틱·노드가 죽으면 명령 발행이 끊기고, 구동축 정지는 기존 워치독(0.5초)이 담당합니다. |
+
+검증은 **합성 조이스틱 입력**으로 자동화되어 있어 실물 패드 없이도 회귀 확인이 가능합니다
+(`tools/test_teleop.py` — 5항목 전부 통과).
 
 ---
 
@@ -107,6 +129,7 @@ l-project-hils-ros2/
 │   │   ├── rover_control_node.py#   Twist → 12축 명령 + 워치독
 │   │   ├── rover_state_node.py  #   JointState(12) → /odom + TF
 │   │   ├── health_monitor_node.py#  토픽·노드·축 상태 → /diagnostics
+│   │   ├── rover_teleop_node.py #   조이스틱 → /cmd_vel_joy (crab·서스 프리셋)
 │   │   ├── epos_master.py       #   EPOS4 CANopen 마스터 (벤치용)
 │   │   └── can_protocol.py      #   CANopen 프레임 헬퍼 (순수 함수)
 │   ├── config/                  #   rover_params.yaml, nav2/nav2_params.yaml
@@ -120,6 +143,7 @@ l-project-hils-ros2/
 │   │   └── test_*.py            #     자체 시험 / SIL / 12축 프로토콜 시험
 │   ├── epos_bench.py            #   실기 벤치 CLI (PVM 구동축)
 │   ├── suspension_cmd.py        #   서스펜션 자세 프리셋 CLI (OP-001)
+│   ├── test_teleop.py           #   조이스틱 텔레옵 자동 시험 (합성 /joy)
 │   ├── sim_plant.py             #   시뮬레이터 대역 플랜트 (1차 지연, 50 Hz)
 │   ├── isaac/                   #   Isaac Sim 브리지 어댑터
 │   ├── jetson/ · simpc/         #   배포 스크립트 + systemd 유닛
@@ -219,6 +243,7 @@ maxon EPOS4 Compact 50/8의 CANopen 프로토콜(NMT/SDO/PDO/CiA402 상태머신
 | SIL — ROS2 마스터 ↔ 에뮬레이터 | **ALL PASS** (4구동 벤치 + PPM 조향 수렴) |
 | ROS2 12축 폐루프 (cmd_vel → 4WS → 플랜트 → /odom) | 명령 복원 오차 < 0.1% |
 | 노드 헬스 모니터링 | 컴포넌트 강제 종료 시 3 s 내 원인 지목(ERROR) |
+| 조이스틱 수동 주행 (합성 입력) | **5 PASS / 0 FAIL** — 자율 주행 선점, 게걸음 시 네 축 조향 90.0°, 데드맨 해제 시 정지 유지, 반납 후 자율 복귀 |
 | 펌웨어 (FreeRTOS + micro-ROS + 12축 CANopen 마스터) | 빌드 461 KB / 894 KB, 3경로(mcu/can/sim) 시험 통과 |
 
 ---
@@ -226,7 +251,7 @@ maxon EPOS4 Compact 50/8의 CANopen 프로토콜(NMT/SDO/PDO/CiA402 상태머신
 ## 기술 스택
 
 `ROS2 Humble` · `micro-ROS (XRCE-DDS)` · `STM32H7 / FreeRTOS` · `CANopen (CiA 301/402)` ·
-`Isaac Sim` · `Python / PySide6` · `4WS Kinematics` · `Jetson Orin` · `Fast DDS` · `Nav2`
+`Isaac Sim` · `Python / PySide6` · `4WS Kinematics` · `Jetson Orin` · `Fast DDS` · `Nav2` · `Joy Teleop`
 
 ---
 

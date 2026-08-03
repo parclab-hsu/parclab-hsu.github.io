@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SRS-001 |
-| 버전 | 1.5 |
+| 버전 | 1.6 |
 | 작성일 | 2026-07-28 (개정 2026-07-31) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 적용 표준 | IEEE 830 준용 |
@@ -29,6 +29,7 @@
 | 1.3 | 2026-07-30 | **12축 개정(v3 계약)** — 실기 로버 = 4륜 독립조향+액티브 서스펜션(AN-001). `/rover/axes_cmd` 12ch, 4WS(swerve) 기구학, 펌웨어 EPOS 12노드 혼합모드(1-4 PVM/5-12 PPM), 제원 갱신(r0.213/트랙1.26/축거1.5). 8륜 스키드 계약·PC 직결 CAN 백엔드 폐지(벤치는 tools/epos_bench.py) |
 | 1.4 | 2026-07-31 | 전체 검토 — 1.3에서 개정 이력만 반영되고 본문에 남아 있던 8륜/wheel_cmd 잔재를 12축 계약으로 전면 정합화 (2·3·5·6장, NF-004 FreeRTOS 반영, cmd 프로토콜 0x0031/0x0034 12축 페이로드) |
 | 1.5 | 2026-07-31 | **노드 헬스 모니터링 신설** — health_monitor 노드(CSCI-10), 3.7절 SRS-FR-060~064, `/diagnostics` 인터페이스 (AD-002 v2.3 6a절 연계) |
+| 1.6 | 2026-08-03 | **조이스틱 수동 주행 신설** — rover_teleop 노드(CSCI-11), 3.8절 SRS-FR-070~075, `/cmd_vel_joy` 우선권 중재, 4WS crab(linear.y) 지원 (FR-001 개정) |
 
 ---
 
@@ -102,6 +103,7 @@ flowchart TB
 | CSCI-8 rover_mcu | CSCI-6 확장 | C (micro-ROS/FreeRTOS) | XRCE-DDS 노드 + Drive Interface 추상화 (drv_epos/drv_sim) — 구현완료(A1~A4) |
 | CSCI-9 rover_state | — | — | CSCI-2로 병합 (A5에서 sim_feedback을 rover_state로 개명·일반화) |
 | CSCI-10 health_monitor | `hils_rover_control/` | Python/ROS2 Humble | 노드·토픽·축 상태 헬스 모니터링 → `/diagnostics` |
+| CSCI-11 rover_teleop | `hils_rover_control/` | Python/ROS2 Humble | 조이스틱 수동 주행 (`/joy` → `/cmd_vel_joy`, 서스펜션 프리셋) |
 
 ---
 
@@ -113,7 +115,7 @@ flowchart TB
 
 | ID | 요구사항 | V | 상태 |
 |---|---|---|---|
-| SRS-FR-001 | `/cmd_vel`(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 ±π/2 랩(속도 부호 반전)한다 | T | 검증완료 |
+| SRS-FR-001 | `/cmd_vel`(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 ±π/2 랩(속도 부호 반전)하며, **linear.y(crab)를 지원**한다(자율 주행 소스는 0, 수동 주행에서만 사용) | T | 검증완료 |
 | SRS-FR-002 | 구동 모드는 `real`(CAN 실 구동)과 `sim`(시뮬레이터 전달) 2종을 제공하며 런타임 파라미터로 전환 가능하다 | T | 검증완료 |
 | SRS-FR-003 | `sim` 모드에서 12축 명령을 `/sim/axes_cmd`(Float64MultiArray×12)로 발행한다 | T | 검증완료 |
 | SRS-FR-004 | `real` 모드에서 12축 명령을 `/rover/axes_cmd`로 HILS 보드에 전달한다 (rpm·counts 변환은 보드 drv_epos가 수행) | T | 검증완료 |
@@ -188,6 +190,17 @@ flowchart TB
 | SRS-FR-063 | 진단 결과를 ROS2 표준 `/diagnostics`(DiagnosticArray, 기본 1Hz)로 발행하며, 종합 항목(`rover/system`)은 최악 레벨과 원인 목록을 포함한다 | T | 검증완료 |
 | SRS-FR-064 | health_monitor는 제어 루프에 개입하지 않는다(감시·보고 전용) — 명령 경로 토픽은 정보성으로만 보고하고, 안전 정지는 FR-005/FR-055 워치독이 전담한다 | I | 검증완료 |
 
+### 3.8 조이스틱 수동 주행 (CSCI-11)
+
+| ID | 요구사항 | V | 상태 |
+|---|---|---|---|
+| SRS-FR-070 | rover_teleop은 `/joy`(sensor_msgs/Joy)를 구독해 스틱 입력을 Twist로 변환하고 `/cmd_vel_joy`로 발행한다. 좌스틱=병진(전후 + crab), 우스틱=제자리 회전이며 축·버튼 배치와 속도 스케일은 파라미터로 조정한다 | T | 검증완료 |
+| SRS-FR-071 | **데드맨(enable) 버튼을 누르고 있는 동안에만** 주행 명령을 발행한다. 버튼을 떼면 즉시 0을 발행한다 | T | 검증완료 |
+| SRS-FR-072 | rover_control은 `joy_priority_timeout`(기본 1s) 내에 `/cmd_vel_joy`를 수신하면 `/cmd_vel`(자율 주행)을 무시한다 — **수동 주행이 자율 주행을 선점**한다 | T | 검증완료 |
+| SRS-FR-073 | 데드맨 해제 시 우선권을 유지하여 정지 상태를 지키고, 자율 주행 복귀는 release 버튼으로 명시적으로 반납할 때만 이루어진다 (손을 떼자마자 자율 주행이 재개되는 것을 방지) | T | 검증완료 |
+| SRS-FR-074 | 조이스틱 또는 rover_teleop 두절 시 `/cmd_vel_joy` 발행이 끊기며, 구동축 정지는 FR-005 워치독이, 자율 주행 복귀는 FR-072 타임아웃이 담당한다 | A | 검증완료 |
+| SRS-FR-075 | 버튼으로 서스펜션 프리셋(level/lift/drop)을 `/rover/suspension_cmd`로 발행한다 (OP-001 정책 준수, 상승 엣지에서만 1회) | T | 검증완료 |
+
 ## 4. 비기능 요구사항
 
 | ID | 요구사항 | V | 상태 |
@@ -207,7 +220,9 @@ flowchart TB
 
 | 토픽 | 타입 | 방향 | 단위 |
 |---|---|---|---|
-| `/cmd_vel` | geometry_msgs/Twist | 구독 | m/s, rad/s |
+| `/cmd_vel` | geometry_msgs/Twist | 구독 | m/s, rad/s (자율 주행) |
+| `/cmd_vel_joy` | geometry_msgs/Twist | 발행(teleop)·구독(control) | m/s, rad/s — linear.y(crab) 포함, `/cmd_vel`보다 우선 |
+| `/joy` | sensor_msgs/Joy | 구독 (rover_teleop) | 축·버튼 |
 | `/sim/axes_cmd` | std_msgs/Float64MultiArray[12] | 발행 | 구동 rad/s ×4 + 조향 rad ×4 + 서스 rad ×4 |
 | `/sim/joint_states` | sensor_msgs/JointState (12조인트, USD 이름) | 구독 | rad/s·Nm(구동), rad(조향·서스) |
 | `/rover/suspension_cmd` | std_msgs/Float64MultiArray[4] | 구독 | 서스펜션 rad |
