@@ -960,11 +960,11 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.8</td>
+<td>1.9</td>
 </tr>
 <tr>
 <td>작성일</td>
-<td>2026-07-28 (개정 2026-07-31)</td>
+<td>2026-07-28 (개정 2026-08-03)</td>
 </tr>
 <tr>
 <td>과제</td>
@@ -1031,14 +1031,20 @@
 <td>2026-08-03</td>
 <td>2.4절에 문서 공개 경로(연구실 홈페이지 게재·자동 재생성) 명시</td>
 </tr>
+<tr>
+<td>1.9</td>
+<td>2026-08-03</td>
+<td>공개 홈페이지·Git 구현 정합화 — 폐기된 PC 직결 CAN 경로 제거, 벤치 에뮬레이터 시험과 STM32/실물 검증 범위 구분, 레거시 URDF 범위 명시</td>
+</tr>
 </tbody>
 </table>
 <hr />
 <h2 id="1">1. 프로젝트 개요<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <h3 id="11">1.1 목표<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
 <p>12축 로버(4륜 독립조향 + 액티브 서스펜션, v3 계약 — AN-001)의 Navigation-구동계 폐루프를
-HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN 프로토콜로 개발·검증이
-가능하도록 플랜트 에뮬레이터를 제공하고, 실물 전환 시 파라미터 변경만으로 동작하도록 한다.</p>
+HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen 소프트웨어 계약과 제어 로직을
+사전 검증할 수 있는 플랜트 에뮬레이터를 제공한다. 전기적·실시간 호환성, PPM 핸드셰이크와
+안전 기능은 보드·실물 도입 후 별도 검증한다.</p>
 <h3 id="12">1.2 개발 산출물<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1095,9 +1101,9 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 <td>완료 (검증됨)</td>
 </tr>
 <tr>
-<td>Isaac Sim 연동 준비 (어댑터·URDF·가이드 IG-001)</td>
+<td>Isaac Sim 연동 준비 (12축 어댑터·정식 VIPER v4 USD 가이드 IG-001)</td>
 <td><code>tools/isaac/</code>, <code>docs/</code></td>
-<td>완료 (어댑터·URDF 검증됨)</td>
+<td>완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시)</td>
 </tr>
 <tr>
 <td>Nav2 통합 준비 (파라미터·런치·가이드 IG-002)</td>
@@ -1260,12 +1266,12 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 </tr>
 <tr>
 <td>P4. 3중 구현</td>
-<td>ROS2 마스터 / STM32 펌웨어 / GUI 에뮬레이터 (동일 규격)</td>
+<td>PC 벤치 마스터 / STM32 펌웨어 / GUI 에뮬레이터 (EPOS4 사양 기반)</td>
 <td>각 단위시험</td>
 </tr>
 <tr>
 <td>P5. SIL 검증</td>
-<td>마스터 ↔ 에뮬레이터 in-process 검증 (ALL PASS)</td>
+<td>PC 벤치 마스터 ↔ 에뮬레이터 in-process 검증 (ALL PASS)</td>
 <td><code>test_sil_master.py</code></td>
 </tr>
 <tr>
@@ -1297,7 +1303,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 </tr>
 <tr>
 <td>N2. 펌웨어-에뮬레이터 CAN 시험</td>
-<td><strong>실물 대체</strong>: 보드 FDCAN ↔ USB-CAN 어댑터 ↔ PC 에뮬레이터(socketcan) — TP-001 v1.2 대체 구성</td>
+<td><strong>프로토콜 대역 시험</strong>: 보드 FDCAN ↔ USB-CAN 어댑터 ↔ PC 에뮬레이터(socketcan) — 실물 전기·타이밍 검증은 포함하지 않음</td>
 <td>보드·USB-CAN 어댑터 입고</td>
 </tr>
 <tr>
@@ -1327,7 +1333,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 </tr>
 <tr>
 <td>A5. Jetson 노드 개편 (완료 2026-07-30)</td>
-<td>rover_control <code>real_backend</code>(mcu/can), <code>rover_state</code> 신설 — 3경로 시험 통과</td>
+<td><code>rover_control</code> <code>/rover/*</code> 전환, <code>rover_state</code> 신설. 당시 mcu/can/sim 시험 기록은 v2 이력이며, v3에서 PC 직결 CAN 제거 — 현행 real 경로는 MCU 단일</td>
 <td>A1</td>
 </tr>
 <tr>
@@ -1375,7 +1381,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 <tr>
 <td>B4</td>
 <td>PPM 핸드셰이크 검증</td>
-<td><strong>에뮬레이터 검증으로 대체 완료 (2026-07-31)</strong> — test_master_12axis 8축 동시 ack/target-reached 확인. 실물 도입 시에만 재검증</td>
+<td><strong>PC 벤치 마스터↔에뮬레이터 소프트웨어 시험 완료 (2026-07-31)</strong> — test_master_12axis에서 8축 ack/target-reached 확인. STM32 <code>epos.cpp</code>와 실물 EPOS4 조합은 미검증이며 N2·실물 도입 시 재시험</td>
 </tr>
 <tr>
 <td>B5</td>
@@ -1432,7 +1438,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 <tr>
 <td>에뮬레이터-실물 동작 차이 (전류/토크 물리, 튜닝, 비실시간 PC 타이밍)</td>
 <td>실물 도입 시 재작업</td>
-<td>프로토콜 표면은 시험으로 정합 유지(test_master_12axis), 물리 파라미터는 플랜트 모델(Isaac)로 보완, 실물 도입 시 TP-001 원 절차 재수행</td>
+<td>벤치 마스터↔에뮬레이터 내부 정합만 test_master_12axis로 회귀시험, 보드·실물 조합은 TP-001/N2로 별도 검증</td>
 </tr>
 </tbody>
 </table>
@@ -1460,7 +1466,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 </tr>
 <tr>
 <td>SIL</td>
-<td>마스터↔에뮬레이터 <code>test_sil_master.py</code></td>
+<td>PC 벤치 마스터↔에뮬레이터 <code>test_sil_master.py</code></td>
 <td>7항목 (4구동 벤치+PPM 스모크)</td>
 </tr>
 <tr>
@@ -1527,8 +1533,8 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 </thead>
 <tbody>
 <tr>
-<td>A5: 3경로(mcu/can/sim) 명령·피드백 (2026-07-30)</td>
-<td>전부 통과 (wheel_cmd 4.4/5.6, odom 0.5/0.2 복원)</td>
+<td>A5(v2 이력): 3경로(mcu/can/sim) 명령·피드백 (2026-07-30)</td>
+<td>당시 시험 통과. 현행 12축 v3 계약은 PC 직결 CAN을 포함하지 않으며 real 경로는 MCU 단일</td>
 </tr>
 <tr>
 <td>sim_plant 대역 플랜트 (2026-07-30)</td>
@@ -1567,8 +1573,8 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 <td>정지 중 프리셋 lift 0.2 rad → axes_cmd[8..11]=0.2 즉시 발행 확인</td>
 </tr>
 <tr>
-<td><strong>12축 전체 프로토콜 시험</strong> (2026-07-31, 실물 대체 판정)</td>
-<td>test_master_12axis <strong>11 PASS / 0 FAIL</strong> — 12노드 시동·PVM 4축 속도(1% 이내)·TPDO3 토크 4B·PPM 8축 위치(±1 cnt)·ack/target-reached·4WS 조향각 일치·EMCY/리셋</td>
+<td><strong>벤치 master↔emulator 12축 소프트웨어 프로토콜 시험</strong> (2026-07-31)</td>
+<td>test_master_12axis <strong>11 PASS / 0 FAIL</strong> — 12노드 시동·PVM 4축 속도(1% 이내)·TPDO3 토크 4B·PPM 8축 위치(±1 cnt)·ack/target-reached·4WS 조향각 일치·EMCY/리셋. STM32/실물 호환성 판정은 아님</td>
 </tr>
 <tr>
 <td>조이스틱 수동 주행 (2026-08-03)</td>
@@ -1582,7 +1588,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 <code>f833878</code>(GUI 게이지/모니터 모드) → <code>0ad2519</code>(트렌드 그래프) → <code>f600f7d</code>(vcan 인프라) →
 <code>9c765c7</code>(12축 v3 전면 개정) → <code>dd293d2</code>(B1: 에뮬레이터 12노드·PPM) → <code>8a37c90</code>(B2: TP-001/002 v1.1) →
 <code>43d65f0</code>(전체 정합성 검토) → <code>2c2f76d</code>(SRS/SDP 흐름 검증) → <code>421f240</code>(RR-001 검토 보고서) →
-<code>45b219f</code>(헬스 모니터링) → <code>d756c3e</code>(B5 서스펜션 정책) → <code>3fb5614</code>·<code>7c08ce4</code>(EPOS4 실물 대체 판정).</p>
+<code>45b219f</code>(헬스 모니터링) → <code>d756c3e</code>(B5 서스펜션 정책) → <code>3fb5614</code>·<code>7c08ce4</code>(벤치 에뮬레이터 프로토콜 시험).</p>
 <hr />
 <h2 id="5">5. 운영 절차 요약<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <h3 id="51-ros2-sim">5.1 ROS2 폐루프 시뮬레이션 (실물 없음 — sim 모드)<a class="headerlink" href="#51-ros2-sim" title="Permanent link">&para;</a></h3>

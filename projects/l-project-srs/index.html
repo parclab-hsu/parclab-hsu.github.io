@@ -1009,11 +1009,11 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.6</td>
+<td>1.7</td>
 </tr>
 <tr>
 <td>작성일</td>
-<td>2026-07-28 (개정 2026-07-31)</td>
+<td>2026-07-28 (개정 2026-08-03)</td>
 </tr>
 <tr>
 <td>과제</td>
@@ -1069,6 +1069,11 @@
 <td>1.6</td>
 <td>2026-08-03</td>
 <td><strong>조이스틱 수동 주행 신설</strong> — rover_teleop 노드(CSCI-11), 3.8절 SRS-FR-070~075, <code>/cmd_vel_joy</code> 우선권 중재, 4WS crab(linear.y) 지원 (FR-001 개정)</td>
+</tr>
+<tr>
+<td>1.7</td>
+<td>2026-08-03</td>
+<td>2.1절 구성도에 rover_teleop·health_monitor 반영, 노드·토픽 그래프(AD-002 3a) 참조 추가, 5.1절 <code>/hils/raw</code> 누락 보완</td>
 </tr>
 </tbody>
 </table>
@@ -1138,7 +1143,8 @@
 <h3 id="21-v2-lpj-hils-ad-002">2.1 시스템 구성 (목표 아키텍처 v2 — 상세는 LPJ-HILS-AD-002)<a class="headerlink" href="#21-v2-lpj-hils-ad-002" title="Permanent link">&para;</a></h3>
 <p>Ethernet Hub 단일망(UDP)에 3노드: Navigation(NVIDIA Jetson, Humble), 시뮬레이션 PC(Ubuntu 22.04, Humble), HILS 보드(STM32H7, micro-ROS/XRCE-DDS). <strong>HILS 보드가 Drive Interface 추상 계층을 소유</strong>하여 실 구동(drv_epos: CANopen→EPOS4)과 시뮬레이션(drv_sim: DDS→시뮬 PC)을 백엔드 교체로 전환하고, Navigation은 모드와 무관하게 동일한 <code>/rover/*</code> 인터페이스를 본다.</p>
 <pre class="mermaid"><code>flowchart TB
-    NAV[Nav2 · Jetson] -- /cmd_vel --&gt; RC[rover_control · Jetson&lt;br/&gt;기구학]
+    NAV[Nav2 · Jetson] -- /cmd_vel --&gt; RC[rover_control · Jetson&lt;br/&gt;기구학 · 명령 중재]
+    JOY[joy_node + rover_teleop] -- "/cmd_vel_joy (우선)" --&gt; RC
     RC -- "/rover/axes_cmd [12]" --&gt; MCU[rover_mcu · HILS 보드&lt;br/&gt;Drive Interface]
     MCU -- "real: CANopen RPDO3/4 x12" --&gt; EPOS[EPOS4 x12&lt;br/&gt;1~4 PVM / 5~12 PPM]
     EPOS -- TPDO3/TPDO4 --&gt; MCU
@@ -1146,7 +1152,9 @@
     SIM -. /sim/joint_states .-&gt; MCU
     MCU -- /rover/joint_states --&gt; RS[rover_state · Jetson] -- /odom + TF --&gt; NAV
     AG[micro_ros_agent · Jetson&lt;br/&gt;udp4 :8888] === MCU
+    MCU -- "/rover/status" --&gt; HM[health_monitor · Jetson&lt;br/&gt;→ /diagnostics]
     JIG[캘리브레이션 지그 hils-fw] -- "UDP $DATA1" --&gt; HB[hils_bridge]</code></pre>
+<p>노드·토픽 전체 연결(발행·구독 매트릭스 포함)은 <strong>LPJ-HILS-AD-002 3a절</strong>을 참조한다.</p>
 <p>구 v1 구성(PC 직결 CAN 백엔드)은 12축 개정으로 폐지되었다 — 벤치 시험은 <code>tools/epos_bench.py</code>(EposMaster 단독 CLI, LPJ-HILS-TP-001 v1.1)로 수행한다.</p>
 <h3 id="22-csci">2.2 소프트웨어 형상 항목 (CSCI)<a class="headerlink" href="#22-csci" title="Permanent link">&para;</a></h3>
 <table>
@@ -1738,6 +1746,12 @@
 <td>sensor_msgs/JointState</td>
 <td>발행</td>
 <td>rad, m</td>
+</tr>
+<tr>
+<td><code>/hils/raw</code></td>
+<td>std_msgs/String</td>
+<td>발행</td>
+<td>지그 원문 문장(디버그)</td>
 </tr>
 <tr>
 <td><code>/diagnostics</code></td>

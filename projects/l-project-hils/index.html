@@ -662,13 +662,24 @@
   <a href="#3-xrce-dds" class="md-nav__link">
     <span class="md-ellipsis">
       
-        시스템 구성 — 3계층 XRCE-DDS 아키텍처
+        목표 시스템 구성 — 3계층 XRCE-DDS 아키텍처
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="시스템 구성 — 3계층 XRCE-DDS 아키텍처">
+    <nav class="md-nav" aria-label="목표 시스템 구성 — 3계층 XRCE-DDS 아키텍처">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ros2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROS2 노드·토픽 그래프
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#mcu-xrce-dds" class="md-nav__link">
@@ -762,7 +773,7 @@
   <a href="#epos4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        EPOS4 드라이버 에뮬레이터 — 실물 대체 검증 환경
+        EPOS4 드라이버 에뮬레이터 — 소프트웨어 프로토콜 시험 환경
       
     </span>
   </a>
@@ -816,12 +827,13 @@
 Simulation) 시스템</strong>입니다. 4륜 독립조향(4WS) + 액티브 서스펜션의 <strong>12축 로버</strong>를
 Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이션 PC(Isaac Sim)의
 3계층 폐루프로 검증합니다.</p>
-<p>실물 모터드라이버(maxon EPOS4 ×12) 없이도 동일한 CANopen 프로토콜로 개발·검증할 수
-있도록 <strong>드라이버 에뮬레이터</strong>를 자체 개발했으며, 실물과의 프로토콜 정합을 12축 전체
-자동 시험으로 유지합니다.</p>
+<p>실물 모터드라이버(maxon EPOS4 ×12) 없이도 CANopen 마스터 소프트웨어를 개발·검증할 수
+있도록 <strong>드라이버 에뮬레이터</strong>를 자체 개발했으며, EPOS4 펌웨어 사양서 기준의 프로토콜
+동작을 12축 자동 시험으로 확인합니다. 실물 드라이버의 전기적 특성·응답 타이밍 검증은
+이 시험 범위에 포함되지 않습니다.</p>
 </div>
 <blockquote>
-<p><strong>핵심 설계 원칙</strong> — HILS 보드가 항상 루프 안에 있다. 실 구동/시뮬레이션 어느 모드든 Navigation의 명령은 보드의 Drive Interface 추상 계층을 거치므로, 제어 주기·안전 로직·인터페이스가 두 모드에서 동일하게 검증됩니다.</p>
+<p><strong>핵심 설계 원칙</strong> — HILS 보드가 항상 루프 안에 있다. 실 구동/시뮬레이션 어느 모드든 Navigation의 명령은 보드의 Drive Interface 추상 계층을 거치므로, 제어 주기·안전 로직·인터페이스를 두 모드에서 동일하게 검증할 수 있도록 설계했습니다. 3머신 통합 검증은 A6 시험으로 남아 있습니다.</p>
 </blockquote>
 <div class="grid cards">
 <ul>
@@ -840,7 +852,7 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
 </ul>
 </div>
 <hr />
-<h2 id="3-xrce-dds">시스템 구성 — 3계층 XRCE-DDS 아키텍처<a class="headerlink" href="#3-xrce-dds" title="Permanent link">&para;</a></h2>
+<h2 id="3-xrce-dds">목표 시스템 구성 — 3계층 XRCE-DDS 아키텍처<a class="headerlink" href="#3-xrce-dds" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TB
     subgraph J["Navigation — NVIDIA Jetson (ROS2 Humble)"]
         NAV[Nav2 / Isaac ROS] -- /cmd_vel --&gt; RC[rover_control&lt;br/&gt;4WS 기구학 · 명령 중재]
@@ -852,7 +864,7 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
 
     subgraph B["HILS 보드 — STM32H7 (FreeRTOS + micro-ROS)"]
         MCU[rover_mcu] --- DIF{{Drive Interface}}
-        DIF -- real --&gt; EPOS[CANopen 마스터&lt;br/&gt;EPOS4 ×12 / 에뮬레이터]
+        DIF -- real --&gt; EPOS[CANopen 마스터&lt;br/&gt;EPOS4 ×12]
         DIF -- sim --&gt; DSIM[DDS 백엔드]
     end
 
@@ -864,13 +876,51 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
     AG === MCU
     DSIM -.-&gt; SIM
     SIM -.-&gt; DSIM</code></pre>
+<p><code>rover_control</code>, <code>rover_state</code>, 보드의 Drive Interface와 <code>drv_sim</code> 경로는 구현되어 있습니다.
+위 그림 전체를 Jetson·시뮬레이션 PC·보드로 연결하는 A6 시험과 실물 EPOS4 경로는 아직
+완료되지 않았습니다.</p>
 <ul>
 <li><strong>통신</strong>: Ethernet Hub 단일망(UDP) — MCU는 XRCE-DDS(W5300 커스텀 UDP 전송), Linux 간은 Fast DDS(도메인 통일)</li>
 <li><strong>12축 계약(v3)</strong>: 구동 4축(속도, PVM) + 조향 4축(±90°, PPM) + 서스펜션 4축(±30°, PPM)</li>
 <li><strong>4WS 기구학</strong>: 스워브 정/역기구학(강체 최소자승) — 제자리 회전·crab 주행 지원</li>
 <li><strong>주행 입력</strong>: 자율(Nav2)과 수동(조이스틱) 이중 경로 — 수동이 자율을 선점</li>
-<li><strong>안전</strong>: 계층별 워치독(Jetson·보드·드라이버) + 노드 헬스 모니터링(<code>/diagnostics</code> 표준)</li>
+<li><strong>안전</strong>: <code>rover_control</code>·보드 drive 계층 워치독 + 노드 헬스 모니터링. EPOS4 RPDO 타임아웃과 STO는 N5 실기 과제</li>
 </ul>
+<h3 id="ros2">ROS2 노드·토픽 그래프<a class="headerlink" href="#ros2" title="Permanent link">&para;</a></h3>
+<p>위 그림이 <strong>어느 기계에서 무엇이 도는가</strong>를 보여준다면, 아래는 기계 경계를 지우고 노드와
+토픽의 연결만 남긴 그래프입니다. 실선이 실 구동(real), 점선이 시뮬레이션(sim) 경로입니다.</p>
+<pre class="mermaid"><code>flowchart LR
+    NAV(["Nav2 / Isaac ROS"])
+    JOYD(["joy_node"])
+    TELE["rover_teleop"]
+    RC["rover_control"]
+    RS["rover_state"]
+    HM["health_monitor"]
+    MCU["rover_mcu&lt;br/&gt;HILS 보드"]
+    PLANT(["sim_plant / Isaac Sim"])
+    EPOS(["EPOS4 ×12 · CAN"])
+
+    JOYD -- "/joy" --&gt; TELE
+    TELE -- "/cmd_vel_joy" --&gt; RC
+    NAV -- "/cmd_vel" --&gt; RC
+    TELE -- "/rover/suspension_cmd" --&gt; RC
+
+    RC -- "/rover/axes_cmd [12]" --&gt; MCU
+    MCU -- "CANopen RPDO" --&gt; EPOS
+    EPOS -- "TPDO" --&gt; MCU
+    MCU -. "/sim/axes_cmd [12]" .-&gt; PLANT
+    PLANT -. "/sim/joint_states" .-&gt; MCU
+
+    MCU -- "/rover/joint_states" --&gt; RS
+    RS -- "/odom + TF" --&gt; NAV
+    MCU -- "/rover/status" --&gt; HM
+    RC -. 감시 .-&gt; HM
+    RS -. 감시 .-&gt; HM</code></pre>
+<p><strong>모드 전환 지점은 HILS 보드 안</strong>입니다 — Jetson 쪽 노드는 실 구동인지 시뮬레이션인지
+구분하지 않고 같은 <code>/rover/*</code> 인터페이스만 봅니다. <code>health_monitor</code>는 구독만 하며 제어에
+개입하지 않습니다. 지그 경로(<code>hils_bridge</code> → <code>/hils/*</code>)는 구동계와 독립이라 위 그래프에는
+포함하지 않았습니다.</p>
+<p>발행·구독 전체 매트릭스는 저장소 아키텍처 문서(AD-002 3a절)에 있습니다.</p>
 <h3 id="mcu-xrce-dds">미들웨어 선택 — 왜 MCU는 XRCE-DDS인가<a class="headerlink" href="#mcu-xrce-dds" title="Permanent link">&para;</a></h3>
 <p>MCU에서 <strong>완전 DDS(RTPS)를 직접 구동</strong>하는 방안(Cyclone DDS의 FreeRTOS 포트, embeddedRTPS)을
 검토한 뒤 기각하고, XRCE-DDS + 에이전트 구조를 확정했습니다. 판단 근거는 세 가지입니다.</p>
@@ -957,7 +1007,7 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 <tr>
 <td><code>parclab-hsu/l-project-hils</code></td>
 <td>STM32 펌웨어 3종(로버 제어·캘리브레이션 지그·부트로더), PC 도구(GUI/로더)</td>
-<td>추적 파일 3,900여 개 (STM32Cube HAL 포함, 2026-07 git 전환)</td>
+<td>추적 파일 약 3,900개 (현재 3,887개, STM32Cube HAL 포함)</td>
 </tr>
 </tbody>
 </table>
@@ -1063,7 +1113,7 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 </tr>
 <tr>
 <td>—</td>
-<td>노드 헬스 모니터링, 서스펜션 정책(OP-001), EPOS4 실물 대체 판정</td>
+<td>노드 헬스 모니터링, 서스펜션 정책(OP-001), 벤치 에뮬레이터 프로토콜 시험</td>
 <td><code>45b219f</code> · <code>d756c3e</code> · <code>7c08ce4</code></td>
 </tr>
 </tbody>
@@ -1130,10 +1180,11 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 </tbody>
 </table>
 <hr />
-<h2 id="epos4">EPOS4 드라이버 에뮬레이터 — 실물 대체 검증 환경<a class="headerlink" href="#epos4" title="Permanent link">&para;</a></h2>
+<h2 id="epos4">EPOS4 드라이버 에뮬레이터 — 소프트웨어 프로토콜 시험 환경<a class="headerlink" href="#epos4" title="Permanent link">&para;</a></h2>
 <p>maxon EPOS4 Compact 50/8의 CANopen 프로토콜(NMT/SDO/PDO/CiA402 상태머신/PVM/PPM/EMCY)을
-12노드 전부 에뮬레이션하는 PySide6 GUI입니다. 실물 드라이버를 구매하지 않고도 마스터
-소프트웨어(ROS2·STM32 펌웨어)를 동일 프로토콜로 검증합니다.</p>
+12노드 전부 에뮬레이션하는 PySide6 GUI입니다. 현재 자동 시험은 저장소의 PC 벤치 마스터와
+에뮬레이터 사이의 프로토콜 일관성을 확인합니다. STM32 펌웨어와 에뮬레이터의 보드 포함 N2
+시험, 실제 EPOS4 호환성 시험은 아직 완료되지 않았습니다.</p>
 <figure>
 <p><img alt="EPOS4 12축 에뮬레이터 — 모터 인디케이터" loading="lazy" src="../../assets/l-project-emulator-motors.png" />
   </p>
@@ -1144,12 +1195,15 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
   </p>
 <figcaption>수신 명령만으로 적분한 4WS 자세 — 휠별 조향각과 주행 궤적(직진 → 곡선 → 제자리 회전)</figcaption>
 </figure>
-<p><strong>대체 범위와 한계</strong> — 프로토콜 표면(프레임·상태머신·핸드셰이크)은 12축 전체 자동 시험으로
-정합을 유지합니다. 실제 모터 전류/토크 물리, 드라이버 튜닝, STO 하드웨어, 실시간 타이밍은
-에뮬레이터로 확인할 수 없으므로 위험 등록부에 명시하고, 실물 도입 시 원 벤치 절차(TP-001)를
-재수행하도록 계획했습니다.</p>
+<p><strong>대체 범위와 한계</strong> — 12축 전체 자동 시험은 저장소 내 벤치 마스터와 에뮬레이터 사이의
+프레임·상태머신·명령/피드백 동작을 확인합니다. 이는 EPOS4 사양서 기반의 소프트웨어
+일관성 시험이며 실물 호환성 확정 시험은 아닙니다. 실제 모터 전류/토크 물리, 드라이버 튜닝,
+STO 하드웨어, 실시간 타이밍은 에뮬레이터로 확인할 수 없으므로 위험 등록부에 명시하고,
+실물 도입 시 원 벤치 절차(TP-001)를 재수행하도록 계획했습니다.</p>
 <hr />
 <h2 id="_5">검증 현황<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>아래 결과는 저장소에 기록된 2026-08-03 기준 시험 실적입니다. 소프트웨어 시험 결과와
+실기 검증 상태를 구분해 표시합니다.</p>
 <table>
 <thead>
 <tr>
@@ -1163,11 +1217,11 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 <td><strong>20 PASS / 0 FAIL</strong></td>
 </tr>
 <tr>
-<td>12축 전체 프로토콜 시험 (실물 대체 판정)</td>
-<td><strong>11 PASS / 0 FAIL</strong> — 속도 1% 이내, 위치 ±1 count, 세트포인트 핸드셰이크 정확</td>
+<td>12축 전체 프로토콜 시험 (벤치 마스터 ↔ 에뮬레이터)</td>
+<td><strong>11 PASS / 0 FAIL</strong> — 에뮬레이터 기준 속도 1% 이내, 위치 ±1 count</td>
 </tr>
 <tr>
-<td>SIL — ROS2 마스터 ↔ 에뮬레이터</td>
+<td>SIL — PC 벤치 EposMaster ↔ 에뮬레이터</td>
 <td><strong>ALL PASS</strong> (4구동 벤치 + PPM 조향 수렴)</td>
 </tr>
 <tr>
@@ -1184,7 +1238,11 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 </tr>
 <tr>
 <td>펌웨어 (FreeRTOS + micro-ROS + 12축 CANopen 마스터)</td>
-<td>빌드 461 KB / 894 KB, 3경로(mcu/can/sim) 시험 통과</td>
+<td>2026-08-03 Arm GNU 13.3.Rel1 빌드 통과 — FLASH 461,460 B / 894 KB; 실기 HILS 검증은 A6 대기</td>
+</tr>
+<tr>
+<td>3머신 A6 · 실물 EPOS4 · STO</td>
+<td><strong>미실시</strong> — 실물 드라이버 미구매, 전기·타이밍·안전 기능 검증 범위 밖</td>
 </tr>
 </tbody>
 </table>

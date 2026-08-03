@@ -75,6 +75,48 @@ flowchart TB
 - **주행 입력**: 자율(Nav2)과 수동(조이스틱) 이중 경로 — 수동이 자율을 선점
 - **안전**: `rover_control`·보드 drive 계층 워치독 + 노드 헬스 모니터링. EPOS4 RPDO 타임아웃과 STO는 N5 실기 과제
 
+### ROS2 노드·토픽 그래프
+
+위 그림이 **어느 기계에서 무엇이 도는가**를 보여준다면, 아래는 기계 경계를 지우고 노드와
+토픽의 연결만 남긴 그래프입니다. 실선이 실 구동(real), 점선이 시뮬레이션(sim) 경로입니다.
+
+```mermaid
+flowchart LR
+    NAV(["Nav2 / Isaac ROS"])
+    JOYD(["joy_node"])
+    TELE["rover_teleop"]
+    RC["rover_control"]
+    RS["rover_state"]
+    HM["health_monitor"]
+    MCU["rover_mcu<br/>HILS 보드"]
+    PLANT(["sim_plant / Isaac Sim"])
+    EPOS(["EPOS4 ×12 · CAN"])
+
+    JOYD -- "/joy" --> TELE
+    TELE -- "/cmd_vel_joy" --> RC
+    NAV -- "/cmd_vel" --> RC
+    TELE -- "/rover/suspension_cmd" --> RC
+
+    RC -- "/rover/axes_cmd [12]" --> MCU
+    MCU -- "CANopen RPDO" --> EPOS
+    EPOS -- "TPDO" --> MCU
+    MCU -. "/sim/axes_cmd [12]" .-> PLANT
+    PLANT -. "/sim/joint_states" .-> MCU
+
+    MCU -- "/rover/joint_states" --> RS
+    RS -- "/odom + TF" --> NAV
+    MCU -- "/rover/status" --> HM
+    RC -. 감시 .-> HM
+    RS -. 감시 .-> HM
+```
+
+**모드 전환 지점은 HILS 보드 안**입니다 — Jetson 쪽 노드는 실 구동인지 시뮬레이션인지
+구분하지 않고 같은 `/rover/*` 인터페이스만 봅니다. `health_monitor`는 구독만 하며 제어에
+개입하지 않습니다. 지그 경로(`hils_bridge` → `/hils/*`)는 구동계와 독립이라 위 그래프에는
+포함하지 않았습니다.
+
+발행·구독 전체 매트릭스는 저장소 아키텍처 문서(AD-002 3a절)에 있습니다.
+
 ### 미들웨어 선택 — 왜 MCU는 XRCE-DDS인가
 
 MCU에서 **완전 DDS(RTPS)를 직접 구동**하는 방안(Cyclone DDS의 FreeRTOS 포트, embeddedRTPS)을

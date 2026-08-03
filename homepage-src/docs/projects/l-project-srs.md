@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SRS-001 |
-| 버전 | 1.6 |
+| 버전 | 1.7 |
 | 작성일 | 2026-07-28 (개정 2026-08-03) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 적용 표준 | IEEE 830 준용 |
@@ -30,6 +30,7 @@
 | 1.4 | 2026-07-31 | 전체 검토 — 1.3에서 개정 이력만 반영되고 본문에 남아 있던 8륜/wheel_cmd 잔재를 12축 계약으로 전면 정합화 (2·3·5·6장, NF-004 FreeRTOS 반영, cmd 프로토콜 0x0031/0x0034 12축 페이로드) |
 | 1.5 | 2026-07-31 | **노드 헬스 모니터링 신설** — health_monitor 노드(CSCI-10), 3.7절 SRS-FR-060~064, `/diagnostics` 인터페이스 (AD-002 v2.3 6a절 연계) |
 | 1.6 | 2026-08-03 | **조이스틱 수동 주행 신설** — rover_teleop 노드(CSCI-11), 3.8절 SRS-FR-070~075, `/cmd_vel_joy` 우선권 중재, 4WS crab(linear.y) 지원 (FR-001 개정) |
+| 1.7 | 2026-08-03 | 2.1절 구성도에 rover_teleop·health_monitor 반영, 노드·토픽 그래프(AD-002 3a) 참조 추가, 5.1절 `/hils/raw` 누락 보완 |
 
 ---
 
@@ -76,7 +77,8 @@ Ethernet Hub 단일망(UDP)에 3노드: Navigation(NVIDIA Jetson, Humble), 시�
 
 ```mermaid
 flowchart TB
-    NAV[Nav2 · Jetson] -- /cmd_vel --> RC[rover_control · Jetson<br/>기구학]
+    NAV[Nav2 · Jetson] -- /cmd_vel --> RC[rover_control · Jetson<br/>기구학 · 명령 중재]
+    JOY[joy_node + rover_teleop] -- "/cmd_vel_joy (우선)" --> RC
     RC -- "/rover/axes_cmd [12]" --> MCU[rover_mcu · HILS 보드<br/>Drive Interface]
     MCU -- "real: CANopen RPDO3/4 x12" --> EPOS[EPOS4 x12<br/>1~4 PVM / 5~12 PPM]
     EPOS -- TPDO3/TPDO4 --> MCU
@@ -84,8 +86,11 @@ flowchart TB
     SIM -. /sim/joint_states .-> MCU
     MCU -- /rover/joint_states --> RS[rover_state · Jetson] -- /odom + TF --> NAV
     AG[micro_ros_agent · Jetson<br/>udp4 :8888] === MCU
+    MCU -- "/rover/status" --> HM[health_monitor · Jetson<br/>→ /diagnostics]
     JIG[캘리브레이션 지그 hils-fw] -- "UDP $DATA1" --> HB[hils_bridge]
 ```
+
+노드·토픽 전체 연결(발행·구독 매트릭스 포함)은 **LPJ-HILS-AD-002 3a절**을 참조한다.
 
 구 v1 구성(PC 직결 CAN 백엔드)은 12축 개정으로 폐지되었다 — 벤치 시험은 `tools/epos_bench.py`(EposMaster 단독 CLI, LPJ-HILS-TP-001 v1.1)로 수행한다.
 
@@ -229,6 +234,7 @@ flowchart TB
 | `/odom` | nav_msgs/Odometry (+TF) | 발행 | m, rad |
 | `/hils/tcp_position` | geometry_msgs/PointStamped | 발행 | m |
 | `/hils/joint_state` | sensor_msgs/JointState | 발행 | rad, m |
+| `/hils/raw` | std_msgs/String | 발행 | 지그 원문 문장(디버그) |
 | `/diagnostics` | diagnostic_msgs/DiagnosticArray | 발행 (health_monitor, 1 Hz) | 표준 진단 |
 
 ### 5.2 축 배치 (v3 계약 — 순서 FL, FR, RL, RR)
