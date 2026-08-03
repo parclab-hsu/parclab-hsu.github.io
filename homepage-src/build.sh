@@ -22,6 +22,11 @@ SRC="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$SRC/.." && pwd)"
 TMP="$(mktemp -d)"
 
+# L-Project SRS/SDP 공개 페이지는 저장소 docs/ 의 정적 복사본이라 원문 개정 시
+# 다시 만들어야 한다. 저장소를 못 찾으면(NAS 미마운트 등) 경고만 남기고 진행.
+echo "▶ L-Project SRS/SDP 동기화..."
+python3 "$SRC/sync-l-project-docs.py"
+
 echo "▶ MkDocs 빌드 중..."
 mkdocs build -f "$SRC/mkdocs.yml" -d "$TMP" --clean
 
