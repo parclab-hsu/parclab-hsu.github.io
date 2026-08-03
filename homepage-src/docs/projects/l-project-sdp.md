@@ -14,8 +14,8 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.8 |
-| 작성일 | 2026-07-28 (개정 2026-07-31) |
+| 버전 | 1.9 |
+| 작성일 | 2026-07-28 (개정 2026-08-03) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
 
@@ -32,6 +32,7 @@
 | 1.6 | 2026-07-31 | **EPOS4 실물 미구매 — 에뮬레이터 대체 결정** 반영: 12축 전체 프로토콜 시험(test_master_12axis) 등재, N2/N3 성격 변경, B3/B4 재정의, 대체 한계 리스크 등재 |
 | 1.7 | 2026-08-03 | **조이스틱 수동 주행 신설** — rover_teleop 노드·`tools/test_teleop.py` 산출물 등재, SRS 3.8절/AD-002 3b절 연계, 시험 실적 추가 |
 | 1.8 | 2026-08-03 | 2.4절에 문서 공개 경로(연구실 홈페이지 게재·자동 재생성) 명시 |
+| 1.9 | 2026-08-03 | 공개 홈페이지·Git 구현 정합화 — 폐기된 PC 직결 CAN 경로 제거, 벤치 에뮬레이터 시험과 STM32/실물 검증 범위 구분, 레거시 URDF 범위 명시 |
 
 ---
 
@@ -40,8 +41,9 @@
 ### 1.1 목표
 
 12축 로버(4륜 독립조향 + 액티브 서스펜션, v3 계약 — AN-001)의 Navigation-구동계 폐루프를
-HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN 프로토콜로 개발·검증이
-가능하도록 플랜트 에뮬레이터를 제공하고, 실물 전환 시 파라미터 변경만으로 동작하도록 한다.
+HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen 소프트웨어 계약과 제어 로직을
+사전 검증할 수 있는 플랜트 에뮬레이터를 제공한다. 전기적·실시간 호환성, PPM 핸드셰이크와
+안전 기능은 보드·실물 도입 후 별도 검증한다.
 
 ### 1.2 개발 산출물
 
@@ -56,7 +58,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 | 문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001) | 본 저장소 `docs/` | 유지 관리 중 |
 | 배포 도구 (Jetson·시뮬 PC 설치 스크립트/systemd) | `tools/jetson/`, `tools/simpc/` | 완료 |
 | 시뮬레이터 대역 `sim_plant.py` · DDS 설정 | `tools/`, `config/dds/` | 완료 (검증됨) |
-| Isaac Sim 연동 준비 (어댑터·URDF·가이드 IG-001) | `tools/isaac/`, `docs/` | 완료 (어댑터·URDF 검증됨) |
+| Isaac Sim 연동 준비 (12축 어댑터·정식 VIPER v4 USD 가이드 IG-001) | `tools/isaac/`, `docs/` | 완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시) |
 | Nav2 통합 준비 (파라미터·런치·가이드 IG-002) | `hils_rover_control/config/nav2/`, `docs/` | 완료 (빌드·문법 검증) |
 | NVIDIA Isaac ROS Navigation 가이드 (IG-003) | `docs/` | 완료 — **N4는 NVIDIA 경로·카메라 D455 확정**, 발주 대기 |
 | `rover_mcu` (micro-ROS/XRCE-DDS 펌웨어 노드) | CSCI-6 확장 | 완료 (A1~A4) |
@@ -128,8 +130,8 @@ source install/setup.bash
 | P1. 자산 분석 | 기존 wiznet-iot-speaker 기반 지그 펌웨어/도구 전체 분석, 리네이밍 | 코드 리뷰 |
 | P2. ROS2 구동 구조 설계 | rover_control(real/sim)·sim_feedback 노드, 스키드스티어 기구학 | 루프백 시험 |
 | P3. 드라이버 규격 학습 | EPOS4 공식 문서 3종 정독, CANopen 프로토콜 추출 | 문서 대조 |
-| P4. 3중 구현 | ROS2 마스터 / STM32 펌웨어 / GUI 에뮬레이터 (동일 규격) | 각 단위시험 |
-| P5. SIL 검증 | 마스터 ↔ 에뮬레이터 in-process 검증 (ALL PASS) | `test_sil_master.py` |
+| P4. 3중 구현 | PC 벤치 마스터 / STM32 펌웨어 / GUI 에뮬레이터 (EPOS4 사양 기반) | 각 단위시험 |
+| P5. SIL 검증 | PC 벤치 마스터 ↔ 에뮬레이터 in-process 검증 (ALL PASS) | `test_sil_master.py` |
 | P6. 통합 검증 | 프로세스 분리 + vcan0 실 CAN 스택 검증 (ALL PASS) | 통합 시험 |
 | P7. 운영 도구화 | 게이지/그래프 GUI, Monitor 모드, vcan systemd 영구화 | 시연 |
 
@@ -138,13 +140,13 @@ source install/setup.bash
 | 단계 | 내용 | 선행 조건 |
 |---|---|---|
 | N1. 실기 파라미터 확정 | 휠 반경/트랙/감속비/정격토크 실측 반영 | 기구 제원 확정 |
-| N2. 펌웨어-에뮬레이터 CAN 시험 | **실물 대체**: 보드 FDCAN ↔ USB-CAN 어댑터 ↔ PC 에뮬레이터(socketcan) — TP-001 v1.2 대체 구성 | 보드·USB-CAN 어댑터 입고 |
+| N2. 펌웨어-에뮬레이터 CAN 시험 | **프로토콜 대역 시험**: 보드 FDCAN ↔ USB-CAN 어댑터 ↔ PC 에뮬레이터(socketcan) — 실물 전기·타이밍 검증은 포함하지 않음 | 보드·USB-CAN 어댑터 입고 |
 | N3. EPOS Studio 튜닝 | (보류 — 실물 미구매) 실물 도입 시에만 수행 | 실물 도입 결정 |
 | A1. micro-ROS 골격 | 펌웨어 FreeRTOS + `rover_mcu` 노드 (시리얼 전송) | — |
 | A2. W5300 UDP 전송 (완료 2026-07-30) | XRCE UDP 전송(소켓3, 에이전트 :8888), 시리얼 폴백 유지, 보드 IP .30 기본화 | A1 |
 | A3. Drive Interface (완료 2026-07-30) | 추상 계층 + drv_epos 래핑 + drv_sim 루프백 스텁 — 소비자 전부 drive API 경유 | A1 |
 | A4. drv_sim 백엔드 (완료 2026-07-30) | micro-ROS /sim/* 연동, 피드백 신선도 안전, 루프백 폴백 유지 | A3 |
-| A5. Jetson 노드 개편 (완료 2026-07-30) | rover_control `real_backend`(mcu/can), `rover_state` 신설 — 3경로 시험 통과 | A1 |
+| A5. Jetson 노드 개편 (완료 2026-07-30) | `rover_control` `/rover/*` 전환, `rover_state` 신설. 당시 mcu/can/sim 시험 기록은 v2 이력이며, v3에서 PC 직결 CAN 제거 — 현행 real 경로는 MCU 단일 | A1 |
 | A6. 3머신 통합 시험 | Jetson+시뮬 PC+보드, real/sim 양 모드 | A2~A5, N2 |
 | N4. Navigation 통합 (**NVIDIA 확정**) | Isaac ROS(cuVSLAM·nvblox)+Nav2 — IG-002/IG-003 절차(D455 확정) | A6, D455 발주 |
 | N5. 안전 기능 보강 | STO 배선, EMCY 정책, RPDO 타임아웃(0x8250) 설정 | N2 |
@@ -156,7 +158,7 @@ source install/setup.bash
 | B1 | EPOS4 에뮬레이터 12노드·PPM 지원 | **완료 (2026-07-31)** — 12노드 기본, PPM 세트포인트 핸드셰이크, 4WS 자세 적분, SIL 복원 (test_emulator 20 PASS / test_sil_master ALL PASS) |
 | B2 | TP-001/TP-002 기대값·절차 개정 | **완료 (2026-07-31)** — TP-001 v1.1(epos_bench 도구화, TS-8 PPM 벤치, 12대 확장), TP-002 v1.1(axes_cmd[12], 4WS 기대값 기구학 교차검증, 서스 명령·조향 유지 워치독) |
 | B3 | 조향/서스 기어비·카운트 상수 확정 | 실물 미구매로 실측 불가 — 기구 설계 제원 확정 시 상수 갱신(drive.h·axes.py·emu_core.py 3곳), 에뮬레이터는 동일 상수로 정합 유지 |
-| B4 | PPM 핸드셰이크 검증 | **에뮬레이터 검증으로 대체 완료 (2026-07-31)** — test_master_12axis 8축 동시 ack/target-reached 확인. 실물 도입 시에만 재검증 |
+| B4 | PPM 핸드셰이크 검증 | **PC 벤치 마스터↔에뮬레이터 소프트웨어 시험 완료 (2026-07-31)** — test_master_12axis에서 8축 ack/target-reached 확인. STM32 `epos.cpp`와 실물 EPOS4 조합은 미검증이며 N2·실물 도입 시 재시험 |
 | B5 | 서스펜션 제어 정책 정의 | **1단계 완료 (2026-07-31, OP-001)** — 운영자 프리셋(level/lift/drop/manual) CLI `tools/suspension_cmd.py`, 정지 중 즉시 반영, 한계 이중 클램프. 2단계(지형 적응 자동화)는 실기 데이터 확보 후 |
 
 ### 3.3 위험 관리
@@ -170,7 +172,7 @@ source install/setup.bash
 | W5300 XRCE 커스텀 전송 개발 난이도 | A2 지연 | A1(시리얼)로 기능 선완성 후 전송만 교체 |
 | 머신 간 RMW 혼용/발견 실패 | 통신 두절 | 전 머신 RMW·도메인 통일, 설정 파일 형상 관리 (SRS-FR-056) |
 | XRCE 세션 두절 시 거동 | 폭주 위험 | 보드 로컬 타임아웃이 최종 안전선 (SRS-FR-055) |
-| 에뮬레이터-실물 동작 차이 (전류/토크 물리, 튜닝, 비실시간 PC 타이밍) | 실물 도입 시 재작업 | 프로토콜 표면은 시험으로 정합 유지(test_master_12axis), 물리 파라미터는 플랜트 모델(Isaac)로 보완, 실물 도입 시 TP-001 원 절차 재수행 |
+| 에뮬레이터-실물 동작 차이 (전류/토크 물리, 튜닝, 비실시간 PC 타이밍) | 실물 도입 시 재작업 | 벤치 마스터↔에뮬레이터 내부 정합만 test_master_12axis로 회귀시험, 보드·실물 조합은 TP-001/N2로 별도 검증 |
 
 ---
 
@@ -182,7 +184,7 @@ source install/setup.bash
 |---|---|---|
 | 단위 | 프로토콜 프레임 인코딩/디코딩 검사 | pytest 가능 (현재 스크립트) |
 | 구성요소 | 에뮬레이터 자체 시험 `test_emulator.py` | 20항목 (12노드·PVM·PPM) |
-| SIL | 마스터↔에뮬레이터 `test_sil_master.py` | 7항목 (4구동 벤치+PPM 스모크) |
+| SIL | PC 벤치 마스터↔에뮬레이터 `test_sil_master.py` | 7항목 (4구동 벤치+PPM 스모크) |
 | 통합 | vcan0 프로세스 분리, ROS2 토픽 단위 확인 | 수동 절차 (자동화 예정) |
 | 실기 | EPOS4 실물 + Monitor 모드 계기판 | 예정 (N2) |
 
@@ -207,7 +209,7 @@ source install/setup.bash
 
 | 시험 | 결과 |
 |---|---|
-| A5: 3경로(mcu/can/sim) 명령·피드백 (2026-07-30) | 전부 통과 (wheel_cmd 4.4/5.6, odom 0.5/0.2 복원) |
+| A5(v2 이력): 3경로(mcu/can/sim) 명령·피드백 (2026-07-30) | 당시 시험 통과. 현행 12축 v3 계약은 PC 직결 CAN을 포함하지 않으며 real 경로는 MCU 단일 |
 | sim_plant 대역 플랜트 (2026-07-30) | 4.4/5.6 rad/s 수렴, 49.98 Hz |
 | Isaac 어댑터 재정렬 (2026-07-30) | 역순 입력 → 표준 순서 복원 통과 |
 | micro-ROS 포함 펌웨어 빌드 (2026-07-30) | FLASH 459 KB / 894 KB, RAM_D1 77.5% |
@@ -217,7 +219,7 @@ source install/setup.bash
 | 헬스 모니터 (2026-07-31) | sim 폐루프 전 항목 OK(50.0Hz 판정) → sim_plant kill 3s 내 joint_states·odom ERROR·종합 degraded |
 | 헬스 모니터 real 모드 SIL (2026-07-31) | 합성 /rover/status: 전 축 enabled → `rover/axes` OK, 노드3 Fault+EMCY 주입 → ERROR `fault [N3] emcy [N3:0x2310]` 정확 지목 |
 | 서스펜션 정책 (2026-07-31, B5) | 정지 중 프리셋 lift 0.2 rad → axes_cmd[8..11]=0.2 즉시 발행 확인 |
-| **12축 전체 프로토콜 시험** (2026-07-31, 실물 대체 판정) | test_master_12axis **11 PASS / 0 FAIL** — 12노드 시동·PVM 4축 속도(1% 이내)·TPDO3 토크 4B·PPM 8축 위치(±1 cnt)·ack/target-reached·4WS 조향각 일치·EMCY/리셋 |
+| **벤치 master↔emulator 12축 소프트웨어 프로토콜 시험** (2026-07-31) | test_master_12axis **11 PASS / 0 FAIL** — 12노드 시동·PVM 4축 속도(1% 이내)·TPDO3 토크 4B·PPM 8축 위치(±1 cnt)·ack/target-reached·4WS 조향각 일치·EMCY/리셋. STM32/실물 호환성 판정은 아님 |
 | 조이스틱 수동 주행 (2026-08-03) | test_teleop **5 PASS / 0 FAIL** — Nav2 단독 반영 · 조이스틱 선점(2.35 vs Nav2 0.94) · crab 전 축 조향 90.0° · 데드맨 해제 시 정지 유지 · release 후 Nav2 복귀 |
 
 ### 4.3 요구사항 추적
@@ -227,7 +229,7 @@ SRS의 각 요구사항(SRS-FR/NF-xxx)은 4.2의 시험 항목 및 저장소 커
 `f833878`(GUI 게이지/모니터 모드) → `0ad2519`(트렌드 그래프) → `f600f7d`(vcan 인프라) →
 `9c765c7`(12축 v3 전면 개정) → `dd293d2`(B1: 에뮬레이터 12노드·PPM) → `8a37c90`(B2: TP-001/002 v1.1) →
 `43d65f0`(전체 정합성 검토) → `2c2f76d`(SRS/SDP 흐름 검증) → `421f240`(RR-001 검토 보고서) →
-`45b219f`(헬스 모니터링) → `d756c3e`(B5 서스펜션 정책) → `3fb5614`·`7c08ce4`(EPOS4 실물 대체 판정).
+`45b219f`(헬스 모니터링) → `d756c3e`(B5 서스펜션 정책) → `3fb5614`·`7c08ce4`(벤치 에뮬레이터 프로토콜 시험).
 
 ---
 

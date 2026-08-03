@@ -94,7 +94,7 @@ def main():
         print('  + %s 갱신' % out_name)
 
     if changed:
-        print('  → 갱신됨: %s — 빌드 후 git add/commit 하세요' % ', '.join(changed))
+        print('  → 갱신됨: %s - 빌드 후 git add/commit 하세요' % ', '.join(changed))
     return 0
 
 

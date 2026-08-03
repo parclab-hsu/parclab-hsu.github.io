@@ -20,7 +20,7 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     ---
 
-    현대자동차 L-Project팀 과제 — 4륜 독립조향+액티브 서스펜션 12축 로버의 구동계 HILS. Navigation(Jetson)–HILS 보드(STM32H7 micro-ROS)–시뮬레이션 PC 3계층 폐루프, EPOS4 CANopen 에뮬레이터(실물 대체, 12축 프로토콜 시험 통과), 노드 헬스 모니터링.
+    현대자동차 L-Project팀 과제 — 4륜 독립조향+액티브 서스펜션 12축 로버의 구동계 HILS. Navigation(Jetson)–HILS 보드(STM32H7 micro-ROS)–시뮬레이션 PC 3계층 폐루프, EPOS4 CANopen 에뮬레이터(12축 소프트웨어 프로토콜 시험 통과, 실물 검증 별도), 노드 헬스 모니터링.
 
     `ROS2` · `micro-ROS` · `STM32H7` · `CANopen` · `4WS` · `EPOS4 Emulator` · `Isaac Sim`
 
