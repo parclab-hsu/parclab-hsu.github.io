@@ -93,7 +93,7 @@ MCU에서 **완전 DDS(RTPS)를 직접 구동**하는 방안(Cyclone DDS의 Free
 
 | 저장소 | 내용 | 규모 |
 |---|---|---|
-| `parclab-hsu/l-project-hils-ros2` | ROS2 패키지, EPOS4 에뮬레이터, Isaac/Nav2 설정, 배포 도구, 문서 15종 | 추적 파일 70개 · 커밋 45 |
+| `parclab-hsu/l-project-hils-ros2` | ROS2 패키지, EPOS4 에뮬레이터, Isaac/Nav2 설정, 배포 도구, 문서 13종 | 추적 파일 70여 개 · 커밋 45+ |
 | `parclab-hsu/l-project-hils` | STM32 펌웨어 3종(로버 제어·캘리브레이션 지그·부트로더), PC 도구(GUI/로더) | 추적 파일 3,900여 개 (STM32Cube HAL 포함, 2026-07 git 전환) |
 
 ### ROS2 · 도구 저장소 (`l-project-hils-ros2`)
@@ -125,7 +125,7 @@ l-project-hils-ros2/
 │   ├── jetson/ · simpc/         #   배포 스크립트 + systemd 유닛
 │   └── systemd/                 #   vcan0 가상 CAN 영구화
 ├── config/dds/                  # Fast DDS/CycloneDDS 프로파일, 도메인 설정
-└── docs/                        # 문서 15종 (아래 표)
+└── docs/                        # 문서 13종 (아래 표)
 ```
 
 ### 펌웨어 저장소 (`l-project-hils`)
