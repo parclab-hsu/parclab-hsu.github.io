@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.7 |
+| 버전 | 1.8 |
 | 작성일 | 2026-07-28 (개정 2026-07-31) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
@@ -31,6 +31,7 @@
 | 1.5 | 2026-07-31 | 노드 헬스 모니터링 산출물 등재 — health_monitor 노드·`/diagnostics` (SRS 3.7절, AD-002 v2.3 6a절), sim 폐루프 검증 실적 추가 |
 | 1.6 | 2026-07-31 | **EPOS4 실물 미구매 — 에뮬레이터 대체 결정** 반영: 12축 전체 프로토콜 시험(test_master_12axis) 등재, N2/N3 성격 변경, B3/B4 재정의, 대체 한계 리스크 등재 |
 | 1.7 | 2026-08-03 | **조이스틱 수동 주행 신설** — rover_teleop 노드·`tools/test_teleop.py` 산출물 등재, SRS 3.8절/AD-002 3b절 연계, 시험 실적 추가 |
+| 1.8 | 2026-08-03 | 2.4절에 문서 공개 경로(연구실 홈페이지 게재·자동 재생성) 명시 |
 
 ---
 
@@ -107,6 +108,10 @@ source install/setup.bash
 
 커밋 규칙: 기능 단위 커밋, 메시지 영어 요약 + 상세 불릿.
 브랜치: 현재 `main` 단일 (팀 확장 시 feature 브랜치 도입).
+
+**문서 공개**: SRS·SDP는 연구실 홈페이지에도 게재된다(`parclab-hsu.github.io/projects/l-project-{srs,sdp}`).
+공개 페이지는 본 저장소 `docs/` 원문의 정적 복사본이며, 홈페이지 `build.sh`가 빌드 직전
+`sync-l-project-docs.py`로 자동 재생성하므로 문서 개정 후 홈페이지를 빌드·커밋하면 반영된다.
 
 **접근 정책(승인제)**: 두 저장소 모두 PRIVATE — 소유자(parclab-hsu)가 초대·승인한 콜라보레이터만 접근.
 초대: `gh api -X PUT repos/parclab-hsu/<repo>/collaborators/<id> -f permission=push` (읽기 전용은 `pull`).

@@ -960,7 +960,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.7</td>
+<td>1.8</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1025,6 +1025,11 @@
 <td>1.7</td>
 <td>2026-08-03</td>
 <td><strong>조이스틱 수동 주행 신설</strong> — rover_teleop 노드·<code>tools/test_teleop.py</code> 산출물 등재, SRS 3.8절/AD-002 3b절 연계, 시험 실적 추가</td>
+</tr>
+<tr>
+<td>1.8</td>
+<td>2026-08-03</td>
+<td>2.4절에 문서 공개 경로(연구실 홈페이지 게재·자동 재생성) 명시</td>
 </tr>
 </tbody>
 </table>
@@ -1220,6 +1225,9 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 동일 CAN
 </table>
 <p>커밋 규칙: 기능 단위 커밋, 메시지 영어 요약 + 상세 불릿.
 브랜치: 현재 <code>main</code> 단일 (팀 확장 시 feature 브랜치 도입).</p>
+<p><strong>문서 공개</strong>: SRS·SDP는 연구실 홈페이지에도 게재된다(<code>parclab-hsu.github.io/projects/l-project-{srs,sdp}</code>).
+공개 페이지는 본 저장소 <code>docs/</code> 원문의 정적 복사본이며, 홈페이지 <code>build.sh</code>가 빌드 직전
+<code>sync-l-project-docs.py</code>로 자동 재생성하므로 문서 개정 후 홈페이지를 빌드·커밋하면 반영된다.</p>
 <p><strong>접근 정책(승인제)</strong>: 두 저장소 모두 PRIVATE — 소유자(parclab-hsu)가 초대·승인한 콜라보레이터만 접근.
 초대: <code>gh api -X PUT repos/parclab-hsu/&lt;repo&gt;/collaborators/&lt;id&gt; -f permission=push</code> (읽기 전용은 <code>pull</code>).
 개인 계정 저장소는 포크 차단 불가 — 팀 확대 시 Organization 전환 검토(포크 금지·팀 권한·감사 로그).</p>
