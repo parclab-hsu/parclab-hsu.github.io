@@ -804,6 +804,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#32b-p-2026-08-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2b 하드웨어 대기 중 사전 준비 (P) — 2026-08-04
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -960,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.9</td>
+<td>1.14</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1035,6 +1046,31 @@
 <td>1.9</td>
 <td>2026-08-03</td>
 <td>공개 홈페이지·Git 구현 정합화 — 폐기된 PC 직결 CAN 경로 제거, 벤치 에뮬레이터 시험과 STM32/실물 검증 범위 구분, 레거시 URDF 범위 명시</td>
+</tr>
+<tr>
+<td>1.10</td>
+<td>2026-08-04</td>
+<td><strong>TP-002 사전 리허설 도입</strong> — 보드 대역 노드 <code>mcu_stub.py</code>와 자동 리허설 <code>test_tp002_rehearsal.py</code> 산출물 등재(TP-002 v1.3 0a절), 시험 실적 추가</td>
+</tr>
+<tr>
+<td>1.11</td>
+<td>2026-08-04</td>
+<td><strong>통합 회귀 러너 도입</strong> — <code>tools/run_all_tests.sh</code>로 5종 시험 일괄 수행, 4.1절 '수동 절차(자동화 예정)' 해소</td>
+</tr>
+<tr>
+<td>1.12</td>
+<td>2026-08-04</td>
+<td>micro_ros_agent 사전 검증 실적 등재(DP-001 4.2절) — 빌드·세션 확립 확인, conda 파이썬 빌드 함정 기록</td>
+</tr>
+<tr>
+<td>1.13</td>
+<td>2026-08-04</td>
+<td><strong>Nav2 스모크 자동화·실행</strong> — <code>test_nav2_smoke.py</code> 등재, 회귀 러너 편입, inflation_radius 결함 수정(IG-002)</td>
+</tr>
+<tr>
+<td>1.14</td>
+<td>2026-08-04</td>
+<td>전수 검증 — 3.2b절 신설(하드웨어 대기 중 사전 준비 P1~P5 등재), A6·N4에 예행 완료 상태 반영</td>
 </tr>
 </tbody>
 </table>
@@ -1139,6 +1175,21 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>서스펜션 운용 도구 <code>suspension_cmd.py</code> + 정책 OP-001</td>
 <td><code>tools/</code>, <code>docs/</code></td>
 <td>완료 (B5 1단계)</td>
+</tr>
+<tr>
+<td>보드 대역 노드 <code>mcu_stub.py</code> + TP-002 자동 리허설 <code>test_tp002_rehearsal.py</code></td>
+<td><code>tools/</code></td>
+<td>완료 (15항목 통과, 펌웨어 검증은 범위 밖)</td>
+</tr>
+<tr>
+<td>통합 회귀 러너 <code>run_all_tests.sh</code></td>
+<td><code>tools/</code></td>
+<td>완료 (6종 일괄, 전체 통과)</td>
+</tr>
+<tr>
+<td>Nav2 스모크 시험 <code>test_nav2_smoke.py</code></td>
+<td><code>tools/</code></td>
+<td>완료 (10항목 통과, IG-002 4절 자동화)</td>
 </tr>
 </tbody>
 </table>
@@ -1338,12 +1389,12 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 </tr>
 <tr>
 <td>A6. 3머신 통합 시험</td>
-<td>Jetson+시뮬 PC+보드, real/sim 양 모드</td>
+<td>Jetson+시뮬 PC+보드, real/sim 양 모드. <strong>IT-1~IT-3은 P1으로 예행 완료</strong>(보드 대역 노드) — 실제 구성으로 IT-0부터 재수행</td>
 <td>A2~A5, N2</td>
 </tr>
 <tr>
 <td>N4. Navigation 통합 (<strong>NVIDIA 확정</strong>)</td>
-<td>Isaac ROS(cuVSLAM·nvblox)+Nav2 — IG-002/IG-003 절차(D455 확정)</td>
+<td>Isaac ROS(cuVSLAM·nvblox)+Nav2 — IG-002/IG-003 절차(D455 확정). <strong>Nav2 무맵 1단계는 P4로 검증 완료</strong></td>
 <td>A6, D455 발주</td>
 </tr>
 <tr>
@@ -1390,6 +1441,47 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 </tr>
 </tbody>
 </table>
+<h3 id="32b-p-2026-08-04">3.2b 하드웨어 대기 중 사전 준비 (P) — 2026-08-04<a class="headerlink" href="#32b-p-2026-08-04" title="Permanent link">&para;</a></h3>
+<p>보드·Jetson·허브·실물 드라이버가 없는 동안 <strong>하드웨어 없이 앞당길 수 있는 검증</strong>을 먼저 수행해,
+입고 후 남는 위험을 좁힌다. 각 항목의 검증 범위 한계는 해당 절차서에 명시한다.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>TP-002 사전 리허설</td>
+<td><strong>완료</strong> — 보드 대역 노드 <code>mcu_stub.py</code>로 IT-1~IT-3 예행, 15항목 통과 (TP-002 v1.3 0a절). 펌웨어·XRCE·FDCAN은 범위 밖</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>micro_ros_agent 사전 검증</td>
+<td><strong>완료</strong> — 빌드·UDP :8888 바인딩·XRCE 세션 확립과 객체 생성 체인 확인 (DP-001 4.2절). conda 파이썬 빌드 함정 기록</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>통합 회귀 러너</td>
+<td><strong>완료</strong> — <code>tools/run_all_tests.sh</code> 6종 일괄, 4.1절 자동화 항목 해소</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>Nav2 스모크</td>
+<td><strong>완료</strong> — IG-002 4절 자동화·실행 10항목 통과. <code>inflation_radius</code>(0.55) &lt; 내접원(0.76) 결함 발견·수정</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>Isaac Sim 12축 연동 검증</td>
+<td><strong>대기</strong> — GPU 드라이버 커널모듈(595.71.05)과 라이브러리(595.84) 불일치로 재부팅 필요, Isaac Sim 본체 미설치(기존 운용은 OmniLRS 도커)</td>
+</tr>
+</tbody>
+</table>
+<p>P1~P4로 A6·N4의 소프트웨어 측 위험은 상당 부분 제거되었다. 남은 것은 <strong>하드웨어가 있어야만
+확인 가능한 것들</strong>(펌웨어 실기 동작, XRCE 실 전송, CAN 전기·타이밍, 센서 인지)이다.</p>
 <h3 id="33">3.3 위험 관리<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1471,8 +1563,13 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 </tr>
 <tr>
 <td>통합</td>
-<td>vcan0 프로세스 분리, ROS2 토픽 단위 확인</td>
-<td>수동 절차 (자동화 예정)</td>
+<td>ROS2 폐루프 — 조이스틱 텔레옵 <code>test_teleop.py</code>, TP-002 리허설 <code>test_tp002_rehearsal.py</code></td>
+<td>5항목 / 15항목</td>
+</tr>
+<tr>
+<td>회귀</td>
+<td><strong><code>tools/run_all_tests.sh</code></strong> — 위 5종을 일괄 수행·요약</td>
+<td>자동 (약 75 s)</td>
 </tr>
 <tr>
 <td>실기</td>
@@ -1481,6 +1578,9 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 </tr>
 </tbody>
 </table>
+<p>회귀 러너는 시험별로 갈리는 인터프리터(에뮬레이터=PySide6 conda / ROS2=시스템 python)를
+자동 선택하고, 이전 시험이 남긴 노드를 정리한 뒤 실행한다 — 잔존 노드가 다음 시험 결과를
+조용히 오염시킨 사례가 있었기 때문이다. 판정은 각 시험의 종료코드를 정본으로 한다.</p>
 <h3 id="42">4.2 시험 실적<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
 <p>시간순 기록이다. <strong>① 초기 8륜 스키드 구성(2026-07-28)</strong> 실적은 12축 개정으로 대체되었고,
 현행 유효 실적은 <strong>② 12축(v3) 구성</strong> 이하 행이다.</p>
@@ -1575,6 +1675,22 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td><strong>벤치 master↔emulator 12축 소프트웨어 프로토콜 시험</strong> (2026-07-31)</td>
 <td>test_master_12axis <strong>11 PASS / 0 FAIL</strong> — 12노드 시동·PVM 4축 속도(1% 이내)·TPDO3 토크 4B·PPM 8축 위치(±1 cnt)·ack/target-reached·4WS 조향각 일치·EMCY/리셋. STM32/실물 호환성 판정은 아님</td>
+</tr>
+<tr>
+<td><strong>Nav2 스모크</strong> (2026-08-04)</td>
+<td>test_nav2_smoke <strong>10 PASS / 0 FAIL</strong> — 스택 기동·액션 서버·goal 수락·<code>/cmd_vel</code> 163건·12축 경로 163건·목표 오차 <strong>0.12 m</strong> SUCCEEDED·종료 후 워치독 정지. 이 시험에서 <code>inflation_radius</code>(0.55) &lt; 내접원(0.76) 결함을 잡아 1.0으로 수정</td>
+</tr>
+<tr>
+<td><strong>micro_ros_agent 사전 검증</strong> (2026-08-04, 개발 PC)</td>
+<td>빌드 통과 · UDP :8888 바인딩 · 표준 XRCE 클라이언트로 <strong>세션 확립 + 객체 생성 체인 5종 각 1건</strong> 성공(XRCE-DDS 2.4). 범위: 에이전트·XRCE 세션 계층까지 — ROS2 토픽 브리징·W5300 전송은 보드 연결 후 IT-0</td>
+</tr>
+<tr>
+<td><strong>통합 회귀 러너</strong> (2026-08-04)</td>
+<td><code>run_all_tests.sh</code> <strong>5종 전체 통과</strong> — 에뮬레이터 20 / 12축 프로토콜 11 / SIL ALL / 텔레옵 5 / TP-002 리허설 15, 총 약 75 s</td>
+</tr>
+<tr>
+<td><strong>TP-002 사전 리허설</strong> (2026-08-04)</td>
+<td>test_tp002_rehearsal <strong>15 PASS / 0 FAIL</strong> — IT-1 주기·형식(50.0/2.0 Hz, 24개), IT-2 4WS 전달·<code>/odom</code> 0.500/0.200·서스 반영, IT-3 두절 시 구동만 정지·폴트 진단·시뮬 두절 감지. <strong>보드 자리는 Linux 대역 노드이며 펌웨어·XRCE·FDCAN은 범위 밖</strong></td>
 </tr>
 <tr>
 <td>조이스틱 수동 주행 (2026-08-03)</td>
