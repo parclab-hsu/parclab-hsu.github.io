@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.16</td>
+<td>1.17</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1082,6 +1082,11 @@
 <td>2026-08-04</td>
 <td><strong>공유 안내서 SG-001 신설</strong> — 현대자동차 L-Project팀 대상 자료 구성·문서 지도·재현 절차·검증 범위 안내</td>
 </tr>
+<tr>
+<td>1.17</td>
+<td>2026-08-04</td>
+<td><strong>홈페이지 공개 운영 안내 PG-001 신설</strong> — 공개 범위·페이지 구성·갱신 절차·작성 규칙·게시 후 검증</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1132,12 +1137,17 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>완료</td>
 </tr>
 <tr>
-<td>문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001·SG-001)</td>
+<td>문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001·SG-001·PG-001)</td>
 <td>본 저장소 <code>docs/</code></td>
 <td>유지 관리 중</td>
 </tr>
 <tr>
 <td>공유 안내서 <code>SG-001</code> (현대차 L-Project팀 대상)</td>
+<td>본 저장소 <code>docs/</code></td>
+<td>완료</td>
+</tr>
+<tr>
+<td>홈페이지 공개 운영 안내 <code>PG-001</code></td>
 <td>본 저장소 <code>docs/</code></td>
 <td>완료</td>
 </tr>
@@ -1299,7 +1309,8 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 브랜치: 현재 <code>main</code> 단일 (팀 확장 시 feature 브랜치 도입).</p>
 <p><strong>문서 공개</strong>: SRS·SDP는 연구실 홈페이지에도 게재된다(<code>parclab-hsu.github.io/projects/l-project-{srs,sdp}</code>).
 공개 페이지는 본 저장소 <code>docs/</code> 원문의 정적 복사본이며, 홈페이지 <code>build.sh</code>가 빌드 직전
-<code>sync-l-project-docs.py</code>로 자동 재생성하므로 문서 개정 후 홈페이지를 빌드·커밋하면 반영된다.</p>
+<code>sync-l-project-docs.py</code>로 자동 재생성하므로 문서 개정 후 홈페이지를 빌드·커밋하면 반영된다.
+공개 범위·갱신 절차·작성 규칙·게시 후 검증은 <strong>LPJ-HILS-PG-001</strong>에 정리했다.</p>
 <p><strong>접근 정책(승인제)</strong>: 두 저장소 모두 PRIVATE — 소유자(parclab-hsu)가 초대·승인한 콜라보레이터만 접근.
 초대: <code>gh api -X PUT repos/parclab-hsu/&lt;repo&gt;/collaborators/&lt;id&gt; -f permission=push</code> (읽기 전용은 <code>pull</code>).
 개인 계정 저장소는 포크 차단 불가 — 팀 확대 시 Organization 전환 검토(포크 금지·팀 권한·감사 로그).</p>

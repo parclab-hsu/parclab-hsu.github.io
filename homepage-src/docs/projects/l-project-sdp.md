@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.16 |
+| 버전 | 1.17 |
 | 작성일 | 2026-07-28 (개정 2026-08-04) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
@@ -40,6 +40,7 @@
 | 1.14 | 2026-08-04 | 전수 검증 — 3.2b절 신설(하드웨어 대기 중 사전 준비 P1~P5 등재), A6·N4에 예행 완료 상태 반영 |
 | 1.15 | 2026-08-04 | 재검증 — Nav2 편입 후에도 4.1절·시험 실적에 남아 있던 회귀 러너 '5종/75 s' 표기를 6종/90 s로 정정 |
 | 1.16 | 2026-08-04 | **공유 안내서 SG-001 신설** — 현대자동차 L-Project팀 대상 자료 구성·문서 지도·재현 절차·검증 범위 안내 |
+| 1.17 | 2026-08-04 | **홈페이지 공개 운영 안내 PG-001 신설** — 공개 범위·페이지 구성·갱신 절차·작성 규칙·게시 후 검증 |
 
 ---
 
@@ -62,8 +63,9 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 | 로버 제어 펌웨어 `hils-rover-fw` | `l-project-hils/firmware/` (NAS) | 빌드 검증 완료, 실기 시험 대기 |
 | 지그 펌웨어/부트로더 `hils-fw`, `hils-boot` | `l-project-hils/firmware/` (NAS) | 기존 자산 (리네이밍 완료) |
 | 테스트 인프라 (vcan systemd, SIL/통합 테스트) | 본 저장소 `tools/` | 완료 |
-| 문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001·SG-001) | 본 저장소 `docs/` | 유지 관리 중 |
+| 문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001·SG-001·PG-001) | 본 저장소 `docs/` | 유지 관리 중 |
 | 공유 안내서 `SG-001` (현대차 L-Project팀 대상) | 본 저장소 `docs/` | 완료 |
+| 홈페이지 공개 운영 안내 `PG-001` | 본 저장소 `docs/` | 완료 |
 | 배포 도구 (Jetson·시뮬 PC 설치 스크립트/systemd) | `tools/jetson/`, `tools/simpc/` | 완료 |
 | 시뮬레이터 대역 `sim_plant.py` · DDS 설정 | `tools/`, `config/dds/` | 완료 (검증됨) |
 | Isaac Sim 연동 준비 (12축 어댑터·정식 VIPER v4 USD 가이드 IG-001) | `tools/isaac/`, `docs/` | 완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시) |
@@ -125,6 +127,7 @@ source install/setup.bash
 **문서 공개**: SRS·SDP는 연구실 홈페이지에도 게재된다(`parclab-hsu.github.io/projects/l-project-{srs,sdp}`).
 공개 페이지는 본 저장소 `docs/` 원문의 정적 복사본이며, 홈페이지 `build.sh`가 빌드 직전
 `sync-l-project-docs.py`로 자동 재생성하므로 문서 개정 후 홈페이지를 빌드·커밋하면 반영된다.
+공개 범위·갱신 절차·작성 규칙·게시 후 검증은 **LPJ-HILS-PG-001**에 정리했다.
 
 **접근 정책(승인제)**: 두 저장소 모두 PRIVATE — 소유자(parclab-hsu)가 초대·승인한 콜라보레이터만 접근.
 초대: `gh api -X PUT repos/parclab-hsu/<repo>/collaborators/<id> -f permission=push` (읽기 전용은 `pull`).
