@@ -313,5 +313,5 @@ STO 하드웨어, 실시간 타이밍은 에뮬레이터로 확인할 수 없으
 ---
 
 [:octicons-arrow-left-24: 프로젝트 목록으로](../projects.md){ .md-button }
-[:octicons-file-document-16: SRS 전문](l-project-srs.md){ .md-button }
-[:octicons-file-document-16: SDP 전문](l-project-sdp.md){ .md-button }
+[:octicons-file-16: SRS 전문](l-project-srs.md){ .md-button }
+[:octicons-file-16: SDP 전문](l-project-sdp.md){ .md-button }

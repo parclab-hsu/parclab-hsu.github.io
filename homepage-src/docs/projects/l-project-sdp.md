@@ -15,7 +15,7 @@
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
 | 버전 | 1.16 |
-| 작성일 | 2026-07-28 (개정 2026-08-03) |
+| 작성일 | 2026-07-28 (개정 2026-08-04) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
 
@@ -308,4 +308,4 @@ python3 tools/epos_rover_emulator/epos-rover-emulator.py \
 ---
 
 [:octicons-arrow-left-24: 프로젝트 개요로](l-project-hils.md){ .md-button }
-[:octicons-file-document-16: SRS (요구사항 명세서) 보기](l-project-srs.md){ .md-button }
+[:octicons-file-16: SRS (요구사항 명세서) 보기](l-project-srs.md){ .md-button }

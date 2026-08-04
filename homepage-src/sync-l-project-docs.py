@@ -51,7 +51,7 @@ TAIL = """
 ---
 
 [:octicons-arrow-left-24: 프로젝트 개요로](l-project-hils.md){ .md-button }
-[:octicons-file-document-16: %s 보기](%s){ .md-button }
+[:octicons-file-16: %s 보기](%s){ .md-button }
 """
 
 
