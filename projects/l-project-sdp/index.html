@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.14</td>
+<td>1.16</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1072,6 +1072,16 @@
 <td>2026-08-04</td>
 <td>전수 검증 — 3.2b절 신설(하드웨어 대기 중 사전 준비 P1~P5 등재), A6·N4에 예행 완료 상태 반영</td>
 </tr>
+<tr>
+<td>1.15</td>
+<td>2026-08-04</td>
+<td>재검증 — Nav2 편입 후에도 4.1절·시험 실적에 남아 있던 회귀 러너 '5종/75 s' 표기를 6종/90 s로 정정</td>
+</tr>
+<tr>
+<td>1.16</td>
+<td>2026-08-04</td>
+<td><strong>공유 안내서 SG-001 신설</strong> — 현대자동차 L-Project팀 대상 자료 구성·문서 지도·재현 절차·검증 범위 안내</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1122,9 +1132,14 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>완료</td>
 </tr>
 <tr>
-<td>문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001)</td>
+<td>문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001·SG-001)</td>
 <td>본 저장소 <code>docs/</code></td>
 <td>유지 관리 중</td>
+</tr>
+<tr>
+<td>공유 안내서 <code>SG-001</code> (현대차 L-Project팀 대상)</td>
+<td>본 저장소 <code>docs/</code></td>
+<td>완료</td>
 </tr>
 <tr>
 <td>배포 도구 (Jetson·시뮬 PC 설치 스크립트/systemd)</td>
@@ -1568,8 +1583,8 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 </tr>
 <tr>
 <td>회귀</td>
-<td><strong><code>tools/run_all_tests.sh</code></strong> — 위 5종을 일괄 수행·요약</td>
-<td>자동 (약 75 s)</td>
+<td><strong><code>tools/run_all_tests.sh</code></strong> — 위 시험을 일괄 수행·요약</td>
+<td>자동 6종 (약 90 s)</td>
 </tr>
 <tr>
 <td>실기</td>
@@ -1686,7 +1701,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 </tr>
 <tr>
 <td><strong>통합 회귀 러너</strong> (2026-08-04)</td>
-<td><code>run_all_tests.sh</code> <strong>5종 전체 통과</strong> — 에뮬레이터 20 / 12축 프로토콜 11 / SIL ALL / 텔레옵 5 / TP-002 리허설 15, 총 약 75 s</td>
+<td><code>run_all_tests.sh</code> <strong>6종 전체 통과</strong> — 에뮬레이터 20 / 12축 프로토콜 11 / SIL ALL / 텔레옵 5 / TP-002 리허설 15 / Nav2 스모크 10, 총 약 90 s</td>
 </tr>
 <tr>
 <td><strong>TP-002 사전 리허설</strong> (2026-08-04)</td>

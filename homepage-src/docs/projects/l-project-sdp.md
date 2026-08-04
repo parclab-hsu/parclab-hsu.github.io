@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.14 |
+| 버전 | 1.16 |
 | 작성일 | 2026-07-28 (개정 2026-08-03) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
@@ -38,6 +38,8 @@
 | 1.12 | 2026-08-04 | micro_ros_agent 사전 검증 실적 등재(DP-001 4.2절) — 빌드·세션 확립 확인, conda 파이썬 빌드 함정 기록 |
 | 1.13 | 2026-08-04 | **Nav2 스모크 자동화·실행** — `test_nav2_smoke.py` 등재, 회귀 러너 편입, inflation_radius 결함 수정(IG-002) |
 | 1.14 | 2026-08-04 | 전수 검증 — 3.2b절 신설(하드웨어 대기 중 사전 준비 P1~P5 등재), A6·N4에 예행 완료 상태 반영 |
+| 1.15 | 2026-08-04 | 재검증 — Nav2 편입 후에도 4.1절·시험 실적에 남아 있던 회귀 러너 '5종/75 s' 표기를 6종/90 s로 정정 |
+| 1.16 | 2026-08-04 | **공유 안내서 SG-001 신설** — 현대자동차 L-Project팀 대상 자료 구성·문서 지도·재현 절차·검증 범위 안내 |
 
 ---
 
@@ -60,7 +62,8 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 | 로버 제어 펌웨어 `hils-rover-fw` | `l-project-hils/firmware/` (NAS) | 빌드 검증 완료, 실기 시험 대기 |
 | 지그 펌웨어/부트로더 `hils-fw`, `hils-boot` | `l-project-hils/firmware/` (NAS) | 기존 자산 (리네이밍 완료) |
 | 테스트 인프라 (vcan systemd, SIL/통합 테스트) | 본 저장소 `tools/` | 완료 |
-| 문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001) | 본 저장소 `docs/` | 유지 관리 중 |
+| 문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001·SG-001) | 본 저장소 `docs/` | 유지 관리 중 |
+| 공유 안내서 `SG-001` (현대차 L-Project팀 대상) | 본 저장소 `docs/` | 완료 |
 | 배포 도구 (Jetson·시뮬 PC 설치 스크립트/systemd) | `tools/jetson/`, `tools/simpc/` | 완료 |
 | 시뮬레이터 대역 `sim_plant.py` · DDS 설정 | `tools/`, `config/dds/` | 완료 (검증됨) |
 | Isaac Sim 연동 준비 (12축 어댑터·정식 VIPER v4 USD 가이드 IG-001) | `tools/isaac/`, `docs/` | 완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시) |
@@ -210,7 +213,7 @@ P1~P4로 A6·N4의 소프트웨어 측 위험은 상당 부분 제거되었다. 
 | 구성요소 | 에뮬레이터 자체 시험 `test_emulator.py` | 20항목 (12노드·PVM·PPM) |
 | SIL | PC 벤치 마스터↔에뮬레이터 `test_sil_master.py` | 7항목 (4구동 벤치+PPM 스모크) |
 | 통합 | ROS2 폐루프 — 조이스틱 텔레옵 `test_teleop.py`, TP-002 리허설 `test_tp002_rehearsal.py` | 5항목 / 15항목 |
-| 회귀 | **`tools/run_all_tests.sh`** — 위 5종을 일괄 수행·요약 | 자동 (약 75 s) |
+| 회귀 | **`tools/run_all_tests.sh`** — 위 시험을 일괄 수행·요약 | 자동 6종 (약 90 s) |
 | 실기 | EPOS4 실물 + Monitor 모드 계기판 | 예정 (N2) |
 
 회귀 러너는 시험별로 갈리는 인터프리터(에뮬레이터=PySide6 conda / ROS2=시스템 python)를
@@ -251,7 +254,7 @@ P1~P4로 A6·N4의 소프트웨어 측 위험은 상당 부분 제거되었다. 
 | **벤치 master↔emulator 12축 소프트웨어 프로토콜 시험** (2026-07-31) | test_master_12axis **11 PASS / 0 FAIL** — 12노드 시동·PVM 4축 속도(1% 이내)·TPDO3 토크 4B·PPM 8축 위치(±1 cnt)·ack/target-reached·4WS 조향각 일치·EMCY/리셋. STM32/실물 호환성 판정은 아님 |
 | **Nav2 스모크** (2026-08-04) | test_nav2_smoke **10 PASS / 0 FAIL** — 스택 기동·액션 서버·goal 수락·`/cmd_vel` 163건·12축 경로 163건·목표 오차 **0.12 m** SUCCEEDED·종료 후 워치독 정지. 이 시험에서 `inflation_radius`(0.55) < 내접원(0.76) 결함을 잡아 1.0으로 수정 |
 | **micro_ros_agent 사전 검증** (2026-08-04, 개발 PC) | 빌드 통과 · UDP :8888 바인딩 · 표준 XRCE 클라이언트로 **세션 확립 + 객체 생성 체인 5종 각 1건** 성공(XRCE-DDS 2.4). 범위: 에이전트·XRCE 세션 계층까지 — ROS2 토픽 브리징·W5300 전송은 보드 연결 후 IT-0 |
-| **통합 회귀 러너** (2026-08-04) | `run_all_tests.sh` **5종 전체 통과** — 에뮬레이터 20 / 12축 프로토콜 11 / SIL ALL / 텔레옵 5 / TP-002 리허설 15, 총 약 75 s |
+| **통합 회귀 러너** (2026-08-04) | `run_all_tests.sh` **6종 전체 통과** — 에뮬레이터 20 / 12축 프로토콜 11 / SIL ALL / 텔레옵 5 / TP-002 리허설 15 / Nav2 스모크 10, 총 약 90 s |
 | **TP-002 사전 리허설** (2026-08-04) | test_tp002_rehearsal **15 PASS / 0 FAIL** — IT-1 주기·형식(50.0/2.0 Hz, 24개), IT-2 4WS 전달·`/odom` 0.500/0.200·서스 반영, IT-3 두절 시 구동만 정지·폴트 진단·시뮬 두절 감지. **보드 자리는 Linux 대역 노드이며 펌웨어·XRCE·FDCAN은 범위 밖** |
 | 조이스틱 수동 주행 (2026-08-03) | test_teleop **5 PASS / 0 FAIL** — Nav2 단독 반영 · 조이스틱 선점(2.35 vs Nav2 0.94) · crab 전 축 조향 90.0° · 데드맨 해제 시 정지 유지 · release 후 Nav2 복귀 |
 
