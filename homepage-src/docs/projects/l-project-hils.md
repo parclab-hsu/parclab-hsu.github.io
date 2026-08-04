@@ -81,7 +81,7 @@ flowchart TB
 토픽의 연결만 남긴 그래프입니다. 실선이 실 구동(real), 점선이 시뮬레이션(sim) 경로입니다.
 
 ```mermaid
-flowchart LR
+flowchart TB
     NAV(["Nav2 / Isaac ROS"])
     JOYD(["joy_node"])
     TELE["rover_teleop"]
