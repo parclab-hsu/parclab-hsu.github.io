@@ -26,6 +26,16 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     [:octicons-arrow-right-24: 자세히 보기](projects/l-project-hils.md)
 
+-   :material-circle:{ style="color:#2e9e44" } [__진행중 · Mobile Manipulator (AMR + 매니퓰레이터)__](projects/mobile-manipulator.md)
+
+    ---
+
+    자율주행 모바일 베이스 위에 로봇 팔을 올려 "이동 + 조작"을 하나의 작업으로 수행하는 플랫폼. Jetson Orin NX 단일 보드에서 Livox Mid-360 기반 FAST-LIO2 오도메트리, slam_toolbox 2D SLAM, Nav2(MPPI) 자율주행, 팔 제어를 기능별 컨테이너로 분리 구동. 전도 위험을 고려해 주행 중 팔을 접는 순차 실행 정책 적용.
+
+    `ROS2 Jazzy` · `Jetson Orin NX` · `Livox Mid-360` · `FAST-LIO2` · `slam_toolbox` · `Nav2 MPPI` · `MoveIt 2` · `Docker`
+
+    [:octicons-arrow-right-24: 자세히 보기](projects/mobile-manipulator.md)
+
 -   :material-circle:{ style="color:#2e9e44" } __진행중 · EtherCAT 기반 실시간 모션 제어 시스템__
 
     ---
