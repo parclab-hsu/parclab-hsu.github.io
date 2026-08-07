@@ -81,6 +81,7 @@ nav:
     - 정보처리기사 C 대비(실기): exam-prep.md
     - 정보처리기사 필기 이론(C): exam-written.md
     - 심화 개념 노트(상위권): advanced-notes.md
+    - C ↔ Python 비교: c-vs-python.md
     - 2026 트렌드 기반 검토: review.md
   - 예제 코드:
     - 코드 사용법: code/index.md
