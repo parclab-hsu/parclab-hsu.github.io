@@ -159,6 +159,13 @@ Stella N2 LiDAR(`/scan`) → `analyze_scan()` → 주행(`/cmd_vel`) + 아두이
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- ROS2 공식 문서 https://docs.ros.org/en/humble/
+- micro-ROS https://micro.ros.org/
+- Stella N2 https://idearobot.gitbook.io/stella-n2
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 1. ROS2에서 데이터를 보내는 것과 받는 것을 영어 용어로?
 2. Stella N2에서 LiDAR 거리 데이터 토픽과 주행 명령 토픽의 이름은?

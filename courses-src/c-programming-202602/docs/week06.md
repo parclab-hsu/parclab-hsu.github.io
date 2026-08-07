@@ -875,6 +875,12 @@ if (cnt % 2 == 0) {
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- for/while https://en.cppreference.com/w/c/language/for
+- break/continue https://en.cppreference.com/w/c/language/break
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 
 1. `for (int i = 0; i < 5; i++)`는 몇 번 반복하는가?

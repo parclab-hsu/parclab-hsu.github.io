@@ -553,6 +553,13 @@ int count_close_obstacles(const float *ranges, int count, float threshold)
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- 포인터 https://en.cppreference.com/w/c/language/pointer
+- 포인터 개념(그림) https://en.wikipedia.org/wiki/Pointer_(computer_programming)
+- 메모리 세그먼트 https://en.wikipedia.org/wiki/Data_segment
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 
 1. `int a = 10; int *p = &a; *p = 30;` 실행 후 `a`의 값은?

@@ -746,3 +746,9 @@ Arduino Serial Monitor에서 한 줄을 입력받아 정수, 실수, 일반 문�
 - 교재 Ch03-04 · 표준 입력 함수, 변수와 자료형
 - C 자료형: <https://en.cppreference.com/w/c/language/type>
 - C `scanf` 계열 함수: <https://en.cppreference.com/w/c/io/fscanf>
+
+## 📚 참고 레퍼런스 (외부)
+- C 자료형 https://en.cppreference.com/w/c/language/type
+- 정수 오버플로 https://en.wikipedia.org/wiki/Integer_overflow
+- 2의 보수 https://en.wikipedia.org/wiki/Two%27s_complement
+- 전체 정리: [참고 자료 모음](references.md)

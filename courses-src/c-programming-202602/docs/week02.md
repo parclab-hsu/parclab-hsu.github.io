@@ -695,3 +695,8 @@ void loop() {
 
 - 교재 Ch03 · 표준 입출력 함수
 - `printf` 레퍼런스: <https://en.cppreference.com/w/c/io/fprintf>
+
+## 📚 참고 레퍼런스 (외부)
+- printf 형식(표) https://en.cppreference.com/w/c/io/fprintf
+- 이스케이프 https://en.cppreference.com/w/c/language/escape
+- 전체 정리: [참고 자료 모음](references.md)

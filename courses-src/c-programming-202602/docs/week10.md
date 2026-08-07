@@ -603,6 +603,13 @@ count = sizeof(point) / sizeof(point[0]);
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- 배열 https://en.cppreference.com/w/c/language/array
+- 이진 탐색 https://en.wikipedia.org/wiki/Binary_search_algorithm
+- 이동평균 https://en.wikipedia.org/wiki/Moving_average
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 
 1. `int a[6];`의 유효한 인덱스 범위는?

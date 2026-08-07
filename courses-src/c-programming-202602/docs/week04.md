@@ -834,3 +834,8 @@ Arduino에서 A0, A1, A2 센서값이 500보다 크면 각각 전방, 왼쪽, �
 
 - 교재 Ch05 · 연산자
 - C 연산자 우선순위: <https://en.cppreference.com/w/c/language/operator_precedence>
+
+## 📚 참고 레퍼런스 (외부)
+- 연산자 우선순위 표 https://en.cppreference.com/w/c/language/operator_precedence
+- 비트 연산 https://en.wikipedia.org/wiki/Bitwise_operation
+- 전체 정리: [참고 자료 모음](references.md)

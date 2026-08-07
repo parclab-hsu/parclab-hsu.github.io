@@ -632,6 +632,12 @@ double values[] = {3.2, 3.8, -3.2, -3.8};
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- 함수 https://en.cppreference.com/w/c/language/functions
+- 함수 포인터 https://en.wikipedia.org/wiki/Function_pointer
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 
 1. 함수 선언 `int Add(int, int);`에서 마지막 세미콜론은 왜 필요한가?

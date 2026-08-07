@@ -425,6 +425,12 @@ ROS2에서는 이 구조가 토픽 메시지 수신 콜백, 상태 전환 함수
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- 재귀(호출 트리) https://en.wikipedia.org/wiki/Recursion_(computer_science)
+- 하노이탑 https://en.wikipedia.org/wiki/Tower_of_Hanoi
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 
 1. `char word[] = "RUN";`과 `char *state = "RUN";`의 차이를 저장 공간 관점에서 설명하시오.

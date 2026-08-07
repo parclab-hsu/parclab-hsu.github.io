@@ -786,3 +786,9 @@ s[2]
 - PC C: [`packet_parser.c`](code/c/examples/packet_parser.c)
 - Arduino UNO R4: [`15_struct_packet`](code/arduino.md)
 - ROS2 bridge: [`stella_n2_bridge`](code/ros2/stella_n2_bridge/index.md)
+
+## 📚 참고 레퍼런스 (외부)
+- 구조체 https://en.cppreference.com/w/c/language/struct
+- 연결리스트 https://en.wikipedia.org/wiki/Linked_list
+- malloc/free https://en.cppreference.com/w/c/memory/malloc
+- 전체 정리: [참고 자료 모음](references.md)

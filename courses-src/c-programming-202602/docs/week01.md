@@ -224,6 +224,13 @@ void loop() {}
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- C 언어 개요 https://en.wikipedia.org/wiki/C_(programming_language)
+- 컴파일 vs 인터프리터 https://en.wikipedia.org/wiki/Interpreter_(computing)
+- Arduino UNO R4 WiFi https://docs.arduino.cc/hardware/uno-r4-wifi/
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 > 먼저 스스로 풀고 **정답**을 펼쳐 확인하세요.
 

@@ -891,6 +891,12 @@ void loop() {
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- if/switch https://en.cppreference.com/w/c/language/switch
+- Arduino LED 매트릭스 https://docs.arduino.cc/tutorials/uno-r4-wifi/led-matrix/
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 
 1. `int x = 0; if (x) printf("A"); else printf("B");`의 출력은 무엇인가?

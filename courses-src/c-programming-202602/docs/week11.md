@@ -477,6 +477,12 @@ ROS2의 occupancy grid는 로봇 주변 공간을 격자로 표현한다. 각 �
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- C 문자열 함수 https://en.cppreference.com/w/c/string/byte
+- 점유격자 https://en.wikipedia.org/wiki/Occupancy_grid_mapping
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 
 1. `int map[8][12];`의 전체 원소 개수는 몇 개인가?

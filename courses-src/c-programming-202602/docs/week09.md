@@ -695,6 +695,12 @@ void set_robot_state(int state);
 
 ---
 
+
+## 📚 참고 레퍼런스 (외부)
+- 스코프·저장기간 https://en.cppreference.com/w/c/language/storage_duration
+- 변수 범위 https://en.wikipedia.org/wiki/Scope_(computer_science)
+- 전체 정리: [참고 자료 모음](references.md)
+
 ## 연습문제
 
 1. `for`문 안에서 선언한 `int sum`을 `for`문 밖에서 출력하면 왜 오류가 나는가?
