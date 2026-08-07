@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.17 |
+| 버전 | 1.18 |
 | 작성일 | 2026-07-28 (개정 2026-08-04) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
@@ -41,6 +41,7 @@
 | 1.15 | 2026-08-04 | 재검증 — Nav2 편입 후에도 4.1절·시험 실적에 남아 있던 회귀 러너 '5종/75 s' 표기를 6종/90 s로 정정 |
 | 1.16 | 2026-08-04 | **공유 안내서 SG-001 신설** — 현대자동차 L-Project팀 대상 자료 구성·문서 지도·재현 절차·검증 범위 안내 |
 | 1.17 | 2026-08-04 | **홈페이지 공개 운영 안내 PG-001 신설** — 공개 범위·페이지 구성·갱신 절차·작성 규칙·게시 후 검증 |
+| 1.18 | 2026-08-06 | P5 경로를 **OmniLRS 도커**로 확정(IG-001 2b절), 사전 점검 도구 등재 |
 
 ---
 
@@ -68,7 +69,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 | 홈페이지 공개 운영 안내 `PG-001` | 본 저장소 `docs/` | 완료 |
 | 배포 도구 (Jetson·시뮬 PC 설치 스크립트/systemd) | `tools/jetson/`, `tools/simpc/` | 완료 |
 | 시뮬레이터 대역 `sim_plant.py` · DDS 설정 | `tools/`, `config/dds/` | 완료 (검증됨) |
-| Isaac Sim 연동 준비 (12축 어댑터·정식 VIPER v4 USD 가이드 IG-001) | `tools/isaac/`, `docs/` | 완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시) |
+| Isaac Sim 연동 준비 (12축 어댑터·VIPER v4 USD·OmniLRS 도커 절차·사전 점검 도구, IG-001) | `tools/isaac/`, `docs/` | 완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시) |
 | Nav2 통합 준비 (파라미터·런치·가이드 IG-002) | `hils_rover_control/config/nav2/`, `docs/` | 완료 (빌드·문법 검증) |
 | NVIDIA Isaac ROS Navigation 가이드 (IG-003) | `docs/` | 완료 — **N4는 NVIDIA 경로·카메라 D455 확정**, 발주 대기 |
 | `rover_mcu` (micro-ROS/XRCE-DDS 펌웨어 노드) | CSCI-6 확장 | 완료 (A1~A4) |
@@ -186,7 +187,7 @@ source install/setup.bash
 | P2 | micro_ros_agent 사전 검증 | **완료** — 빌드·UDP :8888 바인딩·XRCE 세션 확립과 객체 생성 체인 확인 (DP-001 4.2절). conda 파이썬 빌드 함정 기록 |
 | P3 | 통합 회귀 러너 | **완료** — `tools/run_all_tests.sh` 6종 일괄, 4.1절 자동화 항목 해소 |
 | P4 | Nav2 스모크 | **완료** — IG-002 4절 자동화·실행 10항목 통과. `inflation_radius`(0.55) < 내접원(0.76) 결함 발견·수정 |
-| P5 | Isaac Sim 12축 연동 검증 | **대기** — GPU 드라이버 커널모듈(595.71.05)과 라이브러리(595.84) 불일치로 재부팅 필요, Isaac Sim 본체 미설치(기존 운용은 OmniLRS 도커) |
+| P5 | Isaac Sim 12축 연동 검증 | **대기 (경로 확정: OmniLRS 도커 — IG-001 2b절)** — 막는 항목 2개: ① GPU 드라이버 커널모듈(595.71.05)↔라이브러리(595.84) 불일치로 재부팅 필요 ② docker 그룹 미소속(sudo 필요). 점검: `tools/isaac/check_omnilrs_ready.sh` |
 
 P1~P4로 A6·N4의 소프트웨어 측 위험은 상당 부분 제거되었다. 남은 것은 **하드웨어가 있어야만
 확인 가능한 것들**(펌웨어 실기 동작, XRCE 실 전송, CAN 전기·타이밍, 센서 인지)이다.

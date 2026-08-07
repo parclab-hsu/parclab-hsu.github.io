@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.17</td>
+<td>1.18</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1087,6 +1087,11 @@
 <td>2026-08-04</td>
 <td><strong>홈페이지 공개 운영 안내 PG-001 신설</strong> — 공개 범위·페이지 구성·갱신 절차·작성 규칙·게시 후 검증</td>
 </tr>
+<tr>
+<td>1.18</td>
+<td>2026-08-06</td>
+<td>P5 경로를 <strong>OmniLRS 도커</strong>로 확정(IG-001 2b절), 사전 점검 도구 등재</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1162,7 +1167,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>완료 (검증됨)</td>
 </tr>
 <tr>
-<td>Isaac Sim 연동 준비 (12축 어댑터·정식 VIPER v4 USD 가이드 IG-001)</td>
+<td>Isaac Sim 연동 준비 (12축 어댑터·VIPER v4 USD·OmniLRS 도커 절차·사전 점검 도구, IG-001)</td>
 <td><code>tools/isaac/</code>, <code>docs/</code></td>
 <td>완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시)</td>
 </tr>
@@ -1502,7 +1507,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>P5</td>
 <td>Isaac Sim 12축 연동 검증</td>
-<td><strong>대기</strong> — GPU 드라이버 커널모듈(595.71.05)과 라이브러리(595.84) 불일치로 재부팅 필요, Isaac Sim 본체 미설치(기존 운용은 OmniLRS 도커)</td>
+<td><strong>대기 (경로 확정: OmniLRS 도커 — IG-001 2b절)</strong> — 막는 항목 2개: ① GPU 드라이버 커널모듈(595.71.05)↔라이브러리(595.84) 불일치로 재부팅 필요 ② docker 그룹 미소속(sudo 필요). 점검: <code>tools/isaac/check_omnilrs_ready.sh</code></td>
 </tr>
 </tbody>
 </table>
