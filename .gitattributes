@@ -1,0 +1,67 @@
+# 줄바꿈 정책
+#
+# 이 저장소는 NAS(CIFS) 에 마운트된 채로 편집되는 일이 있어, 워킹트리의
+# 줄바꿈이 CRLF 로 바뀌면 내용이 그대로여도 전 파일이 변경된 것처럼 보인다.
+# 실제로 433개 파일 / 33만 줄이 diff 에 잡혀 커밋 리뷰가 불가능해진 적이 있다.
+#
+# 아래 정책으로 인덱스와 워킹트리 모두 LF 로 고정한다.
+#   - 저장소(인덱스)에는 항상 LF 로 저장
+#   - 체크아웃 시에도 LF 로 기록 (eol=lf)
+#   - 바이너리는 변환 대상에서 제외
+#
+# 정책을 바꾼 뒤에는 반드시 한 번 재정규화할 것:
+#   git add --renormalize .
+#   git commit -m "Normalize line endings"
+
+# 기본: 텍스트로 판단되는 모든 파일을 LF 로
+* text=auto eol=lf
+
+# --- 명시적 텍스트 ---
+*.md        text eol=lf
+*.html      text eol=lf
+*.css       text eol=lf
+*.js        text eol=lf
+*.map       text eol=lf
+*.json      text eol=lf
+*.xml       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.txt       text eol=lf
+*.py        text eol=lf
+*.sh        text eol=lf
+*.c         text eol=lf
+*.h         text eol=lf
+*.cpp       text eol=lf
+*.ino       text eol=lf
+*.svg       text eol=lf
+*.example   text eol=lf
+.gitignore  text eol=lf
+.nojekyll   text eol=lf
+
+# 셸 스크립트는 CRLF 가 섞이면 실행 자체가 깨진다
+*.sh        text eol=lf
+
+# --- 바이너리 (변환 금지) ---
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary
+*.webp      binary
+*.pdf       binary
+*.zip       binary
+*.gz        binary
+*.xlsx      binary
+*.woff      binary
+*.woff2     binary
+*.ttf       binary
+*.eot       binary
+*.mp4       binary
+*.step      binary
+*.STEP      binary
+
+# --- diff 표시 ---
+# 빌드 산출물이라 리뷰 대상이 아니다. GitHub 에서 diff 를 접어 보여준다.
+assets/**           linguist-generated=true
+search/search_index.json  linguist-generated=true
+sitemap.xml         linguist-generated=true
