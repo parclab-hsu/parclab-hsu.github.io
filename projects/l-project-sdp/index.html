@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.18</td>
+<td>1.20</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1092,6 +1092,16 @@
 <td>2026-08-06</td>
 <td>P5 경로를 <strong>OmniLRS 도커</strong>로 확정(IG-001 2b절), 사전 점검 도구 등재</td>
 </tr>
+<tr>
+<td>1.19</td>
+<td>2026-08-13</td>
+<td>N2 어댑터를 <strong>PEAK PCAN-USB</strong>로 확정(TP-001 v1.3) — 준비물·배선·속도 정합·점검 도구, 보드 트랜시버 확인 필요 명시</td>
+</tr>
+<tr>
+<td>1.20</td>
+<td>2026-08-14</td>
+<td><strong>ND-001 노드·데이터 명세</strong>와 <strong>OP-002 조이패드 원격 조종 운용</strong> 신설, 원격 조종석 런치 추가</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1142,7 +1152,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>완료</td>
 </tr>
 <tr>
-<td>문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001·SG-001·PG-001)</td>
+<td>문서 일체 (SRS·SDP·AD-002·TP-001/002·DP-001/002·IG-001/002/003·AN-001·RR-001·OP-001·SG-001·PG-001·ND-001·OP-002)</td>
 <td>본 저장소 <code>docs/</code></td>
 <td>유지 관리 중</td>
 </tr>
@@ -1154,6 +1164,16 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>홈페이지 공개 운영 안내 <code>PG-001</code></td>
 <td>본 저장소 <code>docs/</code></td>
+<td>완료</td>
+</tr>
+<tr>
+<td>노드·데이터 명세 <code>ND-001</code> (파라미터·토픽·필드별 의미)</td>
+<td>본 저장소 <code>docs/</code></td>
+<td>완료</td>
+</tr>
+<tr>
+<td>조이패드 원격 조종 <code>OP-002</code> + <code>teleop_remote.launch.py</code></td>
+<td><code>docs/</code>, <code>hils_rover_control/launch/</code></td>
 <td>완료</td>
 </tr>
 <tr>
@@ -1385,8 +1405,8 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 </tr>
 <tr>
 <td>N2. 펌웨어-에뮬레이터 CAN 시험</td>
-<td><strong>프로토콜 대역 시험</strong>: 보드 FDCAN ↔ USB-CAN 어댑터 ↔ PC 에뮬레이터(socketcan) — 실물 전기·타이밍 검증은 포함하지 않음</td>
-<td>보드·USB-CAN 어댑터 입고</td>
+<td><strong>프로토콜 대역 시험</strong>: 보드 FDCAN ↔ <strong>PCAN-USB</strong> ↔ PC 에뮬레이터(socketcan) — 실물 전기·타이밍 검증은 포함하지 않음. 준비물·배선은 TP-001 v1.3, 점검은 <code>tools/check_can_ready.sh</code></td>
+<td>PCAN-USB 발주(2026-08-13), <strong>보드 CAN 트랜시버 유무 확인 필요</strong></td>
 </tr>
 <tr>
 <td>N3. EPOS Studio 튜닝</td>

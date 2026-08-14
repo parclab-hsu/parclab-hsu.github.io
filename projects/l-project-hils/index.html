@@ -984,6 +984,8 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 </tr>
 </tbody>
 </table>
+<p>조종석은 로버와 같은 기계에 있을 필요가 없습니다 — 명령이 DDS 토픽으로 흐르므로 <strong>별도 PC에서
+원격 조종</strong>할 수 있고, 이를 위한 추가 코드는 없습니다(조종석 전용 런치만 제공).</p>
 <p>검증은 <strong>합성 조이스틱 입력</strong>으로 자동화되어 있어 실물 패드 없이도 회귀 확인이 가능합니다
 (<code>tools/test_teleop.py</code> — 5항목 전부 통과).</p>
 <hr />
@@ -1001,7 +1003,7 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 <tbody>
 <tr>
 <td><code>parclab-hsu/l-project-hils-ros2</code></td>
-<td>ROS2 패키지, EPOS4 에뮬레이터, Isaac/Nav2 설정, 배포 도구, 문서 15종</td>
+<td>ROS2 패키지, EPOS4 에뮬레이터, Isaac/Nav2 설정, 배포 도구, 문서 17종</td>
 <td>추적 파일 76개 · 커밋 58 (2026-08 기준)</td>
 </tr>
 <tr>
@@ -1040,7 +1042,7 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>│   ├── jetson/ · simpc/         #   배포 스크립트 + systemd 유닛
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>│   └── systemd/                 #   vcan0 가상 CAN 영구화
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>├── config/dds/                  # Fast DDS/CycloneDDS 프로파일, 도메인 설정
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>└── docs/                        # 문서 15종 (아래 표)
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>└── docs/                        # 문서 17종 (아래 표)
 </code></pre></div>
 <h3 id="l-project-hils">펌웨어 저장소 (<code>l-project-hils</code>)<a class="headerlink" href="#l-project-hils" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>firmware/
@@ -1186,6 +1188,16 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 <td>공개 운영</td>
 <td>PG-001</td>
 <td>홈페이지 공개 범위·갱신 절차·작성 규칙·게시 후 검증</td>
+</tr>
+<tr>
+<td>인터페이스</td>
+<td>ND-001</td>
+<td>노드별 파라미터·토픽과 데이터 필드별 의미(12축 인덱스·statusword·CANopen 프레임)</td>
+</tr>
+<tr>
+<td>운용</td>
+<td>OP-002</td>
+<td>조이패드 원격 조종 — 패드 선정·조종석 구성·안전 규칙</td>
 </tr>
 </tbody>
 </table>
