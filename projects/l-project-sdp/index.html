@@ -971,11 +971,11 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.20</td>
+<td>1.23</td>
 </tr>
 <tr>
 <td>작성일</td>
-<td>2026-07-28 (개정 2026-08-04)</td>
+<td>2026-07-28 (개정 2026-08-14)</td>
 </tr>
 <tr>
 <td>과제</td>
@@ -1101,6 +1101,21 @@
 <td>1.20</td>
 <td>2026-08-14</td>
 <td><strong>ND-001 노드·데이터 명세</strong>와 <strong>OP-002 조이패드 원격 조종 운용</strong> 신설, 원격 조종석 런치 추가</td>
+</tr>
+<tr>
+<td>1.21</td>
+<td>2026-08-14</td>
+<td>OP-002 v1.1 — 조종간을 <strong>Xbox 무선 컨트롤러</strong>로 확정</td>
+</tr>
+<tr>
+<td>1.23</td>
+<td>2026-08-14</td>
+<td><strong>노션 자산 허브 전수 대조</strong> — 문서 15종 중 SDP만 2판 뒤처져 있었고, 다수 페이지의 <em>본문</em>이 초판(8륜 계약) 그대로였음. 경고 배너·개정 콜아웃으로 조치하고 재발 방지 규칙을 PG-001 6절에 신설(v1.1)</td>
+</tr>
+<tr>
+<td>1.22</td>
+<td>2026-08-14</td>
+<td><strong>P5 부분 완료</strong> — Isaac 대역 노드 <code>isaac_stub.py</code>와 <code>test_isaac_bridge.py</code>로 연동 계약 15항목 자동 검증(IG-001 2c절). 회귀 러너 <strong>7종</strong>으로 확장. Isaac Sim 실제 실행은 GPU 드라이버 재부팅 대기로 여전히 미수행</td>
 </tr>
 </tbody>
 </table>
@@ -1234,7 +1249,12 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>통합 회귀 러너 <code>run_all_tests.sh</code></td>
 <td><code>tools/</code></td>
-<td>완료 (6종 일괄, 전체 통과)</td>
+<td>완료 (7종 일괄, 전체 통과)</td>
+</tr>
+<tr>
+<td>Isaac 연동 사전 검증 <code>isaac_stub.py</code> + <code>test_isaac_bridge.py</code></td>
+<td><code>tools/isaac/</code>, <code>tools/</code></td>
+<td>완료 (15항목 — IG-001 2c절)</td>
 </tr>
 <tr>
 <td>Nav2 스모크 시험 <code>test_nav2_smoke.py</code></td>
@@ -1517,7 +1537,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>P3</td>
 <td>통합 회귀 러너</td>
-<td><strong>완료</strong> — <code>tools/run_all_tests.sh</code> 6종 일괄, 4.1절 자동화 항목 해소</td>
+<td><strong>완료</strong> — <code>tools/run_all_tests.sh</code> 7종 일괄(P5 편입으로 확장), 4.1절 자동화 항목 해소</td>
 </tr>
 <tr>
 <td>P4</td>
@@ -1527,7 +1547,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>P5</td>
 <td>Isaac Sim 12축 연동 검증</td>
-<td><strong>대기 (경로 확정: OmniLRS 도커 — IG-001 2b절)</strong> — 막는 항목 2개: ① GPU 드라이버 커널모듈(595.71.05)↔라이브러리(595.84) 불일치로 재부팅 필요 ② docker 그룹 미소속(sudo 필요). 점검: <code>tools/isaac/check_omnilrs_ready.sh</code></td>
+<td><strong>부분 완료</strong> — 계약 계층은 Isaac 대역 노드로 검증 완료(15항목, IG-001 2c절): USD 조인트명 실재, 명령·피드백 양방향 변환, 역순·잡조인트 재정렬, 폐루프 <code>/odom</code> 복원, 결손 내성. <strong>Isaac Sim 실제 실행은 대기</strong> — ① GPU 드라이버 커널모듈(595.71.05)↔라이브러리(595.84) 불일치로 재부팅 필요(마지막 부팅 2026-06-30) ② docker 그룹 미소속(sudo 필요). 점검: <code>tools/isaac/check_omnilrs_ready.sh</code></td>
 </tr>
 </tbody>
 </table>
@@ -1620,7 +1640,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>회귀</td>
 <td><strong><code>tools/run_all_tests.sh</code></strong> — 위 시험을 일괄 수행·요약</td>
-<td>자동 6종 (약 90 s)</td>
+<td>자동 7종 (약 110 s)</td>
 </tr>
 <tr>
 <td>실기</td>
@@ -1736,8 +1756,12 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>빌드 통과 · UDP :8888 바인딩 · 표준 XRCE 클라이언트로 <strong>세션 확립 + 객체 생성 체인 5종 각 1건</strong> 성공(XRCE-DDS 2.4). 범위: 에이전트·XRCE 세션 계층까지 — ROS2 토픽 브리징·W5300 전송은 보드 연결 후 IT-0</td>
 </tr>
 <tr>
-<td><strong>통합 회귀 러너</strong> (2026-08-04)</td>
-<td><code>run_all_tests.sh</code> <strong>6종 전체 통과</strong> — 에뮬레이터 20 / 12축 프로토콜 11 / SIL ALL / 텔레옵 5 / TP-002 리허설 15 / Nav2 스모크 10, 총 약 90 s</td>
+<td><strong>IG-001 Isaac 연동 리허설</strong> (2026-08-14)</td>
+<td><strong>15 PASS / 0 FAIL</strong> — USD 12축 조인트명 실재, <code>/sim/axes_cmd</code>→<code>/isaac/joint_command</code>(구동 velocity·조향 position 분리), 역순·잡조인트 섞인 피드백에서 12조인트 표준 순서 복원(60.0 Hz), 폐루프 <code>/odom</code> vx 0.500·wz 0.200, 게걸음 네 축 +90.0°, 조인트 결손 내성. <strong>Isaac 자리는 대역 노드 — 물리·접촉·슬립·GPU·Action Graph 실배선은 범위 밖</strong></td>
+</tr>
+<tr>
+<td><strong>통합 회귀 러너</strong> (2026-08-14)</td>
+<td><code>run_all_tests.sh</code> <strong>7종 전체 통과</strong> — 에뮬레이터 20 / 12축 프로토콜 11 / SIL ALL / 텔레옵 5 / TP-002 리허설 15 / <strong>IG-001 Isaac 리허설 15</strong> / Nav2 스모크 10, 총 약 110 s</td>
 </tr>
 <tr>
 <td><strong>TP-002 사전 리허설</strong> (2026-08-04)</td>
