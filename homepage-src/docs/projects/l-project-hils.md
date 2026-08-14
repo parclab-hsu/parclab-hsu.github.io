@@ -199,8 +199,8 @@ Isaac Sim 실행은 현재 개발 PC의 GPU 드라이버 문제로 대기 중입
 
 | 저장소 | 내용 | 규모 |
 |---|---|---|
-| `parclab-hsu/l-project-hils-ros2` | ROS2 패키지, EPOS4 에뮬레이터, Isaac/Nav2 설정, 배포 도구, 문서 17종 | 추적 파일 76개 · 커밋 58 (2026-08 기준) |
-| `parclab-hsu/l-project-hils` | STM32 펌웨어 3종(로버 제어·캘리브레이션 지그·부트로더), PC 도구(GUI/로더) | 추적 파일 3,887개 (STM32Cube HAL 포함, 2026-08 기준) |
+| `parclab-hsu/l-project-hils-ros2` | ROS2 패키지, EPOS4 에뮬레이터, Isaac/Nav2 설정, 배포 도구, 문서 17종 | 추적 파일 85개 · 커밋 70 (2026-08-14 기준) |
+| `parclab-hsu/l-project-hils` | STM32 펌웨어 3종(로버 제어·캘리브레이션 지그·부트로더), PC 도구(GUI/로더) | 추적 파일 3,887개 (STM32Cube HAL 포함, 2026-08-14 기준) |
 
 ### ROS2 · 도구 저장소 (`l-project-hils-ros2`)
 
