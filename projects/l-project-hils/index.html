@@ -880,13 +880,19 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
     end
 
     subgraph S["시뮬레이션 PC"]
+        PL[sim_plant&lt;br/&gt;대역 플랜트]
+        BR[sim_isaac_bridge&lt;br/&gt;계약 어댑터]
         SIM[Isaac Sim&lt;br/&gt;VIPER 로버 플랜트]
         EMU[EPOS4 에뮬레이터&lt;br/&gt;12노드 GUI]
+        BR -. "isaac/*" .-&gt; SIM
+        SIM -. "isaac/*" .-&gt; BR
     end
 
     AG === MCU
-    DSIM -.-&gt; SIM
-    SIM -.-&gt; DSIM</code></pre>
+    DSIM -. "/sim/axes_cmd [12]" .-&gt; PL
+    PL -. "/sim/joint_states" .-&gt; DSIM
+    DSIM -. "/sim/axes_cmd [12]" .-&gt; BR
+    BR -. "/sim/joint_states" .-&gt; DSIM</code></pre>
 <p><code>rover_control</code>, <code>rover_state</code>, 보드의 Drive Interface와 <code>drv_sim</code> 경로는 구현되어 있습니다.
 위 그림 전체를 Jetson·시뮬레이션 PC·보드로 연결하는 A6 시험과 실물 EPOS4 경로는 아직
 완료되지 않았습니다.</p>
@@ -908,7 +914,9 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
     RS["rover_state"]
     HM["health_monitor"]
     MCU["rover_mcu&lt;br/&gt;HILS 보드"]
-    PLANT(["sim_plant / Isaac Sim"])
+    PLANT(["sim_plant&lt;br/&gt;대역 플랜트"])
+    IBR["sim_isaac_bridge"]
+    ISAAC(["Isaac Sim&lt;br/&gt;PhysX"])
     EPOS(["EPOS4 ×12 · CAN"])
 
     JOYD -- "/joy" --&gt; TELE
@@ -921,12 +929,19 @@ Navigation(NVIDIA Jetson) — HILS 보드(STM32H7, micro-ROS) — 시뮬레이�
     EPOS -- "TPDO" --&gt; MCU
     MCU -. "/sim/axes_cmd [12]" .-&gt; PLANT
     PLANT -. "/sim/joint_states" .-&gt; MCU
+    MCU -. "동일 계약" .-&gt; IBR
+    IBR -.-&gt; MCU
+    IBR -. "isaac/joint_command" .-&gt; ISAAC
+    ISAAC -. "isaac/joint_states" .-&gt; IBR
 
     MCU -- "/rover/joint_states" --&gt; RS
     RS -- "/odom + TF" --&gt; NAV
     MCU -- "/rover/status" --&gt; HM
     RC -. 감시 .-&gt; HM
     RS -. 감시 .-&gt; HM</code></pre>
+<p><strong>플랜트는 둘 중 하나만 돕니다</strong> — 대역 모델(<code>sim_plant</code>)과 Isaac Sim은 같은 <code>/sim/*</code> 계약을
+갖는 대체 경로이고, <code>isaac/*</code>는 시뮬레이션 PC 안에서만 쓰이는 내부 토픽이라 보드와 Jetson은
+존재를 모릅니다.</p>
 <p><strong>모드 전환 지점은 HILS 보드 안</strong>입니다 — Jetson 쪽 노드는 실 구동인지 시뮬레이션인지
 구분하지 않고 같은 <code>/rover/*</code> 인터페이스만 봅니다. <code>health_monitor</code>는 구독만 하며 제어에
 개입하지 않습니다. 지그 경로(<code>hils_bridge</code> → <code>/hils/*</code>)는 구동계와 독립이라 위 그래프에는

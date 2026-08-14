@@ -56,13 +56,19 @@ flowchart TB
     end
 
     subgraph S["시뮬레이션 PC"]
+        PL[sim_plant<br/>대역 플랜트]
+        BR[sim_isaac_bridge<br/>계약 어댑터]
         SIM[Isaac Sim<br/>VIPER 로버 플랜트]
         EMU[EPOS4 에뮬레이터<br/>12노드 GUI]
+        BR -. "isaac/*" .-> SIM
+        SIM -. "isaac/*" .-> BR
     end
 
     AG === MCU
-    DSIM -.-> SIM
-    SIM -.-> DSIM
+    DSIM -. "/sim/axes_cmd [12]" .-> PL
+    PL -. "/sim/joint_states" .-> DSIM
+    DSIM -. "/sim/axes_cmd [12]" .-> BR
+    BR -. "/sim/joint_states" .-> DSIM
 ```
 
 `rover_control`, `rover_state`, 보드의 Drive Interface와 `drv_sim` 경로는 구현되어 있습니다.
@@ -89,7 +95,9 @@ flowchart TB
     RS["rover_state"]
     HM["health_monitor"]
     MCU["rover_mcu<br/>HILS 보드"]
-    PLANT(["sim_plant / Isaac Sim"])
+    PLANT(["sim_plant<br/>대역 플랜트"])
+    IBR["sim_isaac_bridge"]
+    ISAAC(["Isaac Sim<br/>PhysX"])
     EPOS(["EPOS4 ×12 · CAN"])
 
     JOYD -- "/joy" --> TELE
@@ -102,6 +110,10 @@ flowchart TB
     EPOS -- "TPDO" --> MCU
     MCU -. "/sim/axes_cmd [12]" .-> PLANT
     PLANT -. "/sim/joint_states" .-> MCU
+    MCU -. "동일 계약" .-> IBR
+    IBR -.-> MCU
+    IBR -. "isaac/joint_command" .-> ISAAC
+    ISAAC -. "isaac/joint_states" .-> IBR
 
     MCU -- "/rover/joint_states" --> RS
     RS -- "/odom + TF" --> NAV
@@ -109,6 +121,10 @@ flowchart TB
     RC -. 감시 .-> HM
     RS -. 감시 .-> HM
 ```
+
+**플랜트는 둘 중 하나만 돕니다** — 대역 모델(`sim_plant`)과 Isaac Sim은 같은 `/sim/*` 계약을
+갖는 대체 경로이고, `isaac/*`는 시뮬레이션 PC 안에서만 쓰이는 내부 토픽이라 보드와 Jetson은
+존재를 모릅니다.
 
 **모드 전환 지점은 HILS 보드 안**입니다 — Jetson 쪽 노드는 실 구동인지 시뮬레이션인지
 구분하지 않고 같은 `/rover/*` 인터페이스만 봅니다. `health_monitor`는 구독만 하며 제어에
