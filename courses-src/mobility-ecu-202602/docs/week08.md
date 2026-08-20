@@ -526,6 +526,22 @@ reset vector는 초기 stack pointer와 `Reset_Handler`를 가리킨다. startup
 | OSPEEDR | 느린 edge 또는 불필요한 EMI |
 | alternate function | PWM·UART pin 무출력 |
 
+### CubeMX 생성 코드와 레지스터 대조
+
+CubeMX는 레지스터를 대신 외워 주는 도구가 아니라 설정을 빠르게 만들고 검산하는 도구다. 같은 LED 동작을 CubeMX 생성 코드, HAL 함수, 직접 레지스터 코드 세 가지로 만들어 최종 레지스터 값을 비교한다.
+
+| CubeMX 설정 | 확인할 레지스터 |
+|---|---|
+| GPIO Output, push-pull | `GPIOx->MODER`, `OTYPER` |
+| pull-up/pull-down | `GPIOx->PUPDR` |
+| output speed | `GPIOx->OSPEEDR` |
+| 핀 기능(AF) 배정 | `GPIOx->AFR[0/1]` |
+| 주변장치 clock enable | `RCC->AHB1ENR` |
+
+- 코드를 재생성하면 `/* USER CODE BEGIN */`과 `/* USER CODE END */` 사이만 남는다. 그 밖에 직접 쓴 레지스터 코드는 사라진다.
+- `.ioc` 파일이 설정의 원본이다. 회로도·HSI 표와 같은 버전으로 저장소에 둔다.
+- 동작하지 않을 때 확인 순서는 생성 코드든 직접 코드든 같다. clock enable → 핀 mode·AF → 출력 레지스터 → 실제 핀 전압.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |
@@ -548,6 +564,7 @@ reset vector는 초기 stack pointer와 `Reset_Handler`를 가리킨다. startup
 1. GPIO 출력 전 RCC 클럭을 켜야 하는 이유를 설명한다.
 2. MODER, OTYPER, ODR이 각각 무엇을 설정하는지 말한다.
 3. 레지스터 직접접근 코드에서 volatile이 필요한 이유를 설명한다.
+4. CubeMX가 생성한 `MX_GPIO_Init()`이 실제로 바꾸는 레지스터를 register view에서 확인하는 방법을 설명한다.
 
 ## 💻 실습 코드 (주석 포함) — `code/week08_gpio_led.c`
 
@@ -612,5 +629,6 @@ int main(void)
 - [ ] 레퍼런스 매뉴얼 참고해 레지스터 비트 write → LED On/Off
 - [ ] F103 HAL(`HAL_GPIO_TogglePin`)과 비교, 레지스터 직접접근 코드 리뷰
 - [ ] GPIO 출력 실습 코드와 동작 영상 제출
+- [ ] 같은 LED 동작을 CubeMX 생성 코드·HAL·레지스터 3종으로 구현하고 최종 레지스터 값 비교
 
 > **🤖 AX 연계** — AI 코드 어시스트(Copilot)로 레지스터 접근 코드를 생성·리뷰하며 생산성과 정확성을 높인다.

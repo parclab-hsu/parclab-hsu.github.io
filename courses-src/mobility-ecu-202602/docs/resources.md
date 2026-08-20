@@ -79,3 +79,20 @@
 | `Edge_AI_Rover_Integration.pdf` / `Space_Rover_Edge_AI.pdf` | 7·14·15주차 | 데이터 기반 제어, Edge AI 전처리, 자율 루프 |
 | `Space_Rover_Final_Validation.pdf` | 15주차 | V-Model, 미션 시나리오, 평가 루브릭, 최종 보고서 |
 | `Space_Rover_ECU_Design_and_Debugging.pdf` | 11·15주차 | HSI, 설계 리뷰, JTAG/GDB, Logic Analyzer 디버깅 |
+
+## STM32CubeMX 설정 체크리스트
+
+설정을 마친 뒤, 회로 리뷰(12주차) 전, 최종 검증(15주차) 전에 각각 확인한다.
+
+- [ ] `.ioc` 파일이 회로도·HSI 표와 같은 버전으로 저장소에 있는가
+- [ ] Pinout에 핀 충돌 경고가 없는가
+- [ ] SWD(PA13/PA14), NRST, BOOT0, 오실레이터 핀을 다른 기능이 침범하지 않았는가
+- [ ] Clock Configuration의 SYSCLK/AHB/APB와 타이머 클럭이 손 계산값과 일치하는가
+- [ ] Flash latency와 전압 스케일 조건을 데이터시트로 확인했는가
+- [ ] TIM1이 center-aligned·상보 출력·dead time으로 설정되고 생성된 DTG 값이 의도한 시간과 맞는가
+- [ ] TIM1 break input이 하드웨어 fault 신호에 연결되고 자동 복구가 꺼져 있는가
+- [ ] ADC 트리거가 TIM1 TRGO이고 sampling time이 소스 임피던스를 견디는가
+- [ ] EXTI 핀·edge·NVIC 우선순위가 HSI 표의 허용 지연과 일치하는가
+- [ ] USART baud 오차가 허용 범위 안에 있는가
+- [ ] 직접 작성한 코드가 `USER CODE` 구역 안에 있어 재생성 후에도 남는가
+- [ ] 생성 코드의 초기화 결과를 register view로 한 번 이상 확인했는가

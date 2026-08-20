@@ -523,6 +523,16 @@ Cboot ≥ Qtotal / ΔVboot
 
 `shunt → amplifier/comparator → fault input → PWM disable → fault latch → communication` 경로를 회로와 code 양쪽에서 추적한다.
 
+### CubeMX 핀 배정과 TIM1 break input
+
+회로 리뷰에서는 회로도 net, CubeMX `.ioc` pinout, HSI 표를 함께 열고 대조한다. 회로가 만들어진 뒤에는 바꾸기 어려운 항목이다.
+
+- TIM1 CHx/CHxN 쌍이 게이트드라이버 high/low 입력 배치와 일치하는가
+- CubeMX에 입력한 dead time이 드라이버 지연, MOSFET turn-off 시간, 온도·공차 여유보다 큰가
+- 하드웨어 과전류 비교기 출력을 TIM1 break input(BKIN)에 연결했는가. break가 걸리면 `BDTR`의 MOE가 하드웨어로 클리어되어 펌웨어가 멈춰도 PWM이 차단된다
+- break 신호의 극성(BKP)과 필터가 실제 fault 신호의 active level·노이즈 폭과 맞는가
+- 자동 출력 복구(AOE)를 꺼서 원인 제거와 명시적 재시작 전까지 출력이 되살아나지 않는가
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |
@@ -545,6 +555,7 @@ Cboot ≥ Qtotal / ΔVboot
 1. MCU 3.3V PWM이 직접 MOSFET을 구동하기 어려운 이유를 말한다.
 2. 부트스트랩 회로가 하이사이드 구동에 필요한 이유를 설명한다.
 3. 션트 증폭 회로의 입력 범위와 ADC 범위를 함께 확인한다.
+4. TIM1 break input이 소프트웨어 과전류 차단보다 빠르고 확실한 이유를 `BDTR` MOE 동작으로 설명한다.
 
 !!! tip "📌 보충 설명 — 실전 팁·주의점"
     게이트드라이버 **부트스트랩 커패시터·다이오드** 값을 확인하고 MOSFET **정션온도 여유**를 둔다.
@@ -554,5 +565,6 @@ Cboot ≥ Qtotal / ΔVboot
 - [ ] 사양서 → 부품 선정(MOSFET Vds, 인덕터 L, Cout) 계산 재현
 - [ ] LED/명령 분압 저항 설계, MOSFET 정션온도 계산
 - [ ] MCU 주변회로·게이트드라이버 회로 리뷰 자료 제출
+- [ ] CubeMX TIM1 break input 설정과 하드웨어 fault 신호 연결을 회로도에서 확인
 
 > **🤖 AX 연계** — AI 기반으로 부품 선정·설계를 검토하고, 열·손실을 예측해 설계 리스크를 사전 진단한다.

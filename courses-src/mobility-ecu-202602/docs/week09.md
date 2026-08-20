@@ -513,6 +513,22 @@ button·Hall edge가 들어오면 ISR 시작 시 debug pin을 toggle한다. 입�
 
 EXTI ISR 시작과 종료에서 각각 debug pin을 toggle한다. 정상 edge, bounce, 불법 Hall 전이, 동시에 발생한 UART interrupt 조건에서 latency와 실행시간을 비교하고 deadline 초과 여부를 기록한다.
 
+### CubeMX Clock Configuration으로 검산한다
+
+Clock Configuration 탭에 `HSE 16MHz → PLL → SYSCLK 216MHz → AHB 216MHz → APB1/APB2 54MHz`를 입력하고, 화면이 표시하는 APB 타이머 클럭을 앞 절의 손 계산과 비교한다. STM32F7은 `RCC->DCKCFGR1`의 TIMPRE 비트에 따라 타이머 클럭 배수가 달라지므로, 216MHz 타이머 클럭이 어디에서 나오는지 끝까지 추적한다.
+
+| CubeMX 표시값 | 확인할 레지스터 |
+|---|---|
+| SYSCLK 216MHz | `RCC->PLLCFGR`, `RCC->CFGR` SW |
+| APB1 54MHz | `RCC->CFGR` PPRE1 |
+| 타이머 클럭 216MHz | `RCC->DCKCFGR1` TIMPRE |
+| Flash latency | `FLASH->ACR` LATENCY |
+| EXTI 핀·edge | `SYSCFG->EXTICR`, `EXTI->IMR/RTSR/FTSR` |
+
+- CubeMX가 허용하는 최대 주파수는 전압 스케일과 over-drive 조건을 전제로 한다. 데이터시트 조건을 함께 확인한다.
+- NVIC 탭의 우선순위는 화면에서 한눈에 보인다. ISR 설계 원칙에서 정한 최대 허용 latency 순서와 일치하는지 이 화면에서 검토한다.
+- 클럭이 맞는지는 CubeMX 화면이 아니라 MCO 출력이나 debug pin toggle 주기로 확인한다.
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |
@@ -535,6 +551,7 @@ EXTI ISR 시작과 종료에서 각각 debug pin을 toggle한다. 정상 edge, b
 1. 폴링과 인터럽트의 차이를 실시간성 관점에서 설명한다.
 2. APB 프리스케일러가 타이머 클럭에 미치는 영향을 계산한다.
 3. EXTI pending flag를 지우지 않으면 어떤 현상이 생기는지 말한다.
+4. CubeMX가 표시하는 APB 타이머 클럭이 PCLK보다 커지는 조건과, 그 배수를 정하는 레지스터 비트를 말한다.
 
 ## 💻 실습 코드 (주석 포함) — `code/week09_exti_switch.c`
 
@@ -598,5 +615,6 @@ int main(void){ exti_switch_init(); while(1){ /* CPU는 다른 일을 하거나 
 - [ ] EXTI 인터럽트로 스위치 입력→LED 제어, NVIC 우선순위 차등
 - [ ] MCO(PA8)를 로직분석기로 클럭 검증
 - [ ] 로터리 엔코더 EXTI로 방향 판별(A가 B보다 먼저 Rising=CW)
+- [ ] CubeMX 클럭 트리 설정값을 RCC 레지스터와 1:1로 대조한 표 작성
 
 > **🤖 AX 연계** — 인터럽트 이벤트를 로그 데이터로 수집하고, 비정상 이벤트를 탐지하는 개념을 다룬다.
