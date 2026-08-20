@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.26</td>
+<td>1.27</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1131,6 +1131,11 @@
 <td>1.26</td>
 <td>2026-08-20</td>
 <td><strong>사전 준비 재점검(R5)</strong> — 점검·시험 도구 결함 2건 수정: D-15 <code>check_omnilrs_ready.sh</code>가 GCC 버전을 드라이버 버전으로 오독(해소된 선행 조건을 미해소로 보고) / D-16 Nav2 스모크가 노드 스냅샷 재사용으로 정상 기동을 FAIL 판정. P5 대기 사유를 <strong>docker 그룹 단일 항목</strong>으로 좁힘. 1.22~1.25 이력 순서 정정(D-09 재발)</td>
+</tr>
+<tr>
+<td>1.27</td>
+<td>2026-08-20</td>
+<td><strong>제원 갱신 지점 정정(D-17)</strong> — 3.2a B3·3.3 위험표의 "3곳"에서 <code>rover_params.yaml</code>이 빠져 있었다. 런치 3종이 적재하는 이 yaml이 <code>axes.py</code> 기본값을 덮으므로, 실측 반영 시 누락하면 실행 노드가 옛 제원으로 돈다. <strong>4곳</strong>으로 정정 (SRS v1.9 6장 동시 개정)</td>
 </tr>
 </tbody>
 </table>
@@ -1513,7 +1518,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>B3</td>
 <td>조향/서스 기어비·카운트 상수 확정</td>
-<td>실물 미구매로 실측 불가 — 기구 설계 제원 확정 시 상수 갱신(drive.h·axes.py·emu_core.py 3곳), 에뮬레이터는 동일 상수로 정합 유지</td>
+<td>실물 미구매로 실측 불가 — 기구 설계 제원 확정 시 상수 갱신 <strong>4곳</strong>(drive.h·axes.py·<code>hils_rover_control/config/rover_params.yaml</code>·emu_core.py), 에뮬레이터는 동일 상수로 정합 유지. yaml을 빠뜨리면 코드만 바뀌고 실행 노드는 옛 값으로 돈다(D-17)</td>
 </tr>
 <tr>
 <td>B4</td>
@@ -1581,7 +1586,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>로버 제원 가정값과 실측 불일치</td>
 <td>주행 오차</td>
-<td>파라미터 일원화 — 변경점 3곳(axes.py/drive.h/emu_core.py)으로 국한</td>
+<td>파라미터 일원화 — 변경점 <strong>4곳</strong>(axes.py/<code>rover_params.yaml</code>/drive.h/emu_core.py)으로 국한. 런치가 적재하는 yaml이 코드 기본값을 덮으므로 반드시 함께 갱신(D-17)</td>
 </tr>
 <tr>
 <td>EPOS4 단위계 설정 상이(0x60A9 등)</td>

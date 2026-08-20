@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SRS-001 |
-| 버전 | 1.8 |
+| 버전 | 1.9 |
 | 작성일 | 2026-07-28 (개정 2026-08-04) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 적용 표준 | IEEE 830 준용 |
@@ -32,6 +32,7 @@
 | 1.6 | 2026-08-03 | **조이스틱 수동 주행 신설** — rover_teleop 노드(CSCI-11), 3.8절 SRS-FR-070~075, `/cmd_vel_joy` 우선권 중재, 4WS crab(linear.y) 지원 (FR-001 개정) |
 | 1.7 | 2026-08-03 | 2.1절 구성도에 rover_teleop·health_monitor 반영, 노드·토픽 그래프(AD-002 3a) 참조 추가, 5.1절 `/hils/raw` 누락 보완 |
 | 1.8 | 2026-08-04 | **검증 상태 용어 정의 추가**(3장 서두) 및 3.2절 검증 범위 명시 — CANopen 요구사항의 '검증완료'가 에뮬레이터 기준임을 분명히 하여 실물 검증으로 오독될 여지를 제거 |
+| 1.9 | 2026-08-20 | 6장 제원 갱신 지점을 **4곳**으로 정정(D-17) — `rover_params.yaml`이 빠져 있었고 경로도 저장소 루트 기준으로 오해될 표기였다. 런치가 적재하는 yaml이 코드 상수를 덮어쓴다는 점 명시 |
 
 ---
 
@@ -306,8 +307,13 @@ flowchart TB
 
 - 로버 제원: 휠 반경 0.213 m·트랙 1.26 m·축거 1.50 m (VIPER v4 USD 실측 — AN-001). **가정값(실측 필요)**:
   감속비 15:1, 정격토크 0.5 Nm, 위치축 65188.9 counts/rad (백로그 B3).
-  갱신 지점(전체): 펌웨어 `drive.h`(단일 정의 — epos/rover_mcu가 참조), ROS2 `hils_rover_control/axes.py`
-  (+`config/rover_params.yaml`), 에뮬레이터 `emu_core.py`. `tools/isaac/rover.urdf`(8륜)은 레거시 — 정식 플랜트는 VIPER v4 USD
+  갱신 지점(전체) **4곳**: ① 펌웨어 `drive.h`(단일 정의 — epos/rover_mcu가 참조)
+  ② ROS2 `hils_rover_control/hils_rover_control/axes.py` ③ ROS2 파라미터
+  `hils_rover_control/config/rover_params.yaml` — **`/rover_control`과 `/rover_state` 두 블록에
+  각각 있다** ④ 에뮬레이터 `tools/epos_rover_emulator/lib/emu_core.py`.
+  ③을 빠뜨리면 코드 상수만 바뀌고 **실행 중인 노드는 옛 제원 그대로 돈다** — 런치 3종
+  (`rover_control`·`nav2_hils`·`teleop_remote`)이 모두 이 yaml을 적재하며, yaml 값이
+  `axes.py` 기본값을 덮어쓴다. `tools/isaac/rover.urdf`(8륜)은 레거시 — 정식 플랜트는 VIPER v4 USD
 - EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제
 - CAN 종단저항: 버스 양 끝 노드 DIP7 ON
 - 개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용

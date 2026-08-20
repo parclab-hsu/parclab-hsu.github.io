@@ -1009,7 +1009,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.8</td>
+<td>1.9</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1079,6 +1079,11 @@
 <td>1.8</td>
 <td>2026-08-04</td>
 <td><strong>검증 상태 용어 정의 추가</strong>(3장 서두) 및 3.2절 검증 범위 명시 — CANopen 요구사항의 '검증완료'가 에뮬레이터 기준임을 분명히 하여 실물 검증으로 오독될 여지를 제거</td>
+</tr>
+<tr>
+<td>1.9</td>
+<td>2026-08-20</td>
+<td>6장 제원 갱신 지점을 <strong>4곳</strong>으로 정정(D-17) — <code>rover_params.yaml</code>이 빠져 있었고 경로도 저장소 루트 기준으로 오해될 표기였다. 런치가 적재하는 yaml이 코드 상수를 덮어쓴다는 점 명시</td>
 </tr>
 </tbody>
 </table>
@@ -1910,8 +1915,13 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
 <ul>
 <li>로버 제원: 휠 반경 0.213 m·트랙 1.26 m·축거 1.50 m (VIPER v4 USD 실측 — AN-001). <strong>가정값(실측 필요)</strong>:
   감속비 15:1, 정격토크 0.5 Nm, 위치축 65188.9 counts/rad (백로그 B3).
-  갱신 지점(전체): 펌웨어 <code>drive.h</code>(단일 정의 — epos/rover_mcu가 참조), ROS2 <code>hils_rover_control/axes.py</code>
-  (+<code>config/rover_params.yaml</code>), 에뮬레이터 <code>emu_core.py</code>. <code>tools/isaac/rover.urdf</code>(8륜)은 레거시 — 정식 플랜트는 VIPER v4 USD</li>
+  갱신 지점(전체) <strong>4곳</strong>: ① 펌웨어 <code>drive.h</code>(단일 정의 — epos/rover_mcu가 참조)
+  ② ROS2 <code>hils_rover_control/hils_rover_control/axes.py</code> ③ ROS2 파라미터
+  <code>hils_rover_control/config/rover_params.yaml</code> — <strong><code>/rover_control</code>과 <code>/rover_state</code> 두 블록에
+  각각 있다</strong> ④ 에뮬레이터 <code>tools/epos_rover_emulator/lib/emu_core.py</code>.
+  ③을 빠뜨리면 코드 상수만 바뀌고 <strong>실행 중인 노드는 옛 제원 그대로 돈다</strong> — 런치 3종
+  (<code>rover_control</code>·<code>nav2_hils</code>·<code>teleop_remote</code>)이 모두 이 yaml을 적재하며, yaml 값이
+  <code>axes.py</code> 기본값을 덮어쓴다. <code>tools/isaac/rover.urdf</code>(8륜)은 레거시 — 정식 플랜트는 VIPER v4 USD</li>
 <li>EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제</li>
 <li>CAN 종단저항: 버스 양 끝 노드 DIP7 ON</li>
 <li>개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용</li>
