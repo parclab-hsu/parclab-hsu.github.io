@@ -239,6 +239,19 @@ s1.name = "Hong";      // 오류
 strcpy(s1.name, "Hong");
 ```
 
+!!! warning "`strcpy()`는 배열 크기를 검사하지 않는다"
+    `s1.name`은 `char name[20]`, 즉 문자 19개와 마지막 `'\0'` 자리다. 그런데 `strcpy()`는 복사할 문자열이 이 크기를 넘는지 **확인하지 않고** 그대로 써 버린다. 넘치면 옆에 있는 다른 변수의 메모리를 덮어써서 값이 조용히 망가지거나 프로그램이 죽는다. 이것을 **버퍼 오버플로**라 하고, 실제 보안 사고의 상당수가 여기서 시작된다.
+
+    위 예처럼 길이를 눈으로 확인할 수 있는 짧은 리터럴이면 문제가 없다. 하지만 **사용자 입력처럼 길이를 모르는 문자열**을 넣을 때는 크기를 명시하는 형태를 쓴다.
+
+    ```c
+    #include <stdio.h>
+
+    snprintf(s1.name, sizeof(s1.name), "%s", "Hong");
+    ```
+
+    `sizeof(s1.name)`이 배열 크기를 알려 주므로 넘치는 부분은 잘리고 `'\0'`은 항상 붙는다. 15주차 패킷 예제가 `snprintf()`를 쓰는 것도 같은 이유다.
+
 정리하면 구조체 변수는 `변수이름.멤버이름` 형식으로 읽고 쓴다.
 
 ### 구조체 대입과 복사
@@ -374,11 +387,13 @@ void update_average(struct student *s)
 struct student make_student(const char *name, int kor, int math)
 {
     struct student s = {"", kor, math, 0.0};
-    strcpy(s.name, name);
+    snprintf(s.name, sizeof(s.name), "%s", name);   // 원본 슬라이드는 strcpy
     s.avg = (kor + math) / 2.0;
     return s;
 }
 ```
+
+원본 슬라이드는 이 자리에 `strcpy(s.name, name)`을 쓴다. 여기서는 `snprintf()`로 바꿨는데, 이유는 `name`이 **길이를 알 수 없는 포인터**이기 때문이다. 호출하는 쪽이 20자가 넘는 이름을 넘기면 `strcpy()`는 그대로 넘쳐 쓴다. 앞의 버퍼 오버플로 경고가 바로 이 상황을 말한다.
 
 이 방식은 함수가 여러 값을 한 번에 돌려주는 것처럼 사용할 수 있다. 단, 큰 구조체를 자주 복사하면 비용이 커질 수 있으므로 수정이 필요한 함수는 포인터를 넘기는 편이 좋다.
 
@@ -398,7 +413,7 @@ typedef struct {
 StudentInfo make_info(int id, const char *name, int age)
 {
     StudentInfo s = {id, "", age};
-    strcpy(s.name, name);
+    snprintf(s.name, sizeof(s.name), "%s", name);   // 원본 슬라이드는 strcpy
     return s;
 }
 ```

@@ -1,2 +1,6 @@
 work/
 .local-site/
+
+# 실제 WiFi 자격증명이 들어가는 파일. 저장소는 공개되어 있으므로
+# 절대 커밋되면 안 된다. 템플릿(arduino_secrets.h.example)만 추적한다.
+arduino_secrets.h
