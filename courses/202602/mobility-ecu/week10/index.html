@@ -1989,6 +1989,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cubemx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CubeMX 주변장치 설정과 생성 코드
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3747,6 +3758,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cubemx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CubeMX 주변장치 설정과 생성 코드
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4354,6 +4376,43 @@
 </tbody>
 </table>
 <p>스로틀을 천천히 바꾸며 <code>ADC raw → calibrated voltage → command duty → UART log</code>가 한 시간축에서 일관되게 움직이는지 확인한다.</p>
+<h3 id="cubemx">CubeMX 주변장치 설정과 생성 코드<a class="headerlink" href="#cubemx" title="Permanent link">&para;</a></h3>
+<p>ADC·Timer·UART는 CubeMX에서 몇 번의 클릭으로 설정되지만, 그 값이 어느 레지스터로 내려가는지 알아야 시험과 디버깅이 가능하다.</p>
+<table>
+<thead>
+<tr>
+<th>CubeMX 설정</th>
+<th>확인할 레지스터</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADC 채널·sampling time</td>
+<td><code>ADC-&gt;SMPRx</code></td>
+</tr>
+<tr>
+<td>ADC trigger = TIM1 TRGO</td>
+<td><code>ADC-&gt;CR2</code> EXTSEL/EXTEN</td>
+</tr>
+<tr>
+<td>PWM 주기·duty</td>
+<td><code>TIM-&gt;PSC</code>, <code>ARR</code>, <code>CCRx</code></td>
+</tr>
+<tr>
+<td>상보 출력·dead time</td>
+<td><code>TIM1-&gt;CCER</code>, <code>BDTR</code> DTG</td>
+</tr>
+<tr>
+<td>USART 115200 8-N-1</td>
+<td><code>USART-&gt;BRR</code>, <code>CR1</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>dead time은 ns로 입력하지만 실제로는 <code>BDTR</code>의 DTG 필드 값으로 양자화된다. 입력값과 생성값을 반드시 비교한다.</li>
+<li>baud rate와 타이머 주기는 CubeMX가 계산해 주더라도 앞 절의 식으로 검산하고 파형·터미널로 확인한다.</li>
+<li>Project Manager의 Code Generator에서 주변장치별 <code>.c/.h</code> 분리 생성을 켜면 생성 코드와 직접 작성한 코드의 경계가 분명해진다.</li>
+</ul>
 <h2 id="3_5">⏱️ 3시간 수업 운영안<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4418,6 +4477,7 @@
 <li>12bit ADC에서 3.3V 기준 1스텝 전압을 계산한다.</li>
 <li>ARR/CCR/PSC가 PWM 주파수와 듀티를 어떻게 결정하는지 설명한다.</li>
 <li>UART 로그가 디버깅과 데이터 수집에 동시에 쓰이는 이유를 말한다.</li>
+<li>CubeMX에 dead time을 1µs로 입력해도 생성된 DTG 값이 정확히 1µs가 아닐 수 있는 이유를 설명한다.</li>
 </ol>
 <h2 id="codeweek10_adc_timer_uartc">💻 실습 코드 (주석 포함) — <code>code/week10_adc_timer_uart.c</code><a class="headerlink" href="#codeweek10_adc_timer_uartc" title="Permanent link">&para;</a></h2>
 <p>센서 읽기(ADC)·모터 속도(PWM)·통신(UART)을 한 루프에 묶은 핵심 예제. <a href="../code/week10_adc_timer_uart.c">⬇ 전체 코드</a></p>
@@ -4478,6 +4538,7 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ADC값 UART 출력, 1초 주기 LED 태스크, 시리얼 모니터 캡처</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 타이머 PWM으로 모터 듀티 제어, 엔코더 모드로 속도 읽기</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ADC·Timer·UART 통합 실습 결과 제출</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> CubeMX로 ADC를 TIM1 TRGO 트리거로 설정하고 실제 샘플링 시점을 debug pin으로 확인</li>
 </ul>
 <blockquote>
 <p><strong>🤖 AX 연계</strong> — ADC/UART로 수집한 센서 데이터를 Teleplot·CSV로 데이터셋화하여 ML 학습 파이프라인을 준비한다.</p>

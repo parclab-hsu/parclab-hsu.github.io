@@ -1922,6 +1922,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cubemx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CubeMX 생성 코드와 레지스터 대조
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3725,6 +3736,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cubemx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CubeMX 생성 코드와 레지스터 대조
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4324,6 +4346,43 @@
 </tr>
 </tbody>
 </table>
+<h3 id="cubemx">CubeMX 생성 코드와 레지스터 대조<a class="headerlink" href="#cubemx" title="Permanent link">&para;</a></h3>
+<p>CubeMX는 레지스터를 대신 외워 주는 도구가 아니라 설정을 빠르게 만들고 검산하는 도구다. 같은 LED 동작을 CubeMX 생성 코드, HAL 함수, 직접 레지스터 코드 세 가지로 만들어 최종 레지스터 값을 비교한다.</p>
+<table>
+<thead>
+<tr>
+<th>CubeMX 설정</th>
+<th>확인할 레지스터</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO Output, push-pull</td>
+<td><code>GPIOx-&gt;MODER</code>, <code>OTYPER</code></td>
+</tr>
+<tr>
+<td>pull-up/pull-down</td>
+<td><code>GPIOx-&gt;PUPDR</code></td>
+</tr>
+<tr>
+<td>output speed</td>
+<td><code>GPIOx-&gt;OSPEEDR</code></td>
+</tr>
+<tr>
+<td>핀 기능(AF) 배정</td>
+<td><code>GPIOx-&gt;AFR[0/1]</code></td>
+</tr>
+<tr>
+<td>주변장치 clock enable</td>
+<td><code>RCC-&gt;AHB1ENR</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>코드를 재생성하면 <code>/* USER CODE BEGIN */</code>과 <code>/* USER CODE END */</code> 사이만 남는다. 그 밖에 직접 쓴 레지스터 코드는 사라진다.</li>
+<li><code>.ioc</code> 파일이 설정의 원본이다. 회로도·HSI 표와 같은 버전으로 저장소에 둔다.</li>
+<li>동작하지 않을 때 확인 순서는 생성 코드든 직접 코드든 같다. clock enable → 핀 mode·AF → 출력 레지스터 → 실제 핀 전압.</li>
+</ul>
 <h2 id="3_5">⏱️ 3시간 수업 운영안<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4384,6 +4443,7 @@
 <li>GPIO 출력 전 RCC 클럭을 켜야 하는 이유를 설명한다.</li>
 <li>MODER, OTYPER, ODR이 각각 무엇을 설정하는지 말한다.</li>
 <li>레지스터 직접접근 코드에서 volatile이 필요한 이유를 설명한다.</li>
+<li>CubeMX가 생성한 <code>MX_GPIO_Init()</code>이 실제로 바꾸는 레지스터를 register view에서 확인하는 방법을 설명한다.</li>
 </ol>
 <h2 id="codeweek08_gpio_ledc">💻 실습 코드 (주석 포함) — <code>code/week08_gpio_led.c</code><a class="headerlink" href="#codeweek08_gpio_ledc" title="Permanent link">&para;</a></h2>
 <p>HAL 없이 레지스터에 직접 값을 써서 LED를 켜는 <strong>F767 비교 예제</strong>다. 클럭→모드→출력 순서가 핵심이며, H7 실습에서는 보드 회로도와 레퍼런스 매뉴얼에 맞게 포트·핀·클럭 레지스터를 바꾼다. <a href="../code/week08_gpio_led.c">⬇ 전체 코드</a></p>
@@ -4445,6 +4505,7 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 레퍼런스 매뉴얼 참고해 레지스터 비트 write → LED On/Off</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> F103 HAL(<code>HAL_GPIO_TogglePin</code>)과 비교, 레지스터 직접접근 코드 리뷰</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> GPIO 출력 실습 코드와 동작 영상 제출</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 같은 LED 동작을 CubeMX 생성 코드·HAL·레지스터 3종으로 구현하고 최종 레지스터 값 비교</li>
 </ul>
 <blockquote>
 <p><strong>🤖 AX 연계</strong> — AI 코드 어시스트(Copilot)로 레지스터 접근 코드를 생성·리뷰하며 생산성과 정확성을 높인다.</p>
