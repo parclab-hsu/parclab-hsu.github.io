@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.25</td>
+<td>1.26</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1108,14 +1108,9 @@
 <td>OP-002 v1.1 — 조종간을 <strong>Xbox 무선 컨트롤러</strong>로 확정</td>
 </tr>
 <tr>
-<td>1.25</td>
+<td>1.22</td>
 <td>2026-08-14</td>
-<td><strong>AD-002 v2.7</strong> — 시뮬레이터 어댑터 계층을 아키텍처에 반영(구성도·노드 그래프에 <code>sim_isaac_bridge</code>·<code>isaac/*</code> 내부 토픽, 3c절 「플랜트 교체 경계」 신설, 토픽 계약·매트릭스 분리). 홈페이지 다이어그램 동기화</td>
-</tr>
-<tr>
-<td>1.24</td>
-<td>2026-08-14</td>
-<td><strong>전수 검증(R4)</strong> — 결함 3건(D-12 러너가 SKIP을 통과로 보고 / D-13 PG-001 페이지 구성 / D-14 홈페이지 수치 드리프트) 수정·검증, RR-001 v1.1</td>
+<td><strong>P5 부분 완료</strong> — Isaac 대역 노드 <code>isaac_stub.py</code>와 <code>test_isaac_bridge.py</code>로 연동 계약 15항목 자동 검증(IG-001 2c절). 회귀 러너 <strong>7종</strong>으로 확장. Isaac Sim 실제 실행은 GPU 드라이버 재부팅 대기로 여전히 미수행</td>
 </tr>
 <tr>
 <td>1.23</td>
@@ -1123,9 +1118,19 @@
 <td><strong>노션 자산 허브 전수 대조</strong> — 노션에 게시된 문서 페이지 15종(SG-001·PG-001은 허브 본문에만 요약) 중 SDP만 2판 뒤처져 있었고, 다수 페이지의 <em>본문</em>이 초판(8륜 계약) 그대로였음. 경고 배너·개정 콜아웃으로 조치하고 재발 방지 규칙을 PG-001 6절에 신설(v1.1)</td>
 </tr>
 <tr>
-<td>1.22</td>
+<td>1.24</td>
 <td>2026-08-14</td>
-<td><strong>P5 부분 완료</strong> — Isaac 대역 노드 <code>isaac_stub.py</code>와 <code>test_isaac_bridge.py</code>로 연동 계약 15항목 자동 검증(IG-001 2c절). 회귀 러너 <strong>7종</strong>으로 확장. Isaac Sim 실제 실행은 GPU 드라이버 재부팅 대기로 여전히 미수행</td>
+<td><strong>전수 검증(R4)</strong> — 결함 3건(D-12 러너가 SKIP을 통과로 보고 / D-13 PG-001 페이지 구성 / D-14 홈페이지 수치 드리프트) 수정·검증, RR-001 v1.1</td>
+</tr>
+<tr>
+<td>1.25</td>
+<td>2026-08-14</td>
+<td><strong>AD-002 v2.7</strong> — 시뮬레이터 어댑터 계층을 아키텍처에 반영(구성도·노드 그래프에 <code>sim_isaac_bridge</code>·<code>isaac/*</code> 내부 토픽, 3c절 「플랜트 교체 경계」 신설, 토픽 계약·매트릭스 분리). 홈페이지 다이어그램 동기화</td>
+</tr>
+<tr>
+<td>1.26</td>
+<td>2026-08-20</td>
+<td><strong>사전 준비 재점검(R5)</strong> — 점검·시험 도구 결함 2건 수정: D-15 <code>check_omnilrs_ready.sh</code>가 GCC 버전을 드라이버 버전으로 오독(해소된 선행 조건을 미해소로 보고) / D-16 Nav2 스모크가 노드 스냅샷 재사용으로 정상 기동을 FAIL 판정. P5 대기 사유를 <strong>docker 그룹 단일 항목</strong>으로 좁힘. 1.22~1.25 이력 순서 정정(D-09 재발)</td>
 </tr>
 </tbody>
 </table>
@@ -1557,7 +1562,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>P5</td>
 <td>Isaac Sim 12축 연동 검증</td>
-<td><strong>부분 완료</strong> — 계약 계층은 Isaac 대역 노드로 검증 완료(15항목, IG-001 2c절): USD 조인트명 실재, 명령·피드백 양방향 변환, 역순·잡조인트 재정렬, 폐루프 <code>/odom</code> 복원, 결손 내성. <strong>Isaac Sim 실제 실행은 대기</strong> — ① GPU 드라이버 커널모듈(595.71.05)↔라이브러리(595.84) 불일치로 재부팅 필요(마지막 부팅 2026-06-30) ② docker 그룹 미소속(sudo 필요). 점검: <code>tools/isaac/check_omnilrs_ready.sh</code></td>
+<td><strong>부분 완료</strong> — 계약 계층은 Isaac 대역 노드로 검증 완료(15항목, IG-001 2c절): USD 조인트명 실재, 명령·피드백 양방향 변환, 역순·잡조인트 재정렬, 폐루프 <code>/odom</code> 복원, 결손 내성. <strong>Isaac Sim 실제 실행은 대기</strong> — 2026-08-20 재점검 결과 ① GPU 드라이버는 <strong>해소</strong>(08-17 재부팅으로 595.84 일치, <code>nvidia-smi</code> 정상. 종전 "595.71.05" 기록은 점검 스크립트의 버전 오판이었다 — D-15) ② <strong>docker 그룹 미소속만 잔존</strong> — <code>sudo</code>가 비밀번호를 요구해 비대화 실행 불가. <code>sudo usermod -aG docker $USER</code> + 재로그인이 유일한 남은 선행 조건. 점검: <code>tools/isaac/check_omnilrs_ready.sh</code></td>
 </tr>
 </tbody>
 </table>
