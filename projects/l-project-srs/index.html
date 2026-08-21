@@ -1009,7 +1009,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.10</td>
+<td>1.11</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1089,6 +1089,11 @@
 <td>1.10</td>
 <td>2026-08-21</td>
 <td>6장 정식 플랜트를 <strong><code>final_rover_HH</code></strong> 로 교체(AN-001 8절), 자산별 토픽 계약은 플랜트 프로파일이 담당함을 명시(AD-002 3d)</td>
+</tr>
+<tr>
+<td>1.11</td>
+<td>2026-08-21</td>
+<td>6장에 플랜트 <strong>물리 특성</strong> 정의 위치와 한계 명시 — <code>config/isaac/final_rover_HH_physics.yaml</code>(VIPER 참조 추정치, 실측 아님)·<code>tools/isaac/apply_asset_physics.py</code>. 지형·마찰 미반영이므로 주행 수치를 Nav2 근거로 쓰지 않는다</td>
 </tr>
 </tbody>
 </table>
@@ -1929,6 +1934,13 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
   <code>axes.py</code> 기본값을 덮어쓴다. <code>tools/isaac/rover.urdf</code>(8륜)은 레거시 — <strong>정식 플랜트는 <code>final_rover_HH</code> USD</strong>
   (2026-08-21 채택, AN-001 8절). 구 <code>HSU_Rover_viper_v4</code> 도 레거시이며, 자산별 Isaac 토픽 계약은
   플랜트 프로파일 <code>config/isaac/&lt;자산&gt;.yaml</code> 로 지정한다(AD-002 3d절)</li>
+<li>플랜트의 <strong>물리 특성</strong>(링크 질량·관성·중력·구동 드라이브)은 위 기구 제원과 별개로
+  <code>config/isaac/final_rover_HH_physics.yaml</code> 에 있고 <code>tools/isaac/apply_asset_physics.py</code> 로
+  자산에 반영한다. <strong>현재 값은 NASA VIPER 공개 제원(총질량 450 kg)을 참조한 추정치이며 실측이
+  아니다</strong> — 기구팀 제원이 오면 이 yaml 만 교체한다. 기구학(위 4곳)과 달리 이 값들은 ROS2
+  소프트웨어 동작에 직접 들어가지 않지만, <strong>시뮬레이션 주행 결과의 대표성을 좌우한다.</strong>
+  달 지형·마찰은 아직 미반영이므로(IG-001 2e, D-24) 이 플랜트의 주행·슬립 수치를 Nav2
+  파라미터 근거로 쓰지 않는다</li>
 <li>EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제</li>
 <li>CAN 종단저항: 버스 양 끝 노드 DIP7 ON</li>
 <li>개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용</li>
