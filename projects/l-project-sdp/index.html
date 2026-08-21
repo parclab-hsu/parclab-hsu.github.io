@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.30</td>
+<td>1.37</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1152,6 +1152,41 @@
 <td>2026-08-21</td>
 <td><strong>자산 ROS 도메인 결함 D-19</strong> — <code>ROS2Context</code> 5개가 도메인 10 이었다(계약 42). 기동은 되는데 토픽이 안 보이는 종류라 IG-0 검사에 도메인 항목을 추가하고 자산을 42 로 정정. <strong>sim↔real 전주기 대응 명시</strong> — AD-002 v2.9 3e절에 필드 대응표(특히 구동축 토크: 실기 TPDO3 0x6077 ↔ Isaac effort→<code>drv_sim</code> 역산)와 Isaac 끝단이 비어 있을 수 있다는 한계를 기술. IG-7 토크 대칭 시험 신설 (리허설 26항목), TP-IG-5 에 effort 확인 단계 추가</td>
 </tr>
+<tr>
+<td>1.31</td>
+<td>2026-08-21</td>
+<td><strong>P5 차단 사유 변경</strong> — docker 그룹 해소로 TP-IG 착수, TP-IG-1 통과. 이후 <strong>Isaac Sim 5.0.0-rc.45 자체가 기동 실패</strong>(빈 스테이지에서도 재현)하여 TP-IG-2~6 차단. 해소는 OmniLRS 이미지 재빌드 문제로 이관</td>
+</tr>
+<tr>
+<td>1.32</td>
+<td>2026-08-21</td>
+<td><strong>이미지 재빌드가 해법이 아님을 확인</strong> — 베이스 <code>isaac-sim:5.0.0</code>·신규 <code>5.1.0</code> 모두 단독으로 동일 세그폴트(<code>librtx.scenedb.plugin.so</code>). 5.1.0 은 Warp CUDA 문제만 해소되고 RTX 크래시는 남는다. 반면 같은 이미지의 NVIDIA 호환성 검사기는 정상 기동하며 드라이버 595.84 를 supported 로 판정한다. P5 차단은 <strong>벤더 레벨 사안</strong>으로 이관 — 저장소 측 조치 없음</td>
+</tr>
+<tr>
+<td>1.33</td>
+<td>2026-08-21</td>
+<td><strong>P5 차단 원인 확정</strong> — NVIDIA 확인상 <strong>595.xx 드라이버 분기의 Blackwell GPU 알려진 결함</strong>(우리 환경: 595.84 + RTX 5080 sm_120). Isaac Sim 버전과 무관하며 이미지 재빌드로 해결되지 않는다. 해법은 <strong>드라이버 다운그레이드</strong>(591.74 확인됨, 또는 Requirements 명시 580.65.06/580.95.05). 전 시스템 영향 조치라 사용자 승인 대기. 근거는 IG-001 2b절</td>
+</tr>
+<tr>
+<td>1.34</td>
+<td>2026-08-21</td>
+<td><strong>P5 차단 해소, TP-IG 1회차 수행</strong> — 드라이버를 580.173.02-open 으로 내려 Isaac Sim 정상 기동 확인. TP-IG-1~4·effort 관문 통과, <strong>TP-IG-5 구동축 FAIL</strong>. 실행으로만 드러난 결함 4건 등재(RR-001 R6: D-20 점검 스크립트 재발 · D-21 브리지 명령 QoS 비호환 · D-22 컨테이너 SHM 권한 · <strong>D-23 자산 구동 드라이브 — 미해결</strong>). D-21 수정으로 명령 경로 성립. P5 는 D-23 때문에 <strong>완료로 올리지 않는다</strong></td>
+</tr>
+<tr>
+<td>1.35</td>
+<td>2026-08-21</td>
+<td><strong>D-23 원인 확정</strong> — 자산의 ① 질량 특성 플레이스홀더(전 강체 관성 1e-4, COM -inf) ② 구동 조인트 위치 스프링(stiffness 10 → PhysX kp 572.96) 두 가지이며 <strong>둘 다 풀어야 한다.</strong> 인과 격리 실험으로 확인 — 둘 다 교정 시 지령 추종 오차 1.2 %, 계약 경로 선회 성립(IG-001 2e). 조치는 자산 쪽이고 실제 제원이 필요해 기구팀 확인 대기. P5 는 여전히 완료 아님</td>
+</tr>
+<tr>
+<td>1.36</td>
+<td>2026-08-21</td>
+<td><strong>D-24 등재 — 정식 플랜트가 달 환경이 아니다.</strong> 중력이 USD 센티널이라 PhysX 가 지구 9.81 을 쓰고(실측), 휠 마찰 재질은 어느 콜라이더에도 바인딩돼 있지 않으며, 지면은 월면토가 아닌 무한 평면이다. 중력만 달로 바꿔도 직진 속도가 62 % 변한다. <strong>중력·마찰은 D-23 고착의 원인이 아님을 실험으로 배제</strong>했다. 아울러 그라우저 휠·월면토 특성상 <code>ω·r</code> 기준 슬립 계산이 무효임을 명시 — 이 단계 주행 수치는 IG-002 입력으로 쓰지 않는다(IG-001 2e)</td>
+</tr>
+<tr>
+<td>1.37</td>
+<td>2026-08-21</td>
+<td><strong>D-23 자산 반영 완료 — TP-IG 전 항목 통과.</strong> NASA VIPER 공개 제원을 참조해 총질량 450 kg 을 링크별로 배분하고(이동계 33 %), 관성은 <code>(0,0,0)</code> 자동 계산으로 되돌리고, 달 중력 1.62 와 구동 stiffness 0 을 함께 반영했다(<code>config/isaac/final_rover_HH_physics.yaml</code> + <code>tools/isaac/apply_asset_physics.py</code>, 산출물 등재). 오버라이드 없이 재수행한 결과 구동 오차 0.75 % · 조향 1.6 % · <code>/cmd_vel</code> → <code>/odom</code> 0.4992/0.1993 · 워치독 정상. <strong>P5 는 조건부 완료</strong> — 제원이 VIPER 참조 추정치이고 지형·마찰(D-24 ②③)이 미반영이다</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1290,6 +1325,16 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>Isaac 연동 사전 검증 <code>isaac_stub.py</code> + <code>test_isaac_bridge.py</code></td>
 <td><code>tools/isaac/</code>, <code>tools/</code></td>
 <td>완료 (15항목 — IG-001 2c절)</td>
+</tr>
+<tr>
+<td>자산 물리 특성 정의 <code>final_rover_HH_physics.yaml</code></td>
+<td><code>config/isaac/</code></td>
+<td>완료 — 질량·관성·중력·구동 드라이브. <strong>VIPER 참조 추정치</strong>이며 기구팀 실측 대체 대상 (IG-001 2e절)</td>
+</tr>
+<tr>
+<td>자산 물리 특성 적용 도구 <code>apply_asset_physics.py</code></td>
+<td><code>tools/isaac/</code></td>
+<td>완료 — 기본 dry-run, <code>--write</code> 시 <code>.bak-&lt;타임스탬프&gt;</code> 자동 백업. 제원이 바뀌면 yaml 만 고쳐 재실행한다</td>
 </tr>
 <tr>
 <td>Nav2 스모크 시험 <code>test_nav2_smoke.py</code></td>
@@ -1582,7 +1627,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>P5</td>
 <td>Isaac Sim 12축 연동 검증</td>
-<td><strong>부분 완료</strong> — 계약 계층은 Isaac 대역 노드로 검증 완료(15항목, IG-001 2c절): USD 조인트명 실재, 명령·피드백 양방향 변환, 역순·잡조인트 재정렬, 폐루프 <code>/odom</code> 복원, 결손 내성. <strong>Isaac Sim 실제 실행은 대기</strong> — 2026-08-20 재점검 결과 ① GPU 드라이버는 <strong>해소</strong>(08-17 재부팅으로 595.84 일치, <code>nvidia-smi</code> 정상. 종전 "595.71.05" 기록은 점검 스크립트의 버전 오판이었다 — D-15) ② <strong>docker 그룹 미소속만 잔존</strong> — <code>sudo</code>가 비밀번호를 요구해 비대화 실행 불가. <code>sudo usermod -aG docker $USER</code> + 재로그인이 유일한 남은 선행 조건. 점검: <code>tools/isaac/check_omnilrs_ready.sh</code></td>
+<td><strong>조건부 완료(2026-08-21)</strong> — 드라이버 다운그레이드로 실행 차단이 풀린 뒤 TP-IG-1~6 을 두 회차 수행했다. 1회차에서 실행으로만 드러나는 결함 5건(D-20~D-24)을 잡았고, 그중 브리지 QoS(D-21)와 자산 물리 특성(D-23)·중력(D-24 ①)을 수정한 뒤 <strong>2회차에서 전 항목이 통과했다</strong> — 구동 추종 오차 0.75 %, 조향 1.6 %, 서스펜션 좌우 편차 ±8 %, <code>/cmd_vel</code> 0.5·0.2 → <code>/odom</code> 0.4992·0.1993, 명령 두절 시 워치독 정상(SRS-FR-005). <strong>완료로 단정하지 않는 이유</strong>: 자산 제원이 NASA VIPER 참조 <strong>추정치</strong>이고(기구팀 실측 대체 대상), 지면이 월면토가 아닌 무한 평면이며 마찰 재질이 미바인딩이다(D-24 ②③). 따라서 <strong>이 플랜트의 주행·슬립 수치는 IG-002 Nav2 파라미터 입력으로 쓰지 않는다.</strong> 상세는 IG-001 2b·2d·2e, 결함은 RR-001 R6</td>
 </tr>
 </tbody>
 </table>
