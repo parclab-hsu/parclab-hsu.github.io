@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.37 |
+| 버전 | 1.39 |
 | 작성일 | 2026-07-28 (개정 2026-08-14) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
@@ -61,6 +61,8 @@
 | 1.35 | 2026-08-21 | **D-23 원인 확정** — 자산의 ① 질량 특성 플레이스홀더(전 강체 관성 1e-4, COM -inf) ② 구동 조인트 위치 스프링(stiffness 10 → PhysX kp 572.96) 두 가지이며 **둘 다 풀어야 한다.** 인과 격리 실험으로 확인 — 둘 다 교정 시 지령 추종 오차 1.2 %, 계약 경로 선회 성립(IG-001 2e). 조치는 자산 쪽이고 실제 제원이 필요해 기구팀 확인 대기. P5 는 여전히 완료 아님 |
 | 1.36 | 2026-08-21 | **D-24 등재 — 정식 플랜트가 달 환경이 아니다.** 중력이 USD 센티널이라 PhysX 가 지구 9.81 을 쓰고(실측), 휠 마찰 재질은 어느 콜라이더에도 바인딩돼 있지 않으며, 지면은 월면토가 아닌 무한 평면이다. 중력만 달로 바꿔도 직진 속도가 62 % 변한다. **중력·마찰은 D-23 고착의 원인이 아님을 실험으로 배제**했다. 아울러 그라우저 휠·월면토 특성상 `ω·r` 기준 슬립 계산이 무효임을 명시 — 이 단계 주행 수치는 IG-002 입력으로 쓰지 않는다(IG-001 2e) |
 | 1.37 | 2026-08-21 | **D-23 자산 반영 완료 — TP-IG 전 항목 통과.** NASA VIPER 공개 제원을 참조해 총질량 450 kg 을 링크별로 배분하고(이동계 33 %), 관성은 `(0,0,0)` 자동 계산으로 되돌리고, 달 중력 1.62 와 구동 stiffness 0 을 함께 반영했다(`config/isaac/final_rover_HH_physics.yaml` + `tools/isaac/apply_asset_physics.py`, 산출물 등재). 오버라이드 없이 재수행한 결과 구동 오차 0.75 % · 조향 1.6 % · `/cmd_vel` → `/odom` 0.4992/0.1993 · 워치독 정상. **P5 는 조건부 완료** — 제원이 VIPER 참조 추정치이고 지형·마찰(D-24 ②③)이 미반영이다 |
+| 1.38 | 2026-08-21 | **월면토 지형 전환(D-24 ③)** — 무한 평면에서 **OmniLRS lunaryard** 로 옮겼다. 자산의 Action Graph 가 로버 바깥에 있어 OmniLRS 스폰 규약(defaultPrim 하나 아래)에 맞지 않으므로 `tools/isaac/make_omnilrs_robot_usd.py` 로 로봇 USD 를 재구성한다(D-18 배선 복사·대조 보존, 차이 0). 환경 설정 `config/isaac/lunaryard_lproject.yaml` 등재. 월면 지형 위 구동 추종 오차 약 0.1 %. **마찰(② )은 lunaryard 로도 미해결**이고 **로봇 USD 에 odometry 그래프가 없어 월면토 슬립은 미측정**이다 — P5 조건부 완료 유지 |
+| 1.39 | 2026-08-21 | **지상 진실 오도메트리 신설 · 월면토 슬립 첫 측정.** 자산에 없던 오도메트리 그래프를 `make_omnilrs_robot_usd.py` 가 husky `ROS_Odometry` 구성으로 만들어 넣고, `/rover/odom_gt` 로 낸다(`/odom` 은 조인트 역산이라 슬립이 정의상 0 이므로 쓰지 않는다). `tools/isaac/measure_slip.py` 등재. 월면토 평탄 정상상태 **슬립 49.1 %**(무한 평면 31.2 % 대비), ω≥2 에서는 지형에 걸려 80 % 이상. **설계 입력으로는 아직 쓰지 않는다** — 마찰이 월면토 계수가 아니고(D-24 ②) 지형 변형이 꺼져 있으며 제원이 VIPER 참조 추정치다 |
 
 ---
 
@@ -101,6 +103,10 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 | 보드 대역 노드 `mcu_stub.py` + TP-002 자동 리허설 `test_tp002_rehearsal.py` | `tools/` | 완료 (15항목 통과, 펌웨어 검증은 범위 밖) |
 | 통합 회귀 러너 `run_all_tests.sh` | `tools/` | 완료 (7종 일괄, 전체 통과) |
 | Isaac 연동 사전 검증 `isaac_stub.py` + `test_isaac_bridge.py` | `tools/isaac/`, `tools/` | 완료 (15항목 — IG-001 2c절) |
+| OmniLRS 로봇 USD 재구성 `make_omnilrs_robot_usd.py` | `tools/isaac/` | 완료 — 그래프를 복사·재배치하고 원본과 대조 검산 (IG-001 2f절) |
+| lunaryard 환경 설정 `lunaryard_lproject.yaml` | `config/isaac/` | 완료 — 월면토 지형(80 m 야드) 위 12축 주행 (IG-001 2f절) |
+| 슬립 측정 `measure_slip.py` | `tools/isaac/` | 완료 — 지상 진실 `/rover/odom_gt` 대 휠 회전, 낙하 검출 포함 (IG-001 2f절) |
+| GUI 스크린샷 캡처 `capture_screens.py` | `tools/epos_rover_emulator/` | 완료 — 실제 GUI 를 offscreen 으로 캡처, 문서 이미지 갱신용 |
 | 자산 물리 특성 정의 `final_rover_HH_physics.yaml` | `config/isaac/` | 완료 — 질량·관성·중력·구동 드라이브. **VIPER 참조 추정치**이며 기구팀 실측 대체 대상 (IG-001 2e절) |
 | 자산 물리 특성 적용 도구 `apply_asset_physics.py` | `tools/isaac/` | 완료 — 기본 dry-run, `--write` 시 `.bak-<타임스탬프>` 자동 백업. 제원이 바뀌면 yaml 만 고쳐 재실행한다 |
 | Nav2 스모크 시험 `test_nav2_smoke.py` | `tools/` | 완료 (10항목 통과, IG-002 4절 자동화) |
