@@ -539,6 +539,8 @@ power device copper, thermal via, 방열판 접촉부, airflow를 계획한다. 
 
 ## 🧪 실습·과제
 
+> 📝 제출 형식·채점 배점·제출 예시는 [과제집](assignments.md)의 해당 주차를 참조한다.
+
 - [ ] LED 회로(2층)로 EasyEDA 전 과정 완주 + 구동보드 PCB Import
 - [ ] 정격 상전류 기준 트레이스폭 계산(1oz vs 2oz)
 - [ ] EasyEDA 회로도 및 PCB 초안 제출

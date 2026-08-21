@@ -544,6 +544,8 @@ power current와 sensor current가 같은 좁은 GND를 공유하면 `Vnoise=I×
 
 ## 🧪 실습·과제
 
+> 📝 제출 형식·채점 배점·제출 예시는 [과제집](assignments.md)의 해당 주차를 참조한다.
+
 - [ ] 구동보드 PCB에서 PGND↔AGND 0Ω 연결점 찾기
 - [ ] 트레이스 인덕턴스 식으로 폭 2배 시 L 변화 계산
 - [ ] PCB 노이즈·그라운드 개선 보고서 제출

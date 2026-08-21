@@ -626,6 +626,8 @@ int main(void)
 
 ## 🧪 실습·과제
 
+> 📝 제출 형식·채점 배점·제출 예시는 [과제집](assignments.md)의 해당 주차를 참조한다.
+
 - [ ] 레퍼런스 매뉴얼 참고해 레지스터 비트 write → LED On/Off
 - [ ] F103 HAL(`HAL_GPIO_TogglePin`)과 비교, 레지스터 직접접근 코드 리뷰
 - [ ] GPIO 출력 실습 코드와 동작 영상 제출

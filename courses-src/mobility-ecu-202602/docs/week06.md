@@ -622,6 +622,8 @@ void hall_isr(uint8_t ha, uint8_t hb, uint8_t hc, uint16_t throttle_duty)
 
 ## 🧪 실습·과제
 
+> 📝 제출 형식·채점 배점·제출 예시는 [과제집](assignments.md)의 해당 주차를 참조한다.
+
 - [ ] 캐리어-지령 비교로 PWM 파형 그리기
 - [ ] 데드타임 유무에 따른 암단락 시뮬레이션
 - [ ] H-브리지 진리표(정/역/정지/브레이크) 정리

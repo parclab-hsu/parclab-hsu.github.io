@@ -555,6 +555,8 @@ Ipeak ≈ Iout + ΔIL/2
 
 ## 🧪 실습·과제
 
+> 📝 제출 형식·채점 배점·제출 예시는 [과제집](assignments.md)의 해당 주차를 참조한다.
+
 - [ ] `Vout = D·Vin` 유도(Voltage-sec balance)를 손으로 전개
 - [ ] 목표 리플로 L·Cout 산정
 - [ ] 벅컨버터 설계 계산서 작성

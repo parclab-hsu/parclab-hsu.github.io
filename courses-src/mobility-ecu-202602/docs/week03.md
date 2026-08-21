@@ -554,6 +554,8 @@ Pgate = Qg × Vgate × fsw
 
 ## 🧪 실습·과제
 
+> 📝 제출 형식·채점 배점·제출 예시는 [과제집](assignments.md)의 해당 주차를 참조한다.
+
 - [ ] MOSFET 데이터시트로 정격·`Rds(on)`·게이트 전하 분석표 작성
 - [ ] Turn-on 파형에서 Miller Plateau 구간 설명
 - [ ] 바디다이오드 shoot-through와 데드타임 필요성 설명

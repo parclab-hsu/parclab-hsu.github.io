@@ -612,6 +612,8 @@ int main(void){ exti_switch_init(); while(1){ /* CPU는 다른 일을 하거나 
 
 ## 🧪 실습·과제
 
+> 📝 제출 형식·채점 배점·제출 예시는 [과제집](assignments.md)의 해당 주차를 참조한다.
+
 - [ ] EXTI 인터럽트로 스위치 입력→LED 제어, NVIC 우선순위 차등
 - [ ] MCO(PA8)를 로직분석기로 클럭 검증
 - [ ] 로터리 엔코더 EXTI로 방향 판별(A가 B보다 먼저 Rising=CW)
