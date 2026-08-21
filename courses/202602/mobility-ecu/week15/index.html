@@ -373,6 +373,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📝 과제집(과제·제출 예시)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../resources/" class="md-nav__link">
         
   
@@ -496,10 +523,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
             
   
   
@@ -517,8 +544,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2129,6 +2156,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2모터 명령 분배와 섀시 통합 시험
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2225,10 +2263,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
-          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
             
   
   
@@ -2246,8 +2284,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_11">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2396,10 +2434,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
         
           
-          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
             
   
   
@@ -2417,8 +2455,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_12">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2483,10 +2521,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
         
           
-          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="">
             
   
   
@@ -2504,8 +2542,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_13">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3747,6 +3785,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2모터 명령 분배와 섀시 통합 시험
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4405,6 +4454,56 @@
 </tbody>
 </table>
 </div>
+<h3 id="2_4">2모터 명령 분배와 섀시 통합 시험<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h3>
+<p>로버는 정류 상태기계를 좌우 각각 하나씩 돌린다. 명령은 <code>v, ω → vL, vR → RpmRefL/R → 채널별 PI → 채널별 6-step 정류</code> 순으로 내려간다.</p>
+<ul>
+<li>역방향은 duty만 줄이는 것이 아니라 정류 순서를 반대로 적용한다. 명령 방향과 측정된 Hall 진행 방향이 다르면 fault로 처리한다.</li>
+<li>좌우 모터는 마주 보게 장착되는 경우가 많다. "로버 전진"과 "모터 CW"의 관계를 채널마다 HSI에 정의한다.</li>
+<li>한 채널에서 과전류·Hall 오류·stall이 나면 그 채널만 끄지 말고 양쪽을 함께 정지시킨다. 한쪽만 멈추면 로버가 제자리에서 돈다.</li>
+</ul>
+<p>섀시에 올린 뒤에는 단계적으로 확장하고, 실패하면 이전 단계로 돌아간다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>조건</th>
+<th>통과 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>벤치</td>
+<td>모터 분리</td>
+<td>파형·deadtime, fault 차단</td>
+</tr>
+<tr>
+<td>무부하 회전</td>
+<td>바퀴 공중 부양</td>
+<td>방향 일치, RPM 추종</td>
+</tr>
+<tr>
+<td>차동 동작</td>
+<td>바퀴 공중 부양</td>
+<td>v/ω가 좌우 RPM으로 분배</td>
+</tr>
+<tr>
+<td>저속 직진</td>
+<td>지면, duty 제한</td>
+<td>5m 경로 이탈·좌우 편차 기록</td>
+</tr>
+<tr>
+<td>선회·제자리 회전</td>
+<td>지면</td>
+<td>최소 회전반경, 전류 상승 확인</td>
+</tr>
+<tr>
+<td>경사·험지</td>
+<td>목표각부터 단계 상승</td>
+<td>실패 지점 각도와 원인 기록</td>
+</tr>
+</tbody>
+</table>
+<p>튜닝 결과는 직진 편차(5m당 m), 최소 회전반경(m), 등판 실패각(°), 최대 전류(A)로 기록한다.</p>
 <h2 id="3_5">⏱️ 3시간 수업 운영안<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -4465,6 +4564,7 @@
 <li>20kHz PWM 인터럽트, 1ms SysTick, 500ms 통신 태스크가 각각 맡는 일을 구분한다.</li>
 <li>Fault code가 발생했을 때 펌웨어가 어떤 순서로 멈춰야 하는지 설명한다.</li>
 <li>최종 프로젝트의 실패 원인을 하드웨어, 펌웨어, 제어 파라미터로 나누어 진단한다.</li>
+<li>바퀴를 공중에 띄운 시험만으로 평지 주행 미션 통과를 주장할 수 없는 이유를 설명한다.</li>
 </ol>
 <h2 id="codeweek15_schedulerc">💻 실습 코드 (주석 포함) — <code>code/week15_scheduler.c</code><a class="headerlink" href="#codeweek15_schedulerc" title="Permanent link">&para;</a></h2>
 <p>인터럽트(빠른 제어)와 스케줄러(느린 작업)로 전체 펌웨어를 통합하는 골격. 페일세이프 포함. <a href="../code/week15_scheduler.c">⬇ 전체 코드</a></p>
@@ -4511,9 +4611,13 @@
 <p>통합은 <strong>한 기능씩 검증</strong>(빅뱅 통합 금지). <strong>페일세이프(고장→즉시 정지)</strong>를 가장 먼저 구현한다.</p>
 </div>
 <h2 id="_64">🧪 실습·과제<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>📝 제출 형식·채점 배점·제출 예시는 <a href="../assignments/">과제집</a>의 해당 주차를 참조한다.</p>
+</blockquote>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 정류 → 20kHz PWM 전류센싱 → T방식 RPM → PI 튜닝 → 무선 모니터링 → 고장코드 재현</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 로버 2륜 차동구동 주행 시연 및 발표, 펌웨어 구조도·개선사항 보고서 제출</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 지면 저속 직진 5m·선회 시험 후 직진 편차와 최소 회전반경 기록</li>
 </ul>
 <blockquote>
 <p><strong>🤖 AX 연계</strong> — 엣지 AI(TinyML)로 모터 전류·진동 데이터에서 고장을 진단하고 예지보전을 구현한다. 데이터로그→이상탐지 모델을 펌웨어에 통합하고, 실패 시 고전 제어로 폴백하는 페일세이프를 둔다.</p>
