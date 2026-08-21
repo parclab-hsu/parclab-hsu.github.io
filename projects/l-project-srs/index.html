@@ -1009,7 +1009,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.9</td>
+<td>1.10</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1084,6 +1084,11 @@
 <td>1.9</td>
 <td>2026-08-20</td>
 <td>6장 제원 갱신 지점을 <strong>4곳</strong>으로 정정(D-17) — <code>rover_params.yaml</code>이 빠져 있었고 경로도 저장소 루트 기준으로 오해될 표기였다. 런치가 적재하는 yaml이 코드 상수를 덮어쓴다는 점 명시</td>
+</tr>
+<tr>
+<td>1.10</td>
+<td>2026-08-21</td>
+<td>6장 정식 플랜트를 <strong><code>final_rover_HH</code></strong> 로 교체(AN-001 8절), 자산별 토픽 계약은 플랜트 프로파일이 담당함을 명시(AD-002 3d)</td>
 </tr>
 </tbody>
 </table>
@@ -1921,7 +1926,9 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
   각각 있다</strong> ④ 에뮬레이터 <code>tools/epos_rover_emulator/lib/emu_core.py</code>.
   ③을 빠뜨리면 코드 상수만 바뀌고 <strong>실행 중인 노드는 옛 제원 그대로 돈다</strong> — 런치 3종
   (<code>rover_control</code>·<code>nav2_hils</code>·<code>teleop_remote</code>)이 모두 이 yaml을 적재하며, yaml 값이
-  <code>axes.py</code> 기본값을 덮어쓴다. <code>tools/isaac/rover.urdf</code>(8륜)은 레거시 — 정식 플랜트는 VIPER v4 USD</li>
+  <code>axes.py</code> 기본값을 덮어쓴다. <code>tools/isaac/rover.urdf</code>(8륜)은 레거시 — <strong>정식 플랜트는 <code>final_rover_HH</code> USD</strong>
+  (2026-08-21 채택, AN-001 8절). 구 <code>HSU_Rover_viper_v4</code> 도 레거시이며, 자산별 Isaac 토픽 계약은
+  플랜트 프로파일 <code>config/isaac/&lt;자산&gt;.yaml</code> 로 지정한다(AD-002 3d절)</li>
 <li>EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제</li>
 <li>CAN 종단저항: 버스 양 끝 노드 DIP7 ON</li>
 <li>개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용</li>

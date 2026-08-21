@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.27 |
+| 버전 | 1.30 |
 | 작성일 | 2026-07-28 (개정 2026-08-14) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
@@ -51,6 +51,9 @@
 | 1.25 | 2026-08-14 | **AD-002 v2.7** — 시뮬레이터 어댑터 계층을 아키텍처에 반영(구성도·노드 그래프에 `sim_isaac_bridge`·`isaac/*` 내부 토픽, 3c절 「플랜트 교체 경계」 신설, 토픽 계약·매트릭스 분리). 홈페이지 다이어그램 동기화 |
 | 1.26 | 2026-08-20 | **사전 준비 재점검(R5)** — 점검·시험 도구 결함 2건 수정: D-15 `check_omnilrs_ready.sh`가 GCC 버전을 드라이버 버전으로 오독(해소된 선행 조건을 미해소로 보고) / D-16 Nav2 스모크가 노드 스냅샷 재사용으로 정상 기동을 FAIL 판정. P5 대기 사유를 **docker 그룹 단일 항목**으로 좁힘. 1.22~1.25 이력 순서 정정(D-09 재발) |
 | 1.27 | 2026-08-20 | **제원 갱신 지점 정정(D-17)** — 3.2a B3·3.3 위험표의 "3곳"에서 `rover_params.yaml`이 빠져 있었다. 런치 3종이 적재하는 이 yaml이 `axes.py` 기본값을 덮으므로, 실측 반영 시 누락하면 실행 노드가 옛 제원으로 돈다. **4곳**으로 정정 (SRS v1.9 6장 동시 개정) |
+| 1.28 | 2026-08-20 | **정식 플랜트를 `final_rover_HH` 로 채택**(AN-001 8.6) — 자산은 수정하지 않고 브리지에 `command_mode: split` 을 신설해 자산의 두 그래프(wheel/steering) 계약에 맞췄다. 플랜트 프로파일 `config/isaac/*.yaml` 도입, IG-6 시험 신설. **기구학·모션 모델 검증 시험**(31항목)을 회귀에 편입해 8종으로 확장 |
+| 1.29 | 2026-08-21 | **자산 배선 결함 D-18 수정** — 정식 자산 `final_rover_HH` 의 두 Action Graph 가 컨트롤러·구독자 입력 전부를 양쪽에 교차 연결하고 있었고 없는 노드 참조도 있었다(14건 수정, 원본 백업 보존). `test_isaac_bridge.py` 에 **IG-0 자산 배선 검사**를 신설해 회귀에서 자동 검출(리허설 22항목). AD-002 v2.8 3d절「플랜트 프로파일」신설, SRS v1.10 정식 플랜트 교체 |
+| 1.30 | 2026-08-21 | **자산 ROS 도메인 결함 D-19** — `ROS2Context` 5개가 도메인 10 이었다(계약 42). 기동은 되는데 토픽이 안 보이는 종류라 IG-0 검사에 도메인 항목을 추가하고 자산을 42 로 정정. **sim↔real 전주기 대응 명시** — AD-002 v2.9 3e절에 필드 대응표(특히 구동축 토크: 실기 TPDO3 0x6077 ↔ Isaac effort→`drv_sim` 역산)와 Isaac 끝단이 비어 있을 수 있다는 한계를 기술. IG-7 토크 대칭 시험 신설 (리허설 26항목), TP-IG-5 에 effort 확인 단계 추가 |
 
 ---
 
@@ -80,7 +83,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 | 조이패드 원격 조종 `OP-002` + `teleop_remote.launch.py` | `docs/`, `hils_rover_control/launch/` | 완료 |
 | 배포 도구 (Jetson·시뮬 PC 설치 스크립트/systemd) | `tools/jetson/`, `tools/simpc/` | 완료 |
 | 시뮬레이터 대역 `sim_plant.py` · DDS 설정 | `tools/`, `config/dds/` | 완료 (검증됨) |
-| Isaac Sim 연동 준비 (12축 어댑터·VIPER v4 USD·OmniLRS 도커 절차·사전 점검 도구, IG-001) | `tools/isaac/`, `docs/` | 완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시) |
+| Isaac Sim 연동 준비 (12축 어댑터·**final_rover_HH USD(정식)**·플랜트 프로파일·OmniLRS 도커 절차·주행 시험 절차 2d, IG-001) | `tools/isaac/`, `config/isaac/`, `docs/` | 완료 (브리지 재정렬·split 분할 검증 20항목. 구 8륜 URDF와 viper_v4 는 레거시) |
 | Nav2 통합 준비 (파라미터·런치·가이드 IG-002) | `hils_rover_control/config/nav2/`, `docs/` | 완료 (빌드·문법 검증) |
 | NVIDIA Isaac ROS Navigation 가이드 (IG-003) | `docs/` | 완료 — **N4는 NVIDIA 경로·카메라 D455 확정**, 발주 대기 |
 | `rover_mcu` (micro-ROS/XRCE-DDS 펌웨어 노드) | CSCI-6 확장 | 완료 (A1~A4) |

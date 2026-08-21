@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.27</td>
+<td>1.30</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1137,6 +1137,21 @@
 <td>2026-08-20</td>
 <td><strong>제원 갱신 지점 정정(D-17)</strong> — 3.2a B3·3.3 위험표의 "3곳"에서 <code>rover_params.yaml</code>이 빠져 있었다. 런치 3종이 적재하는 이 yaml이 <code>axes.py</code> 기본값을 덮으므로, 실측 반영 시 누락하면 실행 노드가 옛 제원으로 돈다. <strong>4곳</strong>으로 정정 (SRS v1.9 6장 동시 개정)</td>
 </tr>
+<tr>
+<td>1.28</td>
+<td>2026-08-20</td>
+<td><strong>정식 플랜트를 <code>final_rover_HH</code> 로 채택</strong>(AN-001 8.6) — 자산은 수정하지 않고 브리지에 <code>command_mode: split</code> 을 신설해 자산의 두 그래프(wheel/steering) 계약에 맞췄다. 플랜트 프로파일 <code>config/isaac/*.yaml</code> 도입, IG-6 시험 신설. <strong>기구학·모션 모델 검증 시험</strong>(31항목)을 회귀에 편입해 8종으로 확장</td>
+</tr>
+<tr>
+<td>1.29</td>
+<td>2026-08-21</td>
+<td><strong>자산 배선 결함 D-18 수정</strong> — 정식 자산 <code>final_rover_HH</code> 의 두 Action Graph 가 컨트롤러·구독자 입력 전부를 양쪽에 교차 연결하고 있었고 없는 노드 참조도 있었다(14건 수정, 원본 백업 보존). <code>test_isaac_bridge.py</code> 에 <strong>IG-0 자산 배선 검사</strong>를 신설해 회귀에서 자동 검출(리허설 22항목). AD-002 v2.8 3d절「플랜트 프로파일」신설, SRS v1.10 정식 플랜트 교체</td>
+</tr>
+<tr>
+<td>1.30</td>
+<td>2026-08-21</td>
+<td><strong>자산 ROS 도메인 결함 D-19</strong> — <code>ROS2Context</code> 5개가 도메인 10 이었다(계약 42). 기동은 되는데 토픽이 안 보이는 종류라 IG-0 검사에 도메인 항목을 추가하고 자산을 42 로 정정. <strong>sim↔real 전주기 대응 명시</strong> — AD-002 v2.9 3e절에 필드 대응표(특히 구동축 토크: 실기 TPDO3 0x6077 ↔ Isaac effort→<code>drv_sim</code> 역산)와 Isaac 끝단이 비어 있을 수 있다는 한계를 기술. IG-7 토크 대칭 시험 신설 (리허설 26항목), TP-IG-5 에 effort 확인 단계 추가</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1222,9 +1237,9 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>완료 (검증됨)</td>
 </tr>
 <tr>
-<td>Isaac Sim 연동 준비 (12축 어댑터·VIPER v4 USD·OmniLRS 도커 절차·사전 점검 도구, IG-001)</td>
-<td><code>tools/isaac/</code>, <code>docs/</code></td>
-<td>완료 (브리지 재정렬 검증, 구 8륜 URDF는 레거시)</td>
+<td>Isaac Sim 연동 준비 (12축 어댑터·<strong>final_rover_HH USD(정식)</strong>·플랜트 프로파일·OmniLRS 도커 절차·주행 시험 절차 2d, IG-001)</td>
+<td><code>tools/isaac/</code>, <code>config/isaac/</code>, <code>docs/</code></td>
+<td>완료 (브리지 재정렬·split 분할 검증 20항목. 구 8륜 URDF와 viper_v4 는 레거시)</td>
 </tr>
 <tr>
 <td>Nav2 통합 준비 (파라미터·런치·가이드 IG-002)</td>

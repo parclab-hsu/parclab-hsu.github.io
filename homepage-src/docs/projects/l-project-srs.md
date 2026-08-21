@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SRS-001 |
-| 버전 | 1.9 |
+| 버전 | 1.10 |
 | 작성일 | 2026-07-28 (개정 2026-08-04) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 적용 표준 | IEEE 830 준용 |
@@ -33,6 +33,7 @@
 | 1.7 | 2026-08-03 | 2.1절 구성도에 rover_teleop·health_monitor 반영, 노드·토픽 그래프(AD-002 3a) 참조 추가, 5.1절 `/hils/raw` 누락 보완 |
 | 1.8 | 2026-08-04 | **검증 상태 용어 정의 추가**(3장 서두) 및 3.2절 검증 범위 명시 — CANopen 요구사항의 '검증완료'가 에뮬레이터 기준임을 분명히 하여 실물 검증으로 오독될 여지를 제거 |
 | 1.9 | 2026-08-20 | 6장 제원 갱신 지점을 **4곳**으로 정정(D-17) — `rover_params.yaml`이 빠져 있었고 경로도 저장소 루트 기준으로 오해될 표기였다. 런치가 적재하는 yaml이 코드 상수를 덮어쓴다는 점 명시 |
+| 1.10 | 2026-08-21 | 6장 정식 플랜트를 **`final_rover_HH`** 로 교체(AN-001 8절), 자산별 토픽 계약은 플랜트 프로파일이 담당함을 명시(AD-002 3d) |
 
 ---
 
@@ -313,7 +314,9 @@ flowchart TB
   각각 있다** ④ 에뮬레이터 `tools/epos_rover_emulator/lib/emu_core.py`.
   ③을 빠뜨리면 코드 상수만 바뀌고 **실행 중인 노드는 옛 제원 그대로 돈다** — 런치 3종
   (`rover_control`·`nav2_hils`·`teleop_remote`)이 모두 이 yaml을 적재하며, yaml 값이
-  `axes.py` 기본값을 덮어쓴다. `tools/isaac/rover.urdf`(8륜)은 레거시 — 정식 플랜트는 VIPER v4 USD
+  `axes.py` 기본값을 덮어쓴다. `tools/isaac/rover.urdf`(8륜)은 레거시 — **정식 플랜트는 `final_rover_HH` USD**
+  (2026-08-21 채택, AN-001 8절). 구 `HSU_Rover_viper_v4` 도 레거시이며, 자산별 Isaac 토픽 계약은
+  플랜트 프로파일 `config/isaac/<자산>.yaml` 로 지정한다(AD-002 3d절)
 - EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제
 - CAN 종단저항: 버스 양 끝 노드 DIP7 ON
 - 개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용
