@@ -971,7 +971,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.39</td>
+<td>1.45</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1197,6 +1197,36 @@
 <td>2026-08-21</td>
 <td><strong>지상 진실 오도메트리 신설 · 월면토 슬립 첫 측정.</strong> 자산에 없던 오도메트리 그래프를 <code>make_omnilrs_robot_usd.py</code> 가 husky <code>ROS_Odometry</code> 구성으로 만들어 넣고, <code>/rover/odom_gt</code> 로 낸다(<code>/odom</code> 은 조인트 역산이라 슬립이 정의상 0 이므로 쓰지 않는다). <code>tools/isaac/measure_slip.py</code> 등재. 월면토 평탄 정상상태 <strong>슬립 49.1 %</strong>(무한 평면 31.2 % 대비), ω≥2 에서는 지형에 걸려 80 % 이상. <strong>설계 입력으로는 아직 쓰지 않는다</strong> — 마찰이 월면토 계수가 아니고(D-24 ②) 지형 변형이 꺼져 있으며 제원이 VIPER 참조 추정치다</td>
 </tr>
+<tr>
+<td>1.40</td>
+<td>2026-08-22</td>
+<td><strong>Jetson 실기 배포 첫 수행 — 결함 5건과 안전 공백 1건.</strong> ROS 설치된 Jetson 에서 시작해 조이패드 조종까지 명령 경로 전 구간을 세웠다. 다섯 결함은 <strong>회귀 8종이 계속 통과하는 상태에서</strong> 나왔다 — 전부 개발 PC 가 우연히 만족시키던 환경·하드웨어 전제였다: 스크립트 22개 실행 비트 누락(CIFS 라 개발 측에서 안 보임) · <code>set -u</code> 와 ROS <code>setup.bash</code> 충돌 · 선택 의존성(pip3)이 배포 전체를 중단 · <strong>펌웨어 발행 주기 오차</strong>(status 1.536 Hz / joint_states 약 38 Hz — <code>vTaskDelay</code> 를 <code>xTaskDelayUntil</code> 로) · <strong>조이패드 런치가 패드를 열 수 없었음</strong>(경로를 <code>device_name</code> 에 전달). 안전 공백은 <strong>B6/SRS-FR-076</strong> — 패드 링크 두절이 정지로 연결되지 않는다. 산출물 등재: <code>BRINGUP.md</code>, <code>check_teleop_kinematics.py</code>. 문서: DP-001 v1.2, OP-002 v1.2, SRS v1.12</td>
+</tr>
+<tr>
+<td>1.41</td>
+<td>2026-08-22</td>
+<td><strong>HILS 폐루프 성립 — <code>rover_control → 보드 → Isaac → 보드 → rover_state</code> 를 값까지 확인.</strong> 막고 있던 것은 두 층이었다. ① 보드의 <code>/rover/joint_states</code> 가 <strong>한 번도 발행에 성공한 적이 없었다</strong>(D-25) — XRCE MTU 512 에 약 684 B 메시지. <code>libmicroros.a</code> 를 MTU 1024 로 재빌드해 조인트명 계약을 지켰고, 재플래시 후 50.005 Hz 로 처음 흘렀다. ② 보드가 <strong>EPOS(CAN) 백엔드로 부팅</strong>해 CAN 에 아무것도 없는 동안 구동이 성립하지 않았다 — <code>/rover/drive_mode</code> 토픽 전환을 신설했다(SRS FR-078). <strong>정상상태 8축 일치</strong>(구동 <code>+2.318~+2.346</code> 대 Isaac <code>+2.319~+2.346</code>), <code>/odom</code> vx +0.465(지령 0.5). 신규 결함: <strong>D-29</strong> 순차 <code>--once</code> 점검이 없는 결함을 만들어냄 — <code>tools/check_hils_loop.py</code> 로 동시 샘플링. 문서: SRS v1.13, ND-001 v1.2, RR-001 v1.14, <code>BRINGUP.md</code></td>
+</tr>
+<tr>
+<td>1.42</td>
+<td>2026-08-22</td>
+<td><strong>D-28(조이 우선권) 철회 — 결함이 아니었다.</strong> <code>rover_teleop</code> 은 Start 버튼(<code>button_release</code>=7)에서 우선권을 반납하고 <code>/cmd_vel_joy</code> 발행을 멈추며, 그러면 <code>/cmd_vel</code> 이 다시 통한다(실측: <code>/rover/axes_cmd</code> 2.347). 등재 근거였던 "영구 차단" 은 <strong>문서에 있는 반납 조작을 수행하지 않고</strong> 측정한 결과이며, <code>/cmd_vel_joy</code> 발행 노드도 <code>teleop_twist_joy</code> 로 잘못 지목한 것이었다. <strong>D-29 와 같은 계열의 세 번째 사례</strong> — 제품이 아니라 점검 절차가 결함원이었다. 백로그 B7 삭제, SRS FR-077 철회(v1.14), RR-001 v1.15</td>
+</tr>
+<tr>
+<td>1.43</td>
+<td>2026-08-22</td>
+<td><strong>D-24 ② 조치 완료(월면토 마찰 명시 바인딩)와 조향 모드 신설.</strong> 마찰: Apollo 토질 시험(내부 마찰각 대표 42°, 그라우저는 토양 내부 전단) 근거로 static 0.90 / dynamic 0.70 을 휠·지형에 바인딩했다 — <code>config/isaac/lunar_regolith_friction.yaml</code> + <code>tools/isaac/apply_friction.py</code> + <code>tools/isaac/run_lunaryard_lproject.py</code>(지형은 절차 생성이라 런타임 바인딩, 메시가 아니라 부모 Xform 에). <strong>그런데 A/B 결과 슬립이 소수점까지 같았다</strong>(0.50/0.50 대 0.90/0.70 모두 49.0/49.1 %) — 이 슬립은 견인 한계로 생긴 것이 아니며 <strong>D-31 로 미해결 등재</strong>했다. 그 A/B 를 하려다 <strong>D-30</strong> 을 찾았다 — 보드가 sim 모드에서 <code>/sim/axes_cmd</code> 에 0 을 50 Hz 로 계속 쏘아 측정 지령과 섞이고, 평균만 보면 그럴듯한 슬립처럼 보인다. <code>measure_slip.py</code> 에 각속도 변동계수 판정을 넣어 그런 구간을 무효로 기각하게 했다. 조향: <strong>동위상/역위상 모드</strong>와 <strong>왼쪽=방향·오른쪽=스로틀</strong> 배치를 넣었다(SRS FR-079·080). 기구학은 그대로다 — <code>tools/check_steer_modes.py</code> 로 두 모드가 의도한 바퀴 배치를 만드는지 검증한다. 문서: SRS v1.15, RR-001 v1.16, ND-001 v1.3</td>
+</tr>
+<tr>
+<td>1.44</td>
+<td>2026-08-22</td>
+<td><strong>조향축 오프셋 반영 — 백로그 B7 완료.</strong> 기구 도면이 없어 자산 USD 조인트 좌표에서 실측했다(스크럽 반경 0.1271 m). 기구학 3곳을 고쳤다: 조향각은 조향축에서, 휠 속도는 조향각만큼 돌아간 휠 접지점에서, 역기구학은 일반 최소자승으로. <strong>에뮬레이터 GUI 자세 적분 사본도 같이 고쳤다</strong> — 안 고치면 GUI 궤적만 조용히 어긋난다. 회귀를 배포 구성(오프셋 포함)으로 돌리도록 바꾸고 K2b(오프셋 전용 6항목)를 신설했다 — <strong>49 PASS / 0 FAIL</strong>. 하류 기대값(TP-002·ND-001·BRINGUP·test_isaac_bridge)을 함께 갱신했고, 과거 측정 기록은 고치지 않고 주석만 달았다. 문서: SRS v1.16, RR-001 v1.17</td>
+</tr>
+<tr>
+<td>1.45</td>
+<td>2026-08-22</td>
+<td><strong>선회 포락선 신설(SRS FR-081) — 백로그 B8 완료.</strong> 참조 코드 식을 그대로 쓰지 않고 우리 구속에서 다시 유도했다. 축별 클램프보다 <strong>먼저</strong> twist 를 줄여 강체 정합을 지킨다 — 클램프는 휠마다 따로 잘라 지령과 다른 운동을 만든다. 평시 주행(0.5 m/s · 0.8 rad/s)은 걸리지 않고, 터보(1.0 m/s)에서 wz 1.6 → 0.55 로 잘린다. 제자리 회전은 막지 않는다. 회귀 <strong>58 PASS / 0 FAIL</strong>(K7 신설 9항목). 무게중심 높이 0.3153 m 를 자산 질량 분포에서 실측해 SRS 6장에 등재했다. 문서: SRS v1.17, ND-001 v1.4</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1355,6 +1385,16 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>GUI 스크린샷 캡처 <code>capture_screens.py</code></td>
 <td><code>tools/epos_rover_emulator/</code></td>
 <td>완료 — 실제 GUI 를 offscreen 으로 캡처, 문서 이미지 갱신용</td>
+</tr>
+<tr>
+<td>구동 가이드 <code>BRINGUP.md</code></td>
+<td>저장소 루트</td>
+<td>완료 (2026-08-22) — 전원 인가에서 조이패드 조종까지 <strong>실기에서 통과한 순서</strong>. <code>docs/</code> 는 17종 고정이라 루트에 둔다</td>
+</tr>
+<tr>
+<td>조종 기구학 대조 <code>check_teleop_kinematics.py</code></td>
+<td><code>tools/</code></td>
+<td>완료 (2026-08-22) — <code>/cmd_vel_joy</code> 대 <code>/rover/axes_cmd</code> 를 <strong>독립 구현한 역기구학</strong>으로 대조. <code>kinematics.py</code> 를 쓰지 않아 구현 오류가 상쇄되지 않는다</td>
 </tr>
 <tr>
 <td>자산 물리 특성 정의 <code>final_rover_HH_physics.yaml</code></td>
@@ -1619,6 +1659,21 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>B5</td>
 <td>서스펜션 제어 정책 정의</td>
 <td><strong>1단계 완료 (2026-07-31, OP-001)</strong> — 운영자 프리셋(level/lift/drop/manual) CLI <code>tools/suspension_cmd.py</code>, 정지 중 즉시 반영, 한계 이중 클램프. 2단계(지형 적응 자동화)는 실기 데이터 확보 후</td>
+</tr>
+<tr>
+<td>B6</td>
+<td><strong>패드 링크 두절 감지 → 구동축 정지 (SRS-FR-076)</strong></td>
+<td><strong>미착수 — 안전 공백.</strong> 패드가 절전에 들어가거나 무선이 끊겨도 <code>joy_node</code> 의 <code>autorepeat_rate</code>(20 Hz) 때문에 <code>/cmd_vel_joy</code> 가 계속 흘러 FR-005 워치독이 걸리지 않는다. 데드맨을 쥔 채 끊기면 마지막 주행 명령이 무한 반복된다. <code>autorepeat_rate</code> 는 링크 지연 대비로 의도한 값이라 끄는 것이 답이 아니고, <strong>링크 생존을 명령 흐름과 별개 신호로</strong> 판정해야 한다(<code>/joy</code> 타임스탬프 정체 감시, joy 장치 파일 존재 확인 등). <strong>실물·에뮬레이터 연결 전에 닫아야 한다</strong> — 그때까지는 OP-002 2.4 운용 규칙으로만 막고 있다</td>
+</tr>
+<tr>
+<td>B7</td>
+<td><strong>조향축 오프셋(WHEELOFFSET) 보정</strong></td>
+<td><strong>완료 (2026-08-22).</strong> 기구 도면이 없어 <code>final_rover_HH</code> 자산의 조인트 좌표에서 실측했다 — <strong>스크럽 반경 0.1271 m</strong>(캐스터 트레일 0, 킹핀 경사 10.0°). 참조 코드의 0.1125 m 는 다른 차량 값이다. <code>FourWheelSteering</code> 이 조향각을 조향축에서 정하고 휠 속도를 옮겨진 접지점에서 다시 구하도록 고쳤고, 역기구학도 배치 대칭 전제를 버리고 일반 최소자승으로 바꿨다(오프셋이 들어가면 sum(py)≠0 이다). 에뮬레이터 GUI 의 자세 적분 사본도 같이 고쳤다. 참조 코드의 <strong>선회 포락선 제한</strong>(<code>Vr ≤ 0.339·Vl + 0.0205</code>)은 여전히 없다 — 그 계수는 참조 차량 것이라 우리 값이 따로 필요하다(B8)</td>
+</tr>
+<tr>
+<td>B8</td>
+<td><strong>선회 포락선 우리 값 산정</strong></td>
+<td><strong>완료 (2026-08-22).</strong> 참조 코드의 <code>Vr ≤ 0.339·Vl + 0.0205</code> 는 조향각이 제한된 애커먼 차량의 <strong>최소 선회반경</strong>(2.95 m)에서 나온 식이라 속도에 <strong>비례해 커진다</strong>. 우리는 조향 ±90°(자산 실측)라 최소 선회반경이 없어 그 식이 성립하지 않는다 — 포락선이 속도에 따라 <strong>좁아진다</strong>. 구속을 다시 유도했다: ① 휠 각속도 한계(저속 구속, 제자리 회전 2.07 rad/s) ② 횡가속 한계 0.55 m/s²(중속 구속) — 전도 3.24 m/s²(CG 높이 0.3153 m 실측)보다 <strong>견인 1.134 m/s² 가 엄격</strong>해 그 절반을 횡방향에 배분했다. <code>SRS-FR-081</code>, <code>tools/check_turn_envelope.py</code>, 회귀 K7</td>
 </tr>
 </tbody>
 </table>
