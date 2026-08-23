@@ -61,6 +61,14 @@
 
     [:octicons-arrow-right-24: 전문 보기](l-project-sdp.md)
 
+-   :material-progress-check:{ .lg .middle } __중간 보고 (2026-08-22)__
+
+    ---
+
+    3계층 폐루프 성립·실기 배포·기구학 정정과 **아직 확인되지 않은 것**을 구분해 정리.
+
+    [:octicons-arrow-right-24: 보고서 보기](l-project-interim.md)
+
 </div>
 
 ---

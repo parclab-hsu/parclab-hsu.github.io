@@ -24,7 +24,7 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `ROS2` · `micro-ROS` · `STM32H7` · `CANopen` · `4WS` · `EPOS4 Emulator` · `Isaac Sim`
 
-    [:octicons-arrow-right-24: 자세히 보기](projects/l-project-hils.md)
+    [:octicons-arrow-right-24: 자세히 보기](projects/l-project-hils.md) · [:octicons-arrow-right-24: 중간 보고](projects/l-project-interim.md)
 
 -   :material-circle:{ style="color:#2e9e44" } [__진행중 · Mobile Manipulator (AMR + 매니퓰레이터)__](projects/mobile-manipulator.md)
 

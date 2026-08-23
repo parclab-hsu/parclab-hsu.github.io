@@ -14,7 +14,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SDP-001 |
-| 버전 | 1.45 |
+| 버전 | 1.49 |
 | 작성일 | 2026-07-28 (개정 2026-08-14) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 관련 문서 | SRS-001, AD-002(아키텍처), TP-001(벤치)·TP-002(통합), DP-001(Jetson)·DP-002(시뮬 PC), IG-001(Isaac Sim)·IG-002(Nav2)·IG-003(NVIDIA Nav) |
@@ -69,6 +69,11 @@
 | 1.43 | 2026-08-22 | **D-24 ② 조치 완료(월면토 마찰 명시 바인딩)와 조향 모드 신설.** 마찰: Apollo 토질 시험(내부 마찰각 대표 42°, 그라우저는 토양 내부 전단) 근거로 static 0.90 / dynamic 0.70 을 휠·지형에 바인딩했다 — `config/isaac/lunar_regolith_friction.yaml` + `tools/isaac/apply_friction.py` + `tools/isaac/run_lunaryard_lproject.py`(지형은 절차 생성이라 런타임 바인딩, 메시가 아니라 부모 Xform 에). **그런데 A/B 결과 슬립이 소수점까지 같았다**(0.50/0.50 대 0.90/0.70 모두 49.0/49.1 %) — 이 슬립은 견인 한계로 생긴 것이 아니며 **D-31 로 미해결 등재**했다. 그 A/B 를 하려다 **D-30** 을 찾았다 — 보드가 sim 모드에서 `/sim/axes_cmd` 에 0 을 50 Hz 로 계속 쏘아 측정 지령과 섞이고, 평균만 보면 그럴듯한 슬립처럼 보인다. `measure_slip.py` 에 각속도 변동계수 판정을 넣어 그런 구간을 무효로 기각하게 했다. 조향: **동위상/역위상 모드**와 **왼쪽=방향·오른쪽=스로틀** 배치를 넣었다(SRS FR-079·080). 기구학은 그대로다 — `tools/check_steer_modes.py` 로 두 모드가 의도한 바퀴 배치를 만드는지 검증한다. 문서: SRS v1.15, RR-001 v1.16, ND-001 v1.3 |
 | 1.44 | 2026-08-22 | **조향축 오프셋 반영 — 백로그 B7 완료.** 기구 도면이 없어 자산 USD 조인트 좌표에서 실측했다(스크럽 반경 0.1271 m). 기구학 3곳을 고쳤다: 조향각은 조향축에서, 휠 속도는 조향각만큼 돌아간 휠 접지점에서, 역기구학은 일반 최소자승으로. **에뮬레이터 GUI 자세 적분 사본도 같이 고쳤다** — 안 고치면 GUI 궤적만 조용히 어긋난다. 회귀를 배포 구성(오프셋 포함)으로 돌리도록 바꾸고 K2b(오프셋 전용 6항목)를 신설했다 — **49 PASS / 0 FAIL**. 하류 기대값(TP-002·ND-001·BRINGUP·test_isaac_bridge)을 함께 갱신했고, 과거 측정 기록은 고치지 않고 주석만 달았다. 문서: SRS v1.16, RR-001 v1.17 |
 | 1.45 | 2026-08-22 | **선회 포락선 신설(SRS FR-081) — 백로그 B8 완료.** 참조 코드 식을 그대로 쓰지 않고 우리 구속에서 다시 유도했다. 축별 클램프보다 **먼저** twist 를 줄여 강체 정합을 지킨다 — 클램프는 휠마다 따로 잘라 지령과 다른 운동을 만든다. 평시 주행(0.5 m/s · 0.8 rad/s)은 걸리지 않고, 터보(1.0 m/s)에서 wz 1.6 → 0.55 로 잘린다. 제자리 회전은 막지 않는다. 회귀 **58 PASS / 0 FAIL**(K7 신설 9항목). 무게중심 높이 0.3153 m 를 자산 질량 분포에서 실측해 SRS 6장에 등재했다. 문서: SRS v1.17, ND-001 v1.4 |
+| 1.46 | 2026-08-22 | **에뮬레이터 GUI 에 ROS 토픽 수신 감시 신설, 모니터 모드 결함 2건 수정.** GUI 에 **ROS Topics** 탭을 추가해 계약 토픽의 수신 주기·경과·값을 본다 — 흐르는 토픽과 "목록에만 있는" 토픽을 색으로 구분한다. **GUI 는 rclpy 를 쓸 수 없다**(PySide6 는 conda 3.13, rclpy 는 시스템 3.10 전용) — `tools/ros_topic_probe.py` 가 ROS 를 맡고 UDP 로 GUI 에 넘긴다. 프로브가 없어도 GUI 는 정상이다. 함께 수정한 결함: ① `mainHeadless()` 가 `--mode` 를 무시해 `--headless --mode monitor` 가 **에뮬레이터로 돌아 실 버스에 프레임을 냈을 것**(GUI 경로는 정상이라 headless 만 조용히 틀려 있었다) ② Rover View heading 이 0 대신 360.0 으로 표시. 확인: vcan0 에 에뮬레이터+벤치 마스터를 올려 모니터가 명령·피드백·statusword·토크를 모두 해독하고 **송신 0 프레임**임을 실측, 실제 창으로 세 탭 렌더 확인. 회귀 20 PASS / 0 FAIL. 문서: ND-001 v1.5, BRINGUP.md |
+| 1.47 | 2026-08-22 | **ROS Topics 탭에 추세 그래프 추가 — Motors 탭과 같은 방식으로 본다.** 확인해 보니 v1.46 의 ROS 탭은 **표뿐이었다.** 표는 "지금 몇 Hz"만 알려주고 **언제 끊겼는지·어떻게 흔들리는지는 못 보여준다** — 이번 세션에서 스틱-슬립을 평균값만 보고 놓쳤던 것과 같은 사각이다. `TopicTrend` 위젯을 붙여 위쪽에 **수신 주기[Hz]**, 아래쪽에 **값 4계열**을 그린다. 표에서 행을 고르면 그 토픽이, 안 고르면 실제로 흐르는 첫 토픽이 그려진다. 프로브가 `nums`(숫자 최대 4개)를 같이 싣고, **이력은 GUI(`lib/ros_monitor.py`)가 토픽별 300 표본으로 보관**한다 — 프로브가 이력까지 실으면 데이터그램이 커지고 GUI 재기동 시 어차피 비어야 한다. 실측: `/rover/axes_cmd` 20 Hz 주기 곡선과 값 4계열 렌더 확인. 회귀 20 PASS / 0 FAIL. 문서: ND-001 v1.6 |
+| 1.48 | 2026-08-22 | **`BRINGUP.md` 를 머신별 절차로 재편.** 종전에는 Jetson 중심 흐름 하나에 시뮬 PC 항목이 섞여 있어 **어느 머신에서 무엇을 실행하는지가 문서 구조로 드러나지 않았다.** 머신마다 절을 하나씩 두고(B Jetson · C 보드 · D 시뮬 PC), 앞에 **구성표와 의존 순서**를, 뒤에 **세 머신을 묶어 확인하는 절(E)** 을 두었다. 신설: **B1 갱신 절차**(git pull + 재빌드, `--symlink-install` 금지 이유, **재기동 전에는 옛 코드가 돈다**는 점, 기대값으로 반영 여부 검산) · **A 공통 절**(DDS 환경, 시뮬 PC 인터프리터 분리). IG-001 2f 에는 **마찰 바인딩 러너의 docker 실행 전문**과 `friction_verified` 로 확인하는 방법을 채웠다 — BRINGUP 은 그쪽을 가리키기만 한다(마운트를 옮겨 적으면 낡는다) |
+| 1.49 | 2026-08-22 | **GUI 화면 원천을 CAN/ROS 선택식으로.** 보드를 sim 백엔드로 두면 CAN 이 비어 Motors 탭이 전부 `No data` 가 된다 — 고장이 아니라 **보드가 CAN 을 안 쓰고 ROS 로 Isaac 과 주고받기** 때문이고, 게다가 보드 CAN 버스는 어댑터가 없어 시뮬 PC 에서 보이지도 않는다. 상단 `View` 로 원천을 고르면 같은 12축을 ROS 로 볼 수 있다(`/rover/axes_cmd`·`/rover/joint_states`·`/rover/status`). **NMT 칸은 `-` 로 남긴다** — CANopen 계층이라 ROS 에 없는 정보를 0 이나 Online 으로 채우지 않는다. 환산 상수는 `emu_core` 의 `GEAR_RATIO`·`CNT_PER_RAD` 를 그대로 쓴다(다시 적으면 CAN 화면과 ROS 화면이 조용히 갈린다). 실측: 조향 4축 ±19°/±9° 가 ROS 원천으로 그대로 보였다. 회귀 20 PASS / 0 FAIL. 문서: ND-001 v1.7, BRINGUP.md |
+| 1.46 | 2026-08-22 | **Jetson 실기 브링업 절차를 5.4 절로 요약 등재**하고 2.1 도구표에 Navigation 머신(Orin 계열 + JetPack 6.x)을 추가했다. 배포 절차가 DP-001·`BRINGUP.md` 에만 있어 SDP 5 장 운영 절차에는 실물 로버 명령 두 줄뿐이었다. 저장소는 **git clone 으로 내려받는다**(NAS 마운트는 CIFS 심링크 미지원으로 `~/hils_ws/src` 구조가 깨진다), 워크스페이스가 개발 PC 와 다르다(`~/hils_ws`), Nav2 는 별도 apt 설치라는 세 가지를 명시했다. 플랫폼 요건은 SRS v1.18 6 장에 등재 |
 
 ---
 
@@ -134,6 +139,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 | MCU SDK | STM32CubeH7 HAL (STM32H723ZG) | 코드베이스 내장 |
 | Python 라이브러리 | python-can 4.6, PySide6 6.11 | conda(3.13) 및 시스템(3.10) 양쪽 설치 |
 | CAN 테스트 버스 | vcan0 (systemd 유닛 `tools/systemd/`) | 부팅 자동 생성 |
+| Navigation 머신 | NVIDIA Jetson Orin 계열 | JetPack 6.x = Ubuntu 22.04 (Humble 네이티브 전제 — SRS 6장) |
 | 형상관리 | git | 저장소 2개 (2.4절) |
 
 ### 2.2 펌웨어 빌드 절차
@@ -349,6 +355,26 @@ ros2 launch hils_rover_control rover_control.launch.py mode:=real   # Jetson, �
 python3 tools/epos_rover_emulator/epos-rover-emulator.py \
   --interface socketcan --channel can0 --mode monitor
 ```
+
+### 5.4 Jetson 실기 브링업 (Navigation 머신 — DP-001 / BRINGUP.md)
+
+전원 인가에서 조이패드 조종까지의 **실기 통과 순서는 `BRINGUP.md`** 가 정본이다. 아래는 배치 요약이다.
+
+```bash
+# 최초 1회 - 저장소는 git 으로 내려받는다 (NAS 마운트 금지: CIFS 는 심링크 미지원)
+git clone https://github.com/parclab-hsu/l-project-hils-ros2.git ~/l-project-hils-ros2
+cd ~/l-project-hils-ros2/tools/jetson && ./install-jetson.sh   # ~/hils_ws 빌드 + DDS(.bashrc)
+sudo ./install-jetson.sh service                               # systemd (agent 자동시작)
+# 매번 - 워크스페이스가 개발 PC 와 다르다
+source ~/hils_ws/install/setup.bash
+ros2 launch hils_rover_control rover_control.launch.py mode:=real          # 로버 노드
+ros2 launch hils_rover_control nav2_hils.launch.py mode:=real              # + Nav2 (IG-002)
+ros2 launch hils_rover_control teleop_remote.launch.py joy_device_id:=<n>  # 조종석 (OP-002)
+```
+
+- Nav2 는 `ros-humble-navigation2 ros-humble-nav2-bringup` 을 별도 설치한다 — `install-jetson.sh` 범위 밖이다
+- 조이패드 장치는 **경로가 아니라 `joy_device_id`(정수 인덱스)** 로 지정한다 (OP-002 2.3절 — 경로를 `device_name` 에 넘겨 패드가 열리지 않은 결함 이력)
+- 갱신 배포: `git pull` → `colcon build --packages-select hils_rover_control hils_bridge` → `systemctl restart hils-rover`
 
 
 ---

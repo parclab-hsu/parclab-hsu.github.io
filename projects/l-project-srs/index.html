@@ -1009,7 +1009,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.17</td>
+<td>1.18</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1124,6 +1124,11 @@
 <td>1.17</td>
 <td>2026-08-22</td>
 <td><strong>FR-081 신설 — 선회 포락선.</strong> 참조 코드의 <code>Vr ≤ 0.339·Vl + 0.0205</code> 는 <strong>쓰지 않는다</strong> — 조향각이 제한된 애커먼 차량의 최소 선회반경 식이라 속도에 비례해 커지는데, 우리 로버는 조향 ±90°(자산 실측)라 최소 선회반경이 없고 포락선이 속도에 따라 <strong>좁아진다</strong>. 구속은 ① 휠 각속도 한계(저속에서 구속, 제자리 회전 2.07 rad/s) ② 횡가속 한계(중속에서 구속, 0.55 m/s² — 견인 μ 0.70×g 1.62 의 절반. 전도 한계 3.24 m/s² 보다 엄격하다). 6장에 무게중심 높이 0.3153 m 를 등재했다</td>
+</tr>
+<tr>
+<td>1.18</td>
+<td>2026-08-22</td>
+<td><strong>Navigation 머신 플랫폼 요건을 6장 설계 제약에 등재</strong> — DP-001·IG-003 에만 있던 온보드 컴퓨터 전제(Orin 계열 + JetPack 6.x = Ubuntu 22.04)를 요구사항 쪽에 명시했다. Humble 이 22.04 를 요구하므로 <strong>구형 Jetson Nano(JetPack 4.6.x = 18.04)는 제외</strong>되며 Isaac ROS 지원 대상도 아니다. 무맵 1단계는 Orin Nano 8 GB 로도 되지만 비전 2단계는 Orin NX 16 GB 이상이다</td>
 </tr>
 </tbody>
 </table>
@@ -2027,6 +2032,13 @@ FR-076 을 닫아야 한다.</p>
   소프트웨어 동작에 직접 들어가지 않지만, <strong>시뮬레이션 주행 결과의 대표성을 좌우한다.</strong>
   달 지형·마찰은 아직 미반영이므로(IG-001 2e, D-24) 이 플랜트의 주행·슬립 수치를 Nav2
   파라미터 근거로 쓰지 않는다</li>
+<li><strong>Navigation 머신 플랫폼 요건</strong> — Nav2·<code>rover_control</code>·<code>rover_state</code>·micro-ROS 에이전트가
+  올라가는 온보드 컴퓨터는 <strong>NVIDIA Jetson Orin 계열 + JetPack 6.x(Ubuntu 22.04)</strong> 를 전제한다.
+  ROS 2 Humble 이 Ubuntu 22.04 배포판을 요구하기 때문이며, JetPack 5.x(20.04)는 네이티브 설치가
+  불가해 컨테이너 대안이 필요하다(DP-001 부록 B). <strong>구형 Jetson Nano(Maxwell, JetPack 4.6.x =
+  Ubuntu 18.04)는 제외한다</strong> — Humble 네이티브 설치가 불가하고 Isaac ROS(cuVSLAM·nvblox) 지원
+  대상도 아니라 IG-003 2단계 경로가 성립하지 않는다. 무맵 1단계(IG-002)는 Orin Nano 8 GB 로도
+  되지만, 카메라 인지를 얹는 2단계는 <strong>Orin NX 16 GB 이상(AGX Orin 권장)</strong> 이다(IG-003 2절)</li>
 <li>EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제</li>
 <li>CAN 종단저항: 버스 양 끝 노드 DIP7 ON</li>
 <li>개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용</li>
