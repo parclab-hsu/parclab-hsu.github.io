@@ -68,6 +68,16 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
 <div class="grid cards" markdown>
 
+-   :material-circle-outline:{ style="color:#e0a800" } [__컨소시엄 제안 · 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리__](projects/manufacturing-data-factory-rfm/index.md)
+
+    ---
+
+    모빌테크의 정밀 3D Asset·공간 Digital Twin과 한성대의 OmniLRS 기반 변형지형·접촉물리 경험을 연결하여, 제조환경 물성·변형을 재현하는 Deformation Engine과 Robot·Sensor·Task 시뮬레이션을 개발. 합성·실측 데이터를 RFM 학습과 실물 Robot 검증으로 순환시키는 제조 Physical AI 데이터팩토리 구축안.
+
+    `Manufacturing Digital Twin` · `Deformation Engine` · `Simulation-ready Asset` · `Synthetic Data` · `RFM` · `Sim-to-Real`
+
+    [:octicons-arrow-right-24: 자세히 보기](projects/manufacturing-data-factory-rfm/index.md)
+
 -   :material-circle-outline:{ style="color:#e0a800" } __계획중 · Lean VLA 제조·물류 로봇 적용 연구__
 
     ---

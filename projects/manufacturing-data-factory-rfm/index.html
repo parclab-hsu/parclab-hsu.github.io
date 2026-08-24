@@ -12,7 +12,7 @@
         <meta name="author" content="KyungBok Lee">
       
       
-        <link rel="canonical" href="https://parclab-hsu.github.io/projects/mobile-manipulator/">
+        <link rel="canonical" href="https://parclab-hsu.github.io/projects/manufacturing-data-factory-rfm/">
       
       
       
@@ -25,7 +25,7 @@
     
     
       
-        <title>Mobile Manipulator (AMR + 매니퓰레이터) - PARC Lab</title>
+        <title>제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리 - PARC Lab</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mobile-manipulator-amr" class="md-skip">
+        <a href="#digital-twindeformation-engine-robot-rfm" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mobile Manipulator (AMR + 매니퓰레이터)
+              제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리
             
           </span>
         </div>
@@ -659,10 +659,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mobile-manipulator" class="md-nav__link">
+  <a href="#digital-twin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        왜 Mobile Manipulator 인가
+        왜 제조환경에는 물리적으로 반응하는 Digital Twin이 필요한가
       
     </span>
   </a>
@@ -670,22 +670,128 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#omnilrs-manufacturing-deformation-engine" class="md-nav__link">
     <span class="md-ellipsis">
       
-        시스템 구성
+        핵심 기술: OmniLRS에서 Manufacturing Deformation Engine으로
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="시스템 구성">
+    <nav class="md-nav" aria-label="핵심 기술: OmniLRS에서 Manufacturing Deformation Engine으로">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#omnilrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OmniLRS 기반 기술의 제조환경 전환
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manufacturing-deformation-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manufacturing Deformation Engine의 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        한성대학교–모빌테크 공동개발 구조
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="한성대학교–모빌테크 공동개발 구조">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        연산 플랫폼
+        기관별 주도 역할
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hand-off-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공동 Hand-off Interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        한성대학교 세부 R&amp;R
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="한성대학교 세부 R&amp;R">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taskscenario-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        제조 Task·Scenario Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RFM 학습데이터 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RFM 학습데이터 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#episode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Episode 단위 데이터
       
     </span>
   </a>
@@ -696,7 +802,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        위치추정 파이프라인
+        데이터 생성 전략
       
     </span>
   </a>
@@ -704,65 +810,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fairino-fr16" class="md-nav__link">
+  <a href="#rfm_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        매니퓰레이터 — FAIRINO FR16
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        베이스 사이징 — 전도 안전율이 설계를 지배한다
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        자율주행
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aruco" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        위치 정밀도 — ArUco 마커로 두 자릿수 좁히기
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#slam" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SLAM — 무엇을 담당하는가
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        주행-조작 협조 제어
+        RFM 기관과의 연계 범위
       
     </span>
   </a>
@@ -771,6 +822,61 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-feedback-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation Feedback Loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계별 추진안
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        컨소시엄 공통 Interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기대 산출물
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hsu-pac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HSU-PAC과의 연계
+      
+    </span>
+  </a>
   
 </li>
       
@@ -778,68 +884,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        소프트웨어 아키텍처
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="소프트웨어 아키텍처">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        로컬 플래너 비교 측정
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        자동 검증 — 조용한 오작동을 막는다
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        컨테이너 구성
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        기술 스택
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        향후 계획
+        기술 참고
       
     </span>
   </a>
@@ -863,450 +908,528 @@
 
 
 
-<h1 id="mobile-manipulator-amr">Mobile Manipulator (AMR + 매니퓰레이터)<a class="headerlink" href="#mobile-manipulator-amr" title="Permanent link">&para;</a></h1>
-<p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>개발 중</strong> · Autonomous Mobile Manipulator Platform</p>
+<h1 id="digital-twindeformation-engine-robot-rfm">제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리<a class="headerlink" href="#digital-twindeformation-engine-robot-rfm" title="Permanent link">&para;</a></h1>
+<p><span class="twemoji" style="color:#e0a800"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>컨소시엄 제안</strong> · Manufacturing Physical AI Data Factory &amp; Robot Foundation Model</p>
 <div class="admonition abstract">
 <p class="admonition-title">프로젝트 한눈에 보기</p>
-<p>자율주행 모바일 베이스(AMR) 위에 로봇 팔을 올려 <strong>"이동 + 조작"을 하나의 작업으로
-수행</strong>하는 플랫폼입니다. 고정형 매니퓰레이터가 작업 반경에 묶이는 한계를 넘어,
-작업 대상이 있는 곳으로 스스로 이동한 뒤 조작을 수행합니다.</p>
-<p>매니퓰레이터는 <strong>FAIRINO FR16</strong>(6축, 가반 16 kg, 리치 1034 mm)을 사용합니다.
-Jetson Orin NX 16GB 단일 보드 위에서 3D LiDAR-관성 오도메트리, 2D SLAM,
-자율주행, 팔 제어를 함께 구동하며, 기능별 컨테이너로 분리해 운용합니다.</p>
+<p>본 프로젝트는 실제 제조공간을 <strong>Simulation-ready Digital Twin</strong>으로 전환하고, 로봇의 접촉으로
+발생하는 물리 상태 변화를 재현하는 <strong>Manufacturing Deformation Engine</strong>을 개발하여, 제조 로봇
+파운데이션모델(RFM)의 학습·평가·Sim-to-Real 검증에 필요한 데이터를 지속적으로 생산하는 것을
+목표로 합니다.</p>
+<p>모빌테크는 현장 취득과 정밀 3D Asset·공간 Digital Twin을 담당하고, 한성대학교는 OmniLRS 활용
+연구에서 축적한 변형지형·접촉물리 경험을 제조환경으로 확장해 물성 모델, 로봇 시뮬레이션,
+합성데이터 생성, RFM 연계 및 실물 검증을 수행합니다.</p>
 </div>
 <blockquote>
-<p><strong>현재 단계</strong> — 시스템·소프트웨어 아키텍처 설계와 ROS 2 워크스페이스 구성 완료.
-설정 일관성·구조 무결성·전도 안전율 자동 검증 통과. 하드웨어 연동 진행 중.</p>
+<p><strong>핵심 제안</strong> — 정적인 제조공간의 시각화에 머물지 않고, <strong>형상·물성·상태·행동·검증 데이터가 함께 순환하는 제조 Physical AI Digital Twin</strong>을 구축합니다.</p>
 </blockquote>
+<div class="admonition info">
+<p class="admonition-title">사업·역할 상태</p>
+<p>이 페이지는 컨소시엄 제안 단계의 한성대학교–모빌테크 공동 R&amp;R과 기술구조를 정리한 것입니다.
+제조 Use Case, 대상 설비·로봇, 정량 KPI와 기관별 최종 책임범위는 컨소시엄 협의와 실증환경
+확정 후 기준선(Baseline)으로 관리합니다.</p>
+</div>
 <hr />
-<h2 id="mobile-manipulator">왜 Mobile Manipulator 인가<a class="headerlink" href="#mobile-manipulator" title="Permanent link">&para;</a></h2>
-<p>제조·물류 현장에서 로봇 팔은 대개 고정되어 있고, 작업물이 컨베이어를 타고 로봇에게
-옵니다. 다품종 소량 생산이나 비정형 작업 환경에서는 이 전제가 성립하지 않습니다.
-작업 지점이 흩어져 있으면 로봇이 이동해야 합니다.</p>
-<p>이때 생기는 문제는 단순히 "AMR과 로봇 팔을 합치는 것"이 아닙니다.</p>
+<h2 id="digital-twin">왜 제조환경에는 물리적으로 반응하는 Digital Twin이 필요한가<a class="headerlink" href="#digital-twin" title="Permanent link">&para;</a></h2>
+<p>제조 로봇의 성능은 3D 형상만으로 결정되지 않습니다. 같은 공간과 작업이라도 바닥 마찰,
+부품 공차, 포장재 강성, 그리퍼 접촉, 설비 진동, 센서 노이즈, 작업 순서와 누적 사용 상태에 따라
+로봇의 관측과 행동 결과가 달라집니다. 따라서 RFM 학습용 제조 Digital Twin은 다음 세 계층을
+동시에 표현해야 합니다.</p>
 <table>
 <thead>
 <tr>
-<th>과제</th>
-<th>내용</th>
+<th>계층</th>
+<th>표현 대상</th>
+<th>RFM 학습에서의 의미</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>위치 정밀도의 전가</strong></td>
-<td>주행 정지 오차를 팔의 역기구학이 흡수해야 한다</td>
+<td>Geometry Twin</td>
+<td>공간, 설비, 치구, 부품, 로봇의 형상·좌표·Semantic</td>
+<td>인식, 위치추정, 경로계획의 기준</td>
 </tr>
 <tr>
-<td><strong>동적 안정성</strong></td>
-<td>팔을 실어 무게중심이 높아져 급가감속·급회전 시 전도 위험</td>
+<td>Physics Twin</td>
+<td>질량·관성, 마찰, 강성, 감쇠, 접촉, 변형·복원 특성</td>
+<td>접촉행동과 실패조건의 재현</td>
 </tr>
 <tr>
-<td><strong>정적 전도 한계</strong></td>
-<td>리치 끝에서 가반하중을 드는 순간의 모멘트가 베이스 복원력을 넘을 수 있다</td>
-</tr>
-<tr>
-<td><strong>자원 경합</strong></td>
-<td>SLAM·자율주행·팔 제어가 단일 보드의 CPU를 나눠 쓴다</td>
-</tr>
-<tr>
-<td><strong>센서 자기가림</strong></td>
-<td>360도 LiDAR 시야에 로봇 자신의 팔과 본체가 들어온다</td>
+<td>Behavior Twin</td>
+<td>공정 순서, 로봇 행동, 정상·실패·복구 시나리오</td>
+<td>Task–Observation–Action 학습 데이터 생성</td>
 </tr>
 </tbody>
 </table>
+<pre class="mermaid"><code>flowchart TB
+    REAL["실제 제조환경&lt;br/&gt;공간·설비·로봇·작업"] --&gt;|Scan · Mapping · 도면| DT["Simulation-ready&lt;br/&gt;Digital Twin"]
+    DT --&gt; PHYS["Material &amp; Physics Layer&lt;br/&gt;물성·접촉·변형"]
+    PHYS --&gt; SIM["Isaac Sim / ROS 2&lt;br/&gt;Robot·Sensor·Task"]
+    SIM --&gt; DATA["Robot Learning Data&lt;br/&gt;관측·상태·행동·이벤트"]
+    DATA --&gt; RFM["Robot Foundation Model&lt;br/&gt;학습·평가"]
+    RFM --&gt; ROBOT["Physical Robot&lt;br/&gt;제조작업 검증"]
+    ROBOT -.-&gt;|Failure · Edge Case · Domain Gap| DT
+    ROBOT -.-&gt;|Validation Feedback| PHYS</code></pre>
 <hr />
-<h2 id="_1">시스템 구성<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">연산 플랫폼<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="omnilrs-manufacturing-deformation-engine">핵심 기술: OmniLRS에서 Manufacturing Deformation Engine으로<a class="headerlink" href="#omnilrs-manufacturing-deformation-engine" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/OmniLRS/OmniLRS">OmniLRS</a>는 NVIDIA Isaac Sim 기반의 오픈소스 달 탐사
+로봇 시뮬레이터로, 절차적·무작위 지형 생성, ROS 2 연계, 합성데이터 생성과 함께 로버 주행에
+따른 지형 변형을 지원합니다. 한성대학교는 OmniLRS 기반 달 로버 시뮬레이션과 HILS 연구에서
+확보한 경험을 토대로, 변형지형 엔진의 개념을 제조 로봇의 <strong>접촉–물성–상태 변화</strong> 문제로
+파생·고도화합니다.</p>
+<h3 id="omnilrs">OmniLRS 기반 기술의 제조환경 전환<a class="headerlink" href="#omnilrs" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>항목</th>
-<th>사양</th>
+<th>OmniLRS 변형지형 개념</th>
+<th>제조환경 Deformation Engine으로의 확장</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>연산 보드</td>
-<td>NVIDIA Jetson Orin NX 16GB</td>
+<td>Wheel Footprint</td>
+<td>바퀴·그리퍼·공구·부품의 Contact Patch</td>
 </tr>
 <tr>
-<td>SDK</td>
-<td>JetPack 7.2</td>
+<td>접촉력–변형깊이 회귀</td>
+<td>힘·토크·접촉시간·속도에 따른 변위·변형 응답</td>
 </tr>
 <tr>
-<td>OS / 미들웨어</td>
-<td>Ubuntu 24.04 · ROS 2 Jazzy Jalisco</td>
+<td>반복 통과 시 변형 누적·감쇠</td>
+<td>반복 하중, 마찰, 마모, 히스테리시스, 영구변형 상태</td>
 </tr>
 <tr>
-<td>배포</td>
-<td>기능별 Docker 컨테이너</td>
+<td>Depth·Boundary Distribution</td>
+<td>접촉부 변형 형상과 영향영역 분포</td>
+</tr>
+<tr>
+<td>지형·조명·Asset Randomization</td>
+<td>재질·공차·마찰·강성·배치·센서·작업조건 Randomization</td>
+</tr>
+<tr>
+<td>ROS 2와 합성데이터</td>
+<td>로봇 상태·행동·접촉·성공/실패가 시간 동기화된 학습 Episode</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_3">위치추정 파이프라인<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>3D LiDAR-관성 오도메트리와 2D SLAM을 <strong>역할을 나눠</strong> 함께 사용합니다.</p>
-<pre class="mermaid"><code>flowchart LR
-    MID["Livox Mid-360&lt;br/&gt;3D LiDAR + IMU 200Hz"] --&gt; LIO["FAST-LIO2&lt;br/&gt;LiDAR-관성 오도메트리"]
-    WHEEL["휠 엔코더"] --&gt; EKF
-    LIO --&gt; EKF["EKF 융합&lt;br/&gt;robot_localization"]
-    LIO --&gt; P2LS["2D 스캔 투영"]
-    EKF --&gt; TF["odom → base_footprint"]
-    P2LS --&gt; SLAM["slam_toolbox&lt;br/&gt;2D 지도 · 루프 클로저"]
-    SLAM --&gt; NAV["Nav2&lt;br/&gt;MPPI 로컬 플래너"]
-    TF --&gt; NAV</code></pre>
-<p><strong>FAST-LIO2</strong>는 연속적인 상대 위치(오도메트리)를, <strong>slam_toolbox</strong>는 지도와 전역
-보정(루프 클로저, 재위치추정)을 담당합니다. 역할이 다르므로 중복이 아닙니다.</p>
-<p><strong>EKF 융합</strong>을 끼운 이유는 두 센서의 실패 모드가 다르기 때문입니다. LiDAR 오도메트리는
-특징이 부족한 공간(빈 복도, 유리벽)에서 흔들리고, 휠 오도메트리는 슬립에 취약합니다.
-휠에서는 속도만, LiDAR에서는 위치와 방향을 받아 융합합니다.</p>
-<h3 id="fairino-fr16">매니퓰레이터 — FAIRINO FR16<a class="headerlink" href="#fairino-fr16" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>항목</th>
-<th>사양</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>자유도</td>
-<td>6축</td>
-</tr>
-<tr>
-<td>가반하중</td>
-<td>16 kg (최대 20 kg)</td>
-</tr>
-<tr>
-<td>리치</td>
-<td>1034 mm</td>
-</tr>
-<tr>
-<td>자중</td>
-<td>40 kg</td>
-</tr>
-<tr>
-<td>반복정밀도</td>
-<td>±0.03 mm</td>
-</tr>
-<tr>
-<td>보호등급</td>
-<td>IP54 / IP65</td>
-</tr>
-</tbody>
-</table>
-<p>관절 가동범위가 축마다 다르고 <strong>J2·J4는 +85°/−265°로 비대칭</strong>입니다. 대칭으로
-가정한 궤적은 실기 컨트롤러가 거부하므로, 팔 인터페이스 노드가 궤적을 수락하기
-전에 사양표 범위를 검사합니다.</p>
-<h3 id="_4">베이스 사이징 — 전도 안전율이 설계를 지배한다<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>FR16을 얹는 순간 베이스 설계 제약이 바뀝니다. 자중 40 kg에 리치 1034 mm이므로,
-팔을 완전히 뻗어 16 kg을 드는 순간의 전도 모멘트가 소형 베이스의 복원 모멘트를
-넘어섭니다.</p>
-<p>기종 확정 전 가정했던 베이스(0.60 × 0.45 m, 40 kg)의 전도 안전율은 좌우 방향
-<strong>0.44</strong> 였습니다 — 1 미만은 넘어진다는 뜻입니다. 이에 따라 베이스를 다시
-설계했습니다.</p>
-<table>
-<thead>
-<tr>
-<th>항목</th>
-<th>기종 확정 전</th>
-<th>FR16 반영</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>베이스 치수</td>
-<td>0.60 × 0.45 m</td>
-<td>0.90 × 0.70 m</td>
-</tr>
-<tr>
-<td>베이스 질량</td>
-<td>40 kg</td>
-<td>150 kg</td>
-</tr>
-<tr>
-<td>팔 장착 위치</td>
-<td>후방 치우침</td>
-<td>중심</td>
-</tr>
-<tr>
-<td>최소 전도 안전율</td>
-<td>0.44</td>
-<td>3.89</td>
-</tr>
-</tbody>
-</table>
-<p>팔을 베이스 중심에 두는 이유는 한쪽으로 치우치면 반대 방향으로 뻗을 때
-안전율이 급락하기 때문입니다. 대신 LiDAR 마스트를 전방 모서리로 옮겨 팔의
-작업영역과 간섭하지 않게 했습니다.</p>
-<p>주행 속도와 가감속도 함께 낮췄습니다. 200 kg급에 무게중심이 높은 기계입니다.</p>
-<h3 id="_5">자율주행<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>로컬 플래너로 <strong>MPPI</strong>(Model Predictive Path Integral)를 채택했습니다. 궤적 후보 중
-최저비용 하나를 고르는 DWB와 달리, 샘플링한 궤적들의 비용 가중평균으로 제어를
-만들기 때문에 좁은 통로나 U자 장애물에서 로컬 미니마에 갇힐 가능성이 낮습니다.</p>
-<p>대신 크리틱 가중치가 많아 튜닝 표면이 넓고, 매 제어 주기마다 궤적 배치를 CPU에서
-평가하므로 연산 부하가 큽니다. Orin NX에서 SLAM과 동시 구동을 고려해 배치 크기를
-기본값보다 낮춰 시작하고, 동일 조건 A/B 비교가 가능하도록 DWB 설정을 함께
-유지합니다.</p>
-<h3 id="aruco">위치 정밀도 — ArUco 마커로 두 자릿수 좁히기<a class="headerlink" href="#aruco" title="Permanent link">&para;</a></h3>
-<p>주행과 조작의 정밀도 요구가 두 자릿수 차이 납니다.</p>
-<table>
-<thead>
-<tr>
-<th>단계</th>
-<th>오차</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nav2 주행 정지</td>
-<td><strong>±100 mm / ±0.10 rad</strong></td>
-</tr>
-<tr>
-<td>FR16 반복정밀도</td>
-<td><strong>±0.03 mm</strong></td>
-</tr>
-</tbody>
-</table>
-<p>팔은 mm 급인데 베이스는 cm 급입니다. 팔의 정밀도를 살리려면 목표를 베이스가
-아니라 <strong>작업 대상 기준</strong>으로 알아야 합니다. 작업대에 붙인 ArUco 마커가 그
-기준입니다. 베이스가 어디에 섰든 마커는 카메라에 보이고, 파지점은 마커 기준
-고정 오프셋이므로 주행 정지 오차가 팔 목표에 전달되지 않습니다.</p>
-<p>카메라를 두 곳에 두어 단계적으로 좁힙니다.</p>
-<table>
-<thead>
-<tr>
-<th>단계</th>
-<th>카메라</th>
-<th>거리</th>
-<th>마커</th>
-<th>기대 위치오차</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>베이스 전방</td>
-<td>0.5~2 m</td>
-<td>150 mm</td>
-<td>1~6 mm</td>
-</tr>
-<tr>
-<td>2</td>
-<td>손목 (eye-in-hand)</td>
-<td>0.15~0.5 m</td>
-<td>40 mm</td>
-<td>0.1~0.5 mm</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>위 수치는 코너 검출 노이즈를 가정한 계산값이며 실측이 아닙니다. 실제로는
-캘리브레이션 잔차, 조명, 마커 평면도가 더해집니다.</p>
-</blockquote>
-<p><strong>정밀도를 좌우하는 것은 알고리즘이 아니라 준비물입니다.</strong> 카메라 캘리브레이션을
-하지 않으면 계통 오차가 그대로 남고, 마커 인쇄 배율 오차는 거리 오차에 그대로
-비례합니다. 검출 노드는 캘리브레이션되지 않은 카메라를 아예 거부합니다.</p>
-<p>평면 마커에는 <strong>자세 모호성(flip)</strong> 이라는 함정도 있습니다. 정면에 가까울수록
-두 개의 해가 비슷한 오차를 갖고, 잘못된 쪽을 고르면 자세가 뒤집힙니다. 다만
-이때 뒤집히는 것은 회전이고 위치는 두 해가 거의 같습니다. 이 성질을 이용해
-모호할 때는 위치만 신뢰하고 회전은 신뢰 불가로 표시합니다 — 정면 마커를
-통째로 버리지 않으면서 뒤집힌 자세도 쓰지 않는 방식입니다.</p>
-<h3 id="slam">SLAM — 무엇을 담당하는가<a class="headerlink" href="#slam" title="Permanent link">&para;</a></h3>
-<p>이 시스템에서 SLAM 은 위치추정 전체가 아니라 한 계층입니다.</p>
-<table>
-<thead>
-<tr>
-<th>담당</th>
-<th>역할</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FAST-LIO2</td>
-<td>연속적인 상대 위치. 짧은 시간 스케일에서 정확</td>
-</tr>
-<tr>
-<td>EKF</td>
-<td>LIO + 휠 융합</td>
-</tr>
-<tr>
-<td><strong>slam_toolbox</strong></td>
-<td><strong>지도, 루프 클로저, 누적 드리프트 보정</strong></td>
-</tr>
-<tr>
-<td>ArUco</td>
-<td>작업 대상 기준 상대 위치 (mm 급)</td>
-</tr>
-</tbody>
-</table>
-<p>오도메트리는 아무리 좋아도 시간이 지나면 밀립니다. 같은 장소를 다시 방문했을
-때 그것을 알아보고 전체 궤적을 되맞추는 것(루프 클로저)이 SLAM 의 값입니다.</p>
-<p>지도 품질은 알고리즘보다 <strong>어떻게 주행했는가</strong>가 좌우합니다. 천천히, 급회전
-없이, 반드시 루프를 닫아야 합니다. 넓고 특징 없는 공간(빈 창고 한가운데, 긴
-복도)이 최대 난관으로, 스캔이 어디를 봐도 비슷해 정합이 걸리지 않습니다.</p>
-<p>2D SLAM 의 구조적 한계도 분명합니다. Mid-360 의 3D 정보를 높이 창으로 잘라
-쓰므로 그 밖의 장애물은 지도에 없고, 경사면과 유리는 왜곡을 남깁니다. 그래서
-cm 급인 SLAM 위에서 mm 급 조작을 하기 위해 ArUco 를 함께 씁니다. 역할이
-다르므로 둘 다 필요합니다.</p>
-<h3 id="-">주행-조작 협조 제어<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
-<p>주행과 조작을 <strong>동시에 하지 않습니다.</strong> 팔을 펼친 채 주행하면 무게중심 이동으로
-전도 위험이 커지고, 관성으로 적재물이 이탈할 수 있습니다.</p>
-<ol>
-<li>목표 수신 → 팔을 스토우(접힘) 자세로 복귀</li>
-<li>Nav2 자율주행</li>
-<li>정지 후 안정화 대기</li>
-<li><strong>ArUco 마커 검출 → 목표를 마커 기준으로 확정</strong></li>
-<li>팔 동작 수행</li>
-</ol>
-<p>주행 중에는 팔이 잠기며, 가감속 한계도 Nav2 기본값보다 보수적으로 설정합니다.</p>
-<hr />
-<h2 id="_6">소프트웨어 아키텍처<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>기능별 ROS 2 패키지로 분리하고, 하드웨어 의존 코드를 좁은 경계 안에 가둬
-실제 장비 확정 전에도 전체 배선을 검증할 수 있게 설계했습니다.</p>
-<table>
-<thead>
-<tr>
-<th>패키지</th>
-<th>역할</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>mm_description</code></td>
-<td>URDF/xacro 로봇 모델 (베이스 + 6축 팔 + 센서 마스트)</td>
-</tr>
-<tr>
-<td><code>mm_lio</code></td>
-<td>Mid-360 드라이버, FAST-LIO2, EKF 융합, 2D 스캔 투영</td>
-</tr>
-<tr>
-<td><code>mm_navigation</code></td>
-<td>slam_toolbox 매핑/위치추정, Nav2 설정</td>
-</tr>
-<tr>
-<td><code>mm_perception</code></td>
-<td>ArUco 마커 검출, 목표 정밀화</td>
-</tr>
-<tr>
-<td><code>mm_base_control</code></td>
-<td>차동 구동 제어, 휠 오도메트리</td>
-</tr>
-<tr>
-<td><code>mm_arm_control</code></td>
-<td>FR16 인터페이스, 관절 한계 검사</td>
-</tr>
-<tr>
-<td><code>mm_coordinator</code></td>
-<td>주행↔조작 순차 실행 상태 기계</td>
-</tr>
-<tr>
-<td><code>mm_bringup</code></td>
-<td>통합 실행 및 런타임 파라미터</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_7">로컬 플래너 비교 측정<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>컨트롤러를 바꾸는 것은 런치 인자 하나지만, 어느 쪽이 나은지 판단하려면 숫자가
-필요합니다. 계측 노드가 제어주기 유지율, 실패 횟수, 경로 효율, 재계획 횟수,
-저크, 최소 장애물 거리를 기록하고, 같은 목표를 반복 주행해 평균과 편차로
-비교합니다.</p>
-<p>판단 순서에서 <strong>제어주기 유지율이 1차 관문</strong>입니다. 20 Hz를 못 맞춘 컨트롤러는
-다른 지표가 좋아도 채택할 수 없습니다.</p>
-<h3 id="_8">자동 검증 — 조용한 오작동을 막는다<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>이런 시스템의 대표적인 함정은 <strong>오류 없이 조용히 잘못 동작</strong>하는 것입니다.
-같은 물리량이 여러 파일에 중복되어 있고, 한쪽만 고쳐도 예외가 발생하지 않습니다.
-파라미터 이름이 어긋나면 노드는 기본값으로 멀쩡히 기동하므로 로그로도 알 수
-없습니다.</p>
-<p>이를 막기 위해 세 종류의 검사를 두고, 하드웨어 없이 실행합니다.</p>
-<table>
-<thead>
-<tr>
-<th>검사</th>
-<th>대상</th>
-<th>항목 수</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>값 일관성</td>
-<td>휠 치수, 속도 한계, LiDAR-IMU 외부 파라미터, 관절 가동범위</td>
-<td>79</td>
-</tr>
-<tr>
-<td>구조·참조 무결성</td>
-<td>런치가 부르는 실행파일, entry point, 컨테이너 타깃, 파라미터 배선</td>
-<td>202</td>
-</tr>
-<tr>
-<td>전도 안전율</td>
-<td>베이스 치수·질량 대비 팔의 전도 모멘트</td>
-<td>4방향</td>
-</tr>
-</tbody>
-</table>
-<p>모두 ROS 설치 없이 동작하므로 CI에서 회귀를 막을 수 있습니다.</p>
-<p>검사 자체가 비어 있지 않은지도 확인했습니다. 관절 가동범위를 사양과 다르게
-바꾸거나, 런치의 실행파일 이름에 오타를 내거나, 파라미터 키를 틀리게 하는 등
-의도적으로 결함을 주입해 모두 검출되는 것을 검증했습니다.</p>
-<h3 id="_9">컨테이너 구성<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>기능 계층별로 컨테이너를 분리해 장애 격리와 재사용성을 확보합니다.</p>
-<table>
-<thead>
-<tr>
-<th>컨테이너</th>
-<th>역할</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bringup</code></td>
-<td>로봇 하드웨어 계층</td>
-</tr>
-<tr>
-<td><code>lio</code></td>
-<td>LiDAR 드라이버 + 오도메트리</td>
-</tr>
-<tr>
-<td><code>slam</code></td>
-<td>지도 작성 / 위치추정</td>
-</tr>
-<tr>
-<td><code>nav2</code></td>
-<td>자율주행</td>
-</tr>
-<tr>
-<td><code>arm</code></td>
-<td>매니퓰레이터</td>
-</tr>
-<tr>
-<td><code>coordinator</code></td>
-<td>태스크 조율</td>
-</tr>
-</tbody>
-</table>
-<p>Nav2가 죽어도 SLAM과 베이스 제어는 유지되며, 해당 계층만 재시작할 수 있습니다.</p>
-<hr />
-<h2 id="_10">기술 스택<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p><code>ROS 2 Jazzy</code> · <code>Jetson Orin NX</code> · <code>FAIRINO FR16</code> · <code>Livox Mid-360</code> · <code>FAST-LIO2</code>
-· <code>slam_toolbox</code> · <code>Nav2</code> · <code>MPPI</code> · <code>robot_localization</code> · <code>ArUco</code> · <code>OpenCV</code>
-· <code>MoveIt 2</code> · <code>Docker</code></p>
-<hr />
-<h2 id="_11">향후 계획<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>OmniLRS의 기존 Deformation Engine은 접촉력으로부터 변형 깊이를 계산하는 비교적 단순한
+모델을 사용합니다. 제조환경 확장에서는 소재·형상·온도·속도·시간 의존성과 접촉 이력을
+포함할 수 있도록 모델을 모듈화하고, 실제 계측 데이터로 파라미터를 보정합니다.</p>
+<h3 id="manufacturing-deformation-engine">Manufacturing Deformation Engine의 구성<a class="headerlink" href="#manufacturing-deformation-engine" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TB
+    INPUT["입력&lt;br/&gt;Contact Force·Torque·Velocity·Pose"] --&gt; PATCH["Contact Patch Estimator"]
+    MAT["Material Profile&lt;br/&gt;마찰·강성·감쇠·복원·공차"] --&gt; RESPONSE["Material Response Model"]
+    PATCH --&gt; RESPONSE
+    HISTORY["State History&lt;br/&gt;반복하중·마모·잔류변형"] --&gt; RESPONSE
+    RESPONSE --&gt; UPDATE["Geometry / Collider / Material State Update"]
+    UPDATE --&gt; SENSOR["Camera·Depth·LiDAR·F/T·Tactile Observation"]
+    UPDATE --&gt; LABEL["Deformation·Contact·Failure Ground Truth"]
+    SENSOR --&gt; EPISODE["RFM Training Episode"]
+    LABEL --&gt; EPISODE</code></pre>
+<p>개발 대상은 특정 단일 물리모델에 고정하지 않고 다음과 같이 계층화합니다.</p>
 <ul>
-<li>FR16 MoveIt 2 설정 구성 (베이스·마스트를 충돌 씬에 포함)</li>
-<li>실기 환경에서 MPPI/DWB 비교 평가 및 파라미터 확정</li>
-<li>실제 CAD 무게중심 기반 전도 한계 재검증 및 동적 안정성 해석</li>
-<li>그리퍼 선정 (가반하중에서 그리퍼 무게 차감)</li>
-<li>시뮬레이션 환경(Gazebo Harmonic / Isaac Sim) 연동</li>
-<li>카메라 기종 선정 및 캘리브레이션, 마커 배치 실측</li>
-<li>비전 기반 대상 인식과 파지 계획 통합</li>
+<li><strong>Material Profile</strong> — 마찰, 반발, 밀도, 강성, 감쇠, 복원, 파손·변형 임계값과 불확실성 범위</li>
+<li><strong>Contact Model</strong> — 로봇 바퀴·그리퍼·공구와 대상물 사이의 접촉면·힘·토크·미끄럼 추정</li>
+<li><strong>Response Model</strong> — 탄성·점탄성·소성·마모 등 Use Case별 변형 응답 모듈</li>
+<li><strong>State Update</strong> — 변형된 형상, Collision, 표면 상태와 누적 이력의 실시간 또는 준실시간 갱신</li>
+<li><strong>Data Labeler</strong> — 접촉, 변형량, 물성 파라미터, 정상·실패·복구 이벤트의 자동 Ground Truth 생성</li>
+<li><strong>Calibration Interface</strong> — 실제 센서·시험 결과를 이용한 파라미터 식별과 Sim-to-Real 오차 보정</li>
 </ul>
 <hr />
-<div class="admonition note">
-<p class="admonition-title">저장소</p>
-<p>개발 저장소는 연구실 내부 비공개로 운영합니다. 협업 문의는
-<a href="../../contact/">연락처</a>를 통해 주시기 바랍니다.</p>
-</div>
+<h2 id="_1">한성대학교–모빌테크 공동개발 구조<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">기관별 주도 역할<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>모빌테크 — Real → Digital</th>
+<th>한성대학교 — Digital → Physical AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>요구사항</td>
+<td>현장 취득범위·정밀도·갱신주기 정의</td>
+<td>Robot·Sensor·Task·물리모델 요구조건 정의</td>
+</tr>
+<tr>
+<td>공간 취득</td>
+<td>LiDAR·MMS·Camera·도면 기반 Scan·Mapping</td>
+<td>로봇 작업영역·센서 가시성·접촉영역 검토</td>
+</tr>
+<tr>
+<td>3D Asset</td>
+<td>설비·공간·부품의 정밀 3D 모델과 LOD 구성</td>
+<td>USD 계층, Articulation, Collision, Joint 요구조건 정의</td>
+</tr>
+<tr>
+<td>물성정보</td>
+<td>현장 재질·설비·자산 Metadata 조사와 Asset 연결</td>
+<td>물성 Schema, 파라미터 식별, Deformation Model 개발</td>
+</tr>
+<tr>
+<td>시뮬레이션</td>
+<td>Simulation-ready Asset·좌표·Semantic 제공</td>
+<td>Isaac Sim·ROS 2 환경과 Robot·Sensor·Task 구성</td>
+</tr>
+<tr>
+<td>데이터</td>
+<td>Asset·공간 Metadata와 버전·출처 관리</td>
+<td>Domain Randomization, Synthetic Data와 자동 Annotation</td>
+</tr>
+<tr>
+<td>검증</td>
+<td>Real–Digital 공간·Asset 정합 지원</td>
+<td>RFM·Robot HW 실증, Domain Gap 분석과 Feedback</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hand-off-interface">공동 Hand-off Interface<a class="headerlink" href="#hand-off-interface" title="Permanent link">&para;</a></h3>
+<p>모빌테크의 3D Asset이 시뮬레이터에서 보이는 것만으로는 충분하지 않습니다. 다음 정보를 하나의
+버전으로 묶어 전달하는 <strong>Simulation-ready Asset Package</strong>를 공동 정의합니다.</p>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>필수 정보</th>
+<th>검증 관점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Geometry</td>
+<td>Mesh, LOD, 단위, 원점, 좌표계, Scale</td>
+<td>공간 치수·배치·정합 오차</td>
+</tr>
+<tr>
+<td>Semantic</td>
+<td>Asset ID, 설비·부품 분류, 공정·작업 태그</td>
+<td>데이터 검색과 Task 연결성</td>
+</tr>
+<tr>
+<td>Visual</td>
+<td>PBR Material, Texture, 조명 반응, 표면 상태</td>
+<td>Camera 기반 인식의 사실성</td>
+</tr>
+<tr>
+<td>Collision</td>
+<td>단순화 Collider, Contact 영역, Self-collision</td>
+<td>충돌 안정성과 계산성능</td>
+</tr>
+<tr>
+<td>Dynamics</td>
+<td>질량, 무게중심, 관성, Joint, 구동·제약조건</td>
+<td>로봇 행동과 설비 운동 재현성</td>
+</tr>
+<tr>
+<td>Material</td>
+<td>마찰, 반발, 강성, 감쇠, 복원·변형·마모 파라미터</td>
+<td>실제 시험 응답과 Physics 오차</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>Camera·LiDAR·F/T·Tactile 기준좌표와 Noise</td>
+<td>관측 데이터의 실·가상 정합</td>
+</tr>
+<tr>
+<td>Provenance</td>
+<td>취득일, 출처, 보정조건, 버전, 유효범위</td>
+<td>재현성·변경관리·데이터 거버넌스</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>sequenceDiagram
+    participant M as 모빌테크
+    participant I as 공동 Asset·Physics Interface
+    participant H as 한성대학교
+    participant R as RFM·Robot HW 기관
+
+    M-&gt;&gt;I: 3D Asset·좌표·Semantic·현장 Metadata
+    H-&gt;&gt;I: 물성 Schema·Collision·Sensor·Task 요구조건
+    I-&gt;&gt;H: Simulation-ready Asset Package
+    H-&gt;&gt;R: Scenario·Robot Data·Model Interface
+    R-&gt;&gt;H: 모델·제어기·실물 검증 결과
+    H-&gt;&gt;I: Domain Gap·Failure·파라미터 보정값
+    I-&gt;&gt;M: 정합·Asset 갱신 요구</code></pre>
+<hr />
+<h2 id="rr">한성대학교 세부 R&amp;R<a class="headerlink" href="#rr" title="Permanent link">&para;</a></h2>
+<p>한성대학교는 전체 컨소시엄에서 제조환경 Digital Twin을 데이터와 RFM, 실제 Robot HW로 연결하는
+<strong>Simulation &amp; Sim-to-Real 기술 인터페이스</strong>를 담당합니다.</p>
+<table>
+<thead>
+<tr>
+<th>Work Package</th>
+<th>한성대학교 주도 업무</th>
+<th>주요 산출물</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HSU-1. Use Case·Interface 설계</td>
+<td>제조 Task·Process·Failure Case와 Robot·Sensor 요구조건 정의</td>
+<td>Use Case 명세, 공통 Interface·Dataset Schema</td>
+</tr>
+<tr>
+<td>HSU-2. Deformation Engine</td>
+<td>물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정</td>
+<td>Engine Module, Material Library, Calibration Tool</td>
+</tr>
+<tr>
+<td>HSU-3. 제조 로봇 시뮬레이션</td>
+<td>Isaac Sim·ROS 2 기반 Robot·Sensor·Task·Scenario 구성</td>
+<td>Simulation Package, Scenario Library</td>
+</tr>
+<tr>
+<td>HSU-4. 학습데이터 생성</td>
+<td>Domain Randomization, Synthetic/Real Data 정렬, 자동 Annotation</td>
+<td>RFM용 Dataset·Metadata·품질 리포트</td>
+</tr>
+<tr>
+<td>HSU-5. RFM 연계</td>
+<td>RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의</td>
+<td>RFM Adapter, Benchmark·Evaluation Protocol</td>
+</tr>
+<tr>
+<td>HSU-6. Physical Validation</td>
+<td>실제 Robot HW 적용, Domain Gap·Failure·Edge Case 분석</td>
+<td>Sim-to-Real 검증결과, Feedback Data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="taskscenario-library">제조 Task·Scenario Library<a class="headerlink" href="#taskscenario-library" title="Permanent link">&para;</a></h3>
+<p>초기 대상은 컨소시엄 제조 Use Case와 로봇 구성이 확정된 뒤 기준선으로 동결합니다.</p>
+<ul>
+<li><strong>이송·물류</strong> — AMR 이동, 적재·하역, 도킹, 통로 폐색과 미끄럼 조건</li>
+<li><strong>조작</strong> — Pick &amp; Place, Bin Picking, 파지 실패, 대상물 변형·미끄럼·낙하</li>
+<li><strong>조립</strong> — 삽입, 체결, 정렬, 공차와 접촉력 변화, 치구 위치 편차</li>
+<li><strong>검사</strong> — Camera·Depth·LiDAR·F/T 기반 외관·치수·접촉 품질검사</li>
+<li><strong>예외·복구</strong> — 설비 정지, 센서 열화, 부품 누락, 충돌 위험, 작업 재계획</li>
+</ul>
+<p>각 Task는 <strong>정상–경계–실패–복구</strong> 상태를 포함하고, 환경·설비·부품·로봇·센서 조건을
+독립적으로 변화시킬 수 있도록 구성합니다.</p>
+<hr />
+<h2 id="rfm">RFM 학습데이터 설계<a class="headerlink" href="#rfm" title="Permanent link">&para;</a></h2>
+<h3 id="episode">Episode 단위 데이터<a class="headerlink" href="#episode" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>데이터 계층</th>
+<th>주요 항목</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task</td>
+<td>자연어·Task ID, 공정 단계, 성공조건, 안전 제약</td>
+</tr>
+<tr>
+<td>Observation</td>
+<td>RGB/RGB-D, LiDAR, Robot State, F/T, Tactile, 설비·환경 상태</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Joint·Cartesian 명령, Gripper, Mobile Base, 고수준 Skill</td>
+</tr>
+<tr>
+<td>Physics</td>
+<td>접촉점·힘·토크, 마찰·강성, 변형량·복원·마모 상태</td>
+</tr>
+<tr>
+<td>Ground Truth</td>
+<td>6D Pose, Segmentation, Depth, Velocity, Collision, Event Label</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>성공·실패·복구, Cycle Time, 품질·안전 지표</td>
+</tr>
+<tr>
+<td>Provenance</td>
+<td>Asset·Material·Scenario 버전, Random Seed, 생성·실측 조건</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">데이터 생성 전략<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TB
+    BASE["기준 제조 Scenario"] --&gt; DR["Domain Randomization"]
+    DR --&gt; SYN["Synthetic Episode"]
+    REAL["실제 Robot Episode"] --&gt; ALIGN["시간·좌표·Semantic 정렬"]
+    SYN --&gt; MIX["Synthetic + Real Dataset"]
+    ALIGN --&gt; MIX
+    MIX --&gt; TRAIN["RFM Pre-training / Fine-tuning"]
+    TRAIN --&gt; EVAL["Simulation·Physical Evaluation"]
+    EVAL --&gt;|실패·미커버 조건| DR</code></pre>
+<p>Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감쇠·변형 임계값·센서 노이즈·작업
+속도·로봇 초기상태가 포함됩니다. 모든 변화조건을 Metadata로 보존하여 모델 성능의 원인을
+추적하고 같은 Episode를 재생성할 수 있도록 합니다.</p>
+<h3 id="rfm_1">RFM 기관과의 연계 범위<a class="headerlink" href="#rfm_1" title="Permanent link">&para;</a></h3>
+<p>한성대학교가 RFM 전체 모델을 단독 개발하는 구조가 아니라, RFM 주관기관과 다음 Interface를
+공동 정의하고 제조환경 학습·평가를 지원합니다.</p>
+<ul>
+<li>로봇별 Observation·Action Space와 Embodiment Metadata</li>
+<li>자연어 Task·공정 단계와 저수준 Robot Action의 연결</li>
+<li>Synthetic·Real Dataset의 혼합비, Curriculum과 Fine-tuning 조건</li>
+<li>Offline Benchmark와 Simulation Rollout 평가</li>
+<li>실물 Robot 성공률·안전·복구성능 및 Sim-to-Real Gap 분석</li>
+<li>Failure·Edge Case의 재시뮬레이션과 재학습 데이터 생성</li>
+</ul>
+<hr />
+<h2 id="validation-feedback-loop">Validation Feedback Loop<a class="headerlink" href="#validation-feedback-loop" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    V1["실물 제조작업 검증"] --&gt; V2["Failure·Edge Case 수집"]
+    V2 --&gt; V3["Geometry·Material·Sensor Domain Gap 분석"]
+    V3 --&gt; V4["Digital Twin·Deformation Model 보정"]
+    V4 --&gt; V5["Scenario 보강·데이터 재생성"]
+    V5 --&gt; V6["RFM 재학습·재평가"]
+    V6 --&gt; V1</code></pre>
+<p>검증은 단순한 영상 유사도가 아니라 다음 관점에서 수행합니다.</p>
+<table>
+<thead>
+<tr>
+<th>검증영역</th>
+<th>평가항목 예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Geometry Fidelity</td>
+<td>위치·치수·좌표 정합, Sensor 가시성, Collision 일치도</td>
+</tr>
+<tr>
+<td>Physics Fidelity</td>
+<td>접촉력, 변위·복원, 미끄럼, Cycle Time, 실패 발생조건</td>
+</tr>
+<tr>
+<td>Data Quality</td>
+<td>Schema 완전성, 시간동기, Label 정확도, 재현성, 조건 Coverage</td>
+</tr>
+<tr>
+<td>Model Performance</td>
+<td>Task 성공률, OOD 강건성, 실패복구, Sim-to-Real 성능차</td>
+</tr>
+<tr>
+<td>Operational Quality</td>
+<td>Asset·Dataset 버전 추적, 자동화율, 재생성 시간, 자원 사용량</td>
+</tr>
+</tbody>
+</table>
+<p>정량 목표값은 대상 Use Case와 실제 제조환경의 기준 데이터를 확보한 뒤 컨소시엄 공통 KPI로
+확정합니다.</p>
+<hr />
+<h2 id="_4">단계별 추진안<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>핵심 활동</th>
+<th>완료 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 기준선 설계</td>
+<td>제조 Use Case, 실증조건, Asset·Material·Data Interface 합의</td>
+<td>공동 Interface Specification 승인</td>
+</tr>
+<tr>
+<td>2. Digital Twin 구축</td>
+<td>현장 취득, 3D Asset, 좌표·Semantic·물성정보 연결</td>
+<td>Simulation-ready Asset Package 검수</td>
+</tr>
+<tr>
+<td>3. Physics·Scenario 개발</td>
+<td>Deformation Engine, Robot·Sensor·Task Scenario 구현</td>
+<td>기준 물성시험·시뮬레이션 재현</td>
+</tr>
+<tr>
+<td>4. Data·RFM 연계</td>
+<td>Domain Randomization, Dataset 생성, RFM Adapter·평가</td>
+<td>학습·평가 Pipeline 재현 가능</td>
+</tr>
+<tr>
+<td>5. Physical Validation</td>
+<td>실제 Robot 적용, Domain Gap 분석, 반복 보정</td>
+<td>공통 KPI 기반 Sim-to-Real 검증</td>
+</tr>
+<tr>
+<td>6. 데이터팩토리 운영</td>
+<td>실패·Edge Case 수집, 자동 재생성·재학습</td>
+<td>Validation Feedback Loop 운영</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="interface">컨소시엄 공통 Interface<a class="headerlink" href="#interface" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>참여영역</th>
+<th>한성대학교와 주고받는 정보</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>제조환경·수요기업</td>
+<td>공정, Task, 안전조건, 품질기준, 실증 데이터</td>
+</tr>
+<tr>
+<td>Digital Twin·모빌테크</td>
+<td>3D Asset, 좌표·Semantic, 물성 Metadata, 정합 결과</td>
+</tr>
+<tr>
+<td>Data 기관</td>
+<td>Dataset Schema, 저장·검색·품질관리, Synthetic/Real 연결</td>
+</tr>
+<tr>
+<td>RFM 기관</td>
+<td>Model Interface, 학습·평가 조건, 모델·Checkpoint·결과</td>
+</tr>
+<tr>
+<td>SI 기관</td>
+<td>데이터팩토리 서비스·워크플로·운영 API 통합</td>
+</tr>
+<tr>
+<td>Robot HW 기관</td>
+<td>URDF/USD, 제어·센서 Interface, 실물 검증과 Failure Data</td>
+</tr>
+<tr>
+<td>연구기관</td>
+<td>시험기준, Benchmark, 성능·안전 검증 협력</td>
+</tr>
+</tbody>
+</table>
+<p>한성대학교는 기관별 기능을 대체하지 않고, 각 산출물이 다음 단계에서 바로 사용될 수 있도록
+<strong>Asset–Physics–Data–Model–Validation Hand-off</strong>를 연결합니다.</p>
+<hr />
+<h2 id="_5">기대 산출물<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>제조환경 <strong>Simulation-ready Digital Twin Asset Package</strong>와 검수 기준</li>
+<li>물성·접촉·변형 파라미터 <strong>Material &amp; Physics Schema</strong></li>
+<li>OmniLRS 경험을 제조환경으로 파생한 <strong>Manufacturing Deformation Engine</strong></li>
+<li>Isaac Sim·ROS 2 기반 <strong>Robot·Sensor·Task Scenario Library</strong></li>
+<li>정상·실패·Edge Case를 포함한 <strong>RFM 학습·평가 Dataset</strong></li>
+<li>RFM·Robot HW 연계를 위한 <strong>Model·Control·Validation Interface</strong></li>
+<li>실물 검증 기반 <strong>Domain Gap Report와 Calibration Data</strong></li>
+<li>반복적인 데이터 생성–학습–검증을 위한 <strong>Validation Feedback Pipeline</strong></li>
+</ul>
+<hr />
+<h2 id="hsu-pac">HSU-PAC과의 연계<a class="headerlink" href="#hsu-pac" title="Permanent link">&para;</a></h2>
+<p><a href="../hsu-pac/">HSU-PAC</a>은 Isaac Sim·Isaac Lab·ROS 2·GPU·NAS·실물 로봇을 연결하는
+한성대학교 Physical AI 교육·연구 플랫폼입니다. 본 프로젝트에서는 HSU-PAC을 초기
+알고리즘·Scenario·Dataset 검증 기반으로 활용하고, 컨소시엄의 제조 데이터 규모와 다기관
+운영 요구에 맞춰 연산·스토리지·보안·실증환경을 확장합니다.</p>
+<blockquote>
+<p>HSU-PAC은 <strong>개발·검증 Seed Platform</strong>, 컨소시엄 데이터팩토리는 <strong>제조환경 공동운영 Production Platform</strong>으로 구분합니다.</p>
+</blockquote>
+<hr />
+<h2 id="_6">기술 참고<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/OmniLRS/OmniLRS">OmniLRS — Omniverse Lunar Robotics Simulator</a></li>
+<li><a href="https://github.com/OmniLRS/OmniLRS/wiki/deformation_engine">OmniLRS Deformation Engine</a></li>
+<li><a href="../hsu-pac/">한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC</a></li>
+</ul>
+<hr />
+<p><code>Manufacturing Digital Twin</code> · <code>Deformation Engine</code> · <code>Simulation-ready Asset</code> · <code>Material Physics</code> · <code>Synthetic Data</code> · <code>Robot Foundation Model</code> · <code>Isaac Sim</code> · <code>ROS 2</code> · <code>Sim-to-Real</code></p>
+<p><a href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 프로젝트 목록으로</a></p>
 
 
 
