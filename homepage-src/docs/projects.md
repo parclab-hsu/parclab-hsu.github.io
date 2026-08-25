@@ -80,7 +80,7 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `Deformation Engine` · `Manufacturing Ontology` · `Edge Case` · `Teleoperation Data` · `HSU-PAC` · `RFM` · `Sim-to-Real`
 
-    [:octicons-arrow-right-24: 자세히 보기](projects/manufacturing-data-factory-rfm/index.md)
+    [:octicons-arrow-right-24: 자세히 보기](projects/manufacturing-data-factory-rfm/index.md) · [기술 상세](projects/manufacturing-data-factory-rfm/technical.md)
 
 -   :material-circle-outline:{ style="color:#e0a800" } __계획중 · Lean VLA 제조·물류 로봇 적용 연구__
 
