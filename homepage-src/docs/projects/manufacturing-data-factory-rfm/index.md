@@ -1,3 +1,7 @@
+---
+noindex: true
+---
+
 # 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리
 
 :material-circle-outline:{ style="color:#e0a800" } **컨소시엄 제안** · Manufacturing Physical AI Data Factory & Robot Foundation Model
@@ -25,6 +29,45 @@
   ![한성대학교 제조 Physical AI R&R — 모빌테크 Digital Twin, Ontology Edge Case, 학생 Teleoperation, 참여기업 Shared Testbed와 실물 로봇 검증](../../assets/manufacturing-rfm-hsu-rr.svg){ loading=lazy }
   <figcaption>한성대학교 제조 Physical AI R&R — Asset·Physics·Ontology·Teleoperation Data·Model·Validation을 연결하는 Real–Digital–Physical AI 인터페이스</figcaption>
 </figure>
+
+---
+
+## 과제 개요와 공고 정합성
+
+본 제안은 산업통상부 공고 **제2026-549호**(2026. 8. 13.) 「2026년도 제2차 로봇산업기술개발사업
+신규지원 대상과제」의 **연구개발과제 1 — 로봇 데이터팩토리 구축 및 로봇파운데이션모델(RFM) 개발**을
+대상으로 합니다.
+
+| 항목 | 공고 기준 |
+|---|---|
+| 내역사업 | 로봇산업기술개발 (로봇산업핵심기술개발) |
+| 주관연구개발기관 | 제한없음 |
+| 지원규모 | 7,500백만원 |
+| 수행기간 | 43개월 |
+| 과제유형 | 일반 · **원천기술형** · **품목지정형** |
+| 과제특징 | 초격차 (R&D자율성트랙(일반) 신청 가능) |
+| 접수 | 2026. 8. 21.(금) ~ **9. 11.(금) 18:00**, 범부처통합연구지원시스템(IRIS) |
+| 평가 배점 | 기술성 60 / 연구역량 20 / 사업화·경제성 20 — 종합 70점 미만 지원제외 |
+| 대학 지원비율 | 정부지원연구개발비 **연구개발비의 100% 이하**, 기관부담 현금은 필요시 |
+
+!!! warning "확정 전까지 병기해야 하는 수치 차이"
+    사업기간과 규모는 출처에 따라 다르게 전달되고 있습니다. **공고문 표는 43개월 / 7,500백만원**이고,
+    컨소시엄 협의 과정에서 공유된 값은 **약 44개월 / 총 약 340억원(정부지원 75억원)**입니다.
+    총괄–세부 병렬형 구성에서 컨소시엄 총액과 세부과제 지원규모가 섞였을 가능성이 있어, 본 페이지의
+    예산·일정은 **44개월·4개 차년도 가정**을 명시적으로 사용하고 확정 시 일괄 재산정합니다.
+
+    또한 과제 1의 **상세 RFP/품목서 원문은 아직 확보되지 않았습니다.** 정량목표는 품목서의 성능지표와
+    대조한 뒤 기준선으로 동결합니다.
+
+### 대학 참여기관으로서의 적합성
+
+| 평가 관점 | 본 제안의 대응 근거 |
+|---|---|
+| RFP/품목 부합성 | 데이터팩토리(데이터 생성·정제·관리)와 RFM(학습·평가) 사이의 **제조 물리·의미 계층**을 담당 |
+| 목표의 도전성 | 시각 중심 Digital Twin을 **접촉·변형·누적상태가 반영되는 Physics Twin**으로 전환 |
+| 연구조직 역량 | OmniLRS 기반 Isaac Sim·ROS 2 시뮬레이션과 변형지형·HILS 수행실적, HSU-PAC 인프라 |
+| 연구 인프라 | GPU·Isaac Sim·ROS 2·NAS·실물 로봇을 갖춘 [HSU-PAC](../hsu-pac.md)을 **참여기업 공동 Testbed**로 개방 |
+| 지역·인력 파급 | 30명·5개 조 Teleoperation 체계로 데이터 생산과 Physical AI 인력양성을 동시 수행 |
 
 ---
 
@@ -93,6 +136,32 @@ OmniLRS의 기존 Deformation Engine은 접촉력으로부터 변형 깊이를 �
 모델을 사용합니다. 제조환경 확장에서는 소재·형상·온도·속도·시간 의존성과 접촉 이력을
 포함할 수 있도록 모델을 모듈화하고, 실제 계측 데이터로 파라미터를 보정합니다.
 
+### 파생의 근거가 되는 OmniLRS 수행실적
+
+Deformation Engine 파생은 개념 차용이 아니라, 한성대학교가 직접 구동·계측·확장해 본 환경에서
+출발합니다. 아래는 확보된 수행실적이며, 그대로 제조환경 요소로 치환할 대상입니다.
+
+| 수행 항목 | 확보된 실적 | 제조환경 전환 대상 |
+|---|---|---|
+| 실행환경 | **Isaac Sim 5.0.0 + OmniLRS + ROS 2 Humble** Docker 통합 구동 | 제조 Cell·Line Simulation 실행환경 |
+| 환경 구성 | Hydra 기반 단일 yaml로 환경·모드·렌더링·물리엔진 통합 제어 | 설비·공정·Robot·Sensor 조건의 Scenario 파라미터화 |
+| 환경 종류 | `lunalab`(Digital Twin) · `lunaryard_20m/40m`(절차생성) · `largescale`, 각각 `_deformable` 변형지형 | 실측 기반 제조 Cell Twin과 절차생성 Layout, 변형 대상물 |
+| 실시간 제어 | 조명·태양광·렌즈·렌더·지형·로봇 6개 카테고리 **ROS 2 토픽 제어** (조명 on/off·세기, 광원 위치·자세, 암석 배치 랜덤화, 로봇 Spawn·Reset·Teleport) | 조명·설비·부품 배치·로봇 초기상태의 Randomization 제어면 |
+| 합성데이터 | 조명·지형 자동 변화 + 카메라 랜덤 시점, **1회 Run당 약 1,000 프레임 자동 생성 후 종료** | 제조 Task Episode의 자동 대량 생성 |
+| 자동 Annotation | Bounding Box · Instance Segmentation · Pixel-level Labeling | 6D Pose·Collision·접촉·변형·이벤트 Ground Truth |
+| Sim-to-Real 효과 | 합성데이터 사전학습 시 암석 분류 **mAP 약 14% 향상** | 제조 부품·결함 인식의 사전학습 기여도 검증 |
+| 접촉물리 | Grouser Wheel 지형변형 모델 이식 — 슬립·침하, Mesh 실시간 변형, 접촉력·저항력 모델링 | 그리퍼·공구·부품 접촉의 변형·미끄럼·잔류변형 |
+
+!!! note "무엇이 새로 개발되는가"
+    OmniLRS의 변형 모델은 **접촉력에서 변형 깊이를 얻는 단일 경로**이며, 대상 물성이 월면토로
+    고정되어 있습니다. 제조환경에서는 대상이 금속·수지·포장재·탄성체로 바뀌고 온도·속도·반복이력에
+    따라 응답이 달라지므로, **물성 Profile 분리 · 응답 모델 교체 가능 구조 · 실계측 파라미터 보정**이
+    새로 개발되어야 할 범위입니다.
+
+    변형지형 참조 구현: Kamohara, J., Ares, V. E., Hurrell, J., Takehana, K., Richard, A., Santra, S.,
+    Uno, K., Rohmer, E., & Yoshida, K. (2024). *Modeling of terrain deformation by a grouser wheel for
+    lunar rover simulation.* Proc. 21st Int'l & 12th Asia-Pacific Regional Conf. of the ISTVS, 283–289.
+
 ### Manufacturing Deformation Engine의 구성
 
 ```mermaid
@@ -132,6 +201,29 @@ flowchart TB
 | 시뮬레이션 | Simulation-ready Asset·좌표·Semantic 제공 | Isaac Sim·ROS 2 환경과 Robot·Sensor·Task 구성 |
 | 데이터 | Asset·공간 Metadata와 버전·출처 관리 | Domain Randomization, Synthetic Data와 자동 Annotation |
 | 검증 | Real–Digital 공간·Asset 정합 지원 | RFM·Robot HW 실증, Domain Gap 분석과 Feedback |
+
+### 모빌테크 수행 레퍼런스
+
+모빌테크는 실공간을 정밀 공간데이터로 변환하고 이를 다수의 상용 시뮬레이터로 넘겨 본 실적을
+보유합니다. 본 과제에서 요구되는 것은 **보기 좋은 3D**가 아니라 **다음 단계로 넘어가는 Asset**이며,
+아래 실적은 그 Hand-off가 이미 반복 수행되었음을 보여줍니다.
+
+| 구분 | 내용 |
+|---|---|
+| 산업·물류 Digital Twin | **인천신항 콜드체인 특화구역 물류센터**(한국초저온인천, 2023.11~2024.12) — 건설 전 도면(조감도·평면도) 기반 실외 전경·랜드스케이프, 창고 Layout과 층별 호실 팝업, **자동화 창고 입출고 시나리오 애니메이션**, Unreal Project 일체 납품 |
+| 제조환경 참고사례 | **현대제철소 Visual 구현** — Unreal 기반, 개발기간 약 5개월, 중·상급 품질 기준 약 4억원 규모(모빌테크 공유 참고 견적) |
+| 실공간 정밀 디지털화 | LiDAR · MMS · HD Map · 3D Modeling 기반 고정밀 공간데이터 변환 |
+| 시뮬레이터 호환 | NVIDIA Omniverse · Unreal · Unity · dSPACE Aurelion · Blender · PC-Crash 연계 |
+| 이기종 결과 통합 | Omniverse · VISSIM · dSPACE 시뮬레이션 결과의 통합 처리 경험 |
+| 공간 레퍼런스 | 강남 스마트시티, 여의도 UAM·교통, 판교 제로시티, 태백 스피드웨이, 샤르자 공항(UAE), K-City, 새만금 PG |
+| HD맵 공급 | SWM · MORAI · dSPACE · 42dot · Phantom AI 및 연구기관 다수 |
+| 대외 지위 | NVIDIA 시뮬레이션 인증 파트너, 서울시 XR 서비스 플랫폼 MOU |
+
+!!! warning "참고 견적을 본 과제 예산으로 읽지 말 것"
+    현대제철소 사례의 **5개월·약 4억원**은 *Visual 구현* 기준의 참고치입니다. 본 과제가 요구하는
+    Asset은 여기에 **Collision·질량/관성·Joint·마찰/강성 등 물성·Sensor 기준좌표·Provenance**가
+    결합된 Simulation-ready Package이므로, 대상 면적·설비 수·요구 LOD·물성시험 범위에 따라
+    비용 구조가 달라집니다. 아래 「차년도별 예상 예산(가안)」은 이 차이를 반영해 별도로 산정한 값입니다.
 
 ### 공동 Hand-off Interface
 
@@ -361,6 +453,24 @@ flowchart TB
 환경, 제작·Prototype 공간과 GPU·NAS·ROS 2 인프라를 연결합니다. 참여기업은 각자의 Asset·Dataset·
 Model·Robot Interface를 가져와 본 실증에 들어가기 전 사전 통합·재현·성능검증을 수행할 수 있습니다.
 
+### 공동활용 가능한 연구 인프라
+
+| 구분 | 구성 | 본 과제에서의 용도 |
+|---|---|---|
+| 교내 GPU 서버 | RTX PRO 6000 Blackwell Server Edition 96GB **×4** (총 384GB), 64코어 · RAM 512GB, MIG 분할 운영 | Isaac Sim 원격 실행·스트리밍, Isaac Lab 학습, 합성데이터 생성, DT 렌더링 |
+| 대형모델 노드 | DGX Spark(통합 메모리 128GB) 1~2대, 사용률 기반 증설 | VLA·RFM Checkpoint 적재·검증, LoRA/QLoRA Fine-tuning |
+| 클라우드 버스트 | AWS G6e/P 계열, S3 동기화 | 학기·과제 피크의 대규모 멀티GPU 학습 |
+| 스토리지 | NAS 40~80TB(RAID6/RAIDZ2) + 별도 백업 스토리지, 일일 Snapshot | Episode·Asset·Dataset 버전 보관과 복구 |
+| 네트워크 | 10GbE 코어, 서버망·학생망·로봇망·스토리지망 VLAN 분리 | 기업별 격리환경과 데이터 이동 |
+| 소프트웨어 | Isaac Sim · Isaac Lab · ROS 2 · PyTorch · LeRobot · Docker/NVIDIA Container Toolkit · Slurm · MLflow/W&B · DCGM/Prometheus/Grafana | 표준 실행환경, 작업 큐, 실험 추적, 자원 모니터링 |
+| 실물 실증공간 | Mobile Robot Arena, Robot Manipulation Cell(협동로봇·F/T), Sensor & Perception Studio(RGB-D·LiDAR·캘리브레이션), Wearable·HRI, Maker 공간 | Sim-to-Real 사전검증, Teleoperation 수집, Domain Gap 측정 |
+| 인력 운영 | 30명 · 6인 5개 조, 계정·Quota·권한 분리, 예약제 운영 | Teleoperation Demonstration 수집과 검수 |
+
+!!! note "확장이 필요한 부분"
+    HSU-PAC은 **교육·연구 규모**로 설계된 플랫폼입니다. 컨소시엄의 제조 데이터 규모와 다기관
+    동시 운영을 감당하려면 연산·스토리지·보안 격리·실증환경의 확장이 필요하며, 그 증설분은
+    「차년도별 예상 예산(가안)」의 *연구시설·장비* 항목에 반영했습니다.
+
 | 참여 주체 | HSU-PAC 공동활용 내용 | 공동 산출물 |
 |---|---|---|
 | 모빌테크 | 3D Asset 반입, USD·좌표·LOD·Collision 검수, 현장–가상 정합 | Simulation-ready Asset Package |
@@ -437,6 +547,40 @@ flowchart TB
 정량 목표값은 대상 Use Case와 실제 제조환경의 기준 데이터를 확보한 뒤 컨소시엄 공통 KPI로
 확정합니다.
 
+### 정량 KPI 정의와 기준선 확정 절차
+
+"확정 후 정한다"만으로는 제안이 성립하지 않으므로, **무엇을 어떤 식으로 잴 것인가**는 제안
+단계에서 고정하고, **목표 수치만** 기준선 확정 시점에 동결합니다. 아래 표의 잠정 목표는 수행실적에서
+유추한 제안단계 값이며 산정근거를 함께 표기합니다.
+
+| 구분 | 지표 | 산정 방식 | 잠정 목표 | 산정근거 |
+|---|---|---|---|---|
+| Geometry | Asset 정합 오차 | 실측 기준점 대비 위치·치수 RMS 편차 | 주요 설비·치구 기준 **≤ 20 mm** | 모빌테크 도면·MMS 기반 물류센터 구축 실적 |
+| Geometry | Sensor 가시성 일치 | 동일 Pose에서 실·가상 Depth 유효화소 비율 차 | **≤ 10 %p** | 실·가상 카메라 정합 검수 관행 |
+| Physics | 접촉력 재현오차 | 기준 물성시험 대비 접촉력·변위 곡선 NRMSE | 대상 소재군별 **≤ 20 %** | 물성 파라미터 식별 후 보정 전제 |
+| Physics | Cycle Time 편차 | 동일 Task의 실물–시뮬레이션 소요시간 차 | **≤ 15 %** | Task별 SOP 고정 시 달성 가능 범위 |
+| Physics | 실패 발생조건 일치 | 실물에서 관측된 실패조건의 시뮬레이션 재현율 | **≥ 70 %** | Edge Case 재생 구조 전제 |
+| Data | Episode 생성 처리량 | Scenario 1건당 자동 생성 Episode 수·소요시간 | Run당 **1,000 프레임급 자동 생성** 유지 | OmniLRS에서 1 Run ≈ 1,000 프레임 자동 생성·종료 확인 |
+| Data | Schema 완전성 | 필수 필드(Task·Observation·Action·Physics·GT·Outcome·Provenance) 충족률 | **100 %** | 자동 검증 Gate로 강제 |
+| Data | 재현성 | 동일 Seed·버전으로 Episode 재생성 시 일치율 | **≥ 99 %** | Versioned Asset·Material·Seed 관리 전제 |
+| Data | QC 통과율 | 자동 QC + 전문가 표본검수 통과 Episode 비율 | **≥ 90 %** | 시간동기·범위검사·결측 탐지 자동화 |
+| Edge Case | 후보 정밀도 | 자동 후보 중 전문가가 확정한 비율 | **≥ 50 %** | Human-in-the-loop 검수 전제, 오탐 허용 설계 |
+| Edge Case | Recovery Coverage | 실패유형 대비 복구 Episode 보유 비율 | **≥ 80 %** | 실패–복구 쌍 수집 Protocol 적용 |
+| Model | Sim-to-Real Gap | 동일 Task의 시뮬레이션–실물 성공률 차 | **≤ 20 %p** | 합성 사전학습 + 소량 실데이터 Fine-tuning 전략 |
+| Model | 합성데이터 기여도 | 합성 사전학습 유무에 따른 성능 차 | **유의한 향상 확인** | OmniLRS 실적에서 mAP 약 14% 향상 확인 |
+| Teleoperation | 유효 Demonstration | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | 30명·5개 조, 6인 역할 순환 체계 |
+| 운영 | 공동활용 성과 | 참여기업 수, Asset 재사용률, Onboarding 소요, 검증 Turnaround | 분기 단위 추세관리 | HSU-PAC Shared Testbed 운영 |
+
+!!! warning "잠정 목표의 취급"
+    위 수치는 **제안 단계의 잠정치**입니다. 대상 Use Case, 소재군, Robot·Sensor 구성, 실증환경이
+    확정되면 기준 데이터를 실측한 뒤 컨소시엄 공통 KPI로 동결하며, 확정 전에는 협약 목표로 인용하지
+    않습니다. 특히 접촉력·Cycle Time·Sim-to-Real Gap은 **대상 소재와 Task 난이도에 강하게 의존**하므로
+    Use Case별로 별도 목표를 둡니다.
+
+**기준선 동결 절차** — ① Use Case·Robot·소재군 확정 → ② 실물 기준시험(물성·Cycle Time·실패조건)
+계측 → ③ 지표별 현재값(Baseline) 산출 → ④ 차년도별 목표값 합의 → ⑤ Interface Specification에
+포함해 승인 → ⑥ 변경 시 개정이력으로 관리.
+
 ---
 
 ## 단계별 추진안
@@ -450,6 +594,34 @@ flowchart TB
 | 5. Physical Validation | 실제 Robot 적용, Domain Gap 분석, 반복 보정 | 공통 KPI 기반 Sim-to-Real 검증 |
 | 6. 데이터팩토리 운영 | 참여기업 공동활용, 실패·Edge Case 후보화, Scenario 재생성·재학습 | Shared Testbed와 Validation Feedback Loop 운영 |
 
+### 차년도 매핑과 마일스톤
+
+6개 단계는 4개 차년도에 걸쳐 중첩 수행합니다. 1단계는 전 기간에 걸쳐 개정되고, 5·6단계는
+3차년도부터 반복 Loop로 운영됩니다.
+
+| 차년도 | 주 수행 단계 | 마일스톤(완료 판정 대상) |
+|---|---|---|
+| 1차년도 | 1 기준선 설계, 2 착수 | **M1** 공동 Interface Specification 승인 · **M2** Pilot Scan과 기준 3D Asset 검수 · **M3** Ontology v1과 Teleoperation·안전 Protocol 승인 |
+| 2차년도 | 2 완료, 3 주력 | **M4** 제조공간 Digital Twin 본 구축 검수 · **M5** Deformation Engine 1차와 Material Library · **M6** Edge Case Extractor 1차, Teleoperation 수집환경 가동 |
+| 3차년도 | 4 주력, 5 착수, 6 개시 | **M7** Synthetic·Real·Demonstration Dataset 1차 릴리스 · **M8** RFM Adapter·Benchmark 합의 · **M9** 실물 Robot Domain Gap 1차 측정 · **M10** 참여기업 Shared Testbed 운영 개시 |
+| 4차년도 | 5·6 반복, 표준화 | **M11** Edge Case·Recovery Corpus 고도화 · **M12** 재학습–재검증 Loop 2회 이상 완주 · **M13** Ontology·Interface·Asset·Dataset 표준화 · **M14** 상생공간·현장 연계 최종 실증 |
+
+| 단계 | 1차년도 | 2차년도 | 3차년도 | 4차년도 |
+|---|:--:|:--:|:--:|:--:|
+| 1. 기준선·Interface 설계 | ● | ◐ | ◐ | ◐ |
+| 2. Digital Twin 구축 | ◐ | ● | ○ | ○ |
+| 3. Physics·Scenario 개발 | ○ | ● | ◐ | ○ |
+| 4. Data·RFM 연계 | ○ | ◐ | ● | ◐ |
+| 5. Physical Validation | ○ | ○ | ● | ● |
+| 6. 데이터팩토리 운영 | ○ | ○ | ◐ | ● |
+
+<small>● 주 수행 · ◐ 병행·개정 · ○ 준비 또는 해당 없음</small>
+
+
+!!! note "일정 가정"
+    위 구간은 **4개 차년도·약 44개월 가정**에 따른 상대 일정입니다. 공고문 기준(43개월)으로 확정될
+    경우 1차년도(9개월 기준) 범위를 우선 조정하고, 마일스톤 순서는 유지합니다.
+
 ---
 
 ## 차년도별 예상 예산(가안)
@@ -457,7 +629,8 @@ flowchart TB
 !!! warning "예산 기준과 범위"
     아래 금액은 **한성대학교 주도 Work Package**에 모빌테크의 Simulation-ready Digital Twin·3D
     Asset 공동개발, Ontology·Edge Case, 학생 Teleoperation Data, HSU-PAC 참여기업 공동활용 범위를
-    포함한 기준안입니다. 사업기간은 확정 전까지 **4개 차년도·약 44개월**로 가정하며, 총사업비·
+    포함한 기준안입니다. 사업기간은 확정 전까지 **4개 차년도·약 44개월**로 가정하며(「과제 개요와
+    공고 정합성」의 수치 차이 참조), 총사업비·
     기관별 정부지원금·현금·현물·간접비 배분을 의미하는 확정예산이 아닙니다.
 
     500평 상생공간의 건축·인테리어, 컨소시엄 공용 대형 GPU Cluster, RFM 주관기관의 모델개발비,
@@ -499,6 +672,26 @@ flowchart TB
 
 ---
 
+## 리스크와 대응
+
+제안 단계에서 이미 드러난 위험을 감추지 않고, 완화 수단과 판단 시점을 함께 둡니다.
+
+| 구분 | 리스크 | 영향 | 대응 |
+|---|---|---|---|
+| 범위 | **기관 간 역할 중첩** — Simulation·Data·검증 영역에서 타 기관과 업무가 겹칠 수 있음 | 중복투자, 산출물 소유 불명확 | 기능이 아니라 **Hand-off 산출물 단위**로 책임을 정의하고 Interface Specification에 명시 |
+| 범위 | **Use Case 확정 지연** | Asset·물성·Scenario 착수 지연 | 1차년도에 Pilot Use Case 1건을 먼저 동결해 Interface를 검증하고, 확장은 2차년도로 분리 |
+| 기술 | **제조 Use Case·Data Schema 구체화 부족** | Dataset 재작업 | Schema를 버전화하고 최소 필수 필드부터 강제, 확장 필드는 선택으로 시작 |
+| 기술 | **물성 파라미터 식별 실패** — 소재군이 넓거나 시험 데이터 부족 | Physics Fidelity 미달 | 응답 모델을 교체 가능한 모듈로 설계하고, 소재군을 단계적으로 확대. 미확보 소재는 불확실성 범위로 표기 |
+| 기술 | **Deformation 계산비용** — 실시간 요구와 충돌 | Episode 생성 처리량 저하 | 실시간·준실시간 2개 모드 운영, 학습데이터 생성은 준실시간 배치로 분리 |
+| 실적 | **제조 로봇 실물검증 레퍼런스 부족** — 기존 실적이 달·야외 주행 중심 | 연구역량 평가 감점 | HSU-PAC Manipulation Cell·Mobile Robot Arena에서 선행 검증하고, Robot HW 기관과 조기 공동시험 |
+| 자산 | **제조 특화 Asset·Scenario 축적 부족** | 초기 데이터 다양성 부족 | 모빌테크 산업·물류 Asset 실적을 기반선으로 사용하고, Scenario Library를 재사용 단위로 설계 |
+| 운영 | **Teleoperation 데이터 편향** — 특정 조작자 습관 학습 | 모델 일반화 실패 | 작업자 단위로 학습·검증 Set 분리, 숙련도·전략 다양성 확보, 조별 Coverage 관리 |
+| 운영 | **참여기업 데이터 보안** | 반입 거부, 실증 축소 | 기업별 Namespace·권한 분리, NDA, 접근 Log와 Asset 버전 관리 |
+| 사업 | **기간·예산 확정치 변동** (43개월 vs 44개월, 세부 지원규모) | 계획 재작성 | 차년도 구조를 단계 중첩으로 설계해 기간 변동 시 마일스톤 순서를 유지한 채 구간만 조정 |
+| 사업 | **RFP/품목서 정량목표와의 불일치** | 목표 미달 판정 | 품목서 확보 즉시 KPI 표와 대조해 기준선 동결 전에 정렬 |
+
+---
+
 ## 컨소시엄 공통 Interface
 
 | 참여영역 | 한성대학교와 주고받는 정보 |
@@ -529,6 +722,8 @@ flowchart TB
 - 참여기업 Asset·Model·Robot의 **HSU-PAC 공동 사전검증 운영체계**
 - 실물 검증 기반 **Domain Gap Report와 Calibration Data**
 - 반복적인 데이터 생성–학습–검증을 위한 **Validation Feedback Pipeline**
+- 지표 정의·산정식·측정절차를 담은 **정량 KPI 정의서와 기준선(Baseline) Report**
+- 기간·범위·기술 리스크의 **리스크 관리대장과 완화 이력**
 
 ---
 
@@ -547,6 +742,10 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 
 - [OmniLRS — Omniverse Lunar Robotics Simulator](https://github.com/OmniLRS/OmniLRS)
 - [OmniLRS Deformation Engine](https://github.com/OmniLRS/OmniLRS/wiki/deformation_engine)
+- [OmniLRS 설치·실행 매뉴얼](https://github.com/OmniLRS/OmniLRS/wiki)
+- [NVIDIA Isaac Sim Container 설치 문서](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_container.html)
+- Kamohara, J., Ares, V. E., Hurrell, J., Takehana, K., Richard, A., Santra, S., Uno, K., Rohmer, E., & Yoshida, K. (2024). *Modeling of terrain deformation by a grouser wheel for lunar rover simulation.* Proc. 21st Int'l & 12th Asia-Pacific Regional Conf. of the ISTVS, 283–289.
+- [산업통상부 공고 제2026-549호 — 2026년도 제2차 로봇산업기술개발사업 신규지원 대상과제](https://www.motir.go.kr/kor/article/ATCLc01b2801b/71273/view)
 - [한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC](../hsu-pac.md)
 
 ---
