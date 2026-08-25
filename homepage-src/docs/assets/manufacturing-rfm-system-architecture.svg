@@ -173,7 +173,7 @@
   <!-- HSU-PAC Shared Testbed -->
   <rect x="344" y="805" width="1088" height="88" rx="16" fill="#eef7f8" stroke="#c3e0e4"/>
   <text x="374" y="837" class="tbT">HSU-PAC Shared Testbed</text>
-  <text x="374" y="861" class="tbB">RTX PRO 6000 96GB ×4 · DGX Spark 1~2대(사용률 기반 최대 5대) · AWS Burst · NAS 40~80TB · 10GbE</text>
+  <text x="374" y="861" class="tbB">GPU 서버(RTX PRO 6000 96GB급) · DGX Spark · AWS Burst · NAS · 10GbE  |  현재 보유 / 착수 시 구축 / 선택 증설</text>
   <text x="374" y="881" class="tbB">Isaac Sim / Isaac Lab · ROS 2 · Mobile Robot Arena · Manipulation Cell · Sensor Studio · Teleop Console · 기업별 격리환경</text>
 
   <!-- ── 우: 한성대 고유 산출물 ── -->

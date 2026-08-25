@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.58</td>
+<td>1.59</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1308,6 +1308,11 @@
 <td>1.58</td>
 <td>2026-08-25</td>
 <td><strong>강화학습 저장소를 분리 신설</strong> — <a href="https://github.com/parclab-hsu/l-project-rl"><code>parclab-hsu/l-project-rl</code></a>(비공개). 자세 제어와 크레이터 탈출 모션을 다룬다. 학습은 실험 사이클이 빠르고 산출물 성격이 달라 본체와 같은 저장소에 두면 본체 이력이 실험 커밋에 묻힌다. <strong>12축 계약은 본체 <code>axes.py</code> 가 정본</strong>이고 학습 저장소에 사본을 두지 않는다 — 사본 관리는 D-33·D-34·D-36 으로 세 번 실패했다. 출발점은 D-37 의 실측(크레이터에서 슬립 100 %, 자세는 정상)이다. <strong>착수 전 제약을 README 에 먼저 명시했다</strong> — D-31 미해결(원인을 모르는 채 학습하면 그 원인을 보상으로 학습한다) · 변형 엔진 꺼져 있음 · 실기 검증 경로 없음</td>
+</tr>
+<tr>
+<td>1.59</td>
+<td>2026-08-25</td>
+<td><strong>D-31 해결 — 「슬립 49 %」는 슬립이 아니라 <code>1 − RTF</code> 였다. 그리고 그 자리에서 D-38 이 나왔다.</strong> 속도를 40 배 흔들어 소인하니 슬립이 <strong>속도와 무관</strong>했고, 같은 노드가 내는 <strong>포즈와 트위스트가 정확히 2 배 어긋났다</strong>(0.4987). 원인은 설정 두 개의 불일치다 — PhysX 는 <code>physics/default_physics.yaml</code> 의 <code>dt: 0.016666</code> 으로 적분하는데 실시간 페이싱은 <code>environment</code> 의 <code>physics_dt: 0.0333</code> 으로 걸려, 루프가 30 회/초 돌며 매회 16.67 ms 씩만 진행한다 → <strong>심 시간이 벽시계의 0.4994 배</strong>. <code>measure_slip.py</code> 가 경로를 벽시계로 나누고 있었다. <strong>심 시간 기준으로 다시 재니 슬립 −0.011 ~ +0.001, 유효 굴림 반경 비 1.0097.</strong> 침하·차체 끌림 후보는 배제됐다. <strong>D-38 은 미해결로 남긴다</strong> — 네 조건을 실측한 결과 이 하드웨어에서는 접지 정합성을 깨지 않고 실시간을 못 낸다(물리 1/30 은 RTF 0.999 지만 ω=2 에서 슬립 0.637 로 접지가 깨지고, 헤드리스로도 45 Hz 가 천장이라 렌더링이 병목이 아니다). <strong>현행 유지하되 측정을 전부 심 시간 기준으로 바꾸고 GUI 에 RTF 를 상시 노출한다.</strong> 신설 <code>tools/isaac/sweep_slip_vs_speed.py</code>, 산출물 <code>results/d31-slip-sweep-20260825/</code>. <strong>D-24 ② 마찰 A/B 결과는 유효하다</strong> — 애초에 물리량을 재고 있지 않았으므로 마찰이 안 듣는 것이 정상이었다</td>
 </tr>
 <tr>
 <td>1.46</td>
