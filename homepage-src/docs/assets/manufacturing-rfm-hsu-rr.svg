@@ -26,7 +26,7 @@
       .label { font-size: 18px; font-weight: 700; fill: #087f8c; letter-spacing: 1px; }
       .card-title { font-size: 28px; font-weight: 800; fill: #102f40; }
       .core-title { font-size: 30px; font-weight: 800; fill: #ffffff; }
-      .core-body { font-size: 19px; fill: #dff8fa; }
+      .core-body { font-size: 17px; fill: #dff8fa; }
     </style>
   </defs>
 
@@ -40,7 +40,7 @@
   <rect x="1210" y="45" width="300" height="54" rx="27" fill="#0f8f99"/>
   <text x="1360" y="79" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">제조 데이터팩토리 기술 인터페이스</text>
 
-  <rect x="560" y="164" width="480" height="58" rx="29" fill="#ffffff" stroke="#68cbd1" stroke-width="2"/>
+  <rect x="472" y="164" width="656" height="58" rx="29" fill="#ffffff" stroke="#68cbd1" stroke-width="2"/>
   <text x="800" y="200" text-anchor="middle" font-size="22" font-weight="800" fill="#087f8c">OmniLRS 연구경험 → 제조용 Deformation Engine 파생</text>
   <path d="M800 222 L800 252" stroke="#0f8f99" stroke-width="4" marker-end="url(#arrow)"/>
 
@@ -79,28 +79,28 @@
   <text x="590" y="345" class="core-title">한성대학교 핵심 R&amp;R</text>
   <text x="590" y="376" class="core-body">Asset·Physics·Data·Model·Validation을 연결</text>
 
-  <rect x="585" y="410" width="215" height="120" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
-  <text x="608" y="445" font-size="20" font-weight="800" fill="#ffffff">Deformation Engine</text>
-  <text x="608" y="477" class="core-body">물성 · 접촉 · 변형</text>
-  <text x="608" y="505" class="core-body">누적상태 · 보정</text>
+  <rect x="578" y="400" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
+  <text x="596" y="434" font-size="19" font-weight="800" fill="#ffffff">Deformation Engine</text>
+  <text x="596" y="464" class="core-body">물성 · 접촉 · 변형</text>
+  <text x="596" y="490" class="core-body">누적상태 · 파라미터 보정</text>
 
-  <rect x="820" y="410" width="215" height="120" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
-  <text x="843" y="445" font-size="20" font-weight="800" fill="#ffffff">Isaac Sim · ROS 2</text>
-  <text x="843" y="477" class="core-body">Robot · Sensor</text>
-  <text x="843" y="505" class="core-body">Task · Scenario</text>
+  <rect x="816" y="400" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
+  <text x="834" y="434" font-size="19" font-weight="800" fill="#ffffff">Isaac Sim · ROS 2</text>
+  <text x="834" y="464" class="core-body">Robot · Sensor</text>
+  <text x="834" y="490" class="core-body">Task · Scenario</text>
 
-  <rect x="585" y="550" width="215" height="120" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
-  <text x="608" y="585" font-size="20" font-weight="800" fill="#ffffff">Ontology · Data</text>
-  <text x="608" y="617" class="core-body">Edge Case Extraction</text>
-  <text x="608" y="645" class="core-body">Synthetic · Teleoperation</text>
+  <rect x="578" y="546" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
+  <text x="596" y="580" font-size="19" font-weight="800" fill="#ffffff">Ontology · Data</text>
+  <text x="596" y="610" class="core-body">Edge Case Extraction</text>
+  <text x="596" y="636" class="core-body">Synthetic · Teleoperation</text>
 
-  <rect x="820" y="550" width="215" height="120" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
-  <text x="843" y="585" font-size="20" font-weight="800" fill="#ffffff">Sim-to-Real</text>
-  <text x="843" y="617" class="core-body">Domain Gap</text>
-  <text x="843" y="645" class="core-body">Failure · Edge Case</text>
+  <rect x="816" y="546" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
+  <text x="834" y="580" font-size="19" font-weight="800" fill="#ffffff">Sim-to-Real</text>
+  <text x="834" y="610" class="core-body">Domain Gap</text>
+  <text x="834" y="636" class="core-body">Failure · Edge Case</text>
 
-  <rect x="575" y="692" width="470" height="38" rx="19" fill="#07303f" stroke="#55cbd1"/>
-  <text x="810" y="718" text-anchor="middle" font-size="16" font-weight="700" fill="#bff3f5">HSU-PAC · 참여기업 Shared Lab · GPU · ROS 2 · 실물 로봇</text>
+  <rect x="568" y="694" width="484" height="40" rx="20" fill="#07303f" stroke="#55cbd1"/>
+  <text x="810" y="720" text-anchor="middle" font-size="15" font-weight="700" fill="#bff3f5">HSU-PAC · 참여기업 Shared Lab · GPU · ROS 2 · 실물 로봇</text>
 
   <!-- RFM and robot -->
   <g filter="url(#shadow)">
@@ -126,9 +126,11 @@
 
   <!-- Main hand-offs -->
   <path d="M470 488 L535 488" stroke="#0f8f99" stroke-width="5" marker-end="url(#arrow)"/>
-  <text x="502" y="468" text-anchor="middle" font-size="16" font-weight="700" fill="#087f8c">Asset·Physics</text>
+  <text x="510" y="459" text-anchor="middle" font-size="15" font-weight="700" fill="#087f8c">Asset</text>
+  <text x="510" y="476" text-anchor="middle" font-size="15" font-weight="700" fill="#087f8c">Physics</text>
   <path d="M1070 488 L1135 488" stroke="#0f8f99" stroke-width="5" marker-end="url(#arrow)"/>
-  <text x="1102" y="468" text-anchor="middle" font-size="16" font-weight="700" fill="#087f8c">Data·Model</text>
+  <text x="1110" y="459" text-anchor="middle" font-size="15" font-weight="700" fill="#087f8c">Data</text>
+  <text x="1110" y="476" text-anchor="middle" font-size="15" font-weight="700" fill="#087f8c">Model</text>
 
   <!-- Feedback loop -->
   <path d="M1340 700 C1340 800, 1060 800, 970 750" fill="none" stroke="#0f8f99" stroke-width="4" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
