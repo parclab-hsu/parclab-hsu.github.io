@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100" role="img" aria-labelledby="title desc">
+  <title id="title">한성대학교 고유 Physical AI Data Factory 아키텍처</title>
+  <desc id="desc">외부기관의 표준 입력을 받아 한성대가 보유·개발하는 OmniLRS 파생 Deformation Engine, Manufacturing Ontology, 학생 Teleoperation Data Engine, Ontology 기반 Edge Case Intelligence를 Versioned Episode Factory와 HSU-PAC Shared Testbed 위에서 운영하고, 한성대 고유 산출물을 타 기관에 제공하며 실물 검증 결과를 다시 반영하는 폐루프 구조</desc>
+
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fbfc"/>
+      <stop offset="1" stop-color="#e8f3f4"/>
+    </linearGradient>
+    <linearGradient id="coreHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0d4653"/>
+      <stop offset="1" stop-color="#0f6b74"/>
+    </linearGradient>
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0b2638" flood-opacity="0.10"/>
+    </filter>
+    <marker id="mTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0f8f99"/>
+    </marker>
+    <marker id="mBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2f6fd0"/>
+    </marker>
+    <marker id="mPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7a5fb8"/>
+    </marker>
+    <marker id="mOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#ef8b1e"/>
+    </marker>
+    <style>
+      text { font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif; }
+      .eyebrow  { font-size: 15px; font-weight: 800; fill: #0f8f99; letter-spacing: 1.6px; }
+      .h1       { font-size: 40px; font-weight: 800; fill: #10303e; }
+      .sub      { font-size: 19px; fill: #4d6b78; }
+      .collabel { font-size: 14px; font-weight: 800; fill: #7d97a3; letter-spacing: 1.3px; }
+      .panelT   { font-size: 21px; font-weight: 800; fill: #10303e; }
+      .panelS   { font-size: 13.5px; fill: #6d8794; }
+      .itemT    { font-size: 17px; font-weight: 800; fill: #10303e; }
+      .itemB    { font-size: 13px; fill: #55707d; }
+      .cardT    { font-size: 24px; font-weight: 800; fill: #10303e; }
+      .cardB    { font-size: 15px; font-weight: 600; fill: #33566a; }
+      .cardT2   { font-size: 21px; font-weight: 800; fill: #10303e; }
+      .coreEye  { font-size: 15px; font-weight: 800; fill: #8fdfe4; letter-spacing: 1.4px; }
+      .coreT    { font-size: 27px; font-weight: 800; fill: #ffffff; }
+      .bandT    { font-size: 22px; font-weight: 800; fill: #ffffff; }
+      .bandB    { font-size: 13.5px; fill: #a9dfe6; }
+      .pill     { font-size: 13.5px; font-weight: 700; }
+      .tbT      { font-size: 19px; font-weight: 800; fill: #0d5763; }
+      .tbB      { font-size: 13.5px; font-weight: 600; fill: #3d6470; }
+      .outT     { font-size: 16px; font-weight: 800; fill: #10303e; }
+      .outB     { font-size: 12.5px; fill: #55707d; }
+      .fb       { font-size: 15px; font-weight: 800; fill: #d97b13; }
+      .footT    { font-size: 14px; fill: #7d97a3; }
+      .footB    { font-size: 25px; font-weight: 800; fill: #0d4a7a; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1100" fill="url(#page)"/>
+
+  <!-- ── 헤더 ── -->
+  <text x="46" y="52" class="eyebrow">HANSUNG UNIVERSITY · UNIQUE R&amp;R</text>
+  <text x="46" y="103" class="h1">한성대학교 고유 Physical AI Data Factory 아키텍처</text>
+  <text x="46" y="140" class="sub">OmniLRS 파생 물리모델 · 제조 Ontology · 학생 Teleoperation · HSU-PAC · Sim-to-Real Closed Loop</text>
+
+  <text x="46" y="210" class="collabel">EXTERNAL INPUT INTERFACES</text>
+  <text x="1770" y="210" text-anchor="end" class="collabel">HSU-OWNED OUTPUTS</text>
+
+  <!-- ── 좌: 외부기관 입력 ── -->
+  <g filter="url(#soft)"><rect x="44" y="246" width="236" height="560" rx="22" fill="#ffffff"/></g>
+  <text x="70" y="292" class="panelT">외부기관 입력</text>
+  <text x="70" y="317" class="panelS">한성대 코어가 재사용하는 표준 입력</text>
+
+  <rect x="66" y="340" width="192" height="92" rx="14" fill="#f2f7f8"/>
+  <circle cx="88" cy="368" r="9" fill="#7fd0cf"/>
+  <text x="106" y="374" class="itemT">모빌테크</text>
+  <text x="84" y="400" class="itemB">3D Asset · 좌표 · LOD</text>
+  <text x="84" y="420" class="itemB">Semantic · 현장 Metadata</text>
+
+  <rect x="66" y="450" width="192" height="92" rx="14" fill="#f2f7f8"/>
+  <circle cx="88" cy="478" r="9" fill="#8fb3e8"/>
+  <text x="106" y="484" class="itemT">Robot·제조기업</text>
+  <text x="84" y="510" class="itemB">Real Robot Episode</text>
+  <text x="84" y="530" class="itemB">Sensor · Failure · 품질</text>
+
+  <rect x="66" y="560" width="192" height="92" rx="14" fill="#f2f7f8"/>
+  <circle cx="88" cy="588" r="9" fill="#b3a0dd"/>
+  <text x="106" y="594" class="itemT">RFM 기관</text>
+  <text x="84" y="620" class="itemB">Model · Checkpoint</text>
+  <text x="84" y="640" class="itemB">Confidence · Hard Case</text>
+
+  <rect x="66" y="700" width="192" height="42" rx="21" fill="#eef4f6"/>
+  <text x="162" y="727" text-anchor="middle" font-size="14" font-weight="700" fill="#5c7885">공통 Interface만 연계</text>
+
+  <!-- 입력 화살표 -->
+  <path d="M282 386 L304 386" stroke="#0f8f99" stroke-width="7" marker-end="url(#mTeal)"/>
+  <path d="M282 496 L304 496" stroke="#2f6fd0" stroke-width="7" marker-end="url(#mBlue)"/>
+  <path d="M282 606 L304 606" stroke="#7a5fb8" stroke-width="7" marker-end="url(#mPurple)"/>
+
+  <!-- ── 중앙: 한성대 코어 ── -->
+  <g filter="url(#soft)"><rect x="308" y="176" width="1160" height="740" rx="26" fill="#ffffff" stroke="#cfe4e8"/></g>
+  <path d="M308 202 a26 26 0 0 1 26 -26 h1108 a26 26 0 0 1 26 26 v74 h-1160 z" fill="url(#coreHead)"/>
+  <text x="344" y="216" class="coreEye">HANSUNG UNIVERSITY · PROPRIETARY DIFFERENTIATION AREA</text>
+  <text x="344" y="256" class="coreT">한성대 고유 통합 Data Factory Core</text>
+
+  <rect x="900" y="199" width="170" height="54" rx="12" fill="#ffffff" opacity="0.14"/>
+  <text x="985" y="221" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">RESEARCH SEED</text>
+  <text x="985" y="241" text-anchor="middle" font-size="12.5" fill="#c2eef1">OmniLRS · HILS</text>
+  <rect x="1084" y="199" width="170" height="54" rx="12" fill="#ffffff" opacity="0.14"/>
+  <text x="1169" y="221" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">HUMAN DATA</text>
+  <text x="1169" y="241" text-anchor="middle" font-size="12.5" fill="#c2eef1">30명 · 5개 조</text>
+  <rect x="1268" y="199" width="170" height="54" rx="12" fill="#ffffff" opacity="0.14"/>
+  <text x="1353" y="221" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">SHARED LAB</text>
+  <text x="1353" y="241" text-anchor="middle" font-size="12.5" fill="#c2eef1">HSU-PAC</text>
+
+  <!-- 카드 1 -->
+  <rect x="344" y="310" width="529" height="140" rx="16" fill="#eaf2fb"/>
+  <rect x="344" y="310" width="8" height="140" rx="4" fill="#2f6fd0"/>
+  <circle cx="392" cy="348" r="22" fill="#1f5fbf"/>
+  <text x="392" y="356" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">1</text>
+  <text x="428" y="356" class="cardT">OmniLRS 파생 Deformation Engine</text>
+  <rect x="757" y="297" width="104" height="27" rx="13" fill="#1f5fbf"/>
+  <text x="809" y="316" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">대표 성과</text>
+  <text x="372" y="396" class="cardB">달 지형 변형기술을 제조 Contact–Material–State 변화로 확장</text>
+  <text x="372" y="424" class="cardB">마찰 · 강성 · 변형 · 복원 · 마모 · 반복하중 · Physics Calibration</text>
+
+  <!-- 카드 2 -->
+  <rect x="903" y="310" width="529" height="140" rx="16" fill="#e6f5f2"/>
+  <rect x="903" y="310" width="8" height="140" rx="4" fill="#0e8a86"/>
+  <circle cx="951" cy="348" r="22" fill="#0e8a86"/>
+  <text x="951" y="356" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">2</text>
+  <text x="987" y="356" class="cardT">Manufacturing Ontology</text>
+  <text x="931" y="396" class="cardB">Asset–Process–Task–State–Event–Failure–Recovery 의미관계 통합</text>
+  <text x="931" y="424" class="cardB">3D Asset · 물성 · Robot Episode · Model 결과의 Semantic 연결</text>
+
+  <!-- 카드 3 -->
+  <rect x="344" y="485" width="529" height="140" rx="16" fill="#f2eef8"/>
+  <rect x="344" y="485" width="8" height="140" rx="4" fill="#8a6fc4"/>
+  <circle cx="392" cy="523" r="22" fill="#7a5fb8"/>
+  <text x="392" y="531" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">3</text>
+  <text x="428" y="531" class="cardT">학생 Teleoperation Data Engine</text>
+  <text x="372" y="571" class="cardB">30명·5개 조 · 표준 Task / Safety Protocol · Human Demonstration</text>
+  <text x="372" y="599" class="cardB">성공 · 실패회피 · Recovery 행동 · Edge Case 신고 · 1차 검수</text>
+
+  <!-- 카드 4 -->
+  <rect x="903" y="485" width="529" height="140" rx="16" fill="#fdf0dd"/>
+  <rect x="903" y="485" width="8" height="140" rx="4" fill="#ef8b1e"/>
+  <circle cx="951" cy="523" r="22" fill="#ef8b1e"/>
+  <text x="951" y="531" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">4</text>
+  <text x="987" y="531" class="cardT2">Ontology 기반 Edge Case Intelligence</text>
+  <text x="931" y="571" class="cardB">Rule · Rarity · 상태전이 · Model 불확실성 · Real–Sim Gap 결합</text>
+  <text x="931" y="599" class="cardB">후보화 → 전문가 확정 → Scenario 재생성 → 재학습</text>
+
+  <!-- 카드 간 연결 (여백 안에서만) -->
+  <path d="M608 452 L608 481" stroke="#2f6fd0" stroke-width="5" marker-end="url(#mBlue)"/>
+  <path d="M1167 452 L1167 481" stroke="#0e8a86" stroke-width="5" marker-end="url(#mTeal)"/>
+  <path d="M608 627 L608 653" stroke="#7a5fb8" stroke-width="5" marker-end="url(#mPurple)"/>
+  <path d="M875 555 L899 555" stroke="#7a5fb8" stroke-width="5" marker-end="url(#mPurple)"/>
+  <path d="M1167 627 L1167 653" stroke="#ef8b1e" stroke-width="5" marker-end="url(#mOrange)"/>
+
+  <!-- Episode Factory -->
+  <rect x="344" y="657" width="1088" height="128" rx="18" fill="#103d4a"/>
+  <text x="374" y="697" class="bandT">Versioned Physical AI Episode Factory</text>
+  <text x="374" y="723" class="bandB">시간동기 · 자동 Annotation · QC · Provenance · Asset/Material/Scenario/Model Version · Random Seed</text>
+  <g class="pill">
+    <rect x="396" y="740" width="110" height="32" rx="16" fill="#dbeafe"/><text x="451" y="761" text-anchor="middle" fill="#1e4f9c">Synthetic</text>
+    <rect x="516" y="740" width="80"  height="32" rx="16" fill="#d7f0ee"/><text x="556" y="761" text-anchor="middle" fill="#0b6b68">Real</text>
+    <rect x="606" y="740" width="145" height="32" rx="16" fill="#ece4f7"/><text x="678" y="761" text-anchor="middle" fill="#5f4794">Teleoperation</text>
+    <rect x="761" y="740" width="155" height="32" rx="16" fill="#fce6cb"/><text x="838" y="761" text-anchor="middle" fill="#a8620a">Edge · Recovery</text>
+    <rect x="926" y="740" width="165" height="32" rx="16" fill="#d7f0ee"/><text x="1008" y="761" text-anchor="middle" fill="#0b6b68">RFM Benchmark</text>
+    <rect x="1101" y="740" width="130" height="32" rx="16" fill="#dbeafe"/><text x="1166" y="761" text-anchor="middle" fill="#1e4f9c">Sim-to-Real</text>
+    <rect x="1241" y="740" width="165" height="32" rx="16" fill="#ece4f7"/><text x="1323" y="761" text-anchor="middle" fill="#5f4794">Model Feedback</text>
+  </g>
+
+  <!-- HSU-PAC Shared Testbed -->
+  <rect x="344" y="805" width="1088" height="88" rx="16" fill="#eef7f8" stroke="#c3e0e4"/>
+  <text x="374" y="837" class="tbT">HSU-PAC Shared Testbed</text>
+  <text x="374" y="861" class="tbB">RTX PRO 6000 96GB ×4 · DGX Spark 1~2대(사용률 기반 최대 5대) · AWS Burst · NAS 40~80TB · 10GbE</text>
+  <text x="374" y="881" class="tbB">Isaac Sim / Isaac Lab · ROS 2 · Mobile Robot Arena · Manipulation Cell · Sensor Studio · Teleop Console · 기업별 격리환경</text>
+
+  <!-- ── 우: 한성대 고유 산출물 ── -->
+  <g filter="url(#soft)"><rect x="1520" y="246" width="250" height="560" rx="22" fill="#ffffff" stroke="#cfe4e8"/></g>
+  <text x="1546" y="292" class="panelT">한성대 고유 산출물</text>
+  <text x="1546" y="317" class="panelS">타 기관이 바로 활용하는 패키지</text>
+
+  <rect x="1540" y="340" width="212" height="92" rx="14" fill="#eaf1fb"/>
+  <text x="1556" y="371" class="outT">Dynamic Physics Twin</text>
+  <text x="1556" y="396" class="outB">Deformation-aware</text>
+  <text x="1556" y="416" class="outB">Asset·Material Package</text>
+
+  <rect x="1540" y="450" width="212" height="92" rx="14" fill="#e6f4f1"/>
+  <text x="1556" y="481" class="outT">Edge Case Package</text>
+  <text x="1556" y="506" class="outB">Ontology Index · Trigger</text>
+  <text x="1556" y="526" class="outB">Failure · Recovery · Replay</text>
+
+  <rect x="1540" y="560" width="212" height="92" rx="14" fill="#f2eef8"/>
+  <text x="1556" y="591" class="outT">RFM Data·Benchmark</text>
+  <text x="1556" y="616" class="outB">Synthetic·Real·Teleop</text>
+  <text x="1556" y="636" class="outB">OOD · Sim-to-Real 평가</text>
+
+  <rect x="1540" y="670" width="212" height="92" rx="14" fill="#fdf0e0"/>
+  <text x="1556" y="701" class="outT">Shared Validation</text>
+  <text x="1556" y="726" class="outB">참여기업 사전 통합</text>
+  <text x="1556" y="746" class="outB">전문인력 · 운영체계</text>
+
+  <!-- 산출 화살표 -->
+  <path d="M1472 496 L1514 496" stroke="#ef8b1e" stroke-width="7" marker-end="url(#mOrange)"/>
+  <path d="M1472 716 L1514 716" stroke="#0f8f99" stroke-width="7" marker-end="url(#mTeal)"/>
+
+  <!-- 피드백 루프 -->
+  <path d="M1646 810 C1646 906, 1646 952, 1566 956 L1240 956 C1196 956, 1180 950, 1180 922"
+        fill="none" stroke="#ef8b1e" stroke-width="4" stroke-dasharray="11 9" marker-end="url(#mOrange)"/>
+  <text x="1770" y="1000" text-anchor="end" class="fb">Physical Validation Failure · Model Uncertainty · Domain Gap을 Edge Case·Physics에 재반영</text>
+
+  <!-- 푸터 -->
+  <rect x="308" y="1010" width="1160" height="72" rx="18" fill="#ffffff" stroke="#cfe4e8"/>
+  <text x="888" y="1038" text-anchor="middle" class="footT">한성대만의 차별화</text>
+  <text x="888" y="1068" text-anchor="middle" class="footB">물리적으로 반응하는 Twin + 의미기반 Edge Intelligence + Human Demonstration + 공동 Testbed를 하나의 학습 폐루프로 운영</text>
+</svg>
