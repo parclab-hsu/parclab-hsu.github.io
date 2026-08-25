@@ -33,7 +33,13 @@ PAGES = [
      '요구사항(SRS)의 구현·검증 경로를 추적하는 상위 계획 문서입니다.'),
 ]
 
-HEAD = """# %(title)s
+# 생성 페이지도 색인 차단 대상이다. front matter 를 넣지 않으면 재생성될 때마다
+# overrides/main.html 의 noindex 메타가 빠진다.
+HEAD = """---
+noindex: true
+---
+
+# %(title)s
 
 !!! abstract "문서 정보"
     %(blurb)s
