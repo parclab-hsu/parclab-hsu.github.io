@@ -52,8 +52,8 @@
       .outT     { font-size: 16px; font-weight: 800; fill: #10303e; }
       .outB     { font-size: 14px; fill: #55707d; }
       .fb       { font-size: 15px; font-weight: 800; fill: #d97b13; }
-      .footT    { font-size: 14px; fill: #7d97a3; }
-      .footB    { font-size: 25px; font-weight: 800; fill: #0d4a7a; }
+      .footT    { font-size: 15px; fill: #7d97a3; }
+      .footB    { font-size: 26px; font-weight: 800; fill: #0d4a7a; }
     </style>
   </defs>
 
@@ -218,10 +218,11 @@
   <!-- 피드백 루프 -->
   <path d="M1646 810 C1646 906, 1646 952, 1566 956 L1240 956 C1196 956, 1180 950, 1180 922"
         fill="none" stroke="#ef8b1e" stroke-width="4" stroke-dasharray="11 9" marker-end="url(#mOrange)"/>
-  <text x="1770" y="1000" text-anchor="end" class="fb">Physical Validation Failure · Model Uncertainty · Domain Gap을 Edge Case·Physics에 재반영</text>
+  <text x="1770" y="986" text-anchor="end" class="fb">Physical Validation Failure · Model Uncertainty · Domain Gap을 Edge Case·Physics에 재반영</text>
 
   <!-- 푸터 -->
-  <rect x="308" y="1010" width="1160" height="72" rx="18" fill="#ffffff" stroke="#cfe4e8"/>
-  <text x="888" y="1038" text-anchor="middle" class="footT">한성대만의 차별화</text>
-  <text x="888" y="1068" text-anchor="middle" class="footB">물리적으로 반응하는 Twin + 의미기반 Edge Intelligence + Human Demonstration + 공동 Testbed를 하나의 학습 폐루프로 운영</text>
+  <rect x="44" y="1000" width="1726" height="86" rx="20" fill="#ffffff" stroke="#c3dde3" stroke-width="2"/>
+  <rect x="44" y="1000" width="1726" height="5" rx="2.5" fill="#0f8f99"/>
+  <text x="907" y="1030" text-anchor="middle" class="footT">한성대만의 차별화</text>
+  <text x="907" y="1068" text-anchor="middle" class="footB">물리적으로 반응하는 Twin + 의미기반 Edge Intelligence + Human Demonstration + 공동 Testbed를 하나의 학습 폐루프로 운영</text>
 </svg>
