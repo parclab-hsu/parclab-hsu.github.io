@@ -1015,7 +1015,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.19</td>
+<td>1.20</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1140,6 +1140,11 @@
 <td>1.19</td>
 <td>2026-08-24</td>
 <td><strong>FR-082 신설(URDF 는 자산에서 생성)·FR-006 서스펜션 한계 정정.</strong> URDF 를 만들면서 대조하니 <strong>서스펜션 클램프가 자산 조인트 한계보다 50 % 넓었다</strong> — 계약 ±π/6(±30°) 인데 자산은 네 모서리 모두 <strong>±0.35 rad(±20.05°)</strong> 다. 주석에는 "(USD 조인트 한계)" 라고 적혀 있었으나 사실이 아니었다(RR-001 D-35). 최대 지령이 조인트 스톱을 밀고 있었고, 수직 스트로크도 0.245 m 가 아니라 <strong>0.168 m</strong> 다. 5장 축 배치와 6장 제원표도 함께 정정했다</td>
+</tr>
+<tr>
+<td>1.20</td>
+<td>2026-08-25</td>
+<td><strong>FR-076 구현·검증 — 안전 공백을 닫았다.</strong> 판정 신호로 적어 두었던 「헤더 타임스탬프 정체」는 <strong>실측으로 기각</strong>했다(autorepeat 중에도 스탬프가 정상 갱신된다). 대신 <strong>페이로드 정체</strong>를 쓴다 — 같은 실측에서 111 표본의 axes·buttons 가 전부 bit-identical 이었다. <code>pad_link_timeout</code>(기본 2.0 s) 동안 한 비트도 안 바뀐 채 주행 지령이 나가면 구동을 세우고, 입력이 바뀌면 자동 해제한다. 알려진 오검출(스틱 끝까지 밀어 붙인 채 유지)을 명시했다. 회귀 <code>tools/test_pad_link_watchdog.py</code> 신설</td>
 </tr>
 <tr>
 <td>1.18</td>
@@ -1727,9 +1732,9 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
 </tr>
 <tr>
 <td>SRS-FR-076</td>
-<td><strong>패드 링크 두절</strong>(절전·무선 단절·케이블 분리)을 감지해 구동축을 정지시킨다</td>
+<td><strong>패드 링크 두절</strong>(절전·무선 단절·케이블 분리)을 감지해 구동축을 정지시킨다. 판정 신호는 <strong><code>/joy</code> 페이로드 정체</strong>이며, 정지는 <strong>주행 지령이 나가고 있을 때만</strong> 건다. 입력이 하나라도 바뀌면 자동 해제된다</td>
 <td>T</td>
-<td><strong>미구현 — 안전 공백</strong></td>
+<td><strong>검증완료 (2026-08-25)</strong> — <code>tools/test_pad_link_watchdog.py</code></td>
 </tr>
 <tr>
 <td>SRS-FR-075</td>
@@ -1781,11 +1786,21 @@ FR-074 는 원래 "조이스틱 <strong>또는</strong> rover_teleop 두절"을 
   걸리지 않는다.</strong> 데드맨을 쥔 채 끊기면 마지막 주행 명령이 무한 반복된다.</li>
 </ul>
 <p><code>autorepeat_rate</code> 는 링크 지연에 대비해 의도적으로 넣은 값이라 그냥 끄면 다른 문제가 생긴다.
-링크 생존을 명령 흐름과 <strong>별개 신호로</strong> 판정해야 한다(예: <code>/joy</code> 헤더 타임스탬프 정체 감시,
-또는 joy 장치 파일 존재 확인). 설계는 미착수다.</p>
-<p>현재는 운용 규칙으로만 막고 있다 — OP-002 2.4절(구동계 연결 시 유선 사용, 비상 정지 상비,
-<strong>토픽이 흐르는 것을 조종이 살아 있다는 근거로 쓰지 않기</strong>). 실물·에뮬레이터를 붙이기 전에
-FR-076 을 닫아야 한다.</p>
+링크 생존을 명령 흐름과 <strong>별개 신호로</strong> 판정해야 한다.</p>
+<p><strong>구현 (2026-08-25).</strong> 후보로 적어 두었던 <strong>「헤더 타임스탬프 정체 감시」는 성립하지 않는다</strong> —
+실측하니 autorepeat 중에도 스탬프가 정상 갱신됐다(7.935 s / 7.935 s 벽시계). 그 자리에서
+같이 잰 것이 답이었다: <strong>페이로드가 111 표본 내내 bit-identical</strong> 이었다. 살아 있는 아날로그
+스틱은 LSB 가 흔들려 이렇게 되지 않는다.</p>
+<p><code>rover_teleop</code> 이 <code>/joy</code> 의 <code>(axes, buttons)</code> 가 마지막으로 <strong>바뀐</strong> 시각을 들고 있다가,
+<code>pad_link_timeout</code>(기본 2.0 s) 동안 한 비트도 안 바뀐 채 <strong>주행 지령이 나가고 있으면</strong>
+구동을 세운다. <strong>굳었어도 지령이 0 이면 개입하지 않는다</strong> — 아무 일도 안 일어나므로
+정지시킬 이유가 없다. 입력이 하나라도 바뀌면 <strong>자동 해제</strong>된다.</p>
+<p><strong>알려진 오검출 하나.</strong> 스틱을 <strong>끝까지 밀어 붙인 채</strong> 2 s 넘게 두면 raw 값이 상한에 고정돼
+bit-identical 이 되어 정지가 걸린다. 스틱을 조금만 움직이면 즉시 풀린다. 무한 폭주를 남겨
+두는 것보다 이쪽이 낫다고 판단했다 — <strong>정지는 되돌릴 수 있고 폭주는 되돌릴 수 없다.</strong></p>
+<p>운용 규칙은 유지한다 — OP-002 2.4절(구동계 연결 시 유선 사용, 비상 정지 상비,
+<strong>토픽이 흐르는 것을 조종이 살아 있다는 근거로 쓰지 않기</strong>). 워치독은 마지막 방어선이지
+첫 방어선이 아니다.</p>
 </blockquote>
 <h2 id="4">4. 비기능 요구사항<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <table>

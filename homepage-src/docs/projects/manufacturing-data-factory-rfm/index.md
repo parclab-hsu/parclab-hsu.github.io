@@ -38,6 +38,10 @@ noindex: true
 
     ②와 ③은 ①이 만든 물리 반응 위에서 작동합니다. **엔진이 이 제안의 중심축입니다.**
 
+    세 성과는 **NVIDIA Cosmos 로 외관을, Isaac Sim·Deformation Engine 으로 물리 정답을 만들고,
+    LeRobotDataset 으로 정규화해 RFM 기관에 넘기는** 하나의 파이프라인 위에서 운영됩니다.
+    가져다 쓸 것과 직접 만들 것을 나눈 설계이며, 상세는 「Physical AI 구축 환경 최적화」 절에 있습니다.
+
 !!! info "사업·역할 상태"
     이 페이지는 컨소시엄 제안 단계의 한성대학교–모빌테크 공동 R&R과 기술구조를 정리한 것입니다.
     제조 Use Case, 대상 설비·로봇, 정량 KPI와 기관별 최종 책임범위는 컨소시엄 협의와 실증환경
@@ -113,9 +117,9 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 | HSU-1. Use Case·Interface 설계 | 제조 Task·Process·Failure Case와 Robot·Sensor 요구조건 정의 | Use Case 명세, 공통 Interface·Dataset Schema |
 | **HSU-2. Deformation Engine** | **[대표 성과]** 물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정, 실계측 기반 검증 | **Manufacturing Deformation Engine**, Material Library, Calibration Tool, 검증 리포트 |
 | HSU-3. 제조 로봇 시뮬레이션 | Isaac Sim·ROS 2 기반 Robot·Sensor·Task·Scenario 구성 | Simulation Package, Scenario Library |
-| HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, **학생 1차 검수 체계 운영** | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor |
-| HSU-5. 학습데이터 생성 | Domain Randomization, Synthetic/Real/Teleoperation Data 정렬, 자동 Annotation, **학생 30명·5개 조의 Demonstration·Edge Case 수집 운영** | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus |
-| HSU-6. RFM 연계 | RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의 | RFM Adapter, Benchmark·Evaluation Protocol |
+| HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, **희소조합을 생성 조건으로 변환(Cosmos 조준)**, 학생 1차 검수 체계 운영 | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor, **생성 조건 명세** |
+| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성**, 자동 Annotation, **LeRobotDataset v3 정규화**, 학생 30명·5개 조의 Demonstration·Edge Case 수집 운영 | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus |
+| HSU-6. RFM 연계 | RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의, **LeRobotDataset 확장 필드 규약 정의** | RFM Adapter, Benchmark·Evaluation Protocol, **Dataset 규약서** |
 | HSU-7. 공동 Testbed·Physical Validation | HSU-PAC 참여기업 공동활용, 실제 Robot HW 적용, Domain Gap 분석 | 사전 통합환경, Sim-to-Real 검증결과, Feedback Data |
 
 ### 한성대학교가 기여하는 핵심 가치
@@ -311,8 +315,8 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 
 
 !!! note "일정 가정"
-    위 구간은 **4개 차년도·약 44개월 가정**에 따른 상대 일정입니다. 공고문 기준(43개월)으로 확정될
-    경우 1차년도(9개월 기준) 범위를 우선 조정하고, 마일스톤 순서는 유지합니다.
+    위 구간은 **공고문 기준 43개월을 4개 차년도로 나눈** 상대 일정입니다. 1차년도는 공고에 따라
+    9개월 기준입니다. 기간이 달라져도 마일스톤 순서는 유지하고 구간만 조정합니다.
 
 ---
 
@@ -350,6 +354,9 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 - 참여기업 Asset·Model·Robot의 **HSU-PAC 공동 사전검증 운영체계**
 - 실물 검증 기반 **Domain Gap Report와 Calibration Data**
 - 반복적인 데이터 생성–학습–검증을 위한 **Validation Feedback Pipeline**
+- Ontology 희소조합을 생성 조건으로 바꾸는 **Cosmos 조준 규약과 생성 조건 명세**
+- 접촉력·변형량·물성·Edge Case ID 를 담는 **LeRobotDataset 확장 필드 규약서**
+- Cosmos 생성 장면과 Isaac Sim 물리량을 짝짓는 **Scene–Physics Pairing 절차**
 - 지표 정의·산정식·측정절차를 담은 **정량 KPI 정의서와 기준선(Baseline) Report**
 - 기간·범위·기술 리스크의 **리스크 관리대장과 완화 이력**
 
@@ -767,6 +774,100 @@ Edge Case 추출을 "자동화했다"고만 쓰면 실제로 누가 판단하는
 
 ---
 
+## Physical AI 구축 환경 최적화 — Cosmos · Isaac Sim · LeRobot
+
+세 가지를 각각 잘하는 일에만 쓰고, 그 사이를 한성대가 잇는 구조입니다. 무엇을 직접 만들고
+무엇을 가져다 쓰는지 분명히 나눕니다.
+
+| 계층 | 무엇을 쓰나 | 무엇을 얻나 | 누가 만드나 |
+|---|---|---|---|
+| 외관·환경 다양화 | **NVIDIA Cosmos** (World Foundation Model) | 조명·재질·시점·배경의 사실적 다양성, 희소 장면 생성 | 가져다 씀 |
+| 물리·정답 | **Isaac Sim + Manufacturing Deformation Engine** | 접촉력·변형량·잔류상태와 자동 Ground Truth | **한성대 개발** |
+| 의미·조준 | **Manufacturing Ontology** | 무엇을 생성할지 결정하는 조건, 사건의 의미 색인 | **한성대 개발** |
+| 행동 | 학생 Teleoperation · 실물 Robot | 사람의 성공·실패회피·복구 행동 | **한성대 운영** |
+| 정규화·학습 | **LeRobot / LeRobotDataset v3** | 모든 출처를 한 포맷으로, RFM 기관이 바로 학습 | 규약 정의 |
+
+!!! tip "한 문장으로"
+    **Cosmos 는 그럴듯함을 만들고, 한성대 엔진은 정답을 만듭니다.**
+    Cosmos 3 는 텍스트·이미지·비디오·음향·행동을 아우르는 개방형 World Foundation Model 로
+    사실적인 물리 환경 영상을 생성하지만, **그 장면에서 그리퍼가 부품을 얼마의 힘으로 눌렀고
+    얼마나 변형됐는지는 알지 못합니다.** 제조 RFM 학습에 필요한 것은 그 값입니다.
+
+### 왜 Cosmos 만으로는 부족한가
+
+| Cosmos 가 주는 것 | 제조 RFM 학습에 더 필요한 것 | 한성대가 채우는 방식 |
+|---|---|---|
+| 사실적 장면·시점·재질의 다양성 | 접촉력·토크·변형량·잔류상태의 **수치 정답** | Deformation Engine 의 자동 Ground Truth |
+| 그럴듯한 다음 행동 예측 | **왜 실패했는가**의 인과·상태전이 | Ontology Temporal Knowledge Graph |
+| 대량 생성 | **무엇을 생성해야 하는가**의 조준 | Ontology 희소조합 분석 → 생성 조건 |
+| 일반 도메인 지식 | 이 공장의 설비·공차·소재 | 모빌테크 Digital Twin + 실계측 Material Profile |
+| — | 생성물의 **재현성·출처 추적** | Versioned Episode Factory · Provenance |
+
+### Ontology 조건으로 Cosmos 생성을 조준합니다
+
+무작위 프롬프트로 대량 생성하면 이미 흔한 장면만 늘어납니다. 한성대는 **Ontology 가 희소하다고
+판단한 조합을 생성 조건으로 변환**해 Cosmos 에 넘깁니다. "많이 만들기"가 아니라 "없는 것 만들기"입니다.
+
+```mermaid
+flowchart TB
+    ONT["Manufacturing Ontology<br/>Asset·Process·State·Failure"] --> GAP["Coverage 분석<br/>재질×공차×조명×Pose 희소조합"]
+    GAP --> COND["생성 조건 명세<br/>Prompt · Layout · Sensor 조건"]
+    COND --> COSMOS["NVIDIA Cosmos<br/>외관·환경 다양화"]
+    DT["Digital Twin + Deformation Engine"] --> ISAAC["Isaac Sim Rollout<br/>물리·접촉·변형"]
+    COND --> ISAAC
+    COSMOS --> PAIR["장면 ↔ 물리량 정합<br/>동일 조건으로 쌍 구성"]
+    ISAAC --> PAIR
+    TELE["학생 Teleoperation<br/>행동·복구"] --> NORM
+    PAIR --> NORM["LeRobotDataset v3 정규화<br/>Observation·Action·Physics·Provenance"]
+    NORM --> RFM["RFM 학습·평가"]
+    RFM -->|Confidence 저하·행동 불일치| GAP
+```
+
+**핵심은 쌍(pair) 구성입니다.** Cosmos 가 만든 사실적 장면과 Isaac Sim 이 만든 물리량을
+**같은 조건으로 생성해 짝지어야** 학습에 쓸 수 있습니다. 장면만 있고 정답이 없으면 인식 학습에는
+써도 조작 정책 학습에는 못 씁니다. 이 정합을 담당하는 것이 한성대의 Versioned Episode Factory 입니다.
+
+### LeRobotDataset 을 단일 데이터 계약으로
+
+출처가 넷(Isaac Sim 합성 · Cosmos 증강 · 실물 Robot · 학생 Teleoperation)인데 포맷이 넷이면
+RFM 기관이 매번 변환기를 만들어야 합니다. **모든 출처를 LeRobotDataset v3 로 정규화**합니다.
+
+| LeRobotDataset v3 특성 | 본 과제에서의 쓰임 |
+|---|---|
+| Parquet + MP4, 다중 Episode 를 한 파일에 | 대량 합성 Episode 의 저장·전송 효율 |
+| 관계형 Metadata 로 Episode 경계 해석 | **Ontology ID·Material 버전·Scenario Seed 를 Metadata 에 심어 검색 가능** |
+| `delta_timestamps` 윈도잉 | 접촉 직전·직후 구간을 잘라 실패·복구 학습에 사용 |
+| Streaming (`StreamingLeRobotDataset`) | 대용량 Dataset 을 내려받지 않고 학습 |
+| Hugging Face Hub 생태계·PyTorch 연동 | RFM 기관이 별도 변환 없이 바로 학습 |
+
+!!! note "확장 필드는 우리가 정의합니다"
+    표준 LeRobotDataset 에는 **접촉력·변형량·물성 파라미터·Edge Case ID** 필드가 없습니다.
+    한성대가 이를 확장 필드로 정의하고 규약을 문서화합니다. 표준 필드만 읽는 기존 도구와도
+    호환되도록 **필수 필드는 표준 그대로 두고 확장은 별도 네임스페이스**에 둡니다.
+
+### HSU-PAC 위에서의 실행 배치
+
+무엇을 어디서 돌릴지가 정해져 있어야 자원이 낭비되지 않습니다.
+
+| 작업 | 실행 위치 | 이유 |
+|---|---|---|
+| Isaac Sim + Deformation Engine Rollout | 교내 GPU 서버 | 상시 반복, 지연에 민감, 라이선스·자산이 로컬 |
+| Cosmos 추론(장면 생성) | DGX Spark 계열 · 필요 시 클라우드 버스트 | 대형 모델 적재가 필요하고 상시가 아닌 배치성 작업 |
+| LeRobot 정규화·품질검사 | 교내 CPU·스토리지 | I/O 중심, GPU 불필요 |
+| RFM Fine-tuning·평가 | DGX Spark · 클라우드 버스트 | 메모리 중심, 피크성 |
+| 학생 Teleoperation 수집 | 실습실 + 실물 실증공간 | 사람이 있어야 함 |
+
+**주간에는 실습·수집·실물검증을, 야간에는 Cosmos 생성과 학습 큐를 돌리는 방식**으로 장비
+활용률을 높입니다. 생성물은 즉시 LeRobotDataset 으로 정규화해 다음 날 학습에 들어가도록 합니다.
+
+!!! warning "도입 상태를 정확히 씁니다"
+    Isaac Sim · ROS 2 · OmniLRS 는 **이미 구동해 본 환경**이고, LeRobot 은 HSU-PAC 소프트웨어
+    스택에 포함되어 있습니다. **Cosmos 연계는 본 과제에서 새로 구축할 범위**이며 현재 수행실적이
+    아닙니다. 1차년도에 Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성 가능성을 먼저 검증하고,
+    실패 시 Domain Randomization 중심으로 회귀하는 대안을 둡니다.
+
+---
+
 ## RFM 학습데이터 설계
 
 ### Episode 단위 데이터
@@ -832,6 +933,9 @@ Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감�
 | Physics | 실패 발생조건 일치 | 실물에서 관측된 실패조건의 시뮬레이션 재현율 | **≥ 70 %** | Edge Case 재생 구조 전제 |
 | Data | Episode 생성 처리량 | **GPU-hour당 유효 Episode 수**와 프레임 수 (Scenario·해상도·Sensor 구성 고정 조건) | 기준 구성에서 **GPU-hour당 Episode 수 기준선 대비 유지** | OmniLRS에서 1 Run ≈ 1,000 프레임 자동 생성·종료 확인 |
 | Data | Schema 완전성 | 필수 필드(Task·Observation·Action·Physics·GT·Outcome·Provenance) 충족률 | **100 %** | 자동 검증 Gate로 강제 |
+| Data | **Dataset 호환성** | 표준 LeRobot 도구로 무변환 로드 성공률 (확장 필드 무시 조건) | **100 %** | 필수 필드는 표준 그대로, 확장은 별도 네임스페이스 |
+| Data | **Scene–Physics 쌍 구성률** | Cosmos 생성 장면 중 동일 조건 Isaac Sim 물리량과 짝지어진 비율 | **≥ 80 %** | 1차년도 타당성 검증 후 확정 |
+| Edge Case | **조준 생성 효율** | Ontology 조건 생성분이 무작위 생성분보다 희소조합을 채운 비율 | **2배 이상** | "많이"가 아니라 "없는 것"을 만드는 설계 |
 | Data | 재현성 | 동일 Seed·버전 재생성 시 일치율 — **Robot State·Physics 값은 상대오차 1e-3 이내, 렌더 영상은 PSNR 40dB 이상을 동일로 판정** | **≥ 99 %** | Versioned Asset·Material·Seed 관리 전제 |
 | Data | QC 통과율 | 자동 QC + 전문가 표본검수 통과 Episode 비율 | **≥ 90 %** | 시간동기·범위검사·결측 탐지 자동화 |
 | Edge Case | 후보 정밀도 | 자동 후보 중 전문가가 확정한 비율 — **분기당 무작위 표본 100건 이상, 판정 기준은 Ontology 규칙 위반·재현 가능성·안전 영향 3항목 합의** | **≥ 50 %** | Human-in-the-loop 검수 전제, 오탐 허용 설계 |
@@ -972,11 +1076,13 @@ flowchart LR
 | 기술 | **제조 Use Case·Data Schema 구체화 부족** | Dataset 재작업 | Schema를 버전화하고 최소 필수 필드부터 강제, 확장 필드는 선택으로 시작 |
 | 기술 | **물성 파라미터 식별 실패** — 소재군이 넓거나 시험 데이터 부족 | Physics Fidelity 미달 | 응답 모델을 교체 가능한 모듈로 설계하고, 소재군을 단계적으로 확대. 미확보 소재는 불확실성 범위로 표기 |
 | 기술 | **Deformation 계산비용** — 실시간 요구와 충돌 | Episode 생성 처리량 저하 | 실시간·준실시간 2개 모드 운영, 학습데이터 생성은 준실시간 배치로 분리 |
+| 기술 | **Cosmos 생성 장면과 물리량의 쌍 구성 실패** — 동일 조건 재현이 어려울 수 있음 | 조작 정책 학습에 쓸 수 없는 데이터만 남음 | 1차년도에 타당성을 먼저 검증. 실패 시 **Domain Randomization 중심으로 회귀**하고 Cosmos 는 인식 학습용 증강에 한정 |
+| 기술 | **외부 모델·프레임워크 의존** (Cosmos·LeRobot 버전 변화) | 파이프라인 파손 | 버전 고정과 정규화 계층 분리. **LeRobotDataset 필수 필드는 표준 준수**해 대체 가능성 확보 |
 | 실적 | **제조 로봇 실물검증 레퍼런스 부족** — 기존 실적이 달·야외 주행 중심 | 연구역량 평가 감점 | HSU-PAC Manipulation Cell·Mobile Robot Arena에서 선행 검증하고, Robot HW 기관과 조기 공동시험 |
 | 자산 | **제조 특화 Asset·Scenario 축적 부족** | 초기 데이터 다양성 부족 | 모빌테크 산업·물류 Asset 실적을 기반선으로 사용하고, Scenario Library를 재사용 단위로 설계 |
 | 운영 | **Teleoperation 데이터 편향** — 특정 조작자 습관 학습 | 모델 일반화 실패 | 작업자 단위로 학습·검증 Set 분리, 숙련도·전략 다양성 확보, 조별 Coverage 관리 |
 | 운영 | **참여기업 데이터 보안** | 반입 거부, 실증 축소 | 기업별 Namespace·권한 분리, NDA, 접근 Log와 Asset 버전 관리 |
-| 사업 | **기간 확정치 변동** (43개월 vs 44개월) | 계획 재작성 | 차년도 구조를 단계 중첩으로 설계해 기간 변동 시 마일스톤 순서를 유지한 채 구간만 조정 |
+| 사업 | **수행기간 확정치 변동** | 계획 재작성 | 차년도 구조를 단계 중첩으로 설계해 기간 변동 시 마일스톤 순서를 유지한 채 구간만 조정 |
 | 사업 | **총사업비·기관별 배분 미확정** | 예산 재작성 | 본안 10.0억을 **비례몫보다 낮게** 잡아 조정 여지를 확보. 확정 시 「증액 시 우선 확대할 범위」 순서로 재산정 |
 | 사업 | **RFP/품목서 정량목표와의 불일치** | 목표 미달 판정 | 품목서 확보 즉시 KPI 표와 대조해 기준선 동결 전에 정렬 |
 
@@ -1064,7 +1170,7 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 
 ---
 
-`Manufacturing Digital Twin` · `Deformation Engine` · `Manufacturing Ontology` · `Edge Case Extraction` · `Teleoperation Data` · `Shared Testbed` · `Robot Foundation Model` · `Isaac Sim` · `ROS 2` · `Sim-to-Real`
+`Manufacturing Digital Twin` · `Deformation Engine` · `NVIDIA Cosmos` · `LeRobot` · `Manufacturing Ontology` · `Edge Case Extraction` · `Teleoperation Data` · `Shared Testbed` · `Robot Foundation Model` · `Isaac Sim` · `ROS 2` · `Sim-to-Real`
 
 [:octicons-arrow-left-24: 프로젝트 목록으로](https://parclab-hsu.github.io/projects/)
 

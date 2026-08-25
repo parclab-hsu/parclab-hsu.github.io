@@ -962,6 +962,9 @@ RFM 연계 및 실물 검증을 수행합니다. HSU-PAC 실습실은 참여기�
 <p><strong>③ Manufacturing Ontology·Edge Case Intelligence</strong>
 ①과 ②가 만든 데이터를 의미로 연결해 검색·재현·재학습이 가능한 자산으로 만듭니다.</p>
 <p>②와 ③은 ①이 만든 물리 반응 위에서 작동합니다. <strong>엔진이 이 제안의 중심축입니다.</strong></p>
+<p>세 성과는 <strong>NVIDIA Cosmos 로 외관을, Isaac Sim·Deformation Engine 으로 물리 정답을 만들고,
+LeRobotDataset 으로 정규화해 RFM 기관에 넘기는</strong> 하나의 파이프라인 위에서 운영됩니다.
+가져다 쓸 것과 직접 만들 것을 나눈 설계이며, 상세는 「Physical AI 구축 환경 최적화」 절에 있습니다.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">사업·역할 상태</p>
@@ -1106,18 +1109,18 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.</p>
 </tr>
 <tr>
 <td>HSU-4. Ontology·Edge Case</td>
-<td>제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, <strong>학생 1차 검수 체계 운영</strong></td>
-<td>Manufacturing Ontology, Knowledge Graph, Edge Case Extractor</td>
+<td>제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, <strong>희소조합을 생성 조건으로 변환(Cosmos 조준)</strong>, 학생 1차 검수 체계 운영</td>
+<td>Manufacturing Ontology, Knowledge Graph, Edge Case Extractor, <strong>생성 조건 명세</strong></td>
 </tr>
 <tr>
 <td>HSU-5. 학습데이터 생성</td>
-<td>Domain Randomization, Synthetic/Real/Teleoperation Data 정렬, 자동 Annotation, <strong>학생 30명·5개 조의 Demonstration·Edge Case 수집 운영</strong></td>
+<td>Domain Randomization, <strong>Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성</strong>, 자동 Annotation, <strong>LeRobotDataset v3 정규화</strong>, 학생 30명·5개 조의 Demonstration·Edge Case 수집 운영</td>
 <td>RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus</td>
 </tr>
 <tr>
 <td>HSU-6. RFM 연계</td>
-<td>RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의</td>
-<td>RFM Adapter, Benchmark·Evaluation Protocol</td>
+<td>RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의, <strong>LeRobotDataset 확장 필드 규약 정의</strong></td>
+<td>RFM Adapter, Benchmark·Evaluation Protocol, <strong>Dataset 규약서</strong></td>
 </tr>
 <tr>
 <td>HSU-7. 공동 Testbed·Physical Validation</td>
@@ -1655,8 +1658,8 @@ Protocol을 따르며, 학생인건비는 기관 지급기준에 따라 계상�
 <p><small>● 주 수행 · ◐ 병행·개정 · ○ 준비 또는 해당 없음</small></p>
 <div class="admonition note">
 <p class="admonition-title">일정 가정</p>
-<p>위 구간은 <strong>4개 차년도·약 44개월 가정</strong>에 따른 상대 일정입니다. 공고문 기준(43개월)으로 확정될
-경우 1차년도(9개월 기준) 범위를 우선 조정하고, 마일스톤 순서는 유지합니다.</p>
+<p>위 구간은 <strong>공고문 기준 43개월을 4개 차년도로 나눈</strong> 상대 일정입니다. 1차년도는 공고에 따라
+9개월 기준입니다. 기간이 달라져도 마일스톤 순서는 유지하고 구간만 조정합니다.</p>
 </div>
 <hr />
 <h2 id="_13">기대 산출물<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
@@ -1734,6 +1737,9 @@ Protocol을 따르며, 학생인건비는 기관 지급기준에 따라 계상�
 <li>참여기업 Asset·Model·Robot의 <strong>HSU-PAC 공동 사전검증 운영체계</strong></li>
 <li>실물 검증 기반 <strong>Domain Gap Report와 Calibration Data</strong></li>
 <li>반복적인 데이터 생성–학습–검증을 위한 <strong>Validation Feedback Pipeline</strong></li>
+<li>Ontology 희소조합을 생성 조건으로 바꾸는 <strong>Cosmos 조준 규약과 생성 조건 명세</strong></li>
+<li>접촉력·변형량·물성·Edge Case ID 를 담는 <strong>LeRobotDataset 확장 필드 규약서</strong></li>
+<li>Cosmos 생성 장면과 Isaac Sim 물리량을 짝짓는 <strong>Scene–Physics Pairing 절차</strong></li>
 <li>지표 정의·산정식·측정절차를 담은 <strong>정량 KPI 정의서와 기준선(Baseline) Report</strong></li>
 <li>기간·범위·기술 리스크의 <strong>리스크 관리대장과 완화 이력</strong></li>
 </ul>
@@ -2640,6 +2646,200 @@ Asset은 여기에 <strong>Collision·질량/관성·Joint·마찰/강성 등 �
 자동 후보화 → 학생 1차 검수 → 전문가 확정의 3단 구조로 누락과 오탐을 관리합니다.</p>
 </div>
 <hr />
+<h2 id="physical-ai-cosmos-isaac-sim-lerobot">Physical AI 구축 환경 최적화 — Cosmos · Isaac Sim · LeRobot<a class="headerlink" href="#physical-ai-cosmos-isaac-sim-lerobot" title="Permanent link">&para;</a></h2>
+<p>세 가지를 각각 잘하는 일에만 쓰고, 그 사이를 한성대가 잇는 구조입니다. 무엇을 직접 만들고
+무엇을 가져다 쓰는지 분명히 나눕니다.</p>
+<table>
+<thead>
+<tr>
+<th>계층</th>
+<th>무엇을 쓰나</th>
+<th>무엇을 얻나</th>
+<th>누가 만드나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>외관·환경 다양화</td>
+<td><strong>NVIDIA Cosmos</strong> (World Foundation Model)</td>
+<td>조명·재질·시점·배경의 사실적 다양성, 희소 장면 생성</td>
+<td>가져다 씀</td>
+</tr>
+<tr>
+<td>물리·정답</td>
+<td><strong>Isaac Sim + Manufacturing Deformation Engine</strong></td>
+<td>접촉력·변형량·잔류상태와 자동 Ground Truth</td>
+<td><strong>한성대 개발</strong></td>
+</tr>
+<tr>
+<td>의미·조준</td>
+<td><strong>Manufacturing Ontology</strong></td>
+<td>무엇을 생성할지 결정하는 조건, 사건의 의미 색인</td>
+<td><strong>한성대 개발</strong></td>
+</tr>
+<tr>
+<td>행동</td>
+<td>학생 Teleoperation · 실물 Robot</td>
+<td>사람의 성공·실패회피·복구 행동</td>
+<td><strong>한성대 운영</strong></td>
+</tr>
+<tr>
+<td>정규화·학습</td>
+<td><strong>LeRobot / LeRobotDataset v3</strong></td>
+<td>모든 출처를 한 포맷으로, RFM 기관이 바로 학습</td>
+<td>규약 정의</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">한 문장으로</p>
+<p><strong>Cosmos 는 그럴듯함을 만들고, 한성대 엔진은 정답을 만듭니다.</strong>
+Cosmos 3 는 텍스트·이미지·비디오·음향·행동을 아우르는 개방형 World Foundation Model 로
+사실적인 물리 환경 영상을 생성하지만, <strong>그 장면에서 그리퍼가 부품을 얼마의 힘으로 눌렀고
+얼마나 변형됐는지는 알지 못합니다.</strong> 제조 RFM 학습에 필요한 것은 그 값입니다.</p>
+</div>
+<h3 id="cosmos">왜 Cosmos 만으로는 부족한가<a class="headerlink" href="#cosmos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Cosmos 가 주는 것</th>
+<th>제조 RFM 학습에 더 필요한 것</th>
+<th>한성대가 채우는 방식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사실적 장면·시점·재질의 다양성</td>
+<td>접촉력·토크·변형량·잔류상태의 <strong>수치 정답</strong></td>
+<td>Deformation Engine 의 자동 Ground Truth</td>
+</tr>
+<tr>
+<td>그럴듯한 다음 행동 예측</td>
+<td><strong>왜 실패했는가</strong>의 인과·상태전이</td>
+<td>Ontology Temporal Knowledge Graph</td>
+</tr>
+<tr>
+<td>대량 생성</td>
+<td><strong>무엇을 생성해야 하는가</strong>의 조준</td>
+<td>Ontology 희소조합 분석 → 생성 조건</td>
+</tr>
+<tr>
+<td>일반 도메인 지식</td>
+<td>이 공장의 설비·공차·소재</td>
+<td>모빌테크 Digital Twin + 실계측 Material Profile</td>
+</tr>
+<tr>
+<td>—</td>
+<td>생성물의 <strong>재현성·출처 추적</strong></td>
+<td>Versioned Episode Factory · Provenance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ontology-cosmos">Ontology 조건으로 Cosmos 생성을 조준합니다<a class="headerlink" href="#ontology-cosmos" title="Permanent link">&para;</a></h3>
+<p>무작위 프롬프트로 대량 생성하면 이미 흔한 장면만 늘어납니다. 한성대는 <strong>Ontology 가 희소하다고
+판단한 조합을 생성 조건으로 변환</strong>해 Cosmos 에 넘깁니다. "많이 만들기"가 아니라 "없는 것 만들기"입니다.</p>
+<pre class="mermaid"><code>flowchart TB
+    ONT["Manufacturing Ontology&lt;br/&gt;Asset·Process·State·Failure"] --&gt; GAP["Coverage 분석&lt;br/&gt;재질×공차×조명×Pose 희소조합"]
+    GAP --&gt; COND["생성 조건 명세&lt;br/&gt;Prompt · Layout · Sensor 조건"]
+    COND --&gt; COSMOS["NVIDIA Cosmos&lt;br/&gt;외관·환경 다양화"]
+    DT["Digital Twin + Deformation Engine"] --&gt; ISAAC["Isaac Sim Rollout&lt;br/&gt;물리·접촉·변형"]
+    COND --&gt; ISAAC
+    COSMOS --&gt; PAIR["장면 ↔ 물리량 정합&lt;br/&gt;동일 조건으로 쌍 구성"]
+    ISAAC --&gt; PAIR
+    TELE["학생 Teleoperation&lt;br/&gt;행동·복구"] --&gt; NORM
+    PAIR --&gt; NORM["LeRobotDataset v3 정규화&lt;br/&gt;Observation·Action·Physics·Provenance"]
+    NORM --&gt; RFM["RFM 학습·평가"]
+    RFM --&gt;|Confidence 저하·행동 불일치| GAP</code></pre>
+<p><strong>핵심은 쌍(pair) 구성입니다.</strong> Cosmos 가 만든 사실적 장면과 Isaac Sim 이 만든 물리량을
+<strong>같은 조건으로 생성해 짝지어야</strong> 학습에 쓸 수 있습니다. 장면만 있고 정답이 없으면 인식 학습에는
+써도 조작 정책 학습에는 못 씁니다. 이 정합을 담당하는 것이 한성대의 Versioned Episode Factory 입니다.</p>
+<h3 id="lerobotdataset">LeRobotDataset 을 단일 데이터 계약으로<a class="headerlink" href="#lerobotdataset" title="Permanent link">&para;</a></h3>
+<p>출처가 넷(Isaac Sim 합성 · Cosmos 증강 · 실물 Robot · 학생 Teleoperation)인데 포맷이 넷이면
+RFM 기관이 매번 변환기를 만들어야 합니다. <strong>모든 출처를 LeRobotDataset v3 로 정규화</strong>합니다.</p>
+<table>
+<thead>
+<tr>
+<th>LeRobotDataset v3 특성</th>
+<th>본 과제에서의 쓰임</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parquet + MP4, 다중 Episode 를 한 파일에</td>
+<td>대량 합성 Episode 의 저장·전송 효율</td>
+</tr>
+<tr>
+<td>관계형 Metadata 로 Episode 경계 해석</td>
+<td><strong>Ontology ID·Material 버전·Scenario Seed 를 Metadata 에 심어 검색 가능</strong></td>
+</tr>
+<tr>
+<td><code>delta_timestamps</code> 윈도잉</td>
+<td>접촉 직전·직후 구간을 잘라 실패·복구 학습에 사용</td>
+</tr>
+<tr>
+<td>Streaming (<code>StreamingLeRobotDataset</code>)</td>
+<td>대용량 Dataset 을 내려받지 않고 학습</td>
+</tr>
+<tr>
+<td>Hugging Face Hub 생태계·PyTorch 연동</td>
+<td>RFM 기관이 별도 변환 없이 바로 학습</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">확장 필드는 우리가 정의합니다</p>
+<p>표준 LeRobotDataset 에는 <strong>접촉력·변형량·물성 파라미터·Edge Case ID</strong> 필드가 없습니다.
+한성대가 이를 확장 필드로 정의하고 규약을 문서화합니다. 표준 필드만 읽는 기존 도구와도
+호환되도록 <strong>필수 필드는 표준 그대로 두고 확장은 별도 네임스페이스</strong>에 둡니다.</p>
+</div>
+<h3 id="hsu-pac">HSU-PAC 위에서의 실행 배치<a class="headerlink" href="#hsu-pac" title="Permanent link">&para;</a></h3>
+<p>무엇을 어디서 돌릴지가 정해져 있어야 자원이 낭비되지 않습니다.</p>
+<table>
+<thead>
+<tr>
+<th>작업</th>
+<th>실행 위치</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Isaac Sim + Deformation Engine Rollout</td>
+<td>교내 GPU 서버</td>
+<td>상시 반복, 지연에 민감, 라이선스·자산이 로컬</td>
+</tr>
+<tr>
+<td>Cosmos 추론(장면 생성)</td>
+<td>DGX Spark 계열 · 필요 시 클라우드 버스트</td>
+<td>대형 모델 적재가 필요하고 상시가 아닌 배치성 작업</td>
+</tr>
+<tr>
+<td>LeRobot 정규화·품질검사</td>
+<td>교내 CPU·스토리지</td>
+<td>I/O 중심, GPU 불필요</td>
+</tr>
+<tr>
+<td>RFM Fine-tuning·평가</td>
+<td>DGX Spark · 클라우드 버스트</td>
+<td>메모리 중심, 피크성</td>
+</tr>
+<tr>
+<td>학생 Teleoperation 수집</td>
+<td>실습실 + 실물 실증공간</td>
+<td>사람이 있어야 함</td>
+</tr>
+</tbody>
+</table>
+<p><strong>주간에는 실습·수집·실물검증을, 야간에는 Cosmos 생성과 학습 큐를 돌리는 방식</strong>으로 장비
+활용률을 높입니다. 생성물은 즉시 LeRobotDataset 으로 정규화해 다음 날 학습에 들어가도록 합니다.</p>
+<div class="admonition warning">
+<p class="admonition-title">도입 상태를 정확히 씁니다</p>
+<p>Isaac Sim · ROS 2 · OmniLRS 는 <strong>이미 구동해 본 환경</strong>이고, LeRobot 은 HSU-PAC 소프트웨어
+스택에 포함되어 있습니다. <strong>Cosmos 연계는 본 과제에서 새로 구축할 범위</strong>이며 현재 수행실적이
+아닙니다. 1차년도에 Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성 가능성을 먼저 검증하고,
+실패 시 Domain Randomization 중심으로 회귀하는 대안을 둡니다.</p>
+</div>
+<hr />
 <h2 id="rfm">RFM 학습데이터 설계<a class="headerlink" href="#rfm" title="Permanent link">&para;</a></h2>
 <h3 id="episode">Episode 단위 데이터<a class="headerlink" href="#episode" title="Permanent link">&para;</a></h3>
 <table>
@@ -2790,6 +2990,27 @@ Asset은 여기에 <strong>Collision·질량/관성·Joint·마찰/강성 등 �
 <td>필수 필드(Task·Observation·Action·Physics·GT·Outcome·Provenance) 충족률</td>
 <td><strong>100 %</strong></td>
 <td>자동 검증 Gate로 강제</td>
+</tr>
+<tr>
+<td>Data</td>
+<td><strong>Dataset 호환성</strong></td>
+<td>표준 LeRobot 도구로 무변환 로드 성공률 (확장 필드 무시 조건)</td>
+<td><strong>100 %</strong></td>
+<td>필수 필드는 표준 그대로, 확장은 별도 네임스페이스</td>
+</tr>
+<tr>
+<td>Data</td>
+<td><strong>Scene–Physics 쌍 구성률</strong></td>
+<td>Cosmos 생성 장면 중 동일 조건 Isaac Sim 물리량과 짝지어진 비율</td>
+<td><strong>≥ 80 %</strong></td>
+<td>1차년도 타당성 검증 후 확정</td>
+</tr>
+<tr>
+<td>Edge Case</td>
+<td><strong>조준 생성 효율</strong></td>
+<td>Ontology 조건 생성분이 무작위 생성분보다 희소조합을 채운 비율</td>
+<td><strong>2배 이상</strong></td>
+<td>"많이"가 아니라 "없는 것"을 만드는 설계</td>
 </tr>
 <tr>
 <td>Data</td>
@@ -3123,6 +3344,18 @@ Model·Robot Interface를 가져와 본 실증에 들어가기 전 사전 통합
 <td>실시간·준실시간 2개 모드 운영, 학습데이터 생성은 준실시간 배치로 분리</td>
 </tr>
 <tr>
+<td>기술</td>
+<td><strong>Cosmos 생성 장면과 물리량의 쌍 구성 실패</strong> — 동일 조건 재현이 어려울 수 있음</td>
+<td>조작 정책 학습에 쓸 수 없는 데이터만 남음</td>
+<td>1차년도에 타당성을 먼저 검증. 실패 시 <strong>Domain Randomization 중심으로 회귀</strong>하고 Cosmos 는 인식 학습용 증강에 한정</td>
+</tr>
+<tr>
+<td>기술</td>
+<td><strong>외부 모델·프레임워크 의존</strong> (Cosmos·LeRobot 버전 변화)</td>
+<td>파이프라인 파손</td>
+<td>버전 고정과 정규화 계층 분리. <strong>LeRobotDataset 필수 필드는 표준 준수</strong>해 대체 가능성 확보</td>
+</tr>
+<tr>
 <td>실적</td>
 <td><strong>제조 로봇 실물검증 레퍼런스 부족</strong> — 기존 실적이 달·야외 주행 중심</td>
 <td>연구역량 평가 감점</td>
@@ -3148,7 +3381,7 @@ Model·Robot Interface를 가져와 본 실증에 들어가기 전 사전 통합
 </tr>
 <tr>
 <td>사업</td>
-<td><strong>기간 확정치 변동</strong> (43개월 vs 44개월)</td>
+<td><strong>수행기간 확정치 변동</strong></td>
 <td>계획 재작성</td>
 <td>차년도 구조를 단계 중첩으로 설계해 기간 변동 시 마일스톤 순서를 유지한 채 구간만 조정</td>
 </tr>
@@ -3316,7 +3549,7 @@ Teleoperation·Sim-to-Real을 연결하여, 모든 참여기관이 반복 활용
 Data Factory와 공동 검증 플랫폼으로 고도화합니다.</strong></p>
 </div>
 <hr />
-<h2 id="hsu-pac">HSU-PAC과의 연계<a class="headerlink" href="#hsu-pac" title="Permanent link">&para;</a></h2>
+<h2 id="hsu-pac_1">HSU-PAC과의 연계<a class="headerlink" href="#hsu-pac_1" title="Permanent link">&para;</a></h2>
 <p><a href="../hsu-pac/">HSU-PAC</a>은 Isaac Sim·Isaac Lab·ROS 2·GPU·NAS·실물 로봇을 연결하는
 한성대학교 Physical AI 교육·연구 플랫폼입니다. 본 프로젝트에서는 HSU-PAC을 초기
 Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사전 통합 기반으로 활용하고,
@@ -3336,7 +3569,7 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 <li><a href="../hsu-pac/">한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC</a></li>
 </ul>
 <hr />
-<p><code>Manufacturing Digital Twin</code> · <code>Deformation Engine</code> · <code>Manufacturing Ontology</code> · <code>Edge Case Extraction</code> · <code>Teleoperation Data</code> · <code>Shared Testbed</code> · <code>Robot Foundation Model</code> · <code>Isaac Sim</code> · <code>ROS 2</code> · <code>Sim-to-Real</code></p>
+<p><code>Manufacturing Digital Twin</code> · <code>Deformation Engine</code> · <code>NVIDIA Cosmos</code> · <code>LeRobot</code> · <code>Manufacturing Ontology</code> · <code>Edge Case Extraction</code> · <code>Teleoperation Data</code> · <code>Shared Testbed</code> · <code>Robot Foundation Model</code> · <code>Isaac Sim</code> · <code>ROS 2</code> · <code>Sim-to-Real</code></p>
 <p><a href="https://parclab-hsu.github.io/projects/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 프로젝트 목록으로</a></p>
 <hr />
 

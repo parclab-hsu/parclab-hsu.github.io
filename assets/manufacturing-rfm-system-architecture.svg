@@ -23,6 +23,9 @@
     <marker id="mPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#7a5fb8"/>
     </marker>
+    <marker id="mGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3fae8b"/>
+    </marker>
     <marker id="mOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#ef8b1e"/>
     </marker>
@@ -65,7 +68,7 @@
   <text x="1770" y="210" text-anchor="end" class="collabel">HSU-OWNED OUTPUTS</text>
 
   <!-- ── 좌: 외부기관 입력 ── -->
-  <g filter="url(#soft)"><rect x="44" y="246" width="236" height="560" rx="22" fill="#ffffff"/></g>
+  <g filter="url(#soft)"><rect x="44" y="246" width="236" height="578" rx="22" fill="#ffffff"/></g>
   <text x="70" y="292" class="panelT">외부기관 입력</text>
   <text x="70" y="317" class="panelS">한성대 코어가 재사용하는 표준 입력</text>
 
@@ -87,13 +90,20 @@
   <text x="84" y="620" class="itemB">Model · Checkpoint</text>
   <text x="84" y="640" class="itemB">Confidence · Hard Case</text>
 
-  <rect x="66" y="700" width="192" height="42" rx="21" fill="#eef4f6"/>
-  <text x="162" y="727" text-anchor="middle" font-size="14" font-weight="700" fill="#5c7885">공통 Interface만 연계</text>
+  <rect x="66" y="668" width="192" height="92" rx="14" fill="#f2f7f8"/>
+  <circle cx="88" cy="696" r="9" fill="#76c8a8"/>
+  <text x="106" y="702" class="itemT">NVIDIA Cosmos</text>
+  <text x="84" y="728" class="itemB">World Foundation Model</text>
+  <text x="84" y="748" class="itemB">외관 · 환경 다양화</text>
+
+  <rect x="66" y="774" width="192" height="30" rx="15" fill="#eef4f6"/>
+  <text x="162" y="794" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5c7885">공통 Interface만 연계</text>
 
   <!-- 입력 화살표 -->
   <path d="M282 386 L304 386" stroke="#0f8f99" stroke-width="7" marker-end="url(#mTeal)"/>
   <path d="M282 496 L304 496" stroke="#2f6fd0" stroke-width="7" marker-end="url(#mBlue)"/>
   <path d="M282 606 L304 606" stroke="#7a5fb8" stroke-width="7" marker-end="url(#mPurple)"/>
+  <path d="M282 714 L304 714" stroke="#3fae8b" stroke-width="7" marker-end="url(#mGreen)"/>
 
   <!-- ── 중앙: 한성대 코어 ── -->
   <g filter="url(#soft)"><rect x="308" y="176" width="1160" height="740" rx="26" fill="#ffffff" stroke="#cfe4e8"/></g>
@@ -129,7 +139,7 @@
   <text x="951" y="356" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">2</text>
   <text x="987" y="356" class="cardT">Manufacturing Ontology</text>
   <text x="931" y="396" class="cardB">Asset–Process–Task–State–Event–Failure–Recovery 의미관계 통합</text>
-  <text x="931" y="424" class="cardB">3D Asset · 물성 · Robot Episode · Model 결과의 Semantic 연결</text>
+  <text x="931" y="424" class="cardB">희소조합 → 생성 조건 변환 (Cosmos 조준) · Semantic 연결</text>
 
   <!-- 카드 3 -->
   <rect x="344" y="485" width="529" height="140" rx="16" fill="#f2eef8"/>
@@ -159,7 +169,7 @@
   <!-- Episode Factory -->
   <rect x="344" y="657" width="1088" height="128" rx="18" fill="#103d4a"/>
   <text x="374" y="697" class="bandT">Versioned Physical AI Episode Factory</text>
-  <text x="374" y="723" class="bandB">시간동기 · 자동 Annotation · QC · Provenance · Asset/Material/Scenario/Model Version · Random Seed</text>
+  <text x="374" y="723" class="bandB">LeRobotDataset v3 정규화 · 시간동기 · 자동 Annotation · QC · Provenance · Asset/Material/Scenario/Model Version · Seed</text>
   <g class="pill">
     <rect x="396" y="740" width="110" height="32" rx="16" fill="#dbeafe"/><text x="451" y="761" text-anchor="middle" fill="#1e4f9c">Synthetic</text>
     <rect x="516" y="740" width="80"  height="32" rx="16" fill="#d7f0ee"/><text x="556" y="761" text-anchor="middle" fill="#0b6b68">Real</text>
