@@ -18,19 +18,22 @@ noindex: true
     RFM 연계 및 실물 검증을 수행합니다. HSU-PAC 실습실은 참여기업의 Asset·Model·Robot을
     사전 통합·검증하는 공동 Testbed로 운영합니다.
 
-> **핵심 제안** — 정적인 제조공간의 시각화에 머물지 않고, **형상·물성·상태·행동·검증 데이터가 함께 순환하는 제조 Physical AI Digital Twin**을 구축합니다.
+> **핵심 제안** — 모빌테크가 제조현장을 정밀 **Geometry Twin** 으로 전환하면, 한성대학교는 이를
+> **실측 보정된 Physics Twin** 으로 고도화하고, **실패·복구가 포함된 RFM 학습데이터와 검증
+> 피드백으로 순환**시킵니다.
 
 !!! success "한성대학교의 대표 성과 — 무엇으로 평가받을 것인가"
     본 과제에서 한성대학교가 **직접 개발해 소유하는 성과**는 다음 세 가지이며, 우선순위가 있습니다.
 
     **① Manufacturing Deformation Engine (대표 성과)**
     로봇의 접촉으로 대상물의 형상·표면·잔류상태가 바뀌는 과정을 물리적으로 재현하는 엔진입니다.
-    한성대가 OmniLRS 변형지형 연구에서 직접 구동·계측해 본 코드를 제조 접촉물리로 파생·재설계하며,
-    **다른 참여기관 어디에도 대체 주체가 없는 유일한 항목**입니다. 이 엔진이 있어야 3D Digital Twin이
-    비로소 로봇 학습에 쓸 수 있는 Physics Twin이 됩니다.
+    한성대가 OmniLRS 변형지형 연구에서 직접 구동·계측해 본 코드를 제조 접촉물리로 파생·재설계합니다.
+    **현재 컨소시엄 역할 협의안 기준, 한성대가 주도 제안하는 고유 기술영역**입니다. 이 계층이 있어야
+    3D Digital Twin이 로봇 학습에 쓸 수 있는 Physics Twin으로 확장됩니다.
 
     **② 학생 주도 Human Data Engine**
-    30명·5개 조가 표준 Protocol 아래에서 Teleoperation Demonstration을 생산하고, Edge Case를
+    **교육은 30명·5개 조**, **과제 Dataset 생산은 MD-3 이수자 중 선발한 유급 참여자 6~9명(3개 조)**
+    이 담당합니다. 표준 Protocol 아래에서 Teleoperation Demonstration을 생산하고 Edge Case를
     발견·태깅·재현까지 수행합니다. **Physical AI 마이크로디그리(MD) 과정이 인력 공급 경로**이며,
     교육 → 데이터 생산 → RFM 학습 → 결과 → 다시 교육으로 한 바퀴가 돕니다. 데이터 생산과
     Physical AI 인력양성이 같은 활동에서 나옵니다.
@@ -84,7 +87,7 @@ noindex: true
 
     컨소시엄 협의 과정에서 이와 다른 총사업비가 공유된 바 있으나, 공식 근거가 확인되기 전까지
     본문에서는 사용하지 않습니다. 해당 사항과 상세 RFP/품목서 확보 여부는
-    [OPEN-ITEMS](https://github.com/parclab-hsu/rfm-hansung-rr/blob/main/OPEN-ITEMS.md) 에서 별도로 추적합니다.
+    **내부 미결항목 관리대장**에서 별도로 추적합니다.
 
 ### 대학 참여기관으로서의 적합성
 
@@ -94,7 +97,7 @@ noindex: true
 | 목표의 도전성 | 시각 중심 Digital Twin을 **접촉·변형·누적상태가 반영되는 Physics Twin**으로 전환 |
 | 연구조직 역량 | OmniLRS 기반 Isaac Sim·ROS 2 시뮬레이션과 변형지형·HILS 수행실적, HSU-PAC 인프라 |
 | 연구 인프라 | GPU·Isaac Sim·ROS 2·NAS·실물 로봇을 갖춘 [HSU-PAC](../hsu-pac.md)을 **참여기업 공동 Testbed**로 개방 |
-| 지역·인력 파급 | 30명·5개 조 Teleoperation 체계로 데이터 생산과 Physical AI 인력양성을 동시 수행 |
+| 지역·인력 파급 | 교육 30명·5개 조 · 유급 생산 6~9명 체계로 데이터 생산과 Physical AI 인력양성을 동시 수행 |
 
 ---
 
@@ -102,7 +105,7 @@ noindex: true
 
 
 한성대의 차별성은 개별 기술을 보유하는 데 그치지 않고, **OmniLRS 파생 Deformation Engine**,
-**Manufacturing Ontology**, **30명·5개 조 Teleoperation Data Engine**, **Ontology 기반 Edge Case
+**Manufacturing Ontology**, **MD 과정 기반 Teleoperation Data Engine**, **Ontology 기반 Edge Case
 Intelligence**를 Versioned Episode Factory와 HSU-PAC 안에서 하나의 학습 폐루프로 운영하는 데
 있습니다. 결과물은 Dynamic Physics Twin, 재생 가능한 Edge Case·Recovery Package, RFM Dataset·
 Benchmark와 참여기업 공동검증 체계로 제공됩니다.
@@ -120,7 +123,7 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 | **HSU-2. Deformation Engine** | **[대표 성과]** 물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정, 실계측 기반 검증 | **Manufacturing Deformation Engine**, Material Library, Calibration Tool, 검증 리포트 |
 | HSU-3. 제조 로봇 시뮬레이션 | Isaac Sim·ROS 2 기반 Robot·Sensor·Task·Scenario 구성 | Simulation Package, Scenario Library |
 | HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, **희소조합을 생성 조건으로 변환(Cosmos 조준)**, 학생 1차 검수 체계 운영 | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor, **생성 조건 명세** |
-| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성**, 자동 Annotation, **LeRobotDataset v3 정규화**, **Physical AI MD 과정** 기반 학생 30명·5개 조의 Demonstration·Edge Case 수집 운영 | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus, MD 교보재 |
+| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성**, 자동 Annotation, **LeRobotDataset v3 정규화**, **Physical AI MD 과정** 기반 Demonstration·Edge Case 수집 운영(교육 30명·5개 조 / 유급 생산 6~9명·3개 조) | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus, MD 교보재 |
 | HSU-6. RFM 연계 | RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의, **LeRobotDataset 확장 필드 규약 정의** | RFM Adapter, Benchmark·Evaluation Protocol, **Dataset 규약서** |
 | HSU-7. 공동 Testbed·Physical Validation | HSU-PAC 참여기업 공동활용, 실제 Robot HW 적용, Domain Gap 분석 | 사전 통합환경, Sim-to-Real 검증결과, Feedback Data |
 
@@ -128,11 +131,11 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 
 | 기여영역 | 한성대학교의 차별적 기여 | 컨소시엄 효과 |
 |---|---|---|
-| **Dynamic Physics Twin** **[대표]** | OmniLRS 변형지형 연구경험을 제조용 접촉·물성·변형 모델로 파생 — **컨소시엄 내 대체 주체 없음** | 정적인 3D 시각화를 로봇 행동이 가능한 Physics Twin으로 전환 |
+| **Dynamic Physics Twin** **[대표]** | OmniLRS 변형지형 연구경험을 제조용 접촉·물성·변형 모델로 파생 — **한성대가 주도 제안하는 고유 기술영역** | 3D 시각화를 로봇 행동이 가능한 Physics Twin으로 확장 |
 | Asset–Physics 표준 | 3D Asset에 Collision, Joint, 질량·관성, 물성·Sensor Metadata를 결합 | 모빌테크 산출물을 Isaac Sim·RFM·Robot HW가 재사용 |
 | Ontology·Edge Case | 자산–공정–상태–이벤트–실패–복구 관계를 구조화하고 규칙·희소성·모델 불확실성으로 후보 추출 | 흩어진 실패 로그를 재현 가능한 학습 Scenario로 전환 |
 | 제조 데이터 생성 | 정상·경계·실패·복구 Scenario, Domain Randomization, Teleoperation, 자동 Annotation | Synthetic·Real·Human Demonstration이 결합된 RFM 학습데이터 확보 |
-| 학생 Human Data Engine | **Physical AI MD 과정** 위에서 30명·5개 조가 Demonstration 생산부터 **Edge Case 1차 검수·재현 조건 탐색·복구 시연**까지 수행. 모델 결과가 다음 학기 교재로 되돌아옴 | 학습데이터와 Edge Case가 한 팀에서 나오고, 과제 종료 후에도 MD 과정과 숙련 인력이 남음 |
+| 학생 Human Data Engine | **Physical AI MD 과정** 위에서 유급 참여자가 Demonstration 생산부터 **Edge Case 1차 검수·재현 조건 탐색·복구 시연**까지 수행. 모델 결과가 다음 학기 교재로 되돌아옴 | 학습데이터와 Edge Case가 한 팀에서 나오고, 과제 종료 후에도 MD 과정과 숙련 인력이 남음 |
 | RFM 평가 Interface | Observation·Action·Task·Embodiment Schema와 Benchmark 설계 | 기관별 모델을 동일 제조조건에서 비교·평가 |
 | Sim-to-Real 검증 | 실물 Robot의 Domain Gap·Failure·Edge Case를 물성·Scenario에 재반영 | 데이터 생성–재학습–재검증의 지속 개선 Loop 구축 |
 | HSU-PAC 공동활용 | GPU·Isaac Sim·ROS 2·NAS·실물 로봇과 기업별 격리환경 제공 | 참여기업이 Asset·Model·Robot을 반입해 본 실증 전 사전 통합·검증 |
@@ -165,20 +168,16 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 
 ### 기관별 수행예산
 
-현재 공유된 참여기관은 11곳입니다 — 모빌테크 · 한성대 · 컨피그 · 투모로로보틱스 · 리얼월드 ·
-플라잎 · 로보티즈 · 로보로스 · 홀리데이로보틱스 · 블루로빈 · 로봇융합연구원(KIRO).
-지원규모 75억 기준 기관 평균은 약 6.8억, 2개 기관의 비례몫은 약 18.2%입니다.
-
 | 구분 | 4년 합계 | 연평균 | 총액(75억) 대비 |
 |---|---:|---:|---:|
 | **한성대학교 직접 수행예산** | **7.0억** | 1.75억 | 9.3% |
 | 모빌테크 공동개발 예산 | 3.0억 | 0.75억 | 4.0% |
 | **공동 패키지 합계** | **10.0억** | 2.5억 | **13.3%** |
 
-!!! note "비례몫보다 낮게 잡았습니다"
-    2개 기관이 참여기관 11곳 중 차지하는 비례몫은 약 18.2%이지만, **13.3%로 책정**했습니다.
-    대학과 중소기업이 총액에서 차지하는 비중을 낮춰 컨소시엄 배분의 부담을 줄이려는 것입니다.
-    수행범위는 이 규모에 맞춰 조정했으며, 대표 성과 세 축은 유지합니다.
+!!! note "산정 방식"
+    기관 수 균등배분이 아니라 **수행범위와 투입인력에서 쌓아 올린 값**입니다. 아래에 인월(M/M),
+    시험 횟수·단가, 장비 수량·단가, Teleoperation 운영시간과 산출량을 근거로 제시합니다.
+    현금·현물·간접비 분리는 「비용구조」 표에 있습니다.
 
 ### 한성대학교 Work Package별 배분
 
@@ -209,21 +208,92 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 1차년도는 공고에 따라 9개월 기준이라 낮고, Digital Twin 구축과 Engine 개발이 겹치는
 2~3차년도가 정점입니다.
 
-### 비용구조
+### 비용구조 — 한성대 7.0억
 
-| 비용영역 | 금액(억원) | 주요 내용 |
+| 비용영역 | 금액(억원) | 산정 근거 |
 |---|---:|---|
-| 한성대 연구인력 | 3.2 | 박사후연구원(2·3차년도 집중), 석사과정 연구원, 학부연구생 순환 |
-| 모빌테크 공동개발 | 3.0 | 현장 취득, 정밀 3D Asset, Digital Twin, 공간·재질 Metadata |
-| 간접비 등 | 1.3 | 대학 간접비와 사업 운영비 — 최종 규정에 따라 재산정 |
-| 연구시설·장비 | 1.0 | Teleoperation Console, **Engine 검증용 F/T·Tactile·형상계측 Sensor**, Calibration 지그 |
-| 연구재료·물성시험 | 0.7 | **Deformation Engine 파라미터 식별용 시편·치구·부품, 접촉·반복하중·마모 시험** |
-| Cloud·Software·Data | 0.4 | GPU Burst, Ontology·Edge Case Repository, License·Storage·Backup |
-| 현장실증·연구활동 | 0.4 | 설치·Calibration·성능시험, 공동활용 운영, 표준·성과확산 |
-| **합계** | **10.0** | |
+| 연구인력 인건비 (현금) | 3.2 | 아래 인월 표 — 총 **150.4 M/M** |
+| 연구시설·장비 | 1.0 | 아래 장비 표 — 수량 × 단가 |
+| 연구재료·물성시험 | 1.2 | 아래 시험 표 — 소재군 2종 × 시험 3종 |
+| Cloud·Software·Data | 0.4 | Cosmos·학습 GPU Burst 연 800시간 × 4년, Storage·License |
+| 현장실증·연구활동 | 0.9 | 설치·Calibration·성능시험, 공동활용 운영, 출장·성과확산 |
+| **직접비 소계** | **6.7** | |
+| 간접비 | 0.3 | 대학 간접비율 적용 — **최종 규정에 따라 재산정** |
+| **합계** | **7.0** | |
 
-연산·스토리지는 **HSU-PAC 기존 자원을 활용**하는 것을 전제로 신규 구매를 최소화했습니다.
-대형 GPU Cluster 가 컨소시엄 공용으로 제공되면 Cloud 항목이 추가로 줄어듭니다.
+!!! warning "간접비는 확정 전 잠정치입니다"
+    대학 간접비율은 기관 고시율을 따르며 직접비의 상당 비율이 될 수 있습니다. 위 표는 **직접비를
+    먼저 채우고 잔여를 간접비로 둔 형태**이므로, 고시율 적용 시 직접비를 그만큼 줄이거나 총액을
+    올려야 합니다. 협약 시 재산정 대상입니다.
+
+**연구인력 인월(M/M)** — 43개월 기준. 교수 인건비는 **현물**로 계상하고 현금 인건비에서 제외합니다.
+
+| 구분 | 인원 | 참여율 | 참여기간 | 인월(M/M) | 월단가(만원) | 금액(만원) | 현금/현물 |
+|---|---:|---:|---:|---:|---:|---:|:--:|
+| 연구책임자(교수) | 1 | 20% | 43개월 | 8.6 | — | — | 현물 |
+| 참여교수 | 1 | 15% | 43개월 | 6.5 | — | — | 현물 |
+| 박사후연구원 | 1 | 80% | 32개월 | 25.6 | 400 | 10,240 | 현금 |
+| 석사과정 연구원 | 3 | 70% | 43개월 | 90.3 | 180 | 16,254 | 현금 |
+| 학부연구생(순환) | 2 | 30% | 36개월 | 21.6 | 100 | 2,160 | 현금 |
+| 연구근접지원인력 | 1 | 30% | 43개월 | 12.9 | 250 | 3,225 | 조건부 |
+| **현금 소계** | | | | **150.4** | | **31,879** | |
+
+박사후연구원은 Deformation Engine 개발이 집중되는 **2·3차년도(32개월)** 에 배치합니다.
+연구근접지원인력은 연차별 정부지원연구개발비 5억원 기준을 넘을 때 의무이므로 **조건부**로 두었고,
+해당하지 않으면 그 몫을 석사과정 연구원 참여율 확대에 씁니다.
+
+**물성시험 — 1.2억**
+
+| 항목 | 수량 | 단가 | 금액(만원) |
+|---|---:|---:|---:|
+| 시편·치구 제작 | 40 set | 80만원 | 3,200 |
+| 접촉·반복하중·마모 시험 (소재군 2종 × 시험 3종 × 반복 5회) | 30회 | 150만원 | 4,500 |
+| 대상 부품·소모품 | 일괄 | — | 2,800 |
+| 시험 데이터 처리·보정 도구 | 일괄 | — | 1,500 |
+| **합계** | | | **12,000** |
+
+**소재군을 2종에서 4종으로 늘리면 시험 횟수가 30회에서 60회 이상으로 늘어납니다.** 이것이
+「증액 시 우선 확대할 범위」 1순위가 소재군인 이유이며, 예산과 KPI 목표치가 직접 연동되는 지점입니다.
+
+**연구시설·장비 — 1.0억**
+
+| 항목 | 수량 | 단가 | 금액(만원) |
+|---|---:|---:|---:|
+| Teleoperation Console (유급 3개 조 기준) | 3식 | 1,200만원 | 3,600 |
+| F/T 센서 | 2식 | 800만원 | 1,600 |
+| Tactile 센서 | 2식 | 600만원 | 1,200 |
+| 3D 형상계측 장비 | 1식 | 2,500만원 | 2,500 |
+| Calibration 지그·기타 | 일괄 | — | 1,100 |
+| **합계** | | | **10,000** |
+
+연산·스토리지는 **HSU-PAC 기존 자원 활용**을 전제로 신규 구매에 넣지 않았습니다.
+
+**Teleoperation 운영시간과 산출량**
+
+| 항목 | 산정 |
+|---|---|
+| 유급 참여자 | 6~9명 · 3개 조 (MD-3 이수자 중 선발) |
+| 운영시간 | 1인 주 6시간 × 15주 × 2학기 = **연 180시간/인** |
+| 연 운영시간 | 6명 기준 **1,080시간** (9명이면 1,620시간) |
+| 유효 Episode 산출 | 시간당 QC 통과 6건 기준 → **연 6,500건 내외** |
+| 4년 누적 | **26,000건 내외** |
+
+시간당 산출량은 Task Cycle Time 에 따라 달라지므로 **1차년도 실측 후 확정**합니다. 위 값은
+Pick & Place 급 단순 Task 기준의 추정이며, 조립·검사 Task 는 더 낮게 잡아야 합니다.
+
+### 비용구조 — 모빌테크 3.0억
+
+| 비용영역 | 금액(억원) | 산정 근거 |
+|---|---:|---|
+| 현장 취득 (Scan·Mapping) | 0.7 | 대상 Cell 단위 실측, 갱신 2회 포함 |
+| 정밀 3D Asset 제작 | 1.1 | 설비·치구·부품 Asset, LOD 구성 |
+| Simulation-ready 변환·검수 | 0.6 | USD 계층·좌표계·Semantic·Collision 정비 |
+| 공간·재질 Metadata | 0.3 | 현장 재질·자산 조사와 Asset 연결 |
+| 정합 지원·Asset 갱신 | 0.3 | 실물검증 피드백 반영 |
+| **합계** | **3.0** | |
+
+모빌테크 항목은 **대상 면적과 Asset 수에 직접 비례**합니다. Digital Twin 대상이 단일 Cell 에서
+제조 Line 으로 확대되면 이 금액이 먼저 늘어납니다.
 
 ### 증액 시 우선 확대할 범위
 
@@ -234,11 +304,11 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 
 | 우선순위 | 확대 대상 | 현재 본안 | 확대 시 |
 |:--:|---|---|---|
-| 1 | Deformation Engine 소재군 | 2개 이상 (v3 이력·마모는 개념검증) | 4개 이상, v3 정식 검증 |
+| 1 | Deformation Engine 소재군 | **2개 이상** (v3 이력·마모는 개념검증) | 4개 이상, v3 정식 검증 |
 | 2 | 제조 Use Case | Pilot 1건 + 확장 1건 | 다중 Use Case |
 | 3 | Digital Twin 대상 | 단일 Cell 단위 | 제조 Line 단위 |
-| 4 | Teleoperation 운용 | 3개 조, 학기 단위 | 5개 조 상시 |
-| 5 | Sim-to-Real 반복 검증 | 1회 | 2회 이상 |
+| 4 | Dataset 생산 Teleoperation | **유급 참여 6~9명 · 3개 조** | 12~15명 · 5개 조 |
+| 5 | Sim-to-Real 반복 검증 | **1회 완주** | 2회 이상 |
 | 6 | 참여기업 Shared Testbed | 분기 단위 Sprint | 상시 운영 |
 
 ### 예산 조정 변수
@@ -302,7 +372,7 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 | 1차년도 | 1 기준선 설계, 2 착수 | **M1** 공동 Interface Specification 승인 · **M2** Pilot Scan과 기준 3D Asset 검수 · **M3** Ontology v1과 Teleoperation·안전 Protocol 승인 |
 | 2차년도 | 2 완료, 3 주력 | **M4** 제조공간 Digital Twin 본 구축 검수 · **M5** Deformation Engine 1차와 Material Library · **M6** Edge Case Extractor 1차, Teleoperation 수집환경 가동 |
 | 3차년도 | 4 주력, 5 착수, 6 개시 | **M7** Synthetic·Real·Demonstration Dataset 1차 릴리스 · **M8** RFM Adapter·Benchmark 합의 · **M9** 실물 Robot Domain Gap 1차 측정 · **M10** 참여기업 Shared Testbed 운영 개시 |
-| 4차년도 | 5·6 반복, 표준화 | **M11** Edge Case·Recovery Corpus 고도화 · **M12** 재학습–재검증 Loop 2회 이상 완주 · **M13** Ontology·Interface·Asset·Dataset 표준화 · **M14** 상생공간·현장 연계 최종 실증 |
+| 4차년도 | 5·6 반복, 표준화 | **M11** Edge Case·Recovery Corpus 고도화 · **M12** 재학습–재검증 Loop **1회 완주**(기본안, 확장 시 2회 이상) · **M13** Ontology·Interface·Asset·Dataset 표준화 · **M14** 상생공간·현장 연계 최종 실증 |
 
 | 단계 | 1차년도 | 2차년도 | 3차년도 | 4차년도 |
 |---|:--:|:--:|:--:|:--:|
@@ -473,19 +543,27 @@ flowchart TB
 
 ---
 
-### 기존 물리엔진과 무엇이 다른가
+### 기존 물리엔진 위에 무엇을 더하는가
 
-"Isaac Sim 에 이미 Soft-body 가 있지 않은가"는 반드시 나오는 질문입니다. 기존 엔진은 **보이는
-변형을 만드는 것**이 목적이고, 본 과제가 필요로 하는 것은 **학습에 쓸 수 있는 물리량과 정답**입니다.
+"Isaac Sim 에 이미 Deformable 이 있지 않은가"는 반드시 나오는 질문입니다. 답부터 적으면,
+**대체하지 않습니다.** NVIDIA PhysX 는 FEM 기반의 Surface·Volume Deformable 을 지원하고 금속판·
+고무 같은 재료 거동도 표현할 수 있습니다. 본 과제가 더하는 것은 **더 나은 물리 계산이 아니라,
+그 계산을 제조 RFM 학습데이터 생산체계로 전환하는 계층**입니다.
 
-| 관점 | 기존 물리엔진 (PhysX Soft-body·Deformable 등) | Manufacturing Deformation Engine |
+| 계층 | PhysX 가 제공 | Manufacturing Deformation Engine 이 추가 |
 |---|---|---|
-| 목적 | 시각적으로 그럴듯한 변형 거동 | **실측과 대조 가능한 접촉·변형 응답** |
-| 물성 | 엔진이 요구하는 파라미터를 임의 설정 | **실계측으로 식별·보정한 Material Profile** |
-| 이력 | 상태를 매 프레임 새로 계산, 누적 없음 | **반복하중·마모·히스테리시스·영구변형 누적** |
-| 응답 모델 | 엔진 내장 모델 고정 | **탄성·점탄성·소성·마모 모듈 교체 가능** |
-| 정답 데이터 | 별도 생성 필요 | **접촉점·힘·변형량·이벤트 Ground Truth 자동 생성** |
-| 검증 | 시각 비교 | **NRMSE·잔류변형량 등 정량 오차로 판정** |
+| 변형 계산 | FEM 기반 Surface·Volume Deformable | **그대로 활용** — 재구현하지 않음 |
+| 물성 값 | 사용자가 지정하는 재료 파라미터 | **제조현장 실측으로 식별·보정한 Material Profile** |
+| 상태 이력 | 시뮬레이션 세션 내 상태 | **세션을 넘는 반복하중·마모·잔류상태 누적과 버전 관리** |
+| 응답 모델 | 엔진이 제공하는 재료 모델 | **소재군별 교체형 Response Model 과 Calibration 절차** |
+| 학습용 정답 | 별도 구성 필요 | **접촉점·힘·변형량·이벤트 Ground Truth 자동 생성** |
+| 의미·추적 | — | **Ontology 연결과 Provenance** — 어떤 조건의 사건인지 검색·재현 가능 |
+| 판정 | 사용자 정의 | **NRMSE·잔류변형량 등 정량 오차 기준** |
+
+!!! tip "방어하기 좋은 주장"
+    "PhysX 보다 물리를 더 잘한다"가 아니라 **"PhysX 를 제조 RFM 학습데이터 생산체계로 전환한다"**
+    입니다. 범용 엔진의 변형 계산 위에 **실측 보정된 물성 · 반복이력 · 자동 Ground Truth ·
+    Ontology·Provenance** 를 결합하는 것이 본 과제의 개발 범위입니다.
 
 | 구분 | OmniLRS 원형 | 본 과제 신규 개발 |
 |---|---|---|
@@ -504,7 +582,7 @@ flowchart TB
 | **v0** 기준선 | 1차년도 | OmniLRS 원형 이식 — 단일 접촉력→변형깊이 | 월면토 조건 재현 재확인 | 기존 결과와 동일 재현 |
 | **v1** 탄성·강체 접촉 | 2차년도 | 마찰·반발·강성·감쇠, 그리퍼 파지와 미끄럼 | 기준 시편 접촉력–변위 시험 | 접촉력 NRMSE ≤ 20 % |
 | **v2** 소성·잔류변형 | 3차년도 | 영구변형, 반복하중, 히스테리시스, 포장재·연성부품 | 반복하중 시험, 형상 스캔 대조 | 잔류변형량 오차 ≤ 25 % |
-| **v3** 이력·마모 | 4차년도 | 누적 사용상태, 표면 마모, 공차 변화의 장기 영향 | 장시간 반복운전 로그 대조 | 상태변화 추세 일치 |
+| **v3** 이력·마모 | 4차년도 | 누적 사용상태, 표면 마모, 공차 변화의 장기 영향 | 장시간 반복운전 로그 대조 | 추세 상관계수 **≥ 0.8**, 기울기 오차 **≤ 30 %** |
 
 각 버전은 **Material Profile을 교체하면 다른 소재군으로 확장되는 구조**로 만듭니다. 특정 소재에
 맞춘 수식을 하드코딩하지 않는 것이 설계 원칙입니다.
@@ -514,15 +592,15 @@ flowchart TB
 | 관점 | 근거 |
 |---|---|
 | 코드 수준 경험 | OmniLRS 변형지형 엔진을 **직접 구동·수정·계측**해 봤다. 논문 구현을 이식해 슬립·침하와 Mesh 실시간 변형을 재현한 이력이 있다 |
-| 대체 주체 부재 | 컨소시엄 내 다른 기관은 3D Asset 제작(모빌테크), 데이터 플랫폼, 모델 학습, Robot HW 를 맡는다. **접촉물리 모델링을 담당하는 기관이 없다** |
+| 역할 분담상의 위치 | **현재 협의안 기준** 모빌테크는 3D Asset, 타 기관은 데이터 플랫폼·모델·Robot HW 를 맡는다. 접촉물리·물성 계층은 **한성대가 주도 제안하는 영역**이며 최종 분담은 컨소시엄 협약으로 확정한다 |
 | 검증 수단 보유 | HSU-PAC 의 Manipulation Cell·F/T·Tactile 센서로 시뮬레이션 값과 실측을 같은 자리에서 대조할 수 있다 |
 | 확장 경로 | 달 지형이라는 극단 조건에서 출발했기 때문에, 물성 범위를 넓히는 방향의 일반화가 자연스럽다 |
 
-!!! warning "이 엔진이 없으면 무엇이 무너지는가"
-    Deformation Engine 은 장식이 아니라 **다른 산출물의 전제**입니다. 접촉으로 상태가 변하지 않는
-    Twin 에서는 파지 실패·미끄럼·변형 같은 사건이 애초에 발생하지 않습니다. 그러면
-    Edge Case Extractor 가 걸러낼 실패가 없고, 학생 Demonstration 의 복구 행동은 재현할 대상을
-    잃으며, Sim-to-Real Gap 분석은 형상 오차만 남습니다. **이 제안의 나머지가 이 엔진 위에 서 있습니다.**
+!!! note "이 계층이 다른 산출물과 어떻게 연결되는가"
+    Deformation Engine 은 독립 산출물이 아니라 **다른 산출물의 입력**입니다. 접촉으로 상태가 변하는
+    조건이 갖춰져야 파지 실패·미끄럼·변형 같은 사건이 데이터로 남고, 그래야 Edge Case Extractor 가
+    걸러낼 대상이 생기며, 학생 Demonstration 의 복구 행동에 재현할 상황이 주어지고, Sim-to-Real Gap
+    분석이 형상 오차를 넘어 물리 오차까지 다룰 수 있습니다. 세 성과가 서로를 필요로 하는 구조입니다.
 
 ---
 
@@ -568,6 +646,33 @@ flowchart TB
     결합된 Simulation-ready Package이므로, 대상 면적·설비 수·요구 LOD·물성시험 범위에 따라
     비용 구조가 달라집니다. 아래 「차년도별 예상 예산(가안)」은 이 차이를 반영해 별도로 산정한 값입니다.
 
+### 산출물별 역할 분담 (RACI)
+
+기관 간 충돌을 줄이려면 "누가 무엇을 한다"보다 **"이 산출물에 누가 어떤 자격으로 관여하는가"** 를
+적어야 합니다. **아래는 현재 협의안 기준의 제안이며, 최종 분담은 컨소시엄 협약으로 확정합니다.**
+
+**L** Lead 주도 · **C** Co-develop 공동개발 · **I** Interface 규약 합의 · **V** Validate 검증 참여
+
+| 산출물 | 한성대 | 모빌테크 | Data 기관 | RFM 기관 | Robot HW 기관 | 제조·수요기업 |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|
+| 현장 취득·정밀 3D Asset | I | **L** | — | — | — | V |
+| Simulation-ready Asset Package | C | **L** | I | — | I | V |
+| Material Profile · 물성 파라미터 | **L** | C | I | — | — | V |
+| Manufacturing Deformation Engine | **L** | I | — | I | I | — |
+| Manufacturing Ontology · Schema | **L** | C | **C** | I | I | V |
+| Edge Case Extractor · Package | **L** | — | C | I | V | V |
+| Robot·Sensor·Task Scenario Library | **L** | I | — | I | C | V |
+| Demonstration · Teleoperation Corpus | **L** | — | I | I | C | — |
+| RFM Dataset · Benchmark Protocol | C | — | C | **L** | I | V |
+| RFM 모델 · Checkpoint | I | — | — | **L** | I | — |
+| 실물 Robot Sim-to-Real 검증 | C | I | — | C | **L** | V |
+| 참여기업 공동 Testbed 운영 | **L** | C | C | C | C | I |
+
+!!! note "이 표의 용도"
+    R&R 협의에서 다투게 되는 것은 대개 **공동개발(C)과 규약 합의(I)의 경계**입니다. 이 표를 먼저
+    합의하면 「Interface Specification」 작성 범위가 자동으로 정해집니다. 표에 없는 산출물이 생기면
+    그때 추가하고, 한 산출물에 Lead 가 둘이 되지 않도록 관리합니다.
+
 ### 공동 Hand-off Interface
 
 모빌테크의 3D Asset이 시뮬레이터에서 보이는 것만으로는 충분하지 않습니다. 다음 정보를 하나의
@@ -604,7 +709,8 @@ sequenceDiagram
 
 ## 학생 주도 Human Data Engine — Demonstration과 Edge Case 수집
 
-HSU-PAC의 30명·5개 조 실습체계를 활용해 학생이 실제 또는 시뮬레이션 Robot을 원격 조작하고,
+HSU-PAC의 **30명·5개 조 실습체계**로 교육을 운영하고, 그 가운데 **MD-3 이수자 중 선발한 유급 참여자
+6~9명(3개 조)이 과제 Dataset 생산**을 담당합니다. 학생이 실제 또는 시뮬레이션 Robot을 원격 조작하고,
 성공 행동뿐 아니라 경계조건·실패회피·복구 행동을 포함한 Human Demonstration을 수집합니다.
 **수집에서 끝나지 않습니다** — 같은 조가 Edge Case 파이프라인의 1차 검수·재현 조건 탐색·복구
 시연까지 담당해, 학습데이터와 Edge Case가 한 팀에서 함께 만들어집니다.
@@ -614,7 +720,7 @@ HSU-PAC의 30명·5개 조 실습체계를 활용해 학생이 실제 또는 시
 ```mermaid
 flowchart TB
     PROTOCOL["Task·Safety Protocol<br/>Ontology·성공·실패·복구 기준"] --> TRAINING["학생 사전교육·Calibration<br/>Expert Seed Demonstration"]
-    TRAINING --> TELEOP["Simulation / Physical Teleoperation<br/>30명 · 5개 조"]
+    TRAINING --> TELEOP["Simulation / Physical Teleoperation<br/>교육 30명·5개 조 / 생산 유급 3개 조"]
     TELEOP --> RECORD["Multimodal Synchronized Recording<br/>Observation·Action·State·Event"]
     RECORD --> QC["자동 QC + 전문가 검수<br/>시간동기·범위·Label·재현성"]
     QC --> DATASET["Demonstration Dataset<br/>성공·실패·복구·운영자 다양성"]
@@ -686,7 +792,7 @@ flowchart LR
 
 | | 교과 실습 트랙 | 유급 연구참여 트랙 |
 |---|---|---|
-| 대상 | MD 과정 수강생 전원 | **MD-3 이수자 중 선발** |
+| 대상 | MD 과정 수강생 **30명 · 5개 조** | **MD-3 이수자 중 선발 6~9명 · 3개 조** |
 | 데이터 | 실습 산출물 (동의 시 익명 통계) | 연구개발 Dataset 편입 |
 | 기간 | 학기 단위 | 학기 넘어 연속 |
 | 역할 | 6인 역할 순환 경험 | **숙련 Operator · Quality Reviewer 로 고정 배치** |
@@ -831,7 +937,7 @@ Edge Case Package에는 `EdgeCase ID`, 제조 Context, Trigger 전·후 시계�
 ### 학생이 Edge Case 파이프라인에서 하는 일
 
 Edge Case 추출을 "자동화했다"고만 쓰면 실제로 누가 판단하는지가 비게 됩니다. 본 제안에서
-**Human-in-the-loop의 실체는 학생 5개 조**이며, 전문가는 최종 확정만 맡습니다.
+**Human-in-the-loop의 실체는 유급 참여 학생 3개 조**이며, 전문가는 최종 확정만 맡습니다.
 
 | 단계 | 담당 | 구체적인 작업 |
 |---|---|---|
@@ -940,11 +1046,39 @@ RFM 기관이 매번 변환기를 만들어야 합니다. **모든 출처를 LeR
 **주간에는 실습·수집·실물검증을, 야간에는 Cosmos 생성과 학습 큐를 돌리는 방식**으로 장비
 활용률을 높입니다. 생성물은 즉시 LeRobotDataset 으로 정규화해 다음 날 학습에 들어가도록 합니다.
 
+### Cosmos 도입 실행계획
+
+모델 규모에 따라 필요한 연산자원이 다릅니다. **교내에서 검증하고 규모가 필요할 때만 외부로 나갑니다.**
+
+| 모델 | 규모 | 권장 연산자원 | 본 과제에서의 용도 | 실행 위치 |
+|---|---|---|---|---|
+| **Cosmos3-Nano** | 16B (8B reasoner + 8B generator) | 워크스테이션급 (RTX PRO 6000 계열) | **1차년도 타당성 검증**, 조건 제어 실험, 소량 생성 | **교내 GPU 서버** |
+| **Cosmos3-Super** | 64B (32B + 32B) | Hopper·Blackwell 데이터센터 GPU (다중 GPU·layerwise offload) | 대규모 합성데이터 생성 | 컨소시엄 공용 GPU 또는 클라우드 버스트 |
+
+**1차년도 Gate — 통과해야 2차년도 본 생성으로 갑니다.**
+
+| Gate 항목 | 판정 기준 |
+|---|---|
+| 장면–물리량 쌍 구성률 | 동일 조건으로 생성한 Cosmos 장면과 Isaac Sim Rollout 이 짝지어진 비율 |
+| 조건 일치율 | 지시한 재질·조명·Pose·배치가 생성물에 실제로 반영된 비율 (표본 육안 검수 병행) |
+| 비용 | 유효 Episode 1건당 GPU-hour 와 환산 비용 |
+| 품질 기여 | Cosmos 증강 유무에 따른 인식·조작 성능 차 |
+
+!!! warning "실패 시 회귀 경로를 미리 둡니다"
+    Gate 를 통과하지 못하면 **Isaac Sim Domain Randomization 중심으로 회귀**하고, Cosmos 는
+    **인식 학습용 외관 증강에 한정**해 사용합니다. 조작 정책 학습은 Isaac Sim 물리량만으로
+    수행합니다. 이 경우 KPI 의 *Scene–Physics 쌍 구성률* 은 목표에서 제외합니다.
+
+!!! note "라이선스와 표시 의무는 착수 전 검토합니다"
+    Cosmos 모델·NIM·생성물의 **라이선스 조건과 표시(attribution) 의무**, 생성물의 상업적 활용
+    범위, 제조기업 데이터를 조건으로 넣었을 때의 취급을 1차년도 착수 전에 확인합니다.
+    LeRobotDataset 확장 필드도 **표준 도구에서 실제로 무변환 로드되는지 호환성 시험**이 필요합니다
+    — 문서상 호환과 실제 동작은 다를 수 있습니다.
+
 !!! warning "도입 상태를 정확히 씁니다"
     Isaac Sim · ROS 2 · OmniLRS 는 **이미 구동해 본 환경**이고, LeRobot 은 HSU-PAC 소프트웨어
     스택에 포함되어 있습니다. **Cosmos 연계는 본 과제에서 새로 구축할 범위**이며 현재 수행실적이
-    아닙니다. 1차년도에 Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성 가능성을 먼저 검증하고,
-    실패 시 Domain Randomization 중심으로 회귀하는 대안을 둡니다.
+    아닙니다.
 
 ---
 
@@ -1005,25 +1139,26 @@ Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감�
 |---|---|---|---|---|
 | Geometry | Asset 정합 오차 | 실측 기준점 대비 위치·치수 RMS 편차 | 주요 설비·치구 기준 **≤ 20 mm** | 모빌테크 도면·MMS 기반 물류센터 구축 실적 |
 | Geometry | Sensor 가시성 일치 | 동일 Pose에서 실·가상 Depth 유효화소 비율 차 | **≤ 10 %p** | 실·가상 카메라 정합 검수 관행 |
-| **Engine** | **재현 가능 소재군 수** | Material Profile 로 검증 완료된 소재군 개수 | v3 시점 **4개 이상** | 버전별 단계 확장 계획 |
+| **Engine** | **재현 가능 소재군 수** | Material Profile 로 검증 완료된 소재군 개수 | 기본안 **2개 이상** / 확장안 4개 이상 | 예산 범위와 연동. 물성시험 횟수가 직접 제약 |
 | **Engine** | **접촉력 재현오차** | 기준 물성시험 대비 접촉력·변위 곡선 NRMSE | 대상 소재군별 **≤ 20 %** | 물성 파라미터 식별 후 보정 전제 |
 | **Engine** | **잔류변형 재현오차** | 반복하중 후 형상 스캔 대조 | v2 시점 **≤ 25 %** | 소성 거동은 탄성보다 오차 허용 |
-| **Engine** | **Calibration 소요** | 신규 소재 1종의 파라미터 식별에 드는 시험 횟수·시간 | 절차서 기준 **재현 가능** | 도구·절차서 제공 전제 |
+| **Engine** | **Calibration 소요** | 신규 소재 1종의 파라미터 식별에 드는 **시험 횟수 · 소요시간 · 반복자 간 편차** | **≤ 5회 · ≤ 40시간**, 반복자 간 파라미터 편차 **≤ 15 %** | 절차서·도구 제공 전제. 2인 이상이 독립 수행해 편차 측정 |
 | Physics | Cycle Time 편차 | 동일 Task의 실물–시뮬레이션 소요시간 차 | **≤ 15 %** | Task별 SOP 고정 시 달성 가능 범위 |
 | Physics | 실패 발생조건 일치 | 실물에서 관측된 실패조건의 시뮬레이션 재현율 | **≥ 70 %** | Edge Case 재생 구조 전제 |
 | Data | Episode 생성 처리량 | **GPU-hour당 유효 Episode 수**와 프레임 수 (Scenario·해상도·Sensor 구성 고정 조건) | 기준 구성에서 **GPU-hour당 Episode 수 기준선 대비 유지** | OmniLRS에서 1 Run ≈ 1,000 프레임 자동 생성·종료 확인 |
 | Data | Schema 완전성 | 필수 필드(Task·Observation·Action·Physics·GT·Outcome·Provenance) 충족률 | **100 %** | 자동 검증 Gate로 강제 |
 | Data | **Dataset 호환성** | 표준 LeRobot 도구로 무변환 로드 성공률 (확장 필드 무시 조건) | **100 %** | 필수 필드는 표준 그대로, 확장은 별도 네임스페이스 |
-| Data | **Scene–Physics 쌍 구성률** | Cosmos 생성 장면 중 동일 조건 Isaac Sim 물리량과 짝지어진 비율 | **≥ 80 %** | 1차년도 타당성 검증 후 확정 |
+| Data | **Scene–Physics 쌍 구성률** | Cosmos 장면과 Isaac Sim 물리량이 **① Asset ID 일치 ② Robot·Object Pose 오차 ≤ 5 mm/2° ③ 조명·재질 조건 일치 ④ 시간축 정렬 오차 ≤ 1 frame** 을 모두 충족한 비율 | **≥ 80 %** | 1차년도 Gate 결과로 확정. 미달 시 목표에서 제외 |
 | Edge Case | **조준 생성 효율** | Ontology 조건 생성분이 무작위 생성분보다 희소조합을 채운 비율 | **2배 이상** | "많이"가 아니라 "없는 것"을 만드는 설계 |
-| Data | 재현성 | 동일 Seed·버전 재생성 시 일치율 — **Robot State·Physics 값은 상대오차 1e-3 이내, 렌더 영상은 PSNR 40dB 이상을 동일로 판정** | **≥ 99 %** | Versioned Asset·Material·Seed 관리 전제 |
+| Data | **상태값 재현성** | 동일 Seed·버전 재생성 시 Robot State·Physics 값 상대오차 | **≤ 1e-3 인 Episode ≥ 99 %** | 상태값은 결정적 경로로 재현 가능 |
+| Data | **렌더 통계동등성** | 재생성 영상의 통계적 동등성 (PSNR/SSIM 분포, 밝기·색 히스토그램 거리) | 분포 차 **유의하지 않음** | **GPU 비결정성 때문에 픽셀 단위 동일은 요구하지 않는다** |
 | Data | QC 통과율 | 자동 QC + 전문가 표본검수 통과 Episode 비율 | **≥ 90 %** | 시간동기·범위검사·결측 탐지 자동화 |
 | Edge Case | 후보 정밀도 | 자동 후보 중 전문가가 확정한 비율 — **분기당 무작위 표본 100건 이상, 판정 기준은 Ontology 규칙 위반·재현 가능성·안전 영향 3항목 합의** | **≥ 50 %** | Human-in-the-loop 검수 전제, 오탐 허용 설계 |
 | Edge Case | Recovery Coverage | 실패유형 대비 복구 Episode 보유 비율 | **≥ 80 %** | 실패–복구 쌍 수집 Protocol 적용 |
 | Model | Sim-to-Real Gap | 동일 Task의 시뮬레이션–실물 성공률 차 | **≤ 20 %p** | 합성 사전학습 + 소량 실데이터 Fine-tuning 전략 |
 | Model | 합성데이터 기여도 | 합성 사전학습 유무에 따른 **ΔmAP(인식) · Δ성공률(조작)** — 동일 평가 Dataset·동일 학습예산 조건 | **ΔmAP ≥ +5 %p 또는 Δ성공률 ≥ +5 %p** | OmniLRS 실적에서 mAP 약 14% 향상 확인 |
-| **학생 Data** | **유효 Demonstration** | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | 30명·5개 조, 6인 역할 순환 체계 |
-| **학생 Data** | **Edge Case 검수 처리량** | 자동 후보 대비 학생이 재생 확인·판정한 비율 | **≥ 90 %** | 5개 조 순환으로 큐 적체 방지 |
+| **학생 Data** | **유효 Demonstration** | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | **유급 참여 6~9명·3개 조**가 Dataset 생산 담당 |
+| **학생 Data** | **Edge Case 검수 처리량** | 자동 후보 대비 학생이 재생 확인·판정한 비율 (월별 후보 건수 ÷ 유급 참여자 처리용량으로 검증) | **≥ 90 %** | 유급 3개 조 순환. 후보 유입이 처리용량을 넘으면 목표를 낮추고 우선순위 큐로 운영 |
 | **학생 Data** | **학생 신고 기여도** | 전체 확정 Edge Case 중 학생 flag 에서 출발한 비율 | **추세 관리** | 자동 점수화가 놓치는 사건의 포착률 지표 |
 | **학생 Data** | **역할 순환 이수율** | 6개 역할을 모두 경험한 학생 비율 | 학기당 **≥ 80 %** | 인력양성 성과 지표 |
 | **인력양성** | **MD 과정 이수자** | Physical AI 마이크로디그리 모듈별 이수 인원 | 연 **30명 규모 유지** | HSU-PAC 30명·5개 조 실습체계 |
@@ -1100,7 +1235,7 @@ Model·Robot Interface를 가져와 본 실증에 들어가기 전 사전 통합
 |---|---|
 | 소프트웨어 | Isaac Sim · Isaac Lab · ROS 2 · PyTorch · LeRobot · Docker/NVIDIA Container Toolkit · Slurm · MLflow/W&B · DCGM/Prometheus/Grafana |
 | 실물 실증공간 | Mobile Robot Arena, Robot Manipulation Cell(협동로봇·F/T), Sensor & Perception Studio(RGB-D·LiDAR·캘리브레이션), Wearable·HRI, Maker 공간 |
-| 인력 운영 | 6인 5개 조 순환, 계정·Quota·권한 분리, 예약제 운영 |
+| 인력 운영 | 교육 30명·5개 조 / **Dataset 생산 유급 6~9명·3개 조**, 계정·Quota·권한 분리, 예약제 |
 
 !!! warning "GPU 메모리 합산은 그대로 쓸 수 있는 용량이 아니다"
     GPU 여러 장의 메모리를 더한 값은 **단일 모델이 곧바로 쓸 수 있는 용량이 아닙니다.** 그 용량을
@@ -1110,7 +1245,7 @@ Model·Robot Interface를 가져와 본 실증에 들어가기 전 사전 통합
 
 !!! note "정확한 보유 사양은 확정 후 기재합니다"
     HSU-PAC 문서 안에서 GPU 서버 대수와 모델명 표기가 일치하지 않는 부분이 확인되어
-    ([OPEN-ITEMS](https://github.com/parclab-hsu/rfm-hansung-rr/blob/main/OPEN-ITEMS.md) 7번), 본 문서에서는 단정적 수치 대신 구성 단계로 기술했습니다.
+    (내부 미결항목 관리대장 7번), 본 문서에서는 단정적 수치 대신 구성 단계로 기술했습니다.
     확정되는 대로 정확한 사양으로 교체합니다.
 
     HSU-PAC은 **교육·연구 규모**로 설계된 플랫폼입니다. 컨소시엄의 제조 데이터 규모와 다기관
@@ -1166,7 +1301,7 @@ flowchart LR
 | 운영 | **Teleoperation 데이터 편향** — 특정 조작자 습관 학습 | 모델 일반화 실패 | 작업자 단위로 학습·검증 Set 분리, 숙련도·전략 다양성 확보, 조별 Coverage 관리 |
 | 운영 | **참여기업 데이터 보안** | 반입 거부, 실증 축소 | 기업별 Namespace·권한 분리, NDA, 접근 Log와 Asset 버전 관리 |
 | 사업 | **수행기간 확정치 변동** | 계획 재작성 | 차년도 구조를 단계 중첩으로 설계해 기간 변동 시 마일스톤 순서를 유지한 채 구간만 조정 |
-| 사업 | **총사업비·기관별 배분 미확정** | 예산 재작성 | 본안 10.0억을 **비례몫보다 낮게** 잡아 조정 여지를 확보. 확정 시 「증액 시 우선 확대할 범위」 순서로 재산정 |
+| 사업 | **총사업비·기관별 배분 미확정** | 예산 재작성 | 인월·시험 횟수·장비 수량에서 쌓아 올린 값이라 **범위를 줄이면 금액이 따라 줄어드는 구조**. 확정 시 「증액 시 우선 확대할 범위」 순서로 재산정 |
 | 사업 | **RFP/품목서 정량목표와의 불일치** | 목표 미달 판정 | 품목서 확보 즉시 KPI 표와 대조해 기준선 동결 전에 정렬 |
 
 ---
@@ -1174,17 +1309,42 @@ flowchart LR
 ## 성과 귀속과 데이터 이용 원칙
 
 컨소시엄 제안 단계에서 가장 늦게 합의되면서 가장 많이 다투게 되는 항목이라, 원칙을 먼저 둡니다.
-최종 조건은 협약과 컨소시엄 협약서(공동 연구개발 협약)로 확정합니다.
+최종 조건은 협약과 컨소시엄 협약서로 확정합니다.
+
+### 공개 범위는 3단계로 나눕니다
+
+"한성대 귀속"과 "재현 가능한 공개 규격"을 함께 쓰면 어디까지 공개인지 모호해집니다. 나눕니다.
+
+| 단계 | 대상 | 이유 |
+|---|---|---|
+| **공개** | API 규격 · 데이터 Schema · 평가 Protocol · Benchmark 정의 · 논문 | 타 기관이 연동·비교하려면 규격은 열려야 한다 |
+| **컨소시엄 한정** | Engine 소스코드 · Calibration Tool · 상세 기술문서 · Material Library 구조 | 참여기관은 쓰되 외부 배포는 제한 |
+| **비공개** | 제조기업 원본 데이터 · 현장별 Material Parameter 실측값 · 보정 계수 | 기업 자산이며 공개 시 공정 정보가 드러난다 |
+
+**특허 출원 전에는 공개 단계 항목도 공개하지 않습니다.** 출원·공개 시점은 IP 관리 절차에 따릅니다.
+
+### 성과 귀속
 
 | 대상 | 귀속·이용 원칙(제안) |
 |---|---|
-| Manufacturing Deformation Engine | 한성대학교 개발분은 한성대 귀속. 컨소시엄 참여기관에 과제 목적 범위의 실시권 부여 |
-| Manufacturing Ontology·Schema | **공개 표준을 지향** — 컨소시엄 공통 자산으로 두고 과제 종료 후 규격 공개를 원칙으로 함 |
-| Simulation-ready Asset | 모빌테크 원저작물 기반. 한성대가 부가한 물성·Collision·Sensor Metadata는 공동 성과로 관리 |
+| **Background IP** | 각 기관이 과제 이전부터 보유한 기술·자산. 소유권 변동 없음. OmniLRS 파생 기반 코드, 모빌테크 취득 기술, RFM 기관 기존 모델이 여기 해당 |
+| Manufacturing Deformation Engine | 한성대 개발분(Foreground)은 한성대 귀속. 컨소시엄 참여기관에 **과제 목적 범위의 실시권** 부여 |
+| Manufacturing Ontology·Schema | **공개 표준 지향** — 컨소시엄 공통 자산. 과제 종료 후 규격 공개를 원칙으로 함 |
+| Simulation-ready Asset | 모빌테크 원저작물 기반. 한성대가 부가한 물성·Collision·Sensor Metadata 는 **공동개발분(Joint Foreground)** |
 | 제조현장 원본 데이터 | 제조·수요기업 소유. 반출·가공·공개 범위를 별도 이용조건으로 정함 |
 | Synthetic·Teleoperation Dataset | 생성기관 귀속, 컨소시엄 내 학습·평가 목적 이용 허용. 외부 공개는 제조기업 동의 전제 |
 | RFM 모델·Checkpoint | RFM 주관기관 귀속. 한성대는 평가·검증 목적 이용 |
 | Benchmark·Evaluation Protocol | 공통 자산 — 기관별 모델을 동일 조건에서 비교하려면 중립이어야 함 |
+| **공동개발분(Joint Foreground)** | 지분·실시조건을 **개별 산출물 단위로** 협약서에 명시. 「[산출물별 역할 분담(RACI)](#raci)」의 C 표시 항목이 대상 |
+
+### 과제 종료 후
+
+| 항목 | 원칙 |
+|---|---|
+| 상업적 실시권 | 참여기관에 **우선 실시 협의권**. 조건은 기술료 규정과 협약서에 따름 |
+| 비참여 제3자 | 기술이전 절차를 거쳐 실시 허락 |
+| 데이터셋 | 제조기업 동의 범위 내에서만 공개·이전 |
+| MD 과정 교보재 | 한성대 귀속. 교육 목적 공개 가능 |
 
 !!! note "기술료와 영리기관 참여"
     공고의 「기술료 징수」 과제는 **영리기관이 반드시 연구개발기관으로 참여**해야 합니다. 한성대학교는
