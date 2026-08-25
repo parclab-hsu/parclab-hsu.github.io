@@ -31,7 +31,9 @@ noindex: true
 
     **② 학생 주도 Human Data Engine**
     30명·5개 조가 표준 Protocol 아래에서 Teleoperation Demonstration을 생산하고, Edge Case를
-    발견·태깅·재현까지 수행합니다. 데이터 생산과 Physical AI 인력양성이 같은 활동에서 나옵니다.
+    발견·태깅·재현까지 수행합니다. **Physical AI 마이크로디그리(MD) 과정이 인력 공급 경로**이며,
+    교육 → 데이터 생산 → RFM 학습 → 결과 → 다시 교육으로 한 바퀴가 돕니다. 데이터 생산과
+    Physical AI 인력양성이 같은 활동에서 나옵니다.
 
     **③ Manufacturing Ontology·Edge Case Intelligence**
     ①과 ②가 만든 데이터를 의미로 연결해 검색·재현·재학습이 가능한 자산으로 만듭니다.
@@ -118,7 +120,7 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 | **HSU-2. Deformation Engine** | **[대표 성과]** 물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정, 실계측 기반 검증 | **Manufacturing Deformation Engine**, Material Library, Calibration Tool, 검증 리포트 |
 | HSU-3. 제조 로봇 시뮬레이션 | Isaac Sim·ROS 2 기반 Robot·Sensor·Task·Scenario 구성 | Simulation Package, Scenario Library |
 | HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, **희소조합을 생성 조건으로 변환(Cosmos 조준)**, 학생 1차 검수 체계 운영 | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor, **생성 조건 명세** |
-| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성**, 자동 Annotation, **LeRobotDataset v3 정규화**, 학생 30명·5개 조의 Demonstration·Edge Case 수집 운영 | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus |
+| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성**, 자동 Annotation, **LeRobotDataset v3 정규화**, **Physical AI MD 과정** 기반 학생 30명·5개 조의 Demonstration·Edge Case 수집 운영 | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus, MD 교보재 |
 | HSU-6. RFM 연계 | RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의, **LeRobotDataset 확장 필드 규약 정의** | RFM Adapter, Benchmark·Evaluation Protocol, **Dataset 규약서** |
 | HSU-7. 공동 Testbed·Physical Validation | HSU-PAC 참여기업 공동활용, 실제 Robot HW 적용, Domain Gap 분석 | 사전 통합환경, Sim-to-Real 검증결과, Feedback Data |
 
@@ -130,7 +132,7 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 | Asset–Physics 표준 | 3D Asset에 Collision, Joint, 질량·관성, 물성·Sensor Metadata를 결합 | 모빌테크 산출물을 Isaac Sim·RFM·Robot HW가 재사용 |
 | Ontology·Edge Case | 자산–공정–상태–이벤트–실패–복구 관계를 구조화하고 규칙·희소성·모델 불확실성으로 후보 추출 | 흩어진 실패 로그를 재현 가능한 학습 Scenario로 전환 |
 | 제조 데이터 생성 | 정상·경계·실패·복구 Scenario, Domain Randomization, Teleoperation, 자동 Annotation | Synthetic·Real·Human Demonstration이 결합된 RFM 학습데이터 확보 |
-| 학생 Human Data Engine | 30명·5개 조가 Demonstration 생산부터 **Edge Case 1차 검수·재현 조건 탐색·복구 시연**까지 수행 | 학습데이터와 Edge Case가 한 팀에서 나오고, Physical AI 실무인력이 함께 양성됨 |
+| 학생 Human Data Engine | **Physical AI MD 과정** 위에서 30명·5개 조가 Demonstration 생산부터 **Edge Case 1차 검수·재현 조건 탐색·복구 시연**까지 수행. 모델 결과가 다음 학기 교재로 되돌아옴 | 학습데이터와 Edge Case가 한 팀에서 나오고, 과제 종료 후에도 MD 과정과 숙련 인력이 남음 |
 | RFM 평가 Interface | Observation·Action·Task·Embodiment Schema와 Benchmark 설계 | 기관별 모델을 동일 제조조건에서 비교·평가 |
 | Sim-to-Real 검증 | 실물 Robot의 Domain Gap·Failure·Edge Case를 물성·Scenario에 재반영 | 데이터 생성–재학습–재검증의 지속 개선 Loop 구축 |
 | HSU-PAC 공동활용 | GPU·Isaac Sim·ROS 2·NAS·실물 로봇과 기업별 격리환경 제공 | 참여기업이 Asset·Model·Robot을 반입해 본 실증 전 사전 통합·검증 |
@@ -341,6 +343,7 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 | 복구 시연 Set | 확정된 실패 상황별 사람의 복구 행동 기록 |
 | 운영 Protocol | Task·안전·품질 SOP, 6인 역할 순환 체계, 교육·검수 절차서 |
 | 인력 성과 | 6개 역할을 모두 경험한 Physical AI 실무인력 |
+| **MD 과정 교보재** | 모듈별 교재·실습 Protocol, QC 반려 사례집, 모델 실패 사례연구 — 과제 종료 후에도 운영 가능 |
 
 ### 그 밖의 산출물
 
@@ -631,6 +634,83 @@ flowchart TB
 
 운영자 식별정보는 최소화·가명화하고, 모델 평가 시에는 작업자 단위로 학습·검증 Set을 분리해
 특정 조작자의 습관을 외운 성능을 배제합니다.
+
+### Physical AI 마이크로디그리(MD) 과정 — 교육이 곧 데이터 생산 라인
+
+학생 참여를 일회성 아르바이트로 두면 학기마다 숙련도가 초기화되고 데이터 품질이 흔들립니다.
+**한성대는 Physical AI 마이크로디그리(MD) 과정을 데이터 생산 라인의 인력 공급 경로로 설계**합니다.
+교과목이 곧 파이프라인의 한 단계이고, 이수 산출물이 곧 과제 산출물입니다.
+
+| 모듈 | 배우는 것 | 그 과정에서 만들어지는 것 | 기여하는 WP |
+|---|---|---|---|
+| **MD-1** Physical AI 기초 | Linux · Git · Docker · ROS 2, 재현 가능한 실행환경 | 실행환경 재현 기록, 도구 숙련도 | HSU-7 운영 |
+| **MD-2** Simulation·Digital Twin | USD/URDF · Isaac Sim · 센서 시뮬레이션, **Deformation Engine 사용법** | Scenario 조건표, 물성 파라미터 관측 로그 | HSU-2 · HSU-3 |
+| **MD-3** Robot Learning Data | **LeRobot·모방학습**, Teleoperation, 자동 QC, **Ontology 태깅** | **Demonstration Episode · Edge Case 검수 결과 · Ontology 태그** | HSU-4 · HSU-5 |
+| **MD-4** RFM·Sim-to-Real | VLM/VLA·RFM 구조, 정책 이전, 평가, 캡스톤 | **Benchmark 실행 결과 · Domain Gap 측정 · 실패 사례 보고** | HSU-6 · HSU-7 |
+
+MD-1~2 는 [HSU-PAC](../hsu-pac.md) 의 1~8주차, MD-3 은 9~10주차, MD-4 는 11~15주차 커리큘럼과
+대응합니다. **없던 과정을 새로 만드는 것이 아니라, 이미 설계된 커리큘럼에 과제의 데이터 생산
+Protocol 을 얹는 구조**입니다.
+
+### 교육–데이터–학습–결과가 한 바퀴를 돕니다
+
+```mermaid
+flowchart LR
+    EDU["MD 과정 수강<br/>표준 Protocol 학습"] --> COLLECT["데이터 생산<br/>Demonstration · Edge Case · 태깅"]
+    COLLECT --> QC["자동 QC + 전문가 검수"]
+    QC --> DATASET["LeRobotDataset 편입"]
+    DATASET --> TRAIN["RFM 학습 · 평가"]
+    TRAIN --> RESULT["결과 · 실패 사례 · Hard Case"]
+    RESULT -->|다음 학기 교육 자료로| EDU
+    RESULT -->|재수집 요청| COLLECT
+    QC -->|반려 사유| EDU
+```
+
+**되돌아오는 것이 있어야 교육이다.** 학생이 만든 데이터가 어떤 모델에서 어떻게 쓰였고 어디서
+실패했는지를 다음 학기 교재로 되돌립니다. 구체적으로는 이렇게 씁니다.
+
+| 되돌아오는 것 | 교육에서의 쓰임 |
+|---|---|
+| QC 반려 사유 통계 | 무엇을 잘못 수집하는지 — 다음 기수 사전교육 자료 |
+| 모델이 실패한 Episode | 왜 이 조건이 어려운가 — MD-4 사례연구 |
+| Benchmark 성능 추이 | 내 데이터가 성능을 얼마나 움직였는가 — 기여도 피드백 |
+| Hard Case Queue | 다음 학기 수집 우선순위 — 조별 과제 주제 |
+
+**학생 입장에서 이 순환이 중요한 이유** — 자기가 만든 데이터가 실제 모델을 움직이는 것을 보면
+데이터 품질에 대한 감각이 생깁니다. 이것은 강의로 가르치기 어려운 부분이고, 제조 Physical AI
+현장에서 곧바로 쓰이는 역량입니다.
+
+### 두 트랙과 MD 과정의 관계
+
+앞서 나눈 **교과 실습 / 유급 연구참여** 두 트랙은 MD 과정 위에서 이렇게 연결됩니다.
+
+| | 교과 실습 트랙 | 유급 연구참여 트랙 |
+|---|---|---|
+| 대상 | MD 과정 수강생 전원 | **MD-3 이수자 중 선발** |
+| 데이터 | 실습 산출물 (동의 시 익명 통계) | 연구개발 Dataset 편입 |
+| 기간 | 학기 단위 | 학기 넘어 연속 |
+| 역할 | 6인 역할 순환 경험 | **숙련 Operator · Quality Reviewer 로 고정 배치** |
+
+**MD-3 이수를 유급 참여의 자격 요건으로 둡니다.** 표준 Protocol·안전·QC 를 배운 사람만 실제
+Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품질과 연구윤리를 동시에 지키는 장치입니다.
+
+### 인력양성 성과 지표
+
+과제 성과와 교육 성과를 따로 세지 않습니다. 같은 활동에서 나오므로 함께 측정합니다.
+
+| 지표 | 측정 방법 | 잠정 목표 |
+|---|---|---|
+| MD 과정 이수자 | 모듈별 이수 인원 (연간) | **연 30명 규모 유지** |
+| 6개 역할 순환 이수율 | 6개 역할을 모두 경험한 비율 | 학기당 **≥ 80 %** |
+| 유급 연구참여 전환 | MD-3 이수자 중 연구참여 선발 비율 | 기수당 **20~30 %** |
+| 1인당 유효 Episode | QC 통과 Episode ÷ 참여 학생 수 | 기수 간 **증가 추세** |
+| 숙련도 곡선 | 기수·개인별 QC 통과율 변화 | **후반 기수일수록 상승** |
+| 캡스톤 성과 연계 | 과제 Use Case 를 다룬 캡스톤 수 | 학기당 **2건 이상** |
+
+!!! note "인력양성은 부수 효과가 아니라 설계 목표입니다"
+    제조 Physical AI 인력은 시장에 거의 없습니다. **데이터를 만들 줄 아는 사람이 곧 이 분야의
+    실무인력**이고, 본 과제는 그 사람을 4년에 걸쳐 길러내면서 동시에 데이터를 얻습니다.
+    과제가 끝나도 MD 과정과 숙련 인력은 남습니다.
 
 ### 6인 역할과 담당 산출물
 
@@ -946,6 +1026,9 @@ Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감�
 | **학생 Data** | **Edge Case 검수 처리량** | 자동 후보 대비 학생이 재생 확인·판정한 비율 | **≥ 90 %** | 5개 조 순환으로 큐 적체 방지 |
 | **학생 Data** | **학생 신고 기여도** | 전체 확정 Edge Case 중 학생 flag 에서 출발한 비율 | **추세 관리** | 자동 점수화가 놓치는 사건의 포착률 지표 |
 | **학생 Data** | **역할 순환 이수율** | 6개 역할을 모두 경험한 학생 비율 | 학기당 **≥ 80 %** | 인력양성 성과 지표 |
+| **인력양성** | **MD 과정 이수자** | Physical AI 마이크로디그리 모듈별 이수 인원 | 연 **30명 규모 유지** | HSU-PAC 30명·5개 조 실습체계 |
+| **인력양성** | **유급 연구참여 전환율** | MD-3 이수자 중 연구참여 선발 비율 | 기수당 **20~30 %** | 숙련자만 Dataset 편입 데이터를 만든다 |
+| **인력양성** | **1인당 유효 Episode** | QC 통과 Episode ÷ 참여 학생 수 | 기수 간 **증가 추세** | 숙련도 곡선 확인용 |
 | 운영 | 공동활용 성과 | 참여기업 수, Asset 재사용률, Onboarding 소요, 검증 Turnaround | 분기 단위 추세관리 | HSU-PAC Shared Testbed 운영 |
 
 **측정 규약** — 각 지표에는 다음을 함께 정의해 기준선과 함께 동결합니다.
