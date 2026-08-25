@@ -1,3 +1,7 @@
+---
+noindex: true
+---
+
 # 프로젝트 (Research Projects)
 
 PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝트입니다. 각 프로젝트는 Physical AI와 실시간 제어의 실용적 적용을 목표로 합니다.

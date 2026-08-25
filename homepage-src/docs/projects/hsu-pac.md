@@ -1,3 +1,7 @@
+---
+noindex: true
+---
+
 # 한성대학교 Physical AI 교육·연구 플랫폼 (HSU-PAC)
 
 :material-circle-outline:{ style="color:#e0a800" } **구축 제안** · Hansung University Physical AI Computing Platform

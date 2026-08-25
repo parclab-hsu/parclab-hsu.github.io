@@ -1,3 +1,7 @@
+---
+noindex: true
+---
+
 # SRS — 소프트웨어 요구사항 명세서 (LPJ-HILS-SRS-001)
 
 !!! abstract "문서 정보"

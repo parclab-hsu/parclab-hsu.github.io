@@ -1,3 +1,7 @@
+---
+noindex: true
+---
+
 # 현대자동차 L-Project — 중간 보고
 
 :material-circle:{ style="color:#2e9e44" } **진행중** · 달 탐사 로버 12축 HILS 시스템 · 보고 기준일 **2026-08-22**

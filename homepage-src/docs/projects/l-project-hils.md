@@ -1,3 +1,7 @@
+---
+noindex: true
+---
+
 # 현대자동차 L-Project — 달 탐사 로버 12축 HILS 시스템
 
 :material-circle:{ style="color:#2e9e44" } **진행중** · Hyundai Motor L-Project — Lunar Rover 12-Axis HILS Platform

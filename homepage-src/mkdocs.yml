@@ -10,6 +10,7 @@ docs_dir: docs
 use_directory_urls: true
 
 theme:
+  custom_dir: overrides      # noindex 메타 주입 (overrides/main.html)
   name: material
   language: ko
   logo: assets/logo.png

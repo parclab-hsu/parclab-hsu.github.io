@@ -1,3 +1,7 @@
+---
+noindex: true
+---
+
 # Mobile Manipulator (AMR + 매니퓰레이터)
 
 :material-circle:{ style="color:#2e9e44" } **개발 중** · Autonomous Mobile Manipulator Platform

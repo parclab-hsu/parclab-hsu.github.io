@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{#
+  검색 엔진 색인 차단 — 페이지 front matter 에 `noindex: true` 가 있으면
+  robots 메타를 넣는다.
+
+  **이것은 접근 제어가 아니다.** 규약을 지키는 크롤러(Google·Bing 등)에게
+  "색인하지 말라" 고 요청하는 것일 뿐, URL 을 아는 사람은 그대로 볼 수 있고
+  이미 색인된 것이 즉시 사라지지도 않는다. 실질 보안이 필요하면 사이트에서
+  내리거나 인증이 있는 호스팅으로 옮겨야 한다 (PG-001 참조).
+#}
+{% block extrahead %}
+  {{ super() }}
+  {% if page and page.meta and page.meta.noindex %}
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  {% endif %}
+{% endblock %}
