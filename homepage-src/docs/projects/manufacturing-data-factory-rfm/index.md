@@ -56,6 +56,7 @@ noindex: true
 <figure markdown>
   ![한성대학교 고유 Physical AI Data Factory 아키텍처 — OmniLRS 파생 Deformation Engine, Manufacturing Ontology, 학생 Teleoperation, Ontology 기반 Edge Case Intelligence, Versioned Episode Factory와 HSU-PAC Shared Testbed](../../assets/manufacturing-rfm-system-architecture.svg){ loading=lazy }
   <figcaption>한성대학교 고유 아키텍처 — 외부기관은 표준 입력·활용 Interface로 두고, 한성대가 보유·개발·운영하는 Physics·Ontology·Human Demonstration·Edge Intelligence·Shared Testbed를 중앙에 배치했습니다.</figcaption>
+  <figcaption style="margin-top:.4rem;font-size:.8rem">글자가 작으면 <a href="assets/manufacturing-rfm-system-architecture.svg">원본 SVG 열기</a></figcaption>
 </figure>
 
 ---
@@ -131,7 +132,7 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 | **HSU-2. Deformation Engine** | **[대표 성과]** 물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정, 실계측 기반 검증 | **Manufacturing Deformation Engine**, Material Library, Calibration Tool, 검증 리포트 |
 | HSU-3. 제조 로봇 시뮬레이션 | Isaac Sim·ROS 2 기반 Robot·Sensor·Task·Scenario 구성 | Simulation Package, Scenario Library |
 | HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, **희소조합을 생성 조건으로 변환(Cosmos 조준)**, 학생 1차 검수 체계 운영 | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor, **생성 조건 명세** |
-| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim 물리량의 쌍 구성**, 자동 Annotation, **LeRobotDataset v3 정규화**, **Physical AI MD 과정** 기반 Demonstration·Edge Case 수집 운영(교육 30명·5개 조 / 유급 생산 6~9명·3개 조) | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus, MD 교보재 |
+| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim Episode 의 Scene–Scenario 정합**, 자동 Annotation, **LeRobotDataset v3 정규화**, **Physical AI MD 과정** 기반 Demonstration·Edge Case 수집 운영(교육 30명·5개 조 / 유급 생산 6~9명·3개 조) | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus, MD 교보재 |
 | HSU-6. RFM 연계 | RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의, **LeRobotDataset 확장 필드 규약 정의** | RFM Adapter, Benchmark·Evaluation Protocol, **Dataset 규약서** |
 | HSU-7. 공동 Testbed·Physical Validation | HSU-PAC 참여기업 공동활용, 실제 Robot HW 적용, Domain Gap 분석 | 사전 통합환경, Sim-to-Real 검증결과, Feedback Data |
 
@@ -274,7 +275,7 @@ HSU-5 1.1, HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.
 - 반복적인 데이터 생성–학습–검증을 위한 **Validation Feedback Pipeline**
 - Ontology 희소조합을 생성 조건으로 바꾸는 **Cosmos 조준 규약과 생성 조건 명세**
 - 접촉력·변형량·물성·Edge Case ID 를 담는 **LeRobotDataset 확장 필드 규약서**
-- Cosmos 생성 장면과 Isaac Sim 물리량을 짝짓는 **Scene–Physics Pairing 절차**
+- Cosmos 생성물과 Isaac Sim Episode 를 Asset·Scenario·Task·Material 버전으로 잇는 **Scene–Scenario 정합 절차**
 - 지표 정의·산정식·측정절차를 담은 **정량 KPI 정의서와 기준선(Baseline) Report**
 - 기간·범위·기술 리스크의 **리스크 관리대장과 완화 이력** — 현황은 [기술 상세](technical.md) 참조
 

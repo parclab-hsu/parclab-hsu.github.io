@@ -75,7 +75,7 @@ Deformation Engine 파생은 개념 차용이 아니라, 한성대학교가 직�
 | 실시간 제어 | 조명·태양광·렌즈·렌더·지형·로봇 6개 카테고리 **ROS 2 토픽 제어** (조명 on/off·세기, 광원 위치·자세, 암석 배치 랜덤화, 로봇 Spawn·Reset·Teleport) | 조명·설비·부품 배치·로봇 초기상태의 Randomization 제어면 |
 | 합성데이터 | 조명·지형 자동 변화 + 카메라 랜덤 시점, **1회 Run당 약 1,000 프레임 자동 생성 후 종료** | 제조 Task Episode의 자동 대량 생성 |
 | 자동 Annotation | Bounding Box · Instance Segmentation · Pixel-level Labeling | 6D Pose·Collision·접촉·변형·이벤트 Ground Truth |
-| Sim-to-Real 효과 | 합성데이터 사전학습 시 암석 분류 **mAP 약 14% 향상**(문헌 보고값, 자체 재현 예정) | 제조 부품·결함 인식의 사전학습 기여도 검증 |
+| Sim-to-Real 효과 | **암석 Instance Segmentation** 에서 합성데이터 사전학습 후 실물 Fine-tuning 한 모델이 실물 단독 학습 대비 **Average Precision 약 14% 향상**(OmniLRS 문헌 보고값, 자체 재현 예정) | 제조 부품·결함 인식의 사전학습 기여도 검증 |
 | 접촉물리 | Grouser Wheel 지형변형 모델 이식 — 슬립·침하, Mesh 실시간 변형, 접촉력·저항력 모델링 | 그리퍼·공구·부품 접촉의 변형·미끄럼·잔류변형 |
 
 !!! note "무엇이 새로 개발되는가"
@@ -216,7 +216,7 @@ flowchart TB
     COND --> COSMOS["NVIDIA Cosmos<br/>외관·환경 다양화"]
     DT["Digital Twin + Deformation Engine"] --> ISAAC["Isaac Sim Rollout<br/>물리·접촉·변형"]
     COND --> ISAAC
-    COSMOS --> PAIR["장면 ↔ 물리량 정합<br/>동일 조건으로 쌍 구성"]
+    COSMOS --> PAIR["Scene–Scenario 정합<br/>Asset·Scenario·Task·Material 버전 공유"]
     ISAAC --> PAIR
     TELE["학생 Teleoperation<br/>행동·복구"] --> NORM
     PAIR --> NORM["LeRobotDataset v3 정규화<br/>Observation·Action·Physics·Provenance"]
@@ -283,7 +283,7 @@ RFM 기관이 매번 변환기를 만들어야 합니다. **모든 출처를 LeR
 
 | Gate 항목 | 판정 기준 |
 |---|---|
-| 장면–물리량 쌍 구성률 | 동일 조건으로 생성한 Cosmos 장면과 Isaac Sim Rollout 이 짝지어진 비율 |
+| Scene–Scenario 정합 | Cosmos 생성물과 Isaac Sim Episode 가 Asset ID·Scenario·Task·Material Profile 버전을 공유하는 비율 |
 | 조건 일치율 | 지시한 재질·조명·Pose·배치가 생성물에 실제로 반영된 비율 (표본 육안 검수 병행) |
 | 비용 | 유효 Episode 1건당 GPU-hour 와 환산 비용 |
 | 품질 기여 | Cosmos 증강 유무에 따른 인식·조작 성능 차 |
@@ -291,7 +291,7 @@ RFM 기관이 매번 변환기를 만들어야 합니다. **모든 출처를 LeR
 !!! warning "실패 시 회귀 경로를 미리 둡니다"
     Gate 를 통과하지 못하면 **Isaac Sim Domain Randomization 중심으로 회귀**하고, Cosmos 는
     **인식 학습용 외관 증강에 한정**해 사용합니다. 조작 정책 학습은 Isaac Sim 물리량만으로
-    수행합니다. 이 경우 KPI 의 *Scene–Physics 쌍 구성률* 은 목표에서 제외합니다.
+    수행합니다. 이 경우 KPI 의 *Cosmos 조건 준수율* 은 목표에서 제외하고, *Metadata 연결 완전성* 만 유지합니다.
 
 !!! note "라이선스와 표시 의무는 착수 전 검토합니다"
     Cosmos 모델·NIM·생성물의 **라이선스 조건과 표시(attribution) 의무**, 생성물의 상업적 활용
@@ -411,7 +411,8 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 
 ### 인력양성 성과 지표
 
-과제 성과와 교육 성과를 따로 세지 않습니다. 같은 활동에서 나오므로 함께 측정합니다.
+**연구개발 성과와 교육 성과는 동의·회계·평가기준에 따라 분리 집계**하되, 동일한 교육–연구 피드백
+순환 안에서 연계 관리합니다. 아래는 교육 성과 지표이며, 연구개발 Dataset 관련 지표는 정량 KPI 절에 있습니다.
 
 | 지표 | 측정 방법 | 잠정 목표 |
 |---|---|---|
@@ -424,8 +425,8 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 
 !!! note "인력양성은 부수 효과가 아니라 설계 목표입니다"
     제조 Physical AI 인력은 시장에 거의 없습니다. **데이터를 만들 줄 아는 사람이 곧 이 분야의
-    실무인력**이고, 본 과제는 그 사람을 4년에 걸쳐 길러내면서 동시에 데이터를 얻습니다.
-    과제가 끝나도 MD 과정과 숙련 인력은 남습니다.
+    실무인력**입니다. 과제가 끝나도 MD 과정과 숙련 인력은 남습니다.
+    다만 **교육 성과를 연구개발 성과로 대체 계상하지 않습니다** — 회계·평가기준이 다릅니다.
 
 ### 6인 역할과 담당 산출물
 
@@ -635,7 +636,8 @@ Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감�
 | Data | Episode 생성 처리량 | **GPU-hour당 유효 Episode 수**와 프레임 수 (Scenario·해상도·Sensor 구성 고정 조건) | 기준 구성에서 **GPU-hour당 Episode 수 기준선 대비 유지** | OmniLRS에서 1 Run ≈ 1,000 프레임 자동 생성·종료 확인 |
 | Data | Schema 완전성 | 필수 필드(Task·Observation·Action·Physics·GT·Outcome·Provenance) 충족률 | **100 %** | 자동 검증 Gate로 강제 |
 | Data | **Dataset 호환성** | 표준 LeRobot 도구로 무변환 로드 성공률 (확장 필드 무시 조건) | **100 %** | 필수 필드는 표준 그대로, 확장은 별도 네임스페이스 |
-| Data | **Scene–Scenario 정합률** | Cosmos 생성물이 **① Asset ID ② Scenario 조건 ③ Task 정의 ④ Material Profile 버전** 을 Isaac Sim Episode 와 공유하고 Metadata 로 추적되는 비율 | **≥ 95 %** | **조건·의미 정합** 판정. 픽셀·좌표 정합이 아니다 |
+| Data | **Metadata 연결 완전성** | Cosmos 생성물이 Asset ID·Scenario·Task·Material Profile 버전을 Isaac Sim Episode 와 공유하고 추적 가능한 비율 | **100 %** | 자동 검증 Gate로 강제. 기록만으로 달성되므로 아래 지표와 함께 본다 |
+| Data | **Cosmos 조건 준수율** | 요청한 **재질·조명·배치·시점이 실제 생성물에 반영**됐는지 — 분기당 무작위 표본 100건 이상, 항목별 판정 후 합산 | **≥ 70 %** | Metadata 기록과 별개로 **생성 품질**을 본다. 1차년도 Gate 결과로 확정 |
 | Edge Case | **조준 생성 효율** | Ontology 조건 생성분이 무작위 생성분보다 희소조합을 채운 비율 | **2배 이상** | "많이"가 아니라 "없는 것"을 만드는 설계 |
 | Data | **상태값 재현성** | 동일 Seed·버전 재생성 시 Robot State·Physics 값 상대오차 | **≤ 1e-3 인 Episode ≥ 99 %** | 상태값은 결정적 경로로 재현 가능 |
 | Data | **렌더 통계동등성** | 재생성 영상의 통계적 동등성 (PSNR/SSIM 분포, 밝기·색 히스토그램 거리) | 분포 차 **유의하지 않음** | **GPU 비결정성 때문에 픽셀 단위 동일은 요구하지 않는다** |
@@ -643,7 +645,7 @@ Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감�
 | Edge Case | 후보 정밀도 | 자동 후보 중 전문가가 확정한 비율 — **분기당 무작위 표본 100건 이상, 판정 기준은 Ontology 규칙 위반·재현 가능성·안전 영향 3항목 합의** | **≥ 50 %** | Human-in-the-loop 검수 전제, 오탐 허용 설계 |
 | Edge Case | Recovery Coverage | 실패유형 대비 복구 Episode 보유 비율 | **≥ 80 %** | 실패–복구 쌍 수집 Protocol 적용 |
 | Model | Sim-to-Real Gap | 동일 Task의 시뮬레이션–실물 성공률 차 | **≤ 20 %p** | 합성 사전학습 + 소량 실데이터 Fine-tuning 전략 |
-| Model | 합성데이터 기여도 | 합성 사전학습 유무에 따른 **ΔmAP(인식) · Δ성공률(조작)** — 동일 평가 Dataset·동일 학습예산 조건 | **ΔmAP ≥ +5 %p 또는 Δ성공률 ≥ +5 %p** | OmniLRS 문헌 보고값(mAP 약 14%) 참고. 자체 재현시험으로 기준선 확정 |
+| Model | 합성데이터 기여도 | 합성 사전학습 유무에 따른 **ΔmAP(인식) · Δ성공률(조작)** — 동일 평가 Dataset·동일 학습예산 조건 | **ΔmAP ≥ +5 %p 또는 Δ성공률 ≥ +5 %p** | OmniLRS 문헌 보고값(Instance Segmentation AP 약 14%) 참고. 자체 재현시험으로 기준선 확정 |
 | **학생 Data** | **유효 Demonstration** | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | **유급 참여 6~9명·3개 조**가 Dataset 생산 담당 |
 | **학생 Data** | **Edge Case 검수 처리량** | 자동 후보 대비 학생이 재생 확인·판정한 비율 (월별 후보 건수 ÷ 유급 참여자 처리용량으로 검증) | **≥ 90 %** | 유급 3개 조 순환. 후보 유입이 처리용량을 넘으면 목표를 낮추고 우선순위 큐로 운영 |
 | **학생 Data** | **학생 신고 기여도** | 전체 확정 Edge Case 중 학생 flag 에서 출발한 비율 | **추세 관리** | 자동 점수화가 놓치는 사건의 포착률 지표 |
@@ -753,6 +755,8 @@ flowchart TB
 
 **L** Lead 주도 · **C** Co-develop 공동개발 · **I** Interface 규약 합의 · **V** Validate 검증 참여
 
+<small>표가 넓습니다 — 좁은 화면에서는 표를 가로로 밀어 보십시오.</small>
+
 | 산출물 | 한성대 | 모빌테크 | Data | RFM | SI | Robot HW | 제조·수요 |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 현장 취득·정밀 3D Asset | I | **L** | — | — | — | — | V |
@@ -770,6 +774,9 @@ flowchart TB
 | 참여기업 공동 Testbed 운영 | **L** | C | C | C | C | C | I |
 
 !!! note "이 표의 용도"
+    **C 표시는 공동개발 가능성이 있는 검토 대상이며 지분을 결정하지 않습니다.** 실제 지분은
+    기여·발명자·저작자 확인과 협약으로 정합니다.
+
     R&R 협의에서 다투게 되는 것은 대개 **공동개발(C)과 규약 합의(I)의 경계**입니다. 이 표를 먼저
     합의하면 「Interface Specification」 작성 범위가 자동으로 정해집니다. 표에 없는 산출물이 생기면
     그때 추가하고, 한 산출물에 Lead 가 둘이 되지 않도록 관리합니다.
@@ -919,8 +926,6 @@ flowchart LR
 
 ---
 
----
-
 ## 리스크와 대응
 
 제안 단계에서 이미 드러난 위험을 감추지 않고, 완화 수단과 판단 시점을 함께 둡니다.
@@ -932,7 +937,7 @@ flowchart LR
 | 기술 | **제조 Use Case·Data Schema 구체화 부족** | Dataset 재작업 | Schema를 버전화하고 최소 필수 필드부터 강제, 확장 필드는 선택으로 시작 |
 | 기술 | **물성 파라미터 식별 실패** — 소재군이 넓거나 시험 데이터 부족 | Physics Fidelity 미달 | 응답 모델을 교체 가능한 모듈로 설계하고, 소재군을 단계적으로 확대. 미확보 소재는 불확실성 범위로 표기 |
 | 기술 | **Deformation 계산비용** — 실시간 요구와 충돌 | Episode 생성 처리량 저하 | 실시간·준실시간 2개 모드 운영, 학습데이터 생성은 준실시간 배치로 분리 |
-| 기술 | **Cosmos 생성 장면과 물리량의 쌍 구성 실패** — 동일 조건 재현이 어려울 수 있음 | 조작 정책 학습에 쓸 수 없는 데이터만 남음 | 1차년도에 타당성을 먼저 검증. 실패 시 **Domain Randomization 중심으로 회귀**하고 Cosmos 는 인식 학습용 증강에 한정 |
+| 기술 | **Cosmos 조건 준수 미달** — 요청한 재질·조명·배치·시점이 생성물에 반영되지 않을 수 있음 | 희소조건 조준 생성의 효율과 추적성 저하 | 1차년도에 타당성을 먼저 검증. 실패 시 **Domain Randomization 중심으로 회귀**하고 Cosmos 는 인식 학습용 증강에 한정 |
 | 기술 | **외부 모델·프레임워크 의존** (Cosmos·LeRobot 버전 변화) | 파이프라인 파손 | 버전 고정과 정규화 계층 분리. **LeRobotDataset 필수 필드는 표준 준수**해 대체 가능성 확보 |
 | 실적 | **제조 로봇 실물검증 레퍼런스 부족** — 기존 실적이 달·야외 주행 중심 | 연구역량 평가 감점 | HSU-PAC Manipulation Cell·Mobile Robot Arena에서 선행 검증하고, Robot HW 기관과 조기 공동시험 |
 | 자산 | **제조 특화 Asset·Scenario 축적 부족** | 초기 데이터 다양성 부족 | 모빌테크 산업·물류 Asset 실적을 기반선으로 사용하고, Scenario Library를 재사용 단위로 설계 |
@@ -965,7 +970,8 @@ flowchart LR
 
 | 대상 | 귀속·이용 원칙(제안) |
 |---|---|
-| **Background IP** | 각 기관이 과제 이전부터 보유한 기술·자산. 소유권 변동 없음. OmniLRS 파생 기반 코드, 모빌테크 취득 기술, RFM 기관 기존 모델이 여기 해당 |
+| **Background IP** | 각 기관이 과제 이전부터 보유한 기술·자산. 소유권 변동 없음. 모빌테크 취득 기술, RFM 기관 기존 모델, 한성대 기존 연구성과가 여기 해당 |
+| **제3자 SW·모델** | **OmniLRS(BSD-3-Clause) · Isaac Sim · PhysX · Cosmos · LeRobot 등은 제3자 자산**이며 각 라이선스와 표시(attribution) 의무를 준수한다. 한성대가 권리를 갖는 것은 **원본이 아니라 자체 수정분·신규 모듈·Calibration·Ontology 계층**이다 |
 | Manufacturing Deformation Engine | 한성대 개발분(Foreground)은 한성대 귀속. 컨소시엄 참여기관에 **과제 목적 범위의 실시권** 부여 |
 | Manufacturing Ontology·Schema | **공개 표준 지향** — 컨소시엄 공통 자산. 과제 종료 후 규격 공개를 원칙으로 함 |
 | Simulation-ready Asset | 모빌테크 원저작물 기반. 한성대가 부가한 물성·Collision·Sensor Metadata 는 **공동개발분(Joint Foreground)** |
@@ -973,7 +979,7 @@ flowchart LR
 | Synthetic·Teleoperation Dataset | 생성기관 귀속, 컨소시엄 내 학습·평가 목적 이용 허용. 외부 공개는 제조기업 동의 전제 |
 | RFM 모델·Checkpoint | RFM 주관기관 귀속. 한성대는 평가·검증 목적 이용 |
 | Benchmark·Evaluation Protocol | 공통 자산 — 기관별 모델을 동일 조건에서 비교하려면 중립이어야 함 |
-| **공동개발분(Joint Foreground)** | 지분·실시조건을 **개별 산출물 단위로** 협약서에 명시. 「산출물 역할분담 매트릭스(LCIV)」의 C 표시 항목이 대상 |
+| **공동개발분(Joint Foreground)** | 지분·실시조건을 **개별 산출물 단위로** 협약서에 명시. 「산출물 역할분담 매트릭스(LCIV)」의 **C 표시는 공동개발 가능성이 있는 검토 대상**을 뜻하며, 실제 지분은 기여·발명자·저작자 확인과 협약으로 확정한다 — C 표시만으로 공동소유가 결정되지 않는다 |
 
 
 !!! note "기술료와 영리기관 참여"
@@ -1018,7 +1024,8 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 
 **시뮬레이션·물리**
 
-- [OmniLRS — Omniverse Lunar Robotics Simulator](https://github.com/OmniLRS/OmniLRS)
+- [OmniLRS — Omniverse Lunar Robotics Simulator](https://github.com/OmniLRS/OmniLRS) (BSD-3-Clause)
+- Richard, A., et al. (2024). *OmniLRS: A Photorealistic Simulator for Lunar Robotics.* IEEE ICRA 2024. — **AP 약 14% 향상 수치의 출처**
 - [OmniLRS Deformation Engine](https://github.com/OmniLRS/OmniLRS/wiki/deformation_engine)
 - [OmniLRS 설치·실행 매뉴얼](https://github.com/OmniLRS/OmniLRS/wiki)
 - [NVIDIA Isaac Sim Container 설치 문서](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_container.html)

@@ -40,20 +40,23 @@ Physical AI 교육은 일반적인 Python·AI 실습보다 훨씬 많은 연산�
 
 ### 학생 노트북으로 어디까지 가능한가 — 운영 기준
 
-RTX 4060(8GB)은 Isaac Sim **최소 사양(VRAM 8GB)을 충족하므로 실행 자체는 가능**합니다.
-기초 실습은 노트북 로컬로 소화하고, 무거운 워크로드만 서버로 보내는 것이 HSU-PAC의 운영
-기준입니다.
+RTX 4060(8GB)은 **Isaac Sim 공식 최소사양(VRAM 16GB)에 미달**합니다.
+**Isaac Sim 실행은 교내 GPU 서버가 기본**이고, 학생 노트북은 코드 작성·ROS 2·URDF 편집·
+데이터 확인·원격접속 단말로 씁니다. 이 구분이 HSU-PAC 운영의 기준선입니다.
 
-| 구분 | 노트북 로컬 (VRAM ~6GB 이하) | 서버/클러스터 필요 |
+| 구분 | 학생 노트북에서 | 교내 GPU 서버에서 |
 |---|---|---|
-| 씬 규모 | 단일 로봇 + 단순 환경 (강체 수십 개) | 다중 로봇·창고급 대형 씬 (OOM 발생) |
-| 렌더링 | 카메라 0~1개, 720p 뷰포트 | RTX 카메라 2개+, 1080p+ 렌더 |
-| 학습 | 기본 조작·URDF·ROS 2 브리지 실습 | Isaac Lab 병렬 강화학습(수백~수천 환경) |
-| 데이터 | 소규모 물리 시뮬 | Replicator 합성데이터 생성 |
-| 모델 | — | GR00T/VLM/VLA (모델 자체가 8GB 초과 → Spark), 대형 파인튜닝 → AWS |
+| 개발·도구 | Python·Git·Docker, VS Code Remote, JupyterHub 접속 | — |
+| ROS 2 | 노드 작성·실행, 토픽 확인, rosbag 재생 | 시뮬레이터 연동 브리지 |
+| USD·URDF | 파일 편집·검증, 구조 확인 | Isaac Sim 로드·시각 확인 |
+| **Isaac Sim** | **실행하지 않음** (VRAM 미달) | **모든 씬 — 원격 실행·스트리밍** |
+| 렌더링·센서 | 결과 영상·이미지 확인 | RTX 카메라, Replicator 합성데이터 생성 |
+| 학습 | 결과 지표·로그 확인 | Isaac Lab 병렬 강화학습, LeRobot 학습 |
+| 대형 모델 | — | GR00T/VLM/VLA 적재·검증 → DGX Spark 계열 |
 
-- **기준선**: VRAM 요구 6GB 이하 + 인터랙티브 학습 → 노트북 로컬 우선 / 그 이상 또는 학습(training) 워크로드 → 서버 세션 예약
-- 1~4주차 기초 커리큘럼은 노트북 로컬로 수행 가능 — 서버 세션 수요를 낮추는 보조 자원
+- **기준선**: GPU 연산이 필요한 모든 작업은 **서버 세션 예약**. 노트북은 편집·확인·접속 전용.
+- 1~3주차(Linux·Git·Docker·ROS 2 기초)는 노트북만으로 수행 가능하고,
+  **4주차 이후 Isaac Sim 이 들어가는 시점부터 서버 세션이 필요**합니다.
 - 수업 자료의 씬마다 "노트북 가능 / 서버 필요" 뱃지를 표기해 학생이 스스로 판단
 
 30명의 교육환경에서는 다음 네 가지 문제를 함께 해결해야 합니다.
@@ -69,7 +72,7 @@ RTX 4060(8GB)은 Isaac Sim **최소 사양(VRAM 8GB)을 충족하므로 실행 �
 
 <figure markdown>
   ![HSU-PAC 시스템 블록도](../assets/hsu-pac-blockdiagram.png){ loading=lazy }
-  <figcaption>시스템 블록도 — 학생 30명은 서버로 접속(ROS 2·WebRTC), 대용량 모델은 DGX Spark 클러스터(초기 1~2대 → 최대 5대)가 담당</figcaption>
+  <figcaption>시스템 블록도 — 학생 30명은 서버로 접속(ROS 2·WebRTC), 대용량 모델은 DGX Spark 노드(대수는 사용률 기반 증설)가 담당</figcaption>
 </figure>
 
 ```mermaid
@@ -96,7 +99,7 @@ flowchart TB
     MON --> QUEUE
 
     subgraph COMPUTE["교내 GPU 연산 계층"]
-        RTX["공용 GPU 서버<br/>RTX PRO 6000 Blackwell SE 96GB ×1<br/>Isaac Sim · Isaac Lab · 중형 학습"]
+        RTX["공용 GPU 서버<br/>RTX PRO 6000 Blackwell 96GB급 GPU 서버<br/>Isaac Sim · Isaac Lab · 중형 학습"]
         SPARK["DGX Spark<br/>128GB 통합 메모리<br/>VLM·VLA·대형 모델 실험"]
     end
 
@@ -152,7 +155,7 @@ flowchart TB
 교과목에서 가장 자주 사용하는 핵심 연산 노드입니다.
 
 !!! success "기존 교내 자산 우선 활용 (2026-07 확정)"
-    교내에 기 구축된 GPU 서버(**RTX PRO 6000 Blackwell Max-Q 96GB ×4** — 총 GPU 메모리
+    교내에 기 구축된 GPU 서버(**RTX PRO 6000 Blackwell 96GB급 GPU 서버** — 총 GPU 메모리
     384GB, 64코어/512GB, Kubernetes 운영 중)를 주 연산 노드로 우선 활용합니다. 신규 GPU
     서버 구매는 초기 필수항목에서 제외하고, 사용률 실증 후 증설 선택항목으로 조정 —
     초기 예산을 스토리지·백업·네트워크·플랫폼·DGX Spark에 우선 배정합니다.
@@ -167,13 +170,13 @@ flowchart TB
 - 비전 모델 학습·평가, 디지털 트윈 렌더링
 - 조별 중형 학습 작업, 교수 시연 및 과제 자동평가
 
-RTX PRO 6000 Blackwell Server Edition은 96GB GDDR7 메모리와 최대 4개의 MIG 인스턴스를 지원합니다. 다만 MIG 4분할이 곧바로 "30명 동시 Isaac Sim"을 의미하지는 않습니다. 고해상도 그래픽 세션, 학습 작업, 컨테이너 오버헤드를 고려해 **5개 조 중심의 예약·큐 방식**으로 운영해야 합니다.
+RTX PRO 6000 Blackwell은 96GB GDDR7 메모리와 최대 4개의 MIG 인스턴스를 지원합니다. 다만 MIG 4분할이 곧바로 "30명 동시 Isaac Sim"을 의미하지는 않습니다. 고해상도 그래픽 세션, 학습 작업, 컨테이너 오버헤드를 고려해 **5개 조 중심의 예약·큐 방식**으로 운영해야 합니다.
 
 #### 권장 서버 사양
 
 | 항목 | 권장 사양 |
 |---|---|
-| GPU | RTX PRO 6000 Blackwell Server Edition 96GB ×1 |
+| GPU | RTX PRO 6000 Blackwell 96GB급 GPU 서버 |
 | 확장성 | 향후 동일 GPU 2~4장 장착 가능한 4U급 섀시 |
 | CPU | AMD EPYC 또는 Intel Xeon, 32코어 이상 |
 | 시스템 메모리 | ECC RAM 256GB 이상, 권장 512GB |
@@ -184,7 +187,7 @@ RTX PRO 6000 Blackwell Server Edition은 96GB GDDR7 메모리와 최대 4개의 
 | 운영체제 | Ubuntu Server LTS |
 
 !!! warning "조달 시 유의"
-    조달 사양서에는 반드시 **Server Edition**을 명시해야 합니다. Workstation Edition과
+    **(조달 시 유의사항 — 현재 보유 사양에 대한 서술이 아닙니다.)** 조달 사양서에는 반드시 **Server Edition**을 명시해야 합니다. Workstation Edition과
     냉각구조 및 서버 적용조건이 다릅니다.
 
 !!! warning "그래픽 세션 운영 방식 (`+gfx` MIG 기반)"
@@ -207,7 +210,7 @@ DGX Spark는 128GB 통합 메모리를 제공하는 소형 Grace Blackwell 시�
 - 교수자·대학원생·캡스톤 프로젝트 예약형 사용
 - Arm 기반 소프트웨어 호환성 검증
 
-초기 구축은 DGX Spark 1대를 공용 예약 노드로 운영합니다. 향후 사용률이 높아지면 조별 전용 노드로 단계적으로 증설합니다.
+공용 예약 노드로 시작해 사용률에 따라 단계적으로 증설합니다. **구체 대수는 실물·자산대장 확인 후 확정합니다.**
 
 ### 3. NAS 및 공용 스토리지
 
@@ -284,10 +287,10 @@ RTX PRO 6000 한 장으로 30개의 완전 독립된 고해상도 Isaac Sim 세�
 |---|---|
 | 30명 동시 접속 (Jupyter/ROS 2 상시 세션) | :material-check-circle:{ style="color:#2e9e44" } 가능 — 단, 서버 CPU는 48코어 이상 권장 (32코어는 시뮬 세션 4개 동시 구동 시 포화) |
 | MIG 4분할 조별 Isaac Sim 세션 | :material-check-circle:{ style="color:#2e9e44" } 가능 — 우선순위 예약제 전제, P95 대기 30분 미만 |
-| 다수 Spark로 대용량 모델 처리 | :material-check-circle:{ style="color:#2e9e44" } 가능 — 일반 주차 2대면 양호, 대형 모델 집중 주차(11~14주)는 3~5대 필요 (1~2대는 가동률 97~102% 포화) |
+| 다수 Spark로 대용량 모델 처리 | :material-check-circle:{ style="color:#2e9e44" } 가능 — 대형 모델 집중 주차(11~14주)에 노드 수요가 몰린다. **필요 대수는 실측 후 산정** |
 | ROS 2 + WebRTC + NAS가 10G 내 수용 | :material-check-circle:{ style="color:#2e9e44" } 가능 — 피크 약 1.2Gbps로 10G의 12%만 사용 |
 
-시뮬레이션이 뒷받침하는 운영 경로: **Spark 초기 1~2대로 시작 → 대형 모델 집중 주차 전
+시뮬레이션이 뒷받침하는 운영 경로: **Spark 공용 노드로 시작 → 대형 모델 집중 주차 전
 3~5대로 증설(또는 부족분 AWS 병행)**. RL 학습 잡은 배치 큐로 제출해 수업 후 완료를
 허용하고, ROS 2는 조별 `ROS_DOMAIN_ID` 분리로 DDS 디스커버리 폭주를 방지합니다.
 
@@ -416,9 +419,9 @@ flowchart LR
 ## 연산·저장 자원 현황 — 3단계 정본표
 
 !!! warning "이 표가 정본입니다"
-    아래 본문과 도식에는 GPU 서버 대수·모델명 표기가 서로 다른 곳이 있습니다
-    (`×1` 과 `×4`, `Server Edition` 과 `Max-Q`, DGX Spark `1대` 와 `1~2대`).
-    **실물 확인 전까지는 이 표를 기준으로 인용**하고, 확정되면 본문·도식을 이 표에 맞춥니다.
+    **실물·자산대장 확인 전까지 본문과 도식에서 구체 대수·세부 모델명을 쓰지 않습니다.**
+    이전에는 `×1`·`×4`, `Server Edition`·`Max-Q`, DGX Spark `1대`·`1~2대`·`최대 5대`가 혼재했는데,
+    모순을 고지하는 대신 **구체 수치를 제거**했습니다. 확인되면 아래 3단계로 한 번에 확정합니다.
 
 | 단계 | 자원 | 상태 |
 |---|---|---|
@@ -541,8 +544,8 @@ flowchart LR
 
 초기 구축은 다음 구성을 권장합니다.
 
-- **기존 교내 GPU 서버(RTX PRO 6000 Max-Q 96GB ×4) 우선 활용** — Full GPU 2 + MIG 8인스턴스 혼합 운영, 신규 GPU 서버는 사용률 실증 후 증설 선택항목
-- NVIDIA DGX Spark 1~2대 (공용 예약 노드 — 사용률 기반 조별 증설)
+- **기존 교내 GPU 서버(RTX PRO 6000 Blackwell 96GB급) 우선 활용** — MIG 분할 운영, 신규 GPU 서버는 사용률 실증 후 증설 선택항목. **보유 대수·모델명은 자산대장 확인 후 확정**
+- NVIDIA DGX Spark 공용 예약 노드 (대수는 사용률 기반 증설, 미확정)
 - 10/25GbE Core Network + VLAN 분리
 - 40~80TB급 NAS + **별도 백업 스토리지** (스냅샷과 분리)
 - 30명용 JupyterHub·Kubernetes(Namespace/Quota/PriorityClass) 접속 플랫폼 — 학생에게 Docker 권한 미부여
@@ -558,7 +561,7 @@ HSU-PAC는 단순한 GPU 장비 구매가 아니라 **학생 노트북–교내 
 
 ## 참고자료
 
-- [NVIDIA RTX PRO 6000 Blackwell Server Edition](https://www.nvidia.com/en-us/data-center/rtx-pro-6000-blackwell-server-edition/)
+- [NVIDIA RTX PRO 6000 Blackwell](https://www.nvidia.com/en-us/data-center/rtx-pro-6000-blackwell-server-edition/)
 - [NVIDIA DGX Spark Hardware Overview](https://docs.nvidia.com/dgx/dgx-spark/hardware.html)
 - [NVIDIA Isaac Sim Requirements](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html)
 - [NVIDIA vGPU User Guide](https://docs.nvidia.com/vgpu/latest/grid-vgpu-user-guide/)
@@ -566,6 +569,6 @@ HSU-PAC는 단순한 GPU 장비 구매가 아니라 **학생 노트북–교내 
 
 ---
 
-`RTX PRO 6000 Blackwell Server Edition` · `DGX Spark` · `Isaac Sim` · `Isaac Lab` · `LeRobot` · `GR00T` · `MIG` · `JupyterHub` · `ROS 2` · `10GbE` · `AWS Hybrid`
+`RTX PRO 6000 Blackwell` · `DGX Spark` · `Isaac Sim` · `Isaac Lab` · `LeRobot` · `GR00T` · `MIG` · `JupyterHub` · `ROS 2` · `10GbE` · `AWS Hybrid`
 
 [:octicons-arrow-left-24: 프로젝트 목록으로](https://parclab-hsu.github.io/projects/)

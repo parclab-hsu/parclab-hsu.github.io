@@ -36,21 +36,21 @@
       .sub      { font-size: 19px; fill: #4d6b78; }
       .collabel { font-size: 14px; font-weight: 800; fill: #7d97a3; letter-spacing: 1.3px; }
       .panelT   { font-size: 21px; font-weight: 800; fill: #10303e; }
-      .panelS   { font-size: 13.5px; fill: #6d8794; }
+      .panelS   { font-size: 14.5px; fill: #6d8794; }
       .itemT    { font-size: 17px; font-weight: 800; fill: #10303e; }
-      .itemB    { font-size: 13px; fill: #55707d; }
+      .itemB    { font-size: 15px; fill: #55707d; }
       .cardT    { font-size: 24px; font-weight: 800; fill: #10303e; }
-      .cardB    { font-size: 15px; font-weight: 600; fill: #33566a; }
+      .cardB    { font-size: 16.5px; font-weight: 600; fill: #33566a; }
       .cardT2   { font-size: 21px; font-weight: 800; fill: #10303e; }
       .coreEye  { font-size: 15px; font-weight: 800; fill: #8fdfe4; letter-spacing: 1.4px; }
       .coreT    { font-size: 27px; font-weight: 800; fill: #ffffff; }
       .bandT    { font-size: 22px; font-weight: 800; fill: #ffffff; }
-      .bandB    { font-size: 13.5px; fill: #a9dfe6; }
-      .pill     { font-size: 13.5px; font-weight: 700; }
+      .bandB    { font-size: 15px; fill: #a9dfe6; }
+      .pill     { font-size: 14.5px; font-weight: 700; }
       .tbT      { font-size: 19px; font-weight: 800; fill: #0d5763; }
-      .tbB      { font-size: 13.5px; font-weight: 600; fill: #3d6470; }
+      .tbB      { font-size: 15px; font-weight: 600; fill: #3d6470; }
       .outT     { font-size: 16px; font-weight: 800; fill: #10303e; }
-      .outB     { font-size: 12.5px; fill: #55707d; }
+      .outB     { font-size: 14px; fill: #55707d; }
       .fb       { font-size: 15px; font-weight: 800; fill: #d97b13; }
       .footT    { font-size: 14px; fill: #7d97a3; }
       .footB    { font-size: 25px; font-weight: 800; fill: #0d4a7a; }
@@ -76,7 +76,7 @@
   <circle cx="88" cy="368" r="9" fill="#7fd0cf"/>
   <text x="106" y="374" class="itemT">모빌테크</text>
   <text x="84" y="400" class="itemB">3D Asset · 좌표 · LOD</text>
-  <text x="84" y="420" class="itemB">Semantic · 현장 Metadata</text>
+  <text x="84" y="420" class="itemB">Semantic · 현장 Meta</text>
 
   <rect x="66" y="450" width="192" height="92" rx="14" fill="#f2f7f8"/>
   <circle cx="88" cy="478" r="9" fill="#8fb3e8"/>
@@ -116,7 +116,7 @@
   <text x="985" y="241" text-anchor="middle" font-size="12.5" fill="#c2eef1">OmniLRS · HILS</text>
   <rect x="1084" y="199" width="170" height="54" rx="12" fill="#ffffff" opacity="0.14"/>
   <text x="1169" y="221" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">HUMAN DATA</text>
-  <text x="1169" y="241" text-anchor="middle" font-size="12.5" fill="#c2eef1">30명 · 5개 조</text>
+  <text x="1169" y="241" text-anchor="middle" font-size="12.5" fill="#c2eef1">교육 30명 / 생산 3개 조</text>
   <rect x="1268" y="199" width="170" height="54" rx="12" fill="#ffffff" opacity="0.14"/>
   <text x="1353" y="221" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">SHARED LAB</text>
   <text x="1353" y="241" text-anchor="middle" font-size="12.5" fill="#c2eef1">HSU-PAC</text>
@@ -129,8 +129,8 @@
   <text x="428" y="356" class="cardT">OmniLRS 파생 Deformation Engine</text>
   <rect x="757" y="297" width="104" height="27" rx="13" fill="#1f5fbf"/>
   <text x="809" y="316" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">대표 성과</text>
-  <text x="372" y="396" class="cardB">달 지형 변형기술을 제조 Contact–Material–State 변화로 확장</text>
-  <text x="372" y="424" class="cardB">마찰 · 강성 · 변형 · 복원 · 마모 · 반복하중 · Physics Calibration</text>
+  <text x="372" y="396" class="cardB">달 지형 변형기술 → 제조 Contact–Material–State 변화</text>
+  <text x="372" y="424" class="cardB">마찰·강성·변형·복원·마모·반복하중 · Calibration</text>
 
   <!-- 카드 2 -->
   <rect x="903" y="310" width="529" height="140" rx="16" fill="#e6f5f2"/>
@@ -138,7 +138,7 @@
   <circle cx="951" cy="348" r="22" fill="#0e8a86"/>
   <text x="951" y="356" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">2</text>
   <text x="987" y="356" class="cardT">Manufacturing Ontology</text>
-  <text x="931" y="396" class="cardB">Asset–Process–Task–State–Event–Failure–Recovery 의미관계 통합</text>
+  <text x="931" y="396" class="cardB">Asset–Process–Task–State–Failure–Recovery 의미관계 통합</text>
   <text x="931" y="424" class="cardB">희소조합 → 생성 조건 변환 (Cosmos 조준) · Semantic 연결</text>
 
   <!-- 카드 3 -->
@@ -146,9 +146,9 @@
   <rect x="344" y="485" width="8" height="140" rx="4" fill="#8a6fc4"/>
   <circle cx="392" cy="523" r="22" fill="#7a5fb8"/>
   <text x="392" y="531" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">3</text>
-  <text x="428" y="531" class="cardT">학생 Teleoperation Data Engine</text>
-  <text x="372" y="571" class="cardB">30명·5개 조 · 표준 Task / Safety Protocol · Human Demonstration</text>
-  <text x="372" y="599" class="cardB">성공 · 실패회피 · Recovery 행동 · Edge Case 신고 · 1차 검수</text>
+  <text x="428" y="531" class="cardT">학생 Human Data Engine</text>
+  <text x="372" y="571" class="cardB">교육 30명·5개 조 → MD-3·선발 Gate → 유급 생산 6~9명·3개 조</text>
+  <text x="372" y="599" class="cardB">Demonstration · Recovery · Edge Case 신고 · 1차 검수</text>
 
   <!-- 카드 4 -->
   <rect x="903" y="485" width="529" height="140" rx="16" fill="#fdf0dd"/>
@@ -156,7 +156,7 @@
   <circle cx="951" cy="523" r="22" fill="#ef8b1e"/>
   <text x="951" y="531" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">4</text>
   <text x="987" y="531" class="cardT2">Ontology 기반 Edge Case Intelligence</text>
-  <text x="931" y="571" class="cardB">Rule · Rarity · 상태전이 · Model 불확실성 · Real–Sim Gap 결합</text>
+  <text x="931" y="571" class="cardB">Rule · Rarity · 상태전이 · 불확실성 · Real–Sim Gap</text>
   <text x="931" y="599" class="cardB">후보화 → 전문가 확정 → Scenario 재생성 → 재학습</text>
 
   <!-- 카드 간 연결 (여백 안에서만) -->
@@ -169,7 +169,7 @@
   <!-- Episode Factory -->
   <rect x="344" y="657" width="1088" height="128" rx="18" fill="#103d4a"/>
   <text x="374" y="697" class="bandT">Versioned Physical AI Episode Factory</text>
-  <text x="374" y="723" class="bandB">LeRobotDataset v3 정규화 · 시간동기 · 자동 Annotation · QC · Provenance · Asset/Material/Scenario/Model Version · Seed</text>
+  <text x="374" y="723" class="bandB">LeRobotDataset v3 · 시간동기 · 자동 Annotation · QC · Provenance · Version · Seed</text>
   <g class="pill">
     <rect x="396" y="740" width="110" height="32" rx="16" fill="#dbeafe"/><text x="451" y="761" text-anchor="middle" fill="#1e4f9c">Synthetic</text>
     <rect x="516" y="740" width="80"  height="32" rx="16" fill="#d7f0ee"/><text x="556" y="761" text-anchor="middle" fill="#0b6b68">Real</text>
@@ -183,8 +183,8 @@
   <!-- HSU-PAC Shared Testbed -->
   <rect x="344" y="805" width="1088" height="88" rx="16" fill="#eef7f8" stroke="#c3e0e4"/>
   <text x="374" y="837" class="tbT">HSU-PAC Shared Testbed</text>
-  <text x="374" y="861" class="tbB">GPU 서버(RTX PRO 6000 96GB급) · DGX Spark · AWS Burst · NAS · 10GbE  |  현재 보유 / 착수 시 구축 / 선택 증설</text>
-  <text x="374" y="881" class="tbB">Isaac Sim / Isaac Lab · ROS 2 · Mobile Robot Arena · Manipulation Cell · Sensor Studio · Teleop Console · 기업별 격리환경</text>
+  <text x="374" y="861" class="tbB">GPU 서버 · DGX Spark · AWS Burst · NAS · 10GbE  |  보유 / 착수 시 구축 / 선택 증설</text>
+  <text x="374" y="881" class="tbB">Isaac Sim/Lab · ROS 2 · Mobile Arena · Manipulation Cell · Sensor Studio · Teleop Console · 기업별 격리</text>
 
   <!-- ── 우: 한성대 고유 산출물 ── -->
   <g filter="url(#soft)"><rect x="1520" y="246" width="250" height="560" rx="22" fill="#ffffff" stroke="#cfe4e8"/></g>
