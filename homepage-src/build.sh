@@ -45,5 +45,26 @@ cp -rT "$TMP" "$ROOT"
 # .nojekyll 보장 (GitHub Pages가 _ 폴더/언더스코어 자산을 그대로 서빙하도록)
 touch "$ROOT/.nojekyll"
 
+# sitemap 에서 색인 차단 경로 제외
+#
+# robots.txt 가 /projects/ 와 /courses/ 를 Disallow 하고 페이지에 noindex 메타도 넣는데,
+# sitemap 에 URL 이 남아 있으면 "색인하지 말라면서 목록에는 올린다" 는 모순이 된다.
+# mkdocs 는 페이지 단위 sitemap 제외를 지원하지 않아 후처리한다.
+echo "▶ sitemap 정리 (색인 차단 경로 제외)..."
+python3 - "$ROOT" <<'PYEOF'
+import gzip, re, sys, os
+root = sys.argv[1]
+sm = os.path.join(root, "sitemap.xml")
+if os.path.exists(sm):
+    x = open(sm, encoding="utf-8").read()
+    before = x.count("<url>")
+    x = re.sub(r"\s*<url>(?:(?!</url>).)*?<loc>[^<]*/(?:projects|courses)/.*?</url>", "", x, flags=re.S)
+    after = x.count("<url>")
+    open(sm, "w", encoding="utf-8").write(x)
+    with gzip.open(sm + ".gz", "wb") as f:
+        f.write(x.encode("utf-8"))
+    print("   URL %d -> %d (%d개 제외)" % (before, after, before - after))
+PYEOF
+
 rm -rf "$TMP"
 echo "✅ 완료 — 변경분을 git add/commit/push 하세요."

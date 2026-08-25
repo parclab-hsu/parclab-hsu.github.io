@@ -413,6 +413,26 @@ flowchart LR
 
 ---
 
+## 연산·저장 자원 현황 — 3단계 정본표
+
+!!! warning "이 표가 정본입니다"
+    아래 본문과 도식에는 GPU 서버 대수·모델명 표기가 서로 다른 곳이 있습니다
+    (`×1` 과 `×4`, `Server Edition` 과 `Max-Q`, DGX Spark `1대` 와 `1~2대`).
+    **실물 확인 전까지는 이 표를 기준으로 인용**하고, 확정되면 본문·도식을 이 표에 맞춥니다.
+
+| 단계 | 자원 | 상태 |
+|---|---|---|
+| **① 실제 보유·운영 중** | RTX PRO 6000 Blackwell 96GB급 GPU 서버, NAS, 10GbE 코어망, Isaac Sim·Isaac Lab·ROS 2 환경, 실습실·로봇 실증공간 | **대수·정확한 모델명은 확인 필요** |
+| **② 발주 또는 구축 확정** | — | 과제 착수 시 확정. Teleoperation Console, F/T·Tactile·형상계측 Sensor, Calibration 지그, 기업별 격리환경 |
+| **③ 사용률 기반 선택 증설** | DGX Spark 추가 노드, NAS 증설, AWS G6e/P 버스트 | 평균 GPU 사용률·대기시간 기준 충족 시 |
+
+!!! note "GPU 메모리 합산값 주의"
+    GPU 여러 장의 메모리를 더한 값은 **단일 모델이 곧바로 쓸 수 있는 용량이 아닙니다.**
+    그 용량을 쓰려면 모델·파이프라인 병렬화가 필요하고 통신 대역폭과 구현 비용이 따릅니다.
+    단일 GPU 메모리를 넘는 모델의 적재·검증은 통합 메모리를 쓰는 DGX Spark 계열이 적합합니다.
+
+---
+
 ## 15주 커리큘럼 매핑
 
 | 주차 | 교육 내용 | 주요 자원 |
@@ -548,4 +568,4 @@ HSU-PAC는 단순한 GPU 장비 구매가 아니라 **학생 노트북–교내 
 
 `RTX PRO 6000 Blackwell Server Edition` · `DGX Spark` · `Isaac Sim` · `Isaac Lab` · `LeRobot` · `GR00T` · `MIG` · `JupyterHub` · `ROS 2` · `10GbE` · `AWS Hybrid`
 
-[:octicons-arrow-left-24: 프로젝트 목록으로](../projects.md)
+[:octicons-arrow-left-24: 프로젝트 목록으로](https://parclab-hsu.github.io/projects/)
