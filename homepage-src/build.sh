@@ -61,8 +61,11 @@ if os.path.exists(sm):
     x = re.sub(r"\s*<url>(?:(?!</url>).)*?<loc>[^<]*/(?:projects|courses)/.*?</url>", "", x, flags=re.S)
     after = x.count("<url>")
     open(sm, "w", encoding="utf-8").write(x)
-    with gzip.open(sm + ".gz", "wb") as f:
-        f.write(x.encode("utf-8"))
+    # mtime=0 으로 고정한다. 기본값은 gzip 헤더에 현재 시각을 박아서
+    # 내용이 같아도 매 빌드마다 .gz 만 바뀌는 잡음 diff 가 생긴다.
+    with open(sm + ".gz", "wb") as f:
+        with gzip.GzipFile(fileobj=f, mode="wb", mtime=0) as g:
+            g.write(x.encode("utf-8"))
     print("   URL %d -> %d (%d개 제외)" % (before, after, before - after))
 PYEOF
 
