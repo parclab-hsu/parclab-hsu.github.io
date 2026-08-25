@@ -802,7 +802,7 @@ flowchart TB
     본 패키지의 차년도 규모(모빌테크분 포함 6.0~8.5억)에서 한성대 몫이 이 기준을 넘는지는
     협약 형태와 배분이 확정돼야 판단되므로, 인건비에 조건부로 반영해 두었습니다.
 
-    학생 참여는 [Teleoperation Demonstration](#teleoperation-demonstration-data) 절의 교육·안전·품질
+    학생 참여는 [학생 주도 Human Data Engine](#human-data-engine-demonstration-edge-case) 절의 교육·안전·품질
     Protocol을 따르며, 학생인건비는 기관 지급기준에 따라 계상합니다.
 
 예산은 다음 변수에 따라 조정합니다.
