@@ -59,6 +59,12 @@
 
     
     
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+
   </head>
   
   
@@ -1009,7 +1015,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.18</td>
+<td>1.19</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1124,6 +1130,16 @@
 <td>1.17</td>
 <td>2026-08-22</td>
 <td><strong>FR-081 신설 — 선회 포락선.</strong> 참조 코드의 <code>Vr ≤ 0.339·Vl + 0.0205</code> 는 <strong>쓰지 않는다</strong> — 조향각이 제한된 애커먼 차량의 최소 선회반경 식이라 속도에 비례해 커지는데, 우리 로버는 조향 ±90°(자산 실측)라 최소 선회반경이 없고 포락선이 속도에 따라 <strong>좁아진다</strong>. 구속은 ① 휠 각속도 한계(저속에서 구속, 제자리 회전 2.07 rad/s) ② 횡가속 한계(중속에서 구속, 0.55 m/s² — 견인 μ 0.70×g 1.62 의 절반. 전도 한계 3.24 m/s² 보다 엄격하다). 6장에 무게중심 높이 0.3153 m 를 등재했다</td>
+</tr>
+<tr>
+<td>1.18</td>
+<td>2026-08-23</td>
+<td><strong>6장 제원을 정식 자산 <code>final_rover_HH</code> 실측으로 갱신하고 주요 치수표를 신설.</strong> 종전 값은 <strong>구 자산 viper_v4 에서 온 반올림값</strong>이었고, 플랜트 교체(2026-08-20) 때 재측정이 누락돼 있었다(RR-001 D-34). 윤거 1.26 → <strong>1.2867</strong>(+2.1 %), 축거 1.50 → <strong>1.4910</strong>, 휠 반경 0.213 → <strong>0.2133</strong>. 전장·전폭·전고·지상고·서스펜션 암 길이를 표로 추가했다. 하류 기대값도 함께 갱신 — <code>cmd_vel(0.5, 0.2)</code> → 구동 <code>[1.868, 3.032]</code> · 조향 <code>[0.359, 0.242]</code></td>
+</tr>
+<tr>
+<td>1.19</td>
+<td>2026-08-24</td>
+<td><strong>FR-082 신설(URDF 는 자산에서 생성)·FR-006 서스펜션 한계 정정.</strong> URDF 를 만들면서 대조하니 <strong>서스펜션 클램프가 자산 조인트 한계보다 50 % 넓었다</strong> — 계약 ±π/6(±30°) 인데 자산은 네 모서리 모두 <strong>±0.35 rad(±20.05°)</strong> 다. 주석에는 "(USD 조인트 한계)" 라고 적혀 있었으나 사실이 아니었다(RR-001 D-35). 최대 지령이 조인트 스톱을 밀고 있었고, 수직 스트로크도 0.245 m 가 아니라 <strong>0.168 m</strong> 다. 5장 축 배치와 6장 제원표도 함께 정정했다</td>
 </tr>
 <tr>
 <td>1.18</td>
@@ -1361,9 +1377,9 @@
 </tr>
 <tr>
 <td>SRS-FR-006</td>
-<td>구동 휠 속도는 <code>max_wheel_speed</code>로, 조향각은 ±π/2, 서스펜션각은 ±π/6로 제한(클램프)한다</td>
+<td>구동 휠 속도는 <code>max_wheel_speed</code>로, 조향각은 <strong>±π/2(±90°)</strong>, 서스펜션각은 <strong>±0.35 rad(±20.05°)</strong> 로 제한(클램프)한다. 두 값 모두 <strong>자산 조인트 한계 실측값</strong>이며 클램프가 조인트 스톱을 넘지 않는다</td>
 <td>T</td>
-<td>검증완료</td>
+<td><strong>검증완료</strong> — <code>tools/test_urdf_contract.py</code> U4</td>
 </tr>
 <tr>
 <td>SRS-FR-007</td>
@@ -1745,6 +1761,12 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
 <td>T</td>
 <td><strong>검증완료</strong> — <code>tools/check_turn_envelope.py</code>, 회귀 K7</td>
 </tr>
+<tr>
+<td>SRS-FR-082</td>
+<td>로버 기술서(URDF)는 <strong>정식 자산에서 생성</strong>한다(<code>tools/isaac/make_rover_urdf.py</code>) — 손으로 관리하면 자산 교체 시 조용히 낡는다(D-34 가 그 사례다). 생성물은 12축 계약 조인트명·영점 기하·축 한계가 <code>axes.py</code> 와 일치해야 하며, <strong>서스펜션 4절 링크는 URDF(트리)로 표현할 수 없어 루프를 끊는다</strong> — 그 결과 RViz 에서 서스펜션 구동 시 휠이 함께 기우는 것은 시각화 한계이지 결함이 아니다</td>
+<td>T</td>
+<td><strong>검증완료</strong> — <code>check_urdf</code> + <code>tools/test_urdf_contract.py</code></td>
+</tr>
 </tbody>
 </table>
 <blockquote>
@@ -1898,7 +1920,7 @@ FR-076 을 닫아야 한다.</p>
 <h3 id="52-v3-fl-fr-rl-rr">5.2 축 배치 (v3 계약 — 순서 FL, FR, RL, RR)<a class="headerlink" href="#52-v3-fl-fr-rl-rr" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>노드ID :  1~4  구동(drive)  PVM — 모터 rpm      (휠 반경 0.213 m, 감속비 15:1 가정)
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>          5~8  조향(steer)  PPM — 조인트 rad ±90°
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>          9~12 서스(sus)    PPM — 조인트 rad ±30°
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>          9~12 서스(sus)    PPM — 조인트 rad ±0.35 (±20.05°, 자산 실측)
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>축 인덱스: axes_cmd[0..3]=구동 rad/s, [4..7]=조향 rad, [8..11]=서스 rad
 </code></pre></div>
 <h3 id="53-canopen-epos4-cia-301402">5.3 CANopen (EPOS4, CiA 301/402)<a class="headerlink" href="#53-canopen-epos4-cia-301402" title="Permanent link">&para;</a></h3>
@@ -2006,7 +2028,74 @@ FR-076 을 닫아야 한다.</p>
 <hr />
 <h2 id="6">6. 설계 제약<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <ul>
-<li>로버 제원: 휠 반경 0.213 m·트랙 1.26 m·축거 1.50 m (VIPER v4 USD 실측 — AN-001).
+<li><strong>로버 주요 치수 — <code>final_rover_HH</code> 자산 실측 (2026-08-23)</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>전장 × 전폭 × 전고</td>
+<td>1.918 × 1.440 × 0.581 m</td>
+<td>외형 bbox (휠 포함, 접지면 기준)</td>
+</tr>
+<tr>
+<td>윤거(트랙)</td>
+<td><strong>1.2867 m</strong></td>
+<td>좌우 휠 중심 y ±0.643343</td>
+</tr>
+<tr>
+<td>축거(휠베이스)</td>
+<td><strong>1.4910 m</strong></td>
+<td>전후 휠 중심 x ±0.745500</td>
+</tr>
+<tr>
+<td>휠 지름 / 반경</td>
+<td><strong>0.4267 / 0.2133 m</strong></td>
+<td>그라우저 팁. bbox 0.213339·접지면 0.213350 일치</td>
+</tr>
+<tr>
+<td>휠 폭</td>
+<td>0.159 m</td>
+<td></td>
+</tr>
+<tr>
+<td>차체 링크</td>
+<td>1.775 × 1.020 × 0.453 m</td>
+<td>휠·서스 제외</td>
+</tr>
+<tr>
+<td>지상고</td>
+<td>0.213 m</td>
+<td>휠 중심 z − 접지면 z</td>
+</tr>
+<tr>
+<td>무게중심 높이</td>
+<td>0.3153 m</td>
+<td>질량 분포 실측(총 450 kg)</td>
+</tr>
+<tr>
+<td>조향축 오프셋(스크럽 반경)</td>
+<td>0.1271 m</td>
+<td>킹핀 경사 10.0°, 캐스터 트레일 0</td>
+</tr>
+<tr>
+<td>서스펜션 암 길이</td>
+<td>0.247 m</td>
+<td>중립 6.71°, <strong>±20.05° 에서 수직 +0.082/−0.086 m</strong> (총 0.168)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>종전 값(r 0.213 · 트랙 1.26 · 축거 1.50)은 구 자산 <code>HSU_Rover_viper_v4</code> 의 반올림값이었다.</strong>
+  2026-08-20 에 정식 플랜트를 <code>final_rover_HH</code> 로 교체하면서 제원을 다시 재지 않아,
+  기구학이 <strong>쓰지 않는 자산의 치수</strong>로 돌고 있었다(RR-001 D-34). 트랙이 2.1 % 어긋나
+  선회에서 휠 속도 1.4 % 오차를 만들었고, <strong>직진에서는 차이가 정확히 0</strong> 이라 직진
+  시험으로는 드러나지 않았다. <strong>이 값들도 시뮬레이션 자산 기준이며 기구 도면 실측 대체 대상이다.</strong>
   <strong>조향축 오프셋(스크럽 반경) 0.1271 m</strong> — <code>final_rover_HH</code> 자산 조인트 좌표 실측(2026-08-22).
   휠 접지점이 조향축 접지점보다 <strong>바깥쪽</strong>에 있어, 조향하면 휠이 조향축 둘레로 돈다.
   캐스터 트레일 0, 킹핀 경사 10.0°(기구학 미사용 — 차고·캠버 변화만 만든다).
@@ -2024,25 +2113,24 @@ FR-076 을 닫아야 한다.</p>
   (<code>rover_control</code>·<code>nav2_hils</code>·<code>teleop_remote</code>)이 모두 이 yaml을 적재하며, yaml 값이
   <code>axes.py</code> 기본값을 덮어쓴다. <code>tools/isaac/rover.urdf</code>(8륜)은 레거시 — <strong>정식 플랜트는 <code>final_rover_HH</code> USD</strong>
   (2026-08-21 채택, AN-001 8절). 구 <code>HSU_Rover_viper_v4</code> 도 레거시이며, 자산별 Isaac 토픽 계약은
-  플랜트 프로파일 <code>config/isaac/&lt;자산&gt;.yaml</code> 로 지정한다(AD-002 3d절)</li>
-<li>플랜트의 <strong>물리 특성</strong>(링크 질량·관성·중력·구동 드라이브)은 위 기구 제원과 별개로
+  플랜트 프로파일 <code>config/isaac/&lt;자산&gt;.yaml</code> 로 지정한다(AD-002 3d절)
+- 플랜트의 <strong>물리 특성</strong>(링크 질량·관성·중력·구동 드라이브)은 위 기구 제원과 별개로
   <code>config/isaac/final_rover_HH_physics.yaml</code> 에 있고 <code>tools/isaac/apply_asset_physics.py</code> 로
   자산에 반영한다. <strong>현재 값은 NASA VIPER 공개 제원(총질량 450 kg)을 참조한 추정치이며 실측이
   아니다</strong> — 기구팀 제원이 오면 이 yaml 만 교체한다. 기구학(위 4곳)과 달리 이 값들은 ROS2
   소프트웨어 동작에 직접 들어가지 않지만, <strong>시뮬레이션 주행 결과의 대표성을 좌우한다.</strong>
   달 지형·마찰은 아직 미반영이므로(IG-001 2e, D-24) 이 플랜트의 주행·슬립 수치를 Nav2
-  파라미터 근거로 쓰지 않는다</li>
-<li><strong>Navigation 머신 플랫폼 요건</strong> — Nav2·<code>rover_control</code>·<code>rover_state</code>·micro-ROS 에이전트가
+  파라미터 근거로 쓰지 않는다
+- <strong>Navigation 머신 플랫폼 요건</strong> — Nav2·<code>rover_control</code>·<code>rover_state</code>·micro-ROS 에이전트가
   올라가는 온보드 컴퓨터는 <strong>NVIDIA Jetson Orin 계열 + JetPack 6.x(Ubuntu 22.04)</strong> 를 전제한다.
   ROS 2 Humble 이 Ubuntu 22.04 배포판을 요구하기 때문이며, JetPack 5.x(20.04)는 네이티브 설치가
   불가해 컨테이너 대안이 필요하다(DP-001 부록 B). <strong>구형 Jetson Nano(Maxwell, JetPack 4.6.x =
   Ubuntu 18.04)는 제외한다</strong> — Humble 네이티브 설치가 불가하고 Isaac ROS(cuVSLAM·nvblox) 지원
   대상도 아니라 IG-003 2단계 경로가 성립하지 않는다. 무맵 1단계(IG-002)는 Orin Nano 8 GB 로도
-  되지만, 카메라 인지를 얹는 2단계는 <strong>Orin NX 16 GB 이상(AGX Orin 권장)</strong> 이다(IG-003 2절)</li>
-<li>EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제</li>
-<li>CAN 종단저항: 버스 양 끝 노드 DIP7 ON</li>
-<li>개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용</li>
-</ul>
+  되지만, 카메라 인지를 얹는 2단계는 <strong>Orin NX 16 GB 이상(AGX Orin 권장)</strong> 이다(IG-003 2절)
+- EPOS4 측 모터/센서 튜닝은 EPOS Studio에서 별도 수행·저장(0x1010) 전제
+- CAN 종단저항: 버스 양 끝 노드 DIP7 ON
+- 개발 PC ufw가 UDP 멀티캐스트를 차단 → 프로세스 간 테스트는 vcan(socketcan) 사용</p>
 <hr />
 <p><a class="md-button" href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 프로젝트 개요로</a>
 <a class="md-button" href="../l-project-sdp/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914z"/></svg></span> SDP (개발 계획서) 보기</a></p>
@@ -2052,6 +2140,9 @@ FR-076 을 닫아야 한다.</p>
 
 
 
+
+  
+  
 
 
 

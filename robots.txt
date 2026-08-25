@@ -1,0 +1,13 @@
+# 검색 엔진 색인 정책
+#
+# **이것은 접근 제어가 아니다.** 규약을 지키는 크롤러에게 요청하는 것일 뿐,
+# URL 을 아는 사람은 그대로 볼 수 있다. 각 페이지에도 noindex 메타를 함께 넣는다
+# (homepage-src/overrides/main.html). 실질 보안은 PG-001 참조.
+
+User-agent: *
+Disallow: /projects/
+Disallow: /courses/
+
+# 사이트맵은 남긴다 — 색인 대상 페이지(홈·연구·구성원·논문·소식·연락처)를
+# 크롤러가 찾는 데 쓰인다.
+Sitemap: https://parclab-hsu.github.io/sitemap.xml

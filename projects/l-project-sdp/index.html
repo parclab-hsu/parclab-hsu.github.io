@@ -59,6 +59,12 @@
 
     
     
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+
   </head>
   
   
@@ -982,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.49</td>
+<td>1.55</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1257,6 +1263,36 @@
 <td>1.49</td>
 <td>2026-08-22</td>
 <td><strong>GUI 화면 원천을 CAN/ROS 선택식으로.</strong> 보드를 sim 백엔드로 두면 CAN 이 비어 Motors 탭이 전부 <code>No data</code> 가 된다 — 고장이 아니라 <strong>보드가 CAN 을 안 쓰고 ROS 로 Isaac 과 주고받기</strong> 때문이고, 게다가 보드 CAN 버스는 어댑터가 없어 시뮬 PC 에서 보이지도 않는다. 상단 <code>View</code> 로 원천을 고르면 같은 12축을 ROS 로 볼 수 있다(<code>/rover/axes_cmd</code>·<code>/rover/joint_states</code>·<code>/rover/status</code>). <strong>NMT 칸은 <code>-</code> 로 남긴다</strong> — CANopen 계층이라 ROS 에 없는 정보를 0 이나 Online 으로 채우지 않는다. 환산 상수는 <code>emu_core</code> 의 <code>GEAR_RATIO</code>·<code>CNT_PER_RAD</code> 를 그대로 쓴다(다시 적으면 CAN 화면과 ROS 화면이 조용히 갈린다). 실측: 조향 4축 ±19°/±9° 가 ROS 원천으로 그대로 보였다. 회귀 20 PASS / 0 FAIL. 문서: ND-001 v1.7, BRINGUP.md</td>
+</tr>
+<tr>
+<td>1.50</td>
+<td>2026-08-23</td>
+<td><strong>백로그 B3 의 제원 갱신 지점 목록 정정 (RR-001 D-33).</strong> "600 rpm 이면 13 m/s 아니냐" 는 질문을 확인하다 드러났다 — 그 값은 감속비를 빼고 계산한 것이고(15:1 반영 시 0.89 m/s), 확인 과정에서 <strong>B3 이 지목한 갱신 지점 4곳 중 둘은 감속비를 갖고 있지 않고 실제 두 곳은 목록에 없다</strong>는 것을 발견했다. 그대로 기구 제원을 반영하면 펌웨어와 에뮬레이터가 서로 다른 감속비로 도는 상태가 된다. 목록을 실제 3곳으로 정정하고 정본(<code>drive.h</code>)을 명시했으며, <code>epos-rover-emulator.py</code> 의 중복 상수를 제거했다. <strong>감속비 15.0 은 여전히 가정값</strong>이다</td>
+</tr>
+<tr>
+<td>1.51</td>
+<td>2026-08-23</td>
+<td><strong>제원을 정식 자산 실측으로 갱신 (RR-001 D-34).</strong> 주요 치수를 물어 대조하다 <strong>기구학이 쓰지 않는 자산(구 viper_v4)의 치수로 돌고 있었다</strong>는 것이 드러났다 — 플랜트를 <code>final_rover_HH</code> 로 교체(08-20)하면서 재측정이 누락됐다. 윤거 1.26 → <strong>1.2867</strong>(+2.1 %), 축거 1.50 → <strong>1.4910</strong>, 휠 반경 → <strong>0.2133</strong>. 갱신 지점은 <strong>검색으로 찾아</strong> 5개 파일 6블록을 동시에 고쳤다(D-33 교훈). SRS 6장에 <strong>주요 치수표를 신설</strong>했다 — 전장·전폭·전고·지상고·서스펜션 암 길이까지 한 표에 모았다(종전에는 세 파일에 흩어져 있었다). 회귀 58 PASS / 0 FAIL. <strong>펌웨어 재플래시 필요.</strong> 문서: SRS v1.18, RR-001 v1.19, ND-001·TP-002·IG-001·BRINGUP 기대값</td>
+</tr>
+<tr>
+<td>1.52</td>
+<td>2026-08-24</td>
+<td><strong>12축 URDF 신설 — 자산에서 생성한다 (SRS FR-082).</strong> 기존 <code>tools/isaac/rover.urdf</code> 는 <strong>레거시 8륜 스키드스티어</strong>(휠 반경 0.1 m·트랙 0.6 m)로 현행 계약과 무관했다. <code>tools/isaac/make_rover_urdf.py</code> 가 정식 자산에서 뽑아 만든다 — <strong>손으로 관리하면 자산 교체 시 조용히 낡는다</strong>(D-34 가 그 사례다). 산출물 <code>config/description/lproject_rover.urdf</code>(링크 22·조인트 21). <strong>서스펜션 4절 링크는 URDF(트리)로 표현할 수 없어</strong> 루프를 끊었고 그 한계를 파일과 생성기에 명시했다. 검증 2단: <code>check_urdf</code>(파싱) + <strong><code>tools/test_urdf_contract.py</code></strong>(계약 정합 — 조인트명·영점 기하·축 한계·루프 부재). 만들면서 <strong>D-35</strong>(서스 클램프가 자산 한계보다 50 % 넓음)를 찾아 고쳤다. 생성기 자체 결함도 하나 잡았다 — <strong>USD 는 행벡터 규약</strong>이라 회전행렬을 전치해 읽어야 하는데 빼먹어 킹핀 10° 아래 좌표가 1.6 cm 어긋났다</td>
+</tr>
+<tr>
+<td>1.53</td>
+<td>2026-08-25</td>
+<td><strong>지형 변형 엔진 정밀 분석(<code>DEFORMATION.md</code> 신설)과 OmniLRS 버전 고정 체계.</strong> 조향 시 참조점 처리를 묻는 질문에서 시작해 엔진을 우리 설정으로 재현했다 — 참조점은 <strong>휠 링크 월드 원점(x,y)</strong>이고 방향은 <strong>쿼터니언 yaw 하나</strong>라 조향은 반영되나 z·roll·pitch 는 버린다. <strong>결정적 발견: 현행 설정으로 켜면 변형이 정확히 0 이고 오류도 나지 않는다</strong> — 발자국 폭 0.09 m 가 격자 두 칸(0.10 m)보다 좁아 경계 분포가 전부 0 이 된다. 폭을 실제 휠 폭 0.159 m 로 고치면 발생하지만 이번엔 침하가 <strong>휠 반경의 44 %</strong> 로 비현실적이고 회귀 계수 출처가 없다(D-31 과 같은 구조). <strong>당분간 <code>enable: False</code> 유지</strong>를 권고했다 — 켜면 DEM 이 매 통과마다 바뀌어 D-31 조사의 회차 간 비교가 깨진다. 재현 도구 <code>tools/isaac/analyze_deformation.py</code>. <strong>OmniLRS 소스 결함 2건</strong>(<code>y_deform_offset</code> 이 x 값을 받음, <code>delay</code> 단위 변환이 곱셈)을 찾아 패치로 만들었다. OmniLRS 를 저장소에 통째로 넣는 것은 <strong>git-lfs 6.1 GB</strong> 라 불가해, <code>third_party/omnilrs/</code> 에 <strong>고정 커밋 + 오버레이 + 패치 + 설치/검사 스크립트</strong>(합 28 KB)로 관리한다</td>
+</tr>
+<tr>
+<td>1.54</td>
+<td>2026-08-25</td>
+<td><strong>그라우저 수 실측 — 24개, 변형 엔진 <code>wave_frequency</code> 가 틀렸음을 확인.</strong> 휠 메시(SubUSDs/Rover_hyundai_base.usd, 정점 453만)에서 방위각 히스토그램의 <strong>이산 푸리에 변환</strong>으로 셌다 — 봉우리 세기는 문턱값에 좌우되므로 지배 주파수를 본다. 반경 문턱 98/95/92 % 에서 모두 24, 2등 후보 48 은 배음. <strong>그라우저 24개 · 높이 19.1 mm</strong>(VIPER 참조는 24개 × 26 mm — 개수 일치, 높이는 우리가 낮다). 설정값 4.14 는 그라우저 <strong>13개</strong>에 해당해 틀렸고, 주석의 <code>num_grouser/pi</code> 공식도 <strong>접지 길이가 휠 지름과 같을 때만</strong> 성립한다(OmniLRS 기본 휠은 우연히 그랬다). 일반식 <code>L·N/(2πR)</code> 로 우리 값은 <strong>3.58</strong> 이다. 도구 <code>tools/isaac/count_grousers.py</code>. 문서: <code>DEFORMATION.md</code> §4a</td>
+</tr>
+<tr>
+<td>1.55</td>
+<td>2026-08-25</td>
+<td><strong>수정 검토에서 D-36 발견 — D-34·D-35 가 실배포에 반영되지 않고 있었다.</strong> 갱신 지점을 <code>grep</code> 으로 찾고 <strong>결과를 <code>head</code> 로 자른 뒤 전수로 믿은</strong> 것이 원인이다. 특히 <code>rover_params.yaml</code> 의 <code>sus_limit</code> 이 옛 값이라 <strong>노드는 여전히 ±30° 로 클램프</strong>하고 있었다 — axes.py 는 기본값일 뿐 실행 시에는 YAML 이 이긴다. <strong>사람이 갱신 지점 목록을 관리하는 방식은 D-33·D-34·D-36 으로 세 번 실패했으므로</strong> 회귀 <strong>K8「제원·한계 계층 간 일치」</strong>를 신설해 다섯 계층을 파일에서 직접 읽어 대조한다. 신설 즉시 <code>steer_offset</code> 파라미터 누락을 잡아냈다. 회귀 <strong>74 PASS / 0 FAIL</strong></td>
 </tr>
 <tr>
 <td>1.46</td>
@@ -1689,7 +1725,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>B3</td>
 <td>조향/서스 기어비·카운트 상수 확정</td>
-<td>실물 미구매로 실측 불가 — 기구 설계 제원 확정 시 상수 갱신 <strong>4곳</strong>(drive.h·axes.py·<code>hils_rover_control/config/rover_params.yaml</code>·emu_core.py), 에뮬레이터는 동일 상수로 정합 유지. yaml을 빠뜨리면 코드만 바뀌고 실행 노드는 옛 값으로 돈다(D-17)</td>
+<td>실물 미구매로 실측 불가 — 기구 설계 제원 확정 시 갱신한다. <strong>갱신 지점 목록을 2026-08-23 에 정정했다</strong>(RR-001 D-33) — 종전 목록은 <code>axes.py</code>·<code>rover_params.yaml</code> 을 지목했으나 <strong>둘 다 감속비를 갖고 있지 않고</strong>(ROS 계층은 휠 rad/s 로만 다룬다), 실제로 값을 가진 두 곳이 목록에서 빠져 있었다. 현행 지점: <strong>① <code>firmware/.../drive/drive.h</code> 의 <code>DRIVE_GEAR_RATIO</code>(계약 정본, 현재 가정 15.0) ② <code>tools/epos_rover_emulator/lib/emu_core.py</code> 의 <code>GEAR_RATIO</code> ③ <code>tools/check_hils_loop.py</code>(양자화 폭 계산용)</strong>. <code>epos-rover-emulator.py</code> 의 중복 <code>DEMO_GEAR_RATIO</code> 는 같은 정정에서 제거해 emu_core 것을 쓰게 했다 상수로 정합 유지. yaml을 빠뜨리면 코드만 바뀌고 실행 노드는 옛 값으로 돈다(D-17)</td>
 </tr>
 <tr>
 <td>B4</td>
@@ -1994,7 +2030,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 터미널 2: 제어·상태 노드 (sim 모드)</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ros2<span class="w"> </span>launch<span class="w"> </span>hils_rover_control<span class="w"> </span>rover_control.launch.py<span class="w"> </span>mode:<span class="o">=</span>sim
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 터미널 3: Navigation 또는 수동 명령</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/msg/Twist<span class="w"> </span><span class="s1">'{linear: {x: 0.5}, angular: {z: 0.2}}'</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/msg/Twist<span class="w"> </span><span class="s1">&#39;{linear: {x: 0.5}, angular: {z: 0.2}}&#39;</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 확인: /sim/axes_cmd 구동 1.89/3.02 rad/s·조향 ±21.9/13.5° → /odom 0.5/0.2 복원</span>
 </code></pre></div>
 <h3 id="52-can-sil">5.2 CAN 레벨 SIL (실물 없음 — 에뮬레이터 + 벤치 도구)<a class="headerlink" href="#52-can-sil" title="Permanent link">&para;</a></h3>
@@ -2038,6 +2074,9 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 
 
 
+
+  
+  
 
 
 
