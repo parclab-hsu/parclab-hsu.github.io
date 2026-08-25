@@ -20,6 +20,24 @@ noindex: true
 
 > **핵심 제안** — 정적인 제조공간의 시각화에 머물지 않고, **형상·물성·상태·행동·검증 데이터가 함께 순환하는 제조 Physical AI Digital Twin**을 구축합니다.
 
+!!! success "한성대학교의 대표 성과 — 무엇으로 평가받을 것인가"
+    본 과제에서 한성대학교가 **직접 개발해 소유하는 성과**는 다음 세 가지이며, 우선순위가 있습니다.
+
+    **① Manufacturing Deformation Engine (대표 성과)**
+    로봇의 접촉으로 대상물의 형상·표면·잔류상태가 바뀌는 과정을 물리적으로 재현하는 엔진입니다.
+    한성대가 OmniLRS 변형지형 연구에서 직접 구동·계측해 본 코드를 제조 접촉물리로 파생·재설계하며,
+    **다른 참여기관 어디에도 대체 주체가 없는 유일한 항목**입니다. 이 엔진이 있어야 3D Digital Twin이
+    비로소 로봇 학습에 쓸 수 있는 Physics Twin이 됩니다.
+
+    **② 학생 주도 Human Data Engine**
+    30명·5개 조가 표준 Protocol 아래에서 Teleoperation Demonstration을 생산하고, Edge Case를
+    발견·태깅·재현까지 수행합니다. 데이터 생산과 Physical AI 인력양성이 같은 활동에서 나옵니다.
+
+    **③ Manufacturing Ontology·Edge Case Intelligence**
+    ①과 ②가 만든 데이터를 의미로 연결해 검색·재현·재학습이 가능한 자산으로 만듭니다.
+
+    ②와 ③은 ①이 만든 물리 반응 위에서 작동합니다. **엔진이 이 제안의 중심축입니다.**
+
 !!! info "사업·역할 상태"
     이 페이지는 컨소시엄 제안 단계의 한성대학교–모빌테크 공동 R&R과 기술구조를 정리한 것입니다.
     제조 Use Case, 대상 설비·로봇, 정량 KPI와 기관별 최종 책임범위는 컨소시엄 협의와 실증환경
@@ -188,6 +206,38 @@ flowchart TB
 
 ---
 
+### 개발 단계와 버전별 검증목표
+
+엔진은 한 번에 완성되지 않습니다. **재현할 수 있는 물리현상의 범위를 단계적으로 넓히고, 각 단계마다
+실측으로 검증**합니다. 아래 소재군·현상은 Use Case 확정 시 대상에 맞춰 교체될 수 있습니다.
+
+| 버전 | 시기 | 재현 범위 | 검증 방법 | 완료 판정 |
+|---|---|---|---|---|
+| **v0** 기준선 | 1차년도 | OmniLRS 원형 이식 — 단일 접촉력→변형깊이 | 월면토 조건 재현 재확인 | 기존 결과와 동일 재현 |
+| **v1** 탄성·강체 접촉 | 2차년도 | 마찰·반발·강성·감쇠, 그리퍼 파지와 미끄럼 | 기준 시편 접촉력–변위 시험 | 접촉력 NRMSE ≤ 20 % |
+| **v2** 소성·잔류변형 | 3차년도 | 영구변형, 반복하중, 히스테리시스, 포장재·연성부품 | 반복하중 시험, 형상 스캔 대조 | 잔류변형량 오차 ≤ 25 % |
+| **v3** 이력·마모 | 4차년도 | 누적 사용상태, 표면 마모, 공차 변화의 장기 영향 | 장시간 반복운전 로그 대조 | 상태변화 추세 일치 |
+
+각 버전은 **Material Profile을 교체하면 다른 소재군으로 확장되는 구조**로 만듭니다. 특정 소재에
+맞춘 수식을 하드코딩하지 않는 것이 설계 원칙입니다.
+
+### 왜 이 항목을 한성대가 맡아야 하는가
+
+| 관점 | 근거 |
+|---|---|
+| 코드 수준 경험 | OmniLRS 변형지형 엔진을 **직접 구동·수정·계측**해 봤다. 논문 구현을 이식해 슬립·침하와 Mesh 실시간 변형을 재현한 이력이 있다 |
+| 대체 주체 부재 | 컨소시엄 내 다른 기관은 3D Asset 제작(모빌테크), 데이터 플랫폼, 모델 학습, Robot HW 를 맡는다. **접촉물리 모델링을 담당하는 기관이 없다** |
+| 검증 수단 보유 | HSU-PAC 의 Manipulation Cell·F/T·Tactile 센서로 시뮬레이션 값과 실측을 같은 자리에서 대조할 수 있다 |
+| 확장 경로 | 달 지형이라는 극단 조건에서 출발했기 때문에, 물성 범위를 넓히는 방향의 일반화가 자연스럽다 |
+
+!!! warning "이 엔진이 없으면 무엇이 무너지는가"
+    Deformation Engine 은 장식이 아니라 **다른 산출물의 전제**입니다. 접촉으로 상태가 변하지 않는
+    Twin 에서는 파지 실패·미끄럼·변형 같은 사건이 애초에 발생하지 않습니다. 그러면
+    Edge Case Extractor 가 걸러낼 실패가 없고, 학생 Demonstration 의 복구 행동은 재현할 대상을
+    잃으며, Sim-to-Real Gap 분석은 형상 오차만 남습니다. **이 제안의 나머지가 이 엔진 위에 서 있습니다.**
+
+---
+
 ## 한성대학교–모빌테크 공동개발 구조
 
 ### 기관별 주도 역할
@@ -267,10 +317,10 @@ sequenceDiagram
 | Work Package | 한성대학교 주도 업무 | 주요 산출물 |
 |---|---|---|
 | HSU-1. Use Case·Interface 설계 | 제조 Task·Process·Failure Case와 Robot·Sensor 요구조건 정의 | Use Case 명세, 공통 Interface·Dataset Schema |
-| HSU-2. Deformation Engine | 물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정 | Engine Module, Material Library, Calibration Tool |
+| **HSU-2. Deformation Engine** | **[대표 성과]** 물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정, 실계측 기반 검증 | **Manufacturing Deformation Engine**, Material Library, Calibration Tool, 검증 리포트 |
 | HSU-3. 제조 로봇 시뮬레이션 | Isaac Sim·ROS 2 기반 Robot·Sensor·Task·Scenario 구성 | Simulation Package, Scenario Library |
-| HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출 | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor |
-| HSU-5. 학습데이터 생성 | Domain Randomization, Synthetic/Real/Teleoperation Data 정렬, 자동 Annotation | RFM용 Dataset·Metadata·품질 리포트 |
+| HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, **학생 1차 검수 체계 운영** | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor |
+| HSU-5. 학습데이터 생성 | Domain Randomization, Synthetic/Real/Teleoperation Data 정렬, 자동 Annotation, **학생 30명·5개 조의 Demonstration·Edge Case 수집 운영** | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus |
 | HSU-6. RFM 연계 | RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의 | RFM Adapter, Benchmark·Evaluation Protocol |
 | HSU-7. 공동 Testbed·Physical Validation | HSU-PAC 참여기업 공동활용, 실제 Robot HW 적용, Domain Gap 분석 | 사전 통합환경, Sim-to-Real 검증결과, Feedback Data |
 
@@ -278,11 +328,11 @@ sequenceDiagram
 
 | 기여영역 | 한성대학교의 차별적 기여 | 컨소시엄 효과 |
 |---|---|---|
-| Dynamic Physics Twin | OmniLRS 변형지형 연구경험을 제조용 접촉·물성·변형 모델로 파생 | 정적인 3D 시각화를 로봇 행동이 가능한 Physics Twin으로 전환 |
+| **Dynamic Physics Twin** **[대표]** | OmniLRS 변형지형 연구경험을 제조용 접촉·물성·변형 모델로 파생 — **컨소시엄 내 대체 주체 없음** | 정적인 3D 시각화를 로봇 행동이 가능한 Physics Twin으로 전환 |
 | Asset–Physics 표준 | 3D Asset에 Collision, Joint, 질량·관성, 물성·Sensor Metadata를 결합 | 모빌테크 산출물을 Isaac Sim·RFM·Robot HW가 재사용 |
 | Ontology·Edge Case | 자산–공정–상태–이벤트–실패–복구 관계를 구조화하고 규칙·희소성·모델 불확실성으로 후보 추출 | 흩어진 실패 로그를 재현 가능한 학습 Scenario로 전환 |
 | 제조 데이터 생성 | 정상·경계·실패·복구 Scenario, Domain Randomization, Teleoperation, 자동 Annotation | Synthetic·Real·Human Demonstration이 결합된 RFM 학습데이터 확보 |
-| Teleoperation·인력양성 | 30명·5개 조 학생이 표준 Protocol에 따라 Demonstration·Recovery Data를 수집·검수 | 모델 학습데이터 생산과 Physical AI 실무인력 양성을 동시에 수행 |
+| 학생 Human Data Engine | 30명·5개 조가 Demonstration 생산부터 **Edge Case 1차 검수·재현 조건 탐색·복구 시연**까지 수행 | 학습데이터와 Edge Case가 한 팀에서 나오고, Physical AI 실무인력이 함께 양성됨 |
 | RFM 평가 Interface | Observation·Action·Task·Embodiment Schema와 Benchmark 설계 | 기관별 모델을 동일 제조조건에서 비교·평가 |
 | Sim-to-Real 검증 | 실물 Robot의 Domain Gap·Failure·Edge Case를 물성·Scenario에 재반영 | 데이터 생성–재학습–재검증의 지속 개선 Loop 구축 |
 | HSU-PAC 공동활용 | GPU·Isaac Sim·ROS 2·NAS·실물 로봇과 기업별 격리환경 제공 | 참여기업이 Asset·Model·Robot을 반입해 본 실증 전 사전 통합·검증 |
@@ -371,7 +421,8 @@ flowchart TB
     RAW["Real · Simulation · Teleoperation Log"] --> MAP["Ontology Mapping<br/>Asset·Task·State·Event"]
     MAP --> GRAPH["Temporal Knowledge Graph<br/>원인·전이·영향 관계"]
     GRAPH --> SCORE["Edge Candidate Scoring<br/>규칙·희소성·불확실성·Domain Gap"]
-    SCORE --> REVIEW["전문가 검토<br/>확정·병합·심각도 부여"]
+    SCORE --> TRIAGE["학생 1차 검수<br/>재생 확인·태깅·중복 병합"]
+    TRIAGE --> REVIEW["전문가 확정<br/>안전·품질 판정·심각도 부여"]
     REVIEW --> PACK["Edge Case Package<br/>Episode·조건·Trigger·Recovery·Provenance"]
     PACK --> REPLAY["Scenario Replay · Data Regeneration"]
     REPLAY --> RFM["RFM 학습·평가"]
@@ -393,17 +444,38 @@ Edge Case Package에는 `EdgeCase ID`, 제조 Context, Trigger 전·후 시계�
 물성·Scenario·Model 버전, 심각도, 실패·복구 Label과 데이터 출처를 함께 저장합니다. 이 구조를 통해
 검색된 사건을 동일 Digital Twin에서 재생하고 조건을 변화시켜 추가 학습데이터로 확장할 수 있습니다.
 
+### 학생이 Edge Case 파이프라인에서 하는 일
+
+Edge Case 추출을 "자동화했다"고만 쓰면 실제로 누가 판단하는지가 비게 됩니다. 본 제안에서
+**Human-in-the-loop의 실체는 학생 5개 조**이며, 전문가는 최종 확정만 맡습니다.
+
+| 단계 | 담당 | 구체적인 작업 |
+|---|---|---|
+| 후보 생성 | 자동 | 규칙·희소성·상태전이·Domain Gap·모델 불확실성 점수화 |
+| **1차 검수** | **학생 (Quality Reviewer · Analyst)** | 후보 Episode를 Digital Twin에서 **재생해 실제로 사건이 일어나는지 확인**, 중복 병합, Ontology 태그 부여, 재현 불가 후보 기각 |
+| **재현 조건 탐색** | **학생 (Scenario Controller)** | 사건이 재현되는 조건 범위를 좁히고, 파라미터를 흔들어 **인접 Edge Case를 추가로 만들어냄** |
+| **복구 시연** | **학생 (Operator · Safety Observer)** | 확정된 실패 상황에서 사람이 어떻게 복구하는지 Teleoperation으로 시연·기록 |
+| 최종 확정 | 제조 전문가 · RFM·Robot HW 기관 | 안전·품질 판정, 심각도 부여, 현장 타당성 검토 |
+| 재생성·재학습 | 자동 + 학생 검수 | Scenario Replay로 데이터 확장, QC 통과 여부 확인 |
+
+이 구조에서 학생은 **찾아진 Edge Case를 확인만 하는 것이 아니라 새로 만들어내는 쪽**입니다.
+자동 점수화가 잡아내지 못하는 사건은 조작 중에 사람이 먼저 느끼기 때문에, Operator가 세션 중
+직접 **Edge Case 신고(flag)** 를 남기는 경로를 별도로 둡니다. 신고 건은 자동 후보와 같은 큐로
+들어가 동일한 검수를 거칩니다.
+
 !!! note "자동화의 책임범위"
-    Ontology와 규칙은 Edge Case의 **탐색·정렬·재현을 자동화**하지만, 안전·품질과 관련된 최종
-    판정은 제조 전문가와 RFM·Robot HW 기관의 검토를 거칩니다. 자동 후보화와 Human-in-the-loop
-    검수를 결합해 누락과 오탐을 관리합니다.
+    Ontology와 규칙은 Edge Case의 **탐색·정렬·재현을 자동화**하지만, 재현 여부 확인과 태깅은
+    학생 검수 단계가, 안전·품질과 관련된 최종 판정은 제조 전문가와 RFM·Robot HW 기관이 맡습니다.
+    자동 후보화 → 학생 1차 검수 → 전문가 확정의 3단 구조로 누락과 오탐을 관리합니다.
 
 ---
 
-## 학생 Teleoperation 기반 Demonstration Data
+## 학생 주도 Human Data Engine — Demonstration과 Edge Case 수집
 
 HSU-PAC의 30명·5개 조 실습체계를 활용해 학생이 실제 또는 시뮬레이션 Robot을 원격 조작하고,
 성공 행동뿐 아니라 경계조건·실패회피·복구 행동을 포함한 Human Demonstration을 수집합니다.
+**수집에서 끝나지 않습니다** — 같은 조가 Edge Case 파이프라인의 1차 검수·재현 조건 탐색·복구
+시연까지 담당해, 학습데이터와 Edge Case가 한 팀에서 함께 만들어집니다.
 이는 학생을 단순 반복작업 인력으로 사용하는 방식이 아니라, 표준 교육·안전·품질 Protocol 아래에서
 **RFM 학습데이터 생산과 Physical AI 인력양성**을 함께 수행하는 산학협력 구조입니다.
 
@@ -428,9 +500,25 @@ flowchart TB
 | Event·Outcome | 접촉, 실패·Near-miss, 개입, 복구, 성공·품질 결과 | 실패예측·Recovery Policy 학습 |
 | Provenance | Robot·Asset·Material·Scenario·Operator Group·Session 버전 | 재현성·편향분석·데이터 분할 |
 
-각 6인 조는 `Operator–Safety Observer–Scenario Controller–Data Steward–Quality Reviewer–Analyst`
-역할을 순환하며, 동일 Task를 여러 숙련도·전략으로 반복합니다. 운영자 식별정보는 최소화·가명화하고,
-모델 평가 시에는 작업자 단위로 학습·검증 Set을 분리해 특정 조작자의 습관을 외운 성능을 배제합니다.
+운영자 식별정보는 최소화·가명화하고, 모델 평가 시에는 작업자 단위로 학습·검증 Set을 분리해
+특정 조작자의 습관을 외운 성능을 배제합니다.
+
+### 6인 역할과 담당 산출물
+
+각 6인 조는 아래 역할을 순환하며, 동일 Task를 여러 숙련도·전략으로 반복합니다. 역할은 명칭이
+아니라 **책임지는 산출물**로 정의합니다.
+
+| 역할 | 학습데이터 수집에서 | Edge Case 수집에서 | 책임 산출물 |
+|---|---|---|---|
+| Operator | Teleoperation 조작, 성공·실패회피·복구 시연 | 조작 중 이상 감지 시 **Edge Case 신고(flag)**, 복구 행동 시연 | Demonstration Episode |
+| Safety Observer | 속도·힘·작업영역 감시, 비상정지 | 위험 사건의 상황·전조 기록 | Near-miss Log |
+| Scenario Controller | 환경·설비·부품·센서 조건 변경 | **재현 조건 범위 탐색, 인접 Edge Case 생성** | Scenario 조건표 |
+| Data Steward | 시간동기·버전·Provenance 관리 | Edge Case Package 메타데이터 정합 | Dataset·Provenance |
+| Quality Reviewer | 자동 QC 결과 확인, 결측·범위 이탈 판정 | **후보 재생 확인, 중복 병합, 기각** | QC 리포트 |
+| Analyst | 조별 Coverage·작업자 분산 분석 | **Ontology 태깅, 실패–복구 관계 정리** | Coverage·태깅 결과 |
+
+한 학기 안에 6개 역할을 모두 경험하도록 순환시키므로, 학생은 **데이터를 만드는 쪽과 검증하는 쪽을
+모두 겪게 됩니다.** 이것이 단순 수집 인력과 다른 지점입니다.
 
 ### 품질·안전 운영 원칙
 
@@ -561,13 +649,17 @@ flowchart TB
 
 "확정 후 정한다"만으로는 제안이 성립하지 않으므로, **무엇을 어떤 식으로 잴 것인가**는 제안
 단계에서 고정하고, **목표 수치만** 기준선 확정 시점에 동결합니다. 아래 표의 잠정 목표는 수행실적에서
-유추한 제안단계 값이며 산정근거를 함께 표기합니다.
+유추한 제안단계 값이며 산정근거를 함께 표기합니다. **Engine** 과 **학생 Data** 로 표기한 항목이
+한성대 대표 성과에 직접 대응하는 지표입니다.
 
 | 구분 | 지표 | 산정 방식 | 잠정 목표 | 산정근거 |
 |---|---|---|---|---|
 | Geometry | Asset 정합 오차 | 실측 기준점 대비 위치·치수 RMS 편차 | 주요 설비·치구 기준 **≤ 20 mm** | 모빌테크 도면·MMS 기반 물류센터 구축 실적 |
 | Geometry | Sensor 가시성 일치 | 동일 Pose에서 실·가상 Depth 유효화소 비율 차 | **≤ 10 %p** | 실·가상 카메라 정합 검수 관행 |
-| Physics | 접촉력 재현오차 | 기준 물성시험 대비 접촉력·변위 곡선 NRMSE | 대상 소재군별 **≤ 20 %** | 물성 파라미터 식별 후 보정 전제 |
+| **Engine** | **재현 가능 소재군 수** | Material Profile 로 검증 완료된 소재군 개수 | v3 시점 **4개 이상** | 버전별 단계 확장 계획 |
+| **Engine** | **접촉력 재현오차** | 기준 물성시험 대비 접촉력·변위 곡선 NRMSE | 대상 소재군별 **≤ 20 %** | 물성 파라미터 식별 후 보정 전제 |
+| **Engine** | **잔류변형 재현오차** | 반복하중 후 형상 스캔 대조 | v2 시점 **≤ 25 %** | 소성 거동은 탄성보다 오차 허용 |
+| **Engine** | **Calibration 소요** | 신규 소재 1종의 파라미터 식별에 드는 시험 횟수·시간 | 절차서 기준 **재현 가능** | 도구·절차서 제공 전제 |
 | Physics | Cycle Time 편차 | 동일 Task의 실물–시뮬레이션 소요시간 차 | **≤ 15 %** | Task별 SOP 고정 시 달성 가능 범위 |
 | Physics | 실패 발생조건 일치 | 실물에서 관측된 실패조건의 시뮬레이션 재현율 | **≥ 70 %** | Edge Case 재생 구조 전제 |
 | Data | Episode 생성 처리량 | Scenario 1건당 자동 생성 Episode 수·소요시간 | Run당 **1,000 프레임급 자동 생성** 유지 | OmniLRS에서 1 Run ≈ 1,000 프레임 자동 생성·종료 확인 |
@@ -578,7 +670,10 @@ flowchart TB
 | Edge Case | Recovery Coverage | 실패유형 대비 복구 Episode 보유 비율 | **≥ 80 %** | 실패–복구 쌍 수집 Protocol 적용 |
 | Model | Sim-to-Real Gap | 동일 Task의 시뮬레이션–실물 성공률 차 | **≤ 20 %p** | 합성 사전학습 + 소량 실데이터 Fine-tuning 전략 |
 | Model | 합성데이터 기여도 | 합성 사전학습 유무에 따른 성능 차 | **유의한 향상 확인** | OmniLRS 실적에서 mAP 약 14% 향상 확인 |
-| Teleoperation | 유효 Demonstration | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | 30명·5개 조, 6인 역할 순환 체계 |
+| **학생 Data** | **유효 Demonstration** | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | 30명·5개 조, 6인 역할 순환 체계 |
+| **학생 Data** | **Edge Case 검수 처리량** | 자동 후보 대비 학생이 재생 확인·판정한 비율 | **≥ 90 %** | 5개 조 순환으로 큐 적체 방지 |
+| **학생 Data** | **학생 신고 기여도** | 전체 확정 Edge Case 중 학생 flag 에서 출발한 비율 | **추세 관리** | 자동 점수화가 놓치는 사건의 포착률 지표 |
+| **학생 Data** | **역할 순환 이수율** | 6개 역할을 모두 경험한 학생 비율 | 학기당 **≥ 80 %** | 인력양성 성과 지표 |
 | 운영 | 공동활용 성과 | 참여기업 수, Asset 재사용률, Onboarding 소요, 검증 Turnaround | 분기 단위 추세관리 | HSU-PAC Shared Testbed 운영 |
 
 !!! warning "잠정 목표의 취급"
@@ -680,9 +775,9 @@ flowchart TB
 |---|---|---:|
 | 한성대 연구인력 | 교수·박사후연구원·대학원생·연구원, Ontology·물리모델·Simulation·Teleoperation Data·검증 | 7.0 |
 | 모빌테크 공동개발 | 현장 취득, 정밀 3D Asset, Digital Twin, 공간·재질 Metadata, Asset 갱신 | 6.5 |
-| 연구시설·장비 | Teleoperation Console, Sensor·F/T·Tactile, Storage·Network, 실증·Calibration 장비와 HSU-PAC 확장 | 4.0 |
+| 연구시설·장비 | **학생 5개 조 동시 운용을 위한 Teleoperation Console**, Engine 검증용 F/T·Tactile·형상계측 Sensor, Storage·Network, Calibration 장비와 HSU-PAC 확장 | 4.0 |
 | Cloud·Software·Data | GPU Burst, Ontology·Edge Case Repository, Simulation·데이터 관리, License·Storage·Backup | 2.0 |
-| 연구재료·Prototype | 치구·시편·부품, 물성시험, Robot Interface와 실험환경 구성 | 2.0 |
+| 연구재료·물성시험 | **Deformation Engine 파라미터 식별용 시편·치구·부품과 접촉·반복하중·마모 시험**, Robot Interface와 실험환경 구성 | 2.0 |
 | 현장실증·연구활동 | 설치·Calibration·성능시험, 참여기업 공동활용 운영, 표준·성과확산과 기술협의 | 1.5 |
 | 간접비 등 | 대학 간접비와 사업 운영비 — 최종 규정에 따라 재산정 | 3.0 |
 | **합계** |  | **26.0** |
@@ -786,9 +881,30 @@ flowchart TB
 
 ## 기대 산출물
 
+### 대표 산출물 — Manufacturing Deformation Engine
+
+| 구성물 | 내용 |
+|---|---|
+| Engine 본체 | Contact Patch Estimator, Material Response Model, State Update, Data Labeler — Isaac Sim 연동 모듈 |
+| Material Library | 소재군별 마찰·강성·감쇠·복원·변형/파손 임계값과 불확실성 범위 |
+| Calibration Tool | 실계측 데이터로 파라미터를 식별·보정하는 도구와 절차서 |
+| 검증 리포트 | v1~v3 각 단계의 시험 조건, 실측 대조 결과, 오차와 적용 한계 |
+| 공개 성과 | 논문·특허와 Engine 규격 문서 — 컨소시엄 참여기관이 재현할 수 있는 수준의 기술문서 |
+
+### 학생 주도 Human Data Engine 산출물
+
+| 구성물 | 내용 |
+|---|---|
+| Demonstration Corpus | 성공·경계·실패회피·복구 행동, 작업자·전략 다양성이 확보된 Episode 집합 |
+| Edge Case 검수 결과 | 재생 확인·태깅·병합·기각 이력과 학생 신고(flag) 기반 신규 후보 |
+| 복구 시연 Set | 확정된 실패 상황별 사람의 복구 행동 기록 |
+| 운영 Protocol | Task·안전·품질 SOP, 6인 역할 순환 체계, 교육·검수 절차서 |
+| 인력 성과 | 6개 역할을 모두 경험한 Physical AI 실무인력 |
+
+### 그 밖의 산출물
+
 - 제조환경 **Simulation-ready Digital Twin Asset Package**와 검수 기준
 - 물성·접촉·변형 파라미터 **Material & Physics Schema**
-- OmniLRS 경험을 제조환경으로 파생한 **Manufacturing Deformation Engine**
 - 제조 자산·공정·상태·실패·복구를 연결하는 **Manufacturing Ontology·Knowledge Graph**
 - 규칙·희소성·불확실성·Domain Gap 기반 **Edge Case Extractor와 Scenario Package**
 - Isaac Sim·ROS 2 기반 **Robot·Sensor·Task Scenario Library**
@@ -827,4 +943,4 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 
 `Manufacturing Digital Twin` · `Deformation Engine` · `Manufacturing Ontology` · `Edge Case Extraction` · `Teleoperation Data` · `Shared Testbed` · `Robot Foundation Model` · `Isaac Sim` · `ROS 2` · `Sim-to-Real`
 
-[:octicons-arrow-left-24: 프로젝트 목록으로](../../projects.md)
+[:octicons-arrow-left-24: 프로젝트 목록으로](https://parclab-hsu.github.io/projects/)

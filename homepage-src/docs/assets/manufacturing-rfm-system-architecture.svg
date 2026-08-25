@@ -117,6 +117,8 @@
   <circle cx="392" cy="348" r="22" fill="#1f5fbf"/>
   <text x="392" y="356" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">1</text>
   <text x="428" y="356" class="cardT">OmniLRS 파생 Deformation Engine</text>
+  <rect x="757" y="297" width="104" height="27" rx="13" fill="#1f5fbf"/>
+  <text x="809" y="316" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">대표 성과</text>
   <text x="372" y="396" class="cardB">달 지형 변형기술을 제조 Contact–Material–State 변화로 확장</text>
   <text x="372" y="424" class="cardB">마찰 · 강성 · 변형 · 복원 · 마모 · 반복하중 · Physics Calibration</text>
 
@@ -136,7 +138,7 @@
   <text x="392" y="531" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">3</text>
   <text x="428" y="531" class="cardT">학생 Teleoperation Data Engine</text>
   <text x="372" y="571" class="cardB">30명·5개 조 · 표준 Task / Safety Protocol · Human Demonstration</text>
-  <text x="372" y="599" class="cardB">성공 · 실패회피 · Recovery 행동 · 자동 QC + 전문가 검수</text>
+  <text x="372" y="599" class="cardB">성공 · 실패회피 · Recovery 행동 · Edge Case 신고 · 1차 검수</text>
 
   <!-- 카드 4 -->
   <rect x="903" y="485" width="529" height="140" rx="16" fill="#fdf0dd"/>
@@ -151,6 +153,7 @@
   <path d="M608 452 L608 481" stroke="#2f6fd0" stroke-width="5" marker-end="url(#mBlue)"/>
   <path d="M1167 452 L1167 481" stroke="#0e8a86" stroke-width="5" marker-end="url(#mTeal)"/>
   <path d="M608 627 L608 653" stroke="#7a5fb8" stroke-width="5" marker-end="url(#mPurple)"/>
+  <path d="M875 555 L899 555" stroke="#7a5fb8" stroke-width="5" marker-end="url(#mPurple)"/>
   <path d="M1167 627 L1167 653" stroke="#ef8b1e" stroke-width="5" marker-end="url(#mOrange)"/>
 
   <!-- Episode Factory -->
