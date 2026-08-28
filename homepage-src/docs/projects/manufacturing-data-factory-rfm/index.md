@@ -54,7 +54,7 @@ noindex: true
     확정 후 기준선(Baseline)으로 관리합니다.
 
 <figure markdown>
-  ![한성대학교 고유 Physical AI Data Factory 아키텍처 — OmniLRS 파생 Deformation Engine, Manufacturing Ontology, 학생 Teleoperation, Ontology 기반 Edge Case Intelligence, Versioned Episode Factory와 HSU-PAC Shared Testbed](../../assets/manufacturing-rfm-system-architecture.svg){ loading=lazy }
+  ![한성대학교 제조 Physical AI Data Factory 아키텍처 — OmniLRS 파생 Manufacturing Deformation Engine, Manufacturing Ontology, Human Data Engine(학생 참여), Ontology 기반 Edge Case Intelligence, Versioned Physical AI Episode Factory와 HSU Physical AI Shared Testbed](../../assets/manufacturing-rfm-system-architecture.svg){ loading=lazy }
   <figcaption>한성대학교 고유 아키텍처 — 외부기관은 표준 입력·활용 Interface로 두고, 한성대가 보유·개발·운영하는 Physics·Ontology·Human Demonstration·Edge Intelligence·Shared Testbed를 중앙에 배치했습니다.</figcaption>
   <figcaption markdown>글자가 작으면 [원본 SVG 열기](../../assets/manufacturing-rfm-system-architecture.svg)</figcaption>
 </figure>
