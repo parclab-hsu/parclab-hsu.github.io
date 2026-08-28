@@ -3,143 +3,143 @@
   <desc id="desc">모빌테크의 실제 제조환경 디지털화부터 한성대학교의 Deformation Engine, 시뮬레이션, 합성데이터 생성, RFM 연계와 실물 로봇 검증까지의 역할과 피드백 흐름을 나타낸 도식</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f7fbfd"/>
-      <stop offset="1" stop-color="#e9f4f6"/>
+      <stop offset="0" stop-color="#f7fbfe"/>
+      <stop offset="1" stop-color="#ecf6fd"/>
     </linearGradient>
     <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#073b4c"/>
-      <stop offset="1" stop-color="#087f8c"/>
+      <stop offset="0" stop-color="#054865"/>
+      <stop offset="1" stop-color="#0b7bb8"/>
     </linearGradient>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0b2638" flood-opacity="0.14"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#08304a" flood-opacity="0.14"/>
     </filter>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f8f99"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0295d5"/>
     </marker>
     <marker id="arrowLight" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7ed6dc"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8ccdf0"/>
     </marker>
     <style>
       text { font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif; }
       .small { font-size: 18px; fill: #466273; }
-      .body { font-size: 21px; fill: #1d394a; }
-      .label { font-size: 18px; font-weight: 700; fill: #087f8c; letter-spacing: 1px; }
-      .card-title { font-size: 28px; font-weight: 800; fill: #102f40; }
+      .body { font-size: 21px; fill: #12455f; }
+      .label { font-size: 18px; font-weight: 700; fill: #0b7bb8; letter-spacing: 1px; }
+      .card-title { font-size: 28px; font-weight: 800; fill: #0d3b55; }
       .core-title { font-size: 30px; font-weight: 800; fill: #ffffff; }
-      .core-body { font-size: 17px; fill: #dff8fa; }
+      .core-body { font-size: 17px; fill: #e4f4fd; }
     </style>
   </defs>
 
   <rect width="1600" height="900" fill="url(#bg)"/>
-  <rect width="1600" height="145" fill="#0b2538"/>
-  <circle cx="1510" cy="72" r="160" fill="#0f8f99" opacity="0.12"/>
-  <circle cx="1425" cy="30" r="88" fill="#71d2d8" opacity="0.08"/>
+  <rect width="1600" height="145" fill="#08304a"/>
+  <circle cx="1510" cy="72" r="160" fill="#0295d5" opacity="0.12"/>
+  <circle cx="1425" cy="30" r="88" fill="#7ec6ee" opacity="0.08"/>
 
   <text x="80" y="60" font-size="38" font-weight="800" fill="#ffffff">한성대학교 제조 Physical AI R&amp;R</text>
-  <text x="80" y="105" font-size="23" fill="#b9e8eb">Digital Twin · Deformation Engine · Robot Data · RFM · Sim-to-Real</text>
-  <rect x="1210" y="45" width="300" height="54" rx="27" fill="#0f8f99"/>
+  <text x="80" y="105" font-size="23" fill="#bfe2f5">Digital Twin · Deformation Engine · Robot Data · RFM · Sim-to-Real</text>
+  <rect x="1210" y="45" width="300" height="54" rx="27" fill="#0295d5"/>
   <text x="1360" y="79" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">제조 데이터팩토리 기술 인터페이스</text>
 
-  <rect x="472" y="164" width="656" height="58" rx="29" fill="#ffffff" stroke="#68cbd1" stroke-width="2"/>
-  <text x="800" y="200" text-anchor="middle" font-size="22" font-weight="800" fill="#087f8c">OmniLRS 연구경험 → 제조용 Deformation Engine 파생</text>
-  <path d="M800 222 L800 252" stroke="#0f8f99" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="472" y="164" width="656" height="58" rx="29" fill="#ffffff" stroke="#74c0ec" stroke-width="2"/>
+  <text x="800" y="200" text-anchor="middle" font-size="22" font-weight="800" fill="#0b7bb8">OmniLRS 연구경험 → 제조용 Deformation Engine 파생</text>
+  <path d="M800 222 L800 252" stroke="#0295d5" stroke-width="4" marker-end="url(#arrow)"/>
 
   <!-- Real to Digital -->
   <g filter="url(#shadow)">
-    <rect x="70" y="280" width="400" height="420" rx="28" fill="#ffffff" stroke="#b9d7df" stroke-width="2"/>
+    <rect x="70" y="280" width="400" height="420" rx="28" fill="#ffffff" stroke="#bcd8ea" stroke-width="2"/>
   </g>
-  <rect x="70" y="280" width="400" height="82" rx="28" fill="#e7f6f7"/>
-  <path d="M70 334 H470 V362 H70 Z" fill="#e7f6f7"/>
+  <rect x="70" y="280" width="400" height="82" rx="28" fill="#eaf6fd"/>
+  <path d="M70 334 H470 V362 H70 Z" fill="#eaf6fd"/>
   <text x="100" y="318" class="label">REAL → DIGITAL</text>
   <text x="100" y="350" class="card-title">모빌테크 공동개발</text>
 
-  <circle cx="115" cy="414" r="25" fill="#0f8f99"/>
+  <circle cx="115" cy="414" r="25" fill="#0295d5"/>
   <text x="115" y="422" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">1</text>
   <text x="158" y="409" class="body" font-weight="700">현장 Scan·Mapping</text>
   <text x="158" y="437" class="small">LiDAR · MMS · Camera · 도면</text>
 
-  <circle cx="115" cy="504" r="25" fill="#0f8f99"/>
+  <circle cx="115" cy="504" r="25" fill="#0295d5"/>
   <text x="115" y="512" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">2</text>
   <text x="158" y="499" class="body" font-weight="700">정밀 3D Asset</text>
   <text x="158" y="527" class="small">공간 · 설비 · 부품 · LOD</text>
 
-  <circle cx="115" cy="594" r="25" fill="#0f8f99"/>
+  <circle cx="115" cy="594" r="25" fill="#0295d5"/>
   <text x="115" y="602" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">3</text>
   <text x="158" y="589" class="body" font-weight="700">공간·설비 Metadata</text>
   <text x="158" y="617" class="small">좌표 · Semantic · 재질 · 이력</text>
 
-  <rect x="100" y="650" width="340" height="34" rx="17" fill="#eef4f6"/>
+  <rect x="100" y="650" width="340" height="34" rx="17" fill="#eef6fc"/>
   <text x="270" y="674" text-anchor="middle" font-size="17" font-weight="700" fill="#466273">Simulation-ready Asset Package</text>
 
   <!-- HSU core -->
   <g filter="url(#shadow)">
     <rect x="550" y="252" width="520" height="500" rx="32" fill="url(#core)"/>
   </g>
-  <text x="590" y="304" font-size="18" font-weight="700" fill="#85e2e6" letter-spacing="1.2">DIGITAL → PHYSICAL AI</text>
+  <text x="590" y="304" font-size="18" font-weight="700" fill="#9ed7f3" letter-spacing="1.2">DIGITAL → PHYSICAL AI</text>
   <text x="590" y="345" class="core-title">한성대학교 핵심 R&amp;R</text>
   <text x="590" y="376" class="core-body">Asset·Physics·Data·Model·Validation을 연결</text>
 
-  <rect x="578" y="400" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
+  <rect x="578" y="400" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#a5dbf5"/>
   <text x="596" y="434" font-size="19" font-weight="800" fill="#ffffff">Deformation Engine</text>
   <text x="596" y="464" class="core-body">물성 · 접촉 · 변형</text>
   <text x="596" y="490" class="core-body">누적상태 · 파라미터 보정</text>
 
-  <rect x="816" y="400" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
+  <rect x="816" y="400" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#a5dbf5"/>
   <text x="834" y="434" font-size="19" font-weight="800" fill="#ffffff">Isaac Sim · ROS 2</text>
   <text x="834" y="464" class="core-body">Robot · Sensor</text>
   <text x="834" y="490" class="core-body">Task · Scenario</text>
 
-  <rect x="578" y="546" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
+  <rect x="578" y="546" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#a5dbf5"/>
   <text x="596" y="580" font-size="19" font-weight="800" fill="#ffffff">Ontology · Data</text>
   <text x="596" y="610" class="core-body">Edge Case Extraction</text>
   <text x="596" y="636" class="core-body">Synthetic · Teleoperation</text>
 
-  <rect x="816" y="546" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#8ce3e7"/>
+  <rect x="816" y="546" width="224" height="132" rx="18" fill="#ffffff" opacity="0.12" stroke="#a5dbf5"/>
   <text x="834" y="580" font-size="19" font-weight="800" fill="#ffffff">Sim-to-Real</text>
   <text x="834" y="610" class="core-body">Domain Gap</text>
   <text x="834" y="636" class="core-body">Failure · Edge Case</text>
 
-  <rect x="568" y="694" width="484" height="40" rx="20" fill="#07303f" stroke="#55cbd1"/>
-  <text x="810" y="720" text-anchor="middle" font-size="15" font-weight="700" fill="#bff3f5">HSU-PAC · 참여기업 Shared Lab · GPU · ROS 2 · 실물 로봇</text>
+  <rect x="568" y="694" width="484" height="40" rx="20" fill="#053e58" stroke="#5eb7e9"/>
+  <text x="810" y="720" text-anchor="middle" font-size="15" font-weight="700" fill="#cdeafa">HSU-PAC · 참여기업 Shared Lab · GPU · ROS 2 · 실물 로봇</text>
 
   <!-- RFM and robot -->
   <g filter="url(#shadow)">
-    <rect x="1150" y="280" width="380" height="420" rx="28" fill="#ffffff" stroke="#b9d7df" stroke-width="2"/>
+    <rect x="1150" y="280" width="380" height="420" rx="28" fill="#ffffff" stroke="#bcd8ea" stroke-width="2"/>
   </g>
-  <rect x="1150" y="280" width="380" height="82" rx="28" fill="#eef3fb"/>
-  <path d="M1150 334 H1530 V362 H1150 Z" fill="#eef3fb"/>
-  <text x="1180" y="318" class="label" fill="#4868a9">MODEL → ROBOT</text>
+  <rect x="1150" y="280" width="380" height="82" rx="28" fill="#eaf3fb"/>
+  <path d="M1150 334 H1530 V362 H1150 Z" fill="#eaf3fb"/>
+  <text x="1180" y="318" class="label" fill="#2f7fc4">MODEL → ROBOT</text>
   <text x="1180" y="350" class="card-title">컨소시엄 연계</text>
 
-  <rect x="1190" y="400" width="300" height="70" rx="18" fill="#edf1fb" stroke="#9fb1d6"/>
+  <rect x="1190" y="400" width="300" height="70" rx="18" fill="#e9f2fb" stroke="#a8c4e5"/>
   <text x="1340" y="431" text-anchor="middle" class="body" font-weight="800">Robot Foundation Model</text>
   <text x="1340" y="457" text-anchor="middle" class="small">학습 · 평가 · Model Interface</text>
 
-  <path d="M1340 470 L1340 505" stroke="#4868a9" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect x="1190" y="510" width="300" height="70" rx="18" fill="#edf1fb" stroke="#9fb1d6"/>
+  <path d="M1340 470 L1340 505" stroke="#2f7fc4" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="1190" y="510" width="300" height="70" rx="18" fill="#e9f2fb" stroke="#a8c4e5"/>
   <text x="1340" y="541" text-anchor="middle" class="body" font-weight="800">Robot HW</text>
   <text x="1340" y="567" text-anchor="middle" class="small">AMR · Manipulator · Sensor</text>
 
-  <path d="M1340 580 L1340 615" stroke="#4868a9" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect x="1190" y="620" width="300" height="58" rx="18" fill="#0f8f99"/>
+  <path d="M1340 580 L1340 615" stroke="#2f7fc4" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="1190" y="620" width="300" height="58" rx="18" fill="#0295d5"/>
   <text x="1340" y="657" text-anchor="middle" font-size="21" font-weight="800" fill="#ffffff">실물 제조작업 검증</text>
 
   <!-- Main hand-offs -->
-  <path d="M470 488 L535 488" stroke="#0f8f99" stroke-width="5" marker-end="url(#arrow)"/>
-  <text x="510" y="459" text-anchor="middle" font-size="15" font-weight="700" fill="#087f8c">Asset</text>
-  <text x="510" y="476" text-anchor="middle" font-size="15" font-weight="700" fill="#087f8c">Physics</text>
-  <path d="M1070 488 L1135 488" stroke="#0f8f99" stroke-width="5" marker-end="url(#arrow)"/>
-  <text x="1110" y="459" text-anchor="middle" font-size="15" font-weight="700" fill="#087f8c">Data</text>
-  <text x="1110" y="476" text-anchor="middle" font-size="15" font-weight="700" fill="#087f8c">Model</text>
+  <path d="M470 488 L535 488" stroke="#0295d5" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="510" y="459" text-anchor="middle" font-size="15" font-weight="700" fill="#0b7bb8">Asset</text>
+  <text x="510" y="476" text-anchor="middle" font-size="15" font-weight="700" fill="#0b7bb8">Physics</text>
+  <path d="M1070 488 L1135 488" stroke="#0295d5" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="1110" y="459" text-anchor="middle" font-size="15" font-weight="700" fill="#0b7bb8">Data</text>
+  <text x="1110" y="476" text-anchor="middle" font-size="15" font-weight="700" fill="#0b7bb8">Model</text>
 
   <!-- Feedback loop -->
-  <path d="M1340 700 C1340 800, 1060 800, 970 750" fill="none" stroke="#0f8f99" stroke-width="4" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
-  <text x="1200" y="820" text-anchor="middle" font-size="19" font-weight="800" fill="#087f8c">Validation Feedback</text>
+  <path d="M1340 700 C1340 800, 1060 800, 970 750" fill="none" stroke="#0295d5" stroke-width="4" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+  <text x="1200" y="820" text-anchor="middle" font-size="19" font-weight="800" fill="#0b7bb8">Validation Feedback</text>
   <text x="1200" y="846" text-anchor="middle" class="small">실패·Edge Case → 물성·Scenario 보정 → 데이터 재생성</text>
 
   <!-- Contribution footer -->
-  <rect x="70" y="780" width="880" height="88" rx="22" fill="#ffffff" stroke="#c7dde3"/>
+  <rect x="70" y="780" width="880" height="88" rx="22" fill="#ffffff" stroke="#c9dded"/>
   <text x="105" y="807" font-size="17" font-weight="800" fill="#466273">한성대 데이터팩토리의 차별화</text>
-  <text x="105" y="836" font-size="19" font-weight="800" fill="#0b5964">Ontology Edge Case · 학생 Teleoperation Data</text>
-  <text x="105" y="861" font-size="18" font-weight="800" fill="#0b5964">참여기업 Shared Testbed · RFM 평가 · Sim-to-Real 반복검증</text>
+  <text x="105" y="836" font-size="19" font-weight="800" fill="#095a86">Ontology Edge Case · 학생 Teleoperation Data</text>
+  <text x="105" y="861" font-size="18" font-weight="800" fill="#095a86">참여기업 Shared Testbed · RFM 평가 · Sim-to-Real 반복검증</text>
 </svg>
