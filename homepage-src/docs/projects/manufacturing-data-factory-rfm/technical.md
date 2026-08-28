@@ -175,6 +175,56 @@ flowchart TB
 
 ---
 
+## 수행 역량 근거 — 각 계층을 왜 한성대가 맡을 수 있는가
+
+확정 R&R 이후 접근 방식이 **WFM 활용형 시스템 설계·오케스트레이션·검증**으로 정리되면서,
+계층별로 **이미 확보한 실적과 본 과제에서 새로 구축할 범위**를 나눠 적을 필요가 생겼습니다.
+아래는 그 대조입니다.
+
+| 계층 | 확보한 실적 | 본 과제에서 새로 구축할 것 |
+|---|---|---|
+| **Physics Grounding** | **Isaac Sim 5.0.0 + OmniLRS + ROS 2 Humble** Docker 통합 구동. Hydra 단일 yaml 로 환경·모드·렌더링·물리엔진 통합 제어. **Grouser Wheel 지형변형 모델 이식** — 슬립·침하, Mesh 실시간 변형, 접촉력·저항력 모델링을 **직접 구동·계측** | 제조 접촉·물성 파라미터로의 치환, **생성결과를 반증하는 Physics Consistency Evaluator** |
+| **World Prediction** | Isaac Sim 기반 합성데이터 자동 생성(1회 Run 약 1,000 프레임), 자동 Annotation 3종(Bounding Box·Instance Segmentation·Pixel-level) | **WFM 연계 자체가 신규 범위입니다.** Cosmos Adapter, Prompt·Condition Compiler |
+| **Scenario Exploration** | 조명·태양광·렌즈·렌더·지형·로봇 6개 카테고리의 **ROS 2 토픽 실시간 제어**(조명 세기, 광원 자세, 배치 랜덤화, 로봇 Spawn·Reset·Teleport) | Scenario DSL, Edge Case Compiler |
+| **HIL Validation** | **HILS 폐루프 구성 실적** — 제어기·통신·실시간성 연계 경험 | 제조 로봇 대상 HIL Gate 기준 수립 |
+| **Real-world Validation** | **HSU-PAC** — GPU 서버·Isaac Sim·ROS 2·NAS·실물 로봇, 기업별 격리환경 | 승인 운용범위 내 제한적 실증 절차 |
+| **Evidence Management** | 모델버전·Seed·환경 재현성 관리(컨테이너 기반 실행환경 고정) | Capability Registry, 판정근거 추적 DB |
+
+!!! note "무엇이 실적이고 무엇이 신규인지"
+    **WFM(Cosmos·Genie 3) 연계는 본 과제에서 새로 구축하는 범위이며 현재 수행실적이
+    아닙니다.** 확보한 것은 그 아래 계층 — 물리 시뮬레이션을 직접 구동·계측하고,
+    변형·접촉 모델을 이식해 보고, ROS 2 로 환경을 실시간 제어해 본 이력입니다.
+
+    이 구분이 본 제안의 핵심입니다. **생성결과를 물리적으로 반증하려면 반증할 쪽을 다뤄
+    봤어야 합니다.** WFM 을 쓰는 기관은 많지만, 그 출력이 물리적으로 말이 되는지 판정할
+    수 있는 쪽은 시뮬레이터를 열어 본 곳입니다.
+
+    앞 절의 OmniLRS Instance Segmentation AP 약 14 % 향상은 **문헌 보고값이며 자체 재현
+    수치가 아닙니다.** 합성데이터 사전학습의 기여도를 제조 대상으로 재현하는 것은 본 과제
+    범위에 포함됩니다.
+
+### 실행환경 적합성 대조 (2026-08-29 확인)
+
+기준 구현 모델의 요구사양을 **한성대 보유·계획 장비와 대조**했습니다.
+
+| 장비 | Cosmos-Predict2.5 | Cosmos 3 | 판정 |
+|---|---|---|---|
+| **RTX PRO 6000 Blackwell 96GB** (교내 GPU 서버) | Ampere 이상 요구 → **적합** | Ampere·Hopper·Blackwell 지원. **Cosmos3-Nano 권장 하드웨어에 RTX Pro 6000 명시** | **기준 실행환경** |
+| **DGX Spark** (128GB 통합 메모리) | 적합하나 **CUDA 13.0 필수**(공식 명시) | Nano 계열 Edge 권장에 Jetson AGX 계열 포함 | **CUDA 계통 분리 검증 필요** |
+| 학생 노트북 RTX 4060 (8GB) | VRAM 부족 | 해당 없음 | **실행 대상 아님** — Isaac Sim 최소사양(16GB)에도 미달 |
+| AWS EC2 GPU 버스트 | 필요 시 | Cosmos3-Super(64B)는 H200·B200·GB200 급 | 대규모 생성 시에만 |
+
+**결론 — 교내 RTX PRO 6000 서버만으로 기준 구현과 Post-training 이 성립합니다.**
+대규모 생성이 필요할 때만 외부로 확장하므로, 제조 데이터를 온프레미스에 두는 원칙이
+실제로 지켜집니다.
+
+!!! warning "위 대조는 계획 사양 기준입니다"
+    HSU-PAC 구축 방안 문서상의 사양과 대조한 것이며, **실물 장비 사양 확정은 아직
+    진행 중**입니다. DGX Spark 의 CUDA 13.0 계통 실행은 착수 단계에서 별도로 검증해야
+    합니다.
+
+---
+
 ## Physical AI 구축 환경 최적화 — Cosmos · Isaac Sim · LeRobot
 
 세 가지를 각각 잘하는 일에만 쓰고, 그 사이를 한성대가 잇는 구조입니다. 무엇을 직접 만들고
