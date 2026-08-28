@@ -272,12 +272,24 @@ RFM 기관이 매번 변환기를 만들어야 합니다. **모든 출처를 LeR
 
 ### Cosmos 도입 실행계획
 
-모델 규모에 따라 필요한 연산자원이 다릅니다. **교내에서 검증하고 규모가 필요할 때만 외부로 나갑니다.**
+!!! warning "확정 R&R 이후 기준 구현 모델이 바뀌었습니다 (2026-08-29)"
+    아래 Cosmos 3 규모별 표는 **확정 통보 이전에 작성한 것**입니다. 확정된 5 % 규모와
+    로컬 재현성·Post-training 절차 확보를 우선하여, 현재 기준 구현 모델은
+    **NVIDIA Cosmos 계열(Cosmos-Predict2.5 기준 구현, 후속 계열 호환)** 입니다.
+
+    - **2B 급 경량모델과 LoRA Post-training 을 기준 환경**으로 삼습니다. 대규모 사전학습을
+      수행하지 않으므로 연산자원 요구가 과제 규모에 맞춰집니다.
+    - 모델은 **Model Adapter 와 Capability Registry** 뒤에 두어, 버전이 바뀌어도 Adapter 와
+      Capability Profile 만 고치면 되도록 설계합니다.
+    - 아래 표는 **대규모 생성이 필요해질 경우의 상한 참고치**로 남깁니다.
+
+    현재 접근 방식은 제안서 본문 2.2·2.4 절에 있습니다.
 
 | 모델 | 규모 | 권장 연산자원 | 본 과제에서의 용도 | 실행 위치 |
 |---|---|---|---|---|
-| **Cosmos3-Nano** | 16B (8B reasoner + 8B generator) | 워크스테이션급 (RTX PRO 6000 계열) | **1차년도 타당성 검증**, 조건 제어 실험, 소량 생성 | **교내 GPU 서버** |
-| **Cosmos3-Super** | 64B (32B + 32B) | Hopper·Blackwell 데이터센터 GPU (다중 GPU·layerwise offload) | 대규모 합성데이터 생성 | 컨소시엄 공용 GPU 또는 클라우드 버스트 |
+| **Cosmos-Predict2.5 (2B Video2World)** | 2B | 단일 GPU (Ampere 이상 · Linux) | **기준 구현** — 로컬 추론, Action-conditioned Post-training, LoRA 적응 | **교내 GPU 서버** |
+| Cosmos3-Nano | 16B (8B reasoner + 8B generator) | 워크스테이션급 (RTX PRO 6000 계열) | 상한 참고 — 조건 제어 실험, 소량 생성 | 교내 GPU 서버 |
+| Cosmos3-Super | 64B (32B + 32B) | Hopper·Blackwell 데이터센터 GPU (다중 GPU·layerwise offload) | 상한 참고 — 대규모 합성데이터 생성 | 컨소시엄 공용 GPU 또는 클라우드 버스트 |
 
 **1차년도 Gate — 통과해야 2차년도 본 생성으로 갑니다.**
 

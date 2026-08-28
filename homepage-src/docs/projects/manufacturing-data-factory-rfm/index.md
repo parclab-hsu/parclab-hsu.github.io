@@ -58,6 +58,13 @@ noindex: true
     「[한성대학교 담당 분야와 확정 R&R](#hsu-rr-confirmed)」 절을 먼저 보시면 됩니다.
     연차별 연구내용과 예상 결과물은 **주관사 제출용 별도 문서**로 정리했습니다(2026-08-31 제출).
 
+    **접근 방식이 바뀌었습니다.** 대규모 World Foundation Model 을 자체 개발하지 않고,
+    Genie 3 · NVIDIA Cosmos 계열 등 검증된 선도모델을 제조 도메인에 적용한 뒤
+    **Physics Twin 으로 물리적으로 검증**하는 **Foundation Model 활용형 시스템 설계·
+    오케스트레이션·검증**에 집중합니다. 확정된 5 % 규모에서 물리엔진이나 대형 모델을
+    새로 만드는 계획은 성립하지 않습니다. 아래 「대표 성과」 이하 서술은 확정 이전
+    준비 내용이며, 각 항목의 현재 위상은 확정 R&R 절의 대응표를 따릅니다.
+
 !!! info "사업·역할 상태"
     이 페이지는 컨소시엄 제안 단계의 한성대학교–모빌테크 공동 R&R과 기술구조를 정리한 것입니다.
     제조 Use Case, 대상 설비·로봇, 정량 KPI와 기관별 최종 책임범위는 컨소시엄 협의와 실증환경
@@ -159,6 +166,17 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 | ② Zero-shot Transfer 도메인 적응 | HSU-5 학습데이터 생성(Domain Randomization·Scene–Scenario 정합), HSU-7 Domain Gap 분석 |
 | ③ 엣지 케이스 시뮬레이션 | **HSU-4 Ontology·Edge Case**, HSU-3 Scenario Library |
 | ④ 학술 연구·기술 자문 | HSU-1 Use Case·Interface 설계, HSU-6 RFM 연계·평가기준 |
+
+### 준비 내용에서 위상이 바뀐 항목
+
+| 항목 | 이전 준비안 | 현재 | 왜 바뀌었나 |
+|---|---|---|---|
+| **Deformation Engine** | 자체 개발하는 대표 성과 | **Physics Grounding Layer** 의 물성 보정·정합 검증 역량 | 5 % 규모에서 물리엔진 신규 개발은 성립하지 않습니다. OmniLRS 변형지형 구동·계측 경험은 **생성결과를 물리적으로 반증하는 능력**으로 재배치됩니다 |
+| **NVIDIA Cosmos** | 외관 다양화에 가져다 쓰는 도구 | **기준 구현 모델** (Cosmos-Predict2.5 기준, 후속 계열 호환) | Action-conditioned Post-training 과 LoRA 절차가 공식 제공되어 과제 내 검증이 가능합니다 |
+| **Genie 3** | 없음 | **선택형 시나리오 탐색 계층** | 인터랙티브 월드 생성은 유용하나 Project Genie 는 연구 프로토타입이라 필수 전제로 삼을 수 없습니다 |
+| **HIL 검증** | 부수적 언급 | **독립 검증 계층** | 물리·정책 검증과 실로봇 사이에 제어주기·통신·실시간성 확인 단계가 필요합니다 |
+
+세부 개발 내용과 위험 대응전략은 **제안서 본문**에 있습니다.
 
 !!! warning "범위가 조정되는 항목"
     확정된 네 역할에 **학생 Teleoperation Demonstration 대량 생산**은 명시되어 있지 않습니다.
