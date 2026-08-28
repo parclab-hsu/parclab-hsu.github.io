@@ -726,6 +726,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        준비 내용에서 위상이 바뀐 항목
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -744,7 +755,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         한성대학교가 기여하는 핵심 가치
@@ -771,7 +782,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         단계별 추진안
@@ -783,7 +794,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         차년도 매핑과 마일스톤
@@ -799,7 +810,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         예산 요약
@@ -811,7 +822,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         확정 비율의 배분안
@@ -822,7 +833,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         확정 이전 준비안 (참고)
@@ -838,7 +849,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         기대 산출물
@@ -872,7 +883,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         그 밖의 산출물
@@ -888,7 +899,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         더 읽을 것
@@ -965,6 +976,12 @@ LeRobotDataset 으로 정규화해 RFM 기관에 넘기는</strong> 하나의 �
 <p>아래 본문의 준비 내용은 이 네 역할 아래로 재배치했습니다 —
 「<a href="#hsu-rr-confirmed">한성대학교 담당 분야와 확정 R&amp;R</a>」 절을 먼저 보시면 됩니다.
 연차별 연구내용과 예상 결과물은 <strong>주관사 제출용 별도 문서</strong>로 정리했습니다(2026-08-31 제출).</p>
+<p><strong>접근 방식이 바뀌었습니다.</strong> 대규모 World Foundation Model 을 자체 개발하지 않고,
+Genie 3 · NVIDIA Cosmos 계열 등 검증된 선도모델을 제조 도메인에 적용한 뒤
+<strong>Physics Twin 으로 물리적으로 검증</strong>하는 <strong>Foundation Model 활용형 시스템 설계·
+오케스트레이션·검증</strong>에 집중합니다. 확정된 5 % 규모에서 물리엔진이나 대형 모델을
+새로 만드는 계획은 성립하지 않습니다. 아래 「대표 성과」 이하 서술은 확정 이전
+준비 내용이며, 각 항목의 현재 위상은 확정 R&amp;R 절의 대응표를 따릅니다.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">사업·역할 상태</p>
@@ -1162,6 +1179,44 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="_4">준비 내용에서 위상이 바뀐 항목<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>이전 준비안</th>
+<th>현재</th>
+<th>왜 바뀌었나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deformation Engine</strong></td>
+<td>자체 개발하는 대표 성과</td>
+<td><strong>Physics Grounding Layer</strong> 의 물성 보정·정합 검증 역량</td>
+<td>5 % 규모에서 물리엔진 신규 개발은 성립하지 않습니다. OmniLRS 변형지형 구동·계측 경험은 <strong>생성결과를 물리적으로 반증하는 능력</strong>으로 재배치됩니다</td>
+</tr>
+<tr>
+<td><strong>NVIDIA Cosmos</strong></td>
+<td>외관 다양화에 가져다 쓰는 도구</td>
+<td><strong>기준 구현 모델</strong> (Cosmos-Predict2.5 기준, 후속 계열 호환)</td>
+<td>Action-conditioned Post-training 과 LoRA 절차가 공식 제공되어 과제 내 검증이 가능합니다</td>
+</tr>
+<tr>
+<td><strong>Genie 3</strong></td>
+<td>없음</td>
+<td><strong>선택형 시나리오 탐색 계층</strong></td>
+<td>인터랙티브 월드 생성은 유용하나 Project Genie 는 연구 프로토타입이라 필수 전제로 삼을 수 없습니다</td>
+</tr>
+<tr>
+<td><strong>HIL 검증</strong></td>
+<td>부수적 언급</td>
+<td><strong>독립 검증 계층</strong></td>
+<td>물리·정책 검증과 실로봇 사이에 제어주기·통신·실시간성 확인 단계가 필요합니다</td>
+</tr>
+</tbody>
+</table>
+<p>세부 개발 내용과 위험 대응전략은 <strong>제안서 본문</strong>에 있습니다.</p>
 <div class="admonition warning">
 <p class="admonition-title">범위가 조정되는 항목</p>
 <p>확정된 네 역할에 <strong>학생 Teleoperation Demonstration 대량 생산</strong>은 명시되어 있지 않습니다.
@@ -1221,7 +1276,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_4">한성대학교가 기여하는 핵심 가치<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">한성대학교가 기여하는 핵심 가치<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1285,7 +1340,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 <p>각 Task는 <strong>정상–경계–실패–복구</strong> 상태를 포함하고, 환경·설비·부품·로봇·센서 조건을
 독립적으로 변화시킬 수 있도록 구성합니다.</p>
 <hr />
-<h2 id="_5">단계별 추진안<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">단계별 추진안<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1327,7 +1382,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_6">차년도 매핑과 마일스톤<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_7">차년도 매핑과 마일스톤<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>6개 단계는 4개 차년도에 걸쳐 중첩 수행합니다. 1단계는 전 기간에 걸쳐 개정되고, 5·6단계는
 3차년도부터 반복 Loop로 운영됩니다.</p>
 <table>
@@ -1423,7 +1478,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 9개월 기준입니다. 기간이 달라져도 마일스톤 순서는 유지하고 구간만 조정합니다.</p>
 </div>
 <hr />
-<h2 id="_7">예산 요약<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_8">예산 요약<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p><strong>2026-08-29 주관사 통보로 한성대학교 연구개발비는 「전체 정부지원연구개발비의 5 % 수준」
 으로 확정되었습니다.</strong> 아래 표는 확정 비율에 따른 배분안이며, 아래 두 항목이 닫히면
 금액으로 환산합니다.</p>
@@ -1445,7 +1500,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_8">확정 비율의 배분안<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_9">확정 비율의 배분안<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1517,7 +1572,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 순으로 범위를 조정합니다. 예컨대 소재군을 2종에서 4종으로 늘리면 물성시험이 30회에서
 60회 이상으로 늘어납니다.</p>
 </div>
-<h3 id="_9">확정 이전 준비안 (참고)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">확정 이전 준비안 (참고)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>아래는 총사업비 확정 전에 수행범위 기준으로 쌓아 올린 준비안입니다. <strong>현재 유효한 것은
 위의 5 % 확정안</strong>이며, 이 표는 범위–금액 대응의 근거로만 남겨 둡니다.</p>
 <table>
@@ -1549,7 +1604,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 <p>Work Package별 배분 — HSU-2 Deformation Engine 2.2억(31%), HSU-4 1.1, HSU-5 1.1,
 HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 <hr />
-<h2 id="_10">기대 산출물<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_11">기대 산출물<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <h3 id="manufacturing-deformation-engine">대표 산출물 — Manufacturing Deformation Engine<a class="headerlink" href="#manufacturing-deformation-engine" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1616,7 +1671,7 @@ HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_11">그 밖의 산출물<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_12">그 밖의 산출물<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <ul>
 <li>제조환경 <strong>Simulation-ready Digital Twin Asset Package</strong>와 검수 기준</li>
 <li>물성·접촉·변형 파라미터 <strong>Material &amp; Physics Schema</strong></li>
@@ -1635,7 +1690,7 @@ HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 <li>기간·범위·기술 리스크의 <strong>리스크 관리대장과 완화 이력</strong> — 현황은 <a href="technical/">기술 상세</a> 참조</li>
 </ul>
 <hr />
-<h2 id="_12">더 읽을 것<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_13">더 읽을 것<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="technical/">기술 상세</a></strong> — Deformation Engine · Ontology·Edge Case · 학생 Human Data
   Engine · Cosmos·LeRobot 구축 최적화 · 정량 KPI 전체 · 검증 체계</li>
