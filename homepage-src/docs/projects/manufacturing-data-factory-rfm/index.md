@@ -276,6 +276,49 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.
 
 ---
 
+## 연차별 개발 산출물·정량 목표·성과지표
+
+기간은 **43개월 · 4개 차년도** — 1차 9개월 · 2차 10개월 · 3차 12개월 · 4차 12개월입니다.
+아래는 요약이며, 차년도별 목표와 완료 판정은 **[연차별 목표](roadmap.md)** 에 있습니다.
+
+### 연차별 개발 산출물
+
+| 차년도 | 핵심 산출물 |
+|---|---|
+| **1차 (9개월)** 기준 시스템 | WFM–Physics Twin Reference Architecture · **Scene–Action–State–Event 표준 v1** · Model Adapter v1 · Domain Gap 측정 프로토콜 v1 · Edge Case Taxonomy v1 |
+| **2차 (10개월)** 증강 엔진 | **Prompt·Condition Compiler v1** · **Physics Consistency Evaluator v1** · 제조 Domain Variation Library v1 · Transferability Score v1 · Edge Case Compiler v1 |
+| **3차 (12개월)** 전이 검증 | **Transfer Decision Manager** · **Multi-stage Validation Gate(6단계)** · Simulation–HIL–Real Robot 인터페이스 · Edge/Recovery 증강 Dataset · Physics Calibration |
+| **4차 (12개월)** 표준화 | **Real-to-Sim-to-Real 운용 가이드라인** · Cross-domain Physical AI Benchmark · Robust Operating Envelope 평가모듈 · **Closed-loop RoboOps Toolchain** · 기술 백서 |
+
+### 대표 정량 목표
+
+!!! warning "기준선 확정 전 잠정치입니다"
+    제조 Use Case·소재군·Robot·실증환경이 확정되고 기준 데이터를 실측한 뒤
+    **컨소시엄 공통 KPI 로 동결**합니다. **확정 전에는 협약 목표로 인용하지 않습니다.**
+
+| 차년도 | 대표 지표 | 목표 |
+|---|---|---|
+| 1차 | 생성 재현성 · 스키마 왕복 정합 | 동일 조건 재실행 결과 동일 **100 %** · 손실 없는 전달 **≥ 95 %** |
+| 2차 | 비물리 결과 자동 검출 · 접촉력 재현오차 | 검출률 **≥ 85 %**(오검출 ≤ 15 %) · **NRMSE ≤ 20 %** · 조건 준수율 ≥ 70 % |
+| 3차 | Zero-shot 성능 유지 · 전이 판정 정확도 | 기준환경 대비 **≥ 70 %**(경량 적응 후 ≥ 90 %) · 판정 일치 **≥ 80 %** · OOD 탐지 ≥ 85 % |
+| 4차 | Edge Case Coverage · 절차 재현성 | 커버리지 **≥ 80 %** · 제3자 재현 **≥ 90 %** · 재학습–재검증 Loop 1회 완주 |
+
+### 성과지표 (4년 누계)
+
+| 구분 | 1차 | 2차 | 3차 | 4차 | 누계 |
+|---|:--:|:--:|:--:|:--:|:--:|
+| SCI(E)급 논문 | — | 1 | 1 | 1 | **3** |
+| 국내외 학술발표 | 1 | 2 | 2 | 2 | **7** |
+| 특허 출원 / 등록 | — | 1 | 1 | 1 / 1 | **3 / 1** |
+| SW 프로그램 등록 | — | 1 | 1 | 1 | **3** |
+| 표준 제안 · 기술 백서 | — | — | — | 1 | **1** |
+
+확정 역할 ④가 **학술 연구 및 기술 자문**인 만큼, 논문·특허는 부수 성과가 아니라
+**계약된 산출물**로 관리합니다. 지표 수준은 연구개발비 규모와 참여 인력을 전제로 한
+값이며, 범위가 조정되면 함께 조정합니다.
+
+---
+
 ## 예산 요약
 
 **2026-08-29 주관사 통보로 한성대학교 연구개발비는 「전체 정부지원연구개발비의 5 % 수준」
