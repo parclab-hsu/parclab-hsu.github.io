@@ -72,15 +72,21 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
 <div class="grid cards" markdown>
 
--   :material-circle-outline:{ style="color:#e0a800" } [__컨소시엄 제안 · 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리__](projects/manufacturing-data-factory-rfm/index.md)
+-   :material-circle-outline:{ style="color:#e0a800" } [__컨소시엄 제안 · 실환경–가상환경 연계형 데이터 증강 — Robot RFM 데이터팩토리__](projects/manufacturing-data-factory-rfm/index.md)
 
     ---
 
-    한성대의 OmniLRS 파생 Deformation Engine, Manufacturing Ontology·Edge Case Intelligence, 30명·5개 조 학생 Teleoperation과 HSU-PAC Shared Testbed를 하나의 학습 폐루프로 통합. 모빌테크의 정밀 3D Asset을 물리적으로 반응하는 제조 Digital Twin으로 확장하고, Synthetic·Real·Human Demonstration을 RFM 학습과 실물 Robot 검증으로 순환시키는 제조 Physical AI 데이터팩토리 구축안.
+    Genie 3·NVIDIA Cosmos 계열 World Foundation Model을 제조환경 Physics Twin과 연계하고, 생성결과를 물리적으로 검증해 실로봇까지 잇는 Physical AI 전주기 검증 프레임워크. 대규모 모델을 자체 개발하는 대신 **Real-to-Sim-to-Real 고도화 · Zero-shot Transfer 도메인 적응 · 엣지 케이스 시뮬레이션 · 학술 연구와 기술 자문** 네 역할을 맡습니다. World Model은 가능성을 생성하고, Physics Twin은 물리를 검증하며, Real Robot은 현장 유효성을 실증합니다.
 
-    `Deformation Engine` · `Manufacturing Ontology` · `Edge Case` · `Teleoperation Data` · `HSU-PAC` · `RFM` · `Sim-to-Real`
+    **연차별 개발 산출물** — 1차(9개월) WFM–Physics Twin Reference Architecture · Scene–Action–State–Event 표준 v1 → 2차(10개월) Prompt·Condition Compiler · Physics Consistency Evaluator · Domain Variation Library → 3차(12개월) Transfer Decision Manager · Multi-stage Validation Gate · Sim–HIL–Real 인터페이스 → 4차(12개월) Real-to-Sim-to-Real 운용 가이드라인 · Cross-domain Benchmark · RoboOps Toolchain
 
-    [:octicons-arrow-right-24: 자세히 보기](projects/manufacturing-data-factory-rfm/index.md) · [기술 상세](projects/manufacturing-data-factory-rfm/technical.md)
+    **정량 목표(잠정)** — 비물리 생성결과 자동 검출 ≥ 85 % · 접촉력 재현오차 NRMSE ≤ 20 % · Zero-shot 성능 유지 ≥ 70 %(경량 적응 후 ≥ 90 %) · Edge Case Coverage ≥ 80 % · 절차 재현성 ≥ 90 %
+
+    **성과지표(4년 누계)** — SCI(E)급 논문 3편 · 국내외 학술발표 7건 · 특허 출원 3건·등록 1건 · SW 프로그램 등록 3건 · 표준 제안 1건
+
+    `World Foundation Model` · `Real-to-Sim-to-Real` · `Zero-shot Transfer` · `Edge Case` · `Physics Twin` · `HIL` · `RFM`
+
+    [:octicons-arrow-right-24: 자세히 보기](projects/manufacturing-data-factory-rfm/index.md) · [연차별 목표](projects/manufacturing-data-factory-rfm/roadmap.md) · [기술 상세](projects/manufacturing-data-factory-rfm/technical.md)
 
 -   :material-circle-outline:{ style="color:#e0a800" } __계획중 · Lean VLA 제조·물류 로봇 적용 연구__
 
