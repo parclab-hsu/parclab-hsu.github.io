@@ -88,6 +88,8 @@ noindex: true
 !!! tip "이 페이지의 범위"
     여기는 **대표 페이지**입니다 — 과제 개요, 대표 성과, 아키텍처, 세부 R&R, 일정, 예산 요약.
 
+    연차별 목표·정량 목표·성과지표는 **[연차별 목표](roadmap.md)** 에 있습니다.
+
     기술 근거·수치·운영 규약은 **[기술 상세](technical.md)** 에 있습니다 —
     Deformation Engine, Ontology·Edge Case, 학생 Human Data Engine, Cosmos·LeRobot 구축,
     정량 KPI 전체.
