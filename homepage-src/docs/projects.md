@@ -30,6 +30,16 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     [:octicons-arrow-right-24: 자세히 보기](projects/l-project-hils.md) · [:octicons-arrow-right-24: 중간 보고](projects/l-project-interim.md)
 
+-   :material-circle:{ style="color:#2e9e44" } [__산학협력 · Connecteve 의료·수술로봇 핵심부품 기술협력__](projects/connecteve-shenzhen-partnership.md)
+
+    ---
+
+    Connecteve 의료·수술로봇에 적용할 3D Vision Sensor와 Robot Actuator의 기술 적합성을 검토하는 산학협력 프로젝트. Revopoint POP 3 Plus/POP 4의 광학 특성·대형 물체 스캔 정확도·의료기기 적용과 ZeroErr Actuator의 핵심 구성품·Aging Test·QDD 개발·장기공급을 함께 평가합니다.
+
+    `Surgical Robot` · `3D Scanner` · `Robot Actuator` · `OEM/ODM` · `Medical Robotics` · `Korea Localization`
+
+    [:octicons-arrow-right-24: 미팅 아젠다 보기](projects/connecteve-shenzhen-partnership.md)
+
 -   :material-circle:{ style="color:#2e9e44" } [__진행중 · Mobile Manipulator (AMR + 매니퓰레이터)__](projects/mobile-manipulator.md)
 
     ---
