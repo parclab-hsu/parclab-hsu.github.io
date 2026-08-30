@@ -6,6 +6,8 @@ noindex: true
 
 :material-circle:{ style="color:#2e9e44" } **산학협력 진행 중** · Shenzhen Partner Meeting · 2026-09-01
 
+[:material-translate: 简体中文版](connecteve-shenzhen-partnership-zh.md){ .md-button }
+
 !!! abstract "프로젝트 한눈에 보기"
     Connecteve의 AI 기반 정형외과 수술로봇에 적용할 **3D Vision Sensor**와
     **Robot Actuator**의 기술 적합성을 평가하는 산학협력 프로젝트입니다.
@@ -236,3 +238,4 @@ noindex: true
     5. 다음 기술회의 일정과 참석부서
 
 [:octicons-arrow-left-24: 프로젝트 목록으로](../projects.md){ .md-button }
+[:material-translate: 简体中文版](connecteve-shenzhen-partnership-zh.md){ .md-button }

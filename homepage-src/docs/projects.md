@@ -38,7 +38,7 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `Surgical Robot` · `3D Scanner` · `Robot Actuator` · `OEM/ODM` · `Medical Robotics` · `Korea Localization`
 
-    [:octicons-arrow-right-24: 미팅 아젠다 보기](projects/connecteve-shenzhen-partnership.md)
+    [:octicons-arrow-right-24: 미팅 아젠다 보기](projects/connecteve-shenzhen-partnership.md) · [:material-translate: 中文版](projects/connecteve-shenzhen-partnership-zh.md)
 
 -   :material-circle:{ style="color:#2e9e44" } [__진행중 · Mobile Manipulator (AMR + 매니퓰레이터)__](projects/mobile-manipulator.md)
 
