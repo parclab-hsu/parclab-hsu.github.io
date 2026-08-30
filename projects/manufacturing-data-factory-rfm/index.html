@@ -810,19 +810,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#kpi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        연차별 개발 산출물·정량 목표·성과지표
+        연차별 개발 산출물·핵심 KPI·성과지표
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="연차별 개발 산출물·정량 목표·성과지표">
+    <nav class="md-nav" aria-label="연차별 개발 산출물·핵심 KPI·성과지표">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         연차별 개발 산출물
@@ -833,10 +833,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#kpi_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        대표 정량 목표
+        핵심 KPI
       
     </span>
   </a>
@@ -860,7 +860,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         예산 요약
@@ -872,7 +872,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         확정 비율의 배분안
@@ -883,7 +883,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         확정 이전 준비안 (참고)
@@ -899,7 +899,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         기대 산출물
@@ -933,7 +933,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         그 밖의 산출물
@@ -949,7 +949,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         더 읽을 것
@@ -1530,73 +1530,116 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 기간이 달라져도 마일스톤 순서는 유지하고 구간만 조정합니다.</p>
 </div>
 <hr />
-<h2 id="_8">연차별 개발 산출물·정량 목표·성과지표<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="kpi">연차별 개발 산출물·핵심 KPI·성과지표<a class="headerlink" href="#kpi" title="Permanent link">&para;</a></h2>
 <p>기간은 <strong>43개월 · 4개 차년도</strong> — 1차 9개월 · 2차 10개월 · 3차 12개월 · 4차 12개월입니다.
 아래는 요약이며, 차년도별 목표와 완료 판정은 <strong><a href="roadmap/">연차별 목표</a></strong> 에 있습니다.</p>
-<h3 id="_9">연차별 개발 산출물<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">범위를 좁혔습니다</p>
+<p>세 기술축을 각각 범용 플랫폼으로 개발하지 않습니다. <strong>대표 제조 작업 1~2개</strong>를 정하고,
+「실제 데이터 수집 → 가상환경 물리 보정 → RFM 취약조건과 실패·복구 데이터 생성 →
+자동 검수 → RFM 재학습 → 실제 로봇 재검증」 순환을 <strong>한 바퀴 완주</strong>하는 데 집중합니다.</p>
+<p>한 줄로 말하면 — <strong>실제 로봇의 실패를 가상환경에서 재현하고, 학습 가능한 데이터로
+바꾸는 일</strong>입니다.</p>
+</div>
+<h3 id="_8">연차별 개발 산출물<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>차년도</th>
+<th>목표</th>
 <th>핵심 산출물</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>1차 (9개월)</strong> 기준 시스템</td>
-<td>WFM–Physics Twin Reference Architecture · <strong>Scene–Action–State–Event 표준 v1</strong> · Model Adapter v1 · Domain Gap 측정 프로토콜 v1 · Edge Case Taxonomy v1</td>
+<td><strong>1차 (9개월)</strong></td>
+<td>대표 제조 작업 및 연계기준 확정</td>
+<td><strong>대표 작업 1~2개와 실패유형 선정</strong> · 실환경–가상환경–RFM 데이터 연계규격 · 작업·상태·실패·복구 관계 구조 v1 · <strong>실제–가상 비교 평가절차</strong></td>
 </tr>
 <tr>
-<td><strong>2차 (10개월)</strong> 증강 엔진</td>
-<td><strong>Prompt·Condition Compiler v1</strong> · <strong>Physics Consistency Evaluator v1</strong> · 제조 Domain Variation Library v1 · Transferability Score v1 · Edge Case Compiler v1</td>
+<td><strong>2차 (10개월)</strong></td>
+<td>물리 가상환경 및 데이터 수집환경 구축</td>
+<td>대표 작업 물리 가상환경 · <strong>제조 변형·물성 보정 기술 v1</strong> · 대표 소재 실측 물성값 · <strong>시연·실패·복구 데이터 수집환경</strong> · 실패 가능조건 추출기 v1</td>
 </tr>
 <tr>
-<td><strong>3차 (12개월)</strong> 전이 검증</td>
-<td><strong>Transfer Decision Manager</strong> · <strong>Multi-stage Validation Gate(6단계)</strong> · Simulation–HIL–Real Robot 인터페이스 · Edge/Recovery 증강 Dataset · Physics Calibration</td>
+<td><strong>3차 (12개월)</strong></td>
+<td>취약조건 중심 데이터 생성 및 RFM 평가</td>
+<td><strong>정상·실패·복구·가상 생성 데이터셋 1차 공개</strong> · <strong>RFM 취약조건·엣지 케이스 생성기</strong> · 생성 데이터 자동 검수 · RFM 연계도구·평가기준</td>
 </tr>
 <tr>
-<td><strong>4차 (12개월)</strong> 표준화</td>
-<td><strong>Real-to-Sim-to-Real 운용 가이드라인</strong> · Cross-domain Physical AI Benchmark · Robust Operating Envelope 평가모듈 · <strong>Closed-loop RoboOps Toolchain</strong> · 기술 백서</td>
+<td><strong>4차 (12개월)</strong></td>
+<td>실패·복구 데이터 순환체계 및 최종 실증</td>
+<td><strong>실제 실패의 가상환경 재현</strong> · <strong>실패상태 복원·복구 행동 증강</strong> · <strong>RFM 재학습·실제 로봇 재검증</strong> · 데이터·평가절차 표준화 · 통합 실증 가이드</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_10">대표 정량 목표<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="kpi_1">핵심 KPI<a class="headerlink" href="#kpi_1" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">기준선 확정 전 잠정치입니다</p>
-<p>제조 Use Case·소재군·Robot·실증환경이 확정되고 기준 데이터를 실측한 뒤
-<strong>컨소시엄 공통 KPI 로 동결</strong>합니다. <strong>확정 전에는 협약 목표로 인용하지 않습니다.</strong></p>
+<p>대표 제조 작업·소재·실증환경이 확정되고 기준 데이터를 실측한 뒤 <strong>컨소시엄 공통
+KPI 로 동결</strong>합니다. <strong>확정 전에는 협약 목표로 인용하지 않습니다.</strong></p>
 </div>
 <table>
 <thead>
 <tr>
-<th>차년도</th>
-<th>대표 지표</th>
+<th style="text-align: center;">#</th>
+<th>KPI</th>
 <th>목표</th>
+<th>측정 방법</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1차</td>
-<td>생성 재현성 · 스키마 왕복 정합</td>
-<td>동일 조건 재실행 결과 동일 <strong>100 %</strong> · 손실 없는 전달 <strong>≥ 95 %</strong></td>
+<td style="text-align: center;">1</td>
+<td>대표 작업의 접촉력 재현오차</td>
+<td><strong>≤ 20 %</strong></td>
+<td>동일 물체·자세·속도에서 실제 힘 센서값과 가상환경값 비교</td>
 </tr>
 <tr>
-<td>2차</td>
-<td>비물리 결과 자동 검출 · 접촉력 재현오차</td>
-<td>검출률 <strong>≥ 85 %</strong>(오검출 ≤ 15 %) · <strong>NRMSE ≤ 20 %</strong> · 조건 준수율 ≥ 70 %</td>
+<td style="text-align: center;">2</td>
+<td>대표 소재의 잔류변형 재현오차</td>
+<td><strong>≤ 25 %</strong></td>
+<td>반복하중 조건에서 작업 전후 실제 형상과 가상 형상 비교</td>
 </tr>
 <tr>
-<td>3차</td>
-<td>Zero-shot 성능 유지 · 전이 판정 정확도</td>
-<td>기준환경 대비 <strong>≥ 70 %</strong>(경량 적응 후 ≥ 90 %) · 판정 일치 <strong>≥ 80 %</strong> · OOD 탐지 ≥ 85 %</td>
+<td style="text-align: center;">3</td>
+<td>실제–가상 작업 성공률 차이</td>
+<td><strong>≤ 20 %p</strong></td>
+<td>같은 작업·조건에서 가상환경과 실제 로봇의 성공률 차이</td>
 </tr>
 <tr>
-<td>4차</td>
-<td>Edge Case Coverage · 절차 재현성</td>
-<td>커버리지 <strong>≥ 80 %</strong> · 제3자 재현 <strong>≥ 90 %</strong> · 재학습–재검증 Loop 1회 완주</td>
+<td style="text-align: center;">4</td>
+<td>주요 실패유형별 복구 데이터 확보율</td>
+<td><strong>≥ 80 %</strong></td>
+<td>주요 실패유형 중 유효한 복구 시나리오·데이터 확보 비율</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>엣지 케이스 데이터 검수 완료율</td>
+<td><strong>≥ 90 %</strong></td>
+<td>생성 데이터 중 검수 완료 비율</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td><strong>실제 주요 실패의 가상환경 재현율</strong></td>
+<td><strong>≥ 70 %</strong></td>
+<td>실제 발생한 주요 실패를 가상환경에서 다시 만들어 낸 비율</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td><strong>미학습 물체·배치·물성조건 성능 유지율</strong></td>
+<td><strong>≥ 70 %</strong></td>
+<td>미학습 조건에서 기준환경 대비 작업성공률 — 확정 역할 ② 를 직접 평가</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td><strong>엣지 케이스·복구 데이터 적용 후 실제 성공률 향상</strong></td>
+<td><strong>+ 10 %p 이상</strong></td>
+<td>생성 데이터로 재학습한 모델의 실제 로봇 성공률 변화</td>
 </tr>
 </tbody>
 </table>
+<p><strong>8번이 최종 성과지표입니다</strong> — 만든 데이터가 실제 RFM 성능 개선으로 이어졌는지를 봅니다.</p>
 <h3 id="4">성과지표 (4년 누계)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1653,10 +1696,9 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 </tbody>
 </table>
 <p>확정 역할 ④가 <strong>학술 연구 및 기술 자문</strong>인 만큼, 논문·특허는 부수 성과가 아니라
-<strong>계약된 산출물</strong>로 관리합니다. 지표 수준은 연구개발비 규모와 참여 인력을 전제로 한
-값이며, 범위가 조정되면 함께 조정합니다.</p>
+<strong>계약된 산출물</strong>로 관리합니다.</p>
 <hr />
-<h2 id="_11">예산 요약<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_9">예산 요약<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p><strong>2026-08-29 주관사 통보로 한성대학교 연구개발비는 「전체 정부지원연구개발비의 5 % 수준」
 으로 확정되었습니다.</strong> 아래 표는 확정 비율에 따른 배분안이며, 아래 두 항목이 닫히면
 금액으로 환산합니다.</p>
@@ -1678,7 +1720,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_12">확정 비율의 배분안<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h3 id="_10">확정 비율의 배분안<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1750,7 +1792,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 순으로 범위를 조정합니다. 예컨대 소재군을 2종에서 4종으로 늘리면 물성시험이 30회에서
 60회 이상으로 늘어납니다.</p>
 </div>
-<h3 id="_13">확정 이전 준비안 (참고)<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_11">확정 이전 준비안 (참고)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>아래는 총사업비 확정 전에 수행범위 기준으로 쌓아 올린 준비안입니다. <strong>현재 유효한 것은
 위의 5 % 확정안</strong>이며, 이 표는 범위–금액 대응의 근거로만 남겨 둡니다.</p>
 <table>
@@ -1782,7 +1824,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 <p>Work Package별 배분 — HSU-2 Deformation Engine 2.2억(31%), HSU-4 1.1, HSU-5 1.1,
 HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 <hr />
-<h2 id="_14">기대 산출물<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h2 id="_12">기대 산출물<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <h3 id="manufacturing-deformation-engine">대표 산출물 — Manufacturing Deformation Engine<a class="headerlink" href="#manufacturing-deformation-engine" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1849,7 +1891,7 @@ HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_15">그 밖의 산출물<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h3 id="_13">그 밖의 산출물<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <ul>
 <li>제조환경 <strong>Simulation-ready Digital Twin Asset Package</strong>와 검수 기준</li>
 <li>물성·접촉·변형 파라미터 <strong>Material &amp; Physics Schema</strong></li>
@@ -1868,7 +1910,7 @@ HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 <li>기간·범위·기술 리스크의 <strong>리스크 관리대장과 완화 이력</strong> — 현황은 <a href="technical/">기술 상세</a> 참조</li>
 </ul>
 <hr />
-<h2 id="_16">더 읽을 것<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h2 id="_14">더 읽을 것<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="technical/">기술 상세</a></strong> — Deformation Engine · Ontology·Edge Case · 학생 Human Data
   Engine · Cosmos·LeRobot 구축 최적화 · 정량 KPI 전체 · 검증 체계</li>
