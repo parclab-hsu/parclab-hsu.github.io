@@ -50,8 +50,13 @@ noindex: true
 
 ## 세 기술축의 구체화
 
+**기존 개발 목표 항목은 그대로 유지합니다.** 세 기술축 — Manufacturing Deformation
+Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence — 과
 확정된 4대 역할(① Real-to-Sim-to-Real ② Zero-shot Transfer ③ 엣지 케이스 시뮬레이션
-④ 학술 연구·기술 자문)은 그대로 두고, **구현 범위를 좁혔습니다.**
+④ 학술 연구·기술 자문)은 바뀌지 않았습니다.
+
+바뀐 것은 **연차별 목표와 진행 내용**입니다. 각 축을 범용 플랫폼으로 개발하지 않고
+**대표 제조 작업 1~2개**를 대상으로 구체화했습니다.
 
 ### ① Manufacturing Deformation Engine → 대표 작업의 물리 보정
 
