@@ -215,9 +215,7 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 ### 한눈에 보기 — 핵심 기술 · 연차별 목표 · 핵심 결과물
 
 차년도별 목표와 그 해에 내는 결과물입니다. 결과물 이름은 **2026-08-29 R&R 확정본의
-개발 목표** 그대로입니다. 세부 20건은 아래 접힌 표에 있습니다 —
-**③ 이 관계 구조를 세워야 ② 가 무엇을 수집할지 정해지고, ① 이 물리를 맞춰야
-3차년도 생성 데이터가 검증 대상이 됩니다.**
+개발 목표** 그대로이며, 아래에 **기술축 관점 매트릭스**와 **세부 20건 표**가 이어집니다.
 
 | 차년도 | 연차별 목표 | 핵심 기술 | 대표 결과물 |
 |---|---|:--:|---|
@@ -229,7 +227,28 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 <small>핵심 기술 — **① Manufacturing Deformation Engine**(대표 작업의 물리 보정) ·
 **② Human Data Engine**(실패상태 복원과 복구 증강) ·
 **③ Manufacturing Ontology·Edge Case Intelligence**(RFM 취약조건 탐색).
+「핵심 기술」 열은 그 해에 관여하는 축을 비중 순으로 적은 것입니다.
 차년도별 목표·완료 Gate·완료 판정은 아래 각 절에 있습니다.</small>
+
+### 핵심기술 × 연차 — 세 축이 4년에 걸쳐 어떻게 개발되는가
+
+같은 20건을 **기술축 관점**으로 다시 배열한 것입니다. 위 표가 「그 해에 무엇을 내는가」라면,
+이 표는 「그 축이 4년 동안 어떻게 자라는가」를 봅니다.
+
+| 핵심기술 | 1차 · 기준 시스템 | 2차 · 증강 엔진 | 3차 · 전이 검증 | 4차 · 표준화 |
+|---|---|---|---|---|
+| **① Manufacturing<br>Deformation Engine**<br><small>대표 작업의 물리 보정</small> | **Domain Gap<br>프로토콜 v1** | Physics Consistency<br>Evaluator v1<br>제조 Domain Variation<br>Library v1<br>Transferability Score v1 | Transfer Decision<br>Manager<br>**Physics Calibration** | Robust Operating<br>Envelope 평가모듈<br><small>③ 과 공동</small> |
+| **② Human Data Engine**<br><small>실패상태 복원과<br>복구 증강</small> | <small>수집 대상 실패유형과<br>정상·실패·복구 데이터<br>항목 정의</small> | **데이터 수집환경 가동**<br><small>Edge Case Compiler 의 입력</small> | Multi-stage Validation<br>Gate <small>(주도)</small><br>**Edge/Recovery<br>증강 Dataset** | **Closed-loop RoboOps<br>Toolchain**<br><small>상태 저장·복원 · 복구 다중<br>분기 · 실로봇 Grounding</small> |
+| **③ Manufacturing Ontology<br>·Edge Case Intelligence**<br><small>RFM 취약조건 탐색</small> | **Scene–Action–State–<br>Event 표준 v1**<br>Edge Case Taxonomy v1 | Prompt·Condition<br>Compiler v1<br>**Edge Case Compiler v1** | Edge/Recovery 증강<br>Dataset <small>(취약조건 기반<br>생성 조건 제공)</small> | **Cross-domain<br>Physical AI Benchmark** |
+| **공통 · ④ 학술·자문** | **WFM–Physics Twin<br>Reference Architecture**<br>Model Adapter v1<br><small>공통 RFM Interface</small> | — | Simulation–HIL–Real<br>Robot 인터페이스<br>Multi-stage Validation<br>Gate <small>(공통 Quality Gate)</small> | 운용 가이드라인<br>기술 백서 |
+
+<small>굵게 표시한 것이 그 축·그 해의 대표 결과물입니다. 한 결과물이 두 축에 걸치는 경우
+(Edge Case Compiler · Edge/Recovery Dataset · Validation Gate · RoboOps Toolchain)는
+**주 담당 축에 두고 다른 축에 병기**했으므로, 표 전체의 항목 수는 20건보다 많아 보입니다.
+
+**축 사이 선후관계** — ③ 이 관계 구조를 세워야 ② 가 무엇을 수집할지 정해지고,
+① 이 물리를 맞춰야 3차년도 생성 데이터가 검증 대상이 됩니다.</small>
+
 
 <details>
 <summary><b>차년도별 세부 결과물 20건 전체 보기</b> — 핵심 기술 · 연차별 목표 · 핵심 결과물 · 수행 내용</summary>
