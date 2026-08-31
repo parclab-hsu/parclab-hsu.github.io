@@ -27,7 +27,6 @@ noindex: true
 <div class="concept-diagram concept-diagram--desktop" markdown>
 
 ```mermaid
-%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 18, "rankSpacing": 24, "diagramPadding": 4}}}%%
 flowchart TB
     REAL["REAL | 실제 제조현장<br/>대표 작업 1~2개<br/>정상 · 실패 · 복구 Log"]
     GEO["DIGITAL | Geometry Twin<br/>Simulation-ready 3D Asset<br/>좌표 · 의미 정합"]
@@ -49,7 +48,6 @@ flowchart TB
 <div class="concept-diagram concept-diagram--mobile" markdown>
 
 ```mermaid
-%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 12, "rankSpacing": 20, "diagramPadding": 2}}}%%
 flowchart TB
     REAL["REAL | 제조현장<br/>대표 작업 · 실패 Log"]
     GEO["DIGITAL | Geometry Twin<br/>3D Asset · 의미 정합"]

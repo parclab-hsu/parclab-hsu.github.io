@@ -100,7 +100,7 @@ All custom layout should align to a 4px rhythm through MkDocs Material defaults.
 - **Structure**: Mermaid 기반 폐루프 도식과 바로 뒤의 텍스트 요약.
 - **Desktop/Tablet**: 48rem 이상에서는 기관 역할과 독립적인 세 기술축을 하나의 데이터팩토리 Core 안에 묶어 보여주는 상세도.
 - **Mobile**: 48rem 미만에서는 WFM을 보조 생성수단으로 Core 안에 통합하고, 동일한 폐루프를 세로 흐름으로 압축한 별도 도식.
-- **Accessibility**: 18px Mermaid 기준 글꼴, 의미 단위 수동 줄바꿈, 라벨 없는 보조 화살표를 사용합니다. 한국어 본문은 어절을 보존하고, 도식 뒤에 핵심 메시지를 텍스트로 반복합니다.
+- **Accessibility**: 짧은 노드 문구, 의미 단위 수동 줄바꿈, 라벨 없는 보조 화살표로 축소 시에도 읽을 수 있게 합니다. 한국어 본문은 어절을 보존하고, 도식 뒤에 핵심 메시지를 텍스트로 반복합니다.
 - **Color**: Mermaid와 MkDocs Material의 기본 테마 토큰만 사용하며 별도 장식 색상을 추가하지 않습니다.
 
 ## 6. Motion & Interaction
