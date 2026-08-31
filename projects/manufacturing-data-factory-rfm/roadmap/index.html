@@ -788,21 +788,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        핵심기술 × 차년도 — 세 축이 4년에 걸쳐 어떻게 개발되는가
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        한눈에 보기 — 연차별 개발목표·연구내용·산출물
+        한눈에 보기 — 핵심 기술 · 연차별 목표 · 핵심 결과물
       
     </span>
   </a>
@@ -887,7 +876,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
         성과지표 (4년 누계)
@@ -1263,133 +1252,137 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 </div>
 <hr />
 <h2 id="_5">연차별 목표와 예상 산출물<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h3 id="4">핵심기술 × 차년도 — 세 축이 4년에 걸쳐 어떻게 개발되는가<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<h3 id="_6">한눈에 보기 — 핵심 기술 · 연차별 목표 · 핵심 결과물<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>핵심 기술(세 축)과 연차별 목표, 그 해에 내는 결과물을 한 표에 담았습니다.
+결과물 이름은 <strong>2026-08-29 R&amp;R 확정본의 개발 목표</strong> 그대로이고, 오른쪽은 그 안에서
+한성대가 실제로 수행하는 일입니다.</p>
 <table>
-<thead>
-<tr>
-<th>핵심기술</th>
-<th>1차 · 기준 시스템</th>
-<th>2차 · 증강 엔진</th>
-<th>3차 · 전이 검증</th>
-<th>4차 · 표준화</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>① Manufacturing Deformation Engine</strong><br><small>대표 작업의 물리 보정</small></td>
-<td><strong>Domain Gap 프로토콜 v1</strong></td>
-<td>Physics Consistency Evaluator v1<br>제조 Domain Variation Library v1<br>Transferability Score v1</td>
-<td>Transfer Decision Manager<br><strong>Physics Calibration</strong></td>
-<td>Robust Operating Envelope<br>평가모듈</td>
-</tr>
-<tr>
-<td><strong>② Human Data Engine</strong><br><small>실패상태 복원과 복구 증강</small></td>
-<td>수집 대상 실패유형 정의</td>
-<td><strong>데이터 수집환경 가동</strong><br><small>Edge Case Compiler 의 입력</small></td>
-<td>Multi-stage Validation Gate<br><strong>Edge/Recovery 증강 Dataset</strong></td>
-<td>Closed-loop RoboOps<br>Toolchain</td>
-</tr>
-<tr>
-<td><strong>③ Ontology·Edge Case Intelligence</strong><br><small>RFM 취약조건 탐색</small></td>
-<td><strong>Scene–Action–State–Event 표준 v1</strong><br>Model Adapter v1<br>Edge Case Taxonomy v1</td>
-<td>Prompt·Condition Compiler v1<br><strong>Edge Case Compiler v1</strong></td>
-<td>Edge/Recovery 증강 Dataset<br><small>취약조건 기반 생성</small></td>
-<td>Cross-domain Physical AI<br>Benchmark</td>
-</tr>
-<tr>
-<td><strong>공통 · ④ 학술·자문</strong></td>
-<td><strong>WFM–Physics Twin<br>Reference Architecture</strong></td>
-<td>—</td>
-<td>Simulation–HIL–Real Robot<br>인터페이스</td>
-<td>운용 가이드라인 · 기술 백서</td>
-</tr>
-</tbody>
+  <thead><tr>
+    <th>차년도</th><th>연차별 목표</th><th>핵심 기술</th><th>핵심 결과물</th><th>그 안에서 수행하는 일</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td rowspan="5"><b>1차년도</b><br><small>9개월 · 기준 시스템<br>3.3억</small></td>
+    <td rowspan="5">대표 작업과 실패유형을 확정하고, <b>실제–가상 비교의 측정 항목·조건·판정 기준</b>을 문서로 고정<br><br><small><b>대표 정량 목표</b><br>동일 조건 재실행 결과 동일 100 % · 손실 없는 전달 ≥ 95 %</small></td>
+    <td align="center">공통</td>
+    <td><b>WFM–Physics Twin Reference Architecture</b><br><small>실제–가상–RFM 을 잇는 기준 구조</small></td>
+    <td><small>대표 제조 작업 1~2개 확정과 실패–복구 순환 구조 정의</small></td>
+  </tr>
+  <tr>
+    <td align="center">③ 온톨로지·엣지</td>
+    <td><b>Scene–Action–State–Event 표준 v1</b><br><small>장면·행동·상태·사건 기록 표준</small></td>
+    <td><small>작업·상태·실패·복구 관계 구조 v1</small></td>
+  </tr>
+  <tr>
+    <td align="center">③ 온톨로지·엣지</td>
+    <td><b>Model Adapter v1</b><br><small>RFM 이 변환 없이 읽는 연결 규격</small></td>
+    <td><small>실환경·가상환경·RFM 데이터 연계규격</small></td>
+  </tr>
+  <tr>
+    <td align="center">① 물리 보정</td>
+    <td><b>Domain Gap 프로토콜 v1</b><br><small>실제–가상 차이 측정 절차</small></td>
+    <td><small>실제–가상 비교 평가절차</small></td>
+  </tr>
+  <tr>
+    <td align="center">③ 온톨로지·엣지</td>
+    <td><b>Edge Case Taxonomy v1</b><br><small>실패·경계 상황 분류 체계</small></td>
+    <td><small>대표 작업의 실패유형 목록 확정</small></td>
+  </tr>
+  <tr>
+    <td rowspan="5"><b>2차년도</b><br><small>10개월 · 증강 엔진<br>4.4억</small></td>
+    <td rowspan="5">물성을 실측해 가상환경에 반영하고, <b>증강 엔진 v1 과 데이터 수집환경을 가동</b><br><br><small><b>대표 정량 목표</b><br>비물리 결과 검출률 ≥ 85 % · 접촉력 재현오차 NRMSE ≤ 20 %</small></td>
+    <td align="center">③ 온톨로지·엣지</td>
+    <td><b>Prompt·Condition Compiler v1</b><br><small>생성 조건 → 시뮬레이션 실행조건 변환기</small></td>
+    <td><small>실패 가능조건 추출기 v1</small></td>
+  </tr>
+  <tr>
+    <td align="center">① 물리 보정</td>
+    <td><b>Physics Consistency Evaluator v1</b><br><small>물리적 가능성 자동 판정</small></td>
+    <td><small>제조 변형·물성 보정 기술 v1</small></td>
+  </tr>
+  <tr>
+    <td align="center">① 물리 보정</td>
+    <td><b>제조 Domain Variation Library v1</b><br><small>마찰·공차·재질 등 조건 변이 라이브러리</small></td>
+    <td><small>대표 소재의 실측 물성값 · 대표 작업 물리 가상환경 구축</small></td>
+  </tr>
+  <tr>
+    <td align="center">① 물리 보정</td>
+    <td><b>Transferability Score v1</b><br><small>실제 전이 가능성 지표</small></td>
+    <td><small>미학습 조건 성능 유지율의 지표·측정법 정의</small></td>
+  </tr>
+  <tr>
+    <td align="center">②③</td>
+    <td><b>Edge Case Compiler v1</b><br><small>경계조건 → 실행 시나리오 자동 생성</small></td>
+    <td><small>RFM 취약조건·엣지 케이스 생성기 · 시연·실패·복구 데이터 수집환경 가동</small></td>
+  </tr>
+  <tr>
+    <td rowspan="5"><b>3차년도</b><br><small>12개월 · 전이 검증<br>4.8억</small></td>
+    <td rowspan="5">가상 학습 결과가 실제로 <b>얼마나 전이되는지 판정</b>하고, 생성 데이터를 자동 선별해 용도별 공개<br><br><small><b>대표 정량 목표</b><br>미학습 조건 성능 유지 ≥ 70 % · 전이 판정 일치 ≥ 80 %</small></td>
+    <td align="center">① 물리 보정</td>
+    <td><b>Transfer Decision Manager</b><br><small>전이 가능 여부 판정·적응 필요성 결정</small></td>
+    <td><small>실제–가상 성능차이 및 미학습조건 평가</small></td>
+  </tr>
+  <tr>
+    <td align="center">② 사람 데이터</td>
+    <td><b>Multi-stage Validation Gate (6단계)</b><br><small>생성 데이터 6단계 품질 관문</small></td>
+    <td><small>생성 데이터 자동 검수 기능</small></td>
+  </tr>
+  <tr>
+    <td align="center">공통</td>
+    <td><b>Simulation–HIL–Real Robot 인터페이스</b><br><small>가상·HIL·실물 공통 규약</small></td>
+    <td><small>RFM 연계도구 및 평가기준</small></td>
+  </tr>
+  <tr>
+    <td align="center">②③</td>
+    <td><b>Edge/Recovery 증강 Dataset</b><br><small>실패·복구 포함 증강 학습 데이터</small></td>
+    <td><small>정상·실패·복구·가상 생성 데이터셋 1차 공개 · 실패상태 복원과 복구 행동 증강</small></td>
+  </tr>
+  <tr>
+    <td align="center">① 물리 보정</td>
+    <td><b>Physics Calibration</b><br><small>실측 기반 물리 파라미터 재보정</small></td>
+    <td><small>실측 물성값으로 가상환경 재보정</small></td>
+  </tr>
+  <tr>
+    <td rowspan="5"><b>4차년도</b><br><small>12개월 · 표준화<br>4.5억</small></td>
+    <td rowspan="5">실패 재현–복구 생성–재학습–<b>실물 재검증 순환을 1회 이상 완주</b>하고 절차·벤치마크를 표준화<br><br><small><b>대표 정량 목표</b><br>엣지 커버리지 ≥ 80 % · 제3자 재현 ≥ 90 % · 순환 1회 완주</small></td>
+    <td align="center">공통</td>
+    <td><b>Real-to-Sim-to-Real 운용 가이드라인</b><br><small>제3자가 따라 하는 운용 문서</small></td>
+    <td><small>통합 실증 및 활용 가이드</small></td>
+  </tr>
+  <tr>
+    <td align="center">③ 온톨로지·엣지</td>
+    <td><b>Cross-domain Physical AI Benchmark</b><br><small>작업 교차 공통 평가 기준</small></td>
+    <td><small>실제 실패의 가상환경 재현 결과를 벤치마크로 공개</small></td>
+  </tr>
+  <tr>
+    <td align="center">①③</td>
+    <td><b>Robust Operating Envelope 평가모듈</b><br><small>안정 동작범위 측정</small></td>
+    <td><small>RFM 재학습·실제 로봇 재검증</small></td>
+  </tr>
+  <tr>
+    <td align="center">공통</td>
+    <td><b>Closed-loop RoboOps Toolchain</b><br><small>재현–재학습–재검증 자동화</small></td>
+    <td><small>실패 재현–복구 생성–재학습–재검증 순환 도구 묶음</small></td>
+  </tr>
+  <tr>
+    <td align="center">공통</td>
+    <td><b>기술 백서</b><br><small>데이터·평가절차 표준 제안</small></td>
+    <td><small>데이터·평가절차 표준화</small></td>
+  </tr>
+  </tbody>
 </table>
-<p><small>굵게 표시한 것이 그 축·그 해의 대표 산출물입니다.
-①은 물리 정합, ②는 데이터 생산, ③은 무엇을 만들지 결정하는 조준을 맡습니다.
-1차년도에 ③이 관계 구조를 세워야 2차년도부터 ②가 무엇을 수집할지 정해지고,
-①이 물리를 맞춰야 3차년도 생성 데이터가 검증 대상이 됩니다.</small></p>
-<hr />
-<h3 id="_6">한눈에 보기 — 연차별 개발목표·연구내용·산출물<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>차년도</th>
-<th>개발 목표</th>
-<th>주요 연구내용</th>
-<th>예상 산출물</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1차년도</strong><br><small>기준 시스템</small><br>9개월<br>3.3억</td>
-<td>대표 작업과 실패유형을 확정하고, <strong>실제–가상 비교의 측정 항목·조건·판정 기준</strong>을 문서로 고정</td>
-<td>기준 구조 정의 · 장면–행동–상태–사건 데이터 표준 · RFM 연결 규격 · 실제–가상 차이 측정 절차 · 실패 유형 분류</td>
-<td><strong>WFM–Physics Twin Reference Architecture</strong><br>Scene–Action–State–Event 표준 v1<br>Model Adapter v1<br><strong>Domain Gap 프로토콜 v1</strong><br>Edge Case Taxonomy v1</td>
-</tr>
-<tr>
-<td><strong>2차년도</strong><br><small>증강 엔진</small><br>10개월<br>4.4억</td>
-<td>물성을 실측해 가상환경에 반영하고, <strong>증강 엔진 v1 과 데이터 수집환경을 가동</strong></td>
-<td>생성조건 변환기 · 물리정합 자동 검증기 · 제조 조건 변이 라이브러리 · 전이 가능성 지표 · 엣지 케이스 생성기 · 원격조작 수집환경 가동</td>
-<td>Prompt·Condition Compiler v1<br><strong>Physics Consistency Evaluator v1</strong><br>제조 Domain Variation Library v1<br>Transferability Score v1<br><strong>Edge Case Compiler v1</strong></td>
-</tr>
-<tr>
-<td><strong>3차년도</strong><br><small>전이 검증</small><br>12개월<br>4.8억</td>
-<td>가상 학습 결과가 실제로 <strong>얼마나 전이되는지 판정</strong>하고, 생성 데이터를 자동 선별해 용도별 공개</td>
-<td>전이 가능 여부 판정 · 6단계 품질 관문 · 시뮬레이션–HIL–실물 인터페이스 · 실패·복구 증강 데이터셋 공개 · 실측 기반 물리 재보정</td>
-<td>Transfer Decision Manager<br>Multi-stage Validation Gate (6단계)<br>Simulation–HIL–Real Robot 인터페이스<br><strong>Edge/Recovery 증강 Dataset</strong><br><strong>Physics Calibration</strong></td>
-</tr>
-<tr>
-<td><strong>4차년도</strong><br><small>표준화</small><br>12개월<br>4.5억</td>
-<td>실패 재현–복구 생성–재학습–<strong>실물 재검증 순환을 1회 이상 완주</strong>하고 절차·벤치마크를 표준화</td>
-<td>운용 가이드라인 정리 · 작업 교차 공통 벤치마크 · 안정 동작범위 평가 · 폐루프 재학습 툴체인 · 표준 제안 백서</td>
-<td><strong>Real-to-Sim-to-Real 운용 가이드라인</strong><br>Cross-domain Physical AI Benchmark<br><strong>Robust Operating Envelope 평가모듈</strong><br>Closed-loop RoboOps Toolchain<br>기술 백서</td>
-</tr>
-</tbody>
-</table>
-<p><small>굵게 표시한 것이 그 해의 대표 산출물입니다. 차년도별 완료 판정과 근거는 아래 각 절에 있습니다.</small></p>
+
+<p><small>핵심 기술 — <strong>① Manufacturing Deformation Engine</strong>(대표 작업의 물리 보정) ·
+<strong>② Human Data Engine</strong>(실패상태 복원과 복구 증강) ·
+<strong>③ Manufacturing Ontology·Edge Case Intelligence</strong>(RFM 취약조건 탐색).
+③ 이 관계 구조를 세워야 ② 가 무엇을 수집할지 정해지고, ① 이 물리를 맞춰야
+3차년도 생성 데이터가 검증 대상이 됩니다.</small></p>
 <hr />
 <h3 id="1-9">1차년도 (9개월) — 기준 시스템<a class="headerlink" href="#1-9" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p><strong>목표</strong> — 대표 제조 작업과 실패유형을 확정하고, <strong>실제–가상 비교의 측정 항목·조건·판정
 기준</strong>을 문서로 고정한다.</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>개발하는 것 <small>(2026-08-29 R&amp;R 확정본 개발 목표)</small></th>
-<th>그 안에서 수행하는 일</th>
-<th style="text-align: center;">핵심기술</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>WFM–Physics Twin Reference Architecture</strong><br><small>실제–가상–RFM 을 잇는 기준 구조. 무엇을 어디서 만들어 어디로 넘길지 정의</small></td>
-<td>대표 제조 작업 1~2개 확정과 실패–복구 순환 구조 정의</td>
-<td style="text-align: center;">공통</td>
-</tr>
-<tr>
-<td><strong>Scene–Action–State–Event 표준 v1</strong><br><small>장면·행동·상태·사건을 같은 형식으로 기록하는 데이터 표준</small></td>
-<td>작업·상태·실패·복구 관계 구조 v1</td>
-<td style="text-align: center;">③</td>
-</tr>
-<tr>
-<td><strong>Model Adapter v1</strong><br><small>RFM 이 우리 데이터를 변환 없이 읽게 하는 연결 규격</small></td>
-<td>실환경·가상환경·RFM 데이터 연계규격</td>
-<td style="text-align: center;">③</td>
-</tr>
-<tr>
-<td><strong>Domain Gap 프로토콜 v1</strong><br><small>실제와 가상의 차이를 무엇으로 · 어떻게 잴지 정한 측정 절차</small></td>
-<td>실제–가상 비교 평가절차</td>
-<td style="text-align: center;">①</td>
-</tr>
-<tr>
-<td><strong>Edge Case Taxonomy v1</strong><br><small>실패·경계 상황을 유형으로 나눈 분류 체계</small></td>
-<td>대표 작업의 실패유형 목록 확정</td>
-<td style="text-align: center;">③</td>
-</tr>
-</tbody>
-</table>
 <p><strong>대표 정량 목표</strong> — 생성 재현성 · 스키마 왕복 정합: 동일 조건 재실행 결과 동일 <strong>100 %</strong> · 손실 없는 전달 <strong>≥ 95 %</strong></p>
 <p><strong>완료 판정</strong> — 대표 작업 1~2개와 주요 실패유형 목록이 <strong>컨소시엄 승인</strong>을 받고,
 실제–가상 비교 평가절차가 측정 항목·조건·판정 기준을 갖춘 문서로 확정됩니다.
@@ -1405,42 +1398,6 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <p><strong>목표</strong> — 확정된 대표 작업의 <strong>물성을 실측해 가상환경에 반영</strong>하고, 조건 생성·물리정합
 평가·도메인 변이를 갖춘 <strong>증강 엔진 v1 과 데이터 수집환경을 가동</strong>한다.</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>개발하는 것 <small>(2026-08-29 R&amp;R 확정본 개발 목표)</small></th>
-<th>그 안에서 수행하는 일</th>
-<th style="text-align: center;">핵심기술</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Prompt·Condition Compiler v1</strong><br><small>「어떤 조건의 데이터를 만들지」를 시뮬레이션 실행조건으로 바꾸는 변환기</small></td>
-<td>실패 가능조건 추출기 v1</td>
-<td style="text-align: center;">③</td>
-</tr>
-<tr>
-<td><strong>Physics Consistency Evaluator v1</strong><br><small>생성된 장면이 물리적으로 가능한지 자동 판정하는 검증기</small></td>
-<td>제조 변형·물성 보정 기술 v1</td>
-<td style="text-align: center;">①</td>
-</tr>
-<tr>
-<td><strong>제조 Domain Variation Library v1</strong><br><small>마찰·공차·재질·조명 등 제조 조건 변이를 모아 둔 라이브러리</small></td>
-<td>대표 소재의 실측 물성값 · 대표 작업 물리 가상환경 구축</td>
-<td style="text-align: center;">①</td>
-</tr>
-<tr>
-<td><strong>Transferability Score v1</strong><br><small>가상에서 얻은 성능이 실제로 옮겨갈지 점수로 나타내는 지표</small></td>
-<td>미학습 조건 성능 유지율의 지표·측정법 정의</td>
-<td style="text-align: center;">①</td>
-</tr>
-<tr>
-<td><strong>Edge Case Compiler v1</strong><br><small>취약·경계 조건을 실행 가능한 시뮬레이션 시나리오로 자동 생성</small></td>
-<td>RFM 취약조건·엣지 케이스 생성기 · 시연·실패·복구 데이터 수집환경 가동</td>
-<td style="text-align: center;">②③</td>
-</tr>
-</tbody>
-</table>
 <p><strong>대표 정량 목표</strong> — 비물리 결과 자동 검출 · 접촉력 재현오차: 검출률 <strong>≥ 85 %</strong>(오검출 ≤ 15 %) · <strong>NRMSE ≤ 20 %</strong> · 조건 준수율 <strong>≥ 70 %</strong></p>
 <p><strong>완료 판정</strong> — 대표 소재의 실측 물성값이 가상환경에 적용되고, 기준 시편 접촉력–변위
 시험 대비 <strong>재현오차 NRMSE ≤ 20 %</strong> 를 달성합니다. 물리적으로 불가능한 생성 결과를
@@ -1451,42 +1408,6 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <p><strong>목표</strong> — 가상에서 학습한 결과가 실제로 <strong>얼마나 전이되는지 판정</strong>하고, 생성 데이터를
 <strong>품질 기준으로 자동 선별</strong>한 뒤 용도별로 공개한다.</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>개발하는 것 <small>(2026-08-29 R&amp;R 확정본 개발 목표)</small></th>
-<th>그 안에서 수행하는 일</th>
-<th style="text-align: center;">핵심기술</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Transfer Decision Manager</strong><br><small>전이 가능 여부를 판정하고 추가 적응이 필요한지 결정하는 관리기</small></td>
-<td>실제–가상 성능차이 및 미학습조건 평가</td>
-<td style="text-align: center;">①</td>
-</tr>
-<tr>
-<td><strong>Multi-stage Validation Gate (6단계)</strong><br><small>생성 데이터가 통과해야 하는 6단계 품질 관문</small></td>
-<td>생성 데이터 자동 검수 기능</td>
-<td style="text-align: center;">②</td>
-</tr>
-<tr>
-<td><strong>Simulation–HIL–Real Robot 인터페이스</strong><br><small>시뮬레이션 · HIL · 실물 로봇을 같은 규약으로 잇는 연결부</small></td>
-<td>RFM 연계도구 및 평가기준</td>
-<td style="text-align: center;">공통</td>
-</tr>
-<tr>
-<td><strong>Edge/Recovery 증강 Dataset</strong><br><small>실패와 복구 과정이 포함된 증강 학습 데이터셋</small></td>
-<td>정상·실패·복구·가상 생성 데이터셋 1차 공개 · 실패상태 복원과 복구 행동 증강</td>
-<td style="text-align: center;">②③</td>
-</tr>
-<tr>
-<td><strong>Physics Calibration</strong><br><small>실측값으로 가상환경의 물리 파라미터를 다시 맞추는 보정</small></td>
-<td>실측 물성값으로 가상환경 재보정</td>
-<td style="text-align: center;">①</td>
-</tr>
-</tbody>
-</table>
 <p><strong>대표 정량 목표</strong> — Zero-shot 성능 유지 · 전이 판정 정확도: 기준환경 대비 <strong>≥ 70 %</strong>(경량 적응 후 ≥ 90 %) · 판정 일치 <strong>≥ 80 %</strong> · OOD 탐지 <strong>≥ 85 %</strong></p>
 <div class="admonition tip">
 <p class="admonition-title">데이터는 구성과 용도를 구분해 냅니다</p>
@@ -1503,42 +1424,6 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <p><strong>목표</strong> — 실패 재현–복구 생성–재학습–<strong>실물 재검증 순환을 1회 이상 완주</strong>하고,
 절차와 벤치마크를 <strong>제3자가 재현할 수 있게 표준화</strong>한다.</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>개발하는 것 <small>(2026-08-29 R&amp;R 확정본 개발 목표)</small></th>
-<th>그 안에서 수행하는 일</th>
-<th style="text-align: center;">핵심기술</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Real-to-Sim-to-Real 운용 가이드라인</strong><br><small>순환 전체를 제3자가 따라 할 수 있게 적은 운용 문서</small></td>
-<td>통합 실증 및 활용 가이드</td>
-<td style="text-align: center;">공통</td>
-</tr>
-<tr>
-<td><strong>Cross-domain Physical AI Benchmark</strong><br><small>작업·소재가 바뀌어도 비교 가능한 공통 평가 기준</small></td>
-<td>실제 실패의 가상환경 재현 결과를 벤치마크로 공개</td>
-<td style="text-align: center;">③</td>
-</tr>
-<tr>
-<td><strong>Robust Operating Envelope 평가모듈</strong><br><small>모델이 안정적으로 동작하는 조건 범위를 재는 도구</small></td>
-<td>RFM 재학습·실제 로봇 재검증</td>
-<td style="text-align: center;">①③</td>
-</tr>
-<tr>
-<td><strong>Closed-loop RoboOps Toolchain</strong><br><small>실패 → 재현 → 재학습 → 재검증을 자동으로 도는 도구 묶음</small></td>
-<td>실패 재현–복구 생성–재학습–재검증 순환 도구 묶음</td>
-<td style="text-align: center;">공통</td>
-</tr>
-<tr>
-<td><strong>기술 백서</strong><br><small>데이터·평가절차를 표준 제안 형태로 정리한 문서</small></td>
-<td>데이터·평가절차 표준화</td>
-<td style="text-align: center;">공통</td>
-</tr>
-</tbody>
-</table>
 <p><strong>대표 정량 목표</strong> — Edge Case Coverage · 절차 재현성: 커버리지 <strong>≥ 80 %</strong> · 제3자 재현 <strong>≥ 90 %</strong> · 재학습–재검증 Loop <strong>1회 완주</strong></p>
 <p><strong>완료 판정</strong> — 실패 재현 → 복구 데이터 생성 → 재학습 → 실물 재검증 순환이 <strong>1회 이상
 완주</strong>되고, 엣지·복구 데이터 적용 후 실제 성공률이 <strong>+10 %p 이상</strong> 향상된 것이 측정으로
@@ -1641,7 +1526,7 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 </tbody>
 </table>
 <hr />
-<h2 id="4_1">성과지표 (4년 누계)<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h2>
+<h2 id="4">성과지표 (4년 누계)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1952,7 +1837,7 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../javascripts/mermaid-prepare.js"></script>
-
+      
         <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
         <script src="../../../javascripts/mermaid-render.js"></script>

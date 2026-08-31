@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1800" height="960" viewBox="0 0 1800 960" role="img" aria-labelledby="title desc">
   <title id="title">한성대학교 제조 Physical AI Data Factory 아키텍처</title>
-  <desc id="desc">과제 컨소시엄의 표준 입력을 받아 한성대학교 Physical AI Data Factory Core 에서 Manufacturing Deformation Engine, Manufacturing Ontology, Human Data Engine, Ontology-based Edge Case Intelligence 를 운영하고, Versioned Physical AI Episode Factory 와 HSU Physical AI Shared Testbed 위에서 한성대 핵심 산출물을 만들어 타 기관에 제공하며 실물 검증 결과를 다시 반영하는 구조</desc>
+  <desc id="desc">과제 컨소시엄의 표준 입력을 받아 한성대학교 Physical AI Data Factory Core 에서 ① Manufacturing Deformation Engine, ② Human Data Engine, ③ Manufacturing Ontology 와 Ontology-based Edge Case Intelligence 를 운영하고, Versioned Physical AI Episode Factory 와 HSU Physical AI Shared Testbed 위에서 한성대 핵심 산출물을 만들어 타 기관에 제공하며 실물 검증 결과를 다시 반영하는 구조</desc>
 
   <defs>
     <marker id="dn" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto">
@@ -13,7 +13,7 @@
       <path d="M5 0 L10 10 L0 10 z" fill="#0295D5"/>
     </marker>
     <style>
-      text { font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif; }
+      text { font-family: "Noto Sans KR", "Noto Sans CJK KR", "Malgun Gothic", Arial, sans-serif; }
       .eyebrow { font-size: 16px; font-weight: 700; fill: #0295D5; letter-spacing: 1.4px; }
       .h1      { font-size: 38px; font-weight: 800; fill: #1A1A1A; }
       .ci      { font-size: 19px; font-weight: 800; fill: #0295D5; letter-spacing: .5px; }
@@ -83,27 +83,27 @@
   <text x="404" y="316" class="cardB">달 지형 변형기술을 제조환경 Contact–Material–State 모델로 고도화</text>
   <text x="404" y="344" class="cardB">마찰 · 강성 · 접촉 · 변형 · 복원 · 마모 · 반복하중 · Calibration</text>
 
-  <!-- ② Ontology -->
+  <!-- ② Human Data Engine -->
   <rect x="937" y="218" width="533" height="152" fill="#FBFCFD" stroke="#D8DEE3" stroke-width="1.5"/>
   <text x="961" y="262" class="cardN" fill="#2B2B2B">②</text>
-  <text x="989" y="262" class="cardT" fill="#2B2B2B">Manufacturing Ontology</text>
-  <text x="961" y="300" class="cardB">Asset–Process–Task–State–Event–Failure–Recovery 간 의미관계를</text>
-  <text x="961" y="328" class="cardB">구조화하고, Cosmos 생성 조건 및 Semantic 정보와 연계</text>
+  <text x="989" y="262" class="cardT" fill="#2B2B2B">Human Data Engine (학생 참여)</text>
+  <text x="961" y="300" class="cardB">Teleoperation 기반 Demonstration · Recovery · Edge Case 데이터 생성</text>
+  <text x="961" y="328" class="cardB">및 품질 검수 — 교육 30명·5개 조 → 선발 → 유급 3개 조</text>
 
   <path d="M646 372 V396" stroke="#A9B8C1" stroke-width="2.5" marker-end="url(#dn)"/>
   <path d="M1203 372 V396" stroke="#A9B8C1" stroke-width="2.5" marker-end="url(#dn)"/>
 
-  <!-- ③ Human Data Engine -->
+  <!-- ③ Manufacturing Ontology -->
   <rect x="380" y="400" width="533" height="140" fill="#FBFCFD" stroke="#D8DEE3" stroke-width="1.5"/>
   <text x="404" y="442" class="cardN" fill="#2B2B2B">③</text>
-  <text x="432" y="442" class="cardT" fill="#2B2B2B">Human Data Engine (학생 참여)</text>
-  <text x="404" y="480" class="cardB">Teleoperation 기반 Demonstration · Recovery · Edge Case</text>
-  <text x="404" y="508" class="cardB">데이터 생성 및 품질 검수 — 교육 30명 → 선발 → 유급 3개 조</text>
+  <text x="432" y="442" class="cardT" fill="#2B2B2B">Manufacturing Ontology</text>
+  <text x="404" y="480" class="cardB">Asset–Process–Task–State–Event–Failure–Recovery 간 의미관계를</text>
+  <text x="404" y="508" class="cardB">구조화하고, Cosmos 생성 조건 및 Semantic 정보와 연계</text>
 
-  <!-- ④ Edge Case Intelligence -->
+  <!-- ③ Edge Case Intelligence (③ 의 두 번째 기능) -->
   <rect x="937" y="400" width="533" height="140" fill="#F5FAFD" stroke="#0295D5" stroke-width="2.5"/>
-  <text x="961" y="442" class="cardN" fill="#0295D5">④</text>
-  <text x="989" y="442" class="cardT" fill="#0295D5">Ontology-based Edge Case Intelligence</text>
+  <text x="961" y="442" class="cardN" fill="#0295D5">③</text>
+  <text x="989" y="442" class="cardT" fill="#0295D5">Edge Case Intelligence</text>
   <text x="961" y="480" class="cardB">Rule · Rarity · State Transition · Uncertainty · Real–Sim Gap</text>
   <text x="961" y="508" class="cardB">기반 Edge Case 탐색 → Scenario 재생성 → 재학습</text>
 
