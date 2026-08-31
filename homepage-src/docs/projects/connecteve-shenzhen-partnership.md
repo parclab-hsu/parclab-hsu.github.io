@@ -270,38 +270,137 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 
 ## 10. 주요 기술용어
 
-통역 시 아래 용어를 기준 표현으로 사용하며, 제품 고유 사양이나 시험성적서의 표현이
-다를 경우에는 해당 제조사의 공식 용어를 함께 기록합니다.
+통역 시 아래 한·중·영 용어를 기준 표현으로 사용합니다. 제품 Data sheet, 시험성적서 또는
+제조사 설명에서 다른 표현을 사용하는 경우에는 **제조사의 공식 용어와 단위**를 함께 기록합니다.
 
-| 한국어 | 중국어 |
-|---|---|
-| 기술 자문 | 技术顾问 / 技术咨询 |
-| 정형외과 수술로봇 | 骨科手术机器人 |
-| 로봇 관절 모듈 | 机器人关节模组 |
-| 회전형 액추에이터 | 旋转执行器 |
-| 하모닉 감속기 | 谐波减速器 |
-| 유성감속기 | 行星减速器 |
-| 정격토크 | 额定扭矩 |
-| 순간 최대토크 | 峰值扭矩 |
-| 반복정밀도 | 重复定位精度 |
-| 절대위치정확도 | 绝对定位精度 |
-| 백래시 | 回程间隙 |
-| 토크 리플 | 扭矩波动 |
-| 장시간 연속운전 | 长时间连续运行 |
-| 실시간 포인트클라우드 | 实时点云 |
-| 원시데이터 | 原始数据 |
-| 프레임레이트 | 帧率 |
-| 종단간 지연시간 | 端到端延迟 |
-| 점 간격 | 点间距 |
-| 작업거리 | 工作距离 |
-| 내부 파라미터 | 相机内参 |
-| 외부 파라미터 | 相机外参 |
-| 추적손실 | 跟踪丢失 |
-| 추적복구 | 跟踪恢复 |
-| 장기공급 | 长期供货 |
-| 설계변경 통보 | 设计变更通知 |
-| 단종 사전통보 | 停产预先通知 |
-| 기술적 실현 가능성 | 技术可行性 |
+### 10.1 공통·의료로봇·협력
+
+| 한국어 | 중국어 | 영문·약어 |
+|---|---|---|
+| 기술 자문 / 기술 컨설팅 | 技术顾问 / 技术咨询 | Technical advisory / consulting |
+| 기술적 실현 가능성 | 技术可行性 | Technical feasibility |
+| 정형외과 수술로봇 | 骨科手术机器人 | Orthopedic surgical robot |
+| 의료기기 | 医疗器械 | Medical device |
+| 의료로봇 | 医疗机器人 | Medical robot |
+| 시스템 통합 | 系统集成 | System integration |
+| 실시간 제어 | 实时控制 | Real-time control |
+| 안전 기능 | 安全功能 | Safety function |
+| 고장 모드 | 故障模式 | Failure mode |
+| 신뢰성 | 可靠性 | Reliability |
+| 내구성 | 耐久性 | Durability |
+| 위험관리 | 风险管理 | Risk management |
+| 기술협력 / 공동개발 | 技术合作 / 联合开发 | Technical cooperation / Joint development |
+| 양해각서 | 谅解备忘录 | Memorandum of Understanding (MOU) |
+
+### 10.2 Robot Actuator·제어
+
+| 한국어 | 중국어 | 영문·약어 |
+|---|---|---|
+| 로봇 관절 모듈 | 机器人关节模组 | Robot joint module |
+| 회전형 액추에이터 | 旋转执行器 | Rotary actuator |
+| 준직접구동 액추에이터 | 准直驱执行器 | Quasi-Direct Drive (QDD) actuator |
+| 모터 | 电机 | Motor |
+| 하모닉 감속기 | 谐波减速器 | Harmonic reducer / Strain-wave gear |
+| 유성감속기 | 行星减速器 | Planetary reducer |
+| 감속비 | 减速比 | Reduction ratio |
+| 엔코더 | 编码器 | Encoder |
+| 드라이버 | 驱动器 | Motor driver / Servo drive |
+| 출력축 | 输出轴 | Output shaft |
+| 중공축 | 中空轴 | Hollow shaft |
+| 브레이크 | 制动器 | Brake |
+| 정격토크 | 额定扭矩 | Rated torque |
+| 순간 최대토크 | 峰值扭矩 | Peak torque |
+| 토크 밀도 | 扭矩密度 | Torque density |
+| 반복정밀도 | 重复定位精度 | Repeatability |
+| 절대위치정확도 | 绝对定位精度 | Absolute positioning accuracy |
+| 백래시 | 回程间隙 | Backlash |
+| 히스테리시스 | 迟滞 | Hysteresis |
+| 토크 리플 | 扭矩波动 | Torque ripple |
+| 출력축 강성 | 输出轴刚度 | Output-shaft stiffness |
+| 허용 모멘트 | 允许力矩 | Allowable moment |
+| 저속 구동 | 低速运行 | Low-speed operation |
+| 장시간 연속운전 | 长时间连续运行 | Continuous-duty operation |
+| 진동 / 소음 수준 | 振动 / 噪声水平 | Vibration / Noise level |
+| 온도상승 | 温升 | Temperature rise |
+| 과전류·과열·과부하 보호 | 过流、过热、过载保护 | Overcurrent / Overtemperature / Overload protection |
+| 에이징 / 번인 시험 | 老化试验 / 烧机测试 | Aging / Burn-in test |
+| 예상수명 / 수명시험 | 预期寿命 / 寿命试验 | Expected lifetime / Life test |
+| 산업용 이더넷 통신 | 工业以太网通信 | EtherCAT |
+| CAN 기반 산업용 통신 | 基于CAN的工业通信 | CANopen |
+
+### 10.3 3D Vision·Scanning
+
+| 한국어 | 중국어 | 영문·약어 |
+|---|---|---|
+| 3D 스캐너 | 三维扫描仪 | 3D scanner |
+| 3D 비전센서 | 三维视觉传感器 | 3D vision sensor |
+| 구조광 | 结构光 | Structured light |
+| 적외선 마커 | 红外标记点 | Infrared marker (IR marker) |
+| 광원 파장대 | 光源波段 | Light-source wavelength band |
+| 수신기 스펙트럼 범위 | 接收器光谱范围 | Receiver spectral range |
+| 광학 필터링 | 光学滤波 | Optical filtering |
+| 수술등 | 手术灯 | Surgical light |
+| 스캔 정확도 | 扫描精度 | Scanning accuracy |
+| 측정오차 | 测量误差 | Measurement error |
+| 대형 물체 스캔 | 大型物体扫描 | Large-object scanning |
+| 점 간격 | 点间距 | Point spacing |
+| 작업거리 | 工作距离 | Working distance |
+| 프레임레이트 | 帧率 | Frame rate |
+| 실시간 포인트클라우드 | 实时点云 | Real-time point cloud |
+| 원시데이터 | 原始数据 | Raw data |
+| 실시간 데이터 출력 | 实时数据输出 | Real-time data output |
+| 종단간 지연시간 | 端到端延迟 | End-to-end latency |
+| 내부 파라미터 | 相机内参 | Camera intrinsics |
+| 외부 파라미터 | 相机外参 | Camera extrinsics |
+| 스캔 경로 | 扫描路径 | Scan path |
+| 추적 | 跟踪 | Tracking |
+| 추적손실 | 跟踪丢失 | Tracking loss |
+| 추적복구 | 跟踪恢复 | Tracking recovery |
+| 포인트클라우드 정합 / 융합 | 点云配准 / 融合 | Point-cloud registration / fusion |
+| 누적오차 | 累积误差 | Accumulated error |
+| 교정 / 캘리브레이션 | 标定 / 校准 | Calibration |
+| 소프트웨어 개발도구 | 软件开发工具包 | Software Development Kit (SDK) |
+| 펌웨어 | 固件 | Firmware |
+| 외관 / 하우징 | 外观 / 外壳 | Exterior / Housing |
+
+### 10.4 제조·품질·구매·장기공급
+
+| 한국어 | 중국어 | 영문·약어 |
+|---|---|---|
+| 샘플 평가 | 样品评估 | Sample evaluation |
+| 맞춤화 / 사양 변경 | 定制化 / 规格变更 | Customization / Specification change |
+| 주문자상표부착생산 | 贴牌生产 | Original Equipment Manufacturing (OEM) |
+| 제조자개발생산 | 原始设计制造 | Original Design Manufacturing (ODM) |
+| 시제품 | 原型样机 | Prototype |
+| 양산 | 批量生产 | Mass production |
+| 월 생산능력 | 月产能 | Monthly production capacity |
+| 최소주문수량 | 最小起订量 | Minimum Order Quantity (MOQ) |
+| 납기 / 리드타임 | 交期 / 交付周期 | Lead time |
+| 입고검사 | 来料检验 | Incoming inspection (IQC) |
+| 출하 전 검사 | 出厂前检验 | Outgoing / Pre-shipment inspection (OQC) |
+| 성능시험 | 性能测试 | Performance testing |
+| 품질관리 | 质量控制 | Quality Control (QC) |
+| 제품 간 성능 일관성 | 产品间性能一致性 | Product-to-product consistency |
+| 성능 편차 | 性能偏差 | Performance variation |
+| 품질 추적성 | 质量可追溯性 | Quality traceability |
+| 제조번호 / 일련번호 | 产品编号 / 序列号 | Serial number |
+| 품질이력 | 质量履历 / 质量记录 | Quality history / Record |
+| 전수검사 / 샘플링검사 | 全数检验 / 抽样检验 | 100% inspection / Sampling inspection |
+| 품질보증 | 质量保证 | Quality assurance / Warranty |
+| 불량품 교환 | 不良品更换 | Defective-product replacement |
+| 장기공급 | 长期供货 | Long-term supply |
+| 제품 수명주기 | 产品生命周期 | Product Life Cycle (PLC) |
+| 단종 | 停产 / 生命周期终止 | End of Life (EOL) |
+| 설계변경 통보 | 设计变更通知 | Design-change notification |
+| 제품변경통보 | 产品变更通知 | Product Change Notification (PCN) |
+| 변경관리 | 变更管理 | Change management |
+| 단종 사전통보 | 停产预先通知 | Advance EOL notice |
+| 기술이전 | 技术转让 | Technology transfer |
+| 한국 현지화 | 韩国本地化 | Korea localization |
+| 조립 / 시험 / 교정 | 组装 / 测试 / 校准 | Assembly / Testing / Calibration |
+| 한국산 | 韩国制造 | Made in Korea |
+| 결제조건 | 付款条件 | Payment terms |
+| 수량별 할인 | 批量折扣 | Volume discount |
 
 ---
 
