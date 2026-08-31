@@ -67,6 +67,7 @@ extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
+  - javascripts/mermaid-prepare.js
   - https://unpkg.com/mermaid@11/dist/mermaid.min.js
   - javascripts/mermaid-render.js
 

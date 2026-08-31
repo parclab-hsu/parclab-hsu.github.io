@@ -200,6 +200,10 @@
   word-break: keep-all;
 }
 
+.concept-diagram {
+  scroll-margin-top: 7rem;
+}
+
 .concept-diagram .mermaid {
   text-align: center;
 }

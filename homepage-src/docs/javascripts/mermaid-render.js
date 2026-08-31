@@ -1,12 +1,18 @@
 (() => {
   const renderMermaid = async () => {
-    const nodes = [...document.querySelectorAll("pre.mermaid")].map((pre) => {
+    document.querySelectorAll("pre.mermaid").forEach((pre) => {
       const diagram = document.createElement("div");
       diagram.className = "mermaid";
       diagram.textContent = pre.textContent.trim();
       pre.replaceWith(diagram);
-      return diagram;
     });
+
+    const nodes = [...document.querySelectorAll("div.mermaid")]
+      .filter((diagram) => (
+        !diagram.dataset.processed
+        && !diagram.querySelector("svg")
+        && diagram.textContent.trim()
+      ));
 
     if (nodes.length === 0 || !window.mermaid) {
       return;
