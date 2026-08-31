@@ -766,10 +766,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-manufacturing-deformation-engine" class="md-nav__link">
+  <a href="#a-manufacturing-deformation-engine" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ① Manufacturing Deformation Engine
+        기술축 A · Manufacturing Deformation Engine
       
     </span>
   </a>
@@ -777,10 +777,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-human-data-engine" class="md-nav__link">
+  <a href="#b-human-data-engine" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ② Human Data Engine
+        기술축 B · Human Data Engine
       
     </span>
   </a>
@@ -788,10 +788,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-manufacturing-ontologyedge-case-intelligence" class="md-nav__link">
+  <a href="#c-manufacturing-ontologyedge-case-intelligence" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ③ Manufacturing Ontology·Edge Case Intelligence
+        기술축 C · Manufacturing Ontology·Edge Case Intelligence
       
     </span>
   </a>
@@ -838,10 +838,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-deformation-engine" class="md-nav__link">
+  <a href="#a-deformation-engine" class="md-nav__link">
     <span class="md-ellipsis">
       
-        물리 재현 — ① Deformation Engine
+        물리 재현 — 기술축 A · Deformation Engine
       
     </span>
   </a>
@@ -849,10 +849,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-human-data-engine-quality-gate" class="md-nav__link">
+  <a href="#b-human-data-engine-quality-gate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        데이터 생산과 검수 — ② Human Data Engine · 공통 Quality Gate
+        데이터 생산과 검수 — 기술축 B · Human Data Engine · 공통 Quality Gate
       
     </span>
   </a>
@@ -1218,7 +1218,7 @@ Simulation-ready Geometry Twin 구축을 지원합니다.</strong></p>
 </tr>
 </tbody>
 </table>
-<h3 id="1-manufacturing-deformation-engine">① Manufacturing Deformation Engine<a class="headerlink" href="#1-manufacturing-deformation-engine" title="Permanent link">&para;</a></h3>
+<h3 id="a-manufacturing-deformation-engine">기술축 A · Manufacturing Deformation Engine<a class="headerlink" href="#a-manufacturing-deformation-engine" title="Permanent link">&para;</a></h3>
 <p><strong>물리엔진을 새로 개발하지 않습니다.</strong> Isaac Sim 과 OmniLRS 위에서 동작하는
 <strong>제조 변형·물성 보정 모듈</strong>을 개발합니다. OmniLRS 변형지형 연구에서 축적한 접촉·변형 구동과
 계측 경험을 제조환경의 Contact–Material–State 모델로 파생시키는 작업입니다.</p>
@@ -1251,7 +1251,7 @@ Simulation-ready Geometry Twin 구축을 지원합니다.</strong></p>
 </tr>
 </tbody>
 </table>
-<h3 id="2-human-data-engine">② Human Data Engine<a class="headerlink" href="#2-human-data-engine" title="Permanent link">&para;</a></h3>
+<h3 id="b-human-data-engine">기술축 B · Human Data Engine<a class="headerlink" href="#b-human-data-engine" title="Permanent link">&para;</a></h3>
 <p>사람이 만든 시연·복구 데이터를 로봇 학습 데이터로 바꾸는 축입니다. 핵심 기능은 다음
 네 단계입니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>실패상태 저장·복원 → 복구행동 분기 → 자동검수 → 실로봇 Grounding
@@ -1261,7 +1261,7 @@ Simulation-ready Geometry Twin 구축을 지원합니다.</strong></p>
 만들 필요가 없습니다. 생성된 복구 행동은 자동 검수를 거쳐 소량의 실로봇 시험으로
 Grounding 합니다.</p>
 <p>수행 인력과 마이크로디그리 과정은 <strong>7절 수행인력·교육체계</strong>에 있습니다.</p>
-<h3 id="3-manufacturing-ontologyedge-case-intelligence">③ Manufacturing Ontology·Edge Case Intelligence<a class="headerlink" href="#3-manufacturing-ontologyedge-case-intelligence" title="Permanent link">&para;</a></h3>
+<h3 id="c-manufacturing-ontologyedge-case-intelligence">기술축 C · Manufacturing Ontology·Edge Case Intelligence<a class="headerlink" href="#c-manufacturing-ontologyedge-case-intelligence" title="Permanent link">&para;</a></h3>
 <p><code>Asset → Process → Task → State → Event → Failure → Recovery</code> 구조로 <strong>어떤 설비와 작업에서
 어떤 상태 변화로 실패했고, 어떤 복구 행동이 효과적이었는지</strong>를 연결해 저장합니다.</p>
 <p>이 구조 위에서 물체 위치·각도·마찰·물성·센서오차를 조금씩 바꿔가며 <strong>실패가 시작되는
@@ -1317,7 +1317,7 @@ flowchart TB
     REAL["REAL | 실제 제조환경&lt;br/&gt;대표 작업 1~2개&lt;br/&gt;정상 · 실패 · 복구 Log"]
     GEO["Geometry Twin | 모빌테크&lt;br/&gt;현장 취득 · 3D Asset&lt;br/&gt;좌표 · Semantic 정합"]
     WFM["보조 생성수단&lt;br/&gt;Cosmos / 동급 WFM&lt;br/&gt;후보 장면 · 미래상태"]
-    CORE["한성대학교 | 세 핵심기술&lt;br/&gt;① Manufacturing Deformation Engine&lt;br/&gt;② Human Data Engine&lt;br/&gt;③ Ontology · Edge Case Intelligence"]
+    CORE["한성대학교 | 세 핵심기술&lt;br/&gt;기술축 A · Manufacturing Deformation Engine&lt;br/&gt;기술축 B · Human Data Engine&lt;br/&gt;③ Ontology · Edge Case Intelligence"]
     GATE["Quality Gate | 공통 품질관문&lt;br/&gt;물리정합 · 재현성 · 안전&lt;br/&gt;데이터 품질 · Provenance"]
     RFM["RFM | 학습 · 평가&lt;br/&gt;Zero-shot / Post-training"]
     TEST["실물검증&lt;br/&gt;HIL · 실물 로봇&lt;br/&gt;Domain Gap 측정"]
@@ -1333,7 +1333,7 @@ flowchart TB
 <pre class="mermaid"><code>flowchart TB
     REAL["REAL | 실제 제조환경&lt;br/&gt;대표 작업 · 실패 Log"]
     GEO["Geometry Twin | 모빌테크"]
-    CORE["한성대 | 세 핵심기술&lt;br/&gt;① Deformation Engine&lt;br/&gt;② Human Data Engine&lt;br/&gt;③ Ontology · Edge Case"]
+    CORE["한성대 | 세 핵심기술&lt;br/&gt;기술축 A · Deformation Engine&lt;br/&gt;기술축 B · Human Data Engine&lt;br/&gt;③ Ontology · Edge Case"]
     GATE["Quality Gate&lt;br/&gt;공통 품질관문"]
     RFM["RFM | 학습 · 평가"]
     TEST["실물검증 | HIL · 실물 로봇"]
@@ -1353,7 +1353,7 @@ flowchart TB
 동결</strong>합니다. 확정 전에는 협약 목표로 인용하지 않습니다. 분모·반복횟수·산식·통계 기준은
 <strong><a href="roadmap/">연차별 목표</a></strong> 의 측정 정의표에 있습니다.</p>
 </div>
-<h3 id="1-deformation-engine">물리 재현 — ① Deformation Engine<a class="headerlink" href="#1-deformation-engine" title="Permanent link">&para;</a></h3>
+<h3 id="a-deformation-engine">물리 재현 — 기술축 A · Deformation Engine<a class="headerlink" href="#a-deformation-engine" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1384,7 +1384,7 @@ flowchart TB
 </tr>
 </tbody>
 </table>
-<h3 id="2-human-data-engine-quality-gate">데이터 생산과 검수 — ② Human Data Engine · 공통 Quality Gate<a class="headerlink" href="#2-human-data-engine-quality-gate" title="Permanent link">&para;</a></h3>
+<h3 id="b-human-data-engine-quality-gate">데이터 생산과 검수 — 기술축 B · Human Data Engine · 공통 Quality Gate<a class="headerlink" href="#b-human-data-engine-quality-gate" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1693,7 +1693,7 @@ flowchart TB
 </table>
 <p>연구개발 Dataset 에 편입되는 데이터는 별도 계약·동의를 거친 유급 참여자가 생산합니다.
 과정 구성과 운영 절차는 <strong><a href="technical/">기술 상세</a></strong> 에 있습니다.</p>
-<p>이 체계는 ② Human Data Engine 의 <strong>수행 인력 경로</strong>이며, 기술축 자체의 명칭은
+<p>이 체계는 기술축 B · Human Data Engine 의 <strong>수행 인력 경로</strong>이며, 기술축 자체의 명칭은
 <strong>Human Data Engine</strong> 으로 통일합니다.</p>
 <hr />
 <h2 id="8">8. 확인이 필요한 사항<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>

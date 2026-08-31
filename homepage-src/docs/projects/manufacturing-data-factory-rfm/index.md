@@ -111,7 +111,7 @@ noindex: true
 | **③** | **Manufacturing Ontology·Edge Case Intelligence** | 작업–상태–실패–복구를 구조화해 RFM 의 취약조건을 찾는다 |
 | **공통** | **Quality Gate · RFM Interface · 실물검증** | 생성 데이터를 공통 품질관문으로 거른 뒤 RFM 에 공급하고 실물로 되검증한다 |
 
-### ① Manufacturing Deformation Engine
+### 기술축 A · Manufacturing Deformation Engine
 
 **물리엔진을 새로 개발하지 않습니다.** Isaac Sim 과 OmniLRS 위에서 동작하는
 **제조 변형·물성 보정 모듈**을 개발합니다. OmniLRS 변형지형 연구에서 축적한 접촉·변형 구동과
@@ -128,7 +128,7 @@ noindex: true
 | Material Library | 대표 소재의 마찰·강성·감쇠·복원·임계값과 불확실성 범위 |
 | 실제–가상 비교 리포트 | 동일 조건에서 실물과 가상의 접촉력·변형 차이를 수치로 제시 |
 
-### ② Human Data Engine
+### 기술축 B · Human Data Engine
 
 사람이 만든 시연·복구 데이터를 로봇 학습 데이터로 바꾸는 축입니다. 핵심 기능은 다음
 네 단계입니다.
@@ -144,7 +144,7 @@ Grounding 합니다.
 
 수행 인력과 마이크로디그리 과정은 **7절 수행인력·교육체계**에 있습니다.
 
-### ③ Manufacturing Ontology·Edge Case Intelligence
+### 기술축 C · Manufacturing Ontology·Edge Case Intelligence
 
 `Asset → Process → Task → State → Event → Failure → Recovery` 구조로 **어떤 설비와 작업에서
 어떤 상태 변화로 실패했고, 어떤 복구 행동이 효과적이었는지**를 연결해 저장합니다.
@@ -187,7 +187,7 @@ flowchart TB
     REAL["REAL | 실제 제조환경<br/>대표 작업 1~2개<br/>정상 · 실패 · 복구 Log"]
     GEO["Geometry Twin | 모빌테크<br/>현장 취득 · 3D Asset<br/>좌표 · Semantic 정합"]
     WFM["보조 생성수단<br/>Cosmos / 동급 WFM<br/>후보 장면 · 미래상태"]
-    CORE["한성대학교 | 세 핵심기술<br/>① Manufacturing Deformation Engine<br/>② Human Data Engine<br/>③ Ontology · Edge Case Intelligence"]
+    CORE["한성대학교 | 세 핵심기술<br/>기술축 A · Manufacturing Deformation Engine<br/>기술축 B · Human Data Engine<br/>③ Ontology · Edge Case Intelligence"]
     GATE["Quality Gate | 공통 품질관문<br/>물리정합 · 재현성 · 안전<br/>데이터 품질 · Provenance"]
     RFM["RFM | 학습 · 평가<br/>Zero-shot / Post-training"]
     TEST["실물검증<br/>HIL · 실물 로봇<br/>Domain Gap 측정"]
@@ -208,7 +208,7 @@ flowchart TB
 flowchart TB
     REAL["REAL | 실제 제조환경<br/>대표 작업 · 실패 Log"]
     GEO["Geometry Twin | 모빌테크"]
-    CORE["한성대 | 세 핵심기술<br/>① Deformation Engine<br/>② Human Data Engine<br/>③ Ontology · Edge Case"]
+    CORE["한성대 | 세 핵심기술<br/>기술축 A · Deformation Engine<br/>기술축 B · Human Data Engine<br/>③ Ontology · Edge Case"]
     GATE["Quality Gate<br/>공통 품질관문"]
     RFM["RFM | 학습 · 평가"]
     TEST["실물검증 | HIL · 실물 로봇"]
@@ -233,7 +233,7 @@ flowchart TB
     동결**합니다. 확정 전에는 협약 목표로 인용하지 않습니다. 분모·반복횟수·산식·통계 기준은
     **[연차별 목표](roadmap.md)** 의 측정 정의표에 있습니다.
 
-### 물리 재현 — ① Deformation Engine
+### 물리 재현 — 기술축 A · Deformation Engine
 
 | # | KPI | 목표 | 측정 방법 |
 |:--:|---|---|---|
@@ -241,7 +241,7 @@ flowchart TB
 | 2 | 대표 소재의 잔류변형 재현오차 | **≤ 25 %** | 반복하중 조건에서 작업 전후 실제 형상과 가상 형상 비교 |
 | 3 | 실제–가상 작업 성공률 차이 | **≤ 20 %p** | 같은 작업·조건에서 가상환경과 실제 로봇의 성공률 차이 |
 
-### 데이터 생산과 검수 — ② Human Data Engine · 공통 Quality Gate
+### 데이터 생산과 검수 — 기술축 B · Human Data Engine · 공통 Quality Gate
 
 | # | KPI | 목표 | 측정 방법 |
 |:--:|---|---|---|
@@ -341,7 +341,7 @@ flowchart TB
 연구개발 Dataset 에 편입되는 데이터는 별도 계약·동의를 거친 유급 참여자가 생산합니다.
 과정 구성과 운영 절차는 **[기술 상세](technical.md)** 에 있습니다.
 
-이 체계는 ② Human Data Engine 의 **수행 인력 경로**이며, 기술축 자체의 명칭은
+이 체계는 기술축 B · Human Data Engine 의 **수행 인력 경로**이며, 기술축 자체의 명칭은
 **Human Data Engine** 으로 통일합니다.
 
 ---
