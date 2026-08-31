@@ -112,7 +112,7 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 
 | 연구 | 무엇을 보여주나 |
 |---|---|
-| **Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions** (2025-11, [arXiv:2511.04665](https://arxiv.org/abs/2511.04665)) | 실제 영상에서 연성 물체의 soft-body digital twin 을 만들고, **시뮬레이션 rollout 이 실제 성능과 강하게 상관**함을 보였습니다. 봉제인형 포장·로프 배선·T블록 밀기 대상 |
+| **Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions** (**ICRA 2026**, [arXiv:2511.04665](https://arxiv.org/abs/2511.04665), 2025-11 공개) | 실제 영상에서 3D Gaussian Splatting 외관과 PhysTwin 기반 동역학을 식별해 soft-body twin 을 구성했습니다. 봉제인형 포장·로프 배선·T블록 밀기에서 시뮬레이션–실물 정책 성공률 상관이 모두 **Pearson r > 0.9**였습니다. |
 | **SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds** (2026-04, [arXiv:2604.08544](https://arxiv.org/abs/2604.08544)) | **소량의 실제 시연**으로 장면을 metric-consistent twin 으로 디지털화하고 탄성 모델링으로 **변형 동역학을 보정**한 뒤, 궤적 생성으로 합성 학습데이터를 확장 |
 | **SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation** (2026-06, [arXiv:2606.15338](https://arxiv.org/abs/2606.15338)) | **측정 기반 시뮬레이터**로 학습한 정책이 실환경 파인튜닝 없이 실제 성공률 80 % 이상 |
 
