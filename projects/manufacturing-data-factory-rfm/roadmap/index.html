@@ -1032,6 +1032,11 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 </table>
 <hr />
 <h2 id="_4">참고 연구 — 세 기술축이 서 있는 연구 흐름<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>최근 가상환경·시뮬레이션 기반 데이터 획득 연구는 <strong>소량의 실제 데이터로 가상환경의 물리
+특성을 보정하고, 현재 로봇 모델이 실패하기 쉬운 조건을 집중적으로 만들어 다시 학습하는</strong>
+방향으로 발전하고 있습니다. 또한 <strong>생성한 데이터가 물리적으로 타당한지 자동으로 확인하고,
+실제 환경에서 새롭게 발생한 실패를 다시 가상환경에 반영하는 반복 구조</strong>에 대한 연구도
+늘고 있습니다. 본 과제의 세 기술축은 이 흐름 위에 있습니다.</p>
 <p>각 기술축이 <strong>최근 연구 흐름 위에 있음</strong>을 보이는 대표 연구입니다.
 <strong>본 과제에서 재현한 결과가 아니라 문헌으로 확인한 선행연구</strong>이며, 우리가 무엇을
 새로 만들 것인지는 각 세부 항목에 따로 적었습니다.</p>
@@ -1254,8 +1259,14 @@ EgoRecovery 가 보고한 <strong>10배</strong> 차이는, 실물로 실패를 
 </tr>
 </tbody>
 </table>
-<p><strong>완료 판정</strong> — 데이터셋이 용도별로 구분되어 공개되고, RFM 취약조건이 수치로 특정되며,
-미학습 조건에서의 성능 유지율이 측정됩니다.</p>
+<div class="admonition tip">
+<p class="admonition-title">데이터는 구성과 용도를 구분해 냅니다</p>
+<p>한 덩어리로 내지 않습니다. <strong>정상 / 실패 / 복구 / 가상 생성</strong> 을 구분하고, 각각이
+학습용인지 평가용인지 <strong>용도를 명시</strong>해 공개합니다. RFM 이 취약한 조건을 중심으로
+생성·검수·평가하는 과정이 데이터셋 구성에 그대로 드러나게 합니다.</p>
+</div>
+<p><strong>완료 판정</strong> — 데이터셋이 <strong>구성과 용도별로 구분되어</strong> 공개되고, RFM 취약조건이 수치로
+특정되며, 미학습 조건에서의 성능 유지율이 측정됩니다.</p>
 <h3 id="4-12">4차년도 (12개월) — 실패·복구 데이터 순환체계 및 최종 실증<a class="headerlink" href="#4-12" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p><strong>목표</strong> — 실제 실패를 가상에서 재현해 복구 데이터를 만들고, 재학습한 모델을 실제
