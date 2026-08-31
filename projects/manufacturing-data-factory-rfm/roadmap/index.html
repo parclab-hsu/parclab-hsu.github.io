@@ -1132,21 +1132,25 @@ Hi-WM은 <strong>실패 직전 상태의 저장·복원·분기 교정</strong>,
 <thead>
 <tr>
 <th>연구</th>
-<th>무엇을 보여주나</th>
+<th>검증된 핵심 결과</th>
+<th>한계와 본 과제 반영</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference</strong> (CoRL 2025, <a href="https://arxiv.org/abs/2509.01746">arXiv:2509.01746</a>)</td>
-<td>관측된 실패와 <strong>유사한 조건을 시뮬레이션에서 병렬 생성</strong>해 targeted 데이터셋을 만들고 재학습</td>
+<td><strong>Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference</strong> (<strong>CoRL 2025</strong>, <a href="https://arxiv.org/abs/2509.01746">arXiv:2509.01746</a>)</td>
+<td>관측된 실패와 유사한 조건을 시뮬레이션에서 <strong>병렬 생성</strong>해 targeted 데이터셋을 만들고 skill effect model 을 재학습했습니다. 계층적 tabletop 정리에서 <strong>86 %</strong>(원본 11 %), 미관측 7객체 <strong>71 %</strong>, 미관측 시점 <strong>83~85 %</strong> 를 보고합니다.</td>
+<td>실물 성공률은 <strong>약 80 %</strong> 에 머물고, 저자들은 <strong>Sim2Real gap 보정은 다루지 않았다</strong>고 명시합니다. Real2Sim 이 복잡한 형상·<strong>변형체</strong>에서 불완전하고, 시뮬 상태로 <strong>물체 pose 만</strong> 두어 마찰·질량중심을 제외했습니다. 본 과제는 변형체가 대상이므로 <strong>물성을 상태에 포함</strong>하고 그 재현오차를 KPI 1·2 로 검증합니다.</td>
 </tr>
 <tr>
-<td><strong>From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph</strong> (AgentChord, RSS 2026, <a href="https://arxiv.org/abs/2605.11951">arXiv:2605.11951</a>)</td>
-<td>작업을 <strong>task graph</strong> 로 두고 실행 전에 <strong>예상 실패와 복구 분기</strong>를 미리 붙여 즉시 대응</td>
+<td><strong>From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph</strong> (AgentChord, <strong>RSS 2026</strong>, <a href="https://arxiv.org/abs/2605.11951">arXiv:2605.11951</a>)</td>
+<td>작업을 task graph 로 두고 <strong>예상 실패와 복구 분기를 실행 전에 붙여</strong> 재계획 없이 대응합니다. 실물 6개 작업×20회 평균 <strong>77.5 %</strong>(베이스라인 59.2~72.5 %), 실행시간 92.2 s(베이스라인 107~143 s). 복구 데이터로 파인튜닝 시 실패 시나리오 <strong>39/50</strong>(베이스라인 26/50).</td>
+<td>그래프 구축 단계에서 <strong>예상하지 못한 실패 모드가 남고</strong>, 잘못된 노드로 복구할 수 있습니다. 교정 행동을 계획해도 <strong>IK 가 불가능</strong>한 경우(넘어진 물체 재파지)가 있고, 부정확한 마스크·노이즈 점군이 pose 추정을 흔듭니다. 예상 밖 실패가 남는다는 점이 Edge Case 탐색을 규칙만이 아니라 <strong>RFM 취약조건 기반</strong>으로 두는 근거입니다.</td>
 </tr>
 <tr>
-<td><strong>ASPIRE: Agentic Skills Discovery for Robotics</strong> (2026-06, <a href="https://arxiv.org/abs/2607.00272">arXiv:2607.00272</a>)</td>
-<td>실행 트레이스에서 <strong>실패를 진단 → 수정 → 검증</strong>하고, 검증된 수정을 재사용 가능한 스킬로 축적</td>
+<td><strong>ASPIRE: Agentic Skills Discovery for Robotics</strong> (<a href="https://arxiv.org/abs/2607.00272">arXiv:2607.00272</a>, 2026-06 프리프린트)</td>
+<td>실행 트레이스에서 <strong>실패 진단 → 수정 → 검증 → 재사용 가능한 스킬로 축적</strong>하는 순환을 돌립니다. LIBERO-Pro 매크로 평균 <strong>72 %</strong>, Robosuite 양팔 인계 20 %→<strong>92 %</strong>, 미관측 장기 과제 zero-shot <strong>31 %</strong>(기존 4 %), 실로봇 13/20→<strong>19/20</strong>.</td>
+<td>저자들은 <strong>완전 자율 실세계 학습기가 아니라고</strong> 밝힙니다. <strong>frozen frontier LLM 에 의존</strong>하며 작은 모델로는 검증되지 않았고, 사전 정의 API 밖 능력은 사람이 확장해야 합니다. 스킬 라이브러리의 <strong>장기 메모리 관리가 미해결</strong>이고 <strong>연산 비용이 큽니다</strong>. 본 과제가 자동 검수를 LLM 판단이 아니라 <strong>물리 정합성과 규칙 기반</strong>으로 두는 근거입니다.</td>
 </tr>
 </tbody>
 </table>
@@ -1156,8 +1160,11 @@ Hi-WM은 <strong>실패 직전 상태의 저장·복원·분기 교정</strong>,
 이 흐름을 <strong>제조 도메인과 RFM 평가에 맞춰 결합</strong>한 것입니다.</p>
 <div class="admonition note">
 <p class="admonition-title">인용 원칙</p>
-<p>위 수치(성공률 80 %, 복구 데이터 10배 등)는 <strong>각 논문의 보고값</strong>이며 본 과제의
-목표치나 재현 결과가 아닙니다. 본 과제의 정량 목표는 「핵심 KPI」에 따로 있습니다.</p>
+<p>위 수치(r &gt; 0.9, 성공률 90 %·91.30 %, +37.9 %p, 시간당 10배 등)는 <strong>각 논문의
+특정 Task·장비·표본에서 나온 보고값</strong>이며 본 과제의 목표치나 재현 결과가 아닙니다.
+Real-to-Sim은 ICRA 2026, DreamGen은 CoRL 2025 게재 논문이고, SIM1·SimWeaver·Hi-WM·
+EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 정량 목표는
+대표 제조작업의 기준선과 통계설계를 확정한 뒤 별도 KPI로 관리합니다.</p>
 </div>
 <hr />
 <h2 id="_5">연차별 목표와 예상 산출물<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>

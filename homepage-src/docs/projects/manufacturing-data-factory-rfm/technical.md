@@ -1108,6 +1108,23 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 - [산업통상부 공고 제2026-549호 — 2026년도 제2차 로봇산업기술개발사업 신규지원 대상과제](https://www.motir.go.kr/kor/article/ATCLc01b2801b/71273/view)
 - [한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC](../hsu-pac.md)
 
+**Real-to-Sim·Deformation**
+
+- *Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions* — [arXiv:2511.04665](https://arxiv.org/abs/2511.04665), [프로젝트 페이지](https://real2sim-eval.github.io/) (**ICRA 2026**). 3개 연성작업에서 실물–가상 정책 성공률 상관 **r > 0.9**를 보고했으나, 실물학습 정책의 평가 프록시 연구입니다.
+- *SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds* — [arXiv:2604.08544](https://arxiv.org/abs/2604.08544) (2026 프리프린트). 실측 보정·합성 궤적 확장의 가능성과 함께 소재별 전문가 튜닝이라는 자동화 한계를 제시합니다.
+- *SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation* — [arXiv:2606.15338](https://arxiv.org/abs/2606.15338), [프로젝트 페이지](https://simweaver.github.io/) (2026 프리프린트). 측정 물성·소재군 라이브러리와 광학 증강을 결합했으며, 5개 Task 평균 **91.30 %**를 보고합니다.
+
+**World Model·Human Recovery**
+
+- Jang, E., et al. (2025). *DreamGen: Unlocking Generalization in Robot Learning through Video World Models.* CoRL 2025, PMLR 305. — [PMLR](https://proceedings.mlr.press/v305/jang25a.html), [arXiv:2505.12705](https://arxiv.org/abs/2505.12705). 단일 Task의 2,885개 seed trajectory를 행동·환경 다양성으로 확장한 연구이며 실패복구 전용 연구는 아닙니다.
+- *Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training* — [arXiv:2604.21741](https://arxiv.org/abs/2604.21741), [프로젝트 페이지](https://hi-wm.github.io/) (2026 프리프린트). 실패 직전 상태 cache·rollback·branching과 짧은 사람 교정입력을 결합합니다.
+- *EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration* — [arXiv:2607.19745](https://arxiv.org/abs/2607.19745), [프로젝트 페이지](https://egorecovery.github.io/project_page/) (2026 프리프린트). 인간 복구 intent를 빠르게 수집하지만 로봇 grounding data가 없으면 복구 성능이 제한됩니다.
+
+!!! note "선행연구 수치 해석"
+    위 정량값은 각 논문의 특정 Task·장비·표본에서 보고된 결과입니다. 자체 재현값이나
+    본 과제 KPI가 아니며, 대표 제조작업의 기준선·신뢰구간·Gate를 설계하는 참고근거로만 사용합니다.
+    2026-08-31 기준 Real-to-Sim과 DreamGen만 게재처를 확인했으며 나머지 네 연구는 프리프린트로 표기합니다.
+
 ---
 
 `Manufacturing Digital Twin` · `Deformation Engine` · `NVIDIA Cosmos` · `LeRobot` · `Manufacturing Ontology` · `Edge Case Extraction` · `Teleoperation Data` · `Shared Testbed` · `Robot Foundation Model` · `Isaac Sim` · `ROS 2` · `Sim-to-Real`

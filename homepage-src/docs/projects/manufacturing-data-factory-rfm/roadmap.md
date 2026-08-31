@@ -139,11 +139,11 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 
 ### ③ 실패 조건 탐색·재현 관련 연구
 
-| 연구 | 무엇을 보여주나 |
-|---|---|
-| **Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference** (CoRL 2025, [arXiv:2509.01746](https://arxiv.org/abs/2509.01746)) | 관측된 실패와 **유사한 조건을 시뮬레이션에서 병렬 생성**해 targeted 데이터셋을 만들고 재학습 |
-| **From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph** (AgentChord, RSS 2026, [arXiv:2605.11951](https://arxiv.org/abs/2605.11951)) | 작업을 **task graph** 로 두고 실행 전에 **예상 실패와 복구 분기**를 미리 붙여 즉시 대응 |
-| **ASPIRE: Agentic Skills Discovery for Robotics** (2026-06, [arXiv:2607.00272](https://arxiv.org/abs/2607.00272)) | 실행 트레이스에서 **실패를 진단 → 수정 → 검증**하고, 검증된 수정을 재사용 가능한 스킬로 축적 |
+| 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
+|---|---|---|
+| **Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference** (**CoRL 2025**, [arXiv:2509.01746](https://arxiv.org/abs/2509.01746)) | 관측된 실패와 유사한 조건을 시뮬레이션에서 **병렬 생성**해 targeted 데이터셋을 만들고 skill effect model 을 재학습했습니다. 계층적 tabletop 정리에서 **86 %**(원본 11 %), 미관측 7객체 **71 %**, 미관측 시점 **83~85 %** 를 보고합니다. | 실물 성공률은 **약 80 %** 에 머물고, 저자들은 **Sim2Real gap 보정은 다루지 않았다**고 명시합니다. Real2Sim 이 복잡한 형상·**변형체**에서 불완전하고, 시뮬 상태로 **물체 pose 만** 두어 마찰·질량중심을 제외했습니다. 본 과제는 변형체가 대상이므로 **물성을 상태에 포함**하고 그 재현오차를 KPI 1·2 로 검증합니다. |
+| **From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph** (AgentChord, **RSS 2026**, [arXiv:2605.11951](https://arxiv.org/abs/2605.11951)) | 작업을 task graph 로 두고 **예상 실패와 복구 분기를 실행 전에 붙여** 재계획 없이 대응합니다. 실물 6개 작업×20회 평균 **77.5 %**(베이스라인 59.2~72.5 %), 실행시간 92.2 s(베이스라인 107~143 s). 복구 데이터로 파인튜닝 시 실패 시나리오 **39/50**(베이스라인 26/50). | 그래프 구축 단계에서 **예상하지 못한 실패 모드가 남고**, 잘못된 노드로 복구할 수 있습니다. 교정 행동을 계획해도 **IK 가 불가능**한 경우(넘어진 물체 재파지)가 있고, 부정확한 마스크·노이즈 점군이 pose 추정을 흔듭니다. 예상 밖 실패가 남는다는 점이 Edge Case 탐색을 규칙만이 아니라 **RFM 취약조건 기반**으로 두는 근거입니다. |
+| **ASPIRE: Agentic Skills Discovery for Robotics** ([arXiv:2607.00272](https://arxiv.org/abs/2607.00272), 2026-06 프리프린트) | 실행 트레이스에서 **실패 진단 → 수정 → 검증 → 재사용 가능한 스킬로 축적**하는 순환을 돌립니다. LIBERO-Pro 매크로 평균 **72 %**, Robosuite 양팔 인계 20 %→**92 %**, 미관측 장기 과제 zero-shot **31 %**(기존 4 %), 실로봇 13/20→**19/20**. | 저자들은 **완전 자율 실세계 학습기가 아니라고** 밝힙니다. **frozen frontier LLM 에 의존**하며 작은 모델로는 검증되지 않았고, 사전 정의 API 밖 능력은 사람이 확장해야 합니다. 스킬 라이브러리의 **장기 메모리 관리가 미해결**이고 **연산 비용이 큽니다**. 본 과제가 자동 검수를 LLM 판단이 아니라 **물리 정합성과 규칙 기반**으로 두는 근거입니다. |
 
 **우리가 하는 일과의 관계** — 세 연구는 각각 「실패 조건 재현」, 「작업–실패–복구를 그래프로
 연결」, 「진단·수정·검증의 순환」을 다룹니다. 본 과제의
@@ -151,8 +151,11 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 이 흐름을 **제조 도메인과 RFM 평가에 맞춰 결합**한 것입니다.
 
 !!! note "인용 원칙"
-    위 수치(성공률 80 %, 복구 데이터 10배 등)는 **각 논문의 보고값**이며 본 과제의
-    목표치나 재현 결과가 아닙니다. 본 과제의 정량 목표는 「핵심 KPI」에 따로 있습니다.
+    위 수치(r > 0.9, 성공률 90 %·91.30 %, +37.9 %p, 시간당 10배 등)는 **각 논문의
+    특정 Task·장비·표본에서 나온 보고값**이며 본 과제의 목표치나 재현 결과가 아닙니다.
+    Real-to-Sim은 ICRA 2026, DreamGen은 CoRL 2025 게재 논문이고, SIM1·SimWeaver·Hi-WM·
+    EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 정량 목표는
+    대표 제조작업의 기준선과 통계설계를 확정한 뒤 별도 KPI로 관리합니다.
 
 ---
 
