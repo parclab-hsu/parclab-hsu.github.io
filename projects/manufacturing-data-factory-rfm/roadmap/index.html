@@ -729,6 +729,56 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
+        참고 연구 — 세 기술축이 서 있는 연구 흐름
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="참고 연구 — 세 기술축이 서 있는 연구 흐름">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-manufacturing-deformation-engine_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① Manufacturing Deformation Engine — 대표 작업의 물리 보정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-human-data-engine_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② Human Data Engine — 실패상태 복원과 복구 행동 증강
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-manufacturing-ontologyedge-case-intelligence-rfm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ Manufacturing Ontology·Edge Case Intelligence — RFM 취약조건 탐색
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         연차별 목표와 예상 산출물
       
     </span>
@@ -826,7 +876,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         연구개발비
@@ -953,7 +1003,97 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 </tbody>
 </table>
 <hr />
-<h2 id="_4">연차별 목표와 예상 산출물<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_4">참고 연구 — 세 기술축이 서 있는 연구 흐름<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>각 기술축이 <strong>최근 연구 흐름 위에 있음</strong>을 보이는 대표 연구입니다.
+<strong>본 과제에서 재현한 결과가 아니라 문헌으로 확인한 선행연구</strong>이며, 우리가 무엇을
+새로 만들 것인지는 각 세부 항목에 따로 적었습니다.</p>
+<h3 id="1-manufacturing-deformation-engine_1">① Manufacturing Deformation Engine — 대표 작업의 물리 보정<a class="headerlink" href="#1-manufacturing-deformation-engine_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>연구</th>
+<th>무엇을 보여주나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions</strong> (2025-11, <a href="https://arxiv.org/abs/2511.04665">arXiv:2511.04665</a>)</td>
+<td>실제 영상에서 연성 물체의 soft-body digital twin 을 만들고, <strong>시뮬레이션 rollout 이 실제 성능과 강하게 상관</strong>함을 보였습니다. 봉제인형 포장·로프 배선·T블록 밀기 대상</td>
+</tr>
+<tr>
+<td><strong>SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds</strong> (2026-04, <a href="https://arxiv.org/abs/2604.08544">arXiv:2604.08544</a>)</td>
+<td><strong>소량의 실제 시연</strong>으로 장면을 metric-consistent twin 으로 디지털화하고 탄성 모델링으로 <strong>변형 동역학을 보정</strong>한 뒤, 궤적 생성으로 합성 학습데이터를 확장</td>
+</tr>
+<tr>
+<td><strong>SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation</strong> (2026-06, <a href="https://arxiv.org/abs/2606.15338">arXiv:2606.15338</a>)</td>
+<td><strong>측정 기반 시뮬레이터</strong>로 학습한 정책이 실환경 파인튜닝 없이 실제 성공률 80 % 이상</td>
+</tr>
+</tbody>
+</table>
+<p><strong>우리가 하는 일과의 관계</strong> — 세 연구 모두 「소량의 실제 데이터로 가상환경의 물리를
+맞추고, 거기서 데이터를 늘린다」는 구조입니다. 본 과제는 이를 <strong>제조 대표 작업 1~2개</strong>에
+적용하고, 접촉력·잔류변형의 재현오차를 실측으로 검증하는 데 집중합니다.</p>
+<h3 id="2-human-data-engine_1">② Human Data Engine — 실패상태 복원과 복구 행동 증강<a class="headerlink" href="#2-human-data-engine_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>연구</th>
+<th>무엇을 보여주나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DreamGen: Unlocking Generalization in Robot Learning through Video World Models</strong> (2025-05, <a href="https://arxiv.org/abs/2505.12705">arXiv:2505.12705</a>)</td>
+<td><strong>단일 작업의 소량 원격조작 데이터</strong>와 비디오 월드모델로 새로운 로봇 궤적을 생성</td>
+</tr>
+<tr>
+<td><strong>Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training</strong> (2026-04, <a href="https://arxiv.org/abs/2604.21741">arXiv:2604.21741</a>)</td>
+<td>중간 상태를 캐시해 <strong>rollback 과 branching</strong> 을 지원 — <strong>하나의 실패 상태를 여러 교정 continuation 에 재사용</strong></td>
+</tr>
+<tr>
+<td><strong>EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration</strong> (2026-07, <a href="https://arxiv.org/abs/2607.19745">arXiv:2607.19745</a>)</td>
+<td>사람의 1인칭 실패·복구 영상을 로봇 복구 학습에 활용. <strong>로봇 원격조작 대비 시간당 유효 복구 데이터 10배 이상</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>우리가 하는 일과의 관계</strong> — Hi-WM 이 본 과제 학생 트랙의 <strong>직접적인 선행연구</strong>입니다.
+실패 직전 상태를 저장해 두고 되돌아가 여러 복구를 시도하는 구조가 같습니다.
+EgoRecovery 가 보고한 <strong>10배</strong> 차이는, 실물로 실패를 대량 재현하지 않기로 한 판단의
+근거이기도 합니다. 본 과제는 이를 <strong>제조 작업의 실패유형</strong>에 적용합니다.</p>
+<h3 id="3-manufacturing-ontologyedge-case-intelligence-rfm_1">③ Manufacturing Ontology·Edge Case Intelligence — RFM 취약조건 탐색<a class="headerlink" href="#3-manufacturing-ontologyedge-case-intelligence-rfm_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>연구</th>
+<th>무엇을 보여주나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference</strong> (CoRL 2025, <a href="https://arxiv.org/abs/2509.01746">arXiv:2509.01746</a>)</td>
+<td>관측된 실패와 <strong>유사한 조건을 시뮬레이션에서 병렬 생성</strong>해 targeted 데이터셋을 만들고 재학습</td>
+</tr>
+<tr>
+<td><strong>From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph</strong> (AgentChord, RSS 2026, <a href="https://arxiv.org/abs/2605.11951">arXiv:2605.11951</a>)</td>
+<td>작업을 <strong>task graph</strong> 로 두고 실행 전에 <strong>예상 실패와 복구 분기</strong>를 미리 붙여 즉시 대응</td>
+</tr>
+<tr>
+<td><strong>ASPIRE: Agentic Skills Discovery for Robotics</strong> (2026-06, <a href="https://arxiv.org/abs/2607.00272">arXiv:2607.00272</a>)</td>
+<td>실행 트레이스에서 <strong>실패를 진단 → 수정 → 검증</strong>하고, 검증된 수정을 재사용 가능한 스킬로 축적</td>
+</tr>
+</tbody>
+</table>
+<p><strong>우리가 하는 일과의 관계</strong> — 세 연구는 각각 「실패 조건 재현」, 「작업–실패–복구를 그래프로
+연결」, 「진단·수정·검증의 순환」을 다룹니다. 본 과제의
+<code>Asset → Process → Task → State → Event → Failure → Recovery</code> 구조와 RFM 취약조건 탐색은
+이 흐름을 <strong>제조 도메인과 RFM 평가에 맞춰 결합</strong>한 것입니다.</p>
+<div class="admonition note">
+<p class="admonition-title">인용 원칙</p>
+<p>위 수치(성공률 80 %, 복구 데이터 10배 등)는 <strong>각 논문의 보고값</strong>이며 본 과제의
+목표치나 재현 결과가 아닙니다. 본 과제의 정량 목표는 「핵심 KPI」에 따로 있습니다.</p>
+</div>
+<hr />
+<h2 id="_5">연차별 목표와 예상 산출물<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="1-9">1차년도 (9개월) — 대표 제조 작업 및 연계기준 확정<a class="headerlink" href="#1-9" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p><strong>목표</strong> — 무엇을 대상으로 삼을지 정하고, 실제와 가상을 무엇으로 비교할지 합의한다.</p>
@@ -1253,7 +1393,7 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 값이며, 범위가 조정되면 함께 조정합니다.</p>
 <hr />
 <hr />
-<h2 id="_5">연구개발비<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">연구개발비<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>전체 <strong>정부지원연구개발비의 5 %</strong> 수준으로 확정되었습니다. 차년도별 배분 비중은
 <strong><a href="../#_8">대표 페이지의 예산 요약</a></strong> 에 있습니다.</p>
 <hr />

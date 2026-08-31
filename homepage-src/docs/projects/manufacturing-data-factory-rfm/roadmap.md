@@ -96,6 +96,56 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 
 ---
 
+## 참고 연구 — 세 기술축이 서 있는 연구 흐름
+
+각 기술축이 **최근 연구 흐름 위에 있음**을 보이는 대표 연구입니다.
+**본 과제에서 재현한 결과가 아니라 문헌으로 확인한 선행연구**이며, 우리가 무엇을
+새로 만들 것인지는 각 세부 항목에 따로 적었습니다.
+
+### ① Manufacturing Deformation Engine — 대표 작업의 물리 보정
+
+| 연구 | 무엇을 보여주나 |
+|---|---|
+| **Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions** (2025-11, [arXiv:2511.04665](https://arxiv.org/abs/2511.04665)) | 실제 영상에서 연성 물체의 soft-body digital twin 을 만들고, **시뮬레이션 rollout 이 실제 성능과 강하게 상관**함을 보였습니다. 봉제인형 포장·로프 배선·T블록 밀기 대상 |
+| **SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds** (2026-04, [arXiv:2604.08544](https://arxiv.org/abs/2604.08544)) | **소량의 실제 시연**으로 장면을 metric-consistent twin 으로 디지털화하고 탄성 모델링으로 **변형 동역학을 보정**한 뒤, 궤적 생성으로 합성 학습데이터를 확장 |
+| **SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation** (2026-06, [arXiv:2606.15338](https://arxiv.org/abs/2606.15338)) | **측정 기반 시뮬레이터**로 학습한 정책이 실환경 파인튜닝 없이 실제 성공률 80 % 이상 |
+
+**우리가 하는 일과의 관계** — 세 연구 모두 「소량의 실제 데이터로 가상환경의 물리를
+맞추고, 거기서 데이터를 늘린다」는 구조입니다. 본 과제는 이를 **제조 대표 작업 1~2개**에
+적용하고, 접촉력·잔류변형의 재현오차를 실측으로 검증하는 데 집중합니다.
+
+### ② Human Data Engine — 실패상태 복원과 복구 행동 증강
+
+| 연구 | 무엇을 보여주나 |
+|---|---|
+| **DreamGen: Unlocking Generalization in Robot Learning through Video World Models** (2025-05, [arXiv:2505.12705](https://arxiv.org/abs/2505.12705)) | **단일 작업의 소량 원격조작 데이터**와 비디오 월드모델로 새로운 로봇 궤적을 생성 |
+| **Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training** (2026-04, [arXiv:2604.21741](https://arxiv.org/abs/2604.21741)) | 중간 상태를 캐시해 **rollback 과 branching** 을 지원 — **하나의 실패 상태를 여러 교정 continuation 에 재사용** |
+| **EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration** (2026-07, [arXiv:2607.19745](https://arxiv.org/abs/2607.19745)) | 사람의 1인칭 실패·복구 영상을 로봇 복구 학습에 활용. **로봇 원격조작 대비 시간당 유효 복구 데이터 10배 이상** |
+
+**우리가 하는 일과의 관계** — Hi-WM 이 본 과제 학생 트랙의 **직접적인 선행연구**입니다.
+실패 직전 상태를 저장해 두고 되돌아가 여러 복구를 시도하는 구조가 같습니다.
+EgoRecovery 가 보고한 **10배** 차이는, 실물로 실패를 대량 재현하지 않기로 한 판단의
+근거이기도 합니다. 본 과제는 이를 **제조 작업의 실패유형**에 적용합니다.
+
+### ③ Manufacturing Ontology·Edge Case Intelligence — RFM 취약조건 탐색
+
+| 연구 | 무엇을 보여주나 |
+|---|---|
+| **Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference** (CoRL 2025, [arXiv:2509.01746](https://arxiv.org/abs/2509.01746)) | 관측된 실패와 **유사한 조건을 시뮬레이션에서 병렬 생성**해 targeted 데이터셋을 만들고 재학습 |
+| **From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph** (AgentChord, RSS 2026, [arXiv:2605.11951](https://arxiv.org/abs/2605.11951)) | 작업을 **task graph** 로 두고 실행 전에 **예상 실패와 복구 분기**를 미리 붙여 즉시 대응 |
+| **ASPIRE: Agentic Skills Discovery for Robotics** (2026-06, [arXiv:2607.00272](https://arxiv.org/abs/2607.00272)) | 실행 트레이스에서 **실패를 진단 → 수정 → 검증**하고, 검증된 수정을 재사용 가능한 스킬로 축적 |
+
+**우리가 하는 일과의 관계** — 세 연구는 각각 「실패 조건 재현」, 「작업–실패–복구를 그래프로
+연결」, 「진단·수정·검증의 순환」을 다룹니다. 본 과제의
+`Asset → Process → Task → State → Event → Failure → Recovery` 구조와 RFM 취약조건 탐색은
+이 흐름을 **제조 도메인과 RFM 평가에 맞춰 결합**한 것입니다.
+
+!!! note "인용 원칙"
+    위 수치(성공률 80 %, 복구 데이터 10배 등)는 **각 논문의 보고값**이며 본 과제의
+    목표치나 재현 결과가 아닙니다. 본 과제의 정량 목표는 「핵심 KPI」에 따로 있습니다.
+
+---
+
 ## 연차별 목표와 예상 산출물
 
 ### 1차년도 (9개월) — 대표 제조 작업 및 연계기준 확정
