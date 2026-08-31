@@ -110,28 +110,32 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 
 ### ① 물리 보정 관련 연구
 
-| 연구 | 무엇을 보여주나 |
-|---|---|
-| **Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions** (**ICRA 2026**, [arXiv:2511.04665](https://arxiv.org/abs/2511.04665), 2025-11 공개) | 실제 영상에서 3D Gaussian Splatting 외관과 PhysTwin 기반 동역학을 식별해 soft-body twin 을 구성했습니다. 봉제인형 포장·로프 배선·T블록 밀기에서 시뮬레이션–실물 정책 성공률 상관이 모두 **Pearson r > 0.9**였습니다. |
-| **SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds** (2026-04, [arXiv:2604.08544](https://arxiv.org/abs/2604.08544)) | **소량의 실제 시연**으로 장면을 metric-consistent twin 으로 디지털화하고 탄성 모델링으로 **변형 동역학을 보정**한 뒤, 궤적 생성으로 합성 학습데이터를 확장 |
-| **SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation** (2026-06, [arXiv:2606.15338](https://arxiv.org/abs/2606.15338)) | **측정 기반 시뮬레이터**로 학습한 정책이 실환경 파인튜닝 없이 실제 성공률 80 % 이상 |
+| 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
+|---|---|---|
+| **Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions** (**ICRA 2026**, [arXiv:2511.04665](https://arxiv.org/abs/2511.04665), 2025-11 공개) | 실제 영상으로 3D Gaussian Splatting 외관과 PhysTwin 기반 spring–mass 동역학을 식별해 soft-body twin 을 구성했습니다. 3개 Task에서 ACT·Diffusion Policy·π0·SmolVLA의 시뮬레이션–실물 성공률 상관이 모두 **Pearson r > 0.9**였습니다. | 정책은 실물 데이터로만 학습했고 시뮬레이터는 **평가 프록시**로 사용했습니다. Task별 평가 초기조건도 16~27개로 작아 신뢰구간이 넓습니다. 본 과제는 **실물–가상 정책순위 상관과 신뢰구간을 먼저 검증**하는 근거로 사용합니다. |
+| **SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds** ([arXiv:2604.08544](https://arxiv.org/abs/2604.08544), 2026-04 프리프린트) | 제한된 시연으로 metric-consistent twin 을 만들고 탄성 동역학을 보정한 뒤 diffusion 궤적 생성·품질 필터로 합성데이터를 확장했습니다. 논문은 순수 합성 정책의 **1:15 실데이터 등가비**, 실물 **zero-shot 성공률 90 %**, 미관측 의류 일반화 **20 %→70 %**를 보고합니다. | 소재별 보정에 **전문가 수동 튜닝**이 필요하며 의류 중심 결과입니다. 수치를 전용하지 않고 Material Profile 보정·비용대비 성능·미관측 소재 검증의 실험설계 근거로 사용합니다. |
+| **SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation** ([arXiv:2606.15338](https://arxiv.org/abs/2606.15338), 2026-06 프리프린트) | 면밀도·굽힘강성·신장·마찰 같은 **측정 가능한 물성값**을 소재군 라이브러리로 관리하고 Task당 합성 시연 200개로 학습했습니다. 5개 연성작업×23회에서 평균 **91.30 %**(Wilson 95 % CI **84.7–95.2 %**)를 보고했으며, 광학 증강 제거 시 5개 Task가 모두 0 %였습니다. | 무보정이 아니라 **소재군 측정값을 정하고 Asset을 해당 class에 결합**하는 구조입니다. 실데이터와의 엄격한 정면 비교는 silk grasping 중심입니다. Material Profile 재사용·ISP 광학 증강·Task별 신뢰구간을 Gate로 반영합니다. |
 
-**우리가 하는 일과의 관계** — 세 연구 모두 「소량의 실제 데이터로 가상환경의 물리를
-맞추고, 거기서 데이터를 늘린다」는 구조입니다. 본 과제는 이를 **제조 대표 작업 1~2개**에
-적용하고, 접촉력·잔류변형의 재현오차를 실측으로 검증하는 데 집중합니다.
+**우리가 하는 일과의 관계** — 세 연구는 각각 **① 실물정책 평가 프록시의 타당성 검증
+② 실측 보정 후 합성데이터 확장 ③ 측정 가능한 물성 프로파일의 재사용**을 보여줍니다.
+본 과제는 이를 **제조 대표 작업 1~2개**에 적용하되, 먼저 실물–가상 정책순위 상관을 확인하고,
+접촉력·변위·잔류변형의 재현오차와 불확실성을 통과한 Episode만 학습데이터로 편입합니다.
+Zero-shot 성능과 보정·Post-training 성능은 서로 다른 평가군으로 분리합니다.
 
 ### ② 실패상태 복원·복구 증강 관련 연구
 
-| 연구 | 무엇을 보여주나 |
-|---|---|
-| **DreamGen: Unlocking Generalization in Robot Learning through Video World Models** (2025-05, [arXiv:2505.12705](https://arxiv.org/abs/2505.12705)) | **단일 작업의 소량 원격조작 데이터**와 비디오 월드모델로 새로운 로봇 궤적을 생성 |
-| **Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training** (2026-04, [arXiv:2604.21741](https://arxiv.org/abs/2604.21741)) | 중간 상태를 캐시해 **rollback 과 branching** 을 지원 — **하나의 실패 상태를 여러 교정 continuation 에 재사용** |
-| **EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration** (2026-07, [arXiv:2607.19745](https://arxiv.org/abs/2607.19745)) | 사람의 1인칭 실패·복구 영상을 로봇 복구 학습에 활용. **로봇 원격조작 대비 시간당 유효 복구 데이터 10배 이상** |
+| 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
+|---|---|---|
+| **DreamGen: Unlocking Generalization in Robot Learning through Video World Models** (**CoRL 2025**, [PMLR](https://proceedings.mlr.press/v305/jang25a.html), [arXiv:2505.12705](https://arxiv.org/abs/2505.12705)) | 단일 pick-and-place 작업·환경에서 수집한 **2,885개** 원격조작 trajectory로 비디오 월드모델을 로봇 embodiment에 적응시키고, 생성 영상에서 latent action 또는 inverse-dynamics model로 pseudo-action을 복원했습니다. 신규 행동 평균 성공률은 기준선 **11.2 %→43.2 %**, 완전 미관측 환경은 **28.5 %**였습니다. | “소량 데이터”보다는 **단일 Task의 상당량 seed data를 행동·환경 다양성으로 확장**한 연구이며 실패·복구 전용 방법은 아닙니다. 정상/경계 행동 생성과 pseudo-action 품질검증 근거로 한정합니다. |
+| **Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training** ([arXiv:2604.21741](https://arxiv.org/abs/2604.21741), 2026-04 프리프린트) | action-conditioned world model 안에서 정책을 실행하고, 실패 직전 상태를 cache해 **rollback·branching**한 뒤 사람이 짧은 교정행동을 여러 갈래로 입력합니다. 3개 실물 Task·2개 정책에서 base 대비 평균 **+37.9 %p**, 사람 교정 없는 WM closed-loop 대비 **+19.0 %p**, 실물 성능과의 상관 **r=0.953**을 보고했습니다. | World model이 **실패근처 상태와 행동에도 정합**해야 하고 교정 입력을 정책과 같은 연속 action space로 변환해야 합니다. 상태저장·재생 오차와 실물 상관 Gate를 통과한 Scenario에만 적용합니다. |
+| **EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration** ([arXiv:2607.19745](https://arxiv.org/abs/2607.19745), 2026-07 프리프린트) | 1인칭 인간 복구데이터를 trajectory 자체가 아닌 **교정 시점·크기의 compact corrective intent**로 정렬하고 recovery gate가 필요한 상태에서만 활성화합니다. 시간당 수용 데이터는 인간 **516.5건**, 로봇 **49.0건**이었고, 50 robot success+50 robot recovery+300 human recovery 조건에서 초기 성공률 **80.0 %**, 복구 성공률 **85.0 %**였습니다. | 인간 복구데이터만 쓴 경우 복구 성공률은 **8.8 %**였고 embodiment별 접촉·재파지에는 로봇 복구데이터가 필요했습니다. 같은 Task family의 관련 실패까지만 검증됐으므로 **소량 실로봇 grounding set과 전문가 안전판정**을 반드시 결합합니다. |
 
-**우리가 하는 일과의 관계** — Hi-WM 이 본 과제 학생 트랙의 **직접적인 선행연구**입니다.
-실패 직전 상태를 저장해 두고 되돌아가 여러 복구를 시도하는 구조가 같습니다.
-EgoRecovery 가 보고한 **10배** 차이는, 실물로 실패를 대량 재현하지 않기로 한 판단의
-근거이기도 합니다. 본 과제는 이를 **제조 작업의 실패유형**에 적용합니다.
+**우리가 하는 일과의 관계** — 세 연구의 역할은 서로 다릅니다. DreamGen은 **행동·환경 확장**,
+Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery는 **사람 복구데이터의 빠른
+수집과 로봇-grounded 복구학습** 근거입니다. 본 과제의 Human Data Engine은 이를 합쳐
+`실패상태 cache → 다중 교정 branch → 사람 복구 intent → 소량 실로봇 grounding → 실물 재검증`
+파이프라인으로 정의합니다. 학생 데이터는 실로봇 복구데이터를 대체하지 않으며,
+유급 참여·안전 Protocol·전문가 최종판정을 전제로 합니다.
 
 ### ③ 실패 조건 탐색·재현 관련 연구
 
