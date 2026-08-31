@@ -39,6 +39,18 @@ flowchart TB
 
 ---
 
+## 전체 아키텍처 — Work Package 와 데이터 흐름
+
+<figure markdown>
+  ![한성대학교 제조 Physical AI Data Factory 아키텍처 — Manufacturing Deformation Engine, Human Data Engine, Manufacturing Ontology·Edge Case Intelligence 와 Quality Gate, Versioned Physical AI Episode Factory, HSU Physical AI Shared Testbed](../../assets/manufacturing-rfm-system-architecture.svg){ loading=lazy }
+  <figcaption markdown>글자가 작으면 [원본 SVG 열기](../../assets/manufacturing-rfm-system-architecture.svg)</figcaption>
+</figure>
+
+대표 페이지의 폐루프 도식이 데이터가 도는 경로를 보여준다면, 이 도식은 **Work Package
+HSU-1~7 과 Versioned Episode Factory·HSU-PAC 이 그 경로를 어떻게 떠받치는지**를 보여줍니다.
+
+---
+
 ## 핵심 기술: OmniLRS에서 Manufacturing Deformation Engine으로
 
 [OmniLRS](https://github.com/OmniLRS/OmniLRS)는 NVIDIA Isaac Sim 기반의 오픈소스 달 탐사
@@ -172,6 +184,96 @@ flowchart TB
     조건이 갖춰져야 파지 실패·미끄럼·변형 같은 사건이 데이터로 남고, 그래야 Edge Case Extractor 가
     걸러낼 대상이 생기며, 학생 Demonstration 의 복구 행동에 재현할 상황이 주어지고, Sim-to-Real Gap
     분석이 형상 오차를 넘어 물리 오차까지 다룰 수 있습니다. 세 성과가 서로를 필요로 하는 구조입니다.
+
+---
+
+## Work Package 체계와 산출물
+
+대표 페이지가 세 핵심기술과 폐루프를 다룬다면, 여기서는 그것을 수행 단위로 나눈
+**Work Package HSU-1~7** 과 각 단위의 산출물을 정리합니다.
+
+한성대학교는 전체 컨소시엄에서 제조환경 Digital Twin을 데이터와 RFM, 실제 Robot HW로 연결하는
+**Ontology–Simulation–Data–Sim-to-Real 기술 인터페이스**를 담당합니다.
+
+| Work Package | 한성대학교 주도 업무 | 주요 산출물 |
+|---|---|---|
+| HSU-1. Use Case·Interface 설계 | 제조 Task·Process·Failure Case와 Robot·Sensor 요구조건 정의 | Use Case 명세, 공통 Interface·Dataset Schema |
+| **HSU-2. Deformation Engine** | **[대표 성과]** 물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정, 실계측 기반 검증 | **Manufacturing Deformation Engine**, Material Library, Calibration Tool, 검증 리포트 |
+| HSU-3. 제조 로봇 시뮬레이션 | Isaac Sim·ROS 2 기반 Robot·Sensor·Task·Scenario 구성 | Simulation Package, Scenario Library |
+| HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, **희소조합을 생성 조건으로 변환(Cosmos 조준)**, 학생 1차 검수 체계 운영 | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor, **생성 조건 명세** |
+| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim Episode 의 Scene–Scenario 정합**, 자동 Annotation, **LeRobotDataset v3 정규화**, **Physical AI MD 과정** 기반 Demonstration·Edge Case 수집 운영(교육 30명·5개 조 / 유급 생산 6~9명·3개 조) | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus, MD 교보재 |
+| HSU-6. RFM 연계 | RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의, **LeRobotDataset 확장 필드 규약 정의** | RFM Adapter, Benchmark·Evaluation Protocol, **Dataset 규약서** |
+| HSU-7. 공동 Testbed·Physical Validation | HSU-PAC 참여기업 공동활용, 실제 Robot HW 적용, Domain Gap 분석 | 사전 통합환경, Sim-to-Real 검증결과, Feedback Data |
+
+### 확정 4대 역할과 Work Package 의 대응
+
+앞서 준비한 Work Package(HSU-1~7)는 폐기하지 않고 확정 역할 아래로 재배치했습니다.
+아래 세부 표는 그 상세이며, **읽는 순서는 확정 역할이 먼저입니다.**
+
+| 확정 역할 | 대응하는 Work Package |
+|---|---|
+| ① Real-to-Sim-to-Real 고도화 | **HSU-2 Deformation Engine**, HSU-3 제조 로봇 시뮬레이션, HSU-7 Sim-to-Real 검증 |
+| ② Zero-shot Transfer 도메인 적응 | HSU-5 학습데이터 생성(Domain Randomization·Scene–Scenario 정합), HSU-7 Domain Gap 분석 |
+| ③ 엣지 케이스 시뮬레이션 | **HSU-4 Ontology·Edge Case**, HSU-3 Scenario Library |
+| ④ 학술 연구·기술 자문 | HSU-1 Use Case·Interface 설계, HSU-6 RFM 연계·평가기준 |
+
+### 제조 Task·Scenario Library
+
+초기 대상은 컨소시엄 제조 Use Case와 로봇 구성이 확정된 뒤 기준선으로 동결합니다.
+
+- **이송·물류** — AMR 이동, 적재·하역, 도킹, 통로 폐색과 미끄럼 조건
+- **조작** — Pick & Place, Bin Picking, 파지 실패, 대상물 변형·미끄럼·낙하
+- **조립** — 삽입, 체결, 정렬, 공차와 접촉력 변화, 치구 위치 편차
+- **검사** — Camera·Depth·LiDAR·F/T 기반 외관·치수·접촉 품질검사
+- **예외·복구** — 설비 정지, 센서 열화, 부품 누락, 충돌 위험, 작업 재계획
+
+각 Task는 **정상–경계–실패–복구** 상태를 포함하고, 환경·설비·부품·로봇·센서 조건을
+독립적으로 변화시킬 수 있도록 구성합니다.
+
+---
+
+### 기대 산출물
+
+#### 대표 산출물 — Manufacturing Deformation Engine
+
+| 구성물 | 내용 |
+|---|---|
+| Engine 본체 | Contact Patch Estimator, Material Response Model, State Update, Data Labeler — Isaac Sim 연동 모듈 |
+| Material Library | 소재군별 마찰·강성·감쇠·복원·변형/파손 임계값과 불확실성 범위 |
+| Calibration Tool | 실계측 데이터로 파라미터를 식별·보정하는 도구와 절차서 |
+| 검증 리포트 | v1~v3 각 단계의 시험 조건, 실측 대조 결과, 오차와 적용 한계 |
+| 공개 성과 | 논문·특허와 Engine 규격 문서 — 컨소시엄 참여기관이 재현할 수 있는 수준의 기술문서 |
+
+#### Human Data Engine 산출물
+
+| 구성물 | 내용 |
+|---|---|
+| Demonstration Corpus | 성공·경계·실패회피·복구 행동, 작업자·전략 다양성이 확보된 Episode 집합 |
+| Edge Case 검수 결과 | 재생 확인·태깅·병합·기각 이력과 학생 신고(flag) 기반 신규 후보 |
+| 복구 시연 Set | 확정된 실패 상황별 사람의 복구 행동 기록 |
+| 운영 Protocol | Task·안전·품질 SOP, 6인 역할 순환 체계, 교육·검수 절차서 |
+| 인력 성과 | 6개 역할을 모두 경험한 Physical AI 실무인력 |
+| **MD 과정 교보재** | 모듈별 교재·실습 Protocol, QC 반려 사례집, 모델 실패 사례연구 — 과제 종료 후에도 운영 가능 |
+
+#### 그 밖의 산출물
+
+- 제조환경 **Simulation-ready Digital Twin Asset Package**와 검수 기준
+- 물성·접촉·변형 파라미터 **Material & Physics Schema**
+- 제조 자산·공정·상태·실패·복구를 연결하는 **Manufacturing Ontology·Knowledge Graph**
+- 규칙·희소성·불확실성·Domain Gap 기반 **Edge Case Extractor와 Scenario Package**
+- Isaac Sim·ROS 2 기반 **Robot·Sensor·Task Scenario Library**
+- 정상·실패·복구·Edge Case를 포함한 **Synthetic·Real·Teleoperation RFM Dataset**
+- RFM·Robot HW 연계를 위한 **Model·Control·Validation Interface**
+- 참여기업 Asset·Model·Robot의 **HSU-PAC 공동 사전검증 운영체계**
+- 실물 검증 기반 **Domain Gap Report와 Calibration Data**
+- 반복적인 데이터 생성–학습–검증을 위한 **Validation Feedback Pipeline**
+- Ontology 희소조합을 생성 조건으로 바꾸는 **Cosmos 조준 규약과 생성 조건 명세**
+- 접촉력·변형량·물성·Edge Case ID 를 담는 **LeRobotDataset 확장 필드 규약서**
+- Cosmos 생성물과 Isaac Sim Episode 를 Asset·Scenario·Task·Material 버전으로 잇는 **Scene–Scenario 정합 절차**
+- 지표 정의·산정식·측정절차를 담은 **정량 KPI 정의서와 기준선(Baseline) Report**
+- 기간·범위·기술 리스크의 **리스크 관리대장과 완화 이력** — 현황은 [기술 상세](technical.md) 참조
+
+---
 
 ---
 
@@ -372,7 +474,11 @@ RFM 기관이 매번 변환기를 만들어야 합니다. **모든 출처를 LeR
 
 ---
 
-## 학생 주도 Human Data Engine — Demonstration과 Edge Case 수집
+## Human Data Engine — 실패상태 복원과 복구 행동 증강
+
+핵심 기능은 **실패상태 저장·복원 → 복구행동 분기 → 자동검수 → 실로봇 Grounding** 입니다.
+아래 Demonstration·Edge Case 수집 체계는 이 기능을 수행하는 **인력·교육 경로**이며,
+기술축의 명칭은 **Human Data Engine** 으로 통일합니다.
 
 HSU-PAC의 **30명·5개 조 실습체계**로 교육을 운영하고, 그 가운데 **MD-3 이수자 중 선발한 유급 참여자
 6~9명(3개 조)이 과제 Dataset 생산**을 담당합니다. 학생이 실제 또는 시뮬레이션 Robot을 원격 조작하고,
@@ -996,7 +1102,7 @@ flowchart LR
     한성대 차년도 몫은 1.3~2.0억이라 이 기준(5억)에 미치지 않습니다. 다만 연구책임자가 수행하는 다른 산업부 과제와 합산되므로 협약 시 확인이 필요하며,
     협약 형태와 배분이 확정돼야 판단되므로, 인건비에 조건부로 반영해 두었습니다.
 
-    학생 참여는 [학생 주도 Human Data Engine](#human-data-engine-demonstration-edge-case) 절의 교육·안전·품질
+    학생 참여는 [Human Data Engine](#human-data-engine) 절의 교육·안전·품질
     Protocol을 따르며, 학생인건비는 기관 지급기준에 따라 계상합니다.
 
 ---
