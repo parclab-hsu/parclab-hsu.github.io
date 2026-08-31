@@ -191,3 +191,38 @@
   border: 1px solid var(--md-default-fg-color--lightest);
   margin: 2rem 0;
 }
+
+/* ---- Korean prose and responsive technical concept diagrams ---- */
+.md-typeset p,
+.md-typeset li,
+.md-typeset blockquote {
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.concept-diagram .mermaid {
+  text-align: center;
+}
+
+.concept-diagram .mermaid svg {
+  height: auto;
+  max-width: 100%;
+}
+
+.concept-diagram--mobile {
+  display: none;
+}
+
+@media screen and (max-width: 47.99rem) {
+  .concept-diagram--desktop {
+    display: none;
+  }
+
+  .concept-diagram--mobile {
+    display: block;
+  }
+
+  .concept-diagram--mobile .mermaid {
+    margin-inline: -.15rem;
+  }
+}

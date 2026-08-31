@@ -788,6 +788,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심기술 × 차년도 — 세 축이 4년에 걸쳐 어떻게 개발되는가
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -876,7 +887,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         성과지표 (4년 누계)
@@ -977,14 +988,41 @@
 </blockquote>
 <p>세 기술축을 각각 범용 플랫폼으로 개발하지 않습니다. <strong>대표 제조 작업 1~2개</strong>를 정하고,
 그 작업 하나를 다음 순환으로 끝까지 관통시킵니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>실제 데이터 수집
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   → 가상환경 물리 보정
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   → RFM 취약조건과 실패·복구 데이터 생성
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   → 자동 검수
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   → RFM 재학습
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   → 실제 로봇 재검증
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   └──────────────────────↺
-</code></pre></div>
+<div class="concept-diagram concept-diagram--desktop">
+<pre class="mermaid"><code>%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 18, "rankSpacing": 24, "diagramPadding": 4}}}%%
+flowchart TB
+    REAL["REAL | 실제 제조현장&lt;br/&gt;대표 작업 1~2개&lt;br/&gt;정상 · 실패 · 복구 Log"]
+    GEO["DIGITAL | Geometry Twin&lt;br/&gt;Simulation-ready 3D Asset&lt;br/&gt;좌표 · 의미 정합"]
+    WFM["생성 수단&lt;br/&gt;Cosmos / 동급 WFM&lt;br/&gt;후보 장면 · 미래상태"]
+    CORE["한성대학교 | Failure-to-Data Factory&lt;br/&gt;① Deformation Engine · 물성/변형&lt;br/&gt;② Human Data Engine · 실패/복구&lt;br/&gt;③ Ontology·Edge Case · 취약조건&lt;br/&gt;Quality Gate · 물리/재현성/안전"]
+    RFM["RFM | 학습 · 평가&lt;br/&gt;Zero-shot · Post-training"]
+    TEST["PHYSICAL | 실물검증&lt;br/&gt;HIL · 수요기업&lt;br/&gt;공동 Testbed · Gap 환류"]
+    OUTPUT["공통 성과&lt;br/&gt;Dataset · Benchmark&lt;br/&gt;논문 · 특허 · 표준"]
+
+    REAL --&gt; GEO --&gt; CORE --&gt; RFM --&gt; TEST
+    GEO -.-&gt; WFM -.-&gt; CORE
+    CORE --&gt; OUTPUT
+    TEST --&gt; OUTPUT
+    TEST -.-&gt; REAL</code></pre>
+</div>
+<div class="concept-diagram concept-diagram--mobile">
+<pre class="mermaid"><code>%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 12, "rankSpacing": 20, "diagramPadding": 2}}}%%
+flowchart TB
+    REAL["REAL | 제조현장&lt;br/&gt;대표 작업 · 실패 Log"]
+    GEO["DIGITAL | Geometry Twin&lt;br/&gt;3D Asset · 의미 정합"]
+    CORE["한성대 | 실패 데이터팩토리&lt;br/&gt;① Deformation · 물성/변형&lt;br/&gt;② Human Data · 실패/복구&lt;br/&gt;③ Ontology · 취약조건&lt;br/&gt;Quality Gate · 자동검수&lt;br/&gt;WFM은 후보 생성에 활용"]
+    RFM["RFM | 학습 · 평가"]
+    TEST["PHYSICAL | 실물검증&lt;br/&gt;HIL · Testbed · Gap 환류"]
+    OUTPUT["성과 | Dataset · Benchmark · 표준"]
+
+    REAL --&gt; GEO --&gt; CORE --&gt; RFM --&gt; TEST
+    CORE --&gt; OUTPUT
+    TEST --&gt; OUTPUT
+    TEST -.-&gt; REAL</code></pre>
+</div>
+<p><strong>차별화 포인트는 생성 자체가 아니라 폐루프입니다.</strong> 물리·재현성·안전 Gate를 통과한
+Episode만 RFM에 공급하고, 실물검증에서 확인된 Domain Gap을 다시 현장·Twin·Scenario에
+반영합니다.</p>
 <div class="admonition note">
 <p class="admonition-title">왜 범위를 좁히는가</p>
 <p>예산은 정부지원연구개발비의 <strong>5 % 수준</strong>이고 기간은 43개월입니다. 이 규모로 모든
@@ -1168,6 +1206,53 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 </div>
 <hr />
 <h2 id="_5">연차별 목표와 예상 산출물<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="4">핵심기술 × 차년도 — 세 축이 4년에 걸쳐 어떻게 개발되는가<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>핵심기술</th>
+<th>1차 (9개월)</th>
+<th>2차 (10개월)</th>
+<th>3차 (12개월)</th>
+<th>4차 (12개월)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① Manufacturing Deformation Engine</strong><br><small>대표 작업의 물리 보정</small></td>
+<td>실제–가상 비교 평가절차</td>
+<td><strong>물리 가상환경 구축</strong> · 변형·물성 보정 기술 v1 · 실측 물성값</td>
+<td>실제–가상 성능차이·미학습조건 평가</td>
+<td>RFM 재학습·<strong>실물 로봇 재검증</strong></td>
+</tr>
+<tr>
+<td><strong>② Human Data Engine</strong><br><small>실패상태 복원과 복구 증강</small></td>
+<td>수집 대상 실패유형 선정</td>
+<td><strong>시연·실패·복구 데이터 수집환경</strong></td>
+<td>생성 데이터 자동 검수 · 데이터셋 용도별 공개</td>
+<td><strong>실패상태 복원 및 복구 행동 증강</strong></td>
+</tr>
+<tr>
+<td><strong>③ Ontology·Edge Case Intelligence</strong><br><small>RFM 취약조건 탐색</small></td>
+<td><strong>작업–상태–실패–복구 관계 구조 v1</strong> · 데이터 연계규격</td>
+<td>실패 가능조건 추출기 v1</td>
+<td><strong>RFM 취약조건 및 엣지 케이스 생성기</strong></td>
+<td>실제 실패의 가상환경 재현</td>
+</tr>
+<tr>
+<td><strong>공통 · ④ 학술·자문</strong></td>
+<td>대표 작업 1~2개 확정</td>
+<td>—</td>
+<td>RFM 연계도구·평가기준</td>
+<td>데이터·평가절차 표준화 · 통합 실증</td>
+</tr>
+</tbody>
+</table>
+<p><small>굵게 표시한 것이 그 축·그 해의 대표 산출물입니다.
+①은 물리 정합, ②는 데이터 생산, ③은 무엇을 만들지 결정하는 조준을 맡습니다.
+1차년도에 ③이 관계 구조를 세워야 2차년도부터 ②가 무엇을 수집할지 정해지고,
+①이 물리를 맞춰야 3차년도 생성 데이터가 검증 대상이 됩니다.</small></p>
+<hr />
 <h3 id="_6">한눈에 보기 — 연차별 개발목표·연구내용·산출물<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1216,20 +1301,25 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <thead>
 <tr>
 <th>예상 산출물</th>
+<th style="text-align: center;">핵심기술</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>대표 제조 작업 1~2개와 실패유형 선정</strong></td>
+<td style="text-align: center;">공통</td>
 </tr>
 <tr>
 <td>실환경·가상환경·RFM 데이터 연계규격</td>
+<td style="text-align: center;">③</td>
 </tr>
 <tr>
 <td>작업·상태·실패·복구 관계 구조 v1</td>
+<td style="text-align: center;">③</td>
 </tr>
 <tr>
 <td><strong>실제–가상 비교 평가절차</strong></td>
+<td style="text-align: center;">①</td>
 </tr>
 </tbody>
 </table>
@@ -1251,23 +1341,29 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <thead>
 <tr>
 <th>예상 산출물</th>
+<th style="text-align: center;">핵심기술</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>대표 작업 물리 가상환경 구축</td>
+<td style="text-align: center;">①</td>
 </tr>
 <tr>
 <td><strong>제조 변형·물성 보정 기술 v1</strong></td>
+<td style="text-align: center;">①</td>
 </tr>
 <tr>
 <td>대표 소재의 실측 물성값</td>
+<td style="text-align: center;">①</td>
 </tr>
 <tr>
 <td><strong>시연·실패·복구 데이터 수집환경</strong></td>
+<td style="text-align: center;">②</td>
 </tr>
 <tr>
 <td>실패 가능조건 추출기 v1</td>
+<td style="text-align: center;">③</td>
 </tr>
 </tbody>
 </table>
@@ -1283,23 +1379,29 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <thead>
 <tr>
 <th>예상 산출물</th>
+<th style="text-align: center;">핵심기술</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>정상·실패·복구·가상 생성 데이터셋 1차 공개</strong></td>
+<td style="text-align: center;">②③</td>
 </tr>
 <tr>
 <td><strong>RFM 취약조건 및 엣지 케이스 생성기</strong></td>
+<td style="text-align: center;">③</td>
 </tr>
 <tr>
 <td>생성 데이터 자동 검수 기능</td>
+<td style="text-align: center;">②</td>
 </tr>
 <tr>
 <td>RFM 연계도구 및 평가기준</td>
+<td style="text-align: center;">공통</td>
 </tr>
 <tr>
 <td>실제–가상 성능차이 및 미학습조건 평가</td>
+<td style="text-align: center;">①</td>
 </tr>
 </tbody>
 </table>
@@ -1321,23 +1423,29 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <thead>
 <tr>
 <th>예상 산출물</th>
+<th style="text-align: center;">핵심기술</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>실제 실패의 가상환경 재현</strong></td>
+<td style="text-align: center;">③</td>
 </tr>
 <tr>
 <td><strong>실패상태 복원 및 복구 행동 증강</strong></td>
+<td style="text-align: center;">②</td>
 </tr>
 <tr>
 <td><strong>RFM 재학습·실제 로봇 재검증</strong></td>
+<td style="text-align: center;">①③</td>
 </tr>
 <tr>
 <td>데이터·평가절차 표준화</td>
+<td style="text-align: center;">공통</td>
 </tr>
 <tr>
 <td>통합 실증 및 활용 가이드</td>
+<td style="text-align: center;">공통</td>
 </tr>
 </tbody>
 </table>
@@ -1441,7 +1549,7 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 </tbody>
 </table>
 <hr />
-<h2 id="4">성과지표 (4년 누계)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h2 id="4_1">성과지표 (4년 누계)<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>

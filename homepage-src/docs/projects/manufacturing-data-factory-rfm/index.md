@@ -22,6 +22,54 @@ noindex: true
 > **실측 보정된 Physics Twin** 으로 고도화하고, **실패·복구가 포함된 RFM 학습데이터와 검증
 > 피드백으로 순환**시킵니다.
 
+## 한 장으로 보는 전체 과제 컨셉
+
+<div class="concept-diagram concept-diagram--desktop" markdown>
+
+```mermaid
+%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 18, "rankSpacing": 24, "diagramPadding": 4}}}%%
+flowchart TB
+    REAL["REAL | 실제 제조현장<br/>대표 작업 1~2개<br/>정상 · 실패 · 복구 Log"]
+    GEO["DIGITAL | Geometry Twin<br/>Simulation-ready 3D Asset<br/>좌표 · 의미 정합"]
+    WFM["생성 수단<br/>Cosmos / 동급 WFM<br/>후보 장면 · 미래상태"]
+    CORE["한성대학교 | Failure-to-Data Factory<br/>① Deformation Engine · 물성/변형<br/>② Human Data Engine · 실패/복구<br/>③ Ontology·Edge Case · 취약조건<br/>Quality Gate · 물리/재현성/안전"]
+    RFM["RFM | 학습 · 평가<br/>Zero-shot · Post-training"]
+    TEST["PHYSICAL | 실물검증<br/>HIL · 수요기업<br/>공동 Testbed · Gap 환류"]
+    OUTPUT["공통 성과<br/>Dataset · Benchmark<br/>논문 · 특허 · 표준"]
+
+    REAL --> GEO --> CORE --> RFM --> TEST
+    GEO -.-> WFM -.-> CORE
+    CORE --> OUTPUT
+    TEST --> OUTPUT
+    TEST -.-> REAL
+```
+
+</div>
+
+<div class="concept-diagram concept-diagram--mobile" markdown>
+
+```mermaid
+%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 12, "rankSpacing": 20, "diagramPadding": 2}}}%%
+flowchart TB
+    REAL["REAL | 제조현장<br/>대표 작업 · 실패 Log"]
+    GEO["DIGITAL | Geometry Twin<br/>3D Asset · 의미 정합"]
+    CORE["한성대 | 실패 데이터팩토리<br/>① Deformation · 물성/변형<br/>② Human Data · 실패/복구<br/>③ Ontology · 취약조건<br/>Quality Gate · 자동검수<br/>WFM은 후보 생성에 활용"]
+    RFM["RFM | 학습 · 평가"]
+    TEST["PHYSICAL | 실물검증<br/>HIL · Testbed · Gap 환류"]
+    OUTPUT["성과 | Dataset · Benchmark · 표준"]
+
+    REAL --> GEO --> CORE --> RFM --> TEST
+    CORE --> OUTPUT
+    TEST --> OUTPUT
+    TEST -.-> REAL
+```
+
+</div>
+
+**차별화 포인트는 생성 자체가 아니라 폐루프입니다.** 실제 실패를 가상에서 재현하고,
+물리·재현성·안전 Gate를 통과한 Episode만 RFM에 공급한 뒤, 실물검증에서 확인된
+Domain Gap을 다시 현장·Twin·Scenario에 반영합니다.
+
 !!! success "한성대학교의 대표 성과 — 무엇으로 평가받을 것인가"
     본 과제에서 한성대학교가 **주도 개발하는 성과**는 다음 세 가지이며, 우선순위가 있습니다.
     성과 귀속과 공개 범위는 협약으로 확정하며 원칙은 [기술 상세](technical.md)에 있습니다.

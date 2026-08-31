@@ -668,6 +668,17 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
+        한 장으로 보는 전체 과제 컨셉
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         과제 개요와 공고 정합성
       
     </span>
@@ -677,7 +688,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         대학 참여기관으로서의 적합성
@@ -716,7 +727,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         확정 역할과 준비 내용의 대응
@@ -727,7 +738,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         준비 내용에서 위상이 바뀐 항목
@@ -755,7 +766,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         한성대학교가 기여하는 핵심 가치
@@ -782,7 +793,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         단계별 추진안
@@ -794,7 +805,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         차년도 매핑과 마일스톤
@@ -822,7 +833,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         연차별 개발 산출물
@@ -860,7 +871,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         예산 요약
@@ -872,7 +883,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         차년도별 배분
@@ -894,7 +905,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         확정 이전 준비안 (참고)
@@ -910,7 +921,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         기대 산출물
@@ -944,7 +955,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         그 밖의 산출물
@@ -960,7 +971,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         더 읽을 것
@@ -1006,6 +1017,42 @@ RFM 연계 및 실물 검증을 수행합니다. HSU-PAC 실습실은 참여기�
 <strong>실측 보정된 Physics Twin</strong> 으로 고도화하고, <strong>실패·복구가 포함된 RFM 학습데이터와 검증
 피드백으로 순환</strong>시킵니다.</p>
 </blockquote>
+<h2 id="_1">한 장으로 보는 전체 과제 컨셉<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="concept-diagram concept-diagram--desktop">
+<pre class="mermaid"><code>%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 18, "rankSpacing": 24, "diagramPadding": 4}}}%%
+flowchart TB
+    REAL["REAL | 실제 제조현장&lt;br/&gt;대표 작업 1~2개&lt;br/&gt;정상 · 실패 · 복구 Log"]
+    GEO["DIGITAL | Geometry Twin&lt;br/&gt;Simulation-ready 3D Asset&lt;br/&gt;좌표 · 의미 정합"]
+    WFM["생성 수단&lt;br/&gt;Cosmos / 동급 WFM&lt;br/&gt;후보 장면 · 미래상태"]
+    CORE["한성대학교 | Failure-to-Data Factory&lt;br/&gt;① Deformation Engine · 물성/변형&lt;br/&gt;② Human Data Engine · 실패/복구&lt;br/&gt;③ Ontology·Edge Case · 취약조건&lt;br/&gt;Quality Gate · 물리/재현성/안전"]
+    RFM["RFM | 학습 · 평가&lt;br/&gt;Zero-shot · Post-training"]
+    TEST["PHYSICAL | 실물검증&lt;br/&gt;HIL · 수요기업&lt;br/&gt;공동 Testbed · Gap 환류"]
+    OUTPUT["공통 성과&lt;br/&gt;Dataset · Benchmark&lt;br/&gt;논문 · 특허 · 표준"]
+
+    REAL --&gt; GEO --&gt; CORE --&gt; RFM --&gt; TEST
+    GEO -.-&gt; WFM -.-&gt; CORE
+    CORE --&gt; OUTPUT
+    TEST --&gt; OUTPUT
+    TEST -.-&gt; REAL</code></pre>
+</div>
+<div class="concept-diagram concept-diagram--mobile">
+<pre class="mermaid"><code>%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 12, "rankSpacing": 20, "diagramPadding": 2}}}%%
+flowchart TB
+    REAL["REAL | 제조현장&lt;br/&gt;대표 작업 · 실패 Log"]
+    GEO["DIGITAL | Geometry Twin&lt;br/&gt;3D Asset · 의미 정합"]
+    CORE["한성대 | 실패 데이터팩토리&lt;br/&gt;① Deformation · 물성/변형&lt;br/&gt;② Human Data · 실패/복구&lt;br/&gt;③ Ontology · 취약조건&lt;br/&gt;Quality Gate · 자동검수&lt;br/&gt;WFM은 후보 생성에 활용"]
+    RFM["RFM | 학습 · 평가"]
+    TEST["PHYSICAL | 실물검증&lt;br/&gt;HIL · Testbed · Gap 환류"]
+    OUTPUT["성과 | Dataset · Benchmark · 표준"]
+
+    REAL --&gt; GEO --&gt; CORE --&gt; RFM --&gt; TEST
+    CORE --&gt; OUTPUT
+    TEST --&gt; OUTPUT
+    TEST -.-&gt; REAL</code></pre>
+</div>
+<p><strong>차별화 포인트는 생성 자체가 아니라 폐루프입니다.</strong> 실제 실패를 가상에서 재현하고,
+물리·재현성·안전 Gate를 통과한 Episode만 RFM에 공급한 뒤, 실물검증에서 확인된
+Domain Gap을 다시 현장·Twin·Scenario에 반영합니다.</p>
 <div class="admonition success">
 <p class="admonition-title">한성대학교의 대표 성과 — 무엇으로 평가받을 것인가</p>
 <p>본 과제에서 한성대학교가 <strong>주도 개발하는 성과</strong>는 다음 세 가지이며, 우선순위가 있습니다.
@@ -1082,7 +1129,7 @@ Manufacturing Ontology·Edge Case Intelligence)은 유지합니다. 다만 각�
 Deformation Engine, Ontology·Edge Case, 학생 Human Data Engine, Cosmos·LeRobot 구축,
 정량 KPI 전체.</p>
 </div>
-<h2 id="_1">과제 개요와 공고 정합성<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_2">과제 개요와 공고 정합성<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>본 제안은 산업통상부 공고 <strong>제2026-549호</strong>(2026. 8. 13.) 「2026년도 제2차 로봇산업기술개발사업
 신규지원 대상과제」의 <strong>연구개발과제 1 — 로봇 데이터팩토리 구축 및 로봇파운데이션모델(RFM) 개발</strong>을
 대상으로 합니다.</p>
@@ -1140,7 +1187,7 @@ Deformation Engine, Ontology·Edge Case, 학생 Human Data Engine, Cosmos·LeRob
 본문에서는 사용하지 않습니다. 해당 사항과 상세 RFP/품목서 확보 여부는
 <strong>내부 미결항목 관리대장</strong>에서 별도로 추적합니다.</p>
 </div>
-<h3 id="_2">대학 참여기관으로서의 적합성<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">대학 참여기관으로서의 적합성<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1220,7 +1267,7 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_3">확정 역할과 준비 내용의 대응<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">확정 역할과 준비 내용의 대응<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>앞서 준비한 Work Package(HSU-1~7)는 폐기하지 않고 확정 역할 아래로 재배치했습니다.
 아래 세부 표는 그 상세이며, <strong>읽는 순서는 확정 역할이 먼저입니다.</strong></p>
 <table>
@@ -1249,7 +1296,7 @@ Benchmark와 참여기업 공동검증 체계로 제공됩니다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_4">준비 내용에서 위상이 바뀐 항목<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">준비 내용에서 위상이 바뀐 항목<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1358,7 +1405,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_5">한성대학교가 기여하는 핵심 가치<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">한성대학교가 기여하는 핵심 가치<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1422,7 +1469,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 <p>각 Task는 <strong>정상–경계–실패–복구</strong> 상태를 포함하고, 환경·설비·부품·로봇·센서 조건을
 독립적으로 변화시킬 수 있도록 구성합니다.</p>
 <hr />
-<h2 id="_6">단계별 추진안<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">단계별 추진안<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1464,7 +1511,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_7">차년도 매핑과 마일스톤<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">차년도 매핑과 마일스톤<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>6개 단계는 4개 차년도에 걸쳐 중첩 수행합니다. 1단계는 전 기간에 걸쳐 개정되고, 5·6단계는
 3차년도부터 반복 Loop로 운영됩니다.</p>
 <table>
@@ -1572,7 +1619,7 @@ Physical AI MD 과정 자체는 인력 공급 경로로 남습니다.</p>
 <p>한 줄로 말하면 — <strong>실제 로봇의 실패를 가상환경에서 재현하고, 학습 가능한 데이터로
 바꾸는 일</strong>입니다.</p>
 </div>
-<h3 id="_8">연차별 개발 산출물<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_9">연차별 개발 산출물<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1729,11 +1776,11 @@ KPI 로 동결</strong>합니다. <strong>확정 전에는 협약 목표로 인�
 <p>확정 역할 ④가 <strong>학술 연구 및 기술 자문</strong>인 만큼, 논문·특허는 부수 성과가 아니라
 <strong>계약된 산출물</strong>로 관리합니다.</p>
 <hr />
-<h2 id="_9">예산 요약<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">예산 요약<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p><strong>연구개발비는 4년간 총 17.0억으로 확정되었습니다</strong> — 한성대학교 <strong>13.0억</strong>,
 모빌테크 <strong>4.0억</strong>. 모빌테크는 한성대 수행범위 안의 <strong>공동개발기관</strong>이며 차년도별
 1.0억 균등입니다.</p>
-<h3 id="_10">차년도별 배분<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_11">차년도별 배분<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1849,7 +1896,7 @@ KPI 로 동결</strong>합니다. <strong>확정 전에는 협약 목표로 인�
 순으로 범위를 조정합니다. 예컨대 소재군을 2종에서 4종으로 늘리면 물성시험이 30회에서
 60회 이상으로 늘어납니다.</p>
 </div>
-<h3 id="_11">확정 이전 준비안 (참고)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_12">확정 이전 준비안 (참고)<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>아래는 <strong>확정 통보 이전</strong>에 수행범위 기준으로 쌓아 올린 준비안입니다. <strong>현재 유효한 것은
 위의 5 % 확정안</strong>이며, 이 표는 「범위를 줄이면 금액이 따라 준다」를 보이는 근거로만 남깁니다.</p>
 <table>
@@ -1881,7 +1928,7 @@ KPI 로 동결</strong>합니다. <strong>확정 전에는 협약 목표로 인�
 <p>Work Package별 배분 — HSU-2 Deformation Engine 2.2억(31%), HSU-4 1.1, HSU-5 1.1,
 HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 <hr />
-<h2 id="_12">기대 산출물<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_13">기대 산출물<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <h3 id="manufacturing-deformation-engine">대표 산출물 — Manufacturing Deformation Engine<a class="headerlink" href="#manufacturing-deformation-engine" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1948,7 +1995,7 @@ HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="_13">그 밖의 산출물<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_14">그 밖의 산출물<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <ul>
 <li>제조환경 <strong>Simulation-ready Digital Twin Asset Package</strong>와 검수 기준</li>
 <li>물성·접촉·변형 파라미터 <strong>Material &amp; Physics Schema</strong></li>
@@ -1967,7 +2014,7 @@ HSU-3 1.0, HSU-7 0.6, HSU-1 0.5, HSU-6 0.5.</p>
 <li>기간·범위·기술 리스크의 <strong>리스크 관리대장과 완화 이력</strong> — 현황은 <a href="technical/">기술 상세</a> 참조</li>
 </ul>
 <hr />
-<h2 id="_14">더 읽을 것<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h2 id="_15">더 읽을 것<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="technical/">기술 상세</a></strong> — Deformation Engine · Ontology·Edge Case · 학생 Human Data
   Engine · Cosmos·LeRobot 구축 최적화 · 정량 KPI 전체 · 검증 체계</li>
