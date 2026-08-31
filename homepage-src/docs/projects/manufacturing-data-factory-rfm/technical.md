@@ -884,16 +884,43 @@ flowchart TB
 
 ---
 
-## 한성대학교–모빌테크 공동개발 구조
+## 한성대학교 주도 개발 및 모빌테크 전문지원 구조
+
+> **한성대학교는 실환경–가상환경 연계형 데이터 증강 분야의 책임기관으로서
+> ① Real-to-Sim-to-Real 고도화, ② Zero-shot Transfer 기반 도메인 적응,
+> ③ 엣지 케이스 시뮬레이션, ④ 학술 연구 및 기술 자문을 총괄합니다.
+> 모빌테크는 한성대학교의 요구규격에 따라 현장 공간정보를 취득하고 Simulation-ready
+> Geometry Twin 과 Asset Metadata 를 제공하며, 한성대학교는 이를 기반으로 물리 보정,
+> 실패 재현, 복구 데이터 증강, RFM 연계 및 실물 재검증을 수행합니다.**
+
+!!! note "「책임기관」과 「대표기관」은 다릅니다"
+    여기서 말하는 책임기관은 **담당 분야(실환경–가상환경 연계형 데이터 증강)의 책임**을
+    뜻하며, 전체 컨소시엄의 주관기관을 뜻하지 않습니다. 모빌테크의 법적 참여형태
+    (공동연구개발기관 / 위탁·용역 / 협력기관)가 확정되기 전까지 본 문서는
+    **「한성대 책임 · 모빌테크 세부지원」** 으로 표기를 통일합니다.
+
 
 <figure markdown>
   ![한성대학교 제조 Physical AI R&R — 모빌테크 Digital Twin, Ontology Edge Case, 학생 Teleoperation, 참여기업 Shared Testbed와 실물 로봇 검증](../../assets/manufacturing-rfm-hsu-rr.svg){ loading=lazy }
   <figcaption>한성대학교 제조 Physical AI R&R — Asset·Physics·Ontology·Teleoperation Data·Model·Validation을 연결하는 Real–Digital–Physical AI 인터페이스</figcaption>
 </figure>
 
-### 기관별 주도 역할
+### 4대 역할 · 한성대 핵심기술 · 모빌테크 지원내용
 
-| 구분 | 모빌테크 — Real → Digital | 한성대학교 — Digital → Physical AI |
+| 공식 역할 | 한성대학교 핵심기술 | 모빌테크 지원내용 |
+|---|---|---|
+| **① Real-to-Sim-to-Real 고도화** | Manufacturing Deformation Engine · Physics Calibration · Domain Gap 평가 | 현장 Scan · Geometry Twin · Simulation-ready Asset |
+| **② Zero-shot Transfer 기반 도메인 적응** | 미학습조건 평가 · Transferability Score · Transfer Decision · 경량 적응 | 공간·설비·배치 변화 Asset · Asset Version |
+| **③ 엣지 케이스 시뮬레이션** | Human Data Engine · Ontology·Edge Case Intelligence · Quality Gate | 실패·경계조건 재현을 위한 Geometry·Semantic Metadata 보완 |
+| **④ 학술 연구 및 기술 자문** | 논문·특허·표준·벤치마크·인터페이스 자문 | 산업현장 사례 · Asset 구축·적용자료 제공 |
+
+세 기술축은 위 네 역할 **아래에** 놓입니다 — ① 아래 Deformation Engine,
+③ 아래 Human Data Engine 과 Ontology·Edge Case Intelligence, 공통 Quality Gate 는
+③ 에서 생산한 데이터를 포함해 **모든 생성 데이터**가 통과하는 관문입니다.
+
+### 한성대학교 총괄 역할과 모빌테크 세부 지원범위
+
+| 구분 | 모빌테크 — 세부 지원 (Real → Geometry) | 한성대학교 — 총괄 (Geometry → Physics → RFM) |
 |---|---|---|
 | 요구사항 | 현장 취득범위·정밀도·갱신주기 정의 | Robot·Sensor·Task·물리모델 요구조건 정의 |
 | 공간 취득 | LiDAR·MMS·Camera·도면 기반 Scan·Mapping | 로봇 작업영역·센서 가시성·접촉영역 검토 |
@@ -903,7 +930,7 @@ flowchart TB
 | 데이터 | Asset·공간 Metadata와 버전·출처 관리 | Domain Randomization, Synthetic Data와 자동 Annotation |
 | 검증 | Real–Digital 공간·Asset 정합 지원 | RFM·Robot HW 실증, Domain Gap 분석과 Feedback |
 
-### 모빌테크 수행 레퍼런스
+### 모빌테크 Geometry Twin 지원역량 근거
 
 모빌테크는 실공간을 정밀 공간데이터로 변환하고 이를 다수의 상용 시뮬레이터로 넘겨 본 실적을
 보유합니다. 본 과제에서 요구되는 것은 **보기 좋은 3D**가 아니라 **다음 단계로 넘어가는 Asset**이며,
@@ -926,7 +953,7 @@ flowchart TB
     결합된 Simulation-ready Package이므로, 대상 면적·설비 수·요구 LOD·물성시험 범위에 따라
     비용 구조가 달라집니다. 예산은 이 차이를 반영해 별도로 산정했으며, 산정 근거는 내부 자료로 관리합니다.
 
-### 산출물 역할분담 매트릭스 (LCIV)
+### 한성대학교 책임산출물–모빌테크 지원산출물 매트릭스 (LCIV)
 
 기관 간 충돌을 줄이려면 "누가 무엇을 한다"보다 **"이 산출물에 누가 어떤 자격으로 관여하는가"** 를
 적어야 합니다. **아래는 현재 협의안 기준의 제안이며, 최종 분담은 컨소시엄 협약으로 확정합니다.**
@@ -936,15 +963,21 @@ flowchart TB
 
 **L** Lead 주도 · **C** Co-develop 공동개발 · **I** Interface 규약 합의 · **V** Validate 검증 참여
 
+원칙은 넷입니다 — 한성대학교는 **4대 역할과 핵심성과의 Lead**, 모빌테크는
+**Geometry Asset 의 Lead 또는 Support**. Deformation·Transfer·Human Data·Ontology·
+Quality Gate 에서 모빌테크는 **Interface(I) 또는 Support** 이며,
+**Simulation-ready Asset 을 제외한 한성대 핵심성과에 모빌테크 Lead 를 두지 않습니다.**
+**C 는 실제 공동개발 항목에만** 표시합니다.
+
 <small>표가 넓습니다 — 좁은 화면에서는 표를 가로로 밀어 보십시오.</small>
 
 | 산출물 | 한성대 | 모빌테크 | Data | RFM | SI | Robot HW | 제조·수요 |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 현장 취득·정밀 3D Asset | I | **L** | — | — | — | — | V |
 | Simulation-ready Asset Package | C | **L** | I | — | I | I | V |
-| Material Profile · 물성 파라미터 | **L** | C | I | — | — | — | V |
+| Material Profile · 물성 파라미터 | **L** | I | I | — | — | — | V |
 | Manufacturing Deformation Engine | **L** | I | — | I | I | I | — |
-| Manufacturing Ontology · Schema | **L** | C | **C** | I | C | I | V |
+| Manufacturing Ontology · Schema | **L** | I | **C** | I | C | I | V |
 | Edge Case Extractor · Package | **L** | — | C | I | C | V | V |
 | Robot·Sensor·Task Scenario Library | **L** | I | — | I | I | C | V |
 | Demonstration · Teleoperation Corpus | **L** | — | I | I | I | C | — |
@@ -962,7 +995,7 @@ flowchart TB
     합의하면 「Interface Specification」 작성 범위가 자동으로 정해집니다. 표에 없는 산출물이 생기면
     그때 추가하고, 한 산출물에 Lead 가 둘이 되지 않도록 관리합니다.
 
-### 공동 Hand-off Interface
+### 모빌테크 지원산출물 인수 및 Geometry–Physics Hand-off Interface
 
 모빌테크의 3D Asset이 시뮬레이터에서 보이는 것만으로는 충분하지 않습니다. 다음 정보를 하나의
 버전으로 묶어 전달하는 **Simulation-ready Asset Package**를 공동 정의합니다.

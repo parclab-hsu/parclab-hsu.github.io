@@ -813,7 +813,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        기관별 개발내용과 공동 완료조건
+        기관별 역할과 연차 완료조건
       
     </span>
   </a>
@@ -915,10 +915,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#geometry-twin" class="md-nav__link">
+  <a href="#kpi-4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        모빌테크 Geometry Twin 성과지표 (후보)
+        KPI 와 4대 역할의 대응
       
     </span>
   </a>
@@ -926,10 +926,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-kpi" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        확정 4대 역할과 KPI 의 대응
+        모빌테크 지원지표 — 인수 기준
       
     </span>
   </a>
@@ -953,7 +953,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         연구개발비
@@ -965,7 +965,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         차년도별 배분 (검토안)
@@ -1432,42 +1432,48 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <strong>주 담당 축에 두고 다른 축에 병기</strong>했으므로, 표 전체의 항목 수는 20건보다 많아 보입니다.</p>
 <p><strong>축 사이 선후관계</strong> — ③ 이 관계 구조를 세워야 ② 가 무엇을 수집할지 정해지고,
 ① 이 물리를 맞춰야 3차년도 생성 데이터가 검증 대상이 됩니다.</small></p>
-<h3 id="_7">기관별 개발내용과 공동 완료조건<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>연차 목표는 두 기관의 산출물이 맞물려야 성립합니다. 모빌테크의 Geometry Twin 이 먼저
-들어와야 한성대학교의 Physics Twin 이 그 위에 올라갑니다.</p>
+<h3 id="_7">기관별 역할과 연차 완료조건<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>한성대학교가 각 연차의 목표를 총괄하고, 모빌테크는 그 목표에 필요한 Geometry Asset 을
+요구규격에 맞춰 지원합니다. 완료조건은 <strong>한성대 연차 완료조건</strong>과 <strong>모빌테크 지원 산출물
+인수조건</strong>으로 나누어 적고, 둘을 함께 만족한 상태를 <strong>통합 검증조건</strong>으로 봅니다.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">차년도</th>
-<th>모빌테크 개발내용</th>
-<th>한성대학교 개발내용</th>
-<th>공동 완료조건</th>
+<th>한성대학교 대표 목표</th>
+<th>모빌테크 세부 지원</th>
+<th>한성대 연차 완료조건</th>
+<th>지원 산출물 인수조건</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>1차</strong></td>
-<td>Pilot Scan · 기준 Geometry Asset · 좌표계·Semantic 규격</td>
-<td>대표 작업·실패유형 · 데이터 규격 · Domain Gap 평가절차</td>
-<td><strong>Geometry Twin 인수규격과 Geometry–Physics Interface 승인</strong></td>
+<td>대표 작업·실패유형·평가절차·데이터 규격 확정</td>
+<td>Pilot Scan · 기준 Geometry Asset 제공</td>
+<td>Geometry Asset 을 인수하고 <strong>Geometry–Physics Interface 승인</strong></td>
+<td>좌표계·축척·Semantic 규격 충족, 인수검사 통과</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>2차</strong></td>
-<td>공간 Digital Twin 본 구축 · LOD·Collision·Metadata 적용</td>
-<td>물성 실측 · Deformation Engine v1 · Physics Calibration · 데이터 수집환경</td>
-<td><strong>Simulation-ready Asset 이 Physics Twin 에서 정상 구동</strong></td>
+<td>실측 물성 기반 <strong>Deformation Engine v1</strong> 과 데이터 수집환경 가동</td>
+<td>Simulation-ready Asset · LOD·Collision·Metadata 제공</td>
+<td><strong>Physics Twin 구동</strong>과 접촉력 재현오차 기준 충족</td>
+<td>LOD·Collision·Metadata 검수 통과, Physics Twin 정상 구동</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>3차</strong></td>
-<td>작업 확장 Asset 보완·정합 · Semantic·물성 메타 갱신</td>
-<td>Transfer Decision · Quality Gate · Edge/Recovery Dataset · 미학습조건 평가</td>
-<td><strong>동일 Asset 버전으로 Simulation–HIL–Real 평가 완료</strong></td>
+<td>미학습조건 전이 판단 · Quality Gate · <strong>Edge/Recovery Dataset</strong> 구축</td>
+<td>변동조건 Asset 과 Geometry 갱신</td>
+<td>생성데이터 검수와 <strong>Simulation–HIL–Real 평가 완료</strong></td>
+<td>동일 Asset 버전 제공과 버전 추적성 확보</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>4차</strong></td>
-<td>최종 실증공간 Asset 갱신 · 통합 실증 지원</td>
-<td>실패상태 복원 · 복구 분기 · RFM 재학습 · 실물 재검증 · 표준화</td>
-<td><strong>실패 재현–복구 생성–재학습–실물 재검증 순환 1회 이상 완주</strong></td>
+<td>실패 재현–복구 생성–RFM 재학습–<strong>실물 재검증 순환 완주</strong></td>
+<td>최종 실증공간 Asset 갱신·지원</td>
+<td><strong>실제 성공률 향상</strong>과 폐루프 1회 이상 완주</td>
+<td>최종 Geometry Twin 버전 동결과 실증 지원 완료</td>
 </tr>
 </tbody>
 </table>
@@ -1486,8 +1492,8 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 <tbody>
 <tr>
 <td>현장 Pilot Scan · 기준 3D Asset · Geometry Twin</td>
-<td style="text-align: center;">모빌테크</td>
-<td>한성대·수요기업</td>
+<td style="text-align: center;">모빌테크<br><small>(지원)</small></td>
+<td>한성대 규격 정의 · 수요기업</td>
 <td>현장 실측</td>
 <td>Asset Package</td>
 <td>좌표·축척 오차 규격 내</td>
@@ -1550,7 +1556,7 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 </tr>
 <tr>
 <td>Geometry Twin–Physics Twin Interface · Simulation–HIL–Real Interface</td>
-<td style="text-align: center;"><strong>공동</strong></td>
+<td style="text-align: center;"><strong>한성대 정의</strong><br><small>모빌테크 합의</small></td>
 <td>전 기관</td>
 <td>양측 규격</td>
 <td>인터페이스 규약</td>
@@ -1566,8 +1572,8 @@ EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 �
 </tr>
 <tr>
 <td>통합 실증 결과 · Real-to-Sim-to-Real 운용 가이드라인</td>
-<td style="text-align: center;"><strong>공동</strong></td>
-<td>전 기관</td>
+<td style="text-align: center;"><strong>한성대</strong></td>
+<td>전 기관 지원</td>
 <td>순환 완주 결과</td>
 <td>실증 리포트·가이드</td>
 <td>제3자 재현 가능</td>
@@ -2036,72 +2042,71 @@ Domain Gap 평가절차</strong>를 확정한다.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="geometry-twin">모빌테크 Geometry Twin 성과지표 (후보)<a class="headerlink" href="#geometry-twin" title="Permanent link">&para;</a></h3>
-<p>위 8개는 한성대학교 기술을 평가하는 지표입니다. 모빌테크가 공동개발기관으로 참여하면
-<strong>Geometry Twin 자체의 측정 가능한 지표</strong>가 필요합니다. 아래는 후보이며, 목표값은
-스캐너 성능·작업공간·대표 Use Case 가 확정된 뒤 컨소시엄 공통 KPI 로 동결합니다.</p>
+<h3 id="kpi-4">KPI 와 4대 역할의 대응<a class="headerlink" href="#kpi-4" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>후보 지표</th>
+<th>공식 역할</th>
+<th>핵심 KPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① Real-to-Sim-to-Real</strong></td>
+<td>접촉력 재현오차 <strong>≤ 20 %</strong> · 잔류변형 재현오차 <strong>≤ 25 %</strong> · 실제–가상 성공률 차이 <strong>≤ 20 %p</strong></td>
+</tr>
+<tr>
+<td><strong>② Zero-shot Transfer</strong></td>
+<td>미학습조건 성능 유지율 <strong>≥ 70 %</strong> · 적응 필요성 판단과 적용 후 성능회복</td>
+</tr>
+<tr>
+<td><strong>③ 엣지 케이스 시뮬레이션</strong></td>
+<td>복구 데이터 확보율 <strong>≥ 80 %</strong> · 데이터 검수 완료율 <strong>≥ 90 %</strong> · 실제 실패 가상 재현율 <strong>≥ 70 %</strong></td>
+</tr>
+<tr>
+<td><strong>② + ③ 최종성과</strong></td>
+<td>Edge/Recovery 데이터 적용 후 실제 성공률 <strong>+ 10 %p 이상</strong></td>
+</tr>
+<tr>
+<td><strong>④ 학술·자문</strong></td>
+<td>논문·특허·SW·표준·기술문서와 제3자 절차 재현성 <strong>≥ 90 %</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">모빌테크 지원지표 — 인수 기준<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>모빌테크 지표는 <strong>과제 대표 KPI 가 아니라 한성대학교가 산출물을 인수하기 위한 지원지표</strong>입니다.
+목표값은 스캐너 성능·작업공간·대표 Use Case 가 확정된 뒤 컨소시엄 협의로 정합니다.</p>
+<table>
+<thead>
+<tr>
+<th>지원지표</th>
 <th>무엇을 재는가</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>공간·설비 Geometry 정합오차</td>
+<td>Geometry 정합오차</td>
 <td>실측 대비 형상·치수 오차</td>
 </tr>
 <tr>
-<td>좌표계 Registration 오차</td>
+<td>좌표·축척 정확도</td>
 <td>현장 좌표계와 시뮬레이션 좌표계의 정합</td>
 </tr>
 <tr>
-<td>Semantic Metadata 완성률</td>
+<td>Semantic Metadata 완전성</td>
 <td>설비·부품·영역에 의미정보가 부여된 비율</td>
 </tr>
 <tr>
-<td>LOD·Collision Mesh 규격 준수율</td>
+<td>LOD·Collision 규격 충족률</td>
 <td>Simulation-ready 규격 충족 비율</td>
 </tr>
 <tr>
-<td>Geometry Asset 인수검사 통과율</td>
-<td>1차 검수 통과 비율</td>
-</tr>
-<tr>
-<td>변경 Asset 업데이트·버전 추적률</td>
+<td>Asset Version 추적성</td>
 <td>변경 이력이 추적 가능한 비율</td>
 </tr>
 <tr>
-<td>Geometry Twin–Physics Twin Interface 정합률</td>
+<td>Geometry–Physics Interface 통과율</td>
 <td>인수한 Asset 이 Physics Twin 에서 정상 구동하는 비율</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-kpi">확정 4대 역할과 KPI 의 대응<a class="headerlink" href="#4-kpi" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>확정 역할</th>
-<th>대응 KPI</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>① Real-to-Sim-to-Real 고도화</td>
-<td>1 · 2 · 3</td>
-</tr>
-<tr>
-<td>② Zero-shot Transfer 도메인 적응</td>
-<td>7</td>
-</tr>
-<tr>
-<td>③ 엣지 케이스 시뮬레이션</td>
-<td>4 · 5 · 6 · 8</td>
-</tr>
-<tr>
-<td>④ 학술 연구·기술 자문</td>
-<td>아래 성과지표</td>
 </tr>
 </tbody>
 </table>
@@ -2190,11 +2195,11 @@ Domain Gap 평가절차</strong>를 확정한다.</p>
 <tbody>
 <tr>
 <td>논문</td>
-<td><strong>한성대 주관</strong>, 데이터·Asset 을 제공한 공동기관은 공저 조건으로 참여</td>
+<td><strong>한성대 주관</strong>. 모빌테크는 자동 공동주관이 아니라 <strong>실제 기여도</strong>에 따라 공저 여부를 정함</td>
 </tr>
 <tr>
 <td>특허</td>
-<td><strong>발명자 기여도</strong>에 따라 출원인·지분을 협약 시 정함</td>
+<td><strong>발명자 기준</strong>으로 출원인·지분을 정함 — 지원 산출물 제공만으로 공동출원인이 되지 않음</td>
 </tr>
 <tr>
 <td>SW 등록</td>
@@ -2215,12 +2220,12 @@ Domain Gap 평가절차</strong>를 확정한다.</p>
 값이며, 범위가 조정되면 함께 조정합니다.</p>
 <hr />
 <hr />
-<h2 id="_9">연구개발비<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">연구개발비<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p><strong>현재 검토안은 총 17.0억, 한성대학교 13.0억 · 모빌테크 4.0억 배분을 가정합니다.</strong>
 5 % 의 모수와 협약 형태가 확정된 뒤 동결합니다. 모빌테크는 <strong>공동연구개발기관 참여를
 우선 검토</strong>하고 있으며, 최종 위치와 금액은 협약 과정에서 확정합니다. 아래 배분은
 차년도별 1.0억 균등을 가정한 값입니다.</p>
-<h3 id="_10">차년도별 배분 (검토안)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_11">차년도별 배분 (검토안)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>

@@ -64,15 +64,27 @@ noindex: true
 
 ## 2. 기관 역할
 
-### 컨소시엄 안에서의 분담
+### 컨소시엄 안에서의 기관 위계
 
-| 기관 | 담당 | 산출물 |
+> **한성대학교는 실환경–가상환경 연계형 데이터 증강 분야의 책임기관으로서 4대 연구개발
+> 역할을 총괄하며, 모빌테크는 한성대학교가 정의한 요구규격에 따라 현장 공간정보 취득과
+> Simulation-ready Geometry Twin 구축을 지원합니다.**
+
+| 공식 역할 | 한성대학교 핵심기술 | 모빌테크 지원내용 |
 |---|---|---|
-| **모빌테크** | **Geometry Twin** — 현장 취득, 정밀 3D Asset, 좌표·Semantic 정합 | Simulation-ready Asset Package, 공간 Meta |
-| **한성대학교** | **물성·변형·실패·복구와 RFM 검증** — Geometry Twin 을 실측 보정된 Physics Twin 으로 고도화하고, 실패·복구 데이터를 생성·검수해 RFM 으로 환류 | Deformation Engine, 실패·복구 Dataset, Quality Gate, 검증 리포트 |
+| **① Real-to-Sim-to-Real 고도화** | Manufacturing Deformation Engine · Physics Calibration · Domain Gap 평가 | 현장 Scan · Geometry Twin · Simulation-ready Asset |
+| **② Zero-shot Transfer 기반 도메인 적응** | 미학습조건 평가 · Transferability Score · Transfer Decision · 경량 적응 | 공간·설비·배치 변화 Asset · Asset Version |
+| **③ 엣지 케이스 시뮬레이션** | Human Data Engine · Ontology·Edge Case Intelligence · Quality Gate | 실패·경계조건 재현을 위한 Geometry·Semantic Metadata 보완 |
+| **④ 학술 연구 및 기술 자문** | 논문·특허·표준·벤치마크·인터페이스 자문 | 산업현장 사례 · Asset 구축·적용자료 제공 |
 
 두 기관의 경계는 **형상까지가 모빌테크, 물리 반응부터가 한성대학교**입니다.
-모빌테크의 협약 형태와 금액은 검토 중이며 7절에 확인 항목으로 두었습니다.
+세 기술축은 위 네 역할 **아래에** 놓입니다 — ① 아래 Deformation Engine,
+③ 아래 Human Data Engine 과 Ontology·Edge Case Intelligence 입니다.
+
+!!! note "「책임기관」과 「대표기관」은 다릅니다"
+    책임기관은 **담당 분야의 책임**을 뜻하며 전체 컨소시엄의 주관기관을 뜻하지 않습니다.
+    모빌테크의 법적 참여형태가 확정되기 전까지 **「한성대 책임 · 모빌테크 세부지원」** 으로
+    표기를 통일합니다.
 
 ### 확정된 담당 분야와 4대 역할
 

@@ -250,23 +250,24 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 ① 이 물리를 맞춰야 3차년도 생성 데이터가 검증 대상이 됩니다.</small>
 
 
-### 기관별 개발내용과 공동 완료조건
+### 기관별 역할과 연차 완료조건
 
-연차 목표는 두 기관의 산출물이 맞물려야 성립합니다. 모빌테크의 Geometry Twin 이 먼저
-들어와야 한성대학교의 Physics Twin 이 그 위에 올라갑니다.
+한성대학교가 각 연차의 목표를 총괄하고, 모빌테크는 그 목표에 필요한 Geometry Asset 을
+요구규격에 맞춰 지원합니다. 완료조건은 **한성대 연차 완료조건**과 **모빌테크 지원 산출물
+인수조건**으로 나누어 적고, 둘을 함께 만족한 상태를 **통합 검증조건**으로 봅니다.
 
-| 차년도 | 모빌테크 개발내용 | 한성대학교 개발내용 | 공동 완료조건 |
-|:--:|---|---|---|
-| **1차** | Pilot Scan · 기준 Geometry Asset · 좌표계·Semantic 규격 | 대표 작업·실패유형 · 데이터 규격 · Domain Gap 평가절차 | **Geometry Twin 인수규격과 Geometry–Physics Interface 승인** |
-| **2차** | 공간 Digital Twin 본 구축 · LOD·Collision·Metadata 적용 | 물성 실측 · Deformation Engine v1 · Physics Calibration · 데이터 수집환경 | **Simulation-ready Asset 이 Physics Twin 에서 정상 구동** |
-| **3차** | 작업 확장 Asset 보완·정합 · Semantic·물성 메타 갱신 | Transfer Decision · Quality Gate · Edge/Recovery Dataset · 미학습조건 평가 | **동일 Asset 버전으로 Simulation–HIL–Real 평가 완료** |
-| **4차** | 최종 실증공간 Asset 갱신 · 통합 실증 지원 | 실패상태 복원 · 복구 분기 · RFM 재학습 · 실물 재검증 · 표준화 | **실패 재현–복구 생성–재학습–실물 재검증 순환 1회 이상 완주** |
+| 차년도 | 한성대학교 대표 목표 | 모빌테크 세부 지원 | 한성대 연차 완료조건 | 지원 산출물 인수조건 |
+|:--:|---|---|---|---|
+| **1차** | 대표 작업·실패유형·평가절차·데이터 규격 확정 | Pilot Scan · 기준 Geometry Asset 제공 | Geometry Asset 을 인수하고 **Geometry–Physics Interface 승인** | 좌표계·축척·Semantic 규격 충족, 인수검사 통과 |
+| **2차** | 실측 물성 기반 **Deformation Engine v1** 과 데이터 수집환경 가동 | Simulation-ready Asset · LOD·Collision·Metadata 제공 | **Physics Twin 구동**과 접촉력 재현오차 기준 충족 | LOD·Collision·Metadata 검수 통과, Physics Twin 정상 구동 |
+| **3차** | 미학습조건 전이 판단 · Quality Gate · **Edge/Recovery Dataset** 구축 | 변동조건 Asset 과 Geometry 갱신 | 생성데이터 검수와 **Simulation–HIL–Real 평가 완료** | 동일 Asset 버전 제공과 버전 추적성 확보 |
+| **4차** | 실패 재현–복구 생성–RFM 재학습–**실물 재검증 순환 완주** | 최종 실증공간 Asset 갱신·지원 | **실제 성공률 향상**과 폐루프 1회 이상 완주 | 최종 Geometry Twin 버전 동결과 실증 지원 완료 |
 
 ### 산출물 귀속
 
 | 산출물 | 주관 | 협력 | 입력 | 출력 | 인수기준 |
 |---|:--:|---|---|---|---|
-| 현장 Pilot Scan · 기준 3D Asset · Geometry Twin | 모빌테크 | 한성대·수요기업 | 현장 실측 | Asset Package | 좌표·축척 오차 규격 내 |
+| 현장 Pilot Scan · 기준 3D Asset · Geometry Twin | 모빌테크<br><small>(지원)</small> | 한성대 규격 정의 · 수요기업 | 현장 실측 | Asset Package | 좌표·축척 오차 규격 내 |
 | 좌표계·Semantic 정합 규격 · LOD·Collision Mesh · Asset Metadata | 모빌테크 | 한성대 | 현장 Meta | 규격서·Mesh | Simulation-ready 검수 통과 |
 | Asset Version·Update Package | 모빌테크 | 한성대 | 변경 요청 | 버전 패키지 | 버전 추적 가능 |
 | Manufacturing Deformation Engine · Material Profile · Physics Parameter | 한성대 | 소재·계측기관 | Geometry Twin, 물성 실측 | 보정 모듈·물성값 | 접촉력 재현오차 기준 충족 |
@@ -274,9 +275,9 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 | Human Data Engine · Edge/Recovery Dataset | 한성대 | 실로봇 기관 | 시연·실패 로그 | 데이터셋 | 검수 완료율 기준 충족 |
 | Ontology·Edge Case Compiler · Multi-stage Validation Gate | 한성대 | 데이터·RFM 기관 | 실패 로그, 생성 조건 | 시나리오·품질관문 | Gate 통과 이력 재현 |
 | Transfer Decision Manager · Closed-loop RoboOps Toolchain | 한성대 | RFM·실로봇 기관 | 평가 결과 | 판정기·툴체인 | 전이 판정 일치도 기준 충족 |
-| Geometry Twin–Physics Twin Interface · Simulation–HIL–Real Interface | **공동** | 전 기관 | 양측 규격 | 인터페이스 규약 | 컨소시엄 승인 |
+| Geometry Twin–Physics Twin Interface · Simulation–HIL–Real Interface | **한성대 정의**<br><small>모빌테크 합의</small> | 전 기관 | 양측 규격 | 인터페이스 규약 | 컨소시엄 승인 |
 | RFM Dataset Schema · Validation Feedback Package | **공동** | RFM·데이터 기관 | 데이터·검증 결과 | 스키마·환류 패키지 | RFM 기관 적용 확인 |
-| 통합 실증 결과 · Real-to-Sim-to-Real 운용 가이드라인 | **공동** | 전 기관 | 순환 완주 결과 | 실증 리포트·가이드 | 제3자 재현 가능 |
+| 통합 실증 결과 · Real-to-Sim-to-Real 운용 가이드라인 | **한성대** | 전 기관 지원 | 순환 완주 결과 | 실증 리포트·가이드 | 제3자 재현 가능 |
 
 
 <details>
@@ -546,30 +547,29 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 | 7. 미학습조건 성능 유지율 | 한성대 · RFM 기관 | 모빌테크 변동 Asset |
 | 8. 실제 성공률 향상 | RFM 기관 · 한성대 | 실로봇 기관 · 모빌테크 최종 Asset |
 
-### 모빌테크 Geometry Twin 성과지표 (후보)
+### KPI 와 4대 역할의 대응
 
-위 8개는 한성대학교 기술을 평가하는 지표입니다. 모빌테크가 공동개발기관으로 참여하면
-**Geometry Twin 자체의 측정 가능한 지표**가 필요합니다. 아래는 후보이며, 목표값은
-스캐너 성능·작업공간·대표 Use Case 가 확정된 뒤 컨소시엄 공통 KPI 로 동결합니다.
-
-| 후보 지표 | 무엇을 재는가 |
+| 공식 역할 | 핵심 KPI |
 |---|---|
-| 공간·설비 Geometry 정합오차 | 실측 대비 형상·치수 오차 |
-| 좌표계 Registration 오차 | 현장 좌표계와 시뮬레이션 좌표계의 정합 |
-| Semantic Metadata 완성률 | 설비·부품·영역에 의미정보가 부여된 비율 |
-| LOD·Collision Mesh 규격 준수율 | Simulation-ready 규격 충족 비율 |
-| Geometry Asset 인수검사 통과율 | 1차 검수 통과 비율 |
-| 변경 Asset 업데이트·버전 추적률 | 변경 이력이 추적 가능한 비율 |
-| Geometry Twin–Physics Twin Interface 정합률 | 인수한 Asset 이 Physics Twin 에서 정상 구동하는 비율 |
+| **① Real-to-Sim-to-Real** | 접촉력 재현오차 **≤ 20 %** · 잔류변형 재현오차 **≤ 25 %** · 실제–가상 성공률 차이 **≤ 20 %p** |
+| **② Zero-shot Transfer** | 미학습조건 성능 유지율 **≥ 70 %** · 적응 필요성 판단과 적용 후 성능회복 |
+| **③ 엣지 케이스 시뮬레이션** | 복구 데이터 확보율 **≥ 80 %** · 데이터 검수 완료율 **≥ 90 %** · 실제 실패 가상 재현율 **≥ 70 %** |
+| **② + ③ 최종성과** | Edge/Recovery 데이터 적용 후 실제 성공률 **+ 10 %p 이상** |
+| **④ 학술·자문** | 논문·특허·SW·표준·기술문서와 제3자 절차 재현성 **≥ 90 %** |
 
-### 확정 4대 역할과 KPI 의 대응
+### 모빌테크 지원지표 — 인수 기준
 
-| 확정 역할 | 대응 KPI |
+모빌테크 지표는 **과제 대표 KPI 가 아니라 한성대학교가 산출물을 인수하기 위한 지원지표**입니다.
+목표값은 스캐너 성능·작업공간·대표 Use Case 가 확정된 뒤 컨소시엄 협의로 정합니다.
+
+| 지원지표 | 무엇을 재는가 |
 |---|---|
-| ① Real-to-Sim-to-Real 고도화 | 1 · 2 · 3 |
-| ② Zero-shot Transfer 도메인 적응 | 7 |
-| ③ 엣지 케이스 시뮬레이션 | 4 · 5 · 6 · 8 |
-| ④ 학술 연구·기술 자문 | 아래 성과지표 |
+| Geometry 정합오차 | 실측 대비 형상·치수 오차 |
+| 좌표·축척 정확도 | 현장 좌표계와 시뮬레이션 좌표계의 정합 |
+| Semantic Metadata 완전성 | 설비·부품·영역에 의미정보가 부여된 비율 |
+| LOD·Collision 규격 충족률 | Simulation-ready 규격 충족 비율 |
+| Asset Version 추적성 | 변경 이력이 추적 가능한 비율 |
+| Geometry–Physics Interface 통과율 | 인수한 Asset 이 Physics Twin 에서 정상 구동하는 비율 |
 
 ---
 
@@ -592,8 +592,8 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 
 | 성과 | 귀속 기준 |
 |---|---|
-| 논문 | **한성대 주관**, 데이터·Asset 을 제공한 공동기관은 공저 조건으로 참여 |
-| 특허 | **발명자 기여도**에 따라 출원인·지분을 협약 시 정함 |
+| 논문 | **한성대 주관**. 모빌테크는 자동 공동주관이 아니라 **실제 기여도**에 따라 공저 여부를 정함 |
+| 특허 | **발명자 기준**으로 출원인·지분을 정함 — 지원 산출물 제공만으로 공동출원인이 되지 않음 |
 | SW 등록 | **모듈별 소유기관** — Deformation Engine·Quality Gate 등은 한성대, 공동 인터페이스는 공동 |
 | 표준 제안 | **한성대 주도, 컨소시엄 공동** 명의 |
 | 기술문서·자문 의견서 | **한성대 책임 산출물** |
