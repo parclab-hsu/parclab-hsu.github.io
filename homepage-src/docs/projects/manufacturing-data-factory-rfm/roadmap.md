@@ -102,7 +102,7 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 **본 과제에서 재현한 결과가 아니라 문헌으로 확인한 선행연구**이며, 우리가 무엇을
 새로 만들 것인지는 각 세부 항목에 따로 적었습니다.
 
-### ① Manufacturing Deformation Engine — 대표 작업의 물리 보정
+### ① 물리 보정 관련 연구
 
 | 연구 | 무엇을 보여주나 |
 |---|---|
@@ -114,7 +114,7 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 맞추고, 거기서 데이터를 늘린다」는 구조입니다. 본 과제는 이를 **제조 대표 작업 1~2개**에
 적용하고, 접촉력·잔류변형의 재현오차를 실측으로 검증하는 데 집중합니다.
 
-### ② Human Data Engine — 실패상태 복원과 복구 행동 증강
+### ② 실패상태 복원·복구 증강 관련 연구
 
 | 연구 | 무엇을 보여주나 |
 |---|---|
@@ -127,7 +127,7 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 EgoRecovery 가 보고한 **10배** 차이는, 실물로 실패를 대량 재현하지 않기로 한 판단의
 근거이기도 합니다. 본 과제는 이를 **제조 작업의 실패유형**에 적용합니다.
 
-### ③ Manufacturing Ontology·Edge Case Intelligence — RFM 취약조건 탐색
+### ③ 실패 조건 탐색·재현 관련 연구
 
 | 연구 | 무엇을 보여주나 |
 |---|---|
