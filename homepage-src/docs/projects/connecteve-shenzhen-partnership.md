@@ -100,12 +100,18 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 
 ## 오전 10시 — ZeroErr Meeting Agenda
 
+!!! info "협력 중심 진행 원칙"
+    단순한 사양 확인과 구매 상담을 넘어, Connecteve는 적용 요구사항·시험환경·예상 수요를
+    공유하고 ZeroErr는 기술 대안·Sample·개발조건을 제안합니다. 각 의제마다 공동 검토
+    결과물, 담당자와 완료일을 합의하여 평가 → Customization → 양산으로 이어지도록 합니다.
+
 ### 1. Current Actuator & Customization
 
 - 현재 당사 의료로봇에 적용을 검토 중인 Actuator 관련 기술 논의
 - 당사 적용을 위한 소규모 Customization 가능성
 - 필요한 기술적 Modification 및 추가 개발 가능성
 - Customization 가능한 범위와 개발 절차 및 조건
+- **협력 논의:** Connecteve가 설치공간, 기계·전기 Interface, Load profile과 제어요구사항을 제공하고, ZeroErr가 기술적 실현 가능성, NRE, Sample 사양·수량·일정을 제안하여 1차 Custom sample 범위를 확정
 
 ### 2. Actuator Architecture & Key Components
 
@@ -113,6 +119,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - Motor / Reducer / Encoder / Driver 등 주요 구성품의 공급구조
 - Encoder 또는 Driver만 별도로 구매할 수 있는지
 - 주요 구성품별 별도 공급 또는 Custom configuration이 가능한지
+- **협력 논의:** 필요 시 NDA 체결 후 핵심부품의 공급구조와 대체 가능한 Configuration을 공유하고, 모듈 공급·부분품 공급·이원화 공급에 따른 성능보증 및 공급위험 분담방안을 공동 검토
 
 ### 3. Actuator Manufacturing & Aging Test
 
@@ -120,18 +127,21 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 수행한다면 Aging 조건 및 시간은 어느 정도인지
 - Aging 전후 어떤 성능항목을 확인하는지
 - 양산품 전체에 적용하는지 또는 Sampling 방식인지
+- **협력 논의:** 의료로봇 운전조건을 반영한 Aging profile, 합격기준, Test data format을 공동 정의하고, 전수검사와 Sampling 검사의 적용범위 및 비용·Lead time 영향을 비교
 
 ### 4. QDD & Future Actuator Development
 
 - QDD(Quasi-Direct Drive) Actuator 개발 계획이 있는지
 - 현재 제품 외에 저감속비 / 고토크밀도 방향의 Actuator 개발을 검토하고 있는지
 - 의료로봇 적용을 위한 차세대 Actuator 개발 계획
+- **협력 논의:** Connecteve가 목표 Torque·Speed·감속비·관성·크기와 예상 수량을 제시하고, ZeroErr가 공동개발 가능성, 개발비, IP 귀속, Milestone 및 Roadmap 반영조건을 제안
 
 ### 5. Medical Robotics Requirements & Technical Cooperation
 
 - Connecteve의 향후 의료로봇 제품에 필요한 Actuator 요구사항 공유
 - 해당 요구사항을 향후 제품 개발 및 개선에 고려할 수 있는지
 - 의료로봇 적용을 위한 추가 개발 및 장기적인 기술협력 가능성
+- **협력 논의:** 양사가 공동 Requirement specification과 Interface Control Document를 작성하고, 정기 Technical review와 PoC를 통해 요구사항을 단계적으로 동결·검증하는 방식 협의
 
 ### 6. Hardware & Product Roadmap
 
@@ -139,6 +149,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 기존 Actuator의 향후 개선 계획
 - 차세대 Actuator 및 Product Roadmap
 - Connecteve의 향후 요구사항을 차세대 제품 개발에 반영할 수 있는지
+- **협력 논의:** 공개 가능한 범위에서 양사의 Product roadmap과 적용일정을 공유하고, 요구사항 반영 시점, Engineering sample 제공시점 및 양산 전환 Gate를 공동 설정
 
 ### 7. Product Consistency & Quality Control
 
@@ -146,6 +157,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 제품별 Calibration 및 출하 전 성능검사를 어떻게 수행하는지
 - 제품 간 성능 편차를 어떤 방식으로 관리하는지
 - 제품별 Calibration / Test 결과 및 품질이력 관리 여부
+- **협력 논의:** CTQ, 허용오차, Golden sample, 출하검사 항목과 성적서 양식을 합의하고, Serial number 기반 Traceability와 정기 품질 Review 체계를 구축할 수 있는지 검토
 
 ### 8. Long-term Supply & Product Change
 
@@ -153,12 +165,14 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 예상 Product Life Cycle 및 EOL 계획
 - 단종 또는 주요 부품 / HW 변경 시 고객에게 사전 통보하는 절차가 있는지
 - 의료로봇처럼 장기간 동일 사양이 필요한 고객에 대해 별도의 공급 또는 변경관리 방안이 있는지
+- **협력 논의:** 장기공급계약, Safety stock, PCN/EOL 사전통보기간, Last-time buy 및 대체부품 재검증 절차를 포함한 의료로봇 전용 Change control framework 협의
 
 ### 9. Purchasing & Supply Process
 
 - 현재 양사 간 구매 / 발주 과정이 다소 복잡한 부분이 있음
 - 향후 지속적인 구매가 이루어질 경우 주문 및 구매 프로세스를 단순화할 수 있는지
 - 정기 또는 일정 규모 이상의 구매 시 보다 효율적인 주문 / 공급 방식이 가능한지
+- **협력 논의:** 연간 Forecast, Blanket PO, MOQ, 수량별 단가, Incoterms, 결제조건과 납기 Communication 창구를 합의하여 반복 주문을 단순화
 
 ### 10. Korea Localization / Made in Korea
 
@@ -168,6 +182,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 필요한 경우 제한적인 Manufacturing / Calibration 기술이전, 한국 생산거점 또는 법인 등 다른 방식도 검토할 수 있음
 - 기술이전이 필요한 경우 Connecteve의 Medical / Surgical Robot 제품 생산에만 사용하고 Actuator 자체를 외부에 판매하지 않는 방식으로 사용범위를 제한할 수 있음
 - ZeroErr도 Made in Korea 및 향후 미국 등 해외시장 진출 관점에서 관심이 있다면 양사가 현실적으로 가능한 방안을 함께 검토할 수 있는지
+- **협력 논의:** 1단계 Module 공급·한국 Assembly/Test, 2단계 제한적 Calibration·Manufacturing 기술이전으로 나누어 검토하고, IP 보호, 품질책임, 사용범위 제한, 원산지 요건과 법률검토 항목을 공동 정의
 
 ### 11. MOU & Long-term Cooperation
 
@@ -175,16 +190,23 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 단순 Actuator 구매 관계를 넘어 의료로봇 분야에서 장기적인 협력관계를 구축할 의향이 있는지
 - 장기 제품 적용 / Customization / 추가개발 / 안정적인 공급 / Korea Localization 등을 향후 협력범위로 검토
 - 구체적인 공급, 개발, 기술이전 등의 조건은 필요 시 별도 계약으로 논의
+- **협력 논의:** MOU에는 협력의향, Workstream, 담당자와 목표일정을 담고, NRE·공급·품질·IP·기술이전 조건은 후속 개별계약으로 분리하는 단계적 계약구조 협의
 
 ### 12. Factory / R&D Tour
 
 - Actuator 생산 및 조립 과정
 - Aging / Calibration / Performance Testing / QC 과정
 - R&D 시설 및 향후 제품을 가능한 범위에서 확인
+- **협력 논의:** 기밀보호 범위 내에서 공정흐름, 핵심설비, Lot traceability와 Test data 보관방식을 확인하고, 추후 제공 가능한 Process flow·시험기준·품질자료 목록과 담당자를 합의
 
 ---
 
 ## 오후 3시 — Revopoint Meeting Agenda
+
+!!! info "협력 중심 진행 원칙"
+    Connecteve의 수술로봇 적용환경과 실측결과를 공유하고, Revopoint의 광학·Hardware·SDK
+    역량을 결합해 표준형 제품 적용과 차세대 공동개발 가능성을 함께 평가합니다. 각 의제의
+    결론은 가능 / 불가능 / 조건부 가능으로 구분하고 Sample·시험·개발 후속조치를 정합니다.
 
 ### 1. Current Product Application & Customization
 
@@ -192,6 +214,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 의료로봇 시스템 통합을 위한 외관 / Housing 변경 가능성
 - OEM / ODM 방식의 Customization 가능 범위
 - Customization 시 필요한 개발 절차 및 조건
+- **협력 논의:** Connecteve가 외형치수, 장착방식, Cable·Connector, Interface와 예상 수요를 제공하고, Revopoint가 Feasibility, NRE, Sample·양산 일정 및 OEM/ODM 경계를 제안하여 공동 검토범위를 확정
 
 ### 2. POP 3 Plus / POP 4 Optical Characteristics
 
@@ -199,6 +222,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 수술등 환경에서 POP 3 Plus는 영향이 거의 없으나 POP 4에서는 영향이 발생하는 이유
 - Receiver spectral range 및 Optical filtering 차이
 - 수술등 환경에서 안정적인 사용을 위해 권장하는 제품 또는 방식
+- **협력 논의:** 양사가 수술등 종류·조도·거리·각도별 Test matrix를 공동 작성하고, POP 3 Plus와 POP 4의 Raw data 및 성능을 비교하여 광학 Filter·노출·제품선정에 대한 공동 권고안 도출
 
 ### 3. Large Object Scanning Accuracy
 
@@ -207,6 +231,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - Scanner 자체의 한계인지, 당사의 스캔 방법에 의한 것인지 의견 요청
 - Marker 배치 / Scan path / Tracking / Point cloud fusion 등 권장 방법 및 노하우
 - 1 m급 물체의 전체 모델링 오차를 줄이기 위한 Calibration / Software setting / Scanning 방법
+- **협력 논의:** 동일 Leg phantom, Ground truth와 평가 Metric을 사용하는 공동 Benchmark를 구성하고, Scanner 한계와 Scan process 요인을 분리해 재현시험·개선시험·결과 Review를 단계적으로 수행
 
 ### 4. Medical Device Application & Certification
 
@@ -214,6 +239,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 의료기기 관련 인증 또는 규격 대응 계획이 있는지
 - 향후 의료용 또는 의료장비 전용 3D Scanner 출시 계획이 있는지
 - 의료로봇 적용을 위한 별도 사양 또는 전용제품 개발 가능성이 있는지
+- **협력 논의:** 의료기기 적용에 필요한 Risk management, Design change, Traceability와 인증자료의 역할분담을 검토하고, 범용제품 적용·의료용 Variant·전용 공동개발의 세 가지 경로를 비교
 
 ### 5. Current Product Update & Product Roadmap
 
@@ -223,6 +249,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - POP 3 Plus와 유사한 파장대 및 수술등 환경 특성을 유지하면서 성능이 향상된 차세대 제품 계획이 있는지
 - 차세대 제품 개발 시 Connecteve의 의료로봇 요구사항을 고려할 수 있는지
 - 예상 구매수량 또는 장기적인 적용 규모가 필요하다면 어느 정도 정보를 원하는지
+- **협력 논의:** Connecteve가 단계별 수요 Forecast와 목표 Scan speed·Accuracy·Latency·Form factor를 공유하고, Revopoint가 Roadmap 반영 가능시점, Engineering sample 및 공동개발 조건을 제안
 
 ### 6. Product Consistency & Quality Control
 
@@ -230,6 +257,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 제품별 Calibration 및 출하 전 성능검사를 어떻게 수행하는지
 - 제품 간 성능 편차를 어떤 방식으로 관리하는지
 - 제품별 Calibration / Test 결과 및 품질이력 관리 여부
+- **협력 논의:** Golden sample, Unit-to-unit variation, 출하검사·Calibration 기준과 Report format을 합의하고, 의료로봇 양산품의 Serial number별 품질자료 제공 및 이상품 분석 절차를 검토
 
 ### 7. Long-term Supply & Product Change
 
@@ -237,12 +265,14 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 예상 Product Life Cycle 및 EOL 계획
 - 단종 또는 주요 부품 / HW / FW 변경 시 고객에게 사전 통보하는 절차가 있는지
 - 의료로봇처럼 장기간 동일 사양이 필요한 고객에 대해 별도의 공급 또는 변경관리 방안이 있는지
+- **협력 논의:** 장기공급계약, Safety stock, PCN/EOL 사전통보, Last-time buy와 HW/FW 변경 전 Compatibility 재시험을 포함한 전용 Change control 절차 협의
 
 ### 8. Purchasing & Supply Process
 
 - 현재 양사 간 구매 / 발주 과정이 다소 복잡한 부분이 있음
 - 향후 지속적인 구매가 이루어질 경우 주문 및 구매 프로세스를 단순화할 수 있는지
 - 정기 또는 일정 규모 이상의 구매 시 보다 효율적인 주문 / 공급 방식이 가능한지
+- **협력 논의:** 연간 Forecast, Blanket PO, MOQ, Price tier, 납기, Incoterms와 기술지원 창구를 합의하여 Sample 구매부터 정기 양산공급까지 하나의 Process로 정리
 
 ### 9. Korea Localization / Made in Korea
 
@@ -252,6 +282,7 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 필요한 경우 제한적인 Manufacturing / Calibration 기술이전, 한국 생산거점 또는 법인 등 다른 방식도 검토할 수 있음
 - 기술이전이 필요한 경우 Connecteve의 Surgical Robot 제품 생산에만 사용하고 Scanner 자체를 외부에 판매하지 않는 방식으로 사용범위를 제한할 수 있음
 - Revopoint도 Made in Korea 및 향후 미국 등 해외시장 진출 관점에서 관심이 있다면 양사가 현실적으로 가능한 방안을 함께 검토할 수 있는지
+- **협력 논의:** Module 공급 후 한국 Assembly·Calibration·Testing부터 시작하는 단계적 Localization model을 검토하고, IP·보안·품질보증·사용범위·원산지 요건과 해외시장별 책임을 명확히 정의
 
 ### 10. MOU & Long-term Cooperation
 
@@ -259,12 +290,14 @@ Connecteve는 **AI 기반 정형외과 수술로봇 시스템**을 개발하는 
 - 단순 Scanner 구매 관계를 넘어 의료로봇 분야에서 장기적인 협력관계를 구축할 의향이 있는지
 - 장기 제품 적용 / OEM·ODM / 기술협력 / 안정적인 공급 / Korea Localization 등을 향후 협력범위로 검토
 - 구체적인 공급, 개발, 기술이전 등의 조건은 필요 시 별도 계약으로 논의
+- **협력 논의:** MOU에는 공동평가·OEM/ODM·Roadmap 협의·공급안정·Localization의 기본원칙을 담고, 개발비·IP·독점성·품질·공급조건은 Milestone별 후속계약으로 구체화
 
 ### 11. Factory / R&D / Showroom Tour
 
 - 제품 생산 및 조립 과정
 - Calibration / Testing / QC 과정
 - R&D 시설 및 향후 제품을 가능한 범위에서 확인
+- **협력 논의:** 기밀보호 범위 내에서 생산·Calibration·QC 흐름과 R&D 역량을 확인하고, 공동시험에 필요한 Data sheet·SDK·Test report·Sample 및 후속 기술회의 담당자와 제공일정을 합의
 
 ---
 
