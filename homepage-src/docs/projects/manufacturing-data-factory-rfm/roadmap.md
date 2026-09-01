@@ -29,6 +29,9 @@ noindex: true
     목표값을 바꾸는 추가 KPI가 아니라, 협약 후 같은 방법으로 재현하기 위한 보조 정의입니다.
     대표 제조 작업·소재·실증환경이 확정되면 세부 시험조건을 컨소시엄 공통 기준으로 동결합니다.
 
+    **제안·잠정 수치는 협약 목표로 인용하지 않습니다.** 대표 제조 작업·소재·실증환경이
+    확정되고 기준 데이터를 실측한 뒤 **컨소시엄 공통 KPI 로 동결**합니다.
+
 !!! info "함께 읽을 것"
     과제 개요·아키텍처·세부 R&R 은 **[대표 페이지](index.md)**,
     기술 근거와 수행 역량은 **[기술 상세](technical.md)** 에 있습니다.
@@ -50,16 +53,17 @@ noindex: true
 ```mermaid
 flowchart TB
     REAL["REAL | 실제 제조현장<br/>대표 작업 1~2개<br/>정상 · 실패 · 복구 Log"]
-    GEO["DIGITAL | Geometry Twin<br/>Simulation-ready 3D Asset<br/>좌표 · 의미 정합"]
-    WFM["생성 수단<br/>Cosmos / 동급 WFM<br/>후보 장면 · 미래상태"]
-    CORE["한성대학교 | Failure-to-Data Factory<br/>기술축 A · Deformation Engine · 물성/변형<br/>기술축 B · Human Data Engine · 실패/복구<br/>③ Ontology·Edge Case · 취약조건<br/>Quality Gate · 물리/재현성/안전"]
+    GEO["Geometry Twin | 모빌테크<br/>Simulation-ready 3D Asset<br/>좌표 · Semantic 정합"]
+    WFM["보조 생성수단<br/>Cosmos / 동급 WFM<br/>후보 장면 · 미래상태"]
+    CORE["한성대학교 | 세 기술축<br/>A · Manufacturing Deformation Engine<br/>B · Human Data Engine<br/>C · Ontology·Edge Case Intelligence"]
+    GATE["Quality Gate | 공통 품질관문<br/>물리정합 · 재현성 · 안전<br/>데이터 품질 · Provenance"]
     RFM["RFM | 학습 · 평가<br/>Zero-shot · Post-training"]
     TEST["PHYSICAL | 실물검증<br/>HIL · 수요기업<br/>공동 Testbed · Gap 환류"]
     OUTPUT["공통 성과<br/>Dataset · Benchmark<br/>논문 · 특허 · 표준"]
 
-    REAL --> GEO --> CORE --> RFM --> TEST
+    REAL --> GEO --> CORE --> GATE --> RFM --> TEST
     GEO -.-> WFM -.-> CORE
-    CORE --> OUTPUT
+    GATE --> OUTPUT
     TEST --> OUTPUT
     TEST -.-> REAL
 ```
@@ -71,14 +75,15 @@ flowchart TB
 ```mermaid
 flowchart TB
     REAL["REAL | 제조현장<br/>대표 작업 · 실패 Log"]
-    GEO["DIGITAL | Geometry Twin<br/>3D Asset · 의미 정합"]
-    CORE["한성대 | 실패 데이터팩토리<br/>① Deformation · 물성/변형<br/>기술축 B · Human Data · 실패/복구<br/>③ Ontology · 취약조건<br/>Quality Gate · 자동검수<br/>WFM은 후보 생성에 활용"]
+    GEO["Geometry Twin | 모빌테크<br/>3D Asset · Semantic 정합"]
+    CORE["한성대 | 세 기술축<br/>A · Deformation Engine<br/>B · Human Data Engine<br/>C · Ontology·Edge Case"]
+    GATE["Quality Gate | 공통 품질관문<br/>물리정합 · 재현성 · 안전"]
     RFM["RFM | 학습 · 평가"]
     TEST["PHYSICAL | 실물검증<br/>HIL · Testbed · Gap 환류"]
     OUTPUT["성과 | Dataset · Benchmark · 표준"]
 
-    REAL --> GEO --> CORE --> RFM --> TEST
-    CORE --> OUTPUT
+    REAL --> GEO --> CORE --> GATE --> RFM --> TEST
+    GATE --> OUTPUT
     TEST --> OUTPUT
     TEST -.-> REAL
 ```
@@ -169,7 +174,7 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 **본 과제에서 재현한 결과가 아니라 문헌으로 확인한 선행연구**이며, 우리가 무엇을
 새로 만들 것인지는 각 세부 항목에 따로 적었습니다.
 
-### A 물리 보정 관련 연구
+### 기술축 A — 물리 보정 관련 연구
 
 | 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
 |---|---|---|
@@ -183,7 +188,7 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 접촉력·변위·잔류변형의 재현오차와 불확실성을 통과한 Episode만 학습데이터로 편입합니다.
 Zero-shot 성능과 보정·Post-training 성능은 서로 다른 평가군으로 분리합니다.
 
-### ② 실패상태 복원·복구 증강 관련 연구
+### 기술축 B — 실패상태 복원·복구 증강 관련 연구
 
 | 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
 |---|---|---|
@@ -198,7 +203,7 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 파이프라인으로 정의합니다. 학생 데이터는 실로봇 복구데이터를 대체하지 않으며,
 유급 참여·안전 Protocol·전문가 최종판정을 전제로 합니다.
 
-### ③ 실패 조건 탐색·재현 관련 연구
+### 기술축 C — 실패 조건 탐색·재현 관련 연구
 
 | 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
 |---|---|---|
@@ -215,7 +220,7 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
     위 수치(r > 0.9, 성공률 90 %·91.30 %, +37.9 %p, 시간당 10배 등)는 **각 논문의
     특정 Task·장비·표본에서 나온 보고값**이며 본 과제의 목표치나 재현 결과가 아닙니다.
     Real-to-Sim은 ICRA 2026, DreamGen은 CoRL 2025 게재 논문이고, SIM1·SimWeaver·Hi-WM·
-    EgoRecovery는 2026-09-01 현재 arXiv 프리프린트입니다. 본 과제의 정량 목표는
+    EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 정량 목표는
     대표 제조작업의 기준선과 통계설계를 확정한 뒤 별도 KPI로 관리합니다.
 
 ---
@@ -224,15 +229,15 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 
 ### 한눈에 보기 — 핵심 기술 · 연차별 목표 · 핵심 결과물
 
-차년도별 목표 명칭과 결과물 묶음은 **2026-09-01 한성대 Physical AI R&R**을 기준으로
-정렬했습니다. 아래에 **기술축 관점 매트릭스**와 **세부 20건 표**가 이어집니다.
+차년도별 목표와 그 해에 내는 결과물입니다. 결과물 이름은 **2026-08-29 R&R 확정본의
+개발 목표** 그대로이며, 아래에 **기술축 관점 매트릭스**와 **세부 20건 표**가 이어집니다.
 
-| 차년도 | 제안서 연차별 목표 | 공식 역할 | 결과물 묶음 |
+| 차년도 | 연차별 목표 | 공식 역할 | 대표 결과물 |
 |---|---|:--:|---|
-| **1차년도**<br><small>9개월 · 기준 시스템</small> | **기준 시스템**<br><small>Interface·Schema·Asset 기준과 생성 재현성·왕복 정합 절차 확정</small> | ① Real-to-Sim-to-Real 주 수행 · ②③④ 병행 | **WFM–Physics Twin Reference Architecture**<br>Geometry–Physics Interface · Reference Asset |
-| **2차년도**<br><small>10개월 · 엔진 개발</small> | **제조 변형·데이터 증강 엔진**<br><small>Deformation Engine·Evaluator·Variation·Edge Compiler와 Checkpoint 수집환경 구축</small> | ①②③ 주 수행 · ④ 병행 | **Manufacturing Deformation Engine 기본형**<br>Material Profile · Physics Evaluator · Edge Case Compiler |
-| **3차년도**<br><small>12개월 · 전이 검증</small> | **전이 검증**<br><small>Zero-shot·Transfer Decision·OOD와 Simulation–HIL–Real·Recovery 통합 검증</small> | ②③ 주 수행 · ①④ 병행 | **Transfer Decision Manager**<br>Multi-stage Validation Gate · Recovery 증강 Dataset |
-| **4차년도**<br><small>12개월 · 표준화</small> | **표준화**<br><small>Failure 재현→Recovery 생성→RFM 재학습→실물 재검증 폐루프와 제3자 재현성 검증</small> | ③④ 주 수행 · ①② 병행 | **Closed-loop RoboOps Toolchain**<br>Cross-domain Benchmark · 최종 기준모델·기술백서 |
+| **1차년도**<br><small>9개월 · 기준 시스템</small> | 대표 작업·실패유형을 확정하고 **실제–가상 비교 기준**을 문서로 고정 | ① Real-to-Sim-to-Real · ③ 엣지 케이스 기초 · ④ 인터페이스 자문 | WFM–Physics Twin Reference Architecture<br>Domain Gap 프로토콜 v1 |
+| **2차년도**<br><small>10개월 · 증강 엔진</small> | 대표 소재 물성을 실측해 **Physics Twin 을 보정**하고 **Deformation Engine v1 · Edge Case Compiler v1 · 수집환경** 가동 | ① Physics 고도화 · ② 전이평가 기반 · ③ 데이터 수집환경 | Physics Consistency Evaluator v1<br>Edge Case Compiler v1 |
+| **3차년도**<br><small>12개월 · 전이 검증</small> | 가상 학습 결과의 **전이 여부를 판정**하고 생성 데이터를 자동 선별·공개 | ② Zero-shot 전이판정 · ③ Edge/Recovery Dataset · ① Physics 재보정 · ④ 평가자문 | Transfer Decision Manager<br>Edge/Recovery 증강 Dataset |
+| **4차년도**<br><small>12개월 · 표준화</small> | **실물 재검증 순환 1회 이상 완주**하고 절차·벤치마크를 표준화 | ①②③ 폐루프 통합 · ④ 표준화·학술성과 | Closed-loop RoboOps Toolchain<br>Cross-domain Physical AI Benchmark |
 
 <small>핵심 기술 — **기술축 A · Manufacturing Deformation Engine**(대표 작업의 물리 보정) ·
 **기술축 B · Human Data Engine**(실패상태 복원과 복구 증강) ·
@@ -245,12 +250,12 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 같은 20건을 **기술축 관점**으로 다시 배열한 것입니다. 위 표가 「그 해에 무엇을 내는가」라면,
 이 표는 「그 축이 4년 동안 어떻게 자라는가」를 봅니다.
 
-| 핵심기술 | 1차 · 기준체계 | 2차 · 엔진 기본형 | 3차 · 통합 검증 | 4차 · 실증·표준화 |
+| 핵심기술 | 1차 · 기준 시스템 | 2차 · 증강 엔진 | 3차 · 전이 검증 | 4차 · 표준화 |
 |---|---|---|---|---|
-| **기술축 A · Manufacturing<br>Deformation Engine**<br><small>대표 작업의 물리 보정</small> | Geometry–Physics<br>Interface · Domain Gap<br>Protocol | **Deformation Engine 기본형**<br>Material Profile · Physics Evaluator<br>Variation Library · Transferability Score | Transfer Decision<br>Manager<br>**Physics Calibration** | Robust Operating<br>Envelope 평가모듈<br><small>기술축 C와 공동</small> |
-| **기술축 B · Human Data Engine**<br><small>실패상태 복원과<br>복구 증강</small> | Checkpoint Schema<br><small>정상·실패·복구 데이터<br>항목 정의</small> | **Checkpoint 수집환경 가동**<br><small>Edge Case Compiler 의 입력</small> | Multi-stage Validation<br>Gate <small>(주도)</small><br>**Edge/Recovery<br>증강 Dataset** | **Closed-loop RoboOps<br>Toolchain**<br><small>상태 저장·복원 · 복구 다중<br>분기 · 실로봇 Grounding</small> |
+| **① Manufacturing<br>Deformation Engine**<br><small>대표 작업의 물리 보정</small> | **Domain Gap<br>프로토콜 v1** | Physics Consistency<br>Evaluator v1<br>제조 Domain Variation<br>Library v1<br>Transferability Score v1 | Transfer Decision<br>Manager<br>**Physics Calibration** | Robust Operating<br>Envelope 평가모듈<br><small>③ 과 공동</small> |
+| **기술축 B · Human Data Engine**<br><small>실패상태 복원과<br>복구 증강</small> | <small>수집 대상 실패유형과<br>정상·실패·복구 데이터<br>항목 정의</small> | **데이터 수집환경 가동**<br><small>Edge Case Compiler 의 입력</small> | Multi-stage Validation<br>Gate <small>(주도)</small><br>**Edge/Recovery<br>증강 Dataset** | **Closed-loop RoboOps<br>Toolchain**<br><small>상태 저장·복원 · 복구 다중<br>분기 · 실로봇 Grounding</small> |
 | **기술축 C · Manufacturing Ontology<br>·Edge Case Intelligence**<br><small>RFM 취약조건 탐색</small> | **Scene–Action–State–<br>Event 표준 v1**<br>Edge Case Taxonomy v1 | Prompt·Condition<br>Compiler v1<br>**Edge Case Compiler v1** | Edge/Recovery 증강<br>Dataset <small>(취약조건 기반<br>생성 조건 제공)</small> | **Cross-domain<br>Physical AI Benchmark** |
-| **공통 · ④ 학술·자문** | **WFM–Physics Twin<br>Reference Architecture**<br>Model Adapter v1<br><small>공통 RFM Interface</small> | 물성 보정·데이터 품질<br>시험설계 자문 | Simulation–HIL–Real<br>Robot 인터페이스<br>Multi-stage Validation<br>Gate <small>(공통 Quality Gate)</small> | 운용 가이드라인<br>기술 백서 |
+| **공통 · ④ 학술·자문** | **WFM–Physics Twin<br>Reference Architecture**<br>Model Adapter v1<br><small>공통 RFM Interface</small> | — | Simulation–HIL–Real<br>Robot 인터페이스<br>Multi-stage Validation<br>Gate <small>(공통 Quality Gate)</small> | 운용 가이드라인<br>기술 백서 |
 
 <small>굵게 표시한 것이 그 축·그 해의 대표 결과물입니다. 한 결과물이 두 축에 걸치는 경우
 (Edge Case Compiler · Edge/Recovery Dataset · Validation Gate · RoboOps Toolchain)는
@@ -262,16 +267,16 @@ Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery�
 
 ### 기관별 역할과 연차 완료조건
 
-한성대학교가 PDF의 **공동기관 연구목표**를 책임 수행하고, 모빌테크는 그 목표에 필요한
-Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목표와 모빌테크 지원 산출물의
-인수조건을 함께 만족한 상태를 **통합 완료조건**으로 봅니다.
+한성대학교가 각 연차의 목표를 총괄하고, 모빌테크는 그 목표에 필요한 Geometry Asset 을
+요구규격에 맞춰 지원합니다. 완료조건은 **한성대 연차 완료조건**과 **모빌테크 지원 산출물
+인수조건**으로 나누어 적고, 둘을 함께 만족한 상태를 **통합 검증조건**으로 봅니다.
 
-| 차년도 | 한성대학교 공동기관 연구목표 | 모빌테크 세부 지원 | PDF 대표 정량 완료조건 | 지원 산출물 인수조건 |
+| 차년도 | 한성대학교 대표 목표 | 모빌테크 세부 지원 | 한성대 연차 완료조건 | 지원 산출물 인수조건 |
 |:--:|---|---|---|---|
-| **1차** | **기준 시스템** — Interface·Schema·Asset 기준 확정 | Pilot Scan · 기준 Geometry Asset 제공 | 동일 조건 재실행 결과 동일 **100 %** · 손실 없는 전달 **≥ 95 %** | 좌표계·축척·Semantic 규격 충족, 기준 Asset 인수검사 통과 |
-| **2차** | **제조 변형·데이터 증강 엔진** — Deformation·Evaluator·Compiler 기본형 가동 | Simulation-ready Asset · LOD·Collision·Metadata 제공 | 비물리 결과 검출 **≥ 85 %**(오검출 **≤ 15 %**) · 접촉력 NRMSE **≤ 20 %** · 조건 준수 **≥ 70 %** | LOD·Collision·Metadata 검수 통과, Geometry–Physics Interface 정상 구동 |
-| **3차** | **전이 검증** — Zero-shot·Transfer Decision·OOD·Recovery 통합 검증 | 변동조건 Asset 과 Geometry 갱신 | 기준환경 대비 **≥ 70 %**(경량 적응 후 **≥ 90 %**) · 판정 일치 **≥ 80 %** · OOD **≥ 85 %** | 동일 Asset 버전 제공, 변경 이력과 버전 추적성 확보 |
-| **4차** | **표준화** — Closed-loop·Benchmark·제3자 재현성 확립 | 최종 실증공간 Asset 갱신·지원 | Edge Case Coverage **≥ 80 %** · 제3자 재현 **≥ 90 %** · 재학습–재검증 Loop **1회 완주** | 최종 Geometry Twin 버전 동결, 최종 인수검사와 실증 지원 완료 |
+| **1차** | 대표 작업·실패유형·평가절차·데이터 규격 확정 | Pilot Scan · 기준 Geometry Asset 제공 | Geometry Asset 을 인수하고 **Geometry–Physics Interface 승인** | 좌표계·축척·Semantic 규격 충족, 인수검사 통과 |
+| **2차** | 실측 물성 기반 **Deformation Engine v1** 과 데이터 수집환경 가동 | Simulation-ready Asset · LOD·Collision·Metadata 제공 | **Physics Twin 구동**과 접촉력 재현오차 기준 충족 | LOD·Collision·Metadata 검수 통과, Physics Twin 정상 구동 |
+| **3차** | 미학습조건 전이 판단 · Quality Gate · **Edge/Recovery Dataset** 구축 | 변동조건 Asset 과 Geometry 갱신 | 생성데이터 검수와 **Simulation–HIL–Real 평가 완료** | 동일 Asset 버전 제공과 버전 추적성 확보 |
+| **4차** | 실패 재현–복구 생성–RFM 재학습–**실물 재검증 순환 완주** | 최종 실증공간 Asset 갱신·지원 | **실제 성공률 향상**과 폐루프 1회 이상 완주 | 최종 Geometry Twin 버전 동결과 실증 지원 완료 |
 
 ### 기술축 B(Human Data Engine)의 연차 전개
 
@@ -281,14 +286,14 @@ Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목�
 | 차년도 | Human Data Engine 개발내용 |
 |:--:|---|
 | **1차** | 주요 실패유형, 정상·실패·복구 데이터 항목과 **상태변수 정의** |
-| **2차** | 실패 직전 상태 **Checkpoint·저장 기능 v1**, Teleoperation 수집환경 가동, 저장상태 재실행 기준선 확보 |
-| **3차** | 상태 **Restore·복구행동 다중 분기 v1**, 자동검수, Edge/Recovery Dataset, 대표 실패유형 통합 실행 확인 |
+| **2차** | 실패 직전 상태 **Checkpoint·저장 기능 v1**, Teleoperation 수집환경 가동 |
+| **3차** | 상태 **Restore·복구행동 다중 분기 v1**, 자동검수, Edge/Recovery Dataset |
 | **4차** | 소량 실로봇 **Grounding**, RFM 재학습, 실제 로봇 재검증 |
 
-!!! note "3차년도 통합 확인과 4차년도 Closed-loop 실증을 구분합니다"
-    3차년도에는 대표 실패유형 1종 이상에 대해 **실패상태 저장 → 복원 → 복구행동 분기 →
-    Quality Gate → Simulation–HIL–Real 비교**를 확인합니다. RFM 재학습과 실물 재검증까지
-    포함한 **Closed-loop 1회 이상 완주**는 PDF와 같이 4차년도 정량목표로 관리합니다.
+!!! note "3차년도 중간 완료조건"
+    4차년도에 통합위험이 몰리지 않도록 **3차년도 말까지 대표 실패유형 1건 이상에 대해
+    「실패상태 저장 → 복원 → 복구행동 분기 → Quality Gate → HIL 평가」 사전 폐루프를
+    완주**합니다. 4차년도에는 이를 실로봇과 RFM 재학습까지 확장합니다.
 
 ### 산출물 귀속
 
@@ -298,8 +303,8 @@ Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목�
 | 좌표계·Semantic 정합 규격 · LOD·Collision Mesh · Asset Metadata | 모빌테크 | 한성대 | 현장 Meta | 규격서·Mesh | Simulation-ready 검수 통과 |
 | Asset Version·Update Package | 모빌테크 | 한성대 | 변경 요청 | 버전 패키지 | 버전 추적 가능 |
 | Manufacturing Deformation Engine · Material Profile · Physics Parameter | 한성대 | 소재·계측기관 | Geometry Twin, 물성 실측 | 보정 모듈·물성값 | 접촉력 재현오차 기준 충족 |
-| Physics Consistency Evaluator · Physics Calibration Report | 한성대 | 모빌테크 | 생성 결과, 실측 | 판정기·리포트 | 접촉력·잔류변형·Failure/Edge 재현 기준 충족 |
-| Human Data Engine · Edge/Recovery Dataset | 한성대 | 실로봇 기관 | 시연·실패 로그 | 데이터셋 | 생성·검수 완료율·유효 데이터 기준 충족 |
+| Physics Consistency Evaluator · Physics Calibration Report | 한성대 | 모빌테크 | 생성 결과, 실측 | 판정기·리포트 | 비물리 검출률 기준 충족 |
+| Human Data Engine · Edge/Recovery Dataset | 한성대 | 실로봇 기관 | 시연·실패 로그 | 데이터셋 | 검수 완료율 기준 충족 |
 | Ontology·Edge Case Compiler · Multi-stage Validation Gate | 한성대 | 데이터·RFM 기관 | 실패 로그, 생성 조건 | 시나리오·품질관문 | Gate 통과 이력 재현 |
 | Transfer Decision Manager · Closed-loop RoboOps Toolchain | 한성대 | RFM·실로봇 기관 | 평가 결과 | 판정기·툴체인 | 전이 판정 일치도 기준 충족 |
 | Geometry Twin–Physics Twin Interface · Simulation–HIL–Real Interface | **한성대 정의**<br><small>모빌테크 합의</small> | 전 기관 | 양측 규격 | 인터페이스 규약 | 컨소시엄 승인 |
@@ -316,8 +321,8 @@ Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목�
   </tr></thead>
   <tbody>
   <tr>
-    <td rowspan="5"><b>1차년도</b><br><small>9개월 · 기준 시스템<br>한성대 예산 내 18 %</small></td>
-    <td rowspan="5"><b>기준 시스템</b><br>Interface·Schema·Asset 기준과 생성 재현성·왕복 정합 절차 확정<br><br><small><b>PDF 대표 정량목표</b><br>동일 조건 재실행 결과 동일 100 % · 손실 없는 전달 ≥ 95 %</small></td>
+    <td rowspan="5"><b>1차년도</b><br><small>9개월 · 기준 시스템<br>3.3억</small></td>
+    <td rowspan="5">대표 작업과 실패유형을 확정하고, <b>실제–가상 비교의 측정 항목·조건·판정 기준</b>을 문서로 고정<br><br><small><b>연차 완료 Gate (잠정)</b><br>동일 조건 재실행 결과 동일 100 % · 손실 없는 전달 ≥ 95 %</small></td>
     <td align="center">한성대 공통기반</td>
     <td><b>WFM–Physics Twin Reference Architecture</b><br><small>실제–가상–RFM 을 잇는 기준 구조</small></td>
     <td><small>대표 제조 작업 1~2개와 주요 실패유형의 <b>컨소시엄 승인</b> · 실패–복구 순환 구조 정의</small></td>
@@ -329,49 +334,49 @@ Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목�
   </tr>
   <tr>
     <td align="center">한성대 공통기반<br><small>RFM Interface · C 연계</small></td>
-    <td><b>Model Adapter · Domain Gap Protocol 기술사양서</b><br><small>RFM 연결 규격과 실제–가상 비교 절차</small></td>
-    <td><small>실환경·가상환경·RFM 데이터 연계규격 · 반복횟수·판정기준·통계방법</small></td>
+    <td><b>Model Adapter v1</b><br><small>RFM 이 변환 없이 읽는 연결 규격</small></td>
+    <td><small>실환경·가상환경·RFM 데이터 연계규격</small></td>
   </tr>
   <tr>
-    <td align="center">B · C</td>
-    <td><b>Edge Case Taxonomy · Checkpoint Schema</b><br><small>실패 분류와 상태저장 규격</small></td>
-    <td><small>대표 실패유형 · 정상·실패·복구 데이터 항목 · Human Data 상태변수 정의</small></td>
-  </tr>
-  <tr>
-    <td align="center">한성대 공통기반<br><small>A · 모빌테크 연계</small></td>
-    <td><b>Geometry–Physics Interface 설계·연계 규격서</b><br><small>Geometry Asset 과 Physics Twin 연결 규격</small></td>
-    <td><small>좌표·축척·Semantic·물성 Parameter·Asset Version 연계조건 정의</small></td>
-  </tr>
-  <tr>
-    <td rowspan="5"><b>2차년도</b><br><small>10개월 · 제조 변형·데이터 증강 엔진<br>한성대 예산 내 26 %</small></td>
-    <td rowspan="5"><b>제조 변형·데이터 증강 엔진</b><br>Deformation Engine·Evaluator·Variation·Edge Compiler와 Checkpoint 수집환경 가동<br><br><small><b>PDF 대표 정량목표</b><br>비물리 결과 검출 ≥ 85 %(오검출 ≤ 15 %) · NRMSE ≤ 20 % · 조건 준수 ≥ 70 %</small></td>
     <td align="center">A</td>
-    <td><b>Manufacturing Deformation Engine 기본형 · Material Profile Library</b><br><small>실측 물성 기반 제조 변형 시뮬레이션</small></td>
-    <td><small>대표 소재 물성 보정 · 접촉력·잔류변형 재현 · Material Profile 구축</small></td>
+    <td><b>Domain Gap 프로토콜 v1</b><br><small>실제–가상 차이 측정 절차</small></td>
+    <td><small>실제–가상 비교 평가절차 — <b>반복횟수·판정기준·통계방법</b> 포함</small></td>
   </tr>
   <tr>
     <td align="center">C</td>
-    <td><b>Prompt–Condition Compiler SW 모듈</b><br><small>생성 조건 → 시뮬레이션 실행조건 변환기</small></td>
-    <td><small>실패 가능조건 추출과 조건 기반 시나리오 생성</small></td>
+    <td><b>Edge Case Taxonomy v1</b><br><small>실패·경계 상황 분류 체계</small></td>
+    <td><small>대표 작업의 실패유형 목록 확정 · <b>Human Data Engine 이 수집할 정상·실패·복구 데이터 항목 정의</b></small></td>
+  </tr>
+  <tr>
+    <td rowspan="5"><b>2차년도</b><br><small>10개월 · 증강 엔진<br>4.4억</small></td>
+    <td rowspan="5">물성을 실측해 가상환경에 반영하고, <b>증강 엔진 v1 과 데이터 수집환경을 가동</b><br><br><small><b>연차 완료 Gate (잠정)</b><br>비물리 결과 검출률 ≥ 85 % · 접촉력 재현오차 NRMSE ≤ 20 %</small></td>
+    <td align="center">C</td>
+    <td><b>Prompt·Condition Compiler v1</b><br><small>생성 조건 → 시뮬레이션 실행조건 변환기</small></td>
+    <td><small>실패 가능조건 추출기 v1</small></td>
   </tr>
   <tr>
     <td align="center">A</td>
-    <td><b>Physics Consistency Evaluator · 평가 지표체계</b><br><small>실측 대비 물리 재현성 판정</small></td>
-    <td><small>접촉력 NRMSE · 잔류변형 오차 · Failure/Edge 재현율 평가</small></td>
+    <td><b>Physics Consistency Evaluator v1</b><br><small>물리적 가능성 자동 판정</small></td>
+    <td><small>제조 변형·물성 보정 기술 v1</small></td>
   </tr>
   <tr>
     <td align="center">A</td>
-    <td><b>Domain Variation Library · Zero-shot Baseline · Transferability Score v1</b><br><small>조건 변이와 미학습조건 전이 기준선</small></td>
-    <td><small>마찰·공차·재질 변동 라이브러리 · 미학습 조건 평가 기준선</small></td>
+    <td><b>제조 Domain Variation Library v1</b><br><small>마찰·공차·재질 등 조건 변이 라이브러리</small></td>
+    <td><small>대표 소재의 실측 물성값 · 대표 작업 물리 가상환경 구축</small></td>
+  </tr>
+  <tr>
+    <td align="center">A</td>
+    <td><b>Transferability Score v1</b><br><small>실제 전이 가능성 지표</small></td>
+    <td><small>미학습 조건 성능 유지율의 지표·측정법 정의</small></td>
   </tr>
   <tr>
     <td align="center">B · C</td>
-    <td><b>Edge Case Compiler · 실패상태 Checkpoint 수집환경</b><br><small>경계조건 실행과 상태저장·데이터 수집</small></td>
+    <td><b>Edge Case Compiler v1</b><br><small>경계조건 → 실행 시나리오 자동 생성</small></td>
     <td><small>RFM 취약·경계조건을 실행 가능한 시나리오로 변환 · 시연·실패·복구 데이터 <b>수집환경 가동</b> · 실패 직전 상태 <b>Checkpoint·저장 기능 v1</b></small></td>
   </tr>
   <tr>
-    <td rowspan="5"><b>3차년도</b><br><small>12개월 · 전이 검증<br>한성대 예산 내 29 %</small></td>
-    <td rowspan="5"><b>전이 검증</b><br>Zero-shot·Transfer Decision·OOD·상태복원·Recovery 다중분기와 Simulation–HIL–Real 검증<br><br><small><b>PDF 대표 정량목표</b><br>기준환경 대비 ≥ 70 %(경량 적응 후 ≥ 90 %) · 판정 일치 ≥ 80 % · OOD ≥ 85 %</small></td>
+    <td rowspan="5"><b>3차년도</b><br><small>12개월 · 전이 검증<br>4.8억</small></td>
+    <td rowspan="5">가상 학습 결과가 실제로 <b>얼마나 전이되는지 판정</b>하고, 생성 데이터를 자동 선별해 용도별 공개<br><br><small><b>연차 완료 Gate (잠정)</b><br>미학습 조건 성능 유지 ≥ 70 % · 경량 적응 후 ≥ 90 % · 전이 판정 일치 ≥ 80 % · 생성 데이터 검수 완료 ≥ 90 %</small></td>
     <td align="center">A</td>
     <td><b>Transfer Decision Manager</b><br><small>전이 가능 여부 판정·적응 필요성 결정</small></td>
     <td><small>실제–가상 성능차이 및 미학습조건 평가</small></td>
@@ -388,17 +393,17 @@ Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목�
   </tr>
   <tr>
     <td align="center">B · C</td>
-    <td><b>상태 복원·Recovery 다중분기·증강 Dataset</b><br><small>실패상태 복원과 여러 복구 행동을 포함한 학습데이터</small></td>
-    <td><small>정상·실패·복구·가상 생성 데이터셋의 <b>컨소시엄 제공 및 공개 승인분 배포</b> · 상태 Restore·복구행동 다중 분기 v1 · 자동검수</small></td>
+    <td><b>Edge/Recovery 증강 Dataset</b><br><small>실패·복구 포함 증강 학습 데이터</small></td>
+    <td><small>정상·실패·복구·가상 생성 데이터셋 배포 · <b>상태 Restore·복구행동 다중 분기 v1</b> · 자동검수</small></td>
   </tr>
   <tr>
     <td align="center">A</td>
-    <td><b>Physics Calibration · Simulation–Real 정합성 검증보고서</b><br><small>실측 기반 물리 파라미터 재보정</small></td>
-    <td><small>실측 물성값으로 가상환경을 재보정하고 정합성 결과 기록</small></td>
+    <td><b>Physics Calibration</b><br><small>실측 기반 물리 파라미터 재보정</small></td>
+    <td><small>실측 물성값으로 가상환경 재보정</small></td>
   </tr>
   <tr>
-    <td rowspan="5"><b>4차년도</b><br><small>12개월 · 표준화<br>한성대 예산 내 27 %</small></td>
-    <td rowspan="5"><b>표준화</b><br>Failure 재현→Recovery 생성→RFM 재학습→실물 재검증과 최종 기준모델·표준 제안<br><br><small><b>PDF 대표 정량목표</b><br>Edge Case Coverage ≥ 80 % · 제3자 재현 ≥ 90 % · 재학습–재검증 Loop 1회 완주</small></td>
+    <td rowspan="5"><b>4차년도</b><br><small>12개월 · 표준화<br>4.5억</small></td>
+    <td rowspan="5">실패 재현–복구 생성–재학습–<b>실물 재검증 순환을 1회 이상 완주</b>하고 절차·벤치마크를 표준화<br><br><small><b>연차 완료 Gate (잠정)</b><br>실제 실패 재현율 ≥ 70 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 +10 %p 이상 · 제3자 절차 재현 ≥ 90 %</small></td>
     <td align="center">한성대 공통기반</td>
     <td><b>Real-to-Sim-to-Real 운용 가이드라인</b><br><small>제3자가 따라 하는 운용 문서</small></td>
     <td><small>통합 실증 및 활용 가이드</small></td>
@@ -420,7 +425,7 @@ Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목�
   </tr>
   <tr>
     <td align="center">한성대 공통기반</td>
-    <td><b>Geometry–Physics Twin 최종 기준모델·형상관리·표준 제안·기술백서</b><br><small>제3자 재현 가능한 최종 기준 패키지</small></td>
+    <td><b>기술 백서</b><br><small>데이터·평가절차 표준 제안</small></td>
     <td><small>데이터·평가절차 표준화</small></td>
   </tr>
   </tbody>
@@ -434,56 +439,51 @@ Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목�
 
 > **목표** — 대표 제조 작업 1~2개와 주요 실패유형을 확정하고, 모빌테크의 Pilot Scan·기준
 > Geometry Asset 을 기반으로 **실제–가상 데이터 연계규격, 좌표·Semantic Interface,
-> Domain Gap 평가절차와 KPI 측정법**을 확정한다. Human Data 수집항목·Checkpoint Schema·
-> Edge Case Taxonomy 와 **RFM 데이터·평가 인터페이스 기술사양**까지 동결한다.
+> Domain Gap 평가절차**를 확정한다.
 
-**PDF 대표 정량목표** — 동일 조건 재실행 결과 동일 **100 %** · 스키마 왕복 과정의 손실 없는 전달 **≥ 95 %**
+**연차 완료 Gate (잠정)** — 생성 재현성 · 스키마 왕복 정합: 동일 조건 재실행 결과 동일 **100 %** · 손실 없는 전달 **≥ 95 %**
 
-**완료 판정** — PDF 대표 목표와 아래 내부 승인 증빙을 함께 확인합니다.
+**완료 판정** — 네 가지를 모두 만족해야 합니다.
 
 - 대표 작업·실패유형 **컨소시엄 승인**
-- 기준 Geometry Asset **인수검사 항목 100 % 충족**과 Geometry–Physics Interface 승인
-- 좌표계·축척·Semantic 규격과 S-A-S-E Round-trip의 **손실 없는 전달 ≥ 95 %**
-- 동일 Scene·Action·Seed 재실행 시 상태·판정·Provenance **재현 100 %**
-- Domain Gap **분모·산식·반복횟수·판정기준·통계방법 확정**
-- 기준 데이터와 학습용·검증용·평가용 **분할 원칙 동결**
+- 기준 Geometry Asset **인수검사 완료**
+- **좌표계·Semantic 규격 승인**
+- Domain Gap **측정 항목·반복횟수·판정기준 확정**
 
 !!! tip "1차년도에 평가방법까지 고정합니다"
     관계 구조(온톨로지)는 **필요한 최소 관계만** 정의합니다. 대신 나중에 성능을 비교할
     **평가방법을 1차년도에 확정**합니다. 재는 방법이 정해지지 않으면 뒤의 수치가
     비교 대상을 잃습니다.
 
-### 2차년도 (10개월) — 제조 변형·데이터 증강 엔진
+### 2차년도 (10개월) — 증강 엔진
 
-> **목표** — 모빌테크의 Simulation-ready Geometry Twin 에 대표 소재의 실측 물성을 결합해
-> **Manufacturing Deformation Engine 기본형 · Material/Domain Variation Library ·
-> Edge Case Compiler · Human Data 수집환경과 실패상태 Checkpoint 기능**을 가동한다.
-> Zero-shot Transfer 기준성능(Baseline)과 미학습 조건 평가 데이터셋을 설계한다.
+> **목표** — 대표 소재의 물성을 실측하여 **Physics Twin 을 보정**하고, **Manufacturing
+> Deformation Engine v1 · Edge Case Compiler v1 · 실패·복구 데이터 수집환경**을 가동한다.
+> Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.
 
-**PDF 대표 정량목표** — 비물리 결과 자동 검출률 **≥ 85 %**(오검출 **≤ 15 %**) · 접촉력 재현오차 **NRMSE ≤ 20 %** · 생성조건 준수율 **≥ 70 %**
+**연차 완료 Gate (잠정)** — 비물리 결과 검출률 **≥ 85 %**(오검출 ≤ 15 %) · 접촉력 재현오차 **NRMSE ≤ 20 %** · 상태 Checkpoint 저장과 실패·복구 데이터 수집 가능
 
-**완료 판정** — PDF 대표 목표와 엔진 가동 여부를 함께 확인합니다.
+**완료 판정** — 네 묶음으로 나누어 판정합니다.
 
 | 묶음 | 판정 기준 |
 |---|---|
-| **Geometry Asset 인수** | LOD·Collision·Metadata 검수 및 Geometry–Physics Interface 정상 구동 |
-| **Deformation Engine** | 접촉력 **NRMSE ≤ 20 %**, 잔류변형 **≤ 25 %**, 실측 Material Profile 적용 |
-| **Failure/Edge 재현** | 사전 정의된 주요 조건의 가상환경 재현율 **≥ 70 %**, 실행조건과 판정 근거 저장 |
-| **데이터 엔진** | Edge Case 학습데이터 생성·검수 완료율 **≥ 90 %**, Checkpoint 저장·재실행과 S-A-S-E 수집 가능 |
+| **Geometry Asset 인수** | LOD·Collision·Metadata 검수 완료 |
+| **Physics Engine** | 접촉력 재현오차 **NRMSE ≤ 20 %**, 실측 물성값이 Physics Twin 에 적용 |
+| **Quality Module** | 비물리 결과 **검출률 ≥ 85 %**(오검출 ≤ 15 %) |
+| **Human Data** | 상태 **Checkpoint 저장**과 정상·실패·복구 데이터 수집 가능(S-A-S-E 규격) |
 
 ### 3차년도 (12개월) — 전이 검증
 
 > **목표** — **버전 관리된 Geometry·Physics Twin** 에서 RFM 취약조건과 미학습조건을 생성하고,
-> Zero-shot·적응·Post-training 평가군을 분리해 **Simulation–HIL–Real 전이 가능성을
-> 판정**한다. Quality Gate 를 통과한 데이터는 **컨소시엄에 제공하고 공개 승인분만 배포**하며,
-> 대표 실패유형 1종 이상에서 상태복원·복구행동 다중 분기와 사전 정의 정량지표를 검증한다.
+> **Quality Gate 를 통과한** 정상·실패·복구·가상 데이터를 용도별로 배포하며
+> **Simulation–HIL–Real 전이 가능성을 판정**한다.
 
-**PDF 대표 정량목표** — 미학습 조건의 기준환경 대비 Zero-shot 성능 유지율 **≥ 70 %**(경량 적응 후 **≥ 90 %**) · Transfer Decision 판정 일치도 **≥ 80 %** · OOD 조건 탐지율 **≥ 85 %**
+**연차 완료 Gate (잠정)** — **Zero-shot 성능 유지율 ≥ 70 %**(경량 적응 전) · **적응 후 성능 회복률 ≥ 90 %** · 전이 판정 일치도 **≥ 80 %** · OOD 탐지 **≥ 85 %** · 검수 완료율 **≥ 90 %**
 
-**완료 판정** — 적응하지 않은 상태에서 기준환경 대비 **Zero-shot 성능 유지율 ≥ 70 %** 를
-측정하고, 경량 적응 후 성능 유지율 **≥ 90 %**, 판정 일치도 **≥ 80 %**, OOD **≥ 85 %** 를 각각 보고합니다. **동일 Asset 버전으로 Simulation–HIL–Real
-비교**를 마치고, 대표 실패유형 1종 이상에서 상태 저장–복원–복구분기–Gate–HIL 통합 실행을
-확인합니다. 아래 네 가지 구분이 데이터셋에 드러납니다.
+**완료 판정** — **경량 적응을 하지 않은 상태**에서 기준환경 대비 **Zero-shot 성능 유지율
+≥ 70 %**, 경량 적응(Few-shot·LoRA) 뒤 **성능 회복률 ≥ 90 %** 를 각각 측정해 **나누어
+보고**합니다. 전이 판정 일치도 **≥ 80 %**, 검수 완료율 **≥ 90 %** 를 달성하고,
+**동일 Asset 버전으로 HIL·실물 비교**를 마칩니다. 아래 네 가지 구분이 데이터셋에 드러납니다.
 
 | 구분 | 값 |
 |---|---|
@@ -495,74 +495,108 @@ Geometry Asset 을 요구규격에 맞춰 지원합니다. PDF 대표 정량목�
 ### 4차년도 (12개월) — 표준화
 
 > **목표** — 실제 실패를 가상환경에서 재현하고, **실패상태 복원·복구행동 분기·RFM 재학습·
-> 실물 재검증 폐루프를 1회 이상 완주**한다. 모빌테크의 최종 Asset Package 를 동결하고,
-> 증강 데이터의 실제 성능기여도와 제3자 절차 재현성을 입증해 운용절차·벤치마크를 표준화한다.
+> 실물 재검증 순환을 1회 이상 완주**하며, 모빌테크의 최종 Asset Package 와 함께
+> 운용절차와 벤치마크를 표준화한다.
 
-**PDF 대표 정량목표** — Edge Case Coverage **≥ 80 %** · 제3자 기준절차 재현 성공률 **≥ 90 %** · 실패재현→Recovery 생성→RFM 재학습→실물 재검증 Loop **1회 완주**
+**연차 완료 Gate (잠정)** — 실제 실패 재현율 **≥ 70 %** · **복구 데이터 확보율 ≥ 80 %** · 엣지 케이스 커버리지 **≥ 80 %** · 재학습–실물 재검증 순환 **1회 이상 완주** · **실제 성공률 + 10 %p 이상** · 제3자 절차 재현 **≥ 90 %**
 
-**완료 판정** — 실패 재현 → 복구 데이터 생성 → 재학습 → 실물 재검증 순환을 **1회 완주**하고,
-승인된 Taxonomy 기준 Edge Case Coverage **≥ 80 %** 를 확보합니다. 제3자는 최종 기준모델과
-운용 가이드라인으로 기준 시나리오를 **≥ 90 % 재현**할 수 있어야 합니다. 최종
-**Geometry·Physics Twin 버전과 평가용 RFM Checkpoint 를 동결**합니다.
+**완료 판정** — 실패 재현 → 복구 데이터 생성 → 재학습 → 실물 재검증 순환이 **1회 이상
+완주**되고, 엣지·복구 데이터 적용 후 실제 성공률이 **+10 %p 이상** 향상된 것이 측정으로
+제시됩니다. 실제 주요 실패의 **가상 재현율 ≥ 70 %**, 엣지 케이스 **커버리지 ≥ 80 %** 를
+확보하고, **제3자가 운용 가이드라인만으로 기준 시나리오를 ≥ 90 % 재현**할 수 있습니다.
+최종 **Geometry·Physics Twin 버전을 동결**합니다.
 
 ---
 
 ## 핵심 KPI
 
-2026-09-01 R&R은 연차별 개발 산출물과 함께 아래 **12개 대표 정량목표**를 제시합니다.
-모두 기준선 확정 전 잠정치이며, 1차년도에 Use Case·소재군·Robot·실증환경과
-분모·산식·반복·통계를 컨소시엄 공통 KPI 정의서로 동결합니다.
+측정 대상과 방법이 드러나도록 정의했습니다. **본 목표값은 제안 기준**이며, 1차년도에
+대표 작업·소재·실증환경의 **기준선을 실측해 세부 시험조건과 통계설계를 확정**합니다.
+**KPI 의 평가방향과 최소 목표수준은 유지합니다.** 반복횟수(20·30·50회)는 실증기관의
+시험시간·비용과 함께 협약 전에 확인합니다.
 
-| # | 차년도 | KPI | 목표 | 측정·증빙 설계 |
-|:--:|:--:|---|---|---|
-| 1 | 1차 | 동일 조건 재실행 결과 동일률 | **100 %** | 같은 Scene·Action·Seed·Asset Version을 재실행해 상태·이벤트·판정 결과 비교 |
-| 2 | 1차 | 스키마 왕복 무손실 전달률 | **≥ 95 %** | 데이터 직렬화→기관 간 전달→역직렬화 후 필드·값 보존 비율 |
-| 3 | 2차 | 비물리 결과 자동 검출률 | **≥ 85 %** | 전문가가 물리 타당성을 판정한 표본의 Recall; 오검출률 **≤ 15 %** 병기 |
-| 4 | 2차 | 접촉력 재현오차 | **NRMSE ≤ 20 %** | 동일 조건 실물 F/T 기준곡선과 시뮬레이션 접촉력 비교 |
-| 5 | 2차 | 생성조건 준수율 | **≥ 70 %** | Prompt–Condition Compiler가 지정한 물성·공차·마찰·배치 조건을 충족한 결과 비율 |
-| 6 | 3차 | Zero-shot 성능 유지율 | **≥ 70 %** | 미학습 조건 성공률 ÷ 기준환경 성공률; 추가 학습 전 측정 |
-| 7 | 3차 | 경량 적응 후 성능 유지율 | **≥ 90 %** | 같은 평가군에서 소량 적응 후 별도 측정; Zero-shot 결과와 분리 보고 |
-| 8 | 3차 | Transfer Decision 판정 일치도 | **≥ 80 %** | 전이 가능·경량 적응 필요·재학습 필요 판정과 실물 검증결과의 일치율 |
-| 9 | 3차 | OOD 탐지율 | **≥ 85 %** | 사전 정의된 OOD 조건 중 탐지 성공 비율과 오탐을 함께 보고 |
-| 10 | 4차 | Edge Case Coverage | **≥ 80 %** | 승인된 Edge Case Taxonomy 항목 중 시나리오·데이터·검증증빙이 완결된 비율 |
-| 11 | 4차 | 제3자 절차 재현 성공률 | **≥ 90 %** | 독립 수행자가 최종 기준모델·가이드라인으로 기준절차를 재현한 비율 |
-| 12 | 4차 | 재학습–재검증 Loop 완주 | **1회** | Failure 재현→Recovery 생성→RFM 재학습→실물 재검증 전체 실행로그 |
+!!! note "「연차 완료 Gate」 와 「핵심 KPI」 는 다른 지표입니다"
+    **연차 완료 Gate** 는 그 해의 작업이 끝났는지 판정하는 **진행 관리용 잠정 기준**이고,
+    **핵심 KPI** 는 과제 전체의 성능을 재는 **성과 지표**입니다. 값이 겹치는 항목이
+    있지만 같은 지표로 인용하지 않습니다.
 
-!!! note "공식 목표와 내부 보조지표를 구분합니다"
-    잔류변형 오차, 실제–가상 성공률 차이, 데이터 검수 완료율, 실제 성공률 향상은
-    Deformation·Quality Gate·실증 분석에 필요한 **내부 보조지표**로 계속 측정할 수 있습니다.
-    다만 2026-09-01 R&R의 대표 정량목표로 인용하지 않습니다.
+| # | KPI | 목표 | 측정 방법 |
+|:--:|---|---|---|
+| 1 | **대표 작업의 접촉력 재현오차** | **≤ 20 %** | 동일한 물체·자세·속도에서 실제 힘 센서값과 가상환경값을 비교 |
+| 2 | **대표 소재의 잔류변형 재현오차** | **≤ 25 %** | 선정한 소재와 반복하중 조건에서 작업 전후의 실제 형상과 가상 형상을 비교 |
+| 3 | **실제–가상 작업 성공률 차이** | **≤ 20 %p** | 같은 작업·조건에서 가상환경과 실제 로봇의 성공률 차이 |
+| 4 | **주요 실패유형별 복구 데이터 확보율** | **≥ 80 %** | 사전에 정한 주요 실패유형 중 유효한 복구 시나리오와 데이터가 확보된 비율 |
+| 5 | **엣지 케이스 데이터 검수 완료율** | **≥ 90 %** | 생성 데이터 중 검수가 완료된 비율 |
+| 6 | **실제 주요 실패의 가상환경 재현율** | **≥ 70 %** | 실제로 발생한 주요 실패를 가상환경에서 다시 만들어 낸 비율 |
+| 7 | **학습하지 않은 물체·배치·물성조건 성능 유지율** | **≥ 70 %** | 미학습 조건에서 기준환경 대비 작업성공률 |
+| 8 | **엣지 케이스·복구 데이터 적용 후 실제 성공률 향상** | **+ 10 %p 이상** | 생성 데이터로 재학습한 모델의 실제 로봇 성공률 변화 |
 
-### KPI 성숙도 — 연차별 검증 목표
+**6·7·8번은 새로 제안하는 지표입니다.**
+6번은 실환경–가상환경 연계와 엣지 케이스 생성 능력을 직접 보여주고,
+7번은 확정 역할 ② **Zero-shot Transfer** 를 그대로 평가하며,
+8번은 **만든 데이터가 실제 성능 개선으로 이어졌는지**를 보는 최종 성과지표입니다.
 
-| 차년도 | PDF 대표 정량목표 | 필수 증빙 |
-|:--:|---|---|
-| **1차** | 재실행 동일 **100 %** · 무손실 전달 **≥ 95 %** | Reference Asset·Schema 버전, 재실행 비교로그, Round-trip 검증보고서 |
-| **2차** | 검출 **≥ 85 %**(오검출 **≤ 15 %**) · NRMSE **≤ 20 %** · 조건 준수 **≥ 70 %** | Material Profile, Physics Evaluator 혼동행렬, F/T 비교곡선, 조건 준수로그 |
-| **3차** | Zero-shot **≥ 70 %** · 적응 후 **≥ 90 %** · 판정 일치 **≥ 80 %** · OOD **≥ 85 %** | 평가군별 결과, Transfer Decision·OOD 로그, Simulation–HIL–Real 비교보고서 |
-| **4차** | Coverage **≥ 80 %** · 제3자 재현 **≥ 90 %** · Loop **1회** | Edge Case Package, 독립 재현 결과, Closed-loop 전 과정 실행로그 |
+### KPI 측정 정의 — 분모 · 산식 · 반복 · 통계
 
-### KPI별 주관·협력 기관
+목표값만으로는 같은 수치를 다르게 잴 수 있습니다. **무엇을 분모로 두고 몇 번 반복해
+어떻게 계산하는지**를 함께 고정합니다. 아래 정의는 1차년도 평가절차 문서에서 확정합니다.
 
-| KPI 묶음 | 주관 | 필수 협력 |
+| # | 기준선 | 평가 대상 (분모) | 반복 | 산식 | 통계 | 측정 |
+|:--:|---|---|:--:|---|---|:--:|
+| 1 | 실물 F/T 계측 기준곡선 | 대표 작업의 **파지 / 삽입 / 압착 중 지정 구간** | 30회 이상 | NRMSE = RMSE ÷ (실측 최대–최소), 힘–변위 곡선 정렬방법 명시 — **Peak Force·Impulse 보조지표** 병기 | 평균 ± 95 % CI | 2·3차 |
+| 2 | 작업 전후 실측 형상 | 대표 소재 시편 | 20회 이상 | **잔류변형 MAE ÷ 기준 시편 대표변형량** — 실측 변형이 0 에 가까울 때 값이 폭증하지 않도록 **최소 분모**를 설정 | 평균 ± 95 % CI | 2·3차 |
+| 3 | 실물 로봇 성공률 | 동일 작업·조건 시행 | 각 50회 이상 | \|가상 성공률 − 실제 성공률\| — 실제·가상 **초기상태를 같은 분포에서 추출**하고 성공 판정자를 동일 적용 | Wilson 95 % CI — **차이의 상한이 20 %p 이하**인지로 판정 | 3·4차 |
+| 4 | 1차년도 확정 실패유형 목록 | **사전 정의된 실패유형 수** | 유형당 10회 이상 | 유효 복구데이터 확보 유형 ÷ 전체 유형. **유효** = Quality Gate 통과 · 안전제약 위반 없음 · 동일 실패상태에서 복구 성공 · 최소 Episode 수 충족 · RFM 기관이 로드 가능한 형식 | 비율 | 3·4차 |
+| 5 | 검수 절차 정의서 | **생성된 전체 데이터 건수** | 전수 | 검수 완료 건수 ÷ 생성 건수 | 비율 | 3·4차 |
+| 6 | 실제 발생 실패 로그 | **1차년도에 고정한 실패유형 수·로그 수** 안의 승인된 주요 실패만 | 건별 5회 이상 | 가상 재현 성공 건수 ÷ 실제 실패 건수. **성공** = 동일 Failure Type 발생 · Trigger 조건 일치 · 핵심 물리량 허용오차 내 · 실패 발생 단계와 결과 일치 | 비율 | 4차 |
+| 7 | 기준환경 작업성공률 | **미학습 물체 / 배치 / 물성 / 복합조건을 각각 분리** | 조건당 30회 이상 | 미학습 성공률 ÷ 기준환경 성공률 — **조건별 Macro-average 와 최소값을 함께 보고**, 측정은 경량 적응 **전** | 평균 ± 95 % CI | 3·4차 |
+| 8 | 재학습 전 실제 성공률 | 동일 실물 시험 조건 | 전후 각 50회 이상 | 재학습 후 − 재학습 전 (%p) — **동일 모델·초기 Checkpoint·학습예산·Epoch·Batch**, 바뀌는 것은 Edge/Recovery 증강 데이터뿐. 성공률과 함께 **안전위반·Recovery Rate** 보고 | Wilson 95 % CI | 4차 |
+
+!!! warning "검수 완료율과 유효 데이터 비율은 다른 지표입니다"
+    네 지표가 비슷해 보이지만 분모가 각각 다릅니다.
+
+    | 지표 | 분모 | 뜻 |
+    |---|---|---|
+    | **복구 데이터 확보율 ≥ 80 %** | 사전 정의된 실패유형 | 유효한 복구 데이터가 확보된 **유형**의 비율 |
+    | **Edge Case Coverage ≥ 80 %** | 정의된 엣지 조건 전체 | 시험·재현된 **조건**의 비율 |
+    | **데이터 검수 완료율 ≥ 90 %** | 생성 데이터 전체 | 검수 **절차가 끝난** 건의 비율 |
+    | **유효 데이터 통과율** | 검수 완료 데이터 | 그중 **실제로 쓸 수 있는** 건의 비율 |
+
+    검수를 마쳤다고 모두 쓸 수 있는 것은 아닙니다. 통과율은 검수 완료율의 하위 지표입니다.
+
+### KPI 별 주관·협력 기관
+
+지표마다 책임 기관이 다릅니다. 측정에 다른 기관의 데이터가 필요한 항목은 협력 기관을
+함께 적었습니다.
+
+| KPI | 주관 | 필수 협력 |
 |---|:--:|---|
-| 1–2. 재현성·스키마 | **한성대** | Data·RFM 기관 · 모빌테크 Asset |
-| 3–5. Physics·조건 준수 | **한성대** | 실로봇·소재기관 · 모빌테크 Geometry |
-| 6–9. Zero-shot·Transfer·OOD | **한성대 평가 주관** | RFM 기관 Model·Checkpoint · 실로봇 기관 |
-| 10–12. Coverage·제3자 재현·Loop | **한성대 통합 주관** | RFM·Robot HW·실증기관 · 모빌테크 최종 Asset |
+| 1. 접촉력 재현오차 | 한성대 | 모빌테크 Asset · 실로봇 기관 F/T 데이터 |
+| 2. 잔류변형 재현오차 | 한성대 | 모빌테크 Geometry · 소재·계측기관 |
+| 3. 실제–가상 성공률 차이 | 한성대 | 모빌테크 Asset · RFM 기관 · 실로봇 기관 |
+| 4. 복구 데이터 확보율 | 한성대 | 실로봇 기관 · 수요기업 |
+| 5. 데이터 검수 완료율 <small>(+ 유효 데이터 통과율)</small> | **한성대** | 데이터·RFM 기관 |
+| 6. 실제 실패의 가상 재현율 | 한성대 | 모빌테크 Geometry · 실로봇 기관 실패로그 |
+| 7. 미학습조건 성능 유지율 | **한성대** | RFM 기관 모델·Checkpoint · 모빌테크 변동 Asset |
+| 8. 실제 성공률 향상 | **한성대** | RFM 기관 재학습 · 실로봇 기관 검증 · 모빌테크 최종 Asset |
 
-### KPI와 4대 역할의 대응
+### KPI 와 4대 역할의 대응
 
 | 공식 역할 | 핵심 KPI |
 |---|---|
-| **① Real-to-Sim-to-Real** | 재실행 동일률 · 접촉력 NRMSE · 제3자 절차 재현 |
-| **② Zero-shot Transfer** | Zero-shot·경량 적응 성능 유지율 · Transfer Decision 일치도 · OOD 탐지율 |
-| **③ Edge Case Simulation** | 비물리 결과 검출 · 조건 준수 · Edge Case Coverage · Closed-loop 완주 |
-| **④ 학술·자문** | SCI(E) 3편 · 학술발표 7건 · 특허 출원 3건/등록 1건 · SW 3건 · 표준 제안·기술백서 1건 |
+| **① Real-to-Sim-to-Real** | KPI 1 접촉력 **≤ 20 %** · KPI 2 잔류변형 **≤ 25 %** · KPI 3 실제–가상 성공률 차이 **≤ 20 %p** · KPI 6 실제 실패 재현율 **≥ 70 %** |
+| **② Zero-shot Transfer** | KPI 7 미학습조건 성능 유지율 **≥ 70 %** · 적응 후 성능 회복률 **≥ 90 %** · 전이 판정 일치도 **≥ 80 %** |
+| **③ 엣지 케이스 시뮬레이션** | KPI 4 복구 데이터 확보율 **≥ 80 %** · KPI 5 검수 완료율 **≥ 90 %** · KPI 6 실패 재현율 **≥ 70 %** |
+| **② + ③ 최종성과** | Edge/Recovery 데이터 적용 후 실제 성공률 **+ 10 %p 이상** |
+| **④ 학술·자문** | 논문·특허·SW·표준·기술문서와 제3자 절차 재현성 **≥ 90 %** |
 
-한성대학교는 증강 데이터의 **전이·검증 평가를 주관**합니다. RFM 기관은 동일 모델조건으로
-평가·재학습에 협력하고, 실로봇 기관은 현장 유효성을 검증합니다. 이는 한성대학교가
-RFM 모델 자체를 단독 개발한다는 뜻이 아닙니다.
+!!! note "KPI 7·8 의 주관은 한성대학교입니다"
+    한성대학교가 **증강 데이터의 성능기여도 평가를 주관**하고, RFM 기관은 **동일 학습예산과
+    모델조건으로 재학습**을 수행하며, 실로봇 기관은 **실제 성공률을 검증**합니다.
+    한성대학교가 RFM 모델 자체를 개발한다는 뜻이 아닙니다.
+
+    KPI 6 은 역할 ① 과 ③ 의 공동 결과이지만 **한성대학교 내부 기술 간 공동**이며,
+    모빌테크 공동주관을 뜻하지 않습니다.
 
 ### 모빌테크 지원지표 — 인수 기준
 
@@ -580,36 +614,23 @@ RFM 모델 자체를 단독 개발한다는 뜻이 아닙니다.
 
 ---
 
-## 성과지표 (2026-09-01 R&R · 4년 누계)
-
-아래 건수는 최신 R&R과 동일합니다. 기준선·범위 조정 시 함께 조정하며,
-확정 전 정량목표를 협약 목표로 인용하지 않습니다.
+## 성과지표 (4년 누계)
 
 | 구분 | 1차 | 2차 | 3차 | 4차 | **누계** |
 |---|:--:|:--:|:--:|:--:|:--:|
 | SCI(E)급 논문 | — | 1 | 1 | 1 | **3** |
 | 국내외 학술발표 | 1 | 2 | 2 | 2 | **7** |
-| 특허 출원 / 등록 | — | 1 | 1 | 1 / 1 | **3 / 1** |
+| 특허 출원 | — | 1 | 1 | 1 | **3** |
+| 특허 등록 **추진** | — | — | — | 1 | **1** |
 | SW 프로그램 등록 | — | 1 | 1 | 1 | **3** |
-| 표준 제안 · 기술 백서 | — | — | — | 1 | **1** |
+| <small>등록 대상</small> | — | <small>Deformation Engine</small> | <small>Validation Gate</small> | <small>RoboOps Toolchain</small> | |
+| 표준 제안 | — | — | — | 1 | **1** |
+| 기술문서·자문 의견서 | 1 | 1 | 1 | 1 | **4** |
 
-특허는 **출원 3건·등록 1건**을 분리 관리합니다.
+특허는 **3차년도 출원분을 4차년도에 등록**하는 일정입니다 — 심사 기간을 고려한 배치입니다.
 
-### 역할 ④의 연차별 자문·기술 기록
-
-| 차년도 | 내부 관리 문서·자문 기록 | 연결되는 기술성과 |
-|:--:|---|---|
-| **1차** | Geometry–Physics–RFM 인터페이스·KPI 시험설계 자문 | Reference Architecture · Domain Gap 프로토콜 |
-| **2차** | 물성 보정·Failure/Edge 재현·Human Data 수집 시험 자문 | Deformation Engine · Physics Consistency Evaluator |
-| **3차** | Zero-shot 전이판정·상태복원·Simulation–HIL–Real 통합 평가 자문 | Transfer Decision Manager · Validation Gate |
-| **4차** | 실물 폐루프 운용·벤치마크·표준화 자문 | RoboOps Toolchain · 운용 가이드라인 · 기술 백서 |
-
-따라서 역할 ④는 마지막 연차의 논문·표준 작업만을 뜻하지 않습니다. 매년 그 연차의 핵심
-기술 Gate를 검토하고, 검토결과를 다음 연차 입력으로 남기는 **연속 수행 역할**입니다.
-위 표는 수행 연속성을 남기는 **내부 관리 산출물**이며, PDF 성과지표 건수에 추가하지 않습니다.
-
-역할 ④의 정량성과는 최신 R&R에 따라 **SCI(E) 논문 3편 · 국내외 학술발표 7건 ·
-특허 출원 3건/등록 1건 · SW 프로그램 등록 3건 · 표준 제안·기술백서 1건**으로 관리합니다.
+확정 역할 ④가 **학술 연구 및 기술 자문**인 만큼, 논문·특허는 부수 성과가 아니라
+**협약 시 확정된 논문·특허·SW·표준·기술문서 성과지표**로 관리합니다.
 
 | 성과 | 귀속 기준 |
 |---|---|
@@ -619,39 +640,74 @@ RFM 모델 자체를 단독 개발한다는 뜻이 아닙니다.
 | 표준 제안 | **한성대 주도, 컨소시엄 공동** 명의 |
 | 기술문서·자문 의견서 | **한성대 책임 산출물** |
 
-성과지표 건수는 최신 PDF 기준이며, 컨소시엄 협의나 협약 과정에서 값이 바뀌면
-연차별 표와 누계를 함께 갱신합니다.
+특허 **등록**은 심사 기간에 좌우되므로 **「출원 3건, 등록 1건 추진」** 으로 관리합니다 —
+출원은 수행 범위 안에서 달성 가능하고, 등록은 심사 일정에 따른 위험이 있습니다. 지표 수준은 연구개발비 규모와 참여 인력을 전제로 한
+값이며, 범위가 조정되면 함께 조정합니다.
 
 ---
 
-## 연구개발비·연차 수행강도
 
-한성대학교 연구개발비는 **전체 정부지원연구개발비의 5 % 수준**으로 제시됐습니다.
-5 %의 모수와 모빌테크의 참여 형태·한성대 몫 포함 여부가 확정된 뒤 금액으로 환산합니다.
+---
 
-| 차년도 | 기간 | 한성대 연구개발비 내 배분 | 주요 마일스톤 | 4대 역할 수행강도 |
-|:--:|---:|---:|---|---|
-| **1차** | 9개월 | **18 %** | Geometry–Physics Interface · Pilot Scan·Reference Asset · Schema·Domain Gap Protocol | ① **주 수행** · ②③④ 병행 |
-| **2차** | 10개월 | **26 %** | Deformation·Material Library · Physics Evaluator·Variation · Edge Compiler·Checkpoint 수집 | ①②③ **주 수행** · ④ 병행 |
-| **3차** | 12개월 | **29 %** | Zero-shot·Transfer Decision · Simulation–HIL–Real 검증 · Recovery·Physics Calibration | ②③ **주 수행** · ①④ 병행 |
-| **4차** | 12개월 | **27 %** | Failure–Recovery Closed-loop · Cross-domain Benchmark · Robust Envelope·제3자 재현성 | ③④ **주 수행** · ①② 병행 |
-| **합계** | **43개월** | **100 %** | | |
+## 연구개발비
 
-!!! warning "기관별 절대금액은 아직 확정값이 아닙니다"
-    최신 R&R은 연차별 비중만 제시합니다. 이전 검토안의 한성대·모빌테크 절대금액을
-    제안서 확정값으로 사용하지 않고, 모수와 협약 형태가 확정된 뒤 금액표를 작성합니다.
-
-### 모빌테크 세부 지원범위
+**현재 검토안은 총 17.0억, 한성대학교 13.0억 · 모빌테크 4.0억 배분을 가정합니다.**
+5 % 의 모수와 협약 형태가 확정된 뒤 동결합니다.
 
 모빌테크는 한성대학교가 책임 수행하는 실환경–가상환경 연계형 데이터 증강 분야에서
-**Real → Geometry 구간을 지원**합니다. 법적 참여형태는 협약에서 확정합니다.
+**Geometry Twin 구축을 지원하는 세부 수행기관**으로 배치합니다. **법적 참여형태**
+(공동연구개발기관 · 위탁연구개발기관 · 용역)는 협약기준에 따라 별도로 확정하되,
+**기술적 역할은 「한성대 책임 · 모빌테크 세부지원」으로 유지**합니다.
+아래 배분은 차년도별 1.0억 균등을 가정한 값입니다.
 
-| 차년도 | 지원 내용 |
+### 차년도별 배분 (검토안)
+
+| 차년도 | 기간 | 한성대 | 모빌테크 | 합계 | 근거 |
+|---|---:|---:|---:|---:|---|
+| 1차년도 | 9개월 | **2.3억** | 1.0억 | **3.3억** | 대상 선정·규격 확정 · Pilot Scan·기준 Asset |
+| 2차년도 | 10개월 | **3.4억** | 1.0억 | **4.4억** | 물리 가상환경 구축 · 공간 Twin 본 구축 |
+| 3차년도 | 12개월 | **3.8억** | 1.0억 | **4.8억** | 데이터 생성·검수 · Asset 보완·정합 |
+| 4차년도 | 12개월 | **3.5억** | 1.0억 | **4.5억** | 순환 완주·실물 재검증 · 실증 대상 Asset 갱신 |
+| **합계** | **43개월** | **13.0억** | **4.0억** | **17.0억** | |
+
+### 한성대 13.0억의 4대 역할별 배분 (검토안)
+
+| 확정 역할 | 비중 | 금액 | 대응 기술축 |
+|---|---:|---:|---|
+| ① Real-to-Sim-to-Real 고도화 | 36 % | **4.7억** | 기술축 A — Manufacturing Deformation Engine |
+| ② Zero-shot Transfer 도메인 적응 | 24 % | **3.1억** | 미학습 조건 평가 · Transfer Decision |
+| ③ 엣지 케이스 시뮬레이션 | 25 % | **3.3억** | 기술축 B · C — Human Data Engine · Ontology·Edge Case |
+| ④ 학술 연구·기술 자문 | 15 % | **1.9억** | 논문·특허·표준 |
+| **합계** | **100 %** | **13.0억** | |
+
+!!! warning "모빌테크 4.0억을 유지하려면 물량 근거가 필요합니다"
+    지원기관에 전체의 약 23.5 % 를 배정하는 것이 과다하다는 평가를 받지 않으려면
+    아래 물량이 산정표로 뒷받침되어야 합니다. **1차년도 대표 작업 확정과 함께 확보합니다.**
+
+    Scan 대상 면적 · 설비·치구·부품 Asset 수 · 요구 LOD 단계 · Collision Mesh 수 ·
+    현장 방문·재취득 횟수 · Asset 갱신 주기 · 4년간 Version Package 수 ·
+    인수검사와 수정 횟수
+
+### 모빌테크 4.0억의 수행 범위
+
+전체의 **약 23.5 %** 로, 공간 Digital Twin 을 전 기간에 걸쳐 담당하는 규모입니다.
+
+| 차년도 | 수행 내용 |
 |---|---|
-| **1차** | 대표 작업 공간 Pilot Scan · 기준 Geometry Asset · 좌표계·Semantic 규격 합의 |
-| **2차** | Simulation-ready Geometry Twin · LOD·Collision·Asset Metadata |
-| **3차** | 변동조건 Asset 보완 · Version·정합 이력 제공 |
-| **4차** | 최종 실증공간 Asset 동결·갱신 · 제3자 재현 지원 |
+| 1차 | 대표 작업 공간 **Pilot Scan 과 기준 Asset** 취득 · 좌표계·Semantic 규격 합의 |
+| 2차 | **공간 Digital Twin 본 구축** — 설비·치구·작업공간의 정밀 3D Asset, Simulation-ready 변환(LOD·Collision·Metadata) |
+| 3차 | 대표 작업 확장에 따른 **Asset 보완·정합** · 물성·Semantic 메타 갱신 |
+| 4차 | 실증 대상 공간 **Asset 갱신**과 최종 통합 실증 지원 |
+
+**협약 형태** — 법적 형태는 협약기준에 따라 확정합니다(위탁·용역이면 3천만원 이상 내역 명시)
+의무이고, 핵심공정 기술개발은 외주 대상이 될 수 없습니다.
+
+!!! warning "통보 문구와 금액의 모수가 다릅니다 — 협약 전 확인 필요"
+    2026-08-29 통보는 **「전체 정부지원연구개발비 기준 5 %」** 였습니다. 총액 17억은
+    **총사업비 340억의 5 %** 에 해당하며, 공고문상 정부지원연구개발비(75억)의 5 %
+    (3.75억)와는 다릅니다. **협약서 근거 문구와 금액을 함께 확인해야 합니다.**
+
+---
 
 <small>본 페이지는 컨소시엄 협의 단계의 자료이며, 확정 목표가 아닙니다.
 한성대학교 AI로봇연구소</small>
