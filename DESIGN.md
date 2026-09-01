@@ -117,5 +117,5 @@ Use MkDocs Material's mixed strategy: subtle tonal surfaces for admonitions/tabs
 
 - Do not nest card-like structures inside admonitions.
 - Use code blocks and tables as the primary visual rhythm for technical material.
-- Dense technical tables keep Korean terms intact with `word-break: keep-all`; narrow
-  viewports use the native horizontal table scroll instead of splitting semantic terms.
+- Dense technical tables and long Korean TOC labels keep semantic terms intact with
+  `word-break: keep-all`; narrow tables use native horizontal scrolling.
