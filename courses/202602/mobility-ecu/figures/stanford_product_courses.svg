@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 560" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <rect width="760" height="560" fill="#ffffff"/>
+  <text x="380" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#1a1a1a">스탠퍼드의 제품 개발 교육 3갈래와 본 강의의 위치</text>
+  <text x="380" y="55" text-anchor="middle" font-size="12.5" fill="#666">같은 "제품을 만든다"라도 무엇을 훈련시키는지가 다르다</text>
+
+  <!-- axis -->
+  <line x1="60" y1="92" x2="700" y2="92" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="60" y="82" font-size="11" fill="#94a3b8">← 만드는 힘(구현·회로·펌웨어)</text>
+  <text x="700" y="82" text-anchor="end" font-size="11" fill="#94a3b8">찾는 힘(문제 정의·사용자·시장) →</text>
+
+  <!-- ME218 -->
+  <rect x="46" y="108" width="212" height="196" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="152" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#1e40af">ME218 A·B·C</text>
+  <text x="152" y="153" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3a8a">Smart Product Design</text>
+  <text x="152" y="176" text-anchor="middle" font-size="11" fill="#334155">"스마트 제품 = 마이크로프로세서로</text>
+  <text x="152" y="192" text-anchor="middle" font-size="11" fill="#334155">기능이 확장된 제품"</text>
+  <line x1="70" y1="204" x2="234" y2="204" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="152" y="223" text-anchor="middle" font-size="10.5" fill="#475569">트랜지스터 스위칭 · 상태기계 · C</text>
+  <text x="152" y="239" text-anchor="middle" font-size="10.5" fill="#475569">타이머 · PWM · 인터럽트 · OP앰프</text>
+  <text x="152" y="255" text-anchor="middle" font-size="10.5" fill="#475569">센서/액추에이터 인터페이스 · 노이즈</text>
+  <text x="152" y="271" text-anchor="middle" font-size="10.5" fill="#475569">전원 · 무선(XBee) 팀 경진</text>
+  <text x="152" y="293" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">3개 분기(A→B→C) 연속 수강</text>
+
+  <!-- ME203 -->
+  <rect x="274" y="108" width="212" height="196" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="380" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#15803d">ME103 / ME203</text>
+  <text x="380" y="153" text-anchor="middle" font-size="12" font-weight="600" fill="#14532d">Design and Manufacturing</text>
+  <text x="380" y="176" text-anchor="middle" font-size="11" fill="#334155">의미 있는 제품을 골라 관점을 세우고</text>
+  <text x="380" y="192" text-anchor="middle" font-size="11" fill="#334155">직접 만들어 낸다</text>
+  <line x1="298" y1="204" x2="462" y2="204" stroke="#bbf7d0" stroke-width="1.5"/>
+  <text x="380" y="223" text-anchor="middle" font-size="10.5" fill="#475569">스케치 · 사용 시나리오 · 래피드 프로토타입</text>
+  <text x="380" y="239" text-anchor="middle" font-size="10.5" fill="#475569">CAD · 제조 시험 모델</text>
+  <text x="380" y="255" text-anchor="middle" font-size="10.5" fill="#475569">양산 관점 재설계(공정·재료)</text>
+  <text x="380" y="271" text-anchor="middle" font-size="10.5" fill="#475569">Product Realization Lab에서 제작</text>
+  <text x="380" y="293" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">공개 발표 "Meet the Makers"</text>
+
+  <!-- ME310 -->
+  <rect x="502" y="108" width="212" height="196" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="608" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#c2410c">ME310 A·B·C</text>
+  <text x="608" y="153" text-anchor="middle" font-size="12" font-weight="600" fill="#9a3412">Design Innovation</text>
+  <text x="608" y="176" text-anchor="middle" font-size="11" fill="#334155">기업이 낸 실제 과제를 9개월간</text>
+  <text x="608" y="192" text-anchor="middle" font-size="11" fill="#334155">국제 협업으로 푼다</text>
+  <line x1="526" y1="204" x2="690" y2="204" stroke="#fed7aa" stroke-width="1.5"/>
+  <text x="608" y="223" text-anchor="middle" font-size="10.5" fill="#475569">스탠퍼드 팀 3~4명 + 해외 파트너대 팀</text>
+  <text x="608" y="239" text-anchor="middle" font-size="10.5" fill="#475569">기업 후원·코치·교수진 협업</text>
+  <text x="608" y="255" text-anchor="middle" font-size="10.5" fill="#475569">Design → Prototype → Iterate 반복</text>
+  <text x="608" y="271" text-anchor="middle" font-size="10.5" fill="#475569">다수의 동작 프로토타입 산출</text>
+  <text x="608" y="293" text-anchor="middle" font-size="11" font-weight="700" fill="#c2410c">6월 공개 쇼케이스 "EXPE"</text>
+
+  <!-- arrow down -->
+  <path d="M152 312 L152 340" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+  <path d="M380 312 L380 340" stroke="#16a34a" stroke-width="2.5" fill="none" marker-end="url(#ah2)"/>
+  <path d="M608 312 L608 340" stroke="#ea580c" stroke-width="2.5" fill="none" marker-end="url(#ah3)"/>
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#2563eb"/></marker>
+    <marker id="ah2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#16a34a"/></marker>
+    <marker id="ah3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#ea580c"/></marker>
+  </defs>
+
+  <!-- our course -->
+  <rect x="46" y="348" width="668" height="176" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5"/>
+  <text x="380" y="376" text-anchor="middle" font-size="16" font-weight="800" fill="#5b21b6">본 강의 — 모빌리티 전자제어유닛 실습 (15주, 주 3시간)</text>
+  <text x="380" y="398" text-anchor="middle" font-size="12" fill="#4c1d95">세 갈래를 한 학기 안에 압축해, 로버 구동 ECU라는 하나의 제품으로 잇는다</text>
+
+  <rect x="70" y="412" width="196" height="92" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="168" y="432" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">ME218에서 가져온 축</text>
+  <text x="168" y="452" text-anchor="middle" font-size="10.5" fill="#475569">2~4주 회로·전원 / 6주 PWM</text>
+  <text x="168" y="468" text-anchor="middle" font-size="10.5" fill="#475569">9~10주 레지스터·타이머·인터럽트</text>
+  <text x="168" y="484" text-anchor="middle" font-size="10.5" fill="#475569">11주 상태기계 · 14주 노이즈</text>
+
+  <rect x="282" y="412" width="196" height="92" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="380" y="432" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">ME203에서 가져온 축</text>
+  <text x="380" y="452" text-anchor="middle" font-size="10.5" fill="#475569">13주 회로도·PCB 설계</text>
+  <text x="380" y="468" text-anchor="middle" font-size="10.5" fill="#475569">제조 가능성·방열·정비성 검토</text>
+  <text x="380" y="484" text-anchor="middle" font-size="10.5" fill="#475569">설계 릴리스 패키지 제출</text>
+
+  <rect x="494" y="412" width="196" height="92" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="592" y="432" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">ME310에서 가져온 축</text>
+  <text x="592" y="452" text-anchor="middle" font-size="10.5" fill="#475569">1주 요구사항 · 8주 중간 설계 리뷰</text>
+  <text x="592" y="468" text-anchor="middle" font-size="10.5" fill="#475569">팀 역할분담 · 반복 개선</text>
+  <text x="592" y="484" text-anchor="middle" font-size="10.5" fill="#475569">15주 공개 시연·최종 발표</text>
+
+  <text x="380" y="546" text-anchor="middle" font-size="10.5" fill="#7c3aed">차이: 스탠퍼드는 3개 과목·9개월에 나눠 하는 것을, 우리는 15주 한 과목에서 "요구사항–회로–펌웨어–검증"의 연결로 압축한다</text>
+</svg>
