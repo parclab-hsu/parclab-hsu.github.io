@@ -203,7 +203,7 @@ flowchart TB
     REAL["REAL | 실제 제조환경<br/>대표 작업 1~2개<br/>정상 · 실패 · 복구 Log"]
     GEO["Geometry Twin | 모빌테크<br/>현장 취득 · 3D Asset<br/>좌표 · Semantic 정합"]
     WFM["보조 생성수단<br/>Cosmos / 동급 WFM<br/>후보 장면 · 미래상태"]
-    CORE["한성대학교 | 세 핵심기술<br/>기술축 A · Manufacturing Deformation Engine<br/>기술축 B · Human Data Engine<br/>③ Ontology · Edge Case Intelligence"]
+    CORE["한성대학교 | 세 핵심기술<br/>기술축 A · Manufacturing Deformation Engine<br/>기술축 B · Human Data Engine<br/>기술축 C · Ontology·Edge Case Intelligence"]
     GATE["Quality Gate | 공통 품질관문<br/>물리정합 · 재현성 · 안전<br/>데이터 품질 · Provenance"]
     RFM["RFM | 학습 · 평가<br/>Zero-shot / Post-training"]
     TEST["실물검증<br/>HIL · 실물 로봇<br/>Domain Gap 측정"]
@@ -224,7 +224,7 @@ flowchart TB
 flowchart TB
     REAL["REAL | 실제 제조환경<br/>대표 작업 · 실패 Log"]
     GEO["Geometry Twin | 모빌테크"]
-    CORE["한성대 | 세 핵심기술<br/>기술축 A · Deformation Engine<br/>기술축 B · Human Data Engine<br/>③ Ontology · Edge Case"]
+    CORE["한성대 | 세 핵심기술<br/>기술축 A · Deformation Engine<br/>기술축 B · Human Data Engine<br/>기술축 C · Ontology·Edge Case"]
     GATE["Quality Gate<br/>공통 품질관문"]
     RFM["RFM | 학습 · 평가"]
     TEST["실물검증 | HIL · 실물 로봇"]

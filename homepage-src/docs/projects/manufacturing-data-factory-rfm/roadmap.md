@@ -75,14 +75,15 @@ flowchart TB
 ```mermaid
 flowchart TB
     REAL["REAL | 제조현장<br/>대표 작업 · 실패 Log"]
-    GEO["DIGITAL | Geometry Twin<br/>3D Asset · 의미 정합"]
-    CORE["한성대 | 실패 데이터팩토리<br/>① Deformation · 물성/변형<br/>기술축 B · Human Data · 실패/복구<br/>③ Ontology · 취약조건<br/>Quality Gate · 자동검수<br/>WFM은 후보 생성에 활용"]
+    GEO["Geometry Twin | 모빌테크<br/>3D Asset · Semantic 정합"]
+    CORE["한성대 | 세 기술축<br/>A · Deformation Engine<br/>B · Human Data Engine<br/>C · Ontology·Edge Case"]
+    GATE["Quality Gate | 공통 품질관문<br/>물리정합 · 재현성 · 안전"]
     RFM["RFM | 학습 · 평가"]
     TEST["PHYSICAL | 실물검증<br/>HIL · Testbed · Gap 환류"]
     OUTPUT["성과 | Dataset · Benchmark · 표준"]
 
-    REAL --> GEO --> CORE --> RFM --> TEST
-    CORE --> OUTPUT
+    REAL --> GEO --> CORE --> GATE --> RFM --> TEST
+    GATE --> OUTPUT
     TEST --> OUTPUT
     TEST -.-> REAL
 ```

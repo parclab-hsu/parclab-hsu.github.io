@@ -1110,14 +1110,15 @@
 <div class="concept-diagram concept-diagram--mobile">
 <pre class="mermaid"><code>flowchart TB
     REAL["REAL | 제조현장&lt;br/&gt;대표 작업 · 실패 Log"]
-    GEO["DIGITAL | Geometry Twin&lt;br/&gt;3D Asset · 의미 정합"]
-    CORE["한성대 | 실패 데이터팩토리&lt;br/&gt;① Deformation · 물성/변형&lt;br/&gt;기술축 B · Human Data · 실패/복구&lt;br/&gt;③ Ontology · 취약조건&lt;br/&gt;Quality Gate · 자동검수&lt;br/&gt;WFM은 후보 생성에 활용"]
+    GEO["Geometry Twin | 모빌테크&lt;br/&gt;3D Asset · Semantic 정합"]
+    CORE["한성대 | 세 기술축&lt;br/&gt;A · Deformation Engine&lt;br/&gt;B · Human Data Engine&lt;br/&gt;C · Ontology·Edge Case"]
+    GATE["Quality Gate | 공통 품질관문&lt;br/&gt;물리정합 · 재현성 · 안전"]
     RFM["RFM | 학습 · 평가"]
     TEST["PHYSICAL | 실물검증&lt;br/&gt;HIL · Testbed · Gap 환류"]
     OUTPUT["성과 | Dataset · Benchmark · 표준"]
 
-    REAL --&gt; GEO --&gt; CORE --&gt; RFM --&gt; TEST
-    CORE --&gt; OUTPUT
+    REAL --&gt; GEO --&gt; CORE --&gt; GATE --&gt; RFM --&gt; TEST
+    GATE --&gt; OUTPUT
     TEST --&gt; OUTPUT
     TEST -.-&gt; REAL</code></pre>
 </div>
