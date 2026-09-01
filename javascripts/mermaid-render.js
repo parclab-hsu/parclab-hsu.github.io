@@ -11,6 +11,7 @@
       .filter((diagram) => (
         !diagram.dataset.processed
         && !diagram.querySelector("svg")
+        && diagram.getClientRects().length > 0
         && diagram.textContent.trim()
       ));
 
@@ -35,4 +36,7 @@
   if (typeof document$ !== "undefined") {
     document$.subscribe(() => void renderMermaid());
   }
+
+  const responsiveDiagram = window.matchMedia("(max-width: 47.99rem)");
+  responsiveDiagram.addEventListener("change", () => void renderMermaid());
 })();
