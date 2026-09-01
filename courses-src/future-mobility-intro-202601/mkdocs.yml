@@ -1,0 +1,83 @@
+site_name: 미래모빌리티 개론 · 2026-1학기
+site_description: 한성대학교 미래모빌리티학과 1학년 전공기초 · 자율주행·드론/UAM·로봇을 아우르는 미래 모빌리티 기술 개관과 사회·제도·윤리 고찰
+site_url: https://parclab-hsu.github.io/courses/202601/future-mobility-intro/
+site_dir: ../../.local-site/future-mobility-intro
+docs_dir: docs
+use_directory_urls: true
+
+theme:
+  name: material
+  language: ko
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드로
+    - scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드로
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.footer
+    - content.code.copy
+    - search.highlight
+    - toc.follow
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.blocks.caption
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - 강의 개요: index.md
+  - 📋 강의계획서(Syllabus): syllabus.md
+  - 🧭 강의 전체 흐름: 00-course-flow.md
+  - 커리큘럼(15주차): curriculum.md
+  - 주차별 강의 자료:
+      - 1주차 · 미래모빌리티란 무엇인가: week01.md
+      - 2주차 · 자율주행 개념·레벨·제도: week02.md
+      - 3주차 · 자율주행 시스템과 ADAS: week03.md
+      - 4주차 · 객체탐지와 데이터 기반 의사결정: week04.md
+      - 5주차 · 자율주행 단계·규제와 센서 시스템: week05.md
+      - 6주차 · 센서의 진화와 AI 프로세서: week06.md
+      - 7주차 · 통신·V2X와 공학 설계 프로세스: week07.md
+      - 8주차 · 중간고사: week08.md
+      - 9주차 · 드론 개념·분류·시스템 구조: week09.md
+      - 10주차 · 드론 생태계·DNA+드론·대드론: week10.md
+      - 11주차 · 드론 구조설계와 멀티콥터 설계: week11.md
+      - 12주차 · 스마트시티·MaaS·UAM: week12.md
+      - 13주차 · 로봇의 등장과 산업용 로봇: week13.md
+      - 14주차 · 휴머노이드 보행과 Physical AI: week14.md
+      - 15주차 · 기말고사: week15.md
+  - 시험·평가:
+      - 시험 유형과 핵심 정리: exams.md
+      - 과제·발표 안내: assignments.md
+  - 용어 사전: glossary.md

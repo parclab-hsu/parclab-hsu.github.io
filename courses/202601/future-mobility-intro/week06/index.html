@@ -1,0 +1,2631 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 1학년 전공기초 · 자율주행·드론/UAM·로봇을 아우르는 미래 모빌리티 기술 개관과 사회·제도·윤리 고찰">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202601/future-mobility-intro/week06/">
+      
+      
+        <link rel="prev" href="../week05/">
+      
+      
+        <link rel="next" href="../week07/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>6주차 · 센서의 진화와 AI 프로세서 - 미래모빌리티 개론 · 2026-1학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-ai" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="미래모빌리티 개론 · 2026-1학기" class="md-header__button md-logo" aria-label="미래모빌리티 개론 · 2026-1학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            미래모빌리티 개론 · 2026-1학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6주차 · 센서의 진화와 AI 프로세서
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="미래모빌리티 개론 · 2026-1학기" class="md-nav__button md-logo" aria-label="미래모빌리티 개론 · 2026-1학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    미래모빌리티 개론 · 2026-1학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 강의계획서(Syllabus)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧭 강의 전체 흐름
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    커리큘럼(15주차)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 강의 자료
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    주차별 강의 자료
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · 미래모빌리티란 무엇인가
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 자율주행 개념·레벨·제도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 자율주행 시스템과 ADAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · 객체탐지와 데이터 기반 의사결정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · 자율주행 단계·규제와 센서 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · 센서의 진화와 AI 프로세서
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · 센서의 진화와 AI 프로세서
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 주요 자율주행 센서 3종
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 카메라
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 카메라">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        노출의 3요소 (카메라 요구 사양의 기초)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        자율주행용 카메라의 요구 사양
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        카메라의 진화 기술
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        열화상 카메라와 SWIR
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 라이다 (LiDAR)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 라이다 (LiDAR)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        원리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라이다의 장점과 한계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라이다 주요 이슈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라이다 제품 비교 (대표 사양)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-radar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 레이더 (Radar)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 레이더 (Radar)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        동작 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        진화 방향
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4D 이미징 레이더
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 센서 클리닝 시스템
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 센서 진화 방향 — 6가지 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 자율주행 AI 프로세서
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 자율주행 AI 프로세서">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프로세서의 세 갈래
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        딥러닝의 3단계 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gflops-vs-tops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 지표 — GFLOPS vs TOPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        딥러닝 프로세서 성능 비교
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 프로세서 경쟁 구도 — 모빌아이 / 퀄컴 / 엔비디아
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 프로세서 경쟁 구도 — 모빌아이 / 퀄컴 / 엔비디아">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모빌아이의 전략
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시장 구도
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stradvision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        카메라 기반 인식 솔루션 — 스트라드비전(STRADVISION)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 자율주행 데이터셋
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 센서 데이터 인식
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 센서 데이터 인식">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        주행 예측 (Prediction)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · 통신·V2X와 공학 설계 프로세스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · 드론 개념·분류·시스템 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · 드론 생태계·DNA+드론·대드론
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · 드론 구조설계와 멀티콥터 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · 스마트시티·MaaS·UAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · 로봇의 등장과 산업용 로봇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · 휴머노이드 보행과 Physical AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · 기말고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험·평가
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시험·평가
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험 유형과 핵심 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    과제·발표 안내
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어 사전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 주요 자율주행 센서 3종
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 카메라
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 카메라">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        노출의 3요소 (카메라 요구 사양의 기초)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        자율주행용 카메라의 요구 사양
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        카메라의 진화 기술
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        열화상 카메라와 SWIR
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lidar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 라이다 (LiDAR)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 라이다 (LiDAR)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        원리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라이다의 장점과 한계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라이다 주요 이슈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라이다 제품 비교 (대표 사양)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-radar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 레이더 (Radar)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 레이더 (Radar)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        동작 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        진화 방향
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4D 이미징 레이더
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 센서 클리닝 시스템
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 센서 진화 방향 — 6가지 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 자율주행 AI 프로세서
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 자율주행 AI 프로세서">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        프로세서의 세 갈래
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        딥러닝의 3단계 흐름
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gflops-vs-tops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 지표 — GFLOPS vs TOPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        딥러닝 프로세서 성능 비교
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 프로세서 경쟁 구도 — 모빌아이 / 퀄컴 / 엔비디아
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 프로세서 경쟁 구도 — 모빌아이 / 퀄컴 / 엔비디아">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모빌아이의 전략
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시장 구도
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stradvision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        카메라 기반 인식 솔루션 — 스트라드비전(STRADVISION)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 자율주행 데이터셋
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 센서 데이터 인식
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 센서 데이터 인식">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        주행 예측 (Prediction)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6-ai">6주차 · 센서의 진화와 AI 프로세서<a class="headerlink" href="#6-ai" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>🔗 <strong>강의 흐름</strong> — 5주차에서 "센서 성능이 아니라 비용 대비 성능"이라고 했다. 이번 주는 그 말의 근거를 <strong>센서별 물리 원리와 가격표</strong>로 확인하고, 경쟁의 무게중심이 왜 <strong>AI 반도체</strong>로 넘어갔는지 본다. 중간고사 서술형 3번(센서 비교 + 센서 퓨전)이 여기서 나온다.</p>
+<p><strong>학습목표</strong> — 카메라·라이다·레이더·열화상·SWIR 센서의 물리적 원리와 장단점을 비교하고, 각 센서의 진화 방향을 설명하며, 자율주행 AI 프로세서의 성능 지표와 시장 구도를 설명할 수 있다.</p>
+<p>💡 <strong>기초 다지기</strong> — <strong>센서는 각각 "보는 방식"이 다르다.</strong> 카메라는 빛(색·형태), 라이다는 레이저의 왕복 시간(거리·3D), 레이더는 전파와 도플러(거리·속도), 열화상은 온도. 그래서 <strong>하나가 실패하는 상황에서 다른 하나가 살아남는다.</strong> 이것이 센서 퓨전의 존재 이유다.</p>
+</blockquote>
+<h2 id="_1">🗺️ 한눈에 보는 개념도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    subgraph SENSOR["센서 3형제 — 각각 장단점이 있음"]
+      C["카메라&lt;br/&gt;렌즈로 시각적 인식"]
+      L["라이다&lt;br/&gt;빛 반사 시간으로 거리"]
+      R["레이더&lt;br/&gt;전자기파로 거리·속도"]
+    end
+    C --&gt; F["센서 퓨전"]
+    L --&gt; F
+    R --&gt; F
+    F --&gt; P["AI 프로세서&lt;br/&gt;GPU / NPU / MCU+가속기"]
+    P --&gt; D["인식 결과"]
+    L -.3D 입체 지도 구현.-&gt; L
+    R -.날씨 영향 거의 없음.-&gt; R</code></pre>
+<h2 id="1-3">1. 주요 자율주행 센서 3종<a class="headerlink" href="#1-3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>센서</th>
+<th>원리</th>
+<th>강점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>카메라(Camera)</strong></td>
+<td>렌즈를 통해 <strong>시각적으로</strong> 주변 사물·상황 인식</td>
+<td>색·문자·형태(신호등, 표지판, 차선)</td>
+</tr>
+<tr>
+<td><strong>라이다(Lidar)</strong></td>
+<td><strong>빛(레이저)이 반사되는 시간</strong>으로 거리 측정</td>
+<td><strong>3D 입체 지도 구현 가능</strong></td>
+</tr>
+<tr>
+<td><strong>레이더(Radar)</strong></td>
+<td><strong>전자기파 송수신</strong>을 통한 거리·속도 측정</td>
+<td><strong>날씨 등 외부환경 영향 거의 없음</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>레이더, 라이다, 카메라 — 각각 장단점이 있다.</strong> 그래서 <strong>센서 퓨전</strong>이 필요하다.</p>
+</blockquote>
+<p><strong>센서 시스템의 진화 3축</strong></p>
+<ol>
+<li><strong>라이다 vs 스테레오 카메라</strong> — 3D 인식, 처리속도, 환경 등에서 차이. 다양한 참조 모델이 진화 중</li>
+<li><strong>라이다 센서의 저가화</strong> — 관련 기술의 발달, <strong>고정형 라이다 상용화 가시화</strong></li>
+<li><strong>레이더 기술의 진화</strong> — 3D 레이더 기술</li>
+</ol>
+<h2 id="2">2. 카메라<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>ADAS 시장에서 이미 <strong>핵심 센서로 발전</strong>했고, <strong>모든 자율주행 차량 제조사가 카메라를 필수 센서로 채택·탑재</strong>한다.</li>
+<li>종류: 전방 카메라 / 스테레오 카메라 / 어라운드 뷰 카메라 / 운전자 모니터링 카메라</li>
+<li>탑재 수: <strong>초기 1~3개 구조 → 중장기 8~14개 구조</strong></li>
+</ul>
+<h3 id="3">노출의 3요소 (카메라 요구 사양의 기초)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>요소</th>
+<th>정의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>조리개(Aperture)</strong></td>
+<td>카메라 렌즈에서 <strong>빛의 양을 조절</strong>하는 장치 (f/1.4 ~ f/22)</td>
+</tr>
+<tr>
+<td><strong>셔터 속도(Shutter Speed)</strong></td>
+<td>설정한 시간만큼 열리고 닫히며 <strong>노출 시간을 조정</strong>하여 빛의 양을 조절 (1/1000s ~ 1/4s)</td>
+</tr>
+<tr>
+<td><strong>감도(ISO)</strong></td>
+<td>이미지 센서가 조리개와 셔터를 거쳐 노출된 <strong>빛을 증폭할 수준</strong> (ISO 50 ~ 25600, 높을수록 노이즈↑)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">자율주행용 카메라의 요구 사양<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>카메라 설치 위치 최적화</strong> — 시야각과 사각지대를 고려한 배치</li>
+<li><strong>슈도 라이다(Pseudo-LiDAR)</strong> — 카메라 기반의 3D 인식 데이터를 LiDAR처럼 표현한 기술, <strong>"가짜 LiDAR"</strong>. 스테레오 카메라로 3D 인식을 구현</li>
+<li><strong>조명 변화에 대한 내구성</strong> — 터널, 역광, 밤 시간대 등 → 향후 <strong>조리개 조절 기능</strong>에 대한 고려</li>
+<li><strong>날씨 조건에 대한 문제</strong> — 악천후</li>
+</ul>
+<h3 id="_3">카메라의 진화 기술<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>기술</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>조리개 자동 조절</td>
+<td>자동 조리개 조절이 되는 트랜센드 블랙박스</td>
+</tr>
+<tr>
+<td><strong>HDR</strong> (High Dynamic Range)</td>
+<td>명암비가 큰 장면에서 밝은 곳과 어두운 곳을 동시에 표현</td>
+</tr>
+<tr>
+<td>센서 떨림 보정</td>
+<td><strong>센서 시프트 / 렌즈 시프트</strong> 방식</td>
+</tr>
+<tr>
+<td>센서 클리닝</td>
+<td>dlhBOWLES의 라이다 클리닝 시스템</td>
+</tr>
+</tbody>
+</table>
+<h3 id="swir">열화상 카메라와 SWIR<a class="headerlink" href="#swir" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>열화상 카메라</strong> — <strong>온도 인지</strong>로 사람/동물/차량 등의 <strong>야간 인지 가능</strong>. 예: 열화상 카메라 '바이퍼(Viper)'</li>
+<li><strong>SWIR 카메라</strong> (이스라엘 TriEye) — <strong>저비용 단파장 적외선 이미징 솔루션</strong>. CMOS 기반 이미지 센서에 SWIR 기능 구현 → 악천후 이미징, 야간 이미징, 원격 물질 감지, 1000배 낮은 가격, 저전력, 고해상도</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">시험 포인트 — 매년 나온다</p>
+<p><strong>"온도를 감지하여 야간에도 사람, 동물, 차량 등을 인식할 수 있는 센서는?"</strong>
+→ ① 4D 이미징 라이다 ② 이벤트 카메라 ③ Short Wave IR 센서 ④ <strong>열화상 카메라</strong> ← 정답</p>
+</div>
+<h2 id="3-lidar">3. 라이다 (LiDAR)<a class="headerlink" href="#3-lidar" title="Permanent link">&para;</a></h2>
+<h3 id="_4">원리<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>$$d = \frac{c \cdot t}{2}$$</p>
+<ul>
+<li><strong>d</strong> — 물체까지의 거리</li>
+<li><strong>c</strong> — 빛의 속도 (약 3×10⁸ m/s)</li>
+<li><strong>t</strong> — 왕복 시간 (펄스가 갔다가 되돌아오는 데 걸리는 시간)</li>
+</ul>
+<p>→ 왕복이므로 <strong>2로 나눈다</strong>는 점이 핵심이다.</p>
+<h3 id="_5">라이다의 장점과 한계<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ 장점</td>
+<td>레이저 신호가 반사되어 돌아오는 <strong>시간을 이용해 거리를 측정</strong>한다 / <strong>3D 인식</strong>이 가능하여 주변 환경을 정밀하게 파악할 수 있다</td>
+</tr>
+<tr>
+<td>❌ 한계</td>
+<td><strong>오염에 민감</strong>하기 때문에 클리닝 시스템이 필요한 경우가 있다 / <strong>안개·비·눈에서는 성능이 저하</strong>된다 / 고가</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">시험 포인트 — 라이다 오답 보기</p>
+<p><strong>"안개나 비, 눈이 올 때도 정확한 성능을 유지할 수 있다"</strong> → <strong>틀린 설명</strong>이다. 날씨에 강한 것은 <strong>레이더</strong>다.</p>
+</div>
+<h3 id="_6">라이다 주요 이슈<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><strong>① Eye-safe LiDAR — 950nm vs 1550nm</strong></p>
+<table>
+<thead>
+<tr>
+<th>파장</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>950nm</td>
+<td>기존 주류. 출력을 높이면 눈에 위험</td>
+</tr>
+<tr>
+<td><strong>1550nm</strong></td>
+<td><strong>출력이 높아져도 사람의 눈에 흡수되지 않아 안전</strong>. 다만 <strong>양산 비용과 소모 전력이 상대적으로 높음</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>② 회전형 vs 고정형 라이다 — 고정형으로의 진화</strong></p>
+<table>
+<thead>
+<tr>
+<th>방식</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Flash</strong></td>
+<td>근거리, 작은 기기 (드론, 스마트폰)</td>
+</tr>
+<tr>
+<td><strong>MEMS</strong></td>
+<td>차량용 ADAS, 로봇 (균형 잡힌 성능)</td>
+</tr>
+<tr>
+<td><strong>OPA</strong></td>
+<td>미래형 고정형 라이다, 군사/자율주행차</td>
+</tr>
+</tbody>
+</table>
+<p><strong>③ VCSEL</strong> (Vertical Cavity Surface Emitting Laser) — Apple 아이폰X에 <strong>Face ID 기능을 위해 처음으로 도입</strong>된 광원. 라이다 소형화·저가화의 열쇠.</p>
+<p><strong>④ 고정형 라이다와 양산을 위한 진화 (CES 2022)</strong></p>
+<ul>
+<li>우리나라 — <strong>SOS랩, 카네비컴</strong> 등</li>
+<li>해외 — <strong>루미나, 발레오, 이노비즈, 헤사이, 로보센스</strong> 등</li>
+</ul>
+<h3 id="_7">라이다 제품 비교 (대표 사양)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>모델</th>
+<th style="text-align: right;">채널</th>
+<th>측정거리</th>
+<th style="text-align: right;">가격</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valeo ScaLa I (ADAS)</td>
+<td style="text-align: right;">4</td>
+<td>100~200m</td>
+<td style="text-align: right;"><strong>$600</strong></td>
+</tr>
+<tr>
+<td>Velodyne HDL-64</td>
+<td style="text-align: right;">64</td>
+<td>100~120m</td>
+<td style="text-align: right;"><strong>$75,000</strong></td>
+</tr>
+<tr>
+<td>Velodyne HDL-32</td>
+<td style="text-align: right;">32</td>
+<td>80~100m</td>
+<td style="text-align: right;">$30,000</td>
+</tr>
+<tr>
+<td>Velodyne VLP-16</td>
+<td style="text-align: right;">16</td>
+<td>100m</td>
+<td style="text-align: right;">$8,000</td>
+</tr>
+<tr>
+<td>RoboSense RS-LiDAR-32</td>
+<td style="text-align: right;">32</td>
+<td>200m</td>
+<td style="text-align: right;">$16,800</td>
+</tr>
+<tr>
+<td>Ouster OS-1</td>
+<td style="text-align: right;">64</td>
+<td>100m</td>
+<td style="text-align: right;">$12,000</td>
+</tr>
+<tr>
+<td>ibeo Lux</td>
+<td style="text-align: right;">4~8</td>
+<td>120~200m</td>
+<td style="text-align: right;">$10,000~20,000</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">이 표가 말하는 것</p>
+<p>양산용 ADAS 라이다(ScaLa I, $600)와 연구용 고성능 라이다(HDL-64, $75,000)의 <strong>가격 차이가 100배</strong>다. 5주차의 "비용 대비 성능 최적화"가 무슨 뜻인지 이 표 하나로 설명된다.</p>
+</div>
+<h2 id="4-radar">4. 레이더 (Radar)<a class="headerlink" href="#4-radar" title="Permanent link">&para;</a></h2>
+<h3 id="_8">동작 순서<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ol>
+<li>운전자의 차량에서 <strong>전파 신호 송신</strong></li>
+<li>다른 차량이나 장애물로부터 <strong>반사된 전파 수신</strong></li>
+<li>송·수신 데이터 간 <strong>시간차와 도플러 주파수 변화량</strong> 확인</li>
+<li>시간차·도플러 변화량 기반으로 <strong>물체와의 거리와 상대속도</strong>를 측정</li>
+</ol>
+<h3 id="_9">진화 방향<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>이전에는 좁은 범위에서 사물을 인식하도록 사용</li>
+<li>최근 <strong>넓은 범위에서 물체를 인식</strong>하도록 진화</li>
+<li>앞으로 레이더 센서가 <strong>360°/3D를 인지</strong>하도록 진화할 것으로 예상</li>
+</ul>
+<h3 id="4d">4D 이미징 레이더<a class="headerlink" href="#4d" title="Permanent link">&para;</a></h3>
+<p><strong>"4D"</strong> = 거리·방위각·고도(3D) + <strong>속도</strong>. 카메라·라이다에 비해 <strong>날씨, 조명 등 외부 요인에 강인</strong>하다.</p>
+<table>
+<thead>
+<tr>
+<th>기업</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>피스커</td>
+<td><strong>최초의 4D 이미징 레이더 적용 차량 마그나 상용화</strong> (CES 2022)</td>
+</tr>
+<tr>
+<td>모빌아이</td>
+<td>4D 이미징 레이더의 효용성 강조</td>
+</tr>
+<tr>
+<td>구글</td>
+<td>5세대 자율주행 시스템에 4D 이미징 레이더 <strong>자체 설계 및 적용</strong> (2020.03)</td>
+</tr>
+<tr>
+<td>엔비디아</td>
+<td>하이페리온 9 — 서라운드로 확장 (2022.03)</td>
+</tr>
+<tr>
+<td>스마트레이더시스템(SRS)</td>
+<td><strong>세계 최고 수준의 4D 이미징 레이더 기술력 보유</strong>(2019, Yole). 서울대와 자율주행 실증 과제 수행(과기정통부 주관)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5">5. 센서 클리닝 시스템<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>라이다·카메라는 오염에 취약하다. 실제 상용화를 위해서는 <strong>닦는 기술</strong>이 필요하다.</p>
+<table>
+<thead>
+<tr>
+<th>기업</th>
+<th>방식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>구글 웨이모 (2017)</td>
+<td>라이다 센서에 <strong>일반 자동차와 비슷하게 와이퍼 추가</strong></td>
+</tr>
+<tr>
+<td>발레오 (2018 파리모터쇼)</td>
+<td><strong>에버뷰 센트리캠(EverView Centricam)</strong> — 센서를 감싼 덮개가 고속으로 회전하면서 물을 떨어내 센서를 보호</td>
+</tr>
+<tr>
+<td>dlhBOWLES (CES 2019)</td>
+<td>라이다 센서에 묻은 먼지·흙탕물을 <strong>물로 클리닝</strong>하는 시스템</td>
+</tr>
+<tr>
+<td>마이크로시스템</td>
+<td>액체 자가세정 유리(Liquid self-cleaning glass) — 소수성 층 + 유전체 층 + 전극으로 물방울을 진동시켜 먼지 제거</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-6">6. 센서 진화 방향 — 6가지 요약<a class="headerlink" href="#6-6" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>"카메라, 라이다, 레이더 — 센서의 조합"</strong></p>
+</blockquote>
+<ol>
+<li><strong>360도 인식</strong>을 위한 진화</li>
+<li><strong>3D 인식</strong>을 위한 진화</li>
+<li><strong>Worst case / Edge case 인식</strong>을 위한 진화</li>
+<li><strong>대량 양산 및 상용화</strong>를 위한 진화</li>
+<li><strong>클리닝 시스템</strong> 필요</li>
+<li><strong>프로세서 / SW 융합</strong> 필요</li>
+</ol>
+<h2 id="7-ai">7. 자율주행 AI 프로세서<a class="headerlink" href="#7-ai" title="Permanent link">&para;</a></h2>
+<h3 id="_10">프로세서의 세 갈래<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><strong>GPU</strong> / <strong>NPU</strong> / <strong>MCU + AI 가속기</strong></p>
+<p>→ 특히 <strong>Level 2/3에서는 임베디드 프로세서가 중요</strong>하다.</p>
+<h3 id="3_1">딥러닝의 3단계 흐름<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart LR
+    T["① Training (학습)&lt;br/&gt;Desktop/Cloud&lt;br/&gt;TensorFlow · Python/C++/Java · Linux"]
+    --&gt; X["② Translation (변환)&lt;br/&gt;Desktop Linux / Arm Linux&lt;br/&gt;임베디드 환경용 모델 경량화"]
+    --&gt; I["③ Inference (추론)&lt;br/&gt;Embedded deployment&lt;br/&gt;TIDL on MCU"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training</strong></td>
+<td>이미지·모션·소리 데이터로 컴퓨터에서 딥러닝 모델을 학습. TensorFlow, Python/C++/Java, Linux</td>
+</tr>
+<tr>
+<td><strong>Translation</strong></td>
+<td>학습된 모델을 그대로 쓰지 않고 <strong>임베디드 환경(ARM, 리눅스)에서 돌아가게 변환</strong>. PC와 임베디드 보드는 성능이 완전히 다르므로 "가볍게, 빠르게" 바꾸는 과정</td>
+</tr>
+<tr>
+<td><strong>Inference</strong></td>
+<td>자동차·카메라·로봇에서 실제로 AI가 판단하는 단계. <strong>TIDL</strong>(TI Deep Learning)로 MCU에서 실행</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Network quantization 문제 발생 → 정확도 감소</p>
+<p>모델을 경량화(부동소수점 → 정수)하는 과정에서 <strong>정확도가 떨어지는</strong> 문제가 생긴다. 이것이 임베디드 AI의 핵심 난제다.</p>
+</div>
+<h3 id="gflops-vs-tops">성능 지표 — GFLOPS vs TOPS<a class="headerlink" href="#gflops-vs-tops" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GFLOPS</strong> (Giga Floating Point Operations per Second)</td>
+<td>초당 <strong>부동소수점</strong> 연산 횟수 — <strong>실수 연산 성능(정밀 계산)</strong>. FLOAT32/FLOAT64 기준</td>
+</tr>
+<tr>
+<td><strong>TOPS</strong> (Tera Operation Per Second)</td>
+<td>초당 <strong>정수</strong> 연산 횟수 — <strong>AI 추론 성능</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>정밀도</strong> FLOAT64 &gt; FLOAT32 &gt; INT16
+<strong>속도/전력</strong> INT16 &gt; FLOAT32 &gt; FLOAT64</p>
+<p>→ AI 추론은 정밀도를 조금 희생하고 속도·전력을 얻는 방향으로 간다. 그래서 TOPS가 지표가 된다.</p>
+<h3 id="_11">딥러닝 프로세서 성능 비교<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>기업</th>
+<th>제품</th>
+<th>성능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NVIDIA</strong></td>
+<td>재비어 SoC</td>
+<td>30 TOPS / 30W</td>
+</tr>
+<tr>
+<td></td>
+<td>드라이브 PX 페가수스</td>
+<td>320 TOPS / 300W</td>
+</tr>
+<tr>
+<td></td>
+<td>오린 플랫폼(2023)</td>
+<td>최대 254 TOPS / 100W</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Thor</strong> (GTC 2022)</td>
+<td><strong>2000 TOPS</strong></td>
+</tr>
+<tr>
+<td><strong>Tesla</strong></td>
+<td>FSD computer</td>
+<td>(144 TOPS 급)</td>
+</tr>
+<tr>
+<td>Horizon Robotics</td>
+<td>Journey 5</td>
+<td>30 TOPS / 30W 급</td>
+</tr>
+<tr>
+<td><strong>퀄컴</strong></td>
+<td>스냅드래곤 라이드 (CES 2020)</td>
+<td><strong>700 TOPS / 130W</strong></td>
+</tr>
+<tr>
+<td><strong>모빌아이</strong></td>
+<td>EyeQ ULTRA</td>
+<td><strong>176 TOPS</strong> (2025년 예정)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NVIDIA Drive Thor (GTC 2022)</strong> — HYPERION 8 SENSORS: 2.5 G sample/sec, 750 TOPs ×3 / HYPERION 9 SENSORS: 4.2 G sample/sec, <strong>2000 TOPs ×2</strong></p>
+<p><strong>Qualcomm Snapdragon Ride Vision SoC</strong> — 업계 선도 <strong>4nm</strong> SoC. Hexagon Processor, Kryo CPU, Embedded Vision Accelerator, Spectra ISP, Video Processor(VPU), Secure Processor, Safety Island. Arriver 협력 발표.</p>
+<div class="admonition danger">
+<p class="admonition-title">시험 포인트 — 매년 나온다</p>
+<p><strong>"다음 중 고성능 자율주행 프로세서를 제조하지 않는 기업은?"</strong>
+→ ① <strong>루미나</strong> ← 정답(라이다 업체) ② 퀄컴 ③ 엔비디아 ④ 모빌아이</p>
+<p><strong>"자율주행용 임베디드 AI 프로세서에 대한 설명으로 옳지 않은 것"</strong>
+→ <strong>"전력 소모가 많아도 괜찮다"</strong> ← 정답(옳지 않음). 연산량 최적화 필요 ✅, 빠른 처리 속도 요구 ✅, 양자화 이슈 발생 가능 ✅</p>
+</div>
+<h2 id="8">8. 프로세서 경쟁 구도 — 모빌아이 / 퀄컴 / 엔비디아<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="_12">모빌아이의 전략<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>플랫폼 두 가지 — <strong>camera only platform</strong> / <strong>with LiDAR platform</strong></li>
+<li>특징: <strong>정밀 지도</strong> / 자율주행 센서(라이다·카메라) <strong>직접 개발</strong> / 자율주행 처리 소프트웨어 <strong>직접 개발</strong></li>
+<li>전략: <strong>자율주행 솔루션 + 정밀 지도 + 센서를 묶어서 납품</strong></li>
+<li><strong>REM Cloud-enhanced ADAS, Volkswagen</strong> — 자체 기술이 탑재된 <strong>약 100만 대의 차량</strong>을 활용해 데이터를 크라우드소싱하여 고화질 지도 구축</li>
+</ul>
+<h3 id="_13">시장 구도<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>기존 ADAS 시장 — 사실상 모빌아이 독점(데이터 독점)</strong>
+<strong>자율주행 시장에서 자동차사의 모빌아이 견제 → 엔비디아/퀄컴 등과 협력</strong></p>
+</blockquote>
+<h3 id="stradvision">카메라 기반 인식 솔루션 — 스트라드비전(STRADVISION)<a class="headerlink" href="#stradvision" title="Permanent link">&para;</a></h3>
+<p>기존 <strong>레벨 2, 3 정도의 자율주행 프로세서에 AI 가속기를 붙인 형태</strong>의 경량 인식 소프트웨어에서 많은 시장을 장악.</p>
+<h2 id="9">9. 자율주행 데이터셋<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>데이터셋</th>
+<th>출처·특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KITTI</strong></td>
+<td>KIT(Karlsruhe Institute of Technology) 발표 (<strong>2012.03</strong>). 카메라·라이다·GPS 등 사용. <strong>이미지 당 최대 15대의 자동차와 30명의 보행자</strong>. 홈페이지에서 별도의 오픈소스는 제공하지 않음</td>
+</tr>
+<tr>
+<td><strong>KITTI-360</strong></td>
+<td>KITTI 데이터에서 조금 더 진화한 데이터셋</td>
+</tr>
+<tr>
+<td><strong>nuScenes</strong></td>
+<td>현대자동차와 Aptiv의 합작법인 <strong>모셔널</strong>이 공개한 <strong>멀티모달 데이터셋</strong> (<strong>2019.03</strong>). 카메라·레이더·라이다 데이터셋 조합. 차들이 운행했던 도시(Boston Seaport, Singapore One North)의 <strong>정밀 지도 제공</strong></td>
+</tr>
+<tr>
+<td><strong>BDD100K</strong></td>
+<td>미국 버클리대에서 만든 데이터셋</td>
+</tr>
+<tr>
+<td><strong>Waymo</strong></td>
+<td>웨이모 공개 데이터셋</td>
+</tr>
+<tr>
+<td><strong>TuSimple</strong></td>
+<td>자율주행 트럭 업체 TuSimple 제작</td>
+</tr>
+<tr>
+<td><strong>Cirrus</strong></td>
+<td><strong>볼보</strong>에서 제작 (<strong>2021.02</strong>). 루미나와 함께. 정밀 지도 제공</td>
+</tr>
+<tr>
+<td><strong>KODAS</strong></td>
+<td>우리나라 <strong>국토정보공사</strong>에서 만든 데이터셋</td>
+</tr>
+</tbody>
+</table>
+<p><strong>딥러닝 vs 비 딥러닝 알고리즘 비교 (KITTI dataset, Vehicle 기준)</strong></p>
+<table>
+<thead>
+<tr>
+<th>방식</th>
+<th>방법</th>
+<th style="text-align: right;">연도</th>
+<th style="text-align: right;">Vehicle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deep Learning</td>
+<td>Multi-Task CNN and ROI</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;"><strong>91.67%</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>RRC (Recurrent Rolling Convolution)</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">90.19%</td>
+</tr>
+<tr>
+<td></td>
+<td>SubCNN</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">88.86%</td>
+</tr>
+<tr>
+<td></td>
+<td>SDP+RPN</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">89.42%</td>
+</tr>
+<tr>
+<td>Non-Deep Learning</td>
+<td>AOG (Hierarchical And-Or model)</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;"><strong>75.94%</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>SubCat</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">75.46%</td>
+</tr>
+<tr>
+<td></td>
+<td>3DVP (3D Voxel Pattern)</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">75.77%</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>딥러닝과 비딥러닝의 격차가 약 15%p</strong>. 이것이 자율주행이 딥러닝으로 넘어간 이유다.</p>
+<h2 id="10">10. 센서 데이터 인식<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>센서</th>
+<th>인식 방식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Camera 기반</strong></td>
+<td>차선 인식 / 객체 인식 알고리즘 → <strong>객체 추적(Object tracking)</strong></td>
+</tr>
+<tr>
+<td><strong>라이다 기반</strong></td>
+<td><strong>Deep learning 기반 알고리즘(연구용)</strong> — Input Original Data(.pcd) → RoI Filtering → Ground Removal Algorithm → Clustering</td>
+</tr>
+<tr>
+<td><strong>레이더 기반</strong></td>
+<td>전자파 신호를 이용한 객체 인식 / <strong>4D Imaging Radar</strong> → 라이다 기반 인식과 유사하게 사용</td>
+</tr>
+<tr>
+<td><strong>센서 퓨전</strong></td>
+<td>센서 데이터 융합 — 카메라/라이다/레이더 융합. KITTI 사례(Camera + LiDAR), nuScenes 사례(Camera + LiDAR + Radar)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prediction">주행 예측 (Prediction)<a class="headerlink" href="#prediction" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>보행자의 의도 파악을 통한 주행 보조 / 주변 차량의 의도 파악</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>과제</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>순환적 인공지능 학습 데이터 구조 설계</strong></td>
+<td>인공지능 기술을 활용하여 데이터의 선별·라벨링·배포를 자동화하는 기술 필요</td>
+</tr>
+<tr>
+<td><strong>데이터 수집 체계 설계</strong></td>
+<td>대규모 자율주행 데이터를 효율적으로 수집·관리할 수 있는 체계 필요</td>
+</tr>
+<tr>
+<td><strong>센서 가상화 및 시뮬레이터 설계</strong></td>
+<td>실사와 같은 <strong>디지털 트윈</strong> 생성 기술 필요. 실도로에서 획득하기 힘든 상황을 모사하여 시뮬레이션 데이터 생성 가능</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_14">🤔 생각해 봅시다<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>중간고사 서술형 3번 시나리오 연습</strong>
+<strong>"짙은 안개가 낀 야간 고속도로에서 선행 트럭 뒤에 정지 차량이 있는 시나리오"</strong> — 각 센서가 기여하는 바와 한계를 센서 퓨전 관점에서 논하시오.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>센서</th>
+<th>이 시나리오에서의 기여</th>
+<th>한계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>카메라</td>
+<td>차선·트럭 후미등 인식</td>
+<td>야간 + 안개 → <strong>거의 무력</strong>. 선행 트럭에 가려 정지 차량 안 보임</td>
+</tr>
+<tr>
+<td>라이다</td>
+<td>3D 형상·거리 정밀</td>
+<td><strong>안개에서 산란으로 성능 저하</strong></td>
+</tr>
+<tr>
+<td>레이더</td>
+<td><strong>날씨 영향 거의 없음</strong>, 거리·상대속도 직접 측정. 트럭 아래로 반사되어 <strong>선행차 너머 감지 가능</strong></td>
+<td>해상도 낮음, 객체 종류 구분 어려움</td>
+</tr>
+<tr>
+<td>초음파</td>
+<td>근거리 주차 보조</td>
+<td>고속 주행에는 <strong>부적합</strong>(8m 수준)</td>
+</tr>
+<tr>
+<td>이벤트 카메라</td>
+<td>밝기 변화만 감지 → 고속·저지연</td>
+<td>절대 밝기 정보 없음</td>
+</tr>
+<tr>
+<td>열화상</td>
+<td><strong>온도로 사람·동물·엔진 열원 감지</strong> → 야간에 유효</td>
+<td>열 대비가 없는 물체는 약함</td>
+</tr>
+</tbody>
+</table>
+<p>→ 결론: <strong>레이더 + 열화상</strong>이 이 시나리오의 주력, 카메라·라이다는 보조. 그리고 <strong>V2X</strong>(7주차)가 있다면 선행 트럭이 정지 차량 정보를 직접 전송해 줄 수 있다.</p>
+<h2 id="_15">✅ 이번 주 체크리스트<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 카메라·라이다·레이더의 원리와 대표 강점을 한 줄씩 말할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 라이다 거리 공식 <strong>d = c·t/2</strong>를 쓸 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1550nm이 eye-safe인 이유와 단점을 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Flash/MEMS/OPA의 용도 차이를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> GFLOPS와 TOPS의 차이를 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 루미나가 프로세서 회사가 아니라는 것을 안다</li>
+</ul>
+<hr />
+<p>▶️ <strong>다음 주 예고</strong> — 센서로도 못 보는 것을 <strong>통신</strong>으로 본다. V2X 4유형, DSRC, MEC, 5G. 그리고 중간고사 서술형에 나오는 <strong>7단계 공학 설계 프로세스</strong>를 실제 공모전 사례로 익힌다. → <a href="../week07/">7주차</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../week05/" class="md-footer__link md-footer__link--prev" aria-label="이전: 5주차 · 자율주행 단계·규제와 센서 시스템">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                5주차 · 자율주행 단계·규제와 센서 시스템
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week07/" class="md-footer__link md-footer__link--next" aria-label="다음: 7주차 · 통신·V2X와 공학 설계 프로세스">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                7주차 · 통신·V2X와 공학 설계 프로세스
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

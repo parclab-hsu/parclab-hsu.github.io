@@ -1,0 +1,2214 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 1학년 전공기초 · 자율주행·드론/UAM·로봇을 아우르는 미래 모빌리티 기술 개관과 사회·제도·윤리 고찰">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202601/future-mobility-intro/week11/">
+      
+      
+        <link rel="prev" href="../week10/">
+      
+      
+        <link rel="next" href="../week12/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>11주차 · 드론 구조설계와 멀티콥터 설계 - 미래모빌리티 개론 · 2026-1학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#11" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="미래모빌리티 개론 · 2026-1학기" class="md-header__button md-logo" aria-label="미래모빌리티 개론 · 2026-1학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            미래모빌리티 개론 · 2026-1학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              11주차 · 드론 구조설계와 멀티콥터 설계
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="미래모빌리티 개론 · 2026-1학기" class="md-nav__button md-logo" aria-label="미래모빌리티 개론 · 2026-1학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    미래모빌리티 개론 · 2026-1학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 강의계획서(Syllabus)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧭 강의 전체 흐름
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    커리큘럼(15주차)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 강의 자료
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    주차별 강의 자료
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · 미래모빌리티란 무엇인가
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 자율주행 개념·레벨·제도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 자율주행 시스템과 ADAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · 객체탐지와 데이터 기반 의사결정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · 자율주행 단계·규제와 센서 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · 센서의 진화와 AI 프로세서
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · 통신·V2X와 공학 설계 프로세스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · 드론 개념·분류·시스템 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · 드론 생태계·DNA+드론·대드론
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · 드론 구조설계와 멀티콥터 설계
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · 드론 구조설계와 멀티콥터 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 개념 이해하기 — 강성 vs 강도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fos-weight-spiral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 안전계수(FoS)와 Weight Spiral
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 안전계수(FoS)와 Weight Spiral">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        안전계수 설계 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fos-weight-spiral-over-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왜 FoS를 무작정 높일 수 없는가 — Weight Spiral &amp; Over-design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 재료 선택
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 드론 구조 설계의 미래 패러다임
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 드론 구조 설계의 미래 패러다임">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① AI 기반 형상 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-co-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 구조-제어 통합 설계 (Co-design)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 차세대 드론 아키텍처
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ④ 디지털 트윈 기반 해석
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 프로펠러
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 전기 모터의 종류와 특징
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 배터리 — 동력원 4방식 비교
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 모터-로터 성능 비교
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 레이아웃 및 로터 선정에 따른 성능 비교 — 기말 필수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-modal-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 동특성 분석 (Modal Analysis) — 공진
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 동특성 분석 (Modal Analysis) — 공진">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UAV 주요 동특성 모드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기본 설계안 (Type 04) — 고유진동수/고유 모드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impact-testing-artcopter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Impact Testing — Artcopter 고유진동수
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · 스마트시티·MaaS·UAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · 로봇의 등장과 산업용 로봇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · 휴머노이드 보행과 Physical AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · 기말고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험·평가
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시험·평가
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험 유형과 핵심 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    과제·발표 안내
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어 사전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 개념 이해하기 — 강성 vs 강도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fos-weight-spiral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 안전계수(FoS)와 Weight Spiral
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 안전계수(FoS)와 Weight Spiral">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        안전계수 설계 예시
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fos-weight-spiral-over-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왜 FoS를 무작정 높일 수 없는가 — Weight Spiral &amp; Over-design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 재료 선택
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 드론 구조 설계의 미래 패러다임
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 드론 구조 설계의 미래 패러다임">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① AI 기반 형상 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-co-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 구조-제어 통합 설계 (Co-design)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 차세대 드론 아키텍처
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ④ 디지털 트윈 기반 해석
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 프로펠러
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 전기 모터의 종류와 특징
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 배터리 — 동력원 4방식 비교
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 모터-로터 성능 비교
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 레이아웃 및 로터 선정에 따른 성능 비교 — 기말 필수
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-modal-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 동특성 분석 (Modal Analysis) — 공진
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 동특성 분석 (Modal Analysis) — 공진">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UAV 주요 동특성 모드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기본 설계안 (Type 04) — 고유진동수/고유 모드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impact-testing-artcopter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Impact Testing — Artcopter 고유진동수
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="11">11주차 · 드론 구조설계와 멀티콥터 설계<a class="headerlink" href="#11" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>🔗 <strong>강의 흐름</strong> — 이 주차는 개론 과목에서 유일하게 <strong>정량 설계</strong>를 다룬다. 그래서 <strong>기말고사 계산 문제 3문항이 전부 여기서 나온다.</strong> 강성·안전계수·동력원·공진 — 네 가지 개념을 숫자로 다룰 수 있어야 한다.</p>
+<p><strong>학습목표</strong> — 강성과 강도를 구분하고, 안전계수와 Weight Spiral의 관계를 설명하며, 구조-제어 통합설계와 디지털 트윈의 개념을 서술하고, 프로펠러·모터·배터리 선정과 레이아웃 비교를 정량적으로 수행할 수 있다.</p>
+<p>💡 <strong>기초 다지기</strong> — <strong>"강성이 부족하면 흔들리고, 강도가 부족하면 부러진다."</strong>
+이 한 문장이 이번 주차의 전부다. 흔들림(진동·공진)은 <strong>강성(Stiffness)</strong> 문제, 부러짐(파괴)은 <strong>강도(Strength)</strong> 문제. 둘은 다른 물리량이고, 다른 방법으로 해결한다.</p>
+</blockquote>
+<h2 id="_1">🗺️ 한눈에 보는 개념도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    REQ["임무 요구사항&lt;br/&gt;Payload · 체공시간 · 환경"] --&gt; DES
+    subgraph DES["설계"]
+      ST["구조 설계&lt;br/&gt;강성 k · 강도 σ · FoS"]
+      PR["추진 설계&lt;br/&gt;프로펠러 · 모터 · ESC"]
+      PW["전원 설계&lt;br/&gt;배터리 · 연료전지 · 하이브리드"]
+    end
+    DES --&gt; W["중량 증가"]
+    W --&gt;|Weight Spiral| DES
+    DES --&gt; VAL["검증&lt;br/&gt;모달해석 · 충격시험 · 디지털트윈"]
+    VAL --&gt; RES["공진 위험 판정"]</code></pre>
+<h2 id="1-vs">1. 개념 이해하기 — 강성 vs 강도<a class="headerlink" href="#1-vs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th><strong>강성 (Stiffness)</strong></th>
+<th><strong>강도 (Strength)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>정의</td>
+<td><strong>변형 저항</strong></td>
+<td><strong>파괴·항복 저항</strong></td>
+</tr>
+<tr>
+<td>수식</td>
+<td>$k = F/\delta$</td>
+<td>허용응력(항복강도)</td>
+</tr>
+<tr>
+<td>관련 현상</td>
+<td><strong>고유진동수</strong> $\omega_n = \sqrt{k/m}$ → <strong>공진 문제의 핵심</strong></td>
+<td>부재가 깨지는지의 문제</td>
+</tr>
+<tr>
+<td>부족하면</td>
+<td><strong>흔들린다</strong></td>
+<td><strong>부러진다</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">기말 서술형 필수 개념</p>
+<p>공진은 <strong>강성–질량 문제</strong>다. 강도를 아무리 높여도 공진은 해결되지 않는다. 이 구분을 명확히 쓰지 않으면 감점된다.</p>
+</div>
+<h2 id="2-fos-weight-spiral">2. 안전계수(FoS)와 Weight Spiral<a class="headerlink" href="#2-fos-weight-spiral" title="Permanent link">&para;</a></h2>
+<h3 id="_2">안전계수 설계 예시<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>적용 분야</th>
+<th>Factor of Safety</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>드론 핵심부</strong></td>
+<td><strong>2.0 ~ 2.5</strong></td>
+</tr>
+<tr>
+<td><strong>항공·우주</strong></td>
+<td><strong>1.4 ~ 1.5</strong></td>
+</tr>
+</tbody>
+</table>
+<p>$$\text{요구 설계 허용응력} = \text{해석응력} \times \text{FoS}$$</p>
+<div class="admonition example">
+<p class="admonition-title">기말 계산 예제 (실제 출제)</p>
+<p>동일 Arm의 굽힘 응력 해석값이 <strong>80 MPa</strong>일 때:</p>
+<ul>
+<li>드론 핵심부 기준 (FoS = 2.0) → 80 MPa × 2.0 = <strong>160 MPa</strong></li>
+<li>항공·우주 기준 (FoS = 1.4) → 80 MPa × 1.4 = <strong>112 MPa</strong></li>
+</ul>
+<p>→ 재료는 핵심부 기준 <strong>160 MPa</strong>, 항공우주 기준 <strong>112 MPa</strong> 이상의 항복강도를 가져야 한다.
+(또는 안전여유 관점: 동일 재료라면 핵심부가 더 큰 단면·중량을 요구한다.)</p>
+</div>
+<h3 id="fos-weight-spiral-over-design">왜 FoS를 무작정 높일 수 없는가 — Weight Spiral &amp; Over-design<a class="headerlink" href="#fos-weight-spiral-over-design" title="Permanent link">&para;</a></h3>
+<p><strong>FoS ↑ → 요구 허용응력 ↑ → 단면적·두께 증대 → 구조 중량 증가(과설계)</strong></p>
+<pre class="mermaid"><code>flowchart LR
+    A["구조 중량 ↑"] --&gt; B["총중량 ↑"]
+    B --&gt; C["호버 추력 요구 ↑"]
+    C --&gt; D["더 큰 모터·프로펠러"]
+    D --&gt; E["더 큰 배터리"]
+    E --&gt; A</code></pre>
+<blockquote>
+<p><strong>중량 추정 반복(Weight Spiral, 악순환)</strong> — 구조 중량↑ → 총중량↑, 총중량↑ → 호버 추력 요구↑ → 더 큰 모터·프로펠러 필요 → 모터↑ → 더 큰 배터리 필요 → 또 중량↑ → 다시 1로 되돌아가 <strong>중량이 눈덩이처럼 증가하는 발산 루프</strong>.</p>
+<p><strong>결과: 페이로드 여유·체공시간 급감, 효율 악화.</strong></p>
+</blockquote>
+<h2 id="3">3. 재료 선택<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>프레임 재질 — <strong>탄소섬유(Carbon Fiber)</strong>, 알루미늄, 플라스틱 등. 강성·강도·중량·비용의 균형점을 찾는 것이 설계다.</p>
+<h2 id="4">4. 드론 구조 설계의 미래 패러다임<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>경량화와 강성의 물리적 한계를 넘어서기 위해, 드론 구조 설계는 <strong>인간의 직관을 넘어 AI 알고리즘과 첨단 나노 소재의 영역</strong>으로 진입하고 있음</p>
+</blockquote>
+<h3 id="1-ai">① AI 기반 형상 설계<a class="headerlink" href="#1-ai" title="Permanent link">&para;</a></h3>
+<p>위상 최적화(Topology Optimization)와 생성형 설계로 사람이 떠올리기 어려운 형상을 도출.</p>
+<h3 id="2-co-design">② 구조-제어 통합 설계 (Co-design)<a class="headerlink" href="#2-co-design" title="Permanent link">&para;</a></h3>
+<ul>
+<li>구조와 제어를 <strong>독립적으로 설계하던 기존 방식에서 벗어나</strong>, 구조–제어 시스템을 <strong>통합적으로 고려하여 동시 최적화</strong>하는 개념</li>
+<li>구조물의 <strong>진동 특성</strong>과 제어기의 <strong>동작 주파수</strong>를 통합 반영하여, <strong>경량화와 시스템 안정성을 동시에 확보</strong></li>
+</ul>
+<p><strong>사례 — NASA X-56A</strong></p>
+<ul>
+<li>유연한(flexible) 날개를 사용하기 때문에 구조가 가벼워진 대신 <strong>진동이 잘 생길 수 있다</strong></li>
+<li><strong>구조-제어 통합 설계(Structure–Control Co-design)</strong>와 <strong>능동 플러터 제어(Active Flutter Suppression)</strong>를 적용하여 진동이 커지기 전에 억제</li>
+<li>센서–액추에이터 기반 능동 제어로 플러터 진동이 증폭되기 전에 실시간 억제</li>
+<li>플러터 발생 한계를 향상시켜 <strong>경량 구조에서도 안정적인 비행 성능 확보</strong></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">플러터(Flutter)란</p>
+<p><strong>공기력(Aerodynamics) + 구조 진동(Structure) + 관성(Inertia)</strong>이 상호작용하면서 진동이 점점 커지는 <strong>불안정 현상</strong>.
+발생 시 → 날개 진동 급증 / 구조 피로 및 손상 증가 / 제어 안정성 저하 / 심하면 <strong>구조 파손</strong>.</p>
+</div>
+<h3 id="3_1">③ 차세대 드론 아키텍처<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<h3 id="4_1">④ 디지털 트윈 기반 해석<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>실제 드론의 <strong>구조 동특성과 비행 상태를 가상 환경에서 실시간으로 재현</strong>하는 디지털 모델</li>
+<li><strong>실시간 센서 데이터 + 물리 기반 해석 모델</strong>을 결합하여 하중·진동·구조 응답을 예측</li>
+<li>예시 — 비행 중 구조 상태 모니터링 및 <strong>잔여 수명(RUL, Remaining Useful Life) 예측</strong> / <strong>Virtual Flight Test</strong> 기반 반복 시험으로 개발 효율성 향상 및 비용 절감</li>
+</ul>
+<blockquote>
+<p>설계 도구의 역사: <em>"In the late 20th Century, this was engineering. Paper was King!"</em> → <em>"Then… Someone introduced Computer Aided Drafting… CAD was born."</em> → 지금은 <strong>디지털 트윈</strong>.</p>
+</blockquote>
+<h2 id="5">5. 프로펠러<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p><strong>선정 시 고려사항</strong></p>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>직경(Diameter) ↑</strong></td>
+<td><strong>추력 증가</strong></td>
+</tr>
+<tr>
+<td><strong>피치(Pitch) ↑</strong></td>
+<td><strong>속도 증가</strong></td>
+</tr>
+<tr>
+<td><strong>블레이드 수 ↑</strong></td>
+<td>추력 증가, <strong>효율 감소 가능</strong></td>
+</tr>
+<tr>
+<td>재질</td>
+<td>플라스틱 / 카본파이버</td>
+</tr>
+</tbody>
+</table>
+<p><strong>설계 파라미터</strong> — Tip to Tip Diameter, Propeller Pitch, 에어포일 형상, Chord Length, Twist angle</p>
+<p><strong>사례</strong> — T-motor <strong>18 × 6.1 Blade</strong>(직경 18인치, 피치 6.1인치). 현재 로봇 기술 그룹 DARPA용 Prototype 적용. 개발 target 사이즈 1m × 1m 이내 가능한 최대 로터 직경.</p>
+<p><strong>블레이드 성능 해석·제작·시험</strong></p>
+<ul>
+<li>CFX 이용 초기 검증 완료(헬리콥터 로터 UH-1H 대상), Benchmark 로터 성능 해석, 비행 미션 고려 로터 최적 설계</li>
+<li><strong>3D Printing을 이용한 Blade Prototype 제작</strong> — Project 3500HD, 정밀도 16~32μm, Printing size 298 × 185 × 203 mm, 제작시간 24시간 예상</li>
+<li><strong>블레이드 추력 성능 시험</strong> — Single rotor / Coaxial Rotor, 추력 시험용 테스트 리그 제작, <strong>Arduino 기반 측정장치</strong>, 계측값: <strong>전류, 전압, RPM, 추력</strong></li>
+</ul>
+<h2 id="6">6. 전기 모터의 종류와 특징<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Brushed DC Motor</strong></td>
+<td>구조 단순·저가, 브러시 마모로 수명·유지보수 부담</td>
+</tr>
+<tr>
+<td><strong>BLDC</strong> (Brushless DC) Motor</td>
+<td>브러시 없음 → 수명·효율 우수. <strong>드론 표준</strong></td>
+</tr>
+<tr>
+<td><strong>Synchronous Motor</strong> (동기 모터)</td>
+<td>회전자가 회전자계와 동기 회전</td>
+</tr>
+<tr>
+<td><strong>Induction Motor</strong> (유도 모터)</td>
+<td>견고·저가, 슬립 존재</td>
+</tr>
+</tbody>
+</table>
+<p><strong>성능 파라미터</strong> — KV, 최대 전류, 효율(g/W), 무게 등</p>
+<p><strong>추진계 구성</strong></p>
+<table>
+<thead>
+<tr>
+<th>구성</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>프레임(Frame)</strong></td>
+<td>드론의 기본 골격. 모터·배터리·센서·제어장치를 지지</td>
+</tr>
+<tr>
+<td><strong>추진계(Propulsion System)</strong></td>
+<td>프로펠러 + 모터. 회전력으로 <strong>양력(Thrust)</strong> 발생. 드론 성능(속도·비행시간·적재하중)에 직접 영향</td>
+</tr>
+<tr>
+<td><strong>전원(Power System)</strong></td>
+<td>일반적으로 <strong>Li-Po</strong> 배터리. 전압(V)·용량(mAh)에 따라 비행시간 결정. 예: <strong>4S(14.8V), 6S(22.2V)</strong></td>
+</tr>
+<tr>
+<td><strong>제어계(Control System)</strong></td>
+<td><strong>FC</strong>(Flight Controller) — IMU·GPS·센서 정보로 자세·비행 제어 / <strong>ESC</strong>(Electronic Speed Controller) — FC 신호를 받아 모터 속도 제어</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-4">7. 배터리 — 동력원 4방식 비교<a class="headerlink" href="#7-4" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">기말 서술형 필수 — 30분 이상 체공을 위한 동력원 선정</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>방식</th>
+<th>에너지 밀도</th>
+<th>Pro</th>
+<th>Con</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Battery-Motor (LiPo)</strong></td>
+<td><strong>≤ 200 Wh/kg</strong></td>
+<td>널리 쓰이는 LiPo, 저렴한 가격, 기성품 다양</td>
+<td><strong>낮은 에너지 밀도</strong>, 긴 충전시간, 저온/고온 효율 저하, 메모리 효과</td>
+</tr>
+<tr>
+<td><strong>Fuel Cell-Motor</strong></td>
+<td><strong>500~1000 W/kg</strong></td>
+<td>높은 에너지 밀도, <strong>연료소비에 따른 무게 감소</strong>, 재충전이 빠름</td>
+<td>온도에 민감(저온 시동 불가), 드론용 기성품 제한, 충격에 약함, <strong>폭발 위험성</strong>, 재사용 횟수 제한(촉매 교체)</td>
+</tr>
+<tr>
+<td><strong>Hybrid (Engine-Generator-Battery-Motor)</strong></td>
+<td><strong>가솔린 1500 W/kg</strong></td>
+<td>높은 에너지 밀도, 연료소비에 따른 무게 감소, 재충전 빠름, <strong>저온에서 운영 가능</strong></td>
+<td><strong>하이브리드 엔진 신규개발 필요</strong>(기성품 X), 엔진/발전기/연료탱크 등 구성품, 소형 드론 적용 어려움, <strong>엔진 소음</strong></td>
+</tr>
+<tr>
+<td><strong>Gasoline Engine Driven</strong></td>
+<td>가솔린 1500 W/kg</td>
+<td>높은 에너지 밀도, <strong>기성품 존재</strong>, 재충전 빠름, 저온 운영 가능</td>
+<td>기어박스/서보모터/콜렉티브 피치 등 부가 기계장치 필요, 소형 드론 적용 어려움, 엔진 소음·진동, <strong>멀티콥터 적용 사례 없음</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>LiPo 배터리가 일반적이나 무게 대비 에너지 밀도가 낮아 <strong>실제 체공 시간 30분 미만</strong>. 실제 비행시간 및 Payload 향상을 위해 <strong>Fuel Cell이나 가솔린 연료를 이용한 Hybrid 타입 멀티콥터</strong> 개발이 진행 중.</p>
+</blockquote>
+<p><strong>상용 배터리 사양 검토 — LiPo battery (12V ~ 22.2V)</strong></p>
+<p>대부분의 상용 배터리 에너지 밀도는 <strong>200 Wh/kg 이하</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Tattu 16000mAh 22.2V 15/30C 6S1P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capacity</td>
+<td>16000mAh (<strong>355Wh</strong>)</td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>1932g → <strong>184 Wh/kg</strong></td>
+</tr>
+<tr>
+<td>Dimensions</td>
+<td>180 × 74 × 65 mm</td>
+</tr>
+<tr>
+<td>Voltage</td>
+<td>22.2V</td>
+</tr>
+<tr>
+<td>비고</td>
+<td>현재 DARPA용 시제품에 적용, 에너지 밀도 비교적 높음</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">기말 서술형 모범 답안 (동력원 선정)</p>
+<p><strong>목표: 30분 이상 + Payload 1.5kg급 소형 드론</strong>
+<strong>선정: Hybrid (LiPo + Fuel Cell)</strong> — 단, 규모 제약 시 고에너지 LiPo 우선 검토.
+<strong>근거</strong>: 소형·고응답이 요구되는 멀티콥터 특성상 <strong>순수 Fuel Cell은 부적합</strong>하고, <strong>에너지밀도는 Fuel Cell, 출력밀도는 LiPo가 분담</strong>하는 Hybrid 구성이 30분 이상 체공과 비행 안정성을 동시에 만족하는 가장 타당한 해법이다.</p>
+</div>
+<h2 id="8-">8. 모터-로터 성능 비교<a class="headerlink" href="#8-" title="Permanent link">&para;</a></h2>
+<p><strong>15~18인치 로터/모터 비교 분석</strong> — Motor(blade) supplier: Tiger motor, Tarrot, Rctimer, DJI. 대체로 <strong>Efficiency(W/kg) 기준 10% 이내 차이</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>로터 크기</th>
+<th>Thrust 2kg</th>
+<th>Thrust 3kg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>15~18인치</strong></td>
+<td>250 W</td>
+<td>500 W</td>
+</tr>
+<tr>
+<td><strong>26~28인치</strong></td>
+<td><strong>150 W</strong></td>
+<td><strong>250 W</strong></td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>로터가 클수록 같은 추력을 더 적은 전력으로 낸다.</strong> 이것이 다음 절의 핵심 원리다.</p>
+<h2 id="9">9. 레이아웃 및 로터 선정에 따른 성능 비교 — 기말 필수<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p><strong>T-motor사의 motor/rotor 기준, Payload 1.5kg</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;"><strong>Quadcopter</strong></th>
+<th style="text-align: right;"><strong>Octocopter (Coaxial, U7)</strong></th>
+<th style="text-align: right;"><strong>Octocopter (Coaxial, U5)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motor</td>
+<td style="text-align: right;">U7 250g × 4 = 1000</td>
+<td style="text-align: right;">U7 250g × 8 = 2000</td>
+<td style="text-align: right;">U5 150g × 8 = 1200</td>
+</tr>
+<tr>
+<td>Blade</td>
+<td style="text-align: right;">18×6.1, 32.2g × 4 = 128.8</td>
+<td style="text-align: right;">16×5.4, 28.2g × 8 = 225.6</td>
+<td style="text-align: right;">16×5.4, 28.2g × 8 = 225.6</td>
+</tr>
+<tr>
+<td>ESC 75A</td>
+<td style="text-align: right;">60g × 4 = 240</td>
+<td style="text-align: right;">60g × 8 = 480</td>
+<td style="text-align: right;">60g × 8 = 480</td>
+</tr>
+<tr>
+<td>Mainboard</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr>
+<td>16Ah Battery</td>
+<td style="text-align: right;">1932g × 2 = 3864</td>
+<td style="text-align: right;">1932g × 3 = 5796</td>
+<td style="text-align: right;">1932g × 3 = 5796</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td style="text-align: right;">1500</td>
+<td style="text-align: right;">1500</td>
+<td style="text-align: right;">1500</td>
+</tr>
+<tr>
+<td>Fuselage</td>
+<td style="text-align: right;">1500</td>
+<td style="text-align: right;">1500 × 1.5 = 2250</td>
+<td style="text-align: right;">1500 × 1.5 = 2250</td>
+</tr>
+<tr>
+<td><strong>Total Weight (g)</strong></td>
+<td style="text-align: right;"><strong>9,233</strong></td>
+<td style="text-align: right;"><strong>13,252</strong></td>
+<td style="text-align: right;"><strong>12,452</strong></td>
+</tr>
+<tr>
+<td>Required Thrust (마진)</td>
+<td style="text-align: right;">10,156 (10%)</td>
+<td style="text-align: right;">16,565 (25%)</td>
+<td style="text-align: right;">15,565 (25%)</td>
+</tr>
+<tr>
+<td>Thrust (Hovering)</td>
+<td style="text-align: right;">2500 × 4 = 10,000</td>
+<td style="text-align: right;">2130 × 8 = 17,040</td>
+<td style="text-align: right;">2000 × 8 = 16,000</td>
+</tr>
+<tr>
+<td>Power @Hovering</td>
+<td style="text-align: right;">370W × 4 = 1,480</td>
+<td style="text-align: right;">300W × 8 = 2,400</td>
+<td style="text-align: right;">260W × 8 = 2,080</td>
+</tr>
+<tr>
+<td>Total power (W)</td>
+<td style="text-align: right;">1,776</td>
+<td style="text-align: right;">2,880</td>
+<td style="text-align: right;">2,496</td>
+</tr>
+<tr>
+<td>Battery (Wh)</td>
+<td style="text-align: right;">355 × 2 = 710</td>
+<td style="text-align: right;">355 × 3 = 1,065</td>
+<td style="text-align: right;">355 × 3 = 1,065</td>
+</tr>
+<tr>
+<td><strong>Hovering time</strong></td>
+<td style="text-align: right;"><strong>24 min</strong></td>
+<td style="text-align: right;"><strong>22 min</strong></td>
+<td style="text-align: right;"><strong>26 min</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">기말 서술형 — 왜 더 무거운 옥토콥터가 더 오래 나는가?</p>
+<p><strong>핵심: 모터당 부하가 낮을수록 로터 효율(g/W)이 높아지기 때문.</strong></p>
+<p><strong>① 부하 분산 (모터당 부하)</strong>
+호버링에 필요한 총추력 = 총중량(불변, 추력 = 중량 평형).
+- 쿼드: 4개 로터가 총추력 분담 → 모터당 부하 큼
+- 옥토: 8개 로터가 분담 → 총중량이 다소 무거워도 모터당 부하는 현저히 감소
+- 예: 쿼드 총중량 W₄, 모터당 W₄/4 = <strong>0.25 W₄</strong>. 옥토 총중량 1.2W₄라도 모터당 1.2W₄/8 = <strong>0.15 W₄</strong> &lt; 0.25 W₄ → <strong>모터당 부하 약 40% 감소</strong></p>
+<p><strong>② 로터 효율 곡선(g/W)의 비선형성</strong>
+로터 효율(단위 전력당 추력)은 <strong>저추력 영역에서 높고 고추력 영역에서 급격히 떨어지는</strong> 비선형 곡선.
+운동량 이론상 $P \propto T^{3/2}$, 즉 $T \propto P^{2/3}$ → <strong>추력을 절반으로 내리면 전력은 $2^{1.5} \approx 2.83$배 절감.</strong>
+즉 모터당 부하를 낮추면 각 로터가 <strong>효율 좋은(g/W 높은) 동작점</strong>으로 이동한다.</p>
+<p><strong>③ T/W 마진과 전력 소모</strong>
+옥토는 동일 모터로 더 큰 T/W 여유 확보 → 호버 추력이 <strong>최대추력 대비 낮은 비율(예: 30~40%)</strong>에서 작동.</p>
+</div>
+<h2 id="10-modal-analysis">10. 동특성 분석 (Modal Analysis) — 공진<a class="headerlink" href="#10-modal-analysis" title="Permanent link">&para;</a></h2>
+<h3 id="uav">UAV 주요 동특성 모드<a class="headerlink" href="#uav" title="Permanent link">&para;</a></h3>
+<p>비행 안정성과 vision에 영향을 주는 주요 모드:</p>
+<table>
+<thead>
+<tr>
+<th>모드</th>
+<th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Z축 병진 mode</strong></td>
+<td>상승/하강 후 <strong>leveling control issue</strong></td>
+</tr>
+<tr>
+<td><strong>좌우 pitching unbalance mode</strong></td>
+<td><strong>Hovering instability</strong>, 좌/우 prop의 tilting → <strong>Yaw instability</strong></td>
+</tr>
+<tr>
+<td><strong>Pitching mode</strong></td>
+<td>Incoming wind gust → <strong>Pitch instability</strong></td>
+</tr>
+<tr>
+<td><strong>Rolling mode</strong></td>
+<td>Lateral wind gust → <strong>Roll instability</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-04">기본 설계안 (Type 04) — 고유진동수/고유 모드<a class="headerlink" href="#type-04" title="Permanent link">&para;</a></h3>
+<p>기본 보강재(ribs) 추가 → 상세설계 시 cut-out 실시. Skin thickness / Ribs thickness 조정.
+중량 예: 기존 456g → <strong>514g (58g ↑)</strong>, 다른 설계안 1377g.</p>
+<h3 id="impact-testing-artcopter">Impact Testing — Artcopter 고유진동수<a class="headerlink" href="#impact-testing-artcopter" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>27, 38, 151 Hz</strong>에서 주요 모드 발생</li>
+<li>실물 testing에서의 <strong>저주파 고유진동수는 landing gear의 영향</strong>으로 보임</li>
+<li>해석/시험 결과 정합성 <strong>미확보</strong> (물성치, 연결부 모델링, 부품 무게 정보 부족)</li>
+<li>Testing Results 참고값: 21.5 / 22.3 / 35.3 / 35.7 / 113.0 Hz</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">기말 계산 예제 — 공진 위험 정량 분석 (실제 출제)</p>
+<p><strong>문제</strong>: 쿼드콥터 충격시험 결과 주요 고유진동수가 <strong>27 Hz, 38 Hz, 151 Hz</strong>에서 측정. <strong>18×6.1 프로펠러</strong> 장착, 호버링 시 약 <strong>6,000 RPM</strong> 회전. 프로펠러 통과주파수(BPF)를 계산하고(블레이드 <strong>2매</strong> 가정) 공진 위험을 정량 분석하시오.</p>
+<p><strong>① 회전 주파수</strong> = 6,000 RPM ÷ 60 = <strong>100 Hz</strong>
+<strong>② BPF</strong> = 회전주파수 × 블레이드 수 = 100 Hz × 2 = <strong>200 Hz</strong></p>
+<p><strong>③ 판정</strong>
+- <strong>27 Hz, 38 Hz</strong> — 1× 가진(100 Hz)과도 충분히 이격되어 <strong>안전</strong>
+- <strong>151 Hz가 핵심 쟁점</strong> — BPF(200 Hz)와의 이격이 약 <strong>24.5%</strong>로 ±20% 경계를 약간 벗어나므로 정상 호버링(6,000 RPM)에서는 <strong>직접 공진은 아니다</strong>
+- 그러나 <strong>RPM은 기동 시 변동</strong>한다. 151 Hz에 BPF가 일치하려면 회전주파수 75.5 Hz → <strong>4,530 RPM</strong>. 즉 호버링 RPM(6,000)보다 낮은 운용 영역(상승/하강·저추력 구간)에서 BPF가 151 Hz를 <strong>통과(sweep through)</strong>하게 되어 <strong>천이 공진(transient resonance) 위험</strong>이 존재한다
+- 또한 151 Hz는 1× 성분 기준으로는 9,060 RPM에 해당하므로 정격 범위 밖이나, BPF 경유 통과는 피할 수 없어 <strong>151 Hz 모드가 가장 위험한 모드로 판정</strong>된다</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">이어지는 서술 — 순차설계 vs 코디자인</p>
+<p><strong>공진은 강성–질량 문제</strong>($\omega_n = \sqrt{k/m}$).</p>
+<table>
+<thead>
+<tr>
+<th>접근</th>
+<th>강성 확보 전략</th>
+<th>중량 영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>순차설계 (Sequential Design)</strong></td>
+<td>강성을 <strong>구조로만</strong> 확보</td>
+<td><strong>무겁다</strong></td>
+</tr>
+<tr>
+<td><strong>코디자인 (Co-Design)</strong></td>
+<td><strong>구조와 제어가 강성을 분담</strong></td>
+<td>더 <strong>가볍게</strong> 같은 안전성 달성</td>
+</tr>
+</tbody>
+</table>
+<p><strong>강성(Stiffness)</strong> — 변형 저항($k = F/\delta$), 고유진동수를 결정 → 공진 문제의 핵심
+<strong>강도(Strength)</strong> — 파괴·항복 저항(허용응력), 부재가 깨지는지의 문제</p>
+</div>
+<h2 id="_3">🤔 생각해 봅시다<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ol>
+<li>헥사콥터와 옥토콥터 중 <strong>택배 드론</strong>에 적합한 것은? 9주차의 "옥토콥터는 체공시간이 줄어든다"와 이번 주 계산표(옥토가 더 오래 난다)가 모순처럼 보이는데, 어떻게 화해시킬 수 있나? <em>(힌트: 같은 배터리 vs 같은 페이로드, 동축 반전 여부)</em></li>
+<li>안전계수를 2.5로 잡은 설계와 1.4로 잡은 설계 중, <strong>사람이 타지 않는 드론</strong>에는 어느 쪽이 합리적인가? 판단 기준은?</li>
+<li>디지털 트윈으로 Virtual Flight Test를 하면 실물 시험을 얼마나 줄일 수 있을까? 줄일 수 <strong>없는</strong> 시험은 무엇인가?</li>
+</ol>
+<h2 id="_4">✅ 이번 주 체크리스트<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 강성과 강도를 수식과 함께 구분해 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> FoS 계산(해석응력 × FoS)을 할 수 있고, 드론 2.0~2.5 / 항공우주 1.4~1.5를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Weight Spiral 루프를 그릴 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 플러터의 3요소(공기력+구조진동+관성)를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 동력원 4방식의 에너지 밀도 수치를 안다 (LiPo ≤200 / FC 500~1000 / 가솔린 1500)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> BPF = 회전주파수 × 블레이드 수를 계산할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> $P \propto T^{3/2}$로 옥토콥터 체공시간 역전을 설명할 수 있다</li>
+</ul>
+<hr />
+<p>▶️ <strong>다음 주 예고</strong> — 하늘길이 도시로 내려온다. 스마트시티, MaaS, 그리고 <strong>UAM</strong>. 그리고 파트 3의 문을 여는 <strong>로봇 산업</strong>. → <a href="../week12/">12주차</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../week10/" class="md-footer__link md-footer__link--prev" aria-label="이전: 10주차 · 드론 생태계·DNA+드론·대드론">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                10주차 · 드론 생태계·DNA+드론·대드론
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week12/" class="md-footer__link md-footer__link--next" aria-label="다음: 12주차 · 스마트시티·MaaS·UAM">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                12주차 · 스마트시티·MaaS·UAM
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

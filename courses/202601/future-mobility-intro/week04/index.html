@@ -1,0 +1,1789 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 1학년 전공기초 · 자율주행·드론/UAM·로봇을 아우르는 미래 모빌리티 기술 개관과 사회·제도·윤리 고찰">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202601/future-mobility-intro/week04/">
+      
+      
+        <link rel="prev" href="../week03/">
+      
+      
+        <link rel="next" href="../week05/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>4주차 · 객체탐지와 데이터 기반 의사결정 - 미래모빌리티 개론 · 2026-1학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="미래모빌리티 개론 · 2026-1학기" class="md-header__button md-logo" aria-label="미래모빌리티 개론 · 2026-1학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            미래모빌리티 개론 · 2026-1학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4주차 · 객체탐지와 데이터 기반 의사결정
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="미래모빌리티 개론 · 2026-1학기" class="md-nav__button md-logo" aria-label="미래모빌리티 개론 · 2026-1학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    미래모빌리티 개론 · 2026-1학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 강의계획서(Syllabus)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧭 강의 전체 흐름
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    커리큘럼(15주차)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 강의 자료
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    주차별 강의 자료
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · 미래모빌리티란 무엇인가
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 자율주행 개념·레벨·제도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 자율주행 시스템과 ADAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · 객체탐지와 데이터 기반 의사결정
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · 객체탐지와 데이터 기반 의사결정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 객체탐지란
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-1-stage-vs-2-stage-detector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 1-stage vs 2-stage Detector
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 1-stage vs 2-stage Detector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yolo-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YOLO의 동작 3단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-cnn-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R-CNN의 동작 2단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-iou-nms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. IoU와 NMS — 반드시 이해할 두 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. IoU와 NMS — 반드시 이해할 두 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iou-intersection-over-union" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IoU (Intersection over Union)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nms-non-maximum-suppression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NMS (Non-Maximum Suppression, 비최대값 억제)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 모델의 계보
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ai-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 자율주행 AI 시스템의 4단 구조
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 세이프티 드라이버 (안전요원)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 산업 지형 — 누가 앞서 있는가
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 산업 지형 — 누가 앞서 있는가">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guidehouse-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        가이드하우스 인사이트(Guidehouse Insights) 리더보드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        주요 로보택시 사업자
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        국방 분야로의 확장
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · 자율주행 단계·규제와 센서 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · 센서의 진화와 AI 프로세서
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · 통신·V2X와 공학 설계 프로세스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · 드론 개념·분류·시스템 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · 드론 생태계·DNA+드론·대드론
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · 드론 구조설계와 멀티콥터 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · 스마트시티·MaaS·UAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · 로봇의 등장과 산업용 로봇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · 휴머노이드 보행과 Physical AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · 기말고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험·평가
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시험·평가
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험 유형과 핵심 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    과제·발표 안내
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어 사전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 객체탐지란
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-1-stage-vs-2-stage-detector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 1-stage vs 2-stage Detector
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 1-stage vs 2-stage Detector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yolo-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YOLO의 동작 3단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-cnn-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R-CNN의 동작 2단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-iou-nms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. IoU와 NMS — 반드시 이해할 두 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. IoU와 NMS — 반드시 이해할 두 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iou-intersection-over-union" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IoU (Intersection over Union)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nms-non-maximum-suppression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NMS (Non-Maximum Suppression, 비최대값 억제)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 모델의 계보
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ai-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 자율주행 AI 시스템의 4단 구조
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 세이프티 드라이버 (안전요원)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 산업 지형 — 누가 앞서 있는가
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 산업 지형 — 누가 앞서 있는가">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guidehouse-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        가이드하우스 인사이트(Guidehouse Insights) 리더보드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        주요 로보택시 사업자
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        국방 분야로의 확장
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4">4주차 · 객체탐지와 데이터 기반 의사결정<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>🔗 <strong>강의 흐름</strong> — 3주차에서 "인지 = 센서 + AI"라고 했다. 이번 주는 그 AI의 정체인 <strong>객체탐지(Object Detection)</strong>를 연다. 이론이 끝나면 그 기술로 실제 돈을 버는 <strong>로보택시 산업</strong>의 현재를 본다.</p>
+<p><strong>학습목표</strong> — 객체탐지의 정의와 1-stage·2-stage 방식의 차이를 설명하고, IoU와 NMS의 역할을 계산 개념으로 이해하며, 글로벌 자율주행 기업의 경쟁 구도를 설명할 수 있다.</p>
+<p>💡 <strong>기초 다지기</strong> — <strong>분류(Classification)와 탐지(Detection)는 다르다.</strong> 분류는 "이 사진은 고양이다"까지만 말한다. 탐지는 <strong>"어디에"</strong> 있는지까지 말해야 한다. CNN은 "무엇인지"는 잘 맞추지만 "어디에 있는지"는 모른다. 그래서 <strong>Localization</strong> 정보를 추가하는 것이 객체탐지다.</p>
+</blockquote>
+<h2 id="_1">🗺️ 한눈에 보는 개념도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    IMG["입력 이미지"] --&gt; Q{"방식 선택"}
+    Q --&gt;|한 번에| ONE["1-stage Detector&lt;br/&gt;YOLO"]
+    Q --&gt;|두 단계| TWO["2-stage Detector&lt;br/&gt;R-CNN 계열"]
+    ONE --&gt; O1["Region Proposal +&lt;br/&gt;Classification 동시"]
+    TWO --&gt; T1["① Region Proposal&lt;br/&gt;Selective Search ~2000개"]
+    T1 --&gt; T2["② Classification +&lt;br/&gt;Localization"]
+    O1 --&gt; POST["후처리&lt;br/&gt;IoU 평가 · NMS 중복 제거"]
+    T2 --&gt; POST
+    POST --&gt; OUT["최종 바운딩 박스 + 클래스"]</code></pre>
+<h2 id="1">1. 객체탐지란<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p><strong>객체 탐지(Object Detection)</strong> — 영상 및 영상 내의 <strong>객체 종류(class)와 객체 위치(bounding box) 정보를 함께 포함</strong>하는 것. 도로 영상에서 차량·차선·표지판을 찾아내고 그 위치를 박스로 표시한다.</p>
+<ul>
+<li>얼굴, 도로 상황, 보행자 및 차량 등의 인식에 <strong>머신러닝 기반 객체 탐지 기술</strong>이 많이 활용된다.</li>
+<li>이미지·영상 속에서 사람·동물·차량 등 객체의 <strong>위치를 찾기 위해 컴퓨터비전 기술</strong>이 활용된다.</li>
+<li>검출 대상에 대한 <strong>후보 영역을 찾고 그 안에서 객체의 종류와 위치를 예측</strong>하는 방식으로 동작한다.</li>
+<li>과거에는 <strong>슬라이딩 윈도우</strong>로 화면을 조금씩 이동시키며 탐지했지만, 현재는 딥러닝 기반 모델이 주로 사용된다.</li>
+</ul>
+<p><strong>출력</strong> — 일반적으로 이미지를 입력받아 <strong>경계 상자와 객체 클래스 리스트</strong>를 출력하며, 경계 상자에는 <strong>예측된 클래스와 그 신뢰도(confidence score)</strong>가 함께 나온다. 모델 성능 평가는 주로 <strong>정확도와 재현율</strong>을 기준으로 한다.</p>
+<h2 id="2-1-stage-vs-2-stage-detector">2. 1-stage vs 2-stage Detector<a class="headerlink" href="#2-1-stage-vs-2-stage-detector" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th><strong>1-stage detector</strong></th>
+<th><strong>2-stage detector</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>대표 모델</td>
+<td><strong>YOLO</strong></td>
+<td><strong>R-CNN 계열</strong></td>
+</tr>
+<tr>
+<td>동작</td>
+<td>Region Proposal과 Classification이 <strong>동시에</strong> 처리</td>
+<td>① 객체가 있을 만한 영역(Region Proposal)을 찾고 ② 그 영역을 분류</td>
+</tr>
+<tr>
+<td>속도</td>
+<td><strong>빠르다</strong></td>
+<td>느리다</td>
+</tr>
+<tr>
+<td>정확도</td>
+<td>상대적으로 낮다</td>
+<td><strong>높다</strong></td>
+</tr>
+<tr>
+<td>적합 분야</td>
+<td>자율주행·실시간 영상 처리</td>
+<td>정밀 분석</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition quote">
+<p class="admonition-title">한 문장 요약</p>
+<p><strong>"One Stage detector는 비교적 빠르지만 정확도가 낮고, Two Stage detector는 비교적 느리지만 정확도가 높다."</strong></p>
+</div>
+<h3 id="yolo-3">YOLO의 동작 3단계<a class="headerlink" href="#yolo-3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>그리드 분할</strong> — 입력 이미지를 S×S 그리드 셀로 나눈다(7×7, 13×13 등). 셀 중심에 객체가 있으면 그 셀이 해당 객체의 예측을 담당한다.</li>
+<li><strong>셀마다 예측</strong> — 각 셀은 B개의 바운딩 박스를 예측. 각 박스는 <strong>(x, y)</strong> 박스 중심 좌표(셀 내 상대 위치), <strong>(w, h)</strong> 너비·높이(전체 이미지 기준 비율), <strong>Confidence</strong>(객체일 확률 × IOU), <strong>Class probabilities</strong>(C개).</li>
+<li><strong>후처리 NMS</strong> — 겹치는 박스 중 신뢰도가 높은 것만 남기고 제거 → 최종 위치와 클래스 결정.</li>
+</ol>
+<h3 id="r-cnn-2">R-CNN의 동작 2단계<a class="headerlink" href="#r-cnn-2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Region Proposal</strong> — <strong>Selective Search</strong>로 이미지에서 객체가 있을 만한 <strong>후보 영역 약 2000개</strong>를 생성.</li>
+<li><strong>Classification + Localization</strong> — 각 후보 영역을 CNN에 넣어 무슨 객체인지 분류하고, 정확한 위치(Bounding Box)를 보정.</li>
+</ol>
+<h2 id="3-iou-nms">3. IoU와 NMS — 반드시 이해할 두 개념<a class="headerlink" href="#3-iou-nms" title="Permanent link">&para;</a></h2>
+<h3 id="iou-intersection-over-union">IoU (Intersection over Union)<a class="headerlink" href="#iou-intersection-over-union" title="Permanent link">&para;</a></h3>
+<p>예측한 박스와 실제 정답 박스가 <strong>얼마나 잘 겹치는지</strong>를 나타내는 지표.</p>
+<p>$$\text{IoU} = \frac{\text{겹치는 영역}}{\text{전체(합집합) 영역}}$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">IoU 값</th>
+<th>평가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">약 0.40</td>
+<td>Poor — 겹침이 적다</td>
+</tr>
+<tr>
+<td style="text-align: right;">약 0.73</td>
+<td>Good</td>
+</tr>
+<tr>
+<td style="text-align: right;">약 0.92</td>
+<td>Excellent — 거의 일치</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>IoU가 높을수록 모델이 위치를 정확하게 예측</strong>했다는 뜻이다.</p>
+<h3 id="nms-non-maximum-suppression">NMS (Non-Maximum Suppression, 비최대값 억제)<a class="headerlink" href="#nms-non-maximum-suppression" title="Permanent link">&para;</a></h3>
+<p>객체 탐지 모델은 <strong>하나의 객체에 대해 여러 개의 박스를 동시에 예측</strong>하는 경우가 많다. 얼굴 하나인데 박스가 여러 개 겹치는 상황을 정리하는 것이 NMS다.</p>
+<ol>
+<li>모든 박스를 <strong>확률 기준으로 정렬</strong></li>
+<li>가장 확률이 높은 박스를 하나 <strong>선택</strong></li>
+<li>그 박스와 다른 박스들의 <strong>IoU를 계산</strong></li>
+<li>IoU가 일정 기준(예: <strong>0.5</strong>) 이상이면 겹치는 박스를 <strong>제거</strong></li>
+<li>남은 박스에 대해 <strong>반복</strong></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">IoU와 NMS의 관계</p>
+<p>IoU는 <strong>평가 지표</strong>이면서 동시에 <strong>NMS의 판단 기준</strong>이다. 같은 수식이 두 군데서 쓰인다는 점을 알면 헷갈리지 않는다.</p>
+</div>
+<h2 id="4_1">4. 모델의 계보<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>YOLOv3 + Deep SORT</strong> — 탐지(YOLO)에 추적(tracking)을 결합</li>
+<li><strong>YOLOv8</strong> — 최신 YOLO 모델들과의 성능 비교</li>
+<li>수많은 YOLO 버전이 탄생 — Object Detection 분야의 논문과 관련 연구가 지속 발전 중</li>
+<li>데이터셋 — Microsoft(COCO), University of Oxford + PASCAL Challenge(PASCAL VOC)</li>
+</ul>
+<h2 id="5-ai-4">5. 자율주행 AI 시스템의 4단 구조<a class="headerlink" href="#5-ai-4" title="Permanent link">&para;</a></h2>
+<p>강의에서 제시하는 자율주행 AI의 확장된 구조다. 3주차의 인지–판단–제어를 한 단계 더 세분한 것으로 보면 된다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>세부 기술</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>인지 (Perception)</strong></td>
+<td>고성능 임베디드 센서 · 환경 장애물 인식(날씨·조도·도로상태) · 운전자/탑승자 모니터링</td>
+</tr>
+<tr>
+<td><strong>인식 (Recognition)</strong></td>
+<td>정밀 동적 맵(실시간 업데이트) · AI 기반 객체 검출·추적 알고리즘 고도화</td>
+</tr>
+<tr>
+<td><strong>계획 (Planning)</strong></td>
+<td>초저지연 차량 간 통신으로 협력 주행 · 장거리 및 자율주행 최적화 · 자율주행 휴먼 팩터 고려</td>
+</tr>
+<tr>
+<td><strong>강화학습 제어 (RL Control)</strong></td>
+<td>자율 차량 군집 주행 · 교통 제어</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6">6. 세이프티 드라이버 (안전요원)<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>자율주행 서비스를 위한 <strong>Safety Driver / 안전요원</strong>이 필요하다.</li>
+<li>자율주행 기술이 발전할수록 <strong>차량이 담당하는 비율이 늘고 안전요원 담당 비율이 줄어드는</strong> 전이(轉移) 구조를 갖는다.</li>
+<li>이것은 곧 <strong>새로운 직업의 등장</strong>이기도 하다(2주차 「생각해 봅시다」와 연결).</li>
+</ul>
+<h2 id="7">7. 산업 지형 — 누가 앞서 있는가<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="guidehouse-insights">가이드하우스 인사이트(Guidehouse Insights) 리더보드<a class="headerlink" href="#guidehouse-insights" title="Permanent link">&para;</a></h3>
+<p>자율주행 업체의 순위를 매년 리더보드 형태로 발표한다.</p>
+<ul>
+<li><strong>2021년 1분기</strong> 리더 그룹 — <strong>웨이모(Waymo, 구글), 엔비디아(Nvidia), 아르고 AI(Argo AI, 포드·폭스바겐), 바이두(Baidu)</strong></li>
+<li><strong>전통적인 완성차 제조업체가 리더 그룹 밖에 있는 현실</strong></li>
+<li><strong>2023년</strong> — 모빌아이, 웨이모, 바이두, 크루즈(GM), 모셔널(현대차그룹–앱티브), Nvidia, 오로라, WeRide, 죽스(Zoox), Gatik</li>
+<li>테슬라는 미국 평가에서 <strong>2년 연속 최하위권</strong>으로 보도됨</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">왜 테슬라가 낮게 평가되는가</p>
+<p>리더보드는 "전략 + 실행"을 함께 본다. 테슬라의 FSD는 <strong>레벨 2</strong>로 분류되며 책임이 운전자에게 있다. 반면 웨이모는 특정 지역에서 <strong>레벨 4 무인 서비스를 실제 운영</strong>한다. 평가 축이 "판매량"이 아니라 "자율성 수준과 실증"이기 때문이다.</p>
+</div>
+<h3 id="_2">주요 로보택시 사업자<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>기업</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>웨이모(구글)</strong></td>
+<td>마운틴뷰 등 실리콘밸리까지 확대. <strong>마이애미로 사업 확장, 2026년 로보택시 서비스 출시 목표</strong> — 4번째 도시 확장으로 크루즈·테슬라와의 격차 확대 전망</td>
+</tr>
+<tr>
+<td><strong>바이두</strong></td>
+<td>베이징·상하이·광저우·선전·충칭·우한·청두·창사·허페이·양취안·우전 등 <strong>10개 이상 대도시</strong>에서 자율주행 택시 운영. 누적 승차 <strong>140만 건 이상</strong>, L4 테스트 마일리지 <strong>4,000만 km 이상</strong>, 자율주행 특허 <strong>3,477건</strong></td>
+</tr>
+<tr>
+<td><strong>크루즈(GM)</strong></td>
+<td>로보택시 인명 피해 사고로 규제당국 조사 및 운행 중단</td>
+</tr>
+<tr>
+<td><strong>모셔널(현대차그룹)</strong></td>
+<td>현대차 26% + 기아 14% + 현대모비스 10% + 앱티브 50% 합작(2020 설립). 3년간 <strong>누적 영업적자 약 1조 4,995억원</strong></td>
+</tr>
+<tr>
+<td><strong>테슬라</strong></td>
+<td>운전대·페달 없는 로보택시 <strong>'사이버캡'</strong> 공개. <strong>3만 달러(약 4천만 원) 미만</strong> 예상, <strong>2026년 양산</strong> 목표. 머스크 — "자율주행차가 있다. 운전자는 없다"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">국방 분야로의 확장<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>미국 <strong>'AI 무인전투기' 1000대</strong> 제작 계획 — 스텔스기 호위 임무.</li>
+</ul>
+<h2 id="_4">🤔 생각해 봅시다<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li>자율주행에는 왜 2-stage보다 1-stage가 더 많이 쓰일까? "정확도가 높은 쪽이 안전하지 않나?"라는 반문에 어떻게 답하겠는가?</li>
+<li>크루즈는 사고 한 번으로 운행이 중단되었다. 자율주행 산업에서 <strong>한 번의 사고가 갖는 무게</strong>는 왜 다른 산업과 다른가?</li>
+<li>모셔널의 누적 적자 1조 5천억을 어떻게 볼 것인가 — 실패인가, 필요한 투자인가? 판단 근거는?</li>
+</ol>
+<h2 id="_5">✅ 이번 주 체크리스트<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 객체탐지의 정의(class + bounding box)를 말할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1-stage/2-stage의 대표 모델·속도·정확도 트레이드오프를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> IoU 수식과 NMS 5단계를 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 가이드하우스 리더보드 상위권과 테슬라의 위치를 안다</li>
+</ul>
+<hr />
+<p>▶️ <strong>다음 주 예고</strong> — 자율주행의 <strong>레벨과 국제 규제</strong>를 정면으로 다룬다. UNECE ALKS는 왜 60km/h에서 130km/h로 바뀌었나, 테슬라와 웨이모의 센서 구성은 왜 정반대인가, 그리고 자동차가 왜 '소프트웨어 회사'가 되고 있는가. → <a href="../week05/">5주차</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../week03/" class="md-footer__link md-footer__link--prev" aria-label="이전: 3주차 · 자율주행 시스템과 ADAS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                3주차 · 자율주행 시스템과 ADAS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week05/" class="md-footer__link md-footer__link--next" aria-label="다음: 5주차 · 자율주행 단계·규제와 센서 시스템">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                5주차 · 자율주행 단계·규제와 센서 시스템
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
