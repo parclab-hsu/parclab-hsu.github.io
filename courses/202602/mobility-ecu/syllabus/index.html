@@ -1718,7 +1718,7 @@
 </tbody>
 </table>
 <h2 id="3-15">3. 주차별 강의 계획 (15주)<a class="headerlink" href="#3-15" title="Permanent link">&para;</a></h2>
-<p>각 주차는 <strong>이론 강의(1.5h) + 실습/프로젝트(1.5h)</strong>로 구성한다.</p>
+<p>각 주차는 <strong>이론 강의(1.5h) + 실습/프로젝트(1.5h)</strong>로 구성한다. 8주차 중간 설계 리뷰를 먼저 거친 뒤 9~11주차에서 STM32와 BLDC 구동 펌웨어를 통합한다.</p>
 <table>
 <thead>
 <tr>
@@ -1732,95 +1732,129 @@
 <tr>
 <td style="text-align: right;">1</td>
 <td>OT·미션 정의</td>
-<td>강의 개요, 우주 로버 대회 개요, 월면 험지주행 미션 요구사항 정의(HSI)</td>
-<td>팀 편성·역할분담, 요구사항 명세서 작성</td>
+<td>ECU의 정의와 역할, V-모델 개발 흐름, ECU 시간·자원 예산, 기능/성능/안전 요구사항 구분</td>
+<td>팀 편성·역할분담, 로버 ECU 입출력 분해, 요구사항 3개와 미니 FMEA 작성</td>
 </tr>
 <tr>
 <td style="text-align: right;">2</td>
 <td>실전 회로 (1)</td>
-<td>수동소자(R·L·C), 옴의 법칙, RC/RL 과도응답, 필터 개념</td>
-<td>센서 신호 필터 회로 설계</td>
+<td>R·L·C의 실제 특성과 데이터시트 정격·공차, RC 차단주파수와 시정수, ADC 소스 임피던스, 최악조건 설계</td>
+<td>LED 저항·배터리 전압 분배기 계산, 계측으로 공차·gain/offset 확인</td>
 </tr>
 <tr>
 <td style="text-align: right;">3</td>
 <td>실전 회로 (2)</td>
-<td>다이오드·정류·클램핑, BJT/MOSFET 스위칭, CMOS 게이트</td>
-<td>모터 구동단 스위칭 소자 선정</td>
+<td>다이오드·BJT·MOSFET 동작, Rds(on)·Vgs(th)·Qg·SOA, 고온 도통손실·스위칭·게이트 구동 손실, 열저항</td>
+<td>MOSFET 후보 3종 선정표 작성, 데드타임 사고 시 전류 경로 분석</td>
 </tr>
 <tr>
 <td style="text-align: right;">4</td>
 <td>전원 회로</td>
-<td>선형 레귤레이터, 벅/부스트 컨버터, 노이즈·EMI 대책</td>
-<td>배터리→로직/모터 전원 트리 설계</td>
+<td>전원 트리, 리니어/벅/부스트 컨버터, 전력 예산과 효율, 입력 보호·돌입전류, 배터리 내부저항과 부하 시 전압 강하</td>
+<td>로버 ECU 전원 트리·전류 예산 작성, LDO 발열 계산, 전원 리플·부하 과도 계측</td>
 </tr>
 <tr>
 <td style="text-align: right;">5</td>
 <td>DC·BLDC 모터</td>
-<td>DC 모터 등가모델, BLDC 구조·홀센서, 토크·속도 특성</td>
-<td>로버 구동륜 모터 사양 산정</td>
+<td>DC/BLDC 구조와 역기전력, 주행저항(경사·구름·가속) 역산, 감속기 효율, Kt/Ke와 전류, 홀센서 6상태, 차동 구동 운동학</td>
+<td>구동륜 모터 사양 산정(토크·RPM), 요구사항–부품 추적표, 최소 회전반경·제자리 회전 요구 산정</td>
 </tr>
 <tr>
 <td style="text-align: right;">6</td>
-<td>인버터·PWM 구동</td>
-<td>3상 인버터, H-브리지, 데드타임, PWM 평균전압, 암단락 방지</td>
-<td>모터 구동부 PWM 표와 안전 스위칭 상태 작성</td>
+<td>인버터·PWM 이론</td>
+<td>하프/풀브리지와 3상 인버터, 6-step 전류 경로, center-aligned PWM, 데드타임·부트스트랩 제약, 회생과 DC 링크</td>
+<td>6-step 상 패턴 표 작성, 파형 판독표와 안전 측정 절차 설계</td>
 </tr>
 <tr>
 <td style="text-align: right;">7</td>
 <td>제어공학·PI 속도제어</td>
-<td>폐루프 제어, P/I/PI, 오버슈트·정착시간, 로그 기반 튜닝</td>
-<td>Teleplot 로그로 속도 응답 분석</td>
+<td>open/closed loop, P·I·PI 특성, 이산 PI 구현과 샘플 주기, anti-windup, RPM 필터 지연, 좌우 2채널 제어</td>
+<td>Teleplot 속도 응답 관찰, Kp·Ki 후보별 상승시간·overshoot·정상상태 오차 정량 비교</td>
 </tr>
 <tr>
 <td style="text-align: right;">8</td>
-<td>STM32 펌웨어 (1)</td>
-<td>GPIO 구조, 메모리맵, 레지스터 직접 제어 기초</td>
-<td>레지스터 직접 접근 LED/GPIO 실습</td>
+<td><strong>중간 설계 리뷰</strong></td>
+<td>요구사항 계층과 양방향 추적성, HSI를 인터페이스 계약으로 작성, 시스템 상태기계, 리뷰 결함 등급, CubeMX Pinout 검증</td>
+<td>팀별 1차 설계 발표(요구사항·블록도·HSI·리스크 3개), 결함 분류 후 수정본 제출</td>
 </tr>
 <tr>
 <td style="text-align: right;">9</td>
-<td>STM32 펌웨어 (2)</td>
-<td>스위치 입력, 시스템 클럭(RCC), EXTI, NVIC 인터럽트</td>
-<td>입력 이벤트와 인터럽트 흐름도 작성</td>
+<td>STM32 펌웨어 (1)</td>
+<td>메모리맵과 주변장치 레지스터, GPIO MODER/ODR/BSRR과 원자적 접근, volatile의 한계, 클럭 트리, startup·벡터 테이블</td>
+<td>MCU 보드 브링업, LED·스위치 레지스터 직접 제어, CubeMX·HAL·레지스터 3종 결과 비교</td>
 </tr>
 <tr>
 <td style="text-align: right;">10</td>
-<td>STM32 펌웨어 (3)</td>
-<td>ADC 센서 취득, Timer 동기화, UART 직렬 통신</td>
-<td>센서·PWM·로그 주기를 같은 시간축에 정리</td>
+<td>STM32 펌웨어 (2)</td>
+<td>EXTI·NVIC와 인터럽트 우선순위, ADC 변환과 PWM 동기 샘플링, Timer 주기 계산, UART 처리량 예산</td>
+<td>스로틀 ADC·주기 태스크·UART 상태 출력 통합, 통합 타임라인 측정</td>
 </tr>
 <tr>
 <td style="text-align: right;">11</td>
-<td>요구사항·HSI</td>
-<td>요구사항 분석, 하드웨어-소프트웨어 인터페이스, 시스템 블록도</td>
-<td>팀별 HSI 표와 시스템 블록도 리뷰</td>
+<td>구동 펌웨어</td>
+<td>홀 상태 순서와 회전 방향 판정, pole-pair 기반 RPM, 구동 상태기계, stall·불법 전이·overrun 진단, 2모터 명령 분배</td>
+<td>6-step 구동 코드 분석, 홀/PWM 로직 애널라이저 계측, 고장 주입 시 PWM 차단 확인</td>
 </tr>
 <tr>
 <td style="text-align: right;">12</td>
 <td>인버터 하드웨어 설계</td>
-<td>게이트 드라이버, 전류 션트, 보호회로, MCU 주변회로</td>
-<td>인버터 하드웨어 설계 검토</td>
+<td>MCU 주변회로, 게이트드라이버 구동 능력·부트스트랩 계산, Kelvin 전류 센싱, 하드웨어 안전 상태, TIM1 break input, 워치독</td>
+<td>HSI 핀 리뷰, 회로 리뷰 체크리스트 10개 작성, fault chain 추적과 bring-up 순서 설계</td>
 </tr>
 <tr>
 <td style="text-align: right;">13</td>
-<td>회로도·PCB 기초</td>
-<td>EasyEDA 스키매틱, 부품 라이브러리, 다층 PCB 기본 배선</td>
-<td>로버 제어보드 회로도·PCB 초안 작성</td>
+<td>회로도·PCB 설계</td>
+<td>스키매틱 품질 기준, symbol–footprint 검증, net class와 트레이스 폭, ERC/DRC, 방열·정비성, 제조 릴리스 데이터</td>
+<td>EasyEDA 회로도·PCB 초안 작성, 배치 의도 설명, 설계 릴리스 패키지 구성</td>
 </tr>
 <tr>
 <td style="text-align: right;">14</td>
 <td>PCB 노이즈·그라운드</td>
-<td>EMI, Power Integrity, 리턴 전류, 파워/그라운드 분리</td>
-<td>노이즈 개선 체크리스트와 레이아웃 수정안</td>
+<td>노이즈 종류와 source–path–victim 모델, 공통 임피던스와 기준면, 전류 리턴 경로, EMC(전도·방사), 대책의 trade-off</td>
+<td>3상 인버터 PCB 노이즈 경로 표시와 개선안, A/B 노이즈 실험 및 보고서</td>
 </tr>
 <tr>
 <td style="text-align: right;">15</td>
-<td><strong>펌웨어 통합·최종 시연</strong></td>
-<td>구동 펌웨어 시스템 통합, 험지주행·경사극복 시연, 포트폴리오 발표</td>
-<td>우주 로버 미션 시연·최종 포트폴리오 발표</td>
+<td><strong>통합 검증·최종 발표</strong></td>
+<td>시험 수준과 순서, 시험 명세 필수 항목, pre-flight gate, fault injection과 복구, 버전·증거 기반 인수시험, 섀시 통합 시험</td>
+<td>요구사항 추적표 작성, 제한 조건 시연 또는 모듈 테스트, 팀별 10분 최종 발표</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">주차별 강의 자료 페이지와의 대응</p>
+<p>왼쪽 메뉴의 <strong>주차별 강의 자료(week01~week15)</strong> 는 주제별로 묶여 있어 위 표의 주차 번호와 8~11·15주차에서 일치하지 않는다. 운영 기준은 이 표(2026-08-20 개정 강의계획서)이며, 자료 페이지는 다음과 같이 대응한다.</p>
+<table>
+<thead>
+<tr>
+<th>이 표의 주차</th>
+<th>해당 자료 페이지</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 · 중간 설계 리뷰</td>
+<td><a href="../week11/">11주차 · 요구사항·HSI·시스템 블록도</a></td>
+</tr>
+<tr>
+<td>9 · STM32 펌웨어 (1)</td>
+<td><a href="../week08/">8주차 · GPIO·레지스터</a>, <a href="../week09/">9주차 · 입력·클럭·인터럽트</a></td>
+</tr>
+<tr>
+<td>10 · STM32 펌웨어 (2)</td>
+<td><a href="../week09/">9주차 · EXTI 부분</a>, <a href="../week10/">10주차 · ADC·Timer·UART</a></td>
+</tr>
+<tr>
+<td>11 · 구동 펌웨어</td>
+<td><a href="../week15/">15주차 · 구동 펌웨어 통합</a> 의 Hall 정류·상태기계 부분</td>
+</tr>
+<tr>
+<td>15 · 통합 검증·최종 발표</td>
+<td><a href="../week15/">15주차</a> 의 통합 검증·발표 부분</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="4">4. 평가 방법<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1832,35 +1866,35 @@
 </thead>
 <tbody>
 <tr>
-<td>출석·참여</td>
+<td>출석 및 참여</td>
 <td style="text-align: right;">10%</td>
-<td>출결, 수업 참여도</td>
+<td>실습 참여, 안전 수칙 준수, 팀 활동 기여</td>
 </tr>
 <tr>
-<td>실습 과제</td>
+<td>주차별 실습 과제</td>
+<td style="text-align: right;">25%</td>
+<td>회로 계산, STM32 코드, 측정 결과, 주차별 짧은 보고서</td>
+</tr>
+<tr>
+<td>중간 설계 리뷰</td>
 <td style="text-align: right;">20%</td>
-<td>회로·펌웨어·PCB 주차별 실습 결과물</td>
+<td>요구사항, HSI, 시스템 블록도, 인버터·전원 회로 이해</td>
 </tr>
 <tr>
-<td>중간 설계발표</td>
+<td>최종 프로젝트 문서</td>
+<td style="text-align: right;">25%</td>
+<td>회로, PCB, 펌웨어, 검증 계획·결과의 연결성</td>
+</tr>
+<tr>
+<td>최종 발표 및 시연</td>
 <td style="text-align: right;">20%</td>
-<td>요구사항·HSI·인버터 하드웨어 설계 리뷰(11~12주)</td>
-</tr>
-<tr>
-<td>팀 프로젝트</td>
-<td style="text-align: right;">30%</td>
-<td>로버 제어유닛 완성도·통합 시험(11~14주)</td>
-</tr>
-<tr>
-<td>대회 미션 수행</td>
-<td style="text-align: right;">20%</td>
-<td>월면 험지주행 미션 성능(등판각·완주)</td>
+<td>로버/모터 구동 시나리오 설명, 제한 조건 시연, 질의응답</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">대회 미션 점수 산정</p>
-<p>대회 미션 수행 점수는 <strong>개인 기여도</strong>와 <strong>팀 완주 성과</strong>를 합산해 산정한다.</p>
+<p class="admonition-title">동작 실패도 평가 대상</p>
+<p>실제 모터 구동을 완료하지 못한 팀도 모듈 테스트 증거와 다음 검증 계획을 제시하면 평가 대상으로 인정한다. 동작 성공 여부보다 요구사항·측정 증거·실패 원인 분석의 연결성을 우선 평가한다. 팀 산출물 점수에는 개인 기여도를 반영한다.</p>
 </div>
 <h3 id="-">학습성과-평가 매핑<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
 <table>
@@ -1902,7 +1936,7 @@
 <h2 id="5">5. 실습 환경 및 제공 자료<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <p><strong>하드웨어 / 소프트웨어</strong></p>
 <ul>
-<li><strong>MCU</strong>: STM32H7 계열 (레지스터 직접 제어, HAL 미사용)</li>
+<li><strong>MCU</strong>: STM32F767 기반 개발보드 또는 실습 키트 (레지스터 직접 제어 중심, HAL은 비교 학습용)</li>
 <li><strong>구동부</strong>: 12V급 소형 로버 구동 모터 + 한성대 보드</li>
 <li><strong>개발툴</strong>: STM32CubeIDE, EasyEDA(회로/PCB), 로버 섀시 조립 키트</li>
 </ul>
