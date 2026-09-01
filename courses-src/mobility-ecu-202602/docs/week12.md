@@ -512,6 +512,15 @@ Cboot ≥ Qtotal / ΔVboot
 - hardware over-current는 firmware 정지와 무관하게 동작한다.
 - fault 원인과 recovery condition을 LED·UART로 진단할 수 있다.
 
+### firmware가 멈췄을 때의 안전 상태 (watchdog)
+
+제어 루프가 무한 루프나 ISR 폭주로 정지해도 TIM1은 마지막 duty를 그대로 출력한다. 모터는 명령 없이 계속 돈다. hardware 차단(BKIN)이 과전류를 잡아 준다면, watchdog은 "명령이 갱신되지 않는 상태" 자체를 잡는다.
+
+- **IWDG/WWDG refresh 위치**: 주기 태스크가 정상적으로 한 바퀴를 돌았을 때만 refresh 한다. ISR 안에서 무조건 refresh 하면 main이 죽어도 watchdog이 살아 있어 의미가 없다.
+- **timeout 설정**: 제어 주기보다 길고, 기계적으로 위험해지는 시간보다는 짧게 잡는다. 1ms 제어 주기라면 수십 ms 수준이 출발점이다.
+- **reset 이후 재기동**: `RCC->CSR`의 reset 원인 플래그를 읽어 watchdog reset임을 기록하고, PWM은 꺼진 상태에서 시작해 명시적 재시작 명령을 기다린다. 자동 재기동은 같은 고장을 반복시킨다.
+- **상위 명령 timeout**: UART·블루투스 명령이 정해진 시간 이상 오지 않으면 스스로 감속·정지한다. 통신이 끊긴 로버가 마지막 속도로 계속 가는 것을 막는다.
+
 ### 저에너지 bring-up 순서
 
 1. 무전원 상태에서 short와 polarity를 검사한다.

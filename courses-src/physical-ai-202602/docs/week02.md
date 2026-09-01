@@ -356,8 +356,8 @@ Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 �
 ## 🔗 출처 및 참고자료
 
 - 교안 「Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션」 (제작: ENGI UNIVERSE)
-- NVIDIA Isaac Sim 공식 문서 — <https://docs.isaac-sim.nvidia.com>
-- Isaac Sim Camera & Sensors — <https://docs.isaac-sim.nvidia.com/latest/sensors/index.html>
+- NVIDIA Isaac Sim 공식 문서 — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html>
+- Isaac Sim Camera & Sensors — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/sensors/index.html>
 - Visual Studio Code (Linux) — <https://code.visualstudio.com/docs/setup/linux>
 
 ## 📘 Isaac Sim 5.1.0 공식 문서

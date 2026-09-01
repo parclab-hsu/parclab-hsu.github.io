@@ -336,8 +336,8 @@ Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라�
 ## 🔗 출처 및 참고자료
 
 - 교안 **「Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습)」** (제작: ENGI UNIVERSE)
-- NVIDIA Isaac Sim — URDF Importer — <https://docs.isaacsim.omniverse.nvidia.com/latest/robot_setup/import_urdf.html>
-- ROS2 URDF 튜토리얼 — <https://docs.ros.org/en/rolling/Tutorials/Intermediate/URDF/URDF-Main.html>
+- NVIDIA Isaac Sim — URDF Importer — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/importer_exporter/import_urdf.html>
+- ROS2 URDF 튜토리얼 — <https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/URDF-Main.html>
 - Isaac Lab / rsl_rl — <https://github.com/leggedrobotics/rsl_rl>
 
 ## 📘 Isaac Sim 5.1.0 공식 문서

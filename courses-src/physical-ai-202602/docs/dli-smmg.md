@@ -308,7 +308,7 @@ Human Demos → Annotation Tooling → Annotated Demos
 ## 🔗 출처 및 참고자료
 
 - NVIDIA «Isaac for Accelerated Robotics» (GTC Paris 2025) / DLI **C-OV-05 Part 4**
-- Isaac Lab — <https://github.com/isaac-sim/IsaacLab> · 텔레오퍼레이션/모방학습 가이드 <https://isaac-sim.github.io/IsaacLab/main/source/overview/teleop_imitation.html>
+- Isaac Lab — <https://github.com/isaac-sim/IsaacLab> · 텔레오퍼레이션/모방학습 가이드 <https://isaac-sim.github.io/IsaacLab/main/source/overview/imitation-learning/teleop_imitation.html>
 - robomimic BC-RNN — <https://robomimic.github.io/docs/introduction/implemented_algorithms.html#bc-rnn>
 - Cosmos Transfer1 (robot augmentation) — <https://github.com/nvidia-cosmos/cosmos-transfer1>
 - Cosmos Predict 체험 — <https://build.nvidia.com/nvidia/cosmos-predict1-7b>

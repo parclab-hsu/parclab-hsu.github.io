@@ -1858,7 +1858,7 @@
   <a href="#_61" class="md-nav__link">
     <span class="md-ellipsis">
       
-        벅 컨버터 계산
+        배터리 내부저항과 부하 시 전압 강하
       
     </span>
   </a>
@@ -1867,6 +1867,17 @@
         
           <li class="md-nav__item">
   <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        벅 컨버터 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
     <span class="md-ellipsis">
       
         전원 계측 조건
@@ -1893,7 +1904,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_63" class="md-nav__link">
+  <a href="#_64" class="md-nav__link">
     <span class="md-ellipsis">
       
         📎 수업자료 활용
@@ -1904,7 +1915,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_64" class="md-nav__link">
+  <a href="#_65" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 이해 확인 질문
@@ -1915,7 +1926,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_65" class="md-nav__link">
+  <a href="#_66" class="md-nav__link">
     <span class="md-ellipsis">
       
         🧪 실습·과제
@@ -3801,7 +3812,7 @@
   <a href="#_61" class="md-nav__link">
     <span class="md-ellipsis">
       
-        벅 컨버터 계산
+        배터리 내부저항과 부하 시 전압 강하
       
     </span>
   </a>
@@ -3810,6 +3821,17 @@
         
           <li class="md-nav__item">
   <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        벅 컨버터 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
     <span class="md-ellipsis">
       
         전원 계측 조건
@@ -3836,7 +3858,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_63" class="md-nav__link">
+  <a href="#_64" class="md-nav__link">
     <span class="md-ellipsis">
       
         📎 수업자료 활용
@@ -3847,7 +3869,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_64" class="md-nav__link">
+  <a href="#_65" class="md-nav__link">
     <span class="md-ellipsis">
       
         ✅ 이해 확인 질문
@@ -3858,7 +3880,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_65" class="md-nav__link">
+  <a href="#_66" class="md-nav__link">
     <span class="md-ellipsis">
       
         🧪 실습·과제
@@ -4413,13 +4435,23 @@
 <p>입력전류는 출력전류와 같지 않다. <code>Pin=Pout/η</code>로 효율을 적용하고 battery, fuse, connector 정격까지 추적한다.</p>
 <h3 id="_60">입력 보호와 기동 순서<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h3>
 <p><code>connector → fuse → reverse-polarity protection → TVS → input filter → DC/DC</code> 순으로 검토한다. 대용량 DC-link capacitor는 돌입전류를 만들므로 pre-charge 또는 current limit 필요성을 판단한다. 전원이 천천히 상승하거나 순간 강하할 때 반복 reset을 막기 위해 BOR와 전원 정상 신호(PG)도 확인한다.</p>
-<h3 id="_61">벅 컨버터 계산<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>D ≈ Vout / Vin
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ΔIL ≈ (Vin - Vout) × D / (L × fsw)
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Ipeak ≈ Iout + ΔIL/2
+<h3 id="_61">배터리 내부저항과 부하 시 전압 강하<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h3>
+<p>로버는 경사에서 전류를 가장 많이 쓰는데, 바로 그때 배터리 전압이 가장 많이 떨어진다. 배터리를 이상적인 전압원으로 두면 등판 시험에서 예상 못 한 저전압 차단을 만난다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Vbat(부하) ≈ Vocv(SoC) - Ipeak × (Rcell + Rwire + Rconnector + Rfuse)
+</code></pre></div>
+<ul>
+<li>방전이 진행되면 <code>Vocv</code>가 내려가고 <code>Rcell</code>은 오히려 올라간다. 저온에서는 둘 다 더 나빠진다.</li>
+<li>설계 기준은 만충 전압이 아니라 <strong>"방전 말기 + 피크 전류" 조건의 최저 전압</strong>이다. 이 값에서 12V·5V·3.3V regulator가 모두 dropout을 넘기는지 확인한다.</li>
+<li>저전압 보호(UVLO·BMS 차단) 임계값은 이 순간 전압 강하보다 낮게 잡는다. 그렇지 않으면 경사 진입 순간마다 로버가 스스로 꺼진다.</li>
+<li>측정으로 확인한다. 무부하 전압과 피크 부하 전압을 같은 지점에서 재고, 차이를 전류로 나누면 실효 내부저항이 나온다.</li>
+</ul>
+<h3 id="_62">벅 컨버터 계산<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>D ≈ Vout / Vin
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ΔIL ≈ (Vin - Vout) × D / (L × fsw)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Ipeak ≈ Iout + ΔIL/2
 </code></pre></div>
 <p>인덕터 saturation current는 계산한 <code>Ipeak</code>보다 높아야 한다. 입력 커패시터는 고주파 switching loop를 담당하므로 switch 가까이에 배치하고, 출력 커패시터는 ripple뿐 아니라 load transient와 제어루프 안정성 조건을 만족해야 한다.</p>
-<h3 id="_62">전원 계측 조건<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h3>
+<h3 id="_63">전원 계측 조건<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h3>
 <ul>
 <li>긴 probe GND 대신 ground spring을 사용한다.</li>
 <li>ripple 캡처에 AC/DC coupling, bandwidth limit, 부하 조건을 기록한다.</li>
@@ -4458,7 +4490,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_63">📎 수업자료 활용<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h2>
+<h2 id="_64">📎 수업자료 활용<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -4481,7 +4513,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_64">✅ 이해 확인 질문<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h2>
+<h2 id="_65">✅ 이해 확인 질문<a class="headerlink" href="#_65" title="Permanent link">&para;</a></h2>
 <ol>
 <li>벅 컨버터에서 듀티가 증가하면 출력전압과 인덕터 리플이 어떻게 변하는지 설명한다.</li>
 <li>LDO를 아무 곳에나 쓰면 발열 문제가 생기는 이유를 계산한다.</li>
@@ -4491,7 +4523,7 @@
 <p class="admonition-title">📌 보충 설명 — 실전 팁·주의점</p>
 <p>벅 인덕터는 <strong>포화전류를 부하보다 크게</strong> 잡고, 스위칭 노드 배선은 <strong>짧게</strong>(노이즈원). 다이오드는 쇼트키를 쓴다.</p>
 </div>
-<h2 id="_65">🧪 실습·과제<a class="headerlink" href="#_65" title="Permanent link">&para;</a></h2>
+<h2 id="_66">🧪 실습·과제<a class="headerlink" href="#_66" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>📝 제출 형식·채점 배점·제출 예시는 <a href="../assignments/">과제집</a>의 해당 주차를 참조한다.</p>
 </blockquote>

@@ -495,6 +495,15 @@ PCB 노이즈·그라운드의 시스템 위치, 수치 근거, 실험 증거, �
 
 noise 문제를 source(빠른 voltage/current 변화), coupling path(common impedance·parasitic C/L), victim(ADC·Hall·UART)으로 나눈다. 대책은 source edge를 완화하는지, 결합 경로를 줄이는지, victim 내성을 높이는지 명확히 설명한다.
 
+### EMC — 같은 모델을 보드 밖으로 확장하기
+
+내 보드가 만들어 내보내는 것이 **emission**, 밖에서 들어오는 것을 견디는 능력이 **immunity**다. 둘 다 전도(conducted, 전원·신호선 경로)와 방사(radiated, 공간 결합)로 나뉜다. 이 수업에서 규격 시험을 하지는 않지만, 인버터는 대표적인 노이즈원이므로 설계 단계에서 다음은 판단할 수 있어야 한다.
+
+- 스위칭 루프(DC-link capacitor → half-bridge → GND) 면적이 곧 방사 안테나 면적이다. 이 루프를 가장 먼저 줄인다.
+- 배터리로 나가는 전원선이 전도 노이즈의 주 경로다. 입력단 필터(common-mode choke, X/Y capacitor) 자리를 처음부터 남겨 둔다.
+- 모터 3상 케이블은 길고 dv/dt가 크다. 꼬거나 차폐하고, 홀센서·통신 케이블과 나란히 묶지 않는다.
+- 대책을 나중에 붙이려면 자리가 필요하다. 시제품 PCB에는 필터·스너버·페라이트 자리를 미리 두고, 쓰지 않으면 0Ω으로 채운다.
+
 ### 공통 임피던스와 return path
 
 power current와 sensor current가 같은 좁은 GND를 공유하면 `Vnoise=I×Zcommon`이 측정 기준 전압을 흔든다. GND plane을 무조건 분리하면 고주파 귀환 전류가 우회해 loop area가 커질 수 있다. 기능별 current가 어디에서 흐르고 합류하는지 먼저 표시한다.

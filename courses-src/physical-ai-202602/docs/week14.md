@@ -332,7 +332,7 @@ System-2 LLM Planner 설계 — 슬라이드 20 (출처: ENGI UNIVERSE)
 - **Spot+ATS 프로젝트 사용 매뉴얼 (Rev 1.4)** — 로봇 플랫폼·운용 시나리오
 - LangChain — <https://python.langchain.com>
 - Pydantic — <https://docs.pydantic.dev>
-- ROS 2 (rclpy) — <https://docs.ros.org/en/rolling/p/rclpy/>
+- ROS 2 (rclpy) — <https://docs.ros.org/en/humble/p/rclpy/>
 
 ## 🏛️ CAIO Forum 2026 연계 — AI 에이전트의 "신뢰성"
 

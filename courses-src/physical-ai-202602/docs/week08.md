@@ -70,6 +70,22 @@ simulation_app.close()
 
 - 평가 포인트: 센서 토픽 ROS2 퍼블리시 · TF 트리 정합 · 지도 생성 · 목표 도달
 
+## ✅ 체크포인트 (시험 전 자가 점검)
+
+1~7주차 범위를 스스로 점검하세요. 하나라도 막히면 해당 주차 페이지의 **📖 핵심 용어 설명**으로 돌아가 확인합니다.
+
+- [ ] **1주차** — Isaac Sim과 Isaac Lab의 목적 차이, Miniconda·CUDA·PyTorch 설치 순서를 설명할 수 있는가
+- [ ] **2주차** — Stage/World/Prim 계층과 Prim 경로를 설명하고, RGB·Depth 카메라를 부착·획득할 수 있는가
+- [ ] **3주차** — IMU·LiDAR·Radar의 측정 원리와 메시지 형식 차이를 구분하고, Annotator로 포인트 클라우드를 얻을 수 있는가
+- [ ] **4주차** — MDP의 Action·Observation·Reward 구성과 Height Scan의 역할을 설명할 수 있는가
+- [ ] **5주차** — URDF의 링크/조인트 구조를 읽고 Isaac Sim Import 옵션(Static·Position·Stiffness)을 설명할 수 있는가
+- [ ] **6주차** — SLAM의 Front-end/Back-end 분리와 `map → odom → body` 좌표 체인을 설명할 수 있는가
+- [ ] **7주차** — ROS 2 브릿지 구성과 TF 트리 정합 실패 시 진단 순서를 설명할 수 있는가
+- [ ] **공통** — `ros2 topic list/echo/hz`, `ros2 run tf2_tools view_frames` 로 상태를 직접 확인할 수 있는가
+
+!!! tip "실기 대비"
+    실기는 "설치되어 있는가"가 아니라 **"막혔을 때 스스로 진단하는가"**를 봅니다. 지금까지의 트러블슈팅 기록을 다시 훑어보세요.
+
 ## 📊 평가 기준
 
 | 항목 | 비중 |

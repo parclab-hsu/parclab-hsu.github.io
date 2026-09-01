@@ -190,8 +190,14 @@ def exec_move_to(node, navigator, nav_feedback, goal, replan_rules):
 ```python
 # 1초마다 TF 현재 pose(x,y,yaw)와 Nav2 남은 거리 로그 출력
 if now - last_print > 1.0:
-    # TF 조회 성공: pose(map)=(...), dist_remain=...
-    # TF 조회 실패: pose=Unknown(TF fail)
+    last_print = now
+    pose = self._node._last_pose             # Executor가 1초마다 갱신하는 map→body 캐시
+    if pose["ok"]:
+        self._node.get_logger().info(
+            f"[move_to] pose(map)=({pose['x']:.2f}, {pose['y']:.2f}, {pose['yaw']:.2f}), "
+            f"dist_remain={dist:.2f}")
+    else:
+        self._node.get_logger().warn("[move_to] pose=Unknown(TF fail)")
 
 # 진행 감지: 남은 거리가 best_dist보다 eps 이상 줄면 진행으로 인정
 if dist < (best_dist - eps_m):
@@ -463,8 +469,8 @@ System-1 단위 액션 설계 part 1 — 슬라이드 47 (출처: ENGI UNIVERSE)
 
 - 교안 **「System-1 단위 액션 설계 part 1」** (제작: ENGI UNIVERSE) — 강의 슬라이드 원본
 - Nav2 (Navigation2) — <https://docs.nav2.org>
-- ROS 2 Actions 개념 — <https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html>
-- ROS 2 tf2 (좌표 변환) — <https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Tf2.html>
+- ROS 2 Actions 개념 — <https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html>
+- ROS 2 tf2 (좌표 변환) — <https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html>
 
 ## 📖 핵심 용어 설명
 

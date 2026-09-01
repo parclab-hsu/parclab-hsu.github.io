@@ -306,11 +306,19 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
 - 교안 **「Spot + ATS Vision 연동 (YOLOv8)」** (제작: ENGI UNIVERSE)
 - Ultralytics YOLOv8 — <https://docs.ultralytics.com>
 - ByteTrack — <https://github.com/ifzhang/ByteTrack>
-- ROS 2 QoS 설정 — <https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html>
+- ROS 2 QoS 설정 — <https://docs.ros.org/en/humble/Concepts/Intermediate/About-Quality-of-Service-Settings.html>
 
 !!! note "🔬 NVIDIA Isaac 워크샵 연계 (DLI)"
     YOLOv8 외에도 **Isaac ROS**의 하드웨어 가속 인지 GEM(**Isaac Perceptor** 등)으로 GPU 가속 객체탐지·깊이추정·시각 SLAM을 구성할 수 있습니다. 엣지(Jetson)에서 고FPS 인지가 필요할 때 유리합니다.
     → 자세한 내용: [DLI · Isaac ROS](dli-ros.md)
+
+## 📘 Isaac Sim 5.1.0 공식 문서
+
+!!! note "공식 문서 (NVIDIA Isaac Sim 5.1.0)"
+    본 주차의 카메라 토픽·ROS 2 브릿지 구성은 아래 공식 문서로 보강·검증할 수 있습니다.
+
+    - [ROS 2 튜토리얼](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/ros2_tutorials/index.html)
+    - [카메라 & 센서](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/sensors/index.html)
 
 ## 📖 핵심 용어 설명
 

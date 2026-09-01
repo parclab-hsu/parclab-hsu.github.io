@@ -382,7 +382,7 @@ Wrap-up — 슬라이드 37 (출처: ENGI UNIVERSE)
 - 교안 **「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」** (제작: *ENGI UNIVERSE*)
 - slam_toolbox — <https://github.com/SteveMacenski/slam_toolbox>
 - Nav2 (Navigation2) 공식 문서 — <https://docs.nav2.org>
-- ROS 2 TF2 (tf2_tools) — <https://docs.ros.org/en/rolling/Concepts/About-Tf2.html>
+- ROS 2 TF2 (tf2_tools) — <https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html>
 
 ## 📘 Isaac Sim 5.1.0 공식 문서
 

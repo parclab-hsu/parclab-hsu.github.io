@@ -317,7 +317,7 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 32 (출처: ENGI UNIV
 ## 🔗 출처 및 참고자료
 
 - 교안 **「NVIDIA Isaac Sim 설치 및 활용 사례」** (제작: ENGI UNIVERSE) — 강의 슬라이드 원본
-- NVIDIA Isaac Sim 공식 문서 — <https://docs.isaac-sim.nvidia.com>
+- NVIDIA Isaac Sim 공식 문서 — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html>
 - NVIDIA Isaac Lab 공식 문서 — <https://isaac-sim.github.io/IsaacLab>
 - Miniconda 설치 가이드 — <https://docs.anaconda.com/miniconda/>
 
