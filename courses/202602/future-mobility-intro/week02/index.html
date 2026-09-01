@@ -1,0 +1,1678 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 1학년 전공기초 · 자율주행·드론/UAM·로봇을 아우르는 미래 모빌리티 기술 개관과 사회·제도·윤리 고찰">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/future-mobility-intro/week02/">
+      
+      
+        <link rel="prev" href="../week01/">
+      
+      
+        <link rel="next" href="../week03/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>2주차 · 자율주행 개념·레벨·제도 - 미래모빌리티 개론 · 2026-2학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="미래모빌리티 개론 · 2026-2학기" class="md-header__button md-logo" aria-label="미래모빌리티 개론 · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            미래모빌리티 개론 · 2026-2학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2주차 · 자율주행 개념·레벨·제도
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="미래모빌리티 개론 · 2026-2학기" class="md-nav__button md-logo" aria-label="미래모빌리티 개론 · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    미래모빌리티 개론 · 2026-2학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 강의계획서(Syllabus)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧭 강의 전체 흐름
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    커리큘럼(15주차)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 강의 자료
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    주차별 강의 자료
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · 미래모빌리티란 무엇인가
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 자율주행 개념·레벨·제도
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 자율주행 개념·레벨·제도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 기본 용어 정의
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 자율주행은 왜 필요한가
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 자율주행의 역사 — 세 개의 이정표
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 자율주행시스템의 연산 성능
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 우리나라의 제도 ① — 임시운행 허가제도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 우리나라의 제도 ② — 시범운행지구
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-2030-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 국가 로드맵 — 2030년 미래차 경쟁력 1등 국가
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-1-20216" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 제1차 교통물류 기본계획 (국토교통부, 2021.6)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 국가별 준비도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 자율주행 시스템과 ADAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · 객체탐지와 데이터 기반 의사결정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · 자율주행 단계·규제와 센서 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · 센서의 진화와 AI 프로세서
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · 통신·V2X와 공학 설계 프로세스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · 드론 개념·분류·시스템 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · 드론 생태계·DNA+드론·대드론
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · 드론 구조설계와 멀티콥터 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · 스마트시티·MaaS·UAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · 로봇의 등장과 산업용 로봇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · 휴머노이드 보행과 Physical AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · 기말고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험·평가
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시험·평가
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험 유형과 핵심 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    과제·발표 안내
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어 사전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 기본 용어 정의
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 자율주행은 왜 필요한가
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 자율주행의 역사 — 세 개의 이정표
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 자율주행시스템의 연산 성능
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 우리나라의 제도 ① — 임시운행 허가제도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 우리나라의 제도 ② — 시범운행지구
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-2030-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 국가 로드맵 — 2030년 미래차 경쟁력 1등 국가
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-1-20216" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 제1차 교통물류 기본계획 (국토교통부, 2021.6)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 국가별 준비도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2">2주차 · 자율주행 개념·레벨·제도<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>🔗 <strong>강의 흐름</strong> — 1주차에서 "미래모빌리티 = 기존 운송수단 + 첨단기술"이라 정의했다. 이번 주는 그 첨단기술의 첫 갈래인 <strong>자율주행</strong>을 용어 수준에서 정확히 세운다. 여기서 잡는 정의와 레벨은 5주차 규제, 7주차 통신까지 계속 쓰인다.</p>
+<p><strong>학습목표</strong> — 자율주행자동차와 자율주행시스템을 구분해 정의하고, 자율주행이 필요한 이유를 데이터로 설명하며, 국내 제도(임시운행허가·시범운행지구)와 국가 로드맵을 설명할 수 있다.</p>
+<p>💡 <strong>기초 다지기</strong> — <strong>"자율주행차"와 "자율주행시스템"은 다른 말이다.</strong> 차(車)는 물건이고, 시스템은 그 안에서 인지·판단하게 만드는 <strong>장비 + 소프트웨어 + 관련 장치 일체</strong>다. 법에서도 이 둘을 따로 정의한다.</p>
+</blockquote>
+<h2 id="_1">🗺️ 한눈에 보는 개념도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph 차량
+      SYS["자율주행시스템&lt;br/&gt;인지·판단 장비 + SW + 장치"]
+    end
+    ENV["주변 상황&lt;br/&gt;도로 정보"] --&gt; SYS
+    SYS --&gt; DRIVE["자율주행자동차&lt;br/&gt;= 조작 없이 운행 가능한 차"]
+    INFRA["신호기·안전표지·교통시설"] -.협력.-&gt; SYS
+    DRIVE --&gt; BEN["사고 차단 · 효율 · 이동권"]</code></pre>
+<h2 id="1">1. 기본 용어 정의<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>정의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>자율주행자동차</strong></td>
+<td>운전자 또는 승객의 <strong>조작 없이 스스로 운행이 가능한 자동차</strong></td>
+</tr>
+<tr>
+<td><strong>자율주행시스템</strong></td>
+<td>주변 상황과 도로 정보 등을 스스로 <strong>인지하고 판단</strong>하여 자동차를 운행할 수 있게 하는 <strong>자동화 장비, 소프트웨어, 그리고 이와 관련한 일체의 장치</strong>. 자율주행자동차는 이 시스템을 통해 움직인다</td>
+</tr>
+<tr>
+<td><strong>자율주행 협력 시스템</strong></td>
+<td>더 폭넓은 관점 — 신호기·안전표지·교통시설 등 <strong>환경까지 협업</strong>하는 것을 가정한 시스템</td>
+</tr>
+</tbody>
+</table>
+<p><strong>사용자 경험 관련 용어</strong> (강의에서 함께 정의)</p>
+<ul>
+<li><strong>UI</strong>(User Interface) — 사용자와 시스템 사이에 존재하는 <strong>접점</strong></li>
+<li><strong>User Interaction</strong> — 그 접면을 통해 행하는 <strong>상호작용</strong></li>
+<li><strong>UX</strong>(User eXperience) — 제품·서비스를 사용하며 하게 되는 <strong>모든 경험</strong> → <strong>CX</strong>(Customer eXperience, 고객 경험) → <strong>DX</strong>(Digital Transformation, 디지털 전환)으로 확장 중</li>
+</ul>
+<h2 id="2_1">2. 자율주행은 왜 필요한가<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">가장 중요한 숫자</p>
+<p><strong>NHTSA — 지금까지 발생한 교통사고의 약 94%가 인간이 원인</strong>(운전 중 부주의, 음주운전, 과속 등).
+국내(도로교통공단·경찰청 합동 조사) — <strong>부주의 42%, 운전미숙 16.3%, 신호위반 및 졸음 14%, 전방주시태만 11.6% → 약 95%가 인적 요인.</strong></p>
+</div>
+<ul>
+<li><strong>안전</strong> — 운전 환경의 다양한 변수를 통제하여 교통사고 차단. 전방주시 태만·판단 및 운전 미숙·졸음 등 <strong>인적요인 사전 차단</strong></li>
+<li><strong>효율</strong> — 안정성 및 교통 효율 증가, 교통손실 비용 및 에너지 절감</li>
+<li><strong>형평</strong> — 운전자 편의성 향상, <strong>교통약자의 이동성 향상</strong></li>
+</ul>
+<blockquote>
+<p>서술형 1번 단골: <em>"자율 주행 기술이 필요한 이유와 그 핵심 가치에 대하여 설명하시오."</em> → <strong>안전(94%) · 효율(비용·에너지) · 접근성(교통약자)</strong> 세 축으로 답하면 된다.</p>
+</blockquote>
+<h2 id="3">3. 자율주행의 역사 — 세 개의 이정표<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>연도</th>
+<th>사건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1925</td>
+<td>라디오 장비 업체 후디나 라디오 컨트롤의 <strong>'아메리칸 원더'</strong> — 최초의 자율주행 시도. <strong>통신(무선 조종) 기반</strong>이었다</td>
+</tr>
+<tr>
+<td>1980년대~</td>
+<td>카네기멜런대학 로보틱스연구소 <strong>Navlab</strong> 프로젝트 — 컴퓨터 비전 기반 자율주행. <strong>ADAS 기술 발전에 영향</strong></td>
+</tr>
+<tr>
+<td>1990년대</td>
+<td>미국에서 자율주행 자동차에 대한 <strong>본격적인 연구</strong> 시작</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">기출 포인트</p>
+<ul>
+<li>최초의 자율주행 시스템은 <strong>통신 기반 기술에서 출발</strong>했다 (✅ 맞는 설명)</li>
+<li>자율주행의 급속한 발전은 <strong>ADAS 기술의 빠른 발전</strong>에 기인한다 (✅)</li>
+<li>자율주행 핵심기술은 <strong>통신기술 의존도가 매우 높다</strong> (✅)</li>
+</ul>
+</div>
+<h2 id="4">4. 자율주행시스템의 연산 성능<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>테슬라 <strong>FSD</strong>(Full Self-Driving) computer — <strong>TOPS</strong>(Trillion Operation Per Second) 단위로 성능을 표기한다.</li>
+<li>자세한 프로세서 비교는 <a href="../week06/">6주차</a>에서 다룬다.</li>
+</ul>
+<h2 id="5-1">5. 우리나라의 제도 ①  — 임시운행 허가제도<a class="headerlink" href="#5-1" title="Permanent link">&para;</a></h2>
+<p>국토부는 민간의 자율주행 기술개발을 지원하기 위해 <strong>2016년 2월 자율주행차 임시운행허가제도</strong>를 도입했다.</p>
+<ul>
+<li>신청 시 제출 서류 3종: <strong>시험·연구계획서</strong>, <strong>자율주행차의 구조와 기능에 대한 설명서</strong>, <strong>안전운행요건 적합 여부 확인에 필요한 서류</strong></li>
+<li>신청 후 국토교통부장관이 정하는 날짜·장소에 차량을 제시하여 <strong>안전운행요건 적합 여부 확인</strong>을 받아야 한다.</li>
+<li><strong>2016년 현대 제네시스가 국내 자율주행차 임시운행 제1호 차</strong> 허가.</li>
+<li><strong>2020년 임시운행 허가 차량이 119대(41개 기관)</strong>로 100대를 넘었다.</li>
+</ul>
+<p><strong>2020년 개정 — 유형별 맞춤형 허가요건 신설</strong></p>
+<table>
+<thead>
+<tr>
+<th>유형</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A형</strong></td>
+<td>기존 자동차 형태의 자율주행차</td>
+</tr>
+<tr>
+<td><strong>B형</strong></td>
+<td><strong>운전석이 없는</strong> 자율주행차</td>
+</tr>
+<tr>
+<td><strong>C형</strong></td>
+<td><strong>사람이 탑승하지 않는</strong> 무인 자율주행차</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-2">6. 우리나라의 제도 ② — 시범운행지구<a class="headerlink" href="#6-2" title="Permanent link">&para;</a></h2>
+<p><strong>자율주행자동차 시범운행지구</strong> = 자율주행차의 연구·시범 운행을 촉진하기 위하여 <strong>규제 특례가 적용되는 구역</strong>.</p>
+<ul>
+<li>2020년 5월 시행된 <strong>자율주행자동차법</strong>에 따라 새롭게 도입.</li>
+<li>1차 6개 지구 지정 후 1개 추가 → <strong>서울 상암·제주 등 7개 지구</strong>, 2022년 <strong>전국 10개 시·도 14개 지구</strong>로 확대 공표.</li>
+<li>세종·광주 <strong>규제자유특구</strong>를 통한 서비스 실증과 규제 정비 병행.</li>
+<li><strong>K-City</strong> 등 자율주행 테스트베드 고도화, 기업 상주 연구공간 마련.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">세종시 자율주행버스 1년 운행 결과 (KBS 보도)</p>
+<ul>
+<li>이용자의 <strong>80%가 "신기하다"며 만족</strong>, <strong>70%가 "다시 이용할 의향"</strong></li>
+<li>다만 자율주행이 2~3단계 수준이라 <strong>안전 우려</strong>의 목소리</li>
+<li><strong>어린이보호구역에서는 자율주행이 법으로 금지</strong></li>
+<li>도로에서는 돌발상황 대비로 <strong>운전석에 사람이 타서 최소한의 수동 운행</strong>
+→ 대구 시범지구는 반대로 <strong>"이용자 적고 차량 없다"</strong>는 보도. 같은 제도라도 운영이 다르면 결과가 다르다.</li>
+</ul>
+</div>
+<h2 id="7-2030-1">7. 국가 로드맵 — 2030년 미래차 경쟁력 1등 국가<a class="headerlink" href="#7-2030-1" title="Permanent link">&para;</a></h2>
+<p><em>미래자동차 산업 발전 전략 – 2030년 국가 로드맵</em> (관계부처 합동, 2019.10)</p>
+<div class="admonition success">
+<p class="admonition-title">2030년 <strong>5-F(ree) 사회</strong> 구현</p>
+<p>사고(<strong>A</strong>ccident) · 장벽(<strong>B</strong>arrier) · 정체(<strong>C</strong>ongestion) · 지연(<strong>D</strong>elay) · 배출(<strong>E</strong>mission)이 <strong>없는</strong> 사회
+→ 머리글자 <strong>A-B-C-D-E</strong>로 외우면 쉽다.</p>
+</div>
+<p><strong>단계적 로드맵</strong></p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>연도</th>
+<th>목표</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>2021</td>
+<td><strong>레벨3 자율차 출시</strong></td>
+</tr>
+<tr>
+<td>②</td>
+<td>2024</td>
+<td><strong>레벨4 일부 상용화</strong> + 완전자율주행 법·제도·인프라(주요 도로) 완비</td>
+</tr>
+<tr>
+<td>③</td>
+<td>2027</td>
+<td><strong>레벨4 전국 상용화</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>개방형 미래차 생태계로 신속 전환: 친환경차 기술력·국내 보급 가속화, <strong>민간 투자 약 60조원</strong> 규모.</li>
+<li>미래자동차 = <strong>친환경 전기차·수소차 + ICT·AI 기반 자율주행차</strong>를 포괄하는 개념. 정부는 미래자동차 산업을 <strong>8대 혁신성장 선도과제</strong>로 선정.</li>
+<li>2030년 미래자동차 시장 3대 축: ① 친환경차 ② 자율주행차(스마트카) ③ <strong>서비스 산업</strong></li>
+</ul>
+<h2 id="8-1-20216">8. 제1차 교통물류 기본계획 (국토교통부, 2021.6)<a class="headerlink" href="#8-1-20216" title="Permanent link">&para;</a></h2>
+<p>비전 — <strong>2025년 자율주행 기반 교통물류체계 상용화 시대 개막</strong>. 전 고속도로와 시·도별 주요 거점에서 자율주행 상용서비스 제공.</p>
+<table>
+<thead>
+<tr>
+<th>축</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기술 고도화</td>
+<td>자율주행 여객·화물·사회기반 서비스 기술력 확보</td>
+</tr>
+<tr>
+<td>실증 환경 조성</td>
+<td>PoC 가능한 시범운행지구 지속 확대 및 규제 정비, 테스트베드 고도화</td>
+</tr>
+<tr>
+<td>사업환경 조성</td>
+<td>도로·통신 인프라 전국 구축, <strong>C-ITS 2025년까지 전국 주요도로 구축</strong>, 동적 지도(신속 갱신), 데이터 표준화·빅데이터 공통 플랫폼</td>
+</tr>
+<tr>
+<td>안전성·수용성</td>
+<td>레벨4 주행·충돌·통신·시스템 안전성 평가 기준과 시험방법, <strong>해킹방지 등 사이버보안</strong>, 안전기준 국제조화, 개인정보 보호 가이드라인</td>
+</tr>
+<tr>
+<td>생태계</td>
+<td>국제 공동연구, 테스트베드 간 협력, 국토교통 혁신펀드 확대, <strong>대학 커리큘럼 개선 등 인력양성</strong>, 일자리 전환 대응</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>C-ITS</strong> (Cooperative-Intelligent Transport Systems, 차세대 지능형교통체계)</li>
+</ul>
+<p><strong>기대효과</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>편의성</td>
+<td>대중교통 접근 시간 <strong>20% 감축</strong>, 환승 소요시간 <strong>50% 감축</strong>, 교통약자 이동권 확보</td>
+</tr>
+<tr>
+<td>안전성</td>
+<td>서비스 종사자 부주의 교통사고 <strong>50% 감축</strong>, 교통사고 사망률 2015년 대비 <strong>50% 감소</strong></td>
+</tr>
+<tr>
+<td>일자리</td>
+<td>서비스 다양화·데이터 고부가가치 산업 육성으로 <strong>일자리 1만 개 창출</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="9">9. 국가별 준비도<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p>Confused.com이 발표한 <strong>"자율주행차 시대를 가장 잘 준비하고 있는 국가 Top 5"</strong>(2022.2). 기술 개발만으로는 부족하고 <strong>국가의 법률 지원 + 일반 소비자의 인식 개선</strong>이 함께 완성되어야 대중화된다는 것이 요지다.</p>
+<h2 id="_2">🤔 생각해 봅시다<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ol>
+<li>세종시 사례에서 볼 때, 자율주행차의 <strong>상용화 확대를 위해 해결해야 할 이슈</strong>는 무엇인가? (기술 / 제도 / 수용성으로 나누어 답해 보자)</li>
+<li>자율주행차의 등장으로 <strong>새롭게 생겨나는 직업</strong>이 있을까? (제주 라이드플럭스 안전요원 사례 — 안전요원이 갖추어야 할 요건과 역할은?)</li>
+<li>임시운행허가 유형을 A/B/C로 나눈 이유는 무엇일까? 각 유형에 다른 안전요건이 필요한 까닭은?</li>
+</ol>
+<h2 id="_3">✅ 이번 주 체크리스트<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 자율주행자동차 / 자율주행시스템 / 자율주행 협력 시스템을 구분해 정의할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> "사고의 94%가 인적 요인"이라는 수치와 출처(NHTSA)를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 임시운행허가 A·B·C형을 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5-F(ree)의 다섯 가지와 3단계 로드맵 연도(2021/2024/2027)를 안다</li>
+</ul>
+<hr />
+<p>▶️ <strong>다음 주 예고</strong> — 자율주행차 <strong>안을 열어본다</strong>. 자율주행자동차가 어떤 장치로 이루어져 있고, ADAS 기능들이 실제로 무엇을 하며, 자율주행 알고리즘이 어떤 순서(SENSE → PLAN → CONTROL)로 도는지 본다. → <a href="../week03/">3주차</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../week01/" class="md-footer__link md-footer__link--prev" aria-label="이전: 1주차 · 미래모빌리티란 무엇인가">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                1주차 · 미래모빌리티란 무엇인가
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week03/" class="md-footer__link md-footer__link--next" aria-label="다음: 3주차 · 자율주행 시스템과 ADAS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                3주차 · 자율주행 시스템과 ADAS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

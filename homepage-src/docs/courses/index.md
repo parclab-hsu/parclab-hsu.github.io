@@ -21,6 +21,16 @@ PARC Lab은 인식–계획–제어를 통합하는 **Physical AI 인재**를 �
 
 <div class="grid cards" markdown>
 
+-   :material-satellite-variant:{ .lg .middle } __미래모빌리티 개론__
+
+    ---
+
+    자율주행·드론/UAM·로봇을 아우르는 미래 모빌리티 기술 개관과 사회·제도·윤리 고찰. 15주 이론·토론.
+
+    *1학년 · 3학점 · 전공기초 · 2026-2학기*
+
+    [강의 자료 →](/courses/202602/future-mobility-intro/)
+
 -   :material-car-electric:{ .lg .middle } __모빌리티 전자제어유닛 실습__
 
     ---
@@ -59,7 +69,7 @@ PARC Lab은 인식–계획–제어를 통합하는 **Physical AI 인재**를 �
 
 ## 2026학년도 1학기 · 202601
 
-이전 학기 개설 과목입니다. 강의 자료는 계속 열람할 수 있습니다.
+이전 학기 개설 과목 목록입니다. 강의 자료는 **2026-2학기 페이지로 통합**되어 있습니다.
 
 <div class="grid cards" markdown>
 
@@ -67,11 +77,11 @@ PARC Lab은 인식–계획–제어를 통합하는 **Physical AI 인재**를 �
 
     ---
 
-    자율주행·드론/UAM·로봇을 아우르는 미래 모빌리티 기술 개관과 사회·제도·윤리 고찰. 15주 이론·토론.
+    2026-1학기 개설. 강의 자료는 2026-2학기 페이지에서 이어집니다.
 
-    *1학년 · 3학점 · 전공기초 · 2026-1학기*
+    *1학년 · 3학점 · 전공기초*
 
-    [강의 자료 →](/courses/202601/future-mobility-intro/)
+    [2026-2학기 강의 자료 →](/courses/202602/future-mobility-intro/)
 
 </div>
 

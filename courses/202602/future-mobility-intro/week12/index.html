@@ -1,0 +1,2398 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 1학년 전공기초 · 자율주행·드론/UAM·로봇을 아우르는 미래 모빌리티 기술 개관과 사회·제도·윤리 고찰">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/future-mobility-intro/week12/">
+      
+      
+        <link rel="prev" href="../week11/">
+      
+      
+        <link rel="next" href="../week13/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>12주차 · 스마트시티·MaaS·UAM - 미래모빌리티 개론 · 2026-2학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#12-maasuam" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="미래모빌리티 개론 · 2026-2학기" class="md-header__button md-logo" aria-label="미래모빌리티 개론 · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            미래모빌리티 개론 · 2026-2학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              12주차 · 스마트시티·MaaS·UAM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="미래모빌리티 개론 · 2026-2학기" class="md-nav__button md-logo" aria-label="미래모빌리티 개론 · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    미래모빌리티 개론 · 2026-2학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 강의계획서(Syllabus)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧭 강의 전체 흐름
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    커리큘럼(15주차)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 강의 자료
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    주차별 강의 자료
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · 미래모빌리티란 무엇인가
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 자율주행 개념·레벨·제도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 자율주행 시스템과 ADAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · 객체탐지와 데이터 기반 의사결정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · 자율주행 단계·규제와 센서 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · 센서의 진화와 AI 프로세서
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · 통신·V2X와 공학 설계 프로세스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · 드론 개념·분류·시스템 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · 드론 생태계·DNA+드론·대드론
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · 드론 구조설계와 멀티콥터 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · 스마트시티·MaaS·UAM
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · 스마트시티·MaaS·UAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 스마트시티의 등장
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 스마트시티의 등장">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기말 서술형 모범 답안 — '인간 중심'의 의미
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 스마트시티와 모빌리티 (1주차 복습·심화)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-maas-mobility-as-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. MaaS — Mobility as a Service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MaaS — Mobility as a Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        거시적 필요성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        대표 사례 — 핀란드 헬싱키 Whim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maas-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MaaS 수준 5단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        국내 MaaS 주도 기업
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-uam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. UAM — 도심 항공 모빌리티
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. UAM — 도심 항공 모빌리티">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왜 필요한가 — 메가시티 문제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기대 효과 3가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UAM의 역사
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uam_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UAM의 종류
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UAM의 종류">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 멀티콥터(드론) 방식
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lift-cruise-tilt-rotor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② Lift &amp; Cruise / Tilt Rotor 방식
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-utm-vs-atm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 드론 교통관리 — UTM vs ATM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 파트 3의 문 — 로봇 산업의 중요성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 파트 3의 문 — 로봇 산업의 중요성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        로봇 산업 Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        차세대 성장 엔진의 필요성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        로봇 산업의 성공 공식
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4차 산업혁명과 지능형 로봇
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#industry-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Industry 4.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-hrc-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        인간-로봇 협업 (HRC) — 기말 10번 직결
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · 로봇의 등장과 산업용 로봇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · 휴머노이드 보행과 Physical AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · 기말고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험·평가
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    시험·평가
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시험 유형과 핵심 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    과제·발표 안내
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어 사전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ 한눈에 보는 개념도
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 스마트시티의 등장
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 스마트시티의 등장">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기말 서술형 모범 답안 — '인간 중심'의 의미
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 스마트시티와 모빌리티 (1주차 복습·심화)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-maas-mobility-as-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. MaaS — Mobility as a Service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MaaS — Mobility as a Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        거시적 필요성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        대표 사례 — 핀란드 헬싱키 Whim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maas-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MaaS 수준 5단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        국내 MaaS 주도 기업
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-uam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. UAM — 도심 항공 모빌리티
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. UAM — 도심 항공 모빌리티">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왜 필요한가 — 메가시티 문제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기대 효과 3가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UAM의 역사
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uam_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UAM의 종류
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UAM의 종류">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 멀티콥터(드론) 방식
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lift-cruise-tilt-rotor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② Lift &amp; Cruise / Tilt Rotor 방식
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-utm-vs-atm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 드론 교통관리 — UTM vs ATM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 파트 3의 문 — 로봇 산업의 중요성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 파트 3의 문 — 로봇 산업의 중요성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        로봇 산업 Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        차세대 성장 엔진의 필요성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        로봇 산업의 성공 공식
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4차 산업혁명과 지능형 로봇
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#industry-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Industry 4.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-hrc-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        인간-로봇 협업 (HRC) — 기말 10번 직결
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 생각해 봅시다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 이번 주 체크리스트
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="12-maasuam">12주차 · 스마트시티·MaaS·UAM<a class="headerlink" href="#12-maasuam" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>🔗 <strong>강의 흐름</strong> — 1주차에서 "모빌리티의 발전은 도시의 변화를 가져온다"고 시작했다. 이번 주는 그 문장으로 되돌아온다. 자율주행(1부)과 드론(2부)이 만나는 지점이 <strong>도시</strong>이고, 그 도시의 하늘이 <strong>UAM</strong>이다. 후반부에서 파트 3(로봇)의 문을 연다.</p>
+<p><strong>학습목표</strong> — 스마트시티의 정의와 '인간 중심'의 의미를 사회·기술·정책 측면에서 설명하고, MaaS의 개념과 수준 5단계를 서술하며, UAM의 개념·역사·종류와 UTM/ATM 구분을 설명할 수 있다.</p>
+<p>💡 <strong>기초 다지기</strong> — <strong>MaaS는 "앱 하나로 모든 이동"이다.</strong> 지하철 앱, 택시 앱, 따릉이 앱을 각각 켜는 대신 <strong>하나의 서비스로 예약하고 한 번에 결제</strong>한다. 자동차를 소유하지 않아도 불편하지 않게 만드는 것이 목표다.</p>
+</blockquote>
+<h2 id="_1">🗺️ 한눈에 보는 개념도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    CITY["스마트시티&lt;br/&gt;ICT·IoT·빅데이터·AI"]
+    CITY --&gt; G1["① 시민 삶의 질 향상"]
+    CITY --&gt; G2["② 도시 지속가능성 제고"]
+    CITY --&gt; G3["③ 신산업 육성 플랫폼"]
+    CITY --&gt; T["가장 집중되는 분야 = 교통"]
+    T --&gt; M["MaaS&lt;br/&gt;모든 교통수단을 하나의 서비스로"]
+    T --&gt; U["UAM&lt;br/&gt;도심 저고도 항공 모빌리티"]
+    U --&gt; UTM["UTM&lt;br/&gt;400ft 이하 드론 교통관리"]
+    UTM -.혼재 영역.-&gt; ATM["ATM&lt;br/&gt;18,000ft 이상 유인기 관제"]</code></pre>
+<h2 id="1">1. 스마트시티의 등장<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>시기</th>
+<th>흐름</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1990년대</strong></td>
+<td>화석연료 등 에너지 위기에 대비하여 <strong>지속가능한 도시</strong>를 위한 노력</td>
+</tr>
+<tr>
+<td><strong>2000년대</strong></td>
+<td>정보통신기술의 발달을 계기로 우리나라 중심의 <strong>유비쿼터스도시</strong>, 디지털시티, 인텔리전트도시 등 다양한 도시 모델이 제시 → 최근에는 <strong>스마트시티로 수렴</strong></td>
+</tr>
+</tbody>
+</table>
+<p>※ 정보통신기술의 발달 → 지능화, 자동화 및 각종 시스템들이 체계적으로 구축
+※ UN "세계 인구 80억 돌파"(2022.11.15 기준) — 공중 보건과 영양, 개인 위생과 의학의 발전으로 인간 수명의 점진적 증가</p>
+<div class="admonition success">
+<p class="admonition-title">스마트시티의 정의 — 기말 서술형 1번 직결</p>
+<p>스마트시티에 대한 정의는 국가별 여건에 따라 매우 다양하지만, 공통적으로는 <strong>4차 산업혁명 시대의 혁신기술을 활용하여</strong>
+① <strong>시민 삶의 질을 높이고</strong>
+② <strong>도시의 지속 가능성을 제고</strong>하며
+③ <strong>새로운 산업을 육성하기 위한 플랫폼</strong>을 개발하는 것.</p>
+<p>오늘날 스마트시티는 선진국이나 개발도상국 할 것 없이 전 세계적으로 도시 문제를 해결하기 위한 <strong>미래도시 모델로서 가장 주목</strong>받는다. 그중에서도 가장 집중되는 분야는 <strong>단연 교통</strong>이다.</p>
+</div>
+<h3 id="_2">기말 서술형 모범 답안 — '인간 중심'의 의미<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>문항</strong>: 스마트 시티의 정의를 기술하고 '인간 중심'이 갖는 의미를 <strong>사회·기술·정책</strong> 측면에서 설명하시오. (상20 / 중14 / 하8)</p>
+</blockquote>
+<p><strong>📌 스마트시티의 정의</strong>
+스마트시티란 <strong>ICT(정보통신기술), IoT, 빅데이터, AI 등 첨단 기술을 활용하여 도시의 효율성과 지속가능성을 높이고, 시민의 삶의 질을 향상시키는 도시</strong>를 말한다. 교통, 에너지, 안전, 복지 등의 도시 서비스를 지능화하고 통합적으로 관리하여 지속 가능한 도시 운영과 거주자 편의 증진을 목표로 한다.</p>
+<p><strong>📌 '인간 중심'의 의미</strong></p>
+<table>
+<thead>
+<tr>
+<th>측면</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>사회적 측면</strong></td>
+<td>모든 도시 서비스와 인프라의 중심에 시민이 있으며, <strong>소외계층·고령자·장애인 등 모든 시민의 접근성과 포용성</strong>을 보장하는 방향으로 설계된다</td>
+</tr>
+<tr>
+<td><strong>기술적 측면</strong></td>
+<td>기술 도입의 목적이 '기술 그 자체'가 아니라, <strong>시민의 삶을 안전하고 편리하게 만드는 것</strong>에 있다. 예: 스마트 헬스케어, 에너지 절감형 주택, 개인화된 교통 시스템</td>
+</tr>
+<tr>
+<td><strong>정책적 측면</strong></td>
+<td><strong>시민의 참여</strong>(시민참여 플랫폼, 디지털 거버넌스 등)를 강화하고, <strong>데이터 기반 정책 수립</strong>을 통해 시민 중심의 의사결정 구조를 구축한다</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-1">2. 스마트시티와 모빌리티 (1주차 복습·심화)<a class="headerlink" href="#2-1" title="Permanent link">&para;</a></h2>
+<p>쉘 &amp; 맥킨지(2017.6) 도시 3분류와 처방 → <a href="../week01/">1주차</a> 참조.
+기존 도시 vs 자율주행 전용 도시, 글로벌 정책 동향(EU 2035 / 미국 2032 / 중국 2035), LCA·ITS → <a href="../week01/">1주차</a> 참조.</p>
+<h2 id="3-maas-mobility-as-a-service">3. MaaS — Mobility as a Service<a class="headerlink" href="#3-maas-mobility-as-a-service" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">출발점이 되는 질문</p>
+<p><strong>"급한 미팅이 생겨 한성대에서 잠실로 이동해야 된다면 어떤 방법이 가장 빠르고 효과적일까?"</strong>
+① 택시? 버스? 지하철? 소요시간을 줄이기 위해서 공유 자전거?
+② 공유 자동차·자전거·킥보드 등 다양한 공유 모빌리티를 선택할까?
+→ <strong>Door-to-Door 이동하는 방법을 찾기 위해 또 다른 시간을 투입</strong>하게 된다. 이 문제를 해결하기 위해 주목받는 것이 MaaS다.</p>
+</div>
+<p><strong>정의</strong> — <strong>MaaS</strong>(Mobility as a Service)를 직역하면 <strong>'서비스로서의 모빌리티'</strong>. <strong>모든 교통수단을 하나의 통합된 서비스로 제공하는 개념</strong>이다.</p>
+<h3 id="_3">거시적 필요성<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>As-Is</strong></td>
+<td>도시 집중화에 의한 교통 체증, 주차 공간 부족, 대기 오염 등</td>
+</tr>
+<tr>
+<td><strong>Resolution</strong></td>
+<td>자가용보다 <strong>더 빠르고, 편하고, 쉽고, 쾌적한 이동 서비스</strong> 제공</td>
+</tr>
+<tr>
+<td><strong>목표</strong></td>
+<td><strong>2025년까지 자동차 없는 도시</strong>를 만드는 것 — 시민 누구라도 자동차를 소유하지 않고 생활할 수 있는 환경 조성</td>
+</tr>
+</tbody>
+</table>
+<p>→ 정부·지자체에서 거시적인 도시문제들을 해결할 수 있는 솔루션 = <strong>MaaS</strong></p>
+<h3 id="whim">대표 사례 — 핀란드 헬싱키 Whim<a class="headerlink" href="#whim" title="Permanent link">&para;</a></h3>
+<ul>
+<li>MaaS를 도입해 도시의 교통 문제를 해결하고자 하는 가장 대표적인 도시 = <strong>핀란드 헬싱키</strong></li>
+<li><strong>2016년부터</strong> 개인 교통수단과 트램, 열차, 택시, 버스, 공유 자전거 등 <strong>모든 교통수단을 Whim이라는 하나의 앱</strong>을 이용해 예약하고 비용을 지불</li>
+<li>운영사 <strong>MaaS Global</strong>의 비전 — <em>"create a world where you don't have to own a car to live a fulfilling life"</em></li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">실제 효과 — 숫자로 확인</p>
+<p>MaaS Global사가 Whim 사용자를 대상으로 실시한 조사 결과, Whim 제공 개시 전후 헬싱키의 'Whim 이용자 이동'에서 차지하는 <strong>대중교통 이용 비율이 48% → 74%로 대폭 증가</strong>했다.
+→ MaaS에서의 이용자 편익은 '이동의 편리성 향상'뿐 아니라 <strong>'교통비 절감'</strong> 효과도 있으며, 이동 데이터를 하나의 MaaS 플랫폼에 축적함으로써 <strong>새로운 데이터 활용</strong>도 가능하다.</p>
+</div>
+<p><strong>우버 사례</strong> — UBER가 <strong>JUMP 바이크</strong>와 서비스 통합 → 통합 서비스 사용량 <strong>15% 증가</strong>.</p>
+<h3 id="maas-5">MaaS 수준 5단계<a class="headerlink" href="#maas-5" title="Permanent link">&para;</a></h3>
+<p>EU의 기업들을 중심으로 <strong>2015년 설립</strong>되어 MaaS 활성화를 주도하고 있는 민간 협력단체 <strong>MaaS Alliance</strong>에서는 MaaS 수준을 총 <strong>5단계</strong>로 구분한다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">단계</th>
+<th>개념 (일반적 정의)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">Level 0</td>
+<td>통합 없음 — 각 수단이 개별 운영</td>
+</tr>
+<tr>
+<td style="text-align: right;">Level 1</td>
+<td><strong>정보 통합</strong> — 통합 경로·요금 정보 제공</td>
+</tr>
+<tr>
+<td style="text-align: right;">Level 2</td>
+<td><strong>예약·결제 통합</strong> — 한 번에 예약·결제</td>
+</tr>
+<tr>
+<td style="text-align: right;">Level 3</td>
+<td><strong>서비스 제공 통합</strong> — 구독·번들 상품</td>
+</tr>
+<tr>
+<td style="text-align: right;">Level 4</td>
+<td><strong>정책 통합</strong> — 도시 정책 목표와 연계</td>
+</tr>
+</tbody>
+</table>
+<h3 id="maas">국내 MaaS 주도 기업<a class="headerlink" href="#maas" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>기업</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>카카오 모빌리티</strong></td>
+<td>택시·자전거·셔틀·시외버스·기차 등 중단거리에서 광역 교통까지. 내비게이션·주차·대리운전부터 세차·정비, 중고차 영역까지 서비스 범위 확대</td>
+</tr>
+<tr>
+<td><strong>티맵 모빌리티</strong></td>
+<td>세계 최대 승용차 공유 서비스 업체 <strong>우버와 합작사 '우티' 출범(2021.4)</strong>. <strong>구글로부터 5천만 달러(약 565억원) 투자 유치</strong> — 구글의 AI·자율주행 기술 접목 사업 기회 모색 중. T맵과 우버의 운영 노하우를 합쳐 렌터카·대리운전·차량 공유·단거리 이동 수단·주차 등</td>
+</tr>
+<tr>
+<td><strong>쏘카</strong></td>
+<td>차량 공유</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">시험 포인트</p>
+<p><strong>"모빌리티 서비스에서 사용자 중심의 모빌리티 서비스인 'MaaS'의 약자는?"</strong> → <strong>Mobility as a Service</strong></p>
+</div>
+<h2 id="4-uam">4. UAM — 도심 항공 모빌리티<a class="headerlink" href="#4-uam" title="Permanent link">&para;</a></h2>
+<div class="admonition success">
+<p class="admonition-title">정의</p>
+<p><strong>UAM</strong>(Urban Air Mobility) — <strong>사람 또는 물자를 탑재한 상태로, 도심 내외를 저고도로 운항하는 소형 비행체 및 운용 체계</strong></p>
+</div>
+<h3 id="_4">왜 필요한가 — 메가시티 문제<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><strong>메가시티(megacity)</strong> = 인구 1,000만 명이 넘는 도시. 사회적 중심 역할을 수행하는 대도시로 정치·경제·교육·행정·문화 시설 등이 집중된다.</p>
+<p><strong>인구 집중 → 이동 수단 포화(교통 체증) → 이동 효율성 저하, 물류 운송 비용 등 사회적 비용 급증 → 다양한 사회 문제 초래</strong></p>
+<h3 id="3">기대 효과 3가지<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><em>(출처: 『포스트모빌리티 — 탈것의 혁신에서 공간의 혁명으로』, 차두원·이슬아, 위즈덤하우스, 2022.06.29, p.121 인용)</em></p>
+<ol>
+<li>UAM이 활성화되어 도심에 대한 접근성이 개선된다면 <strong>도심 밀집도는 낮아질 것</strong>으로 기대됨</li>
+<li>메가시티의 도로·주차 시설로 활용하고 있는 면적 중 <strong>20%를 다양한 문화 공간(공원, 박물관, 공연 센터)으로 활용</strong> 가능</li>
+<li>전기차·수소차와 함께 <strong>도시 환경을 보호하며 깨끗한 공기를 제공</strong>하는 데 기여</li>
+</ol>
+<blockquote>
+<p>항공·자율주행·배터리 분야의 기술 발전으로 도심 항공 모빌리티가 본격화되고 있다.</p>
+</blockquote>
+<h3 id="uam">UAM의 역사<a class="headerlink" href="#uam" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>시기</th>
+<th>형태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>라이트 형제 이후</td>
+<td>첫 동력 비행 후 사람이 탑승하여 도심 내외를 저고도로 운항하는 소형 비행체 개발. <strong>회전익기</strong> 또는 제한적인 UAM으로 활용방안 모색</td>
+</tr>
+<tr>
+<td><strong>2000년대 초반</strong></td>
+<td>자동차 개념의 <strong>고정익 + Flying Car</strong> 형태 연구 — <strong>에어로모빌 3.0</strong>, <strong>PAL-V</strong></td>
+</tr>
+<tr>
+<td>최근</td>
+<td><strong>회전익 + Flying Car</strong> 형태 개발 중(AirBus) → 일반 자동차와 같이 공도에서 운행하다 필요시 <strong>회전익 모듈을 장착</strong>하는 개념으로 발전</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>자이로콥터</strong> — 고정익(Rear Prop.) + 회전익(Main Rotor) 하이브리드</td>
+</tr>
+<tr>
+<td><strong>2010 ~</strong></td>
+<td><strong>멀티콥터(= 드론)</strong> — 도심 항공 모빌리티에 큰 변화 시작</td>
+</tr>
+</tbody>
+</table>
+<p><strong>자이로콥터 사양 예</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>길이</td>
+<td>5.1m</td>
+<td>최대 비행 속도</td>
+<td>172 km/h</td>
+</tr>
+<tr>
+<td>높이</td>
+<td>2.81m</td>
+<td>최소 비행 속도</td>
+<td>50 km/h</td>
+</tr>
+<tr>
+<td>천장(고도)</td>
+<td>3,000m</td>
+<td>좌석</td>
+<td>2</td>
+</tr>
+<tr>
+<td>이륙 거리</td>
+<td>90m 이하</td>
+<td>착륙 거리</td>
+<td>30m 이하</td>
+</tr>
+<tr>
+<td>연료 탱크</td>
+<td>68L @95#</td>
+<td>지구력</td>
+<td>5시간</td>
+</tr>
+<tr>
+<td>비행거리</td>
+<td>500 km</td>
+<td>순항 속도</td>
+<td>100~150 km/h</td>
+</tr>
+<tr>
+<td>최대 이륙 중량</td>
+<td>485 kg</td>
+<td>상승률</td>
+<td>4.5 m/s (1인) / 3.2 m/s (2인)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>장점</strong> — 도로 주행 + 공중 비행 가능</li>
+<li><strong>단점</strong> — 헬리콥터와는 달리 <strong>활주로가 필요</strong>, <strong>내연 기관 엔진으로 공해와 소음</strong> 발생</li>
+</ul>
+<p><strong>멀티콥터의 비행 원리 대비</strong></p>
+<table>
+<thead>
+<tr>
+<th>헬리콥터형</th>
+<th>멀티콥터형</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main Rotor에서 양력 생성, Main Rotor의 <strong>Angle을 통해 추력(Roll/Pitch) 제어</strong>, Rear Rotor는 Yaw 제어</td>
+<td><strong>각 Rotor가 양력을 생성</strong>하며, <strong>회전수를 조절해 추력 방향 제어</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="uam_1">UAM의 종류<a class="headerlink" href="#uam_1" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">① 멀티콥터(드론) 방식<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th><strong>Volocopter</strong> (독일 Volocopter社)</th>
+<th><strong>EHang216</strong> (중국 Ehang社)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>배터리</td>
+<td><strong>배터리 교체 ( &lt; 5min)</strong></td>
+<td><strong>배터리 충전 ( min 1 Hour)</strong></td>
+</tr>
+<tr>
+<td>인원</td>
+<td>2명</td>
+<td></td>
+</tr>
+<tr>
+<td>비행거리</td>
+<td>35 km</td>
+<td></td>
+</tr>
+<tr>
+<td>최대 비행 속도</td>
+<td>100 km/h</td>
+<td></td>
+</tr>
+<tr>
+<td>로터</td>
+<td><strong>16개 이상</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>활발한 연구로 급변하는 도심 항공 모빌리티 산업</p>
+</blockquote>
+<h4 id="2-lift-cruise-tilt-rotor">② Lift &amp; Cruise / Tilt Rotor 방식<a class="headerlink" href="#2-lift-cruise-tilt-rotor" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>방식</th>
+<th>특징</th>
+<th>사례</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>리프트 &amp; 크루즈 (Lift + Cruise)</strong></td>
+<td>수직용 로터와 순항용 추진기를 분리</td>
+<td>현대자동차 <strong>S-A1</strong> (CES 2020, 스마트 모빌리티 솔루션의 UAM 비전 콘셉트), 브라질 <strong>Embraer X — Eve</strong></td>
+</tr>
+<tr>
+<td><strong>틸트로터 (Tilt Rotor, Vector Thrust)</strong></td>
+<td><strong>순항 시 Rotor 방향을 수평으로 전환</strong>. ※ 멀티콥터에 비해 <strong>순항 시 적은 에너지 소모</strong></td>
+<td>한국항공우주연구원 <strong>OPPAV</strong>, KAI社 OPPAV</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embraer X Eve 사양</strong> — 인원 5명 / 공허중량·최대중량 500~1,000 kg / 비행거리 60 km / 최대 비행 속도 240 km/h</p>
+<h2 id="5-utm-vs-atm">5. 드론 교통관리 — UTM vs ATM<a class="headerlink" href="#5-utm-vs-atm" title="Permanent link">&para;</a></h2>
+<div class="admonition success">
+<p class="admonition-title">고도로 나뉘는 두 체계</p>
+<table>
+<thead>
+<tr>
+<th>고도</th>
+<th>체계</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>400 ft(약 120m) 이하</strong></td>
+<td><strong>UTM</strong> 중심 영역</td>
+<td>소형 드론(sUAS) 중심. 도시·농업·시설점검 등 저고도 임무. <strong>자동화 기반 교통관리</strong>. FAA 관제 대신 <strong>협력형 관리(Cooperative Management)</strong></td>
+</tr>
+<tr>
+<td>400 ft ~ 18,000 ft</td>
+<td><strong>UTM·ATM 혼재</strong> 과도 영역</td>
+<td>헬리콥터, 감시 드론, 특수 목적 UAV, 저고도 항공기</td>
+</tr>
+<tr>
+<td><strong>18,000 ft 이상</strong></td>
+<td><strong>ATM</strong> 중심 영역</td>
+<td>여객기·화물기·군용기. <strong>IFR 기반 항공교통관제</strong>. 사람이 직접 관제하는 기존 체계</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>UTM</strong> (Unmanned Aircraft System Traffic Management) — 드론 중심 저고도 교통관리 체계, 다수 드론을 네트워크 기반으로 관리</li>
+<li><strong>ATM</strong> (Air Traffic Management) — 기존 유인항공기 중심의 항공교통관리 시스템, 관제사가 항공기를 직접 관리</li>
+</ul>
+<p><strong>근거 문헌</strong></p>
+<ul>
+<li>법제처, 『드론 활용의 촉진 및 기반조성에 관한 법률』, 국가법령정보센터(2025)</li>
+<li>Federal Aviation Administration, 『FAA Regulation Part 107』, FAA(2025)</li>
+<li>국토교통부, 『<strong>한국형 도심항공교통(K-UAM) 운용개념서 1.5</strong>』, UAM Team Korea(2025)</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">시험 포인트 (기말 2번)</p>
+<p><strong>"드론 생태계 관리를 위한 UTM 시스템의 주요 기능으로 적절하지 않은 것은?"</strong>
+→ ① 비행계획 제출 및 허가 ② 실시간 비행 중 충돌 회피 ③ <strong>지자체별 연료 보급소 위치 전송</strong> ← 정답 ④ 드론 위치·고도 정보 통합 제공</p>
+</div>
+<h2 id="6-3">6. 파트 3의 문 — 로봇 산업의 중요성<a class="headerlink" href="#6-3" title="Permanent link">&para;</a></h2>
+<p>12주차 후반부터 <strong>로봇</strong>으로 넘어간다. 상세는 <a href="../week13/">13주차</a>에서 다루고, 여기서는 <strong>왜 지금 로봇인가</strong>를 짚는다.</p>
+<h3 id="issue">로봇 산업 Issue<a class="headerlink" href="#issue" title="Permanent link">&para;</a></h3>
+<p><strong>저출산·고령화 → 생산가능인구 감소 → 노동력 부족 → 생산성 향상·자동화 수요 증가</strong></p>
+<h3 id="_5">차세대 성장 엔진의 필요성<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>국내 제조 산업의 현황</strong></td>
+<td>우리나라는 <strong>세계 수준의 제조 및 생산 기반을 보유</strong>하고 있음. 그러나 산업에서의 <strong>제조업 비중이 감소</strong>하고 있는 시점</td>
+</tr>
+<tr>
+<td><strong>기존 산업의 한계</strong></td>
+<td>주력 산업은 <strong>세계적 공급 과잉 상태</strong>에 직면. 현재 시장의 확장은 어려우며, <strong>고도 성장은 종료된 상태</strong>로 평가</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">시험 포인트 (기말 9번)</p>
+<p><strong>"차세대 산업성장 동력 확보와 관련된 설명으로 사실과 가장 거리가 먼 것"</strong>
+→ <strong>"제조업 비중은 계속 증가하고 고도 성장을 지속"</strong> ← 정답(사실과 다름)
+(✅ 글로벌 수준의 제조·생산 기반 보유 / ✅ 공급 과잉 구조와 확장성 한계 직면 / ✅ 휴머노이드 로봇 시장은 서비스·의료 중심으로 성장)</p>
+</div>
+<h3 id="_6">로봇 산업의 성공 공식<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>$$\textbf{기술 융합(Convergence)} + \textbf{시장 창출(Market Creation)} = \textbf{로봇 산업 성공}$$</p>
+<table>
+<thead>
+<tr>
+<th>요인</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>기술 융합</strong></td>
+<td>AI·센서·반도체·통신·제어 기술의 융합 → 새로운 산업과 서비스 창출, 산업 간 경계를 허무는 혁신. 이종/동종 산업 간 융합, <strong>I(Information)·B(Bio)·N(Nano) Technology</strong>와의 융합, 기계 + 전자(가전·컴퓨터·통신) 융합 → <strong>Mechatronics</strong></td>
+</tr>
+<tr>
+<td><strong>Digital Convergence</strong></td>
+<td>전자 기능 간의 융합, Network·Infra 간의 융합</td>
+</tr>
+<tr>
+<td><strong>시장 창출</strong></td>
+<td>기술보다 <strong>고객의 문제 해결</strong>이 중요. 새로운 수요와 시장을 발굴하는 능력 필요. <strong>초기 시장 선점</strong>이 산업 주도권 결정</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition quote">
+<p class="admonition-title">핵심 메시지</p>
+<p><strong>"좋은 기술만으로는 성공할 수 없다. 기술 융합을 통해 혁신을 만들고, 시장을 창출하여 고객 가치를 제공해야 한다."</strong></p>
+</div>
+<h3 id="4">4차 산업혁명과 지능형 로봇<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>산업혁명</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1차</td>
+<td>기계화 (Mechanization)</td>
+</tr>
+<tr>
+<td>2차</td>
+<td>대량생산 (Mass Production)</td>
+</tr>
+<tr>
+<td>3차</td>
+<td>자동화 (Automation)</td>
+</tr>
+<tr>
+<td><strong>4차</strong></td>
+<td><strong>지능화 (Intelligent Automation)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4차 산업혁명의 핵심 변화</strong></p>
+<ol>
+<li><strong>ICT와 제조업의 융합</strong> — AI·클라우드·빅데이터·로봇 기술 통합, 물리 세계와 디지털 세계 연결, 스마트 팩토리 구현</li>
+<li><strong>사물인터넷(IoT) 기반 연결</strong> — 기계와 기계(M2M) 통신, 센서 데이터 실시간 수집, 생산설비 간 자율 협업</li>
+<li><strong>CPS (Cyber Physical System)</strong> — 현실 공장을 디지털 공간에 구현, 시뮬레이션 기반 생산 최적화, <strong>디지털 트윈</strong> 활용</li>
+<li><strong>생산 통제의 변화</strong> — 과거: 사람이 생산 과정 제어 → 현재: 기계가 스스로 판단·제어 → 미래: <strong>AI 기반 자율 생산 시스템</strong></li>
+</ol>
+<p><strong>로봇 관점에서의 의미</strong> — 산업용 로봇 → 지능형 로봇 / 단순 반복 작업 → 자율 의사결정 / 개별 로봇 → 네트워크 연결 로봇 / <strong>자동화 → 자율화(Autonomy)</strong></p>
+<h3 id="industry-40">Industry 4.0<a class="headerlink" href="#industry-40" title="Permanent link">&para;</a></h3>
+<p>Industry 4.0은 <strong>노동력 부족, 고령화, 글로벌 경쟁에 대응</strong>하기 위해 AI·IoT·로봇을 활용하여 제조업을 지능화하는 혁신 전략이다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>필요 이유</strong></td>
+<td>숙련공 부족 및 노동력 감소 / 고령화 / 글로벌 경쟁 심화와 비용 절감 압박 / <strong>제품 수명주기 단축</strong> / 고객 요구 다양화로 제품 변동성 증가</td>
+</tr>
+<tr>
+<td><strong>목표</strong></td>
+<td>스마트 팩토리 구현 / 생산설비의 자율적 의사결정 / 공장 내 모든 설비·시스템 연결 / 생산성 향상 및 비용 절감 / <strong>유연 생산(Flexible Manufacturing)</strong> 실현</td>
+</tr>
+<tr>
+<td><strong>핵심 특징</strong></td>
+<td><strong>맞춤형 대량생산(Mass Customization)</strong> / 소규모 스마트 공장 운영 / 자원 효율성 극대화 / 친환경·도심형 생산 시스템 / 공급망 전체의 디지털 연결</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-hrc-10">인간-로봇 협업 (HRC) — 기말 10번 직결<a class="headerlink" href="#-hrc-10" title="Permanent link">&para;</a></h3>
+<p><strong>EU ROBO-PARTNER 프로젝트</strong> — 미래 제조환경에서 인간과 로봇이 협력하는 스마트 공장 모델.</p>
+<table>
+<thead>
+<tr>
+<th>기존 산업용 로봇</th>
+<th>4차 산업혁명형 로봇</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>안전 펜스(Fence) 내부</strong>에서 독립 작업</td>
+<td>사람과 <strong>같은 공간</strong>에서 작업</td>
+</tr>
+<tr>
+<td>사람과 작업 공간 분리</td>
+<td>작업 상황을 <strong>실시간 인식</strong></td>
+</tr>
+<tr>
+<td>반복 작업 자동화 중심</td>
+<td>사람을 <strong>보조</strong>하는 역할 수행</td>
+</tr>
+<tr>
+<td>생산성 향상이 주요 목적</td>
+<td><strong>생산성과 유연성을 동시에</strong> 확보</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ROBO-PARTNER의 핵심 개념 4가지</strong> — ① Human-Robot Safe Interaction ② Mobile Robot(AMR/AGV) ③ Human-Robot Cooperative Task Planner ④ Cooperative Assembly</p>
+<p><strong>인간-로봇 협력 생산의 장점</strong></p>
+<table>
+<thead>
+<tr>
+<th>장점</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 생산성 향상</strong></td>
+<td>로봇 = 반복 작업·고중량 작업·정밀 작업 / 인간 = 판단·문제 해결·창의적 의사결정</td>
+</tr>
+<tr>
+<td><strong>② 공정 유연성 증가</strong></td>
+<td>기존 자동화는 제품 A 전용 라인 → 제품 B 생산 시 재설계 필요. <strong>협동 생산</strong>은 사람이 변화에 대응하고 로봇은 반복 작업 수행 → <strong>다품종 소량생산에 유리</strong></td>
+</tr>
+<tr>
+<td><strong>③ 로봇의 한계 보완</strong></td>
+<td>현재 AI·로봇 기술이 발전했지만 여전히 인간의 지능이 필요한 영역이 있음</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>제조 로봇과 인간이 안전하게 협조함으로써 <strong>사용성과 생산성을 극대화</strong>한다. 인간-로봇 협력생산은 최종목적지인 <strong>완전무인화에 도달하기 위해 필수적으로 거쳐야 할 기술개발 단계</strong>임과 동시에 <strong>현실적인 솔루션</strong>이 될 수 있다. 로봇이 인공지능 학습 기능을 갖춘다면 가까운 미래에 로봇에 의한 완전 무인화 생산이 될 것이다.</p>
+</blockquote>
+<div class="admonition danger">
+<p class="admonition-title">시험 포인트 (기말 10번)</p>
+<p><strong>"지능형 로봇 기반 유연 생산 시스템의 핵심 전략으로 가장 적절한 것은?"</strong>
+→ <strong>인간-로봇 협업 중심의 유연한 작업 흐름 구축</strong>
+(✕ 정형화된 반복 작업의 전면 자동화 / ✕ 전 공정 무인화를 통한 고정 생산라인 설계 / ✕ 모든 직업에 대한 인간 개입을 최소화한 구조)</p>
+</div>
+<h2 id="_7">🤔 생각해 봅시다<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ol>
+<li>2020년 현대자동차가 그린 가상 스마트시티 시나리오에서, <strong>어떤 부분이 "인간 중심의 스마트시티"</strong>라고 여겨지는가?</li>
+<li>Whim의 대중교통 이용률 48%→74% 증가는 정말 MaaS 때문인가? 다른 설명 요인은 없는가?</li>
+<li>UAM이 활성화되면 도심 밀집도가 낮아진다는 기대는 타당한가? 오히려 <strong>소음·안전·형평성</strong> 문제가 생기지는 않는가?</li>
+</ol>
+<h2 id="_8">✅ 이번 주 체크리스트<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 스마트시티 정의 3요소(삶의 질·지속가능성·신산업 플랫폼)를 말할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> '인간 중심'을 사회·기술·정책 3측면으로 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> MaaS의 정의와 Whim 사례(48%→74%)를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> UAM 정의와 기대효과 3가지를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 멀티콥터/Lift+Cruise/Tilt Rotor 3방식을 구분할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> UTM(400ft 이하)과 ATM(18,000ft 이상)의 경계를 안다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 로봇 산업 성공 공식(기술 융합 + 시장 창출)을 안다</li>
+</ul>
+<hr />
+<p>▶️ <strong>다음 주 예고</strong> — 로봇의 역사를 처음부터 훑는다. 'Robota'라는 단어부터 아시모프의 3원칙, 최초의 산업용 로봇 Unimate, 그리고 지금 중국이 만들고 있는 휴머노이드 VLA 모델까지. → <a href="../week13/">13주차</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../week11/" class="md-footer__link md-footer__link--prev" aria-label="이전: 11주차 · 드론 구조설계와 멀티콥터 설계">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                11주차 · 드론 구조설계와 멀티콥터 설계
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week13/" class="md-footer__link md-footer__link--next" aria-label="다음: 13주차 · 로봇의 등장과 산업용 로봇">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                13주차 · 로봇의 등장과 산업용 로봇
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
