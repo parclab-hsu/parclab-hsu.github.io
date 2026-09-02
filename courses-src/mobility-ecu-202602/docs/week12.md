@@ -512,6 +512,10 @@ Cboot ≥ Qtotal / ΔVboot
 - hardware over-current는 firmware 정지와 무관하게 동작한다.
 - fault 원인과 recovery condition을 LED·UART로 진단할 수 있다.
 
+### 레퍼런스 보드에서 확인하기
+
+[FM_SmartDriver V1](reference-board.md)의 회로도 시트 3·4가 좌·우 3상 인버터다. UCC27211DR 6개(축당 3개), 부트스트랩 다이오드 1N5819HW 12개, 게이트 저항 10Ω 36개, 게이트-소스 클램프 RSB16VTE 12개, 2mΩ 션트 8개 + INA240A1 2개가 이번 주 이론과 그대로 대응한다. 위 계산식으로 나온 값을 실제 부품값과 대조해 본다.
+
 ### firmware가 멈췄을 때의 안전 상태 (watchdog)
 
 제어 루프가 무한 루프나 ISR 폭주로 정지해도 TIM1은 마지막 duty를 그대로 출력한다. 모터는 명령 없이 계속 돈다. hardware 차단(BKIN)이 과전류를 잡아 준다면, watchdog은 "명령이 갱신되지 않는 상태" 자체를 잡는다.

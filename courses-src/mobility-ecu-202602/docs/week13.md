@@ -512,6 +512,15 @@ trace width는 한 개의 고정 숫자가 아니라 copper thickness, inner/out
 
 power device copper, thermal via, 방열판 접촉부, airflow를 계획한다. SWD·UART·voltage·current test point는 조립 후에도 접근 가능하게 둔다.
 
+## 📦 레퍼런스 보드의 릴리스 패키지 읽기
+
+[FM_SmartDriver V1](reference-board.md)의 [BOM](board/FM_SmartDriver_BOM.csv)과 [CPL](board/FM_SmartDriver_CPL.xlsx)을 열어 제조 관점에서 점검한다.
+
+- BOM 146종 546개 — `Designator` 개수와 `Quantity` 합계가 일치하는가(546으로 일치)
+- `Manufacturer Part`가 빈 줄은 무엇인가(나사 구멍·테스트 포인트처럼 실제로 사지 않는 항목만이어야 한다)
+- CPL 558점의 `Layer`가 전부 `T` — 단면 실장이다. 왜 그렇게 정했을까
+- `Rotation` 0/90/180/270 분포 — 이 값이 틀리면 IC가 돌아간 채 납땜된다
+
 ## ⏱️ 3시간 수업 운영안
 
 | 시간 | 활동 | 학생 산출물 |

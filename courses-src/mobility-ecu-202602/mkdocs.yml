@@ -67,6 +67,7 @@ nav:
   - 용어·도해 사전: glossary.md
   - 최신 기술 트렌드: trends.md
   - 🌍 국내외 대학·대회 동향: global-benchmark.md
+  - 🔧 레퍼런스 보드(FM_SmartDriver): reference-board.md
   - 주차별 강의 자료:
       - 1주차 · 오리엔테이션·로버 제어유닛 구조: week01.md
       - 2주차 · 전자부품 1 · 저항·커패시터·인덕터: week02.md

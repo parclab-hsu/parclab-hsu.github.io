@@ -495,6 +495,10 @@ PCB 노이즈·그라운드의 시스템 위치, 수치 근거, 실험 증거, �
 
 noise 문제를 source(빠른 voltage/current 변화), coupling path(common impedance·parasitic C/L), victim(ADC·Hall·UART)으로 나눈다. 대책은 source edge를 완화하는지, 결합 경로를 줄이는지, victim 내성을 높이는지 명확히 설명한다.
 
+### 레퍼런스 보드 6층으로 확인하기
+
+[FM_SmartDriver V1](reference-board.md)은 6층 보드이고 각 층의 동박 이미지가 공개돼 있다. Layer 1에서 `LEFT_U/V/W`·`RIGHT_U/V/W` 대형 상 동박과 `+DC_LINK` 면, 그리고 가운데 MCU에서 뻗는 가는 신호선이 바로 보인다. 층을 하나씩 겹쳐 보며 스위칭 루프가 어느 층에서 닫히는지, 션트–INA240 배선이 전력 패드와 분리돼 있는지, 홀·엔코더 신호가 3상 동박 밑을 지나는지 추적한다.
+
 ### EMC — 같은 모델을 보드 밖으로 확장하기
 
 내 보드가 만들어 내보내는 것이 **emission**, 밖에서 들어오는 것을 견디는 능력이 **immunity**다. 둘 다 전도(conducted, 전원·신호선 경로)와 방사(radiated, 공간 결합)로 나뉜다. 이 수업에서 규격 시험을 하지는 않지만, 인버터는 대표적인 노이즈원이므로 설계 단계에서 다음은 판단할 수 있어야 한다.

@@ -16,7 +16,7 @@
 | 학과 | 미래모빌리티학과 |
 | 운영 | 15주 · 주당 3시간 · 총 45시간 |
 | 구성 | 이론 강의 1.5h + 실습/프로젝트 1.5h (주 3시간) · 팀 기반 운영 |
-| 도구 | STM32F767 기반 보드(레지스터 직접제어, HAL은 비교 학습용), 로버 구동 모터 + 한성대 보드, EasyEDA(회로/PCB), STM32CubeIDE, 로버 섀시 키트, UART/Teleplot |
+| 도구 | 레퍼런스 보드 FM_SmartDriver V1(STM32H723ZGT6, 2축 BLDC, 6층) + STM32F767 학습보드(레지스터 직접제어 실습), 로버 구동 모터, EasyEDA(회로/PCB), STM32CubeIDE, 로버 섀시 키트, UART/Teleplot |
 
 !!! tip "🤖 AX 교육과정으로 운영"
     본 강의는 **AX(AI Transformation) 교육과정**으로, 기존 임베디드·제어 위에 **AI 도구 활용·데이터 기반 제어·엣지 AI(TinyML)·Physical AI**를 통합한다. 상세는 [AX 교육과정 개편](ax-curriculum.md) 참고.
