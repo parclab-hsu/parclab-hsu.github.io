@@ -138,6 +138,8 @@ LED 토글 코드를 HAL과 레지스터 방식으로 비교하고, 디버거에
     마스크, 쉬프트, volatile, read-modify-write를 코드 리뷰 대상으로 삼는다. AI 코드 보조 결과도 반드시 레퍼런스 매뉴얼로 확인한다.
 
 ## 📦 용어 박스
+
+> 📚 이번 주 용어의 자세한 설명과 그림은 **[주차별 용어 정리 — 8주차](terms-by-week.md#week08)** 에 있다.
 !!! abstract "이번 주 꼭 설명할 용어"
     - **메모리맵**: 주소 공간에 Flash, SRAM, 주변장치 레지스터를 배치한 지도.
     - **RCC**: 클럭을 켜고 PLL/버스를 설정하는 STM32 Reset and Clock Control.

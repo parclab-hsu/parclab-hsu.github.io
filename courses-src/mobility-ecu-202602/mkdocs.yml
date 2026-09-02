@@ -36,6 +36,7 @@ extra_css:
 markdown_extensions:
   - admonition
   - attr_list
+  - def_list
   - md_in_html
   - tables
   - footnotes
@@ -65,6 +66,7 @@ nav:
   - 📝 과제집(과제·제출 예시): assignments.md
   - 첨부자료 활용 가이드: resources.md
   - 용어·도해 사전: glossary.md
+  - 📚 주차별 용어 정리: terms-by-week.md
   - 최신 기술 트렌드: trends.md
   - 🌍 국내외 대학·대회 동향: global-benchmark.md
   - 🔧 레퍼런스 보드(FM_SmartDriver): reference-board.md

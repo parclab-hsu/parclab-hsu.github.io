@@ -152,6 +152,8 @@ PI 속도제어 초기값 `Kp = J·ωc²/KT`, `Ki = J·ωc²/(5·KT)`. Teleplot(
     요구사항, HSI, 회로/PCB, 코드 구조, Teleplot 로그, 주행 영상, 실패 원인 분석을 한 흐름으로 발표한다.
 
 ## 📦 용어 박스
+
+> 📚 이번 주 용어의 자세한 설명과 그림은 **[주차별 용어 정리 — 15주차](terms-by-week.md#week15)** 에 있다.
 !!! abstract "이번 주 꼭 설명할 용어"
     - **6-step 펌웨어**: 홀 상태에 따라 두 상을 선택해 PWM을 출력하는 BLDC 구동 코드.
     - **Center-aligned PWM**: 카운터가 up/down하며 중앙 정렬 펄스를 만들어 전류센싱과 EMI에 유리한 PWM.
