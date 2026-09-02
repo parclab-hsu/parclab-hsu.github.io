@@ -167,6 +167,9 @@ from langchain.output_parsers import PydanticOutputParser
 from langchain.prompts import ChatPromptTemplate
 from models import HighLevelPlan
 
+# model: 보유한 API 키로 사용 가능한 모델로 교체할 수 있다.
+#        단, PydanticOutputParser의 구조화 출력(JSON 스키마 준수)을
+#        안정적으로 지원하는 모델을 골라야 플랜 검증이 통과한다.
 # temperature=0.1 → 창의성을 거의 줄여 경로 흔들림("어제 오른쪽, 오늘 왼쪽") 방지
 llm = ChatOpenAI(model="gpt-4o", temperature=0.1)
 parser = PydanticOutputParser(pydantic_object=HighLevelPlan)
