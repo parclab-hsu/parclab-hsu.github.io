@@ -69,7 +69,7 @@ nav:
       - 5주차 · 자율주행 단계·규제와 센서 시스템: week05.md
       - 6주차 · 센서의 진화와 AI 프로세서: week06.md
       - 7주차 · 통신·V2X와 공학 설계 프로세스: week07.md
-      - 8주차 · 중간고사: week08.md
+      - 8주차 · 중간고사 기간: week08.md
       - 9주차 · 드론 개념·분류·시스템 구조: week09.md
       - 10주차 · 드론 생태계·DNA+드론·대드론: week10.md
       - 11주차 · 드론 구조설계와 멀티콥터 설계: week11.md
@@ -77,7 +77,5 @@ nav:
       - 13주차 · 로봇의 등장과 산업용 로봇: week13.md
       - 14주차 · 휴머노이드 보행과 Physical AI: week14.md
       - 15주차 · 기말고사: week15.md
-  - 시험·평가:
-      - 시험 유형과 핵심 정리: exams.md
-      - 과제·발표 안내: assignments.md
+  - 과제·발표 안내: assignments.md
   - 용어 사전: glossary.md

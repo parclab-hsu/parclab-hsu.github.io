@@ -1038,7 +1038,7 @@
   <span class="md-ellipsis">
     
   
-    8주차 · 중간고사
+    8주차 · 중간고사 기간
   
 
     
@@ -1261,86 +1261,6 @@
   
   
   
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    시험·평가
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    시험·평가
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../exams/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    시험 유형과 핵심 정리
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../assignments/" class="md-nav__link">
         
@@ -1358,14 +1278,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1830,7 +1742,7 @@
 
 <h1 id="6-ai">6주차 · 센서의 진화와 AI 프로세서<a class="headerlink" href="#6-ai" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>🔗 <strong>강의 흐름</strong> — 5주차에서 "센서 성능이 아니라 비용 대비 성능"이라고 했다. 이번 주는 그 말의 근거를 <strong>센서별 물리 원리와 가격표</strong>로 확인하고, 경쟁의 무게중심이 왜 <strong>AI 반도체</strong>로 넘어갔는지 본다. 중간고사 서술형 3번(센서 비교 + 센서 퓨전)이 여기서 나온다.</p>
+<p>🔗 <strong>강의 흐름</strong> — 5주차에서 "센서 성능이 아니라 비용 대비 성능"이라고 했다. 이번 주는 그 말의 근거를 <strong>센서별 물리 원리와 가격표</strong>로 확인하고, 경쟁의 무게중심이 왜 <strong>AI 반도체</strong>로 넘어갔는지 본다. 센서별 비교와 센서 퓨전이 이 주차의 핵심이다.</p>
 <p><strong>학습목표</strong> — 카메라·라이다·레이더·열화상·SWIR 센서의 물리적 원리와 장단점을 비교하고, 각 센서의 진화 방향을 설명하며, 자율주행 AI 프로세서의 성능 지표와 시장 구도를 설명할 수 있다.</p>
 <p>💡 <strong>기초 다지기</strong> — <strong>센서는 각각 "보는 방식"이 다르다.</strong> 카메라는 빛(색·형태), 라이다는 레이저의 왕복 시간(거리·3D), 레이더는 전파와 도플러(거리·속도), 열화상은 온도. 그래서 <strong>하나가 실패하는 상황에서 다른 하나가 살아남는다.</strong> 이것이 센서 퓨전의 존재 이유다.</p>
 </blockquote>
@@ -1952,10 +1864,10 @@
 <li><strong>열화상 카메라</strong> — <strong>온도 인지</strong>로 사람/동물/차량 등의 <strong>야간 인지 가능</strong>. 예: 열화상 카메라 '바이퍼(Viper)'</li>
 <li><strong>SWIR 카메라</strong> (이스라엘 TriEye) — <strong>저비용 단파장 적외선 이미징 솔루션</strong>. CMOS 기반 이미지 센서에 SWIR 기능 구현 → 악천후 이미징, 야간 이미징, 원격 물질 감지, 1000배 낮은 가격, 저전력, 고해상도</li>
 </ul>
-<div class="admonition danger">
-<p class="admonition-title">시험 포인트 — 매년 나온다</p>
-<p><strong>"온도를 감지하여 야간에도 사람, 동물, 차량 등을 인식할 수 있는 센서는?"</strong>
-→ ① 4D 이미징 라이다 ② 이벤트 카메라 ③ Short Wave IR 센서 ④ <strong>열화상 카메라</strong> ← 정답</p>
+<div class="admonition success">
+<p class="admonition-title">온도로 보는 센서 — 열화상 카메라</p>
+<p>온도를 감지하여 야간에도 사람·동물·차량을 인식하는 센서는 <strong>열화상 카메라</strong>다.
+4D 이미징 라이다 · 이벤트 카메라 · SWIR 센서와는 원리가 다르다.</p>
 </div>
 <h2 id="3-lidar">3. 라이다 (LiDAR)<a class="headerlink" href="#3-lidar" title="Permanent link">&para;</a></h2>
 <h3 id="_4">원리<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
@@ -1985,9 +1897,9 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition danger">
-<p class="admonition-title">시험 포인트 — 라이다 오답 보기</p>
-<p><strong>"안개나 비, 눈이 올 때도 정확한 성능을 유지할 수 있다"</strong> → <strong>틀린 설명</strong>이다. 날씨에 강한 것은 <strong>레이더</strong>다.</p>
+<div class="admonition warning">
+<p class="admonition-title">라이다의 한계 — 자주 오해하는 점</p>
+<p>라이다가 <strong>안개·비·눈에서도 정확한 성능을 유지한다는 것은 사실이 아니다.</strong> 악천후에 강한 센서는 <strong>레이더</strong>다.</p>
 </div>
 <h3 id="_6">라이다 주요 이슈<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><strong>① Eye-safe LiDAR — 950nm vs 1550nm</strong></p>
@@ -2310,12 +2222,12 @@
 </table>
 <p><strong>NVIDIA Drive Thor (GTC 2022)</strong> — HYPERION 8 SENSORS: 2.5 G sample/sec, 750 TOPs ×3 / HYPERION 9 SENSORS: 4.2 G sample/sec, <strong>2000 TOPs ×2</strong></p>
 <p><strong>Qualcomm Snapdragon Ride Vision SoC</strong> — 업계 선도 <strong>4nm</strong> SoC. Hexagon Processor, Kryo CPU, Embedded Vision Accelerator, Spectra ISP, Video Processor(VPU), Secure Processor, Safety Island. Arriver 협력 발표.</p>
-<div class="admonition danger">
-<p class="admonition-title">시험 포인트 — 매년 나온다</p>
-<p><strong>"다음 중 고성능 자율주행 프로세서를 제조하지 않는 기업은?"</strong>
-→ ① <strong>루미나</strong> ← 정답(라이다 업체) ② 퀄컴 ③ 엔비디아 ④ 모빌아이</p>
-<p><strong>"자율주행용 임베디드 AI 프로세서에 대한 설명으로 옳지 않은 것"</strong>
-→ <strong>"전력 소모가 많아도 괜찮다"</strong> ← 정답(옳지 않음). 연산량 최적화 필요 ✅, 빠른 처리 속도 요구 ✅, 양자화 이슈 발생 가능 ✅</p>
+<div class="admonition warning">
+<p class="admonition-title">기업과 제품을 짝지어 기억한다</p>
+<p>고성능 자율주행 프로세서를 만드는 곳은 <strong>퀄컴 · 엔비디아 · 모빌아이</strong>다.
+<strong>루미나는 라이다 업체</strong>이며 프로세서 제조사가 아니다.</p>
+<p>또한 임베디드 AI 프로세서는 <strong>연산량 최적화가 필요하고, 빠른 처리 속도가 요구되며, 양자화 이슈가 발생</strong>한다.
+<strong>전력 소모에 제약이 없다는 것은 사실이 아니다.</strong></p>
 </div>
 <p><img alt="Training → Translation → Inference 흐름과 Network quantization으로 인한 정확도 감소 문제" src="../figures/w06-tidl-quantization.webp" /></p>
 <blockquote>
@@ -2490,7 +2402,7 @@
 </table>
 <h2 id="_14">🤔 생각해 봅시다<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p><strong>중간고사 서술형 3번 시나리오 연습</strong>
+<p><strong>시나리오 분석</strong>
 <strong>"짙은 안개가 낀 야간 고속도로에서 선행 트럭 뒤에 정지 차량이 있는 시나리오"</strong> — 각 센서가 기여하는 바와 한계를 센서 퓨전 관점에서 논하시오.</p>
 </blockquote>
 <table>
@@ -2545,7 +2457,7 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 루미나가 프로세서 회사가 아니라는 것을 안다</li>
 </ul>
 <hr />
-<p>▶️ <strong>다음 주 예고</strong> — 센서만으로는 인지할 수 없는 것을 <strong>통신</strong>으로 확보한다. V2X 4유형, DSRC, MEC, 5G. 그리고 중간고사 서술형에 나오는 <strong>7단계 공학 설계 프로세스</strong>를 실제 공모전 사례로 익힌다. → <a href="../week07/">7주차</a></p>
+<p>▶️ <strong>다음 주 예고</strong> — 센서만으로는 인지할 수 없는 것을 <strong>통신</strong>으로 확보한다. V2X 4유형, DSRC, MEC, 5G. 그리고 <strong>7단계 공학 설계 프로세스</strong>를 실제 공모전 사례로 익힌다. → <a href="../week07/">7주차</a></p>
 
 
 

@@ -603,7 +603,7 @@
   <span class="md-ellipsis">
     
   
-    8주차 · 중간고사
+    8주차 · 중간고사 기간
   
 
     
@@ -920,7 +920,7 @@
   <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. 레이아웃 및 로터 선정에 따른 성능 비교 — 기말 필수
+        9. 레이아웃 및 로터 선정에 따른 성능 비교
       
     </span>
   </a>
@@ -1133,86 +1133,6 @@
   
   
   
-    
-    
-    
-    
-      
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    시험·평가
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    시험·평가
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../exams/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    시험 유형과 핵심 정리
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../assignments/" class="md-nav__link">
         
@@ -1230,14 +1150,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1476,7 +1388,7 @@
   <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. 레이아웃 및 로터 선정에 따른 성능 비교 — 기말 필수
+        9. 레이아웃 및 로터 선정에 따른 성능 비교
       
     </span>
   </a>
@@ -1574,7 +1486,7 @@
 
 <h1 id="11">11주차 · 드론 구조설계와 멀티콥터 설계<a class="headerlink" href="#11" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>🔗 <strong>강의 흐름</strong> — 이 주차는 개론 과목에서 유일하게 <strong>정량 설계</strong>를 다룬다. 그래서 <strong>기말고사 계산 문제 3문항이 전부 여기서 나온다.</strong> 강성·안전계수·동력원·공진 — 네 가지 개념을 숫자로 다룰 수 있어야 한다.</p>
+<p>🔗 <strong>강의 흐름</strong> — 이 주차는 개론 과목에서 유일하게 <strong>정량 설계</strong>를 다룬다. 강성·안전계수·동력원·공진 — 네 가지 개념을 숫자로 다룰 수 있어야 한다.</p>
 <p><strong>학습목표</strong> — 강성과 강도를 구분하고, 안전계수와 Weight Spiral의 관계를 설명하며, 구조-제어 통합설계와 디지털 트윈의 개념을 서술하고, 프로펠러·모터·배터리 선정과 레이아웃 비교를 정량적으로 수행할 수 있다.</p>
 <p>💡 <strong>기초 다지기</strong> — <strong>"강성이 부족하면 흔들리고, 강도가 부족하면 부러진다."</strong>
 이 한 문장이 이번 주차의 전부다. 흔들림(진동·공진)은 <strong>강성(Stiffness)</strong> 문제, 부러짐(파괴)은 <strong>강도(Strength)</strong> 문제. 둘은 다른 물리량이고, 다른 방법으로 해결한다.</p>
@@ -1623,8 +1535,8 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition danger">
-<p class="admonition-title">기말 서술형 필수 개념</p>
+<div class="admonition warning">
+<p class="admonition-title">공진은 강성 문제다</p>
 <p>공진은 <strong>강성–질량 문제</strong>다. 강도를 아무리 높여도 공진은 해결되지 않는다. 이 구분을 명확히 쓰지 않으면 감점된다.</p>
 </div>
 <p><img alt="강성(Stiffness)과 강도(Strength)의 의미·측정지표·시험·고장 모드 비교" src="../figures/w11-stiffness-vs-strength.webp" /></p>
@@ -1653,7 +1565,7 @@
 </table>
 <p>$$\text{요구 설계 허용응력} = \text{해석응력} \times \text{FoS}$$</p>
 <div class="admonition example">
-<p class="admonition-title">기말 계산 예제 (실제 출제)</p>
+<p class="admonition-title">계산 예제 — 요구 설계 허용응력</p>
 <p>동일 Arm의 굽힘 응력 해석값이 <strong>80 MPa</strong>일 때:</p>
 <ul>
 <li>드론 핵심부 기준 (FoS = 2.0) → 80 MPa × 2.0 = <strong>160 MPa</strong></li>
@@ -1809,8 +1721,8 @@
 </tbody>
 </table>
 <h2 id="7-4">7. 배터리 — 동력원 4방식 비교<a class="headerlink" href="#7-4" title="Permanent link">&para;</a></h2>
-<div class="admonition danger">
-<p class="admonition-title">기말 서술형 필수 — 30분 이상 체공을 위한 동력원 선정</p>
+<div class="admonition info">
+<p class="admonition-title">30분 이상 체공을 위한 동력원 선택</p>
 </div>
 <table>
 <thead>
@@ -1884,7 +1796,7 @@
 </tbody>
 </table>
 <div class="admonition example">
-<p class="admonition-title">기말 서술형 모범 답안 (동력원 선정)</p>
+<p class="admonition-title">동력원 선정 예시</p>
 <p><strong>목표: 30분 이상 + Payload 1.5kg급 소형 드론</strong>
 <strong>선정: Hybrid (LiPo + Fuel Cell)</strong> — 단, 규모 제약 시 고에너지 LiPo 우선 검토.
 <strong>근거</strong>: 소형·고응답이 요구되는 멀티콥터 특성상 <strong>순수 Fuel Cell은 부적합</strong>하고, <strong>에너지밀도는 Fuel Cell, 출력밀도는 LiPo가 분담</strong>하는 Hybrid 구성이 30분 이상 체공과 비행 안정성을 동시에 만족하는 가장 타당한 해법이다.</p>
@@ -1917,7 +1829,7 @@
 </tbody>
 </table>
 <p>→ <strong>로터가 클수록 같은 추력을 더 적은 전력으로 낸다.</strong> 이것이 다음 절의 핵심 원리다.</p>
-<h2 id="9">9. 레이아웃 및 로터 선정에 따른 성능 비교 — 기말 필수<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h2 id="9">9. 레이아웃 및 로터 선정에 따른 성능 비교<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p><strong>T-motor사의 motor/rotor 기준, Payload 1.5kg</strong></p>
 <table>
 <thead>
@@ -2015,8 +1927,8 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition danger">
-<p class="admonition-title">기말 서술형 — 왜 더 무거운 옥토콥터가 더 오래 나는가?</p>
+<div class="admonition info">
+<p class="admonition-title">왜 더 무거운 옥토콥터가 더 오래 나는가</p>
 <p><strong>핵심: 모터당 부하가 낮을수록 로터 효율(g/W)이 높아지기 때문.</strong></p>
 <p><strong>① 부하 분산 (모터당 부하)</strong>
 호버링에 필요한 총추력 = 총중량(불변, 추력 = 중량 평형).
@@ -2074,8 +1986,8 @@
 <li>Testing Results 참고값: 21.5 / 22.3 / 35.3 / 35.7 / 113.0 Hz</li>
 </ul>
 <div class="admonition example">
-<p class="admonition-title">기말 계산 예제 — 공진 위험 정량 분석 (실제 출제)</p>
-<p><strong>문제</strong>: 쿼드콥터 충격시험 결과 주요 고유진동수가 <strong>27 Hz, 38 Hz, 151 Hz</strong>에서 측정. <strong>18×6.1 프로펠러</strong> 장착, 호버링 시 약 <strong>6,000 RPM</strong> 회전. 프로펠러 통과주파수(BPF)를 계산하고(블레이드 <strong>2매</strong> 가정) 공진 위험을 정량 분석하시오.</p>
+<p class="admonition-title">계산 예제 — 공진 위험 정량 분석</p>
+<p><strong>조건</strong>: 쿼드콥터 충격시험 결과 주요 고유진동수가 <strong>27 Hz, 38 Hz, 151 Hz</strong>에서 측정. <strong>18×6.1 프로펠러</strong> 장착, 호버링 시 약 <strong>6,000 RPM</strong> 회전. 프로펠러 통과주파수(BPF)를 계산하고(블레이드 <strong>2매</strong> 가정) 공진 위험을 정량 분석하시오.</p>
 <p><strong>① 회전 주파수</strong> = 6,000 RPM ÷ 60 = <strong>100 Hz</strong>
 <strong>② BPF</strong> = 회전주파수 × 블레이드 수 = 100 Hz × 2 = <strong>200 Hz</strong></p>
 <p><strong>③ 판정</strong>
