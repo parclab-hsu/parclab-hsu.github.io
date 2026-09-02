@@ -544,6 +544,52 @@ System-1 단위 액션 설계 part 1 — 슬라이드 47 (출처: ENGI UNIVERSE)
 - **역할/왜 중요한가**: scan 노드는 "탐색 + FOUND 발행"에만 집중하고 실제 후속 행동은 상위 로직이 결정하므로, scan을 **독립·재사용 가능한 모듈**로 유지합니다.
 - **맥락·예시**: `report_on_found=True`면 FOUND 직후 `_do_report()`까지 자동 호출되며, `hasattr(node, "_do_report")`로 느슨하게 연결됩니다.
 
+## 🧠 핵심 용어 암기 노트
+
+!!! tip "이 절의 사용법"
+    위 **📖 핵심 용어 설명**이 "뜻"이라면, 이 절은 **외우고 확인하는 곳**입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.
+
+### ① 빠른 암기표
+
+| 용어 | 한 줄로 외우기 | 헷갈리는 지점 |
+| --- | --- | --- |
+| **`move_to`** | 지도 좌표로 **이동**하는 액션 (Nav2 사용) | 직접 바퀴를 굴리지 않는다 — Nav2에 목표만 넘긴다 |
+| **`scan`** | 제자리에서 **카메라만 돌려 탐색** | ALIGN(정면 정렬) → SWEEP(좌우 왕복) → FOUND(발견) |
+| **서비스 vs 액션** | 서비스=한 번에 끝, 액션=**중간 피드백 + 취소 가능** | 이동처럼 오래 걸리는 일은 액션 |
+| **`NavigateToPose`** | Nav2의 **"거기까지 가라"** 액션 인터페이스 | 기본 기준 좌표계는 `map` |
+| **쿼터니언** | 회전을 4개 값 `(x,y,z,w)`로 표현 | ROS 2는 방향을 항상 쿼터니언으로 주고받는다 |
+| **짐벌락** | 오일러각이 특정 각도에서 **축 하나를 잃는** 현상 | 이걸 피하려고 쿼터니언을 쓴다 |
+| **stuck 판정** | 진행이 없으면 **정체로 보고 포기** | 유예시간·최대 무진행시간·최소 진행량 3개 파라미터 |
+| **`progress_grace_sec`** | 출발 직후 **판정을 미루는** 시간 | 출발이 느린 것을 정체로 오판하지 않게 |
+| **`hard_stuck_timeout_sec`** | 이만큼 진행 없으면 **실패 처리** | 너무 짧으면 성급히 포기 |
+| **`progress_epsilon_m`** | 이만큼 줄어야 **진행으로 인정** | 센서 노이즈를 진행으로 착각하지 않게 |
+| **PID / P 제어** | 정밀 정렬은 PID, 넓은 탐색은 **P만으로 충분** | ALIGN=PID, SWEEP=P |
+| **FOUND 이벤트** | 목표 발견 시 `/scan_report`로 **알림만** 발행 | 후속 행동은 상위가 결정 — 느슨한 결합 |
+
+### ② 그림으로 잡기
+
+![짐벌락 — 두 축이 겹쳐 회전 자유도 하나를 잃는 순간](https://upload.wikimedia.org/wikipedia/commons/4/49/Gimbal_Lock_Plane.gif)
+*짐벌락 — 두 축이 겹쳐 회전 자유도 하나를 잃는 순간 — 출처: Wikimedia Commons, Gimbal Lock Plane.gif (CC0)*
+
+![오일러각(roll·pitch·yaw) — 짐벌락이 생기는 표현 방식](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Eulerangles.svg/960px-Eulerangles.svg.png)
+*오일러각(roll·pitch·yaw) — 짐벌락이 생기는 표현 방식 — 출처: Wikimedia Commons, Eulerangles.svg (CC BY 3.0)*
+
+![scan의 ALIGN / SWEEP / FOUND 3단계](img/w12/s33.jpg)
+*scan의 ALIGN / SWEEP / FOUND 3단계 — 출처: 강의 슬라이드 Physical AI 2강 33 (제작: ENGI UNIVERSE)*
+
+### ③ 자가 점검 퀴즈
+
+1. 이동에 서비스가 아니라 액션을 쓰는 이유 두 가지는?
+2. yaw를 쿼터니언으로 바꿔 넘기는 이유는?
+3. stuck 판정 3대 파라미터의 역할을 각각 한 줄로 쓰세요.
+4. ALIGN은 PID, SWEEP은 P 제어를 쓰는 이유는?
+
+??? success "정답 확인"
+    1. 진행 중 피드백(남은 거리 등)을 계속 받을 수 있고, 도중에 취소할 수 있기 때문.
+    2. 오일러각은 특정 각도에서 짐벌락으로 자유도를 잃어 불안정해지지만, 쿼터니언은 그런 특이점 없이 회전을 안정적으로 표현하기 때문.
+    3. `progress_grace_sec`=출발 직후 판정 유예, `hard_stuck_timeout_sec`=무진행 허용 한계, `progress_epsilon_m`=진행으로 인정할 최소 거리 감소량.
+    4. ALIGN은 정면을 정밀하게 유지해야 하므로 적분·미분 항이 필요하고, SWEEP은 넓은 영역을 훑는 것이라 단순 비례 제어로 충분하다.
+
 ## 📝 12주차 과제
 
 !!! example "과제 12 — 단위 액션 구현 — move_to & scan"

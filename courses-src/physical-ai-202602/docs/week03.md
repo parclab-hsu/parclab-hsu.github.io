@@ -495,6 +495,48 @@ Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 26 (출처
 | 도플러 (Doppler) | 물체의 움직임으로 반사파 주파수가 바뀌는 현상. Radar가 속도(`radialVelocity`)를 측정하는 원리 |
 | 방위각/고도각 (Azimuth / Elevation) | 센서 기준 수평 방향 각도(방위각)와 수직 방향 각도(고도각). 점의 방향을 나타냄 |
 
+## 🧠 핵심 용어 암기 노트
+
+!!! tip "이 절의 사용법"
+    위 **📖 핵심 용어 설명**이 "뜻"이라면, 이 절은 **외우고 확인하는 곳**입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.
+
+### ① 빠른 암기표
+
+| 용어 | 한 줄로 외우기 | 헷갈리는 지점 |
+| --- | --- | --- |
+| **IMU** | **자세·가속**을 재는 센서. 가속도계 + 자이로 | 바깥 세상을 못 본다 — 자기 몸의 움직임만 안다. 오차가 누적된다 |
+| **LiDAR** | **빛**을 쏘고 반사 시간으로 거리 측정 | 정밀하지만 유리·비·먼지에 약하다 |
+| **Radar** | **전파**를 쏴서 거리·속도 측정 | 해상도는 낮지만 악천후에 강하다. LiDAR와 강약이 반대 |
+| **Point Cloud** | 거리 측정점들을 3D 좌표로 모은 **점 덩어리** | 이미지가 아니라 좌표 집합 — 픽셀이 아닌 점 하나하나가 데이터 |
+| **RTX 센서** | RTX **레이트레이싱으로 물리적으로 계산**되는 센서 | 단순 기하 계산이 아니라 광선 추적 — 그래서 RTX GPU가 필요하다 |
+| **Render Product** | 센서/카메라의 **렌더 출력 파이프라인 핸들** | 이것을 만들어야 어노테이터를 붙일 대상이 생긴다 |
+| **Annotator** | 렌더 결과에서 **원하는 데이터만 추출** | Render Product → Annotator → 데이터, 순서가 고정 |
+| **Writer** | 뽑은 데이터를 **파일·토픽으로 내보내는 기록기** | Annotator는 뽑고, Writer는 내보낸다 — 역할이 다르다 |
+
+### ② 그림으로 잡기
+
+![실제 IMU 모듈 — 가속도계·자이로·지자기가 한 보드에 들어간다](https://upload.wikimedia.org/wikipedia/commons/c/cb/SparkFun_9DoF-Sensor-Stick_Acc%2BGyro%2BMag_13944-01.jpg)
+*실제 IMU 모듈 — 가속도계·자이로·지자기가 한 보드에 들어간다 — 출처: Wikimedia Commons, SparkFun 9DoF Sensor Stick (CC BY 2.0)*
+
+![실제 LiDAR 포인트 클라우드 — 거리 측정점들이 3차원 공간에 찍힌 모습](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Ouster_OS1-64_lidar_point_cloud_of_intersection_of_Folsom_and_Dore_St%2C_San_Francisco.png/960px-Ouster_OS1-64_lidar_point_cloud_of_intersection_of_Folsom_and_Dore_St%2C_San_Francisco.png)
+*실제 LiDAR 포인트 클라우드 — 거리 측정점들이 3차원 공간에 찍힌 모습 — 출처: Wikimedia Commons, Ouster OS1-64 point cloud (CC BY 4.0)*
+
+![Isaac Sim에서의 Radar — 전파 기반 거리·속도 측정](img/w03/s19.jpg)
+*Isaac Sim에서의 Radar — 전파 기반 거리·속도 측정 — 출처: 강의 슬라이드 3강 19 (제작: ENGI UNIVERSE)*
+
+### ③ 자가 점검 퀴즈
+
+1. IMU가 "바깥을 못 본다"는 말은 무슨 뜻인가요?
+2. LiDAR와 Radar의 강약을 한 문장으로 대비하세요.
+3. Isaac Sim에서 LiDAR 데이터를 얻기까지의 순서 3단계는?
+4. Annotator와 Writer의 역할 차이는?
+
+??? success "정답 확인"
+    1. IMU는 자기 몸의 가속도·각속도만 측정할 뿐 주변 환경을 관측하지 못한다. 그래서 적분 오차가 쌓이면 위치가 밀린다(drift).
+    2. LiDAR는 해상도가 높지만 유리·악천후에 약하고, Radar는 해상도가 낮지만 비·먼지 같은 악천후에 강하다.
+    3. ① 센서 생성 → ② Render Product 생성 → ③ Annotator 등록(필요시 Writer로 내보내기).
+    4. Annotator는 렌더 결과에서 원하는 데이터를 뽑아내고, Writer는 그 데이터를 파일이나 토픽으로 내보낸다.
+
 ## 📝 3주차 과제
 
 !!! example "과제 3 — IMU·LiDAR·Radar 센서 데이터 획득"

@@ -1203,6 +1203,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#12" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1214,7 +1264,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -2100,6 +2150,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#12" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2111,7 +2211,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -2884,6 +2984,106 @@
 <li><strong>역할/왜 중요한가</strong>: scan 노드는 "탐색 + FOUND 발행"에만 집중하고 실제 후속 행동은 상위 로직이 결정하므로, scan을 <strong>독립·재사용 가능한 모듈</strong>로 유지합니다.</li>
 <li><strong>맥락·예시</strong>: <code>report_on_found=True</code>면 FOUND 직후 <code>_do_report()</code>까지 자동 호출되며, <code>hasattr(node, "_do_report")</code>로 느슨하게 연결됩니다.</li>
 </ul>
+<h2 id="_9">🧠 핵심 용어 암기 노트<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">이 절의 사용법</p>
+<p>위 <strong>📖 핵심 용어 설명</strong>이 "뜻"이라면, 이 절은 <strong>외우고 확인하는 곳</strong>입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.</p>
+</div>
+<h3 id="1">① 빠른 암기표<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>한 줄로 외우기</th>
+<th>헷갈리는 지점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>move_to</code></strong></td>
+<td>지도 좌표로 <strong>이동</strong>하는 액션 (Nav2 사용)</td>
+<td>직접 바퀴를 굴리지 않는다 — Nav2에 목표만 넘긴다</td>
+</tr>
+<tr>
+<td><strong><code>scan</code></strong></td>
+<td>제자리에서 <strong>카메라만 돌려 탐색</strong></td>
+<td>ALIGN(정면 정렬) → SWEEP(좌우 왕복) → FOUND(발견)</td>
+</tr>
+<tr>
+<td><strong>서비스 vs 액션</strong></td>
+<td>서비스=한 번에 끝, 액션=<strong>중간 피드백 + 취소 가능</strong></td>
+<td>이동처럼 오래 걸리는 일은 액션</td>
+</tr>
+<tr>
+<td><strong><code>NavigateToPose</code></strong></td>
+<td>Nav2의 <strong>"거기까지 가라"</strong> 액션 인터페이스</td>
+<td>기본 기준 좌표계는 <code>map</code></td>
+</tr>
+<tr>
+<td><strong>쿼터니언</strong></td>
+<td>회전을 4개 값 <code>(x,y,z,w)</code>로 표현</td>
+<td>ROS 2는 방향을 항상 쿼터니언으로 주고받는다</td>
+</tr>
+<tr>
+<td><strong>짐벌락</strong></td>
+<td>오일러각이 특정 각도에서 <strong>축 하나를 잃는</strong> 현상</td>
+<td>이걸 피하려고 쿼터니언을 쓴다</td>
+</tr>
+<tr>
+<td><strong>stuck 판정</strong></td>
+<td>진행이 없으면 <strong>정체로 보고 포기</strong></td>
+<td>유예시간·최대 무진행시간·최소 진행량 3개 파라미터</td>
+</tr>
+<tr>
+<td><strong><code>progress_grace_sec</code></strong></td>
+<td>출발 직후 <strong>판정을 미루는</strong> 시간</td>
+<td>출발이 느린 것을 정체로 오판하지 않게</td>
+</tr>
+<tr>
+<td><strong><code>hard_stuck_timeout_sec</code></strong></td>
+<td>이만큼 진행 없으면 <strong>실패 처리</strong></td>
+<td>너무 짧으면 성급히 포기</td>
+</tr>
+<tr>
+<td><strong><code>progress_epsilon_m</code></strong></td>
+<td>이만큼 줄어야 <strong>진행으로 인정</strong></td>
+<td>센서 노이즈를 진행으로 착각하지 않게</td>
+</tr>
+<tr>
+<td><strong>PID / P 제어</strong></td>
+<td>정밀 정렬은 PID, 넓은 탐색은 <strong>P만으로 충분</strong></td>
+<td>ALIGN=PID, SWEEP=P</td>
+</tr>
+<tr>
+<td><strong>FOUND 이벤트</strong></td>
+<td>목표 발견 시 <code>/scan_report</code>로 <strong>알림만</strong> 발행</td>
+<td>후속 행동은 상위가 결정 — 느슨한 결합</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><img alt="짐벌락 — 두 축이 겹쳐 회전 자유도 하나를 잃는 순간" src="https://upload.wikimedia.org/wikipedia/commons/4/49/Gimbal_Lock_Plane.gif" />
+<em>짐벌락 — 두 축이 겹쳐 회전 자유도 하나를 잃는 순간 — 출처: Wikimedia Commons, Gimbal Lock Plane.gif (CC0)</em></p>
+<p><img alt="오일러각(roll·pitch·yaw) — 짐벌락이 생기는 표현 방식" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Eulerangles.svg/960px-Eulerangles.svg.png" />
+<em>오일러각(roll·pitch·yaw) — 짐벌락이 생기는 표현 방식 — 출처: Wikimedia Commons, Eulerangles.svg (CC BY 3.0)</em></p>
+<p><img alt="scan의 ALIGN / SWEEP / FOUND 3단계" src="../img/w12/s33.jpg" />
+<em>scan의 ALIGN / SWEEP / FOUND 3단계 — 출처: 강의 슬라이드 Physical AI 2강 33 (제작: ENGI UNIVERSE)</em></p>
+<h3 id="3_2">③ 자가 점검 퀴즈<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>이동에 서비스가 아니라 액션을 쓰는 이유 두 가지는?</li>
+<li>yaw를 쿼터니언으로 바꿔 넘기는 이유는?</li>
+<li>stuck 판정 3대 파라미터의 역할을 각각 한 줄로 쓰세요.</li>
+<li>ALIGN은 PID, SWEEP은 P 제어를 쓰는 이유는?</li>
+</ol>
+<details class="success">
+<summary>정답 확인</summary>
+<ol>
+<li>진행 중 피드백(남은 거리 등)을 계속 받을 수 있고, 도중에 취소할 수 있기 때문.</li>
+<li>오일러각은 특정 각도에서 짐벌락으로 자유도를 잃어 불안정해지지만, 쿼터니언은 그런 특이점 없이 회전을 안정적으로 표현하기 때문.</li>
+<li><code>progress_grace_sec</code>=출발 직후 판정 유예, <code>hard_stuck_timeout_sec</code>=무진행 허용 한계, <code>progress_epsilon_m</code>=진행으로 인정할 최소 거리 감소량.</li>
+<li>ALIGN은 정면을 정밀하게 유지해야 하므로 적분·미분 항이 필요하고, SWEEP은 넓은 영역을 훑는 것이라 단순 비례 제어로 충분하다.</li>
+</ol>
+</details>
 <h2 id="12">📝 12주차 과제<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">과제 12 — 단위 액션 구현 — move_to &amp; scan</p>
@@ -2935,7 +3135,7 @@
 </table>
 <p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
-<h2 id="_9">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <details class="note">
 <summary>원본 강의 슬라이드 전체 (48매)</summary>
 <p><img alt="슬라이드 01" src="../img/w12/s01.jpg" width="700" />

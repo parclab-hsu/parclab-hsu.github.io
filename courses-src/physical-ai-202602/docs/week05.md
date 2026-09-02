@@ -428,6 +428,49 @@ Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라�
 - **역할/왜 중요한가**: 벡터화 환경으로 수십~수백 개 시뮬레이션을 병렬 실행해 학습 속도를 크게 높이며, 설정 파일 하나로 지형·보상·명령 등 환경 전체를 통제합니다.
 - **맥락·예시**: 5강에서 `velocity_env_cfg.py`의 `RewardsCfg`(보상 설계), `CommandsCfg`(속도 명령 범위), `CurriculumCfg`(난이도 조절) 등을 통해 Spot+ATS 보행 정책을 재학습합니다.
 
+## 🧠 핵심 용어 암기 노트
+
+!!! tip "이 절의 사용법"
+    위 **📖 핵심 용어 설명**이 "뜻"이라면, 이 절은 **외우고 확인하는 곳**입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.
+
+### ① 빠른 암기표
+
+| 용어 | 한 줄로 외우기 | 헷갈리는 지점 |
+| --- | --- | --- |
+| **URDF** | 로봇의 **뼈대를 적은 XML 설계도** | 링크(뼈)와 조인트(관절)로만 이루어진다 |
+| **Link / Joint** | Link = 강체 부품, Joint = 두 Link의 **연결·회전 규칙** | Link는 명사(부품), Joint는 동사(움직임) |
+| **ATS** | 2축(Yaw·Pitch) **카메라 지향 시스템** | 로봇 몸을 안 돌리고 카메라만 돌린다 |
+| **Yaw / Pitch** | Yaw = 좌우 회전, Pitch = 상하 회전 | Yaw는 팬(좌우 두리번), Pitch는 틸트(고개 끄덕) |
+| **Revolute Joint** | **각도 제한이 있는** 회전 관절 | 제한이 있어 끝까지만 돈다 |
+| **Continuous Joint** | **제한 없이 무한 회전**하는 관절 | Revolute와의 유일한 차이가 각도 한계 유무 |
+| **visual / collision / inertial** | 보이는 형상 / 충돌 계산용 형상 / 질량·관성 | collision을 단순화해야 물리 계산이 빨라진다 |
+| **URDF Importer** | URDF를 **Isaac Sim USD로 변환**하는 도구 | Static·Position·Stiffness 옵션 설정이 핵심 |
+| **OmniGraph / Action Graph** | 노드를 선으로 잇는 **시각적 배선도** | ROS 2 ↔ Isaac Sim 연결이 여기서 이루어진다 |
+| **Articulation Controller** | 관절 묶음에 **명령을 넣는 제어기** | 개별 관절이 아니라 아티큘레이션(관절 트리) 단위로 다룬다 |
+| **Stiffness(kp) / Damping(kv)** | kp = 목표로 **끌어당기는 힘**, kv = **흔들림을 잡는 저항** | kp만 키우면 진동한다 — kv와 같이 조율 |
+| **`JointState`** | 관절의 위치·속도·힘을 담는 **ROS 2 표준 메시지** | ATS Yaw/Pitch 제어를 이 메시지로 주고받는다 |
+
+### ② 그림으로 잡기
+
+![ATS의 2축 구조 — Yaw(좌우)와 Pitch(상하)](img/w05/s07.jpg)
+*ATS의 2축 구조 — Yaw(좌우)와 Pitch(상하) — 출처: 강의 슬라이드 5강 07 (제작: ENGI UNIVERSE)*
+
+![ATS URDF 전체 구조 — 링크 3개와 조인트 2개](img/w05/s18.jpg)
+*ATS URDF 전체 구조 — 링크 3개와 조인트 2개 — 출처: 강의 슬라이드 5강 18 (제작: ENGI UNIVERSE)*
+
+### ③ 자가 점검 퀴즈
+
+1. Revolute와 Continuous Joint의 차이는 딱 하나입니다. 무엇인가요?
+2. URDF의 Link에 visual과 collision을 따로 두는 이유는?
+3. kp만 크게 올리면 어떤 현상이 생기고, 어떻게 잡나요?
+4. ATS를 Spot에 얹은 뒤 강화학습을 다시 하는 이유는?
+
+??? success "정답 확인"
+    1. 회전 각도 한계(limit)의 유무. Revolute는 제한이 있고 Continuous는 무한 회전한다.
+    2. 보여 주는 형상은 정밀해도 되지만 충돌 계산은 단순한 형상이 훨씬 빠르기 때문. 둘을 분리해 화질과 연산량을 각각 최적화한다.
+    3. 목표로 강하게 끌어당겨 오버슈트·진동이 생긴다. kv(damping)를 함께 올려 흔들림을 감쇠시킨다.
+    4. 질량·관성 분포가 바뀌어 기존 보행 정책의 전제가 달라지기 때문. 바뀐 몸에 맞는 정책을 다시 학습해야 한다.
+
 ## 📝 5주차 과제
 
 !!! example "과제 5 — Spot+ATS 시스템 조립 (URDF→Isaac Sim→ROS2)"

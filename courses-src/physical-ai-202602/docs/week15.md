@@ -405,6 +405,46 @@ def main():
 | 멀티 에이전트 (Multi-Agent System) | System-2를 관제 서버로 만들어 Spot·드론·UGV 여러 로봇을 동시 스케줄링하는 확장안(Robot Registry·Task Allocator·Conflict Resolver). |
 | `/system2/plan_cmd` | System-2가 만든 `HighLevelPlan`을 System-1 실행부로 전달하는 ROS 2 메인 토픽. |
 
+## 🧠 핵심 용어 암기 노트
+
+!!! tip "이 절의 사용법"
+    위 **📖 핵심 용어 설명**이 "뜻"이라면, 이 절은 **외우고 확인하는 곳**입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.
+
+### ① 빠른 암기표
+
+| 용어 | 한 줄로 외우기 | 헷갈리는 지점 |
+| --- | --- | --- |
+| **HighLevelPlan** | System-2가 만든 **step 시퀀스 계획** | 단위 액션 5종만으로 구성되어야 한다 |
+| **`/system2/plan_cmd`** | 계획을 System-1에 **하달하는 토픽** | 메인 채널 — 여기로 PlanCommand가 간다 |
+| **`/ats_state`** | Executor 상태를 **브로드캐스트** | 위치·배터리·현재 task·queue_status |
+| **`/system2/report_context`** | 현장 맥락을 **위로 보고**하는 토픽 | report_and_wait 시 좌표·비전 스냅샷을 올린다 |
+| **`/system2/decision`** | 운영자 **결정을 내려보내는** 토픽 | continue / no_command 등 |
+| **Human-in-the-loop** | 자동화 중간에 **사람 판단을 끼워 넣기** | 완전 자동이 위험한 지점에서 사람이 결정 |
+| **`report_and_wait`** | 보고 + 대기를 **하나로 묶은** 액션 | 대기는 실패가 아니다 — 항상 True |
+| **Scenario A~D** | 서로 다른 **액션 조합**을 검증하는 시나리오 | A=이동, B=이동+스캔+보고, C=다중 순차, D=스캔+추적 |
+| **ReplanRules** | 재계획 **판단 기준 묶음** | stuck·타깃 손실·배터리 등 임계값 |
+| **Guard ↔ ReplanRules** | 두뇌가 준 규칙을 몸이 **검사에 사용** | 계약이 맞아야 계층이 맞물린다 |
+| **Visual Servoing** | **영상 오차로 직접 제어**하는 방식 | track이 하는 일이 이것 |
+| **VLA** | Vision-Language-Action — **보고·듣고·행동**하는 통합 모델 | 규칙 기반 실행부를 학습형으로 넓히는 방향 |
+
+### ② 그림으로 잡기
+
+![Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향](img/w15/g5-15.png)
+*Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향 — 출처: 강의 슬라이드 Physical AI 5강 15 (제작: ENGI UNIVERSE)*
+
+### ③ 자가 점검 퀴즈
+
+1. 두 계층을 잇는 4개 토픽의 방향과 역할을 쓰세요.
+2. `report_and_wait`가 항상 True를 반환하는 이유는?
+3. Human-in-the-loop을 넣는 이유를 한 문장으로 쓰세요.
+4. System-2 단독 테스트를 System-1 연동보다 먼저 하는 이유는?
+
+??? success "정답 확인"
+    1. `/system2/plan_cmd`(S2→S1, 계획 하달), `/ats_state`(S1→S2, 상태 보고), `/system2/report_context`(S1→S2, 현장 맥락 보고), `/system2/decision`(S2→S1, 운영자 결정 전달).
+    2. 대기는 정상적인 흐름이지 실패가 아니기 때문. 운영자 결정을 기다리는 것 자체가 액션의 목적이다.
+    3. 완전 자동으로 두기에 위험하거나 판단이 애매한 지점에서, 사람이 개입해 책임 있는 결정을 내리게 하기 위해서.
+    4. 오류가 "계획을 잘못 세운 것"인지 "실행이 잘못된 것"인지 구분하기 위해서. 먼저 격리해 검증하면 원인 추적이 쉽다.
+
 ## 📝 15주차 과제
 
 !!! example "과제 15 — 기말 종합 프로젝트 — End-to-End 에이전트"

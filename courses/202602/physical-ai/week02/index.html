@@ -780,7 +780,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         📝 2주차 과제
@@ -791,7 +841,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -1814,7 +1864,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         📝 2주차 과제
@@ -1825,7 +1925,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -2451,7 +2551,85 @@
 </tr>
 </tbody>
 </table>
-<h2 id="2_1">📝 2주차 과제<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h2>
+<h2 id="_9">🧠 핵심 용어 암기 노트<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">이 절의 사용법</p>
+<p>위 <strong>📖 핵심 용어 설명</strong>이 "뜻"이라면, 이 절은 <strong>외우고 확인하는 곳</strong>입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.</p>
+</div>
+<h3 id="1">① 빠른 암기표<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>한 줄로 외우기</th>
+<th>헷갈리는 지점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stage</strong></td>
+<td>장면 전체를 담는 <strong>USD 파일 = 무대</strong></td>
+<td>World는 시뮬레이션 제어 객체, Stage는 데이터(장면) 그 자체</td>
+</tr>
+<tr>
+<td><strong>World</strong></td>
+<td>물리·시간·리셋을 관리하는 <strong>시뮬레이션 컨트롤러</strong></td>
+<td><code>World.reset()</code>을 빼먹으면 물리가 초기화되지 않는다</td>
+</tr>
+<tr>
+<td><strong>Prim</strong></td>
+<td>Stage 안의 <strong>모든 개체 한 개</strong> (Primitive). <code>/World/Cube</code> 같은 경로로 지정</td>
+<td>경로가 곧 이름 — 경로가 틀리면 객체를 못 찾는다</td>
+</tr>
+<tr>
+<td><strong>PhysX</strong></td>
+<td>NVIDIA <strong>물리 엔진</strong>. 중력·충돌·마찰 계산 담당</td>
+<td>렌더링(보이는 것)과 물리(움직이는 것)는 별개. 물리 속성을 안 주면 안 떨어진다</td>
+</tr>
+<tr>
+<td><strong>DynamicCuboid</strong></td>
+<td>물리가 <strong>적용되는</strong> 큐브. 중력에 반응해 떨어지고 충돌함</td>
+<td>정적(static) 오브젝트와 구분 — 정적은 안 움직인다</td>
+</tr>
+<tr>
+<td><strong>RGB 카메라</strong></td>
+<td>색상 영상. <strong>무엇인지</strong>를 본다</td>
+<td>사람이 보는 것과 같은 정보 — 거리는 모른다</td>
+</tr>
+<tr>
+<td><strong>Depth 카메라</strong></td>
+<td>각 픽셀의 <strong>거리</strong> 값. <strong>얼마나 먼지</strong>를 본다</td>
+<td><code>distance_to_camera</code> 어노테이터로 얻는다. RGB와 해상도·좌표계를 맞춰야 융합 가능</td>
+</tr>
+<tr>
+<td><strong>Annotator</strong></td>
+<td>렌더 결과에서 <strong>원하는 데이터만 뽑는 추출기</strong></td>
+<td>카메라를 만들었다고 데이터가 나오지 않는다 — 어노테이터를 붙여야 나온다</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_1">② 그림으로 잡기<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p><img alt="Stage / World / Prim 계층 — 무대·관리자·개체" src="../img/w02/s16.jpg" />
+<em>Stage / World / Prim 계층 — 무대·관리자·개체 — 출처: 강의 슬라이드 2강 16 (제작: ENGI UNIVERSE)</em></p>
+<p><img alt="Depth(깊이) 영상의 원리 — 가까울수록 밝고 멀수록 어둡게 거리를 이미지로 표현" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Z-depth2.png" />
+<em>Depth(깊이) 영상의 원리 — 가까울수록 밝고 멀수록 어둡게 거리를 이미지로 표현 — 출처: Wikimedia Commons, Z-depth2.png (Public domain)</em></p>
+<h3 id="3_2">③ 자가 점검 퀴즈<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Stage · World · Prim을 각각 한 단어로 비유하면?</li>
+<li>RGB 카메라만으로는 알 수 없고 Depth 카메라가 있어야 아는 정보는?</li>
+<li>카메라 Prim을 만들었는데 이미지가 안 나옵니다. 가장 먼저 확인할 것은?</li>
+<li>큐브를 만들었는데 떨어지지 않습니다. 왜일까요?</li>
+</ol>
+<details class="success">
+<summary>정답 확인</summary>
+<ol>
+<li>Stage = 무대(장면 데이터, USD), World = 무대 감독(물리·시간·리셋 관리), Prim = 무대 위 개체 하나.</li>
+<li>카메라로부터 각 픽셀까지의 거리(깊이). RGB는 색·형태만 준다.</li>
+<li>Annotator(어노테이터)를 등록했는지. 렌더 결과에서 데이터를 뽑아내는 추출기를 붙여야 이미지가 나온다.</li>
+<li>물리 속성이 적용되지 않은 정적 오브젝트이기 때문. <code>DynamicCuboid</code>처럼 물리(PhysX)가 적용되는 객체로 만들어야 중력에 반응한다.</li>
+</ol>
+</details>
+<h2 id="2_2">📝 2주차 과제<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">과제 2 — 물리 환경 + RGB/Depth 카메라 시뮬레이션</p>
 <p><strong>목표</strong>: Isaac Sim에서 World·Ground·DynamicCuboid로 물리 장면을 구성하고 RGB·Depth 카메라를 부착해 프레임을 획득·시각화한다.</p>
@@ -2502,7 +2680,7 @@
 </table>
 <p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
-<h2 id="_9">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <details class="note">
 <summary>원본 강의 슬라이드 전체 (29매)</summary>
 <p><img alt="슬라이드 01" src="../img/w02/s01.jpg" width="700" />

@@ -426,6 +426,50 @@ Policy 추론과 행동 적용 — 시뮬레이션 환경 동작 (출처: ENGI U
 | `decimation` | 물리 계산 몇 번마다 행동을 1번 갱신할지 정하는 값. `sim.dt × decimation`이 실제 제어 주기(50Hz)를 결정 |
 | `gym.make()` | 설정된 task·env_cfg로 시뮬레이션 환경 인스턴스를 생성하는 함수(num_envs 수만큼 병렬 생성) |
 
+## 🧠 핵심 용어 암기 노트
+
+!!! tip "이 절의 사용법"
+    위 **📖 핵심 용어 설명**이 "뜻"이라면, 이 절은 **외우고 확인하는 곳**입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.
+
+### ① 빠른 암기표
+
+| 용어 | 한 줄로 외우기 | 헷갈리는 지점 |
+| --- | --- | --- |
+| **강화학습(RL)** | **시행착오 + 보상**으로 정책을 배우는 학습 | 정답(라벨)을 주는 지도학습과 다르다 — 보상만 준다 |
+| **MDP** | 상태·행동·보상·전이로 문제를 정의하는 **틀** | "지금 상태만 보면 충분하다"는 마르코프 가정이 전제 |
+| **Task** | Isaac Lab에서 **하나의 학습 문제 정의** | 환경(Environment)과 짝 — Task가 관측·행동·보상을 규정한다 |
+| **PPO** | 정책을 **조금씩만** 바꾸며 안정적으로 학습하는 알고리즘 | 한 번에 크게 바꾸면 무너지므로 변화폭을 제한(clip)한다 |
+| **RSL-RL** | Isaac Lab이 쓰는 **RL 학습 라이브러리** | PPO 등 알고리즘 구현체. 환경은 Isaac Lab, 학습은 RSL-RL |
+| **`num_envs`** | **동시에 돌리는 로봇 개수** | 많을수록 데이터가 빨리 모이지만 VRAM을 그만큼 먹는다 |
+| **Action** | 정책이 내는 **출력** — 여기서는 12개 관절 목표 위치 | `scale`을 곱해 실제 관절 범위로 변환된다 |
+| **Observation** | 정책이 보는 **입력 벡터** (48차원) | 속도·중력·명령·관절 상태 등이 이어붙은 것 |
+| **Command** | "이 속도로 걸어라"라는 **목표 지시** | Action이 아니라 Observation에 들어간다 — 로봇에게 주는 주문서 |
+| **Height Scan** | 발밑 지형 높이를 **레이로 찍어 보는 관측** | 지형을 "보는" 것 — 없으면 계단·경사에서 무너진다 |
+| **Domain Randomization** | 마찰·질량·외력을 **일부러 흔들며** 학습 | 시뮬에만 과적합되는 것을 막아 Sim-to-Real 간극을 줄인다 |
+
+### ② 그림으로 잡기
+
+![강화학습의 기본 루프 — 에이전트가 행동하면 환경이 상태와 보상을 돌려준다](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Reinforcement_learning_diagram.svg/960px-Reinforcement_learning_diagram.svg.png)
+*강화학습의 기본 루프 — 에이전트가 행동하면 환경이 상태와 보상을 돌려준다 — 출처: Wikimedia Commons, Reinforcement learning diagram (CC0)*
+
+![MDP — 상태에서 행동을 고르면 확률적으로 다음 상태와 보상이 정해진다](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Markov_Decision_Process.svg/960px-Markov_Decision_Process.svg.png)
+*MDP — 상태에서 행동을 고르면 확률적으로 다음 상태와 보상이 정해진다 — 출처: Wikimedia Commons, Markov Decision Process (CC BY-SA 4.0)*
+
+### ③ 자가 점검 퀴즈
+
+1. 강화학습이 지도학습과 다른 결정적 지점은?
+2. Command가 Action이 아니라 Observation에 들어가는 이유는?
+3. Height Scan을 빼면 어떤 상황에서 먼저 실패할까요?
+4. Domain Randomization은 무엇을 막기 위한 장치인가요?
+5. `num_envs`를 늘릴 때의 이득과 대가는?
+
+??? success "정답 확인"
+    1. 정답 라벨이 주어지지 않고 보상 신호만 주어진다. 에이전트가 시행착오로 스스로 좋은 행동을 찾아야 한다.
+    2. Command는 로봇이 만들어 내는 출력이 아니라 "이렇게 움직여라"라고 주어지는 목표 지시이므로, 정책이 참고해야 할 입력(관측)의 일부다.
+    3. 평지가 아닌 계단·경사·요철 지형. 발밑 높이 정보가 없어 발 디딜 곳을 예측하지 못한다.
+    4. 시뮬레이션의 특정 물리 파라미터에만 과적합되는 것. 흔들며 학습해야 실기의 다른 마찰·질량에서도 버틴다.
+    5. 이득은 단위 시간당 수집 데이터량 증가(학습 가속), 대가는 VRAM·연산 부하 증가.
+
 ## 📝 4주차 과제
 
 !!! example "과제 4 — Isaac Lab 4족 보행 강화학습 환경 구성"

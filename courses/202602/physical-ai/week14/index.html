@@ -1072,6 +1072,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#14" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1083,7 +1133,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -1726,6 +1776,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#14" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1737,7 +1837,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -2328,6 +2428,99 @@
 </tr>
 </tbody>
 </table>
+<h2 id="_8">🧠 핵심 용어 암기 노트<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">이 절의 사용법</p>
+<p>위 <strong>📖 핵심 용어 설명</strong>이 "뜻"이라면, 이 절은 <strong>외우고 확인하는 곳</strong>입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.</p>
+</div>
+<h3 id="1_1">① 빠른 암기표<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>한 줄로 외우기</th>
+<th>헷갈리는 지점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>System-2</strong></td>
+<td>자연어를 <strong>검증된 계획(JSON)</strong> 으로 바꾸는 층</td>
+<td>로봇을 직접 움직이지 않는다 — 계획만 만든다</td>
+</tr>
+<tr>
+<td><strong>Pydantic / BaseModel</strong></td>
+<td>파이썬 클래스로 <strong>데이터 형식을 강제</strong>하는 도구</td>
+<td>형식이 틀리면 아예 객체가 안 만들어진다</td>
+</tr>
+<tr>
+<td><strong>스키마 = 계약서</strong></td>
+<td>LLM과 로봇 사이의 <strong>약속된 데이터 형식</strong></td>
+<td>스키마가 있어야 LLM 출력을 믿고 실행할 수 있다</td>
+</tr>
+<tr>
+<td><strong><code>Literal</code> 타입</strong></td>
+<td>허용된 <strong>값만</strong> 쓰도록 못 박기</td>
+<td><code>task</code>를 5종으로 제한 → 없는 동작을 지어내지 못한다</td>
+</tr>
+<tr>
+<td><strong>환각(Hallucination)</strong></td>
+<td>LLM이 <strong>그럴듯하지만 틀린 것</strong>을 지어냄</td>
+<td>스키마·Literal·검증으로 차단한다</td>
+</tr>
+<tr>
+<td><strong><code>Field(ge=, le=)</code></strong></td>
+<td>숫자의 <strong>하한·상한</strong> 제약</td>
+<td>각도·시간이 말이 안 되는 값으로 나오는 것을 막는다</td>
+</tr>
+<tr>
+<td><strong>LangChain</strong></td>
+<td>프롬프트·모델·파서를 <strong>엮는 프레임워크</strong></td>
+<td><code>prompt | llm | parser</code> 파이프로 연결</td>
+</tr>
+<tr>
+<td><strong><code>PydanticOutputParser</code></strong></td>
+<td>LLM 출력을 <strong>스키마 객체로 파싱·검증</strong></td>
+<td>파싱 실패 = 계획 거부. 실행 전에 걸러진다</td>
+</tr>
+<tr>
+<td><strong><code>temperature</code></strong></td>
+<td>출력의 <strong>무작위성</strong> 정도</td>
+<td>0.1처럼 낮추면 같은 명령에 같은 계획이 나온다</td>
+</tr>
+<tr>
+<td><strong>시스템 프롬프트 4단계</strong></td>
+<td>Action(행동 제한) · Map(공간) · Logic(규칙) · Format(형식)</td>
+<td>네 가지를 다 넣어야 계획이 안정적으로 나온다</td>
+</tr>
+<tr>
+<td><strong><code>state_to_text</code></strong></td>
+<td>로봇 상태를 <strong>LLM이 읽을 문장</strong>으로 변환</td>
+<td>숫자 상태를 자연어 맥락으로 바꾸는 다리</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><img alt="시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format" src="../img/w14/s11.jpg" />
+<em>시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format — 출처: 강의 슬라이드 Physical AI 4강 11 (제작: ENGI UNIVERSE)</em></p>
+<p><img alt="models.py — LLM과 로봇 사이의 계약서(스키마) 정의" src="../img/w14/s05.jpg" />
+<em>models.py — LLM과 로봇 사이의 계약서(스키마) 정의 — 출처: 강의 슬라이드 Physical AI 4강 05 (제작: ENGI UNIVERSE)</em></p>
+<h3 id="3_2">③ 자가 점검 퀴즈<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>Literal</code>로 task를 5종으로 제한하면 무엇이 막히나요?</li>
+<li><code>temperature=0.1</code>을 쓰는 이유는?</li>
+<li>스키마 검증이 "실행 전"에 있어야 하는 이유는?</li>
+<li>시스템 프롬프트의 4단계를 순서대로 쓰고 각 역할을 한 줄로 설명하세요.</li>
+</ol>
+<details class="success">
+<summary>정답 확인</summary>
+<ol>
+<li>LLM이 존재하지 않는 동작을 지어내는 환각. 허용 목록 밖의 값은 파싱 단계에서 거부된다.</li>
+<li>출력의 무작위성을 낮춰 같은 명령에 대해 일관된 계획이 나오게 하기 위해서. 경로가 실행할 때마다 달라지는 것을 막는다.</li>
+<li>잘못된 계획이 로봇에 전달되면 실제 물리 행동으로 이어진다. 검증은 물리 세계에 나가기 전 마지막 방어선이다.</li>
+<li>Action=쓸 수 있는 행동 제한, Map=공간·좌표 정보 제공, Logic=판단 규칙 제시, Format=출력 JSON 형식 지정.</li>
+</ol>
+</details>
 <h2 id="14">📝 14주차 과제<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">과제 14 — System-2 LLM Planner 구현</p>
@@ -2379,7 +2572,7 @@
 </table>
 <p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
-<h2 id="_8">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_9">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <details class="note">
 <summary>원본 강의 슬라이드 전체 (20매)</summary>
 <p><img alt="슬라이드 01" src="../img/w14/s01.jpg" width="700" />

@@ -1070,6 +1070,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1081,7 +1131,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -1946,6 +1996,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1957,7 +2057,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -2561,6 +2661,106 @@
 <li><strong>역할/왜 중요한가</strong>: "보고 → 오차 계산 → 움직여서 보정 → 다시 본다"의 순환을 만들어, Spot+ATS가 대상을 능동적으로 인식·추적·추종하게 합니다.</li>
 <li><strong>맥락·예시</strong>: VisionContextBuilder가 산출한 Δx, Δy 오차가 <code>/ats_twist</code>·<code>/cmd_vel</code> 제어의 입력 근거가 됩니다(본문 4장).</li>
 </ul>
+<h2 id="_8">🧠 핵심 용어 암기 노트<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">이 절의 사용법</p>
+<p>위 <strong>📖 핵심 용어 설명</strong>이 "뜻"이라면, 이 절은 <strong>외우고 확인하는 곳</strong>입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.</p>
+</div>
+<h3 id="1">① 빠른 암기표<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>한 줄로 외우기</th>
+<th>헷갈리는 지점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>YOLO / YOLOv8</strong></td>
+<td>이미지를 <strong>한 번만</strong> 통과시켜 위치와 종류를 동시에 예측</td>
+<td>2-stage(후보 뽑고 분류)보다 빠르다 — 그래서 실시간용</td>
+</tr>
+<tr>
+<td><strong>bbox</strong></td>
+<td>객체를 감싸는 <strong>사각형</strong> <code>[x, y, w, h]</code></td>
+<td>중심 기준 좌표 — 좌상단 기준과 헷갈리지 말 것</td>
+</tr>
+<tr>
+<td><strong>confidence</strong></td>
+<td>그 탐지가 맞을 <strong>확신도</strong> 0~1</td>
+<td><code>threshold</code> 미만은 버린다. 높이면 오탐↓ 미탐↑</td>
+</tr>
+<tr>
+<td><strong>Detector</strong></td>
+<td><strong>매 프레임 독립적으로</strong> 객체를 찾음</td>
+<td>"이전 프레임의 그 사람"인지는 모른다</td>
+</tr>
+<tr>
+<td><strong>Tracker</strong></td>
+<td>프레임을 가로질러 <strong>같은 객체에 같은 ID</strong> 부여</td>
+<td><code>track</code> 액션이 대상을 계속 쫓으려면 필수</td>
+</tr>
+<tr>
+<td><strong>BYTETrack / BOTSort</strong></td>
+<td>대표적인 <strong>다중 객체 추적 알고리즘</strong></td>
+<td>Detector 결과를 이어 붙이는 역할</td>
+</tr>
+<tr>
+<td><strong>ReID</strong></td>
+<td>가렸다 다시 나타난 객체를 <strong>같은 사람으로 재식별</strong></td>
+<td>겉모습 특징으로 다시 잇는 것</td>
+</tr>
+<tr>
+<td><strong>namespace</strong></td>
+<td>노드·토픽 이름 앞에 붙는 <strong>구역 이름표</strong></td>
+<td>같은 노드를 여러 개 띄울 때 충돌을 막는다</td>
+</tr>
+<tr>
+<td><strong>CvBridge</strong></td>
+<td>ROS 이미지 ↔ OpenCV 이미지 <strong>변환기</strong></td>
+<td>인코딩(bgr8 등)이 안 맞으면 여기서 터진다</td>
+</tr>
+<tr>
+<td><strong>리매핑(remapping)</strong></td>
+<td>코드를 안 고치고 <strong>토픽 이름만 갈아끼우기</strong></td>
+<td>시뮬↔실기 전환을 이걸로 한다</td>
+</tr>
+<tr>
+<td><strong><code>/vision_context_raw</code></strong></td>
+<td>Vision이 내보내는 <strong>원시 JSON 결과 토픽</strong></td>
+<td>Vision과 Executor를 느슨하게 분리하는 접점</td>
+</tr>
+<tr>
+<td><strong>VisionCache / 정규화</strong></td>
+<td>여러 모델의 출력을 <strong>하나의 표준 구조</strong>로 통일해 저장</td>
+<td>모델을 바꿔도 정규화 함수만 고치면 된다(모델 독립성)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><img alt="CNN의 전형적 구조 — YOLO도 이런 합성곱 층 위에 세워진다" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Typical_cnn.png/960px-Typical_cnn.png" />
+<em>CNN의 전형적 구조 — YOLO도 이런 합성곱 층 위에 세워진다 — 출처: Wikimedia Commons, Typical cnn.png (CC BY-SA 4.0)</em></p>
+<p><img alt="IoU — 예측 bbox와 정답 bbox가 얼마나 겹치는가로 탐지 품질을 잰다" src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Intersection_over_Union_-_poor%2C_good_and_excellent_score.png" />
+<em>IoU — 예측 bbox와 정답 bbox가 얼마나 겹치는가로 탐지 품질을 잰다 — 출처: Wikimedia Commons, Intersection over Union (CC BY-SA 4.0)</em></p>
+<p><img alt="YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름" src="../img/w10/s05.jpg" />
+<em>YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름 — 출처: 강의 슬라이드 SLAM 4강 05 (제작: ENGI UNIVERSE)</em></p>
+<h3 id="3_1">③ 자가 점검 퀴즈<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Detector만 있고 Tracker가 없으면 <code>track</code> 액션이 왜 곤란해지나요?</li>
+<li><code>threshold</code>를 올리면 오탐과 미탐은 각각 어떻게 되나요?</li>
+<li>Vision 모듈을 Executor에서 분리해 토픽으로 잇는 설계의 이점은?</li>
+<li>토픽 리매핑이 실전에서 유용한 대표 상황은?</li>
+</ol>
+<details class="success">
+<summary>정답 확인</summary>
+<ol>
+<li>프레임마다 독립적으로 탐지하므로 "같은 대상"이라는 보장이 없다. ID가 유지되지 않으면 추종 대상이 프레임마다 바뀔 수 있다.</li>
+<li>오탐(없는 것을 있다고 함)은 줄고, 미탐(있는 것을 놓침)은 늘어난다. 반대로 내리면 그 반대.</li>
+<li>느슨한 결합. 탐지 모델을 YOLOv8에서 다른 것으로 바꿔도 Executor는 정규화 함수만 고치면 되고 행동 로직은 그대로다.</li>
+<li>시뮬레이션(<code>/ats/rgb/image_raw</code>)과 실기(<code>/camera/image_raw</code>)를 같은 코드로 전환할 때. 실행 인자만 바꾸면 된다.</li>
+</ol>
+</details>
 <h2 id="10">📝 10주차 과제<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">과제 10 — YOLOv8 Vision을 Spot+ATS에 연동</p>
@@ -2612,7 +2812,7 @@
 </table>
 <p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
-<h2 id="_8">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_9">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <details class="note">
 <summary>원본 강의 슬라이드 전체 (28매)</summary>
 <p><img alt="슬라이드 01" src="../img/w10/s01.jpg" width="700" />

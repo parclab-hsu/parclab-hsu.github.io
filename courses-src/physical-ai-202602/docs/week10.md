@@ -382,6 +382,52 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
 - **역할/왜 중요한가**: "보고 → 오차 계산 → 움직여서 보정 → 다시 본다"의 순환을 만들어, Spot+ATS가 대상을 능동적으로 인식·추적·추종하게 합니다.
 - **맥락·예시**: VisionContextBuilder가 산출한 Δx, Δy 오차가 `/ats_twist`·`/cmd_vel` 제어의 입력 근거가 됩니다(본문 4장).
 
+## 🧠 핵심 용어 암기 노트
+
+!!! tip "이 절의 사용법"
+    위 **📖 핵심 용어 설명**이 "뜻"이라면, 이 절은 **외우고 확인하는 곳**입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.
+
+### ① 빠른 암기표
+
+| 용어 | 한 줄로 외우기 | 헷갈리는 지점 |
+| --- | --- | --- |
+| **YOLO / YOLOv8** | 이미지를 **한 번만** 통과시켜 위치와 종류를 동시에 예측 | 2-stage(후보 뽑고 분류)보다 빠르다 — 그래서 실시간용 |
+| **bbox** | 객체를 감싸는 **사각형** `[x, y, w, h]` | 중심 기준 좌표 — 좌상단 기준과 헷갈리지 말 것 |
+| **confidence** | 그 탐지가 맞을 **확신도** 0~1 | `threshold` 미만은 버린다. 높이면 오탐↓ 미탐↑ |
+| **Detector** | **매 프레임 독립적으로** 객체를 찾음 | "이전 프레임의 그 사람"인지는 모른다 |
+| **Tracker** | 프레임을 가로질러 **같은 객체에 같은 ID** 부여 | `track` 액션이 대상을 계속 쫓으려면 필수 |
+| **BYTETrack / BOTSort** | 대표적인 **다중 객체 추적 알고리즘** | Detector 결과를 이어 붙이는 역할 |
+| **ReID** | 가렸다 다시 나타난 객체를 **같은 사람으로 재식별** | 겉모습 특징으로 다시 잇는 것 |
+| **namespace** | 노드·토픽 이름 앞에 붙는 **구역 이름표** | 같은 노드를 여러 개 띄울 때 충돌을 막는다 |
+| **CvBridge** | ROS 이미지 ↔ OpenCV 이미지 **변환기** | 인코딩(bgr8 등)이 안 맞으면 여기서 터진다 |
+| **리매핑(remapping)** | 코드를 안 고치고 **토픽 이름만 갈아끼우기** | 시뮬↔실기 전환을 이걸로 한다 |
+| **`/vision_context_raw`** | Vision이 내보내는 **원시 JSON 결과 토픽** | Vision과 Executor를 느슨하게 분리하는 접점 |
+| **VisionCache / 정규화** | 여러 모델의 출력을 **하나의 표준 구조**로 통일해 저장 | 모델을 바꿔도 정규화 함수만 고치면 된다(모델 독립성) |
+
+### ② 그림으로 잡기
+
+![CNN의 전형적 구조 — YOLO도 이런 합성곱 층 위에 세워진다](https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Typical_cnn.png/960px-Typical_cnn.png)
+*CNN의 전형적 구조 — YOLO도 이런 합성곱 층 위에 세워진다 — 출처: Wikimedia Commons, Typical cnn.png (CC BY-SA 4.0)*
+
+![IoU — 예측 bbox와 정답 bbox가 얼마나 겹치는가로 탐지 품질을 잰다](https://upload.wikimedia.org/wikipedia/commons/e/e6/Intersection_over_Union_-_poor%2C_good_and_excellent_score.png)
+*IoU — 예측 bbox와 정답 bbox가 얼마나 겹치는가로 탐지 품질을 잰다 — 출처: Wikimedia Commons, Intersection over Union (CC BY-SA 4.0)*
+
+![YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름](img/w10/s05.jpg)
+*YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름 — 출처: 강의 슬라이드 SLAM 4강 05 (제작: ENGI UNIVERSE)*
+
+### ③ 자가 점검 퀴즈
+
+1. Detector만 있고 Tracker가 없으면 `track` 액션이 왜 곤란해지나요?
+2. `threshold`를 올리면 오탐과 미탐은 각각 어떻게 되나요?
+3. Vision 모듈을 Executor에서 분리해 토픽으로 잇는 설계의 이점은?
+4. 토픽 리매핑이 실전에서 유용한 대표 상황은?
+
+??? success "정답 확인"
+    1. 프레임마다 독립적으로 탐지하므로 "같은 대상"이라는 보장이 없다. ID가 유지되지 않으면 추종 대상이 프레임마다 바뀔 수 있다.
+    2. 오탐(없는 것을 있다고 함)은 줄고, 미탐(있는 것을 놓침)은 늘어난다. 반대로 내리면 그 반대.
+    3. 느슨한 결합. 탐지 모델을 YOLOv8에서 다른 것으로 바꿔도 Executor는 정규화 함수만 고치면 되고 행동 로직은 그대로다.
+    4. 시뮬레이션(`/ats/rgb/image_raw`)과 실기(`/camera/image_raw`)를 같은 코드로 전환할 때. 실행 인자만 바꾸면 된다.
+
 ## 📝 10주차 과제
 
 !!! example "과제 10 — YOLOv8 Vision을 Spot+ATS에 연동"

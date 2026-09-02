@@ -946,6 +946,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -957,7 +1007,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -2034,6 +2084,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 핵심 용어 암기 노트
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 핵심 용어 암기 노트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① 빠른 암기표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ② 그림으로 잡기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ 자가 점검 퀴즈
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2045,7 +2145,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         🖼️ 원본 강의 슬라이드
@@ -2725,6 +2825,101 @@
 </tr>
 </tbody>
 </table>
+<h2 id="_8">🧠 핵심 용어 암기 노트<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">이 절의 사용법</p>
+<p>위 <strong>📖 핵심 용어 설명</strong>이 "뜻"이라면, 이 절은 <strong>외우고 확인하는 곳</strong>입니다. ① 암기표 오른쪽을 손으로 가리고 용어만 보며 말해 보기 → ② 그림으로 장면을 기억하기 → ③ 퀴즈로 확인하기 순서로 쓰세요.</p>
+</div>
+<h3 id="1">① 빠른 암기표<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>한 줄로 외우기</th>
+<th>헷갈리는 지점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>강화학습(RL)</strong></td>
+<td><strong>시행착오 + 보상</strong>으로 정책을 배우는 학습</td>
+<td>정답(라벨)을 주는 지도학습과 다르다 — 보상만 준다</td>
+</tr>
+<tr>
+<td><strong>MDP</strong></td>
+<td>상태·행동·보상·전이로 문제를 정의하는 <strong>틀</strong></td>
+<td>"지금 상태만 보면 충분하다"는 마르코프 가정이 전제</td>
+</tr>
+<tr>
+<td><strong>Task</strong></td>
+<td>Isaac Lab에서 <strong>하나의 학습 문제 정의</strong></td>
+<td>환경(Environment)과 짝 — Task가 관측·행동·보상을 규정한다</td>
+</tr>
+<tr>
+<td><strong>PPO</strong></td>
+<td>정책을 <strong>조금씩만</strong> 바꾸며 안정적으로 학습하는 알고리즘</td>
+<td>한 번에 크게 바꾸면 무너지므로 변화폭을 제한(clip)한다</td>
+</tr>
+<tr>
+<td><strong>RSL-RL</strong></td>
+<td>Isaac Lab이 쓰는 <strong>RL 학습 라이브러리</strong></td>
+<td>PPO 등 알고리즘 구현체. 환경은 Isaac Lab, 학습은 RSL-RL</td>
+</tr>
+<tr>
+<td><strong><code>num_envs</code></strong></td>
+<td><strong>동시에 돌리는 로봇 개수</strong></td>
+<td>많을수록 데이터가 빨리 모이지만 VRAM을 그만큼 먹는다</td>
+</tr>
+<tr>
+<td><strong>Action</strong></td>
+<td>정책이 내는 <strong>출력</strong> — 여기서는 12개 관절 목표 위치</td>
+<td><code>scale</code>을 곱해 실제 관절 범위로 변환된다</td>
+</tr>
+<tr>
+<td><strong>Observation</strong></td>
+<td>정책이 보는 <strong>입력 벡터</strong> (48차원)</td>
+<td>속도·중력·명령·관절 상태 등이 이어붙은 것</td>
+</tr>
+<tr>
+<td><strong>Command</strong></td>
+<td>"이 속도로 걸어라"라는 <strong>목표 지시</strong></td>
+<td>Action이 아니라 Observation에 들어간다 — 로봇에게 주는 주문서</td>
+</tr>
+<tr>
+<td><strong>Height Scan</strong></td>
+<td>발밑 지형 높이를 <strong>레이로 찍어 보는 관측</strong></td>
+<td>지형을 "보는" 것 — 없으면 계단·경사에서 무너진다</td>
+</tr>
+<tr>
+<td><strong>Domain Randomization</strong></td>
+<td>마찰·질량·외력을 <strong>일부러 흔들며</strong> 학습</td>
+<td>시뮬에만 과적합되는 것을 막아 Sim-to-Real 간극을 줄인다</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><img alt="강화학습의 기본 루프 — 에이전트가 행동하면 환경이 상태와 보상을 돌려준다" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Reinforcement_learning_diagram.svg/960px-Reinforcement_learning_diagram.svg.png" />
+<em>강화학습의 기본 루프 — 에이전트가 행동하면 환경이 상태와 보상을 돌려준다 — 출처: Wikimedia Commons, Reinforcement learning diagram (CC0)</em></p>
+<p><img alt="MDP — 상태에서 행동을 고르면 확률적으로 다음 상태와 보상이 정해진다" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Markov_Decision_Process.svg/960px-Markov_Decision_Process.svg.png" />
+<em>MDP — 상태에서 행동을 고르면 확률적으로 다음 상태와 보상이 정해진다 — 출처: Wikimedia Commons, Markov Decision Process (CC BY-SA 4.0)</em></p>
+<h3 id="3_1">③ 자가 점검 퀴즈<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>강화학습이 지도학습과 다른 결정적 지점은?</li>
+<li>Command가 Action이 아니라 Observation에 들어가는 이유는?</li>
+<li>Height Scan을 빼면 어떤 상황에서 먼저 실패할까요?</li>
+<li>Domain Randomization은 무엇을 막기 위한 장치인가요?</li>
+<li><code>num_envs</code>를 늘릴 때의 이득과 대가는?</li>
+</ol>
+<details class="success">
+<summary>정답 확인</summary>
+<ol>
+<li>정답 라벨이 주어지지 않고 보상 신호만 주어진다. 에이전트가 시행착오로 스스로 좋은 행동을 찾아야 한다.</li>
+<li>Command는 로봇이 만들어 내는 출력이 아니라 "이렇게 움직여라"라고 주어지는 목표 지시이므로, 정책이 참고해야 할 입력(관측)의 일부다.</li>
+<li>평지가 아닌 계단·경사·요철 지형. 발밑 높이 정보가 없어 발 디딜 곳을 예측하지 못한다.</li>
+<li>시뮬레이션의 특정 물리 파라미터에만 과적합되는 것. 흔들며 학습해야 실기의 다른 마찰·질량에서도 버틴다.</li>
+<li>이득은 단위 시간당 수집 데이터량 증가(학습 가속), 대가는 VRAM·연산 부하 증가.</li>
+</ol>
+</details>
 <h2 id="4">📝 4주차 과제<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <div class="admonition example">
 <p class="admonition-title">과제 4 — Isaac Lab 4족 보행 강화학습 환경 구성</p>
@@ -2776,7 +2971,7 @@
 </table>
 <p><strong>제출 형식·마감</strong>: 다음 주차 강의 시작 전까지 LMS 업로드 — ① 코드/설정 <code>zip</code> ② 보고서 <code>PDF</code>(표지: 학번·이름·과제명) ③ 실행 결과 스크린샷/영상. 코드는 재현 가능해야 하며, 외부 코드를 사용하면 출처를 명시한다(미표기 시 감점).</p>
 <!-- FULLDECK -->
-<h2 id="_8">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_9">🖼️ 원본 강의 슬라이드<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <details class="note">
 <summary>원본 강의 슬라이드 전체 (37매)</summary>
 <p><img alt="슬라이드 01" src="../img/w04/s01.jpg" width="700" />
