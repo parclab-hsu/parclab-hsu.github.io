@@ -1716,7 +1716,7 @@
 <blockquote>
 <p><strong>학습목표</strong> — 15주 동안 배우는 회로·펌웨어·PCB 항목이 실제 보드 한 장에서 어떻게 만나는지 확인한다. 좌·우 두 벌의 3상 인버터가 로버 차동 구동에 그대로 대응한다.</p>
 </blockquote>
-<p>이 수업에는 담당 교수가 직접 설계한 <strong>2축 BLDC 모터 드라이버 보드</strong>가 레퍼런스로 따라온다. 회로도·BOM·CPL·레이어 이미지를 모두 공개하므로, 학생은 "완성된 실물"을 역으로 읽으며 각 주차의 이론이 어디에 쓰였는지 확인할 수 있다.</p>
+<p>본 강의는 담당 교수가 직접 설계한 <strong>2축 BLDC 모터 드라이버 보드</strong>를 레퍼런스로 사용한다. 회로도·BOM·CPL·레이어 이미지를 모두 공개하므로, 학생은 "완성된 실물"을 역으로 읽으며 각 주차의 이론이 어디에 쓰였는지 확인할 수 있다.</p>
 <p><img alt="FM_SmartDriver V1 3D 렌더 — 상단 BLDC Motor-1, 하단 BLDC Motor-2의 3상 인버터가 좌우 대칭으로 배치되고 가운데 STM32H723ZGT6(LQFP-144)가 두 축을 함께 제어한다" src="../figures/board/3d.jpg" /></p>
 <h2 id="_1">📋 보드 개요<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <table>
@@ -1943,7 +1943,7 @@
 </tr>
 </tbody>
 </table>
-<p>홀센서는 디지털 신호인데도 슈미트 버퍼를 한 단 거친다. 인버터 노이즈로 경계 부근에서 신호가 여러 번 튀면 정류가 깨지기 때문이다. 엔코더를 <strong>차동 수신기</strong>로 받는 이유도 같다 — 모터 케이블과 나란히 가는 신호선의 공통모드 노이즈를 상쇄한다. 14주차 노이즈 대책이 부품으로 구현된 예다.</p>
+<p>홀센서는 디지털 신호인데도 슈미트 버퍼를 한 단 거친다. 인버터 노이즈로 경계 부근에서 신호가 여러 번 튀면 정류가 깨지기 때문이다. 엔코더를 <strong>차동 수신기</strong>로 받는 이유도 같다. 모터 케이블과 나란히 가는 신호선의 공통모드 노이즈를 상쇄한다. 14주차 노이즈 대책이 부품으로 구현된 예다.</p>
 <h2 id="hsi-2">🗂 HSI 표 — 이 보드 기준 2축 확장<a class="headerlink" href="#hsi-2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2043,8 +2043,8 @@
 <h2 id="bom-cpl">📄 BOM과 CPL 읽기<a class="headerlink" href="#bom-cpl" title="Permanent link">&para;</a></h2>
 <p><strong>BOM</strong> 열 구성: <code>No. / Quantity / Comment / Designator / Footprint / Value / Manufacturer Part / Manufacturer / Supplier Part / Supplier</code></p>
 <ol>
-<li><code>Quantity</code> 내림차순으로 보면 보드의 성격이 보인다. 이 보드는 <strong>10Ω 36개, 100nF 30개</strong>가 최상위다. 게이트 저항과 디커플링이 압도적으로 많다는 뜻이고, 이는 스위칭 회로의 특징이다.</li>
-<li><code>Designator</code>를 세어 <code>Quantity</code>와 맞는지 확인한다. 여기서는 546개로 일치한다. 불일치는 곧 조립 사고다.</li>
+<li><code>Quantity</code> 내림차순으로 보면 보드의 성격이 보인다. 이 보드는 <strong>10Ω 36개, 100nF 30개</strong>가 최상위다. 게이트 저항과 디커플링이 대다수를 차지하며, 이는 스위칭 회로의 전형적인 특징이다.</li>
+<li><code>Designator</code>를 세어 <code>Quantity</code>와 맞는지 확인한다. 여기서는 546개로 일치한다. 불일치는 조립 불량으로 직결된다.</li>
 <li><code>Manufacturer Part</code>가 비어 있는 줄은 발주가 불가능하다. 나사 구멍·테스트 포인트처럼 실제로 사지 않는 항목만 비어 있어야 한다.</li>
 </ol>
 <p><strong>CPL</strong> 열 구성: <code>Designator / Device / Footprint / Mid X / Mid Y / … / Layer / Rotation / SMD</code></p>
