@@ -140,6 +140,14 @@ $$d = \frac{c \cdot t}{2}$$
 !!! tip "이 표가 말하는 것"
     양산용 ADAS 라이다(ScaLa I, $600)와 연구용 고성능 라이다(HDL-64, $75,000)의 **가격 차이가 100배**다. 5주차의 "비용 대비 성능 최적화"가 무슨 뜻인지 이 표 하나로 설명된다.
 
+![라이다 센서 원리(d = c·t/2), eye-safe 파장 950nm vs 1550nm, 회전형 vs 고정형](figures/w06-lidar-principle-eyesafe.webp)
+
+> ▲ 라이다 센서 원리(d = c·t/2), eye-safe 파장 950nm vs 1550nm, 회전형 vs 고정형 *(출처: 6주차 슬라이드 p16)*
+
+![라이다 제품 비교 원본 표 — Valeo ScaLa I $600 vs Velodyne HDL-64 $75,000, 채널·측정거리·해상도·가격](figures/w06-lidar-product-table.webp)
+
+> ▲ 라이다 제품 비교 원본 표 — Valeo ScaLa I $600 vs Velodyne HDL-64 $75,000, 채널·측정거리·해상도·가격 *(출처: 6주차 슬라이드 p17)*
+
 ## 4. 레이더 (Radar)
 
 ### 동작 순서
@@ -166,6 +174,10 @@ $$d = \frac{c \cdot t}{2}$$
 | 구글 | 5세대 자율주행 시스템에 4D 이미징 레이더 **자체 설계 및 적용** (2020.03) |
 | 엔비디아 | 하이페리온 9 — 서라운드로 확장 (2022.03) |
 | 스마트레이더시스템(SRS) | **세계 최고 수준의 4D 이미징 레이더 기술력 보유**(2019, Yole). 서울대와 자율주행 실증 과제 수행(과기정통부 주관) |
+
+![레이더 센서의 진화 방향과 4D 이미징 레이더 — 거리·방위각·고도 + 속도](figures/w06-radar-4d-imaging.webp)
+
+> ▲ 레이더 센서의 진화 방향과 4D 이미징 레이더 — 거리·방위각·고도 + 속도 *(출처: 6주차 슬라이드 p19)*
 
 ## 5. 센서 클리닝 시스템
 
@@ -196,6 +208,10 @@ $$d = \frac{c \cdot t}{2}$$
 **GPU** / **NPU** / **MCU + AI 가속기**
 
 → 특히 **Level 2/3에서는 임베디드 프로세서가 중요**하다.
+
+![자율주행 AI 프로세서의 세 갈래 — GPU / NPU / MCU + AI 가속기](figures/w06-processor-three-types.webp)
+
+> ▲ 자율주행 AI 프로세서의 세 갈래 — GPU / NPU / MCU + AI 가속기 *(출처: 6주차 슬라이드(덱 10) p3)*
 
 ### 딥러닝의 3단계 흐름
 
@@ -250,6 +266,10 @@ flowchart LR
 
     **"자율주행용 임베디드 AI 프로세서에 대한 설명으로 옳지 않은 것"**
     → **"전력 소모가 많아도 괜찮다"** ← 정답(옳지 않음). 연산량 최적화 필요 ✅, 빠른 처리 속도 요구 ✅, 양자화 이슈 발생 가능 ✅
+
+![Training → Translation → Inference 흐름과 Network quantization으로 인한 정확도 감소 문제](figures/w06-tidl-quantization.webp)
+
+> ▲ Training → Translation → Inference 흐름과 Network quantization으로 인한 정확도 감소 문제 *(출처: 6주차 슬라이드(덱 10) p6)*
 
 ## 8. 프로세서 경쟁 구도 — 모빌아이 / 퀄컴 / 엔비디아
 

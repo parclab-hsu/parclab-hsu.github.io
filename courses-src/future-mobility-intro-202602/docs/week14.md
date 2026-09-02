@@ -57,6 +57,10 @@ flowchart TB
 - **자세** 결정 = 3개 (roll, pitch, yaw)
 - → 발(foot)을 원하는 **위치·방향에 자유롭게 두려면 최소 6 DOF** 필요
 
+![Robot leg design – kinematics — Hip 3 DOF + Knee 1 DOF + Ankle 2 DOF = 6 DOF](figures/w14-leg-6dof.webp)
+
+> ▲ Robot leg design – kinematics — Hip 3 DOF + Knee 1 DOF + Ankle 2 DOF = 6 DOF *(출처: 14주차 슬라이드 p9)*
+
 ## 3. 액추에이터 — 로봇 설계 전체를 결정한다
 
 !!! quote "핵심 명제"
@@ -112,6 +116,10 @@ $$\tau = \tau_{motor} + \tau_{friction}, \qquad \tau_{motor} = K \cdot I$$
 
 **문제의 본질** — 전류(I)로 모터 토크(τ_motor = K·I)는 알 수 있지만, **마찰 토크(τ_friction)가 불확실·비선형**이라 실제 출력 τ를 정확히 모른다. → **"전류만으로 힘을 알 수 없다"**
 
+![유압 액추에이터와 전기 모터 액추에이터의 장단점 — "Actuators determine the robot design"](figures/w14-actuator-hydraulic-electric.webp)
+
+> ▲ 유압 액추에이터와 전기 모터 액추에이터의 장단점 — "Actuators determine the robot design" *(출처: 14주차 슬라이드 p10)*
+
 ## 4. 토크 제어 기반 액추에이터 4종 — 기말 서술형 직결
 
 !!! success "2010년대 패러다임 전환"
@@ -127,6 +135,10 @@ $$\tau = \tau_{motor} + \tau_{friction}, \qquad \tau_{motor} = K \cdot I$$
 | ④ | **저감속비 기반 직접 구동형 (QDD, Proprioceptive)** | Motor + **Low reducer** | 감속비를 낮춰 **마찰 자체를 줄임** → 전류만으로 힘 추정 가능, 역구동성 확보 | **백래시 없음 → 부드러운 제어** / **고속 응답성** | **토크 부족** 가능성 / **큰 크기 및 무게** 부담 |
 
 **대표 적용 사례** — ① BigDog·ATLAS / ② TORO·TALOS / ③ Valkyrie / ④ MIT Cheetah, Mini Cheetah
+
+![2010s Compliant actuator — 위치 제어에서 토크 제어로의 패러다임 전환과 4가지 토크 제어 액추에이터](figures/w14-compliant-actuators.webp)
+
+> ▲ 2010s Compliant actuator — 위치 제어에서 토크 제어로의 패러다임 전환과 4가지 토크 제어 액추에이터 *(출처: 14주차 슬라이드 p14)*
 
 ## 5. 로봇 다리 설계의 역사 — 두 갈래 계보
 
@@ -195,6 +207,10 @@ flowchart LR
 | **Valkyrie** (NASA) | 전기, **SEA** 적용 | 우주 탐사·작업 목표. 극한 환경 작업 휴머노이드 |
 | **WALK-MAN** (IIT, 이탈리아) | 전기 | **재난 대응용**. 고출력·내충격 설계. 험지 작업·구조 활동 특화 |
 | **E2-DR** (Honda) | — | 재난 구조용 이족 인간형 로봇 |
+
+![Robot leg design – History — 유압 계보와 전기 모터 계보의 병행 발전(1960~2020)](figures/w14-leg-design-history.webp)
+
+> ▲ Robot leg design – History — 유압 계보와 전기 모터 계보의 병행 발전(1960~2020) *(출처: 14주차 슬라이드 p8)*
 
 ## 6. 모션 플래닝 및 제어 설계 — 기말 서술형 4번
 

@@ -51,10 +51,18 @@ flowchart TB
 2. **셀마다 예측** — 각 셀은 B개의 바운딩 박스를 예측. 각 박스는 **(x, y)** 박스 중심 좌표(셀 내 상대 위치), **(w, h)** 너비·높이(전체 이미지 기준 비율), **Confidence**(객체일 확률 × IOU), **Class probabilities**(C개).
 3. **후처리 NMS** — 겹치는 박스 중 신뢰도가 높은 것만 남기고 제거 → 최종 위치와 클래스 결정.
 
+![YOLO의 그리드 기반 탐지 — 이미지를 격자로 나누고 셀마다 박스와 클래스를 동시에 예측](figures/w04-yolo-grid.webp)
+
+> ▲ YOLO의 그리드 기반 탐지 — 이미지를 격자로 나누고 셀마다 박스와 클래스를 동시에 예측 *(출처: 4주차 슬라이드 p10)*
+
 ### R-CNN의 동작 2단계
 
 1. **Region Proposal** — **Selective Search**로 이미지에서 객체가 있을 만한 **후보 영역 약 2000개**를 생성.
 2. **Classification + Localization** — 각 후보 영역을 CNN에 넣어 무슨 객체인지 분류하고, 정확한 위치(Bounding Box)를 보정.
+
+![One(1) stage detector(YOLO) vs Two(2) stage detector(R-CNN) — 속도와 정확도의 맞바꿈](figures/w04-one-vs-two-stage.webp)
+
+> ▲ One(1) stage detector(YOLO) vs Two(2) stage detector(R-CNN) — 속도와 정확도의 맞바꿈 *(출처: 4주차 슬라이드 p8)*
 
 ## 3. IoU와 NMS — 반드시 이해할 두 개념
 
@@ -85,6 +93,10 @@ $$\text{IoU} = \frac{\text{겹치는 영역}}{\text{전체(합집합) 영역}}$$
 !!! tip "IoU와 NMS의 관계"
     IoU는 **평가 지표**이면서 동시에 **NMS의 판단 기준**이다. 같은 수식이 두 군데서 쓰인다는 점을 알면 헷갈리지 않는다.
 
+![IOU 계산 방법과 NMS(비최대값 억제) — 겹치는 박스 중 신뢰도가 높은 것만 남긴다](figures/w04-iou-nms.webp)
+
+> ▲ IOU 계산 방법과 NMS(비최대값 억제) — 겹치는 박스 중 신뢰도가 높은 것만 남긴다 *(출처: 4주차 슬라이드 p14)*
+
 ## 4. 모델의 계보
 
 - **YOLOv3 + Deep SORT** — 탐지(YOLO)에 추적(tracking)을 결합
@@ -108,6 +120,10 @@ $$\text{IoU} = \frac{\text{겹치는 영역}}{\text{전체(합집합) 영역}}$$
 - 자율주행 서비스를 위한 **Safety Driver / 안전요원**이 필요하다.
 - 자율주행 기술이 발전할수록 **차량이 담당하는 비율이 늘고 안전요원 담당 비율이 줄어드는** 전이(轉移) 구조를 갖는다.
 - 이것은 곧 **새로운 직업의 등장**이기도 하다(2주차 「생각해 봅시다」와 연결).
+
+![자율주행 기술 발전에 따른 차량과 안전요원의 담당 비율 변화](figures/w04-safety-driver.webp)
+
+> ▲ 자율주행 기술 발전에 따른 차량과 안전요원의 담당 비율 변화 *(출처: 4주차 슬라이드(덱 6) p14)*
 
 ## 7. 산업 지형 — 누가 앞서 있는가
 

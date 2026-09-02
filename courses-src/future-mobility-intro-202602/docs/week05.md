@@ -38,6 +38,10 @@ flowchart LR
     - **"SAE 자율주행 단계 구분에서 '조건부 자율주행(Conditional Automation)'에 해당하는 레벨"** → **레벨 3**
     - 서술형 1번(2026): *"SAE 자율주행 단계(Level 0~5)를 각 단계별 특징·운전자 역할을 중심으로 설명하시오."*
 
+![운전 자동화 Level 1~5와 두 가지 해석 축(도로 환경 기준 / 운전자 필요 여부 기준)](figures/w05-sae-levels.webp)
+
+> ▲ 운전 자동화 Level 1~5와 두 가지 해석 축(도로 환경 기준 / 운전자 필요 여부 기준) *(출처: 5주차 슬라이드 p3)*
+
 ## 2. UNECE 규제 — 기술이 아니라 법이 상용화를 정한다
 
 **UNECE** = UN 산하 **유럽경제위원회**. 사이버 보안 및 SW 업데이트 관련 법규를 관장한다.
@@ -72,7 +76,15 @@ flowchart LR
 !!! quote "이 주차의 핵심 문장"
     **"결국 자율주행의 핵심은 '센서 성능'이 아니라 '비용 대비 성능을 어떻게 최적화하느냐'다."**
 
+![UNECE ALKS 규정 변화(2020 60km/h → 2022 130km/h)와 기업별 자율주행 수준 — 대부분 현재 Level 2, 책임은 사용자](figures/w05-unece-alks.webp)
+
+> ▲ UNECE ALKS 규정 변화(2020 60km/h → 2022 130km/h)와 기업별 자율주행 수준 — 대부분 현재 Level 2, 책임은 사용자 *(출처: 5주차 슬라이드 p4)*
+
 ## 3. 기업별 전략 비교 — 같은 문제, 다른 답
+
+![테슬라 — 카메라 8 + 레이더 1 + 초음파 12, 자체 AI 칩 144 TOPS, FSD V8→V9·V10 전개](figures/w05-tesla-sensors-fsd.webp)
+
+> ▲ 테슬라 — 카메라 8 + 레이더 1 + 초음파 12, 자체 AI 칩 144 TOPS, FSD V8→V9·V10 전개 *(출처: 5주차 슬라이드 p7)*
 
 ### 테슬라 — 카메라 중심 (Vision only)
 
@@ -137,6 +149,10 @@ Front Main Camera / Front Long-Range Camera / Side Cameras ×4 / Rear Camera / S
 
 > 👉 **자동차의 경쟁력이 하드웨어가 아니라 소프트웨어 플랫폼으로 이동하고 있다.**
 
+![자율주행(Adaptive AUTOSAR) / 인포테인먼트 / 제어(Classic AUTOSAR) 3영역과 완성차 자체 OS](figures/w05-vehicle-sw-layers.webp)
+
+> ▲ 자율주행(Adaptive AUTOSAR) / 인포테인먼트 / 제어(Classic AUTOSAR) 3영역과 완성차 자체 OS *(출처: 5주차 슬라이드 p14)*
+
 ## 6. HD Map과 크라우드소싱 — REM
 
 **REM** (Road Experience Management) — **Crowdsourcing 기반 정밀지도 생성 기술**(= 정밀 지도 구축)
@@ -172,6 +188,10 @@ Front Main Camera / Front Long-Range Camera / Side Cameras ×4 / Rear Camera / S
     **"트럭 군집주행에서 주로 사용되는 통신 방식과 주된 이점의 조합"** → **V2V — 연료 효율 향상 및 운전자 부담 완화**
     (✕ V2G-전력망 / ✕ V2P-보행자 안내 / ✕ V2I-신호등 최적화)
     **"군집 주행의 주요 이점 중 아닌 것"** → **운전자의 운전 부담 증가**
+
+![V2V 기반 대형트럭 군집주행과 효과 4가지 — 연료 소비의 35~55%가 공기저항](figures/w05-truck-platooning.webp)
+
+> ▲ V2V 기반 대형트럭 군집주행과 효과 4가지 — 연료 소비의 35~55%가 공기저항 *(출처: 5주차 슬라이드(덱 8) p24)*
 
 ## 8. 시뮬레이션 — 웨이모 Simulation City
 

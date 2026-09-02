@@ -1801,6 +1801,10 @@
 <li><strong>자세</strong> 결정 = 3개 (roll, pitch, yaw)</li>
 <li>→ 발(foot)을 원하는 <strong>위치·방향에 자유롭게 두려면 최소 6 DOF</strong> 필요</li>
 </ul>
+<p><img alt="Robot leg design – kinematics — Hip 3 DOF + Knee 1 DOF + Ankle 2 DOF = 6 DOF" src="../figures/w14-leg-6dof.webp" /></p>
+<blockquote>
+<p>▲ Robot leg design – kinematics — Hip 3 DOF + Knee 1 DOF + Ankle 2 DOF = 6 DOF <em>(출처: 14주차 슬라이드 p9)</em></p>
+</blockquote>
 <h2 id="3">3. 액추에이터 — 로봇 설계 전체를 결정한다<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <div class="admonition quote">
 <p class="admonition-title">핵심 명제</p>
@@ -1904,6 +1908,10 @@
 </tbody>
 </table>
 <p><strong>문제의 본질</strong> — 전류(I)로 모터 토크(τ_motor = K·I)는 알 수 있지만, <strong>마찰 토크(τ_friction)가 불확실·비선형</strong>이라 실제 출력 τ를 정확히 모른다. → <strong>"전류만으로 힘을 알 수 없다"</strong></p>
+<p><img alt="유압 액추에이터와 전기 모터 액추에이터의 장단점 — &quot;Actuators determine the robot design&quot;" src="../figures/w14-actuator-hydraulic-electric.webp" /></p>
+<blockquote>
+<p>▲ 유압 액추에이터와 전기 모터 액추에이터의 장단점 — "Actuators determine the robot design" <em>(출처: 14주차 슬라이드 p10)</em></p>
+</blockquote>
 <h2 id="4-4">4. 토크 제어 기반 액추에이터 4종 — 기말 서술형 직결<a class="headerlink" href="#4-4" title="Permanent link">&para;</a></h2>
 <div class="admonition success">
 <p class="admonition-title">2010년대 패러다임 전환</p>
@@ -1958,6 +1966,10 @@
 </tbody>
 </table>
 <p><strong>대표 적용 사례</strong> — ① BigDog·ATLAS / ② TORO·TALOS / ③ Valkyrie / ④ MIT Cheetah, Mini Cheetah</p>
+<p><img alt="2010s Compliant actuator — 위치 제어에서 토크 제어로의 패러다임 전환과 4가지 토크 제어 액추에이터" src="../figures/w14-compliant-actuators.webp" /></p>
+<blockquote>
+<p>▲ 2010s Compliant actuator — 위치 제어에서 토크 제어로의 패러다임 전환과 4가지 토크 제어 액추에이터 <em>(출처: 14주차 슬라이드 p14)</em></p>
+</blockquote>
 <h2 id="5">5. 로봇 다리 설계의 역사 — 두 갈래 계보<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
     subgraph HY["유압 계보"]
@@ -2151,6 +2163,10 @@
 </tr>
 </tbody>
 </table>
+<p><img alt="Robot leg design – History — 유압 계보와 전기 모터 계보의 병행 발전(1960~2020)" src="../figures/w14-leg-design-history.webp" /></p>
+<blockquote>
+<p>▲ Robot leg design – History — 유압 계보와 전기 모터 계보의 병행 발전(1960~2020) <em>(출처: 14주차 슬라이드 p8)</em></p>
+</blockquote>
 <h2 id="6-4">6. 모션 플래닝 및 제어 설계 — 기말 서술형 4번<a class="headerlink" href="#6-4" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p><strong>문항</strong>: 휴머노이드 로봇의 모션 플래닝 및 제어 설계 시 고려해야 할 공학적 특성을 설명하시오. (상20 / 중14 / 하8)</p>

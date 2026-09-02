@@ -78,6 +78,10 @@ flowchart LR
     - **IRE** (Institute of Radio Engineers) — 1912년 설립, 무선통신·전자공학(레이더·반도체·전자회로·컴퓨터)
     - 1960년대 들어 전기공학 + 전자공학 + 컴퓨터공학의 경계가 사라지면서 → **AIEE + IRE = IEEE (1963)**
 
+![로봇의 발전 연표 — 1960s 산업용 로봇 탄생·성장 → 1990s 전환기 → 2000s 이후 새로운 로봇의 탄생과 성장](figures/w13-robot-timeline.webp)
+
+> ▲ 로봇의 발전 연표 — 1960s 산업용 로봇 탄생·성장 → 1990s 전환기 → 2000s 이후 새로운 로봇의 탄생과 성장 *(출처: 13주차 슬라이드 p3)*
+
 ## 4. 서비스 로봇 성공의 조건
 
 !!! success "로봇 성공의 핵심 공식"
@@ -150,6 +154,10 @@ $$\text{센싱(Sensing)} \to \text{인지(Perception)} \to \text{지능(Intellig
 > 과거의 로봇은 인간을 **대체**하기 위해 개발되었지만, 미래의 로봇은 인간과 **공존하며 삶을 지원**하는 방향으로 발전하고 있다.
 > 변화의 원인 — 환경 변화(Environment Change), 기술 혁신(Technology Innovation), 사회적 요구(Social Needs) 증가, AI·디지털 기술 발전, 고령화·노동력 부족.
 
+![지능형 로봇 = 외부환경을 인식(Perception)하고 스스로 상황을 판단(Cognition)하여 자율적으로 동작(Mobility & Manipulation)하는 로봇](figures/w13-intelligent-robot.webp)
+
+> ▲ 지능형 로봇 = 외부환경을 인식(Perception)하고 스스로 상황을 판단(Cognition)하여 자율적으로 동작(Mobility & Manipulation)하는 로봇 *(출처: 12주차 슬라이드(덱 20) p36)*
+
 ### 개인서비스용 로봇의 3축
 
 **개인서비스용 로봇** = 인간과 공존하는 환경에서 개인에게 필요한 도움을 제공하는 로봇
@@ -162,6 +170,10 @@ $$\text{센싱(Sensing)} \to \text{인지(Perception)} \to \text{지능(Intellig
 
 **사례** — IS Robotics(미)의 **iRobot**(최초의 인터넷 로봇 개발, 로봇기술(RT) + 정보기술(IT)), Amazon **Astro**, LG **CLOi**, X Sense Robot(바둑), 로봇청소기.
 
+![개인서비스용 로봇의 3축 — Perception(Sensing) / Cognition(Intelligence) / Manipulation(Motion)](figures/w13-personal-service-robot.webp)
+
+> ▲ 개인서비스용 로봇의 3축 — Perception(Sensing) / Cognition(Intelligence) / Manipulation(Motion) *(출처: 12주차 슬라이드(덱 20) p38)*
+
 ### 로봇은 미래 핵심 성장 동력
 
 | 관점 | 내용 |
@@ -169,6 +181,10 @@ $$\text{센싱(Sensing)} \to \text{인지(Perception)} \to \text{지능(Intellig
 | **21세기 대표 End-User 제품** | 산업용 로봇 → 생활형 서비스 로봇으로 진화. 인간과 공존하며 다양한 서비스 제공. AI 시대의 대표 소비자 제품으로 성장 |
 | **메가트렌드의 핵심 해결책** | 고령화 사회 대응 / 노동력 부족 문제 해결 / 삶의 질 향상 / 개인화·지능화·모바일화 서비스 실현 |
 | **대한민국의 기회** | 세계 최고 수준의 ICT 및 제조 인프라 보유 / 로봇 서비스 도입에 적합한 생활환경 / AI·반도체·통신 기술과의 시너지 가능 |
+
+![로봇의 정의(Webster) — "An automated device that performs functions normally ascribed to humans, or a machine in the form of a human."](figures/w13-robot-definition.webp)
+
+> ▲ 로봇의 정의(Webster) — "An automated device that performs functions normally ascribed to humans, or a machine in the form of a human." *(출처: 12주차 슬라이드(덱 20) p33)*
 
 ## 6. 산업용 로봇 — 작업 영역에 따른 분류 6종
 

@@ -1627,6 +1627,10 @@
 <p class="admonition-title">기말 서술형 필수 개념</p>
 <p>공진은 <strong>강성–질량 문제</strong>다. 강도를 아무리 높여도 공진은 해결되지 않는다. 이 구분을 명확히 쓰지 않으면 감점된다.</p>
 </div>
+<p><img alt="강성(Stiffness)과 강도(Strength)의 의미·측정지표·시험·고장 모드 비교" src="../figures/w11-stiffness-vs-strength.webp" /></p>
+<blockquote>
+<p>▲ 강성(Stiffness)과 강도(Strength)의 의미·측정지표·시험·고장 모드 비교 <em>(출처: 11주차 슬라이드 p6)</em></p>
+</blockquote>
 <h2 id="2-fos-weight-spiral">2. 안전계수(FoS)와 Weight Spiral<a class="headerlink" href="#2-fos-weight-spiral" title="Permanent link">&para;</a></h2>
 <h3 id="_2">안전계수 설계 예시<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
@@ -1670,6 +1674,10 @@
 <p><strong>중량 추정 반복(Weight Spiral, 악순환)</strong> — 구조 중량↑ → 총중량↑, 총중량↑ → 호버 추력 요구↑ → 더 큰 모터·프로펠러 필요 → 모터↑ → 더 큰 배터리 필요 → 또 중량↑ → 다시 1로 되돌아가 <strong>중량이 눈덩이처럼 증가하는 발산 루프</strong>.</p>
 <p><strong>결과: 페이로드 여유·체공시간 급감, 효율 악화.</strong></p>
 </blockquote>
+<p><img alt="안전계수 설계 예시 — 항공·우주 1.4~1.5 / 드론 핵심부 2.0~2.5 / UAM·인력항공기 3.0~4.0" src="../figures/w11-factor-of-safety.webp" /></p>
+<blockquote>
+<p>▲ 안전계수 설계 예시 — 항공·우주 1.4~1.5 / 드론 핵심부 2.0~2.5 / UAM·인력항공기 3.0~4.0 <em>(출처: 11주차 슬라이드 p8)</em></p>
+</blockquote>
 <h2 id="3">3. 재료 선택<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>프레임 재질 — <strong>탄소섬유(Carbon Fiber)</strong>, 알루미늄, 플라스틱 등. 강성·강도·중량·비용의 균형점을 찾는 것이 설계다.</p>
 <h2 id="4">4. 드론 구조 설계의 미래 패러다임<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
@@ -1704,6 +1712,10 @@
 </ul>
 <blockquote>
 <p>설계 도구의 역사: <em>"In the late 20th Century, this was engineering. Paper was King!"</em> → <em>"Then… Someone introduced Computer Aided Drafting… CAD was born."</em> → 지금은 <strong>디지털 트윈</strong>.</p>
+</blockquote>
+<p><img alt="전통적 순차설계(Sequential Design) vs 구조–제어 병렬 통합설계(Co-Design)" src="../figures/w11-sequential-vs-codesign.webp" /></p>
+<blockquote>
+<p>▲ 전통적 순차설계(Sequential Design) vs 구조–제어 병렬 통합설계(Co-Design) <em>(출처: 11주차 슬라이드 p13)</em></p>
 </blockquote>
 <h2 id="5">5. 프로펠러<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <p><strong>선정 시 고려사항</strong></p>
@@ -1877,6 +1889,10 @@
 <strong>선정: Hybrid (LiPo + Fuel Cell)</strong> — 단, 규모 제약 시 고에너지 LiPo 우선 검토.
 <strong>근거</strong>: 소형·고응답이 요구되는 멀티콥터 특성상 <strong>순수 Fuel Cell은 부적합</strong>하고, <strong>에너지밀도는 Fuel Cell, 출력밀도는 LiPo가 분담</strong>하는 Hybrid 구성이 30분 이상 체공과 비행 안정성을 동시에 만족하는 가장 타당한 해법이다.</p>
 </div>
+<p><img alt="Battery-Motor(LiPo) / Fuel Cell-Motor / Hybrid / Gasoline Engine Driven 4방식의 장단점" src="../figures/w11-battery-four-options.webp" /></p>
+<blockquote>
+<p>▲ Battery-Motor(LiPo) / Fuel Cell-Motor / Hybrid / Gasoline Engine Driven 4방식의 장단점 <em>(출처: 11주차 슬라이드(덱 18) p14)</em></p>
+</blockquote>
 <h2 id="8-">8. 모터-로터 성능 비교<a class="headerlink" href="#8-" title="Permanent link">&para;</a></h2>
 <p><strong>15~18인치 로터/모터 비교 분석</strong> — Motor(blade) supplier: Tiger motor, Tarrot, Rctimer, DJI. 대체로 <strong>Efficiency(W/kg) 기준 10% 이내 차이</strong>.</p>
 <table>
@@ -2014,6 +2030,10 @@
 <p><strong>③ T/W 마진과 전력 소모</strong>
 옥토는 동일 모터로 더 큰 T/W 여유 확보 → 호버 추력이 <strong>최대추력 대비 낮은 비율(예: 30~40%)</strong>에서 작동.</p>
 </div>
+<p><img alt="Quadcopter 24분 · Coaxial Octocopter(U7) 22분 · Coaxial Octocopter(U5) 26분 — 중량·추력·전력·호버링 시간 원본 표" src="../figures/w11-layout-hover-time.webp" /></p>
+<blockquote>
+<p>▲ Quadcopter 24분 · Coaxial Octocopter(U7) 22분 · Coaxial Octocopter(U5) 26분 — 중량·추력·전력·호버링 시간 원본 표 <em>(출처: 11주차 슬라이드(덱 18) p17)</em></p>
+</blockquote>
 <h2 id="10-modal-analysis">10. 동특성 분석 (Modal Analysis) — 공진<a class="headerlink" href="#10-modal-analysis" title="Permanent link">&para;</a></h2>
 <h3 id="uav">UAV 주요 동특성 모드<a class="headerlink" href="#uav" title="Permanent link">&para;</a></h3>
 <p>비행 안정성과 vision에 영향을 주는 주요 모드:</p>
@@ -2091,6 +2111,10 @@
 <p><strong>강성(Stiffness)</strong> — 변형 저항($k = F/\delta$), 고유진동수를 결정 → 공진 문제의 핵심
 <strong>강도(Strength)</strong> — 파괴·항복 저항(허용응력), 부재가 깨지는지의 문제</p>
 </div>
+<p><img alt="Impact testing — Artcopter 고유진동수 27 · 38 · 151 Hz와 실측 모드 형상" src="../figures/w11-impact-testing.webp" /></p>
+<blockquote>
+<p>▲ Impact testing — Artcopter 고유진동수 27 · 38 · 151 Hz와 실측 모드 형상 <em>(출처: 11주차 슬라이드(덱 18) p20)</em></p>
+</blockquote>
 <h2 id="_3">🤔 생각해 봅시다<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
 <li>헥사콥터와 옥토콥터 중 <strong>택배 드론</strong>에 적합한 것은? 9주차의 "옥토콥터는 체공시간이 줄어든다"와 이번 주 계산표(옥토가 더 오래 난다)가 모순처럼 보이는데, 어떻게 화해시킬 수 있나? <em>(힌트: 같은 배터리 vs 같은 페이로드, 동축 반전 여부)</em></li>

@@ -35,6 +35,10 @@ flowchart TB
 !!! danger "기말 서술형 필수 개념"
     공진은 **강성–질량 문제**다. 강도를 아무리 높여도 공진은 해결되지 않는다. 이 구분을 명확히 쓰지 않으면 감점된다.
 
+![강성(Stiffness)과 강도(Strength)의 의미·측정지표·시험·고장 모드 비교](figures/w11-stiffness-vs-strength.webp)
+
+> ▲ 강성(Stiffness)과 강도(Strength)의 의미·측정지표·시험·고장 모드 비교 *(출처: 11주차 슬라이드 p6)*
+
 ## 2. 안전계수(FoS)와 Weight Spiral
 
 ### 안전계수 설계 예시
@@ -71,6 +75,10 @@ flowchart LR
 > **중량 추정 반복(Weight Spiral, 악순환)** — 구조 중량↑ → 총중량↑, 총중량↑ → 호버 추력 요구↑ → 더 큰 모터·프로펠러 필요 → 모터↑ → 더 큰 배터리 필요 → 또 중량↑ → 다시 1로 되돌아가 **중량이 눈덩이처럼 증가하는 발산 루프**.
 >
 > **결과: 페이로드 여유·체공시간 급감, 효율 악화.**
+
+![안전계수 설계 예시 — 항공·우주 1.4~1.5 / 드론 핵심부 2.0~2.5 / UAM·인력항공기 3.0~4.0](figures/w11-factor-of-safety.webp)
+
+> ▲ 안전계수 설계 예시 — 항공·우주 1.4~1.5 / 드론 핵심부 2.0~2.5 / UAM·인력항공기 3.0~4.0 *(출처: 11주차 슬라이드 p8)*
 
 ## 3. 재료 선택
 
@@ -109,6 +117,10 @@ flowchart LR
 - 예시 — 비행 중 구조 상태 모니터링 및 **잔여 수명(RUL, Remaining Useful Life) 예측** / **Virtual Flight Test** 기반 반복 시험으로 개발 효율성 향상 및 비용 절감
 
 > 설계 도구의 역사: *"In the late 20th Century, this was engineering. Paper was King!"* → *"Then… Someone introduced Computer Aided Drafting… CAD was born."* → 지금은 **디지털 트윈**.
+
+![전통적 순차설계(Sequential Design) vs 구조–제어 병렬 통합설계(Co-Design)](figures/w11-sequential-vs-codesign.webp)
+
+> ▲ 전통적 순차설계(Sequential Design) vs 구조–제어 병렬 통합설계(Co-Design) *(출처: 11주차 슬라이드 p13)*
 
 ## 5. 프로펠러
 
@@ -181,6 +193,10 @@ flowchart LR
     **선정: Hybrid (LiPo + Fuel Cell)** — 단, 규모 제약 시 고에너지 LiPo 우선 검토.
     **근거**: 소형·고응답이 요구되는 멀티콥터 특성상 **순수 Fuel Cell은 부적합**하고, **에너지밀도는 Fuel Cell, 출력밀도는 LiPo가 분담**하는 Hybrid 구성이 30분 이상 체공과 비행 안정성을 동시에 만족하는 가장 타당한 해법이다.
 
+![Battery-Motor(LiPo) / Fuel Cell-Motor / Hybrid / Gasoline Engine Driven 4방식의 장단점](figures/w11-battery-four-options.webp)
+
+> ▲ Battery-Motor(LiPo) / Fuel Cell-Motor / Hybrid / Gasoline Engine Driven 4방식의 장단점 *(출처: 11주차 슬라이드(덱 18) p14)*
+
 ## 8. 모터-로터 성능 비교
 
 **15~18인치 로터/모터 비교 분석** — Motor(blade) supplier: Tiger motor, Tarrot, Rctimer, DJI. 대체로 **Efficiency(W/kg) 기준 10% 이내 차이**.
@@ -230,6 +246,10 @@ flowchart LR
     **③ T/W 마진과 전력 소모**
     옥토는 동일 모터로 더 큰 T/W 여유 확보 → 호버 추력이 **최대추력 대비 낮은 비율(예: 30~40%)**에서 작동.
 
+![Quadcopter 24분 · Coaxial Octocopter(U7) 22분 · Coaxial Octocopter(U5) 26분 — 중량·추력·전력·호버링 시간 원본 표](figures/w11-layout-hover-time.webp)
+
+> ▲ Quadcopter 24분 · Coaxial Octocopter(U7) 22분 · Coaxial Octocopter(U5) 26분 — 중량·추력·전력·호버링 시간 원본 표 *(출처: 11주차 슬라이드(덱 18) p17)*
+
 ## 10. 동특성 분석 (Modal Analysis) — 공진
 
 ### UAV 주요 동특성 모드
@@ -277,6 +297,10 @@ flowchart LR
 
     **강성(Stiffness)** — 변형 저항($k = F/\delta$), 고유진동수를 결정 → 공진 문제의 핵심
     **강도(Strength)** — 파괴·항복 저항(허용응력), 부재가 깨지는지의 문제
+
+![Impact testing — Artcopter 고유진동수 27 · 38 · 151 Hz와 실측 모드 형상](figures/w11-impact-testing.webp)
+
+> ▲ Impact testing — Artcopter 고유진동수 27 · 38 · 151 Hz와 실측 모드 형상 *(출처: 11주차 슬라이드(덱 18) p20)*
 
 ## 🤔 생각해 봅시다
 

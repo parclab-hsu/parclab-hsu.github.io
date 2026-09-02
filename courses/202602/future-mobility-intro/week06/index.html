@@ -2097,6 +2097,14 @@
 <p class="admonition-title">이 표가 말하는 것</p>
 <p>양산용 ADAS 라이다(ScaLa I, $600)와 연구용 고성능 라이다(HDL-64, $75,000)의 <strong>가격 차이가 100배</strong>다. 5주차의 "비용 대비 성능 최적화"가 무슨 뜻인지 이 표 하나로 설명된다.</p>
 </div>
+<p><img alt="라이다 센서 원리(d = c·t/2), eye-safe 파장 950nm vs 1550nm, 회전형 vs 고정형" src="../figures/w06-lidar-principle-eyesafe.webp" /></p>
+<blockquote>
+<p>▲ 라이다 센서 원리(d = c·t/2), eye-safe 파장 950nm vs 1550nm, 회전형 vs 고정형 <em>(출처: 6주차 슬라이드 p16)</em></p>
+</blockquote>
+<p><img alt="라이다 제품 비교 원본 표 — Valeo ScaLa I $600 vs Velodyne HDL-64 $75,000, 채널·측정거리·해상도·가격" src="../figures/w06-lidar-product-table.webp" /></p>
+<blockquote>
+<p>▲ 라이다 제품 비교 원본 표 — Valeo ScaLa I $600 vs Velodyne HDL-64 $75,000, 채널·측정거리·해상도·가격 <em>(출처: 6주차 슬라이드 p17)</em></p>
+</blockquote>
 <h2 id="4-radar">4. 레이더 (Radar)<a class="headerlink" href="#4-radar" title="Permanent link">&para;</a></h2>
 <h3 id="_8">동작 순서<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ol>
@@ -2143,6 +2151,10 @@
 </tr>
 </tbody>
 </table>
+<p><img alt="레이더 센서의 진화 방향과 4D 이미징 레이더 — 거리·방위각·고도 + 속도" src="../figures/w06-radar-4d-imaging.webp" /></p>
+<blockquote>
+<p>▲ 레이더 센서의 진화 방향과 4D 이미징 레이더 — 거리·방위각·고도 + 속도 <em>(출처: 6주차 슬라이드 p19)</em></p>
+</blockquote>
 <h2 id="5">5. 센서 클리닝 시스템<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <p>라이다·카메라는 오염에 취약하다. 실제 상용화를 위해서는 <strong>닦는 기술</strong>이 필요하다.</p>
 <table>
@@ -2187,6 +2199,10 @@
 <h3 id="_10">프로세서의 세 갈래<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p><strong>GPU</strong> / <strong>NPU</strong> / <strong>MCU + AI 가속기</strong></p>
 <p>→ 특히 <strong>Level 2/3에서는 임베디드 프로세서가 중요</strong>하다.</p>
+<p><img alt="자율주행 AI 프로세서의 세 갈래 — GPU / NPU / MCU + AI 가속기" src="../figures/w06-processor-three-types.webp" /></p>
+<blockquote>
+<p>▲ 자율주행 AI 프로세서의 세 갈래 — GPU / NPU / MCU + AI 가속기 <em>(출처: 6주차 슬라이드(덱 10) p3)</em></p>
+</blockquote>
 <h3 id="3_1">딥러닝의 3단계 흐름<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
 <pre class="mermaid"><code>flowchart LR
     T["① Training (학습)&lt;br/&gt;Desktop/Cloud&lt;br/&gt;TensorFlow · Python/C++/Java · Linux"]
@@ -2301,6 +2317,10 @@
 <p><strong>"자율주행용 임베디드 AI 프로세서에 대한 설명으로 옳지 않은 것"</strong>
 → <strong>"전력 소모가 많아도 괜찮다"</strong> ← 정답(옳지 않음). 연산량 최적화 필요 ✅, 빠른 처리 속도 요구 ✅, 양자화 이슈 발생 가능 ✅</p>
 </div>
+<p><img alt="Training → Translation → Inference 흐름과 Network quantization으로 인한 정확도 감소 문제" src="../figures/w06-tidl-quantization.webp" /></p>
+<blockquote>
+<p>▲ Training → Translation → Inference 흐름과 Network quantization으로 인한 정확도 감소 문제 <em>(출처: 6주차 슬라이드(덱 10) p6)</em></p>
+</blockquote>
 <h2 id="8">8. 프로세서 경쟁 구도 — 모빌아이 / 퀄컴 / 엔비디아<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <h3 id="_12">모빌아이의 전략<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <ul>

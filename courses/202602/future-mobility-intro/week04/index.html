@@ -1535,11 +1535,19 @@
 <li><strong>셀마다 예측</strong> — 각 셀은 B개의 바운딩 박스를 예측. 각 박스는 <strong>(x, y)</strong> 박스 중심 좌표(셀 내 상대 위치), <strong>(w, h)</strong> 너비·높이(전체 이미지 기준 비율), <strong>Confidence</strong>(객체일 확률 × IOU), <strong>Class probabilities</strong>(C개).</li>
 <li><strong>후처리 NMS</strong> — 겹치는 박스 중 신뢰도가 높은 것만 남기고 제거 → 최종 위치와 클래스 결정.</li>
 </ol>
+<p><img alt="YOLO의 그리드 기반 탐지 — 이미지를 격자로 나누고 셀마다 박스와 클래스를 동시에 예측" src="../figures/w04-yolo-grid.webp" /></p>
+<blockquote>
+<p>▲ YOLO의 그리드 기반 탐지 — 이미지를 격자로 나누고 셀마다 박스와 클래스를 동시에 예측 <em>(출처: 4주차 슬라이드 p10)</em></p>
+</blockquote>
 <h3 id="r-cnn-2">R-CNN의 동작 2단계<a class="headerlink" href="#r-cnn-2" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Region Proposal</strong> — <strong>Selective Search</strong>로 이미지에서 객체가 있을 만한 <strong>후보 영역 약 2000개</strong>를 생성.</li>
 <li><strong>Classification + Localization</strong> — 각 후보 영역을 CNN에 넣어 무슨 객체인지 분류하고, 정확한 위치(Bounding Box)를 보정.</li>
 </ol>
+<p><img alt="One(1) stage detector(YOLO) vs Two(2) stage detector(R-CNN) — 속도와 정확도의 맞바꿈" src="../figures/w04-one-vs-two-stage.webp" /></p>
+<blockquote>
+<p>▲ One(1) stage detector(YOLO) vs Two(2) stage detector(R-CNN) — 속도와 정확도의 맞바꿈 <em>(출처: 4주차 슬라이드 p8)</em></p>
+</blockquote>
 <h2 id="3-iou-nms">3. IoU와 NMS — 반드시 이해할 두 개념<a class="headerlink" href="#3-iou-nms" title="Permanent link">&para;</a></h2>
 <h3 id="iou-intersection-over-union">IoU (Intersection over Union)<a class="headerlink" href="#iou-intersection-over-union" title="Permanent link">&para;</a></h3>
 <p>예측한 박스와 실제 정답 박스가 <strong>얼마나 잘 겹치는지</strong>를 나타내는 지표.</p>
@@ -1580,6 +1588,10 @@
 <p class="admonition-title">IoU와 NMS의 관계</p>
 <p>IoU는 <strong>평가 지표</strong>이면서 동시에 <strong>NMS의 판단 기준</strong>이다. 같은 수식이 두 군데서 쓰인다는 점을 알면 헷갈리지 않는다.</p>
 </div>
+<p><img alt="IOU 계산 방법과 NMS(비최대값 억제) — 겹치는 박스 중 신뢰도가 높은 것만 남긴다" src="../figures/w04-iou-nms.webp" /></p>
+<blockquote>
+<p>▲ IOU 계산 방법과 NMS(비최대값 억제) — 겹치는 박스 중 신뢰도가 높은 것만 남긴다 <em>(출처: 4주차 슬라이드 p14)</em></p>
+</blockquote>
 <h2 id="4_1">4. 모델의 계보<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>YOLOv3 + Deep SORT</strong> — 탐지(YOLO)에 추적(tracking)을 결합</li>
@@ -1621,6 +1633,10 @@
 <li>자율주행 기술이 발전할수록 <strong>차량이 담당하는 비율이 늘고 안전요원 담당 비율이 줄어드는</strong> 전이(轉移) 구조를 갖는다.</li>
 <li>이것은 곧 <strong>새로운 직업의 등장</strong>이기도 하다(2주차 「생각해 봅시다」와 연결).</li>
 </ul>
+<p><img alt="자율주행 기술 발전에 따른 차량과 안전요원의 담당 비율 변화" src="../figures/w04-safety-driver.webp" /></p>
+<blockquote>
+<p>▲ 자율주행 기술 발전에 따른 차량과 안전요원의 담당 비율 변화 <em>(출처: 4주차 슬라이드(덱 6) p14)</em></p>
+</blockquote>
 <h2 id="7">7. 산업 지형 — 누가 앞서 있는가<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <h3 id="guidehouse-insights">가이드하우스 인사이트(Guidehouse Insights) 리더보드<a class="headerlink" href="#guidehouse-insights" title="Permanent link">&para;</a></h3>
 <p>자율주행 업체의 순위를 매년 리더보드 형태로 발표한다.</p>

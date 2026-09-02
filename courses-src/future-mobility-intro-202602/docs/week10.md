@@ -112,6 +112,10 @@ flowchart TB
 
 **DNA+ 드론 워크스페이스**를 중심으로 국가슈퍼컴퓨팅센터(KISTI, Online High-Performance) — Replica System(ETRI, BigData & Dev. Infra) — 표준 데이터셋(ETRI 나눔, 대국민 개방형 표준데이터셋 공개) — DNA+ 드론 데이터/서비스 챌린지(과제 종료 후 민간 이양, AI 챌린지·드론 챌린지 등 각종 경진대회와 협력).
 
+![DNA+드론 핵심기술 — 01 Data(수집·모델링·표준·빅데이터 서버) / 02 Network 5G(이동기지국·원격운용·이종군집자율비행)](figures/w10-dna-core-tech.webp)
+
+> ▲ DNA+드론 핵심기술 — 01 Data(수집·모델링·표준·빅데이터 서버) / 02 Network 5G(이동기지국·원격운용·이종군집자율비행) *(출처: 10주차 슬라이드 p5)*
+
 ## 3. 국내외 드론 생태계
 
 ### 국내 드론 산업 생태계 지도 (2023.02 기준, 국토교통부·KIAST·드론정보포털)
@@ -183,6 +187,10 @@ flowchart TB
 **연구 확장 영역** — AI / **안티드론** / Platform
 → 드론의 필요성 / 드론의 규제 / 플랫폼 / 드론과 AI / 기타 드론과 대드론에 대한 연구
 
+![드론 수요의 변화 — 날다 · 찍다 · 운반하다(드론 택배·택시) · 지키다(위험성 판단·드론 테러 대응)](figures/w10-demand-evolution.webp)
+
+> ▲ 드론 수요의 변화 — 날다 · 찍다 · 운반하다(드론 택배·택시) · 지키다(위험성 판단·드론 테러 대응) *(출처: 10주차 슬라이드 p17)*
+
 ## 6. 법률의 변화
 
 | 법률 | 내용 |
@@ -253,6 +261,10 @@ flowchart TB
 - **Deploy a Fog Grenade** — 연막/시야 차단 장비 운용
 - **Blind the Drone Camera** — 레이저·광학장치 기반 카메라 무력화
 
+![대드론 2·3단계 — React(비접촉형 대응)와 Interdict(Kinetic / Non-Kinetic 무력화)](figures/w10-react-interdict.webp)
+
+> ▲ 대드론 2·3단계 — React(비접촉형 대응)와 Interdict(Kinetic / Non-Kinetic 무력화) *(출처: 10주차 슬라이드(덱 16) p7)*
+
 #### ③ Interdict — 무력화
 
 | 구분 | 기술 |
@@ -280,6 +292,10 @@ flowchart TB
 
 1. **드론캅** — 원전·공항 주변 배회하는 불법드론 포획. '국민안전 감시 및 대응 무인항공기 융합시스템 개발사업'을 통해 개발된 무인기 시제품
 2. **불법드론 조종사를 찾아내는 포렌식 기술**
+
+![대드론 1단계 — Detect · Track · Identify와 활용 센서(Acoustic / Visual·EO / Thermal / RF / Radar)](figures/w10-counter-uas-dti.webp)
+
+> ▲ 대드론 1단계 — Detect · Track · Identify와 활용 센서(Acoustic / Visual·EO / Thermal / RF / Radar) *(출처: 10주차 슬라이드(덱 16) p5)*
 
 ## 🤔 생각해 봅시다
 
