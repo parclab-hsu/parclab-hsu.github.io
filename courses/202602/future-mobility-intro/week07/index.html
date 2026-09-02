@@ -1666,7 +1666,7 @@
 <blockquote>
 <p>🔗 <strong>강의 흐름</strong> — 6주차 마지막 시나리오(안개 낀 야간 고속도로)에서 센서만으로는 부족하다는 것을 확인했다. 이번 주는 그 빈칸을 <strong>통신</strong>이 어떻게 메우는지 본다. 중간고사 서술형 4번(V2X)과 5번(도전과제)이 여기서 나오고, 2025년 서술형 3번의 <strong>7단계 공학 설계 프로세스</strong>도 이 주차 내용이다.</p>
 <p><strong>학습목표</strong> — V2X 4유형을 정의하고 협조주행과 자율주행의 관계를 논하며, 통신 기반 자율주행 사례를 설명하고, 7단계 공학 설계 프로세스로 문제를 구조화할 수 있다.</p>
-<p>💡 <strong>기초 다지기</strong> — <strong>"센서는 보이는 것만 본다."</strong> 카메라는 앞차 너머를 못 보고, 라이다는 코너 뒤를 못 본다. 그런데 앞차가 "여기 결빙 구간이야"라고 <strong>말해 주면</strong> 보지 않고도 알 수 있다. 이것이 V2X다. 자율주행이 "보는" 단계에서 <strong>"데이터로 이해하는"</strong> 단계로 넘어가는 것이다.</p>
+<p>💡 <strong>기초 다지기</strong> — <strong>"센서는 보이는 것만 본다."</strong> 카메라는 선행 차량 너머를 인지하지 못하고, 라이다는 코너 뒤를 감지하지 못한다. 그러나 선행 차량이 "전방에 결빙 구간이 있다"는 정보를 <strong>전송해 주면</strong>, 직접 보지 않고도 알 수 있다. 이것이 V2X다. 자율주행이 "보는" 단계에서 <strong>"데이터로 이해하는"</strong> 단계로 넘어가는 것이다.</p>
 </blockquote>
 <h2 id="_1">🗺️ 한눈에 보는 개념도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TB
@@ -1714,13 +1714,13 @@
 <thead>
 <tr>
 <th>센서</th>
-<th>못 보는 것</th>
+<th>인지하지 못하는 대상</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>카메라 ❌</td>
-<td>앞이 안 보임 (선행 차량에 가림)</td>
+<td>전방 시야 확보 불가 (선행 차량에 가림)</td>
 </tr>
 <tr>
 <td>라이다 ❌</td>
@@ -1864,7 +1864,7 @@
 </ol>
 <h3 id="4-3">④ 자율주행 레벨 3과 통신<a class="headerlink" href="#4-3" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Handover and communication</strong> — 제어권 넘김. 차가 운전하다 사람에게 넘길 수도, 다시 받아올 수도 있는데 이 과정에서 통신이 중요하다. 시스템 → 운전자: "지금 개입하세요". 차량 ↔ 클라우드 상태 공유</li>
+<li><strong>Handover and communication</strong> — 제어권 넘김. 차가 운전하다 사람에게 넘길 수도, 다시 받아올 수도 있는데 이 과정에서 통신이 중요하다. 시스템 → 운전자로 개입 요청이 전달되며, 차량과 클라우드가 상태를 공유한다</li>
 <li><strong>V2X information</strong> — Swarm intelligence / Car-to-X</li>
 </ul>
 <h3 id="5">⑤ 캘리포니아 운전자 없는 자율주행차 규정<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
@@ -2115,12 +2115,12 @@
 </blockquote>
 <h2 id="_6">🤔 생각해 봅시다<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>중간고사 서술형 5번 연습</strong> — 도심 자율주행 확산 과정에서 발생할 수 있는 <strong>기술적·윤리적·법제도적 도전 과제</strong>를 각각 1개 이상 제시하고 해결 방안을 논리적으로 서술해 보자.</li>
+<li><strong>중간고사 서술형 5번 연습</strong> — 도심 자율주행 확산 과정에서 발생할 수 있는 <strong>기술적·윤리적·법제도적 도전 과제</strong>를 각각 1개 이상 제시하고 해결 방안을 논리적으로 서술하시오.</li>
 <li>기술: 사각지대·악천후·Edge case → 센서 퓨전 + V2X + 시뮬레이션 검증</li>
 <li>윤리: 사고 시 선택(보행자 vs 탑승자), 책임 소재 → 투명성·설명가능성·기록장치(DSSAD)</li>
 <li>법제도: 레벨 3 책임 배분, 데이터·개인정보, 보험 → 규제 샌드박스·시범운행지구·국제 조화(UNECE)</li>
-<li>Shift 10처럼 <strong>신호등이 없는 도시</strong>가 가능하려면 무엇이 전제되어야 하는가? 그 도시에서 정전이 나면?</li>
-<li>카카오모빌리티 사례처럼, 우리 학교 주변의 어떤 불편을 <strong>모빌리티 데이터</strong>로 설명할 수 있을까?</li>
+<li>Shift 10처럼 <strong>신호등이 없는 도시</strong>가 가능하려면 무엇이 전제되어야 하는가? 그 도시에서 정전이 발생하면 어떤 일이 벌어지는가?</li>
+<li>카카오모빌리티 사례처럼, 학교 주변의 어떤 불편을 <strong>모빌리티 데이터</strong>로 설명할 수 있는가?</li>
 </ol>
 <h2 id="_7">✅ 이번 주 체크리스트<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
