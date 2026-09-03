@@ -300,7 +300,7 @@
 
 ## 9주차 · STM32 레지스터·GPIO·클럭 {#week09}
 
-![레퍼런스 보드의 STM32H723 LQFP-144와 크리스탈, 디커플링 커패시터](figures/terms/board_mcu.jpg)
+![레퍼런스 보드의 STM32H723 LQFP-144와 크리스탈, 디커플링 커패시터 — 회로를 읽는 대상이고, 레지스터 실습은 STM32F767 학습보드로 한다](figures/terms/board_mcu.jpg)
 
 **메모리맵 (Memory Map)**
 : 주변장치 레지스터가 특정 주소에 배치돼 있어, 그 주소에 값을 쓰면 하드웨어가 동작하는 구조.

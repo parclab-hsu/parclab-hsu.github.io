@@ -883,10 +883,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gpio-f767" class="md-nav__link">
+  <a href="#gpio-stm32f767" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔧 GPIO 출력 레지스터 시퀀스 (F767 비교 예시)
+        🔧 GPIO 출력 레지스터 시퀀스 (STM32F767)
       
     </span>
   </a>
@@ -2697,10 +2697,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gpio-f767" class="md-nav__link">
+  <a href="#gpio-stm32f767" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔧 GPIO 출력 레지스터 시퀀스 (F767 비교 예시)
+        🔧 GPIO 출력 레지스터 시퀀스 (STM32F767)
       
     </span>
   </a>
@@ -3916,7 +3916,7 @@
 <p>이 주차의 <strong>원본 첨부 PDF 링크·슬라이드 미리보기 이미지</strong>(chcbaram 원본 자료)는 수업 활용 범위와 외부 배포 가능 여부를 확인해 사용한다. 공개 배포 전에는 인용 허가, 출처 표기, 자작 대체 자료 여부를 점검한다.</p>
 </div>
 <blockquote>
-<p>🧭 <strong>하드웨어 자료 구분</strong> — 수업 기준 MCU는 <strong>STM32F767(레지스터 직접 제어, HAL은 비교 학습용)</strong>이다. 첨부자료 중 F103은 HAL, ESP32는 Arduino 예시이므로, 교수자는 “원리 비교 자료”와 “이번 학기 구현 기준”을 분리해 설명한다.</p>
+<p>🧭 <strong>하드웨어 자료 구분</strong> — 실습 기준 MCU는 <strong>STM32F767(레지스터 직접 제어, HAL은 비교 학습용)</strong>이다. 첨부자료 중 F103은 HAL, ESP32는 Arduino 예시이므로, 교수자는 “원리 비교 자료”와 “이번 학기 구현 기준”을 분리해 설명한다. 레퍼런스 보드(STM32H723)는 회로를 읽는 대상이며 실습 대상이 아니다.</p>
 </blockquote>
 <h2 id="_1">🗺️ 한눈에 보는 개념도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TD
@@ -3926,7 +3926,7 @@
     MAP --&gt; M1["Code 0x0000 / SRAM 0x2000"]
     MAP --&gt; M2["Peripheral 0x4000 / PPB 0xE000"]
     MCU --&gt; GPIO["GPIO 출력 레지스터 시퀀스"]</code></pre>
-<h2 id="gpio-f767">🔧 GPIO 출력 레지스터 시퀀스 (F767 비교 예시)<a class="headerlink" href="#gpio-f767" title="Permanent link">&para;</a></h2>
+<h2 id="gpio-stm32f767">🔧 GPIO 출력 레지스터 시퀀스 (STM32F767)<a class="headerlink" href="#gpio-stm32f767" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
     A["RCC_AHB1ENR&lt;br&gt;클럭 Enable"] --&gt; B["MODER&lt;br&gt;출력 모드"]
     B --&gt; C["OTYPER&lt;br&gt;Push-Pull"]
@@ -3934,8 +3934,8 @@
     D --&gt; E["ODR&lt;br&gt;출력 값"]</code></pre>
 <p>MCU 레지스터 3분류 — <strong>Control</strong>(설정) / <strong>Status</strong>(플래그) / <strong>Data</strong>(값).</p>
 <div class="admonition note">
-<p class="admonition-title">H7 구현 전 확인</p>
-<p>아래 레지스터 시퀀스와 코드는 <strong>STM32F767 기준</strong>이다. 보드가 바뀌면 레퍼런스 매뉴얼과 헤더 파일 기준으로 포트, 버스, 클럭 Enable 비트, 핀 번호를 다시 확인해 적용한다.</p>
+<p class="admonition-title">구현 전 확인</p>
+<p>아래 레지스터 시퀀스와 코드는 <strong>이번 학기 실습 기준인 STM32F767</strong>에 맞춘 것이다. 다른 보드로 옮길 때는 레퍼런스 매뉴얼과 헤더 파일 기준으로 포트, 버스, 클럭 Enable 비트, 핀 번호를 다시 확인해야 한다.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">🔗 여기서부터 확장 자료 — 흐름 이어보기</p>
@@ -4530,9 +4530,9 @@
 <li>CubeMX가 생성한 <code>MX_GPIO_Init()</code>이 실제로 바꾸는 레지스터를 register view에서 확인하는 방법을 설명한다.</li>
 </ol>
 <h2 id="codeweek08_gpio_ledc">💻 실습 코드 (주석 포함) — <code>code/week08_gpio_led.c</code><a class="headerlink" href="#codeweek08_gpio_ledc" title="Permanent link">&para;</a></h2>
-<p>HAL 없이 레지스터에 직접 값을 써서 LED를 켜는 <strong>F767 비교 예제</strong>다. 클럭→모드→출력 순서가 핵심이며, H7 실습에서는 보드 회로도와 레퍼런스 매뉴얼에 맞게 포트·핀·클럭 레지스터를 바꾼다. <a href="../code/week08_gpio_led.c">⬇ 전체 코드</a></p>
+<p>HAL 없이 레지스터에 직접 값을 써서 LED를 켜는 <strong>STM32F767 실습 예제</strong>다. 클럭→모드→출력 순서가 핵심이며, 보드가 바뀌면 회로도와 레퍼런스 매뉴얼에 맞게 포트·핀·클럭 레지스터를 확인해 적용한다. <a href="../code/week08_gpio_led.c">⬇ 전체 코드</a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">/*</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm"> * [8주차] GPIO 출력 — 레지스터 직접 접근 F767 비교 예제</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm"> * [8주차] GPIO 출력 — 레지스터 직접 접근 (STM32F767 실습 예제)</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm"> * ---------------------------------------------------------------</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm"> * 목표: HAL 함수 없이 &quot;레지스터에 직접 값을 써서&quot; 마이크로프로세서를 이해한다.</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cm"> * 핵심 흐름:  클럭 Enable → 모드 설정 → 출력타입/속도 → 값 쓰기</span>
