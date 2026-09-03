@@ -525,6 +525,273 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 
 ---
 
+---
+
+## 2-2. 연구개발 목표 및 내용 · 2-3. 수행일정 및 주요 결과물
+
+!!! info "제안서 양식에 맞춘 개조식 정리"
+    아래는 **제안서 「2-2. 연구개발 목표 및 내용」·「2-3. 연구개발과제 수행일정 및 주요
+    결과물」 양식**에 맞춰 개조식으로 옮긴 것입니다. 목표는 **확정 4대 역할(①②③④)**을
+    단계·차년도마다 그대로 반복하고, 개발 내용은 그 아래 중간 항목과 세부 항목으로 답니다.
+
+    내용은 위의 연차별 목표·결과물과 같은 것이며, 표기만 제안서 양식을 따릅니다.
+    한성대학교 기술축(A·B·C)은 공식 역할 아래에 배치되므로 이 절에서는 역할 번호만 씁니다.
+
+### [1단계] (1) 1차년도 — 기준 시스템 및 연계 기반 확보
+
+#### ① 개발 목표
+
+**[공동연구개발기관9(한성대학교)]**
+
+- o Real-to-Sim-to-Real 디지털 트윈 기술 고도화
+- o Zero-shot Transfer 기반 도메인 적응
+- o 엣지 케이스 시뮬레이션
+- o 학술 연구 및 기술 자문
+
+#### ② 개발 내용 및 범위
+
+**[공동연구개발기관9(한성대학교)]**
+
+**o Real-to-Sim-to-Real 디지털 트윈 기술 고도화**
+
+- 대표 제조 작업과 실제–가상 비교 기준의 확정
+    - ● 대표 제조 작업 1~2개 및 대상 소재·접촉현상 선정, 컨소시엄 승인 획득
+    - ● 실제 센서·F/T·영상·형상 측정 항목과 취득 조건 정의
+    - ● Domain Gap 프로토콜 v1 수립 — 측정 항목·조건·반복횟수·판정기준·통계방법 명시
+- Geometry–Physics Interface 정의 및 기준 Asset 인수
+    - ● 모빌테크 Pilot Scan·기준 Geometry Asset의 인수규격과 검수기준 확정
+    - ● 좌표계·축척·원점·Semantic Metadata 연계규격 합의 및 승인
+    - ● WFM–Physics Twin Reference Architecture 수립 — 실제·가상·RFM 간 데이터 흐름 정의
+
+**o Zero-shot Transfer 기반 도메인 적응**
+
+- 미학습조건 평가체계 설계
+    - ● 미학습 물체·배치·물성·복합조건의 구분 정의와 평가셋 설계
+    - ● Zero-shot 성능 유지율의 측정 프로토콜 초안 작성 — 적응 전 측정 원칙 명시
+    - ● 기준환경 작업성공률의 기준선 측정 계획 수립
+
+**o 엣지 케이스 시뮬레이션**
+
+- 작업–상태–실패–복구 관계 구조의 정의
+    - ● Scene–Action–State–Event 표준 v1 수립
+    - ● Edge Case Taxonomy v1 구축 — 대표 작업의 주요 실패유형 목록 확정
+- Human Data Engine 수집 기반 정의
+    - ● 정상·실패·복구 데이터의 수집 항목과 상태변수 정의
+    - ● 실패 직전 상태의 Checkpoint Schema 초안 작성
+
+**o 학술 연구 및 기술 자문**
+
+- RFM 연계 규격 기술자문
+    - ● Model Adapter v1 개발 — 실환경·가상환경·RFM 데이터 연계규격
+    - ● RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의
+- 재현 가능한 기준환경 구축과 성과 관리
+    - ● 모델버전·Seed·입력조건 기반 생성·검증 이력의 재현체계 확보
+    - ● 국내외 학술발표 1건, 기술문서·자문 의견서 1건
+
+**연차 완료조건** — 대표 작업·실패유형 컨소시엄 승인 · 기준 Geometry Asset 인수검사 완료 · 좌표계·Semantic 규격 승인 · Domain Gap 측정 항목·반복횟수·판정기준 확정 · 동일 조건 재실행 결과 동일 100 % · 스키마 왕복 손실 없는 전달 ≥ 95 %
+
+**지원 산출물 인수조건(모빌테크)** — 좌표계·축척·Semantic 규격 충족, 기준 Asset 인수검사 통과
+### [2단계] (1) 2차년도 — Deformation·Data Engine v1 개발
+
+#### ① 개발 목표
+
+**[공동연구개발기관9(한성대학교)]**
+
+- o Real-to-Sim-to-Real 디지털 트윈 기술 고도화
+- o Zero-shot Transfer 기반 도메인 적응
+- o 엣지 케이스 시뮬레이션
+- o 학술 연구 및 기술 자문
+
+#### ② 개발 내용 및 범위
+
+**[공동연구개발기관9(한성대학교)]**
+
+**o Real-to-Sim-to-Real 디지털 트윈 기술 고도화**
+
+- Manufacturing Deformation Engine v1 개발
+    - ● 대표 소재의 마찰·강성·감쇠·복원·임계값 실측과 Material Profile 구축
+    - ● 접촉·압축·복원·잔류변형 모사 기능 개발 — 범용 Physics Engine 신규 개발이 아니라 Isaac Sim 등 기존 시뮬레이터 위의 제조 특화 물리모듈
+    - ● 제조 Domain Variation Library v1 구축 — 마찰·공차·재질·조명 등 조건 변이
+- Physics Calibration 및 정합성 검증
+    - ● 실측 물성값의 Physics Twin 적용과 파라미터 식별·보정 절차 수립
+    - ● Physics Consistency Evaluator v1 개발 — 생성 결과의 물리적 가능성 자동 판정
+    - ● 모빌테크 Simulation-ready Asset의 LOD·Collision·Metadata 인수검사 수행
+
+**o Zero-shot Transfer 기반 도메인 적응**
+
+- 전이 가능성 지표 개발
+    - ● Transferability Score v1 개발 — 미학습 조건 성능 유지율의 지표·측정법 정의
+    - ● Zero-shot Transfer 평가 기준선과 미학습조건 평가셋 설계
+    - ● 조건별(물체·배치·물성·복합) 분리 측정 설계와 Macro-average 산출 방식 확정
+
+**o 엣지 케이스 시뮬레이션**
+
+- 생성 조건 컴파일 체계 구축
+    - ● Prompt·Condition Compiler v1 개발 — 생성 조건을 시뮬레이션 실행조건으로 변환
+    - ● Edge Case Compiler v1 개발 — RFM 취약·경계조건을 실행 가능한 시나리오로 변환
+- Human Data Engine 수집환경 가동
+    - ● 실패 직전 상태 Checkpoint·저장 기능 v1 개발
+    - ● 원격조작 기반 정상·실패·복구 데이터 수집환경 가동
+    - ● Scene–Action–State–Event 규격에 따른 데이터 축적 체계 운용
+
+**o 학술 연구 및 기술 자문**
+
+- 방법론 성과화
+    - ● 물리 보정·도메인 적응 방법론의 논문화 — SCI(E) 1편, 학술발표 2건
+    - ● Manufacturing Deformation Engine SW 프로그램 등록 1건
+    - ● 특허 출원 1건, 기술문서·자문 의견서 1건
+
+**연차 완료조건** — ① Geometry Asset 인수: LOD·Collision·Metadata 검수 완료 · ② Physics Engine: 접촉력 재현오차 NRMSE ≤ 20 %, 실측 물성값 적용 · ③ Quality Module: 비물리 결과 검출률 ≥ 85 %(오검출 ≤ 15 %) · ④ Human Data: 상태 Checkpoint 저장과 정상·실패·복구 데이터 수집 가능
+
+**지원 산출물 인수조건(모빌테크)** — LOD·Collision·Metadata 검수 통과, Simulation-ready Asset이 Physics Twin에서 정상 구동
+### [3단계] (1) 3차년도 — Zero-shot Transfer 및 Edge/Recovery 검증
+
+#### ① 개발 목표
+
+**[공동연구개발기관9(한성대학교)]**
+
+- o Real-to-Sim-to-Real 디지털 트윈 기술 고도화
+- o Zero-shot Transfer 기반 도메인 적응
+- o 엣지 케이스 시뮬레이션
+- o 학술 연구 및 기술 자문
+
+#### ② 개발 내용 및 범위
+
+**[공동연구개발기관9(한성대학교)]**
+
+**o Real-to-Sim-to-Real 디지털 트윈 기술 고도화**
+
+- 실측 기반 재보정과 실물 연계 검증
+    - ● Physics Calibration 수행 — 실측 물성값으로 가상환경 물리 파라미터 재보정
+    - ● Simulation–HIL–Real Robot 인터페이스 구축 — 가상·HIL·실물의 공통 규약
+    - ● 동일 Asset 버전 기준의 실제–가상 성능차이 측정과 Domain Gap 분석
+
+**o Zero-shot Transfer 기반 도메인 적응**
+
+- 전이 판정과 단계적 적응
+    - ● Transfer Decision Manager 개발 — 직접 적용·경량 적응·추가학습·적용보류 판단
+    - ● 경량 적응(Few-shot·LoRA) 적용 전략 비교와 적응 후 성능 회복률 평가
+    - ● OOD·위험도 평가기능 개발 — 미학습조건 평가셋 기준 탐지 성능 확보
+    - ● Zero-shot 성능 유지율과 적응 후 회복률의 분리 측정·보고 체계 확립
+
+**o 엣지 케이스 시뮬레이션**
+
+- 복구 데이터 증강과 품질 관문
+    - ● 상태 Restore·복구행동 다중 분기 v1 개발 — 하나의 실패에서 여러 복구 데이터 확보
+    - ● Multi-stage Validation Gate 구축 — 물리정합·재현성·안전·데이터 품질·Provenance 6단계 검수
+    - ● Edge/Recovery 증강 Dataset 구축 — 정상·실패·복구·가상 생성 구분, 학습용·검증용·평가용 용도 표시
+    - ● 대표 실패유형 1건 이상에 대한 사전 폐루프 완주(저장 → 복원 → 분기 → Gate → HIL)
+
+**o 학술 연구 및 기술 자문**
+
+- 전이 평가 방법론의 성과화
+    - ● 전이 평가·Edge Case 검증 방법론 논문화 — SCI(E) 1편, 학술발표 2건
+    - ● Multi-stage Validation Gate SW 프로그램 등록 1건
+    - ● 특허 출원 1건, 기술문서·자문 의견서 1건
+    - ● RFM 기관과 데이터셋 스키마·평가기준 협의 및 기술 자문
+
+**연차 완료조건** — Zero-shot 성능 유지율 ≥ 70 %(적응 전) · 적응 후 성능 회복률 ≥ 90 % · 전이 판정 일치도 ≥ 80 % · OOD 탐지 ≥ 85 % · 생성 데이터 검수 완료율 ≥ 90 % · 동일 Asset 버전으로 Simulation–HIL–Real 비교 완료
+
+**지원 산출물 인수조건(모빌테크)** — 변동조건 Asset 제공과 버전 추적성 확보
+### [4단계] (1) 4차년도 — Closed-loop 완주 및 표준화
+
+#### ① 개발 목표
+
+**[공동연구개발기관9(한성대학교)]**
+
+- o Real-to-Sim-to-Real 디지털 트윈 기술 고도화
+- o Zero-shot Transfer 기반 도메인 적응
+- o 엣지 케이스 시뮬레이션
+- o 학술 연구 및 기술 자문
+
+#### ② 개발 내용 및 범위
+
+**[공동연구개발기관9(한성대학교)]**
+
+**o Real-to-Sim-to-Real 디지털 트윈 기술 고도화**
+
+- 실물 재검증과 운용체계 확립
+    - ● 실제 실패의 가상환경 재현과 재학습 모델의 실물 로봇 재검증
+    - ● Real-to-Sim-to-Real 운용 가이드라인 완성 — 제3자가 절차만으로 재현 가능한 수준
+    - ● 최종 Geometry·Physics Twin 버전 동결과 재현성 검증
+
+**o Zero-shot Transfer 기반 도메인 적응**
+
+- 강건성 평가와 일반화 검증
+    - ● Robust Operating Envelope 평가모듈 개발 — 모델이 안정적으로 동작하는 조건 범위 측정
+    - ● Cross-domain Physical AI Benchmark 구축 — 작업·소재가 바뀌어도 비교 가능한 공통 기준
+    - ● 적응 기법의 일반화 검증과 모델 교체·버전변경 대응절차 확립
+
+**o 엣지 케이스 시뮬레이션**
+
+- 폐루프 완주와 자동화
+    - ● Closed-loop RoboOps Toolchain 개발 — 실패 재현 → 복구 생성 → 재학습 → 재검증 자동화
+    - ● 소량 실로봇 Grounding 수행 — 3차년도 개발 기능을 실로봇·RFM과 연결
+    - ● 실패 재현–복구 생성–RFM 재학습–실물 재검증 순환 1회 이상 완주
+    - ● Edge/Recovery 데이터 적용 전후의 실제 성공률 변화 측정과 안전위반·Recovery Rate 병행 보고
+
+**o 학술 연구 및 기술 자문**
+
+- 표준화와 최종 성과화
+    - ● 데이터·평가·Validation 절차의 표준 제안 1건
+    - ● 최종 기술 백서 1건 작성 — Engine 규격·측정 정의·운용 절차 수록
+    - ● SCI(E) 1편, 학술발표 2건, 특허 출원 1건 및 등록 1건 추진, Closed-loop RoboOps Toolchain SW 등록 1건
+    - ● 컨소시엄 기술 의사결정 지원과 기술문서·자문 의견서 1건
+
+**연차 완료조건** — 실제 주요 실패 가상 재현율 ≥ 70 % · 복구 데이터 확보율 ≥ 80 % · 엣지 케이스 커버리지 ≥ 80 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 + 10 %p 이상 · 제3자 절차 재현 ≥ 90 %
+
+**지원 산출물 인수조건(모빌테크)** — 최종 실증공간 Asset 갱신 완료와 Geometry Twin 버전 동결
+---
+
+## 2-3. 연구개발과제 수행일정 및 주요 결과물
+
+### 수행일정
+
+| 단계 | 차년도 | 기간 | 핵심 마일스톤 |
+|:--:|:--:|:--:|---|
+| 1단계 | 1차년도 | 9개월 | M1 대표 작업·실패유형 선정 · M2 Reference Architecture · M3 S-A-S-E 표준 v1 · M4 Domain Gap 프로토콜 v1 |
+| 2단계 | 2차년도 | 10개월 | M5 Prompt·Condition Compiler v1 · M6 Physics Consistency Evaluator v1 · M7 Domain Variation Library v1 · M8 Edge Case Compiler v1 |
+| 3단계 | 3차년도 | 12개월 | M9 Transfer Decision Manager · M10 Multi-stage Validation Gate · M11 Sim–HIL–Real 인터페이스 · M12 Edge/Recovery Dataset 배포 |
+| 4단계 | 4차년도 | 12개월 | M13 Cross-domain Benchmark · M14 재학습–실물 재검증 완주 · M15 운용 가이드라인·기술 백서 |
+
+<small>기간 합계 43개월. 각 단계의 완료조건은 2-2 의 「연차 완료조건」과 같습니다.</small>
+
+### 주요 결과물
+
+| 차년도 | 결과물 | 형태 |
+|:--:|---|---|
+| **1차** | WFM–Physics Twin Reference Architecture | 설계 문서 |
+| | Scene–Action–State–Event 표준 v1 | 규격서 |
+| | Model Adapter v1 | SW · 규격서 |
+| | Domain Gap 프로토콜 v1 | 절차서 |
+| | Edge Case Taxonomy v1 | 분류 체계 |
+| **2차** | Manufacturing Deformation Engine v1 · Material Profile | SW · 물성 DB |
+| | Physics Consistency Evaluator v1 | SW |
+| | 제조 Domain Variation Library v1 | 라이브러리 |
+| | Transferability Score v1 | 지표 정의서 |
+| | Edge Case Compiler v1 · Checkpoint 수집환경 | SW · 운용환경 |
+| **3차** | Transfer Decision Manager | SW |
+| | Multi-stage Validation Gate | SW |
+| | Simulation–HIL–Real Robot 인터페이스 | 규격서 · 연계 SW |
+| | Edge/Recovery 증강 Dataset | 데이터셋 |
+| | Physics Calibration Report | 검증 리포트 |
+| **4차** | Real-to-Sim-to-Real 운용 가이드라인 | 절차서 |
+| | Cross-domain Physical AI Benchmark | 평가 체계 |
+| | Robust Operating Envelope 평가모듈 | SW |
+| | Closed-loop RoboOps Toolchain | SW |
+| | 표준 제안서 · 최종 기술 백서 | 문서 |
+
+### 연구성과 목표 (4년 누계)
+
+| 구분 | 1차 | 2차 | 3차 | 4차 | 누계 |
+|---|:--:|:--:|:--:|:--:|:--:|
+| SCI(E)급 논문 | — | 1 | 1 | 1 | **3** |
+| 국내외 학술발표 | 1 | 2 | 2 | 2 | **7** |
+| 특허 출원 / 등록 추진 | — | 1 | 1 | 1 / 1 | **3 / 1** |
+| SW 프로그램 등록 | — | 1 | 1 | 1 | **3** |
+| 표준 제안 · 기술 백서 | — | — | — | 1 | **1** |
+| 기술문서 · 자문 의견서 | 1 | 1 | 1 | 1 | **4** |
+
 ## 핵심 KPI
 
 측정 대상과 방법이 드러나도록 정의했습니다. **본 목표값은 제안 기준**이며, 1차년도에
