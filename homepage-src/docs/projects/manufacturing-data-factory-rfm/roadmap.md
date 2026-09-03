@@ -174,54 +174,71 @@ Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence �
 **본 과제에서 재현한 결과가 아니라 문헌으로 확인한 선행연구**이며, 우리가 무엇을
 새로 만들 것인지는 각 세부 항목에 따로 적었습니다.
 
-### 기술축 A — 물리 보정 관련 연구
+### 기술축 A — 물리 보정·Real-to-Sim 관련 연구
 
 | 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
 |---|---|---|
-| **Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions** (**ICRA 2026**, [arXiv:2511.04665](https://arxiv.org/abs/2511.04665), 2025-11 공개) | 실제 영상으로 3D Gaussian Splatting 외관과 PhysTwin 기반 spring–mass 동역학을 식별해 soft-body twin 을 구성했습니다. 3개 Task에서 ACT·Diffusion Policy·π0·SmolVLA의 시뮬레이션–실물 성공률 상관이 모두 **Pearson r > 0.9**였습니다. | 정책은 실물 데이터로만 학습했고 시뮬레이터는 **평가 프록시**로 사용했습니다. Task별 평가 초기조건도 16~27개로 작아 신뢰구간이 넓습니다. 본 과제는 **실물–가상 정책순위 상관과 신뢰구간을 먼저 검증**하는 근거로 사용합니다. |
-| **SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds** ([arXiv:2604.08544](https://arxiv.org/abs/2604.08544), 2026-04 프리프린트) | 제한된 시연으로 metric-consistent twin 을 만들고 탄성 동역학을 보정한 뒤 diffusion 궤적 생성·품질 필터로 합성데이터를 확장했습니다. 논문은 순수 합성 정책의 **1:15 실데이터 등가비**, 실물 **zero-shot 성공률 90 %**, 미관측 의류 일반화 **20 %→70 %**를 보고합니다. | 소재별 보정에 **전문가 수동 튜닝**이 필요하며 의류 중심 결과입니다. 수치를 전용하지 않고 Material Profile 보정·비용대비 성능·미관측 소재 검증의 실험설계 근거로 사용합니다. |
+| **Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions** (**ICRA 2026**, [arXiv:2511.04665](https://arxiv.org/abs/2511.04665)) | 실제 영상으로 외관과 soft-body 동역학을 식별해 twin을 구성했습니다. 3개 Task 각각에서 여러 정책·checkpoint 평가점의 시뮬레이션–실물 성공률 상관이 **Pearson r > 0.9**였습니다. | 실물학습 정책의 **평가 프록시**이며 Task별 초기조건도 16~27개입니다. 본 과제는 실물–가상 정책순위 상관과 신뢰구간을 먼저 검증합니다. |
+| **Sim, Yet Same: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds** (SIM1, **ECCV 2026**, [공식 프로그램](https://eccv.ecva.net/Conferences/2026/Videos), [arXiv:2604.08544](https://arxiv.org/abs/2604.08544)) | 제한된 시연으로 twin과 탄성 동역학을 보정한 뒤 합성 trajectory를 확장했습니다. **1:15 실데이터 등가비**, 실물 **zero-shot 90 %**, 미관측 의류 **20 %→70 %**를 보고합니다. | 소재별 전문가 수동 튜닝이 필요하고 의류 중심입니다. Material Profile 보정·비용대비 성능·미관측 소재 검증의 근거로만 사용합니다. |
 | **SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation** ([arXiv:2606.15338](https://arxiv.org/abs/2606.15338), 2026-06 프리프린트) | 면밀도·굽힘강성·신장·마찰 같은 **측정 가능한 물성값**을 소재군 라이브러리로 관리하고 Task당 합성 시연 200개로 학습했습니다. 5개 연성작업×23회에서 평균 **91.30 %**(Wilson 95 % CI **84.7–95.2 %**)를 보고했으며, 광학 증강 제거 시 5개 Task가 모두 0 %였습니다. | 무보정이 아니라 **소재군 측정값을 정하고 Asset을 해당 class에 결합**하는 구조입니다. 실데이터와의 엄격한 정면 비교는 silk grasping 중심입니다. Material Profile 재사용·ISP 광학 증강·Task별 신뢰구간을 Gate로 반영합니다. |
+| **Differentiable Physics-based System Identification for Robotic Manipulation of Elastoplastic Materials** (DPSI, **IJRR 2025**, [DOI](https://doi.org/10.1177/02783649251334661), [arXiv:2411.00554](https://arxiv.org/abs/2411.00554)) | **한 번의 실제 상호작용과 불완전한 3D point cloud**로 Young’s modulus·Poisson ratio·yield stress·마찰 등 재료·환경 파라미터를 식별합니다. | 국소최적·비식별성·모델 불일치가 남고 체적형 탄소성 재료 범위입니다. 물성 추정값에 **식별 불확실성과 재현오차**를 함께 저장합니다. |
+| **Scalable Real2Sim: Physics-Aware Asset Generation Via Robotic Pick-and-Place Setups** (**IROS 2025**, [DOI](https://doi.org/10.1109/IROS60139.2025.11246653), [arXiv:2503.00370](https://arxiv.org/abs/2503.00370)) | RGB-D와 joint torque로 **시각 mesh·충돌 geometry·관성 파라미터**를 자동 생성합니다. | 강체 pick-and-place·특정 setup 중심입니다. 모빌테크 Geometry Twin을 한성대 Physics Twin으로 잇는 **Geometry–Physics Hand-off** 근거로 사용합니다. |
+| **Harnessing with Twisting: Single-Arm Deformable Linear Object Manipulation for Industrial Harnessing Task** (**IROS 2024**, [DOI](https://doi.org/10.1109/IROS58592.2024.10802801), [arXiv:2410.10729](https://arxiv.org/abs/2410.10729)) | FANUC/NIST ATB4에서 실제 trajectory 40개로 학습해 단일 전선 두 Task **각 10/10**, 순차 다중전선 **9/10 후 8/9**를 보고했습니다. | 제한된 workcell·소표본입니다. 본 과제는 **산업용 배선·삽입형 대표작업**에서 별도 재검증합니다. |
 
-**본 과제와의 연결** — 세 연구는 각각 **① 실물정책 평가 프록시의 타당성 검증
-② 실측 보정 후 합성데이터 확장 ③ 측정 가능한 물성 프로파일의 재사용**을 보여줍니다.
-본 과제는 이를 **제조 대표 작업 1~2개**에 적용하되, 먼저 실물–가상 정책순위 상관을 확인하고,
-접촉력·변위·잔류변형의 재현오차와 불확실성을 통과한 Episode만 학습데이터로 편입합니다.
-Zero-shot 성능과 보정·Post-training 성능은 서로 다른 평가군으로 분리합니다.
+**본 과제와의 연결** — 이 연구들은 **① 평가 프록시 검증 ② 합성데이터 확장
+③ 측정 물성 재사용 ④ asset 자동생성·물성 식별 ⑤ 산업 제조작업 검증**의 근거입니다.
+본 과제는 대표 제조작업 1~2개에서 실물–가상 정책순위 상관을 확인하고, 접촉력·변위·
+잔류변형의 재현오차와 식별 불확실성을 통과한 Episode만 학습데이터로 편입합니다.
+Zero-shot과 보정·Post-training 성능은 서로 다른 평가군으로 분리합니다.
 
 ### 기술축 B — 실패상태 복원·복구 증강 관련 연구
 
 | 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
 |---|---|---|
-| **DreamGen: Unlocking Generalization in Robot Learning through Video World Models** (**CoRL 2025**, [PMLR](https://proceedings.mlr.press/v305/jang25a.html), [arXiv:2505.12705](https://arxiv.org/abs/2505.12705)) | 단일 pick-and-place 작업·환경에서 수집한 **2,885개** 원격조작 trajectory로 비디오 월드모델을 로봇 embodiment에 적응시키고, 생성 영상에서 latent action 또는 inverse-dynamics model로 pseudo-action을 복원했습니다. 신규 행동 평균 성공률은 기준선 **11.2 %→43.2 %**, 완전 미관측 환경은 **28.5 %**였습니다. | “소량 데이터”보다는 **단일 Task의 상당량 seed data를 행동·환경 다양성으로 확장**한 연구이며 실패·복구 전용 방법은 아닙니다. 정상/경계 행동 생성과 pseudo-action 품질검증 근거로 한정합니다. |
-| **Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training** ([arXiv:2604.21741](https://arxiv.org/abs/2604.21741), 2026-04 프리프린트) | action-conditioned world model 안에서 정책을 실행하고, 실패 직전 상태를 cache해 **rollback·branching**한 뒤 사람이 짧은 교정행동을 여러 갈래로 입력합니다. 3개 실물 Task·2개 정책에서 base 대비 평균 **+37.9 %p**, 사람 교정 없는 WM closed-loop 대비 **+19.0 %p**, 실물 성능과의 상관 **r=0.953**을 보고했습니다. | World model이 **실패근처 상태와 행동에도 정합**해야 하고 교정 입력을 정책과 같은 연속 action space로 변환해야 합니다. 상태저장·재생 오차와 실물 상관 Gate를 통과한 Scenario에만 적용합니다. |
+| **DreamGen: Unlocking Generalization in Robot Learning through Video World Models** (**CoRL 2025**, [PMLR](https://proceedings.mlr.press/v305/jang25a.html), [arXiv:2505.12705](https://arxiv.org/abs/2505.12705)) | 단일 pick-and-place 원격조작 데이터로 비디오 월드모델을 적응시키고 생성영상의 pseudo-action을 복원했습니다. 논문은 **월드모델 2,884개**, 정책 미세조정 **2,885개** trajectory를 단계별로 표기하며 신규 행동 성공률 **11.2 %→43.2 %**를 보고합니다. | 상당량의 단일 Task seed data를 다양성으로 확장한 연구이며 실패·복구 전용은 아닙니다. 정상·경계 행동 생성과 pseudo-action 검증 근거로 한정합니다. |
+| **Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training** ([arXiv:2604.21741](https://arxiv.org/abs/2604.21741), 2026-04 프리프린트) | 실패 직전 상태를 cache해 **rollback·branching**한 뒤 사람이 짧은 교정행동을 입력합니다. 3개 실물 Task·2개 정책에서 base 대비 평균 **+37.9 %p**, 사람 교정 없는 WM 대비 **+19.0 %p**, 실물 상관 **r=0.953**을 보고합니다. | 평균의 **cell별 시행횟수와 신뢰구간이 제시되지 않아** 불확실성을 재계산하기 어렵습니다. 본 과제는 상태 재생오차와 Task별 표본수·신뢰구간을 Gate에 포함합니다. |
 | **EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration** ([arXiv:2607.19745](https://arxiv.org/abs/2607.19745), 2026-07 프리프린트) | 1인칭 인간 복구데이터를 trajectory 자체가 아닌 **교정 시점·크기의 compact corrective intent**로 정렬하고 recovery gate가 필요한 상태에서만 활성화합니다. 시간당 수용 데이터는 인간 **516.5건**, 로봇 **49.0건**이었고, 50 robot success+50 robot recovery+300 human recovery 조건에서 초기 성공률 **80.0 %**, 복구 성공률 **85.0 %**였습니다. | 인간 복구데이터만 쓴 경우 복구 성공률은 **8.8 %**였고 embodiment별 접촉·재파지에는 로봇 복구데이터가 필요했습니다. 같은 Task family의 관련 실패까지만 검증됐으므로 **소량 실로봇 grounding set과 전문가 안전판정**을 반드시 결합합니다. |
+| **Set-Supervised Diffusion Policy: Learning Action-Chunking Diffusion through Corrections** (**RSS 2026**, [공식 논문](https://www.roboticsproceedings.org/rss22/p080.html), [arXiv:2606.01865](https://arxiv.org/abs/2606.01865)) | 교정 episode의 **로봇 부정 action chunk와 사람 긍정 chunk를 함께 보존**합니다. 50개 시연+40개 교정 episode의 Insert-T에서 **35/40**, 일반 Diffusion Policy는 **23/40**이었습니다. | 사람의 적시 교정과 특정 Task에 의존합니다. positive/negative chunk·개입시점·교정주체를 함께 저장하는 데이터 계약 근거로 사용합니다. |
 
-**본 과제와의 연결** — 세 연구의 역할은 서로 다릅니다. DreamGen은 **행동·환경 확장**,
-Hi-WM은 **실패 직전 상태의 저장·복원·분기 교정**, EgoRecovery는 **사람 복구데이터의 빠른
-수집과 로봇-grounded 복구학습** 근거입니다. 본 과제의 Human Data Engine은 이를 합쳐
-`실패상태 cache → 다중 교정 branch → 사람 복구 intent → 소량 실로봇 grounding → 실물 재검증`
-파이프라인으로 정의합니다. 학생 데이터는 실로봇 복구데이터를 대체하지 않으며,
+**본 과제와의 연결** — DreamGen은 **행동·환경 확장**, Hi-WM은 **실패 직전 상태
+저장·복원·분기 교정**, EgoRecovery는 **사람 복구 intent와 실로봇 grounding**,
+Set-Supervised Diffusion Policy는 **부정·긍정 action chunk 보존**의 근거입니다. Human Data
+Engine은 `실패상태 cache → 다중 교정 branch → 사람 복구 intent → 소량 실로봇 grounding
+→ 실물 재검증`으로 정의합니다. 학생 데이터는 실로봇 복구데이터를 대체하지 않으며
 유급 참여·안전 Protocol·전문가 최종판정을 전제로 합니다.
 
 ### 기술축 C — 실패 조건 탐색·재현 관련 연구
 
 | 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
 |---|---|---|
-| **Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference** (**CoRL 2025**, [arXiv:2509.01746](https://arxiv.org/abs/2509.01746)) | 관측된 실패와 유사한 조건을 시뮬레이션에서 **병렬 생성**해 targeted 데이터셋을 만들고 skill effect model 을 재학습했습니다. 계층적 tabletop 정리에서 **86 %**(원본 11 %), 미관측 7객체 **71 %**, 미관측 시점 **83~85 %** 를 보고합니다. | 실물 성공률은 **약 80 %** 에 머물고, 저자들은 **Sim2Real gap 보정은 다루지 않았다**고 명시합니다. Real2Sim 이 복잡한 형상·**변형체**에서 불완전하고, 시뮬 상태로 **물체 pose 만** 두어 마찰·질량중심을 제외했습니다. 본 과제는 변형체가 대상이므로 **물성을 상태에 포함**하고 그 재현오차를 KPI 1·2 로 검증합니다. |
-| **From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph** (AgentChord, **RSS 2026**, [arXiv:2605.11951](https://arxiv.org/abs/2605.11951)) | 작업을 task graph 로 두고 **예상 실패와 복구 분기를 실행 전에 붙여** 재계획 없이 대응합니다. 실물 6개 작업×20회 평균 **77.5 %**(베이스라인 59.2~72.5 %), 실행시간 92.2 s(베이스라인 107~143 s). 복구 데이터로 파인튜닝 시 실패 시나리오 **39/50**(베이스라인 26/50). | 그래프 구축 단계에서 **예상하지 못한 실패 모드가 남고**, 잘못된 노드로 복구할 수 있습니다. 교정 행동을 계획해도 **IK 가 불가능**한 경우(넘어진 물체 재파지)가 있고, 부정확한 마스크·노이즈 점군이 pose 추정을 흔듭니다. 예상 밖 실패가 남는다는 점이 Edge Case 탐색을 규칙만이 아니라 **RFM 취약조건 기반**으로 두는 근거입니다. |
-| **ASPIRE: Agentic Skills Discovery for Robotics** ([arXiv:2607.00272](https://arxiv.org/abs/2607.00272), 2026-06 프리프린트) | 실행 트레이스에서 **실패 진단 → 수정 → 검증 → 재사용 가능한 스킬로 축적**하는 순환을 돌립니다. LIBERO-Pro 매크로 평균 **72 %**, Robosuite 양팔 인계 20 %→**92 %**, 미관측 장기 과제 zero-shot **31 %**(기존 4 %), 실로봇 13/20→**19/20**. | 저자들은 **완전 자율 실세계 학습기가 아니라고** 밝힙니다. **frozen frontier LLM 에 의존**하며 작은 모델로는 검증되지 않았고, 사전 정의 API 밖 능력은 사람이 확장해야 합니다. 스킬 라이브러리의 **장기 메모리 관리가 미해결**이고 **연산 비용이 큽니다**. 본 과제가 자동 검수를 LLM 판단이 아니라 **물리 정합성과 규칙 기반**으로 두는 근거입니다. |
+| **Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference** (**CoRL 2025**, [PMLR](https://proceedings.mlr.press/v305/huang25d.html), [arXiv:2509.01746](https://arxiv.org/abs/2509.01746)) | 관측 실패와 유사한 조건을 시뮬레이션에서 병렬 생성해 targeted dataset을 만들고 재학습했습니다. 계층적 tabletop 정리 **86 %**(원본 11 %), 미관측 7객체 **71 %**를 보고합니다. | Sim2Real gap 보정은 다루지 않았고 상태가 pose 중심이라 마찰·질량중심·변형물성을 제외했습니다. 본 과제는 물성을 상태에 포함하고 재현오차를 검증합니다. |
+| **From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph for Robotic Manipulation** (AgentChord, **RSS 2026**, [공식 논문](https://www.roboticsproceedings.org/rss22/p180.html), [arXiv:2605.11951](https://arxiv.org/abs/2605.11951)) | task graph에 예상 실패와 복구 분기를 실행 전에 붙입니다. 실물 6개 작업×20회 평균 **77.5 %**, 복구데이터 fine-tuning에서 실패 시나리오 **39/50**을 보고합니다. | 예상하지 못한 실패모드와 IK 불가능 복구가 남습니다. graph 규칙뿐 아니라 RFM 취약조건 탐색을 병행합니다. |
+| **ASPIRE: Agentic /Skills Discovery for Robotics** ([arXiv:2607.00272](https://arxiv.org/abs/2607.00272), 2026-07 프리프린트) | **실패 진단→수정→검증→스킬 축적** 순환에서 **LIBERO-Pro macro 평균 72 %**, 실로봇 soda-can Task **13/20→19/20**을 보고합니다. | 완전 자율 실세계 학습기가 아니며 frozen frontier LLM·사전정의 API·높은 연산비용에 의존합니다. 자동 검수는 물리·규칙 Gate로 둡니다. |
+| **Predictive Red Teaming: Breaking Policies Without Breaking Robots** (RoboART, **CoRL 2025**, [PMLR](https://proceedings.mlr.press/v305/majumdar25a.html)) | 12개 off-nominal 조건과 500회 이상 hardware trial로 실패율을 예측했습니다. 성공률 예측오차 **0.19 미만**, 표적 데이터 효율 **2~7배**를 보고합니다. | 시각·환경 교란 중심이며 모든 접촉물리를 포괄하지 않습니다. RFM 취약조건의 **안전한 선별·우선순위화** 근거입니다. |
+| **Geometric Red-Teaming for Robotic Manipulation** (GRT, **CoRL 2025**, [PMLR](https://proceedings.mlr.press/v305/goel25a.html)) | 실제 CrashShapes에서 성공률이 원래 형상 **90 %**에서 적대 형상 **22.5 %**로 낮아졌고 blue-team 재학습 후 최대 **90 %**로 회복됐습니다. | geometry-only 탐색이며 사용자 제약과 연산비용이 필요합니다. Geometry Twin에서 실패경계를 찾고 재학습하는 근거입니다. |
 
-**본 과제와의 연결** — 세 연구는 각각 「실패 조건 재현」, 「작업–실패–복구를 그래프로
-연결」, 「진단·수정·검증의 순환」을 다룹니다. 본 과제의
-`Asset → Process → Task → State → Event → Failure → Recovery` 구조와 RFM 취약조건 탐색은
-이 흐름을 **제조 도메인과 RFM 평가에 맞춰 결합**한 것입니다.
+**본 과제와의 연결** — 기존 실패의 재현·graph 복구·스킬 수정에 더해 RoboART와 GRT는
+**미관측 시각·환경·형상 취약조건을 능동 탐색**합니다. 본 과제는
+`Asset → Process → Task → State → Event → Failure → Recovery`를 제조 Ontology로 기록하고,
+발견 조건을 Edge Case Compiler로 재현해 재학습·실물 재검증까지 닫습니다.
+
+### D 공통 검증·전이 판정·데이터 품질 관련 연구
+
+| 연구 | 검증된 핵심 결과 | 한계와 본 과제 반영 |
+|---|---|---|
+| **Evaluating Real-World Robot Manipulation Policies in Simulation** (SIMPLER, **CoRL 2024**, [PMLR](https://proceedings.mlr.press/v270/li25c.html)) | 2개 robot embodiment·8개 Task family에서 **1,500회 이상** sim–real paired evaluation을 수행했습니다. | 강체·고정 camera·특정 system 중심입니다. Transfer Decision Manager의 **정책선별용 사전 Gate**로 쓰되 변형체 상관은 별도 검증합니다. |
+| **Can We Detect Failures Without Failure Data? Uncertainty-Aware Runtime Failure Detection for Imitation Learning Policies** (FAIL-Detect, **RSS 2025**, [공식 논문](https://www.roboticsproceedings.org/rss21/p073.html)) | failure data 없이 success-only uncertainty로 4개 simulation·2개 hardware Task를 평가해 최상 평균 balanced accuracy가 simulation 약 **78 %**, hardware 약 **72 %**였습니다. | ID-only calibration에서는 OOD true-negative rate가 0에 가까워질 수 있습니다. OOD·경계 실패를 별도 평가군으로 확보합니다. |
+| **Curating Demonstrations using Online Experience** (Demo-SCORE, **RSS 2025**, [공식 논문](https://www.roboticsproceedings.org/rss21/p071.html)) | online 성공·실패 classifier를 교차검증하고 demonstration을 선별·재학습해 성공률을 **15~35 %p** 높였습니다. | rollout 비용과 Task별 classifier가 필요합니다. 데이터 Quality Gate를 **수집→선별→재학습→실물평가** 폐루프로 운영합니다. |
+
+**본 과제와의 연결** — SIMPLER는 전이 전 정책선별, FAIL-Detect는 runtime OOD·실패 Gate,
+Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성데이터를 무조건 편입하지 않고
+`전이 가능성→실패/OOD→데이터 품질→실물 재검증` 순으로 승인합니다.
 
 !!! note "인용 원칙"
-    위 수치(r > 0.9, 성공률 90 %·91.30 %, +37.9 %p, 시간당 10배 등)는 **각 논문의
-    특정 Task·장비·표본에서 나온 보고값**이며 본 과제의 목표치나 재현 결과가 아닙니다.
-    Real-to-Sim은 ICRA 2026, DreamGen은 CoRL 2025 게재 논문이고, SIM1·SimWeaver·Hi-WM·
-    EgoRecovery는 2026-08-31 현재 arXiv 프리프린트입니다. 본 과제의 정량 목표는
-    대표 제조작업의 기준선과 통계설계를 확정한 뒤 별도 KPI로 관리합니다.
+    위 수치는 **각 논문의 특정 Task·장비·표본에서 나온 보고값**이며 본 과제 KPI나 자체
+    재현 결과가 아닙니다. 게재처·서지는 논문·학회·출판사 원문을 2026-09-02 기준으로
+    확인했습니다. SimWeaver·Hi-WM·EgoRecovery·ASPIRE는 arXiv 프리프린트로, 나머지는
+    확인된 학회·저널을 병기했습니다. 목표치는 제조작업 기준선 확정 후 별도 관리합니다.
 
 ---
 

@@ -2,7 +2,7 @@
 noindex: true
 ---
 
-# 기술 상세 — 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리
+# 기술 상세 — 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리 {.rfm-technical-title}
 
 :material-circle-outline:{ style="color:#e0a800" } **컨소시엄 제안** · 기술 근거·수치·운영 규약
 
@@ -1248,20 +1248,39 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 
 **Real-to-Sim·Deformation**
 
-- *Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions* — [arXiv:2511.04665](https://arxiv.org/abs/2511.04665), [프로젝트 페이지](https://real2sim-eval.github.io/) (**ICRA 2026**). 3개 연성작업에서 실물–가상 정책 성공률 상관 **r > 0.9**를 보고했으나, 실물학습 정책의 평가 프록시 연구입니다.
-- *SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds* — [arXiv:2604.08544](https://arxiv.org/abs/2604.08544) (2026 프리프린트). 실측 보정·합성 궤적 확장의 가능성과 함께 소재별 전문가 튜닝이라는 자동화 한계를 제시합니다.
+- *Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions* — [arXiv:2511.04665](https://arxiv.org/abs/2511.04665) (**ICRA 2026**). 3개 Task 각각의 정책·checkpoint 평가점에서 실물–가상 성공률 상관 **r > 0.9**를 보고한 평가 프록시 연구입니다.
+- *Sim, Yet Same: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds* (SIM1) — [ECCV 2026 공식 프로그램](https://eccv.ecva.net/Conferences/2026/Videos), [arXiv:2604.08544](https://arxiv.org/abs/2604.08544). 실측 보정·합성 trajectory 확장과 소재별 전문가 튜닝 한계를 함께 제시합니다.
 - *SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation* — [arXiv:2606.15338](https://arxiv.org/abs/2606.15338), [프로젝트 페이지](https://simweaver.github.io/) (2026 프리프린트). 측정 물성·소재군 라이브러리와 광학 증강을 결합했으며, 5개 Task 평균 **91.30 %**를 보고합니다.
+- *Differentiable Physics-based System Identification for Robotic Manipulation of Elastoplastic Materials* — [IJRR 2025 DOI](https://doi.org/10.1177/02783649251334661), [arXiv:2411.00554](https://arxiv.org/abs/2411.00554). 한 번의 실제 상호작용·불완전 point cloud로 탄소성 재료·환경 파라미터를 식별하되 비식별성·모델 불일치를 고려해야 합니다.
+- *Scalable Real2Sim: Physics-Aware Asset Generation Via Robotic Pick-and-Place Setups* — [IROS 2025 DOI](https://doi.org/10.1109/IROS60139.2025.11246653), [arXiv:2503.00370](https://arxiv.org/abs/2503.00370). RGB-D·joint torque로 시각 mesh·충돌 geometry·관성 파라미터를 자동 생성하는 강체 asset pipeline입니다.
+- *Harnessing with Twisting: Single-Arm Deformable Linear Object Manipulation for Industrial Harnessing Task* — [IROS 2024 DOI](https://doi.org/10.1109/IROS58592.2024.10802801), [arXiv:2410.10729](https://arxiv.org/abs/2410.10729). FANUC/NIST ATB4의 산업 배선 Task에서 실제 trajectory 40개와 소표본 성공률을 보고합니다.
 
 **World Model·Human Recovery**
 
-- Jang, E., et al. (2025). *DreamGen: Unlocking Generalization in Robot Learning through Video World Models.* CoRL 2025, PMLR 305. — [PMLR](https://proceedings.mlr.press/v305/jang25a.html), [arXiv:2505.12705](https://arxiv.org/abs/2505.12705). 단일 Task의 2,885개 seed trajectory를 행동·환경 다양성으로 확장한 연구이며 실패복구 전용 연구는 아닙니다.
-- *Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training* — [arXiv:2604.21741](https://arxiv.org/abs/2604.21741), [프로젝트 페이지](https://hi-wm.github.io/) (2026 프리프린트). 실패 직전 상태 cache·rollback·branching과 짧은 사람 교정입력을 결합합니다.
+- Jang, E., et al. (2025). *DreamGen: Unlocking Generalization in Robot Learning through Video World Models.* CoRL 2025, PMLR 305. — [PMLR](https://proceedings.mlr.press/v305/jang25a.html), [arXiv:2505.12705](https://arxiv.org/abs/2505.12705). 월드모델 2,884개·정책 미세조정 2,885개 trajectory로 행동·환경을 확장했으며 실패복구 전용 연구는 아닙니다.
+- *Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training* — [arXiv:2604.21741](https://arxiv.org/abs/2604.21741) (2026 프리프린트). 실패 직전 cache·rollback·branching과 사람 교정을 결합하지만 평균값의 cell별 시행횟수·신뢰구간은 제시하지 않습니다.
 - *EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration* — [arXiv:2607.19745](https://arxiv.org/abs/2607.19745), [프로젝트 페이지](https://egorecovery.github.io/project_page/) (2026 프리프린트). 인간 복구 intent를 빠르게 수집하지만 로봇 grounding data가 없으면 복구 성능이 제한됩니다.
+- *Set-Supervised Diffusion Policy: Learning Action-Chunking Diffusion through Corrections* — [RSS 2026 공식 논문](https://www.roboticsproceedings.org/rss22/p080.html), [arXiv:2606.01865](https://arxiv.org/abs/2606.01865). 로봇 부정·사람 긍정 action chunk를 함께 보존하며 50개 시연+40개 교정 episode의 Insert-T에서 **35/40**을 보고합니다.
+
+**Failure Discovery·RoboOps**
+
+- *Fail2Progress: Learning from Real-World Robot Failures with Stein Variational Inference* — [CoRL 2025 PMLR](https://proceedings.mlr.press/v305/huang25d.html), [arXiv:2509.01746](https://arxiv.org/abs/2509.01746). 관측 실패를 simulation에서 재현·증강하지만 Sim2Real gap과 변형물성은 다루지 않습니다.
+- *From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph for Robotic Manipulation* (AgentChord) — [RSS 2026 공식 논문](https://www.roboticsproceedings.org/rss22/p180.html), [arXiv:2605.11951](https://arxiv.org/abs/2605.11951). 예상 실패·복구 graph를 선제 구성하지만 미관측 실패가 남습니다.
+- *ASPIRE: Agentic /Skills Discovery for Robotics* — [arXiv:2607.00272](https://arxiv.org/abs/2607.00272) (2026 프리프린트). LIBERO-Pro macro 평균 **72 %**, 실로봇 soda-can **13/20→19/20**은 해당 평가범위의 보고값입니다.
+- *Predictive Red Teaming: Breaking Policies Without Breaking Robots* (RoboART) — [CoRL 2025 PMLR](https://proceedings.mlr.press/v305/majumdar25a.html). 12개 off-nominal 조건·500회 이상 hardware trial로 시각·환경 취약조건을 표적 탐색합니다.
+- *Geometric Red-Teaming for Robotic Manipulation* (GRT) — [CoRL 2025 PMLR](https://proceedings.mlr.press/v305/goel25a.html). 실제 CrashShapes에서 성공률 **90 %→22.5 %**, 재학습 후 최대 **90 %**를 보고한 형상 취약성 연구입니다.
+
+**Transfer·OOD·RFM Evaluation**
+
+- *Evaluating Real-World Robot Manipulation Policies in Simulation* (SIMPLER) — [CoRL 2024 PMLR](https://proceedings.mlr.press/v270/li25c.html). 2개 embodiment·8개 Task family·1,500회 이상 sim–real paired evaluation으로 정책선별 프록시를 검증했습니다.
+- *Can We Detect Failures Without Failure Data? Uncertainty-Aware Runtime Failure Detection for Imitation Learning Policies* (FAIL-Detect) — [RSS 2025 공식 논문](https://www.roboticsproceedings.org/rss21/p073.html). success-only failure/OOD 탐지를 검증했지만 ID-only calibration은 OOD true-negative rate를 거의 0으로 만들 수 있습니다.
+- *Curating Demonstrations using Online Experience* (Demo-SCORE) — [RSS 2025 공식 논문](https://www.roboticsproceedings.org/rss21/p071.html). online 성공·실패 classifier의 교차검증·선별·재학습으로 **15~35 %p** 향상을 보고합니다.
 
 !!! note "선행연구 수치 해석"
     위 정량값은 각 논문의 특정 Task·장비·표본에서 보고된 결과입니다. 자체 재현값이나
-    본 과제 KPI가 아니며, 대표 제조작업의 기준선·신뢰구간·Gate를 설계하는 참고근거로만 사용합니다.
-    2026-08-31 기준 Real-to-Sim과 DreamGen만 게재처를 확인했으며 나머지 네 연구는 프리프린트로 표기합니다.
+    본 과제 KPI가 아니며 제조작업의 기준선·신뢰구간·Gate 설계 참고근거로만 사용합니다.
+    게재처·서지는 2026-09-02 기준 원문으로 확인했으며 SimWeaver·Hi-WM·EgoRecovery·ASPIRE는
+    arXiv 프리프린트로, 나머지는 확인된 학회·저널을 병기했습니다.
 
 ---
 

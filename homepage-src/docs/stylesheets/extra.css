@@ -200,6 +200,15 @@
   word-break: keep-all;
 }
 
+@media screen and (max-width: 600px) {
+  .md-typeset h1.rfm-technical-title {
+    font-size: 1.35rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+  }
+}
+
 .concept-diagram {
   scroll-margin-top: 7rem;
 }
