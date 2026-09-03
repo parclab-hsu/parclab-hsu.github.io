@@ -115,6 +115,37 @@ class System1State(BaseModel):
 
 System-2가 생성한 플랜을 `/system2/plan_cmd` 로 발행하면 System-1이 해당 단위 액션 서버를 호출합니다. 4가지 시나리오로 통신 파이프라인과 자율 동작을 검증합니다.
 
+### 연동 토픽 구조 — 두 계층을 잇는 4개 채널
+
+```text
+[운영자] --자연어--> [System-2] --/system2/plan_cmd (HighLevelPlan)--> [System-1 Executor]
+                         ▲                                                    │
+                         │ /system2/decision (운영자 결정)                     │ 실행(5종 단위 액션)
+                         │                                                    ▼
+                     [운영자] <--/system2/report_context-- [System-1] --/ats_state(상태 브로드캐스트)-->
+```
+
+| 토픽 | 방향 | 역할 |
+| --- | --- | --- |
+| `/system2/plan_cmd` | S2 → S1 | `HighLevelPlan` 하달(메인 채널) |
+| `/ats_state` | S1 → S2 | Executor 상태(위치·배터리·현재 task·`queue_status`) 브로드캐스트 |
+| `/system2/report_context` | S1 → S2 | `report_and_wait` 시 현장 맥락(맵 좌표·vision 스냅샷) 보고 |
+| `/system2/decision` | S2 → S1 | 운영자 결정(continue/no_command 등)을 즉시 전달 |
+
+### Scenario A~D 한눈에 보기
+
+각 시나리오는 **서로 다른 단위 액션 조합**을 검증하도록 설계되어 있습니다.
+
+| 시나리오 | 검증 액션 조합 | 확인 포인트 |
+| --- | --- | --- |
+| **A** | `move_to` | 구역→좌표 변환, Nav2 목표 도달 |
+| **B** | `move_to`→`scan`→(조건)`report_and_wait` | 중앙 좌표 계산, 120° 스윕, 사람 발견 시 보고·대기 |
+| **C** | `move_to`×4 순차 | 다중 목표 순차 방문(순서 유지) |
+| **D** | `scan`→(조건)`track` | 60° 스윕, `truck` 발견 시 짐벌+본체 3축 추적 전환 |
+
+!!! success "검증 관점"
+    "명령이 의도한 **단위 액션 시퀀스**로 바뀌었는가"와 "각 액션의 **True/False 계약**(성공→다음 step, 실패→retry/replan)이 지켜지는가"를 함께 봅니다.
+
 ### Scenario A — 기초 기동 ("D 구역으로 가줘")
 
 - 체크포인트: System-2가 `move_to` 플랜 생성 후 `/system2/plan_cmd` 로 전송 → System-1이 `move_to` 액션 서버 호출
@@ -139,6 +170,25 @@ System-2가 생성한 플랜을 `/system2/plan_cmd` 로 발행하면 System-1이
         - 엣지(Spot 내장 컴퓨터/Jetson): 가벼운 모델로 1차 이벤트(사람·움직임)만 감지 → 짧은 클립 전송
         - 서버(고성능 GPU + 대형 VLM, GPT-4o 등): 정밀 판단 후 행동 지침 회신
         - → 로봇 자원(배터리·연산)을 아끼면서 고성능 연산이 가능한 **지능형 보안 관제 솔루션**
+
+**Scenario B 기대 생성 Plan (예시)** — "지도 중앙 이동 → 120° 스캔 → 사람 발견 시 보고·대기"
+
+```json
+{
+  "version": "1.0.0",
+  "mission_id": "scenario_b_001",
+  "intent": "지도 중앙 이동 후 120도 스캔, 사람 발견 시 보고·대기",
+  "steps": [
+    {"task": "move_to", "params": {"goal": {"x": 0.0, "y": 0.0, "yaw": 0.0}}},
+    {"task": "scan", "params": {"sweep_deg": 120, "yaw_rate_dps": 15, "duration_sec": 12,
+                                 "watch_classes": ["person"], "report_on_found": true}},
+    {"task": "report_and_wait", "params": {"prompt": "사람 감지 — 운영자 지시 대기"}}
+  ],
+  "replan_rules": {"lost_target_sec": 5.0, "battery_rtb": 0.18}
+}
+```
+
+> 채점·데모 기준: 위처럼 5종 task만으로 구성되고, 구역/중앙이 `goal` 좌표로 변환되며, 조건(사람 발견)이 `report_and_wait` 로 이어지는지 확인합니다.
 
 ### Scenario C — 장기 순찰 (D, C, B, A 순차 정찰)
 
@@ -237,6 +287,39 @@ def main():
     - `normalize_plan_for_schema()` : LLM 출력이 스키마와 살짝 다를 때(좌표가 평평한 형태로 올 때 등) 스키마 규격으로 강제 변환 → **무결성 보장**
     - **Multi-threading**: ROS 콜백(spin)과 운영자 입력 루프 분리 → 응답성 유지
     - **Interactive Callback**: `report_context_callback()` 으로 운영자 실시간 협업(Teaming)
+
+---
+
+### ROS 2 통합 검증 — 4개 토픽을 동시에 관찰하기
+
+연동이 실제로 살아 있는지는 토픽을 직접 들여다봐야 확인됩니다. 터미널을 나눠 함께 띄워 두세요.
+
+```bash
+ros2 topic echo /ats_state
+ros2 topic echo /system2/plan_cmd
+ros2 topic echo /system2/decision
+ros2 topic echo /system2/report_context
+```
+
+| 확인 항목 | 기대 |
+| --- | --- |
+| `/system2/plan_cmd` | 자연어 명령 직후 `HighLevelPlan` JSON 발행 |
+| `/ats_state` | 0.5초 주기로 `queue_status`·현재 task·pose 갱신 |
+| `/system2/report_context` | `report_and_wait` 진입 시 맵 좌표·vision 스냅샷 포함 |
+| `/system2/decision` | 운영자 발행 시 즉시 수신되어 대기 해제 |
+
+### ReplanRules ↔ Guard 매핑 (두뇌↔몸 계약 완결)
+
+System-2가 플랜에 실어 보내는 `replan_rules` 는 System-1의 **guard 심볼**로 해석되어 실행 중 안전 조건으로 작동합니다.
+
+| System-2 `replan_rules` (14주차) | System-1 guard (11주차) | 동작 |
+| --- | --- | --- |
+| `battery_rtb` (예: 0.18) | `BATTERY_SOC` | 잔량이 임계 이하면 step `paused`→`return_to_home` 재계획 |
+| `lost_target_sec` (예: 5.0) | `track` 의 `lost_sec` 판정 | 추적 대상 손실 지속 시 재탐색 포기·재계획 |
+| (안전 구역 규칙) | `SAFE_BACKSTOP` | 후방 안전거리 미확보 시 이동 step 차단 |
+
+!!! note "계층이 맞물리는 지점"
+    "System-2가 정한 재계획 규칙"이 "System-1의 guard 평가"로 내려와, 조건 위반 시 `queue_status = paused/error` 로 전이되고 `/system2/report_context`·`replan` 으로 두뇌에 되먹임됩니다. **이 매핑이 맞아야 두 계층이 하나의 시스템으로 동작합니다.**
 
 ---
 

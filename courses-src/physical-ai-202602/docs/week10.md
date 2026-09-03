@@ -37,6 +37,32 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 01 (출처: ENGI UNIVERSE)
 Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 03 (출처: ENGI UNIVERSE)
 ///
 
+### Vision 모듈은 어느 계층에 있는가
+
+다음 주(11주차)에서 설계할 **System-1 Executor** 는 `scan`·`track` 같은 단위 액션을 수행할 때 **"지금 무엇이 보이는가"** 를 알아야 합니다. 그 정보를 만들어 내는 것이 이번 주차의 Vision 모듈입니다.
+
+| 계층 | 역할 | 이번 주차와의 관계 |
+| --- | --- | --- |
+| **System-2** | 자연어 → 고수준 플랜 | Vision 요약(`vision_snapshot`)을 판단 근거로 사용 |
+| **System-1 Executor** | 플랜 실행·상태 관리 | `VisionCache` 에 정규화된 비전 상태 저장 |
+| **Vision 모듈(이번 주차)** | 카메라 영상 → 객체 탐지·추적 | `/vision_context_raw` 로 원시 결과 발행 |
+
+!!! note "왜 별도 모듈로 분리하는가"
+    Vision을 Executor에서 분리하면 탐지 모델을 교체(YOLOv8 → YOLOv10)해도 Executor는 그대로 둘 수 있습니다. Executor는 정규화 함수(`_normalize_raw_vision`)만 손보면 되고, Vision 모듈은 "탐지·추적 결과 발행"에만 집중합니다. → **모델 독립성(Model Independence)**
+
+### YOLO의 출력 3요소
+
+YOLO는 이미지를 **한 번만(one-stage)** 통과시켜 객체의 **위치(bbox)** 와 **종류(class)** 를 동시에 예측합니다. 후보 영역을 따로 뽑는 2-stage 방식보다 빨라 실시간성이 중요한 로봇에 적합합니다.
+
+| 출력 요소 | 의미 | 이후 사용처 |
+| --- | --- | --- |
+| `class` | 객체 종류(예: `person`, `truck`) | System-2의 판단·시나리오 트리거 |
+| `bbox` | 경계 상자 `[x, y, w, h]`(중심 기준) | `track` 의 화면 중심 정렬 기준 |
+| `confidence` | 탐지 신뢰도(0~1) | `threshold` 미만은 무시 |
+
+- **모델 크기**: `yolov8n`(nano) → `yolov8x`(xlarge). `n` 이 가장 가볍고 빠름 → 엣지/실시간용
+- **device**: `cpu` 또는 `cuda:0`(GPU). 실시간 추론에는 GPU 권장
+
 ---
 
 ## 🧩 2. YOLOv8 구조 — detector → tracker → debug
@@ -80,6 +106,54 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 07 (출처: ENGI UNIVERSE)
 
 !!! note "예시 파일은 실제 동작 코드가 아닙니다"
     교안의 예시 런치/노드 코드는 구조 이해를 돕기 위한 재구성으로, 그대로 실행되는 코드가 아닙니다.
+
+### 실행해 보기 — Launch 골격과 추론 명령
+
+위 구조를 실제로 돌려 보는 최소 형태입니다. 모델·디바이스·임계값·입력 토픽을 실행 시점에 바꿀 수 있어 재빌드가 필요 없습니다.
+
+```python
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    model = LaunchConfiguration("model")
+    device = LaunchConfiguration("device")
+    threshold = LaunchConfiguration("threshold")
+    input_image_topic = LaunchConfiguration("input_image_topic")
+
+    return LaunchDescription([
+        DeclareLaunchArgument("model", default_value="yolov8n.pt"),
+        DeclareLaunchArgument("device", default_value="cpu"),
+        DeclareLaunchArgument("threshold", default_value="0.5"),
+        DeclareLaunchArgument("input_image_topic", default_value="/camera/image_raw"),
+        Node(
+            package="yolov8_bringup",
+            executable="yolov8_node",
+            name="yolov8_node",
+            parameters=[{
+                "model": model,
+                "device": device,
+                "threshold": threshold,
+            }],
+            remappings=[("image_raw", input_image_topic)],
+        ),
+    ])
+```
+
+ATS 카메라의 RGB 토픽을 입력으로 GPU 추론을 실행합니다.
+
+```bash
+ros2 launch yolov8_bringup yolov8.launch.py \
+  model:=yolov8n.pt \
+  device:=cuda:0 \
+  threshold:=0.45 \
+  input_image_topic:=/ats/rgb/image_raw
+```
+
+!!! tip "토픽 리매핑의 이점"
+    `input_image_topic` 만 바꾸면 시뮬레이션(`/ats/rgb/image_raw`)과 실기(`/camera/image_raw`)를 **동일한 코드로** 전환할 수 있습니다. 토폴로지가 자주 바뀌는 로봇 환경에서 특히 유리합니다.
 
 ### 외부화되는 구성 요소
 
@@ -261,6 +335,38 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 26 (출처: ENGI UNIVERSE)
 
     System-1에서 사용할 수 있는 표준 JSON 포맷으로 객체별 `id`·`class`·중심좌표·크기를 정규화하여 발행
 
+### `/vision_context_raw` → System-1 VisionCache
+
+탐지·추적 결과를 **원시 JSON** 으로 발행하면, 다음 주(11주차)에서 설계할 System-1 Executor가 이를 받아 정규화합니다.
+
+```text
+[Vision 모듈]  --/vision_context_raw (raw JSON)-->  [System-1 Executor]
+                                                     on_vision_raw()
+                                                     └ _normalize_raw_vision()
+                                                       └ VisionCache 반영
+```
+
+**원시 JSON 예시**
+
+```json
+{
+  "targets": [
+    {"id": "17", "class": "person", "bbox": [312, 240, 96, 210], "range": 4.2},
+    {"id": "23", "class": "truck",  "bbox": [40, 180, 140, 120]}
+  ],
+  "primary_id": "17",
+  "lost_sec": 0.0
+}
+```
+
+정규화 후 Executor가 관리하는 **표준 구조**는 다음과 같습니다(11주차에서 상세히 다룸).
+
+| 필드 | 의미 |
+| --- | --- |
+| `targets` | 감지된 객체 리스트 — `id`·`class`·`bbox([x,y,w,h])`·`range`(거리, 선택) |
+| `primary_id` | 주 대상. `center(cx, cy)` 포함 → `track`·`report_and_wait` 의 기준 |
+| `lost_sec` | 아무 객체도 감지되지 않은 누적 시간 → "타깃 손실" 판단 트리거 |
+
 !!! success "System-2 전 배경 — 우리가 지금 구축한 단계"
     가장 하위 계층(Sensing/Perception)을 완성하는 단계입니다.
 
@@ -371,6 +477,30 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
 - **정의**: QoS(Quality of Service)는 ROS 2에서 메시지 전달 신뢰성·지연 등을 정하는 통신 정책이며, `image_reliability`는 이미지 토픽의 QoS를 런치 인자(정수 0/1/2)로 지정하는 파라미터입니다.
 - **역할/왜 중요한가**: 환경에 맞춰 통신 방식을 선택할 수 있게 합니다. **Best Effort**는 드롭을 허용해 지연을 줄이고, **Reliable**은 손실을 최소화합니다.
 - **맥락·예시**: 무선·시뮬레이터에서는 Best Effort, 로깅·재현이 중요하면 Reliable을 쓰며 파일 수정 없이 인자로 전환합니다.
+
+### bbox (Bounding Box) · confidence
+
+- **정의**: `bbox` 는 탐지된 객체를 감싸는 사각형(`[x, y, w, h]`, 중심 기준)이고, `confidence` 는 그 탐지가 맞을 확률(0~1)입니다.
+- **역할/왜 중요한가**: `bbox` 의 중심(`cx, cy`)은 `track` 이 카메라를 대상 쪽으로 정렬하는 기준이 되고, `confidence` 는 `threshold` 미만 탐지를 걸러 오탐을 줄입니다.
+- **맥락·예시**: Tracker가 `tracked_box.xywh[0]` 로 보정한 `cx, cy, w, h` 를 `detection.bbox` 에 채워 System-1으로 전달합니다.
+
+### Detector vs. Tracker
+
+- **정의**: Detector는 **매 프레임 독립적으로** 객체를 찾고, Tracker는 프레임에 걸쳐 같은 객체를 연결해 **일관된 ID** 를 부여합니다.
+- **역할/왜 중요한가**: 특정 대상을 계속 추종하는 `track` 액션은 "같은 사람인지"를 알아야 하므로 Tracker의 ID가 필수입니다.
+- **맥락·예시**: `self.tracker.update(...)` 가 detection을 추적 트랙과 매칭하고, `tracked_box.is_track` 이 참이면 `detection.id` 에 유지 ID를 씁니다.
+
+### VisionCache / 정규화 (Normalization)
+
+- **정의**: 다양한 비전 모델의 서로 다른 출력을 `_normalize_raw_vision()` 으로 하나의 표준 구조(`targets`·`primary_id`·`lost_sec`)로 통합해 저장하는 System-1의 중앙 비전 저장소입니다.
+- **역할/왜 중요한가**: 모델을 교체해도 정규화 함수만 고치면 되어 **모델 독립성** 을 확보하고, 비전 데이터의 일관성이 System-2 플랜 품질을 지탱합니다.
+- **맥락·예시**: 이번 주차가 `/vision_context_raw` 로 발행한 원시 JSON을 다음 주(11주차) Executor의 `on_vision_raw` 가 받아 정규화합니다.
+
+### `/vision_context_raw` (토픽)
+
+- **정의**: Vision 모듈이 탐지·추적 결과를 **원시 JSON** 형태로 내보내는 토픽입니다.
+- **역할/왜 중요한가**: Vision과 Executor를 토픽으로 분리(느슨한 결합)해, 서로의 내부 구현을 몰라도 협업할 수 있게 합니다.
+- **맥락·예시**: System-1 Executor는 이 토픽을 선택적으로 구독해 정규화 후 VisionCache에 반영합니다.
 
 ### VisionContextBuilder
 - **정의**: `/yolo/tracking`(추적 결과)과 `/yolo/image_raw`(영상)를 함께 구독해 "무엇을 봤는가 + 어느 프레임에서 봤는가"를 하나의 **비전 컨텍스트**로 묶는 모듈입니다.
