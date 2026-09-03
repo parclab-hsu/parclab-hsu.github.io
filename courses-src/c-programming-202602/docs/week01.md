@@ -151,10 +151,11 @@ int main(void) {        // main: 프로그램이 시작되는 함수
 - `int main(void)` : 모든 C 프로그램의 **시작점**.
 - `return 0;` : 종료 코드(0=성공).
 
-### 1.7 개발환경 4종
+### 1.7 개발환경 5종
 | 환경 | 용도 |
 |------|------|
 | Visual Studio 2022 | PC에서 C 작성·컴파일·디버깅(주력) |
+| VS Code(선택) | VS 2022의 컴파일러를 그대로 쓰면서 파일 하나 단위로 편집·디버깅 |
 | Arduino IDE 2.x | 보드(UNO R4 WiFi)에 업로드 |
 | Tinkercad | 회로와 Arduino 기초 입출력 시뮬레이션 |
 | Linux + gcc(선택) | 명령줄 컴파일, ROS2의 기반(후반부) |

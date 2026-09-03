@@ -19,7 +19,7 @@
 | 교과목 | C 프로그래밍 (전공기초, 1학년 2학기) |
 | 학과 | 미래모빌리티학과 |
 | 보드 | Arduino UNO R4 WiFi (12×8 LED Matrix + Wi-Fi 내장) |
-| 환경 | Visual Studio 2022 · Arduino IDE 2.x · Tinkercad · Ubuntu 24.04 + ROS2 Jazzy |
+| 환경 | Visual Studio 2022(선택: VS Code) · Arduino IDE 2.x · Tinkercad · Ubuntu 24.04 + ROS2 Jazzy |
 | 로봇 | Stella N2 (ROS2 · YDLIDAR · Cartographer) |
 
 ## 학습 성과 (CLO)
