@@ -56,3 +56,110 @@
   outline: 2px solid var(--md-accent-fg-color);
   outline-offset: 2px;
 }
+
+/* ── 이미지 확대 보기 (docs/javascripts/lightbox.js) ───────────────── */
+
+.lb-zoomable {
+  cursor: zoom-in;
+  transition: box-shadow .15s ease, transform .15s ease;
+  border-radius: 4px;
+}
+.lb-zoomable:hover,
+.lb-zoomable:focus-visible {
+  box-shadow: 0 0 0 3px var(--md-accent-fg-color, #3f51b5);
+  outline: none;
+}
+
+body.lb-lock { overflow: hidden; }
+
+.lb-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  background: rgba(0, 0, 0, .92);
+}
+.lb-overlay.is-open { display: flex; }
+
+.lb-stage {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 3.2rem 1rem 0.5rem;
+}
+.lb-overlay.is-zoomed .lb-stage {
+  overflow: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: grab;
+}
+
+.lb-img {
+  max-width: 96vw;
+  max-height: 86vh;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 4px;
+  cursor: zoom-in;
+}
+.lb-overlay.is-zoomed .lb-img {
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+  cursor: zoom-out;
+  margin: auto;
+}
+
+.lb-bar {
+  flex: 0 0 auto;
+  padding: .5rem 1rem 1rem;
+  text-align: center;
+  color: #fff;
+}
+.lb-cap {
+  margin: 0 auto .25rem;
+  max-width: 60rem;
+  font-size: .78rem;
+  line-height: 1.5;
+  color: #f2f2f2;
+}
+.lb-hint {
+  margin: 0;
+  font-size: .68rem;
+  color: #b9b9b9;
+}
+
+.lb-close {
+  position: absolute;
+  top: .6rem;
+  right: .8rem;
+  z-index: 1;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.lb-close:hover,
+.lb-close:focus-visible {
+  background: rgba(255, 255, 255, .3);
+  outline: none;
+}
+
+@media screen and (max-width: 600px) {
+  .lb-stage { padding: 3rem .4rem .4rem; }
+  .lb-img { max-width: 99vw; }
+}
+
+@media print {
+  .lb-overlay { display: none !important; }
+  .lb-zoomable { box-shadow: none; }
+}
