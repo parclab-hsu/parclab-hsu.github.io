@@ -68,6 +68,39 @@ conda env create -f environment.yml
 
 ---
 
+### GPU가 없다면 — 설치 전에 경로부터 정하기
+
+Isaac Sim은 설치 전에 **내 하드웨어에 맞는 경로**를 먼저 골라야 합니다. 잘못 고르면 설치를 끝내고도 실행이 안 됩니다.
+
+**내 GPU 확인하기**
+
+```bash
+# Linux
+nvidia-smi
+```
+
+Windows에서는 `작업 관리자 → 성능 → GPU` 항목에서 모델명을 확인합니다.
+
+| 확인 결과 | 경로 |
+| --- | --- |
+| **NVIDIA RTX 계열 GPU 보유** | 본인 PC에 Isaac Sim 직접 설치 (아래 절차 그대로) |
+| **GPU 없음** (내장 그래픽 등) | **AWS 클라우드** 활용 — EC2 `g6e` 인스턴스 권장 (**유료**) |
+
+!!! warning "AWS 경로를 택한 경우"
+    - 접속은 **RDP 원격 데스크톱**으로 합니다 (Linux 클라이언트는 `remmina` 등).
+    - **강화학습(4·5주차)을 클라우드에서 처음부터 돌리면 요금이 크게 나올 수 있습니다.** 이미 학습된 Policy 모델을 받아 쓰는 방법을 수업에서 안내합니다.
+    - **쓰지 않을 때는 인스턴스를 반드시 중지(stop)** 하세요. 켜 둔 시간만큼 과금됩니다.
+    - 원본 프로젝트 매뉴얼은 AWS 환경 기준으로 Isaac Sim 5.0 설치를 안내합니다. 본 강의는 5.1 기준이므로 버전 차이가 있는 부분은 수업 중 안내를 따르세요.
+
+### Ubuntu 설치 준비물
+
+- **8GB 이상 빈 USB 저장장치** 한 개 — 부팅 USB 제작용
+- Ubuntu 22.04 LTS(Jammy Jellyfish) 이미지 — [ubuntu.com/download/desktop](https://ubuntu.com/download/desktop) → `check alternative downloads` → `Past releases and other flavours`
+
+!!! danger "듀얼부팅(Windows + Ubuntu) 시 데이터 삭제 주의"
+    같은 PC에서 Windows와 Ubuntu를 함께 쓰려면 디스크 파티션을 나눠야 하고, 이 과정에서 **기존 데이터가 삭제될 수 있습니다.** 중요한 자료는 **반드시 사전에 다른 저장장치로 백업**하십시오.
+    부팅 USB로 진입할 때는 전원을 켠 직후 **Boot Menu 키**(보통 `F11`, 메인보드 제조사마다 다름)를 눌러 USB를 선택합니다.
+
 ## 🧱 02 개발 환경 구축 — Miniconda 설치
 
 **Step 1 — 설치 디렉토리 생성**

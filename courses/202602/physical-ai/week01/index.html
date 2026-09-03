@@ -482,6 +482,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU가 없다면 — 설치 전에 경로부터 정하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubuntu 설치 준비물
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -534,7 +556,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gpu" class="md-nav__link">
+  <a href="#gpu_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         GPU 모델별 예시 조합
@@ -1622,6 +1644,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPU가 없다면 — 설치 전에 경로부터 정하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubuntu 설치 준비물
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1674,7 +1718,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gpu" class="md-nav__link">
+  <a href="#gpu_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         GPU 모델별 예시 조합
@@ -2126,22 +2170,66 @@
 <p>하나의 Python 버전만 쓰면 프로젝트끼리 <strong>패키지 충돌·버전 호환성 문제</strong>가 발생합니다. Conda 가상환경은 프로젝트마다 별도의 Python 실행 환경을 분리해 이러한 문제를 근본적으로 막아 줍니다.</p>
 </div>
 <hr>
+<h3 id="gpu">GPU가 없다면 — 설치 전에 경로부터 정하기<a class="headerlink" href="#gpu" title="Permanent link">¶</a></h3>
+<p>Isaac Sim은 설치 전에 <strong>내 하드웨어에 맞는 경로</strong>를 먼저 골라야 합니다. 잘못 고르면 설치를 끝내고도 실행이 안 됩니다.</p>
+<p><strong>내 GPU 확인하기</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Linux</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>nvidia-smi
+</code></pre></div>
+<p>Windows에서는 <code>작업 관리자 → 성능 → GPU</code> 항목에서 모델명을 확인합니다.</p>
+<table>
+<thead>
+<tr>
+<th>확인 결과</th>
+<th>경로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NVIDIA RTX 계열 GPU 보유</strong></td>
+<td>본인 PC에 Isaac Sim 직접 설치 (아래 절차 그대로)</td>
+</tr>
+<tr>
+<td><strong>GPU 없음</strong> (내장 그래픽 등)</td>
+<td><strong>AWS 클라우드</strong> 활용 — EC2 <code>g6e</code> 인스턴스 권장 (<strong>유료</strong>)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">AWS 경로를 택한 경우</p>
+<ul>
+<li>접속은 <strong>RDP 원격 데스크톱</strong>으로 합니다 (Linux 클라이언트는 <code>remmina</code> 등).</li>
+<li><strong>강화학습(4·5주차)을 클라우드에서 처음부터 돌리면 요금이 크게 나올 수 있습니다.</strong> 이미 학습된 Policy 모델을 받아 쓰는 방법을 수업에서 안내합니다.</li>
+<li><strong>쓰지 않을 때는 인스턴스를 반드시 중지(stop)</strong> 하세요. 켜 둔 시간만큼 과금됩니다.</li>
+<li>원본 프로젝트 매뉴얼은 AWS 환경 기준으로 Isaac Sim 5.0 설치를 안내합니다. 본 강의는 5.1 기준이므로 버전 차이가 있는 부분은 수업 중 안내를 따르세요.</li>
+</ul>
+</div>
+<h3 id="ubuntu">Ubuntu 설치 준비물<a class="headerlink" href="#ubuntu" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>8GB 이상 빈 USB 저장장치</strong> 한 개 — 부팅 USB 제작용</li>
+<li>Ubuntu 22.04 LTS(Jammy Jellyfish) 이미지 — <a href="https://ubuntu.com/download/desktop">ubuntu.com/download/desktop</a> → <code>check alternative downloads</code> → <code>Past releases and other flavours</code></li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">듀얼부팅(Windows + Ubuntu) 시 데이터 삭제 주의</p>
+<p>같은 PC에서 Windows와 Ubuntu를 함께 쓰려면 디스크 파티션을 나눠야 하고, 이 과정에서 <strong>기존 데이터가 삭제될 수 있습니다.</strong> 중요한 자료는 <strong>반드시 사전에 다른 저장장치로 백업</strong>하십시오.
+부팅 USB로 진입할 때는 전원을 켠 직후 <strong>Boot Menu 키</strong>(보통 <code>F11</code>, 메인보드 제조사마다 다름)를 눌러 USB를 선택합니다.</p>
+</div>
 <h2 id="02-miniconda">🧱 02 개발 환경 구축 — Miniconda 설치<a class="headerlink" href="#02-miniconda" title="Permanent link">¶</a></h2>
 <p><strong>Step 1 — 설치 디렉토리 생성</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
 </code></pre></div>
 <ul>
 <li>사용자 홈 디렉토리에 <code>miniconda3</code> 디렉토리를 생성</li>
 <li><code>-p</code> : 상위 디렉토리가 없으면 자동으로 생성</li>
 </ul>
 <p><strong>Step 2 — 설치 스크립트 다운로드</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>~/miniconda3/miniconda.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>~/miniconda3/miniconda.sh
 </code></pre></div>
 <ul>
 <li><code>-O</code> : 다운로드된 파일을 저장할 경로·파일명을 명시</li>
 </ul>
 <p><strong>Step 3 — 설치 실행</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash<span class="w"> </span>~/miniconda3/miniconda.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bash<span class="w"> </span>~/miniconda3/miniconda.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
 </code></pre></div>
 <ul>
 <li><code>-b</code> : 비대화 모드 설치(사용자 입력 없이 기본값으로 진행)</li>
@@ -2160,7 +2248,7 @@
 <h3 id="gpu-cuda">여기서 잠깐! — 내 GPU에 맞는 CUDA·드라이버 고르기<a class="headerlink" href="#gpu-cuda" title="Permanent link">¶</a></h3>
 <p>GPU 모델마다 지원하는 CUDA 버전과 권장 드라이버가 다릅니다. 설치 전 반드시 호환성을 확인합니다.</p>
 <p><strong>Step 1 —</strong> <code>nvidia-smi</code> 로 GPU 모델 확인</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>nvidia-smi
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nvidia-smi
 </code></pre></div>
 <p><strong>Step 2 —</strong> NVIDIA 공식 페이지(<em>Why CUDA Compatibility</em>)에서 모델 지원 범위 확인
 <strong>Step 3 —</strong> 드라이버 ↔ CUDA 버전 호환성 매트릭스 확인 (GPU가 CUDA X.Y를 지원하는지, 현재 드라이버가 CUDA X.Y와 호환되는지)</p>
@@ -2191,7 +2279,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="gpu">GPU 모델별 예시 조합<a class="headerlink" href="#gpu" title="Permanent link">¶</a></h4>
+<h4 id="gpu_1">GPU 모델별 예시 조합<a class="headerlink" href="#gpu_1" title="Permanent link">¶</a></h4>
 <table>
 <thead>
 <tr>
