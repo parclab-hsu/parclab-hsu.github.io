@@ -1326,13 +1326,22 @@ Quality Gate</strong> 네 가지이며, 생성 도구는 교체 가능한 구성
 </div>
 <hr />
 <h2 id="4_1">4. 폐루프 — 데이터가 도는 경로<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="제조환경 RFM 데이터팩토리 전체 과제 개념도 — 실제 제조환경과 모빌테크 Geometry Twin 지원, 한성대학교의 Manufacturing Deformation Engine·Human Data Engine·Ontology·Edge Case Intelligence, 공통 Quality Gate, RFM 학습·평가, HIL·실물 로봇 검증과 Domain Gap 환류" decoding="async" height="941" loading="lazy" src="../../assets/manufacturing-rfm-data-factory-concept-v2.png" width="1672" />
+  </p>
+<figcaption>
+<p>전체 과제 개념도 — <strong>한성대학교가 Physical AI Data Factory Core를 대표 수행</strong>하고, 모빌테크는 Geometry Twin을 지원합니다. 핵심기술 A·B·C와 공통 Quality Gate로 RFM을 학습·평가하며, HIL 검증과 실물 검증 결과를 가상환경에 환류합니다.</p>
+</figcaption>
+</figure>
+<p>위 이미지는 과제의 역할·기술·데이터 흐름을 한눈에 보여주는 요약이며, 아래 도식은 같은
+폐루프를 텍스트 기반으로 제공합니다.</p>
 <div class="concept-diagram concept-diagram--desktop">
 <pre class="mermaid"><code>%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 20, "rankSpacing": 28}}}%%
 flowchart TB
     REAL["REAL | 실제 제조환경&lt;br/&gt;대표 작업 1~2개&lt;br/&gt;정상 · 실패 · 복구 Log"]
     GEO["Geometry Twin | 모빌테크&lt;br/&gt;현장 취득 · 3D Asset&lt;br/&gt;좌표 · Semantic 정합"]
     WFM["보조 생성수단&lt;br/&gt;Cosmos / 동급 WFM&lt;br/&gt;후보 장면 · 미래상태"]
-    CORE["한성대학교 | 세 핵심기술&lt;br/&gt;기술축 A · Manufacturing Deformation Engine&lt;br/&gt;기술축 B · Human Data Engine&lt;br/&gt;기술축 C · Ontology·Edge Case Intelligence"]
+    CORE["한성대학교 | 핵심기술 A·B·C&lt;br/&gt;기술축 A · Manufacturing Deformation Engine&lt;br/&gt;기술축 B · Human Data Engine&lt;br/&gt;기술축 C · Ontology·Edge Case Intelligence"]
     GATE["Quality Gate | 공통 품질관문&lt;br/&gt;물리정합 · 재현성 · 안전&lt;br/&gt;데이터 품질 · Provenance"]
     RFM["RFM | 학습 · 평가&lt;br/&gt;Zero-shot / Post-training"]
     TEST["실물검증&lt;br/&gt;HIL · 실물 로봇&lt;br/&gt;Domain Gap 측정"]
@@ -1348,7 +1357,7 @@ flowchart TB
 <pre class="mermaid"><code>flowchart TB
     REAL["REAL | 실제 제조환경&lt;br/&gt;대표 작업 · 실패 Log"]
     GEO["Geometry Twin | 모빌테크"]
-    CORE["한성대 | 세 핵심기술&lt;br/&gt;기술축 A · Deformation Engine&lt;br/&gt;기술축 B · Human Data Engine&lt;br/&gt;기술축 C · Ontology·Edge Case"]
+    CORE["한성대 | 핵심기술 A·B·C&lt;br/&gt;기술축 A · Deformation Engine&lt;br/&gt;기술축 B · Human Data Engine&lt;br/&gt;기술축 C · Ontology·Edge Case&lt;br/&gt;보조 생성 · Cosmos / 동급 WFM"]
     GATE["Quality Gate&lt;br/&gt;공통 품질관문"]
     RFM["RFM | 학습 · 평가"]
     TEST["실물검증 | HIL · 실물 로봇"]
