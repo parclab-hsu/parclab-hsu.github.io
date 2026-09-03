@@ -231,6 +231,10 @@
     display: none;
   }
 
+  .md-typeset figure.concept-diagram--desktop {
+    display: none;
+  }
+
   .concept-diagram--mobile {
     display: block;
   }
