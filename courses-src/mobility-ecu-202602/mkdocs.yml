@@ -30,6 +30,24 @@ theme:
     - search.highlight
     - toc.follow
 
+plugins:
+  # search 는 기본 활성 플러그인이지만, plugins 절을 선언하는 순간 기본값이
+  # 사라지므로 반드시 함께 명시해야 검색 기능이 유지된다.
+  - search
+  # 본문 이미지를 클릭하면 라이트박스로 확대. 회로도·핀맵·코드 캡처는
+  # 원본 해상도로 봐야 글자가 읽히므로 전 페이지에 적용한다.
+  - glightbox:
+      touchNavigation: true
+      zoomable: true
+      draggable: true
+      effect: zoom
+      width: 100%
+      height: auto
+      auto_caption: true
+      caption_position: bottom
+      skip_classes:
+        - no-lightbox
+
 extra_css:
   - stylesheets/extra.css
 

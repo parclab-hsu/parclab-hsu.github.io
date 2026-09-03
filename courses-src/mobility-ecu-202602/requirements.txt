@@ -1,0 +1,5 @@
+# 강의 사이트 빌드 의존성
+# 설치: python -m pip install -r requirements.txt
+mkdocs>=1.6
+mkdocs-material>=9.5
+mkdocs-glightbox>=0.5   # 본문 이미지 클릭 확대(라이트박스)
