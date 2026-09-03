@@ -196,8 +196,8 @@ RFM Interface 는 Observation·Action·Task·Embodiment 규약과 평가기준�
 ## 4. 폐루프 — 데이터가 도는 경로
 
 <figure markdown>
-  ![제조환경 RFM 데이터팩토리 전체 과제 개념도 — 실제 제조환경과 모빌테크 Geometry Twin 지원, 한성대학교의 Manufacturing Deformation Engine·Human Data Engine·Ontology·Edge Case Intelligence, 공통 Quality Gate, RFM 학습·평가, HIL·실물 로봇 검증과 Domain Gap 환류](../../assets/manufacturing-rfm-data-factory-concept-v2.png){ width="1672" height="941" loading=lazy decoding=async }
-  <figcaption markdown>전체 과제 개념도 — **한성대학교가 Physical AI Data Factory Core를 대표 수행**하고, 모빌테크는 Geometry Twin을 지원합니다. 핵심기술 A·B·C와 공통 Quality Gate로 RFM을 학습·평가하며, HIL 검증과 실물 검증 결과를 가상환경에 환류합니다.</figcaption>
+  ![제조환경 RFM 데이터팩토리 전체 과제 개념도 — 실제 제조환경의 센서·로봇·비디오를 ROS 2로 수집·동기화하고 LeRobot Episode Dataset으로 표준화하며, 모빌테크 Geometry Twin은 ROS 2 Simulation Bridge로 연계하고, 한성대학교의 세 핵심기술과 Quality Gate, RFM 학습·평가, HIL·실물 로봇 검증 및 Domain Gap 환류로 이어지는 폐루프](../../assets/manufacturing-rfm-data-factory-concept-v3-ros2-lerobot.png){ width="1672" height="941" loading=lazy decoding=async }
+  <figcaption markdown>전체 과제 개념도 — **한성대학교가 Physical&nbsp;AI&nbsp;Data&nbsp;Factory&nbsp;Core를 대표 수행**하고, 모빌테크는 Geometry Twin을 지원합니다. 실물 데이터는 ROS 2로 수집·동기화하여 LeRobot&nbsp;Episode&nbsp;Dataset으로 표준화하고, 가상환경은 ROS&nbsp;2&nbsp;Simulation&nbsp;Bridge로 연결합니다.</figcaption>
 </figure>
 
 위 이미지는 과제의 역할·기술·데이터 흐름을 한눈에 보여주는 요약이며, 아래 도식은 같은
@@ -209,15 +209,18 @@ RFM Interface 는 Observation·Action·Task·Embodiment 규약과 평가기준�
 %%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"nodeSpacing": 20, "rankSpacing": 28}}}%%
 flowchart TB
     REAL["REAL | 실제 제조환경<br/>대표 작업 1~2개<br/>정상 · 실패 · 복구 Log"]
+    PIPE["실물 데이터 파이프라인<br/>ROS 2 · 수집·동기화<br/>LeRobot<br/>Episode Dataset"]
     GEO["Geometry Twin | 모빌테크<br/>현장 취득 · 3D Asset<br/>좌표 · Semantic 정합"]
+    SIM["ROS 2 Simulation Bridge<br/>가상 Sensor · Robot Topic"]
     WFM["보조 생성수단<br/>Cosmos / 동급 WFM<br/>후보 장면 · 미래상태"]
     CORE["한성대학교 | 핵심기술 A·B·C<br/>기술축 A · Manufacturing Deformation Engine<br/>기술축 B · Human Data Engine<br/>기술축 C · Ontology·Edge Case Intelligence"]
     GATE["Quality Gate | 공통 품질관문<br/>물리정합 · 재현성 · 안전<br/>데이터 품질 · Provenance"]
-    RFM["RFM | 학습 · 평가<br/>Zero-shot / Post-training"]
+    RFM["RFM | 학습 · 평가<br/>Zero-shot / Post-training<br/>LeRobot Dataset<br/>Policy API"]
     TEST["실물검증<br/>HIL · 실물 로봇<br/>Domain Gap 측정"]
     OUT["공통 성과<br/>Dataset · Benchmark<br/>논문 · 특허 · 표준"]
 
-    REAL --> GEO --> CORE --> GATE --> RFM --> TEST
+    REAL --> PIPE --> CORE --> GATE --> RFM --> TEST
+    GEO --> SIM --> CORE
     WFM -. "후보 생성" .-> CORE
     GATE --> OUT
     TEST --> OUT
@@ -231,13 +234,15 @@ flowchart TB
 ```mermaid
 flowchart TB
     REAL["REAL | 실제 제조환경<br/>대표 작업 · 실패 Log"]
-    GEO["Geometry Twin | 모빌테크"]
+    PIPE["ROS 2 · 수집·동기화<br/>LeRobot<br/>Episode Dataset"]
+    GEO["Geometry Twin | 모빌테크<br/>ROS 2 Simulation Bridge"]
     CORE["한성대 | 핵심기술 A·B·C<br/>기술축 A · Deformation Engine<br/>기술축 B · Human Data Engine<br/>기술축 C · Ontology·Edge Case<br/>보조 생성 · Cosmos / 동급 WFM"]
     GATE["Quality Gate<br/>공통 품질관문"]
-    RFM["RFM | 학습 · 평가"]
+    RFM["RFM | 학습 · 평가<br/>LeRobot Dataset<br/>Policy API"]
     TEST["실물검증 | HIL · 실물 로봇"]
 
-    REAL --> GEO --> CORE --> GATE --> RFM --> TEST
+    REAL --> PIPE --> CORE --> GATE --> RFM --> TEST
+    GEO -. "ROS 2 가상연계" .-> CORE
     TEST -. "실패 · Gap 환류" .-> REAL
 ```
 
