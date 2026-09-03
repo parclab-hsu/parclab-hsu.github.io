@@ -1084,6 +1084,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../safety-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ 심화 · 자율주행 안전 아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../assignments/" class="md-nav__link">
         
   
@@ -1454,6 +1481,10 @@
 <blockquote>
 <p>▲ 운전 자동화 Level 1~5와 두 가지 해석 축(도로 환경 기준 / 운전자 필요 여부 기준) <em>(출처: 5주차 슬라이드 p3)</em></p>
 </blockquote>
+<div class="admonition tip">
+<p class="admonition-title">L2+ · L2++는 어디에 놓이는가</p>
+<p>업계가 말하는 <strong>L2+/L2++는 SAE 공식 분류가 아니다.</strong> 기능은 위 표의 레벨 3에 가깝게 끌어올리되 <strong>최종 책임은 레벨 2에 그대로 두는</strong> 과도기 모델이며, 이 모순 때문에 오히려 더 엄격한 이중화 설계가 요구된다. → <a href="../safety-architecture/">🛡️ 심화 · 자율주행 안전 아키텍처</a></p>
+</div>
 <h2 id="2-unece">2. UNECE 규제 — 기술이 아니라 법이 상용화를 정한다<a class="headerlink" href="#2-unece" title="Permanent link">&para;</a></h2>
 <p><strong>UNECE</strong> = UN 산하 <strong>유럽경제위원회</strong>. 사이버 보안 및 SW 업데이트 관련 법규를 관장한다.</p>
 <h3 id="alks-automated-lane-keeping-system">ALKS (Automated Lane Keeping System)<a class="headerlink" href="#alks-automated-lane-keeping-system" title="Permanent link">&para;</a></h3>
@@ -1566,6 +1597,10 @@
 <p>👉 <strong>자율주행 경쟁력은 이제 센서가 아니라 "AI 반도체와 시스템 아키텍처"에서 결정된다.</strong>
 2025년을 기점으로 자율주행이 본격 상용화 단계에 진입하며, 특히 <strong>모빌아이 중심의 양산형 플랫폼 확대</strong>가 예상된다.</p>
 </blockquote>
+<div class="admonition info">
+<p class="admonition-title">ASIL과 기능안전</p>
+<p>차량 소프트웨어를 논할 때 함께 따라오는 것이 <strong>ISO 26262 기능안전과 ASIL 등급(A~D, D가 최상위)</strong>이다. 같은 ECU 안에서도 응용 연산은 ASIL-B, 이를 감시하는 실시간 코어는 ASIL-D로 분리 설계하는 방식이 쓰인다. → <a href="../safety-architecture/">🛡️ 심화 · 자율주행 안전 아키텍처 §9</a></p>
+</div>
 <h2 id="5-3">5. 차량 소프트웨어 구조 3영역<a class="headerlink" href="#5-3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

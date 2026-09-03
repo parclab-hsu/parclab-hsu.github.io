@@ -823,6 +823,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../safety-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ 심화 · 자율주행 안전 아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../assignments/" class="md-nav__link">
         
   
@@ -917,6 +944,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="1. 자율주행 일반">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-1. 기능안전·안전 아키텍처 (심화)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1017,6 +1061,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="1. 자율주행 일반">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-1. 기능안전·안전 아키텍처 (심화)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1253,6 +1314,99 @@
 <td><strong>5-F(ree)</strong></td>
 <td>Accident·Barrier·Congestion·Delay·Emission Free</td>
 <td>2030년 국가 로드맵의 목표 사회상</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-1">1-1. 기능안전·안전 아키텍처 <em>(심화)</em><a class="headerlink" href="#1-1" title="Permanent link">&para;</a></h3>
+<p>아래 용어는 <a href="../safety-architecture/">🛡️ 심화 · 자율주행 안전 아키텍처</a>에서 다룬다.</p>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>원어</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L2+ / L2++</strong></td>
+<td>—</td>
+<td>SAE 공식 분류가 아닌 업계 관행 표기. 기능은 L3에 근접하나 <strong>최종 책임은 L2</strong></td>
+</tr>
+<tr>
+<td><strong>ODD</strong></td>
+<td>Operational Design Domain</td>
+<td>시스템이 정상 동작하도록 설계된 운행 조건 범위</td>
+</tr>
+<tr>
+<td><strong>ASIL</strong></td>
+<td>Automotive Safety Integrity Level</td>
+<td>ISO 26262의 자동차 기능안전 등급 A~D — <strong>D가 최상위</strong></td>
+</tr>
+<tr>
+<td><strong>ISO 26262</strong></td>
+<td>Road vehicles — Functional safety</td>
+<td>전기·전자 시스템의 <strong>고장(Fault)</strong>에 대비하는 기능안전 국제표준</td>
+</tr>
+<tr>
+<td><strong>SOTIF</strong></td>
+<td>Safety Of The Intended Functionality (ISO 21448)</td>
+<td>고장이 없어도 발생하는 <strong>성능 한계(Limitation)</strong>로 인한 위험을 다루는 표준</td>
+</tr>
+<tr>
+<td><strong>HARA</strong></td>
+<td>Hazard Analysis and Risk Assessment</td>
+<td>위험 시나리오 분석 — 안전 목표와 ASIL 등급을 도출하는 절차</td>
+</tr>
+<tr>
+<td><strong>FSC / TSC</strong></td>
+<td>Functional / Technical Safety Concept</td>
+<td>안전 메커니즘 정의 / 그 기술적 구현 개념</td>
+</tr>
+<tr>
+<td><strong>DCAS</strong></td>
+<td>Driver Control Assistance Systems</td>
+<td>UNECE <strong>R-171</strong>이 규정하는 운전자 제어 보조 시스템 규제</td>
+</tr>
+<tr>
+<td><strong>HOR</strong></td>
+<td>Hand-Over Request</td>
+<td>시스템이 운전자에게 제어권 인수를 요청하는 절차</td>
+</tr>
+<tr>
+<td><strong>DCA</strong></td>
+<td>Direct Control Alert</td>
+<td>ODD 이탈 시 즉각적인 수동 운전 전환 경고</td>
+</tr>
+<tr>
+<td><strong>DUR</strong></td>
+<td>Driver Unavailability Response</td>
+<td>운전자 상태 불량 시 감속·정차 유도</td>
+</tr>
+<tr>
+<td><strong>DMO</strong></td>
+<td>Degraded Mode Operation</td>
+<td>시스템 고장 시 제어 능력을 단계적으로 낮추는 기능 축소 운행</td>
+</tr>
+<tr>
+<td><strong>Fail-operational</strong></td>
+<td>—</td>
+<td>단일 고장이 나도 기능을 <strong>유지</strong>하는 설계 <em>(cf. 즉시 정지하는 Fail-safe)</em></td>
+</tr>
+<tr>
+<td><strong>Doer / Checker / Fallback</strong></td>
+<td>—</td>
+<td>1차 경로 생성 / 궤적 유효성 검증 / 2차 경로 생성의 3중 논리 구조</td>
+</tr>
+<tr>
+<td><strong>EPS / SAS / ESC / EPB</strong></td>
+<td>Electric Power Steering / Steering Angle Sensor / Electronic Stability Control / Electronic Parking Brake</td>
+<td>이중화 차량 플랫폼을 구성하는 조향·제동 요소</td>
+</tr>
+<tr>
+<td><strong>PMIC</strong></td>
+<td>Power Management IC</td>
+<td>전원 관리 IC — 이중화 전원 구조에서 독립 배치</td>
 </tr>
 </tbody>
 </table>

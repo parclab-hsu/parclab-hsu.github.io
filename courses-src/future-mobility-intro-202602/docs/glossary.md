@@ -37,6 +37,29 @@
 | **CASE** | Connected, Autonomous, Shared, Electrified | 미래 모빌리티 패러다임 전환의 4축 |
 | **5-F(ree)** | Accident·Barrier·Congestion·Delay·Emission Free | 2030년 국가 로드맵의 목표 사회상 |
 
+### 1-1. 기능안전·안전 아키텍처 *(심화)*
+
+아래 용어는 [🛡️ 심화 · 자율주행 안전 아키텍처](safety-architecture.md)에서 다룬다.
+
+| 용어 | 원어 | 뜻 |
+|---|---|---|
+| **L2+ / L2++** | — | SAE 공식 분류가 아닌 업계 관행 표기. 기능은 L3에 근접하나 **최종 책임은 L2** |
+| **ODD** | Operational Design Domain | 시스템이 정상 동작하도록 설계된 운행 조건 범위 |
+| **ASIL** | Automotive Safety Integrity Level | ISO 26262의 자동차 기능안전 등급 A~D — **D가 최상위** |
+| **ISO 26262** | Road vehicles — Functional safety | 전기·전자 시스템의 **고장(Fault)**에 대비하는 기능안전 국제표준 |
+| **SOTIF** | Safety Of The Intended Functionality (ISO 21448) | 고장이 없어도 발생하는 **성능 한계(Limitation)**로 인한 위험을 다루는 표준 |
+| **HARA** | Hazard Analysis and Risk Assessment | 위험 시나리오 분석 — 안전 목표와 ASIL 등급을 도출하는 절차 |
+| **FSC / TSC** | Functional / Technical Safety Concept | 안전 메커니즘 정의 / 그 기술적 구현 개념 |
+| **DCAS** | Driver Control Assistance Systems | UNECE **R-171**이 규정하는 운전자 제어 보조 시스템 규제 |
+| **HOR** | Hand-Over Request | 시스템이 운전자에게 제어권 인수를 요청하는 절차 |
+| **DCA** | Direct Control Alert | ODD 이탈 시 즉각적인 수동 운전 전환 경고 |
+| **DUR** | Driver Unavailability Response | 운전자 상태 불량 시 감속·정차 유도 |
+| **DMO** | Degraded Mode Operation | 시스템 고장 시 제어 능력을 단계적으로 낮추는 기능 축소 운행 |
+| **Fail-operational** | — | 단일 고장이 나도 기능을 **유지**하는 설계 *(cf. 즉시 정지하는 Fail-safe)* |
+| **Doer / Checker / Fallback** | — | 1차 경로 생성 / 궤적 유효성 검증 / 2차 경로 생성의 3중 논리 구조 |
+| **EPS / SAS / ESC / EPB** | Electric Power Steering / Steering Angle Sensor / Electronic Stability Control / Electronic Parking Brake | 이중화 차량 플랫폼을 구성하는 조향·제동 요소 |
+| **PMIC** | Power Management IC | 전원 관리 IC — 이중화 전원 구조에서 독립 배치 |
+
 ## 2. 센서·AI
 
 | 용어 | 원어 | 뜻 |
