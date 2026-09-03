@@ -674,6 +674,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5. CNN 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#canny-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        참고 — Canny 에지 검출의 4단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1289,6 +1306,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5. CNN 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#canny-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        참고 — Canny 에지 검출의 4단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1724,6 +1758,37 @@
 <li><strong>Canny는 에지(Edge) 검출 방법</strong>이며, 경계 상자 내부의 클래스를 분류하는 데 쓰지 않는다</li>
 </ul>
 </div>
+<h3 id="canny-4">참고 — Canny 에지 검출의 4단계<a class="headerlink" href="#canny-4" title="Permanent link">&para;</a></h3>
+<p>차선 검출처럼 <strong>경계를 찾는</strong> 전처리에 쓰이는 고전 알고리즘이다. 객체의 종류를 분류하지는 않는다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">단계</th>
+<th>처리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><strong>1. 노이즈 제거</strong></td>
+<td>5×5 가우시안 필터로 이미지를 흐리게 하여 잡음을 줄인다</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>2. Gradient 계산</strong></td>
+<td>Sobel 커널을 수평·수직 방향으로 적용해 각 방향의 gradient(Gx, Gy)를 얻고, 이를 합쳐 <strong>각 픽셀의 gradient 크기와 방향</strong>을 구한다</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>3. 비최대 억제</strong></td>
+<td>이미지 전체를 훑어 <strong>에지가 아닌(주변보다 크지 않은) 픽셀 값을 0으로</strong> 만든다</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>4. Hysteresis Thresholding</strong></td>
+<td>두 임계값(min·max)으로 진짜 에지를 가린다. max 이상이면 <strong>강한 에지</strong>, min~max 사이면 <strong>약한 에지</strong>. 약한 에지는 <strong>강한 에지와 이어져 있을 때만</strong> 에지로 인정한다</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>OpenCV에서는 <code>cv2.Canny(이미지, 최소 임계값, 최대 임계값)</code> 형태로 사용한다.</p>
+</blockquote>
 <p><strong>참고</strong> — <strong>MFCC</strong>(Mel-Frequency Cepstral Coefficients): 사람의 귀(청각 특성)를 반영해 소리를 수치화한 특징. Mel-Frequency(사람이 느끼는 주파수 스케일) + Cepstral(스펙트럼을 다시 변환) + Coefficients(최종 특징 벡터). 영상 외 음향 데이터에도 같은 CNN 구조를 적용할 수 있음을 보이는 사례다.</p>
 <h2 id="_2">🤔 생각해 봅시다<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1840,6 +1905,8 @@
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/lightbox.js"></script>
       
     
   </body>
