@@ -1076,10 +1076,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#asset-geometry-twin" class="md-nav__link">
+  <a href="#asset-6-geometry-twin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        지원 산출물 인수조건(모빌테크) — 최종 실증공간 Asset 갱신 완료와 Geometry Twin 버전 동결
+        지원 산출물 인수조건(모빌테크) — 최종 실증공간 Asset 갱신 완료와 6대 대표공정 Geometry Twin 버전 동결
       
     </span>
   </a>
@@ -1333,8 +1333,12 @@
 <p><strong>한성대학교는 실제 로봇의 실패를 가상환경에서 재현하고, 학습 가능한 데이터로 바꾸는
 일을 맡습니다.</strong></p>
 </blockquote>
-<p>세 기술축을 각각 범용 플랫폼으로 개발하지 않습니다. <strong>대표 제조 작업 1~2개</strong>를 정하고,
-그 작업 하나를 다음 순환으로 끝까지 관통시킵니다.</p>
+<p>한성대학교의 대상 범위는 <strong>2단 구조</strong>입니다. RFP 의 <strong>6대 대표공정</strong>(토트 박스 옮기기 ·
+토트 박스 쌓기 · 비전 활용 불량 검사 · 박스 포장 패키징 마감 · Bin Picking · Kitting)에
+대해서는 <strong>디지털 트윈을 연차별 누적으로 전량 구축</strong>하고(1차 2개 → 2차 누계 4개 →
+3차 누계 6개 → 4차 버전 동결·이관), 그중 <strong>대표 제조 작업 1~2개</strong>를 심화 대상으로 정해
+실측 물성 보정부터 폐루프 완주까지 다음 순환으로 끝까지 관통시킵니다.
+세 기술축을 각각 범용 플랫폼으로 개발하지는 않습니다.</p>
 <div class="concept-diagram concept-diagram--desktop">
 <pre class="mermaid"><code>flowchart TB
     REAL["REAL | 실제 제조현장&lt;br/&gt;대표 작업 1~2개&lt;br/&gt;정상 · 실패 · 복구 Log"]
@@ -1374,8 +1378,9 @@ Episode만 RFM에 공급하고, 실물검증에서 확인된 Domain Gap을 다�
 <p class="admonition-title">왜 범위를 좁히는가</p>
 <p>예산은 정부지원연구개발비의 <strong>5 % 수준</strong>이고 기간은 43개월입니다. 이 규모로 모든
 제조 소재와 공정을 다루는 범용 플랫폼을 만들면 어느 것도 끝까지 검증되지 않습니다.
-<strong>대표 작업 1~2개를 골라 순환을 한 바퀴 완주하는 편이, 넓게 벌여 놓고 미완으로
-끝나는 것보다 컨소시엄에 쓸모가 있습니다.</strong></p>
+<strong>6대 대표공정의 트윈은 전량 구축하되 심화 검증은 대표 작업 1~2개로 좁혀 순환을
+한 바퀴 완주하는 편이, 여섯 공정을 모두 얕게 벌여 놓고 미완으로 끝나는 것보다
+컨소시엄에 쓸모가 있습니다.</strong></p>
 </div>
 <hr />
 <h2 id="_3">세 기술축의 구체화<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
@@ -1383,8 +1388,9 @@ Episode만 RFM에 공급하고, 실물검증에서 확인된 Domain Gap을 다�
 Engine · Human Data Engine · Manufacturing Ontology·Edge Case Intelligence — 과
 확정된 4대 역할(① Real-to-Sim-to-Real ② Zero-shot Transfer ③ 엣지 케이스 시뮬레이션
 ④ 학술 연구·기술 자문)은 바뀌지 않았습니다.</p>
-<p>바뀐 것은 <strong>연차별 목표와 진행 내용</strong>입니다. 각 축을 범용 플랫폼으로 개발하지 않고
-<strong>대표 제조 작업 1~2개</strong>를 대상으로 구체화했습니다.</p>
+<p>바뀐 것은 <strong>연차별 목표와 진행 내용</strong>입니다. 6대 대표공정의 디지털 트윈은 연차별
+누적으로 전량 구축하되, 각 축의 심화 개발은 범용 플랫폼이 아니라 <strong>대표 제조 작업
+1~2개</strong>를 대상으로 구체화했습니다.</p>
 <p>아래 표의 오른쪽 열은 그 기능이 <strong>3절의 어느 개발 목표로 산출되는지</strong>를 가리킵니다.
 왼쪽이 한성대가 만드는 기능이고, 오른쪽이 그것이 컨소시엄에 전달되는 이름입니다.</p>
 <h3 id="a-manufacturing-deformation-engine">기술축 A · Manufacturing Deformation Engine → 대표 작업의 물리 보정<a class="headerlink" href="#a-manufacturing-deformation-engine" title="Permanent link">&para;</a></h3>
@@ -1673,7 +1679,7 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 <h2 id="_5">연차별 목표와 예상 산출물<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="_6">한눈에 보기 — 핵심 기술 · 연차별 목표 · 핵심 결과물<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>차년도별 목표와 그 해에 내는 결과물입니다. 결과물 이름은 <strong>2026-08-29 R&amp;R 확정본의
-개발 목표</strong> 그대로이며, 아래에 <strong>기술축 관점 매트릭스</strong>와 <strong>세부 20건 표</strong>가 이어집니다.</p>
+개발 목표</strong> 그대로이며, 아래에 <strong>기술축 관점 매트릭스</strong>와 <strong>세부 24건 표</strong>가 이어집니다.</p>
 <table>
 <thead>
 <tr>
@@ -1686,25 +1692,25 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 <tbody>
 <tr>
 <td><strong>1차년도</strong><br><small>9개월 · 기준 시스템</small></td>
-<td>대표 작업·실패유형을 확정하고 <strong>실제–가상 비교 기준</strong>을 문서로 고정</td>
+<td><strong>6대 대표공정 트윈 구축계획·인수규격을 확정</strong>(대상 2개 공정 구축)하고, 대표 작업·실패유형과 <strong>실제–가상 비교 기준</strong>을 문서로 고정</td>
 <td style="text-align: center;">① Real-to-Sim-to-Real · ③ 엣지 케이스 기초 · ④ 인터페이스 자문</td>
 <td>WFM–Physics Twin Reference Architecture<br>Domain Gap 프로토콜 v1</td>
 </tr>
 <tr>
 <td><strong>2차년도</strong><br><small>10개월 · 증강 엔진</small></td>
-<td>대표 소재 물성을 실측해 <strong>Physics Twin 을 보정</strong>하고 <strong>Deformation Engine v1 · Edge Case Compiler v1 · 수집환경</strong> 가동</td>
+<td><strong>대표공정 트윈을 누계 4개로 확장</strong>하고, 대표 소재 물성을 실측해 <strong>Physics Twin 을 보정</strong>하며 <strong>Deformation Engine v1 · Edge Case Compiler v1 · 수집환경</strong> 가동</td>
 <td style="text-align: center;">① Physics 고도화 · ② 전이평가 기반 · ③ 데이터 수집환경</td>
 <td>Physics Consistency Evaluator v1<br>Edge Case Compiler v1</td>
 </tr>
 <tr>
 <td><strong>3차년도</strong><br><small>12개월 · 전이 검증</small></td>
-<td>가상 학습 결과의 <strong>전이 여부를 판정</strong>하고 생성 데이터를 자동 선별·공개</td>
+<td><strong>6대 대표공정 트윈 전량(누계 6개) 구축을 완료</strong>하고, 가상 학습 결과의 <strong>전이 여부를 판정</strong>하며 생성 데이터를 자동 선별·공개</td>
 <td style="text-align: center;">② Zero-shot 전이판정 · ③ Edge/Recovery Dataset · ① Physics 재보정 · ④ 평가자문</td>
 <td>Transfer Decision Manager<br>Edge/Recovery 증강 Dataset</td>
 </tr>
 <tr>
 <td><strong>4차년도</strong><br><small>12개월 · 표준화</small></td>
-<td><strong>실물 재검증 순환 1회 이상 완주</strong>하고 절차·벤치마크를 표준화</td>
+<td><strong>실물 재검증 순환 1회 이상 완주</strong>하고, 6대 대표공정 트윈을 <strong>버전 동결·이관</strong>하며 절차·벤치마크를 표준화</td>
 <td style="text-align: center;">①②③ 폐루프 통합 · ④ 표준화·학술성과</td>
 <td>Closed-loop RoboOps Toolchain<br>Cross-domain Physical AI Benchmark</td>
 </tr>
@@ -1716,7 +1722,7 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 「핵심 기술」 열은 그 해에 관여하는 축을 비중 순으로 적은 것입니다.
 차년도별 목표·완료 Gate·완료 판정은 아래 각 절에 있습니다.</small></p>
 <h3 id="4">핵심기술 × 연차 — 세 축이 4년에 걸쳐 어떻게 개발되는가<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>같은 20건을 <strong>기술축 관점</strong>으로 다시 배열한 것입니다. 위 표가 「그 해에 무엇을 내는가」라면,
+<p>같은 24건을 <strong>기술축 관점</strong>으로 다시 배열한 것입니다. 위 표가 「그 해에 무엇을 내는가」라면,
 이 표는 「그 축이 4년 동안 어떻게 자라는가」를 봅니다.</p>
 <table>
 <thead>
@@ -1731,10 +1737,10 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 <tbody>
 <tr>
 <td><strong>① Manufacturing<br>Deformation Engine</strong><br><small>대표 작업의 물리 보정</small></td>
-<td><strong>Domain Gap<br>프로토콜 v1</strong></td>
-<td>Physics Consistency<br>Evaluator v1<br>제조 Domain Variation<br>Library v1<br>Transferability Score v1</td>
-<td>Transfer Decision<br>Manager<br><strong>Physics Calibration</strong></td>
-<td>Robust Operating<br>Envelope 평가모듈<br><small>③ 과 공동</small></td>
+<td><strong>6대 대표공정 트윈<br>구축계획·인수규격 v1</strong><br><small>대상 2개 공정 구축</small><br><strong>Domain Gap<br>프로토콜 v1</strong></td>
+<td><strong>공정 트윈 누계 4개</strong><br>Physics Consistency<br>Evaluator v1<br>제조 Domain Variation<br>Library v1<br>Transferability Score v1</td>
+<td><strong>공정 트윈 전량 6개<br>구축 완료</strong><br>Transfer Decision<br>Manager<br><strong>Physics Calibration</strong></td>
+<td><strong>공정 트윈 버전 동결·이관</strong><br>Robust Operating<br>Envelope 평가모듈<br><small>③ 과 공동</small></td>
 </tr>
 <tr>
 <td><strong>기술축 B · Human Data Engine</strong><br><small>실패상태 복원과<br>복구 증강</small></td>
@@ -1761,7 +1767,7 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 </table>
 <p><small>굵게 표시한 것이 그 축·그 해의 대표 결과물입니다. 한 결과물이 두 축에 걸치는 경우
 (Edge Case Compiler · Edge/Recovery Dataset · Validation Gate · RoboOps Toolchain)는
-<strong>주 담당 축에 두고 다른 축에 병기</strong>했으므로, 표 전체의 항목 수는 20건보다 많아 보입니다.</p>
+<strong>주 담당 축에 두고 다른 축에 병기</strong>했으므로, 표 전체의 항목 수는 24건보다 많아 보입니다.</p>
 <p><strong>축 사이 선후관계</strong> — ③ 이 관계 구조를 세워야 ② 가 무엇을 수집할지 정해지고,
 ① 이 물리를 맞춰야 3차년도 생성 데이터가 검증 대상이 됩니다.</small></p>
 <h3 id="_7">기관별 역할과 연차 완료조건<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
@@ -1781,31 +1787,31 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>1차</strong></td>
-<td>대표 작업·실패유형·평가절차·데이터 규격 확정</td>
-<td>Pilot Scan · 기준 Geometry Asset 제공</td>
-<td>Geometry Asset 을 인수하고 <strong>Geometry–Physics Interface 승인</strong></td>
+<td><strong>6대 대표공정 트윈 구축계획·인수규격 확정</strong>(대상 2개 공정) · 대표 작업·실패유형·평가절차·데이터 규격 확정</td>
+<td>대상 2개 공정 Pilot Scan · 기준 Geometry Asset 제공</td>
+<td>대상 2개 공정 Geometry Asset 을 인수하고 <strong>Geometry–Physics Interface 승인</strong></td>
 <td>좌표계·축척·Semantic 규격 충족, 인수검사 통과</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>2차</strong></td>
-<td>실측 물성 기반 <strong>Deformation Engine v1</strong> 과 데이터 수집환경 가동</td>
-<td>Simulation-ready Asset · LOD·Collision·Metadata 제공</td>
-<td><strong>Physics Twin 구동</strong>과 접촉력 재현오차 기준 충족</td>
+<td><strong>대표공정 트윈 누계 4개 구축</strong> · 실측 물성 기반 <strong>Deformation Engine v1</strong> 과 데이터 수집환경 가동</td>
+<td>누계 4개 공정 Simulation-ready Asset · LOD·Collision·Metadata 제공</td>
+<td><strong>Physics Twin 구동</strong>과 접촉력 재현오차 기준 충족 · 누계 4개 공정 트윈 인수검사 통과</td>
 <td>LOD·Collision·Metadata 검수 통과, Physics Twin 정상 구동</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>3차</strong></td>
-<td>미학습조건 전이 판단 · Quality Gate · <strong>Edge/Recovery Dataset</strong> 구축</td>
-<td>변동조건 Asset 과 Geometry 갱신</td>
-<td>생성데이터 검수와 <strong>Simulation–HIL–Real 평가 완료</strong></td>
-<td>동일 Asset 버전 제공과 버전 추적성 확보</td>
+<td><strong>대표공정 트윈 전량(누계 6개) 구축 완료</strong> · 미학습조건 전이 판단 · Quality Gate · <strong>Edge/Recovery Dataset</strong> 구축</td>
+<td>6대 대표공정 전체 Asset 과 변동조건 Asset · Geometry 갱신</td>
+<td>생성데이터 검수와 <strong>Simulation–HIL–Real 평가 완료</strong> · 6개 공정 트윈 구축 완료</td>
+<td>동일 Asset 버전 제공과 공정별 버전 추적성 확보</td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>4차</strong></td>
-<td>실패 재현–복구 생성–RFM 재학습–<strong>실물 재검증 순환 완주</strong></td>
+<td>실패 재현–복구 생성–RFM 재학습–<strong>실물 재검증 순환 완주</strong> · 6대 대표공정 트윈 <strong>버전 동결·이관</strong></td>
 <td>최종 실증공간 Asset 갱신·지원</td>
-<td><strong>실제 성공률 향상</strong>과 폐루프 1회 이상 완주</td>
-<td>최종 Geometry Twin 버전 동결과 실증 지원 완료</td>
+<td><strong>실제 성공률 향상</strong>과 폐루프 1회 이상 완주 · 6개 공정 트윈 동결·이관 완료</td>
+<td>6대 대표공정 최종 Geometry Twin 버전 동결과 실증 지원 완료</td>
 </tr>
 </tbody>
 </table>
@@ -1857,6 +1863,14 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>6대 대표공정 디지털 트윈 (연차 누적 2 → 4 → 6개 공정)</td>
+<td style="text-align: center;"><strong>한성대</strong><br><small>구축·통합</small></td>
+<td>모빌테크 Asset · 수요기업</td>
+<td>공정 Scene · ODD·Task Metadata</td>
+<td>공정 트윈 패키지</td>
+<td>공정별 인수검사 통과 · 시나리오 실행 검증</td>
+</tr>
 <tr>
 <td>현장 Pilot Scan · 기준 3D Asset · Geometry Twin</td>
 <td style="text-align: center;">모빌테크<br><small>(지원)</small></td>
@@ -1948,7 +1962,7 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 </tbody>
 </table>
 <details>
-<summary><b>차년도별 세부 결과물 20건 전체 보기</b> — 핵심 기술 · 연차별 목표 · 핵심 결과물 · 수행 내용</summary>
+<summary><b>차년도별 세부 결과물 24건 전체 보기</b> — 핵심 기술 · 연차별 목표 · 핵심 결과물 · 수행 내용</summary>
 
 <table>
   <thead><tr>
@@ -1956,8 +1970,8 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
   </tr></thead>
   <tbody>
   <tr>
-    <td rowspan="5"><b>1차년도</b><br><small>9개월 · 기준 시스템<br>3.3억</small></td>
-    <td rowspan="5">대표 작업과 실패유형을 확정하고, <b>실제–가상 비교의 측정 항목·조건·판정 기준</b>을 문서로 고정<br><br><small><b>연차 완료 Gate (잠정)</b><br>동일 조건 재실행 결과 동일 100 % · 손실 없는 전달 ≥ 95 %</small></td>
+    <td rowspan="6"><b>1차년도</b><br><small>9개월 · 기준 시스템<br>3.3억</small></td>
+    <td rowspan="6">대표 작업과 실패유형을 확정하고, <b>실제–가상 비교의 측정 항목·조건·판정 기준</b>을 문서로 고정<br><br><small><b>연차 완료 Gate (잠정)</b><br>동일 조건 재실행 결과 동일 100 % · 손실 없는 전달 ≥ 95 %</small></td>
     <td align="center">한성대 공통기반</td>
     <td><b>WFM–Physics Twin Reference Architecture</b><br><small>실제–가상–RFM 을 잇는 기준 구조</small></td>
     <td><small>대표 제조 작업 1~2개와 주요 실패유형의 <b>컨소시엄 승인</b> · 실패–복구 순환 구조 정의</small></td>
@@ -1983,8 +1997,13 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
     <td><small>대표 작업의 실패유형 목록 확정 · <b>Human Data Engine 이 수집할 정상·실패·복구 데이터 항목 정의</b></small></td>
   </tr>
   <tr>
-    <td rowspan="5"><b>2차년도</b><br><small>10개월 · 증강 엔진<br>4.4억</small></td>
-    <td rowspan="5">물성을 실측해 가상환경에 반영하고, <b>증강 엔진 v1 과 데이터 수집환경을 가동</b><br><br><small><b>연차 완료 Gate (잠정)</b><br>비물리 결과 검출률 ≥ 85 % · 접촉력 재현오차 NRMSE ≤ 20 %</small></td>
+    <td align="center">A<br><small>+ 한성대 공통기반</small></td>
+    <td><b>6대 대표공정 트윈 구축계획·인수규격 v1</b><br><small>대상 2개 공정 트윈 포함</small></td>
+    <td><small>6대 대표공정(토트 박스 옮기기 · 쌓기 · 비전 불량검사 · 포장 마감 · Bin Picking · Kitting)의 <b>구축 순서·인수검사 기준 확정</b> · 공정별 ODD·Task Metadata 서식 v1 · 대상 2개 공정 Scene 구성과 시나리오 실행 검증</small></td>
+  </tr>
+  <tr>
+    <td rowspan="6"><b>2차년도</b><br><small>10개월 · 증강 엔진<br>4.4억</small></td>
+    <td rowspan="6">물성을 실측해 가상환경에 반영하고, <b>증강 엔진 v1 과 데이터 수집환경을 가동</b><br><br><small><b>연차 완료 Gate (잠정)</b><br>비물리 결과 검출률 ≥ 85 % · 접촉력 재현오차 NRMSE ≤ 20 %</small></td>
     <td align="center">C</td>
     <td><b>Prompt·Condition Compiler v1</b><br><small>생성 조건 → 시뮬레이션 실행조건 변환기</small></td>
     <td><small>실패 가능조건 추출기 v1</small></td>
@@ -2010,8 +2029,13 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
     <td><small>RFM 취약·경계조건을 실행 가능한 시나리오로 변환 · 시연·실패·복구 데이터 <b>수집환경 가동</b> · 실패 직전 상태 <b>Checkpoint·저장 기능 v1</b></small></td>
   </tr>
   <tr>
-    <td rowspan="5"><b>3차년도</b><br><small>12개월 · 전이 검증<br>4.8억</small></td>
-    <td rowspan="5">가상 학습 결과가 실제로 <b>얼마나 전이되는지 판정</b>하고, 생성 데이터를 자동 선별해 용도별 공개<br><br><small><b>연차 완료 Gate (잠정)</b><br>미학습 조건 성능 유지 ≥ 70 % · 경량 적응 후 ≥ 90 % · 전이 판정 일치 ≥ 80 % · 생성 데이터 검수 완료 ≥ 90 %</small></td>
+    <td align="center">A</td>
+    <td><b>대표공정 디지털 트윈 — 누계 4개 공정</b><br><small>공정 단위 트윈 확장</small></td>
+    <td><small>추가 2개 공정 Simulation-ready Asset 인수·Scene 구성 · 공정별 기본 물리 프로파일 적용 · <b>공정 트윈 인수검사(LOD·Collision·Metadata)</b>와 버전 등록</small></td>
+  </tr>
+  <tr>
+    <td rowspan="6"><b>3차년도</b><br><small>12개월 · 전이 검증<br>4.8억</small></td>
+    <td rowspan="6">가상 학습 결과가 실제로 <b>얼마나 전이되는지 판정</b>하고, 생성 데이터를 자동 선별해 용도별 공개<br><br><small><b>연차 완료 Gate (잠정)</b><br>미학습 조건 성능 유지 ≥ 70 % · 경량 적응 후 ≥ 90 % · 전이 판정 일치 ≥ 80 % · 생성 데이터 검수 완료 ≥ 90 %</small></td>
     <td align="center">A</td>
     <td><b>Transfer Decision Manager</b><br><small>전이 가능 여부 판정·적응 필요성 결정</small></td>
     <td><small>실제–가상 성능차이 및 미학습조건 평가</small></td>
@@ -2037,8 +2061,13 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
     <td><small>실측 물성값으로 가상환경 재보정</small></td>
   </tr>
   <tr>
-    <td rowspan="5"><b>4차년도</b><br><small>12개월 · 표준화<br>4.5억</small></td>
-    <td rowspan="5">실패 재현–복구 생성–재학습–<b>실물 재검증 순환을 1회 이상 완주</b>하고 절차·벤치마크를 표준화<br><br><small><b>연차 완료 Gate (잠정)</b><br>실제 실패 재현율 ≥ 70 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 +10 %p 이상 · 제3자 절차 재현 ≥ 90 %</small></td>
+    <td align="center">A</td>
+    <td><b>6대 대표공정 디지털 트윈 — 전체 6개 공정</b><br><small>전량 구축 완료</small></td>
+    <td><small>나머지 2개 공정 Asset 인수·Scene 구성 · 공정별 세부 시나리오 실행 스크립트 연계(<b>30개 세부 공정 시나리오 확장 지원</b>) · 6개 공정 트윈의 Sim–HIL–Real 적용성 점검</small></td>
+  </tr>
+  <tr>
+    <td rowspan="6"><b>4차년도</b><br><small>12개월 · 표준화<br>4.5억</small></td>
+    <td rowspan="6">실패 재현–복구 생성–재학습–<b>실물 재검증 순환을 1회 이상 완주</b>하고 절차·벤치마크를 표준화<br><br><small><b>연차 완료 Gate (잠정)</b><br>실제 실패 재현율 ≥ 70 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 +10 %p 이상 · 제3자 절차 재현 ≥ 90 %</small></td>
     <td align="center">한성대 공통기반</td>
     <td><b>Real-to-Sim-to-Real 운용 가이드라인</b><br><small>제3자가 따라 하는 운용 문서</small></td>
     <td><small>통합 실증 및 활용 가이드</small></td>
@@ -2063,6 +2092,11 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
     <td><b>기술 백서</b><br><small>데이터·평가절차 표준 제안</small></td>
     <td><small>데이터·평가절차 표준화</small></td>
   </tr>
+  <tr>
+    <td align="center">A<br><small>+ 한성대 공통기반</small></td>
+    <td><b>6대 대표공정 트윈 최종 패키지</b><br><small>버전 동결·이관</small></td>
+    <td><small>트윈 자산·시나리오·메타데이터 <b>최종 버전 동결</b>과 재현성 검증 · 데이터팩토리 주관기관 <b>이관</b>과 활용 절차 문서화 · 제3자 재현 절차에 6개 공정 포함</small></td>
+  </tr>
   </tbody>
 </table>
 
@@ -2071,13 +2105,15 @@ Demo-SCORE는 online 경험 기반 데이터 선별의 근거입니다. 합성�
 <hr />
 <h3 id="1-9">1차년도 (9개월) — 기준 시스템<a class="headerlink" href="#1-9" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p><strong>목표</strong> — 대표 제조 작업 1~2개와 주요 실패유형을 확정하고, 모빌테크의 Pilot Scan·기준
-Geometry Asset 을 기반으로 <strong>실제–가상 데이터 연계규격, 좌표·Semantic Interface,
-Domain Gap 평가절차</strong>를 확정한다.</p>
+<p><strong>목표</strong> — <strong>6대 대표공정의 디지털 트윈 구축계획과 인수규격을 확정</strong>하고 대상 2개 공정의
+트윈을 구축한다. 그중 심화 대상이 될 대표 제조 작업 1~2개와 주요 실패유형을 확정하고,
+모빌테크의 Pilot Scan·기준 Geometry Asset 을 기반으로 <strong>실제–가상 데이터 연계규격,
+좌표·Semantic Interface, Domain Gap 평가절차</strong>를 확정한다.</p>
 </blockquote>
 <p><strong>연차 완료 Gate (잠정)</strong> — 생성 재현성 · 스키마 왕복 정합: 동일 조건 재실행 결과 동일 <strong>100 %</strong> · 손실 없는 전달 <strong>≥ 95 %</strong></p>
 <p><strong>완료 판정</strong> — 네 가지를 모두 만족해야 합니다.</p>
 <ul>
+<li><strong>6대 대표공정 트윈 구축계획·인수규격 컨소시엄 승인</strong>, 대상 2개 공정 Scene 구성·시나리오 실행 검증 완료</li>
 <li>대표 작업·실패유형 <strong>컨소시엄 승인</strong></li>
 <li>기준 Geometry Asset <strong>인수검사 완료</strong></li>
 <li><strong>좌표계·Semantic 규격 승인</strong></li>
@@ -2091,8 +2127,9 @@ Domain Gap 평가절차</strong>를 확정한다.</p>
 </div>
 <h3 id="2-10">2차년도 (10개월) — 증강 엔진<a class="headerlink" href="#2-10" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p><strong>목표</strong> — 대표 소재의 물성을 실측하여 <strong>Physics Twin 을 보정</strong>하고, <strong>Manufacturing
-Deformation Engine v1 · Edge Case Compiler v1 · 실패·복구 데이터 수집환경</strong>을 가동한다.
+<p><strong>목표</strong> — <strong>대표공정 트윈을 누계 4개로 확장</strong>하고, 대표 소재의 물성을 실측하여
+<strong>Physics Twin 을 보정</strong>하며, <strong>Manufacturing Deformation Engine v1 · Edge Case
+Compiler v1 · 실패·복구 데이터 수집환경</strong>을 가동한다.
 Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 </blockquote>
 <p><strong>연차 완료 Gate (잠정)</strong> — 비물리 결과 검출률 <strong>≥ 85 %</strong>(오검출 ≤ 15 %) · 접촉력 재현오차 <strong>NRMSE ≤ 20 %</strong> · 상태 Checkpoint 저장과 실패·복구 데이터 수집 가능</p>
@@ -2121,11 +2158,16 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <td><strong>Human Data</strong></td>
 <td>상태 <strong>Checkpoint 저장</strong>과 정상·실패·복구 데이터 수집 가능(S-A-S-E 규격)</td>
 </tr>
+<tr>
+<td><strong>공정 트윈</strong></td>
+<td>대표공정 트윈 <strong>누계 4개 구축</strong>, 공정별 인수검사(LOD·Collision·Metadata) 통과</td>
+</tr>
 </tbody>
 </table>
 <h3 id="3-12">3차년도 (12개월) — 전이 검증<a class="headerlink" href="#3-12" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p><strong>목표</strong> — <strong>버전 관리된 Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 생성하고,
+<p><strong>목표</strong> — <strong>6대 대표공정 트윈 전량(누계 6개) 구축을 완료</strong>하고, <strong>버전 관리된
+Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 생성하고,
 <strong>Quality Gate 를 통과한</strong> 정상·실패·복구·가상 데이터를 용도별로 배포하며
 <strong>Simulation–HIL–Real 전이 가능성을 판정</strong>한다.</p>
 </blockquote>
@@ -2133,7 +2175,8 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <p><strong>완료 판정</strong> — <strong>경량 적응을 하지 않은 상태</strong>에서 기준환경 대비 <strong>Zero-shot 성능 유지율
 ≥ 70 %</strong>, 경량 적응(Few-shot·LoRA) 뒤 <strong>성능 회복률 ≥ 90 %</strong> 를 각각 측정해 <strong>나누어
 보고</strong>합니다. 전이 판정 일치도 <strong>≥ 80 %</strong>, 검수 완료율 <strong>≥ 90 %</strong> 를 달성하고,
-<strong>동일 Asset 버전으로 HIL·실물 비교</strong>를 마칩니다. 아래 네 가지 구분이 데이터셋에 드러납니다.</p>
+<strong>동일 Asset 버전으로 HIL·실물 비교</strong>를 마칩니다. <strong>6대 대표공정 트윈 6개 전체의 구축과
+인수검사</strong>도 이 해에 완료합니다. 아래 네 가지 구분이 데이터셋에 드러납니다.</p>
 <table>
 <thead>
 <tr>
@@ -2163,15 +2206,16 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <h3 id="4-12">4차년도 (12개월) — 표준화<a class="headerlink" href="#4-12" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p><strong>목표</strong> — 실제 실패를 가상환경에서 재현하고, <strong>실패상태 복원·복구행동 분기·RFM 재학습·
-실물 재검증 순환을 1회 이상 완주</strong>하며, 모빌테크의 최종 Asset Package 와 함께
-운용절차와 벤치마크를 표준화한다.</p>
+실물 재검증 순환을 1회 이상 완주</strong>하며, <strong>6대 대표공정 트윈을 버전 동결하여 데이터팩토리
+주관기관에 이관</strong>하고, 모빌테크의 최종 Asset Package 와 함께 운용절차와 벤치마크를
+표준화한다.</p>
 </blockquote>
 <p><strong>연차 완료 Gate (잠정)</strong> — 실제 실패 재현율 <strong>≥ 70 %</strong> · <strong>복구 데이터 확보율 ≥ 80 %</strong> · 엣지 케이스 커버리지 <strong>≥ 80 %</strong> · 재학습–실물 재검증 순환 <strong>1회 이상 완주</strong> · <strong>실제 성공률 + 10 %p 이상</strong> · 제3자 절차 재현 <strong>≥ 90 %</strong></p>
 <p><strong>완료 판정</strong> — 실패 재현 → 복구 데이터 생성 → 재학습 → 실물 재검증 순환이 <strong>1회 이상
 완주</strong>되고, 엣지·복구 데이터 적용 후 실제 성공률이 <strong>+10 %p 이상</strong> 향상된 것이 측정으로
 제시됩니다. 실제 주요 실패의 <strong>가상 재현율 ≥ 70 %</strong>, 엣지 케이스 <strong>커버리지 ≥ 80 %</strong> 를
 확보하고, <strong>제3자가 운용 가이드라인만으로 기준 시나리오를 ≥ 90 % 재현</strong>할 수 있습니다.
-최종 <strong>Geometry·Physics Twin 버전을 동결</strong>합니다.</p>
+최종 <strong>Geometry·Physics Twin 버전을 동결</strong>하고, <strong>6대 대표공정 트윈 패키지를 이관</strong>합니다.</p>
 <hr />
 <hr />
 <h2 id="2-2-2-3">2-2. 연구개발 목표 및 내용 · 2-3. 수행일정 및 주요 결과물<a class="headerlink" href="#2-2-2-3" title="Permanent link">&para;</a></h2>
@@ -2187,7 +2231,7 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <h4 id="1">① 개발 목표<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p><strong>[공동연구개발기관9(한성대학교)]</strong></p>
 <ul>
-<li>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화</li>
+<li>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화 — 6대 대표공정 디지털 트윈 구축 착수(누계 2개 공정)</li>
 <li>o Zero-shot Transfer 기반 도메인 적응</li>
 <li>o 엣지 케이스 시뮬레이션</li>
 <li>o 학술 연구 및 기술 자문</li>
@@ -2196,8 +2240,15 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <p><strong>[공동연구개발기관9(한성대학교)]</strong></p>
 <p><strong>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화</strong></p>
 <ul>
+<li>6대 대표공정 디지털 트윈 구축 계획과 인수규격 확정<ul>
+<li>● 6대 대표공정(토트 박스 옮기기 · 토트 박스 쌓기 · 비전 활용 불량 검사 · 박스 포장 패키징 마감 · Bin Picking · Kitting)의 트윈 구축 순서 확정 — 1차 2개 · 2차 누계 4개 · 3차 누계 6개, 컨소시엄 승인 획득</li>
+<li>● 공정별 작업 셀·대상물·로봇·센서 배치의 Scene 구성 규격과 공정 트윈 인수검사 기준 수립</li>
+<li>● 공정별 ODD·Task Metadata 서식 v1 정의 — 9개 분야 30개 세부 공정 시나리오로 확장 가능한 공통 서식</li>
+<li>● 1차년도 대상 2개 공정의 기준 Geometry Asset 인수와 Scene 구성·시나리오 실행 검증</li>
+</ul>
+</li>
 <li>대표 제조 작업과 실제–가상 비교 기준의 확정<ul>
-<li>● 대표 제조 작업 1~2개 및 대상 소재·접촉현상 선정, 컨소시엄 승인 획득</li>
+<li>● 6대 대표공정 중 실측 물성 보정·폐루프 완주의 심화 대상이 될 대표 제조 작업 1~2개 및 대상 소재·접촉현상 선정, 컨소시엄 승인 획득</li>
 <li>● 실제 센서·F/T·영상·형상 측정 항목과 취득 조건 정의</li>
 <li>● Domain Gap 프로토콜 v1 수립 — 측정 항목·조건·반복횟수·판정기준·통계방법 명시</li>
 </ul>
@@ -2244,13 +2295,13 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 </ul>
 </li>
 </ul>
-<p><strong>연차 완료조건</strong> — 대표 작업·실패유형 컨소시엄 승인 · 기준 Geometry Asset 인수검사 완료 · 좌표계·Semantic 규격 승인 · Domain Gap 측정 항목·반복횟수·판정기준 확정 · 동일 조건 재실행 결과 동일 100 % · 스키마 왕복 손실 없는 전달 ≥ 95 %</p>
-<p><strong>지원 산출물 인수조건(모빌테크)</strong> — 좌표계·축척·Semantic 규격 충족, 기준 Asset 인수검사 통과</p>
+<p><strong>연차 완료조건</strong> — 6대 대표공정 트윈 구축계획·인수규격 컨소시엄 승인 · 대상 2개 공정 Scene 구성·시나리오 실행 검증 완료 · 대표 작업·실패유형 컨소시엄 승인 · 기준 Geometry Asset 인수검사 완료 · 좌표계·Semantic 규격 승인 · Domain Gap 측정 항목·반복횟수·판정기준 확정 · 동일 조건 재실행 결과 동일 100 % · 스키마 왕복 손실 없는 전달 ≥ 95 %</p>
+<p><strong>지원 산출물 인수조건(모빌테크)</strong> — 좌표계·축척·Semantic 규격 충족, 1차년도 대상 2개 공정의 기준 Asset 인수검사 통과</p>
 <h3 id="2-1-2-deformationdata-engine-v1">[2단계] (1) 2차년도 — Deformation·Data Engine v1 개발<a class="headerlink" href="#2-1-2-deformationdata-engine-v1" title="Permanent link">&para;</a></h3>
 <h4 id="1_1">① 개발 목표<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
 <p><strong>[공동연구개발기관9(한성대학교)]</strong></p>
 <ul>
-<li>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화</li>
+<li>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화 — 6대 대표공정 디지털 트윈 확장(누계 4개 공정)</li>
 <li>o Zero-shot Transfer 기반 도메인 적응</li>
 <li>o 엣지 케이스 시뮬레이션</li>
 <li>o 학술 연구 및 기술 자문</li>
@@ -2259,6 +2310,13 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <p><strong>[공동연구개발기관9(한성대학교)]</strong></p>
 <p><strong>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화</strong></p>
 <ul>
+<li>6대 대표공정 디지털 트윈 확장 — 누계 4개 공정<ul>
+<li>● 추가 2개 공정의 Simulation-ready Asset 인수와 작업 셀·대상물·로봇·센서 Scene 구성</li>
+<li>● 구축 공정별 기본 물리 프로파일 적용 — Material Profile 의 공정 단위 매핑</li>
+<li>● 제조 Domain Variation Library v1 의 공정 단위 적용 — 마찰·공차·재질·조명 조건 변이</li>
+<li>● 공정 트윈 인수검사(LOD·Collision·Metadata) 수행과 공정별 버전 등록</li>
+</ul>
+</li>
 <li>Manufacturing Deformation Engine v1 개발<ul>
 <li>● 대표 소재의 마찰·강성·감쇠·복원·임계값 실측과 Material Profile 구축</li>
 <li>● 접촉·압축·복원·잔류변형 모사 기능 개발 — 범용 Physics Engine 신규 개발이 아니라 Isaac Sim 등 기존 시뮬레이터 위의 제조 특화 물리모듈</li>
@@ -2304,13 +2362,13 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 </ul>
 </li>
 </ul>
-<p><strong>연차 완료조건</strong> — ① Geometry Asset 인수: LOD·Collision·Metadata 검수 완료 · ② Physics Engine: 접촉력 재현오차 NRMSE ≤ 20 %, 실측 물성값 적용 · ③ Quality Module: 비물리 결과 검출률 ≥ 85 %(오검출 ≤ 15 %) · ④ Human Data: 상태 Checkpoint 저장과 정상·실패·복구 데이터 수집 가능</p>
-<p><strong>지원 산출물 인수조건(모빌테크)</strong> — LOD·Collision·Metadata 검수 통과, Simulation-ready Asset이 Physics Twin에서 정상 구동</p>
+<p><strong>연차 완료조건</strong> — ① Geometry Asset 인수: LOD·Collision·Metadata 검수 완료 · ② Physics Engine: 접촉력 재현오차 NRMSE ≤ 20 %, 실측 물성값 적용 · ③ Quality Module: 비물리 결과 검출률 ≥ 85 %(오검출 ≤ 15 %) · ④ Human Data: 상태 Checkpoint 저장과 정상·실패·복구 데이터 수집 가능 · ⑤ 공정 트윈: 대표공정 트윈 누계 4개 구축·인수검사 통과</p>
+<p><strong>지원 산출물 인수조건(모빌테크)</strong> — 누계 4개 공정 Asset의 LOD·Collision·Metadata 검수 통과, Simulation-ready Asset이 Physics Twin에서 정상 구동</p>
 <h3 id="3-1-3-zero-shot-transfer-edgerecovery">[3단계] (1) 3차년도 — Zero-shot Transfer 및 Edge/Recovery 검증<a class="headerlink" href="#3-1-3-zero-shot-transfer-edgerecovery" title="Permanent link">&para;</a></h3>
 <h4 id="1_2">① 개발 목표<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
 <p><strong>[공동연구개발기관9(한성대학교)]</strong></p>
 <ul>
-<li>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화</li>
+<li>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화 — 6대 대표공정 디지털 트윈 전체 구축(누계 6개 공정)</li>
 <li>o Zero-shot Transfer 기반 도메인 적응</li>
 <li>o 엣지 케이스 시뮬레이션</li>
 <li>o 학술 연구 및 기술 자문</li>
@@ -2319,6 +2377,12 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <p><strong>[공동연구개발기관9(한성대학교)]</strong></p>
 <p><strong>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화</strong></p>
 <ul>
+<li>6대 대표공정 디지털 트윈 전체 구축 — 누계 6개 공정<ul>
+<li>● 나머지 2개 공정의 Asset 인수·Scene 구성으로 6대 대표공정 트윈 구축 완료</li>
+<li>● 공정별 세부 시나리오 실행 스크립트 연계 — 9개 분야 30개 세부 공정 시나리오 확장 지원</li>
+<li>● 6개 공정 트윈에 대한 Simulation–HIL–Real 인터페이스 적용성 점검 — Domain Gap 정밀 측정은 심화 대표 작업 우선 수행</li>
+</ul>
+</li>
 <li>실측 기반 재보정과 실물 연계 검증<ul>
 <li>● Physics Calibration 수행 — 실측 물성값으로 가상환경 물리 파라미터 재보정</li>
 <li>● Simulation–HIL–Real Robot 인터페이스 구축 — 가상·HIL·실물의 공통 규약</li>
@@ -2356,13 +2420,13 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 </ul>
 </li>
 </ul>
-<p><strong>연차 완료조건</strong> — Zero-shot 성능 유지율 ≥ 70 %(적응 전) · 적응 후 성능 회복률 ≥ 90 % · 전이 판정 일치도 ≥ 80 % · OOD 탐지 ≥ 85 % · 생성 데이터 검수 완료율 ≥ 90 % · 동일 Asset 버전으로 Simulation–HIL–Real 비교 완료</p>
-<p><strong>지원 산출물 인수조건(모빌테크)</strong> — 변동조건 Asset 제공과 버전 추적성 확보</p>
+<p><strong>연차 완료조건</strong> — Zero-shot 성능 유지율 ≥ 70 %(적응 전) · 적응 후 성능 회복률 ≥ 90 % · 전이 판정 일치도 ≥ 80 % · OOD 탐지 ≥ 85 % · 생성 데이터 검수 완료율 ≥ 90 % · 동일 Asset 버전으로 Simulation–HIL–Real 비교 완료 · 6대 대표공정 트윈 누계 6개 구축 완료</p>
+<p><strong>지원 산출물 인수조건(모빌테크)</strong> — 6대 대표공정 전체 Asset과 변동조건 Asset 제공, 공정별 버전 추적성 확보</p>
 <h3 id="4-1-4-closed-loop">[4단계] (1) 4차년도 — Closed-loop 완주 및 표준화<a class="headerlink" href="#4-1-4-closed-loop" title="Permanent link">&para;</a></h3>
 <h4 id="1_3">① 개발 목표<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
 <p><strong>[공동연구개발기관9(한성대학교)]</strong></p>
 <ul>
-<li>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화</li>
+<li>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화 — 6대 대표공정 디지털 트윈 버전 동결·이관(6개 공정)</li>
 <li>o Zero-shot Transfer 기반 도메인 적응</li>
 <li>o 엣지 케이스 시뮬레이션</li>
 <li>o 학술 연구 및 기술 자문</li>
@@ -2371,6 +2435,12 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <p><strong>[공동연구개발기관9(한성대학교)]</strong></p>
 <p><strong>o Real-to-Sim-to-Real 디지털 트윈 기술 고도화</strong></p>
 <ul>
+<li>6대 대표공정 디지털 트윈 버전 동결과 이관<ul>
+<li>● 6대 대표공정 트윈 자산·시나리오·메타데이터의 최종 버전 동결과 재현성 검증</li>
+<li>● 공정별 트윈 패키지의 데이터팩토리 주관기관 이관과 활용 절차 문서화</li>
+<li>● 제3자 재현 절차에 6대 대표공정 트윈 포함 — 절차만으로 재현 가능한 수준 확보</li>
+</ul>
+</li>
 <li>실물 재검증과 운용체계 확립<ul>
 <li>● 실제 실패의 가상환경 재현과 재학습 모델의 실물 로봇 재검증</li>
 <li>● Real-to-Sim-to-Real 운용 가이드라인 완성 — 제3자가 절차만으로 재현 가능한 수준</li>
@@ -2407,8 +2477,8 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 </ul>
 </li>
 </ul>
-<p><strong>연차 완료조건</strong> — 실제 주요 실패 가상 재현율 ≥ 70 % · 복구 데이터 확보율 ≥ 80 % · 엣지 케이스 커버리지 ≥ 80 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 + 10 %p 이상 · 제3자 절차 재현 ≥ 90 %</p>
-<h2 id="asset-geometry-twin"><strong>지원 산출물 인수조건(모빌테크)</strong> — 최종 실증공간 Asset 갱신 완료와 Geometry Twin 버전 동결<a class="headerlink" href="#asset-geometry-twin" title="Permanent link">&para;</a></h2>
+<p><strong>연차 완료조건</strong> — 실제 주요 실패 가상 재현율 ≥ 70 % · 복구 데이터 확보율 ≥ 80 % · 엣지 케이스 커버리지 ≥ 80 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 + 10 %p 이상 · 제3자 절차 재현 ≥ 90 % · 6대 대표공정 트윈 버전 동결·이관 완료</p>
+<h2 id="asset-6-geometry-twin"><strong>지원 산출물 인수조건(모빌테크)</strong> — 최종 실증공간 Asset 갱신 완료와 6대 대표공정 Geometry Twin 버전 동결<a class="headerlink" href="#asset-6-geometry-twin" title="Permanent link">&para;</a></h2>
 <h2 id="2-3">2-3. 연구개발과제 수행일정 및 주요 결과물<a class="headerlink" href="#2-3" title="Permanent link">&para;</a></h2>
 <h3 id="_9">수행일정<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <table>
@@ -2425,25 +2495,25 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <td style="text-align: center;">1단계</td>
 <td style="text-align: center;">1차년도</td>
 <td style="text-align: center;">9개월</td>
-<td>M1 대표 작업·실패유형 선정 · M2 Reference Architecture · M3 S-A-S-E 표준 v1 · M4 Domain Gap 프로토콜 v1</td>
+<td>M1 6대 대표공정 트윈 구축계획·인수규격 확정(누계 2개 공정) · M2 대표 작업·실패유형 선정 · M3 Reference Architecture · M4 S-A-S-E 표준 v1 · M5 Domain Gap 프로토콜 v1</td>
 </tr>
 <tr>
 <td style="text-align: center;">2단계</td>
 <td style="text-align: center;">2차년도</td>
 <td style="text-align: center;">10개월</td>
-<td>M5 Prompt·Condition Compiler v1 · M6 Physics Consistency Evaluator v1 · M7 Domain Variation Library v1 · M8 Edge Case Compiler v1</td>
+<td>M6 대표공정 트윈 누계 4개 구축 · M7 Prompt·Condition Compiler v1 · M8 Physics Consistency Evaluator v1 · M9 Domain Variation Library v1 · M10 Edge Case Compiler v1</td>
 </tr>
 <tr>
 <td style="text-align: center;">3단계</td>
 <td style="text-align: center;">3차년도</td>
 <td style="text-align: center;">12개월</td>
-<td>M9 Transfer Decision Manager · M10 Multi-stage Validation Gate · M11 Sim–HIL–Real 인터페이스 · M12 Edge/Recovery Dataset 배포</td>
+<td>M11 6대 대표공정 트윈 전체 구축(누계 6개) · M12 Transfer Decision Manager · M13 Multi-stage Validation Gate · M14 Sim–HIL–Real 인터페이스 · M15 Edge/Recovery Dataset 배포</td>
 </tr>
 <tr>
 <td style="text-align: center;">4단계</td>
 <td style="text-align: center;">4차년도</td>
 <td style="text-align: center;">12개월</td>
-<td>M13 Cross-domain Benchmark · M14 재학습–실물 재검증 완주 · M15 운용 가이드라인·기술 백서</td>
+<td>M16 6대 대표공정 트윈 버전 동결·이관 · M17 Cross-domain Benchmark · M18 재학습–실물 재검증 완주 · M19 운용 가이드라인·기술 백서</td>
 </tr>
 </tbody>
 </table>
@@ -2460,6 +2530,11 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>1차</strong></td>
+<td>6대 대표공정 디지털 트윈 구축계획·인수규격 v1 (대상 2개 공정 트윈 포함)</td>
+<td>규격서 · 트윈 자산</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
 <td>WFM–Physics Twin Reference Architecture</td>
 <td>설계 문서</td>
 </tr>
@@ -2485,6 +2560,11 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>2차</strong></td>
+<td>대표공정 디지털 트윈 — 누계 4개 공정</td>
+<td>트윈 자산 · 시나리오</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
 <td>Manufacturing Deformation Engine v1 · Material Profile</td>
 <td>SW · 물성 DB</td>
 </tr>
@@ -2510,6 +2590,11 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>3차</strong></td>
+<td>6대 대표공정 디지털 트윈 — 전체 6개 공정</td>
+<td>트윈 자산 · 시나리오</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
 <td>Transfer Decision Manager</td>
 <td>SW</td>
 </tr>
@@ -2535,6 +2620,11 @@ Geometry Twin 은 모빌테크가 요구규격에 따라 제공한다.</p>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>4차</strong></td>
+<td>6대 대표공정 트윈 최종 패키지 (버전 동결)</td>
+<td>트윈 자산 · 이관 문서</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
 <td>Real-to-Sim-to-Real 운용 가이드라인</td>
 <td>절차서</td>
 </tr>
