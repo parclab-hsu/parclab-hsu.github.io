@@ -1021,18 +1021,22 @@
 </tbody>
 </table>
 <p>제안·잠정 수치는 협약 목표로 인용하지 않습니다.</p>
-<p>제안·잠정 수치는 협약 목표로 인용하지 않습니다.</p>
 </div>
 <hr />
 <h2 id="1">1. 과제 정의<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <h3 id="_1">무엇을 만드는 과제인가<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>한성대학교는 <strong>대표 제조 작업 1~2개</strong>를 선정하고, 그 작업 하나를 다음 순환으로 끝까지
-관통시킵니다. 세 기술축을 각각 범용 제조 플랫폼으로 개발하는 과제가 아닙니다.</p>
+<p>대상 범위는 <strong>2단 구조</strong>입니다. RFP 의 <strong>6대 대표공정</strong>(토트 박스 옮기기 · 토트 박스 쌓기 ·
+비전 활용 불량 검사 · 박스 포장 패키징 마감 · Bin Picking · Kitting)에 대해서는 <strong>디지털
+트윈을 연차별 누적으로 전량 구축</strong>합니다 — 1차 2개 → 2차 누계 4개 → 3차 누계 6개 →
+4차 버전 동결·이관. 그중 <strong>대표 제조 작업 1~2개</strong>를 심화 대상으로 선정하고, 그 작업 하나를
+다음 순환으로 끝까지 관통시킵니다. 세 기술축을 각각 범용 제조 플랫폼으로 개발하는
+과제가 아닙니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>실제 데이터 수집 → 가상환경 물리 보정 → RFM 취약조건과 실패·복구 데이터 생성
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   → 자동 검수 → RFM 재학습 → 실제 로봇 재검증 → 실패·Domain Gap 환류
 </code></pre></div>
 <p>요약하면 <strong>실제 로봇의 실패를 가상환경에서 재현하고, 학습 가능한 데이터로 바꾸는 일</strong>입니다.
-대표 작업을 정해 한 바퀴를 완주해야 각 단계의 수치가 서로 연결되어 검증됩니다.</p>
+6대 대표공정의 트윈은 전량 구축하되, 심화 대상 작업을 정해 한 바퀴를 완주해야 각 단계의
+수치가 서로 연결되어 검증됩니다.</p>
 <h3 id="_2">공고 정합성<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1237,7 +1241,8 @@ Simulation-ready Geometry Twin 구축을 지원합니다.</strong></p>
 <p><strong>물리엔진을 새로 개발하지 않습니다.</strong> Isaac Sim 과 OmniLRS 위에서 동작하는
 <strong>제조 변형·물성 보정 모듈</strong>을 개발합니다. OmniLRS 변형지형 연구에서 축적한 접촉·변형 구동과
 계측 경험을 제조환경의 Contact–Material–State 모델로 파생시키는 작업입니다.</p>
-<p>범용 엔진이 아니라 <strong>대표 작업 1~2개의 접촉력·변형·잔류상태를 실측과 대조해 검증하는
+<p>6대 대표공정 트윈에는 공정별 기본 물리 프로파일을 적용하되, 실측 대조를 통한 정밀 검증은
+범용 엔진이 아니라 <strong>대표 작업 1~2개의 접촉력·변형·잔류상태를 실측과 대조해 검증하는
 범위로 한정</strong>합니다. 소재군을 넓히면 물성시험 횟수가 그만큼 늘어나므로, 범위 확장은
 예산·기간과 함께 결정합니다.</p>
 <table>
@@ -1495,7 +1500,7 @@ flowchart TB
 <hr />
 <h2 id="6">6. 연차 계획과 예산<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <p>기간은 <strong>43개월 · 4개 차년도</strong> — 1차 9개월 · 2차 10개월 · 3차 12개월 · 4차 12개월입니다.
-차년도별 목표·완료 Gate·완료 판정과 결과물 20건은 <strong><a href="roadmap/">연차별 목표</a></strong> 에 있습니다.</p>
+차년도별 목표·완료 Gate·완료 판정과 결과물 24건은 <strong><a href="roadmap/">연차별 목표</a></strong> 에 있습니다.</p>
 <table>
 <thead>
 <tr>
@@ -1508,22 +1513,22 @@ flowchart TB
 <tr>
 <td><strong>1차 (9개월)</strong></td>
 <td>기준 시스템</td>
-<td>대표 작업·실패유형 확정 · WFM–Physics Twin Reference Architecture · Domain Gap 프로토콜 v1</td>
+<td>6대 대표공정 트윈 구축계획·인수규격 v1(대상 2개 공정) · 대표 작업·실패유형 확정 · WFM–Physics Twin Reference Architecture · Domain Gap 프로토콜 v1</td>
 </tr>
 <tr>
 <td><strong>2차 (10개월)</strong></td>
 <td>증강 엔진</td>
-<td>Physics Consistency Evaluator v1 · 제조 Domain Variation Library v1 · Edge Case Compiler v1</td>
+<td>대표공정 트윈 누계 4개 · Physics Consistency Evaluator v1 · 제조 Domain Variation Library v1 · Edge Case Compiler v1</td>
 </tr>
 <tr>
 <td><strong>3차 (12개월)</strong></td>
 <td>전이 검증</td>
-<td>Transfer Decision Manager · Multi-stage Validation Gate · Edge/Recovery 증강 Dataset</td>
+<td>대표공정 트윈 전량 6개 구축 완료 · Transfer Decision Manager · Multi-stage Validation Gate · Edge/Recovery 증강 Dataset</td>
 </tr>
 <tr>
 <td><strong>4차 (12개월)</strong></td>
 <td>표준화</td>
-<td>Closed-loop RoboOps Toolchain · Cross-domain Physical AI Benchmark · 기술 백서</td>
+<td>6대 대표공정 트윈 버전 동결·이관 · Closed-loop RoboOps Toolchain · Cross-domain Physical AI Benchmark · 기술 백서</td>
 </tr>
 </tbody>
 </table>
@@ -1737,7 +1742,7 @@ flowchart TB
 <tbody>
 <tr>
 <td style="text-align: center;">1</td>
-<td><strong>대표 제조 작업 1~2개 선정</strong></td>
+<td><strong>6대 대표공정 트윈 구축 순서와 심화 대표 작업 1~2개 선정</strong></td>
 <td>이 과제 전체가 여기서 출발합니다 — 1차년도 최우선</td>
 </tr>
 <tr>
@@ -1770,7 +1775,7 @@ flowchart TB
 <hr />
 <h2 id="_7">더 읽을 것<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong><a href="roadmap/">연차별 목표</a></strong> — 차년도별 목표·완료 Gate·결과물 20건·KPI 측정 정의</li>
+<li><strong><a href="roadmap/">연차별 목표</a></strong> — 차년도별 목표·완료 Gate·결과물 24건·KPI 측정 정의</li>
 <li><strong><a href="technical/">기술 상세</a></strong> — Work Package HSU-1~7 · Deformation Engine 상세 ·
   Ontology·Edge Case · MD 과정 운영 · Cosmos·LeRobot 구축 최적화 · 검증 체계</li>
 <li><a href="../hsu-pac/">한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC</a></li>

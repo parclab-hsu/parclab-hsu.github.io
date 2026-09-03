@@ -299,6 +299,53 @@ local_costmap:
 
 ---
 
+## 프로젝트 코드 받기 (7주차 이후 공통)
+
+Spot+ATS 실습 코드는 공개 저장소에 있습니다. 7주차부터 계속 사용하므로 한 번 받아 두면 됩니다.
+
+```bash
+# 프로젝트 코드 클론
+git clone https://github.com/engiengi/SpotATS_ws.git
+
+# 빌드 (conda 환경을 빠져나온 뒤 빌드해야 함)
+conda deactivate
+cd ~/SpotATS_ws/phyAI_ws
+colcon build
+
+# 워크스페이스 자동 로드 등록
+echo "source ~/SpotATS_ws/phyAI_ws/install/setup.bash" >> ~/.bashrc
+source ~/SpotATS_ws/phyAI_ws/install/setup.bash
+```
+
+!!! tip "빌드가 실패한다면 — 대개 라이브러리 버전 충돌입니다"
+    `conda list -n base` 로 설치된 버전을 확인하고, 아래 조합을 권장합니다.
+
+    ```bash
+    pip install "opencv-python==4.11.0.86" "numpy==1.26.4" "empy==3.3.4"
+    ```
+
+    `module 'em' has no attribute 'BUFFERED_OPT'` 오류는 `empy` 버전 문제입니다(3.3.4로 맞추면 해결).
+
+## 여러 노드를 한 번에 띄우기 — tmuxp
+
+ROS 2 실습은 Isaac Sim·Navigation·Sensor 노드를 **각각 다른 터미널**에서 띄워야 해 번거롭습니다. `tmuxp` 는 이 다중 터미널 구성을 YAML 하나로 관리해 명령 한 번으로 모두 실행합니다.
+
+```bash
+pip install tmuxp
+
+# System1 node · YOLO · RViz2 · Nav2 · SLAM 을 한 번에
+tmuxp load spot_ats.yml
+
+# 개별 창 종료: Ctrl+c   /   세션 닫기: Ctrl+d
+```
+
+**키보드 수동 제어**
+
+| 대상 | 키 |
+| --- | --- |
+| Spot 이동 | 방향키 |
+| ATS 짐벌 | `w` 상 · `s` 하 · `a` 좌 · `d` 우 |
+
 ## 7주차 · Spot + ATS SLAM 연동 part 1
 
 ### Isaac Sim 전용 Python 런처 사용
