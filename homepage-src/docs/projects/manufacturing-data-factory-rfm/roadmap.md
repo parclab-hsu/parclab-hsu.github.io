@@ -20,7 +20,7 @@ noindex: true
 
 # 연차별 목표와 성과지표
 
-**담당 분야 — 실환경–가상환경 연계형 데이터 증강**
+**담당 분야 — 실환경–가상환경 연계형 <span class="rfm-nowrap">데이터 증강</span>**
 
 산업통상부 공고 제2026-549호 · 연구개발과제 1
 「로봇 데이터팩토리 구축 및 로봇파운데이션모델(RFM) 개발」
@@ -149,7 +149,7 @@ Engine · Demonstration & Recovery Data Engine · Manufacturing Ontology·Edge C
 | **원격조작 데이터 수집도구** | 학생이 실물 로봇을 조작해 정상·실패·복구를 규격대로 기록한다 | 데이터 수집환경 <small>(Edge Case Compiler 의 입력)</small> |
 | **실패상태 저장·복원 기능** | 실패 직전의 관절각·물체 위치·접촉 상태를 저장해 그 지점으로 되돌린다 | Edge/Recovery 증강 Dataset |
 | **복구 행동 증강 기능** | 되돌린 상태에서 다른 복구 조작을 반복 시도해 하나의 실패에서 여러 복구를 얻는다 | Edge/Recovery 증강 Dataset |
-| **자동 데이터 검수 기능** | 충돌·관통·비정상 동작이 섞인 생성 결과를 자동으로 걸러낸다 | Multi-stage Validation Gate (다단계) |
+| **자동 데이터 검수 기능** | 충돌·관통·비정상 동작이 섞인 생성 결과를 자동으로 걸러낸다 | Multi‑stage Validation Gate (5대 검수영역) |
 
 ### 기술축 C · Manufacturing Ontology·Edge Case Intelligence → RFM 취약조건 탐색
 
@@ -170,7 +170,7 @@ Engine · Demonstration & Recovery Data Engine · Manufacturing Ontology·Edge C
 
 ---
 
-## 참고 연구 — 세 기술축이 서 있는 연구 흐름
+## 참고 연구 — 세 기술축의 연구 근거
 
 최근 가상환경·시뮬레이션 기반 데이터 획득 연구는 **소량의 실제 데이터로 가상환경의 물리
 특성을 보정하고, 현재 로봇 모델이 실패하기 쉬운 조건을 집중적으로 만들어 다시 학습하는**
@@ -278,7 +278,7 @@ flowchart TB
 
 !!! note "제안서 작성 기준"
     본 절의 연차별 목표는 **상위과제 전체 통합 관점**으로 작성했습니다. 한성대학교는
-    공동연구개발기관9로서 실환경–가상환경 연계형 데이터 증강, 디지털 트윈, 도메인 적응,
+    공동연구개발기관9로서 실환경–가상환경 연계형 <span class="rfm-nowrap">데이터 증강</span>, 디지털 트윈, 도메인 적응,
     Edge Case 생성, 데이터 품질·평가 및 RFM 환류 기술을 담당합니다. 모빌테크는
     한성대학교의 서브·협력기관으로 Geometry Twin, Simulation‑ready Asset, 공간 정합 및
     현장 갱신을 지원합니다.
@@ -414,15 +414,15 @@ flowchart TB
 
 **지원 산출물 인수조건(모빌테크)**: 누계 4개 공정 Asset의 LOD·Collision·Metadata 검수를 통과하고 Simulation‑ready Asset이 Physics Twin에서 정상 구동해야 합니다.
 
-### [3단계] (1) 3차년도 — Zero‑shot Transfer 및 Edge/Recovery 검증
+### [3단계] (1) 3차년도 — <span class="rfm-nowrap">Zero‑shot Transfer 평가</span> · <wbr><span class="rfm-nowrap">경량 도메인 적응</span> · <wbr><span class="rfm-nowrap">Edge/Recovery 검증</span>
 
 ##### ① 개발 목표
 
 **[공동연구개발기관9(한성대학교)]**
 
 - **Real‑to‑Sim‑to‑Real 디지털 트윈 기술 고도화**: 나머지 2개 공정을 추가해 6대 대표공정 디지털 트윈을 완성하고 실측 기반 재보정·실물연계 검증을 수행
-- **Zero‑shot Transfer 기반 도메인 적응**: 추가 정책학습 없는 전이 판정과 Fallback Adaptation을 분리해 성능유지율·회복률을 검증
-- **Edge Case 시뮬레이션**: 실패상태 복원·복구행동 다중분기·다단계 Validation Gate를 연결한 사전 폐루프를 완주
+- **<span class="rfm-nowrap">Zero‑shot Transfer 평가</span> 및 <wbr><span class="rfm-nowrap">경량 도메인 적응</span>**: 추가 정책학습 없는 Zero‑shot 성능을 먼저 평가하고, 기준 미달 시에만 Few‑shot·LoRA 기반 Fallback Adaptation을 별도 수행해 성능회복률을 검증
+- **Edge Case 시뮬레이션**: 실패상태 복원·복구행동 다중분기·Multi-stage Validation Gate(물리정합·재현성·안전·데이터 품질·Provenance의 5대 검수영역)를 연결한 사전 폐루프를 완주
 - **학술 연구 및 기술 자문**: 전이 평가·Edge Case 검증 방법론을 논문화하고 RFM 기관의 데이터셋·평가기준 수립을 지원
 
 ##### ② 개발 내용 및 범위
@@ -440,7 +440,7 @@ flowchart TB
     - Simulation–HILS–Real Robot 공통 Interface 구축
     - 동일 Asset Version 기준 실제–가상 성능차이 측정과 Domain Gap 분석
 
-**나. Zero‑shot Transfer 기반 도메인 적응**
+**나. <span class="rfm-nowrap">Zero‑shot Transfer 평가</span> 및 <wbr><span class="rfm-nowrap">경량 도메인 적응</span>**
 
 - **전이판정과 단계적 적응**
     - Transfer Decision Manager 개발: 직접 적용·경량 적응·추가학습·적용보류 판정
@@ -452,7 +452,7 @@ flowchart TB
 
 - **복구 데이터 증강과 품질관문**
     - 상태 Restore·복구행동 다중분기 v1 개발 및 하나의 실패에서 복수 복구데이터 확보
-    - Multi‑stage Validation Gate 구축: 물리정합·재현성·안전·데이터 품질·Provenance 다단계 검수
+    - Multi‑stage Validation Gate 구축: 물리정합·재현성·안전·데이터 품질·Provenance의 **5대 검수영역** 적용
     - Edge/Recovery 증강 Dataset 구축: 정상·실패·복구·가상생성을 구분하고 학습·검증·평가 용도 표시
     - 대표 실패유형 1건 이상의 사전 폐루프 완주: 저장 → 복원 → 분기 → Gate → HILS
 
@@ -543,8 +543,8 @@ flowchart TB
 | Milestone | 완료 시점 | 완료 조건 |
 |---|:--:|---|
 | **M1. 기준 시스템·연계규격 확정** | 1차년도 말 | 6대 공정 구축계획 승인, 2개 공정 Scene 검증, 대표작업·실패유형·Domain Gap Protocol·Geometry–Physics Interface 확정 |
-| **M2. Deformation·Data Engine v1** | 2차년도 말 | 누계 4개 공정 Twin 인수, Deformation Engine·Physics Consistency Evaluator·Compiler v1 및 실패·복구 수집환경 가동 |
-| **M3. Zero‑shot·Edge/Recovery 검증** | 3차년도 말 | 누계 6개 공정 Twin 완성, Zero‑shot/Fallback 분리평가, Multi‑stage Validation Gate 및 Sim–HILS–Real 비교 완료 |
+| **M2. Deformation·Data Engine v1** | 2차년도 말 | 누계 4개 공정 Twin 인수, Deformation Engine·Physics Consistency Evaluator·**M7 Prompt·Condition Compiler v1** 및 Demonstration & Recovery Data 수집환경·Checkpoint 저장기능 가동 |
+| **M3. Zero‑shot 평가·경량 적응·Edge/Recovery 검증** | 3차년도 말 | 누계 6개 공정 Twin 완성, Zero‑shot 평가/Fallback Adaptation 분리, Multi‑stage Validation Gate 및 Sim–HILS–Real 비교 완료 |
 | **M4. Closed‑loop 완주·표준화** | 4차년도 말 | 6개 공정 Twin Version 동결·이관, RFM 재학습–실물 재검증 순환 완주, Benchmark·Guideline·표준·백서 완성 |
 
 ### 다. 차년도별 주요 결과물 및 인수 기준
@@ -552,7 +552,7 @@ flowchart TB
 | 차년도 | 주요 결과물 | 주관·협력 | 주요 인수·완료 기준 |
 |:--:|---|---|---|
 | **1차** | 6대 공정 구축계획·인수규격, 대상 2개 공정 Scene, ODD·Task Metadata v1, Domain Gap Protocol v1, S‑A‑S‑E 표준 v1, Edge Case Taxonomy v1 | 한성대 기준·연계규격 총괄<br>모빌테크 기준 Asset 지원 | **제안 목표(안)**: 주요 상태변수 허용오차 내 재현율 ≥ 95 %, 필수 Observation·Action·Task 필드 변환 성공률 ≥ 99 % |
-| **2차** | 누계 4개 공정 Twin, Manufacturing Deformation Engine v1, Material Profile, Domain Variation Library v1, Physics Consistency Evaluator·Compiler v1 | 한성대 Engine·평가 총괄<br>모빌테크 Simulation‑ready Asset 지원 | **제안 목표(안)**: 접촉력 NRMSE ≤ 20 %¹, 물리 비정합 탐지 Recall ≥ 85 %, False Positive Rate ≤ 15 %, 실패·복구 수집환경 가동 |
+| **2차** | 누계 4개 공정 Twin, Manufacturing Deformation Engine v1, Material Profile, Domain Variation Library v1, Physics Consistency Evaluator v1, **M7 Prompt·Condition Compiler v1**, Edge Case Compiler v1, **Demonstration & Recovery Data Engine 수집환경·Checkpoint 저장기능 v1** | 한성대 Engine·평가 총괄<br>모빌테크 Simulation‑ready Asset 지원 | **제안 목표(안)**: 접촉력 NRMSE ≤ 20 %¹, 물리 비정합 탐지 Recall ≥ 85 %, False Positive Rate ≤ 15 %, 실패·복구 수집환경 가동 |
 | **3차** | 누계 6개 공정 Twin, Transfer Decision Manager, Edge/Recovery 증강 Dataset, Multi‑stage Validation Gate, Simulation–HILS–Real Interface | 한성대 전이·폐루프 총괄<br>모빌테크 변동조건 Asset 지원 | **제안 목표(안)**: Zero‑shot Performance Retention² ≥ 70 %, 전이 판정 일치도 ≥ 80 %, OOD 탐지 Recall ≥ 85 %, 데이터 검수 완료율 ≥ 90 %. Fallback Adaptation Recovery Rate³ 별도 산정 |
 | **4차** | 6개 공정 Twin 동결·이관, Robust Operating Envelope, Cross‑domain Benchmark, Closed‑loop RoboOps Toolchain, 운용 Guideline·표준·기술백서 | 한성대 통합·검증 총괄<br>모빌테크 최종 Asset 동결 지원 | **제안 목표(안)**: 실제 실패 재현율 ≥ 70 %, 복구 데이터 확보율 ≥ 80 %, Edge Case Coverage ≥ 80 %, 대표 Edge Case 성공률 +10 %p 이상, 제3자 절차 재현율 ≥ 90 % |
 
@@ -560,11 +560,16 @@ flowchart TB
 
 ### 라. 연차별 개발목표 요약
 
+<figure class="concept-diagram" markdown>
+![제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리의 4개년 개발 로드맵. 1차년도 기반 구축·표준화, 2차년도 Real-to-Sim·Data Engine, 3차년도 Zero-shot 평가·경량 적응·Edge/Recovery 증강, 4차년도 통합·산업 실증과 Closed-loop 환류 구조](../../assets/manufacturing-rfm-four-year-roadmap-v3.png){ width="1671" height="941" loading=lazy decoding=async }
+<figcaption markdown>4개년 개발목표와 Closed-loop RFM 환류 구조 · [원본 보기](../../assets/manufacturing-rfm-four-year-roadmap-v3.png)</figcaption>
+</figure>
+
 | 구분 | 핵심 개발목표 | 핵심 키워드 |
 |:--:|---|---|
 | **1차년도** | 기준 시스템·연계규격 확정 및 대표공정 Twin 구축 착수 | 2 Processes / Protocol / Interface / Baseline |
 | **2차년도** | Deformation·Data Engine v1 개발 및 대표공정 Twin 확장 | 4 Processes / Physics / Compiler / Data Engine |
-| **3차년도** | Zero‑shot Transfer·Edge/Recovery 검증 및 대표공정 Twin 완성 | 6 Processes / Transfer / Recovery / HILS |
+| **3차년도** | Zero‑shot Transfer 평가·경량 도메인 적응·Edge/Recovery 검증 및 대표공정 Twin 완성 | 6 Processes / Zero‑shot Evaluation / Lightweight Adaptation / Recovery / HILS |
 | **4차년도** | Closed‑loop 완주, Twin 동결·이관 및 표준화 | Freeze & Transfer / RoboOps / Benchmark / Standard |
 
 ### 마. 연차별 기술 발전 구조
@@ -591,13 +596,13 @@ flowchart TB
 ### 한눈에 보기 — 핵심 기술 · 연차별 목표 · 핵심 결과물
 
 차년도별 목표와 그 해에 내는 결과물입니다. 결과물 이름은 **2026-08-29 R&R 확정본의
-개발 목표** 그대로이며, 아래에 **기술축 관점 매트릭스**와 **세부 20건 표**가 이어집니다.
+개발 목표** 그대로이며, 아래에 **기술축 관점 매트릭스**와 **세부 21건 표**가 이어집니다.
 
 | 차년도 | 연차별 목표 | 공식 역할 | 대표 결과물 |
 |---|---|:--:|---|
 | **1차년도**<br><small>9개월 · 기준 시스템</small> | 대표 작업·실패유형을 확정하고 **Real–Sim 비교 기준**을 문서로 고정 | ① Real‑to‑Sim‑to‑Real · ② Zero-shot 평가정의 · ③ Edge Case 기초 · ④ 인터페이스 자문 | Data Factory–Physics Twin–RFM Reference Architecture<br>Domain Gap 프로토콜 v1 |
-| **2차년도**<br><small>10개월 · 증강 엔진</small> | 대표 소재 물성을 실측해 **Physics Twin을 보정**하고 **Manufacturing Deformation Engine v1 · Edge Case Compiler v1 · 수집환경** 가동 | ① Physics 개발 · ② 전이평가 기반 · ③ 데이터 수집환경 | Physics Consistency Evaluator v1<br>Edge Case Compiler v1 |
-| **3차년도**<br><small>12개월 · 전이 검증</small> | 추가 정책학습 없는 **Zero-shot 전이 여부를 판정**하고 실패 시 Fallback Adaptation을 분리 수행 | ② Zero-shot 전이판정·Fallback 분리 · ③ Edge/Recovery Dataset · ① Physics 재보정 · ④ 평가자문 | Transfer Decision Manager<br>Edge/Recovery 증강 Dataset |
+| **2차년도**<br><small>10개월 · 증강 엔진</small> | 대표 소재 물성을 실측해 **Physics Twin을 보정**하고 **Manufacturing Deformation Engine v1 · M7 Prompt·Condition Compiler v1 · Edge Case Compiler v1 · 복구 데이터 수집환경** 가동 | ① Physics 개발 · ② 전이평가 기반 · ③ 데이터 수집환경 | M7 Prompt·Condition Compiler v1<br>Demonstration & Recovery Data Engine 수집환경 v1 |
+| **3차년도**<br><small>12개월 · 전이 평가·경량 적응</small> | 추가 정책학습 없는 **Zero‑shot 성능을 먼저 평가**하고 기준 미달 시 Few‑shot·LoRA 기반 Fallback Adaptation을 별도 수행 | ② Zero‑shot 평가·경량 도메인 적응 · ③ Edge/Recovery Dataset · ① Physics 재보정 · ④ 평가자문 | Transfer Decision Manager<br>Edge/Recovery 증강 Dataset |
 | **4차년도**<br><small>12개월 · 통합·실증</small> | **Real Failure → Simulation → Recovery → RFM Retraining → Sim/HILS/Real Validation 완전 폐루프**를 완주 | ①②③ 폐루프 통합 · ④ 표준화·학술성과 | Closed‑loop RoboOps Toolchain<br>Cross-domain Physical AI Benchmark |
 
 <small>핵심 기술 — **기술축 A · Manufacturing Deformation Engine**(대표 작업의 물리 보정) ·
@@ -608,7 +613,7 @@ flowchart TB
 
 ### 핵심기술 × 연차 — 세 축이 4년에 걸쳐 어떻게 개발되는가
 
-같은 20건을 **기술축 관점**으로 다시 배열한 것입니다. 위 표가 「그 해에 무엇을 내는가」라면,
+같은 21건을 **기술축 관점**으로 다시 배열한 것입니다. 위 표가 「그 해에 무엇을 내는가」라면,
 이 표는 「그 축이 4년 동안 어떻게 자라는가」를 봅니다.
 
 | 핵심기술 | 1차 · 기준 시스템 | 2차 · 증강 엔진 | 3차 · 전이 검증 | 4차 · 표준화 |
@@ -620,7 +625,7 @@ flowchart TB
 
 <small>굵게 표시한 것이 그 축·그 해의 대표 결과물입니다. 한 결과물이 두 축에 걸치는 경우
 (Edge Case Compiler · Edge/Recovery Dataset · Validation Gate · RoboOps Toolchain)는
-**주 담당 축에 두고 다른 축에 병기**했으므로, 표 전체의 항목 수는 20건보다 많아 보입니다.
+**주 담당 축에 두고 다른 축에 병기**했으므로, 표 전체의 항목 수는 21건보다 많아 보입니다.
 
 **축 사이 선후관계** — ③ 이 관계 구조를 세워야 ② 가 무엇을 수집할지 정해지고,
 ① 이 물리를 맞춰야 3차년도 생성 데이터가 검증 대상이 됩니다.</small>
@@ -666,7 +671,7 @@ flowchart TB
 | Manufacturing Deformation Engine · Material Profile · Physics Parameter | 한성대 | 소재·계측기관 | Geometry Twin, 물성 실측 | 보정 모듈·물성값 | 접촉력 재현오차 기준 충족 |
 | Physics Consistency Evaluator · Physics Calibration Report | 한성대 | 모빌테크 | 생성 결과, 실측 | 판정기·리포트 | 비물리 검출률 기준 충족 |
 | Demonstration & Recovery Data Engine · Edge/Recovery Dataset | 한성대 | 실로봇 기관 | 시연·실패 로그 | 데이터셋 | 검수 완료율 기준 충족 |
-| Ontology·Edge Case Compiler · Multi-stage Validation Gate | 한성대 | 데이터·RFM 기관 | 실패 로그, 생성 조건 | 시나리오·품질관문 | Gate 통과 이력 재현 |
+| Ontology·Edge Case Compiler · Multi‑stage Validation Gate | 한성대 | 데이터·RFM 기관 | 실패 로그, 생성 조건 | 시나리오·5대 품질관문 | Gate 통과 이력 재현 |
 | Transfer Decision Manager · Closed‑loop RoboOps Toolchain | 한성대 | RFM·실로봇 기관 | 평가 결과 | 판정기·툴체인 | 전이 판정 일치도 기준 충족 |
 | Geometry Twin–Physics Twin Interface · Sim–HILS–실로봇 Interface | **한성대 정의**<br><small>모빌테크 합의</small> | 전 기관 | 양측 규격 | 인터페이스 규약 | 컨소시엄 승인 |
 | RFM Dataset Schema · Validation Feedback Package | **한성대 정의**<br><small>RFM·Data 기관 합의</small> | RFM·데이터 기관 | 데이터·검증 결과 | 스키마·환류 패키지 | RFM 기관 적용 확인 |
@@ -674,7 +679,7 @@ flowchart TB
 
 
 <details>
-<summary><b>차년도별 세부 결과물 20건 전체 보기</b> — <span class="rfm-nowrap">핵심 기술</span> · <span class="rfm-nowrap">연차별 목표</span> · <span class="rfm-nowrap">핵심 결과물</span> · <span class="rfm-nowrap">수행 내용</span></summary>
+<summary><b>차년도별 세부 결과물 21건 전체 보기</b> — <span class="rfm-nowrap">핵심 기술</span> · <span class="rfm-nowrap">연차별 목표</span> · <span class="rfm-nowrap">핵심 결과물</span> · <span class="rfm-nowrap">수행 내용</span></summary>
 
 <table>
   <thead><tr>
@@ -709,10 +714,10 @@ flowchart TB
     <td><small>대표 작업의 실패유형 목록 확정 · <b>Demonstration & Recovery Data Engine이 수집할 정상·실패·복구 데이터 항목 정의</b></small></td>
   </tr>
   <tr>
-    <td rowspan="5"><b>2차년도</b><br><small>10개월 · 증강 엔진<br>4.4억</small></td>
-    <td rowspan="5">물성을 실측해 가상환경에 반영하고, <b>증강 엔진 v1과 데이터 수집환경을 가동</b><br><br><small><b>연차 완료 Gate · 제안 목표(안)</b><br>물리 비정합 탐지 Recall ≥ 85 % · False Positive Rate ≤ 15 % · 접촉력 재현오차 NRMSE ≤ 20 %</small></td>
+    <td rowspan="6"><b>2차년도</b><br><small>10개월 · 증강 엔진<br>4.4억</small></td>
+    <td rowspan="6">물성을 실측해 가상환경에 반영하고, <b>증강 엔진 v1과 데이터 수집환경을 가동</b><br><br><small><b>연차 완료 Gate · 제안 목표(안)</b><br>물리 비정합 탐지 Recall ≥ 85 % · False Positive Rate ≤ 15 % · 접촉력 재현오차 NRMSE ≤ 20 %</small></td>
     <td align="center">C</td>
-    <td><b>Prompt·Condition Compiler v1</b><br><small>생성 조건 → 시뮬레이션 실행조건 변환기</small></td>
+    <td><b>M7 · Prompt·Condition Compiler v1</b><br><small>생성 조건 → 시뮬레이션 실행조건 변환기</small></td>
     <td><small>실패 가능조건 추출기 v1</small></td>
   </tr>
   <tr>
@@ -733,7 +738,12 @@ flowchart TB
   <tr>
     <td align="center">B · C</td>
     <td><b>Edge Case Compiler v1</b><br><small>경계조건 → 실행 시나리오 자동 생성</small></td>
-    <td><small>RFM 취약·경계조건을 실행 가능한 시나리오로 변환 · 시연·실패·복구 데이터 <b>수집환경 가동</b> · 실패 직전 상태 <b>Checkpoint·저장 기능 v1</b></small></td>
+    <td><small>RFM 취약·경계조건을 실행 가능한 시나리오로 변환</small></td>
+  </tr>
+  <tr>
+    <td align="center">B</td>
+    <td><b>Demonstration & Recovery Data Engine 수집환경 v1</b><br><small>실패·복구 수집 및 상태 Checkpoint 저장</small></td>
+    <td><small>원격조작 기반 정상·실패·복구 데이터 수집환경 가동 · 실패 직전 상태 <b>Checkpoint 저장기능 v1</b> 구현 · Scene–Action–State–Event 규격에 따른 데이터 축적</small></td>
   </tr>
   <tr>
     <td rowspan="5"><b>3차년도</b><br><small>12개월 · 전이 검증<br>4.8억</small></td>
@@ -744,7 +754,7 @@ flowchart TB
   </tr>
   <tr>
     <td align="center">한성대 공통기반<br><small>Quality Gate · B 주도</small></td>
-    <td><b>Multi-stage Validation Gate</b><br><small>생성 데이터 다단계 품질 관문</small></td>
+    <td><b>Multi‑stage Validation Gate</b><br><small>물리정합·재현성·안전·데이터 품질·Provenance의 5대 검수영역</small></td>
     <td><small>생성 데이터 자동 검수 기능</small></td>
   </tr>
   <tr>
@@ -833,7 +843,7 @@ flowchart TB
 | **Physics Consistency Evaluator** | 물리 비정합 데이터 탐지 **Recall ≥ 85 %**, **False Positive Rate ≤ 15 %** |
 | **Demonstration & Recovery Data** | 상태 **Checkpoint 저장**과 정상·실패·복구 데이터 수집 가능(S-A-S-E 규격) |
 
-### 3차년도 (12개월) — 전이 검증
+### 3차년도 (12개월) — <span class="rfm-nowrap">Zero‑shot 평가</span> 및 <wbr><span class="rfm-nowrap">경량 도메인 적응</span>
 
 > **목표** — **버전 관리된 Geometry·Physics Twin** 에서 RFM 취약조건과 미학습조건을 생성하고,
 > **Quality Gate 를 통과한** 정상·실패·복구·가상 데이터를 용도별로 배포하며
@@ -853,7 +863,7 @@ flowchart TB
 | **데이터 구성** | 정상 / 실패 / 복구 / 가상 생성 |
 | **데이터 용도** | 학습용 / 검증용 / 평가용 |
 | **평가군** | Zero-shot Transfer(추가 정책학습 없음) / Fallback Adaptation(Few‑shot·LoRA) / Post‑training |
-| **품질관문** | 물리정합 / 재현성 / 안전 / Provenance / RFM 유효성 |
+| **품질관문** | 물리정합 / 재현성 / 안전 / 데이터 품질 / Provenance |
 
 ### 4차년도 (12개월) — 표준화
 
@@ -1018,7 +1028,7 @@ flowchart TB
 **현재 검토안은 총 17.0억, 한성대학교 13.0억 · 모빌테크 4.0억 배분을 가정합니다.**
 5 % 의 모수와 협약 형태가 확정된 뒤 동결합니다.
 
-모빌테크는 한성대학교가 책임 수행하는 실환경–가상환경 연계형 데이터 증강 분야에서
+모빌테크는 한성대학교가 책임 수행하는 실환경–가상환경 연계형 <span class="rfm-nowrap">데이터 증강</span> 분야에서
 **Geometry Twin 구축을 지원하는 세부 수행기관**으로 배치합니다. **법적 참여형태**
 (공동연구개발기관 · 위탁연구개발기관 · 용역)는 협약기준에 따라 별도로 확정하되,
 **기술적 역할은 「한성대 책임 · 모빌테크 세부지원」으로 유지**합니다.
