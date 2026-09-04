@@ -1166,6 +1166,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+
+        제안서 주석용 출처
+
+    </span>
+  </a>
+
+</li>
+
+          <li class="md-nav__item">
   <a href="#kpi_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1199,7 +1210,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         모빌테크 지원지표 — 인수 기준
@@ -1226,7 +1237,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         연구개발비
@@ -1238,7 +1249,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         차년도별 배분 (검토안)
@@ -1303,6 +1314,10 @@
   display: block;
   max-width: 100%;
   overflow-x: auto;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 </style>
 
@@ -2869,7 +2884,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">1</td>
 <td><strong>대표 작업의 접촉력 재현오차</strong></td>
 <td><strong>≤ 20 %</strong></td>
-<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 연성체 Digital Twin의 물성 보정 공개, 동일 접촉력 NRMSE는 미공개</td>
+<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 연성체 Digital Twin의 물성 보정 공개, 동일 접촉력 NRMSE는 미공개 <sup><a href="#kpi-reference-1">[주 1]</a></sup></td>
 <td>개별 물성보정 사례는 있으나 동일 F/T 곡선 NRMSE 공개치 미확인</td>
 <td>동일한 물체·자세·속도에서 실제 힘 센서값과 가상환경값을 비교</td>
 </tr>
@@ -2877,7 +2892,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">2</td>
 <td><strong>대표 소재의 잔류변형 재현오차</strong></td>
 <td><strong>≤ 25 %</strong></td>
-<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 영상 기반 연성체 물리 보정 공개, 동일 잔류변형 정규화오차는 미공개</td>
+<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 영상 기반 연성체 물리 보정 공개, 동일 잔류변형 정규화오차는 미공개 <sup><a href="#kpi-reference-1">[주 1]</a></sup></td>
 <td>개별 연성체 시뮬레이션 중심이며 반복하중 잔류변형 공개치 미확인</td>
 <td>선정한 소재와 반복하중 조건에서 작업 전후의 실제 형상과 가상 형상을 비교</td>
 </tr>
@@ -2885,7 +2900,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">3</td>
 <td><strong>실제–가상 작업 성공률 차이</strong></td>
 <td><strong>≤ 20 %p</strong></td>
-<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 실제–가상 성공률 상관 <strong>r = 0.901~0.944</strong><br><small>상관계수로서 절대 %p 차이와는 다른 지표</small></td>
+<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 실제–가상 성공률 상관 <strong>r = 0.901~0.944</strong> <sup><a href="#kpi-reference-1">[주 1]</a></sup><br><small>상관계수로서 절대 %p 차이와는 다른 지표</small></td>
 <td>동일 초기상태·반복수로 짝지은 Sim–Real 성공률 차이 공개치 미확인</td>
 <td>같은 작업·조건에서 가상환경과 실제 로봇의 성공률 차이</td>
 </tr>
@@ -2893,7 +2908,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">4</td>
 <td><strong>주요 실패유형별 복구 데이터 확보율</strong></td>
 <td><strong>≥ 80 %</strong></td>
-<td><strong>중국·캐나다</strong> · Current Robotics·Tsinghua·Peking·Toronto — Hi-WM rollback·branching 후 실제 성공률 <strong>+37.9 %p</strong><br><small>실패유형 coverage는 미공개</small></td>
+<td><strong>중국·캐나다</strong> · Current Robotics·Tsinghua·Peking·Toronto — Hi-WM rollback·branching 후 실제 성공률 <strong>+37.9 %p</strong> <sup><a href="#kpi-reference-2">[주 2]</a></sup><br><small>실패유형 coverage는 미공개</small></td>
 <td>성공 시연 중심이며 Failure Taxonomy별 Recovery Coverage 공개치 미확인</td>
 <td>사전에 정한 주요 실패유형 중 유효한 복구 시나리오와 데이터가 확보된 비율</td>
 </tr>
@@ -2901,7 +2916,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">5</td>
 <td><strong>엣지 케이스 데이터 검수 완료율</strong></td>
 <td><strong>≥ 90 %</strong></td>
-<td><strong>중국</strong> · Shanghai AI Lab 연구팀 — SIM1의 궤적 품질 필터링 공개, 동일 검수 완료율은 미공개</td>
+<td><strong>중국</strong> · Shanghai AI Lab 연구팀 — SIM1의 궤적 품질 필터링 공개, 동일 검수 완료율은 미공개 <sup><a href="#kpi-reference-3">[주 3]</a></sup></td>
 <td>기관별 내부 검수 중심이며 생성 전체 대비 검수 완료율 공개치 미확인</td>
 <td>생성 데이터 중 검수가 완료된 비율</td>
 </tr>
@@ -2909,7 +2924,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">6</td>
 <td><strong>실제 주요 실패의 가상환경 재현율</strong></td>
 <td><strong>≥ 70 %</strong></td>
-<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 실제–가상 정책 성능 상관 <strong>r &gt; 0.9</strong><br><small>실패 재현율과는 다른 지표</small></td>
+<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 실제–가상 정책 성능 상관 <strong>r &gt; 0.9</strong> <sup><a href="#kpi-reference-1">[주 1]</a></sup><br><small>실패 재현율과는 다른 지표</small></td>
 <td>고장주입·HILS 개별 검증 중심이며 실제 실패목록 대비 재현율 공개치 미확인</td>
 <td>실제로 발생한 주요 실패를 가상환경에서 다시 만들어 낸 비율</td>
 </tr>
@@ -2917,7 +2932,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">7</td>
 <td><strong>학습하지 않은 물체·배치·물성조건 성능 유지율</strong></td>
 <td><strong>≥ 70 %</strong></td>
-<td><strong>중국</strong> · Shanghai Jiao Tong Univ.·Horizon Robotics·Style3D — SimWeaver 5개 변형 작업 Zero-shot 실물 성공률 <strong>91.30 %</strong><br><small>기준환경 대비 유지율과는 다른 지표</small></td>
+<td><strong>중국</strong> · Shanghai Jiao Tong Univ.·Horizon Robotics·Style3D — SimWeaver 5개 변형 작업 Zero-shot 실물 성공률 <strong>91.30 %</strong> <sup><a href="#kpi-reference-4">[주 4]</a></sup><br><small>기준환경 대비 유지율과는 다른 지표</small></td>
 <td>개별 Sim-to-Real 실증은 있으나 미학습 물체·배치·물성 유지율 공개치 미확인</td>
 <td>미학습 조건에서 기준환경 대비 작업성공률</td>
 </tr>
@@ -2925,15 +2940,25 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">8</td>
 <td><strong>엣지 케이스·복구 데이터 적용 후 실제 성공률 향상</strong></td>
 <td><strong>+ 10 %p 이상</strong></td>
-<td><strong>중국·캐나다</strong> · Current Robotics·Tsinghua·Peking·Toronto — Hi-WM 실제 성공률 <strong>+37.9 %p</strong><br><strong>중국</strong> · Shanghai AI Lab 연구팀 — SIM1 일반화 성능 <strong>+50 %</strong></td>
+<td><strong>중국·캐나다</strong> · Current Robotics·Tsinghua·Peking·Toronto — Hi-WM 실제 성공률 <strong>+37.9 %p</strong> <sup><a href="#kpi-reference-2">[주 2]</a></sup><br><strong>중국</strong> · Shanghai AI Lab 연구팀 — SIM1 일반화 성능 <strong>+50 %</strong> <sup><a href="#kpi-reference-3">[주 3]</a></sup></td>
 <td>Edge/Recovery 재학습 전후 동일 실물시험의 성공률 개선 공개치 미확인</td>
 <td>생성 데이터로 재학습한 모델의 실제 로봇 성공률 변화</td>
 </tr>
 </tbody>
 </table>
-<p><strong>국제 공개수준 근거:</strong> <a href="https://real2sim-eval.github.io/">Real-to-Sim Robot Policy Evaluation</a> ·
-<a href="https://hi-wm.github.io/">Hi-WM</a> · <a href="https://internrobotics.github.io/sim1.github.io/">SIM1</a> ·
-<a href="https://simweaver.github.io/">SimWeaver</a></p>
+<h3 id="_11">제안서 주석용 출처<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><a id="kpi-reference-1"></a><strong>[주 1] KPI 1·2·3·6.</strong> Zhang, Kaifeng, et al. “Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions.” <em>arXiv preprint</em> arXiv:2511.04665 (2025). <a href="https://doi.org/10.48550/arXiv.2511.04665">DOI</a> · <a href="https://arxiv.org/abs/2511.04665">arXiv</a> · <a class="nowrap" href="https://real2sim-eval.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 4.).</span></p>
+<p><a id="kpi-reference-2"></a><strong>[주 2] KPI 4·8.</strong> Li, Yaxuan, et al. “Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training.” <em>arXiv preprint</em> arXiv:2604.21741 (2026). <a href="https://doi.org/10.48550/arXiv.2604.21741">DOI</a> · <a href="https://arxiv.org/abs/2604.21741">arXiv</a> · <a class="nowrap" href="https://hi-wm.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 4.).</span></p>
+<p><a id="kpi-reference-3"></a><strong>[주 3] KPI 5·8.</strong> Zhou, Yunsong, et al. “SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds.” <em>arXiv preprint</em> arXiv:2604.08544 (2026). <a href="https://doi.org/10.48550/arXiv.2604.08544">DOI</a> · <a href="https://arxiv.org/abs/2604.08544">arXiv</a> · <a class="nowrap" href="https://internrobotics.github.io/sim1.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 4.).</span></p>
+<p><a id="kpi-reference-4"></a><strong>[주 4] KPI 7.</strong> Hu, Wenkang, et al. “SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation.” <em>arXiv preprint</em> arXiv:2606.15338 (2026). <a href="https://doi.org/10.48550/arXiv.2606.15338">DOI</a> · <a href="https://arxiv.org/abs/2606.15338">arXiv</a> · <a class="nowrap" href="https://simweaver.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 4.).</span></p>
+<div class="admonition note">
+<p class="admonition-title">국내 수준 표기의 주석 작성 기준</p>
+<p><code>공개치 미확인</code>은 <strong>국내 기술 부재를 의미하지 않습니다.</strong> 2026년 9월 4일 현재 공개 접근이
+가능한 자료에서 <span class="nowrap">본 과제와</span> 동일한 분모·시험조건·산식의 정량값을
+<span class="nowrap">확인하지 못했다는</span> 뜻입니다. 기업 내부자료와 비공개 실증결과는
+조사 범위에서 제외했으며, 제안서에는 <span class="nowrap">이 한계를</span> 함께
+주석으로 밝히고 1차년도 동일 프로토콜 기준선 실측값으로 대체합니다.</p>
+</div>
 <p><strong>6·7·8번은 새로 제안하는 지표입니다.</strong>
 6번은 실환경–가상환경 연계와 엣지 케이스 생성 능력을 직접 보여주고,
 7번은 확정 역할 ② <strong>Zero-shot Transfer</strong> 를 그대로 평가하며,
@@ -3157,7 +3182,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <p>KPI 6 은 역할 ① 과 ③ 의 공동 결과이지만 <strong>한성대학교 내부 기술 간 공동</strong>이며,
 모빌테크 공동주관을 뜻하지 않습니다.</p>
 </div>
-<h3 id="_11">모빌테크 지원지표 — 인수 기준<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_12">모빌테크 지원지표 — 인수 기준<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>모빌테크 지표는 <strong>과제 대표 KPI 가 아니라 한성대학교가 산출물을 인수하기 위한 지원지표</strong>입니다.
 목표값은 스캐너 성능·작업공간·대표 Use Case 가 확정된 뒤 컨소시엄 협의로 정합니다.</p>
 <table>
@@ -3312,7 +3337,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 값이며, 범위가 조정되면 함께 조정합니다.</p>
 <hr />
 <hr />
-<h2 id="_12">연구개발비<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_13">연구개발비<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <p><strong>현재 검토안은 총 17.0억, 한성대학교 13.0억 · 모빌테크 4.0억 배분을 가정합니다.</strong>
 5 % 의 모수와 협약 형태가 확정된 뒤 동결합니다.</p>
 <p>모빌테크는 한성대학교가 책임 수행하는 실환경–가상환경 연계형 데이터 증강 분야에서
@@ -3320,7 +3345,7 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 (공동연구개발기관 · 위탁연구개발기관 · 용역)는 협약기준에 따라 별도로 확정하되,
 <strong>기술적 역할은 「한성대 책임 · 모빌테크 세부지원」으로 유지</strong>합니다.
 아래 배분은 차년도별 1.0억 균등을 가정한 값입니다.</p>
-<h3 id="_13">차년도별 배분 (검토안)<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_14">차년도별 배분 (검토안)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
