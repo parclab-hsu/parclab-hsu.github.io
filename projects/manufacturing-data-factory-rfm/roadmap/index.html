@@ -2844,12 +2844,23 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <strong>핵심 KPI</strong> 는 과제 전체의 성능을 재는 <strong>성과 지표</strong>입니다. 값이 겹치는 항목이
 있지만 같은 지표로 인용하지 않습니다.</p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">세계 최고·국내 수준 비교의 해석 기준 — 2026-09-04 공개자료 기준</p>
+<p>8개 KPI와 <strong>분모·시험조건·산식이 모두 같은 국제 공인 순위는 없습니다.</strong> 따라서
+<code>세계 최고 공개수준</code>에는 과제 KPI와 가장 가까운 최신 공개 연구의 수치와 보유국·기관/기업을
+기재하고, 지표가 다르면 그 차이를 함께 표시했습니다. <code>연구개발 전 국내 수준</code>은 공개 확인
+범위의 수준이며, <code>공개치 미확인</code>은 국내 기술 부재가 아니라 <strong>동일 프로토콜의 비교 가능한
+정량값이 공개되지 않았음</strong>을 뜻합니다. 국내 수치는 1차년도 동일 시험조건의 기준선 실측 후
+대체·확정합니다.</p>
+</div>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">#</th>
 <th>KPI</th>
 <th>목표</th>
+<th>세계 최고 공개수준<br><small>보유국·기관/기업</small></th>
+<th>연구개발 전 국내 수준<br><small>공개 확인 기준</small></th>
 <th>측정 방법</th>
 </tr>
 </thead>
@@ -2858,52 +2869,71 @@ Geometry·Physics Twin</strong> 에서 RFM 취약조건과 미학습조건을 �
 <td style="text-align: center;">1</td>
 <td><strong>대표 작업의 접촉력 재현오차</strong></td>
 <td><strong>≤ 20 %</strong></td>
+<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 연성체 Digital Twin의 물성 보정 공개, 동일 접촉력 NRMSE는 미공개</td>
+<td>개별 물성보정 사례는 있으나 동일 F/T 곡선 NRMSE 공개치 미확인</td>
 <td>동일한 물체·자세·속도에서 실제 힘 센서값과 가상환경값을 비교</td>
 </tr>
 <tr>
 <td style="text-align: center;">2</td>
 <td><strong>대표 소재의 잔류변형 재현오차</strong></td>
 <td><strong>≤ 25 %</strong></td>
+<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 영상 기반 연성체 물리 보정 공개, 동일 잔류변형 정규화오차는 미공개</td>
+<td>개별 연성체 시뮬레이션 중심이며 반복하중 잔류변형 공개치 미확인</td>
 <td>선정한 소재와 반복하중 조건에서 작업 전후의 실제 형상과 가상 형상을 비교</td>
 </tr>
 <tr>
 <td style="text-align: center;">3</td>
 <td><strong>실제–가상 작업 성공률 차이</strong></td>
 <td><strong>≤ 20 %p</strong></td>
+<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 실제–가상 성공률 상관 <strong>r = 0.901~0.944</strong><br><small>상관계수로서 절대 %p 차이와는 다른 지표</small></td>
+<td>동일 초기상태·반복수로 짝지은 Sim–Real 성공률 차이 공개치 미확인</td>
 <td>같은 작업·조건에서 가상환경과 실제 로봇의 성공률 차이</td>
 </tr>
 <tr>
 <td style="text-align: center;">4</td>
 <td><strong>주요 실패유형별 복구 데이터 확보율</strong></td>
 <td><strong>≥ 80 %</strong></td>
+<td><strong>중국·캐나다</strong> · Current Robotics·Tsinghua·Peking·Toronto — Hi-WM rollback·branching 후 실제 성공률 <strong>+37.9 %p</strong><br><small>실패유형 coverage는 미공개</small></td>
+<td>성공 시연 중심이며 Failure Taxonomy별 Recovery Coverage 공개치 미확인</td>
 <td>사전에 정한 주요 실패유형 중 유효한 복구 시나리오와 데이터가 확보된 비율</td>
 </tr>
 <tr>
 <td style="text-align: center;">5</td>
 <td><strong>엣지 케이스 데이터 검수 완료율</strong></td>
 <td><strong>≥ 90 %</strong></td>
+<td><strong>중국</strong> · Shanghai AI Lab 연구팀 — SIM1의 궤적 품질 필터링 공개, 동일 검수 완료율은 미공개</td>
+<td>기관별 내부 검수 중심이며 생성 전체 대비 검수 완료율 공개치 미확인</td>
 <td>생성 데이터 중 검수가 완료된 비율</td>
 </tr>
 <tr>
 <td style="text-align: center;">6</td>
 <td><strong>실제 주요 실패의 가상환경 재현율</strong></td>
 <td><strong>≥ 70 %</strong></td>
+<td><strong>미국</strong> · Columbia Univ.·SceniX·Google DeepMind — 실제–가상 정책 성능 상관 <strong>r &gt; 0.9</strong><br><small>실패 재현율과는 다른 지표</small></td>
+<td>고장주입·HILS 개별 검증 중심이며 실제 실패목록 대비 재현율 공개치 미확인</td>
 <td>실제로 발생한 주요 실패를 가상환경에서 다시 만들어 낸 비율</td>
 </tr>
 <tr>
 <td style="text-align: center;">7</td>
 <td><strong>학습하지 않은 물체·배치·물성조건 성능 유지율</strong></td>
 <td><strong>≥ 70 %</strong></td>
+<td><strong>중국</strong> · Shanghai Jiao Tong Univ.·Horizon Robotics·Style3D — SimWeaver 5개 변형 작업 Zero-shot 실물 성공률 <strong>91.30 %</strong><br><small>기준환경 대비 유지율과는 다른 지표</small></td>
+<td>개별 Sim-to-Real 실증은 있으나 미학습 물체·배치·물성 유지율 공개치 미확인</td>
 <td>미학습 조건에서 기준환경 대비 작업성공률</td>
 </tr>
 <tr>
 <td style="text-align: center;">8</td>
 <td><strong>엣지 케이스·복구 데이터 적용 후 실제 성공률 향상</strong></td>
 <td><strong>+ 10 %p 이상</strong></td>
+<td><strong>중국·캐나다</strong> · Current Robotics·Tsinghua·Peking·Toronto — Hi-WM 실제 성공률 <strong>+37.9 %p</strong><br><strong>중국</strong> · Shanghai AI Lab 연구팀 — SIM1 일반화 성능 <strong>+50 %</strong></td>
+<td>Edge/Recovery 재학습 전후 동일 실물시험의 성공률 개선 공개치 미확인</td>
 <td>생성 데이터로 재학습한 모델의 실제 로봇 성공률 변화</td>
 </tr>
 </tbody>
 </table>
+<p><strong>국제 공개수준 근거:</strong> <a href="https://real2sim-eval.github.io/">Real-to-Sim Robot Policy Evaluation</a> ·
+<a href="https://hi-wm.github.io/">Hi-WM</a> · <a href="https://internrobotics.github.io/sim1.github.io/">SIM1</a> ·
+<a href="https://simweaver.github.io/">SimWeaver</a></p>
 <p><strong>6·7·8번은 새로 제안하는 지표입니다.</strong>
 6번은 실환경–가상환경 연계와 엣지 케이스 생성 능력을 직접 보여주고,
 7번은 확정 역할 ② <strong>Zero-shot Transfer</strong> 를 그대로 평가하며,
