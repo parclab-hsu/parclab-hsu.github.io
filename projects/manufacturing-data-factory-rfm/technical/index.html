@@ -25,7 +25,7 @@
     
     
       
-        <title>기술 상세 — 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리 - PARC Lab</title>
+        <title>Technical - PARC Lab</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              기술 상세 — 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리
+              Technical
             
           </span>
         </div>
@@ -990,6 +990,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Physical AI 마이크로디그리(MD) 과정 — 숙련인력 양성·선발 경로">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#md-tele-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MD 연계 Tele-operation 데이터 생산계획
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1418,6 +1435,12 @@
 
 
 
+<style>
+.nowrap {
+  white-space: nowrap;
+}
+</style>
+
 <h1 class="rfm-technical-title" id="digital-twindeformation-engine-robot-rfm">기술 상세 — 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리<a class="headerlink" href="#digital-twindeformation-engine-robot-rfm" title="Permanent link">&para;</a></h1>
 <p><span class="twemoji" style="color:#e0a800"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>컨소시엄 제안</strong> · 기술 근거·수치·운영 규약</p>
 <div class="admonition tip">
@@ -1812,8 +1835,8 @@ Ontology·Provenance</strong> 를 결합하는 것이 본 과제의 개발 범�
 </tr>
 <tr>
 <td>HSU-5. 학습데이터 생성</td>
-<td>Domain Randomization, <strong>Cosmos 생성물과 Isaac Sim Episode 의 Scene–Scenario 정합</strong>, 자동 Annotation, <strong>LeRobotDataset v3 정규화</strong>, <strong>Physical AI MD 과정</strong> 기반 Demonstration·Edge Case 수집 운영(교육 30명·5개 조 / 유급 생산 6~9명·3개 조)</td>
-<td>RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus, MD 교보재</td>
+<td>Domain Randomization, <strong>Cosmos 생성물과 Isaac Sim Episode 의 Scene–Scenario 정합</strong>, 자동 Annotation, <strong>LeRobotDataset v3 정규화</strong>, <strong>Physical AI MD 과정</strong> 기반 Demonstration·Edge Case 수집 운영(교육 연 30명 규모 / 유급 생산인력 6→12→18→6명)</td>
+<td>RFM용 Dataset·Metadata·품질 리포트, Tele-operation 4년 누적 7,000시간, Demonstration Corpus, MD 교보재</td>
 </tr>
 <tr>
 <td>HSU-6. RFM 연계</td>
@@ -2379,8 +2402,8 @@ LeRobotDataset 확장 필드도 <strong>표준 도구에서 실제로 무변환 
 <p>핵심 기능은 <strong>실패상태 저장·복원 → 복구행동 분기 → 자동검수 → 실로봇 Grounding</strong> 입니다.
 아래 Demonstration·Edge Case 수집 체계는 이 기능을 수행하는 <strong>인력·교육 경로</strong>이며,
 기술축의 명칭은 <strong>Human Data Engine</strong> 으로 통일합니다.</p>
-<p>HSU-PAC의 <strong>30명·5개 조 실습체계</strong>로 교육을 운영하고, 그 가운데 <strong>MD-3 이수자 중 선발한 유급 참여자
-6~9명(3개 조)이 과제 Dataset 생산</strong>을 담당합니다. 학생이 실제 또는 시뮬레이션 Robot을 원격 조작하고,
+<p>HSU-PAC의 <strong>연 30명 규모 실습체계</strong>로 교육을 운영하고, 그 가운데 <strong>MD-3 이수자 중 선발한 유급 참여자를
+연차별 6명→12명→18명→6명 규모로 편성하여 과제 Dataset 생산</strong>을 담당합니다. 학생이 실제 또는 시뮬레이션 Robot을 원격 조작하고,
 성공 행동뿐 아니라 경계조건·실패회피·복구 행동을 포함한 Human Demonstration을 수집합니다.</p>
 <div class="admonition tip">
 <p class="admonition-title">핵심은 수집량이 아니라 실패상태 복원입니다 (2026-08-31 범위 구체화)</p>
@@ -2396,7 +2419,7 @@ LeRobotDataset 확장 필드도 <strong>표준 도구에서 실제로 무변환 
 <strong>RFM 학습데이터 생산과 Physical AI 인력양성</strong>을 함께 수행하는 산학협력 구조입니다.</p>
 <pre class="mermaid"><code>flowchart TB
     PROTOCOL["Task·Safety Protocol&lt;br/&gt;Ontology·성공·실패·복구 기준"] --&gt; TRAINING["학생 사전교육·Calibration&lt;br/&gt;Expert Seed Demonstration"]
-    TRAINING --&gt; TELEOP["Simulation / Physical Teleoperation&lt;br/&gt;교육 30명·5개 조 / 생산 유급 3개 조"]
+    TRAINING --&gt; TELEOP["Simulation / Physical Teleoperation&lt;br/&gt;교육 연 30명 / 생산 유급 6→12→18→6명"]
     TELEOP --&gt; RECORD["Multimodal Synchronized Recording&lt;br/&gt;Observation·Action·State·Event"]
     RECORD --&gt; QC["자동 QC + 전문가 검수&lt;br/&gt;시간동기·범위·Label·재현성"]
     QC --&gt; DATASET["Demonstration Dataset&lt;br/&gt;성공·실패·복구·운영자 다양성"]
@@ -2487,6 +2510,56 @@ LeRobotDataset 확장 필드도 <strong>표준 도구에서 실제로 무변환 
 </tr>
 </tbody>
 </table>
+<h4 id="md-tele-operation">MD 연계 Tele-operation 데이터 생산계획<a class="headerlink" href="#md-tele-operation" title="Permanent link">&para;</a></h4>
+<p>총 60,000시간 데이터 구축목표 중 <strong>한성대학교 책임물량은 Tele-operation 기반 실로봇 데이터
+<span class="nowrap">7,000시간(약 11.7 %)입니다.</span></strong> MD 교과목은 표준 Protocol과 안전·품질관리 역량을 교육하고,
+실제 연구개발 Dataset은 별도 계약·동의를 체결한 MD‑3&nbsp;이수자가 유급으로 참여해 생산합니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">차년도</th>
+<th style="text-align: right;">유효 데이터 목표</th>
+<th style="text-align: right;">누적</th>
+<th style="text-align: center;">유급 참여인원</th>
+<th>교육·연구 초점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1차년도</strong></td>
+<td style="text-align: right;"><strong>1,000시간</strong></td>
+<td style="text-align: right;"><strong>1,000시간</strong></td>
+<td style="text-align: center;">6명 내외</td>
+<td>기본 조작과 안전, 수집 Protocol, 정상 및 대표 실패·복구 기준선</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2차년도</strong></td>
+<td style="text-align: right;"><strong>2,000시간</strong></td>
+<td style="text-align: right;"><strong>3,000시간</strong></td>
+<td style="text-align: center;">12명 내외</td>
+<td>다중 공정 수집, Checkpoint 연계, 작업자·전략 다양화</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3차년도</strong></td>
+<td style="text-align: right;"><strong>3,000시간</strong></td>
+<td style="text-align: right;"><strong>6,000시간</strong></td>
+<td style="text-align: center;">18명 내외</td>
+<td>RFM 취약조건, 엣지케이스·복구 집중 수집과 재수집</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4차년도</strong></td>
+<td style="text-align: right;"><strong>1,000시간</strong></td>
+<td style="text-align: right;"><strong>7,000시간</strong></td>
+<td style="text-align: center;">6명 내외</td>
+<td>Sim–HIL–실로봇 검증, 실패 피드백 기반 보강 수집</td>
+</tr>
+</tbody>
+</table>
+<p>참여인원은 <code>1인당 연 200시간</code>을 기준으로 하고 QC 반려·재수집을 고려해 20 % 여유를 둔
+<strong>운영용량 산정치</strong>입니다. 실제 편성은
+로봇·Console 가용시간과 안전담당 배치를 반영해 조정하되, 연차별 유효 데이터 목표는 유지합니다.
+유효시간은 준비·대기·정비를 제외하고 ROS 2 시간동기·필수 Metadata·QC를 통과한 Episode의
+실로봇 채널시간으로 계산하며, Simulation·자율수집과 중복 계상하지 않습니다.</p>
 <p>MD-1~2 는 <a href="../../hsu-pac/">HSU-PAC</a> 의 1~8주차, MD-3 은 9~10주차, MD-4 는 11~15주차 커리큘럼과
 대응합니다. <strong>없던 과정을 새로 만드는 것이 아니라, 이미 설계된 커리큘럼에 과제의 표준 Protocol 을
 가르치는 구조</strong>입니다.</p>
@@ -2494,7 +2567,7 @@ LeRobotDataset 확장 필드도 <strong>표준 도구에서 실제로 무변환 
 <pre class="mermaid"><code>flowchart LR
     EDU["MD 과정 수강 (30명·5개 조)&lt;br/&gt;표준 Protocol 학습"] --&gt; MD3["MD-3 이수"]
     MD3 --&gt; GATE{"지원 · 선발&lt;br/&gt;참여계약 · 동의"}
-    GATE --&gt;|선발| PAID["유급 연구참여&lt;br/&gt;6~9명 · 3개 조"]
+    GATE --&gt;|선발| PAID["유급 연구참여&lt;br/&gt;연차별 6→12→18→6명"]
     GATE --&gt;|미선발| EDUONLY["교과 실습 계속&lt;br/&gt;산출물은 익명 통계로만"]
     PAID --&gt; COLLECT["데이터 생산&lt;br/&gt;Demonstration · Edge Case · 태깅"]
     COLLECT --&gt; QC["자동 QC + 전문가 검수"]
@@ -2549,8 +2622,8 @@ LeRobotDataset 확장 필드도 <strong>표준 도구에서 실제로 무변환 
 <tbody>
 <tr>
 <td>대상</td>
-<td>MD 과정 수강생 <strong>30명 · 5개 조</strong></td>
-<td><strong>MD-3 이수자 중 선발 6~9명 · 3개 조</strong></td>
+<td>MD 과정 수강생 <strong>연 30명 규모</strong></td>
+<td><strong>MD-3 이수자 중 선발 6→12→18→6명</strong></td>
 </tr>
 <tr>
 <td>데이터</td>
@@ -2595,8 +2668,8 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 </tr>
 <tr>
 <td>유급 연구참여 전환</td>
-<td>MD-3 이수자 중 연구참여 선발 비율</td>
-<td>기수당 <strong>20~30 %</strong></td>
+<td>MD-3 이수자 중 연구참여 선발 인원</td>
+<td>연차별 <strong>6명→12명→18명→6명</strong></td>
 </tr>
 <tr>
 <td>1인당 유효 Episode</td>
@@ -2709,8 +2782,9 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 </tr>
 </tbody>
 </table>
-<p>최종 수집량은 Use Case와 Robot별 Cycle Time을 실측한 뒤 확정합니다. 제안 단계에서는 단순 시간
-목표보다 <strong>QC를 통과한 Episode 수, Edge Case·Recovery Coverage, 작업자 다양성</strong>을 핵심 KPI로 둡니다.</p>
+<p>한성대학교의 4년 책임물량은 <strong>QC를 통과한 유효 실로봇 채널시간 7,000시간</strong>으로 고정합니다. Use Case와
+Robot별 Cycle Time을 실측한 뒤에는 이 총량 안에서 공정·로봇별 배분과 Episode 목표를 조정하며,
+시간 KPI와 함께 <strong>QC 통과 Episode 수, Edge Case·Recovery Coverage, 작업자 다양성</strong>을 관리합니다.</p>
 <h3 id="_11">교과 실습과 연구참여는 분리합니다<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>30명 전원을 연구인력으로 간주하지 않습니다. <strong>교과 실습</strong>과 <strong>유급 연구참여</strong>는 근거·대가·데이터
 활용범위가 다르므로 처음부터 두 트랙으로 나눕니다.</p>
@@ -2913,7 +2987,8 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 검색된 사건을 동일 Digital Twin에서 재생하고 조건을 변화시켜 추가 학습데이터로 확장할 수 있습니다.</p>
 <h3 id="edge-case_1">학생이 Edge Case 파이프라인에서 하는 일<a class="headerlink" href="#edge-case_1" title="Permanent link">&para;</a></h3>
 <p>Edge Case 추출을 "자동화했다"고만 쓰면 실제로 누가 판단하는지가 비게 됩니다. 본 제안에서
-<strong>Human-in-the-loop의 실체는 유급 참여 학생 3개 조</strong>이며, 전문가는 최종 확정만 맡습니다.</p>
+<strong>Human-in-the-loop의 실체는 연차별 목표물량에 맞춰 편성한 유급 참여 학생 풀</strong>이며,
+전문가는 최종 확정만 맡습니다.</p>
 <table>
 <thead>
 <tr>
@@ -3196,17 +3271,24 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 </tr>
 <tr>
 <td><strong>학생 Data</strong></td>
+<td><strong>Tele-operation 유효 데이터시간</strong></td>
+<td>ROS 2 시간동기·필수 Metadata·QC를 통과한 실로봇 Episode 채널시간 합계</td>
+<td><strong>1,000→2,000→3,000→1,000시간<br>4년 누적 7,000시간</strong></td>
+<td>전체 60,000시간 중 한성대 책임물량. 준비·대기·정비 및 중복 Episode 제외</td>
+</tr>
+<tr>
+<td><strong>학생 Data</strong></td>
 <td><strong>유효 Demonstration</strong></td>
 <td>QC 통과 Episode 수, 작업자 다양성, 조별 Coverage</td>
 <td>조·Task별 <strong>균등 분포 유지</strong></td>
-<td><strong>유급 참여 6~9명·3개 조</strong>가 Dataset 생산 담당</td>
+<td>연차별 유급 참여 풀 6→12→18→6명이 Dataset 생산 담당</td>
 </tr>
 <tr>
 <td><strong>학생 Data</strong></td>
 <td><strong>Edge Case 검수 처리량</strong></td>
 <td>자동 후보 대비 학생이 재생 확인·판정한 비율 (월별 후보 건수 ÷ 유급 참여자 처리용량으로 검증)</td>
 <td><strong>≥ 90 %</strong></td>
-<td>유급 3개 조 순환. 후보 유입이 처리용량을 넘으면 목표를 낮추고 우선순위 큐로 운영</td>
+<td>연차별 참여 풀을 순환 운영. 후보 유입이 처리용량을 넘으면 우선순위 큐로 운영</td>
 </tr>
 <tr>
 <td><strong>학생 Data</strong></td>
@@ -3231,9 +3313,9 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 </tr>
 <tr>
 <td><strong>인력양성</strong></td>
-<td><strong>유급 연구참여 전환율</strong></td>
-<td>MD-3 이수자 중 연구참여 선발 비율</td>
-<td>기수당 <strong>20~30 %</strong></td>
+<td><strong>유급 연구참여 인원</strong></td>
+<td>MD-3 이수자 중 별도 계약·동의를 거쳐 선발된 인원</td>
+<td>연차별 <strong>6→12→18→6명</strong></td>
 <td>숙련자만 Dataset 편입 데이터를 만든다</td>
 </tr>
 <tr>
@@ -3773,7 +3855,7 @@ Model·Robot Interface를 가져와 본 실증에 들어가기 전 사전 통합
 </tr>
 <tr>
 <td>인력 운영</td>
-<td>교육 30명·5개 조 / <strong>Dataset 생산 유급 6~9명·3개 조</strong>, 계정·Quota·권한 분리, 예약제</td>
+<td>교육 연 30명 규모 / <strong>Dataset 생산 유급 6→12→18→6명</strong>, 계정·Quota·권한 분리, 예약제</td>
 </tr>
 </tbody>
 </table>

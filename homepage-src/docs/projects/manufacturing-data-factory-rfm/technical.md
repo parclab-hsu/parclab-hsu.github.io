@@ -2,6 +2,12 @@
 noindex: true
 ---
 
+<style>
+.nowrap {
+  white-space: nowrap;
+}
+</style>
+
 # 기술 상세 — 제조환경 Digital Twin·Deformation Engine 기반 Robot RFM 데이터팩토리 {.rfm-technical-title}
 
 :material-circle-outline:{ style="color:#e0a800" } **컨소시엄 제안** · 기술 근거·수치·운영 규약
@@ -201,7 +207,7 @@ flowchart TB
 | **HSU-2. Deformation Engine** | **[대표 성과]** 물성 Profile, 접촉·변형·누적상태 모델과 파라미터 보정, 실계측 기반 검증 | **Manufacturing Deformation Engine**, Material Library, Calibration Tool, 검증 리포트 |
 | HSU-3. 제조 로봇 시뮬레이션 | Isaac Sim·ROS 2 기반 Robot·Sensor·Task·Scenario 구성 | Simulation Package, Scenario Library |
 | HSU-4. Ontology·Edge Case | 제조 자산·공정·상태·이벤트·실패·복구 Ontology와 Edge Case 후보 추출, **희소조합을 생성 조건으로 변환(Cosmos 조준)**, 학생 1차 검수 체계 운영 | Manufacturing Ontology, Knowledge Graph, Edge Case Extractor, **생성 조건 명세** |
-| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim Episode 의 Scene–Scenario 정합**, 자동 Annotation, **LeRobotDataset v3 정규화**, **Physical AI MD 과정** 기반 Demonstration·Edge Case 수집 운영(교육 30명·5개 조 / 유급 생산 6~9명·3개 조) | RFM용 Dataset·Metadata·품질 리포트, Demonstration Corpus, MD 교보재 |
+| HSU-5. 학습데이터 생성 | Domain Randomization, **Cosmos 생성물과 Isaac Sim Episode 의 Scene–Scenario 정합**, 자동 Annotation, **LeRobotDataset v3 정규화**, **Physical AI MD 과정** 기반 Demonstration·Edge Case 수집 운영(교육 연 30명 규모 / 유급 생산인력 6→12→18→6명) | RFM용 Dataset·Metadata·품질 리포트, Tele-operation 4년 누적 7,000시간, Demonstration Corpus, MD 교보재 |
 | HSU-6. RFM 연계 | RFM 기관과 Observation·Action·Task·Model Interface 및 평가기준 협의, **LeRobotDataset 확장 필드 규약 정의** | RFM Adapter, Benchmark·Evaluation Protocol, **Dataset 규약서** |
 | HSU-7. 공동 Testbed·Physical Validation | HSU-PAC 참여기업 공동활용, 실제 Robot HW 적용, Domain Gap 분석 | 사전 통합환경, Sim-to-Real 검증결과, Feedback Data |
 
@@ -479,8 +485,8 @@ RFM 기관이 매번 변환기를 만들어야 합니다. **모든 출처를 LeR
 아래 Demonstration·Edge Case 수집 체계는 이 기능을 수행하는 **인력·교육 경로**이며,
 기술축의 명칭은 **Human Data Engine** 으로 통일합니다.
 
-HSU-PAC의 **30명·5개 조 실습체계**로 교육을 운영하고, 그 가운데 **MD-3 이수자 중 선발한 유급 참여자
-6~9명(3개 조)이 과제 Dataset 생산**을 담당합니다. 학생이 실제 또는 시뮬레이션 Robot을 원격 조작하고,
+HSU-PAC의 **연 30명 규모 실습체계**로 교육을 운영하고, 그 가운데 **MD-3 이수자 중 선발한 유급 참여자를
+연차별 6명→12명→18명→6명 규모로 편성하여 과제 Dataset 생산**을 담당합니다. 학생이 실제 또는 시뮬레이션 Robot을 원격 조작하고,
 성공 행동뿐 아니라 경계조건·실패회피·복구 행동을 포함한 Human Demonstration을 수집합니다.
 
 !!! tip "핵심은 수집량이 아니라 실패상태 복원입니다 (2026-08-31 범위 구체화)"
@@ -499,7 +505,7 @@ HSU-PAC의 **30명·5개 조 실습체계**로 교육을 운영하고, 그 가�
 ```mermaid
 flowchart TB
     PROTOCOL["Task·Safety Protocol<br/>Ontology·성공·실패·복구 기준"] --> TRAINING["학생 사전교육·Calibration<br/>Expert Seed Demonstration"]
-    TRAINING --> TELEOP["Simulation / Physical Teleoperation<br/>교육 30명·5개 조 / 생산 유급 3개 조"]
+    TRAINING --> TELEOP["Simulation / Physical Teleoperation<br/>교육 연 30명 / 생산 유급 6→12→18→6명"]
     TELEOP --> RECORD["Multimodal Synchronized Recording<br/>Observation·Action·State·Event"]
     RECORD --> QC["자동 QC + 전문가 검수<br/>시간동기·범위·Label·재현성"]
     QC --> DATASET["Demonstration Dataset<br/>성공·실패·복구·운영자 다양성"]
@@ -538,6 +544,25 @@ flowchart TB
 | **MD-3** Robot Learning Data | **LeRobot·모방학습**, Teleoperation, 자동 QC, **Ontology 태깅** | Demonstration·Edge Case 검수·태깅 **실습** — 유급 참여 자격 요건 | HSU-4 · HSU-5 |
 | **MD-4** RFM·Sim-to-Real | VLM/VLA·RFM 구조, 정책 이전, 평가, 캡스톤 | **Benchmark 실행 결과 · Domain Gap 측정 · 실패 사례 보고** | HSU-6 · HSU-7 |
 
+#### MD 연계 Tele-operation 데이터 생산계획
+
+총 60,000시간 데이터 구축목표 중 **한성대학교 책임물량은 Tele-operation 기반 실로봇 데이터
+<span class="nowrap">7,000시간(약 11.7 %)입니다.</span>** MD 교과목은 표준 Protocol과 안전·품질관리 역량을 교육하고,
+실제 연구개발 Dataset은 별도 계약·동의를 체결한 MD‑3&nbsp;이수자가 유급으로 참여해 생산합니다.
+
+| 차년도 | 유효 데이터 목표 | 누적 | 유급 참여인원 | 교육·연구 초점 |
+|:--:|--:|--:|:--:|---|
+| **1차년도** | **1,000시간** | **1,000시간** | 6명 내외 | 기본 조작과 안전, 수집 Protocol, 정상 및 대표 실패·복구 기준선 |
+| **2차년도** | **2,000시간** | **3,000시간** | 12명 내외 | 다중 공정 수집, Checkpoint 연계, 작업자·전략 다양화 |
+| **3차년도** | **3,000시간** | **6,000시간** | 18명 내외 | RFM 취약조건, 엣지케이스·복구 집중 수집과 재수집 |
+| **4차년도** | **1,000시간** | **7,000시간** | 6명 내외 | Sim–HIL–실로봇 검증, 실패 피드백 기반 보강 수집 |
+
+참여인원은 `1인당 연 200시간`을 기준으로 하고 QC 반려·재수집을 고려해 20 % 여유를 둔
+**운영용량 산정치**입니다. 실제 편성은
+로봇·Console 가용시간과 안전담당 배치를 반영해 조정하되, 연차별 유효 데이터 목표는 유지합니다.
+유효시간은 준비·대기·정비를 제외하고 ROS 2 시간동기·필수 Metadata·QC를 통과한 Episode의
+실로봇 채널시간으로 계산하며, Simulation·자율수집과 중복 계상하지 않습니다.
+
 MD-1~2 는 [HSU-PAC](../hsu-pac.md) 의 1~8주차, MD-3 은 9~10주차, MD-4 는 11~15주차 커리큘럼과
 대응합니다. **없던 과정을 새로 만드는 것이 아니라, 이미 설계된 커리큘럼에 과제의 표준 Protocol 을
 가르치는 구조**입니다.
@@ -548,7 +573,7 @@ MD-1~2 는 [HSU-PAC](../hsu-pac.md) 의 1~8주차, MD-3 은 9~10주차, MD-4 는
 flowchart LR
     EDU["MD 과정 수강 (30명·5개 조)<br/>표준 Protocol 학습"] --> MD3["MD-3 이수"]
     MD3 --> GATE{"지원 · 선발<br/>참여계약 · 동의"}
-    GATE -->|선발| PAID["유급 연구참여<br/>6~9명 · 3개 조"]
+    GATE -->|선발| PAID["유급 연구참여<br/>연차별 6→12→18→6명"]
     GATE -->|미선발| EDUONLY["교과 실습 계속<br/>산출물은 익명 통계로만"]
     PAID --> COLLECT["데이터 생산<br/>Demonstration · Edge Case · 태깅"]
     COLLECT --> QC["자동 QC + 전문가 검수"]
@@ -581,7 +606,7 @@ flowchart LR
 
 | | 교과 실습 트랙 | 유급 연구참여 트랙 |
 |---|---|---|
-| 대상 | MD 과정 수강생 **30명 · 5개 조** | **MD-3 이수자 중 선발 6~9명 · 3개 조** |
+| 대상 | MD 과정 수강생 **연 30명 규모** | **MD-3 이수자 중 선발 6→12→18→6명** |
 | 데이터 | 실습 산출물 (동의 시 익명 통계) | 연구개발 Dataset 편입 |
 | 기간 | 학기 단위 | 학기 넘어 연속 |
 | 역할 | 6인 역할 순환 경험 | **숙련 Operator · Quality Reviewer 로 고정 배치** |
@@ -598,7 +623,7 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 |---|---|---|
 | MD 과정 이수자 | 모듈별 이수 인원 (연간) | **연 30명 규모 유지** |
 | 6개 역할 순환 이수율 | 6개 역할을 모두 경험한 비율 | 학기당 **≥ 80 %** |
-| 유급 연구참여 전환 | MD-3 이수자 중 연구참여 선발 비율 | 기수당 **20~30 %** |
+| 유급 연구참여 전환 | MD-3 이수자 중 연구참여 선발 인원 | 연차별 **6명→12명→18명→6명** |
 | 1인당 유효 Episode | QC 통과 Episode ÷ 참여 학생 수 | 기수 간 **증가 추세** |
 | 숙련도 곡선 | 기수·개인별 QC 통과율 변화 | **후반 기수일수록 상승** |
 | 캡스톤 성과 연계 | 과제 Use Case 를 다룬 캡스톤 수 | 학기당 **2건 이상** |
@@ -636,8 +661,9 @@ Dataset 에 들어가는 데이터를 만들게 하는 것이며, 데이터 품�
 | 연구윤리 | 참여 동의·철회 절차, 학업과 분리된 자발적 참여, 인건비 지급기준 준수, 사람 대상 데이터 수집에 해당하는 범위는 IRB 심의 여부를 사전 확인 |
 | 평가 | 유효 Demonstration 시간, QC 통과율, 성공/실패/복구 Coverage, 작업자 간 분산, 재현 성공률 |
 
-최종 수집량은 Use Case와 Robot별 Cycle Time을 실측한 뒤 확정합니다. 제안 단계에서는 단순 시간
-목표보다 **QC를 통과한 Episode 수, Edge Case·Recovery Coverage, 작업자 다양성**을 핵심 KPI로 둡니다.
+한성대학교의 4년 책임물량은 **QC를 통과한 유효 실로봇 채널시간 7,000시간**으로 고정합니다. Use Case와
+Robot별 Cycle Time을 실측한 뒤에는 이 총량 안에서 공정·로봇별 배분과 Episode 목표를 조정하며,
+시간 KPI와 함께 **QC 통과 Episode 수, Edge Case·Recovery Coverage, 작업자 다양성**을 관리합니다.
 
 ### 교과 실습과 연구참여는 분리합니다
 
@@ -727,7 +753,8 @@ Edge Case Package에는 `EdgeCase ID`, 제조 Context, Trigger 전·후 시계�
 ### 학생이 Edge Case 파이프라인에서 하는 일
 
 Edge Case 추출을 "자동화했다"고만 쓰면 실제로 누가 판단하는지가 비게 됩니다. 본 제안에서
-**Human-in-the-loop의 실체는 유급 참여 학생 3개 조**이며, 전문가는 최종 확정만 맡습니다.
+**Human-in-the-loop의 실체는 연차별 목표물량에 맞춰 편성한 유급 참여 학생 풀**이며,
+전문가는 최종 확정만 맡습니다.
 
 | 단계 | 담당 | 구체적인 작업 |
 |---|---|---|
@@ -826,12 +853,13 @@ Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감�
 | Edge Case | Recovery Coverage | 실패유형 대비 복구 Episode 보유 비율 | **≥ 80 %** | 실패–복구 쌍 수집 Protocol 적용 |
 | Model | Sim-to-Real Gap | 동일 Task의 시뮬레이션–실물 성공률 차 | **≤ 20 %p** | 합성 사전학습 + 소량 실데이터 Fine-tuning 전략 |
 | Model | 합성데이터 기여도 | 합성 사전학습 유무에 따른 **ΔmAP(인식) · Δ성공률(조작)** — 동일 평가 Dataset·동일 학습예산 조건 | **ΔmAP ≥ +5 %p 또는 Δ성공률 ≥ +5 %p** | OmniLRS 문헌 보고값(Instance Segmentation AP 약 14%) 참고. 자체 재현시험으로 기준선 확정 |
-| **학생 Data** | **유효 Demonstration** | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | **유급 참여 6~9명·3개 조**가 Dataset 생산 담당 |
-| **학생 Data** | **Edge Case 검수 처리량** | 자동 후보 대비 학생이 재생 확인·판정한 비율 (월별 후보 건수 ÷ 유급 참여자 처리용량으로 검증) | **≥ 90 %** | 유급 3개 조 순환. 후보 유입이 처리용량을 넘으면 목표를 낮추고 우선순위 큐로 운영 |
+| **학생 Data** | **Tele-operation 유효 데이터시간** | ROS 2 시간동기·필수 Metadata·QC를 통과한 실로봇 Episode 채널시간 합계 | **1,000→2,000→3,000→1,000시간<br>4년 누적 7,000시간** | 전체 60,000시간 중 한성대 책임물량. 준비·대기·정비 및 중복 Episode 제외 |
+| **학생 Data** | **유효 Demonstration** | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | 연차별 유급 참여 풀 6→12→18→6명이 Dataset 생산 담당 |
+| **학생 Data** | **Edge Case 검수 처리량** | 자동 후보 대비 학생이 재생 확인·판정한 비율 (월별 후보 건수 ÷ 유급 참여자 처리용량으로 검증) | **≥ 90 %** | 연차별 참여 풀을 순환 운영. 후보 유입이 처리용량을 넘으면 우선순위 큐로 운영 |
 | **학생 Data** | **학생 신고 기여도** | 전체 확정 Edge Case 중 학생 flag 에서 출발한 비율 | **추세 관리** | 자동 점수화가 놓치는 사건의 포착률 지표 |
 | **학생 Data** | **역할 순환 이수율** | 6개 역할을 모두 경험한 학생 비율 | 학기당 **≥ 80 %** | 인력양성 성과 지표 |
 | **인력양성** | **MD 과정 이수자** | Physical AI 마이크로디그리 모듈별 이수 인원 | 연 **30명 규모 유지** | HSU-PAC 30명·5개 조 실습체계 |
-| **인력양성** | **유급 연구참여 전환율** | MD-3 이수자 중 연구참여 선발 비율 | 기수당 **20~30 %** | 숙련자만 Dataset 편입 데이터를 만든다 |
+| **인력양성** | **유급 연구참여 인원** | MD-3 이수자 중 별도 계약·동의를 거쳐 선발된 인원 | 연차별 **6→12→18→6명** | 숙련자만 Dataset 편입 데이터를 만든다 |
 | **인력양성** | **1인당 유효 Episode** | QC 통과 Episode ÷ 참여 학생 수 | 기수 간 **증가 추세** | 숙련도 곡선 확인용 |
 | 운영 | 공동활용 성과 | 참여기업 수, Asset 재사용률, Onboarding 소요, 검증 Turnaround | 분기 단위 추세관리 | HSU-PAC Shared Testbed 운영 |
 
@@ -1049,7 +1077,7 @@ Model·Robot Interface를 가져와 본 실증에 들어가기 전 사전 통합
 |---|---|
 | 소프트웨어 | Isaac Sim · Isaac Lab · ROS 2 · PyTorch · LeRobot · Docker/NVIDIA Container Toolkit · Slurm · MLflow/W&B · DCGM/Prometheus/Grafana |
 | 실물 실증공간 | Mobile Robot Arena, Robot Manipulation Cell(협동로봇·F/T), Sensor & Perception Studio(RGB-D·LiDAR·캘리브레이션), Wearable·HRI, Maker 공간 |
-| 인력 운영 | 교육 30명·5개 조 / **Dataset 생산 유급 6~9명·3개 조**, 계정·Quota·권한 분리, 예약제 |
+| 인력 운영 | 교육 연 30명 규모 / **Dataset 생산 유급 6→12→18→6명**, 계정·Quota·권한 분리, 예약제 |
 
 !!! warning "GPU 메모리 합산은 그대로 쓸 수 있는 용량이 아니다"
     GPU 여러 장의 메모리를 더한 값은 **단일 모델이 곧바로 쓸 수 있는 용량이 아닙니다.** 그 용량을

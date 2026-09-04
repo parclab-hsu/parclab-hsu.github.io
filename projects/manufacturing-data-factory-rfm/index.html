@@ -981,6 +981,9 @@
   word-break: keep-all;
   overflow-wrap: normal;
 }
+.nowrap {
+  white-space: nowrap;
+}
 @media screen and (max-width: 29.99rem) {
   .md-typeset h1 {
     font-size: 1.45rem;
@@ -1702,8 +1705,9 @@ flowchart TB
 <strong>협약 시 확정된 성과지표</strong>로 관리합니다.</p>
 <hr />
 <h2 id="7">7. 수행인력과 교육체계<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
-<p>데이터 생산 인력은 <strong>Physical AI 마이크로디그리(MD) 과정</strong>에서 공급합니다. 교육과 데이터
-생산을 한 체계 안에 두어, 검수 기준을 아는 인력이 데이터를 만들도록 합니다.</p>
+<p>총 60,000시간 데이터 구축목표 중 한성대학교의 책임물량은 <strong>Tele-operation 실로봇 데이터
+<span class="nowrap">7,000시간(약 11.7 %)입니다.</span></strong> 데이터 생산 인력은
+<strong>Physical AI MD 교육과정을 통해</strong> 양성하여, 조작·안전·검수 기준을 아는 인력이 데이터를 만들도록 합니다.</p>
 <table>
 <thead>
 <tr>
@@ -1715,17 +1719,40 @@ flowchart TB
 <tbody>
 <tr>
 <td><strong>교과 실습</strong></td>
-<td>MD 과정 수강생 30명 · 5개 조</td>
-<td>표준 Protocol 학습, 실습 데이터 생성</td>
+<td>MD 과정 수강생 연 30명 규모</td>
+<td>표준 Protocol·ROS 2·LeRobot·안전·QC 학습, 실습 데이터 생성</td>
 </tr>
 <tr>
 <td><strong>유급 연구참여</strong></td>
-<td>MD-3 이수자 중 선발 6~9명 · 3개 조</td>
+<td>MD-3 이수자 중 연차별 선발 6→12→18→6명</td>
 <td>과제 Dataset 생산, 복구 시연, 1차 검수</td>
 </tr>
 </tbody>
 </table>
-<p>연구개발 Dataset 에 편입되는 데이터는 별도 계약·동의를 거친 유급 참여자가 생산합니다.
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th style="text-align: right;">1차</th>
+<th style="text-align: right;">2차</th>
+<th style="text-align: right;">3차</th>
+<th style="text-align: right;">4차</th>
+<th style="text-align: right;">누계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>원격조작 데이터</strong></td>
+<td style="text-align: right;"><strong>1,000시간</strong></td>
+<td style="text-align: right;"><strong>2,000시간</strong></td>
+<td style="text-align: right;"><strong>3,000시간</strong></td>
+<td style="text-align: right;"><strong>1,000시간</strong></td>
+<td style="text-align: right;"><strong>7,000시간</strong></td>
+</tr>
+</tbody>
+</table>
+<p>연구개발 Dataset 에 편입되는 데이터는 별도 계약·동의를 거친 유급 참여자가 생산하며,
+준비시간, 대기시간과 정비시간을 제외하고 Quality Gate를 통과한 실로봇 Episode 채널시간만 계상합니다.
 과정 구성과 운영 절차는 <strong><a href="technical/">기술 상세</a></strong> 에 있습니다.</p>
 <p>이 체계는 기술축 B · Human Data Engine 의 <strong>수행 인력 경로</strong>이며, 기술축 자체의 명칭은
 <strong>Human Data Engine</strong> 으로 통일합니다.</p>
