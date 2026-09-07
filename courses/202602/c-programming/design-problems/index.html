@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -351,6 +351,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 과제와 제출 예시
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../references/" class="md-nav__link">
         
   
@@ -418,10 +445,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -439,8 +466,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -899,10 +926,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked="">
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
             
   
   
@@ -920,8 +947,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1345,10 +1372,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
             
   
   
@@ -1366,8 +1393,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1773,42 +1800,42 @@ AI 시대 개발의 핵심은 <em>타이핑</em>이 아니라 <strong>무엇을�
 <li><strong>요구</strong>: <code>(시각, 거리)</code> 기록 배열에서 최소·최대·평균과 "위험(15cm 미만)" 횟수 출력.</li>
 <li><strong>설계</strong>: <code>struct Reading</code> 의 배열, 통계를 포인터 매개변수로 <strong>다중 반환</strong>하는 <code>analyze()</code>.</li>
 <li><strong>AI 협업</strong>: "최소/최대/평균을 한 번에 반환하는 시그니처 2가지(반환 구조체 vs 포인터 매개변수) 비교."</li>
-<li>참고 예제 <code>ex15_sensor_log.c</code></li>
+<li>참고 예제 — <a href="../code/c/examples/ex10_array_stats.c"><code>ex10_array_stats.c</code></a> (합계·평균·최대·최소) · <a href="../code/c/examples/ex13_pointer_applications.c"><code>ex13_pointer_applications.c</code></a> (포인터 매개변수로 min·max·avg 한 번에 돌려받기)</li>
 </ul>
 <h3 id="2">설계 2 · 시리얼 명령 인터프리터 ⭐⭐<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>요구</strong>: <code>"f s l r"</code> 명령 문자열 → 동작 실행, 미등록 문자는 무시.</li>
 <li><strong>설계</strong>: <code>{char key; void(*fn)(void);}</code> <strong>디스패치 테이블</strong> — 새 명령은 표에 한 줄.</li>
 <li><strong>AI 협업</strong>: "함수 포인터 테이블 vs 긴 switch 유지보수성 비교." 결정은 내가.</li>
-<li>참고 예제 <code>ex09_dispatch.c</code></li>
+<li>참고 예제 — <a href="../code/c/examples/ex13_function_pointer_menu.c"><code>ex13_function_pointer_menu.c</code></a> (함수 포인터 배열 메뉴) · <a href="../code/arduino/"><code>13_pointer_dispatch.ino</code></a> (보드에서 명령 문자 → 함수)</li>
 </ul>
 <h3 id="3">설계 3 · 통신 패킷 파서/빌더 ⭐⭐⭐<a class="headerlink" href="#3" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>요구</strong>: <code>"S,42.0,25.0,RUN"</code> ↔ <code>SensorPacket</code> 구조체 <strong>양방향</strong> 변환, 틀린 줄은 버림(견고성).</li>
 <li><strong>설계</strong>: <code>parse(line,*out)→성공여부</code>, <code>build(*pkt,buf,n)</code>. <code>'\0'</code> 종료·버퍼 크기 주의.</li>
 <li><strong>AI 협업</strong>: "이 파서가 깨질 입력 5가지(빈 줄·필드 부족·너무 긴 상태문자열 등)를 만들어줘." → 방어코드.</li>
-<li>참고 예제 <code>ex12_strings.c</code></li>
+<li>참고 예제 — <a href="../code/c/examples/packet_parser.c"><code>packet_parser.c</code></a> (<code>"S,42.0,25.0,RUN"</code> 파싱) · <a href="../code/c/examples/ex14_struct_packet_list.c"><code>ex14_struct_packet_list.c</code></a> (구조체 ↔ 문자열 양방향)</li>
 </ul>
 <h3 id="4">설계 4 · 점유격자 맵 + 가까운 장애물 ⭐⭐⭐<a class="headerlink" href="#4" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>요구</strong>: 8×12 격자에 장애물, 출력 + "각 열에서 가장 가까운 장애물 행" 구하기.</li>
 <li><strong>설계</strong>: <code>int grid[8][12]</code> — 함수 인자엔 <strong>열 크기 명시</strong>. 열별 스캔 함수.</li>
 <li><strong>AI 협업</strong>: "2차원 배열을 함수 인자로 넘기는 올바른 선언과, 내 선언이 왜 틀렸는지."</li>
-<li>참고 예제 <code>ex08_grid2d.c</code></li>
+<li>참고 예제 — <a href="../code/c/examples/ex11_2d_grid_search.c"><code>ex11_2d_grid_search.c</code></a> (8×12 격자와 탐색)</li>
 </ul>
 <h3 id="5">설계 5 · 자율주행 미니 상태머신 ⭐⭐<a class="headerlink" href="#5" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>요구</strong>: 거리 시퀀스 → <code>STOP/SLOW/RUN/AVOID</code> 전이 추적 + 상태별 횟수 집계.</li>
 <li><strong>설계</strong>: <code>enum</code> 상태 + <code>next_state(거리)</code> + 상태별 카운트 배열.</li>
 <li><strong>AI 협업</strong>: "경계값(8·15·30cm)에서 헷갈리는 경우를 표로." 표 보고 <code>&lt;</code>/<code>&lt;=</code> 결정.</li>
-<li>참고 예제 <code>ex11_state_enum.c</code></li>
+<li>참고 예제 — <a href="../code/ros2/stella_n2_bridge/"><code>scan_logic.c</code></a> (<code>DriveAction</code> enum 으로 상태 반환) · <a href="../code/arduino/"><code>05_showface.ino</code></a> (거리 → 상태 → LED 표정)</li>
 </ul>
 <h3 id="6_1">설계 6 · 센서 필터 파이프라인 ⭐⭐⭐<a class="headerlink" href="#6_1" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>요구</strong>: 잡음 거리 배열 → ①이동평균 ②이상치 제거 ③정렬 후 중앙값.</li>
 <li><strong>설계</strong>: 단계별 독립 함수 3개(배열·길이→출력), 포인터로 전달.</li>
 <li><strong>AI 협업</strong>: "3단계를 독립 함수로 나눈 시그니처 제안 + 단계 사이 데이터 흐름도."</li>
-<li>참고 예제 <code>ex04_movavg.c</code> · <code>ex14_sort_search.c</code></li>
+<li>참고 예제 — <a href="../code/c/examples/ex10_array_stats.c"><code>ex10_array_stats.c</code></a> (이동평균·선택정렬) · <a href="../code/c/examples/ex11_2d_grid_search.c"><code>ex11_2d_grid_search.c</code></a> (순차탐색·이진탐색)</li>
 </ul>
 <hr>
 <h2 id="_2">제출물<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -1914,7 +1941,7 @@ AI 활용 원칙은 <a href="../ai-literacy/">AI 활용 가이드</a> 참고.</p
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   

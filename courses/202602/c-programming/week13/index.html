@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -351,6 +351,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 과제와 제출 예시
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../references/" class="md-nav__link">
         
   
@@ -420,10 +447,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -441,8 +468,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1289,10 +1316,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
             
   
   
@@ -1310,8 +1337,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1572,10 +1599,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
             
   
   
@@ -1593,8 +1620,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2387,6 +2414,8 @@
 </ul>
 <hr>
 <h2 id="4">4. 배열 포인터<a class="headerlink" href="#4" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/30_ptr_array_vs_array_ptr.png" data-title="포인터 배열 vs 배열 포인터" data-desc-position="bottom"><img alt="포인터 배열 vs 배열 포인터" src="../img/30_ptr_array_vs_array_ptr.png"></a></p>
+<p><em>괄호 하나로 뜻이 완전히 달라진다. <code>int *p[3]</code>은 포인터가 3개, <code>int (*p)[3]</code>은 포인터가 1개다. 헷갈리면 괄호부터 본다.</em></p>
 <p>배열 포인터는 "배열 전체를 가리키는 포인터"다. 선언이 헷갈리기 쉽지만 괄호를 기준으로 읽으면 된다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">};</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">ap</span><span class="p">)[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
@@ -2409,6 +2438,8 @@
 <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week13_2d_array_sum_diagram.png" data-title="2차원 배열 합계 과정" data-desc-position="bottom"><img alt="2차원 배열 합계 과정" src="../img/pdf-crops/week13_2d_array_sum_diagram.png"></a></p>
 <hr>
 <h2 id="5">5. 함수 포인터<a class="headerlink" href="#5" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/12_func_pointer.png" data-title="함수 포인터 = 실행할 함수를 표로 골라 부르기" data-desc-position="bottom"><img alt="함수 포인터 = 실행할 함수를 표로 골라 부르기" src="../img/12_func_pointer.png"></a></p>
+<p><em>명령이 늘어날 때 <code>switch</code>를 길게 늘이는 대신 표에 한 줄을 더한다. 15주차 ROS2 콜백이 같은 생각이다.</em></p>
 <p>함수도 메모리 어딘가에 저장되어 있고, 함수 이름은 그 함수의 시작 주소처럼 사용할 수 있다. 함수 포인터는 그 주소를 저장한다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
@@ -2629,8 +2660,8 @@
 <hr>
 <h2 id="_4">📚 참고 레퍼런스 (외부)<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <ul>
-<li>재귀(호출 트리) https://en.wikipedia.org/wiki/Recursion_(computer_science)</li>
-<li>하노이탑 https://en.wikipedia.org/wiki/Tower_of_Hanoi</li>
+<li>재귀(호출 트리) <a href="https://en.wikipedia.org/wiki/Recursion_(computer_science">en.wikipedia.org/wiki/Recursion_(computer_science</a>)</li>
+<li>하노이탑 <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">en.wikipedia.org/wiki/Tower_of_Hanoi</a></li>
 <li>전체 정리: <a href="../references/">참고 자료 모음</a></li>
 </ul>
 <h2 id="_5">연습문제<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
@@ -2752,7 +2783,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   

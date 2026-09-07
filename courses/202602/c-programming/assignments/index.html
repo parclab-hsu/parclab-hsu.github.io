@@ -1,0 +1,3116 @@
+<!DOCTYPE html><html lang="ko" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 1학년 · C언어 강의 자료 (Arduino R4 + C↔ROS2 + Stella N2)">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/c-programming/assignments/">
+      
+      
+        <link rel="prev" href="../weekly-challenges/">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>주차별 과제와 제출 예시 - C 프로그래밍 · 2026-2학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="C 프로그래밍 · 2026-2학기" class="md-header__button md-logo" aria-label="C 프로그래밍 · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C 프로그래밍 · 2026-2학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              주차별 과제와 제출 예시
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal" aria-label="다크 모드로" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal" aria-label="라이트 모드로" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="C 프로그래밍 · 2026-2학기" class="md-nav__button md-logo" aria-label="C 프로그래밍 · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    C 프로그래밍 · 2026-2학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    학습 길잡이
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teaching-guide-3h/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3시간 강의 운영안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weekly-challenges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 1h·2h 운영 + 도전문제
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 과제와 제출 예시
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 과제와 제출 예시
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이 페이지는 다른 문제들과 무엇이 다른가
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 제출 규정
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 제출 규정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        제출물 세 가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일명 규칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        소스 첫머리에 넣을 주석
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        마감
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        빌드 기준
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 활용
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 채점 루브릭
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 제출 예시 (전문)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 제출 예시 (전문)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 예시 과제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-w07_2026123_c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 제출 소스 — w07_2026123_홍길동.c
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 실행 결과
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 경계값 확인표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 회고 3줄
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 주차별 과제
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 주차별 과제">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 1 · 개발환경 인증 (1주차) ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 2 · 전기차 충전 영수증 출력 (2주차) ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 3 · 속도 단위 변환기 (3주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 4 · 배터리 주행 계산기 (4주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 5 · 충전소 요금 계산기 (5주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 6 · 주행 로그 통계 (6주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-6-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 7 · 6주차 과제를 함수로 분해하기 (7주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8주차 · 중간고사 (과제 없음)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 8 · 전역변수의 부작용 재현하기 (9주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-led-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 9 · 센서 통계와 LED 막대그래프 매핑 (10주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 10 · 점유격자 맵 (11주차) ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 11 · 포인터로 값 바꾸기 (12주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 12 · 한 번에 여러 값 돌려받기 + 재귀 (13주차) ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 13 · 센서 패킷 구조체 (14주차) ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15주차 · 기말 프로젝트 (팀)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 제출 전 자가 점검
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        참조
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    참고 자료·외부 레퍼런스
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    환경 설정 상세 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 계획 (15주)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    강의 계획 (15주)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · OT·환경설정·왜 C인가
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 표준 출력(printf)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 입력·변수·자료형
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · 연산자
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · 조건문 + LED 표정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · 반복문 + 애니메이션
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · 함수 + 시리얼 제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · 중간고사
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · 함수와 변수(스코프)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · 배열(1D) + 막대그래프
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · 배열(2D)·통신 + WiFi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · 포인터 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · 포인터 활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · 구조체 + 연결리스트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · C↔ROS2·로봇·기말
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    심화·연계
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    심화·연계
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ros2-robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C↔ROS2 &amp; Stella N2 로봇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-literacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 활용 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-problems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로그램 설계 문제
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam-prep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    정보처리기사 C 대비(실기)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exam-written/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    정보처리기사 필기 이론(C)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    심화 개념 노트(상위권)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c-vs-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C ↔ Python 비교
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026 트렌드 기반 검토
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    예제 코드
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    예제 코드
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    코드 사용법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/arduino/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arduino R4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/ros2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C와 ROS2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/ros2/stella_n2_bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stella N2 브리지
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/ros2/microros_uno_r4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    micro-ROS UNO R4 도전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://parclab-hsu.github.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PARC Lab 홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이 페이지는 다른 문제들과 무엇이 다른가
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 제출 규정
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 제출 규정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        제출물 세 가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일명 규칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        소스 첫머리에 넣을 주석
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        마감
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        빌드 기준
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 활용
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 채점 루브릭
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 제출 예시 (전문)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 제출 예시 (전문)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 예시 과제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-w07_2026123_c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 제출 소스 — w07_2026123_홍길동.c
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 실행 결과
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 경계값 확인표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 회고 3줄
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 주차별 과제
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 주차별 과제">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 1 · 개발환경 인증 (1주차) ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 2 · 전기차 충전 영수증 출력 (2주차) ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 3 · 속도 단위 변환기 (3주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 4 · 배터리 주행 계산기 (4주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 5 · 충전소 요금 계산기 (5주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 6 · 주행 로그 통계 (6주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-6-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 7 · 6주차 과제를 함수로 분해하기 (7주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8주차 · 중간고사 (과제 없음)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 8 · 전역변수의 부작용 재현하기 (9주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-led-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 9 · 센서 통계와 LED 막대그래프 매핑 (10주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 10 · 점유격자 맵 (11주차) ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 11 · 포인터로 값 바꾸기 (12주차) ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 12 · 한 번에 여러 값 돌려받기 + 재귀 (13주차) ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        과제 13 · 센서 패킷 구조체 (14주차) ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15주차 · 기말 프로젝트 (팀)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 제출 전 자가 점검
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        참조
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">주차별 과제와 제출 예시<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>C 프로그래밍 · 미래모빌리티학과 1학년 2학기 | 평가 비중 <strong>C 프로그램 과제 10%</strong>
+매주 한 건씩, 총 13건을 제출한다. 8주차(중간고사)와 15주차(기말 프로젝트)는 별도 규정을 따른다.</p>
+</blockquote>
+<h2 id="_2">이 페이지는 다른 문제들과 무엇이 다른가<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>이 강의에는 성격이 다른 문제가 네 종류 있다. 헷갈리지 않도록 정리한다.</p>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>어디서</th>
+<th>언제</th>
+<th>제출</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>연습문제</td>
+<td>각 주차 강의 페이지 끝</td>
+<td>수업 직후 자가 점검</td>
+<td>없음 (정답 공개)</td>
+</tr>
+<tr>
+<td>🔥 도전 문제</td>
+<td><a href="../weekly-challenges/">주차별 운영안</a></td>
+<td>수업 2시간(실습) 중</td>
+<td>없음 (힌트·정답 공개)</td>
+</tr>
+<tr>
+<td><strong>주차 과제</strong></td>
+<td><strong>이 페이지</strong></td>
+<td><strong>다음 주 수업 전까지</strong></td>
+<td><strong>제출 (채점)</strong></td>
+</tr>
+<tr>
+<td>설계 문제</td>
+<td><a href="../design-problems/">프로그램 설계 문제</a></td>
+<td>학기 중 자율·기말 대비</td>
+<td>선택 (가산점)</td>
+</tr>
+</tbody>
+</table>
+<p>주차 과제는 그 주에 배운 것만으로 풀 수 있게 설계했다. 아직 배우지 않은 문법을 쓸 필요는 없다.</p>
+<hr>
+<h2 id="1">1. 제출 규정<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<h3 id="_3">제출물 세 가지<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>과제 하나에 아래 세 가지를 <strong>한 폴더</strong>에 담아 압축해 제출한다.</p>
+<ol>
+<li><strong>소스 파일</strong> <code>.c</code> — 파일 하나로 완결되어야 한다.</li>
+<li><strong>실행 결과</strong> — 콘솔 캡처 이미지 또는 붙여넣은 텍스트. 요구된 입력 예를 <strong>전부</strong> 실행한 결과여야 한다.</li>
+<li><strong>회고 3줄</strong> — 아래 세 문장을 그대로 채운다.</li>
+<li>막힌 곳: …</li>
+<li>해결 방법: …</li>
+<li>AI를 쓴 부분과 내가 검증한 방법: …</li>
+</ol>
+<h3 id="_4">파일명 규칙<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>w05_2026123_홍길동.c
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>w05_2026123_홍길동.zip
+</code></pre></div>
+<p><code>w</code> + 두 자리 주차 + 학번 + 이름. 폴더째 압축한 <code>.zip</code>으로 올린다. 규칙을 지키지 않으면 채점이 누락될 수 있다.</p>
+<h3 id="_5">소스 첫머리에 넣을 주석<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">/* ============================================================</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm">   5주차 과제 · 충전소 요금 계산기</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm">   미래모빌리티학과 2026123 홍길동</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm">   환경: Visual Studio 2022 (C17) / Windows 11</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cm">   빌드: 경고 0개</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cm">   ============================================================ */</span>
+</code></pre></div>
+<h3 id="_6">마감<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<p>다음 주차 수업 <strong>전날 23:59</strong>. 지각 제출은 3일까지 받고 하루당 20%를 감점한다. 4일 이상 지각은 0점이다.</p>
+<h3 id="_7">빌드 기준<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Visual Studio 2022</strong>에서 <strong>경고 없이</strong> 빌드되어야 한다. 경고가 남아 있으면 감점한다.</li>
+<li>입력 함수는 강의 기준대로 <code>scanf_s()</code>를 쓴다. <code>scanf_s()</code>는 Visual Studio 전용이므로, 다른 컴파일러에서 확인할 때는 <code>scanf()</code>로 바꿔야 한다(<a href="../setup-guide/">환경 설정 가이드</a> 참고).</li>
+<li>컴파일이 안 되는 코드는 <strong>0점</strong>이다. 완성하지 못했더라도 <strong>반드시 컴파일되는 상태</strong>로 제출하고, 못 한 부분을 회고에 적는다. 부분 점수를 받을 수 있다.</li>
+</ul>
+<h3 id="ai">AI 활용<a class="headerlink" href="#ai" title="Permanent link">¶</a></h3>
+<p>AI 사용은 <strong>허용한다.</strong> 다만 세 가지를 지킨다.</p>
+<ul>
+<li>제출한 코드의 <strong>모든 줄을 설명할 수 있어야</strong> 한다. 설명하지 못하면 점수를 인정하지 않는다.</li>
+<li>회고에 <strong>어디를 AI로 썼고 무엇을 어떻게 검증했는지</strong> 적는다. 안 썼으면 "안 씀"이라고 적는다.</li>
+<li>AI가 준 코드를 그대로 붙여넣고 검증하지 않아 생긴 오류는 감점 사유다. 자세한 원칙은 <a href="../ai-literacy/">AI 활용 가이드</a>를 따른다.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">표절</p>
+<p>다른 사람의 코드를 그대로 낸 경우, <strong>준 쪽과 받은 쪽 모두</strong> 해당 과제 0점이다. 같이 공부하는 것은 권장하지만, 코드는 각자 손으로 쓴다.</p>
+</div>
+<hr>
+<h2 id="2">2. 채점 루브릭<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
+<p>주차 과제는 모두 <strong>10점 만점</strong>이며 같은 기준으로 채점한다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>배점</th>
+<th>무엇을 보는가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>동작</td>
+<td>4점</td>
+<td>요구된 입력 예에서 기대한 출력이 나오는가</td>
+</tr>
+<tr>
+<td>요구사항 충족</td>
+<td>2점</td>
+<td>빠뜨린 조건이 없는가</td>
+</tr>
+<tr>
+<td>경계·예외 처리</td>
+<td>2점</td>
+<td>0, 음수, 범위 밖, 나누기 0을 다루는가</td>
+</tr>
+<tr>
+<td>가독성</td>
+<td>1점</td>
+<td>이름, 들여쓰기, 상수화, 주석</td>
+</tr>
+<tr>
+<td>회고</td>
+<td>1점</td>
+<td>세 줄이 구체적인가</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">경계 처리 2점은 매주 나온다</p>
+<p>가장 많이 놓치는 항목이다. 과제를 다 짠 뒤 <strong>0을 넣어 보고, 음수를 넣어 보고, 범위 밖 값을 넣어 보는</strong> 습관을 들이자. 이 2점이 학기 내내 누적된다.</p>
+</div>
+<hr>
+<h2 id="3">3. 제출 예시 (전문)<a class="headerlink" href="#3" title="Permanent link">¶</a></h2>
+<p>아래는 <strong>7주차 수업에서 함께 만든 예제</strong>를 제출 형식에 맞춰 정리한 것이다. 과제의 정답이 아니라 <strong>제출물의 모양</strong>을 보여 주기 위한 예시다. 여러분의 제출물도 이 정도 구성이면 충분하다.</p>
+<h3 id="31">3.1 예시 과제<a class="headerlink" href="#31" title="Permanent link">¶</a></h3>
+<blockquote>
+<p>세 과목 점수를 입력받아 총점·평균·등급을 출력하라. 점수는 0~100이어야 하고, 범위를 벗어나면 다시 입력받는다.</p>
+</blockquote>
+<h3 id="32-w07_2026123_c">3.2 제출 소스 — <code>w07_2026123_홍길동.c</code><a class="headerlink" href="#32-w07_2026123_c" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/* ============================================================</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm">   과제 예시 · 점수 입력과 등급 계산</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm">   미래모빌리티학과 2026123 홍길동</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm">   환경: Visual Studio 2022 (C17) / Windows 11</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cm">   빌드: 경고 0개 (수준 4)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cm">   ============================================================ */</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="cp">#define SUBJECT_COUNT 3</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="cp">#define SCORE_MIN     0</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="cp">#define SCORE_MAX     100</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="cm">/* 점수 하나를 입력받는다. 범위를 벗어나면 다시 묻는다. */</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="kt">int</span><span class="w"> </span><span class="nf">input_score</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">subject</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s 점수(0~100): "</span><span class="p">,</span><span class="w"> </span><span class="n">subject</span><span class="p">);</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">scanf_s</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"  숫자가 아닙니다. 다시 입력하세요.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">getchar</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">'\n'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 입력 버퍼 비우기 */</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">SCORE_MIN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">SCORE_MAX</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"  0~100 사이여야 합니다. 다시 입력하세요.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="p">}</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="kt">int</span><span class="w"> </span><span class="nf">total_of</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scores</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="p">{</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="p">}</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="cm">/* 정수 나눗셈으로 소수점이 잘리지 않도록 double 로 계산한다. */</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="kt">double</span><span class="w"> </span><span class="nf">average_of</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="p">{</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="p">}</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="kt">char</span><span class="w"> </span><span class="nf">grade_of</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">average</span><span class="p">)</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="p">{</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">average</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">90.0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="sc">'A'</span><span class="p">;</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">average</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">80.0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="sc">'B'</span><span class="p">;</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">average</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">70.0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="sc">'C'</span><span class="p">;</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">average</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">60.0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="sc">'D'</span><span class="p">;</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sc">'F'</span><span class="p">;</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="p">}</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="p">{</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">subjects</span><span class="p">[</span><span class="n">SUBJECT_COUNT</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"국어"</span><span class="p">,</span><span class="w"> </span><span class="s">"영어"</span><span class="p">,</span><span class="w"> </span><span class="s">"수학"</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">scores</span><span class="p">[</span><span class="n">SUBJECT_COUNT</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">SUBJECT_COUNT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">        </span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_score</span><span class="p">(</span><span class="n">subjects</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a>
+<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total_of</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span><span class="w"> </span><span class="n">SUBJECT_COUNT</span><span class="p">);</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">average_of</span><span class="p">(</span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">SUBJECT_COUNT</span><span class="p">);</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grade_of</span><span class="p">(</span><span class="n">average</span><span class="p">);</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"과목   점수</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"------------</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">SUBJECT_COUNT</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"%-6s %4d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">subjects</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"------------</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"총점   %4d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"평균   %6.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="p">);</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"등급   %4c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">grade</span><span class="p">);</span>
+<a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="33">3.3 실행 결과<a class="headerlink" href="#33" title="Permanent link">¶</a></h3>
+<p><strong>정상 입력</strong> — <code>90</code>, <code>85</code>, <code>95</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>국어 점수(0~100): 90
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>영어 점수(0~100): 85
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>수학 점수(0~100): 95
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>과목   점수
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>------------
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>국어     90
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>영어     85
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>수학     95
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>------------
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>총점    270
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>평균    90.00
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>등급      A
+</code></pre></div>
+<p><strong>범위 밖 입력</strong> — <code>150</code>, <code>-3</code>을 먼저 넣어 재입력이 도는지 확인</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>국어 점수(0~100): 150
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  0~100 사이여야 합니다. 다시 입력하세요.
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>국어 점수(0~100): -3
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  0~100 사이여야 합니다. 다시 입력하세요.
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>국어 점수(0~100): 60
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>영어 점수(0~100): 70
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>수학 점수(0~100): 50
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>과목   점수
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>------------
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>국어     60
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>영어     70
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>수학     50
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>------------
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>총점    180
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>평균    60.00
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>등급      D
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">한글 열이 어긋나 보이면 인코딩 문제다</p>
+<p><code>printf("%-6s", "국어")</code>의 폭은 <strong>글자 수가 아니라 바이트 수</strong>로 센다. 위 결과는 한글 한 글자가 2바이트인 CP949 기준이다. 소스를 <strong>BOM 없는 UTF-8</strong>로 저장하면 한글이 3바이트가 되어 열이 밀린다.</p>
+<p>파일을 <strong>UTF-8 with BOM</strong>으로 저장하면 Visual Studio 2022와 VS Code 양쪽에서 위와 같이 나온다(<a href="../setup-guide/">환경 설정 가이드 6.6절</a>). 열을 확실히 맞추고 싶으면 항목명을 <code>Kor</code>, <code>Eng</code>, <code>Math</code>처럼 영문으로 두는 방법도 있다.</p>
+</div>
+<h3 id="34">3.4 경계값 확인표<a class="headerlink" href="#34" title="Permanent link">¶</a></h3>
+<p>이 표까지 넣으면 "경계·예외 처리 2점"은 확보한 셈이다.</p>
+<table>
+<thead>
+<tr>
+<th>입력</th>
+<th>기대</th>
+<th>실제</th>
+<th>확인</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90, 85, 95</td>
+<td>평균 90.00 · A</td>
+<td>90.00 · A</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>60, 70, 50</td>
+<td>평균 60.00 · D</td>
+<td>60.00 · D</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>0, 0, 0</td>
+<td>평균 0.00 · F</td>
+<td>0.00 · F</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>100, 100, 100</td>
+<td>평균 100.00 · A</td>
+<td>100.00 · A</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>150 입력</td>
+<td>재입력 요구</td>
+<td>재입력 요구</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>−3 입력</td>
+<td>재입력 요구</td>
+<td>재입력 요구</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>문자 <code>abc</code> 입력</td>
+<td>재입력 요구</td>
+<td>재입력 요구</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-3">3.5 회고 3줄<a class="headerlink" href="#35-3" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>막힌 곳</strong>: <code>85, 90, 96</code>을 넣으면 평균이 <code>90.33</code>이어야 하는데 <code>90.00</code>으로 나왔다. 총점 <code>271</code>을 <code>int / int</code>로 나눠서 소수점이 버려진 것이었다.</li>
+<li><strong>해결 방법</strong>: <code>(double)total / count</code>로 한쪽을 실수로 바꿔서 실수 나눗셈이 되게 했다. 4주차에 배운 형 변환이었다.</li>
+<li><strong>AI를 쓴 부분과 내가 검증한 방법</strong>: 입력이 숫자가 아닐 때 무한 루프가 도는 이유를 AI에게 물어 <code>getchar()</code>로 버퍼를 비우라는 답을 받았다. 그대로 믿지 않고 <code>abc</code>를 직접 넣어 재입력이 정상으로 도는 것을 확인했고, 버퍼 비우는 줄을 지웠을 때 실제로 무한 루프가 나는 것도 확인했다.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">이 예시에서 눈여겨볼 것</p>
+<ul>
+<li><code>while (1)</code> 안에서 조건을 만족할 때만 <code>return</code> — 재입력 구조의 기본형</li>
+<li><code>90</code>, <code>85</code> 같은 숫자를 코드에 흩뿌리지 않고 <code>#define</code>으로 이름 붙임</li>
+<li>함수 하나가 하나의 일만 함 (입력 / 합계 / 평균 / 등급)</li>
+<li>회고에 <strong>무엇을 어떻게 확인했는지</strong>가 구체적으로 적힘</li>
+</ul>
+</div>
+<hr>
+<h2 id="4">4. 주차별 과제<a class="headerlink" href="#4" title="Permanent link">¶</a></h2>
+<h3 id="1-1">과제 1 · 개발환경 인증 (1주차) ⭐<a class="headerlink" href="#1-1" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 세 가지 빌드 환경이 실제로 동작하는 것을 확인하고, 컴파일이 무엇인지 말로 설명한다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li>본인 학번·이름·학과와 좋아하는 모빌리티 한 가지를 출력하는 프로그램을 작성한다.</li>
+<li>같은 소스를 <strong>Visual Studio 2022</strong>와 <strong><code>gcc</code>(WSL 또는 온라인 컴파일러)</strong> 양쪽에서 빌드해 각각 실행 결과를 캡처한다.</li>
+<li><strong>Arduino IDE</strong>에서 보드 연결 후 <code>Serial.println()</code>으로 이름을 출력하고 시리얼 모니터를 캡처한다.</li>
+<li><code>소스 코드 → 실행 파일</code> 사이에 무슨 일이 일어나는지 <strong>3줄</strong>로 쓴다.</li>
+</ol>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 캡처 3장(VS / gcc / 시리얼 모니터), 3줄 설명, 회고 3줄</p>
+<p><strong>흔한 감점</strong> — 캡처에 소스 코드만 있고 실행 결과가 없음 · 3줄 설명이 "컴파일된다" 한 문장으로 끝남</p>
+<hr>
+<h3 id="2-2">과제 2 · 전기차 충전 영수증 출력 (2주차) ⭐<a class="headerlink" href="#2-2" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — <code>printf()</code>의 폭·정밀도·정렬·이스케이프만으로 표 모양을 만든다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li>값은 모두 코드에 직접 적는다. <strong>입력받지 않는다.</strong> (아직 <code>scanf_s</code>를 배우기 전이다.)</li>
+<li>아래 형태의 영수증을 출력한다. 항목명은 왼쪽 정렬, 숫자는 오른쪽 정렬, 금액은 소수점 없이, 전력량은 소수점 둘째 자리까지.</li>
+<li>구분선은 <code>-</code> 문자로 그리고, 마지막에 탭(<code>\t</code>)을 한 번 이상 사용한다.</li>
+</ol>
+<p><strong>출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>=====================================
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>   PARC 충전소 이용 영수증
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>=====================================
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>항목               수량        금액
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>-------------------------------------
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>급속충전(kWh)     32.50      10,725
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>주차요금(시간)     1.00       1,000
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>-------------------------------------
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>합계                          11,725
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>=====================================
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        발행일: 2026-09-08
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과, 회고 3줄</p>
+<p><strong>흔한 감점</strong> — 공백을 스페이스바로 직접 맞춤(폭 지정자 <code>%-10s</code>, <code>%8.2f</code>를 써야 한다) · <code>\n</code>과 <code>\t</code>를 구분하지 못함</p>
+<hr>
+<h3 id="3-3">과제 3 · 속도 단위 변환기 (3주차) ⭐⭐<a class="headerlink" href="#3-3" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 입력, 자료형 선택, 형 변환을 한 번에 다룬다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li><code>scanf_s()</code>로 속도를 <strong>km/h 단위 실수</strong>로 입력받는다.</li>
+<li>m/s와 mph로 변환해 소수점 둘째 자리까지 출력한다. (1 mph = 1.609344 km/h)</li>
+<li>변환 계수는 <code>#define</code> 또는 <code>const double</code>로 <strong>이름을 붙여</strong> 사용한다.</li>
+<li>음수가 입력되면 <code>잘못된 속도입니다</code>를 출력하고 종료한다.</li>
+<li>회고에 <strong>"왜 <code>int</code>가 아니라 <code>double</code>을 썼는지"</strong> 한 줄을 반드시 포함한다.</li>
+</ol>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>속도(km/h): 100
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>100.00 km/h = 27.78 m/s = 62.14 mph
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>속도(km/h): -5
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>잘못된 속도입니다.
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과 2가지(정상·음수), 회고 3줄</p>
+<p><strong>흔한 감점</strong> — <code>100 / 3.6</code>을 정수로 계산해 <code>27.00</code>이 나옴 · 마법의 숫자 <code>3.6</code>을 그대로 코드에 씀</p>
+<hr>
+<h3 id="4-4">과제 4 · 배터리 주행 계산기 (4주차) ⭐⭐<a class="headerlink" href="#4-4" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 산술·관계·논리 연산자와 정수 나눗셈의 함정을 직접 겪는다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li>배터리 총용량(kWh, 실수), 현재 잔량(kWh, 실수), 전비(km/kWh, 실수)를 입력받는다.</li>
+<li>다음을 계산해 출력한다.</li>
+<li>잔량 비율(%) — 소수점 첫째 자리</li>
+<li>주행 가능 거리(km) — 소수점 첫째 자리</li>
+<li>완충까지 남은 용량(kWh)</li>
+<li>잔량 비율이 20% 미만이면 <code>⚠ 충전이 필요합니다</code>를 함께 출력한다. <strong>삼항 연산자</strong>를 한 번 이상 쓴다.</li>
+<li>총용량이 0이면 나누기 전에 걸러 내고 <code>용량이 0일 수 없습니다</code>를 출력한다.</li>
+</ol>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>총용량(kWh): 64
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>잔량(kWh): 12.8
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>전비(km/kWh): 5.2
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>잔량 비율   : 20.0 %
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>주행 가능   : 66.6 km
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>충전 필요량 : 51.20 kWh
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과 3가지(정상 · 20% 미만 · 총용량 0), 회고 3줄</p>
+<p><strong>흔한 감점</strong> — 나누기 0을 검사하지 않음(<strong>경계 2점 전액 감점</strong>) · 비율을 <code>잔량/총용량*100</code>으로 정수 계산해 항상 0이 나옴</p>
+<hr>
+<h3 id="5-5">과제 5 · 충전소 요금 계산기 (5주차) ⭐⭐<a class="headerlink" href="#5-5" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — <code>if / else if</code>와 <code>switch</code>를 목적에 맞게 나눠 쓴다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li>충전량(kWh, 실수), 시간대(<code>1</code>=주간 / <code>2</code>=심야), 회원 등급(<code>A</code>/<code>B</code>/<code>C</code>)을 입력받는다.</li>
+<li>단가: 주간 330원/kWh, 심야 250원/kWh.</li>
+<li>할인: <code>A</code> 등급 15%, <code>B</code> 등급 10%, <code>C</code> 등급 0%.</li>
+<li><strong>시간대는 <code>switch</code>로, 등급도 <code>switch</code>로</strong> 처리한다. 최종 금액 판정만 <code>if</code>를 쓴다.</li>
+<li>정의되지 않은 시간대·등급이 들어오면 <code>잘못된 입력입니다</code>를 출력하고 종료한다. <code>switch</code>의 <code>default</code>를 반드시 사용한다.</li>
+<li>최종 금액은 <strong>원 단위 정수</strong>로 반올림해 출력한다.</li>
+</ol>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>충전량(kWh): 30
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>시간대(1=주간, 2=심야): 2
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>회원 등급(A/B/C): A
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>단가      : 250 원/kWh
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>기본 요금 : 7500 원
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>할인(15%) : -1125 원
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>최종 금액 : 6375 원
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과 3가지(정상 · 다른 등급 · 잘못된 입력), 회고 3줄</p>
+<p><strong>흔한 감점</strong> — <code>break</code>를 빠뜨려 아래 <code>case</code>까지 실행됨(fall-through) · <code>default</code>가 없음 · 소문자 <code>a</code>를 입력하면 오작동</p>
+<hr>
+<h3 id="6-6">과제 6 · 주행 로그 통계 (6주차) ⭐⭐<a class="headerlink" href="#6-6" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 반복문 세 가지와 <code>break</code> / <code>continue</code>를 모두 실제 목적에 맞게 사용한다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li>속도값(km/h, 정수)을 <strong><code>-1</code>이 입력될 때까지</strong> 계속 입력받는다. (<code>while</code> 사용)</li>
+<li>입력이 끝나면 다음을 출력한다: 측정 횟수, 최고 속도, 최저 속도, 평균 속도(소수 첫째 자리), 과속(80 초과) 횟수</li>
+<li>음수(단, <code>-1</code> 제외)가 들어오면 <strong>그 값만 무시</strong>하고 계속 진행한다. (<code>continue</code> 사용)</li>
+<li>측정값이 하나도 없이 바로 <code>-1</code>이 들어오면 <code>측정값이 없습니다</code>를 출력한다. <strong>평균 계산에서 0으로 나누지 않도록</strong> 한다.</li>
+<li>마지막에 속도 구간 분포를 <code>*</code> 문자로 출력한다. (<code>for</code> 중첩 사용)</li>
+</ol>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>속도 입력(-1 종료): 65
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>속도 입력(-1 종료): 92
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>속도 입력(-1 종료): -7
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  음수는 무시합니다.
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>속도 입력(-1 종료): 78
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>속도 입력(-1 종료): 105
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>속도 입력(-1 종료): -1
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>측정 횟수 : 4 회
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>최고 속도 : 105 km/h
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>최저 속도 : 65 km/h
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>평균 속도 : 85.0 km/h
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>과속 횟수 : 2 회
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a> 0- 59 |
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>60- 79 | **
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>80- 99 | *
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>100+   | *
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과 2가지(정상 · 측정값 0개), 회고 3줄</p>
+<p><strong>흔한 감점</strong> — 측정값 0개일 때 <code>nan</code> 또는 프로그램이 죽음 · 최저 속도 초기값을 <code>0</code>으로 둬서 항상 0이 나옴</p>
+<hr>
+<h3 id="7-6-7">과제 7 · 6주차 과제를 함수로 분해하기 (7주차) ⭐⭐<a class="headerlink" href="#7-6-7" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 이미 동작하는 코드를 함수 단위로 쪼개면서, 함수의 경계를 스스로 정해 본다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li><strong>과제 6의 코드를 그대로 가져와</strong> 아래 함수로 나눈다. <code>main()</code>은 흐름만 남긴다.</li>
+<li><code>int read_speeds(int speeds[], int max_count);</code> — 입력을 받아 배열에 담고 개수를 반환</li>
+<li><code>int max_of(const int a[], int n);</code></li>
+<li><code>int min_of(const int a[], int n);</code></li>
+<li><code>double average_of(const int a[], int n);</code></li>
+<li><code>int count_over(const int a[], int n, int limit);</code></li>
+<li><code>void print_report(...);</code></li>
+<li>모든 함수의 <strong>프로토타입을 <code>main()</code> 위에</strong> 선언한다.</li>
+<li><code>main()</code>의 길이가 <strong>20줄을 넘지 않게</strong> 한다.</li>
+<li>회고에 <strong>"함수로 나누니 무엇이 좋아졌는지"</strong> 한 줄을 반드시 포함한다.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">배열을 아직 안 배웠다면</p>
+<p>7주차 시점에 배열이 부담스러우면 <code>read_speeds()</code> 없이, 입력받는 즉시 최댓값·최솟값·합계를 갱신하는 방식으로 만들어도 된다. 이 경우 함수는 <code>update_stats(int value, int *max, int *min, int *sum, int *count)</code> 하나로 묶는다. 어느 쪽이든 <strong><code>main()</code>이 짧아지는 것</strong>이 이 과제의 핵심이다.</p>
+</div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과(과제 6과 동일해야 함), 회고 3줄</p>
+<p><strong>흔한 감점</strong> — 함수로 나눴는데 전역 변수로 값을 주고받음 · 프로토타입 없이 정의 순서에만 의존</p>
+<hr>
+<h3 id="8">8주차 · 중간고사 (과제 없음)<a class="headerlink" href="#8" title="Permanent link">¶</a></h3>
+<p>정규 과제는 없다. 대신 <strong>오답 노트</strong>를 제출하면 <strong>가산점 1점</strong>을 준다.</p>
+<ul>
+<li>틀린 문제마다: 무엇을 물었나 / 내가 쓴 답 / 정답 / <strong>왜 틀렸나(한 줄)</strong></li>
+<li>"실수했다"는 이유로 인정하지 않는다. <code>i++</code>의 순서를 착각했다처럼 <strong>구체적으로</strong> 쓴다.</li>
+<li>9주차 수업 전까지 제출한다.</li>
+</ul>
+<hr>
+<h3 id="8-9">과제 8 · 전역변수의 부작용 재현하기 (9주차) ⭐⭐<a class="headerlink" href="#8-9" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — "전역 변수를 쓰지 마라"는 말을 듣는 대신, 실제로 망가지는 것을 눈으로 본다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li>누적 합을 구하는 기능을 <strong>두 가지 버전</strong>으로 만든다.</li>
+<li>버전 A: 전역 변수 <code>int g_sum;</code>을 함수가 직접 건드린다.</li>
+<li>버전 B: 값을 인자로 받고 결과를 반환한다. 전역 변수를 쓰지 않는다.</li>
+<li>두 버전을 <strong>연속으로 두 번씩</strong> 호출한다. 버전 A에서 두 번째 호출 결과가 왜 이상해지는지 출력으로 보인다.</li>
+<li>함수 안에 <code>static int call_count;</code>를 두고 호출 횟수를 출력한다. <code>static</code>을 빼면 결과가 어떻게 달라지는지 <strong>주석으로</strong> 설명한다.</li>
+<li>지역 / 전역 / <code>static</code> 세 가지를 <strong>표로 정리</strong>해 회고에 붙인다. (보이는 범위 / 값이 유지되는 기간 / 언제 쓰는가)</li>
+</ol>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[버전 A · 전역 사용]
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  1회차 합계: 60
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  2회차 합계: 120   ← 앞의 값이 남아 있다
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>[버전 B · 인자·반환]
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  1회차 합계: 60
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>  2회차 합계: 60
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>호출 횟수(static): 4
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과, 비교표, 회고 3줄</p>
+<p><strong>흔한 감점</strong> — 버전 A를 만들었는데 초기화를 해 버려서 부작용이 안 나타남(이 과제는 <strong>일부러 망가지는 것을 보여야</strong> 한다)</p>
+<hr>
+<h3 id="9-led-10">과제 9 · 센서 통계와 LED 막대그래프 매핑 (10주차) ⭐⭐<a class="headerlink" href="#9-led-10" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 1차원 배열을 순회·가공하고, 값의 범위를 다른 범위로 옮긴다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li>거리 센서값(cm, 정수) <strong>10개</strong>를 배열에 입력받는다.</li>
+<li>합계, 평균, 최댓값과 <strong>그 위치(인덱스)</strong>, 최솟값과 그 위치를 출력한다.</li>
+<li><strong>3점 이동평균</strong> 배열을 만들어 출력한다. 양 끝 두 개는 계산할 수 없으므로 원본 값을 그대로 둔다.</li>
+<li>각 값을 LED 매트릭스 높이 <strong>0~8 단계</strong>로 변환해 <code>*</code>로 막대그래프를 그린다. 0cm이 8단계, 100cm 이상이 0단계가 되도록 <strong>반비례</strong>로 매핑한다.</li>
+<li>배열 크기는 <code>sizeof(arr) / sizeof(arr[0])</code>로 구한다. 숫자 <code>10</code>을 반복해 쓰지 않는다.</li>
+</ol>
+<p><strong>입출력 예</strong> (입력: <code>12 45 78 33 91 25 60 15 88 40</code>)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>합계   : 487 cm
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>평균   : 48.7 cm
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>최댓값 : 91 cm (인덱스 4)
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>최솟값 : 12 cm (인덱스 0)
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>이동평균: 12.0 45.0 52.0 67.3 49.7 58.7 33.3 54.3 47.7 40.0
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>막대그래프 (가까울수록 높음)
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>[ 0]  12cm ********
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>[ 1]  45cm ****
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>[ 2]  78cm **
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>[ 3]  33cm *****
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>[ 4]  91cm *
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>...
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과, 회고 3줄</p>
+<p><strong>흔한 감점</strong> — 이동평균에서 인덱스가 배열 밖으로 나감(<code>i-1</code>, <code>i+1</code> 경계) · 100cm를 넘는 값에서 막대 높이가 음수가 됨</p>
+<hr>
+<h3 id="10-11">과제 10 · 점유격자 맵 (11주차) ⭐⭐⭐<a class="headerlink" href="#10-11" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 2차원 배열을 다루고, 행과 열의 의미를 구분한다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li><code>8행 × 12열</code> 정수 배열로 격자 맵을 만든다. <code>0</code>은 빈 칸, <code>1</code>은 장애물이다.</li>
+<li>초기 맵은 코드에 직접 넣는다. 장애물을 <strong>10개 이상</strong> 배치한다.</li>
+<li>다음을 출력한다.</li>
+<li>맵 전체 (<code>.</code>과 <code>#</code>으로 그린다)</li>
+<li>장애물 총 개수</li>
+<li><strong>행별 장애물 수</strong>와 가장 위험한 행(장애물이 가장 많은 행)의 번호</li>
+<li>로봇이 <code>(행 7, 열 0)</code>에서 출발해 <strong>오른쪽으로 직진</strong>할 때 처음 만나는 장애물까지의 거리(칸 수). 끝까지 없으면 <code>통과 가능</code></li>
+<li>좌표를 입력받아 그 칸이 장애물인지 알려 주는 기능을 넣는다. 격자 밖 좌표는 <code>범위를 벗어났습니다</code>를 출력한다.</li>
+</ol>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>   0 1 2 3 4 5 6 7 8 9 10 11
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a> 0 . . . # . . . . . . .  .
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a> 1 . . . # . . . # . . .  .
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a> ...
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a> 7 . . . . . # . . . . .  .
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>장애물 총 12개
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>행별: [0]1 [1]2 [2]0 [3]3 [4]1 [5]2 [6]1 [7]2
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>가장 위험한 행: 3행 (3개)
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>(7,0) 오른쪽 직진 → 5칸 후 장애물
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>좌표 입력(행 열): 3 3
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>(3,3) 장애물입니다.
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>좌표 입력(행 열): 9 2
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>범위를 벗어났습니다.
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과, 회고 3줄</p>
+<p><strong>흔한 감점</strong> — 행과 열을 바꿔 씀 · 격자 밖 좌표를 검사하지 않아 엉뚱한 값이 나옴(<strong>C는 배열 범위를 검사해 주지 않는다</strong>)</p>
+<hr>
+<h3 id="11-12">과제 11 · 포인터로 값 바꾸기 (12주차) ⭐⭐<a class="headerlink" href="#11-12" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 주소와 값의 차이를 코드로 확인하고, 함수가 호출자의 변수를 바꾸는 방법을 익힌다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li><code>void swap(int *a, int *b);</code>를 만들어 두 변수의 값을 교환한다. 교환 전후를 출력한다.</li>
+<li><strong>포인터를 쓰지 않는</strong> <code>swap_wrong(int a, int b)</code>도 만들어, 왜 안 바뀌는지 출력으로 보인다.</li>
+<li><code>int *max_pos(int *arr, int n);</code> — 배열에서 최댓값이 있는 <strong>자리의 주소</strong>를 반환한다. 호출한 쪽에서 그 주소를 이용해 값과 인덱스를 모두 출력한다.</li>
+<li><code>int</code> 배열의 각 원소 주소를 출력해, 주소가 <strong>4씩</strong> 증가하는 것을 보인다. <code>char</code> 배열로도 같은 것을 해 <strong>1씩</strong> 증가함을 비교한다.</li>
+<li>널 포인터를 넘겼을 때 함수가 죽지 않도록 <code>if (arr == NULL) return NULL;</code>을 넣는다.</li>
+</ol>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>교환 전: a=10, b=20
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>swap_wrong 후: a=10, b=20   ← 안 바뀐다
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>swap 후      : a=20, b=10
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>배열: 30 70 20 90 50
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>최댓값 90 (인덱스 3, 주소 0x7ffd...)
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>int  배열 주소: 0x7ffd1000 0x7ffd1004 0x7ffd1008  (4씩)
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>char 배열 주소: 0x7ffd2000 0x7ffd2001 0x7ffd2002  (1씩)
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과, 회고 3줄</p>
+<p><strong>흔한 감점</strong> — <code>swap</code> 안에서 <code>a = b;</code>처럼 포인터 자체를 바꿈(<code>*a = *b;</code>여야 한다) · 주소 출력에 <code>%d</code>를 씀(<code>%p</code>를 쓴다)</p>
+<hr>
+<h3 id="12-13">과제 12 · 한 번에 여러 값 돌려받기 + 재귀 (13주차) ⭐⭐⭐<a class="headerlink" href="#12-13" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 반환값이 하나뿐인 C에서 여러 결과를 받는 방법과, 재귀의 탈출 조건을 익힌다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li><code>void analyze(const int a[], int n, int *min, int *max, double *avg);</code> — 한 번 호출로 세 값을 모두 돌려받는다.</li>
+<li>재귀 함수 두 개를 만든다.</li>
+<li><code>long long factorial_r(int n);</code></li>
+<li><code>int sum_to_r(int n);</code> — 1부터 n까지의 합</li>
+<li>같은 기능을 <strong>반복문 버전</strong>으로도 만들어, 두 결과가 같은지 출력으로 비교한다.</li>
+<li>재귀의 <strong>탈출 조건</strong>을 주석으로 명시한다. 탈출 조건을 지웠을 때 무슨 일이 일어나는지 회고에 쓴다. (실제로 지워서 실행해 볼 것 — 스택 오버플로로 죽는다)</li>
+<li><code>factorial_r(21)</code>처럼 큰 값을 넣으면 결과가 이상해진다. <strong>왜 그런지</strong> 회고에 한 줄로 쓴다.</li>
+</ol>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>배열: 45 12 78 33 60
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  최소 12 / 최대 78 / 평균 45.60
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>factorial(10) 재귀 = 3628800
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>factorial(10) 반복 = 3628800   일치 ✅
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>sum_to(100) 재귀 = 5050
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>sum_to(100) 반복 = 5050        일치 ✅
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>factorial(21) = -4249290049419214848   ← long long 범위 초과
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과, 회고 3줄(탈출 조건 제거 실험 + 오버플로 설명 포함)</p>
+<p><strong>흔한 감점</strong> — 포인터 매개변수에 <code>NULL</code> 검사가 없음 · 재귀와 반복 결과를 비교하지 않고 각각만 출력</p>
+<hr>
+<h3 id="13-14">과제 13 · 센서 패킷 구조체 (14주차) ⭐⭐⭐<a class="headerlink" href="#13-14" title="Permanent link">¶</a></h3>
+<p><strong>목표</strong> — 관련된 값을 하나로 묶고, 문자열로 바꿨다가 되돌린다.</p>
+<p><strong>요구사항</strong></p>
+<ol>
+<li>구조체를 정의한다.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="kt">int</span><span class="w">   </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="kt">char</span><span class="w">  </span><span class="n">state</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">distance_cm</span><span class="p">;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">speed_cmps</span><span class="p">;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="p">}</span><span class="w"> </span><span class="n">SensorPacket</span><span class="p">;</span>
+</code></pre></div>
+<ol>
+<li>패킷 <strong>5개</strong>를 배열에 담고, 거리에 따라 <code>state</code>를 채운다. 15cm 미만 <code>STOP</code>, 30cm 미만 <code>SLOW</code>, 그 외 <code>RUN</code>.</li>
+<li><code>void print_packet(const SensorPacket *p);</code> — 포인터와 <code>-&gt;</code>로 접근한다. <strong>값 복사로 넘기지 않는다.</strong></li>
+<li><code>void to_line(const SensorPacket *p, char *out, int out_size);</code> — <code>"3,RUN,42.0,25.0"</code> 형태의 한 줄 문자열로 만든다.</li>
+<li><code>int from_line(const char *line, SensorPacket *p);</code> — 그 문자열을 다시 구조체로 되돌린다. 성공하면 1, 실패하면 0을 반환한다.</li>
+<li>5개 패킷을 문자열로 바꿨다가 되돌려, <strong>원본과 같은지</strong> 출력으로 확인한다.</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">문자열 복사는 반드시 크기를 정해서</p>
+<p><code>state</code>는 <code>char[16]</code>이다. <code>strcpy()</code>는 크기를 검사하지 않으므로 긴 문자열이 들어오면 그대로 넘쳐 쓴다. 이 과제에서는 <strong><code>snprintf(p-&gt;state, sizeof(p-&gt;state), "%s", ...)</code></strong> 를 쓴다. 문자열을 읽을 때도 <code>sscanf</code>의 폭 지정자 <code>%15[^,]</code>처럼 <strong>최대 길이를 반드시 적는다.</strong> 14주차 강의의 버퍼 오버플로 경고를 다시 읽어 볼 것.</p>
+</div>
+<p><strong>입출력 예</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[원본]
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a> #1 id=1 state=STOP  dist= 12.0 speed=  0.0
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a> #2 id=2 state=SLOW  dist= 22.5 speed= 10.0
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a> #3 id=3 state=RUN   dist= 42.0 speed= 25.0
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a> ...
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>[직렬화]
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a> 1,STOP,12.0,0.0
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a> 2,SLOW,22.5,10.0
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a> 3,RUN,42.0,25.0
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>[역직렬화 검증]
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a> #1 일치 ✅  #2 일치 ✅  #3 일치 ✅  #4 일치 ✅  #5 일치 ✅
+</code></pre></div>
+<p><strong>제출물</strong> — 소스 <code>.c</code>, 실행 결과, 회고 3줄</p>
+<p><strong>흔한 감점</strong> — <code>strcpy</code>를 크기 검사 없이 사용(<strong>감점</strong>) · 구조체를 값으로 복사해 함수에 넘김 · 파싱 실패를 검사하지 않아 쓰레기 값이 들어감</p>
+<hr>
+<h3 id="15">15주차 · 기말 프로젝트 (팀)<a class="headerlink" href="#15" title="Permanent link">¶</a></h3>
+<p>주차 과제가 아니라 <strong>프로젝트 평가 20%</strong>에 해당한다. 규정이 다르다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인원</td>
+<td>3~4인 팀</td>
+</tr>
+<tr>
+<td>주제</td>
+<td><a href="../design-problems/">프로그램 설계 문제</a> 6선 중 택1, 또는 팀 자체 주제(사전 승인)</td>
+</tr>
+<tr>
+<td>필수</td>
+<td>배열·포인터·구조체·함수 분해가 <strong>모두</strong> 들어갈 것</td>
+</tr>
+<tr>
+<td>연동</td>
+<td>Arduino 또는 C↔ROS2 연동 중 최소 하나 (<a href="../ros2-robot/">C↔ROS2 &amp; Stella N2 로봇</a>)</td>
+</tr>
+<tr>
+<td>제출</td>
+<td>설계 노트 · 소스 전체 · 시연 영상(3분 내) · 발표 자료</td>
+</tr>
+<tr>
+<td>발표</td>
+<td>팀당 7분 + 질의 3분</td>
+</tr>
+</tbody>
+</table>
+<p>채점은 <a href="../design-problems/#_2">설계 문제 공통 루브릭</a>을 따른다. 팀 기여도를 발표 자료에 <strong>역할별로 명시</strong>한다.</p>
+<hr>
+<h2 id="5">5. 제출 전 자가 점검<a class="headerlink" href="#5" title="Permanent link">¶</a></h2>
+<p>제출 버튼을 누르기 전에 이 목록을 지나가자. 여기서 걸리는 것이 감점의 대부분이다.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Visual Studio 2022에서 <strong>경고 없이</strong> 빌드된다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 요구사항에 적힌 <strong>입출력 예를 전부</strong> 실행해 봤다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> <strong>0, 음수, 범위 밖 값</strong>을 넣어 봤다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 나누기가 있다면 <strong>분모가 0인 경우</strong>를 막았다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 배열이 있다면 <strong>인덱스가 범위를 벗어나지 않는지</strong> 확인했다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 마법의 숫자를 <code>#define</code>이나 <code>const</code>로 바꿨다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 변수 이름만 보고 무슨 값인지 알 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 파일명이 <code>wNN_학번_이름.c</code> 규칙에 맞다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 소스 첫머리 주석에 학번·이름·환경이 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 회고 3줄이 <strong>구체적</strong>이다 ("어려웠다" ❌ / "정수 나눗셈이라 소수점이 잘렸다" ✅)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> 내가 쓴 코드의 <strong>모든 줄을 설명할 수 있다</strong></li>
+</ul>
+<hr>
+<h2 id="_8">참조<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
+<ul>
+<li>수업 중 도전 문제: <a href="../weekly-challenges/">주차별 1시간·2시간 운영안</a></li>
+<li>설계 과제와 루브릭: <a href="../design-problems/">프로그램 설계 문제</a></li>
+<li>AI 활용 원칙: <a href="../ai-literacy/">AI 활용 가이드</a></li>
+<li>개발환경 준비: <a href="../setup-guide/">환경 설정 상세 가이드</a></li>
+<li>예제 코드: <a href="../code/">코드 사용법</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터">
+        
+          
+          <a href="../weekly-challenges/" class="md-footer__link md-footer__link--prev" aria-label="이전: 주차별 1h·2h 운영 + 도전문제">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                주차별 1h·2h 운영 + 도전문제
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="다음: 참고 자료·외부 레퍼런스">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                참고 자료·외부 레퍼런스
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

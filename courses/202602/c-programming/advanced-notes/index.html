@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -351,6 +351,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 과제와 제출 예시
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../references/" class="md-nav__link">
         
   
@@ -418,10 +445,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -439,8 +466,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -899,10 +926,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked="">
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
             
   
   
@@ -920,8 +947,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1361,10 +1388,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
             
   
   
@@ -1382,8 +1409,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1887,7 +1914,7 @@
 - <code>realloc</code> 결과는 <strong>반드시 임시 포인터로 받는다</strong>(실패 시 <code>NULL</code> 반환 → 바로 대입하면 원본 주소를 잃어 누수).
 - 힙은 스택보다 유연하지만 <strong>직접 관리</strong>해야 한다(자동으로 안 걷힌다).<p></p>
 <blockquote>
-<p>예제 <code>ex16_dynamic.c</code> 는 <code>-fsanitize=address,leak</code> 로 <strong>누수 없음</strong>을 검증했다.</p>
+<p>이 수업의 배포 예제에는 동적 할당을 쓰는 것이 없다. 위 패턴은 개념 확인용이며, 직접 짜서 확인할 때는 <code>gcc -fsanitize=address,leak</code> 로 빌드해 누수를 검사한다.</p>
 </blockquote>
 <hr>
 <h2 id="6-const-volatile">6. 타입 한정자 — <code>const</code> 와 <code>volatile</code><a class="headerlink" href="#6-const-volatile" title="Permanent link">¶</a></h2>
@@ -1956,7 +1983,7 @@
 </tbody>
 </table>
 <ul>
-<li><code>ex14_sort_search.c</code>에서 <strong>정렬(O(n²)) 후 이진탐색(O(log n))</strong> 을 쓰는 이유가 이것이다.</li>
+<li><code>ex10_array_stats.c</code>의 선택정렬(O(n²)) 뒤에 <code>ex11_2d_grid_search.c</code>의 이진탐색(O(log n))을 쓰는 이유가 이것이다.</li>
 <li>데이터가 커질수록 알고리즘 선택이 성능을 좌우한다 → 자율주행의 실시간 처리에서 핵심.</li>
 </ul>
 <hr>
@@ -1971,7 +1998,7 @@
 - <code>fib(50)</code>은 호출이 폭발해 사실상 멈춘다 → <strong>반복문이나 메모이제이션</strong>으로 바꿔야 한다.
 - 너무 깊은 재귀는 <strong>스택 오버플로</strong>로 크래시. "재귀가 항상 우아한 답은 아니다."<p></p>
 <blockquote>
-<p>💡 <code>ex10_recursion.c</code>의 <code>hanoi_moves</code>처럼 <strong>선형 재귀</strong>는 괜찮지만,
+<p>💡 7주차 <code>factorial()</code>처럼 자기를 <strong>한 번만</strong> 부르는 선형 재귀는 괜찮지만,
 트리 재귀(fib)는 비용을 항상 따져라.</p>
 </blockquote>
 <hr>
@@ -2082,7 +2109,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   

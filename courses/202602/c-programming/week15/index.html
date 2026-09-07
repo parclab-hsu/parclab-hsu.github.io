@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -351,6 +351,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 과제와 제출 예시
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../references/" class="md-nav__link">
         
   
@@ -420,10 +447,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -441,8 +468,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1228,10 +1255,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
             
   
   
@@ -1249,8 +1276,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1511,10 +1538,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
             
   
   
@@ -1532,8 +1559,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2082,7 +2109,7 @@
 </tr>
 <tr>
 <td>구조체는 판단 결과를 묶는다</td>
-<td><code>ScanResult</code>의 필드가 무엇을 뜻하는지 읽는다</td>
+<td><code>DriveDecision</code>의 필드가 무엇을 뜻하는지 읽는다</td>
 <td>거리, 방향, 정지 여부를 하나로 묶으면 무엇이 좋아지는가?</td>
 </tr>
 <tr>
@@ -2167,13 +2194,15 @@
 핵심 C 함수: <code>parse_sensor_line()</code>(구조체로 파싱), <code>analyze_scan()</code>(배열 분석).</p>
 </div>
 <div class="tabbed-block">
-<p>보드가 직접 ROS2 노드. <strong>rclc=순수 C</strong>. UNO R4 공식 지원(RAM 32KB라 경량).</p>
+<p>보드가 직접 ROS2 노드. <strong>rclc=순수 C</strong>. UNO R4(RAM 32KB)는 <code>micro_ros_arduino</code>의 <strong>커뮤니티 기여 보드</strong>다 — 공식 지원 목록(Portenta H7, Nano RP2040, Teensy, ESP32 등)에는 없다. 그래서 기본 경로가 아니라 도전 과제로 둔다.</p>
 </div>
 </div>
 </div>
 <h3 id="13-lidar-c">1.3 LiDAR 배열 → C로 판단 (자율주행의 심장)<a class="headerlink" href="#13-lidar-c" title="Permanent link">¶</a></h3>
-<p>Stella N2의 LiDAR는 거리 <strong>배열</strong>을 <code>/scan</code>으로 보낸다. 이를 C로 분석해 주행을 정한다.
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ScanResult</span><span class="w"> </span><span class="nf">analyze_scan</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">ranges</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">stop_dist</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/15_enum_state.png" data-title="enum 상태머신 — 거리에 따라 상태가 바뀐다" data-desc-position="bottom"><img alt="enum 상태머신 — 거리에 따라 상태가 바뀐다" src="../img/15_enum_state.png"></a></p>
+<p><em><code>enum</code>은 이름 붙인 정수다. <code>0,1,2,3</code> 대신 <code>STOP,SLOW,RUN,AVOID</code>로 쓰면 코드에서 의미가 보인다. <code>scan_logic.h</code>의 <code>DriveAction</code>이 이 구조다.</em>
+Stella N2의 LiDAR는 거리 <strong>배열</strong>을 <code>/scan</code>으로 보낸다. 이를 C로 분석해 주행을 정한다.
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">DriveDecision</span><span class="w"> </span><span class="nf">analyze_scan</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">ranges</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">stop_dist</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">// 1) 배열 순회로 최솟값(가장 가까운 거리) 탐색</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c1">// 2) 거리·방향 → 전진(F)/좌회피(L)/우회피(R)/정지(S)</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
@@ -2266,9 +2295,9 @@
 <hr>
 <h2 id="_9">📚 참고 레퍼런스 (외부)<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
 <ul>
-<li>ROS2 공식 문서 https://docs.ros.org/en/humble/</li>
-<li>micro-ROS https://micro.ros.org/</li>
-<li>Stella N2 https://idearobot.gitbook.io/stella-n2</li>
+<li>ROS2 공식 문서 <a href="https://docs.ros.org/en/jazzy/">docs.ros.org/en/jazzy/</a></li>
+<li>micro-ROS <a href="https://micro.ros.org/">micro.ros.org/</a></li>
+<li>Stella N2 <a href="https://idearobot.gitbook.io/stella-n2">idearobot.gitbook.io/stella-n2</a></li>
 <li>전체 정리: <a href="../references/">참고 자료 모음</a></li>
 </ul>
 <h2 id="_10">연습문제<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
@@ -2380,7 +2409,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   

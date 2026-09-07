@@ -5,12 +5,12 @@ static void print_string_examples(void)
     char word[] = "RUN";
     const char *state = "SLOW";
 
-    printf("[string]\\n");
-    printf("word  = %s, first = %c\\n", word, word[0]);
-    printf("state = %s, first = %c\\n", state, state[0]);
+    printf("[string]\n");
+    printf("word  = %s, first = %c\n", word, word[0]);
+    printf("state = %s, first = %c\n", state, state[0]);
 
     word[0] = 'F';
-    printf("changed word = %s\\n\\n", word);
+    printf("changed word = %s\n\n", word);
 }
 
 static void print_pointer_array(void)
@@ -18,11 +18,11 @@ static void print_pointer_array(void)
     const char *modes[] = {"STOP", "SLOW", "RUN", "STATUS"};
     int count = (int)(sizeof(modes) / sizeof(modes[0]));
 
-    printf("[pointer array]\\n");
+    printf("[pointer array]\n");
     for (int i = 0; i < count; ++i) {
-        printf("%d: %s (%p)\\n", i, modes[i], (const void *)modes[i]);
+        printf("%d: %s (%p)\n", i, modes[i], (const void *)modes[i]);
     }
-    printf("\\n");
+    printf("\n");
 }
 
 static int sum_grid(const int (*grid)[4], int rows)
@@ -67,8 +67,8 @@ int main(void)
         {50, 60, 70, 80}
     };
 
-    printf("[array pointer]\\n");
-    printf("grid total = %d\\n\\n", sum_grid(grid, 2));
+    printf("[array pointer]\n");
+    printf("grid total = %d\n\n", sum_grid(grid, 2));
 
     int samples[] = {72, 85, 61, 90, 77};
     int min_value = 0;
@@ -77,8 +77,8 @@ int main(void)
 
     min_max_avg(samples, 5, &min_value, &max_value, &avg);
 
-    printf("[multiple output parameters]\\n");
-    printf("min = %d, max = %d, avg = %.1f\\n", min_value, max_value, avg);
+    printf("[multiple output parameters]\n");
+    printf("min = %d, max = %d, avg = %.1f\n", min_value, max_value, avg);
 
     return 0;
 }

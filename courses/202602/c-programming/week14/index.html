@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -351,6 +351,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 과제와 제출 예시
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../references/" class="md-nav__link">
         
   
@@ -420,10 +447,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -441,8 +468,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1306,10 +1333,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
             
   
   
@@ -1327,8 +1354,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1589,10 +1616,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
             
   
   
@@ -1610,8 +1637,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2199,6 +2226,9 @@
 
 
 <h1 id="14">14주차 · 구조체 + 연결리스트 맛보기<a class="headerlink" href="#14" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>C언어 · 미래모빌리티학과 | CLO2·CLO4 | 교재 Ch14 | 원본 PDF: <code>14-1. 구조체</code>, <code>14-2. 구조체 실습</code>, <code>14-3. 구조체 도전 문제</code>, <code>14-4. 예상 문제</code></p>
+</blockquote>
 <p>이번 주는 <strong>서로 다른 자료형을 하나의 의미 있는 데이터 묶음으로 만드는 방법</strong>을 배운다. 지금까지 배열은 같은 자료형을 여러 개 저장할 때 사용했다. 하지만 실제 로봇 데이터는 거리, 속도, 상태 문자열처럼 서로 다른 값이 한 세트로 움직인다. C에서는 이런 묶음을 <code>struct</code>로 표현한다.</p>
 <p>구조체를 이해하면 Arduino에서 만든 센서 패킷을 PC 프로그램에서 해석하고, 나중에는 ROS2 메시지로 바꾸는 흐름까지 자연스럽게 이어진다. 14주차의 목표는 "구조체 문법을 외우기"가 아니라, <strong>데이터를 어떤 단위로 묶어야 프로그램이 읽기 쉬워지는지</strong>를 익히는 것이다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p02.png" data-title="구조체 학습 목표" data-desc-position="bottom"><img alt="구조체 학습 목표" src="../img/pdf-crops/week14_14_1_p02.png"></a></p>
@@ -2369,6 +2399,8 @@
 </tbody>
 </table>
 <h2 id="1">1. 구조체는 사용자 정의 자료형이다<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/04_struct_packet.png" data-title="구조체로 센서 데이터 묶기 (SensorPacket)" data-desc-position="bottom"><img alt="구조체로 센서 데이터 묶기 (SensorPacket)" src="../img/04_struct_packet.png"></a></p>
+<p><em>거리·속도·상태는 따로 다니지 않고 한 세트로 움직인다. 이 묶음이 그대로 로봇 통신의 패킷 한 개가 된다.</em></p>
 <p>구조체는 C가 기본으로 제공하는 <code>int</code>, <code>double</code>, <code>char</code>만으로는 표현하기 어려운 데이터를 직접 묶어서 만드는 자료형이다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p03.png" data-title="구조체 개념" data-desc-position="bottom"><img alt="구조체 개념" src="../img/pdf-crops/week14_14_1_p03.png"></a></p>
 <p>예를 들어 학생 한 명을 다음 변수들로 표현할 수 있다.</p>
@@ -2491,120 +2523,131 @@
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">strcpy</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">"Hong"</span><span class="p">);</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title"><code>strcpy()</code>는 배열 크기를 검사하지 않는다</p>
+<p><code>s1.name</code>은 <code>char name[20]</code>, 즉 문자 19개와 마지막 <code>'\0'</code> 자리다. 그런데 <code>strcpy()</code>는 복사할 문자열이 이 크기를 넘는지 <strong>확인하지 않고</strong> 그대로 써 버린다. 넘치면 옆에 있는 다른 변수의 메모리를 덮어써서 값이 조용히 망가지거나 프로그램이 죽는다. 이것을 <strong>버퍼 오버플로</strong>라 하고, 실제 보안 사고의 상당수가 여기서 시작된다.</p>
+<p>위 예처럼 길이를 눈으로 확인할 수 있는 짧은 리터럴이면 문제가 없다. 하지만 <strong>사용자 입력처럼 길이를 모르는 문자열</strong>을 넣을 때는 크기를 명시하는 형태를 쓴다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">snprintf</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hong"</span><span class="p">);</span>
+</code></pre></div>
+<p><code>sizeof(s1.name)</code>이 배열 크기를 알려 주므로 넘치는 부분은 잘리고 <code>'\0'</code>은 항상 붙는다. 15주차 패킷 예제가 <code>snprintf()</code>를 쓰는 것도 같은 이유다.</p>
+</div>
 <p>정리하면 구조체 변수는 <code>변수이름.멤버이름</code> 형식으로 읽고 쓴다.</p>
 <h3 id="_7">구조체 대입과 복사<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <p>같은 구조체 자료형끼리는 대입 연산자 <code>=</code>로 값을 복사할 수 있다. 이 부분은 배열과 구조체가 크게 다른 지점이다. 배열은 <code>a = b;</code>처럼 통째로 대입할 수 없지만, 구조체 변수는 같은 자료형이면 통째로 대입할 수 있다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p13.png" data-title="구조체 데이터 복사 설명" data-desc-position="bottom"><img alt="구조체 데이터 복사 설명" src="../img/pdf-crops/week14_14_2_p13.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">}</span><span class="w"> </span><span class="n">Person</span><span class="p">;</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">Person</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">"Hong"</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">};</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">Person</span><span class="w"> </span><span class="n">p2</span><span class="p">;</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 같은 Person 자료형이므로 멤버 값이 복사됨</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">}</span><span class="w"> </span><span class="n">Person</span><span class="p">;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">Person</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">"Hong"</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">};</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">Person</span><span class="w"> </span><span class="n">p2</span><span class="p">;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 같은 Person 자료형이므로 멤버 값이 복사됨</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p14.png" data-title="구조체 데이터 복사 코드" data-desc-position="bottom"><img alt="구조체 데이터 복사 코드" src="../img/pdf-crops/week14_14_2_p14.png"></a></p>
 <p>단, 구조체 안에 포인터 멤버가 있으면 주의해야 한다. 포인터 멤버는 "가리키는 데이터 전체"가 아니라 <strong>주소값</strong>이 복사된다. 그래서 두 구조체가 같은 문자열이나 같은 배열을 가리키는 상태가 될 수 있다. 이것을 얕은 복사(shallow copy)라고 부른다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">}</span><span class="w"> </span><span class="n">PersonView</span><span class="p">;</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">PersonView</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">"Kim"</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">};</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">PersonView</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w">      </span><span class="c1">// name 문자열의 주소가 복사됨</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">}</span><span class="w"> </span><span class="n">PersonView</span><span class="p">;</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">PersonView</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">"Kim"</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">};</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">PersonView</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w">      </span><span class="c1">// name 문자열의 주소가 복사됨</span>
 </code></pre></div>
 <p>학생에게는 이렇게 설명하면 좋다. <code>char name[20]</code>은 구조체 안에 문자 칸 20개가 들어 있다. <code>char *name</code>은 구조체 안에 문자열이 있는 주소 하나만 들어 있다. 둘은 비슷해 보이지만 복사와 수명 관리에서 매우 다르다.</p>
 <h2 id="4">4. 구조체 배열<a class="headerlink" href="#4" title="Permanent link">¶</a></h2>
 <p>학생이 한 명이면 구조체 변수 하나면 충분하다. 학생이 여러 명이면 구조체 배열을 사용한다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p14.png" data-title="구조체 배열 선언" data-desc-position="bottom"><img alt="구조체 배열 선언" src="../img/pdf-crops/week14_14_1_p14.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">classroom</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="p">{</span><span class="s">"Hong"</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="p">{</span><span class="s">"Lee"</span><span class="p">,</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="p">{</span><span class="s">"Park"</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">}</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">};</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">classroom</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="p">{</span><span class="s">"Hong"</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="p">{</span><span class="s">"Lee"</span><span class="p">,</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="p">{</span><span class="s">"Park"</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">}</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">};</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p15.png" data-title="구조체 배열 초기화" data-desc-position="bottom"><img alt="구조체 배열 초기화" src="../img/pdf-crops/week14_14_1_p15.png"></a></p>
 <p>구조체 배열도 일반 배열처럼 인덱스를 사용한다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">avg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s %.1f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">avg</span><span class="p">);</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">avg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s %.1f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">classroom</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">avg</span><span class="p">);</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">}</span>
 </code></pre></div>
 <p>Arduino 예제로 바꾸면 <code>SensorPacket packets[10]</code>처럼 여러 센서 패킷을 저장할 수 있다. 10주차 배열과 14주차 구조체가 결합되는 지점이다.</p>
 <h2 id="5-">5. 구조체 포인터와 <code>-&gt;</code><a class="headerlink" href="#5-" title="Permanent link">¶</a></h2>
 <p>구조체도 변수이므로 주소가 있다. 구조체 주소를 저장하는 포인터를 만들 수 있다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p18.png" data-title="구조체와 포인터" data-desc-position="bottom"><img alt="구조체와 포인터" src="../img/pdf-crops/week14_14_1_p18.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">"Kim"</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="mf">87.5</span><span class="p">};</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">"Kim"</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="mf">87.5</span><span class="p">};</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">s1</span><span class="p">;</span>
 </code></pre></div>
 <p>포인터 <code>p</code>가 가리키는 구조체의 멤버에 접근하는 정식 표현은 <code>(*p).name</code>이다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p19.png" data-title="구조체를 가리키는 포인터 사용" data-desc-position="bottom"><img alt="구조체를 가리키는 포인터 사용" src="../img/pdf-crops/week14_14_1_p19.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%s %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">).</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">).</span><span class="n">kor</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%s %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">).</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">).</span><span class="n">kor</span><span class="p">);</span>
 </code></pre></div>
 <p>괄호가 필요한 이유는 연산자 우선순위 때문이다. <code>.</code>가 <code>*</code>보다 먼저 계산되므로 <code>*p.name</code>처럼 쓰면 의도와 다르게 해석된다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p20.png" data-title="연산자 우선순위" data-desc-position="bottom"><img alt="연산자 우선순위" src="../img/pdf-crops/week14_14_1_p20.png"></a></p>
 <p>그래서 C는 더 읽기 쉬운 <code>-&gt;</code> 연산자를 제공한다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p21.png" data-title="간접 멤버 연산자" data-desc-position="bottom"><img alt="간접 멤버 연산자" src="../img/pdf-crops/week14_14_1_p21.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%s %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%s %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="p">);</span>
 </code></pre></div>
 <p>다음 두 표현은 같은 뜻이다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">).</span><span class="n">kor</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">).</span><span class="n">kor</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span>
 </code></pre></div>
 <p>실무에서는 구조체 포인터를 다룰 때 거의 항상 <code>-&gt;</code>를 사용한다. 함수에서 구조체를 수정해야 할 때도 포인터를 넘기고 <code>-&gt;</code>로 멤버를 바꾸는 패턴이 자주 나온다.</p>
 <h2 id="6">6. 구조체와 함수<a class="headerlink" href="#6" title="Permanent link">¶</a></h2>
 <p>구조체 변수를 함수 인수로 넘기면 전체 구조체가 복사된다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_1_p24.png" data-title="구조체와 함수의 인수" data-desc-position="bottom"><img alt="구조체와 함수의 인수" src="../img/pdf-crops/week14_14_1_p24.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">print_student</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="p">{</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">kor</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">math</span><span class="p">);</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">print_student</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="p">{</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%s %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">kor</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">math</span><span class="p">);</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="p">}</span>
 </code></pre></div>
 <p>출력만 한다면 값 복사도 괜찮다. 하지만 함수 안에서 원본을 수정하려면 구조체 포인터를 넘겨야 한다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p27.png" data-title="구조체 포인터를 함수 인수로 전달" data-desc-position="bottom"><img alt="구조체 포인터를 함수 인수로 전달" src="../img/pdf-crops/week14_14_2_p27.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">update_average</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="p">{</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">avg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">update_average</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="p">{</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">avg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">}</span>
 </code></pre></div>
 <p>구조체를 함수 반환값으로 사용할 수도 있다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p31.png" data-title="구조체와 함수의 반환값" data-desc-position="bottom"><img alt="구조체와 함수의 반환값" src="../img/pdf-crops/week14_14_2_p31.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">make_student</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">math</span><span class="p">)</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="p">{</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">kor</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">};</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">avg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">make_student</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kor</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">math</span><span class="p">)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="p">{</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">kor</span><span class="p">,</span><span class="w"> </span><span class="n">math</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">};</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w">   </span><span class="c1">// 원본 슬라이드는 strcpy</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">avg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="p">}</span>
 </code></pre></div>
+<p>원본 슬라이드는 이 자리에 <code>strcpy(s.name, name)</code>을 쓴다. 여기서는 <code>snprintf()</code>로 바꿨는데, 이유는 <code>name</code>이 <strong>길이를 알 수 없는 포인터</strong>이기 때문이다. 호출하는 쪽이 20자가 넘는 이름을 넘기면 <code>strcpy()</code>는 그대로 넘쳐 쓴다. 앞의 버퍼 오버플로 경고가 바로 이 상황을 말한다.</p>
 <p>이 방식은 함수가 여러 값을 한 번에 돌려주는 것처럼 사용할 수 있다. 단, 큰 구조체를 자주 복사하면 비용이 커질 수 있으므로 수정이 필요한 함수는 포인터를 넘기는 편이 좋다.</p>
 <h3 id="_8">구조체 반환값을 읽는 방법<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
 <p>실습 자료는 구조체 함수의 반환값을 별도 슬라이드로 다룬다. 핵심은 함수가 <code>int</code> 하나만 돌려주는 것이 아니라, 여러 멤버를 가진 구조체 한 덩어리를 돌려줄 수 있다는 점이다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p32.png" data-title="구조체 반환값 설명" data-desc-position="bottom"><img alt="구조체 반환값 설명" src="../img/pdf-crops/week14_14_2_p32.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="p">}</span><span class="w"> </span><span class="n">StudentInfo</span><span class="p">;</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="n">StudentInfo</span><span class="w"> </span><span class="nf">make_info</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">{</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">    </span><span class="n">StudentInfo</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">};</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="p">}</span><span class="w"> </span><span class="n">StudentInfo</span><span class="p">;</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">StudentInfo</span><span class="w"> </span><span class="nf">make_info</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="p">{</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">    </span><span class="n">StudentInfo</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">};</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w">   </span><span class="c1">// 원본 슬라이드는 strcpy</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="p">}</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p33.png" data-title="구조체 반환값 코드" data-desc-position="bottom"><img alt="구조체 반환값 코드" src="../img/pdf-crops/week14_14_2_p33.png"></a></p>
 <p>이 코드는 <code>id</code>, <code>name</code>, <code>age</code> 세 값을 따로 반환하지 않는다. 세 값을 <code>StudentInfo</code>라는 하나의 묶음으로 만든 뒤 그 묶음을 반환한다. 이 관점은 ROS2 메시지를 이해할 때도 도움이 된다. 메시지 하나가 여러 필드를 함께 가지고 이동하기 때문이다.</p>
 <h2 id="7">7. 구조체 안의 포인터<a class="headerlink" href="#7" title="Permanent link">¶</a></h2>
 <p>구조체 멤버로 포인터를 넣을 수도 있다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p12.png" data-title="구조체 데이터 복사" data-desc-position="bottom"><img alt="구조체 데이터 복사" src="../img/pdf-crops/week14_14_2_p12.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">label</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="p">};</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">label</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="p">};</span>
 </code></pre></div>
 <p>이 경우 <code>name</code> 멤버는 문자열 자체를 저장하는 배열이 아니라 문자열이 있는 위치를 가리키는 주소다. 포인터 멤버를 사용할 때는 "이 주소가 가리키는 데이터가 언제까지 살아 있는가"를 생각해야 한다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p20.png" data-title="포인터를 구조체 멤버로 사용" data-desc-position="bottom"><img alt="포인터를 구조체 멤버로 사용" src="../img/pdf-crops/week14_14_2_p20.png"></a></p>
@@ -2632,36 +2675,36 @@
 </tbody>
 </table>
 <p>연결리스트는 구조체 안에 다음 노드의 주소를 넣는 대표적인 예다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="p">}</span><span class="w"> </span><span class="n">Node</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">}</span><span class="w"> </span><span class="n">Node</span><span class="p">;</span>
 </code></pre></div>
 <p><code>next</code>는 다음 <code>Node</code>의 주소를 저장한다. 배열은 메모리에서 연속된 칸을 사용하지만, 연결리스트는 포인터로 다음 데이터를 찾아간다. 이번 주에는 깊은 자료구조 구현보다 "구조체 안에 같은 구조체를 가리키는 포인터를 넣을 수 있다"는 감각을 잡는 것이 목표다.</p>
 <h2 id="8">8. 이중 포인터 빠른 복습<a class="headerlink" href="#8" title="Permanent link">¶</a></h2>
 <p>14주차 실습 자료에는 이중 포인터가 함께 등장한다. 이중 포인터는 포인터의 주소를 저장하는 포인터다.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p03.png" data-title="이중 포인터 개념" data-desc-position="bottom"><img alt="이중 포인터 개념" src="../img/pdf-crops/week14_14_2_p03.png"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'F'</span><span class="p">;</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">ppc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pc</span><span class="p">;</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pc</span><span class="p">);</span>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">ppc</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'F'</span><span class="p">;</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">ppc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pc</span><span class="p">;</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pc</span><span class="p">);</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">ppc</span><span class="p">);</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_2_p04.png" data-title="이중 포인터 주소 관계" data-desc-position="bottom"><img alt="이중 포인터 주소 관계" src="../img/pdf-crops/week14_14_2_p04.png"></a></p>
 <p>문자열 배열을 다룰 때 <code>char **</code>가 자주 나온다. 예상 문제 #1은 이 개념을 확인하는 문제다.</p>
 <h2 id="9-arduino-ros2">9. Arduino와 ROS2로 연결하기<a class="headerlink" href="#9-arduino-ros2" title="Permanent link">¶</a></h2>
 <p>구조체는 통신과 잘 어울린다. 메모리 안에서는 구조체로 다루고, 시리얼이나 WiFi로 보낼 때는 문자열로 바꾸면 사람이 확인하기 쉽다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">distance_cm</span><span class="p">;</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">speed_cmps</span><span class="p">;</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="p">}</span><span class="w"> </span><span class="n">SensorPacket</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">distance_cm</span><span class="p">;</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">speed_cmps</span><span class="p">;</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">state</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="p">}</span><span class="w"> </span><span class="n">SensorPacket</span><span class="p">;</span>
 </code></pre></div>
 <p>이 구조체를 <code>"S,42.0,25.0,RUN"</code> 같은 문자열로 바꾸는 과정을 <strong>직렬화</strong>라고 한다. 반대로 문자열을 다시 구조체로 바꾸는 과정을 <strong>역직렬화</strong>라고 한다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">SensorPacket</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">42.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">25.0f</span><span class="p">,</span><span class="w"> </span><span class="s">"RUN"</span><span class="p">};</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="c1">// 구조체 -&gt; "S,42.0,25.0,RUN"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">SensorPacket</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">42.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">25.0f</span><span class="p">,</span><span class="w"> </span><span class="s">"RUN"</span><span class="p">};</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="c1">// 구조체 -&gt; "S,42.0,25.0,RUN"</span>
 </code></pre></div>
 <p>Arduino UNO R4 예제 <code>code/arduino/15_struct_packet/15_struct_packet.ino</code>는 센서 패킷 구조체를 만들어 시리얼로 출력한다. PC C 예제 <code>packet_parser.c</code>와 <code>ex14_struct_packet_list.c</code>는 그 문자열을 다시 구조체로 해석한다.</p>
 <p>ROS2 메시지도 결국 이름 붙은 필드들의 묶음이다. 예를 들어 <code>geometry_msgs/msg/Twist</code>는 선속도와 각속도 필드를 가진 구조체처럼 생각할 수 있다. C에서 구조체로 데이터를 잘 묶는 연습은 15주차 ROS2 토픽을 이해하는 준비가 된다.</p>
@@ -2700,9 +2743,9 @@
 <li><code>struct second</code> 안에 <code>struct first sb;</code>처럼 첫 번째 구조체 변수가 멤버로 들어가는지 확인한다.</li>
 <li>바깥 구조체 변수에서 안쪽 구조체 멤버를 읽을 때는 점을 두 번 사용한다.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">after2</span><span class="p">.</span><span class="n">sb</span><span class="p">.</span><span class="n">num</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">after2</span><span class="p">.</span><span class="n">sb</span><span class="p">.</span><span class="n">ch</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">after2</span><span class="p">.</span><span class="n">num</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">after2</span><span class="p">.</span><span class="n">sb</span><span class="p">.</span><span class="n">num</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">after2</span><span class="p">.</span><span class="n">sb</span><span class="p">.</span><span class="n">ch</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">after2</span><span class="p">.</span><span class="n">num</span>
 </code></pre></div>
 <p>이 문제의 핵심은 "구조체 안에 구조체가 들어가도 멤버 접근 규칙은 그대로"라는 점이다. 바깥 멤버로 한 번 들어가고, 안쪽 멤버로 한 번 더 들어간다고 설명하면 된다.</p>
 <p>두 번째 문제는 구조체 변수끼리 대입할 수 있는지 확인한다.</p>
@@ -2728,20 +2771,20 @@
 <li>함수 안에서 평균 또는 합산 결과를 <code>score</code> 구조체에 채운 뒤 <code>return score;</code>로 반환한다.</li>
 </ol>
 <p>이 문제를 풀 때는 "함수가 반환하는 값이 숫자 하나가 아니라 구조체 한 묶음"이라는 사실을 먼저 표시해 두면 덜 헷갈린다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">PS</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avg</span><span class="p">(</span><span class="n">pack</span><span class="p">,</span><span class="w"> </span><span class="n">shin</span><span class="p">);</span><span class="w">  </span><span class="c1">// avg 함수가 PS 구조체를 반환</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">PS</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avg</span><span class="p">(</span><span class="n">pack</span><span class="p">,</span><span class="w"> </span><span class="n">shin</span><span class="p">);</span><span class="w">  </span><span class="c1">// avg 함수가 PS 구조체를 반환</span>
 </code></pre></div>
 <p>수업 중에는 함수 호출 화살표를 그려서 <code>pack</code>, <code>shin</code>이 함수 안의 <code>s1</code>, <code>s2</code>로 복사되고, <code>score</code>가 다시 <code>result</code>로 복사된다고 보여 주면 좋다.</p>
 <h2 id="13">13. 예상 문제 해설<a class="headerlink" href="#13" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_4_p02.png" data-title="예상 문제 1" data-desc-position="bottom"><img alt="예상 문제 1" src="../img/pdf-crops/week14_14_4_p02.png"></a></p>
 <p>예상 문제 #1은 문자열 배열과 이중 포인터 문제다.</p>
 <h3 id="1_1">예상 문제 #1 · 문자열 배열과 이중 포인터<a class="headerlink" href="#1_1" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"Banana"</span><span class="p">,</span><span class="w"> </span><span class="s">"Tomato"</span><span class="p">,</span><span class="w"> </span><span class="s">"Pasta"</span><span class="w"> </span><span class="p">};</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">q</span><span class="p">);</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)));</span>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"Banana"</span><span class="p">,</span><span class="w"> </span><span class="s">"Tomato"</span><span class="p">,</span><span class="w"> </span><span class="s">"Pasta"</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">q</span><span class="p">);</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)));</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
 </code></pre></div>
 <p>이 문제는 <code>char* str[]</code>와 <code>char** q</code>의 관계를 읽는 문제다. 먼저 자료형을 말로 바꾸면 다음과 같다.</p>
 <table>
@@ -2794,9 +2837,9 @@
 <li><code>*(*(q + 2) + 2)</code>는 <code>"Pasta"</code>의 세 번째 글자이므로 <code>s</code>다.</li>
 </ol>
 <p>출력:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>B
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>T
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>B
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>T
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>s
 </code></pre></div>
 <p>시험장에서 이 문제를 풀 때는 <code>q + 1</code>, <code>q + 2</code>를 문자 하나 이동으로 착각하면 안 된다. <code>q</code>는 <code>char**</code>이므로 <code>q + 1</code>은 다음 문자열 포인터 요소로 이동한다. 문자 하나 이동은 <code>*(q + 2) + 2</code>처럼 문자열 시작 주소를 얻은 뒤에 일어난다.</p>
 <table>
@@ -2832,16 +2875,16 @@
 <li><code>printf("%s\n", *(q + 2));</code>의 출력은?</li>
 </ol>
 <p>정답:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>a
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>m
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>Pasta
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>a
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>m
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>Pasta
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/pdf-crops/week14_14_4_p03.png" data-title="예상 문제 2" data-desc-position="bottom"><img alt="예상 문제 2" src="../img/pdf-crops/week14_14_4_p03.png"></a></p>
 <p>예상 문제 #2는 구조체 배열과 포인터 연산 문제다.</p>
 <h3 id="2_1">예상 문제 #2 · 구조체 배열과 포인터 연산<a class="headerlink" href="#2_1" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="p">);</span>
 </code></pre></div>
 <p>이 문제는 <code>p = &amp;s[0];</code> 이후 포인터 연산이 어느 학생을 가리키는지 확인하는 문제다.</p>
 <table>
@@ -2920,7 +2963,7 @@
 </tbody>
 </table>
 <p>계산 1단계:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
 </code></pre></div>
 <table>
 <thead>
@@ -2945,7 +2988,7 @@
 </tbody>
 </table>
 <p>계산 2단계:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">kor</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">math</span><span class="p">;</span>
 </code></pre></div>
 <table>
 <thead>
@@ -2974,7 +3017,7 @@
 </tbody>
 </table>
 <p>계산 3단계:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">total</span><span class="p">);</span>
 </code></pre></div>
 <table>
 <thead>
@@ -2999,12 +3042,12 @@
 </tbody>
 </table>
 <p>따라서 최종 출력은 다음과 같다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>501
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>501
 </code></pre></div>
 <p>이 문제의 핵심은 <code>-&gt;</code>가 구조체 포인터의 멤버 접근이라는 점이다. 다음 두 표현은 같은 의미다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)).</span><span class="n">sum</span>
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">sum</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sum</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)).</span><span class="n">sum</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">sum</span>
 </code></pre></div>
 <p>시험장에서 실수하기 쉬운 지점:</p>
 <table>
@@ -3036,9 +3079,9 @@
 <li><code>printf("%d\n", s[1].sum);</code>을 추가하면 무엇이 출력되는가?</li>
 </ol>
 <p>정답:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>181
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>s[2]
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>163
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>181
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>s[2]
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>163
 </code></pre></div>
 <h3 id="_9">예상 문제 풀이 체크리스트<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
 <ul class="task-list">
@@ -3077,9 +3120,9 @@
 </ul>
 <h2 id="_10">📚 참고 레퍼런스 (외부)<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
 <ul>
-<li>구조체 https://en.cppreference.com/w/c/language/struct</li>
-<li>연결리스트 https://en.wikipedia.org/wiki/Linked_list</li>
-<li>malloc/free https://en.cppreference.com/w/c/memory/malloc</li>
+<li>구조체 <a href="https://en.cppreference.com/w/c/language/struct">en.cppreference.com/w/c/language/struct</a></li>
+<li>연결리스트 <a href="https://en.wikipedia.org/wiki/Linked_list">en.wikipedia.org/wiki/Linked_list</a></li>
+<li>malloc/free <a href="https://en.cppreference.com/w/c/memory/malloc">en.cppreference.com/w/c/memory/malloc</a></li>
 <li>전체 정리: <a href="../references/">참고 자료 모음</a></li>
 </ul>
 
@@ -3175,7 +3218,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   

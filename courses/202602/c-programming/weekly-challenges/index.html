@@ -13,14 +13,14 @@
         <link rel="prev" href="../teaching-guide-3h/">
       
       
-        <link rel="next" href="../references/">
+        <link rel="next" href="../assignments/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -574,6 +574,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 과제와 제출 예시
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../references/" class="md-nav__link">
         
   
@@ -641,10 +668,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -662,8 +689,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1120,10 +1147,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
             
   
   
@@ -1141,8 +1168,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1403,10 +1430,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
             
   
   
@@ -1424,8 +1451,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1994,7 +2021,7 @@ bit0·bit7만 켜면 `s = 0x81`. `GET(s,0)=1, GET(s,3)=0, GET(s,7)=1`.
 <p><strong>🔥 도전</strong> — <code>+ - * /</code> 문자와 두 수를 받아 계산하는 <strong>함수 포인터 계산기</strong>를 만들어라(디스패치 테이블).</p>
 <details><summary>힌트</summary>
 
-`{char op; int(*fn)(int,int);}` 표를 순회해 일치하는 함수 호출. `ex09_dispatch.c` 응용.
+`{char op; int(*fn)(int,int);}` 표를 순회해 일치하는 함수 호출. `ex13_function_pointer_menu.c` 응용.
 </details>
 
 <hr>
@@ -2077,7 +2104,7 @@ bit0·bit7만 켜면 `s = 0x81`. `GET(s,0)=1, GET(s,3)=0, GET(s,7)=1`.
 <p><strong>🔥 도전</strong> — <code>"12,34,56,78"</code> 처럼 콤마로 구분된 숫자 문자열을 <strong>정수 배열로 파싱</strong>해 합을 구하라(<code>strtok</code> 또는 직접 순회).</p>
 <details><summary>힌트</summary>
 
-`strtok(copy,",")`로 토막 → `atoi`/`sscanf`로 정수 변환 → 누적. `ex12_strings.c` 응용.
+`strtok(copy,",")`로 토막 → `atoi`/`sscanf`로 정수 변환 → 누적. `packet_parser.c` 응용.
 </details>
 
 <hr>
@@ -2236,13 +2263,13 @@ bit0·bit7만 켜면 `s = 0x81`. `GET(s,0)=1, GET(s,3)=0, GET(s,7)=1`.
         
         
           
-          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="다음: 참고 자료·외부 레퍼런스">
+          <a href="../assignments/" class="md-footer__link md-footer__link--next" aria-label="다음: 주차별 과제와 제출 예시">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                참고 자료·외부 레퍼런스
+                주차별 과제와 제출 예시
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2277,7 +2304,7 @@ bit0·bit7만 켜면 `s = 0x81`. `GET(s,0)=1, GET(s,3)=0, GET(s,7)=1`.
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   

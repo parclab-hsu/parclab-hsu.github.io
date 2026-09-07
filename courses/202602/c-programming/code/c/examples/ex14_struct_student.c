@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 typedef struct {
     char name[16];
@@ -13,7 +12,9 @@ Student make_student(const char *name, int kor, int math)
 {
     Student s = {"", kor, math, 0, 0.0};
 
-    strcpy(s.name, name);
+    /* name 은 길이를 알 수 없는 포인터다. strcpy 를 쓰면 name[16] 을
+       넘겨도 그대로 써 버리므로, 크기를 명시하는 snprintf 를 쓴다. */
+    snprintf(s.name, sizeof(s.name), "%s", name);
     s.total = s.kor + s.math;
     s.avg = s.total / 2.0;
     return s;

@@ -25,7 +25,9 @@ void loop() {
   SensorPacket packet;
   char line[64];
 
-  packet.distance_cm = 42.0f - (tick % 20);
+  /* 0~39 를 오가며 RUN / SLOW / STOP 세 상태를 모두 지나간다.
+     (tick % 20) 이면 최솟값이 23cm 라 STOP 분기에 영영 닿지 않는다. */
+  packet.distance_cm = 45.0f - (tick % 40);
   packet.speed_cmps = packet.distance_cm < 15.0f ? 0.0f : 25.0f;
 
   if (packet.distance_cm < 15.0f) {
