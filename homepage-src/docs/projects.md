@@ -82,6 +82,18 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
 <div class="grid cards" markdown>
 
+-   :material-circle-outline:{ style="color:#e0a800" } [__연구개발 계획 · HD로보틱스 적외선 광학 추적 기반 로봇 캘리브레이션__](projects/hd-robotics-ots-calibration.md)
+
+    ---
+
+    적외선 스테레오 카메라와 로봇 장착형 강체 마커로 로봇 말단의 3차원 위치·자세를 측정하고, 기존 보정 알고리즘과 연계하는 자동 캘리브레이션 시스템 개발 계획. OTS 하드웨어·추적 소프트웨어·로봇 인터페이스를 통합하고, 가려짐 대응과 자동 측정·보정·검증 절차를 확보합니다.
+
+    **개발 목표** — 절대 위치 오차 0.5 mm 이하 · 자세 회전 오차 0.1° 이하 · OTS 공간 분해능 0.05 mm 이하. 목표값이며 달성 실적을 의미하지 않습니다.
+
+    `Infrared Stereo Vision` · `Optical Tracking` · `Rigid Body Marker` · `Robot Calibration` · `In-Line Automation`
+
+    [:octicons-arrow-right-24: 연구개발 계획서 보기](projects/hd-robotics-ots-calibration.md)
+
 -   :material-circle-outline:{ style="color:#e0a800" } [__컨소시엄 제안 · 실환경–가상환경 연계형 데이터 증강 — Robot RFM 데이터팩토리__](projects/manufacturing-data-factory-rfm/index.md)
 
     ---
