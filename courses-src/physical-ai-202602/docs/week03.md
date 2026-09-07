@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     지난 강의에서 다룬 Isaac Sim의 기본 구조와 RGB/Depth 센서 시각화에 이어, 이번 강의에서는 **IMU·LiDAR·Radar** 세 가지 센서를 Isaac Sim 환경에 적용한다. 각 센서를 동적 물체에 부착하고, 센서 데이터를 획득·시각화하는 전체 실습 과정을 익혀 로봇 인지(perception)의 기초를 다진다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar)」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 **재구성 예제**입니다.
-
 !!! note "강의 흐름 (FLOW)"
     `가상 환경` → `센서 모델` → `프레임 획득` → `시각화` → `ROS 연동`
 
@@ -25,7 +22,7 @@
 
 ![3강 표지 — Isaac Sim 센서 시뮬레이션](img/w03/s01.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 01 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 01
 ///
 
 | 센서 | 풀네임 | 측정 원리 | 활용 |
@@ -36,7 +33,7 @@ Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 01 (출처
 
 ![세 가지 센서 개요](img/w03/s03.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 03 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 03
 ///
 
 !!! note "이번 강의의 흐름"
@@ -70,7 +67,7 @@ my_world.reset()                             # 물리 엔진 초기화
 
 ![IMU 시뮬레이션 환경 구성](img/w03/s05.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 05 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 05
 ///
 
 ### 2-2. 동적 물체 생성
@@ -112,7 +109,7 @@ cube = my_world.scene.add(
 
 ![IMU 센서 부착 파라미터](img/w03/s07.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 07 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 07
 ///
 
 ### 2-4. 시뮬레이션 실행
@@ -138,7 +135,7 @@ simulation_app.close()  # 종료 및 리소스 반환
 
 ![IMU 시뮬레이션 실행 및 HUD](img/w03/s08.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 08 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 08
 ///
 
 ---
@@ -185,7 +182,7 @@ _, sensor = omni.kit.commands.execute(
 
 ![RTX LiDAR 센서 생성](img/w03/s10.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 10 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 10
 ///
 
 ### 3-3. 렌더링 및 데이터 처리 구성
@@ -229,7 +226,7 @@ writer.attach([render_product])
 
 ![LiDAR 어노테이터·포인트 클라우드 시각화](img/w03/s14.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 14 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 14
 ///
 
 ### 3-4. 시뮬레이션 루프 실행 및 결과
@@ -276,7 +273,7 @@ simulation_app.close()               # 자원 정리 및 메모리 해제
 
 ![LiDAR 출력 데이터 항목](img/w03/s17.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 17 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 17
 ///
 
 ---
@@ -288,7 +285,7 @@ Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 17 (출처
 
 ![Isaac Sim에서의 Radar 개요](img/w03/s19.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 19 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 19
 ///
 
 ### 4-1. 환경 구성 및 동적 물체 생성
@@ -324,7 +321,7 @@ _, sensor = omni.kit.commands.execute(
 
 ![RTX Radar 센서 설정](img/w03/s21.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 21 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 21
 ///
 
 ### 4-3. 렌더링 및 데이터 처리 구성
@@ -350,7 +347,7 @@ writer.attach([render_product])
 
 ![Radar 렌더링·데이터 처리](img/w03/s22.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 22 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 22
 ///
 
 ### 4-4. 시뮬레이션 실행
@@ -385,7 +382,7 @@ simulation_app.close()             # 시뮬레이션 내 자원 초기화
 
 ![Radar 출력 데이터 항목](img/w03/s24.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 24 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 24
 ///
 
 ---
@@ -401,7 +398,7 @@ Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 24 (출처
 
 ![Wrap-up 요약](img/w03/s26.jpg){ width="720" }
 /// caption
-Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 26 (출처: ENGI UNIVERSE)
+Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 26
 ///
 
 ## ✅ 체크포인트
@@ -422,9 +419,9 @@ Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 26 (출처
 | Radar 시뮬레이션 | 20 | 센서 설정·512×512 렌더·Radar 출력 데이터 해석 |
 | 개념 이해 | 10 | Annotator 역할·`[1,1]` 의미·센서별 측정 원리 설명 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 「Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar)」 (제작: ENGI UNIVERSE)
+- 교안 「Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar)」
 - NVIDIA Isaac Sim 공식 문서 — <https://docs.isaacsim.omniverse.nvidia.com>
 - Isaac Sim RTX Sensors (LiDAR/Radar) — <https://docs.isaacsim.omniverse.nvidia.com/latest/sensors/index.html>
 - Omniverse Replicator — <https://docs.omniverse.nvidia.com/extensions/latest/ext_replicator.html>
@@ -522,7 +519,7 @@ Isaac Sim 센서 시뮬레이션 (IMU·LiDAR·Radar) — 슬라이드 26 (출처
 *실제 LiDAR 포인트 클라우드 — 거리 측정점들이 3차원 공간에 찍힌 모습 — 출처: Wikimedia Commons, Ouster OS1-64 point cloud (CC BY 4.0)*
 
 ![Isaac Sim에서의 Radar — 전파 기반 거리·속도 측정](img/w03/s19.jpg)
-*Isaac Sim에서의 Radar — 전파 기반 거리·속도 측정 — 출처: 강의 슬라이드 3강 19 (제작: ENGI UNIVERSE)*
+*Isaac Sim에서의 Radar — 전파 기반 거리·속도 측정 — 출처: 강의 슬라이드 3강 19*
 
 ### ③ 자가 점검 퀴즈
 

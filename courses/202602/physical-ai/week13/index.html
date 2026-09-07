@@ -1015,7 +1015,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1813,7 +1813,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -2008,10 +2008,6 @@
 <p class="admonition-title">학습목표</p>
 <p>지난 강의에서 정의한 5종의 <strong>단위 액션(Unit Action)</strong> 중, 가장 복잡한 <strong><code>track</code></strong> 을 중심으로 System-1 Executor의 설계를 완성한다. <code>track</code> 이 단순 시야 추적이 아니라 <strong>짐벌(yaw/pitch) + 바디(yaw) + 거리(vx)</strong> 를 동시에 다루는 <strong>3축 통합 제어</strong>임을 이해하고, <code>report_and_wait</code>(보고·대기)와 <code>return_to_home</code>(귀환) 액션의 구조와 테스트 방법까지 정리한다.</p>
 </div>
-<div class="admonition quote">
-<p class="admonition-title">출처 (Source)</p>
-<p>본 자료의 그림·예제는 교안 <strong>「System-1 단위 액션 설계 part 2」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 코드 표현은 교안의 설명을 충실히 따른 <strong>재구성 예제</strong>입니다(원본 소스 비공개).</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">강의 흐름 (FLOW)</p>
 <p><code>Plan JSON</code> → <code>Executor</code> → <code>Unit Action</code> → <code>Robot APIs</code> → <code>Status Report</code></p>
@@ -2083,7 +2079,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s03.jpg" data-title="단위 액션 5종 개요" data-desc-position="bottom"><img alt="단위 액션 5종 개요" src="../img/w13/s03.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 03 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 03</p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -2131,7 +2127,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s06.jpg" data-title="track의 3축 통합 제어 — 짐벌·바디·거리" data-desc-position="bottom"><img alt="track의 3축 통합 제어 — 짐벌·바디·거리" src="../img/w13/s06.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 06 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 06</p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -2157,7 +2153,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s13.jpg" data-title="DepthBuffer — bbox ROI에서 안정적인 range_m 추출" data-desc-position="bottom"><img alt="DepthBuffer — bbox ROI에서 안정적인 range_m 추출" src="../img/w13/s13.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 13 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 13</p>
 </figcaption>
 </figure>
 <p>산출된 <code>range_m</code> 은 ① <code>follow_dist</code> 와 비교해 전진/후퇴 판단, ② <code>vx</code> 계산의 기준값, ③ <strong>yaw가 정렬된 상태에서만 거리 제어를 시작</strong>하는 조건 판단에 쓰입니다.</p>
@@ -2191,7 +2187,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s20.jpg" data-title="_control_step의 제어 흐름" data-desc-position="bottom"><img alt="_control_step의 제어 흐름" src="../img/w13/s20.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 20 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 20</p>
 </figcaption>
 </figure>
 <p><strong>① 비전 정보 읽기 / 타깃 선택</strong></p>
@@ -2216,7 +2212,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s27.jpg" data-title="Gimbal PID + LPF + Slew 제한" data-desc-position="bottom"><img alt="Gimbal PID + LPF + Slew 제한" src="../img/w13/s27.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 27 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 27</p>
 </figcaption>
 </figure>
 <p><strong>③ 바디 정렬 (wz)</strong></p>
@@ -2371,7 +2367,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s38.jpg" data-title="report_and_wait — 보고와 대기의 결합" data-desc-position="bottom"><img alt="report_and_wait — 보고와 대기의 결합" src="../img/w13/s38.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 38 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 38</p>
 </figcaption>
 </figure>
 <h3 id="31-report">3.1 report — 상황 요약<a class="headerlink" href="#31-report" title="Permanent link">¶</a></h3>
@@ -2428,7 +2424,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s50.jpg" data-title="report_and_wait 결정 대기 흐름" data-desc-position="bottom"><img alt="report_and_wait 결정 대기 흐름" src="../img/w13/s50.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 50 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 50</p>
 </figcaption>
 </figure>
 <h3 id="34-scan-report_and_wait-return_to_home">3.4 테스트 — scan → report_and_wait → return_to_home<a class="headerlink" href="#34-scan-report_and_wait-return_to_home" title="Permanent link">¶</a></h3>
@@ -2493,7 +2489,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s56.jpg" data-title="return_to_home — home 좌표 결정 우선순위" data-desc-position="bottom"><img alt="return_to_home — home 좌표 결정 우선순위" src="../img/w13/s56.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 56 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 56</p>
 </figcaption>
 </figure>
 <h3 id="42-exec_return_to_home">4.2 exec_return_to_home<a class="headerlink" href="#42-exec_return_to_home" title="Permanent link">¶</a></h3>
@@ -2522,7 +2518,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s60.jpg" data-title="return_to_home 테스트 — Nav2 path 수렴 확인" data-desc-position="bottom"><img alt="return_to_home 테스트 — Nav2 path 수렴 확인" src="../img/w13/s60.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 2 — 슬라이드 60 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 2 — 슬라이드 60</p>
 </figcaption>
 </figure>
 <hr>
@@ -2582,9 +2578,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_3">🔗 출처 및 참고자료<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<h2 id="_3">🔗 참고자료<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <ul>
-<li>교안 「System-1 단위 액션 설계 part 2」 (제작: ENGI UNIVERSE)</li>
+<li>교안 「System-1 단위 액션 설계 part 2」</li>
 <li>ROS 2 — <a href="https://docs.ros.org">https://docs.ros.org</a></li>
 <li>Nav2 (NavigateToPose) — <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
 <li>tf2 (좌표 변환) — <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html">https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html</a></li>
@@ -2766,11 +2762,11 @@
 </table>
 <h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s06.jpg" data-title="track의 3축 통합 제어 — 짐벌·바디·거리의 역할 분담" data-desc-position="bottom"><img alt="track의 3축 통합 제어 — 짐벌·바디·거리의 역할 분담" src="../img/w13/s06.jpg"></a>
-<em>track의 3축 통합 제어 — 짐벌·바디·거리의 역할 분담 — 출처: 강의 슬라이드 Physical AI 3강 06 (제작: ENGI UNIVERSE)</em></p>
+<em>track의 3축 통합 제어 — 짐벌·바디·거리의 역할 분담 — 출처: 강의 슬라이드 Physical AI 3강 06</em></p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/PID_en.svg/960px-PID_en.svg.png" data-title="PID 제어의 구조 — 비례·적분·미분 세 항이 오차를 함께 줄인다" data-desc-position="bottom"><img alt="PID 제어의 구조 — 비례·적분·미분 세 항이 오차를 함께 줄인다" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/PID_en.svg/960px-PID_en.svg.png"></a>
 <em>PID 제어의 구조 — 비례·적분·미분 세 항이 오차를 함께 줄인다 — 출처: Wikimedia Commons, PID en.svg (CC BY-SA 3.0)</em></p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w13/s27.jpg" data-title="Gimbal PID에 LPF와 Slew 제한을 얹은 실제 제어 흐름" data-desc-position="bottom"><img alt="Gimbal PID에 LPF와 Slew 제한을 얹은 실제 제어 흐름" src="../img/w13/s27.jpg"></a>
-<em>Gimbal PID에 LPF와 Slew 제한을 얹은 실제 제어 흐름 — 출처: 강의 슬라이드 Physical AI 3강 27 (제작: ENGI UNIVERSE)</em></p>
+<em>Gimbal PID에 LPF와 Slew 제한을 얹은 실제 제어 흐름 — 출처: 강의 슬라이드 Physical AI 3강 27</em></p>
 <h3 id="3_1">③ 자가 점검 퀴즈<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h3>
 <ol>
 <li>track에서 짐벌 축과 바디 축이 하는 일을 구분하세요.</li>

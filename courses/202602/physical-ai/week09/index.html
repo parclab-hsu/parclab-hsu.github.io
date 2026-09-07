@@ -925,7 +925,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1934,7 +1934,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -2206,10 +2206,6 @@
 <p class="admonition-title">학습목표</p>
 <p>지난 주차에 만든 SLAM 지도를 <strong>파일 형태(.pgm/.yaml)로 저장</strong>하고, SLAM 대신 그 완성된 지도를 불러와 위치만 추정하는 <strong>Localization 모드(AMCL + Nav2)</strong> 로 전환하는 과정을 익힌다. 또한 저장된 지도에서 발생할 수 있는 문제와 원인을 분석하고, <strong>GIMP로 지도 파일을 직접 보정</strong>하여 경로 안정성을 높이는 방법을 실습한다.</p>
 </div>
-<div class="admonition quote">
-<p class="admonition-title">출처 (Source)</p>
-<p>본 자료의 그림·예제는 교안 <strong>「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 명령·파라미터는 교안의 설명을 충실히 따르되, 경로는 실습 환경에 맞춰 확인이 필요합니다.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">강의 흐름 (FLOW)</p>
 <p><code>SLAM 지도생성</code> → <code>지도 저장</code> → <code>Localization</code> → <code>맵 수정(GIMP)</code> → <code>재주행</code></p>
@@ -2250,7 +2246,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s01.jpg" data-title="Spot + ATS SLAM 연동 part 2 표지" data-desc-position="bottom"><img alt="Spot + ATS SLAM 연동 part 2 표지" src="../img/w09/s01.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP) — 슬라이드 01 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP) — 슬라이드 01</p>
 </figcaption>
 </figure>
 <p>지난 강의에서는 Spot + ATS를 Isaac Sim 환경에서 <strong>SLAM 모드</strong>로 실행했습니다.</p>
@@ -2294,7 +2290,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s04.jpg" data-title="SLAM 모드 지도 생성 복습" data-desc-position="bottom"><img alt="SLAM 모드 지도 생성 복습" src="../img/w09/s04.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 04 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 04</p>
 </figcaption>
 </figure>
 <h3 id="_1">지난 강의 복습 — 실행 순서<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
@@ -2353,7 +2349,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s07.jpg" data-title="Nav2와 slam_toolbox 동시 구동" data-desc-position="bottom"><img alt="Nav2와 slam_toolbox 동시 구동" src="../img/w09/s07.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 07 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 07</p>
 </figcaption>
 </figure>
 <ul>
@@ -2384,7 +2380,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s10.jpg" data-title="지도 기반 Localization 개념" data-desc-position="bottom"><img alt="지도 기반 Localization 개념" src="../img/w09/s10.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 10 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 10</p>
 </figcaption>
 </figure>
 <p>SLAM을 사용하지 않고 <strong>미리 생성된 지도</strong>를 통해 로봇이 자신의 위치를 추정하고 경로를 계획하는 방법입니다. 고정된 위치·범위에서 동작하는 로봇에게 <strong>안정적인 자율보행</strong>이 가능합니다.</p>
@@ -2420,7 +2416,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s13.jpg" data-title="Localization 모드 실행 — RViz 전환" data-desc-position="bottom"><img alt="Localization 모드 실행 — RViz 전환" src="../img/w09/s13.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 13 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 13</p>
 </figcaption>
 </figure>
 <ul>
@@ -2464,7 +2460,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s17.jpg" data-title="초기 위치 설정 — please set the initial pose" data-desc-position="bottom"><img alt="초기 위치 설정 — please set the initial pose" src="../img/w09/s17.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 17 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 17</p>
 </figcaption>
 </figure>
 <ul>
@@ -2477,7 +2473,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s24.jpg" data-title="nav2_localization_params.yaml AMCL 파라미터" data-desc-position="bottom"><img alt="nav2_localization_params.yaml AMCL 파라미터" src="../img/w09/s24.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 24 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 24</p>
 </figcaption>
 </figure>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Planner / Controller</label><label for="__tabbed_2_2">Smoother / Behavior / Costmap</label><label for="__tabbed_2_3">AMCL / map_server</label></div>
@@ -2521,7 +2517,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s26.jpg" data-title="SLAM 지도 문제와 원인" data-desc-position="bottom"><img alt="SLAM 지도 문제와 원인" src="../img/w09/s26.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 26 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 26</p>
 </figcaption>
 </figure>
 <p><strong>SLAM 지도는 항상 완벽하지 않습니다.</strong> 지도에 오류가 있으면 로봇이 실제와 다른 <strong>"가짜 세계"</strong> 를 보고 판단하게 됩니다.</p>
@@ -2568,7 +2564,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s29.jpg" data-title="GIMP로 지도 보정" data-desc-position="bottom"><img alt="GIMP로 지도 보정" src="../img/w09/s29.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 29 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 29</p>
 </figcaption>
 </figure>
 <p><strong>GIMP</strong>는 지도 이미지를 열어 직접 벽을 보강하거나 불필요한 노이즈를 제거하는 툴입니다. <strong>사람의 판단으로 지도를 다듬는 과정</strong>입니다.</p>
@@ -2624,7 +2620,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s31.jpg" data-title="GIMP 실행 — 편집 규칙" data-desc-position="bottom"><img alt="GIMP 실행 — 편집 규칙" src="../img/w09/s31.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 31 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS SLAM 연동 part 2 — 슬라이드 31</p>
 </figcaption>
 </figure>
 <p><strong>Step 1 — 파일 열기</strong>: File → Open → <code>map2.pgm</code></p>
@@ -2709,9 +2705,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_8">🔗 출처 및 참고자료<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
+<h2 id="_8">🔗 참고자료<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
 <ul>
-<li>교안 <strong>「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」</strong> (제작: <em>ENGI UNIVERSE</em>)</li>
+<li>교안 <strong>「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」</strong></li>
 <li>Nav2 — AMCL &amp; Map Server: <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
 <li>slam_toolbox: <a href="https://github.com/SteveMacenski/slam_toolbox">https://github.com/SteveMacenski/slam_toolbox</a></li>
 <li>GIMP: <a href="https://www.gimp.org">https://www.gimp.org</a></li>
@@ -2873,9 +2869,9 @@
 </table>
 <h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s10.jpg" data-title="지도 기반 Localization 개념 — 저장된 지도 위에서 내 위치 찾기" data-desc-position="bottom"><img alt="지도 기반 Localization 개념 — 저장된 지도 위에서 내 위치 찾기" src="../img/w09/s10.jpg"></a>
-<em>지도 기반 Localization 개념 — 저장된 지도 위에서 내 위치 찾기 — 출처: 강의 슬라이드 SLAM 3강 10 (제작: ENGI UNIVERSE)</em></p>
+<em>지도 기반 Localization 개념 — 저장된 지도 위에서 내 위치 찾기 — 출처: 강의 슬라이드 SLAM 3강 10</em></p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w09/s26.jpg" data-title="SLAM 지도에서 생기는 문제와 원인" data-desc-position="bottom"><img alt="SLAM 지도에서 생기는 문제와 원인" src="../img/w09/s26.jpg"></a>
-<em>SLAM 지도에서 생기는 문제와 원인 — 출처: 강의 슬라이드 SLAM 3강 26 (제작: ENGI UNIVERSE)</em></p>
+<em>SLAM 지도에서 생기는 문제와 원인 — 출처: 강의 슬라이드 SLAM 3강 26</em></p>
 <h3 id="3_1">③ 자가 점검 퀴즈<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h3>
 <ol>
 <li>SLAM 모드와 Localization 모드의 결정적 차이는?</li>

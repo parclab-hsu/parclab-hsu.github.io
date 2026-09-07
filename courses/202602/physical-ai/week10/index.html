@@ -959,7 +959,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1979,7 +1979,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -2284,10 +2284,6 @@
 <p class="admonition-title">학습목표</p>
 <p><strong>YOLOv8</strong> 객체 검출 패키지를 복습하고, 검출(detector) → 추적(tracker) → 디버그(debug) 노드로 이어지는 ROS 2 파이프라인 구조를 이해한다. 이를 <strong>Spot + ATS</strong> 시스템에 연동하여 카메라로 대상을 인식·추적하고, 화면 중심 오차와 추종 속도를 산출하는 <strong>비전 기반 closed-loop</strong>의 입력 계층(Sensing/Perception)을 구축한다.</p>
 </div>
-<div class="admonition quote">
-<p class="admonition-title">출처 (Source)</p>
-<p>본 자료의 그림·예제는 교안 <strong>「Spot + ATS Vision 연동 (YOLOv8)」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 코드·파라미터는 교안의 설명을 충실히 따른 <strong>재구성 예제</strong>이며, 일부 슬라이드는 "실제 동작 코드가 아님"을 전제로 합니다.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">강의 흐름 (FLOW)</p>
 <p><code>카메라</code> → <code>YOLOv8 detector</code> → <code>tracker</code> → <code>debug</code> → <code>ATS 연동</code></p>
@@ -2328,7 +2324,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s01.jpg" data-title="Spot + ATS Vision 연동 표지" data-desc-position="bottom"><img alt="Spot + ATS Vision 연동 표지" src="../img/w10/s01.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 01 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 01</p>
 </figcaption>
 </figure>
 <ul>
@@ -2343,7 +2339,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s03.jpg" data-title="이번 강의 목표" data-desc-position="bottom"><img alt="이번 강의 목표" src="../img/w10/s03.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 03 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 03</p>
 </figcaption>
 </figure>
 <h3 id="vision">Vision 모듈은 어느 계층에 있는가<a class="headerlink" href="#vision" title="Permanent link">¶</a></h3>
@@ -2420,7 +2416,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s05.jpg" data-title="YOLOv8 파이프라인 구성" data-desc-position="bottom"><img alt="YOLOv8 파이프라인 구성" src="../img/w10/s05.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 05 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 05</p>
 </figcaption>
 </figure>
 <h3 id="_2">런치 인자 흐름 (핵심)<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
@@ -2456,7 +2452,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s07.jpg" data-title="런치 인자 흐름" data-desc-position="bottom"><img alt="런치 인자 흐름" src="../img/w10/s07.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 07 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 07</p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -2576,7 +2572,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s09.jpg" data-title="namespace의 세 노드" data-desc-position="bottom"><img alt="namespace의 세 노드" src="../img/w10/s09.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 09 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 09</p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -2595,7 +2591,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s12.jpg" data-title="Yolov8Node 요약" data-desc-position="bottom"><img alt="Yolov8Node 요약" src="../img/w10/s12.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 12 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 12</p>
 </figcaption>
 </figure>
 <h3 id="3-2-tracking_node-id">3-2. tracking_node (프레임 간 ID 유지)<a class="headerlink" href="#3-2-tracking_node-id" title="Permanent link">¶</a></h3>
@@ -2697,7 +2693,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s15.jpg" data-title="TrackingNode 요약" data-desc-position="bottom"><img alt="TrackingNode 요약" src="../img/w10/s15.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 15 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 15</p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -2741,7 +2737,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s22.jpg" data-title="debug_node 요약" data-desc-position="bottom"><img alt="debug_node 요약" src="../img/w10/s22.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 22 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 22</p>
 </figcaption>
 </figure>
 <hr>
@@ -2758,7 +2754,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s24.jpg" data-title="Spot + ATS에 눈 달기" data-desc-position="bottom"><img alt="Spot + ATS에 눈 달기" src="../img/w10/s24.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 24 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 24</p>
 </figcaption>
 </figure>
 <h3 id="graph_builderpy-yolo">graph_builder.py — YOLO 파이프라인 입력값 생성<a class="headerlink" href="#graph_builderpy-yolo" title="Permanent link">¶</a></h3>
@@ -2783,7 +2779,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s26.jpg" data-title="VisionContextBuilder" data-desc-position="bottom"><img alt="VisionContextBuilder" src="../img/w10/s26.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 26 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 26</p>
 </figcaption>
 </figure>
 <p><strong>두 가지 포맷으로 퍼블리시</strong></p>
@@ -2860,7 +2856,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s28.jpg" data-title="Wrap-up" data-desc-position="bottom"><img alt="Wrap-up" src="../img/w10/s28.jpg" width="720"></a></p>
 <figcaption>
-<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)</p>
+<p>Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28</p>
 </figcaption>
 </figure>
 <h2 id="_4">✅ 체크포인트<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
@@ -2908,9 +2904,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_6">🔗 출처 및 참고자료<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<h2 id="_6">🔗 참고자료<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <ul>
-<li>교안 <strong>「Spot + ATS Vision 연동 (YOLOv8)」</strong> (제작: ENGI UNIVERSE)</li>
+<li>교안 <strong>「Spot + ATS Vision 연동 (YOLOv8)」</strong></li>
 <li>Ultralytics YOLOv8 — <a href="https://docs.ultralytics.com">https://docs.ultralytics.com</a></li>
 <li>ByteTrack — <a href="https://github.com/ifzhang/ByteTrack">https://github.com/ifzhang/ByteTrack</a></li>
 <li>ROS 2 QoS 설정 — <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Quality-of-Service-Settings.html">https://docs.ros.org/en/humble/Concepts/Intermediate/About-Quality-of-Service-Settings.html</a></li>
@@ -3109,7 +3105,7 @@
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="https://upload.wikimedia.org/wikipedia/commons/e/e6/Intersection_over_Union_-_poor%2C_good_and_excellent_score.png" data-title="IoU — 예측 bbox와 정답 bbox가 얼마나 겹치는가로 탐지 품질을 잰다" data-desc-position="bottom"><img alt="IoU — 예측 bbox와 정답 bbox가 얼마나 겹치는가로 탐지 품질을 잰다" src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Intersection_over_Union_-_poor%2C_good_and_excellent_score.png"></a>
 <em>IoU — 예측 bbox와 정답 bbox가 얼마나 겹치는가로 탐지 품질을 잰다 — 출처: Wikimedia Commons, Intersection over Union (CC BY-SA 4.0)</em></p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w10/s05.jpg" data-title="YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름" data-desc-position="bottom"><img alt="YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름" src="../img/w10/s05.jpg"></a>
-<em>YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름 — 출처: 강의 슬라이드 SLAM 4강 05 (제작: ENGI UNIVERSE)</em></p>
+<em>YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름 — 출처: 강의 슬라이드 SLAM 4강 05</em></p>
 <h3 id="3_1">③ 자가 점검 퀴즈<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h3>
 <ol>
 <li>Detector만 있고 Tracker가 없으면 <code>track</code> 액션이 왜 곤란해지나요?</li>

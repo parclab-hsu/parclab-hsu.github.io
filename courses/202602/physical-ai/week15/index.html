@@ -1292,7 +1292,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -2089,7 +2089,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -2117,10 +2117,6 @@
 <div class="admonition abstract">
 <p class="admonition-title">학습목표</p>
 <p>한 학기 동안 구축한 <strong>Spot+ATS 보안 로봇</strong>의 두뇌(System-2, LLM 플래너)와 몸(System-1, 로봇 제어)을 연결하여, 자연어 명령이 <strong>계획 생성 → 실행 → 현장 대응</strong>으로 이어지는 전체 파이프라인을 시뮬레이션에서 검증하고, 최신 Physical AI(VLA) 관점에서 고도화 방향을 논의한다.</p>
-</div>
-<div class="admonition quote">
-<p class="admonition-title">출처 (Sources)</p>
-<p>본 주차의 그림과 예제는 강의 교안 <strong>『Physical AI』 5강 「System-2 테스트 및 검증」</strong>, <strong>4강 「System-2 LLM Planner 설계」</strong>(제작: <em>ENGI UNIVERSE</em>)와 <strong>Spot+ATS 프로젝트 사용 매뉴얼(Rev 1.4)</strong> 을 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 <strong>재구성 예제</strong>입니다(원본 소스 비공개).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">강의 흐름 (FLOW)</p>
@@ -2168,7 +2164,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w15/g4-03.png" data-title="System-2의 세 가지 축: models.py → llm_planner.py → system2_node.py" data-desc-position="bottom"><img alt="System-2의 세 가지 축: models.py → llm_planner.py → system2_node.py" src="../img/w15/g4-03.png" width="720"></a></p>
 <figcaption>
-<p>교안 4강 §01 — System-2의 3축 구조 (출처: ENGI UNIVERSE)</p>
+<p>교안 4강 §01 — System-2의 3축 구조</p>
 </figcaption>
 </figure>
 <hr>
@@ -2228,7 +2224,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w15/g5-06.png" data-title="System-2 단독 검증 — 터미널에서 자연어 명령이 HighLevelPlan JSON으로 변환" data-desc-position="bottom"><img alt="System-2 단독 검증 — 터미널에서 자연어 명령이 HighLevelPlan JSON으로 변환" src="../img/w15/g5-06.png" width="720"></a></p>
 <figcaption>
-<p>교안 5강 §02 — System-2 단독 검증(공간 지능 테스트) 콘솔 출력 (출처: ENGI UNIVERSE)</p>
+<p>교안 5강 §02 — System-2 단독 검증(공간 지능 테스트) 콘솔 출력</p>
 </figcaption>
 </figure>
 <h3 id="modelspy-llm-4-02"><code>models.py</code> — LLM과 로봇 사이의 "계약서" (4강 §02 재구성)<a class="headerlink" href="#modelspy-llm-4-02" title="Permanent link">¶</a></h3>
@@ -2353,7 +2349,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w15/g5-09.png" data-title="Scenario A — 기초 기동 테스트(D 구역 이동)" data-desc-position="bottom"><img alt="Scenario A — 기초 기동 테스트(D 구역 이동)" src="../img/w15/g5-09.png" width="720"></a></p>
 <figcaption>
-<p>교안 5강 §03 — Scenario A: 기초 기동 테스트 (출처: ENGI UNIVERSE)</p>
+<p>교안 5강 §03 — Scenario A: 기초 기동 테스트</p>
 </figcaption>
 </figure>
 <h3 id="scenario-b">Scenario B — 인터랙티브 미션 (이동·스캔·보고)<a class="headerlink" href="#scenario-b" title="Permanent link">¶</a></h3>
@@ -2401,7 +2397,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w15/g5-12.png" data-title="Scenario C — 장기 순찰 미션(Task Queue·재계획)" data-desc-position="bottom"><img alt="Scenario C — 장기 순찰 미션(Task Queue·재계획)" src="../img/w15/g5-12.png" width="720"></a></p>
 <figcaption>
-<p>교안 5강 §03 — Scenario C: 장기 순찰 미션 (출처: ENGI UNIVERSE)</p>
+<p>교안 5강 §03 — Scenario C: 장기 순찰 미션</p>
 </figcaption>
 </figure>
 <h3 id="scenario-d">Scenario D — 객체 인식 및 동적 추적<a class="headerlink" href="#scenario-d" title="Permanent link">¶</a></h3>
@@ -2558,7 +2554,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w15/g5-15.png" data-title="Physical AI / VLA 연결 — 객체탐지·세그멘테이션·포인팅·궤적·태스크 진행" data-desc-position="bottom"><img alt="Physical AI / VLA 연결 — 객체탐지·세그멘테이션·포인팅·궤적·태스크 진행" src="../img/w15/g5-15.png" width="720"></a></p>
 <figcaption>
-<p>교안 5강 §04 — 최신 VLA와 Spot+ATS의 System-1 구현 방식 비교 (출처: ENGI UNIVERSE)</p>
+<p>교안 5강 §04 — 최신 VLA와 Spot+ATS의 System-1 구현 방식 비교</p>
 </figcaption>
 </figure>
 <table>
@@ -2893,7 +2889,7 @@
 </table>
 <h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w15/g5-15.png" data-title="Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향" data-desc-position="bottom"><img alt="Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향" src="../img/w15/g5-15.png"></a>
-<em>Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향 — 출처: 강의 슬라이드 Physical AI 5강 15 (제작: ENGI UNIVERSE)</em></p>
+<em>Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향 — 출처: 강의 슬라이드 Physical AI 5강 15</em></p>
 <h3 id="3_1">③ 자가 점검 퀴즈<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h3>
 <ol>
 <li>두 계층을 잇는 4개 토픽의 방향과 역할을 쓰세요.</li>
@@ -3002,9 +2998,9 @@
 <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w15/g4-14.png" data-title="4강 슬라이드 14 — 시스템 프롬프트 4단계" data-desc-position="bottom"><img alt="4강 슬라이드 14 — 시스템 프롬프트 4단계" src="../img/w15/g4-14.png" width="700"></a>
 <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w15/g4-16.png" data-title="4강 슬라이드 16 — system2_node.py" data-desc-position="bottom"><img alt="4강 슬라이드 16 — system2_node.py" src="../img/w15/g4-16.png" width="700"></a></p>
 </details>
-<h2 id="_9">🔗 출처 및 참고자료<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
+<h2 id="_9">🔗 참고자료<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
 <ul>
-<li>교안: <strong>『Physical AI』 4강·5강</strong> (제작: ENGI UNIVERSE) — 강의 슬라이드 원본</li>
+<li>교안: <strong>『Physical AI』 4강·5강</strong> — 강의 슬라이드 원본</li>
 <li><strong>Spot+ATS 프로젝트 사용 매뉴얼 (Rev 1.4)</strong> — 로봇 플랫폼·운용 시나리오</li>
 <li>LangChain — <a href="https://python.langchain.com">https://python.langchain.com</a></li>
 <li>Pydantic — <a href="https://docs.pydantic.dev">https://docs.pydantic.dev</a></li>

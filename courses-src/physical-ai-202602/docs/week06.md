@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     ATS+Spot 자율보행 시뮬레이션에 필요한 **SLAM(동시적 위치추정 및 지도작성)** 의 기본 개념을 파악한다. 특히 SLAM에서 **오도메트리(Odometry)** 와 **센서 융합(Sensor Fusion)** 의 역할을 이해하고, "센서 정보 → 위치 추정 → 지도 작성(Mapping)"으로 이어지는 큰 흐름과 함께 **slam_toolbox** 와 **Nav2(Navigation2)** 스택의 구조 및 YAML 설계 방법을 익힌다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드·파라미터는 교안 설명을 충실히 따른 **재구성 예제**입니다.
-
 !!! note "강의 흐름 (FLOW)"
     `Odometry` → `Sensor Fusion` → `Mapping(SLAM)` → `Nav2` → `자율주행`
 
@@ -23,7 +20,7 @@
 
 ![강의 표지: SLAM과 Navigation 기본 개념](img/w06/s01.jpg){ width="720" }
 /// caption
-SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 01 (출처: ENGI UNIVERSE)
+SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 01
 ///
 
 - **ATS + Spot 자율보행 시뮬레이션**에 필요한 SLAM의 기본 개념 파악
@@ -32,7 +29,7 @@ SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 01 (출�
 
 ![CONTENTS — SLAM 기본 원리부터 Nav2까지](img/w06/s02.jpg){ width="720" }
 /// caption
-SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 02 (출처: ENGI UNIVERSE)
+SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 02
 ///
 
 ---
@@ -44,7 +41,7 @@ SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 02 (출�
 
 ![SLAM 개념 — 위치추정과 지도작성을 동시에](img/w06/s04.jpg){ width="720" }
 /// caption
-SLAM과 Navigation 기본 개념 — 슬라이드 04 (출처: ENGI UNIVERSE)
+SLAM과 Navigation 기본 개념 — 슬라이드 04
 ///
 
 SLAM의 구조는 보통 두 단계로 분류됩니다.
@@ -63,7 +60,7 @@ SLAM의 구조는 보통 두 단계로 분류됩니다.
 
 ![Nav2 스택 구조 — Planner·Controller·BT Navigator](img/w06/s06.jpg){ width="720" }
 /// caption
-Nav2 스택 개요 — 슬라이드 06 (출처: ENGI UNIVERSE)
+Nav2 스택 개요 — 슬라이드 06
 ///
 
 **NAV2**는 *Navigation2* 의 약자로, **ROS2에서 사용되는 로봇 자율주행 표준 프레임워크**입니다. 로봇이 스스로 갈 길을 찾고, 장애물을 피하고, 목적지에 도착할 수 있게 해주는 **자율주행 엔진**입니다. ROS1의 `move_base`를 대체하는 ROS2의 표준 패키지입니다.
@@ -91,7 +88,7 @@ Nav2 스택 개요 — 슬라이드 06 (출처: ENGI UNIVERSE)
 
 ![slam_launch.py 소스코드 구조](img/w06/s10.jpg){ width="720" }
 /// caption
-Nav2 스택 개요 — 슬라이드 10: slam_launch.py 소스코드 (출처: ENGI UNIVERSE)
+Nav2 스택 개요 — 슬라이드 10: slam_launch.py 소스코드
 ///
 
 ### `slam_launch.py` 소스코드 흐름
@@ -171,7 +168,7 @@ start_lifecycle_manager_cmd = Node(
 
 ![slam_toolbox 기본 동작 구성 — Front-end/Back-end](img/w06/s18.jpg){ width="720" }
 /// caption
-slam_toolbox 사용하기 — 슬라이드 18 (출처: ENGI UNIVERSE)
+slam_toolbox 사용하기 — 슬라이드 18
 ///
 
 ### slam_toolbox 기본 동작 구성
@@ -205,7 +202,7 @@ ros2 run tf2_tools view_frames
 
 ![센서 토픽 — LaserScan/PointCloud/MultiEchoLaserScan](img/w06/s22.jpg){ width="720" }
 /// caption
-slam_toolbox 사용하기 — 슬라이드 22: 센서 토픽 (출처: ENGI UNIVERSE)
+slam_toolbox 사용하기 — 슬라이드 22: 센서 토픽
 ///
 
 === "LaserScan (2D LiDAR)"
@@ -230,7 +227,7 @@ slam_toolbox 사용하기 — 슬라이드 22: 센서 토픽 (출처: ENGI UNIVE
 
 ![오도메트리/TF — map→odom→body 좌표계](img/w06/s25.jpg){ width="720" }
 /// caption
-slam_toolbox 사용하기 — 슬라이드 25: 오도메트리/TF (출처: ENGI UNIVERSE)
+slam_toolbox 사용하기 — 슬라이드 25: 오도메트리/TF
 ///
 
 | 프레임 | 의미 |
@@ -280,7 +277,7 @@ throttle_scans: 2       # 들어오는 스캔 주기를 절반으로 줄여 처�
 
 ![Nav2 프레임워크 전체 구조](img/w06/s31.jpg){ width="720" }
 /// caption
-Nav2 사용하기 — 슬라이드 31: Nav2 프레임워크 구조 (출처: ENGI UNIVERSE)
+Nav2 사용하기 — 슬라이드 31: Nav2 프레임워크 구조
 ///
 
 **Step 1** — 사용자가 `NavigateToPose` 액션으로 목표 위치 명령
@@ -320,7 +317,7 @@ Nav2 사용하기 — 슬라이드 31: Nav2 프레임워크 구조 (출처: ENGI
 
 ![Nav2 YAML — Costmap 구성](img/w06/s34.jpg){ width="720" }
 /// caption
-Nav2 사용하기 — 슬라이드 34: Costmap 구성 (출처: ENGI UNIVERSE)
+Nav2 사용하기 — 슬라이드 34: Costmap 구성
 ///
 
 ### 시야 — Costmap (`global_costmap` / `local_costmap`)
@@ -350,7 +347,7 @@ decel_limit:  [2.0, 0.0, 2.0]  # 최대 감속 기울기 제한
 
 ![Wrap-up — 오늘 강의 요약](img/w06/s37.jpg){ width="720" }
 /// caption
-Wrap-up — 슬라이드 37 (출처: ENGI UNIVERSE)
+Wrap-up — 슬라이드 37
 ///
 
 !!! success "오늘 강의 내용 요약"
@@ -377,9 +374,9 @@ Wrap-up — 슬라이드 37 (출처: ENGI UNIVERSE)
 | 종합 적용 | 10 | SLAM→Nav2 연계 흐름을 시뮬레이션 관점에서 설명 |
 | **합계** | **100** | |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」** (제작: *ENGI UNIVERSE*)
+- 교안 **「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」**
 - slam_toolbox — <https://github.com/SteveMacenski/slam_toolbox>
 - Nav2 (Navigation2) 공식 문서 — <https://docs.nav2.org>
 - ROS 2 TF2 (tf2_tools) — <https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html>
@@ -471,10 +468,10 @@ Wrap-up — 슬라이드 37 (출처: ENGI UNIVERSE)
 ### ② 그림으로 잡기
 
 ![SLAM 개념 — 위치추정과 지도작성을 동시에 푼다](img/w06/s04.jpg)
-*SLAM 개념 — 위치추정과 지도작성을 동시에 푼다 — 출처: 강의 슬라이드 SLAM 1강 04 (제작: ENGI UNIVERSE)*
+*SLAM 개념 — 위치추정과 지도작성을 동시에 푼다 — 출처: 강의 슬라이드 SLAM 1강 04*
 
 ![map → odom → body 좌표 체인 — 절대 기준·단기 추정·본체](img/w06/s25.jpg)
-*map → odom → body 좌표 체인 — 절대 기준·단기 추정·본체 — 출처: 강의 슬라이드 SLAM 1강 25 (제작: ENGI UNIVERSE)*
+*map → odom → body 좌표 체인 — 절대 기준·단기 추정·본체 — 출처: 강의 슬라이드 SLAM 1강 25*
 
 ### ③ 자가 점검 퀴즈
 

@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     Isaac Sim 환경에 **Spot + ATS 로봇**을 로드해 물리적으로 연동하고, 센서를 ROS2 토픽으로 퍼블리시하며 **TF 트리(map–odom–body–sensor)** 로 좌표 정합을 확보한다. 수동 제어(키보드 텔레옵)와 Spot 정책 제어를 통합 설계하고, `slam_toolbox`·Nav2를 연동해 지도 작성과 동시에 자율 보행을 수행한다. 이를 통해 **목적 → 설계 → 구현 → 테스트 → 연동**으로 이어지는 완전한 로봇 시스템 개발 과정을 경험한다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「Spot + ATS SLAM 연동 part 1 (ROS2 브릿지·자율주행)」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드·노드명·토픽명은 교안의 설명을 충실히 따른 재구성 예제입니다.
-
 !!! note "강의 흐름 (FLOW)"
     `모델 로드` → `ROS2 브릿지` → `정책/제어` → `TF 정합` → `자율주행`
 
@@ -23,7 +20,7 @@
 
 ![Spot + ATS SLAM 연동 개요](img/w07/s03.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 (ROS2 브릿지·자율주행) — 슬라이드 03 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 (ROS2 브릿지·자율주행) — 슬라이드 03
 ///
 
 - **Isaac Sim 환경에서 Spot + ATS 로봇 제어 및 SLAM 자율 보행 구현**
@@ -63,7 +60,7 @@ Spot + ATS SLAM 연동 part 1 (ROS2 브릿지·자율주행) — 슬라이드 03
 
 ![시스템 필수 기능 정의](img/w07/s08.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 08 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 08
 ///
 
 !!! tip "설계 철학"
@@ -94,7 +91,7 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 08 (출처: ENGI UNIVERSE)
 
 ![world.py 의 의도와 구현](img/w07/s18.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 18 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 18
 ///
 
 | 항목 | 역할 |
@@ -122,7 +119,7 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 18 (출처: ENGI UNIVERSE)
 
 ![graph_builder.py — OmniGraph 배선](img/w07/s28.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 28 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 28
 ///
 
 #### 카메라 퍼블리셔 그래프
@@ -159,7 +156,7 @@ cameraHelperInfo: frameId="Camera", topicName="camera_info"
 
 ![ActionGraph 연결 구조](img/w07/s40.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 40 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 40
 ///
 
 === "제어/상태 (JointState·Twist)"
@@ -196,7 +193,7 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 40 (출처: ENGI UNIVERSE)
 
 ![RTX LiDAR 퍼블리셔 그래프](img/w07/s50.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 50 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 50
 ///
 
 실행 순서 강제: `OnPlaybackTick → RunOneSimulationFrame → RenderProduct → LiDAR Helper`
@@ -226,7 +223,7 @@ RunSim.step → RenderProduct.execIn → RenderProduct.execOut → LiDAR Helper.
 
 ![관측 벡터 구성](img/w07/s60.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 60 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 60
 ///
 
 Isaac Sim에서 얻은 로봇 상태를 **몸체 좌표계 기준 48차원 벡터**로 정리한다.
@@ -343,7 +340,7 @@ ats.set_joint_position_targets(q_ats)
 
 ![Isaac 실행 및 토픽 발행](img/w07/s68.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 68 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 68
 ///
 
 ### RViz2 동작 확인
@@ -373,7 +370,7 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 68 (출처: ENGI UNIVERSE)
 
 ![RViz2에서 Spot+ATS 동작 확인](img/w07/s74.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 74 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 74
 ///
 
 ### 자율주행 연동 — Nav2 ↔ Isaac
@@ -392,7 +389,7 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 74 (출처: ENGI UNIVERSE)
 
 ![Wrap-up — 오늘 강의 요약](img/w07/s78.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 1 — 슬라이드 78 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 1 — 슬라이드 78
 ///
 
 - **SLAM 시스템 구조 설계** — 모듈 분할(world/graph_builder/observation/policy/controller/input/loop/main)
@@ -417,9 +414,9 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 78 (출처: ENGI UNIVERSE)
 | SLAM·Nav2 연동 | 20 | slam_toolbox 매핑 + 2D Nav Goal 자율 이동 시연 |
 | 디버깅·운용 | 10 | RViz2 검증, `Render product not valid` 등 오류 진단·해결 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「Spot + ATS SLAM 연동 part 1 (ROS2 브릿지·자율주행)」** (제작: ENGI UNIVERSE)
+- 교안 **「Spot + ATS SLAM 연동 part 1 (ROS2 브릿지·자율주행)」**
 - slam_toolbox — <https://github.com/SteveMacenski/slam_toolbox>
 - Nav2 (Navigation2) — <https://docs.nav2.org>
 - NVIDIA Isaac Sim ROS 2 Bridge — <https://docs.isaacsim.omniverse.nvidia.com>
@@ -521,10 +518,10 @@ Spot + ATS SLAM 연동 part 1 — 슬라이드 78 (출처: ENGI UNIVERSE)
 ### ② 그림으로 잡기
 
 ![graph_builder.py — OmniGraph로 ROS 2 배선을 구성](img/w07/s28.jpg)
-*graph_builder.py — OmniGraph로 ROS 2 배선을 구성 — 출처: 강의 슬라이드 SLAM 2강 28 (제작: ENGI UNIVERSE)*
+*graph_builder.py — OmniGraph로 ROS 2 배선을 구성 — 출처: 강의 슬라이드 SLAM 2강 28*
 
 ![관측 벡터 구성 — 48차원이 어떤 값들로 채워지는가](img/w07/s60.jpg)
-*관측 벡터 구성 — 48차원이 어떤 값들로 채워지는가 — 출처: 강의 슬라이드 SLAM 2강 60 (제작: ENGI UNIVERSE)*
+*관측 벡터 구성 — 48차원이 어떤 값들로 채워지는가 — 출처: 강의 슬라이드 SLAM 2강 60*
 
 ### ③ 자가 점검 퀴즈
 

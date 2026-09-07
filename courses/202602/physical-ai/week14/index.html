@@ -977,7 +977,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1681,7 +1681,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1876,10 +1876,6 @@
 <p class="admonition-title">학습목표</p>
 <p>Spot+ATS 보안 로봇의 <strong>두뇌(System-2)</strong> 를 직접 설계한다. 운영자의 모호한 자연어 명령을 <strong>검증된 고수준 계획(HighLevelPlan)</strong> 으로 변환하는 LLM 플래너를, <strong>규칙 정의(<code>models.py</code>) → 지능 생성(<code>llm_planner.py</code>) → 통신·관리(<code>system2_node.py</code>)</strong> 의 세 축으로 구현한다. 다음 주(15주차)에서 이 System-2를 System-1과 연동해 검증할 수 있도록, <strong>데이터 계약·프롬프트 엔지니어링·ROS 2 런타임 통합</strong> 의 원리를 익히는 것이 목표다.</p>
 </div>
-<div class="admonition quote">
-<p class="admonition-title">출처 (Source)</p>
-<p>본 자료의 그림·예제는 교안 <strong>「System-2 LLM Planner 설계」</strong>(제작: <em>ENGI UNIVERSE</em>) 4강을 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 <strong>재구성 예제</strong>입니다(원본 소스 비공개).</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">강의 흐름 (FLOW)</p>
 <p><code>Natural Lang.</code> → <code>LLM Planner</code> → <code>Pydantic</code> → <code>HighLevelPlan</code> → <code>ROS 2 Publish</code></p>
@@ -1921,7 +1917,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s03.jpg" data-title="System-2의 세 가지 축: models.py → llm_planner.py → system2_node.py" data-desc-position="bottom"><img alt="System-2의 세 가지 축: models.py → llm_planner.py → system2_node.py" src="../img/w14/s03.jpg" width="720"></a></p>
 <figcaption>
-<p>System-2 LLM Planner 설계 — 슬라이드 03 (출처: ENGI UNIVERSE)</p>
+<p>System-2 LLM Planner 설계 — 슬라이드 03</p>
 </figcaption>
 </figure>
 <p>System-2는 다음 <strong>세 가지 축</strong>으로 구성됩니다.</p>
@@ -1969,7 +1965,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s05.jpg" data-title="models.py — System-2의 스키마(계약서) 정의" data-desc-position="bottom"><img alt="models.py — System-2의 스키마(계약서) 정의" src="../img/w14/s05.jpg" width="720"></a></p>
 <figcaption>
-<p>System-2 LLM Planner 설계 — 슬라이드 05 (출처: ENGI UNIVERSE)</p>
+<p>System-2 LLM Planner 설계 — 슬라이드 05</p>
 </figcaption>
 </figure>
 <ul>
@@ -2047,7 +2043,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s08.jpg" data-title="llm_planner.py — 모델 설정·프롬프트·실행 체인" data-desc-position="bottom"><img alt="llm_planner.py — 모델 설정·프롬프트·실행 체인" src="../img/w14/s08.jpg" width="720"></a></p>
 <figcaption>
-<p>System-2 LLM Planner 설계 — 슬라이드 08 (출처: ENGI UNIVERSE)</p>
+<p>System-2 LLM Planner 설계 — 슬라이드 08</p>
 </figcaption>
 </figure>
 <table>
@@ -2091,7 +2087,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s11.jpg" data-title="시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format" data-desc-position="bottom"><img alt="시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format" src="../img/w14/s11.jpg" width="720"></a></p>
 <figcaption>
-<p>System-2 LLM Planner 설계 — 슬라이드 11 (출처: ENGI UNIVERSE)</p>
+<p>System-2 LLM Planner 설계 — 슬라이드 11</p>
 </figcaption>
 </figure>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">① 행동 반경 제한 (Action)</label><label for="__tabbed_1_2">② 텍스트 기반 공간 추론 (Map)</label><label for="__tabbed_1_3">③ 상황별 대응 로직 (Logic)</label><label for="__tabbed_1_4">④ 출력 형식 강제 (Format)</label></div>
@@ -2130,7 +2126,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s14.jpg" data-title="데이터 변환 함수 — state_to_text / extra_context_to_text" data-desc-position="bottom"><img alt="데이터 변환 함수 — state_to_text / extra_context_to_text" src="../img/w14/s14.jpg" width="720"></a></p>
 <figcaption>
-<p>System-2 LLM Planner 설계 — 슬라이드 14 (출처: ENGI UNIVERSE)</p>
+<p>System-2 LLM Planner 설계 — 슬라이드 14</p>
 </figcaption>
 </figure>
 <p>변환 함수는 시스템을 효율적으로 다루기 위한 <strong>'통역사'와 '필터'</strong> 입니다. 불필요한 데이터를 걸러 <strong>토큰 낭비·정보 과부하</strong>를 방지합니다.</p>
@@ -2182,7 +2178,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s17.jpg" data-title="system2_node.py — ROS 2 토픽·스레드 통합" data-desc-position="bottom"><img alt="system2_node.py — ROS 2 토픽·스레드 통합" src="../img/w14/s17.jpg" width="720"></a></p>
 <figcaption>
-<p>System-2 LLM Planner 설계 — 슬라이드 17 (출처: ENGI UNIVERSE)</p>
+<p>System-2 LLM Planner 설계 — 슬라이드 17</p>
 </figcaption>
 </figure>
 <h3 id="_1">토픽 구성<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
@@ -2261,7 +2257,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s20.jpg" data-title="Wrap-up — System-2 설계 핵심 정리" data-desc-position="bottom"><img alt="Wrap-up — System-2 설계 핵심 정리" src="../img/w14/s20.jpg" width="720"></a></p>
 <figcaption>
-<p>System-2 LLM Planner 설계 — 슬라이드 20 (출처: ENGI UNIVERSE)</p>
+<p>System-2 LLM Planner 설계 — 슬라이드 20</p>
 </figcaption>
 </figure>
 <ol>
@@ -2323,9 +2319,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_5">🔗 출처 및 참고자료<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<h2 id="_5">🔗 참고자료<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <ul>
-<li>교안 <strong>「System-2 LLM Planner 설계」</strong> (제작: ENGI UNIVERSE) — Physical AI 4강 강의 슬라이드 원본</li>
+<li>교안 <strong>「System-2 LLM Planner 설계」</strong> — Physical AI 4강 강의 슬라이드 원본</li>
 <li><strong>Spot+ATS 프로젝트 사용 매뉴얼 (Rev 1.4)</strong> — 로봇 플랫폼·운용 시나리오</li>
 <li>LangChain — <a href="https://python.langchain.com">https://python.langchain.com</a></li>
 <li>Pydantic — <a href="https://docs.pydantic.dev">https://docs.pydantic.dev</a></li>
@@ -2509,9 +2505,9 @@
 </table>
 <h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s11.jpg" data-title="시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format" data-desc-position="bottom"><img alt="시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format" src="../img/w14/s11.jpg"></a>
-<em>시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format — 출처: 강의 슬라이드 Physical AI 4강 11 (제작: ENGI UNIVERSE)</em></p>
+<em>시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format — 출처: 강의 슬라이드 Physical AI 4강 11</em></p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w14/s05.jpg" data-title="models.py — LLM과 로봇 사이의 계약서(스키마) 정의" data-desc-position="bottom"><img alt="models.py — LLM과 로봇 사이의 계약서(스키마) 정의" src="../img/w14/s05.jpg"></a>
-<em>models.py — LLM과 로봇 사이의 계약서(스키마) 정의 — 출처: 강의 슬라이드 Physical AI 4강 05 (제작: ENGI UNIVERSE)</em></p>
+<em>models.py — LLM과 로봇 사이의 계약서(스키마) 정의 — 출처: 강의 슬라이드 Physical AI 4강 05</em></p>
 <h3 id="3_2">③ 자가 점검 퀴즈<a class="headerlink" href="#3_2" title="Permanent link">¶</a></h3>
 <ol>
 <li><code>Literal</code>로 task를 5종으로 제한하면 무엇이 막히나요?</li>

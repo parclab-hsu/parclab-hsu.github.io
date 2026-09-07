@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     2축(Yaw/Pitch)으로 회전하는 ATS(탐지·조준·추적) 시스템의 기구학과 URDF 구조를 이해하고, 이를 Isaac Sim으로 Import하여 ROS2로 짐벌을 제어한다. 나아가 ATS를 4족 보행 로봇 Spot에 탑재하고, 바뀐 무게중심에 맞춰 넘어지지 않고 걷도록 보행 정책을 **강화학습으로 재훈련**하는 Physical AI 시스템 설계·최적화 파이프라인 전체를 따라간다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습)」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드·명령은 교안의 설명을 충실히 따른 재구성 예제입니다.
-
 !!! note "강의 흐름 (FLOW)"
     `URDF/USD` → `ATS Gimbal` → `Spot Body` → `ROS 2 Bridge` → `RL 재학습`
 
@@ -28,7 +25,7 @@
 
 ![ATS 자율 시스템 개념과 RCWS 비교](img/w05/s04.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 04 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 04
 ///
 
 ### 이번 강의 학습 로드맵
@@ -57,7 +54,7 @@ ATS는 두 개의 회전축으로 구성된 단순한 구조입니다.
 
 ![ATS의 2축(Yaw/Pitch) 회전 구조](img/w05/s07.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 07 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 07
 ///
 
 !!! tip "여기서 잠깐 — URDF(Unified Robot Description Format)란?"
@@ -88,7 +85,7 @@ ATS 패키지 폴더 구조 개요입니다.
 
 ![ATS URDF 패키지 폴더 구조](img/w05/s12.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 12 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 12
 ///
 
 ### URDF 구조 분석 — Link
@@ -143,7 +140,7 @@ base_link        ── 기준 몸통 / 좌표계 시작점
 
 ![ATS URDF 전체 구조 — 링크 3개·조인트 2개](img/w05/s18.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 18 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 18
 ///
 
 ---
@@ -164,7 +161,7 @@ Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라�
 
 ![Isaac Sim URDF Import 옵션 패널](img/w05/s24.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 24 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 24
 ///
 
 ### 시뮬레이션 환경 설정하기
@@ -202,7 +199,7 @@ ROS2에서 명령을 보내고 ATS가 실제로 반응하는지 확인하는 **3
 
 ![조인트 Drive 파라미터(kp/kv) 튜닝](img/w05/s31.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 31 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 31
 ///
 
 ### Action Graph 구성
@@ -218,7 +215,7 @@ Action Graph는 시뮬레이션 안에서 ROS2 메시지를 주고받기 위한 
 
 ![ROS2 ↔ Isaac Sim 연결 Action Graph](img/w05/s37.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 37 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 37
 ///
 
 ### ROS2에서 ATS로 명령 주기
@@ -244,7 +241,7 @@ ros2 topic pub /joint_command sensor_msgs/msg/JointState \
 
 ![ATS를 탑재한 Spot 보행 시뮬레이션](img/w05/s42.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 42 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 42
 ///
 
 !!! note "고정형 포탑 → 이동형 플랫폼"
@@ -278,7 +275,7 @@ Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라�
 
 ![Spot 강화학습 환경(velocity_env_cfg) 구성](img/w05/s45.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 45 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 45
 ///
 
 ### 학습용 로봇 모델 설정
@@ -304,7 +301,7 @@ usd_path = f"{usd 파일이 저장된 경로}/spot_learnmodel.usd"
 
 ![headless 모드 병렬 학습 — 데이터 습득](img/w05/s48.jpg){ width="720" }
 /// caption
-Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 48 (출처: ENGI UNIVERSE)
+Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라이드 48
 ///
 
 ---
@@ -333,9 +330,9 @@ Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라�
 | Spot 탑재 결합 | 15 | Fixed Joint 결합 및 학습용 모델 저장 수행 |
 | 강화학습 재훈련 | 20 | 재학습 필요성 이해 + `velocity_env_cfg`/`spot.py` 수정·학습 진행 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습)」** (제작: ENGI UNIVERSE)
+- 교안 **「Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습)」**
 - NVIDIA Isaac Sim — URDF Importer — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/importer_exporter/import_urdf.html>
 - ROS2 URDF 튜토리얼 — <https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/URDF-Main.html>
 - Isaac Lab / rsl_rl — <https://github.com/leggedrobotics/rsl_rl>
@@ -453,10 +450,10 @@ Spot + ATS 시스템 구축 (URDF Import·ROS2 연동·RL 재학습) — 슬라�
 ### ② 그림으로 잡기
 
 ![ATS의 2축 구조 — Yaw(좌우)와 Pitch(상하)](img/w05/s07.jpg)
-*ATS의 2축 구조 — Yaw(좌우)와 Pitch(상하) — 출처: 강의 슬라이드 5강 07 (제작: ENGI UNIVERSE)*
+*ATS의 2축 구조 — Yaw(좌우)와 Pitch(상하) — 출처: 강의 슬라이드 5강 07*
 
 ![ATS URDF 전체 구조 — 링크 3개와 조인트 2개](img/w05/s18.jpg)
-*ATS URDF 전체 구조 — 링크 3개와 조인트 2개 — 출처: 강의 슬라이드 5강 18 (제작: ENGI UNIVERSE)*
+*ATS URDF 전체 구조 — 링크 3개와 조인트 2개 — 출처: 강의 슬라이드 5강 18*
 
 ### ③ 자가 점검 퀴즈
 

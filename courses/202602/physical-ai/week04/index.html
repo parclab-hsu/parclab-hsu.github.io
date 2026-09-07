@@ -763,7 +763,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1901,7 +1901,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -2184,10 +2184,6 @@
 <p class="admonition-title">학습목표</p>
 <p>NVIDIA <strong>Isaac Lab</strong>을 활용하여 4족 보행 로봇(Spot)의 강화학습 환경을 구성하고, 학습 파이프라인(<code>train.py</code>)의 4단계 구조를 이해한다. <strong>MDP 기반 행동(Action)·관측(Observation)</strong> 설계와 <strong>Height Scan(RayCaster)</strong> 지형 인식을 실습하며, 에이전트–환경–보상으로 이어지는 강화학습 핵심 요소를 체득한다.</p>
 </div>
-<div class="admonition quote">
-<p class="admonition-title">출처 (Source)</p>
-<p>본 자료의 그림·예제는 교안 <strong>「Isaac Lab 4족 보행 로봇 강화학습 환경 만들기」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 코드·명령은 교안 설명을 충실히 따른 <strong>재구성 예제</strong>입니다.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">강의 흐름 (FLOW)</p>
 <p><code>Observation</code> → <code>Policy</code> → <code>Action</code> → <code>Reward</code> → <code>Update</code></p>
@@ -2228,7 +2224,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s01.jpg" data-title="4족 보행 로봇 학습환경 만들기 표지" data-desc-position="bottom"><img alt="4족 보행 로봇 학습환경 만들기 표지" src="../img/w04/s01.jpg" width="720"></a></p>
 <figcaption>
-<p>Isaac Lab 4족 보행 로봇 강화학습 환경 만들기 — 슬라이드 01 (출처: ENGI UNIVERSE)</p>
+<p>Isaac Lab 4족 보행 로봇 강화학습 환경 만들기 — 슬라이드 01</p>
 </figcaption>
 </figure>
 <p>이번 강의의 목표는 다음과 같습니다.</p>
@@ -2277,7 +2273,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s05.jpg" data-title="Isaac Lab 소개" data-desc-position="bottom"><img alt="Isaac Lab 소개" src="../img/w04/s05.jpg" width="720"></a></p>
 <figcaption>
-<p>Isaac Lab 소개 및 실행 방법 — 슬라이드 05 (출처: ENGI UNIVERSE)</p>
+<p>Isaac Lab 소개 및 실행 방법 — 슬라이드 05</p>
 </figcaption>
 </figure>
 <h3 id="isaac-lab">Isaac Lab이란?<a class="headerlink" href="#isaac-lab" title="Permanent link">¶</a></h3>
@@ -2344,7 +2340,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s09.jpg" data-title="예제 Task 실행 실습" data-desc-position="bottom"><img alt="예제 Task 실행 실습" src="../img/w04/s09.jpg" width="720"></a></p>
 <figcaption>
-<p>RSL-RL 학습 파이프라인 실행 — 슬라이드 09 (출처: ENGI UNIVERSE)</p>
+<p>RSL-RL 학습 파이프라인 실행 — 슬라이드 09</p>
 </figcaption>
 </figure>
 <h3 id="task">Task(태스크)란?<a class="headerlink" href="#task" title="Permanent link">¶</a></h3>
@@ -2379,7 +2375,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s14.jpg" data-title="train.py 구조" data-desc-position="bottom"><img alt="train.py 구조" src="../img/w04/s14.jpg" width="720"></a></p>
 <figcaption>
-<p>train.py의 4단계 구조 — 슬라이드 14 (출처: ENGI UNIVERSE)</p>
+<p>train.py의 4단계 구조 — 슬라이드 14</p>
 </figcaption>
 </figure>
 <p><code>train.py</code>는 <strong>① 시뮬레이터를 켜고 ② 학습 설정을 확정하고 ③ 환경을 만들어 래퍼로 포장한 뒤 ④ 학습기를 돌려 정책을 학습</strong>하는 스크립트입니다.</p>
@@ -2425,7 +2421,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s18.jpg" data-title="train.py 학습 시작 단계" data-desc-position="bottom"><img alt="train.py 학습 시작 단계" src="../img/w04/s18.jpg" width="720"></a></p>
 <figcaption>
-<p>4단계 학습 시작 — OnPolicyRunner로 정책 학습 (출처: ENGI UNIVERSE)</p>
+<p>4단계 학습 시작 — OnPolicyRunner로 정책 학습</p>
 </figcaption>
 </figure>
 <div class="admonition success">
@@ -2437,7 +2433,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s22.jpg" data-title="flat_env_cfg.py" data-desc-position="bottom"><img alt="flat_env_cfg.py" src="../img/w04/s22.jpg" width="720"></a></p>
 <figcaption>
-<p>flat_env_cfg.py — 강화학습 환경 설정 (출처: ENGI UNIVERSE)</p>
+<p>flat_env_cfg.py — 강화학습 환경 설정</p>
 </figcaption>
 </figure>
 <p><code>flat_env_cfg.py</code>의 목표는 <strong>Spot이 평지 + Cobbles(거친 지형)에서도 사용자가 원하는 속도대로 안정적으로 걷도록</strong> 훈련하는 것입니다. 주요 기능 4가지는 다음과 같습니다.</p>
@@ -2501,7 +2497,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s26.jpg" data-title="관측·이벤트·보상 설정" data-desc-position="bottom"><img alt="관측·이벤트·보상 설정" src="../img/w04/s26.jpg" width="720"></a></p>
 <figcaption>
-<p>Observation·Events·Reward 설정 (출처: ENGI UNIVERSE)</p>
+<p>Observation·Events·Reward 설정</p>
 </figcaption>
 </figure>
 <h3 id="events-domain-randomization">Events — 랜덤화 이벤트(Domain Randomization)<a class="headerlink" href="#events-domain-randomization" title="Permanent link">¶</a></h3>
@@ -2571,7 +2567,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s30.jpg" data-title="학습 정책 적용" data-desc-position="bottom"><img alt="학습 정책 적용" src="../img/w04/s30.jpg" width="720"></a></p>
 <figcaption>
-<p>학습된 정책 적용과 관측 벡터 구성 (출처: ENGI UNIVERSE)</p>
+<p>학습된 정책 적용과 관측 벡터 구성</p>
 </figcaption>
 </figure>
 <h3 id="height-scan-observation">Height Scan &amp; 관측 벡터(Observation) 구성<a class="headerlink" href="#height-scan-observation" title="Permanent link">¶</a></h3>
@@ -2636,7 +2632,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s34.jpg" data-title="정책 추론과 시뮬레이션 동작" data-desc-position="bottom"><img alt="정책 추론과 시뮬레이션 동작" src="../img/w04/s34.jpg" width="720"></a></p>
 <figcaption>
-<p>Policy 추론과 행동 적용 — 시뮬레이션 환경 동작 (출처: ENGI UNIVERSE)</p>
+<p>Policy 추론과 행동 적용 — 시뮬레이션 환경 동작</p>
 </figcaption>
 </figure>
 <hr>
@@ -2644,7 +2640,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w04/s37.jpg" data-title="Wrap-up" data-desc-position="bottom"><img alt="Wrap-up" src="../img/w04/s37.jpg" width="720"></a></p>
 <figcaption>
-<p>오늘 강의 내용 요약 — 슬라이드 37 (출처: ENGI UNIVERSE)</p>
+<p>오늘 강의 내용 요약 — 슬라이드 37</p>
 </figcaption>
 </figure>
 <ul>
@@ -2697,9 +2693,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_5">🔗 출처 및 참고자료<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<h2 id="_5">🔗 참고자료<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <ul>
-<li>교안 <strong>「Isaac Lab 4족 보행 로봇 강화학습 환경 만들기」</strong> (제작: ENGI UNIVERSE) — 강의 슬라이드 원본</li>
+<li>교안 <strong>「Isaac Lab 4족 보행 로봇 강화학습 환경 만들기」</strong> — 강의 슬라이드 원본</li>
 <li>NVIDIA Isaac Lab 공식 문서 — <a href="https://isaac-sim.github.io/IsaacLab/">https://isaac-sim.github.io/IsaacLab/</a></li>
 <li>NVIDIA Isaac Sim — <a href="https://docs.isaacsim.omniverse.nvidia.com/">https://docs.isaacsim.omniverse.nvidia.com/</a></li>
 <li>RSL-RL (PPO 기반 학습 프레임워크) — <a href="https://github.com/leggedrobotics/rsl_rl">https://github.com/leggedrobotics/rsl_rl</a></li>

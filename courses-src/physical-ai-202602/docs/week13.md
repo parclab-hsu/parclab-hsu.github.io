@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     지난 강의에서 정의한 5종의 **단위 액션(Unit Action)** 중, 가장 복잡한 **`track`** 을 중심으로 System-1 Executor의 설계를 완성한다. `track` 이 단순 시야 추적이 아니라 **짐벌(yaw/pitch) + 바디(yaw) + 거리(vx)** 를 동시에 다루는 **3축 통합 제어**임을 이해하고, `report_and_wait`(보고·대기)와 `return_to_home`(귀환) 액션의 구조와 테스트 방법까지 정리한다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「System-1 단위 액션 설계 part 2」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드 표현은 교안의 설명을 충실히 따른 **재구성 예제**입니다(원본 소스 비공개).
-
 !!! note "강의 흐름 (FLOW)"
     `Plan JSON` → `Executor` → `Unit Action` → `Robot APIs` → `Status Report`
 
@@ -33,7 +30,7 @@
 
 ![단위 액션 5종 개요](img/w13/s03.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 03 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 03
 ///
 
 !!! note "이번 part 2의 초점"
@@ -57,7 +54,7 @@ System-1 단위 액션 설계 part 2 — 슬라이드 03 (출처: ENGI UNIVERSE)
 
 ![track의 3축 통합 제어 — 짐벌·바디·거리](img/w13/s06.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 06 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 06
 ///
 
 !!! tip "역할 분담의 핵심"
@@ -86,7 +83,7 @@ System-1 단위 액션 설계 part 2 — 슬라이드 06 (출처: ENGI UNIVERSE)
 
 ![DepthBuffer — bbox ROI에서 안정적인 range_m 추출](img/w13/s13.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 13 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 13
 ///
 
 산출된 `range_m` 은 ① `follow_dist` 와 비교해 전진/후퇴 판단, ② `vx` 계산의 기준값, ③ **yaw가 정렬된 상태에서만 거리 제어를 시작**하는 조건 판단에 쓰입니다.
@@ -120,7 +117,7 @@ System-1 단위 액션 설계 part 2 — 슬라이드 13 (출처: ENGI UNIVERSE)
 
 ![_control_step의 제어 흐름](img/w13/s20.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 20 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 20
 ///
 
 **① 비전 정보 읽기 / 타깃 선택**
@@ -142,7 +139,7 @@ System-1 단위 액션 설계 part 2 — 슬라이드 20 (출처: ENGI UNIVERSE)
 
 ![Gimbal PID + LPF + Slew 제한](img/w13/s27.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 27 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 27
 ///
 
 **③ 바디 정렬 (wz)**
@@ -250,7 +247,7 @@ System-2 대신 `/system2/plan_cmd` 에 `PlanCommand` 를 한 번 발행하고, 
 
 ![report_and_wait — 보고와 대기의 결합](img/w13/s38.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 38 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 38
 ///
 
 ### 3.1 report — 상황 요약
@@ -288,7 +285,7 @@ System-1 단위 액션 설계 part 2 — 슬라이드 38 (출처: ENGI UNIVERSE)
 
 ![report_and_wait 결정 대기 흐름](img/w13/s50.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 50 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 50
 ///
 
 ### 3.4 테스트 — scan → report_and_wait → return_to_home
@@ -340,7 +337,7 @@ System-1 단위 액션 설계 part 2 — 슬라이드 50 (출처: ENGI UNIVERSE)
 
 ![return_to_home — home 좌표 결정 우선순위](img/w13/s56.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 56 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 56
 ///
 
 ### 4.2 exec_return_to_home
@@ -370,7 +367,7 @@ def exec_return_to_home(self, params):
 
 ![return_to_home 테스트 — Nav2 path 수렴 확인](img/w13/s60.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 2 — 슬라이드 60 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 2 — 슬라이드 60
 ///
 
 ---
@@ -400,9 +397,9 @@ System-1 단위 액션 설계 part 2 — 슬라이드 60 (출처: ENGI UNIVERSE)
 | return_to_home | 15 | 좌표 결정 우선순위 + move_to 재사용 캡슐화 |
 | **합계** | **100** | |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 「System-1 단위 액션 설계 part 2」 (제작: ENGI UNIVERSE)
+- 교안 「System-1 단위 액션 설계 part 2」
 - ROS 2 — <https://docs.ros.org>
 - Nav2 (NavigateToPose) — <https://docs.nav2.org>
 - tf2 (좌표 변환) — <https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html>
@@ -485,13 +482,13 @@ System-1 단위 액션 설계 part 2 — 슬라이드 60 (출처: ENGI UNIVERSE)
 ### ② 그림으로 잡기
 
 ![track의 3축 통합 제어 — 짐벌·바디·거리의 역할 분담](img/w13/s06.jpg)
-*track의 3축 통합 제어 — 짐벌·바디·거리의 역할 분담 — 출처: 강의 슬라이드 Physical AI 3강 06 (제작: ENGI UNIVERSE)*
+*track의 3축 통합 제어 — 짐벌·바디·거리의 역할 분담 — 출처: 강의 슬라이드 Physical AI 3강 06*
 
 ![PID 제어의 구조 — 비례·적분·미분 세 항이 오차를 함께 줄인다](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/PID_en.svg/960px-PID_en.svg.png)
 *PID 제어의 구조 — 비례·적분·미분 세 항이 오차를 함께 줄인다 — 출처: Wikimedia Commons, PID en.svg (CC BY-SA 3.0)*
 
 ![Gimbal PID에 LPF와 Slew 제한을 얹은 실제 제어 흐름](img/w13/s27.jpg)
-*Gimbal PID에 LPF와 Slew 제한을 얹은 실제 제어 흐름 — 출처: 강의 슬라이드 Physical AI 3강 27 (제작: ENGI UNIVERSE)*
+*Gimbal PID에 LPF와 Slew 제한을 얹은 실제 제어 흐름 — 출처: 강의 슬라이드 Physical AI 3강 27*
 
 ### ③ 자가 점검 퀴즈
 

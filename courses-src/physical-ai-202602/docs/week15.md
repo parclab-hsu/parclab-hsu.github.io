@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     한 학기 동안 구축한 **Spot+ATS 보안 로봇**의 두뇌(System-2, LLM 플래너)와 몸(System-1, 로봇 제어)을 연결하여, 자연어 명령이 **계획 생성 → 실행 → 현장 대응**으로 이어지는 전체 파이프라인을 시뮬레이션에서 검증하고, 최신 Physical AI(VLA) 관점에서 고도화 방향을 논의한다.
 
-!!! quote "출처 (Sources)"
-    본 주차의 그림과 예제는 강의 교안 **『Physical AI』 5강 「System-2 테스트 및 검증」**, **4강 「System-2 LLM Planner 설계」**(제작: *ENGI UNIVERSE*)와 **Spot+ATS 프로젝트 사용 매뉴얼(Rev 1.4)** 을 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 **재구성 예제**입니다(원본 소스 비공개).
-
 !!! note "강의 흐름 (FLOW)"
     `Natural Lang.` → `LLM Planner` → `Pydantic` → `HighLevelPlan` → `ROS 2 Publish`
 
@@ -30,7 +27,7 @@ System-2는 **규칙 정의(`models.py`) → 지능 생성(`llm_planner.py`) →
 
 ![System-2의 세 가지 축: models.py → llm_planner.py → system2_node.py](img/w15/g4-03.png){ width="720" }
 /// caption
-교안 4강 §01 — System-2의 3축 구조 (출처: ENGI UNIVERSE)
+교안 4강 §01 — System-2의 3축 구조
 ///
 
 ---
@@ -67,7 +64,7 @@ LLM은 이 좌표로 구역 **중앙 좌표를 계산**해 `goal.x, goal.y, goal
 
 ![System-2 단독 검증 — 터미널에서 자연어 명령이 HighLevelPlan JSON으로 변환](img/w15/g5-06.png){ width="720" }
 /// caption
-교안 5강 §02 — System-2 단독 검증(공간 지능 테스트) 콘솔 출력 (출처: ENGI UNIVERSE)
+교안 5강 §02 — System-2 단독 검증(공간 지능 테스트) 콘솔 출력
 ///
 
 ### `models.py` — LLM과 로봇 사이의 "계약서" (4강 §02 재구성)
@@ -153,7 +150,7 @@ System-2가 생성한 플랜을 `/system2/plan_cmd` 로 발행하면 System-1이
 
 ![Scenario A — 기초 기동 테스트(D 구역 이동)](img/w15/g5-09.png){ width="720" }
 /// caption
-교안 5강 §03 — Scenario A: 기초 기동 테스트 (출처: ENGI UNIVERSE)
+교안 5강 §03 — Scenario A: 기초 기동 테스트
 ///
 
 ### Scenario B — 인터랙티브 미션 (이동·스캔·보고)
@@ -199,7 +196,7 @@ System-2가 생성한 플랜을 `/system2/plan_cmd` 로 발행하면 System-1이
 
 ![Scenario C — 장기 순찰 미션(Task Queue·재계획)](img/w15/g5-12.png){ width="720" }
 /// caption
-교안 5강 §03 — Scenario C: 장기 순찰 미션 (출처: ENGI UNIVERSE)
+교안 5강 §03 — Scenario C: 장기 순찰 미션
 ///
 
 ### Scenario D — 객체 인식 및 동적 추적
@@ -329,7 +326,7 @@ System-2가 플랜에 실어 보내는 `replan_rules` 는 System-1의 **guard �
 
 ![Physical AI / VLA 연결 — 객체탐지·세그멘테이션·포인팅·궤적·태스크 진행](img/w15/g5-15.png){ width="720" }
 /// caption
-교안 5강 §04 — 최신 VLA와 Spot+ATS의 System-1 구현 방식 비교 (출처: ENGI UNIVERSE)
+교안 5강 §04 — 최신 VLA와 Spot+ATS의 System-1 구현 방식 비교
 ///
 
 | 구분 | 최신 VLA | Spot+ATS (본 프로젝트) |
@@ -513,7 +510,7 @@ System-2가 플랜에 실어 보내는 `replan_rules` 는 System-1의 **guard �
 ### ② 그림으로 잡기
 
 ![Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향](img/w15/g5-15.png)
-*Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향 — 출처: 강의 슬라이드 Physical AI 5강 15 (제작: ENGI UNIVERSE)*
+*Physical AI / VLA로의 연결 — 인식·언어·행동이 하나로 이어지는 방향 — 출처: 강의 슬라이드 Physical AI 5강 15*
 
 ### ③ 자가 점검 퀴즈
 
@@ -597,9 +594,9 @@ graph LR
     ![4강 슬라이드 14 — 시스템 프롬프트 4단계](img/w15/g4-14.png){ width="700" }
     ![4강 슬라이드 16 — system2_node.py](img/w15/g4-16.png){ width="700" }
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안: **『Physical AI』 4강·5강** (제작: ENGI UNIVERSE) — 강의 슬라이드 원본
+- 교안: **『Physical AI』 4강·5강** — 강의 슬라이드 원본
 - **Spot+ATS 프로젝트 사용 매뉴얼 (Rev 1.4)** — 로봇 플랫폼·운용 시나리오
 - LangChain — <https://python.langchain.com>
 - Pydantic — <https://docs.pydantic.dev>

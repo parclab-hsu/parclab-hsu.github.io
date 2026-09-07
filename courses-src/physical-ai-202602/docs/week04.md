@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     NVIDIA **Isaac Lab**을 활용하여 4족 보행 로봇(Spot)의 강화학습 환경을 구성하고, 학습 파이프라인(`train.py`)의 4단계 구조를 이해한다. **MDP 기반 행동(Action)·관측(Observation)** 설계와 **Height Scan(RayCaster)** 지형 인식을 실습하며, 에이전트–환경–보상으로 이어지는 강화학습 핵심 요소를 체득한다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「Isaac Lab 4족 보행 로봇 강화학습 환경 만들기」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드·명령은 교안 설명을 충실히 따른 **재구성 예제**입니다.
-
 !!! note "강의 흐름 (FLOW)"
     `Observation` → `Policy` → `Action` → `Reward` → `Update`
 
@@ -23,7 +20,7 @@
 
 ![4족 보행 로봇 학습환경 만들기 표지](img/w04/s01.jpg){ width="720" }
 /// caption
-Isaac Lab 4족 보행 로봇 강화학습 환경 만들기 — 슬라이드 01 (출처: ENGI UNIVERSE)
+Isaac Lab 4족 보행 로봇 강화학습 환경 만들기 — 슬라이드 01
 ///
 
 이번 강의의 목표는 다음과 같습니다.
@@ -59,7 +56,7 @@ Isaac Lab 4족 보행 로봇 강화학습 환경 만들기 — 슬라이드 01 (
 
 ![Isaac Lab 소개](img/w04/s05.jpg){ width="720" }
 /// caption
-Isaac Lab 소개 및 실행 방법 — 슬라이드 05 (출처: ENGI UNIVERSE)
+Isaac Lab 소개 및 실행 방법 — 슬라이드 05
 ///
 
 ### Isaac Lab이란?
@@ -106,7 +103,7 @@ Isaac Lab 실행 후 **RSL-RL** 학습기를 통해 1024개의 Spot을 동시에
 
 ![예제 Task 실행 실습](img/w04/s09.jpg){ width="720" }
 /// caption
-RSL-RL 학습 파이프라인 실행 — 슬라이드 09 (출처: ENGI UNIVERSE)
+RSL-RL 학습 파이프라인 실행 — 슬라이드 09
 ///
 
 ### Task(태스크)란?
@@ -127,7 +124,7 @@ Isaac Lab에서 말하는 **Task**는 강화학습의 **규칙서**입니다. �
 
 ![train.py 구조](img/w04/s14.jpg){ width="720" }
 /// caption
-train.py의 4단계 구조 — 슬라이드 14 (출처: ENGI UNIVERSE)
+train.py의 4단계 구조 — 슬라이드 14
 ///
 
 `train.py`는 **① 시뮬레이터를 켜고 ② 학습 설정을 확정하고 ③ 환경을 만들어 래퍼로 포장한 뒤 ④ 학습기를 돌려 정책을 학습**하는 스크립트입니다.
@@ -163,7 +160,7 @@ train.py의 4단계 구조 — 슬라이드 14 (출처: ENGI UNIVERSE)
 
 ![train.py 학습 시작 단계](img/w04/s18.jpg){ width="720" }
 /// caption
-4단계 학습 시작 — OnPolicyRunner로 정책 학습 (출처: ENGI UNIVERSE)
+4단계 학습 시작 — OnPolicyRunner로 정책 학습
 ///
 
 !!! success "한 줄 요약"
@@ -175,7 +172,7 @@ train.py의 4단계 구조 — 슬라이드 14 (출처: ENGI UNIVERSE)
 
 ![flat_env_cfg.py](img/w04/s22.jpg){ width="720" }
 /// caption
-flat_env_cfg.py — 강화학습 환경 설정 (출처: ENGI UNIVERSE)
+flat_env_cfg.py — 강화학습 환경 설정
 ///
 
 `flat_env_cfg.py`의 목표는 **Spot이 평지 + Cobbles(거친 지형)에서도 사용자가 원하는 속도대로 안정적으로 걷도록** 훈련하는 것입니다. 주요 기능 4가지는 다음과 같습니다.
@@ -224,7 +221,7 @@ class SpotObservationCfg:
 
 ![관측·이벤트·보상 설정](img/w04/s26.jpg){ width="720" }
 /// caption
-Observation·Events·Reward 설정 (출처: ENGI UNIVERSE)
+Observation·Events·Reward 설정
 ///
 
 ### Events — 랜덤화 이벤트(Domain Randomization)
@@ -258,7 +255,7 @@ decimation = 10       # 물리 10번 계산마다 액션 1번 업데이트
 
 ![학습 정책 적용](img/w04/s30.jpg){ width="720" }
 /// caption
-학습된 정책 적용과 관측 벡터 구성 (출처: ENGI UNIVERSE)
+학습된 정책 적용과 관측 벡터 구성
 ///
 
 ### Height Scan & 관측 벡터(Observation) 구성
@@ -295,7 +292,7 @@ obsb.update_prev_action(action)     # 다음 관측을 위해 이전 행동 저�
 
 ![정책 추론과 시뮬레이션 동작](img/w04/s34.jpg){ width="720" }
 /// caption
-Policy 추론과 행동 적용 — 시뮬레이션 환경 동작 (출처: ENGI UNIVERSE)
+Policy 추론과 행동 적용 — 시뮬레이션 환경 동작
 ///
 
 ---
@@ -304,7 +301,7 @@ Policy 추론과 행동 적용 — 시뮬레이션 환경 동작 (출처: ENGI U
 
 ![Wrap-up](img/w04/s37.jpg){ width="720" }
 /// caption
-오늘 강의 내용 요약 — 슬라이드 37 (출처: ENGI UNIVERSE)
+오늘 강의 내용 요약 — 슬라이드 37
 ///
 
 - ✔ **Isaac Lab 기반 4족 보행 RL 파이프라인** 개요 이해
@@ -329,9 +326,9 @@ Policy 추론과 행동 적용 — 시뮬레이션 환경 동작 (출처: ENGI U
 | Reward·Domain Randomization | 20 | 보상 항목과 랜덤화 이벤트의 목적·효과를 정확히 설명 |
 | Height Scan & Sim-to-Real | 15 | RayCaster 지형 인식과 제어 주기(50Hz) 매칭의 의미 설명 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「Isaac Lab 4족 보행 로봇 강화학습 환경 만들기」** (제작: ENGI UNIVERSE) — 강의 슬라이드 원본
+- 교안 **「Isaac Lab 4족 보행 로봇 강화학습 환경 만들기」** — 강의 슬라이드 원본
 - NVIDIA Isaac Lab 공식 문서 — <https://isaac-sim.github.io/IsaacLab/>
 - NVIDIA Isaac Sim — <https://docs.isaacsim.omniverse.nvidia.com/>
 - RSL-RL (PPO 기반 학습 프레임워크) — <https://github.com/leggedrobotics/rsl_rl>

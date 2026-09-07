@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     지난 주차에 만든 SLAM 지도를 **파일 형태(.pgm/.yaml)로 저장**하고, SLAM 대신 그 완성된 지도를 불러와 위치만 추정하는 **Localization 모드(AMCL + Nav2)** 로 전환하는 과정을 익힌다. 또한 저장된 지도에서 발생할 수 있는 문제와 원인을 분석하고, **GIMP로 지도 파일을 직접 보정**하여 경로 안정성을 높이는 방법을 실습한다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 명령·파라미터는 교안의 설명을 충실히 따르되, 경로는 실습 환경에 맞춰 확인이 필요합니다.
-
 !!! note "강의 흐름 (FLOW)"
     `SLAM 지도생성` → `지도 저장` → `Localization` → `맵 수정(GIMP)` → `재주행`
 
@@ -23,7 +20,7 @@
 
 ![Spot + ATS SLAM 연동 part 2 표지](img/w09/s01.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP) — 슬라이드 01 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP) — 슬라이드 01
 ///
 
 지난 강의에서는 Spot + ATS를 Isaac Sim 환경에서 **SLAM 모드**로 실행했습니다.
@@ -50,7 +47,7 @@ Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP) — 슬라이�
 
 ![SLAM 모드 지도 생성 복습](img/w09/s04.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 04 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 04
 ///
 
 ### 지난 강의 복습 — 실행 순서
@@ -81,7 +78,7 @@ SLAM은 `slam_toolbox_params.yaml`을 통해 동작 방식을 정의합니다.
 
 ![Nav2와 slam_toolbox 동시 구동](img/w09/s07.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 07 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 07
 ///
 
 - `controller_server` : plugin은 **RegulatedPurePursuitController** 사용
@@ -118,7 +115,7 @@ ros2 run nav2_map_server map_saver_cli -f ~/maps/spot_ats_map
 
 ![지도 기반 Localization 개념](img/w09/s10.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 10 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 10
 ///
 
 SLAM을 사용하지 않고 **미리 생성된 지도**를 통해 로봇이 자신의 위치를 추정하고 경로를 계획하는 방법입니다. 고정된 위치·범위에서 동작하는 로봇에게 **안정적인 자율보행**이 가능합니다.
@@ -152,7 +149,7 @@ Localization 모드 Nav2 실행에는 **두 개의 런치 파일**이 필요합�
 
 ![Localization 모드 실행 — RViz 전환](img/w09/s13.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 13 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 13
 ///
 
 - `localization_launch.py`와 `navigation_launch.py` 실행 (*필히 경로 확인*)
@@ -180,7 +177,7 @@ RViz에서 지도가 보이지 않는다면 단순히 '지도 데이터가 없�
 
 ![초기 위치 설정 — please set the initial pose](img/w09/s17.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 17 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 17
 ///
 
 - 부팅 시 로그: **"please set the initial pose..."**
@@ -192,7 +189,7 @@ Spot + ATS SLAM 연동 part 2 — 슬라이드 17 (출처: ENGI UNIVERSE)
 
 ![nav2_localization_params.yaml AMCL 파라미터](img/w09/s24.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 24 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 24
 ///
 
 === "Planner / Controller"
@@ -231,7 +228,7 @@ Spot + ATS SLAM 연동 part 2 — 슬라이드 24 (출처: ENGI UNIVERSE)
 
 ![SLAM 지도 문제와 원인](img/w09/s26.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 26 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 26
 ///
 
 **SLAM 지도는 항상 완벽하지 않습니다.** 지도에 오류가 있으면 로봇이 실제와 다른 **"가짜 세계"** 를 보고 판단하게 됩니다.
@@ -254,7 +251,7 @@ Spot + ATS SLAM 연동 part 2 — 슬라이드 26 (출처: ENGI UNIVERSE)
 
 ![GIMP로 지도 보정](img/w09/s29.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 29 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 29
 ///
 
 **GIMP**는 지도 이미지를 열어 직접 벽을 보강하거나 불필요한 노이즈를 제거하는 툴입니다. **사람의 판단으로 지도를 다듬는 과정**입니다.
@@ -284,7 +281,7 @@ Spot + ATS SLAM 연동 part 2 — 슬라이드 29 (출처: ENGI UNIVERSE)
 
 ![GIMP 실행 — 편집 규칙](img/w09/s31.jpg){ width="720" }
 /// caption
-Spot + ATS SLAM 연동 part 2 — 슬라이드 31 (출처: ENGI UNIVERSE)
+Spot + ATS SLAM 연동 part 2 — 슬라이드 31
 ///
 
 **Step 1 — 파일 열기**: File → Open → `map2.pgm`
@@ -345,9 +342,9 @@ Spot + ATS SLAM 연동 part 2 — 슬라이드 31 (출처: ENGI UNIVERSE)
 | 문제·원인 분석 | 15 | 스캔 누락·얇은 틈·Loop Closure 등 지도 오류 원인 진단 |
 | GIMP 지도 보정 | 20 | 색 규칙 준수 보정 + raw 내보내기 + RViz 경로 우회 검증 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」** (제작: *ENGI UNIVERSE*)
+- 교안 **「Spot + ATS SLAM 연동 part 2 (지도 저장·Localization·GIMP)」**
 - Nav2 — AMCL & Map Server: <https://docs.nav2.org>
 - slam_toolbox: <https://github.com/SteveMacenski/slam_toolbox>
 - GIMP: <https://www.gimp.org>
@@ -450,10 +447,10 @@ Spot + ATS SLAM 연동 part 2 — 슬라이드 31 (출처: ENGI UNIVERSE)
 ### ② 그림으로 잡기
 
 ![지도 기반 Localization 개념 — 저장된 지도 위에서 내 위치 찾기](img/w09/s10.jpg)
-*지도 기반 Localization 개념 — 저장된 지도 위에서 내 위치 찾기 — 출처: 강의 슬라이드 SLAM 3강 10 (제작: ENGI UNIVERSE)*
+*지도 기반 Localization 개념 — 저장된 지도 위에서 내 위치 찾기 — 출처: 강의 슬라이드 SLAM 3강 10*
 
 ![SLAM 지도에서 생기는 문제와 원인](img/w09/s26.jpg)
-*SLAM 지도에서 생기는 문제와 원인 — 출처: 강의 슬라이드 SLAM 3강 26 (제작: ENGI UNIVERSE)*
+*SLAM 지도에서 생기는 문제와 원인 — 출처: 강의 슬라이드 SLAM 3강 26*
 
 ### ③ 자가 점검 퀴즈
 

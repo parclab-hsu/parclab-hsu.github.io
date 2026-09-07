@@ -786,7 +786,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1747,7 +1747,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1942,10 +1942,6 @@
 <p class="admonition-title">학습목표</p>
 <p>ATS+Spot 자율보행 시뮬레이션에 필요한 <strong>SLAM(동시적 위치추정 및 지도작성)</strong> 의 기본 개념을 파악한다. 특히 SLAM에서 <strong>오도메트리(Odometry)</strong> 와 <strong>센서 융합(Sensor Fusion)</strong> 의 역할을 이해하고, "센서 정보 → 위치 추정 → 지도 작성(Mapping)"으로 이어지는 큰 흐름과 함께 <strong>slam_toolbox</strong> 와 <strong>Nav2(Navigation2)</strong> 스택의 구조 및 YAML 설계 방법을 익힌다.</p>
 </div>
-<div class="admonition quote">
-<p class="admonition-title">출처 (Source)</p>
-<p>본 자료의 그림·예제는 교안 <strong>「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 코드·파라미터는 교안 설명을 충실히 따른 <strong>재구성 예제</strong>입니다.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">강의 흐름 (FLOW)</p>
 <p><code>Odometry</code> → <code>Sensor Fusion</code> → <code>Mapping(SLAM)</code> → <code>Nav2</code> → <code>자율주행</code></p>
@@ -1986,7 +1982,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s01.jpg" data-title="강의 표지: SLAM과 Navigation 기본 개념" data-desc-position="bottom"><img alt="강의 표지: SLAM과 Navigation 기본 개념" src="../img/w06/s01.jpg" width="720"></a></p>
 <figcaption>
-<p>SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 01 (출처: ENGI UNIVERSE)</p>
+<p>SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 01</p>
 </figcaption>
 </figure>
 <ul>
@@ -1997,7 +1993,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s02.jpg" data-title="CONTENTS — SLAM 기본 원리부터 Nav2까지" data-desc-position="bottom"><img alt="CONTENTS — SLAM 기본 원리부터 Nav2까지" src="../img/w06/s02.jpg" width="720"></a></p>
 <figcaption>
-<p>SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 02 (출처: ENGI UNIVERSE)</p>
+<p>SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2) — 슬라이드 02</p>
 </figcaption>
 </figure>
 <hr>
@@ -2009,7 +2005,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s04.jpg" data-title="SLAM 개념 — 위치추정과 지도작성을 동시에" data-desc-position="bottom"><img alt="SLAM 개념 — 위치추정과 지도작성을 동시에" src="../img/w06/s04.jpg" width="720"></a></p>
 <figcaption>
-<p>SLAM과 Navigation 기본 개념 — 슬라이드 04 (출처: ENGI UNIVERSE)</p>
+<p>SLAM과 Navigation 기본 개념 — 슬라이드 04</p>
 </figcaption>
 </figure>
 <p>SLAM의 구조는 보통 두 단계로 분류됩니다.</p>
@@ -2043,7 +2039,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s06.jpg" data-title="Nav2 스택 구조 — Planner·Controller·BT Navigator" data-desc-position="bottom"><img alt="Nav2 스택 구조 — Planner·Controller·BT Navigator" src="../img/w06/s06.jpg" width="720"></a></p>
 <figcaption>
-<p>Nav2 스택 개요 — 슬라이드 06 (출처: ENGI UNIVERSE)</p>
+<p>Nav2 스택 개요 — 슬라이드 06</p>
 </figcaption>
 </figure>
 <p><strong>NAV2</strong>는 <em>Navigation2</em> 의 약자로, <strong>ROS2에서 사용되는 로봇 자율주행 표준 프레임워크</strong>입니다. 로봇이 스스로 갈 길을 찾고, 장애물을 피하고, 목적지에 도착할 수 있게 해주는 <strong>자율주행 엔진</strong>입니다. ROS1의 <code>move_base</code>를 대체하는 ROS2의 표준 패키지입니다.</p>
@@ -2096,7 +2092,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s10.jpg" data-title="slam_launch.py 소스코드 구조" data-desc-position="bottom"><img alt="slam_launch.py 소스코드 구조" src="../img/w06/s10.jpg" width="720"></a></p>
 <figcaption>
-<p>Nav2 스택 개요 — 슬라이드 10: slam_launch.py 소스코드 (출처: ENGI UNIVERSE)</p>
+<p>Nav2 스택 개요 — 슬라이드 10: slam_launch.py 소스코드</p>
 </figcaption>
 </figure>
 <h3 id="slam_launchpy"><code>slam_launch.py</code> 소스코드 흐름<a class="headerlink" href="#slam_launchpy" title="Permanent link">¶</a></h3>
@@ -2176,7 +2172,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s18.jpg" data-title="slam_toolbox 기본 동작 구성 — Front-end/Back-end" data-desc-position="bottom"><img alt="slam_toolbox 기본 동작 구성 — Front-end/Back-end" src="../img/w06/s18.jpg" width="720"></a></p>
 <figcaption>
-<p>slam_toolbox 사용하기 — 슬라이드 18 (출처: ENGI UNIVERSE)</p>
+<p>slam_toolbox 사용하기 — 슬라이드 18</p>
 </figcaption>
 </figure>
 <h3 id="slam_toolbox">slam_toolbox 기본 동작 구성<a class="headerlink" href="#slam_toolbox" title="Permanent link">¶</a></h3>
@@ -2222,7 +2218,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s22.jpg" data-title="센서 토픽 — LaserScan/PointCloud/MultiEchoLaserScan" data-desc-position="bottom"><img alt="센서 토픽 — LaserScan/PointCloud/MultiEchoLaserScan" src="../img/w06/s22.jpg" width="720"></a></p>
 <figcaption>
-<p>slam_toolbox 사용하기 — 슬라이드 22: 센서 토픽 (출처: ENGI UNIVERSE)</p>
+<p>slam_toolbox 사용하기 — 슬라이드 22: 센서 토픽</p>
 </figcaption>
 </figure>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">LaserScan (2D LiDAR)</label><label for="__tabbed_1_2">PointCloud (3D LiDAR)</label><label for="__tabbed_1_3">MultiEchoLaserScan (다중 반사)</label></div>
@@ -2254,7 +2250,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s25.jpg" data-title="오도메트리/TF — map→odom→body 좌표계" data-desc-position="bottom"><img alt="오도메트리/TF — map→odom→body 좌표계" src="../img/w06/s25.jpg" width="720"></a></p>
 <figcaption>
-<p>slam_toolbox 사용하기 — 슬라이드 25: 오도메트리/TF (출처: ENGI UNIVERSE)</p>
+<p>slam_toolbox 사용하기 — 슬라이드 25: 오도메트리/TF</p>
 </figcaption>
 </figure>
 <table>
@@ -2337,7 +2333,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s31.jpg" data-title="Nav2 프레임워크 전체 구조" data-desc-position="bottom"><img alt="Nav2 프레임워크 전체 구조" src="../img/w06/s31.jpg" width="720"></a></p>
 <figcaption>
-<p>Nav2 사용하기 — 슬라이드 31: Nav2 프레임워크 구조 (출처: ENGI UNIVERSE)</p>
+<p>Nav2 사용하기 — 슬라이드 31: Nav2 프레임워크 구조</p>
 </figcaption>
 </figure>
 <p><strong>Step 1</strong> — 사용자가 <code>NavigateToPose</code> 액션으로 목표 위치 명령
@@ -2400,7 +2396,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s34.jpg" data-title="Nav2 YAML — Costmap 구성" data-desc-position="bottom"><img alt="Nav2 YAML — Costmap 구성" src="../img/w06/s34.jpg" width="720"></a></p>
 <figcaption>
-<p>Nav2 사용하기 — 슬라이드 34: Costmap 구성 (출처: ENGI UNIVERSE)</p>
+<p>Nav2 사용하기 — 슬라이드 34: Costmap 구성</p>
 </figcaption>
 </figure>
 <h3 id="costmap-global_costmap-local_costmap">시야 — Costmap (<code>global_costmap</code> / <code>local_costmap</code>)<a class="headerlink" href="#costmap-global_costmap-local_costmap" title="Permanent link">¶</a></h3>
@@ -2439,7 +2435,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s37.jpg" data-title="Wrap-up — 오늘 강의 요약" data-desc-position="bottom"><img alt="Wrap-up — 오늘 강의 요약" src="../img/w06/s37.jpg" width="720"></a></p>
 <figcaption>
-<p>Wrap-up — 슬라이드 37 (출처: ENGI UNIVERSE)</p>
+<p>Wrap-up — 슬라이드 37</p>
 </figcaption>
 </figure>
 <div class="admonition success">
@@ -2500,9 +2496,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_3">🔗 출처 및 참고자료<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<h2 id="_3">🔗 참고자료<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <ul>
-<li>교안 <strong>「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」</strong> (제작: <em>ENGI UNIVERSE</em>)</li>
+<li>교안 <strong>「SLAM과 Navigation 기본 개념 (slam_toolbox·Nav2)」</strong></li>
 <li>slam_toolbox — <a href="https://github.com/SteveMacenski/slam_toolbox">https://github.com/SteveMacenski/slam_toolbox</a></li>
 <li>Nav2 (Navigation2) 공식 문서 — <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
 <li>ROS 2 TF2 (tf2_tools) — <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html">https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html</a></li>
@@ -2685,9 +2681,9 @@
 </table>
 <h3 id="2">② 그림으로 잡기<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s04.jpg" data-title="SLAM 개념 — 위치추정과 지도작성을 동시에 푼다" data-desc-position="bottom"><img alt="SLAM 개념 — 위치추정과 지도작성을 동시에 푼다" src="../img/w06/s04.jpg"></a>
-<em>SLAM 개념 — 위치추정과 지도작성을 동시에 푼다 — 출처: 강의 슬라이드 SLAM 1강 04 (제작: ENGI UNIVERSE)</em></p>
+<em>SLAM 개념 — 위치추정과 지도작성을 동시에 푼다 — 출처: 강의 슬라이드 SLAM 1강 04</em></p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w06/s25.jpg" data-title="map → odom → body 좌표 체인 — 절대 기준·단기 추정·본체" data-desc-position="bottom"><img alt="map → odom → body 좌표 체인 — 절대 기준·단기 추정·본체" src="../img/w06/s25.jpg"></a>
-<em>map → odom → body 좌표 체인 — 절대 기준·단기 추정·본체 — 출처: 강의 슬라이드 SLAM 1강 25 (제작: ENGI UNIVERSE)</em></p>
+<em>map → odom → body 좌표 체인 — 절대 기준·단기 추정·본체 — 출처: 강의 슬라이드 SLAM 1강 25</em></p>
 <h3 id="3_1">③ 자가 점검 퀴즈<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h3>
 <ol>
 <li>SLAM에서 위치추정과 지도작성을 "동시에" 푸는 이유는?</li>

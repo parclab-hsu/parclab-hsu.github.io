@@ -1031,7 +1031,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -1978,7 +1978,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔗 출처 및 참고자료
+        🔗 참고자료
       
     </span>
   </a>
@@ -2250,10 +2250,6 @@
 <p class="admonition-title">학습목표</p>
 <p>System-2가 만든 플랜을 한 줄씩 실행하는 <strong>System-1 Executor</strong>의 역할(TF 추적·vision 캐시·guard 판단)을 이해하고, 더 이상 쪼갤 수 없는 <strong>단위 액션(Unit Action)</strong> 의 개념을 익힌다. 특히 <code>move_to</code>(Nav2 기반 이동)와 <code>scan</code>(ATS 회전 탐색) 두 액션의 <strong>입력 파라미터·성공/실패 판정 기준</strong>을 설계하고, ROS 2 명령으로 단독 테스트하는 방법을 학습한다.</p>
 </div>
-<div class="admonition quote">
-<p class="admonition-title">출처 (Source)</p>
-<p>본 자료의 그림·예제는 교안 <strong>「System-1 단위 액션 설계 part 1」</strong>(제작: <em>ENGI UNIVERSE</em>)를 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 <strong>재구성 예제</strong>입니다(원본 소스 비공개).</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">강의 흐름 (FLOW)</p>
 <p><code>Plan JSON</code> → <code>Executor</code> → <code>Unit Action</code> → <code>Robot APIs</code> → <code>Status Report</code></p>
@@ -2295,7 +2291,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s03.jpg" data-title="System-1 Executor와 단위 액션 개요" data-desc-position="bottom"><img alt="System-1 Executor와 단위 액션 개요" src="../img/w12/s03.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 03 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 03</p>
 </figcaption>
 </figure>
 <h3 id="executor">Executor가 매 스텝에서 하는 일<a class="headerlink" href="#executor" title="Permanent link">¶</a></h3>
@@ -2349,7 +2345,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s05.jpg" data-title="오늘 강의의 흐름: 설계 → 구현 → 테스트" data-desc-position="bottom"><img alt="오늘 강의의 흐름: 설계 → 구현 → 테스트" src="../img/w12/s05.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 05 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 05</p>
 </figcaption>
 </figure>
 <hr>
@@ -2396,7 +2392,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s09.jpg" data-title="move_to 구성요소와 Nav2Navigator 래퍼" data-desc-position="bottom"><img alt="move_to 구성요소와 Nav2Navigator 래퍼" src="../img/w12/s09.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 09 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 09</p>
 </figcaption>
 </figure>
 <h3 id="nav2navigator-navigatetopose"><code>Nav2Navigator</code> — NavigateToPose를 감싸는 전용 래퍼<a class="headerlink" href="#nav2navigator-navigatetopose" title="Permanent link">¶</a></h3>
@@ -2484,7 +2480,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s20.jpg" data-title="exec_move_to의 인자와 stuck 판정 정책" data-desc-position="bottom"><img alt="exec_move_to의 인자와 stuck 판정 정책" src="../img/w12/s20.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 20 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 20</p>
 </figcaption>
 </figure>
 <p>System-1 Executor에서 이동을 담당하는 실제 함수로, Nav2 피드백을 모니터링하며 <strong>정상 도착 시 <code>True</code></strong>, <strong>중간 장애·실패 감지 시 <code>False</code></strong> 를 반환하는 <strong>동기 액션 함수</strong>입니다.</p>
@@ -2559,7 +2555,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s30.jpg" data-title="move_to 테스트 플랜 구조와 기대 흐름" data-desc-position="bottom"><img alt="move_to 테스트 플랜 구조와 기대 흐름" src="../img/w12/s30.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 30 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 30</p>
 </figcaption>
 </figure>
 <p><strong>ROS 2 명령 구조</strong></p>
@@ -2654,7 +2650,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s33.jpg" data-title="scan의 ALIGN / SWEEP / FOUND 3단계" data-desc-position="bottom"><img alt="scan의 ALIGN / SWEEP / FOUND 3단계" src="../img/w12/s33.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 33 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 33</p>
 </figcaption>
 </figure>
 <h3 id="3_1">동작 3단계<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h3>
@@ -2697,7 +2693,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s35.jpg" data-title="ALIGN 단계의 PID 제어 흐름" data-desc-position="bottom"><img alt="ALIGN 단계의 PID 제어 흐름" src="../img/w12/s35.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 35 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 35</p>
 </figcaption>
 </figure>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">while</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">ok</span><span class="p">():</span>
@@ -2715,7 +2711,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s38.jpg" data-title="SWEEP 단계의 좌우·상하 지그재그 스캔" data-desc-position="bottom"><img alt="SWEEP 단계의 좌우·상하 지그재그 스캔" src="../img/w12/s38.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 38 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 38</p>
 </figcaption>
 </figure>
 <ul>
@@ -2744,7 +2740,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s40.jpg" data-title="FOUND 메시지와 느슨한 결합 구조" data-desc-position="bottom"><img alt="FOUND 메시지와 느슨한 결합 구조" src="../img/w12/s40.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 40 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 40</p>
 </figcaption>
 </figure>
 <p>목표 감지 시 FOUND 메시지를 구성해 <code>/scan_report</code> 토픽에 <strong>JSON으로 직렬화하여 퍼블리시</strong>합니다.</p>
@@ -2786,7 +2782,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s44.jpg" data-title="scan 테스트 플랜의 params 구조" data-desc-position="bottom"><img alt="scan 테스트 플랜의 params 구조" src="../img/w12/s44.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 44 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 44</p>
 </figcaption>
 </figure>
 <p>System-2를 생략하고 <code>/system2/plan_cmd</code>에 <code>PlanCommand</code>를 <strong>한 번만 pub</strong>해서 System-1 Executor를 직접 구동합니다. <code>plan_json</code>의 <code>task: "scan"</code>이면 <code>_run_loop()</code>가 <code>exec_scan()</code>을 호출합니다.</p>
@@ -2845,7 +2841,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s47.jpg" data-title="오늘 강의 정리" data-desc-position="bottom"><img alt="오늘 강의 정리" src="../img/w12/s47.jpg" width="720"></a></p>
 <figcaption>
-<p>System-1 단위 액션 설계 part 1 — 슬라이드 47 (출처: ENGI UNIVERSE)</p>
+<p>System-1 단위 액션 설계 part 1 — 슬라이드 47</p>
 </figcaption>
 </figure>
 <ul>
@@ -2899,9 +2895,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_7">🔗 출처 및 참고자료<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<h2 id="_7">🔗 참고자료<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <ul>
-<li>교안 <strong>「System-1 단위 액션 설계 part 1」</strong> (제작: ENGI UNIVERSE) — 강의 슬라이드 원본</li>
+<li>교안 <strong>「System-1 단위 액션 설계 part 1」</strong> — 강의 슬라이드 원본</li>
 <li>Nav2 (Navigation2) — <a href="https://docs.nav2.org">https://docs.nav2.org</a></li>
 <li>ROS 2 Actions 개념 — <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html</a></li>
 <li>ROS 2 tf2 (좌표 변환) — <a href="https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html">https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html</a></li>
@@ -3074,7 +3070,7 @@
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Eulerangles.svg/960px-Eulerangles.svg.png" data-title="오일러각(roll·pitch·yaw) — 짐벌락이 생기는 표현 방식" data-desc-position="bottom"><img alt="오일러각(roll·pitch·yaw) — 짐벌락이 생기는 표현 방식" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Eulerangles.svg/960px-Eulerangles.svg.png"></a>
 <em>오일러각(roll·pitch·yaw) — 짐벌락이 생기는 표현 방식 — 출처: Wikimedia Commons, Eulerangles.svg (CC BY 3.0)</em></p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../img/w12/s33.jpg" data-title="scan의 ALIGN / SWEEP / FOUND 3단계" data-desc-position="bottom"><img alt="scan의 ALIGN / SWEEP / FOUND 3단계" src="../img/w12/s33.jpg"></a>
-<em>scan의 ALIGN / SWEEP / FOUND 3단계 — 출처: 강의 슬라이드 Physical AI 2강 33 (제작: ENGI UNIVERSE)</em></p>
+<em>scan의 ALIGN / SWEEP / FOUND 3단계 — 출처: 강의 슬라이드 Physical AI 2강 33</em></p>
 <h3 id="3_2">③ 자가 점검 퀴즈<a class="headerlink" href="#3_2" title="Permanent link">¶</a></h3>
 <ol>
 <li>이동에 서비스가 아니라 액션을 쓰는 이유 두 가지는?</li>

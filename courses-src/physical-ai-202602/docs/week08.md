@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     1~7주차에서 다룬 **Isaac Sim 환경 구축·센서 시뮬레이션·Isaac Lab 강화학습·Spot+ATS 구축·SLAM/Nav2 자율주행**을 종합 평가한다. 개념 이해(이론)와 실제 시뮬레이션 구성 능력(실기)을 함께 점검한다.
 
-!!! quote "출처 (Source)"
-    평가 범위는 교안 **NVIDIA Isaac Sim 1~5강** 및 **SLAM 1~2강**(제작: ENGI UNIVERSE)에 기반한다.
-
 !!! note "강의 흐름 (FLOW)"
     `Isaac Sim` → `센서` → `Isaac Lab` → `SLAM` → `Nav2`
 
@@ -203,10 +200,10 @@ simulation_app.close()
 ### ② 그림으로 잡기
 
 ![SLAM 개념 복습 — 위치추정과 지도작성을 동시에](img/w06/s04.jpg)
-*SLAM 개념 복습 — 위치추정과 지도작성을 동시에 — 출처: 강의 슬라이드 SLAM 1강 04 (제작: ENGI UNIVERSE)*
+*SLAM 개념 복습 — 위치추정과 지도작성을 동시에 — 출처: 강의 슬라이드 SLAM 1강 04*
 
 ![좌표 체인 복습 — map → odom → body](img/w06/s25.jpg)
-*좌표 체인 복습 — map → odom → body — 출처: 강의 슬라이드 SLAM 1강 25 (제작: ENGI UNIVERSE)*
+*좌표 체인 복습 — map → odom → body — 출처: 강의 슬라이드 SLAM 1강 25*
 
 ### ③ 자가 점검 퀴즈
 

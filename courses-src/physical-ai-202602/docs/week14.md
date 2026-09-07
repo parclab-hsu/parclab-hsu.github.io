@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     Spot+ATS 보안 로봇의 **두뇌(System-2)** 를 직접 설계한다. 운영자의 모호한 자연어 명령을 **검증된 고수준 계획(HighLevelPlan)** 으로 변환하는 LLM 플래너를, **규칙 정의(`models.py`) → 지능 생성(`llm_planner.py`) → 통신·관리(`system2_node.py`)** 의 세 축으로 구현한다. 다음 주(15주차)에서 이 System-2를 System-1과 연동해 검증할 수 있도록, **데이터 계약·프롬프트 엔지니어링·ROS 2 런타임 통합** 의 원리를 익히는 것이 목표다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「System-2 LLM Planner 설계」**(제작: *ENGI UNIVERSE*) 4강을 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 **재구성 예제**입니다(원본 소스 비공개).
-
 !!! note "강의 흐름 (FLOW)"
     `Natural Lang.` → `LLM Planner` → `Pydantic` → `HighLevelPlan` → `ROS 2 Publish`
 
@@ -25,7 +22,7 @@
 
 ![System-2의 세 가지 축: models.py → llm_planner.py → system2_node.py](img/w14/s03.jpg){ width="720" }
 /// caption
-System-2 LLM Planner 설계 — 슬라이드 03 (출처: ENGI UNIVERSE)
+System-2 LLM Planner 설계 — 슬라이드 03
 ///
 
 System-2는 다음 **세 가지 축**으로 구성됩니다.
@@ -49,7 +46,7 @@ System-2는 다음 **세 가지 축**으로 구성됩니다.
 
 ![models.py — System-2의 스키마(계약서) 정의](img/w14/s05.jpg){ width="720" }
 /// caption
-System-2 LLM Planner 설계 — 슬라이드 05 (출처: ENGI UNIVERSE)
+System-2 LLM Planner 설계 — 슬라이드 05
 ///
 
 - `typing` : `List`, `Dict`, `Optional`, `Literal` 등 타입 힌트 제공
@@ -128,7 +125,7 @@ class System1State(BaseModel):
 
 ![llm_planner.py — 모델 설정·프롬프트·실행 체인](img/w14/s08.jpg){ width="720" }
 /// caption
-System-2 LLM Planner 설계 — 슬라이드 08 (출처: ENGI UNIVERSE)
+System-2 LLM Planner 설계 — 슬라이드 08
 ///
 
 | 단계 | 질문 | 구현 |
@@ -151,7 +148,7 @@ System-2 LLM Planner 설계 — 슬라이드 08 (출처: ENGI UNIVERSE)
 
 ![시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format](img/w14/s11.jpg){ width="720" }
 /// caption
-System-2 LLM Planner 설계 — 슬라이드 11 (출처: ENGI UNIVERSE)
+System-2 LLM Planner 설계 — 슬라이드 11
 ///
 
 === "① 행동 반경 제한 (Action)"
@@ -181,7 +178,7 @@ System-2 LLM Planner 설계 — 슬라이드 11 (출처: ENGI UNIVERSE)
 
 ![데이터 변환 함수 — state_to_text / extra_context_to_text](img/w14/s14.jpg){ width="720" }
 /// caption
-System-2 LLM Planner 설계 — 슬라이드 14 (출처: ENGI UNIVERSE)
+System-2 LLM Planner 설계 — 슬라이드 14
 ///
 
 변환 함수는 시스템을 효율적으로 다루기 위한 **'통역사'와 '필터'** 입니다. 불필요한 데이터를 걸러 **토큰 낭비·정보 과부하**를 방지합니다.
@@ -236,7 +233,7 @@ def build_plan(user_cmd: str, state: dict, extra_context: str = "") -> HighLevel
 
 ![system2_node.py — ROS 2 토픽·스레드 통합](img/w14/s17.jpg){ width="720" }
 /// caption
-System-2 LLM Planner 설계 — 슬라이드 17 (출처: ENGI UNIVERSE)
+System-2 LLM Planner 설계 — 슬라이드 17
 ///
 
 ### 토픽 구성
@@ -300,7 +297,7 @@ def main():
 
 ![Wrap-up — System-2 설계 핵심 정리](img/w14/s20.jpg){ width="720" }
 /// caption
-System-2 LLM Planner 설계 — 슬라이드 20 (출처: ENGI UNIVERSE)
+System-2 LLM Planner 설계 — 슬라이드 20
 ///
 
 1. **불확실한 LLM을 제어하기 위한 통신 규약** — `models.py` 의 Pydantic 스키마(계약서)로 환각을 차단
@@ -329,9 +326,9 @@ System-2 LLM Planner 설계 — 슬라이드 20 (출처: ENGI UNIVERSE)
 | 종합·발표 | 10 | System-1/2 분리 구조와 다음 주 연동의 전제 논리적 설명 |
 | **합계** | **100** | |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「System-2 LLM Planner 설계」** (제작: ENGI UNIVERSE) — Physical AI 4강 강의 슬라이드 원본
+- 교안 **「System-2 LLM Planner 설계」** — Physical AI 4강 강의 슬라이드 원본
 - **Spot+ATS 프로젝트 사용 매뉴얼 (Rev 1.4)** — 로봇 플랫폼·운용 시나리오
 - LangChain — <https://python.langchain.com>
 - Pydantic — <https://docs.pydantic.dev>
@@ -431,10 +428,10 @@ CAIO Forum 2026 — 「검증형 AI」 (허기홍, KAIST) · AI 에이전트 신
 ### ② 그림으로 잡기
 
 ![시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format](img/w14/s11.jpg)
-*시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format — 출처: 강의 슬라이드 Physical AI 4강 11 (제작: ENGI UNIVERSE)*
+*시스템 프롬프트 4단계 구조 — Action / Map / Logic / Format — 출처: 강의 슬라이드 Physical AI 4강 11*
 
 ![models.py — LLM과 로봇 사이의 계약서(스키마) 정의](img/w14/s05.jpg)
-*models.py — LLM과 로봇 사이의 계약서(스키마) 정의 — 출처: 강의 슬라이드 Physical AI 4강 05 (제작: ENGI UNIVERSE)*
+*models.py — LLM과 로봇 사이의 계약서(스키마) 정의 — 출처: 강의 슬라이드 Physical AI 4강 05*
 
 ### ③ 자가 점검 퀴즈
 

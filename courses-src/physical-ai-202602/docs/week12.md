@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     System-2가 만든 플랜을 한 줄씩 실행하는 **System-1 Executor**의 역할(TF 추적·vision 캐시·guard 판단)을 이해하고, 더 이상 쪼갤 수 없는 **단위 액션(Unit Action)** 의 개념을 익힌다. 특히 `move_to`(Nav2 기반 이동)와 `scan`(ATS 회전 탐색) 두 액션의 **입력 파라미터·성공/실패 판정 기준**을 설계하고, ROS 2 명령으로 단독 테스트하는 방법을 학습한다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「System-1 단위 액션 설계 part 1」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 **재구성 예제**입니다(원본 소스 비공개).
-
 !!! note "강의 흐름 (FLOW)"
     `Plan JSON` → `Executor` → `Unit Action` → `Robot APIs` → `Status Report`
 
@@ -25,7 +22,7 @@
 
 ![System-1 Executor와 단위 액션 개요](img/w12/s03.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 03 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 03
 ///
 
 ### Executor가 매 스텝에서 하는 일
@@ -58,7 +55,7 @@ System-1 단위 액션 설계 part 1 — 슬라이드 03 (출처: ENGI UNIVERSE)
 
 ![오늘 강의의 흐름: 설계 → 구현 → 테스트](img/w12/s05.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 05 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 05
 ///
 
 ---
@@ -83,7 +80,7 @@ System-1 단위 액션 설계 part 1 — 슬라이드 05 (출처: ENGI UNIVERSE)
 
 ![move_to 구성요소와 Nav2Navigator 래퍼](img/w12/s09.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 09 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 09
 ///
 
 ### `Nav2Navigator` — NavigateToPose를 감싸는 전용 래퍼
@@ -155,7 +152,7 @@ def _yaw_to_quat(yaw):
 
 ![exec_move_to의 인자와 stuck 판정 정책](img/w12/s20.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 20 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 20
 ///
 
 System-1 Executor에서 이동을 담당하는 실제 함수로, Nav2 피드백을 모니터링하며 **정상 도착 시 `True`**, **중간 장애·실패 감지 시 `False`** 를 반환하는 **동기 액션 함수**입니다.
@@ -220,7 +217,7 @@ ok = bool(status == 4)
 
 ![move_to 테스트 플랜 구조와 기대 흐름](img/w12/s30.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 30 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 30
 ///
 
 **ROS 2 명령 구조**
@@ -293,7 +290,7 @@ System-1 단위 액션 설계 part 1 — 슬라이드 30 (출처: ENGI UNIVERSE)
 
 ![scan의 ALIGN / SWEEP / FOUND 3단계](img/w12/s33.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 33 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 33
 ///
 
 ### 동작 3단계
@@ -320,7 +317,7 @@ System-1 단위 액션 설계 part 1 — 슬라이드 33 (출처: ENGI UNIVERSE)
 
 ![ALIGN 단계의 PID 제어 흐름](img/w12/s35.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 35 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 35
 ///
 
 ```python
@@ -341,7 +338,7 @@ while rclpy.ok():
 
 ![SWEEP 단계의 좌우·상하 지그재그 스캔](img/w12/s38.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 38 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 38
 ///
 
 - `half_span` : 전체 스윕 범위의 절반 (예: ±60° → `half_span=60°`)
@@ -370,7 +367,7 @@ for o in objs:
 
 ![FOUND 메시지와 느슨한 결합 구조](img/w12/s40.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 40 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 40
 ///
 
 목표 감지 시 FOUND 메시지를 구성해 `/scan_report` 토픽에 **JSON으로 직렬화하여 퍼블리시**합니다.
@@ -401,7 +398,7 @@ msg = {
 
 ![scan 테스트 플랜의 params 구조](img/w12/s44.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 44 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 44
 ///
 
 System-2를 생략하고 `/system2/plan_cmd`에 `PlanCommand`를 **한 번만 pub**해서 System-1 Executor를 직접 구동합니다. `plan_json`의 `task: "scan"`이면 `_run_loop()`가 `exec_scan()`을 호출합니다.
@@ -439,7 +436,7 @@ System-2를 생략하고 `/system2/plan_cmd`에 `PlanCommand`를 **한 번만 pu
 
 ![오늘 강의 정리](img/w12/s47.jpg){ width="720" }
 /// caption
-System-1 단위 액션 설계 part 1 — 슬라이드 47 (출처: ENGI UNIVERSE)
+System-1 단위 액션 설계 part 1 — 슬라이드 47
 ///
 
 - **System-1 Executor 코드·동작 흐름 정리** — 플랜을 한 줄씩 실행하며 TF 추적·vision 캐시·guard 판단을 수행
@@ -465,9 +462,9 @@ System-1 단위 액션 설계 part 1 — 슬라이드 47 (출처: ENGI UNIVERSE)
 | 단위 액션 테스트 | 20 | PlanCommand 플랜 작성과 기대 로그·성공/실패 흐름을 설명 |
 | 합계 | 100 | |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「System-1 단위 액션 설계 part 1」** (제작: ENGI UNIVERSE) — 강의 슬라이드 원본
+- 교안 **「System-1 단위 액션 설계 part 1」** — 강의 슬라이드 원본
 - Nav2 (Navigation2) — <https://docs.nav2.org>
 - ROS 2 Actions 개념 — <https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html>
 - ROS 2 tf2 (좌표 변환) — <https://docs.ros.org/en/humble/Concepts/Intermediate/About-Tf2.html>
@@ -575,7 +572,7 @@ System-1 단위 액션 설계 part 1 — 슬라이드 47 (출처: ENGI UNIVERSE)
 *오일러각(roll·pitch·yaw) — 짐벌락이 생기는 표현 방식 — 출처: Wikimedia Commons, Eulerangles.svg (CC BY 3.0)*
 
 ![scan의 ALIGN / SWEEP / FOUND 3단계](img/w12/s33.jpg)
-*scan의 ALIGN / SWEEP / FOUND 3단계 — 출처: 강의 슬라이드 Physical AI 2강 33 (제작: ENGI UNIVERSE)*
+*scan의 ALIGN / SWEEP / FOUND 3단계 — 출처: 강의 슬라이드 Physical AI 2강 33*
 
 ### ③ 자가 점검 퀴즈
 

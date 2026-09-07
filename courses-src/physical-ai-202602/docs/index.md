@@ -175,5 +175,5 @@ Isaac Sim은 **RTX 계열 NVIDIA GPU**를 전제로 동작합니다. GPU가 없�
 - ROS 2 Documentation (Humble) — <https://docs.ros.org>
 - Nav2 — <https://docs.nav2.org> · slam_toolbox — <https://github.com/SteveMacenski/slam_toolbox>
 - Ultralytics YOLOv8 — <https://docs.ultralytics.com> · LangChain — <https://python.langchain.com>
-- 강의 교안: **NVIDIA Isaac Sim 1~5강 · SLAM 1~4강 · Physical AI 1~5강** (제작: ENGI UNIVERSE) · Spot+ATS 프로젝트 매뉴얼
+- 강의 교안: **NVIDIA Isaac Sim 1~5강 · SLAM 1~4강 · Physical AI 1~5강** · Spot+ATS 프로젝트 매뉴얼
 - 산업 동향 연계: **매경·KAIST CAIO AI 리더스 포럼 2026** 발표자료 (Agentic AI·에이전트 신뢰성·AX) → 14·15주차 연계

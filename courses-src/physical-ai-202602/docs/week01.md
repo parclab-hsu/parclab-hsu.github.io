@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     Physical AI 개발의 출발점인 **NVIDIA Isaac Sim**을 왜 사용하는지(현실적인 시뮬레이션·비용/시간 절감·광범위한 호환성)를 이해한다. Ubuntu 22.04 + Miniconda(Conda) 가상환경 위에서 **CUDA·NVIDIA 드라이버·PyTorch·Isaac Sim·Isaac Lab**까지 이어지는 개발 환경 구축 절차를 익히고, Isaac Sim이 실제 로봇 연구·산업에서 어떻게 활용되는지 대표 사례를 통해 살펴본다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「NVIDIA Isaac Sim 설치 및 활용 사례」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 명령어·표는 교안의 설명을 충실히 따른 재구성 예제입니다.
-
 !!! note "강의 흐름 (FLOW)"
     `GPU/Driver` → `Conda/Python` → `Isaac Sim` → `Isaac Lab` → `실습 검증`
 
@@ -29,7 +26,7 @@
 
 ![Isaac Sim을 공부하는 이유 — 현실적 시뮬레이션·비용 절감·호환성](img/w01/s03.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 03 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 03
 ///
 
 ---
@@ -47,7 +44,7 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 03 (출처: ENGI UNIV
 
 ![권장 개발 환경 사양 — Ubuntu 22.04 / i9 / 64GB / RTX 4090](img/w01/s05.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 05 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 05
 ///
 
 ### 왜 Miniconda / Conda 인가?
@@ -134,7 +131,7 @@ bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 
 ![Miniconda 설치 절차 — mkdir / wget / bash 설치](img/w01/s09.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 09 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 09
 ///
 
 ---
@@ -175,7 +172,7 @@ nvidia-smi
 
 ![다양한 NVIDIA GPU 사용자를 위한 CUDA & 드라이버 가이드](img/w01/s13.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 13 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 13
 ///
 
 ### CUDA 12 설치 흐름
@@ -191,7 +188,7 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 13 (출처: ENGI UNIV
 
 ![CUDA 12 & NVIDIA Driver 설치 — 저장소 등록·GPG 키](img/w01/s16.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 16 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 16
 ///
 
 ### nvidia-open vs nvidia-driver-XXX
@@ -226,7 +223,7 @@ PyTorch는 GPU(CUDA) 버전에 맞춰 설치하며, 설치 중 의존성 오류�
 
 ![PyTorch 설치 및 의존성 오류 해결](img/w01/s20.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 20 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 20
 ///
 
 ---
@@ -248,7 +245,7 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 20 (출처: ENGI UNIV
 
 ![Isaac Sim 설치 — 설치 명령 옵션·최초 실행 라이선스 동의](img/w01/s24.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 24 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 24
 ///
 
 ---
@@ -279,7 +276,7 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 24 (출처: ENGI UNIV
 
 ![Isaac Lab 설치 및 Isaac Sim과의 비교](img/w01/s28.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 28 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 28
 ///
 
 ---
@@ -312,7 +309,7 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 28 (출처: ENGI UNIV
 
 ![Isaac Sim 실제 활용 사례 — Sim-to-Real, Nav2, Isaac Gym](img/w01/s30.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 30 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 30
 ///
 
 ---
@@ -326,7 +323,7 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 30 (출처: ENGI UNIV
 
 ![Wrap-up — 설치 과정과 활용 분야 요약](img/w01/s32.jpg){ width="720" }
 /// caption
-NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 32 (출처: ENGI UNIVERSE)
+NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 32
 ///
 
 ## ✅ 체크포인트
@@ -347,9 +344,9 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 32 (출처: ENGI UNIV
 | Isaac Sim vs Isaac Lab 비교 | 15 | 목적·물리엔진·RL·ROS 연동 차이를 표로 정리 |
 | 활용 사례 분석 | 15 | Sim-to-Real·Nav2·Isaac Gym 사례의 핵심 가치 설명 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「NVIDIA Isaac Sim 설치 및 활용 사례」** (제작: ENGI UNIVERSE) — 강의 슬라이드 원본
+- 교안 **「NVIDIA Isaac Sim 설치 및 활용 사례」** — 강의 슬라이드 원본
 - NVIDIA Isaac Sim 공식 문서 — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html>
 - NVIDIA Isaac Lab 공식 문서 — <https://isaac-sim.github.io/IsaacLab>
 - Miniconda 설치 가이드 — <https://docs.anaconda.com/miniconda/>
@@ -426,10 +423,10 @@ NVIDIA Isaac Sim 설치 및 활용 사례 — 슬라이드 32 (출처: ENGI UNIV
 ### ② 그림으로 잡기
 
 ![Isaac Sim을 쓰는 이유 — 현실적 시뮬레이션·비용 절감·호환성](img/w01/s03.jpg)
-*Isaac Sim을 쓰는 이유 — 현실적 시뮬레이션·비용 절감·호환성 — 출처: 강의 슬라이드 1강 03 (제작: ENGI UNIVERSE)*
+*Isaac Sim을 쓰는 이유 — 현실적 시뮬레이션·비용 절감·호환성 — 출처: 강의 슬라이드 1강 03*
 
 ![GPU·드라이버·CUDA의 관계 — 세 층이 버전으로 맞물린다](img/w01/s13.jpg)
-*GPU·드라이버·CUDA의 관계 — 세 층이 버전으로 맞물린다 — 출처: 강의 슬라이드 1강 13 (제작: ENGI UNIVERSE)*
+*GPU·드라이버·CUDA의 관계 — 세 층이 버전으로 맞물린다 — 출처: 강의 슬라이드 1강 13*
 
 ### ③ 자가 점검 퀴즈
 

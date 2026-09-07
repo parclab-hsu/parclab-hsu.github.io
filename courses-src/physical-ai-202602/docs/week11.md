@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     Spot+ATS 시스템을 **생각하는 두뇌(System-2)** 와 **실행하는 몸(System-1)** 의 두 계층으로 나누는 아키텍처를 이해하고, System-2가 내려준 고수준 플랜을 실제 물리 행동으로 바꾸는 **단위 액션(Unit Action)** 의 개념을 익힌다. 나아가 플랜을 검증·실행·모니터링하는 핵심 컴포넌트인 **System1ExecutorNode** 의 설계 철학과 내부 구조를 분석한다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「System-1 Executor Node 설계」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 **재구성 예제**입니다(원본 소스 비공개).
-
 !!! note "강의 흐름 (FLOW)"
     `Plan JSON` → `Executor` → `Unit Action` → `Robot APIs` → `Status Report`
 
@@ -23,7 +20,7 @@
 
 ![Spot+ATS 아키텍처 — System-2(두뇌)와 System-1(몸)의 분리](img/w11/s03.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 03 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 03
 ///
 
 **Spot+ATS의 목표** 는 의도·맥락을 이해하고 스스로 판단·행동하는 **물리 AI(Physical AI) 시스템** 입니다. 이를 위해 시스템을 두 계층으로 분리합니다.
@@ -52,7 +49,7 @@ System-1은 ROS2 기반으로 센서 데이터, 모터 명령, SLAM 맵, TF 좌�
 
 ![System-1 Executor Node가 호출하는 모듈들](img/w11/s05.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 05 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 05
 ///
 
 !!! note "전체 아키텍처 정리"
@@ -66,7 +63,7 @@ System-1 Executor Node 설계 — 슬라이드 05 (출처: ENGI UNIVERSE)
 
 ![단위 액션 — 더 이상 쪼갤 수 없는 최소 실행 단위](img/w11/s07.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 07 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 07
 ///
 
 ### 단위 액션(Unit Action)이란?
@@ -84,7 +81,7 @@ System-1 Executor Node 설계 — 슬라이드 07 (출처: ENGI UNIVERSE)
 
 ![Spot+ATS의 6개 단위 액션](img/w11/s09.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 09 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 09
 ///
 
 | # | 액션 | 설명 |
@@ -107,7 +104,7 @@ System-1 Executor Node 설계 — 슬라이드 09 (출처: ENGI UNIVERSE)
 
 ![System-1 Executor Node의 역할](img/w11/s12.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 12 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 12
 ///
 
 ### System-1 Executor Node의 역할
@@ -138,7 +135,7 @@ self.create_timer(1.0, self._log_tf_pose)
 
 ![플랜과 실행 상태 관리 — validator / current_plan / queue_status](img/w11/s14.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 14 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 14
 ///
 
 | 변수 | 역할 |
@@ -185,7 +182,7 @@ self.declare_parameter(...)   # 카메라 기본 해상도, Home 좌표 등
 
 ![통신 구조 — create_publishers / create_subscriptions](img/w11/s17.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 17 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 17
 ///
 
 ```python
@@ -214,7 +211,7 @@ create_subscriptions(self, self.on_plan_cmd, self.on_vision)
 
 ![비전 정규화 — VisionCache와 _normalize_raw_vision](img/w11/s19.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 19 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 19
 ///
 
 ```python
@@ -262,7 +259,7 @@ DepthBuffer                  # 깊이 센서 데이터 실시간 관리 → "현
 
 ![동시성 — 다중 스레드·콜백과 Lock](img/w11/s22.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 22 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 22
 ///
 
 ```python
@@ -312,7 +309,7 @@ def on_plan_cmd(self, msg):
 
 ![플랜 실행 — _run_loop의 task 분기와 True/False 계약](img/w11/s24.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 24 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 24
 ///
 
 ```python
@@ -377,7 +374,7 @@ def publish_state(self):
 
 ![Wrap-up — System-1 Executor Node 설계 철학](img/w11/s25.jpg){ width="720" }
 /// caption
-System-1 Executor Node 설계 — 슬라이드 25 (출처: ENGI UNIVERSE)
+System-1 Executor Node 설계 — 슬라이드 25
 ///
 
 - **System-1과 System-2의 역할 구분** — 두뇌(생각·계획)와 몸(실행·제어)의 분리
@@ -402,9 +399,9 @@ System-1 Executor Node 설계 — 슬라이드 25 (출처: ENGI UNIVERSE)
 | 비전·위임 설계 | 20 | VisionCache 정규화, Tracker·Nav2Navigator 위임의 설계 의도 설명 |
 | 동시성·안전성 | 15 | Lock·guard·`publish_state`를 통한 무결성·상태 동기화 메커니즘 설명 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「System-1 Executor Node 설계」** (제작: ENGI UNIVERSE) — 강의 슬라이드 원본
+- 교안 **「System-1 Executor Node 설계」** — 강의 슬라이드 원본
 - ROS 2 Documentation — <https://docs.ros.org>
 - Nav2 (Navigation2) — <https://docs.nav2.org>
 - Ultralytics YOLO — <https://docs.ultralytics.com>
@@ -499,10 +496,10 @@ System-1 Executor Node 설계 — 슬라이드 25 (출처: ENGI UNIVERSE)
 ### ② 그림으로 잡기
 
 ![System-2(두뇌)와 System-1(몸)의 분리 — 계획과 실행의 역할 나누기](img/w11/s03.jpg)
-*System-2(두뇌)와 System-1(몸)의 분리 — 계획과 실행의 역할 나누기 — 출처: 강의 슬라이드 Physical AI 1강 03 (제작: ENGI UNIVERSE)*
+*System-2(두뇌)와 System-1(몸)의 분리 — 계획과 실행의 역할 나누기 — 출처: 강의 슬라이드 Physical AI 1강 03*
 
 ![Spot+ATS의 단위 액션들 — 조합으로 임무를 만든다](img/w11/s09.jpg)
-*Spot+ATS의 단위 액션들 — 조합으로 임무를 만든다 — 출처: 강의 슬라이드 Physical AI 1강 09 (제작: ENGI UNIVERSE)*
+*Spot+ATS의 단위 액션들 — 조합으로 임무를 만든다 — 출처: 강의 슬라이드 Physical AI 1강 09*
 
 ### ③ 자가 점검 퀴즈
 

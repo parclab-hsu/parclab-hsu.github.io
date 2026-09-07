@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     NVIDIA Isaac Sim에서 **가상 물리 환경(Stage·World·Prim)** 을 구성하고 기본 지형과 동적 오브젝트를 배치하는 방법을 익힌다. 또한 **RGB / Depth 카메라 센서**를 시뮬레이션에 추가·설정하고, 센서 데이터를 실시간으로 수집·시각화하여 실제 로봇 센서와 유사한 가상 환경을 구현하는 능력을 기른다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드는 교안의 설명을 충실히 따른 재구성 예제입니다.
-
 !!! note "강의 흐름 (FLOW)"
     `가상 환경` → `센서 모델` → `프레임 획득` → `시각화` → `ROS 연동`
 
@@ -203,7 +200,7 @@ nvidia-smi              # GPU 인식 (드라이버 설치 전이면 미인식이
 
 ![Isaac Sim 로봇 센서 시뮬레이션 개요](img/w02/s03.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 03 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 03
 ///
 
 - **목표**
@@ -227,7 +224,7 @@ Isaac Sim 실행 전, **Conda 가상환경 활성화는 필수**입니다. 가�
 
 ![Conda 가상환경 활성화](img/w02/s06.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 06 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 06
 ///
 
 | 상태 | 의미 |
@@ -249,7 +246,7 @@ VS Code를 설치해 Isaac Sim과 연동하면 Python 코드를 효율적으로 
 
 ![VS Code 설치 및 Isaac Sim 연동](img/w02/s09.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 09 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 09
 ///
 
 **Step 1 —** 시스템 패키지 목록 갱신 및 설치 준비용 툴(wget, gpg) 설치
@@ -272,7 +269,7 @@ VS Code가 **Conda 가상환경의 Python**을 사용하도록 지정해야 Isaa
 
 ![VS Code Python 인터프리터 설정](img/w02/s13.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 13 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 13
 ///
 
 **Step 1 —** `Ctrl + Shift + X` 로 확장 프로그램(Extension) 창을 열고 **Microsoft 제공 Python 확장 프로그램** 설치
@@ -295,7 +292,7 @@ Isaac Sim의 장면은 **Stage → World → Prim** 의 계층으로 구성됩�
 
 ![Stage / World / Prim 기본 개념](img/w02/s16.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 16 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 16
 ///
 
 | 구성 단위 | 정의 | 핵심 특징 |
@@ -311,7 +308,7 @@ Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 �
 
 ![자율주행 로봇 장애물 회피 시나리오](img/w02/s18.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 18 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 18
 ///
 
 - **Stage 구성**: 두 대의 로봇 `/World/Robot1`, `/World/Robot2` + 카메라·LiDAR 센서 장착, 비포장도로·경사면·나무·돌·경계석 등 장애물, 자연광 조명과 고정형 외부 카메라 포함 → `.usd` 파일로 전체 장면 관리
@@ -355,7 +352,7 @@ simulation_app.close()                          # 시뮬레이션 정상 종료
 
 ![오브젝트(동적 큐브) 생성](img/w02/s20.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 20 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 20
 ///
 
 ```python
@@ -400,7 +397,7 @@ my_world.scene.add(
 
 ![카메라 센서 개요 (RGB / Depth)](img/w02/s24.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 24 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 24
 ///
 
 | 센서 | 생성 데이터 | 활용 |
@@ -461,7 +458,7 @@ Depth 카메라는 RGB 구성에 **어노테이터(Annotator) 등록**과 **Dept
 
 ![Depth 카메라 센서 시뮬레이션](img/w02/s27.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 27 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 27
 ///
 
 ```python
@@ -507,7 +504,7 @@ while simulation_app.is_running:
 
 ![오늘 강의 내용 요약](img/w02/s29.jpg){ width="720" }
 /// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 29 (출처: ENGI UNIVERSE)
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 29
 ///
 
 오늘 강의 내용 요약:
@@ -534,9 +531,9 @@ Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 �
 | RGB 카메라 | 20 | 카메라 설정(해상도·위치·회전) 및 RGB 이미지 획득·시각화 |
 | Depth 카메라 | 15 | `distance_to_camera` 어노테이터 등록 및 Depth Map 시각화 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 「Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션」 (제작: ENGI UNIVERSE)
+- 교안 「Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션」
 - NVIDIA Isaac Sim 공식 문서 — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html>
 - Isaac Sim Camera & Sensors — <https://docs.isaacsim.omniverse.nvidia.com/5.1.0/sensors/index.html>
 - Visual Studio Code (Linux) — <https://code.visualstudio.com/docs/setup/linux>
@@ -622,7 +619,7 @@ Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 �
 ### ② 그림으로 잡기
 
 ![Stage / World / Prim 계층 — 무대·관리자·개체](img/w02/s16.jpg)
-*Stage / World / Prim 계층 — 무대·관리자·개체 — 출처: 강의 슬라이드 2강 16 (제작: ENGI UNIVERSE)*
+*Stage / World / Prim 계층 — 무대·관리자·개체 — 출처: 강의 슬라이드 2강 16*
 
 ![Depth(깊이) 영상의 원리 — 가까울수록 밝고 멀수록 어둡게 거리를 이미지로 표현](https://upload.wikimedia.org/wikipedia/commons/f/fa/Z-depth2.png)
 *Depth(깊이) 영상의 원리 — 가까울수록 밝고 멀수록 어둡게 거리를 이미지로 표현 — 출처: Wikimedia Commons, Z-depth2.png (Public domain)*

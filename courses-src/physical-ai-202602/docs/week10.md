@@ -3,9 +3,6 @@
 !!! abstract "학습목표"
     **YOLOv8** 객체 검출 패키지를 복습하고, 검출(detector) → 추적(tracker) → 디버그(debug) 노드로 이어지는 ROS 2 파이프라인 구조를 이해한다. 이를 **Spot + ATS** 시스템에 연동하여 카메라로 대상을 인식·추적하고, 화면 중심 오차와 추종 속도를 산출하는 **비전 기반 closed-loop**의 입력 계층(Sensing/Perception)을 구축한다.
 
-!!! quote "출처 (Source)"
-    본 자료의 그림·예제는 교안 **「Spot + ATS Vision 연동 (YOLOv8)」**(제작: *ENGI UNIVERSE*)를 바탕으로 재구성하였습니다. 코드·파라미터는 교안의 설명을 충실히 따른 **재구성 예제**이며, 일부 슬라이드는 "실제 동작 코드가 아님"을 전제로 합니다.
-
 !!! note "강의 흐름 (FLOW)"
     `카메라` → `YOLOv8 detector` → `tracker` → `debug` → `ATS 연동`
 
@@ -23,7 +20,7 @@
 
 ![Spot + ATS Vision 연동 표지](img/w10/s01.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 01 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 01
 ///
 
 - **이번 강의 목표**
@@ -34,7 +31,7 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 01 (출처: ENGI UNIVERSE)
 
 ![이번 강의 목표](img/w10/s03.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 03 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 03
 ///
 
 ### Vision 모듈은 어느 계층에 있는가
@@ -74,7 +71,7 @@ YOLO는 이미지를 **한 번만(one-stage)** 통과시켜 객체의 **위치(b
 
 ![YOLOv8 파이프라인 구성](img/w10/s05.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 05 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 05
 ///
 
 ### 런치 인자 흐름 (핵심)
@@ -101,7 +98,7 @@ Node(parameters=[{'model': LaunchConfiguration('model')}])
 
 ![런치 인자 흐름](img/w10/s07.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 07 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 07
 ///
 
 !!! note "예시 파일은 실제 동작 코드가 아닙니다"
@@ -189,7 +186,7 @@ ros2 launch yolov8_bringup yolov8.launch.py \
 
 ![namespace의 세 노드](img/w10/s09.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 09 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 09
 ///
 
 !!! tip "런치 파일의 가치"
@@ -208,7 +205,7 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 09 (출처: ENGI UNIVERSE)
 
 ![Yolov8Node 요약](img/w10/s12.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 12 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 12
 ///
 
 ### 3-2. tracking_node (프레임 간 ID 유지)
@@ -240,7 +237,7 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 12 (출처: ENGI UNIVERSE)
 
 ![TrackingNode 요약](img/w10/s15.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 15 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 15
 ///
 
 !!! note "여기서 잠깐 — BYTETrack / BOTSort 란?"
@@ -280,7 +277,7 @@ for t in tracks:
 
 ![debug_node 요약](img/w10/s22.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 22 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 22
 ///
 
 ---
@@ -296,7 +293,7 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 22 (출처: ENGI UNIVERSE)
 
 ![Spot + ATS에 눈 달기](img/w10/s24.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 24 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 24
 ///
 
 ### graph_builder.py — YOLO 파이프라인 입력값 생성
@@ -321,7 +318,7 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 24 (출처: ENGI UNIVERSE)
 
 ![VisionContextBuilder](img/w10/s26.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 26 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 26
 ///
 
 **두 가지 포맷으로 퍼블리시**
@@ -386,7 +383,7 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 26 (출처: ENGI UNIVERSE)
 
 ![Wrap-up](img/w10/s28.jpg){ width="720" }
 /// caption
-Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
+Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28
 ///
 
 ## ✅ 체크포인트
@@ -407,9 +404,9 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
 | Spot+ATS 연동 | 20 | graph_builder·VisionContextBuilder·`/ats_twist`·`/cmd_vel` 이해 |
 | 시스템 계층 이해 | 15 | Sensing/Perception → System-1/System-2 확장 설명 |
 
-## 🔗 출처 및 참고자료
+## 🔗 참고자료
 
-- 교안 **「Spot + ATS Vision 연동 (YOLOv8)」** (제작: ENGI UNIVERSE)
+- 교안 **「Spot + ATS Vision 연동 (YOLOv8)」**
 - Ultralytics YOLOv8 — <https://docs.ultralytics.com>
 - ByteTrack — <https://github.com/ifzhang/ByteTrack>
 - ROS 2 QoS 설정 — <https://docs.ros.org/en/humble/Concepts/Intermediate/About-Quality-of-Service-Settings.html>
@@ -543,7 +540,7 @@ Spot + ATS Vision 연동 (YOLOv8) — 슬라이드 28 (출처: ENGI UNIVERSE)
 *IoU — 예측 bbox와 정답 bbox가 얼마나 겹치는가로 탐지 품질을 잰다 — 출처: Wikimedia Commons, Intersection over Union (CC BY-SA 4.0)*
 
 ![YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름](img/w10/s05.jpg)
-*YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름 — 출처: 강의 슬라이드 SLAM 4강 05 (제작: ENGI UNIVERSE)*
+*YOLOv8 파이프라인 — detector에서 tracker, debug로 이어지는 흐름 — 출처: 강의 슬라이드 SLAM 4강 05*
 
 ### ③ 자가 점검 퀴즈
 
