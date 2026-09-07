@@ -1,0 +1,1338 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PARC Lab · Physical AI Real-Time Control for Mobility & Robotics · 한성대학교 미래모빌리티학과">
+      
+      
+        <meta name="author" content="KyungBok Lee">
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/projects/l-project-terramechanics/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>달 탐사 로버 HILS 를 위한 월면토 침하·견인 통합 모델 고도화 개발 - PARC Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hils" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="PARC Lab" class="md-header__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PARC Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              달 탐사 로버 HILS 를 위한 월면토 침하·견인 통합 모델 고도화 개발
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연구분야
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  프로젝트
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../people/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  구성원
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  논문·성과
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../courses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  강의
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../news/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  소식
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연락처
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PARC Lab" class="md-nav__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    PARC Lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구분야
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../people/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    구성원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    논문·성과
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소식
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연락처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 왜 필요한가
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 현재 상태 — 두 엔진이 있고, 둘 다 제 역할을 못 한다
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 현재 상태 — 두 엔진이 있고, 둘 다 제 역할을 못 한다">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 침하 엔진 — 켜도 아무 일이 없고, 고치면 로버가 파묻힌다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 견인 솔버 — 꺼져 있고, 켜도 다른 로봇을 계산한다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 그래서 로버는 토양 반력을 전혀 받지 않는다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 막는 원인 — 특정되어 있다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 제안하는 작업 범위
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 제안하는 작업 범위">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sinkage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 침하 (Sinkage)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-traction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 견인 (Traction)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 통합 및 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 기대 효과
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 확인되지 않은 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 준비된 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hils">달 탐사 로버 HILS 를 위한 월면토 침하·견인 통합 모델 고도화 개발<a class="headerlink" href="#hils" title="Permanent link">&para;</a></h1>
+<p><span class="twemoji" style="color:#f0ad4e"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>차년도 과제 제안</strong> · 현대자동차 L-Project · 기준일 <strong>2026-09-07</strong></p>
+<div class="admonition abstract">
+<p class="admonition-title">요약</p>
+<p>실기 제어기가 루프 안에 있는 <strong>HILS</strong> 는 구축되어 동작 중입니다. 그런데 그 제어기가
+마주하는 플랜트는 <strong>완전 강체 지형</strong> 위에 있습니다. 월면토는 밟으면 꺼지고, 꺼진
+만큼 견인력이 달라지는데, 그 층이 비어 있습니다.</p>
+<p>관련 기능이 시뮬레이터(OmniLRS)에 <strong>두 개</strong> 들어 있습니다 — 바퀴자국을 그리는
+<strong>침하(deformation) 엔진</strong>과, 견인력·주행 저항을 계산하는 <strong>견인(terramechanics)
+솔버</strong>입니다. 실측해 보니 <strong>전자는 아무 일도 하지 않고, 후자는 아예 꺼져 있으며,
+무엇보다 둘이 서로 연결되어 있지 않습니다.</strong></p>
+<p>이 둘을 <strong>하나의 모델로 통합하고 실측으로 검증하는 것</strong>을 차년도 과제로 제안합니다.</p>
+</div>
+<p><a href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 프로젝트 상세</a> ·
+<a href="../l-project-interim/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 중간 보고</a> ·
+<a href="../l-project-srs/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 요구사항 명세서(SRS)</a></p>
+<hr />
+<h2 id="1">1. 왜 필요한가<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>달 탐사 로버의 주행 성능은 <strong>토양이 어떻게 꺼지고, 꺼진 상태에서 얼마나 밀어주는가</strong>로
+결정됩니다. 아폴로·VIPER 기록이 공통으로 말하는 것이 이것입니다.</p>
+<p>현재 저희 플랜트는 그 층이 없는 <strong>단단한 달</strong> 위에서 돕니다. 거기서 얻은 슬립·견인·
+등판 한계·자세 수치는 전부 강체 지형의 값입니다. 차년도에 자율 주행이나 크레이터 탈출
+거동을 다루려면 이 층을 먼저 세워야 합니다.</p>
+<div class="admonition info">
+<p class="admonition-title">지금이 착수 시점인 이유</p>
+<p>2026-08-25 에 오래 미해결이던 계측 문제가 해소되면서 <strong>현재 플랜트의 슬립이 사실상
+0 임을 확인</strong>했습니다. 토양 모델을 넣었을 때 생기는 변화를 <strong>깨끗하게 귀속시킬 수
+있는 기준선</strong>이 이번에 처음 확보되었습니다. 기준선 없이 모델을 넣으면 무엇이 무엇
+때문에 바뀌었는지 구분할 수 없습니다.</p>
+</div>
+<hr />
+<h2 id="2">2. 현재 상태 — 두 엔진이 있고, 둘 다 제 역할을 못 한다<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 침하 엔진 — 켜도 아무 일이 없고, 고치면 로버가 파묻힌다<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>기능을 실제로 켜고 로버를 몰면서 측정했습니다(2026-08-26). 같은 지령·같은 시간입니다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>현행 설정</th>
+<th>접지 폭만 실측 휠 폭으로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>로버 이동 거리</strong></td>
+<td><strong>12.156 m</strong></td>
+<td><strong>0.054 m</strong></td>
+</tr>
+<tr>
+<td>지형에서 변한 격자 칸</td>
+<td><strong>0</strong></td>
+<td>40 → 49</td>
+</tr>
+<tr>
+<td>최대 침하</td>
+<td><strong>0.000000 m</strong></td>
+<td>0.208 m</td>
+</tr>
+<tr>
+<td>연산 비용</td>
+<td>30 → <strong>26.5 Hz</strong> (−12 %)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>현행 설정은 <strong>비용만 지불하고 지형이 전혀 바뀌지 않습니다.</strong> 근사적으로 0 이 아니라
+정확히 0 이며 <strong>오류도 나지 않아</strong>, "켰다"고 믿는 상태가 됩니다. 접지 폭을 실측값으로
+고치면 이번에는 로버가 <strong>자기 구덩이를 파고 갇힙니다.</strong></p>
+<h3 id="22">2.2 견인 솔버 — 꺼져 있고, 켜도 다른 로봇을 계산한다<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>견인력(drawbar pull)·주행 저항·조향 저항 토크를 계산하는 솔버가 별도로 들어 있습니다.
+Bekker–Wong 계열의 고전적 차륜–지반 모델입니다. 상태를 확인한 결과입니다.</p>
+<table>
+<thead>
+<tr>
+<th>확인 항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>시뮬레이션 루프에서의 호출</td>
+<td><strong>주석 처리되어 실행되지 않음</strong></td>
+</tr>
+<tr>
+<td>코드 성숙도</td>
+<td>클래스 설명 첫 줄이 <strong><code>WIP</code></strong></td>
+</tr>
+<tr>
+<td>침하량 입력</td>
+<td><strong>0 으로 고정</strong> — 침하 엔진과 연결되어 있지 않음</td>
+</tr>
+<tr>
+<td>힘 적용</td>
+<td>같은 힘을 <strong>두 번 연속 적용</strong></td>
+</tr>
+<tr>
+<td>로버 제원</td>
+<td><strong>기본값</strong> — 질량 20 kg, 휠 반경 0.09 m</td>
+</tr>
+<tr>
+<td>토양 계수</td>
+<td><strong>기본값</strong> — 월면토 값이 아닌 일반값</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">제원이 맞지 않습니다</p>
+<p>저희 로버는 <strong>450 kg · 휠 반경 0.2133 m</strong> 입니다. 솔버는 <strong>20 kg · 0.09 m</strong> 로
+생성되어 있습니다. 질량 <strong>22 배</strong>, 반경 <strong>2.4 배</strong> 차이입니다.</p>
+<p>즉 지금 이 솔버를 그대로 켜면, 로버의 주행 성능이 아니라 <strong>전혀 다른 소형 로봇의
+값</strong>이 로버에 외란으로 실립니다.</p>
+</div>
+<h3 id="23">2.3 그래서 로버는 토양 반력을 전혀 받지 않는다<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>정리하면 이렇습니다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>무엇을 하는가</th>
+<th>지금 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>침하 엔진</td>
+<td>지형의 <strong>모양</strong>을 바꾼다 (바퀴자국)</td>
+<td>켤 수 있으나 결과가 0</td>
+</tr>
+<tr>
+<td>견인 솔버</td>
+<td>로버가 받는 <strong>힘</strong>을 바꾼다 (견인·저항)</td>
+<td>실행되지 않음</td>
+</tr>
+<tr>
+<td><strong>둘의 연결</strong></td>
+<td>꺼진 만큼 견인이 달라져야 한다</td>
+<td><strong>연결 없음</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>바퀴자국이 생겨도 주행은 바뀌지 않고, 힘을 계산해도 침하를 모릅니다.</strong> 이 둘을 잇는
+것이 이 과제에서 말하는 <strong>「통합」</strong> 입니다.</p>
+<hr />
+<h2 id="3">3. 막는 원인 — 특정되어 있다<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>추정이 아니라 계측 결과입니다. 지형이 안 변하는 이유는 세 갈래(접지력 없음 · 침하량 0 ·
+좌표 범위 밖)인데 <strong>겉으로는 모두 똑같이 보이기 때문에</strong>, 세 값을 한 기록에 함께 남기는
+도구를 만들어 갈랐습니다.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>원인</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>접지 폭이 격자 두 칸보다 좁아 분포가 전부 0</td>
+<td>접지력이 <strong>최대 734 N</strong> 으로 충분히 들어오는데 침하가 0</td>
+</tr>
+<tr>
+<td>②</td>
+<td><strong>힘–침하 관계식의 출처가 없다</strong></td>
+<td>어떤 토양·휠·중력에서 맞춘 계수인지 자료가 없고, 접촉력 0 에서도 침하가 나오는 형태</td>
+</tr>
+<tr>
+<td>③</td>
+<td>정지 시 접지력이 <strong>0 으로 읽혀</strong> 침하가 하중이 아니라 <strong>충격</strong>에 비례</td>
+<td>실제 바퀴자국과 반대</td>
+</tr>
+<tr>
+<td>④</td>
+<td><strong>스폰 낙하 충격이 지형에 새겨짐</strong></td>
+<td>주행 전에 이미 <strong>21 cm</strong> 깊이가 생김</td>
+</tr>
+<tr>
+<td>⑤</td>
+<td>견인 솔버가 <strong>침하량을 0 으로 받음</strong></td>
+<td>두 엔진 사이에 연결이 없음</td>
+</tr>
+<tr>
+<td>⑥</td>
+<td>솔버의 로버·토양 제원이 <strong>기본값</strong></td>
+<td>20 kg / 0.09 m / 비월면토 계수</td>
+</tr>
+</tbody>
+</table>
+<p>③ 에 대해서는 <strong>대체 계측 경로를 이미 확인</strong>했습니다. 접지력이 0 으로 읽히는 바로 그
+상태에서 서스펜션 하중 신호는 살아 있었고(표준편차 0.000), 네 바퀴 합이 <strong>기대 자중의
+1.08 배</strong>로 나왔습니다.</p>
+<div class="admonition warning">
+<p class="admonition-title">다만 정확히 해 둡니다</p>
+<p>위 1.08 배는 <strong>정보가 존재한다는 근거</strong>이지 환산식이 완성되었다는 뜻이 아닙니다.
+좌우 부호가 갈리므로 서스펜션 4절 링크 기구학을 거쳐야 실제 바퀴 하중이 됩니다.</p>
+</div>
+<hr />
+<h2 id="4">4. 제안하는 작업 범위<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41-sinkage">4.1 침하 (Sinkage)<a class="headerlink" href="#41-sinkage" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>WP</th>
+<th>내용</th>
+<th>선행</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WP1</strong></td>
+<td><strong>하중 계측 경로 교체</strong> — 접지력 대신 서스펜션 하중에서 역산. 4절 링크 기구학 반영</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>WP2</strong></td>
+<td><strong>힘–침하 관계 재수립</strong> — Bekker 압력–침하 이론 기반 재정식화. 달 중력·그라우저 휠 조건 명시</td>
+<td>WP1</td>
+</tr>
+<tr>
+<td><strong>WP3</strong></td>
+<td><strong>접지 형상 산정</strong> — 폭·길이를 접지 역학에서 결정. 길이는 침하량의 함수라 상수로 둘 수 없음</td>
+<td>WP2</td>
+</tr>
+<tr>
+<td><strong>WP4</strong></td>
+<td><strong>시작 조건 정비</strong> — 낙하·안착 종료 후 변형 개시</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-traction">4.2 견인 (Traction)<a class="headerlink" href="#42-traction" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>WP</th>
+<th>내용</th>
+<th>선행</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WP5</strong></td>
+<td><strong>솔버 활성화 및 결함 정정</strong> — 루프 연결, 이중 적용 제거, <code>WIP</code> 구간 정리</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>WP6</strong></td>
+<td><strong>로버 제원 반영</strong> — 질량·휠 반경·휠 폭·그라우저 높이를 자산 실측값으로</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>WP7</strong></td>
+<td><strong>월면토 계수 확보</strong> — Bekker–Wong 지지·전단 계수</td>
+<td><strong>토질 시험 자료</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="43">4.3 통합 및 검증<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>WP</th>
+<th>내용</th>
+<th>선행</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WP8</strong></td>
+<td><strong>침하 ↔ 견인 연결</strong> — 계산된 침하량을 솔버 입력으로. <strong>이 과제의 핵심</strong></td>
+<td>WP2·WP5</td>
+</tr>
+<tr>
+<td><strong>WP9</strong></td>
+<td><strong>연산 성능</strong> — 현재 40 칸을 바꾸려 정점 배열 전체를 매 스텝 다시 씀</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>WP10</strong></td>
+<td><strong>검증</strong> — 슬립–견인력 곡선 및 바퀴자국(깊이·폭·형상)을 실측과 대조</td>
+<td><strong>토질 시험 자료</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">WP7·WP10 이 이 과제의 성패를 가릅니다</p>
+<p>나머지가 모두 끝나도 <strong>비교할 실측 자료가 없으면</strong>, 「수치는 나오는데 근거가 없는」
+상태가 하나 더 생길 뿐입니다. 이번 분석에서 확인된 원인 ② 가 정확히 그 모양이었고,
+그것이 이 과제를 제안하는 이유이기도 합니다.</p>
+<p><strong>월면토 시뮬런트 시험 자료 확보를 과제 범위에 포함</strong>해 주시기를 요청드립니다.
+필요한 항목은 아래와 같습니다.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>필요한 값</th>
+<th>통상 시험</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>지지 특성</td>
+<td><code>k_c</code>, <code>k_φ</code>, <code>n</code> (압력–침하)</td>
+<td>Bevameter 관입 시험</td>
+</tr>
+<tr>
+<td>전단 특성</td>
+<td><code>c</code>(점착력), <code>φ</code>(내부마찰각), <code>K</code>(전단변형계수)</td>
+<td>직접전단 · Bevameter 전단</td>
+</tr>
+<tr>
+<td>밀도</td>
+<td><code>ρ</code> (다짐도별)</td>
+<td>상대밀도 시험</td>
+</tr>
+<tr>
+<td>조건</td>
+<td>시뮬런트 종류(JSC-1A·KLS-1 등)·입도·하중 범위</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>그라우저 휠 조건이 맞아야 합니다</strong> — 저희 휠은 그라우저 24 개, 높이 19.1 mm 입니다.
+평활 휠 시험 자료만으로는 전단 거동이 맞지 않습니다.</p>
+<hr />
+<h2 id="5">5. 기대 효과<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>주행 성능 예측의 근거 확보</strong> — 슬립–견인력 곡선, 등판 한계, 주행 저항을 강체 지형이
+  아닌 조건에서 산출</li>
+<li><strong>HILS 플랜트 충실도 향상</strong> — 실기 제어기가 마주하는 부하 조건이 실제에 가까워집니다.
+  루프 안에 실 제어기가 있다는 HILS 의 이점이 <strong>플랜트 물리까지 확장</strong>됩니다</li>
+<li><strong>크레이터 탈출 거동 연구의 전제</strong> — 탈출은 토양이 무너지는 거동에 크게 좌우되므로,
+  강체 지형에서 얻은 결과는 실기로 옮기기 어렵습니다</li>
+<li><strong>누적 주행 영향 평가</strong> — 반복 통과로 다져진 자국이 이후 주행에 미치는 영향</li>
+</ul>
+<hr />
+<h2 id="6">6. 확인되지 않은 것<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">이 절을 함께 읽어 주십시오</p>
+<p>아래는 이 과제로도 <strong>확인할 수 없는 범위</strong>입니다. 과제 종료 시 무엇이 남는지를
+미리 밝혀 둡니다.</p>
+</div>
+<ul>
+<li><strong>실제 월면 레골리스가 아닙니다.</strong> 지상 시뮬런트 기준이며, 진공·정전기·입도 이력 등
+  실제 레골리스의 조건은 재현하지 않습니다.</li>
+<li><strong>실물 로버 주행으로 검증하지 않습니다.</strong> 검증은 시뮬레이터 내부에서, 문헌 및 토질
+  시험 자료와의 대조로만 수행합니다.</li>
+<li><strong>토질 시험 자료가 확보되지 않으면 WP7·WP10 이 성립하지 않습니다.</strong> 그 경우 결과물은
+  「문헌 기반 정식화」까지이며, <strong>검증된 모델이라고 부를 수 없습니다.</strong></li>
+<li><strong>연산 시간 여유가 크지 않습니다.</strong> 현재 플랜트는 실시간의 약 절반 속도로 동작하며,
+  침하·견인 계산은 부하를 더합니다. 실시간성 확보는 별도 사안이나, 이 과제의 설계
+  제약으로 작용합니다.</li>
+<li>시뮬레이터 상류(OmniLRS) 구조 변경이 포함되어 포크 유지 부담이 늘어납니다.</li>
+</ul>
+<hr />
+<h2 id="7">7. 준비된 것<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>과제 착수 시 바로 사용할 수 있는 상태로 정리되어 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>원인 분석 문서</td>
+<td>8 개 절, 상류 소스 결함 포함</td>
+</tr>
+<tr>
+<td>계측 도구</td>
+<td>접지력·침하·좌표·지형 변화·로버 이동을 <strong>한 기록에</strong> 남김</td>
+</tr>
+<tr>
+<td>실동작 검증 원자료</td>
+<td>2 조건, 호출 단위 기록</td>
+</tr>
+<tr>
+<td>성능 측정 자료</td>
+<td>4 조건(침하 ON/OFF × 정지/주행), 구간 분포 포함</td>
+</tr>
+<tr>
+<td>로버 자산 실측</td>
+<td>그라우저 <strong>24 개</strong> · 높이 19.1 mm · 휠 반경 0.2134 m · 질량 450 kg</td>
+</tr>
+<tr>
+<td>기준선</td>
+<td>강체 지형 슬립 ≈ 0 (2026-08-25 확인)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">부수적으로 확인된 것</p>
+<p>설정의 그라우저 관련 계수가 <strong>13 개에 해당하는 값</strong>으로 들어가 있었습니다. 자산에서
+실측한 그라우저는 <strong>24 개</strong>입니다. 다만 접지 길이 자체에 근거가 없어, 값만 바꾸는
+것으로는 해결되지 않습니다(WP3).</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 PARC Lab · Hansung University
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/parclab-hsu" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:kblee@hansung.ac.kr" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hansung.ac.kr" target="_blank" rel="noopener" title="한성대학교" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-prepare.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-render.js"></script>
+      
+    
+  </body>
+</html>

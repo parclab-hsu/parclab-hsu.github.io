@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.63</td>
+<td>1.65</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1333,6 +1333,16 @@
 <td>1.63</td>
 <td>2026-08-26</td>
 <td><strong>변형 검증 결과를 <code>DEFORMATION.md</code> 전체에 반영하고 D-39 를 신설했다.</strong> 5·7·8절이 검증 전 서술로 남아 있어 3·4절과 어긋나 있었다. <strong>켜는 순서(§7)를 다시 짰다</strong> — <code>D-31 먼저 닫기</code>는 해결돼 빠지고, 실측에서만 드러난 <strong><code>delay</code> 확대</strong>와 <strong>힘-깊이 모델 재수립</strong>이 <strong>발자국 폭보다 앞으로</strong> 왔다(폭만 고치면 로버가 파묻힌다는 것이 실측이다). <strong>D-39 신설</strong> — 정지·안착 시 접지력이 4륜 모두 0 으로 읽혀(1,680 회 연속) 변형 깊이가 <strong>하중이 아니라 충격에 비례</strong>한다. 영향은 변형 엔진에 한정되나(접지력을 쓰는 곳이 거기뿐), 켜기 전에 풀어야 한다. 유력 후보는 <strong>서스펜션 조인트 effort 에서 하중을 역산</strong>하는 것 — 이미 <code>/sim/joint_states</code> 로 흐르고 정적 하중을 제대로 반영한다</td>
+</tr>
+<tr>
+<td>1.64</td>
+<td>2026-09-07</td>
+<td><strong>차년도 과제 후보를 정리하고(<code>NEXT-PHASE.md</code> 신설) 지형 변형 엔진 고도화를 공개 제안 페이지로 만들었다.</strong> 현대자동차 차년도 추가 과제 논의 요청에 따른 것이다. 목록은 <strong>「하면 좋을 것」이 아니라 「하지 않으면 막히는 것」</strong>만 담았다 — 전부 실측으로 막힌 지점이거나 실물이 없어 못 한 것이고, 아이디어 수준 확장은 넣지 않았다. 6개 항목(A 변형 엔진 · B 시간 충실도 D-38 · C 접지력 D-39 · D 기구 제원 · E 실기 이관 · F 강화학습) 중 <strong>A 를 과제로 제안</strong>한다 — 원인 4가지가 실측으로 특정돼 있고, 계측 도구가 이미 있으며, D-31 해결로 <strong>강체 지형 슬립 ≈ 0 기준선이 이번에 처음 확보</strong>됐기 때문이다. <strong>공개 페이지가 4종 → 5종</strong>이 되어 PG-001 공개 범위표를 갱신했고, 작성 규칙에 <strong>「과제 제안 페이지는 그 과제로도 확인할 수 없는 것을 절로 둔다」</strong>를 추가했다 — 제안서는 잘 보이려고 쓰는 문서라 오히려 이 규칙이 더 필요하다. 페이지에는 시뮬런트 한계·실물 부재·<strong>토질 시험 자료가 없으면 검증 WP 가 성립하지 않음</strong>을 명시했다. <strong>배포하지 않았다</strong> — 소스만 커밋했다</td>
+</tr>
+<tr>
+<td>1.65</td>
+<td>2026-09-07</td>
+<td><strong>차년도 과제명·범위 확정, D-40 신설.</strong> 과제명을 <strong>「달 탐사 로버 HILS 를 위한 월면토 침하·견인 통합 모델 고도화 개발」</strong>로 정했다. 「지형 변형」에서 바꾼 이유는 그 말이 <strong>눈에 보이는 절반만</strong> 가리키기 때문이다 — 확인해 보니 관련 엔진이 <strong>둘</strong>이고, 지형의 <em>모양</em>을 바꾸는 침하 엔진과 로버가 받는 <em>힘</em>을 바꾸는 <code>TerramechanicsSolver</code> 가 <strong>서로 연결되어 있지 않다</strong>(솔버가 침하량을 0 으로 받는다). 둘을 잇는 것이 핵심이라 「통합」이다. <strong>범위에 견인 솔버를 넣었다</strong> — WP 를 침하 4 · 견인 3 · 통합/검증 3 으로 재편했다. <strong>D-40 신설</strong> — 견인 솔버가 루프에서 주석 처리돼 <strong>로버가 토양 반력을 전혀 받지 않는다.</strong> 그냥 켜면 안 되는 것이 <code>lunaryard.py</code> 가 솔버를 <strong>기본 인자로 생성</strong>하기 때문이다(<code>mass 20.0</code> kg · <code>wheel_radius 0.09</code> m, 우리는 450 kg · 0.2133 m — 질량 22 배·반경 2.4 배 차이). 힘도 두 번 연속 적용한다. <strong>값이 그럴듯한 크기라 화면상으로는 정상으로 보인다</strong> — D-24 ② 와 같은 종류의 함정이다. 공개 페이지 슬러그를 <code>l-project-terramechanics</code> 로 바꾸고 PG-001 범위표를 갱신했다. <strong>배포하지 않았다</strong></td>
 </tr>
 <tr>
 <td>1.46</td>
@@ -2070,7 +2080,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 터미널 2: 제어·상태 노드 (sim 모드)</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ros2<span class="w"> </span>launch<span class="w"> </span>hils_rover_control<span class="w"> </span>rover_control.launch.py<span class="w"> </span>mode:<span class="o">=</span>sim
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 터미널 3: Navigation 또는 수동 명령</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/msg/Twist<span class="w"> </span><span class="s1">'{linear: {x: 0.5}, angular: {z: 0.2}}'</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/msg/Twist<span class="w"> </span><span class="s1">&#39;{linear: {x: 0.5}, angular: {z: 0.2}}&#39;</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 확인: /sim/axes_cmd 구동 1.89/3.02 rad/s·조향 ±21.9/13.5° → /odom 0.5/0.2 복원</span>
 </code></pre></div>
 <h3 id="52-can-sil">5.2 CAN 레벨 SIL (실물 없음 — 에뮬레이터 + 벤치 도구)<a class="headerlink" href="#52-can-sil" title="Permanent link">&para;</a></h3>
