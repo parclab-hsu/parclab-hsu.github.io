@@ -6,6 +6,8 @@ noindex: true
 
 :material-circle-outline:{ style="color:#e0a800" } **계획 중** · Infrared Optical Tracking for Robot Calibration
 
+[:material-book-open-page-variant-outline: 핵심 논문 상세 분석 및 유사 기술 동향](hd-robotics-ots-literature.md)
+
 !!! abstract "프로젝트 한눈에 보기"
     적외선 스테레오 카메라와 로봇 장착형 강체 마커를 활용하여 로봇 말단의 **3차원 위치·자세**를 측정하고, 기존 로봇 보정 알고리즘과 연계하는 **자동 캘리브레이션 시스템**을 개발합니다. 광학 추적 시스템(Optical Tracking System, OTS)의 하드웨어·소프트웨어와 로봇 인터페이스를 통합하여 생산라인 적용 가능성을 검증합니다.
 
@@ -194,6 +196,8 @@ OTS 하드웨어, 강체 마커 툴, 추적·보정 연동 소프트웨어 및 �
 ---
 
 ## 8. 관련 논문 및 과제 적용
+
+핵심 논문의 보정 모델·실험 결과·검증 한계와 최근 연구의 비교는 [핵심 논문 상세 분석 및 유사 기술 동향](hd-robotics-ots-literature.md)에 정리하였다.
 
 아래는 본 과제에 직접 연결되는 실험 연구와 기반 방법론을 선별한 목록이다. 연구별 장비·로봇·측정 공간·통계 지표가 다르므로 수치만으로 우열을 판단하지 않는다. **선행연구의 관찰 결과와 본 과제에서 제안하는 구현·검증 항목을 구분**하였다. 문헌 검토일: 2026-09-07.
 

@@ -92,7 +92,7 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `Infrared Stereo Vision` · `Optical Tracking` · `Rigid Body Marker` · `Robot Calibration` · `In-Line Automation`
 
-    [:octicons-arrow-right-24: 연구개발 계획서 보기](projects/hd-robotics-ots-calibration.md)
+    [:octicons-arrow-right-24: 연구개발 계획서 보기](projects/hd-robotics-ots-calibration.md) · [:material-book-open-page-variant-outline: 핵심 논문·기술 동향 분석](projects/hd-robotics-ots-literature.md)
 
 -   :material-circle-outline:{ style="color:#e0a800" } [__컨소시엄 제안 · 실환경–가상환경 연계형 데이터 증강 — Robot RFM 데이터팩토리__](projects/manufacturing-data-factory-rfm/index.md)
 
