@@ -176,7 +176,7 @@ int main(void) {
 3. `Ctrl + Shift + B`를 누르고 **`C/C++: cl.exe 활성 파일 빌드`**를 선택한다.
 4. 처음 한 번은 VS Code가 `.vscode/tasks.json`을 자동으로 만든다.
 
-만들어진 `tasks.json`을 다음처럼 손봐 두면 이 수업의 채점 기준과 맞는다.
+만들어진 `tasks.json`을 다음처럼 손봐 두면 이 수업의 채점 기준과 맞는다. 맨 위 `"type"`은 확장 버전에 따라 `cppbuild` 또는 `shell`로 만들어지는데 **둘 다 정상 동작하므로 그대로 두고 `args`만 맞추면 된다.**
 
 ```json
 {
@@ -189,6 +189,7 @@ int main(void) {
       "args": [
         "/Zi",
         "/W4",
+        "/std:c17",
         "/nologo",
         "/Fe:",
         "${fileDirname}\\${fileBasenameNoExtension}.exe",
@@ -206,6 +207,7 @@ int main(void) {
 |------|-----|-----------|
 | `/Zi` | 디버그 정보 생성 | 중단점을 걸려면 필요 |
 | `/W4` | 경고 수준 4 | 과제 제출 기준이 "수준 4에서 경고 0개"다 |
+| `/std:c17` | C17 표준으로 컴파일 | 과제 머리말의 `환경: Visual Studio 2022 (C17)` 표기와 맞춘다 |
 | `/nologo` | 시작 배너 숨김 | 출력에서 오류만 보이게 |
 | `/Fe:` | 실행파일 이름 지정 | `Hello.c` → `Hello.exe` |
 
@@ -220,8 +222,10 @@ Hello world!
 
 `F5`를 누르고 **C++ (Windows)** → **`cl.exe 활성 파일 빌드 및 디버그`**를 선택하면 `.vscode/launch.json`이 만들어진다.
 
-!!! danger "이 한 줄이 없으면 `scanf_s()`에서 멈춘다"
-    VS Code의 기본 디버그 콘솔은 **키보드 입력을 받지 않는다.** 이 강의 예제는 3주차부터 대부분 `scanf_s()`로 값을 입력받으므로, `launch.json`에 반드시 `"console": "integratedTerminal"` 을 넣어야 한다. 이 줄이 없으면 프로그램이 입력을 기다리며 멈춘 것처럼 보인다.
+!!! warning "`scanf_s()` 입력이 안 되면 이 줄을 본다"
+    이 강의 예제는 3주차부터 대부분 `scanf_s()`로 값을 입력받는다. 프로그램의 입출력이 **디버그 콘솔**로 가면 키보드 입력을 받을 수 없어, 프로그램이 멈춘 것처럼 보인다.
+
+    `launch.json`의 **`"externalConsole": false`** 는 프로그램을 **VS Code 통합 터미널**에서 실행하므로 입력이 정상 동작한다. 별도 콘솔 창에서 실행하고 싶으면 `true`로 바꾼다(대신 프로그램이 끝나면 창이 바로 닫힌다).
 
 ```json
 {
@@ -235,7 +239,8 @@ Hello world!
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
-      "console": "integratedTerminal",
+      "environment": [],
+      "externalConsole": false,
       "preLaunchTask": "C: cl.exe 활성 파일 빌드"
     }
   ]
@@ -280,6 +285,10 @@ VS Code는 파일을 기본적으로 **BOM 없는 UTF-8**로 저장한다. 그�
 
 !!! note "왜 BOM을 붙이는 쪽을 고르나"
     `/utf-8` 컴파일 옵션으로도 소스는 읽히지만, 그러면 실행 시점의 한글도 UTF-8 3바이트가 되어 `printf("%-6s", "국어")` 같은 **자리 맞춤 폭이 강의자료와 달라진다.** BOM만 붙이면 소스는 정확히 읽히고 실행 문자셋은 CP949 그대로라, 강의자료·과제 예시의 출력 정렬이 그대로 재현된다. 같은 이유로 Visual Studio 2022에서 열어도 문제가 없다.
+
+!!! note "설정 값의 근거"
+    이 절의 `tasks.json`·`launch.json`·IntelliSense 값은 Microsoft 공식 안내
+    [Configure VS Code for Microsoft C++](https://code.visualstudio.com/docs/cpp/config-msvc)을 기준으로 하고, 이 강의에 맞춰 `/W4`·`/std:c17`만 더한 것이다.
 
 ### 6.7 동작 확인 체크리스트
 
