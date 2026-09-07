@@ -698,6 +698,56 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#6dof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6DoF 추출에 필요한 구조와 데이터
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6DoF 추출에 필요한 구조와 데이터">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        좌표변환의 방향
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        출력 형식과 품질 판정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학생용 실행 예제
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -760,7 +810,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         기하학적 민감도
@@ -771,7 +821,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         몬테카를로 계산
@@ -799,7 +849,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         설계에 반영할 결론
@@ -827,7 +877,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         강화 설계 후보
@@ -838,7 +888,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         추가 계산 결과
@@ -849,7 +899,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         판단과 필요한 여유
@@ -911,9 +961,9 @@
 <p><strong>정지 측정용 적외선 스테레오 헤드 + 비대칭 6점 강체 마커 + 자동 보정 SW</strong>를 기본 구조로 제안한다. 2~3 m 거리, 600 mm 카메라 기준선, 12 mm 렌즈를 출발점으로 삼고, <strong>90 μm 지향 설계는 16 mm 렌즈·확대 마커·TCP 이격 150 mm·60프레임 평균 조합</strong>을 추가 검토한다. 실측 센서 데이터가 없는 단계이므로 아래 결과는 설계 민감도 분석이며, OTS 또는 로봇의 달성 성능이 아니다.</p>
 </div>
 <h2 id="_1">학생을 위한 한 장 설명<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p><img alt="학생용 OTS 아키텍처: 보기, 계산하기, 보정하기, 확인하기" src="../../assets/ots/architecture-student.png" /></p>
-<p><a href="../../assets/ots/architecture-student.png">아키텍처 이미지 크게 보기·다운로드</a></p>
-<p><strong>이 시스템은 로봇의 실제 작업점이 어디에 있는지 외부에서 측정하고, 목표 위치와의 차이를 줄이는 장치입니다.</strong> 그림은 작동 원리를 설명하는 개념도이며, 실제 마커 형상·치수·기준 계측 장비를 확정한 제작 도면이 아닙니다.</p>
+<p><img alt="6DoF 추출 구조: 동시 촬영, 3차원 복원, 강체 자세 추정, TCP 변환, 위치·회전 출력" src="../../assets/ots/architecture-6dof.png" /></p>
+<p><a href="../../assets/ots/architecture-6dof.png">6DoF 아키텍처 이미지 크게 보기·다운로드</a> · <a href="../../assets/ots/architecture-student.png">보정 전체 흐름 그림</a></p>
+<p><strong>이 시스템은 공구 끝이 어디에 있고 어느 방향을 향하는지, 즉 TCP의 6DoF 위치·자세를 외부에서 측정합니다.</strong> 추출한 결과는 로봇 보정과 독립 검증으로 연결합니다. 그림은 작동 원리를 설명하는 개념도이며, 실제 마커 형상·치수·기준 계측 장비를 확정한 제작 도면이 아닙니다.</p>
 <table>
 <thead>
 <tr>
@@ -924,32 +974,39 @@
 </thead>
 <tbody>
 <tr>
-<td>① 보기</td>
-<td>두 눈으로 물체를 보는 것처럼 카메라 두 대로 같은 표식을 봅니다.</td>
-<td>로봇을 멈추고 마커를 동시에 촬영합니다.</td>
+<td>① 동시 촬영</td>
+<td>두 눈으로 같은 표식을 봅니다.</td>
+<td>교정된 두 카메라로 로봇의 강체 마커를 동시에 촬영합니다.</td>
 </tr>
 <tr>
-<td>② 계산하기</td>
-<td>두 영상에서 표식이 보이는 위치의 차이로 거리를 구합니다.</td>
-<td>각 마커 점의 3차원 좌표와 강체 자세를 복원한 뒤 TCP 위치로 변환합니다.</td>
+<td>② 3차원 점 복원</td>
+<td>표식의 각 점이 공간 어디에 있는지 구합니다.</td>
+<td>좌우 ID를 대응하고 삼각측량으로 점별 X·Y·Z를 복원합니다.</td>
 </tr>
 <tr>
-<td>③ 보정하기</td>
-<td>로봇이 가려던 위치와 실제 위치의 차이를 여러 자세에서 모읍니다.</td>
-<td>관절값과 측정값을 기존 알고리즘에 넣어 보정값을 구하고 적용합니다.</td>
+<td>③ 강체 자세 추정</td>
+<td>점들의 전체 모양이 얼마나 이동·회전했는지 찾습니다.</td>
+<td>교정된 기준 형상과 측정 점을 SVD로 정합해 회전 R과 이동 t를 추정합니다.</td>
 </tr>
 <tr>
-<td>④ 확인하기</td>
-<td>보정 후 실제로 더 정확해졌는지 다시 확인합니다.</td>
-<td>새 검증 자세로 움직인 뒤 독립된 기준 계측기로 평가합니다.</td>
+<td>④ TCP 좌표 변환</td>
+<td>표식의 위치·방향을 실제 공구 끝 기준으로 바꿉니다.</td>
+<td>고정된 마커–TCP 관계와 카메라–베이스 관계를 적용합니다.</td>
+</tr>
+<tr>
+<td>⑤ 6DoF 출력</td>
+<td>위치 세 값과 회전 세 값을 읽습니다.</td>
+<td>X·Y·Z와 Roll·Pitch·Yaw, 내부 회전행렬·쿼터니언, 시각·좌표계·유효성을 출력합니다.</td>
 </tr>
 </tbody>
 </table>
+<p>추출 후에는 여러 자세의 로봇 관절값과 6DoF 실측값으로 보정값을 구합니다. 보정 적용 후 새 검증 자세에서 별도 기준 계측기로 효과를 확인합니다.</p>
 <h3 id="_2">꼭 알아둘 용어<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>마커:</strong> 카메라가 찾기 쉬운 위치 표식입니다. 로봇에 단단히 붙여야 표식의 움직임으로 로봇의 움직임을 알 수 있습니다.</li>
 <li><strong>TCP:</strong> 공구 끝처럼 실제로 작업하는 점입니다. 마커 중심과 다르므로 두 위치 사이의 관계를 교정해야 합니다.</li>
-<li><strong>위치와 자세:</strong> 위치는 “어디에 있는가”, 자세는 “어느 방향을 향하는가”입니다.</li>
+<li><strong>6DoF:</strong> 위치 X·Y·Z의 3자유도와 회전의 3자유도를 합한 것입니다. 마커가 6개이기 때문에 6DoF가 되는 것은 아닙니다.</li>
+<li><strong>위치와 자세:</strong> 위치는 “어디에 있는가”, 자세는 “어느 방향을 향하는가”입니다. TCP에는 작업점뿐 아니라 공구 방향을 나타내는 좌표축도 정의합니다.</li>
 <li><strong>OTS:</strong> Optical Tracking System의 약자로, 빛과 카메라를 이용해 위치·자세를 측정하는 시스템입니다.</li>
 <li><strong>캘리브레이션:</strong> 여러 측정 결과를 이용해 로봇 모델이나 좌표계의 오차를 찾아 보정하는 과정입니다. 한 점에서 찾은 오차를 모든 위치에 똑같이 더하는 것으로 끝나지 않습니다.</li>
 </ul>
@@ -960,6 +1017,91 @@
 <p class="admonition-title">생각해 볼 질문</p>
 <p>마커가 정확히 보이는데도 공구 끝의 위치는 틀릴 수 있을까요? 마커–TCP 관계가 잘못되었거나 자세 오차가 있으면 가능합니다. 따라서 마커 원점 오차와 실제 TCP 오차를 따로 확인해야 합니다.</p>
 </div>
+<h3 id="6dof">6DoF 추출에 필요한 구조와 데이터<a class="headerlink" href="#6dof" title="Permanent link">&para;</a></h3>
+<p><strong>마커는 로봇에 단단히 고정한 비대칭 3차원 구조</strong>로 설계하고, 각 점의 좌표를 실측 교정합니다. 서로 다른 깊이에 점을 두어 다양한 시점에서 식별성과 배치 품질을 확보하는 안입니다. 비공면이 6DoF의 절대적인 수학적 필수조건은 아닙니다. 대응을 알고 있는 비공선 3점도 강체 자세를 결정할 수 있으나, 본 시스템은 중복 관측과 품질 판단을 위해 검수용 4점 이상을 제안합니다.</p>
+<p>한 점의 X·Y·Z만 얻으면 그 점을 중심으로 얼마나 회전했는지 알 수 없습니다. 여러 점의 <strong>상대적 배치</strong>를 함께 비교해야 회전과 이동을 동시에 구할 수 있습니다. 마커 형상이 휘거나 잘못된 ID를 대응하면 강체 자세 추정이 틀릴 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>필요한 입력</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>카메라 내부·외부 교정</td>
+<td>영상 좌표를 일관된 3차원 측정 좌표로 복원하는 기준</td>
+</tr>
+<tr>
+<td>마커 형상·고유 ID</td>
+<td>마커 좌표계에서 각 점의 실측 3차원 좌표와 대응 관계</td>
+</tr>
+<tr>
+<td>관측된 점 좌표</td>
+<td>스테레오로 복원한 동일 ID 점들의 카메라 좌표</td>
+</tr>
+<tr>
+<td>마커–TCP 변환</td>
+<td>마커 기준에서 공구 끝 좌표계의 위치·방향</td>
+</tr>
+<tr>
+<td>베이스–카메라 변환</td>
+<td>카메라 측정을 로봇 베이스 기준으로 표현하는 관계</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_3">좌표변환의 방향<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>이 절에서 C는 카메라 측정 좌표계, M은 마커, B는 로봇 베이스입니다. <code>T_A_B</code>는 <strong>B 좌표를 A 좌표로 바꾸는 행렬</strong>이며 열벡터를 사용합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>측정 점: p_C = R_C_M × p_M + t_C_M
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>강체 정합 출력: T_C_M = [R_C_M, t_C_M; 0, 1]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>최종 출력: T_B_TCP = T_B_C × T_C_M × T_M_TCP
+</code></pre></div>
+<p>행렬 곱은 오른쪽부터 적용됩니다. 영상의 “마커 → TCP → 로봇 베이스”는 처리 순서 설명이며, 행렬 곱의 방향은 위 식으로 고정합니다. 마커에서 TCP로 바꿀 때는 위치 오프셋뿐 아니라 <strong>고정된 회전 관계</strong>도 반영해야 합니다.</p>
+<h4 id="_4">출력 형식과 품질 판정<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>출력</th>
+<th>정의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>position_mm</code></td>
+<td>로봇 베이스 기준 TCP의 X·Y·Z</td>
+</tr>
+<tr>
+<td><code>rpy_deg</code></td>
+<td>고정축 xyz 규약의 Roll·Pitch·Yaw, <code>R = Rz(yaw) Ry(pitch) Rx(roll)</code></td>
+</tr>
+<tr>
+<td><code>quaternion_xyzw</code></td>
+<td>같은 회전을 표현하는 단위 쿼터니언, 성분 순서 x·y·z·w</td>
+</tr>
+<tr>
+<td><code>T_B_TCP</code></td>
+<td>TCP 좌표를 베이스 좌표로 변환하는 4 × 4 행렬</td>
+</tr>
+<tr>
+<td><code>valid</code>, <code>timestamp</code>, <code>frame_id</code></td>
+<td>기본 품질 검사 결과·취득 시각·기준 좌표계</td>
+</tr>
+<tr>
+<td><code>fit_rms_mm</code>, <code>visible_markers</code></td>
+<td>강체 정합 잔차와 관측 점 수; 절대정확도 인증값은 아님</td>
+</tr>
+</tbody>
+</table>
+<p>RPY는 학생용 표시와 인터페이스에 사용하고, 합성·보간·오차 계산에는 회전행렬 또는 쿼터니언을 사용합니다. 오일러 각의 특이점에서는 개별 각도가 유일하지 않을 수 있으므로 <code>euler_singular</code>를 알리고, 제어기와 축 순서·단위·쿼터니언 순서를 일치시킵니다. <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.transform.Rotation.as_euler.html">SciPy 오일러 각 규약</a> · <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.transform.Rotation.as_quat.html">쿼터니언 성분 순서</a></p>
+<p>점 수 부족·거의 일직선인 배치·ID 불일치·과도한 잔차가 있으면 무효 처리합니다. 실제 구현에는 시야, 재투영 잔차, 시간 정합, 공분산 및 추적 복구 검사도 필요합니다. <strong>작은 정합 잔차만으로 90 μm 정확도를 확인할 수 없습니다.</strong></p>
+<h4 id="_5">학생용 실행 예제<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><a href="../../assets/ots/extract_6dof.py">6DoF 추출 Python 코드</a> · <a href="../../assets/ots/pose-input.json">합성 입력 JSON</a> · <a href="../../assets/ots/pose-output.json">실행 출력 JSON</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>extract_6dof.py
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python<span class="w"> </span>extract_6dof.py<span class="w"> </span>--input<span class="w"> </span>pose-input.json<span class="w"> </span>--output<span class="w"> </span>my-pose.json
+</code></pre></div>
+<p>NumPy·SciPy가 필요합니다. 첫 명령은 알려진 이동·회전으로 만든 6점 합성 데이터를 복원하고 수치 검사를 실행합니다. 두 번째 명령은 JSON의 기준 형상·관측 3D 점·교정 변환을 읽어 6DoF를 출력합니다. 실측 적용 시 입력 점은 <strong>같은 ID·같은 순서</strong>로 제공해야 하며, 카메라 영상 검출·ID 매칭·삼각측량·로봇 제어는 이 예제에 포함되지 않습니다.</p>
+<p>합성 예제의 출력은 위치 약 <code>[-369.332, 55.405, 2645.294] mm</code>, RPY 약 <code>[11.887, 1.785, 42.070]°</code>입니다. 실제 측정 결과가 아닙니다. 예제의 잔차 문턱 0.1 mm와 형상 비율 0.02는 교육용 입력값이며 장비 합격 기준이 아닙니다. <code>valid=true</code>는 기본 기하 검사 통과만 뜻하며, 출력의 <code>accuracy_verified=false</code>를 유지합니다.</p>
+<p>정확한 변환 합성·RPY/쿼터니언 재구성, 중복 ID·일직선 형상·3점 관측·큰 이상점의 거부를 검사했습니다. 이 검사는 계산 구현 확인이며 광학계나 로봇의 실제 성능 시험은 아닙니다.</p>
 <h2 id="1">1. 시스템 개발 컨셉<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
     R[로봇 플랜지·TCP] --- M[비대칭 적외선 강체 마커]
@@ -970,8 +1112,10 @@
     S --&gt; M
     L --&gt; P[검출·ID·스테레오 복원]
     C --&gt; P
-    P --&gt; T[강체 자세·TCP 변환·품질 판정]
-    T --&gt; A[기존 보정 알고리즘]
+    P --&gt; F[기준 마커 형상과 SVD 정합]
+    F --&gt; T[회전 R·이동 t 및 TCP 좌표변환]
+    T --&gt; O[6DoF 출력·품질 판정]
+    O --&gt; A[기존 보정 알고리즘]
     Q[로봇 관절값·취득 시각] --&gt; A
     A --&gt; V[보정값 검토·적용·복원 관리]
     V --&gt; R
@@ -1157,18 +1301,18 @@
 </table>
 <p>P95는 표본의 95백분위수이며 최대 오차 보증이 아니다. 각 항목의 P95를 단순 더하거나 제곱합하여 최종 최대값을 보증하지 않는다. 상관·편향·불확도를 포함한 실측 평가가 필요하다. <strong>0.05 mm 공간 분해능 목표도 잡음 시뮬레이션만으로 검증되지 않는다.</strong></p>
 <h2 id="5">5. 시뮬레이션 방법과 재현 조건<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<h3 id="_3">기하학적 민감도<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_6">기하학적 민감도<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>평행·정류된 핀홀 카메라를 가정한다. <code>f_px = 초점거리 / 픽셀 크기</code>, <code>B = 기준선</code>, <code>d = 좌우 시차</code>, <code>Z = 깊이</code>일 때 다음 관계를 사용한다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Z = f_px × B / d
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>σ_Z ≈ Z² / (f_px × B) × √2 × σ_pixel
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>σ_Z,mean ≈ σ_Z / √N        (프레임 잡음이 독립일 때만)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>공통 수평 시야 ≈ max(0, 영상폭_px × Z / f_px − B)
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>TCP 회전 기여 ≈ 수직 이격 거리 × 작은 회전 오차_rad
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Z = f_px × B / d
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>σ_Z ≈ Z² / (f_px × B) × √2 × σ_pixel
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>σ_Z,mean ≈ σ_Z / √N        (프레임 잡음이 독립일 때만)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>공통 수평 시야 ≈ max(0, 영상폭_px × Z / f_px − B)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>TCP 회전 기여 ≈ 수직 이격 거리 × 작은 회전 오차_rad
 </code></pre></div>
 <p>12 mm / 3.45 μm의 <code>f_px</code>는 약 3478 px이다. 기준선 600 mm, σ_pixel = 0.03 px이면 단일 점의 깊이 표준편차는 2 m에서 약 <strong>0.081 mm</strong>, 3 m에서 약 <strong>0.183 mm</strong>이다. 독립 30프레임 평균 시 3 m 값은 약 <strong>0.033 mm</strong>로 감소하지만, 이는 3차원 TCP 오차나 분해능을 의미하지 않는다. 핀홀 투영·교정·삼각측량의 구현 기준은 <a href="https://docs.opencv.org/4.13.0/d9/d0c/group__calib3d.html">OpenCV 공식 문서</a>를 참고하였다. 본 계산 코드는 해당 특수 기하의 식을 직접 구현한다.</p>
 <p><img alt="거리별 깊이 잡음과 공통 시야" src="../../assets/ots/geometry.png" /></p>
 <p>12 mm / 600 mm 구성의 2 m 평면 공통 시야는 약 <strong>0.808 × 1.178 m</strong>, 3 m에서는 <strong>1.511 × 1.766 m</strong>이다. 16 mm 렌즈로 바꾸면 2 m의 공통 수평 시야가 약 <strong>0.456 m</strong>로 줄어든다. 마커 크기·회전·시야 여유를 제외하기 전 값이므로 그대로 로봇 작업 체적으로 사용하지 않는다.</p>
-<h3 id="_4">몬테카를로 계산<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_7">몬테카를로 계산<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li>시나리오별 3,000회, 난수 시드 <code>20260907</code>; 비교 조건에는 같은 난수열을 사용한다.</li>
 <li>강체 원점은 카메라 기준선 중점 기준 X·Y 각각 ±100 mm, Z는 시나리오 거리로 고정한다. xyz 오일러 각을 각각 ±30°에서 균등 추출한다. 전체 SO(3) 균등 분포나 로봇 가동 영역을 의미하지 않는다.</li>
@@ -1292,7 +1436,7 @@
 </tbody>
 </table>
 <p><img alt="조건별 TCP 오차 민감도" src="../../assets/ots/tcp-sensitivity.png" /></p>
-<h3 id="_5">설계에 반영할 결론<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_8">설계에 반영할 결론<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>기본 조건의 합성 TCP 위치 P95는 약 0.124 mm</strong>로 강화된 90 μm 지향값을 초과한다. 기존 기본안을 90 μm 설계안으로 채택하지 않는다. 표본 최대값도 약 0.249 mm이므로 P95를 최대값으로 해석하면 안 된다.</li>
 <li><strong>마커 크기와 TCP 이격이 중요하다.</strong> 마커를 절반으로 줄이거나 TCP 이격을 600 mm로 늘리면 P95가 약 0.247 mm로 커진다. 마커 확대안과 툴 가까이 배치하는 구조를 함께 검토한다.</li>
@@ -1306,7 +1450,7 @@
 <p class="admonition-title">90 μm의 적용 기준</p>
 <p>사용자가 제시한 핵심 지향값은 <strong>90 μm 이내</strong>이다. 현재 추가 계산은 <strong>OTS가 측정하는 실제 TCP 위치의 3차원 거리 오차</strong>를 대상으로 한다. 최종 로봇 도달 오차인지 OTS 계측 오차인지, 최대값인지 P95인지에 대한 확정은 별도이며, 기존 로봇 도달 목표 0.5 mm를 임의로 0.09 mm로 바꾸지 않는다. 아래 표본 최대값은 시험한 합성 표본 중 최대값이며 전 작업 공간의 보증 상한이 아니다.</p>
 </div>
-<h3 id="_6">강화 설계 후보<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_9">강화 설계 후보<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1354,7 +1498,7 @@
 </tbody>
 </table>
 <p>마커 확대·TCP 근접 배치가 실제 툴에 가능한지는 기구 설계로 확인한다. 16 mm 렌즈와 큰 마커의 조합은 근거리 시야가 좁다. 2 m 조건에서는 합성 자세 3,000개 중 1,953개만 시야 검사에 통과했으므로, 낮은 오차만으로 2 m 사용을 승인하지 않는다.</p>
-<h3 id="_7">추가 계산 결과<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_10">추가 계산 결과<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>아래 수치는 μm 단위이다. 모든 행은 3,000회 계산하며, 유효 표본에서 통계를 낸다. 기존 기본안과 마커만 확대하는 행을 제외하면 위 강화 후보를 사용한다.</p>
 <table>
 <thead>
@@ -1430,7 +1574,7 @@
 </table>
 <p><img alt="90 μm 기준의 P95와 표본 최대값 비교" src="../../assets/ots/study-90um.png" /></p>
 <p>프레임 상관 조건은 각 영상 좌표의 시간 잡음에 동일 상관계수 ρ = 0.1을 가정한다. 평균 잡음은 <code>σ × sqrt(ρ + (1−ρ)/N)</code>로 계산한다. 서로 다른 점·영상축·카메라 사이의 상관은 모델링하지 않는다. 상관계수는 실측값이 아닌 민감도 시험 입력이다. ρ = 1이면 평균화 이득이 사라져 단일 프레임 결과와 일치하는지 코드에서 검사했다.</p>
-<h3 id="_8">판단과 필요한 여유<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_11">판단과 필요한 여유<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>이상적인 강화 후보는 검토할 가치가 있다.</strong> 3 m에서 P95 약 23.0 μm, 표본 최대 약 44.4 μm이다. 그러나 모델에 없는 형상·장착·베이스 정합 오차가 남아 있어 90 μm 달성을 의미하지 않는다.</li>
 <li><strong>P95만으로 통과시키면 안 된다.</strong> 상관과 작은 교정 편향을 함께 넣은 조건은 P95 약 88.1 μm지만 표본 최대 약 143.7 μm이다.</li>
@@ -1485,7 +1629,7 @@
 <p>현재는 대상 로봇 모델·셀 CAD·실측 카메라 교정값이 제공되지 않아 물리 로봇 동작·충돌·보정 전후 성능 시뮬레이션까지 수행하지 않았다. 해당 입력을 확보하면 이번 기하 모델을 실제 셀 설계와 연결한다.</p>
 <h2 id="9">9. 다운로드와 재현<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p><a href="../../assets/ots/simulate_ots.py">실행 코드</a> · <a href="../../assets/ots/results.csv">전체 결과 CSV</a> · <a href="../../assets/ots/results.json">조건·마커 좌표·검증 결과 JSON</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>simulate_ots.py<span class="w"> </span>--out<span class="w"> </span>results
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>simulate_ots.py<span class="w"> </span>--out<span class="w"> </span>results
 </code></pre></div>
 <p>Python과 NumPy·SciPy·Matplotlib이 필요하다. 실행에 사용한 라이브러리 버전은 JSON에 기록했다. 코드는 잡음이 없는 경우 TCP 복원 오차가 1e-7 mm 미만인지, 독립 20만 표본의 깊이 표준편차가 해석식과 1% 이내로 일치하는지 자동 검사한 후 결과와 그래프를 생성한다. 이 검사는 수치 구현의 일관성 검사이며 실제 계측 성능 검증은 아니다.</p>
 <hr />
