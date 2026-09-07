@@ -24,7 +24,7 @@
 
 ## 2026 기술 트렌드 요지
 - **Physical AI**: 화면 속 AI → 물리세계 인지·판단·행동. 실시간 제어·펌웨어는 **C/C++**. *"AI는 두뇌, C는 신경·근육."*
-- **ROS2**: 현행 LTS = **Jazzy**(Humble도 광범위). C 진입점 = rcl / **rclc(micro-ROS)**. UNO R4 micro-ROS **공식 지원**(경량).
+- **ROS2**: 현행 LTS = **Jazzy**(Humble도 광범위). C 진입점 = rcl / **rclc(micro-ROS)**. UNO R4는 micro_ros_arduino의 **커뮤니티 기여 보드**(공식 지원 목록 아님, RAM 32KB).
 - **Rust vs C**: 자동차/임베디드는 여전히 **C 지배**(MISRA C:2025, AUTOSAR, ISO 26262). Rust는 보완재.
 - **TinyML/Edge AI**: MCU에서 ML 추론(TFLite Micro·Edge Impulse). 학습 모델을 **C 배열**로 내보내 호출.
 - **SDV**: 소프트웨어 정의 차량. Classic(C)·Adaptive(C++) 공존. 딥임베디드 실시간 = C.

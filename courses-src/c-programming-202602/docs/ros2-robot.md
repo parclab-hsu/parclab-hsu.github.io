@@ -36,7 +36,17 @@
 | 구동 | 12V 차동구동 |
 | SLAM/주행 | Cartographer |
 
-> 표준 ROS2 인터페이스(`/scan`, `/cmd_vel`)를 쓰므로 우리가 만든 C 브리지가 그대로 붙는다.
+!!! warning "실습 전에 로봇의 ROS2 배포판을 확인한다"
+    위 사양표는 Stella N2 출하 기준(**Foxy**)이고, 아래 2단계의 빌드 절차는 이 수업 PC 환경(**Jazzy**) 기준이다. **ROS2는 배포판이 다른 노드 사이의 통신을 보장하지 않는다.** Foxy는 2023년 5월로 지원이 끝났다.
+
+    로봇에 접속해 `printenv ROS_DISTRO` 로 실제 배포판을 먼저 확인하고, 둘 중 하나로 맞춘다.
+
+    - **로봇 위에서 그 배포판으로 빌드**한다 (가장 확실하다)
+    - 또는 **PC를 로봇과 같은 배포판**으로 맞춘다
+
+    맞추기 전까지는 3단계의 토픽 테스트(PC 안에서만 주고받기)로 로직을 검증한다.
+
+> 표준 ROS2 인터페이스(`/scan`, `/cmd_vel`)를 쓰므로, 배포판만 맞으면 우리가 만든 C 브리지가 그대로 붙는다.
 > 공식 문서: <https://idearobot.gitbook.io/stella-n2>
 
 ## 핵심 아이디어 — LiDAR 배열을 C로 분석
@@ -44,7 +54,7 @@
 
 ```c
 // 가장 가까운 장애물을 찾아 전진/회피/정지를 결정 (순수 C)
-ScanResult analyze_scan(const float *ranges, int n, float stop_dist) {
+DriveDecision analyze_scan(const float *ranges, int n, float stop_dist) {
     // 1) 배열에서 최솟값(가장 가까운 거리) 탐색
     // 2) 거리·방향으로 F(전진)/L/R(회피)/S(정지) 결정
 }

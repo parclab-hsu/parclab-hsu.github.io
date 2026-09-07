@@ -362,7 +362,28 @@ Tinkercad는 실제 보드가 없거나 회로를 먼저 시뮬레이션하고 �
 
 *실제 보드가 없는 상황에서는 Tinkercad로 LED, 저항, 버튼 연결을 먼저 연습하고, 이후 같은 개념을 UNO R4 WiFi에서 확인한다.*
 
-## 10. 1주차 제출 체크리스트
+## 10. ROS2 실습 환경 (15주차에 필요)
+
+15주차 `C ↔ ROS2` 실습과 기말 프로젝트는 **Ubuntu 24.04 + ROS2 Jazzy** 환경에서 진행한다. 1~14주차에는 필요하지 않으므로 미리 설치하지 않아도 된다.
+
+| 항목 | 내용 |
+|------|------|
+| OS | Ubuntu 24.04 LTS |
+| ROS2 | Jazzy Jalisco (2029년 5월까지 지원되는 LTS) |
+| 빌드 | `colcon` |
+| 설치 문서 | <https://docs.ros.org/en/jazzy/Installation.html> |
+
+!!! note "먼저 확인할 것"
+    실습실 PC에 이미 설치되어 있는 경우가 많다. 개인 PC에 직접 준비해야 하는지, 실습실 PC를 쓰는지 **수업 공지를 먼저 확인**한다. 개인 PC에 준비한다면 WSL2(Windows 안의 Ubuntu) 또는 듀얼 부팅을 쓴다.
+
+설치가 끝났는지는 터미널에서 다음 두 줄로 확인한다.
+
+```bash
+source /opt/ros/jazzy/setup.bash
+ros2 topic list          # 오류 없이 목록이 뜨면 준비 완료
+```
+
+## 11. 1주차 제출 체크리스트
 
 - [ ] Visual Studio 2022 설치 완료
 - [ ] **C++를 사용한 데스크톱 개발** 워크로드 설치 확인

@@ -20,7 +20,7 @@ static int multiply(int a, int b)
 static int divide_safe(int a, int b)
 {
     if (b == 0) {
-        printf("division by zero is not allowed\\n");
+        printf("division by zero is not allowed\n");
         return 0;
     }
     return a / b;
@@ -35,12 +35,12 @@ int main(void)
     int a = 20;
     int b = 5;
 
-    printf("function pointer menu\\n");
+    printf("function pointer menu\n");
     for (int i = 0; i < count; ++i) {
         int result = operations[i](a, b);
-        printf("%d. %s(%d, %d) = %d\\n", i, names[i], a, b, result);
+        printf("%d. %s(%d, %d) = %d\n", i, names[i], a, b, result);
     }
 
-    printf("\\nchange menu order and observe which function is called.\\n");
+    printf("\nchange menu order and observe which function is called.\n");
     return 0;
 }

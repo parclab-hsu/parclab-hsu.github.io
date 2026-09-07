@@ -79,7 +79,7 @@
 - 동적 메모리(malloc/free) — https://en.cppreference.com/w/c/memory/malloc
 
 ## 15주차 · C↔ROS2·로봇·기말
-- **ROS2 공식 문서** — https://docs.ros.org/en/humble/ · 토픽·노드·pub/sub 개념 그림.
+- **ROS2 공식 문서** — https://docs.ros.org/en/jazzy/ · 토픽·노드·pub/sub 개념 그림.
 - **micro-ROS**(MCU가 ROS2 노드) — https://micro.ros.org/
 - Stella N2 로봇 — https://idearobot.gitbook.io/stella-n2
 

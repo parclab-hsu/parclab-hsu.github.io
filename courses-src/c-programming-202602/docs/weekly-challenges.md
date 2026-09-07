@@ -106,7 +106,7 @@ for(int n=2;n<=30;n++){ int p=1;
 **🔥 도전** — `+ - * /` 문자와 두 수를 받아 계산하는 **함수 포인터 계산기**를 만들어라(디스패치 테이블).
 <details><summary>힌트</summary>
 
-`{char op; int(*fn)(int,int);}` 표를 순회해 일치하는 함수 호출. `ex09_dispatch.c` 응용.
+`{char op; int(*fn)(int,int);}` 표를 순회해 일치하는 함수 호출. `ex13_function_pointer_menu.c` 응용.
 </details>
 
 ---
@@ -154,7 +154,7 @@ for(int n=2;n<=30;n++){ int p=1;
 **🔥 도전** — `"12,34,56,78"` 처럼 콤마로 구분된 숫자 문자열을 **정수 배열로 파싱**해 합을 구하라(`strtok` 또는 직접 순회).
 <details><summary>힌트</summary>
 
-`strtok(copy,",")`로 토막 → `atoi`/`sscanf`로 정수 변환 → 누적. `ex12_strings.c` 응용.
+`strtok(copy,",")`로 토막 → `atoi`/`sscanf`로 정수 변환 → 누적. `packet_parser.c` 응용.
 </details>
 
 ---

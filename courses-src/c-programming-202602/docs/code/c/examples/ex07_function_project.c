@@ -21,7 +21,16 @@ int input_score(const char *label)
 
     while (1) {
         printf("%s score (0-100): ", label);
-        scanf_s("%d", &score);
+
+        /* 이 파일은 code/index.md 의 gcc 명령으로도 빌드되도록 표준 scanf 를 쓴다.
+           Visual Studio 2022 에서는 강의 표준대로 scanf_s("%d", &score) 로 바꾼다.
+           숫자가 아닌 입력이 버퍼에 남아 무한 반복하는 것을 막으려면 비워 준다. */
+        if (scanf("%d", &score) != 1) {
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF) { }
+            printf("Please enter a number.\n");
+            continue;
+        }
 
         if (score >= 0 && score <= 100) {
             return score;

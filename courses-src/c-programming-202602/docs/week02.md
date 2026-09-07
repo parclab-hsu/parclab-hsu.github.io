@@ -341,9 +341,9 @@ int main(void) {
 ================================
 ITEM            VALUE
 --------------------------------
-Speed            42.5 km/h
-RPM              2500 rpm
-Battery          87.3 %
+Speed         42.5 km/h
+RPM           2500 rpm
+Battery       87.3 %
 Gear                D
 ================================
 ```

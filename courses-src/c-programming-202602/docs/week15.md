@@ -30,7 +30,7 @@ ROS2의 토픽은 프로그램들이 데이터를 주고받는 통로다. `/scan
 | 이론 개념 | 바로 해볼 실습 | 확인 질문 |
 |---|---|---|
 | 배열은 센서 묶음이다 | `/scan`의 `ranges[]`를 손으로 추적한다 | 가장 가까운 장애물을 찾으려면 어떤 반복문이 필요한가? |
-| 구조체는 판단 결과를 묶는다 | `ScanResult`의 필드가 무엇을 뜻하는지 읽는다 | 거리, 방향, 정지 여부를 하나로 묶으면 무엇이 좋아지는가? |
+| 구조체는 판단 결과를 묶는다 | `DriveDecision`의 필드가 무엇을 뜻하는지 읽는다 | 거리, 방향, 정지 여부를 하나로 묶으면 무엇이 좋아지는가? |
 | 포인터는 큰 데이터를 넘긴다 | `analyze_scan(const float *ranges, int n, ...)`를 해석한다 | 포인터와 길이 `n`을 함께 넘기는 이유는 무엇인가? |
 | ROS2 토픽은 프로그램 사이의 통로다 | 테스트 `/scan`을 발행하고 `/cmd_vel`을 관찰한다 | C 함수의 반환값이 어떤 메시지 필드로 바뀌는가? |
 
@@ -80,7 +80,7 @@ ROS2 토픽은 프로그램 사이의 데이터 통로다. LiDAR 노드는 `/sca
     핵심 C 함수: `parse_sensor_line()`(구조체로 파싱), `analyze_scan()`(배열 분석).
 
 === "방식 B · micro-ROS (도전)"
-    보드가 직접 ROS2 노드. **rclc=순수 C**. UNO R4 공식 지원(RAM 32KB라 경량).
+    보드가 직접 ROS2 노드. **rclc=순수 C**. UNO R4(RAM 32KB)는 `micro_ros_arduino`의 **커뮤니티 기여 보드**다 — 공식 지원 목록(Portenta H7, Nano RP2040, Teensy, ESP32 등)에는 없다. 그래서 기본 경로가 아니라 도전 과제로 둔다.
 
 ### 1.3 LiDAR 배열 → C로 판단 (자율주행의 심장)
 
@@ -89,7 +89,7 @@ ROS2 토픽은 프로그램 사이의 데이터 통로다. LiDAR 노드는 `/sca
 *`enum`은 이름 붙인 정수다. `0,1,2,3` 대신 `STOP,SLOW,RUN,AVOID`로 쓰면 코드에서 의미가 보인다. `scan_logic.h`의 `DriveAction`이 이 구조다.*
 Stella N2의 LiDAR는 거리 **배열**을 `/scan`으로 보낸다. 이를 C로 분석해 주행을 정한다.
 ```c
-ScanResult analyze_scan(const float *ranges, int n, float stop_dist) {
+DriveDecision analyze_scan(const float *ranges, int n, float stop_dist) {
     // 1) 배열 순회로 최솟값(가장 가까운 거리) 탐색
     // 2) 거리·방향 → 전진(F)/좌회피(L)/우회피(R)/정지(S)
 }
@@ -165,7 +165,7 @@ Stella N2 LiDAR(`/scan`) → `analyze_scan()` → 주행(`/cmd_vel`) + 아두이
 
 
 ## 📚 참고 레퍼런스 (외부)
-- ROS2 공식 문서 https://docs.ros.org/en/humble/
+- ROS2 공식 문서 https://docs.ros.org/en/jazzy/
 - micro-ROS https://micro.ros.org/
 - Stella N2 https://idearobot.gitbook.io/stella-n2
 - 전체 정리: [참고 자료 모음](references.md)

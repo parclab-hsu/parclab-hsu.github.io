@@ -36,37 +36,37 @@
 - **요구**: `(시각, 거리)` 기록 배열에서 최소·최대·평균과 "위험(15cm 미만)" 횟수 출력.
 - **설계**: `struct Reading` 의 배열, 통계를 포인터 매개변수로 **다중 반환**하는 `analyze()`.
 - **AI 협업**: "최소/최대/평균을 한 번에 반환하는 시그니처 2가지(반환 구조체 vs 포인터 매개변수) 비교."
-- 참고 예제 `ex15_sensor_log.c`
+- 참고 예제 — [`ex10_array_stats.c`](code/c/examples/ex10_array_stats.c) (합계·평균·최대·최소) · [`ex13_pointer_applications.c`](code/c/examples/ex13_pointer_applications.c) (포인터 매개변수로 min·max·avg 한 번에 돌려받기)
 
 ### 설계 2 · 시리얼 명령 인터프리터 ⭐⭐
 - **요구**: `"f s l r"` 명령 문자열 → 동작 실행, 미등록 문자는 무시.
 - **설계**: `{char key; void(*fn)(void);}` **디스패치 테이블** — 새 명령은 표에 한 줄.
 - **AI 협업**: "함수 포인터 테이블 vs 긴 switch 유지보수성 비교." 결정은 내가.
-- 참고 예제 `ex09_dispatch.c`
+- 참고 예제 — [`ex13_function_pointer_menu.c`](code/c/examples/ex13_function_pointer_menu.c) (함수 포인터 배열 메뉴) · [`13_pointer_dispatch.ino`](code/arduino.md) (보드에서 명령 문자 → 함수)
 
 ### 설계 3 · 통신 패킷 파서/빌더 ⭐⭐⭐
 - **요구**: `"S,42.0,25.0,RUN"` ↔ `SensorPacket` 구조체 **양방향** 변환, 틀린 줄은 버림(견고성).
 - **설계**: `parse(line,*out)→성공여부`, `build(*pkt,buf,n)`. `'\0'` 종료·버퍼 크기 주의.
 - **AI 협업**: "이 파서가 깨질 입력 5가지(빈 줄·필드 부족·너무 긴 상태문자열 등)를 만들어줘." → 방어코드.
-- 참고 예제 `ex12_strings.c`
+- 참고 예제 — [`packet_parser.c`](code/c/examples/packet_parser.c) (`"S,42.0,25.0,RUN"` 파싱) · [`ex14_struct_packet_list.c`](code/c/examples/ex14_struct_packet_list.c) (구조체 ↔ 문자열 양방향)
 
 ### 설계 4 · 점유격자 맵 + 가까운 장애물 ⭐⭐⭐
 - **요구**: 8×12 격자에 장애물, 출력 + "각 열에서 가장 가까운 장애물 행" 구하기.
 - **설계**: `int grid[8][12]` — 함수 인자엔 **열 크기 명시**. 열별 스캔 함수.
 - **AI 협업**: "2차원 배열을 함수 인자로 넘기는 올바른 선언과, 내 선언이 왜 틀렸는지."
-- 참고 예제 `ex08_grid2d.c`
+- 참고 예제 — [`ex11_2d_grid_search.c`](code/c/examples/ex11_2d_grid_search.c) (8×12 격자와 탐색)
 
 ### 설계 5 · 자율주행 미니 상태머신 ⭐⭐
 - **요구**: 거리 시퀀스 → `STOP/SLOW/RUN/AVOID` 전이 추적 + 상태별 횟수 집계.
 - **설계**: `enum` 상태 + `next_state(거리)` + 상태별 카운트 배열.
 - **AI 협업**: "경계값(8·15·30cm)에서 헷갈리는 경우를 표로." 표 보고 `<`/`<=` 결정.
-- 참고 예제 `ex11_state_enum.c`
+- 참고 예제 — [`scan_logic.c`](code/ros2/stella_n2_bridge/index.md) (`DriveAction` enum 으로 상태 반환) · [`05_showface.ino`](code/arduino.md) (거리 → 상태 → LED 표정)
 
 ### 설계 6 · 센서 필터 파이프라인 ⭐⭐⭐
 - **요구**: 잡음 거리 배열 → ①이동평균 ②이상치 제거 ③정렬 후 중앙값.
 - **설계**: 단계별 독립 함수 3개(배열·길이→출력), 포인터로 전달.
 - **AI 협업**: "3단계를 독립 함수로 나눈 시그니처 제안 + 단계 사이 데이터 흐름도."
-- 참고 예제 `ex04_movavg.c` · `ex14_sort_search.c`
+- 참고 예제 — [`ex10_array_stats.c`](code/c/examples/ex10_array_stats.c) (이동평균·선택정렬) · [`ex11_2d_grid_search.c`](code/c/examples/ex11_2d_grid_search.c) (순차탐색·이진탐색)
 
 ---
 

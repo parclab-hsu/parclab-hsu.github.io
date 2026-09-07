@@ -24,7 +24,8 @@
 
 ## 2. 데이터 타입·변수·상수
 
-- **기본형**: 정수(`char` 1B, `short` 2B, `int` 4B, `long` 8B), 실수(`float` 4B, `double` 8B), 문자(`char`).
+- **기본형**: 정수(`char` 1B, `short` 2B, `int` 4B, `long` **4B(Windows) / 8B(Linux·macOS)**), 실수(`float` 4B, `double` 8B), 문자(`char`).
+    - ⚠ `long`은 환경마다 다르다. 표준은 "4바이트 이상"만 보장한다. **이 수업 환경(Visual Studio 2022 / Windows)에서는 4바이트**이므로 `sizeof(long)`을 찍어 보면 4가 나온다. 크기가 확실해야 하면 `int`/`long long`을 쓴다.
 - **부호**: `signed`(기본)/`unsigned`. `unsigned char` 범위 0~255, `signed char` −128~127.
 - **상수**: 리터럴(`10`, `3.14`, `'A'`, `"hi"`), `const`(수정 불가 변수), `#define`(전처리 치환), `enum`(열거 상수).
 - **변수 명명**: 영문·숫자·`_`만, 숫자로 시작 불가, 대소문자 구분, 예약어 불가.
