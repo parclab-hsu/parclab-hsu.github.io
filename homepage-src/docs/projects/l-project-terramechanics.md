@@ -2,7 +2,7 @@
 noindex: true
 ---
 
-# 달 탐사 로버 HILS 를 위한 월면토 침하·견인 통합 모델 고도화 개발
+# 달 탐사 로버 HILS 를 위한 월면토 침하·견인 통합 모델 고도화 및 개발
 
 :material-circle:{ style="color:#f0ad4e" } **차년도 과제 제안** · 현대자동차 L-Project · 기준일 **2026-09-07**
 
