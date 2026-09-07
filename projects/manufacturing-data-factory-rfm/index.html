@@ -973,6 +973,10 @@
 .nowrap {
   white-space: nowrap;
 }
+.md-typeset a[id^="kpi-reference-"] {
+  display: block;
+  scroll-margin-top: 5.5rem;
+}
 @media screen and (max-width: 29.99rem) {
   .md-typeset h1 {
     font-size: 1.45rem;
@@ -1377,7 +1381,7 @@ flowchart TB
 <p class="admonition-title">이 목표값의 성격</p>
 <p>본 목표값은 <strong>제안 기준</strong>이며, 1차년도에 대표 작업·소재·실증환경의 <strong>기준선을 실측해
 세부 시험조건과 통계설계를 확정</strong>합니다. <strong>KPI 의 평가방향과 최소 목표수준은 유지합니다.</strong>
-분모·반복횟수·산식·통계 기준은 <strong><a class="nowrap" href="roadmap/">연차별 목표</a></strong> 의 측정 정의표에 있습니다.</p>
+분모·반복횟수·산식·통계 기준은 <strong><a class="nowrap" href="roadmap.md">연차별 목표</a></strong> 의 측정 정의표에 있습니다.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">SOTA 및 국내 기준 선정 원칙 — 2026-09-07 공개자료 기준</p>
@@ -1550,7 +1554,7 @@ flowchart TB
 </tr>
 </tbody>
 </table>
-<p>세부 분모·산식·반복·통계 기준은 <strong><a class="nowrap" href="roadmap/#kpi_1">연차별 목표</a></strong> 에서 확인합니다.</p>
+<p>세부 분모·산식·반복·통계 기준은 <strong><a class="nowrap" href="roadmap.md#kpi_1">연차별 목표</a></strong> 에서 확인합니다.</p>
 <h3 id="_7">제안서 주석용 출처<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><a id="kpi-reference-1"></a><strong>[주 1] KPI 1.</strong> Zhou, Yongcan, et al. “Variable Time-Step Physics Engine with Continuous Compliance Contact Model for Optimal Robotic Grinding Trajectory Planning.” <em>Sensors</em> 24.5 (2024): 1415. <a href="https://doi.org/10.3390/s24051415">DOI</a> · <a href="https://www.mdpi.com/1424-8220/24/5/1415">원문</a> <span class="nowrap">(접속일: 2026. 9. 7.).</span></p>
 <p><a id="kpi-reference-2"></a><strong>[주 2] KPI 2·3·6.</strong> Zhang, Kaifeng, et al. “Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions.” <em>arXiv preprint</em> arXiv:2511.04665 (2025). <a href="https://doi.org/10.48550/arXiv.2511.04665">DOI</a> · <a href="https://arxiv.org/abs/2511.04665">arXiv</a> · <a class="nowrap" href="https://real2sim-eval.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 7.).</span></p>
@@ -1575,7 +1579,7 @@ Zero-shot 성공률로서 본 과제의 유지율과는 다른 유사지표입�
 <hr />
 <h2 id="6">6. 연차 계획과 예산<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <p>기간은 <strong>43개월 · 4개 차년도</strong> — 1차 9개월 · 2차 10개월 · 3차 12개월 · 4차 12개월입니다.
-차년도별 목표·완료 Gate·완료 판정과 결과물 24건은 <strong><a class="nowrap" href="roadmap/">연차별 목표</a></strong> 에 있습니다.</p>
+차년도별 목표·완료 Gate·완료 판정과 결과물 28건은 <strong><a class="nowrap" href="roadmap.md">연차별 목표</a></strong> 에 있습니다.</p>
 <table>
 <thead>
 <tr>
@@ -1608,16 +1612,14 @@ Zero-shot 성공률로서 본 과제의 유지율과는 다른 유사지표입�
 </tbody>
 </table>
 <h3 id="_8">연구개발비 (검토안)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p><strong>현재 총 17.0억 배분안을 검토 중입니다</strong> — 한성대학교 13.0억, 모빌테크 4.0억.
+<p><strong>현재 총 17.0억 배분안을 검토 중입니다</strong> — 전액 한성대학교 배분입니다.
 정부지원연구개발비 5 % 의 모수가 확정되기 전까지 금액을 확정값으로 표시하지 않습니다.</p>
 <table>
 <thead>
 <tr>
 <th>차년도</th>
 <th style="text-align: right;">기간</th>
-<th style="text-align: right;">한성대</th>
-<th style="text-align: right;">모빌테크</th>
-<th style="text-align: right;">합계</th>
+<th style="text-align: right;">연구개발비</th>
 <th>근거</th>
 </tr>
 </thead>
@@ -1625,40 +1627,30 @@ Zero-shot 성공률로서 본 과제의 유지율과는 다른 유사지표입�
 <tr>
 <td>1차년도</td>
 <td style="text-align: right;">9개월</td>
-<td style="text-align: right;">2.3억</td>
-<td style="text-align: right;">1.0억</td>
 <td style="text-align: right;">3.3억</td>
 <td>대상 선정·규격 확정 · Pilot Scan</td>
 </tr>
 <tr>
 <td>2차년도</td>
 <td style="text-align: right;">10개월</td>
-<td style="text-align: right;">3.4억</td>
-<td style="text-align: right;">1.0억</td>
 <td style="text-align: right;">4.4억</td>
 <td>물리 가상환경 구축 · 공간 Twin 본 구축</td>
 </tr>
 <tr>
 <td>3차년도</td>
 <td style="text-align: right;">12개월</td>
-<td style="text-align: right;">3.8억</td>
-<td style="text-align: right;">1.0억</td>
 <td style="text-align: right;">4.8억</td>
 <td>데이터 생성·검수 · Asset 보완</td>
 </tr>
 <tr>
 <td>4차년도</td>
 <td style="text-align: right;">12개월</td>
-<td style="text-align: right;">3.5억</td>
-<td style="text-align: right;">1.0억</td>
 <td style="text-align: right;">4.5억</td>
 <td>순환 완주·실물 재검증 · Asset 갱신</td>
 </tr>
 <tr>
 <td><strong>합계</strong></td>
 <td style="text-align: right;"><strong>43개월</strong></td>
-<td style="text-align: right;"><strong>13.0억</strong></td>
-<td style="text-align: right;"><strong>4.0억</strong></td>
 <td style="text-align: right;"><strong>17.0억</strong></td>
 <td></td>
 </tr>
@@ -1677,31 +1669,31 @@ Zero-shot 성공률로서 본 과제의 유지율과는 다른 유사지표입�
 <tr>
 <td>① Real-to-Sim-to-Real 고도화</td>
 <td style="text-align: right;">36 %</td>
-<td style="text-align: right;">4.7억</td>
+<td style="text-align: right;">6.1억</td>
 <td>물성시험·보정·실물 대조가 이 항목에 몰림</td>
 </tr>
 <tr>
 <td>② Zero-shot Transfer 도메인 적응</td>
 <td style="text-align: right;">24 %</td>
-<td style="text-align: right;">3.1억</td>
+<td style="text-align: right;">4.1억</td>
 <td>증강 조건 구성과 전이 평가</td>
 </tr>
 <tr>
 <td>③ 엣지 케이스 시뮬레이션</td>
 <td style="text-align: right;">25 %</td>
-<td style="text-align: right;">3.3억</td>
+<td style="text-align: right;">4.3억</td>
 <td>실패 재현·복구 데이터 생성과 검증</td>
 </tr>
 <tr>
 <td>④ 학술 연구·기술 자문</td>
 <td style="text-align: right;">15 %</td>
-<td style="text-align: right;">1.9억</td>
+<td style="text-align: right;">2.5억</td>
 <td>논문·특허·표준 제안과 자문</td>
 </tr>
 <tr>
 <td><strong>합계</strong></td>
 <td style="text-align: right;"><strong>100 %</strong></td>
-<td style="text-align: right;"><strong>13.0억</strong></td>
+<td style="text-align: right;"><strong>17.0억</strong></td>
 <td></td>
 </tr>
 </tbody>
@@ -1874,7 +1866,7 @@ Zero-shot 성공률로서 본 과제의 유지율과는 다른 유사지표입�
 <hr />
 <h2 id="_9">더 읽을 것<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong><a class="nowrap" href="roadmap/">연차별 목표</a></strong> — 차년도별 목표·완료 Gate·결과물 24건·KPI 측정 정의</li>
+<li><strong><a class="nowrap" href="roadmap.md">연차별 목표</a></strong> — 차년도별 목표·완료 Gate·결과물 28건·KPI 측정 정의</li>
 <li><strong><a href="technical/">기술 상세</a></strong> — Work Package HSU-1~7 · Deformation Engine 상세 ·
   Ontology·Edge Case · MD 과정 운영 · Cosmos·LeRobot 구축 최적화 · 검증 체계</li>
 <li><a href="../hsu-pac/">한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC</a></li>
