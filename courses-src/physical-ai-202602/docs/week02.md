@@ -43,7 +43,7 @@ manage-bde -status
 | `Protection Status: Protection Off` | 그대로 진행 가능 |
 | `Protection Status: Protection On` | **복구 키를 먼저 확보**하거나 일시 중단(`manage-bde -protectors -disable C:`) |
 
-복구 키는 [account.microsoft.com/devices/recoverykey](https://account.microsoft.com/devices/recoverykey) 에서 확인할 수 있습니다.
+복구 키는 [account.microsoft.com/devices/recoverykey](https://account.microsoft.com/devices/recoverykey) 에서 확인할 수 있습니다 — **해당 PC에 로그인할 때 쓰는 Microsoft 계정으로 로그인해야** 목록이 보입니다. 학교·회사 계정으로 관리되는 기기라면 관리자에게 문의해야 할 수 있습니다. 찾는 방법은 [Microsoft 공식 안내](https://support.microsoft.com/help/4026181) 참고.
 
 **② 빠른 시작(Fast Startup) 끄기**
 
@@ -166,7 +166,7 @@ nvidia-smi              # GPU 인식 (드라이버 설치 전이면 미인식이
     BIOS의 부팅 순서에서 `ubuntu` 항목이 뒤에 있는 경우입니다. BIOS(보통 `F2`·`Del`) → Boot 탭에서 **`ubuntu` 를 1순위로** 올립니다.
 
 ??? failure "Windows가 BitLocker 복구 키를 요구한다"
-    STEP 0의 BitLocker 확인을 건너뛴 경우입니다. [account.microsoft.com/devices/recoverykey](https://account.microsoft.com/devices/recoverykey) 에 로그인해 해당 기기의 48자리 키를 확인해 입력하십시오. **키 없이는 복구할 수 없습니다.**
+    STEP 0의 BitLocker 확인을 건너뛴 경우입니다. [account.microsoft.com/devices/recoverykey](https://account.microsoft.com/devices/recoverykey) 에 로그인해 해당 기기의 48자리 키를 확인해 입력하십시오. **키 없이는 복구할 수 없습니다.** 계정에서도 안 보이면 기기를 등록한 관리자·이전 사용자에게 문의하십시오.
 
 ??? failure "설치 중 '이 컴퓨터에 다른 운영체제가 없는 것 같습니다' 라고 나온다"
     Windows가 **빠른 시작** 상태로 종료되어 인식되지 않는 경우입니다. Windows로 돌아가 빠른 시작을 끄고 **완전 종료(Shift + 시스템 종료)** 후 다시 시도하십시오.
