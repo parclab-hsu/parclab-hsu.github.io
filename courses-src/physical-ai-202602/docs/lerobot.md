@@ -4,7 +4,7 @@
     HuggingFace **LeRobot** 프레임워크로 **모방학습(Imitation Learning)** 과 **VLA(Vision-Language-Action, LLM 기반 행동 모델)** 를 직접 실습한다. 시뮬레이션에서 **시연 데이터를 수집 → ACT 정책 학습 → 평가**하고, 사전학습 **SmolVLA** 를 불러와 평가한다. 이 모듈은 14·15주차에서 다룬 **System-1의 규칙 기반(Rule-based) 단위 액션을 "학습형 정책(Policy)"으로 고도화**하는 길을 연결한다.
 
 !!! quote "출처 (Sources)"
-    본 모듈은 도서 **『피지컬 AI 시스템 설계』 16장 LeRobot 실습**(저자: 엥지유니버스 / ENGI UNIVERSE, 한빛미디어)의 예제와 **HuggingFace LeRobot 공식 문서**를 바탕으로 재구성하였습니다. 예제 코드 저장소: **[engiengi/Physical-ai-system-design](https://github.com/engiengi/Physical-ai-system-design)**.
+    본 모듈은 도서 **『피지컬 AI 시스템 설계』 16장 LeRobot 실습**(저자: 엥지유니버스, 한빛미디어)의 예제와 **HuggingFace LeRobot 공식 문서**를 바탕으로 재구성하였습니다. 예제 코드 저장소: **[engiengi/Physical-ai-system-design](https://github.com/engiengi/Physical-ai-system-design)**.
 
 ## 🤗 1. LeRobot이란
 
