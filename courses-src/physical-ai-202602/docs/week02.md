@@ -9,105 +9,16 @@
 !!! note "강의 흐름 (FLOW)"
     `가상 환경` → `센서 모델` → `프레임 획득` → `시각화` → `ROS 연동`
 
-## ⏱️ 3시간 구성
+## 💽 시작 전에 — 학과 노트북 리눅스 재설치 (USB)
 
-| 교시 | 시간 | 내용 | 근거 교안 |
-| --- | --- | --- | --- |
-| 1교시 | 50분 | Intro & 사전 준비(Conda 환경, VS Code 연동·인터프리터 설정) | §01~02 |
-| 2교시 | 50분 | 물리 환경 구성 기본 개념(Stage/World/Prim) & 지형·오브젝트 생성 | §03 |
-| 3교시 | 50분 | 센서 시뮬레이션(RGB·Depth 카메라) & Wrap-up | §04~05 |
+!!! info "누가 읽어야 하나"
+    학과 노트북에는 **Windows와 리눅스가 이미 듀얼부팅**으로 설치되어 있습니다. 아래에 해당하면 **본 주차 내용에 들어가기 전에** 이 절차부터 진행하십시오.
 
----
+    - 기존 리눅스 버전이 Ubuntu 22.04가 아니다
+    - 패키지·드라이버가 꼬여 Isaac Sim 설치가 반복 실패한다
+    - 이전 사용자의 환경이 남아 있어 처음부터 다시 잡고 싶다
 
-## 🤖 1. Intro — Isaac Sim을 활용한 로봇 센서 시뮬레이션
-
-![Isaac Sim 로봇 센서 시뮬레이션 개요](img/w02/s03.jpg){ width="720" }
-/// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 03 (출처: ENGI UNIVERSE)
-///
-
-- **목표**
-    - Isaac Sim 기반 로봇 시뮬레이션의 **기본 환경 구성**
-    - **RGB / Depth 카메라 센서** 시뮬레이션 적용 방법 이해
-- **주요 학습 내용**
-    - 가상의 물리 환경 생성 방법
-    - 센서 구성 요소(RGB, Depth 등) 추가 및 설정
-    - 센서 데이터를 실시간으로 수집·시각화하는 절차 학습
-- **기대 효과**
-    - 실제 로봇의 센서와 유사한 환경을 가상 공간에서 구현
-    - 시뮬레이션 기반 센서 테스트 및 데이터 활용 능력 향상
-
----
-
-## 🧰 2. 사전 준비
-
-### Conda 가상환경 활성화
-
-Isaac Sim 실행 전, **Conda 가상환경 활성화는 필수**입니다. 가상환경을 활성화하지 않으면 오류가 발생합니다.
-
-![Conda 가상환경 활성화](img/w02/s06.jpg){ width="720" }
-/// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 06 (출처: ENGI UNIVERSE)
-///
-
-| 상태 | 의미 |
-| --- | --- |
-| `(base)` | 기본환경이며 **Isaac Sim용 환경이 아님** |
-| `(env_isaaclab)` | Isaac Sim 전용 환경이 활성화된 **정상 상태** |
-
-```bash
-# 기본(base) 상태라면 Isaac Sim용 가상환경으로 전환
-conda activate env_isaaclab
-```
-
-!!! warning "환경 확인법"
-    프롬프트가 `(base)` 로 보인다면 Isaac Sim용 환경이 아닙니다. 반드시 `(env_isaaclab)` 으로 되어 있어야 정상 상태입니다.
-
-### Visual Studio Code 설치 및 Isaac Sim 연동
-
-VS Code를 설치해 Isaac Sim과 연동하면 Python 코드를 효율적으로 작성·실행·디버깅할 수 있습니다.
-
-![VS Code 설치 및 Isaac Sim 연동](img/w02/s09.jpg){ width="720" }
-/// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 09 (출처: ENGI UNIVERSE)
-///
-
-**Step 1 —** 시스템 패키지 목록 갱신 및 설치 준비용 툴(wget, gpg) 설치
-
-```bash
-# 패키지 목록 갱신 및 최신 상태 업그레이드
-sudo apt update && sudo apt upgrade
-
-# 설치 준비용 툴(wget, gpg) 설치
-sudo apt install wget gpg
-```
-
-**Step 2 —** Microsoft GPG 키 등록(VS Code 설치를 위한 신뢰 키 등록) 및 저장소 등록
-
-**Step 3 —** 패키지 목록 재갱신 후 VS Code 설치 → VS Code 실행
-
-### VS Code에 Python 인터프리터 설정
-
-VS Code가 **Conda 가상환경의 Python**을 사용하도록 지정해야 Isaac Sim 관련 코드가 올바르게 실행됩니다.
-
-![VS Code Python 인터프리터 설정](img/w02/s13.jpg){ width="720" }
-/// caption
-Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 13 (출처: ENGI UNIVERSE)
-///
-
-**Step 1 —** `Ctrl + Shift + X` 로 확장 프로그램(Extension) 창을 열고 **Microsoft 제공 Python 확장 프로그램** 설치
-
-**Step 2 —** `env_isaaclab` 환경이 활성화된 상태에서 Python 경로 확인 후 출력된 경로 복사
-
-**Step 3 —** `Ctrl + Shift + P` 로 명령 팔레트를 열고 **`Python: Select Interpreter`** 입력·선택 → 복사한 Python 경로 붙여넣기
-
-!!! note "왜 인터프리터 설정이 필요한가"
-    VS Code가 기본 시스템 Python을 가리키면 Isaac Sim 모듈을 찾지 못합니다. Conda 가상환경(`env_isaaclab`)의 Python을 명시적으로 지정해야 시뮬레이션 코드가 정상 실행됩니다.
-
----
-
-## 💽 부록. 학과 노트북 — 기존 리눅스를 지우고 USB로 재설치하기
-
+    해당 사항이 없으면 이 절은 건너뛰고 [⏱️ 3시간 구성](#3) 부터 보면 됩니다.
 학과 노트북에는 **Windows와 리눅스가 이미 듀얼부팅으로 설치**되어 있습니다. 기존 리눅스가 버전이 맞지 않거나 환경이 꼬였을 때, 리눅스만 지우고 Ubuntu 22.04를 새로 설치하는 절차입니다.
 
 !!! danger "시작 전에 반드시 읽으십시오"
@@ -275,6 +186,106 @@ nvidia-smi              # GPU 인식 (드라이버 설치 전이면 미인식이
 - [ ] `df -h /` 결과 루트 파티션이 150GB 이상인가
 - [ ] 인터넷·Wi-Fi가 연결되는가
 - [ ] 이후 [1주차 페이지](week01.md)의 Miniconda → CUDA → PyTorch → Isaac Sim 순서로 진행
+
+---
+
+## ⏱️ 3시간 구성
+
+| 교시 | 시간 | 내용 | 근거 교안 |
+| --- | --- | --- | --- |
+| 1교시 | 50분 | Intro & 사전 준비(Conda 환경, VS Code 연동·인터프리터 설정) | §01~02 |
+| 2교시 | 50분 | 물리 환경 구성 기본 개념(Stage/World/Prim) & 지형·오브젝트 생성 | §03 |
+| 3교시 | 50분 | 센서 시뮬레이션(RGB·Depth 카메라) & Wrap-up | §04~05 |
+
+---
+
+## 🤖 1. Intro — Isaac Sim을 활용한 로봇 센서 시뮬레이션
+
+![Isaac Sim 로봇 센서 시뮬레이션 개요](img/w02/s03.jpg){ width="720" }
+/// caption
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 03 (출처: ENGI UNIVERSE)
+///
+
+- **목표**
+    - Isaac Sim 기반 로봇 시뮬레이션의 **기본 환경 구성**
+    - **RGB / Depth 카메라 센서** 시뮬레이션 적용 방법 이해
+- **주요 학습 내용**
+    - 가상의 물리 환경 생성 방법
+    - 센서 구성 요소(RGB, Depth 등) 추가 및 설정
+    - 센서 데이터를 실시간으로 수집·시각화하는 절차 학습
+- **기대 효과**
+    - 실제 로봇의 센서와 유사한 환경을 가상 공간에서 구현
+    - 시뮬레이션 기반 센서 테스트 및 데이터 활용 능력 향상
+
+---
+
+## 🧰 2. 사전 준비
+
+### Conda 가상환경 활성화
+
+Isaac Sim 실행 전, **Conda 가상환경 활성화는 필수**입니다. 가상환경을 활성화하지 않으면 오류가 발생합니다.
+
+![Conda 가상환경 활성화](img/w02/s06.jpg){ width="720" }
+/// caption
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 06 (출처: ENGI UNIVERSE)
+///
+
+| 상태 | 의미 |
+| --- | --- |
+| `(base)` | 기본환경이며 **Isaac Sim용 환경이 아님** |
+| `(env_isaaclab)` | Isaac Sim 전용 환경이 활성화된 **정상 상태** |
+
+```bash
+# 기본(base) 상태라면 Isaac Sim용 가상환경으로 전환
+conda activate env_isaaclab
+```
+
+!!! warning "환경 확인법"
+    프롬프트가 `(base)` 로 보인다면 Isaac Sim용 환경이 아닙니다. 반드시 `(env_isaaclab)` 으로 되어 있어야 정상 상태입니다.
+
+### Visual Studio Code 설치 및 Isaac Sim 연동
+
+VS Code를 설치해 Isaac Sim과 연동하면 Python 코드를 효율적으로 작성·실행·디버깅할 수 있습니다.
+
+![VS Code 설치 및 Isaac Sim 연동](img/w02/s09.jpg){ width="720" }
+/// caption
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 09 (출처: ENGI UNIVERSE)
+///
+
+**Step 1 —** 시스템 패키지 목록 갱신 및 설치 준비용 툴(wget, gpg) 설치
+
+```bash
+# 패키지 목록 갱신 및 최신 상태 업그레이드
+sudo apt update && sudo apt upgrade
+
+# 설치 준비용 툴(wget, gpg) 설치
+sudo apt install wget gpg
+```
+
+**Step 2 —** Microsoft GPG 키 등록(VS Code 설치를 위한 신뢰 키 등록) 및 저장소 등록
+
+**Step 3 —** 패키지 목록 재갱신 후 VS Code 설치 → VS Code 실행
+
+### VS Code에 Python 인터프리터 설정
+
+VS Code가 **Conda 가상환경의 Python**을 사용하도록 지정해야 Isaac Sim 관련 코드가 올바르게 실행됩니다.
+
+![VS Code Python 인터프리터 설정](img/w02/s13.jpg){ width="720" }
+/// caption
+Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 — 슬라이드 13 (출처: ENGI UNIVERSE)
+///
+
+**Step 1 —** `Ctrl + Shift + X` 로 확장 프로그램(Extension) 창을 열고 **Microsoft 제공 Python 확장 프로그램** 설치
+
+**Step 2 —** `env_isaaclab` 환경이 활성화된 상태에서 Python 경로 확인 후 출력된 경로 복사
+
+**Step 3 —** `Ctrl + Shift + P` 로 명령 팔레트를 열고 **`Python: Select Interpreter`** 입력·선택 → 복사한 Python 경로 붙여넣기
+
+!!! note "왜 인터프리터 설정이 필요한가"
+    VS Code가 기본 시스템 Python을 가리키면 Isaac Sim 모듈을 찾지 못합니다. Conda 가상환경(`env_isaaclab`)의 Python을 명시적으로 지정해야 시뮬레이션 코드가 정상 실행됩니다.
+
+---
+
 
 ## 🌍 3. 물리 환경 구성 기본 개념
 
