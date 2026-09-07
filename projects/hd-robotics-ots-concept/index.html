@@ -776,13 +776,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
+  <a href="#7-90-m" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. 시제품 시험과 다음 시뮬레이션
+        7. 90 μm 목표를 위한 추가 설계 검토
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="7. 90 μm 목표를 위한 추가 설계 검토">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        강화 설계 후보
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추가 계산 결과
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        판단과 필요한 여유
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -790,7 +829,18 @@
   <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. 다운로드와 재현
+        8. 시제품 시험과 다음 시뮬레이션
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 다운로드와 재현
       
     </span>
   </a>
@@ -819,7 +869,7 @@
 <p><a href="../hd-robotics-ots-calibration/">개발 계획서</a> · <a href="../hd-robotics-ots-literature/">핵심 논문·기술 동향</a></p>
 <div class="admonition abstract">
 <p class="admonition-title">설계 방향</p>
-<p><strong>정지 측정용 적외선 스테레오 헤드 + 비대칭 6점 강체 마커 + 자동 보정 SW</strong>를 기본 구조로 제안한다. 2~3 m 거리, 600 mm 카메라 기준선, 12 mm 렌즈를 출발점으로 삼고, 16 mm 렌즈와 확대 마커를 비교한다. 실측 센서 데이터가 없는 단계이므로 아래 결과는 설계 민감도 분석이며, OTS 또는 로봇의 달성 성능이 아니다.</p>
+<p><strong>정지 측정용 적외선 스테레오 헤드 + 비대칭 6점 강체 마커 + 자동 보정 SW</strong>를 기본 구조로 제안한다. 2~3 m 거리, 600 mm 카메라 기준선, 12 mm 렌즈를 출발점으로 삼고, <strong>90 μm 지향 설계는 16 mm 렌즈·확대 마커·TCP 이격 150 mm·60프레임 평균 조합</strong>을 추가 검토한다. 실측 센서 데이터가 없는 단계이므로 아래 결과는 설계 민감도 분석이며, OTS 또는 로봇의 달성 성능이 아니다.</p>
 </div>
 <h2 id="1">1. 시스템 개발 컨셉<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
@@ -981,7 +1031,7 @@
 <p>그림의 점은 발광 중심이며 제작 도면이 아니다. 시뮬레이션은 코드에 공개한 6개 좌표를 무게중심 원점으로 옮겨 사용한다. 4점 조건은 M1~M4만 남기는 한 가지 누락 패턴이다. 모든 가려짐 조합이나 실제 로봇 구조물의 차폐를 계산한 결과는 아니다.</p>
 <p>능동 마커를 우선 검토하되, 수동 반사 마커와의 비교시험도 수행한다. 능동형은 전원·동기·발열·발광각을, 수동형은 카메라 근접 조명·입사각·주변 반사체 오검출을 평가한다. 확산부·반사구의 크기가 곧 중심 위치 정확도를 의미하지 않는다.</p>
 <h2 id="4">4. 정밀도와 오차 예산 설계<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
-<p>최종 로봇 목표는 기존 계획의 <strong>위치 0.5 mm, 자세 0.1° 이하</strong>이다. OTS에는 별도의 초기 설계 배분안으로 <strong>TCP 위치 오차 P95 0.15 mm 이하, 자세 오차 P95 0.03° 이하</strong>를 제안한다. 이는 논문 실적이나 확정 검수 규격이 아니며, 아래 합성 데이터 민감도 분석과 실측 오차 예산을 바탕으로 조정할 내부 설계 기준이다.</p>
+<p>최종 로봇 목표는 기존 계획의 <strong>위치 0.5 mm, 자세 0.1° 이하</strong>이다. OTS에는 별도의 초기 설계 배분안이었던 TCP 위치 P95 0.15 mm에서 강화하여 <strong>90 μm(0.09 mm) 이내를 핵심 설계 지향값</strong>으로 둔다. 적용 대상·최대값/P95의 최종 합의 전에는 OTS의 실제 TCP 위치 오차를 대상으로 P95와 표본 최대값을 모두 검토한다. 자세 P95 0.03°는 기존 내부 검토 기준이다. 이는 논문 실적이나 확정 검수 규격이 아니며, 아래 합성 데이터 민감도 분석과 실측 오차 예산을 바탕으로 조정할 내부 설계 기준이다.</p>
 <table>
 <thead>
 <tr>
@@ -1155,14 +1205,153 @@
 <p><img alt="조건별 TCP 오차 민감도" src="../../assets/ots/tcp-sensitivity.png" /></p>
 <h3 id="_3">설계에 반영할 결론<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>기본 조건의 합성 TCP 위치 P95는 약 0.124 mm</strong>로 초기 OTS 배분안 0.15 mm 아래이지만, 교정·형상·정합 오차에 대한 여유가 충분하다고 볼 수 없다. 표본 최대값도 약 0.249 mm이므로 P95를 최대값으로 해석하면 안 된다.</li>
+<li><strong>기본 조건의 합성 TCP 위치 P95는 약 0.124 mm</strong>로 강화된 90 μm 지향값을 초과한다. 기존 기본안을 90 μm 설계안으로 채택하지 않는다. 표본 최대값도 약 0.249 mm이므로 P95를 최대값으로 해석하면 안 된다.</li>
 <li><strong>마커 크기와 TCP 이격이 중요하다.</strong> 마커를 절반으로 줄이거나 TCP 이격을 600 mm로 늘리면 P95가 약 0.247 mm로 커진다. 마커 확대안과 툴 가까이 배치하는 구조를 함께 검토한다.</li>
 <li><strong>단일 프레임 또는 중심 검출 악화는 성능을 크게 낮춘다.</strong> 단일 프레임의 P95는 약 0.677 mm이다. 정지 안정화와 영상 품질을 먼저 확보하고, 평균화 효과는 시간 상관을 측정해 검증한다.</li>
 <li><strong>평균화로 교정 편향을 해결할 수 없다.</strong> 고정 시차 0.03 px 또는 기준선 50 ppm 오류를 주면 P95가 각각 약 0.190 / 0.209 mm로 증가한다. 기준선 600 mm의 50 ppm은 0.03 mm에 해당한다.</li>
 <li><strong>4 m를 기본 성능 영역으로 확정하지 않는다.</strong> 4 m의 P95는 약 0.219 mm이며, 우선 2~3 m에서 실측 검증한다. 16 mm 렌즈는 오차를 낮추지만 근거리 공통 시야를 줄인다.</li>
 </ol>
 <p>표의 100% 유효율은 제한된 합성 자세가 시야·점 수 검사에 모두 통과했다는 뜻이다. 실제 추적 성공률, 인라인 자동 완료율 또는 가려짐 대응률이 아니다. 3점 조건의 0%는 실패 확률의 추정이 아니라 명시한 거부 정책의 결과다.</p>
-<h2 id="7">7. 시제품 시험과 다음 시뮬레이션<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h2 id="7-90-m">7. 90 μm 목표를 위한 추가 설계 검토<a class="headerlink" href="#7-90-m" title="Permanent link">&para;</a></h2>
+<div class="admonition important">
+<p class="admonition-title">90 μm의 적용 기준</p>
+<p>사용자가 제시한 핵심 지향값은 <strong>90 μm 이내</strong>이다. 현재 추가 계산은 <strong>OTS가 측정하는 실제 TCP 위치의 3차원 거리 오차</strong>를 대상으로 한다. 최종 로봇 도달 오차인지 OTS 계측 오차인지, 최대값인지 P95인지에 대한 확정은 별도이며, 기존 로봇 도달 목표 0.5 mm를 임의로 0.09 mm로 바꾸지 않는다. 아래 표본 최대값은 시험한 합성 표본 중 최대값이며 전 작업 공간의 보증 상한이 아니다.</p>
+</div>
+<h3 id="_4">강화 설계 후보<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>기존 계산 기준</th>
+<th>90 μm 검토 후보</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>측정 거리</td>
+<td>2~3 m</td>
+<td>우선 2.5~3 m; 근거리는 공통 시야 재검토</td>
+</tr>
+<tr>
+<td>렌즈·기준선</td>
+<td>12 mm / 600 mm</td>
+<td>16 mm / 600 mm</td>
+</tr>
+<tr>
+<td>마커 중심 배치 외곽</td>
+<td>210 × 145 × 90 mm</td>
+<td>315 × 217.5 × 135 mm</td>
+</tr>
+<tr>
+<td>TCP 이격</td>
+<td>300 mm</td>
+<td>150 mm 이하를 우선 검토</td>
+</tr>
+<tr>
+<td>평균화</td>
+<td>30프레임</td>
+<td>60프레임, 60 fps에서 취득만 약 1초</td>
+</tr>
+<tr>
+<td>중심 검출 잡음</td>
+<td>0.03 px 가정</td>
+<td>동일 가정; 프레임 상관을 추가 검토</td>
+</tr>
+<tr>
+<td>교정 편향</td>
+<td>이상적 교정 또는 개별 큰 편향</td>
+<td>시차 −0.005 px·기준선 +10 ppm의 동시 편향도 계산</td>
+</tr>
+</tbody>
+</table>
+<p>마커 확대·TCP 근접 배치가 실제 툴에 가능한지는 기구 설계로 확인한다. 16 mm 렌즈와 큰 마커의 조합은 근거리 시야가 좁다. 2 m 조건에서는 합성 자세 3,000개 중 1,953개만 시야 검사에 통과했으므로, 낮은 오차만으로 2 m 사용을 승인하지 않는다.</p>
+<h3 id="_5">추가 계산 결과<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>아래 수치는 μm 단위이다. 모든 행은 3,000회 계산하며, 유효 표본에서 통계를 낸다. 기존 기본안과 마커만 확대하는 행을 제외하면 위 강화 후보를 사용한다.</p>
+<table>
+<thead>
+<tr>
+<th>조건</th>
+<th>TCP P95 (μm)</th>
+<th>TCP 표본 최대 (μm)</th>
+<th>유효 / 전체</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기존 기본안</td>
+<td>123.5</td>
+<td>249.4</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>기존안에서 마커만 1.5배</td>
+<td>81.8</td>
+<td>166.0</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>강화 후보 3 m, 독립 잡음</td>
+<td>23.0</td>
+<td>44.4</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>강화 후보 2.5 m, 독립 잡음</td>
+<td>15.9</td>
+<td>30.6</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>강화 후보 2 m, 시야 제한</td>
+<td>10.1</td>
+<td>19.4</td>
+<td>1953 / 3000</td>
+</tr>
+<tr>
+<td>강화 후보 3 m, 프레임 상관 0.1</td>
+<td>60.3</td>
+<td>116.7</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>강화 후보 3 m, 작은 동시 편향</td>
+<td>60.5</td>
+<td>77.2</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>강화 후보 3 m, 상관 + 작은 동시 편향</td>
+<td>88.1</td>
+<td>143.7</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>강화 후보 3 m, 시차 −0.03 px + 기준선 50 ppm</td>
+<td>260.1</td>
+<td>270.0</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>강화 후보 3 m, M1~M4 관측</td>
+<td>28.5</td>
+<td>49.4</td>
+<td>3000 / 3000</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="90 μm 기준의 P95와 표본 최대값 비교" src="../../assets/ots/study-90um.png" /></p>
+<p>프레임 상관 조건은 각 영상 좌표의 시간 잡음에 동일 상관계수 ρ = 0.1을 가정한다. 평균 잡음은 <code>σ × sqrt(ρ + (1−ρ)/N)</code>로 계산한다. 서로 다른 점·영상축·카메라 사이의 상관은 모델링하지 않는다. 상관계수는 실측값이 아닌 민감도 시험 입력이다. ρ = 1이면 평균화 이득이 사라져 단일 프레임 결과와 일치하는지 코드에서 검사했다.</p>
+<h3 id="_6">판단과 필요한 여유<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>이상적인 강화 후보는 검토할 가치가 있다.</strong> 3 m에서 P95 약 23.0 μm, 표본 최대 약 44.4 μm이다. 그러나 모델에 없는 형상·장착·베이스 정합 오차가 남아 있어 90 μm 달성을 의미하지 않는다.</li>
+<li><strong>P95만으로 통과시키면 안 된다.</strong> 상관과 작은 교정 편향을 함께 넣은 조건은 P95 약 88.1 μm지만 표본 최대 약 143.7 μm이다.</li>
+<li><strong>평균화보다 편향과 시간 상관 관리가 우선이다.</strong> 시차 −0.005 px·기준선 +10 ppm 조건에서도 표본 최대가 약 77.2 μm로 증가한다. 잔여 오차와 기준 계측 불확도를 위한 여유가 작다. 이 편향 값을 허용 공차로 확정하지 않는다.</li>
+<li><strong>넓은 공간과 모든 자세의 보증에는 추가 검증이 필요하다.</strong> 합성 자세 ±100 mm, 각도 ±30°의 제한된 결과를 전체 작업 공간으로 확대하지 않는다. 최종 평가 공간과 자세를 사전에 고정하고 독립 표본으로 확인한다.</li>
+</ul>
+<p>90 μm를 최대 허용 오차로 확정하는 경우, 별도 기준 계측의 불확도를 포함한 판정 규칙을 수립한다. 예를 들어 적용 가능한 조건에서 <code>측정 오차 + 해당 오차의 확장불확도 ≤ 90 μm</code>의 가드밴드 방식을 검토할 수 있다. 이를 사용하려면 좌표계 정합·기준물·반복성의 불확도와 포함확률을 먼저 평가해야 한다. 단순히 이번 표본 최대값에 임의의 불확도를 더해 합격 처리하지 않는다.</p>
+<p><a href="../../assets/ots/study_90um.py">90 μm 추가 계산 코드</a> · <a href="../../assets/ots/results-90um.csv">결과 CSV</a> · <a href="../../assets/ots/results-90um.json">조건·결과 JSON</a></p>
+<p><code>study_90um.py</code>와 <code>simulate_ots.py</code>를 같은 폴더에 두고 <code>python study_90um.py</code>로 실행한다. 본 계산은 설계 후보를 찾기 위한 동일 난수 표본 비교이며, 후보 선정 후 별도 난수·공간 경계·실측 데이터 검증이 필요하다.</p>
+<h2 id="8">8. 시제품 시험과 다음 시뮬레이션<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1205,7 +1394,7 @@
 </tbody>
 </table>
 <p>현재는 대상 로봇 모델·셀 CAD·실측 카메라 교정값이 제공되지 않아 물리 로봇 동작·충돌·보정 전후 성능 시뮬레이션까지 수행하지 않았다. 해당 입력을 확보하면 이번 기하 모델을 실제 셀 설계와 연결한다.</p>
-<h2 id="8">8. 다운로드와 재현<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h2 id="9">9. 다운로드와 재현<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p><a href="../../assets/ots/simulate_ots.py">실행 코드</a> · <a href="../../assets/ots/results.csv">전체 결과 CSV</a> · <a href="../../assets/ots/results.json">조건·마커 좌표·검증 결과 JSON</a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>simulate_ots.py<span class="w"> </span>--out<span class="w"> </span>results
 </code></pre></div>

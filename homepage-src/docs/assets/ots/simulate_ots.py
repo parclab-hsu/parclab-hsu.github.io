@@ -33,7 +33,7 @@ def fit_pose(model, measured):
 
 def simulate(name, z=3000, focal=12, baseline=600, frames=30,
              sigma=.03, scale=1., tcp=300., visible=6,
-             disparity_bias=0., baseline_ppm=0.):
+             disparity_bias=0., baseline_ppm=0., frame_correlation=0.):
     # Same random poses/noise for controlled comparisons.
     rng=np.random.default_rng(SEED)
     rot=Rotation.from_euler('xyz',rng.uniform(-30,30,(N,3)),degrees=True).as_matrix()
@@ -45,8 +45,11 @@ def simulate(name, z=3000, focal=12, baseline=600, frames=30,
     right=np.stack((f*(points[:,:,0]-baseline/2)/points[:,:,2],f*points[:,:,1]/points[:,:,2]),axis=-1)
     # Field-of-view gate before noise. 10 pixel margin for marker blobs.
     inside=(np.abs(left[:,:,0])<1214)&(np.abs(right[:,:,0])<1214)&(np.abs(left[:,:,1])<1014)&(np.abs(right[:,:,1])<1014)
-    left += rng.normal(0,sigma/np.sqrt(frames),left.shape)
-    right += rng.normal(0,sigma/np.sqrt(frames),right.shape)
+    # Equicorrelated frame-noise average; rho=0 reproduces the original study.
+    assert 0 <= frame_correlation <= 1 and frames >= 1
+    mean_sigma=sigma*np.sqrt(frame_correlation+(1-frame_correlation)/frames)
+    left += rng.normal(0,mean_sigma,left.shape)
+    right += rng.normal(0,mean_sigma,right.shape)
     left[:,:,0] += disparity_bias/2
     right[:,:,0] -= disparity_bias/2
     zz=f*baseline*(1+baseline_ppm*1e-6)/(left[:,:,0]-right[:,:,0])
@@ -57,6 +60,7 @@ def simulate(name, z=3000, focal=12, baseline=600, frames=30,
     result=dict(case=name,z_mm=z,focal_mm=focal,baseline_mm=baseline,frames=frames,
                 sigma_px=sigma,marker_scale=scale,tcp_offset_mm=tcp,visible_markers=visible,
                 disparity_bias_px=disparity_bias,baseline_error_ppm=baseline_ppm,
+                frame_correlation=frame_correlation,
                 trials=N,valid=int(good.sum()),valid_percent=float(good.mean()*100))
     if not good.any(): return result
     rr,tt=fit_pose(model[ids],measured[good][:,ids])
@@ -110,7 +114,7 @@ def main(out):
     valid=[r for r in results if r['valid']]
     fig,ax=plt.subplots(figsize=(10,5.5),layout='constrained')
     ax.barh([r['case'] for r in valid],[r['tcp_p95_mm'] for r in valid],color='#087f8c')
-    ax.axvline(.15,color='#c56a12',linestyle='--',label='Proposed OTS allocation: 0.15 mm P95')
+    ax.axvline(.09,color='#c56a12',linestyle='--',label='90 um design reference (metric to be agreed)')
     ax.set(xlabel='TCP position error P95 (mm)',title='Synthetic OTS errors only / 3,000 trials per case');ax.invert_yaxis();ax.legend();ax.grid(axis='x',alpha=.2)
     fig.savefig(out/'tcp-sensitivity.png',dpi=160);plt.close(fig)
     fig=plt.figure(figsize=(7,5),layout='constrained');ax=fig.add_subplot(111,projection='3d')
