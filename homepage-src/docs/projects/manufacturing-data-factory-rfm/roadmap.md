@@ -928,6 +928,10 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
 
 ## 지식재산권·표준화 대응
 
+<div class="ip-landscape-style-hook">
+  <link rel="stylesheet" href="../../../stylesheets/rfm-ip-landscape.css?v=20260908">
+</div>
+
 <figure class="concept-diagram ip-landscape ip-landscape--desktop">
   <img src="../../../assets/manufacturing-rfm-ip-standards-landscape.svg" width="1800" height="1080" loading="lazy" decoding="async" alt="한성대학교 기반특허, 국내 경쟁기관, 국외 경쟁기관의 주요 선행기술과 본 과제의 신규 특허·표준화 대응영역을 비교한 지식재산 전략도">
   <figcaption>한성대학교의 기존 특허는 <span class="nowrap"><strong>간접 기반역량</strong>으로 구분하고</span>, 본 과제는 ① <span class="nowrap">Manufacturing Deformation Engine</span> ② <span class="nowrap">Failure Checkpoint·Recovery Branching</span> ③ <span class="nowrap">ODD 기반 Closed-loop RFM</span>을 <span class="nowrap">신규 권리화합니다.</span> <a class="nowrap" href="../../../assets/manufacturing-rfm-ip-standards-landscape.svg" target="_blank" rel="noopener">가로형 원본 보기</a></figcaption>

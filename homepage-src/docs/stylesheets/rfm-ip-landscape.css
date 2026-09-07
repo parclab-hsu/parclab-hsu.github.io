@@ -1,0 +1,26 @@
+.md-typeset figure.ip-landscape {
+  margin-inline: 0;
+}
+
+.md-typeset figure.ip-landscape img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.md-typeset figure.ip-landscape figcaption a {
+  color: #00695c;
+}
+
+.md-typeset figure.ip-landscape figcaption a:hover,
+.md-typeset figure.ip-landscape figcaption a:focus-visible {
+  color: #004d40;
+}
+
+.md-typeset figure.ip-landscape--mobile {
+  display: block;
+}
+
+.md-typeset figure.ip-landscape--desktop {
+  display: none;
+}
