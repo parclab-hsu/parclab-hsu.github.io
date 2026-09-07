@@ -684,6 +684,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. 연구개발 배경 및 필요성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        선행연구에 기반한 개발 방향
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -694,6 +711,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. 연구개발 목표 및 성능 평가">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 판정 조건안
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -791,6 +825,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 관련 논문 및 과제 적용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 관련 논문 및 과제 적용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        참고문헌
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -821,10 +883,14 @@
 <h2 id="1">1. 연구개발 개요<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p><strong>과제명:</strong> 적외선 광학 추적 시스템 기반 산업용 로봇 자동 캘리브레이션 기술 개발</p>
 <p>적외선 OTS로 취득한 로봇 말단의 위치·자세 정보와 로봇 관절 데이터를 이용하여 기구학적 오차를 식별·보정한다. 측정 데이터 취득부터 보정값 산출, 보정 결과 검증까지 연결하는 자동화 절차를 구현하여 로봇의 절대 위치 및 자세 정확도를 향상시키는 것을 목적으로 한다.</p>
+<p><strong>기본 범위는 정적 캘리브레이션</strong>이다. 로봇을 측정 자세로 이동시킨 뒤 정지·안정화 상태에서 계측한다. 인라인 적용은 생산라인 내 보정 공정의 자동화를 의미하며, 이동 중 실시간 경로 보상까지 포함하는 요구는 별도 범위로 협의한다. 하드웨어 자체 개발 범위와 기존 보정 알고리즘의 제공·수정·제어기 적용 책임은 착수 단계에서 확정한다.</p>
 <h2 id="2">2. 연구개발 배경 및 필요성<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>산업용 로봇은 동일 위치로 반복 이동하는 반복정밀도와 별개로, 제작·조립 공차, 링크 치수 편차 및 관절 영점 오차 등에 의해 지령 위치와 실제 도달 위치 사이에 절대 위치 오차가 발생할 수 있다. 오프라인 프로그래밍과 정밀 작업의 현장 교시 부담을 줄이기 위해서는 작업 공간 전반에서 절대정확도를 확보하는 계측·보정 기술이 필요하다.</p>
 <p>본 과제는 기존 계측 기반 보정의 장비 도입 비용과 측정 시야 차단에 따른 작업 개입을 개선 대상으로 설정한다. 적외선 스테레오 카메라와 강체 마커로 로봇 위치·자세를 측정하고, 복수 마커 배치와 자동 재인식을 통해 가려짐(Occlusion)에 대응하는 기술을 개발한다.</p>
 <p>로봇 이동, 데이터 취득, 보정값 산출 및 검증을 통합하여 인라인 자동 보정의 적용 가능성을 평가한다. 무인 보정 범위는 실제 작업 공간과 가려짐 조건에 대한 시험을 통해 확정한다.</p>
+<h3 id="_1">선행연구에 기반한 개발 방향<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>OTS와 강체 마커를 이용해 UR10의 기구학·베이스·툴 파라미터를 보정한 연구는 <strong>평균 위치 오차 0.348 mm, 표준편차 0.096 mm, 표본 최대 위치 오차 0.467 mm</strong>, 평균 각도 오차 <strong>0.070°</strong>를 보고하였다. 이는 접근법의 가능성을 보여주는 실험 사례이며, 다른 로봇·작업 공간·TCP에서의 목표 충족을 보장하지 않는다. 특히 표본 최대값은 전 작업 공간의 보증 상한이 아니며, 평균 각도 오차를 최대 자세 오차와 비교해서는 안 된다. <a href="https://www.mdpi.com/1424-8220/20/21/6341">논문 1</a></p>
+<p>광학 모션캡처와 기준 레이저 트래커를 이용해 관절 영점 및 불확도를 추정한 연구도 보고되어 있다. 본 과제는 광학 계측 자체의 신규성보다 <strong>대상 로봇에 맞춘 계측 구성, 기존 보정 알고리즘 연동, 가려짐 시 자동 재측정, 독립 검증을 포함하는 운용 절차</strong>를 차별화 방향으로 설정한다. <a href="https://www.nist.gov/publications/efficiently-improving-and-quantifying-robot-accuracy-situ">논문 2</a></p>
 <h2 id="3">3. 연구개발 목표 및 성능 평가<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -838,17 +904,22 @@
 <tr>
 <td>로봇 절대 위치 오차</td>
 <td>0.5 mm 이하</td>
-<td>보정에 사용하지 않은 검증 지점에서 기준 계측값과 지령 위치 사이의 3차원 거리 오차 평가</td>
+<td>평가안: 독립 기준 계측으로 얻은 TCP 위치와 지령 TCP 위치 간 3차원 거리 오차 평가</td>
 </tr>
 <tr>
 <td>로봇 자세 회전 오차</td>
 <td>0.1° 이하</td>
-<td>기준 자세와 지령 자세 사이의 상대 회전각 평가</td>
+<td>평가안: 독립 기준 자세와 지령 TCP 자세 간 상대 회전각 평가</td>
 </tr>
 <tr>
 <td>OTS 공간 분해능</td>
 <td>0.05 mm 이하</td>
 <td>기준 변위 장치로 미소 변위 구분 능력 평가</td>
+</tr>
+<tr>
+<td>OTS 절대 위치·자세 측정 오차 및 불확도</td>
+<td>작업 공간과 오차 예산 분석 후 확정</td>
+<td>기준 위치·자세와 비교하여 거리·방향·공간별 오차 및 불확도 평가</td>
 </tr>
 <tr>
 <td>마커 인식 및 추적</td>
@@ -864,8 +935,48 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">측정 지표 정의</p>
-<p>원 목표 사양의 <strong>±0.5 mm, ±0.1°</strong>는 본 계획에서 오차 크기의 상한으로 정리하였다. 축별 오차 또는 3차원 합성 오차 여부, 최대값 또는 통계값 기준은 요구사항 정의 단계에서 확정한다. <strong>공간 분해능은 절대 측정 정확도와 구분</strong>하며, OTS 절대 측정 오차와 불확도는 로봇 보정 목표를 충족할 수 있도록 별도 관리한다.</p>
+<p>원 목표 사양은 <strong>±0.5 mm, ±0.1°</strong>이다. 위 표의 TCP 기준 3차원 거리·상대 회전각은 <strong>평가 방법 제안</strong>이며 확정된 검수 조건이 아니다. 축별·합성 오차와 최대값·통계값 기준을 합의한 뒤 요구사항을 동결한다. <strong>공간 분해능은 절대 측정 정확도와 구분</strong>한다. 논문의 평균·RMS·표본 최대값을 서로 같은 지표로 비교하지 않는다.</p>
 </div>
+<h3 id="_2">성능 판정 조건안<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>조건</th>
+<th>요구사항 정의 단계에서 확정할 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>측정 대상</td>
+<td>실제 작업점인 TCP 위치·자세, 플랜지–마커–TCP 변환 및 툴 길이</td>
+</tr>
+<tr>
+<td>적용 공간</td>
+<td>OTS 측정 거리·체적, 로봇 관절 범위, 가시성이 확보되는 유효 영역</td>
+</tr>
+<tr>
+<td>환경·부하</td>
+<td>온도 범위, 워밍업, 툴 질량·무게중심, 로봇 접근 방향</td>
+</tr>
+<tr>
+<td>취득 절차</td>
+<td>정지 안정화 판정, 샘플 수·평균화 방식, 시간 정합 허용값</td>
+</tr>
+<tr>
+<td>표본 구성</td>
+<td>보정 자세 수, 별도 검증 자세 수, 공간 분포, 반복 횟수</td>
+</tr>
+<tr>
+<td>합격 판정</td>
+<td>위치·자세 각각의 주 판정 지표와 임계값, 불확도를 고려한 판정 규칙</td>
+</tr>
+<tr>
+<td>보조 보고</td>
+<td>평균·RMS·최대값·백분위수, 축별 편향, 추적 실패·제외·재측정 건수</td>
+</tr>
+</tbody>
+</table>
+<p>산업용 로봇 성능시험은 <a href="https://www.iso.org/standard/22244.html">ISO 9283</a>을 참고하여 시험계획을 수립한다. 구체적인 절차를 확정하기 전에는 표준 적합 시험을 수행한 것으로 표현하지 않는다. 자세 오차는 회전행렬 또는 단위 쿼터니언의 상대 회전각으로 계산하는 방안을 검토하며, 위치와 자세를 함께 최적화할 때는 단위·측정 불확도를 고려하여 잔차의 가중치를 정한다.</p>
 <p>세부 목표는 다음과 같다.</p>
 <ul>
 <li>고해상도 스테레오 적외선 카메라 기반 OTS 하드웨어 개발</li>
@@ -879,15 +990,46 @@
 <h3 id="41-ots">4.1. OTS 하드웨어 개발<a class="headerlink" href="#41-ots" title="Permanent link">&para;</a></h3>
 <p>고해상도 적외선 카메라, 렌즈, 광학 필터 및 조명으로 구성된 스테레오 계측 모듈을 개발한다. 대상 로봇의 작업 공간과 측정 거리를 고려하여 카메라 간격과 설치 위치를 설계하고, 측정 시야와 위치·자세 측정 성능을 확보한다.</p>
 <p>복수 적외선 마커로 구성된 로봇 말단 장착형 강체 마커 툴을 설계한다. 마커의 기하학적 배치로 고유 ID와 자세를 식별하고, 체결 강성과 반복 장착 시 위치 재현성을 검토한다. 로봇 자세 변화와 주변 구조물에 따른 가려짐을 고려하여 마커 배치를 최적화한다.</p>
+<p>능동 LED 마커와 수동 반사 마커의 전원·배선·조명·ID 식별 특성을 비교하여 방식을 선정한다. 카메라 해상도만으로 성능을 판단하지 않고 측정 거리, 카메라 간격, 렌즈 왜곡, 노출 및 열적 안정성을 함께 설계한다.</p>
+<p>마커 배치와 가시성에 따른 목표점 오차를 평가하는 연구를 참고하여 마커 원점뿐 아니라 <strong>실제 TCP에서의 불확도</strong>를 관리한다. <a href="https://link.springer.com/chapter/10.1007/978-3-540-75759-7_79">논문 5</a> 설계 예시로, 회전축에 수직인 마커–TCP 거리가 300 mm이고 회전 오차가 0.1°이면 작은 각도 근사에 따른 위치 오차 성분은 약 0.524 mm이다. 이 계산은 논문의 실험 결과가 아닌 기하학적 예시이며, TCP 이격 거리와 자세 측정 성능을 함께 제한해야 함을 보여준다.</p>
 <p>카메라 촬영과 적외선 조명의 동기화 기능을 구현하고, 로봇 상태 데이터와 영상 데이터의 취득 시점을 정합하기 위한 타임스탬프 및 트리거 체계를 구축한다.</p>
 <p><strong>주요 산출물:</strong> 스테레오 적외선 카메라 모듈, 강체 마커 툴, 동기화 회로·구동 모듈, 하드웨어 설계서.</p>
 <h3 id="42">4.2. 광학 추적 소프트웨어 개발<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
 <p>적외선 영상에서 마커를 검출하고 중심 좌표를 정밀하게 추정하는 영상처리 알고리즘을 개발한다. 외란광, 반사체 및 영상 노이즈의 영향을 줄이기 위한 전처리와 이상 검출 기능을 구현한다.</p>
 <p>스테레오 카메라의 내부·외부 파라미터를 교정하고, 좌우 영상의 마커 대응 관계와 삼각측량으로 3차원 좌표를 복원한다. 복원 좌표와 강체 마커 기준 형상을 이용하여 로봇 말단의 위치·자세를 산출한다.</p>
 <p>복수 강체 마커의 고유 ID 매칭과 연속 추적 기능을 개발한다. 일부 마커가 가려지면 관측 가능한 마커 수와 배치로 측정 유효성을 판단하고, 저신뢰 데이터는 보정 입력에서 제외한다. 추적 중단 후 시야가 회복되면 자동으로 재인식한다.</p>
+<table>
+<thead>
+<tr>
+<th>관측 상태</th>
+<th>제안 동작 및 기록</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>충분한 마커 관측</td>
+<td>기하학적 배치·잔차·신뢰도를 확인하여 유효 측정값 출력</td>
+</tr>
+<tr>
+<td>일부 마커 가려짐</td>
+<td>남은 관측으로 위치·자세 계산이 유효한지 판정하고 품질 저하 기록</td>
+</tr>
+<tr>
+<td>관측 부족 또는 완전 가려짐</td>
+<td>계측값을 무효 처리하고 대기·재측정; 예측값을 검수용 실측값으로 사용하지 않음</td>
+</tr>
+<tr>
+<td>시야 회복</td>
+<td>ID와 강체 형상 재확인 후 계측 재개, 복구 시간 기록</td>
+</tr>
+</tbody>
+</table>
+<p>재인식 성공률, 잘못된 ID 인식률, 유효 계측률 및 복구 시간을 가려짐 조건별로 평가한다. 구체적인 임계값은 시제품 기초시험 후 합의한다. 마커 수 증가만으로 완전 가려짐이 해결되는 것으로 가정하지 않는다.</p>
 <p><strong>주요 산출물:</strong> 카메라 교정·마커 검출·3차원 복원·ID 매칭 소프트웨어, 추적 유효성 판단 및 재인식 모듈.</p>
 <h3 id="43">4.3. 로봇 보정 연동 및 자동화 인터페이스 개발<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
 <p>OTS 측정 좌표계와 로봇 베이스 좌표계, 강체 마커 좌표계와 로봇 툴 좌표계 사이의 변환 관계를 추정하는 정합 절차를 개발한다.</p>
+<p>Robot-world/hand-eye 동시 정합 연구를 참고하여 좌표변환 방향과 표기 규칙을 고정하고, 초기 정합과 보정 후 정합의 잔차를 각각 평가한다. 이 정합 문제와 로봇 기구학 파라미터 식별은 구분한다. 잘못된 명목 기구학에서 유래한 오차를 좌표계 변환이 흡수하지 않는지 독립 자세로 확인한다. <a href="https://www.nist.gov/publications/solving-robot-worldhand-eye-calibration-problem-using-kronecker-product">논문 3</a></p>
+<p>기존 알고리즘의 제공 형태·입출력·식별 가능 파라미터를 먼저 확인한다. 관절 영점만 식별할지 링크·축 정렬까지 확장할지는 모델의 식별 가능성과 제어기 지원 범위를 바탕으로 결정한다. 제조사 협조 항목은 로봇·제어기 접근, 기존 알고리즘 사용 범위, 보정값 적용 및 복원 절차이며 실제 역할 분담은 협의한다.</p>
 <p>로봇 관절값과 OTS 측정값을 기존 보정 알고리즘에 전달하기 위한 데이터 형식과 통신 인터페이스를 정의한다. 측정 데이터에는 위치·자세, 마커 ID, 취득 시각 및 유효성 정보를 포함한다.</p>
 <p>보정에 필요한 측정 자세를 선정하고, 다음 절차를 자동 실행하는 소프트웨어를 개발한다.</p>
 <ol>
@@ -899,10 +1041,41 @@
 <li>독립 검증 지점 측정 및 결과 기록</li>
 </ol>
 <p>추적 실패나 통신 오류가 발생하면 재측정 또는 절차 중단이 가능하도록 예외 처리를 구현한다.</p>
+<p>측정 자세 선정에는 파라미터 변화가 측정값에 충분히 드러나는지 평가하는 <strong>관측가능성</strong>을 반영한다. Hyundai YS100에서 자세 선택과 표본 수의 영향을 시험한 연구를 참고하여, 동일한 측정 수에서 균등·무작위 선정과 관측가능성 기반 선정을 비교한다. 가시성, 관절 한계, 충돌 회피 및 이동 시간은 본 과제의 추가 제약으로 적용한다. <a href="https://doi.org/10.1155/2014/291389">논문 4</a></p>
+<p>베이지안 실험 설계에 의한 적응형 자세 선택은 후속 고도화 후보로 둔다. 기본 일정은 기존 보정 알고리즘과 관측가능성 기반 기준 방법을 우선 확보하는 범위로 관리하며, 학습 기반 알고리즘을 필수 개발 항목으로 확대하지 않는다. <a href="https://arxiv.org/abs/2409.10802">논문 6</a></p>
 <p><strong>주요 산출물:</strong> 좌표계 정합 모듈, 통신·데이터 인터페이스 명세서, 자동 보정 실행 소프트웨어.</p>
 <h3 id="44">4.4. 시스템 통합 및 성능 검증<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
 <p>OTS 단독 시험으로 공간 분해능, 측정 반복성, 절대 측정 오차 및 작업 공간 내 위치별 성능 편차를 평가한다. 측정 거리, 마커 자세, 외란광 및 온도 조건의 영향을 분석하여 하드웨어와 알고리즘을 개선한다.</p>
 <p>대상 로봇에서 보정 전후의 위치·자세 오차를 비교한다. <strong>보정용 데이터와 검증용 데이터를 분리</strong>하고, 작업 공간에 분포한 독립 검증 지점에서 목표 달성 여부를 확인한다.</p>
+<p><strong>검증 자세의 분리와 기준 계측의 독립성은 별도로 확보</strong>한다. 자체 OTS만으로 보정과 평가를 모두 수행하면 공통 편향을 놓칠 수 있으므로, 최종 검증에는 별도 기준 계측 장치 또는 교정된 기준물을 사용한다. 자세 검증은 6자유도 기준 계측 또는 알려진 기준 형상을 이용한 방식으로 구성하며, 단일 점 위치 측정만으로 자세 정확도를 검증한 것으로 간주하지 않는다.</p>
+<p>오차 예산에는 OTS 위치·자세, 베이스 정합, 마커–TCP 변환, 시간 정합 및 반복 장착을 포함한다. 독립성이 입증되지 않은 오차를 단순 제곱합으로 합성하지 않고 공분산·상관관계를 검토한다. 측정 실패·제외 표본과 재시도 횟수도 함께 보고하여 유효 표본만 선택한 결과로 자동화 성능을 과대평가하지 않는다.</p>
+<table>
+<thead>
+<tr>
+<th>비교 시험</th>
+<th>목적</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>보정 전 / 기존 절차 / OTS 연동 보정 후</td>
+<td>동일 조건에서 정확도 개선과 기존 방식 대비 효과 확인</td>
+</tr>
+<tr>
+<td>균등·무작위 자세 / 관측가능성 기반 자세</td>
+<td>동일 측정 수에서 자세 선정 효과 확인</td>
+</tr>
+<tr>
+<td>정상 시야 / 부분 가려짐 / 시야 복구</td>
+<td>유효 계측률, ID 오류, 복구 시간 및 자동 완료율 확인</td>
+</tr>
+<tr>
+<td>작업 공간 중심 / 경계 / 서로 다른 TCP 자세</td>
+<td>공간·자세에 따른 편차 및 적용 범위 확인</td>
+</tr>
+</tbody>
+</table>
+<p>제어기 적용 전 오프라인 결과와 보정값 유효성을 점검하고, 적용 후 성능 저하 시 이전 보정값으로 복원할 수 있도록 이력을 관리한다.</p>
 <p>생산라인 모사 환경에서는 가려짐 발생·해제, 반복 보정 및 통신 이상 상황을 시험하여 자동 보정 절차의 안정성과 현장 적용 조건을 도출한다.</p>
 <p><strong>주요 산출물:</strong> OTS 성능평가 보고서, 로봇 보정 전후 비교 결과, 통합 시험성적서, 현장 적용·운용 가이드.</p>
 <h2 id="5">5. 추진 방법 및 일정안<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
@@ -950,6 +1123,7 @@
 </tr>
 </tbody>
 </table>
+<p>각 단계의 완료는 문서 제출뿐 아니라 <strong>평가 조건·역할 확정 → OTS 기초 계측 성능 확인 → 좌표계 정합 및 데이터 연동 확인 → 자동 절차·예외 처리 확인 → 독립 기준 검증</strong> 순으로 판정한다. 12개월 일정은 기존 광학 부품·보정 알고리즘의 활용 가능성과 인력·장비 접근성 확보를 전제로 한 안이며, 자체 설계 범위가 확대되면 재산정한다.</p>
 <h2 id="6">6. 주요 기술적 위험 및 대응<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -989,6 +1163,59 @@
 <p>적외선 광학 추적 기반의 로봇 위치·자세 계측 기술과 기존 보정 알고리즘의 연동 기술을 확보하고, 로봇 절대정확도 향상을 위한 자동 캘리브레이션 체계를 구축한다.</p>
 <p>로봇 출하 전 정확도 검사, 설치 후 초기 보정 및 유지보수 후 재보정에 활용할 수 있다. 자동 측정과 결과 기록으로 수동 계측 부담을 줄이고, 보정 절차와 품질 이력 관리의 표준화를 추진한다.</p>
 <p>OTS 하드웨어, 강체 마커 툴, 추적·보정 연동 소프트웨어 및 검증 절차를 패키지화하여 대상 로봇과 생산라인으로 적용 범위를 확대한다. 장비 비용, 보정 소요 시간 및 작업자 개입 감소 효과는 실증 결과를 바탕으로 정량 평가한다.</p>
+<hr />
+<h2 id="8">8. 관련 논문 및 과제 적용<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p>아래는 본 과제에 직접 연결되는 실험 연구와 기반 방법론을 선별한 목록이다. 연구별 장비·로봇·측정 공간·통계 지표가 다르므로 수치만으로 우열을 판단하지 않는다. <strong>선행연구의 관찰 결과와 본 과제에서 제안하는 구현·검증 항목을 구분</strong>하였다. 문헌 검토일: 2026-09-07.</p>
+<table>
+<thead>
+<tr>
+<th>문헌</th>
+<th>확인된 내용</th>
+<th>본 과제 적용 및 한계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[1] OTS 기반 로봇 정확도 개선, 2020</td>
+<td>UR10과 상용 OTS로 기구학·베이스·툴 오차 보정</td>
+<td>가장 직접적인 구조 참고. 상용 계측기를 이용한 결과이므로 자체 OTS 개발 성공의 증거는 아님</td>
+</tr>
+<tr>
+<td>[2] 현장 로봇 정확도 개선·정량화, 2019</td>
+<td>광학 모션캡처와 레이저 트래커 기반 관절 영점 추정·불확도 비교</td>
+<td>광학 계측의 보정 활용과 기준 계측 비교 설계 참고. 모든 로봇·전체 파라미터 식별로 일반화하지 않음</td>
+</tr>
+<tr>
+<td>[3] Robot-world/hand-eye 정합, 2013</td>
+<td>AX = YB 형태의 좌표계 정합 해와 오차 지표 제시</td>
+<td>베이스·마커 변환 초기 정합의 비교 방법. 그 자체로 로봇 기구학 보정을 대체하지 않음</td>
+</tr>
+<tr>
+<td>[4] 최적 측정 자세 선정, 2014</td>
+<td>Hyundai YS100에서 자세 선택 및 표본 수의 효과 검토</td>
+<td>측정 자세 설계·비교시험 참고. 논문의 로봇·계측기와 이번 대상은 다를 수 있음</td>
+</tr>
+<tr>
+<td>[5] 광학 추적 목표점 오차 추정, 2007</td>
+<td>카메라·목표 형상·마커 가시성을 고려한 오차 전파</td>
+<td>TCP 불확도와 가려짐 품질 판정 설계 참고. 의료 추적 연구로 산업용 로봇 정확도 실적은 아님</td>
+</tr>
+<tr>
+<td>[6] 베이지안 실험 설계, 2024/2025</td>
+<td>자세 공간의 기하를 고려한 GP 기반 설계와 OWLAT 실험</td>
+<td>측정 효율 개선의 후속 후보. 이번 정량 목표나 적용 로봇의 성능 보증 자료는 아님</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">참고문헌<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ying Liu, Yuwen Li, Zhenghao Zhuang, Tao Song. <strong>Improvement of Robot Accuracy with an Optical Tracking System.</strong> <em>Sensors</em>, 20(21), 6341, 2020. <a href="https://www.mdpi.com/1424-8220/20/21/6341">출판사 원문 · DOI: 10.3390/s20216341</a>. 정량 결과는 본문 실험 결과와 Table 18을 기준으로 인용하였다.</li>
+<li>Karl Van Wyk, Joe Falco, Geraldine Cheok. <strong>Efficiently Improving and Quantifying Robot Accuracy In Situ.</strong> 2019. <a href="https://www.nist.gov/publications/efficiently-improving-and-quantifying-robot-accuracy-situ">NIST 공식 연구 소개</a> · <a href="https://arxiv.org/abs/1908.07273">공개 논문 arXiv:1908.07273</a>.</li>
+<li>Mili Shah. <strong>Solving the Robot-World/Hand-Eye Calibration Problem Using the Kronecker Product.</strong> <em>Journal of Mechanisms and Robotics</em>, 5(3), 031007, 2013. <a href="https://www.nist.gov/publications/solving-robot-worldhand-eye-calibration-problem-using-kronecker-product">NIST 공식 소개 및 원문</a> · <a href="https://doi.org/10.1115/1.4024473">DOI: 10.1115/1.4024473</a>.</li>
+<li>Jian Zhou, Hoai-Nhan Nguyen, Hee-Jun Kang. <strong>Selecting Optimal Measurement Poses for Kinematic Calibration of Industrial Robots.</strong> <em>Advances in Mechanical Engineering</em>, 2014. <a href="https://doi.org/10.1155/2014/291389">출판사 원문 · DOI: 10.1155/2014/291389</a>.</li>
+<li>Tobias Sielhorst, Martin Bauer, Oliver Wenisch, Gudrun Klinker, Nassir Navab. <strong>Online Estimation of the Target Registration Error for n-Ocular Optical Tracking Systems.</strong> <em>MICCAI 2007</em>, pp. 652–659. <a href="https://link.springer.com/chapter/10.1007/978-3-540-75759-7_79">출판사 초록 · DOI: 10.1007/978-3-540-75759-7_79</a>. 공개 초록에서 확인되는 모델 구성과 적용 범위만 요약하였다.</li>
+<li>Ersin Daş, Thomas Touma, Joel W. Burdick. <strong>Bayesian Optimal Experimental Design for Robot Kinematic Calibration.</strong> <em>IEEE ICRA</em>, 2025. <a href="https://doi.org/10.1109/ICRA55743.2025.11127428">DOI: 10.1109/ICRA55743.2025.11127428</a> · <a href="https://arxiv.org/abs/2409.10802">공개 논문 arXiv:2409.10802</a> · <a href="https://arxiv.org/html/2409.10802v3">검토한 공개본 v3 전문, 2025</a>. 최초 공개본은 2024년에 발표되었다.</li>
+</ol>
 <hr />
 <p><a href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 프로젝트 목록으로 돌아가기</a></p>
 
