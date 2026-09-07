@@ -63,7 +63,7 @@ Isaac Sim은 **RTX 계열 NVIDIA GPU**를 전제로 동작합니다. GPU가 없�
 
 | 무엇 | 언제 | 준비 사항 |
 | --- | --- | --- |
-| **Spot+ATS 프로젝트 코드** — [engiengi/SpotATS_ws](https://github.com/engiengi/SpotATS_ws) | 7주차~ | 공개 저장소입니다. 미리 둘러봐도 좋습니다 |
+| **Spot+ATS 프로젝트 코드** — [parclab-hsu/SpotATS_ws](https://github.com/parclab-hsu/SpotATS_ws) | 7주차~ | 공개 저장소입니다. 미리 둘러봐도 좋습니다 |
 | **OpenAI API 키** | 14주차 (System-2 LLM) | **유료 등록**이 필요합니다. 사용 모델은 교체 가능하니 수업 중 안내에 따르세요 |
 | **NGC 계정**(NVIDIA) | Isaac Sim 설치 | 무료. 학교 이메일로 가입 가능 |
 

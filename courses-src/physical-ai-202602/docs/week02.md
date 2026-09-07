@@ -106,6 +106,176 @@ Isaac Sim 물리환경 구축 및 카메라(RGB/Depth) 센서 시뮬레이션 �
 
 ---
 
+## 💽 부록. 학과 노트북 — 기존 리눅스를 지우고 USB로 재설치하기
+
+학과 노트북에는 **Windows와 리눅스가 이미 듀얼부팅으로 설치**되어 있습니다. 기존 리눅스가 버전이 맞지 않거나 환경이 꼬였을 때, 리눅스만 지우고 Ubuntu 22.04를 새로 설치하는 절차입니다.
+
+!!! danger "시작 전에 반드시 읽으십시오"
+    이 작업은 **디스크 파티션을 직접 건드립니다.** 순서를 잘못 밟으면 리눅스뿐 아니라 **Windows까지 부팅되지 않거나 전체 데이터가 사라질 수 있습니다.**
+
+    - **기존 리눅스의 내 파일은 전부 삭제됩니다.** 필요한 자료는 먼저 USB나 클라우드로 옮기세요.
+    - **Windows 쪽 자료도 백업**하세요. 파티션 작업 중 사고가 나면 함께 영향을 받습니다.
+    - 혼자 진행하다 확신이 서지 않으면 **멈추고 조교·교수에게 문의**하십시오. 되돌리기 어려운 작업입니다.
+
+### STEP 0 — 사전 점검 (Windows에서)
+
+설치 실패의 대부분이 이 단계를 건너뛰어 생깁니다.
+
+**① BitLocker 상태 확인 — 가장 중요**
+
+Windows 드라이브가 BitLocker로 암호화되어 있으면, 파티션 구성이 바뀔 때 **다음 부팅에서 48자리 복구 키를 요구**합니다. 키가 없으면 Windows에 들어갈 수 없습니다.
+
+```powershell
+# Windows PowerShell (관리자 권한)
+manage-bde -status
+```
+
+| 결과 | 조치 |
+| --- | --- |
+| `Protection Status: Protection Off` | 그대로 진행 가능 |
+| `Protection Status: Protection On` | **복구 키를 먼저 확보**하거나 일시 중단(`manage-bde -protectors -disable C:`) |
+
+복구 키는 [account.microsoft.com/devices/recoverykey](https://account.microsoft.com/devices/recoverykey) 에서 확인할 수 있습니다.
+
+**② 빠른 시작(Fast Startup) 끄기**
+
+켜져 있으면 Windows가 완전히 종료되지 않아, 리눅스에서 Windows 파티션을 읽을 때 문제가 생깁니다.
+
+```
+제어판 → 전원 옵션 → 전원 단추 작동 설정 → 현재 사용할 수 없는 설정 변경
+→ "빠른 시작 켜기" 체크 해제
+```
+
+**③ 현재 디스크 구성 확인**
+
+`Windows + R` → `diskmgmt.msc` 로 디스크 관리를 열어 **파티션 구성을 캡처해 두세요.** 어떤 파티션이 리눅스인지 눈으로 확인해야 합니다.
+
+| 파티션 유형 | 크기 | 정체 | 처리 |
+| --- | --- | --- | --- |
+| **EFI 시스템 파티션** | 100~500MB, FAT32 | Windows·리눅스가 **함께 쓰는 부팅 영역** | 🚫 **절대 삭제 금지** |
+| **복구 파티션** | 500MB~1GB | 제조사·Windows 복구용 | 🚫 건드리지 않음 |
+| **주 NTFS 파티션** | 수백 GB | **Windows 본체** | 🚫 건드리지 않음 |
+| **ext4 파티션** | — | 기존 리눅스 루트 | ✅ 삭제 대상 |
+| **linux-swap** | 2~16GB | 기존 리눅스 스왑 | ✅ 삭제 대상 |
+
+!!! warning "EFI 파티션을 지우면 Windows도 부팅되지 않습니다"
+    UEFI 듀얼부팅에서 EFI 시스템 파티션은 **두 운영체제가 공유**합니다. "작아서 필요 없어 보이는" 파티션이 대개 이것입니다. 크기가 100~500MB이고 FAT32라면 손대지 마십시오.
+
+### STEP 1 — 설치 USB 만들기
+
+- **8GB 이상 빈 USB** (USB 안의 기존 자료는 모두 지워집니다)
+- Ubuntu 22.04 LTS(Jammy Jellyfish) ISO — [ubuntu.com/download/desktop](https://ubuntu.com/download/desktop) → `check alternative downloads` → `Past releases and other flavours`
+- 굽기 도구: **Rufus**(Windows) 또는 **balenaEtcher**(공용)
+
+Rufus 설정값:
+
+| 항목 | 값 |
+| --- | --- |
+| 부팅 유형 | 다운로드한 Ubuntu ISO |
+| 파티션 방식 | **GPT** |
+| 대상 시스템 | **UEFI (CSM 없음)** |
+| 파일 시스템 | FAT32 |
+| 쓰기 모드 | **ISO 이미지 모드 (권장)** |
+
+작업에는 7~8분 정도 걸리며, 완료 시 "준비 완료" 상태가 됩니다.
+
+### STEP 2 — USB로 부팅
+
+1. USB를 꽂고 노트북을 재시작합니다.
+2. 검은 화면이 나오는 즉시 **Boot Menu 키**를 연타합니다.
+
+| 제조사 | Boot Menu 키 |
+| --- | --- |
+| 삼성·LG | `F10` 또는 `F12` |
+| 레노버 | `F12` (또는 옆면 Novo 버튼) |
+| HP | `F9` |
+| Dell | `F12` |
+| ASUS·MSI | `F8` / `F11` |
+
+부팅 시 화면 하단에 안내 키가 잠깐 표시되므로 확인 후 누르면 됩니다.
+
+3. 목록에서 **`UEFI: <USB 이름>`** 항목을 선택합니다. `UEFI:` 가 붙은 항목을 골라야 합니다.
+4. `Try or Install Ubuntu` 선택 → 언어에서 **한국어** 선택 → `Ubuntu 설치`
+
+!!! tip "화면이 깨지거나 설치 화면이 안 뜨는 경우"
+    NVIDIA 그래픽과의 호환 문제입니다. 부팅 메뉴에서 `e` 키를 눌러 편집 모드로 들어간 뒤, `quiet splash` 뒤에 **`nomodeset`** 을 추가하고 `F10` 으로 진행하십시오. 커널이 그래픽 드라이버를 먼저 로드하지 않게 하는 설정입니다.
+
+### STEP 3 — 기존 리눅스 파티션만 삭제하고 설치
+
+설치 유형 화면에서 **반드시 `기타(Something else)`** 를 선택합니다.
+
+!!! danger "'디스크를 지우고 Ubuntu 설치'를 절대 고르지 마십시오"
+    이 항목은 **Windows를 포함해 디스크 전체를 지웁니다.** 듀얼부팅을 유지하려면 반드시 `기타`로 들어가 수동으로 파티션을 지정해야 합니다.
+
+**① 기존 리눅스 파티션 삭제**
+
+파티션 목록에서 STEP 0에서 확인한 **ext4 파티션과 linux-swap 파티션만** 선택해 `-` 버튼으로 삭제합니다. 삭제 후 그 공간이 **`남은 공간(free space)`** 으로 바뀝니다.
+
+**② 새 파티션 할당**
+
+`남은 공간`을 선택하고 `+` 버튼으로 아래와 같이 만듭니다.
+
+| 용도 | 크기 | 종류 | 마운트 지점 |
+| --- | --- | --- | --- |
+| 루트 | 나머지 전부 (**최소 150GB 권장**) | ext4 | `/` |
+| 스왑 | RAM과 같은 크기 (8~16GB) | swap 영역 | — |
+
+!!! note "왜 150GB 이상인가"
+    Isaac Sim 이미지·캐시만으로 50GB 이상을 쓰고, Isaac Lab·학습 데이터·YOLO 모델이 추가됩니다. 100GB 미만이면 학기 중반에 공간이 부족해집니다.
+
+**③ 부트로더 설치 위치 — 가장 실수가 잦은 항목**
+
+화면 하단 **`부트로더를 설치할 장치`** 는 파티션이 아니라 **디스크 전체**(`/dev/nvme0n1` 또는 `/dev/sda`)를 지정합니다. `/dev/nvme0n1p3` 처럼 **끝에 숫자가 붙은 파티션을 고르면 부팅이 되지 않습니다.**
+
+**④ 설치 진행** → 지역·계정 설정 → 완료 후 `지금 다시 시작` → **USB를 뽑고** Enter
+
+### STEP 4 — 설치 후 확인
+
+재부팅하면 **GRUB 메뉴**가 뜨고 `Ubuntu` 와 `Windows Boot Manager` 가 함께 보여야 정상입니다.
+
+```bash
+# 부팅 후 터미널에서 확인
+lsb_release -a          # Ubuntu 22.04 LTS 인지
+df -h /                 # 루트 파티션 용량
+free -h                 # 스왑이 잡혔는지
+nvidia-smi              # GPU 인식 (드라이버 설치 전이면 미인식이 정상)
+```
+
+### 🧰 자주 생기는 문제
+
+??? failure "GRUB에 Windows가 안 보인다"
+    리눅스에서 아래를 실행해 Windows를 다시 탐지시킵니다.
+
+    ```bash
+    sudo apt update && sudo apt install os-prober
+    sudo os-prober                 # Windows 가 검출되는지 확인
+    sudo update-grub
+    ```
+
+    그래도 안 보이면 BIOS에서 **Secure Boot**를 끄고 다시 시도합니다.
+
+??? failure "재부팅하니 GRUB 없이 바로 Windows로 부팅된다"
+    BIOS의 부팅 순서에서 `ubuntu` 항목이 뒤에 있는 경우입니다. BIOS(보통 `F2`·`Del`) → Boot 탭에서 **`ubuntu` 를 1순위로** 올립니다.
+
+??? failure "Windows가 BitLocker 복구 키를 요구한다"
+    STEP 0의 BitLocker 확인을 건너뛴 경우입니다. [account.microsoft.com/devices/recoverykey](https://account.microsoft.com/devices/recoverykey) 에 로그인해 해당 기기의 48자리 키를 확인해 입력하십시오. **키 없이는 복구할 수 없습니다.**
+
+??? failure "설치 중 '이 컴퓨터에 다른 운영체제가 없는 것 같습니다' 라고 나온다"
+    Windows가 **빠른 시작** 상태로 종료되어 인식되지 않는 경우입니다. Windows로 돌아가 빠른 시작을 끄고 **완전 종료(Shift + 시스템 종료)** 후 다시 시도하십시오.
+
+??? failure "USB로 부팅이 되지 않는다"
+    - Boot Menu에서 `UEFI:` 가 붙은 항목을 선택했는지 확인합니다.
+    - BIOS에서 **Secure Boot 비활성화**, **부팅 모드 UEFI** 를 확인합니다.
+    - Rufus에서 파티션 방식을 `GPT` / `UEFI(CSM 없음)` 로 구웠는지 확인합니다.
+
+### ✅ 재설치 완료 체크리스트
+
+- [ ] GRUB에서 Ubuntu와 Windows가 **모두** 선택 가능한가
+- [ ] Windows가 BitLocker 키 요구 없이 정상 부팅되는가
+- [ ] `df -h /` 결과 루트 파티션이 150GB 이상인가
+- [ ] 인터넷·Wi-Fi가 연결되는가
+- [ ] 이후 [1주차 페이지](week01.md)의 Miniconda → CUDA → PyTorch → Isaac Sim 순서로 진행
+
 ## 🌍 3. 물리 환경 구성 기본 개념
 
 ### Stage · World · Prim

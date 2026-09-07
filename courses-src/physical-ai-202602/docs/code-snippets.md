@@ -305,7 +305,7 @@ Spot+ATS 실습 코드는 공개 저장소에 있습니다. 7주차부터 계속
 
 ```bash
 # 프로젝트 코드 클론
-git clone https://github.com/engiengi/SpotATS_ws.git
+git clone https://github.com/parclab-hsu/SpotATS_ws.git
 
 # 빌드 (conda 환경을 빠져나온 뒤 빌드해야 함)
 conda deactivate
