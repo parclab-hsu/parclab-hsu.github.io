@@ -1,5 +1,5 @@
-# 2주차 6절(모듈형·SRS·SDP) 그림 4종 생성기
-# 실행: python3 tools/make_week02_figures.py  (matplotlib + Noto Sans CJK KR 필요)
+# 강의자료 생성 그림 (docs/img/25~30) 생성기
+# 실행: python3 tools/make_figures.py   (matplotlib + Noto Sans CJK KR 필요)
 # 출력: docs/img/25~28_*.png  — 그림을 고칠 때는 PNG가 아니라 이 파일을 고친다
 
 import matplotlib; matplotlib.use('Agg')
@@ -133,3 +133,63 @@ ax.text(104,20.6,"① 출력 형식  ② 제약  ③ 실행 검증",ha='center',
 ax.text(104,15.5,"“2주차까지 배운 문법만” 이 한 줄이 막아 준다",ha='center',fontsize=11,color=GRAY)
 caption(ax,"빈칸은 AI가 그럴듯하게 채운다 — 적어 두면 “내가 시킨 적 없는 것”이 바로 눈에 보인다")
 save(fig,"28_ai_prompt_srs.png")
+
+# ---------- 29. 포인터 연산 (12주차 8절) ----------
+fig,ax=canvas()
+title(ax,"포인터 연산 —  p + 1  은 ‘1바이트’가 아니라 ‘한 칸’")
+ax.text(70,52.0,"같은 16바이트 메모리라도, 포인터가 무엇을 가리키느냐에 따라 ‘한 칸’의 크기가 다르다",
+        ha='center',va='center',fontsize=12,color=GRAY)
+rows=[("char *p",  16, ORANGE, '#FDF0DC', "1바이트"),
+      ("int *p",    4, BLUE,   '#EAF0FC', "4바이트  (int 크기)"),
+      ("double *p", 2, GREEN,  '#E4F1E9', "8바이트  (double 크기)")]
+X0, W, H = 32.0, 92.0, 7.5
+for k,(name,n,col,tint,jump) in enumerate(rows):
+    y = 38 - k*13.5
+    cw = W/n
+    ax.text(28,y+H/2,name,ha='right',va='center',fontsize=13.5,family=MONO,
+            color=col,fontweight='bold')
+    for i in range(n):
+        ax.add_patch(Rectangle((X0+i*cw,y),cw,H,fc=tint if i<2 else 'white',ec=col,lw=1.2,zorder=2))
+    ax.text(X0+cw*0.5,y+H/2,"p",ha='center',va='center',fontsize=12.5,family=MONO,
+            color=INK,fontweight='bold',zorder=3)
+    ax.text(X0+cw*1.5,y+H/2,"p + 1",ha='center',va='center',fontsize=12.5,family=MONO,
+            color=RED,fontweight='bold',zorder=3)
+    ay=y+H+2.1
+    ax.add_patch(FancyArrowPatch((X0+cw*0.5,ay),(X0+cw*1.5,ay),arrowstyle='-|>',
+                 mutation_scale=14,lw=1.7,color=RED,zorder=3))
+    ax.text(X0+cw*1.5+2.0,ay,jump,ha='left',va='center',fontsize=11,color=RED)
+    ax.text(X0+W+2.5,y+H/2,f"칸 {n}개",ha='left',va='center',fontsize=10.5,color=LGRAY)
+caption(ax,"가리키는 자료형의 크기만큼 움직인다 — 그래서 배열에서 p + 1 이 정확히 ‘다음 원소’가 된다",y=5.0)
+save(fig,"29_pointer_arith.png")
+
+# ---------- 30. 포인터 배열 vs 배열 포인터 (13주차) ----------
+fig,ax=canvas()
+title(ax,"포인터 배열  vs  배열 포인터 — 괄호 하나가 뜻을 바꾼다")
+ax.add_patch(FancyBboxPatch((3,9),64,42,boxstyle="round,pad=0,rounding_size=1.6",fc='#FDF6EC',ec='none'))
+ax.add_patch(FancyBboxPatch((73,9),64,42,boxstyle="round,pad=0,rounding_size=1.6",fc='#EDF2FD',ec='none'))
+ax.text(35,47.5,"int *p[3];",ha='center',fontsize=17,family=MONO,color=ORANGE,fontweight='bold')
+ax.text(35,43.2,"포인터 배열 — 포인터가 3개",ha='center',fontsize=12.5,color=INK,fontweight='bold')
+for i in range(3):
+    y=34-i*7.5
+    box(ax,8,y,11,5.6,f"p[{i}]",ORANGE,size=11.5,r=0.7)
+    arrow(ax,19.5,y+2.8,33,y+2.8,color='#D9A24E',lw=1.7)
+    ax.add_patch(Rectangle((33,y),9,5.6,fc='white',ec=ORANGE,lw=1.2,zorder=2))
+    ax.text(37.5,y+2.8,str(10*(i+1)),ha='center',va='center',fontsize=11.5,family=MONO,color=INK,zorder=3)
+    ax.text(45,y+2.8,"따로 떨어진 곳",ha='left',va='center',fontsize=10,color=GRAY)
+ax.text(35,11.6,"각 칸이 서로 다른 곳을 가리킨다",ha='center',fontsize=11,color=ORANGE)
+ax.text(105,47.5,"int (*p)[3];",ha='center',fontsize=17,family=MONO,color=BLUE,fontweight='bold')
+ax.text(105,43.2,"배열 포인터 — 포인터는 1개",ha='center',fontsize=12.5,color=INK,fontweight='bold')
+box(ax,78,26.5,11,5.6,"p",BLUE,size=11.5,r=0.7)
+arrow(ax,89.5,29.3,100,29.3,color='#7FA3EE',lw=1.7)
+ax.add_patch(FancyBboxPatch((99.5,23.5),31,11.6,boxstyle="round,pad=0,rounding_size=0.9",
+             fc='none',ec=BLUE,lw=2.0,ls='--',zorder=2))
+for i in range(3):
+    ax.add_patch(Rectangle((101+i*9.5,26.5),9,5.6,fc='white',ec=BLUE,lw=1.2,zorder=3))
+    ax.text(105.5+i*9.5,29.3,str(10*(i+1)),ha='center',va='center',fontsize=11.5,family=MONO,color=INK,zorder=4)
+ax.text(115,37.5,"int 3개짜리 배열 ‘하나’",ha='center',fontsize=10.5,color=BLUE)
+ax.text(105,17.5,"(*p)[0] 처럼 배열을 먼저 꺼낸 뒤 인덱스",ha='center',fontsize=11,color=BLUE)
+ax.text(105,11.6,"p + 1 은 배열 한 줄만큼 건너뛴다",ha='center',fontsize=11,color=GRAY)
+ax.add_patch(FancyBboxPatch((3,1.2),134,6.4,boxstyle="round,pad=0,rounding_size=1.0",fc=FAINT,ec='none'))
+ax.text(70,4.4,"읽는 규칙:  괄호가 없으면 [ ] 가 먼저 → “포인터의 배열”      |      괄호로 묶으면 * 가 먼저 → “배열을 가리키는 포인터”",
+        ha='center',va='center',fontsize=12.5,color=INK,fontweight='bold')
+save(fig,"30_ptr_array_vs_array_ptr.png")

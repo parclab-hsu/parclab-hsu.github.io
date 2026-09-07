@@ -532,6 +532,10 @@ Arduino UNO R4 WiFi에는 12x8 LED Matrix가 내장되어 있다. 조건문 실�
 
 ## 10. LED Matrix는 8x12 배열이다
 
+![LED 매트릭스 좌표계 (8행 × 12열)](img/07_led_matrix_coord.png)
+
+*`frame[r][c] = 1`이 켜는 픽셀의 위치. 행 `r`이 위에서 아래(0~7), 열 `c`가 왼쪽에서 오른쪽(0~11)이다. 이 좌표 감각이 11주차 2차원 배열로 그대로 이어진다.*
+
 LED Matrix는 작은 LED가 행(row)과 열(column)로 놓인 화면이다. 이번 실습에서는 8행 12열 배열을 만들고, `1`인 위치의 LED를 켠다.
 
 ![원본 강의자료: MatrixLED frame 배열](img/pdf-crops/week05_matrix_frame_code.png)

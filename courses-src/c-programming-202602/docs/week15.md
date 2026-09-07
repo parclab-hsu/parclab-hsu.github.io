@@ -83,6 +83,10 @@ ROS2 토픽은 프로그램 사이의 데이터 통로다. LiDAR 노드는 `/sca
     보드가 직접 ROS2 노드. **rclc=순수 C**. UNO R4 공식 지원(RAM 32KB라 경량).
 
 ### 1.3 LiDAR 배열 → C로 판단 (자율주행의 심장)
+
+![enum 상태머신 — 거리에 따라 상태가 바뀐다](img/15_enum_state.png)
+
+*`enum`은 이름 붙인 정수다. `0,1,2,3` 대신 `STOP,SLOW,RUN,AVOID`로 쓰면 코드에서 의미가 보인다. `scan_logic.h`의 `DriveAction`이 이 구조다.*
 Stella N2의 LiDAR는 거리 **배열**을 `/scan`으로 보낸다. 이를 C로 분석해 주행을 정한다.
 ```c
 ScanResult analyze_scan(const float *ranges, int n, float stop_dist) {
