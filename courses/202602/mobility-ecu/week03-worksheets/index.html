@@ -7,13 +7,13 @@
       
       
       
-        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/mobility-ecu/04-pcb-firmware-integration/">
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/mobility-ecu/week03-worksheets/">
       
       
-        <link rel="prev" href="../03-stm32-firmware/">
+        <link rel="prev" href="../week03-kit/">
       
       
-        <link rel="next" href="../code/">
+        <link rel="next" href="../resources/">
       
       
         
@@ -24,7 +24,7 @@
     
     
       
-        <title>11·13·14·15주차 · PCB·펌웨어 통합 - 모빌리티 전자제어유닛 실습 · 2026-2학기</title>
+        <title>🖨️ 3주차 배포용 워크시트 - 모빌리티 전자제어유닛 실습 · 2026-2학기</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pcb-bldc-11131415" class="md-skip">
+        <a href="#3" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11·13·14·15주차 · PCB·펌웨어 통합
+              🖨️ 3주차 배포용 워크시트
             
           </span>
         </div>
@@ -539,10 +539,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../week03-worksheets/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 3주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -558,6 +585,192 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#g-mosfet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        워크시트 G · MOSFET 데이터시트와 손실 계산
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="워크시트 G · MOSFET 데이터시트와 손실 계산">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 데이터시트 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 온도 계수 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 도통 손실 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 스위칭·게이트 손실 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 접합온도 추정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 세 가지 되묻기 — 반드시 채운다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#h-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        워크시트 H · 후보 3종 선정표와 사고 경로
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="워크시트 H · 후보 3종 선정표와 사고 경로">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 조건 (칠판에 적힌 값을 옮겨 적는다)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 후보 비교표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 전압 여유 판단
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 최종 선정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 데드타임 사고 경로
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 오늘 계산하지 않은 것 — 이름만 적어 둔다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1207,8 +1420,6 @@
       
   
   
-    
-  
   
   
     
@@ -1221,11 +1432,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20">
         
           
           <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="">
@@ -1246,7 +1457,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_20">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1345,37 +1556,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    11·13·14·15주차 · PCB·펌웨어 통합
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../04-pcb-firmware-integration/" class="md-nav__link">
         
   
   
@@ -1391,198 +1575,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#11hsi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 11주차(요구사항/HSI/블록도) — 보강 완료
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-easyeda-pcb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        13주차 — EasyEDA &amp; PCB 기초
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="13주차 — EasyEDA &amp; PCB 기초">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#easyeda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EasyEDA 워크플로우
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pcb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PCB 기초
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        설계규칙
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        14주차 — 노이즈 &amp; 그라운드
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="14주차 — 노이즈 &amp; 그라운드">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        노이즈
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        그라운드
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#15-bldc-stm32f767-intergrated_v2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        15주차 — BLDC 펌웨어 통합 (STM32F767, 실제 코드 Intergrated_V2 검증)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="15주차 — BLDC 펌웨어 통합 (STM32F767, 실제 코드 Intergrated_V2 검증)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        구조
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        핵심 코드/수치 (코드 검증됨)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        하드웨어 (소형보드 넷리스트)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pi-teleplot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PI 속도제어 &amp; Teleplot
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        주차 배분
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1824,55 +1816,160 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#11hsi" class="md-nav__link">
+  <a href="#g-mosfet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 11주차(요구사항/HSI/블록도) — 보강 완료
+        워크시트 G · MOSFET 데이터시트와 손실 계산
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="워크시트 G · MOSFET 데이터시트와 손실 계산">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 데이터시트 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 온도 계수 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 도통 손실 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 스위칭·게이트 손실 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 접합온도 추정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 세 가지 되묻기 — 반드시 채운다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#13-easyeda-pcb" class="md-nav__link">
+  <a href="#h-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13주차 — EasyEDA &amp; PCB 기초
+        워크시트 H · 후보 3종 선정표와 사고 경로
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="13주차 — EasyEDA &amp; PCB 기초">
+    <nav class="md-nav" aria-label="워크시트 H · 후보 3종 선정표와 사고 경로">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#easyeda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EasyEDA 워크플로우
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pcb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PCB 기초
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        설계규칙
+        공통 조건 (칠판에 적힌 값을 옮겨 적는다)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 후보 비교표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 전압 여유 판단
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 최종 선정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 데드타임 사고 경로
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 오늘 계산하지 않은 것 — 이름만 적어 둔다
       
     </span>
   </a>
@@ -1881,117 +1978,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        14주차 — 노이즈 &amp; 그라운드
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="14주차 — 노이즈 &amp; 그라운드">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        노이즈
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        그라운드
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#15-bldc-stm32f767-intergrated_v2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        15주차 — BLDC 펌웨어 통합 (STM32F767, 실제 코드 Intergrated_V2 검증)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="15주차 — BLDC 펌웨어 통합 (STM32F767, 실제 코드 Intergrated_V2 검증)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        구조
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        핵심 코드/수치 (코드 검증됨)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        하드웨어 (소형보드 넷리스트)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pi-teleplot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PI 속도제어 &amp; Teleplot
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        주차 배분
-      
-    </span>
-  </a>
   
 </li>
       
@@ -2012,92 +1998,551 @@
 
 
 
-<h1 id="pcb-bldc-11131415">PCB 설계·BLDC 펌웨어 통합 기술 노트 (11·13·14·15주차)<a class="headerlink" href="#pcb-bldc-11131415" title="Permanent link">¶</a></h1>
+<h1 id="3">3주차 배포용 워크시트<a class="headerlink" href="#3" title="Permanent link">¶</a></h1>
+<p>진행 대본과 준비 체크리스트는 <a href="../week03-kit/">3주차 운영 키트</a>에 있다.</p>
+<table>
+<thead>
+<tr>
+<th>워크시트</th>
+<th>인쇄 부수</th>
+<th>사용 시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G. MOSFET 데이터시트와 손실 계산</td>
+<td>수강생 수</td>
+<td>45~100분</td>
+</tr>
+<tr>
+<td>H. 후보 3종 선정표와 사고 경로</td>
+<td>팀 수 + 2</td>
+<td>100~155분</td>
+</tr>
+</tbody>
+</table>
+<div class="week-break"></div>
+
+<h2 id="g-mosfet">워크시트 G · MOSFET 데이터시트와 손실 계산<a class="headerlink" href="#g-mosfet" title="Permanent link">¶</a></h2>
+<p><strong>모빌리티 전자제어유닛 실습 · 3주차</strong> &nbsp;&nbsp; 팀명 <strong><em>_</em></strong><strong><em>_</em> 이름 </strong><strong><em>_</em></strong>___</p>
+<h3 id="1">1. 데이터시트 읽기<a class="headerlink" href="#1" title="Permanent link">¶</a></h3>
+<p>배정받은 MOSFET 품번 <strong><em>_</em></strong><strong><em>_</em></strong><strong> 제조사 <strong><em>_</em></strong><strong><em>_</em></strong></strong></p>
 <blockquote>
-<p>근거: UAV개발/PCB설계강의자료_ver0.1.pdf, 전동킥보드펌웨어_ver0.2.pdf, 속도제어,Teleplot.pdf, 소형보드(넷리스트), + 실제 펌웨어 코드 Intergrated_V2</p>
+<p>숫자만 적으면 반칙이다. <strong>그 숫자가 어떤 조건에서 측정된 값인지</strong> 반드시 같이 적는다.</p>
 </blockquote>
-<h2 id="11hsi">✅ 11주차(요구사항/HSI/블록도) — 보강 완료<a class="headerlink" href="#11hsi" title="Permanent link">¶</a></h2>
-<p>근거는 <strong>인버터하드웨어설계_ver0.1.pdf의 1장 "제품 개발 프로세스"</strong>에 충분히 있음(PCB 5개 파일이 아니라 여기): 개발흐름(요구사항→회로→PCB→기능테스트→기구조립→통합→EMI/EMC), Top-Down 요구사항, <strong>3상 인버터 사양서</strong>(18~42V/350W/15A RMS/27A peak/10~20kHz), <strong>HSI = MCU 핀별 동작 정의</strong>, 시스템 블록도, JLCPCB+EasyEDA 업체선정, 회로 3분할(MCU/GateDriver/Power), 기능→실차→EMC(=EMS+EMI). 실무 방법론 사례는 chcbaram WIZnet 블로그(목표→요구사항 단순화→개발환경→기본사양→블록도→To-do→WBS). HSI 핀표는 코드 검증(PE8~13 PWM, PD0~2 홀, PA0~2 상전류, PA3 Vdc, PA6 NTC, PA7 쓰로틀, PC6 LED, UART2 디버그, USART3 BLE, I2C4 EEPROM). → Notion 11주차 페이지 작성 완료(상태 완료).</p>
-<h2 id="13-easyeda-pcb">13주차 — EasyEDA &amp; PCB 기초<a class="headerlink" href="#13-easyeda-pcb" title="Permanent link">¶</a></h2>
-<h3 id="easyeda">EasyEDA 워크플로우<a class="headerlink" href="#easyeda" title="Permanent link">¶</a></h3>
-<ul>
-<li>회로도+PCB, Pro Edition 로컬. Board=회로도+PCB. <strong>Footprint</strong>=부품 실물 모양. Component↔Footprint 연동.</li>
-<li>설계과정: 회로설계→PCB이동→외곽→부품배치→중요신호배선→전원/그라운드→일반배선→거버→BOM→SMT.</li>
-<li>단위 mm 사용. 라우팅 Alt+W, 굵기 Tab. <strong>폴리곤</strong>(넓은 트레이스), <strong>카파푸어</strong>(GND/파워 채움). Design Rule(이격거리), DRC(회로도·PCB 각각). <strong>JLCPCB 연동 최소 5개 주문</strong>.</li>
-<li>레이어: LED회로=2층, 인버터=4층.</li>
-</ul>
-<h3 id="pcb">PCB 기초<a class="headerlink" href="#pcb" title="Permanent link">¶</a></h3>
-<ul>
-<li>PCB=부품 고정·연결. 라우팅=회로도대로 배선(부품특성·전압/전류·속도 고려). <strong>같은 회로도 레이아웃에 따라 성능 다름</strong>.</li>
-<li>8대 용어: PCB/동박·PAD/Through Hole/SMD/트레이스/실크스크린/카파푸어/솔더마스크.</li>
-<li>레이어↑=배선↑·노이즈강인·가격↑. 4층 스택업 예(모터제어기): SIG/GND/POWER/SIG.</li>
-</ul>
-<h3 id="_1">설계규칙<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>트레이스폭</strong>: 전류+동박두께(1oz/2oz)로 결정, 외부배선이 더 큰 전류 허용. Digikey 계산기.</li>
-<li><strong>3W 룰</strong>: 신호 중심간격 ≥ 트레이스폭 3배 → 크로스토크(오버슈트·링잉) 방지. 클럭/고속신호 우선.</li>
-<li>배선: 짧고 굵게, <strong>직각 금지(45°/원호)</strong>, 양면기판 상하층 수직 배선. 벅컨버터 인덕터 주위 주의.</li>
-<li><strong>비아</strong>: 다층 이동, 고전류부 Via로 결합·발열예방.</li>
-<li><strong>PGND/GND 분리</strong>: 0Ω 저항 단일점 연결.</li>
-<li><strong>켈빈커넥션(4접점)</strong>: 션트 전류센싱, 접촉저항 오차 제거(안쪽 V+/V- 라우팅).</li>
-<li>클럭: GND 가드+MCU 근처. 디커플링캡: IC핀 최대한 가깝게.</li>
-</ul>
-<h2 id="14">14주차 — 노이즈 &amp; 그라운드<a class="headerlink" href="#14" title="Permanent link">¶</a></h2>
-<h3 id="_2">노이즈<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<ul>
-<li>노이즈=원치 않는 신호. EMC 인증 못하면 판매불가. 모터=고전력+스위칭→대비 안하면 99% 오동작.</li>
-<li>3종류: <strong>전도성</strong>(전도경로 유입, 대책 TVS·RC필터), <strong>유도성</strong>(기생인덕턴스 자기장), <strong>방사(EMC 대상)</strong>.</li>
-<li>"모든 전송선로=RLC 집합". VL=L·diL/dt, IC=C·dVc/dt.</li>
-<li>용량성결합(도체간 유전층). 인덕티브결합 M=k√(L1L2), V=−M·di/dt(전류방향 반대면 상쇄).</li>
-<li><strong>크로스토크</strong>→3W룰. <strong>차동모드</strong>(바이패스캡·트위스트케이블). <strong>공통모드</strong>(기준전위차, EMI 주원인→그라운드 설계 중요).</li>
-</ul>
-<h3 id="_3">그라운드<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<ul>
-<li>그라운드=기준전위 0V. 모든 전류는 최저임피던스 폐루프로 리턴. PGND/AGND/DGND 분리.</li>
-<li>기생임피던스→전위차(그라운드 바운싱, 3.3V가 4.3V로). Vz=Iz·Z.</li>
-<li><strong>낮은 임피던스 조건</strong>: 저R·저L(트레이스 넓고 짧게)+높은C(면적 넓게). Z=√(R²+(ωL−1/ωC)²).</li>
-<li>트레이스 인덕턴스 L≅μ₀·(l/w)·(ln(2h/w)+0.5) → <strong>길이 짧게·폭 넓게</strong>.</li>
-<li>루프면적 최소화(리턴패스 짧게). 접지 3방식: 직렬단일점(간단·전체영향)/병렬단일점(배선길어짐)/<strong>다중점병렬(PCB 사용)</strong>.</li>
-<li>부품배치가 가장 중요(고전류/스위칭부 vs 예민신호부 분리).</li>
-</ul>
-<h2 id="15-bldc-stm32f767-intergrated_v2">15주차 — BLDC 펌웨어 통합 (STM32F767, 실제 코드 Intergrated_V2 검증)<a class="headerlink" href="#15-bldc-stm32f767-intergrated_v2" title="Permanent link">¶</a></h2>
-<h3 id="_4">구조<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>헤더/소스 분리</strong>: clock/adc/dac/hall/uart/timer/GPIO.c.</li>
-<li><strong>6-step 홀 정류</strong>: 홀 Ha·Hb·Hc(000·111 제외 6가지). <strong>HallSum=Ha·4+Hb·2+Hc</strong>. 섹터별 2,3,1,5,4,6. 홀변화 010→011→001→101→100→110. 홀 EXTI0/1/2 인터럽트로 감지→스위칭패턴.</li>
-<li><strong>유니폴라 PWM</strong>: 상단 스위치 PWM, 하단 On. (휠매핑/소형BLDC매핑 config USE_INWHEEL로 전환, 정/역 dir).</li>
-</ul>
-<h3 id="_5">핵심 코드/수치 (코드 검증됨)<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Center Align PWM (TIM1)</strong>: 션트 정확 센싱 위해. <strong>CNT_MAX=5400, PSC=0(216MHz), ARR=CNT_MAX → 216MHz/5400/2 = 20kHz</strong>. Center-aligned mode3(CR1=0x0065), <strong>데드타임 DEADTIME_1us=180</strong>(BDTR). RCR=1(카운터 시작후 설정→언더플로우 업데이트, 100us주기).</li>
-<li><strong>쓰로틀→듀티 반전</strong>: DutyA=CNT_MAX−VoltageRef (안빼면 쓰로틀↑에 상단듀티↓).</li>
-<li><strong>SysTick 스케줄러</strong>: LOAD=(216M/1000)−1=215999 → <strong>1ms 인터럽트</strong>. SysTick_Handler서 msTicks++·Scheduler(). msTicks%N으로 10/100/500/1000ms 태스크 플래그, main while서 실행. Task_10ms(RpmRef/Fdb UART), Task_500ms(BLE 송신).</li>
-<li><strong>ADC</strong>: 3상전류(PA0/1/2=ADC1/2/3 동시)·쓰로틀(PA7)은 TIM1 인터럽트서, Vdc(PA3)·NTC(PA6 tempLaw)는 10ms. 전류식 ias=(result−offset)·VREF/FS−OFFSET_Volt)/OPAMP_GAIN. 오프셋=10회평균−2048.</li>
-<li><strong>NTC 온도</strong>: MosfetTemp = −11.48·x³+63.23·x²−149.02·x+181.97 (x=tempLaw, 3차 다항식).</li>
-<li><strong>T방식 RPM</strong>: TIM2 <strong>54MHz</strong>(PSC=3, ARR=53999999≈1초). SpeedCal(): delta_time=현재−last(오버플로우 보정). <strong>calculated_rpm=(60·54000000)/(Edges_per_Rev·delta_time)</strong>. HALL_EDGES_PER_REV=소형BLDC 24, 휠 90.</li>
-<li><strong>속도→km/h</strong>: RPM_TO_KMH(rpm)=rpm·(π·WHEEL_DIAMETER)·60/1000.</li>
-<li><strong>BLE(AT-09)</strong>: UART3, 9600bps, 500ms 송신(Spd/Vdc/MosfetTemp/Flt), 초기PW 000000.</li>
-<li><strong>고장 FltFlg</strong>: 0정상/1과전류(OC_LEVEL 35A, 50ms지속)/2과열(MOSFET&gt;100°C, 90°C서 클리어)/3저전압(&lt;32V)/4과전압.</li>
-<li><strong>쓰로틀 히스테리시스</strong>: THROTTLE_OFF 1.00V / THROTTLE_ON 1.05V.</li>
-<li><strong>Set_Phases(A,B,C)</strong>: +1→CCR=Duty(Unmask), −1→CCR=CNT_MAX(Unmask), 0→Mask. VoltageRef=0/StartFlag=0시 Disable_PWM.</li>
-<li>제어플로우: Init→전류 Calibration(10회)→홀 초기값→TIM1 인터럽트 활성→구동. 런타임: TIM1 20kHz(전류·쓰로틀 ADC→듀티) + 홀 EXTI(홀 업데이트→속도).</li>
-</ul>
-<h3 id="_6">하드웨어 (소형보드 넷리스트)<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
-<ul>
-<li>MCU STM32F767VIT6. <strong>게이트드라이버 부품 불일치</strong>: 슬라이드=UCC27211D vs 회로도=IR2101STRPBF (강의시 실물기준 명시). MOSFET IRF3205PBF(게이트10Ω+1N5819+10k/1nF). 션트 10mΩ ±10A, OP-AMP TLV2374(1.65V). 벅 TPS54360(24~36V→12V, L33µH), LDO LM2940(5V)/LM1117(3.3V). 홀버퍼 SN74LVC3G17. EEPROM M24C64(I2C4). NTC NTCS0603E3103.</li>
-</ul>
-<h3 id="pi-teleplot">PI 속도제어 &amp; Teleplot<a class="headerlink" href="#pi-teleplot" title="Permanent link">¶</a></h3>
-<ul>
-<li>PI: E(s)→Kp+Ki/s→U(s)→Gp(s)→Y(s). <strong>Kp=J·ωc²/KT, Ki=J·ωc²/(5·KT)</strong> (J관성, ωc대역폭, KT토크상수). 정격 4000RPM.</li>
-<li>Teleplot: VSCode 확장, UART 출력 <code>&gt;변수:값</code> 포맷 맞춰야 그래프. 코드에 UART2_SendString("&gt;RpmRef:")... 존재.</li>
-</ul>
-<h2 id="_7">주차 배분<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
-<ul>
-<li>11주차: 요구사항/HSI/블록도 (자료 부족 → 12주차 인버터HW 개발프로세스+펌웨어 블록도로 대체, 정형자료 보강)</li>
-<li>13주차: EasyEDA+PCB기초+트레이스/3W/배선/비아</li>
-<li>14주차: 노이즈 3종+그라운드 이론+접지 3방식+PGND/AGND</li>
-<li>15주차: BLDC 펌웨어 전체 + PI속도제어/Teleplot + 킷 구동 시연</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>시험 조건 (Vgs, Tj, Tc, 구리 면적 등)</th>
+<th>데이터시트 쪽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Vds</code> 정격</td>
+<td>V</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Id</code> 정격</td>
+<td>A</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Rds(on)</code></td>
+<td>mΩ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Qg</code></td>
+<td>nC</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Vgs(th)</code></td>
+<td>V</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Vgs(max)</code></td>
+<td>V</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>RθJC</code></td>
+<td>°C/W</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>RθJA</code></td>
+<td>°C/W</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tr</code> / <code>tf</code></td>
+<td>ns / ns</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">2. 온도 계수 읽기<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
+<p><code>Rds(on)</code> vs 접합온도 그래프를 찾아 읽는다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>그래프가 있는 쪽</td>
+<td>p.</td>
+</tr>
+<tr>
+<td>25°C에서의 배율 (기준)</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>100°C에서의 배율</td>
+<td>배</td>
+</tr>
+<tr>
+<td>125°C에서의 배율</td>
+<td>배</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ 데이터시트 표지의 큰 글씨 <code>Rds(on)</code>은 거의 항상 <strong>가장 유리한 조건</strong>의 값이다.</p>
+</blockquote>
+<h3 id="3_1">3. 도통 손실 계산<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h3>
+<p>교수가 지정한 조건을 적는다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>상전류 <code>I</code></td>
+<td>A</td>
+</tr>
+<tr>
+<td><code>Rds(on)</code> @25°C</td>
+<td>mΩ</td>
+</tr>
+<tr>
+<td>적용할 온도 계수</td>
+<td>배</td>
+</tr>
+<tr>
+<td>도통률 (한 소자가 켜져 있는 비율)</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Rhot  = Rds(on) × 온도계수 =            ×          =            mΩ
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Pcond = I² × Rhot × 도통률 =            ×          ×          =            W
+</code></pre></div>
+<h3 id="4">4. 스위칭·게이트 손실 계산<a class="headerlink" href="#4" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DC 링크 전압 <code>Vds</code></td>
+<td>V</td>
+</tr>
+<tr>
+<td>스위칭 주파수 <code>fsw</code></td>
+<td>kHz</td>
+</tr>
+<tr>
+<td>게이트 구동 전압 <code>Vgate</code></td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Psw   = 0.5 × Vds × Id × (tr + tf) × fsw
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>      = 0.5 ×      ×      × (     +     ) ×          =            W
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Pgate = Qg × Vgate × fsw =        ×        ×          =            W
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Ptotal = Pcond + Psw + Pgate =                        =            W
+</code></pre></div>
+<h3 id="5">5. 접합온도 추정<a class="headerlink" href="#5" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>주위온도 <code>Ta</code></td>
+<td>°C</td>
+</tr>
+<tr>
+<td>사용할 <code>RθJA</code></td>
+<td>°C/W</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Tj = Ta + Ptotal × RθJA =        +        ×        =            °C
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>우리 팀의 답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>데이터시트의 <code>Tj</code> 최대 정격은 몇 °C인가</td>
+<td>°C</td>
+</tr>
+<tr>
+<td>여유는 몇 °C인가</td>
+<td>°C</td>
+</tr>
+<tr>
+<td>이 여유로 충분한가? 그렇게 판단한 이유는</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="6">6. 세 가지 되묻기 — 반드시 채운다<a class="headerlink" href="#6" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>우리 팀의 답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Rds(on)</code>이 더 작은 부품으로 바꾸면 <strong>나빠지는 것</strong>은 무엇인가</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Vgs(th)=2V</code>인데 3.3V로 켜면 무슨 일이 생기는가</td>
+<td></td>
+</tr>
+<tr>
+<td>부품을 바꾸지 않고 <code>Tj</code>를 낮추는 방법은 무엇인가</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="week-break"></div>
+
+<h2 id="h-3">워크시트 H · 후보 3종 선정표와 사고 경로<a class="headerlink" href="#h-3" title="Permanent link">¶</a></h2>
+<p><strong>모빌리티 전자제어유닛 실습 · 3주차</strong> &nbsp;&nbsp; 팀명 <strong><em>_</em></strong>_____</p>
+<h3 id="_1">공통 조건 (칠판에 적힌 값을 옮겨 적는다)<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DC 링크 전압</td>
+<td>V</td>
+</tr>
+<tr>
+<td>상전류 (피크)</td>
+<td>A</td>
+</tr>
+<tr>
+<td>스위칭 주파수</td>
+<td>kHz</td>
+</tr>
+<tr>
+<td>주위온도 <code>Ta</code></td>
+<td>°C</td>
+</tr>
+<tr>
+<td>도통률</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1_1">1. 후보 비교표<a class="headerlink" href="#1_1" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>후보 A</th>
+<th>후보 B</th>
+<th>후보 C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>품번</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Vds</code> 정격 (V)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Rds(on)</code> @25°C (mΩ)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>온도 계수 (배)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Rhot</code> (mΩ)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Qg</code> (nC)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tr + tf</code> (ns)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>RθJA</code> (°C/W)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>Pcond</code></strong> (W)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>Psw</code></strong> (W)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>Pgate</code></strong> (W)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>Ptotal</code></strong> (W)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong><code>Tj</code></strong> (°C)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Tj</code> 정격 대비 여유 (°C)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_1">2. 전압 여유 판단<a class="headerlink" href="#2_1" title="Permanent link">¶</a></h3>
+<blockquote>
+<p>정상 전압만 보면 안 된다. <strong>스위칭 링잉</strong>과 <strong>회생 과전압</strong>을 함께 본다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>정상 DC 링크 전압</td>
+<td>V</td>
+</tr>
+<tr>
+<td>예상 최대 순간 전압 (추정 근거도 적는다)</td>
+<td>V</td>
+</tr>
+<tr>
+<td>각 후보의 전압 여유율 (<code>Vds정격 / 최대순간전압</code>)</td>
+<td>A: 배 · B: 배 · C: 배</td>
+</tr>
+<tr>
+<td>여유가 부족하다고 판단한 후보</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3_2">3. 최종 선정<a class="headerlink" href="#3_2" title="Permanent link">¶</a></h3>
+<p><strong>선택한 후보</strong> <strong><em>_</em></strong>_____</p>
+<p><strong>선정 이유</strong> — 반드시 <strong>숫자</strong>로 쓴다. "저렴해서", "정격이 커서"는 이유가 아니다.</p>
+<hr>
+<hr>
+<p><strong>탈락 후보를 뺀 이유</strong></p>
+<table>
+<thead>
+<tr>
+<th>후보</th>
+<th>탈락 이유 (숫자 포함)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>보완 대책</strong> — 선택한 후보에 남는 문제와 그 해결책 (예: 구리 면적 확대로 <code>RθJA</code> 낮추기)</p>
+<table>
+<thead>
+<tr>
+<th>남는 문제</th>
+<th>대책</th>
+<th>대책 적용 후 예상값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="week-break"></div>
+
+<h3 id="4_1">4. 데드타임 사고 경로<a class="headerlink" href="#4_1" title="Permanent link">¶</a></h3>
+<p>아래 하프브리지에서 <strong>상단과 하단이 동시에 켜졌을 때</strong> 전류가 흐르는 경로를 그리고, 물음에 답한다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>        +DC_LINK
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>           │
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        ┌──┴──┐
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        │  Q1 │  ← 상단 (High-side)
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        └──┬──┘
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>           ├────────→ 스위치 노드 (모터 상)
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        ┌──┴──┐
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        │  Q2 │  ← 하단 (Low-side)
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        └──┬──┘
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>           │
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>          GND
+</code></pre></div>
+<p><strong>전류 경로를 위 그림에 직접 그린다.</strong></p>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>우리 팀의 답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>이 경로에서 전류를 제한하는 것은 무엇인가</td>
+<td></td>
+</tr>
+<tr>
+<td>예상 전류는 대략 어느 정도인가 (근거도 적는다)</td>
+<td>A</td>
+</tr>
+<tr>
+<td>퓨즈가 먼저 끊어지는가, MOSFET이 먼저 죽는가? 왜?</td>
+<td></td>
+</tr>
+<tr>
+<td>이 사고의 이름은</td>
+<td></td>
+</tr>
+<tr>
+<td>어떻게 막는가</td>
+<td></td>
+</tr>
+<tr>
+<td>그 대책을 <strong>너무 크게</strong> 잡으면 생기는 부작용은</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5_1">5. 오늘 계산하지 않은 것 — 이름만 적어 둔다<a class="headerlink" href="#5_1" title="Permanent link">¶</a></h3>
+<blockquote>
+<p>실제 설계에서는 아래 항목도 함께 본다. 무엇을 아직 안 봤는지 아는 것도 공학이다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>무엇을 확인하는 항목인가 (한 줄)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOA</td>
+<td></td>
+</tr>
+<tr>
+<td>Avalanche 정격</td>
+<td></td>
+</tr>
+<tr>
+<td>역회복 특성</td>
+<td></td>
+</tr>
+<tr>
+<td>UVLO / Miller clamp</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>답을 모르면 <strong>"확인 필요"</strong> 라고 적고, 어디서 찾아볼지를 쓴다.</p>
+</blockquote>
 
 
 
@@ -2133,7 +2578,7 @@
       <nav class="md-footer__inner md-grid" aria-label="하단/푸터">
         
           
-          <a href="../03-stm32-firmware/" class="md-footer__link md-footer__link--prev" aria-label="이전: 8~10주차 · STM32 펌웨어">
+          <a href="../week03-kit/" class="md-footer__link md-footer__link--prev" aria-label="이전: 🗓️ 3주차 운영 키트">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -2143,20 +2588,20 @@
                 이전
               </span>
               <div class="md-ellipsis">
-                8~10주차 · STM32 펌웨어
+                🗓️ 3주차 운영 키트
               </div>
             </div>
           </a>
         
         
           
-          <a href="../code/" class="md-footer__link md-footer__link--next" aria-label="다음: 교육용 코드 흐름">
+          <a href="../resources/" class="md-footer__link md-footer__link--next" aria-label="다음: 첨부자료 활용 가이드">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 다음
               </span>
               <div class="md-ellipsis">
-                교육용 코드 흐름
+                첨부자료 활용 가이드
               </div>
             </div>
             <div class="md-footer__button md-icon">
