@@ -1,0 +1,3045 @@
+<!DOCTYPE html><html lang="ko" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="한성대학교 미래모빌리티학과 3학년 · 로버 구동 전자제어유닛 (전자부품→회로→PCB→STM32 펌웨어) + 우주 로버 캡스톤">
+      
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/courses/202602/mobility-ecu/week09-worksheets/">
+      
+      
+        <link rel="prev" href="../week09-kit/">
+      
+      
+        <link rel="next" href="../week10-kit/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>🖨️ 9주차 배포용 워크시트 - 모빌리티 전자제어유닛 실습 · 2026-2학기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="모빌리티 전자제어유닛 실습 · 2026-2학기" class="md-header__button md-logo" aria-label="모빌리티 전자제어유닛 실습 · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            모빌리티 전자제어유닛 실습 · 2026-2학기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🖨️ 9주차 배포용 워크시트
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="다크 모드로" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="라이트 모드로" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="모빌리티 전자제어유닛 실습 · 2026-2학기" class="md-nav__button md-logo" aria-label="모빌리티 전자제어유닛 실습 · 2026-2학기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    모빌리티 전자제어유닛 실습 · 2026-2학기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syllabus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📋 강의계획서(Syllabus)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-course-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧭 강의 전체 흐름
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ax-curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖 AX 교육과정 개편
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    커리큘럼(15주차)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assignments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📝 과제집(과제·제출 예시)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ot-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 1주차 OT 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ot-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 1주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 2주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 2주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 3주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 3주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 4주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 4주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 5주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 5주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 6주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 6주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 7주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 7주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 8주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 8주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 9주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 9주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 9주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        워크시트 S · 레지스터 해석과 클럭 검산
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="워크시트 S · 레지스터 해석과 클럭 검산">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-led" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. LED 출력 — 비트 자리 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bsrr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. BSRR로 바꿔 쓰기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 레지스터 비트 해석 — 말로 설명한다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 스위치 입력
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 클럭 트리 검산 — 손으로 계산한다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cubemx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CubeMX 대조
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        워크시트 T · 3종 비교와 디버깅 기록
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="워크시트 T · 3종 비교와 디버깅 기록">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cubemx-hal-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. CubeMX · HAL · 레지스터 3종 비교
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 디버깅 기록 — 안 될 때 순서대로 확인한다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-8-hsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 8주차 HSI와 대조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 정리 — 이번 주에 새로 알게 된 것
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 10주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 10주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗓️ 11주차 운영 키트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11-worksheets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🖨️ 11주차 배포용 워크시트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    첨부자료 활용 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어·도해 사전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terms-by-week/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 주차별 용어 정리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    최신 기술 트렌드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global-benchmark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌍 국내외 대학·대회 동향
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔧 레퍼런스 보드(FM_SmartDriver)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_35">
+        
+          
+          <label class="md-nav__link" for="__nav_35" id="__nav_35_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주차별 강의 자료
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_35_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_35">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    주차별 강의 자료
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 · 오리엔테이션·로버 제어유닛 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 · 전자부품 1 · 저항·커패시터·인덕터
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3주차 · 전자부품 2 · 다이오드·BJT·MOSFET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4주차 · 전원회로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5주차 · DC/BLDC 모터 원리
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6주차 · 인버터·PWM 구동
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7주차 · 제어공학·PI 속도제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8주차 · STM32 GPIO·레지스터 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9주차 · 입력·클럭·인터럽트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10주차 · ADC·Timer·UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11주차 · 요구사항·HSI·시스템 블록도
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12주차 · 인버터 하드웨어 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13주차 · 회로도·PCB 설계 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14주차 · PCB 노이즈·그라운드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15주차 · 구동 펌웨어 통합·최종 발표
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_36">
+        
+          
+          <label class="md-nav__link" for="__nav_36" id="__nav_36_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의 노트
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_36_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_36">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    강의 노트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-components-power/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2~4주차 · 전자부품·전원회로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-motor-inverter-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5·6·7·12주차 · 모터·인버터·제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-stm32-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8~10주차 · STM32 펌웨어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-pcb-firmware-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11·13·14·15주차 · PCB·펌웨어 통합
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_37">
+        
+          
+          <label class="md-nav__link" for="__nav_37" id="__nav_37_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    실습 코드
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_37_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_37">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    실습 코드
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    교육용 코드 흐름
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_38">
+        
+          
+          <label class="md-nav__link" for="__nav_38" id="__nav_38_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    캡스톤 프로젝트
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_38_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_38">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    캡스톤 프로젝트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ugv-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    로버 개발 프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ugv-bom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    로버 부품표·회로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        워크시트 S · 레지스터 해석과 클럭 검산
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="워크시트 S · 레지스터 해석과 클럭 검산">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-led" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. LED 출력 — 비트 자리 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bsrr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. BSRR로 바꿔 쓰기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 레지스터 비트 해석 — 말로 설명한다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 스위치 입력
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 클럭 트리 검산 — 손으로 계산한다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cubemx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CubeMX 대조
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        워크시트 T · 3종 비교와 디버깅 기록
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="워크시트 T · 3종 비교와 디버깅 기록">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cubemx-hal-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. CubeMX · HAL · 레지스터 3종 비교
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 디버깅 기록 — 안 될 때 순서대로 확인한다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-8-hsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 8주차 HSI와 대조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 정리 — 이번 주에 새로 알게 된 것
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="9">9주차 배포용 워크시트<a class="headerlink" href="#9" title="Permanent link">¶</a></h1>
+<p>진행 대본과 준비 체크리스트는 <a href="../week09-kit/">9주차 운영 키트</a>에 있다.</p>
+<table>
+<thead>
+<tr>
+<th>워크시트</th>
+<th>인쇄 부수</th>
+<th>사용 시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S. 레지스터 해석과 클럭 검산</td>
+<td>수강생 수</td>
+<td>50~130분</td>
+</tr>
+<tr>
+<td>T. 3종 비교와 디버깅 기록</td>
+<td>팀 수 + 2</td>
+<td>130~155분</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ 워크시트 S의 <strong>클럭 검산표</strong>는 10주차 Timer·UART 계산의 입력이 된다.</p>
+</blockquote>
+<div class="week-break"></div>
+
+<h2 id="s">워크시트 S · 레지스터 해석과 클럭 검산<a class="headerlink" href="#s" title="Permanent link">¶</a></h2>
+<p><strong>모빌리티 전자제어유닛 실습 · 9주차</strong> &nbsp;&nbsp; 팀명 <strong><em>_</em></strong><strong><em>_</em> 이름 </strong><strong><em>_</em></strong>___</p>
+<blockquote>
+<p>실습 하드웨어는 <strong>STM32F767 학습보드</strong>다. 모든 값은 F767 기준으로 적는다.</p>
+</blockquote>
+<h3 id="1-led">1. LED 출력 — 비트 자리 계산<a class="headerlink" href="#1-led" title="Permanent link">¶</a></h3>
+<p>제어할 핀 <strong><em>_</em></strong>_____ (8주차 HSI 표에서 가져온다)</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>어떻게 구했는가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>포트</td>
+<td>GPIO___</td>
+<td></td>
+</tr>
+<tr>
+<td>핀 번호 <code>n</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MODER</code>에서 이 핀이 쓰는 비트</td>
+<td>비트 ___ ~ ___</td>
+<td><code>n × 2</code></td>
+</tr>
+<tr>
+<td>출력 모드로 만들 값 (2비트)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>clock enable 레지스터·비트</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>코드를 직접 쓴다</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">_________</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">______________</span><span class="p">;</span><span class="w">   </span><span class="cm">/* 왜 필요한가:                         */</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">GPIOx</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="n">____</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">___</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="cm">/* 왜 먼저 지우는가:                 */</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">GPIOx</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="n">____</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">___</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="cm">/* 무슨 모드인가:                    */</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">GPIOx</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w">   </span><span class="o">^=</span><span class="w">  </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">___</span><span class="p">);</span><span class="w">            </span><span class="cm">/* 토글 */</span>
+</code></pre></div>
+<h3 id="2-bsrr">2. <code>BSRR</code>로 바꿔 쓰기<a class="headerlink" href="#2-bsrr" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">GPIOx</span><span class="o">-&gt;</span><span class="n">BSRR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">___</span><span class="p">);</span><span class="w">          </span><span class="cm">/* set   (LED ON)  */</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">GPIOx</span><span class="o">-&gt;</span><span class="n">BSRR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">___</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16</span><span class="p">));</span><span class="w">   </span><span class="cm">/* reset (LED OFF) */</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>우리 팀의 답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ODR ^= mask</code>는 몇 번의 동작으로 이루어지는가</td>
+<td></td>
+</tr>
+<tr>
+<td>그 사이에 인터럽트가 들어오면 무슨 일이 생기는가</td>
+<td></td>
+</tr>
+<tr>
+<td><code>BSRR</code>은 왜 그 문제가 없는가</td>
+<td></td>
+</tr>
+<tr>
+<td><code>+16</code>을 하는 이유는</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3">3. 레지스터 비트 해석 — 말로 설명한다<a class="headerlink" href="#3" title="Permanent link">¶</a></h3>
+<p>다음 두 줄이 하는 일을 설명한다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mh">0x00003000</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="mh">0x00001000</span><span class="p">;</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x00003000</code>을 2진수로 펴면</td>
+<td></td>
+</tr>
+<tr>
+<td>서 있는 비트 번호는</td>
+<td>비트 ___ , ___</td>
+</tr>
+<tr>
+<td>그러면 몇 번 핀인가</td>
+<td>PC___</td>
+</tr>
+<tr>
+<td><code>0x00001000</code>이 넣는 2비트 값은</td>
+<td></td>
+</tr>
+<tr>
+<td>그 값의 의미는</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>결론: 이 두 줄이 하는 일</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4">4. 스위치 입력<a class="headerlink" href="#4" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>입력 핀</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MODER</code> 설정값 (입력 모드)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>PUPDR</code> 설정 (풀업 / 풀다운 / 없음)</td>
+<td></td>
+</tr>
+<tr>
+<td>그렇게 정한 이유</td>
+<td></td>
+</tr>
+<tr>
+<td>읽을 레지스터</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>풀업/풀다운을 설정하지 않으면?</strong></p>
+<table>
+<thead>
+<tr>
+<th>확인</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>스위치를 누르지 않았을 때 멀티미터로 잰 핀 전압</td>
+<td>V</td>
+</tr>
+<tr>
+<td>그때 <code>IDR</code> 값은 안정적인가</td>
+<td>예 / 아니오</td>
+</tr>
+<tr>
+<td>이 상태를 뭐라고 부르는가</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5">5. 클럭 트리 검산 — 손으로 계산한다<a class="headerlink" href="#5" title="Permanent link">¶</a></h3>
+<p><strong>입력 클럭</strong> HSE ______ MHz</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>설정</th>
+<th>계산</th>
+<th>결과</th>
+<th>확인 레지스터</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PLL</td>
+<td>M=<strong><em> N=</em></strong> P=___</td>
+<td></td>
+<td>MHz</td>
+<td><code>RCC-&gt;PLLCFGR</code></td>
+</tr>
+<tr>
+<td>AHB (HCLK)</td>
+<td>/___</td>
+<td></td>
+<td>MHz</td>
+<td><code>RCC-&gt;CFGR</code> HPRE</td>
+</tr>
+<tr>
+<td>APB1 (PCLK1)</td>
+<td>/___</td>
+<td></td>
+<td>MHz</td>
+<td><code>RCC-&gt;CFGR</code> PPRE1</td>
+</tr>
+<tr>
+<td>APB2 (PCLK2)</td>
+<td>/___</td>
+<td></td>
+<td>MHz</td>
+<td><code>RCC-&gt;CFGR</code> PPRE2</td>
+</tr>
+<tr>
+<td>타이머 클럭</td>
+<td>TIMPRE=___</td>
+<td></td>
+<td>MHz</td>
+<td><code>RCC-&gt;DCKCFGR1</code></td>
+</tr>
+<tr>
+<td>Flash latency</td>
+<td></td>
+<td></td>
+<td>WS</td>
+<td><code>FLASH-&gt;ACR</code> LATENCY</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-cubemx">6. CubeMX 대조<a class="headerlink" href="#6-cubemx" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>손 계산</th>
+<th>CubeMX 표시값</th>
+<th>일치?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SYSCLK</td>
+<td>MHz</td>
+<td>MHz</td>
+<td></td>
+</tr>
+<tr>
+<td>APB1</td>
+<td>MHz</td>
+<td>MHz</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>APB1 타이머 클럭</strong></td>
+<td>MHz</td>
+<td>MHz</td>
+<td></td>
+</tr>
+<tr>
+<td>Flash latency</td>
+<td>WS</td>
+<td>WS</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>APB1이 54MHz인데 타이머 클럭이 216MHz로 표시되는 이유</strong></p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>배수를 결정하는 레지스터와 비트 이름</td>
+<td></td>
+</tr>
+<tr>
+<td>이 값을 틀리면 다음 주 PWM에 어떤 증상이 생기는가</td>
+<td></td>
+</tr>
+<tr>
+<td>불일치가 있었다면 무엇이 원인이었는가</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="week-break"></div>
+
+<h2 id="t-3">워크시트 T · 3종 비교와 디버깅 기록<a class="headerlink" href="#t-3" title="Permanent link">¶</a></h2>
+<p><strong>모빌리티 전자제어유닛 실습 · 9주차</strong> &nbsp;&nbsp; 팀명 <strong><em>_</em></strong>_____</p>
+<h3 id="1-cubemx-hal-3">1. CubeMX · HAL · 레지스터 3종 비교<a class="headerlink" href="#1-cubemx-hal-3" title="Permanent link">¶</a></h3>
+<p>같은 LED 동작을 세 방법으로 만들고, <strong>디버거 register view로 최종 값을 확인</strong>한다.</p>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th>작성한 코드(요약)</th>
+<th>확인한 레지스터와 값</th>
+<th>동작</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① CubeMX 생성</td>
+<td><code>MX_GPIO_Init()</code></td>
+<td><code>MODER</code>=</td>
+<td></td>
+</tr>
+<tr>
+<td>② HAL 함수</td>
+<td><code>HAL_GPIO_WritePin()</code></td>
+<td><code>ODR</code>/<code>BSRR</code>=</td>
+<td></td>
+</tr>
+<tr>
+<td>③ 직접 레지스터</td>
+<td></td>
+<td><code>MODER</code>= , <code>BSRR</code>=</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>우리 팀의 답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>세 방법의 <strong>최종 레지스터 값</strong>이 같은가</td>
+<td>예 / 아니오</td>
+</tr>
+<tr>
+<td>다르다면 어디가 어떻게 다른가</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HAL_GPIO_WritePin()</code>은 내부에서 무엇을 쓰는가</td>
+<td></td>
+</tr>
+<tr>
+<td>CubeMX 생성 코드가 추가로 건드린 레지스터가 있는가</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>CubeMX 재생성 주의</strong></p>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>재생성해도 보존되는 구간의 이름은</td>
+<td></td>
+</tr>
+<tr>
+<td>그 밖에 쓴 코드는 어떻게 되는가</td>
+<td></td>
+</tr>
+<tr>
+<td>설정의 원본이 되는 파일은</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">2. 디버깅 기록 — 안 될 때 순서대로 확인한다<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
+<blockquote>
+<p>코드를 다시 읽지 말고 <strong>register view를 연다.</strong> 코드는 의도이고, 레지스터는 실제로 일어난 일이다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>확인 항목</th>
+<th>기대값</th>
+<th>실제값</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>주변장치 clock enable 비트</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPIO mode / AF / pull / output type</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>ODR</code>·<code>IDR</code> vs 실제 핀 전압(멀티미터)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>타이머 CNT 증가, status flag</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>reserved bit 보존 여부</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>막혔던 문제와 해결 과정</strong> (해결하지 못했으면 "확인 필요"라고 적고 무엇을 더 봐야 하는지 쓴다)</p>
+<table>
+<thead>
+<tr>
+<th>증상</th>
+<th>의심한 원인</th>
+<th>확인 방법</th>
+<th>실제 원인</th>
+<th>해결</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-8-hsi">3. 8주차 HSI와 대조<a class="headerlink" href="#3-8-hsi" title="Permanent link">¶</a></h3>
+<p>오늘 코드에 쓴 핀이 8주차에 확정한 HSI 표와 일치하는지 확인한다.</p>
+<table>
+<thead>
+<tr>
+<th>신호</th>
+<th>HSI 표의 핀</th>
+<th>오늘 코드의 핀</th>
+<th>일치?</th>
+<th>다르면 어느 쪽을 고쳤는가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ 핀을 바꿨다면 <strong>회로도 net · <code>.ioc</code> · HSI 표 · 시험 포인트</strong>를 함께 고쳐야 한다. 어디를 고쳐야 하는지 적는다.</p>
+</blockquote>
+<hr>
+<h3 id="4_1">4. 정리 — 이번 주에 새로 알게 된 것<a class="headerlink" href="#4_1" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>질문</th>
+<th>우리 팀의 답</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>레지스터에 값을 쓴다는 것은 물리적으로 무슨 뜻인가</td>
+<td></td>
+</tr>
+<tr>
+<td>클럭 enable을 빠뜨리면 왜 아무 일도 안 일어나는가</td>
+<td></td>
+</tr>
+<tr>
+<td>HAL을 쓰면서도 레지스터를 알아야 하는 이유는</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터">
+        
+          
+          <a href="../week09-kit/" class="md-footer__link md-footer__link--prev" aria-label="이전: 🗓️ 9주차 운영 키트">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                🗓️ 9주차 운영 키트
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week10-kit/" class="md-footer__link md-footer__link--next" aria-label="다음: 🗓️ 10주차 운영 키트">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                🗓️ 10주차 운영 키트
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/lightbox.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
