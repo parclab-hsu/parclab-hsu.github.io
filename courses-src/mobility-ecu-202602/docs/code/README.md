@@ -9,6 +9,7 @@
 | [`week10_adc_timer_uart.c`](week10_adc_timer_uart.c) | 10 | ADC(센서)·Timer PWM(모터)·UART(통신) 3종 |
 | [`week0506_bldc_hall.c`](week0506_bldc_hall.c) | 5·6 | 홀센서 6-step 정류 룩업테이블 |
 | [`week07_pi_control.c`](week07_pi_control.c) | 7 | PI 속도 제어기(안티 와인드업 포함) |
+| [`week07_pi_baseline.c`](week07_pi_baseline.c) | 7 | **검토 대상 baseline** — 결함 2곳이 들어 있다(활동 2용). 정상 구현은 위 파일 |
 | [`week15_scheduler.c`](week15_scheduler.c) | 15 | SysTick 스케줄러 + 인터럽트 통합 골격 |
 | [`amr_2wheel_drive.c`](amr_2wheel_drive.c) | AMR | 2륜 차동구동 — TB6612 H-브리지 |
 
