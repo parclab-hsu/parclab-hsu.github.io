@@ -18,6 +18,10 @@ noindex: true
 .nowrap {
   white-space: nowrap;
 }
+.md-typeset a[id^="kpi-reference-"] {
+  display: block;
+  scroll-margin-top: 5.5rem;
+}
 </style>
 
 # 연차별 목표와 성과지표
@@ -471,7 +475,7 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
   </tr>
   <tr>
     <td rowspan="6"><b>4차년도</b><br><small>12개월 · 표준화<br>4.5억</small></td>
-    <td rowspan="6">실패 재현–복구 생성–재학습–<b>실물 재검증 순환을 1회 이상 완주</b>하고 절차·벤치마크를 표준화<br><br><small><b>연차 완료 Gate (잠정)</b><br>실제 실패 재현율 ≥ 70 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 +10 %p 이상 · 제3자 절차 재현 ≥ 90 %</small></td>
+    <td rowspan="6">실패 재현–복구 생성–재학습–<b>실물 재검증 순환을 1회 이상 완주</b>하고 절차·벤치마크를 표준화<br><br><small><b>연차 완료 Gate (잠정)</b><br>실제 실패 재현율 ≥ 70 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 +15 %p 이상 · 제3자 절차 재현 ≥ 90 %</small></td>
     <td align="center">한성대 공통기반</td>
     <td><b>Real-to-Sim-to-Real 운용 가이드라인</b><br><small>제3자가 따라 하는 운용 문서</small></td>
     <td><small>통합 실증 및 활용 가이드</small></td>
@@ -585,12 +589,12 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
 > 표준화하며, 검증 피드백 기반 Tele-operation 데이터 **1,000시간**을 추가해 누적
 > **7,000시간**을 완성한다.
 
-**연차 완료 Gate (잠정)** — 실제 실패 재현율 **≥ 70 %** · **복구 데이터 확보율 ≥ 80 %** · 엣지 케이스 커버리지 **≥ 80 %** · 재학습–실물 재검증 순환 **1회 이상 완주** · **실제 성공률 + 10 %p 이상** · 제3자 절차 재현 **≥ 90 %**
+**연차 완료 Gate (잠정)** — 실제 실패 재현율 **≥ 70 %** · **복구 데이터 확보율 ≥ 80 %** · 엣지 케이스 커버리지 **≥ 80 %** · 재학습–실물 재검증 순환 **1회 이상 완주** · **실제 성공률 + 15 %p 이상** · 제3자 절차 재현 **≥ 90 %**
 
 **Human Data 완료조건** — Quality Gate 통과 Tele-operation 데이터 **1,000시간**, 4년 누적 **7,000시간** 확보
 
 **완료 판정** — 실패 재현 → 복구 데이터 생성 → 재학습 → 실물 재검증 순환이 **1회 이상
-완주**되고, 엣지·복구 데이터 적용 후 실제 성공률이 **+10 %p 이상** 향상된 것이 측정으로
+완주**되고, 엣지·복구 데이터 적용 후 실제 성공률이 **+15 %p 이상** 향상된 것이 측정으로
 제시됩니다. 실제 주요 실패의 **가상 재현율 ≥ 70 %**, 엣지 케이스 **커버리지 ≥ 80 %** 를
 확보하고, **제3자가 운용 가이드라인만으로 기준 시나리오를 ≥ 90 % 재현**할 수 있습니다.
 최종 **Geometry·Physics Twin 버전을 동결**하고, **6대 대표공정 트윈 패키지를 이관**합니다.
@@ -838,7 +842,7 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
     - ● SCI(E) 1편, 학술발표 2건, 특허 출원 1건 및 등록 1건 추진, Closed-loop RoboOps Toolchain SW 등록 1건
     - ● 컨소시엄 기술 의사결정 지원과 기술문서·자문 의견서 1건
 
-**연차 완료조건** — 실제 주요 실패 가상 재현율 ≥ 70 % · 복구 데이터 확보율 ≥ 80 % · 엣지 케이스 커버리지 ≥ 80 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 + 10 %p 이상 · Tele-operation 유효 데이터 1,000시간 및 4년 누적 7,000시간 확보 · 제3자 절차 재현 ≥ 90 % · 6대 대표공정 트윈 버전 동결·이관 완료
+**연차 완료조건** — 실제 주요 실패 가상 재현율 ≥ 70 % · 복구 데이터 확보율 ≥ 80 % · 엣지 케이스 커버리지 ≥ 80 % · 재학습–실물 재검증 순환 1회 이상 완주 · 실제 성공률 + 15 %p 이상 · Tele-operation 유효 데이터 1,000시간 및 4년 누적 7,000시간 확보 · 제3자 절차 재현 ≥ 90 % · 6대 대표공정 트윈 버전 동결·이관 완료
 
 **지원 산출물 인수조건(모빌테크)** — 최종 실증공간 Asset 갱신 완료와 6대 대표공정 Geometry Twin 버전 동결
 ---
@@ -903,7 +907,7 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
 
 ## 핵심 KPI
 
-측정 대상과 방법이 드러나도록 정의했습니다. **본 목표값은 제안 기준**이며, 1차년도에
+측정 대상과 방법이 드러나도록 정의했습니다. **<span class="nowrap">본 목표값은</span> 제안 기준**이며, 1차년도에
 대표 작업·소재·실증환경의 **기준선을 실측해 세부 시험조건과 통계설계를 확정**합니다.
 **KPI 의 평가방향과 최소 목표수준은 유지합니다.** 반복횟수(20·30·50회)는 실증기관의
 시험시간·비용과 함께 협약 전에 확인합니다.
@@ -913,46 +917,80 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
     **핵심 KPI** 는 과제 전체의 성능을 재는 **성과 지표**입니다. 값이 겹치는 항목이
     있지만 같은 지표로 인용하지 않습니다.
 
-!!! info "세계 최고·국내 수준 비교의 해석 기준 — 2026-09-04 공개자료 기준"
-    8개 KPI와 **분모·시험조건·산식이 모두 같은 국제 공인 순위는 없습니다.** 따라서
-    `세계 최고 공개수준`에는 과제 KPI와 가장 가까운 최신 공개 연구의 수치와 보유국·기관/기업을
-    기재하고, 지표가 다르면 그 차이를 함께 표시했습니다. `연구개발 전 국내 수준`은 공개 확인
-    범위의 수준이며, `공개치 미확인`은 국내 기술 부재가 아니라 **동일 프로토콜의 비교 가능한
-    정량값이 공개되지 않았음**을 뜻합니다. 국내 수치는 1차년도 동일 시험조건의 기준선 실측 후
-    대체·확정합니다.
+!!! info "SOTA 및 국내 기준 선정 원칙 — 2026-09-07 공개자료 기준"
+    최근 3년 이내 공개된 논문·공식 기술자료 중 **실로봇 검증**, 본 과제의
+    Real-to-Sim-to-Real·변형체 물리정합·Zero-shot/OOD·실패복구와의 관련성,
+    <span class="nowrap">시험조건·표본 수·산식</span>의 확인 가능성을 기준으로 선정했습니다. 근거 수준은
+    `동일 지표 직접 비교`, <code class="nowrap">공개 원자료 환산</code>, `유사 선도사례`, `과제 자체지표`로 구분합니다.
+    동일 지표의 공개 정량값이 없으면 이를 SOTA로 단정하지 않고 1차년도 동일 프로토콜
+    기준선 또는 자체 Validation 기준으로 목표를 확정합니다.
 
-| # | KPI | 목표 | 세계 최고 공개수준<br><small>보유국·기관/기업</small> | 연구개발 전 국내 수준<br><small>공개 확인 기준</small> | 측정 방법 |
-|:--:|---|---|---|---|---|
-| 1 | **대표 작업의 접촉력 재현오차** | **≤ 20 %** | **미국** · Columbia Univ.·SceniX·Google DeepMind — 연성체 Digital Twin의 물성 보정 공개, 동일 접촉력 NRMSE는 미공개 <sup><a href="#kpi-reference-1">[주 1]</a></sup> | 개별 물성보정 사례는 있으나 동일 F/T 곡선 NRMSE 공개치 미확인 | 동일한 물체·자세·속도에서 실제 힘 센서값과 가상환경값을 비교 |
-| 2 | **대표 소재의 잔류변형 재현오차** | **≤ 25 %** | **미국** · Columbia Univ.·SceniX·Google DeepMind — 영상 기반 연성체 물리 보정 공개, 동일 잔류변형 정규화오차는 미공개 <sup><a href="#kpi-reference-1">[주 1]</a></sup> | 개별 연성체 시뮬레이션 중심이며 반복하중 잔류변형 공개치 미확인 | 선정한 소재와 반복하중 조건에서 작업 전후의 실제 형상과 가상 형상을 비교 |
-| 3 | **실제–가상 작업 성공률 차이** | **≤ 20 %p** | **미국** · Columbia Univ.·SceniX·Google DeepMind — 실제–가상 성공률 상관 **r = 0.901~0.944** <sup><a href="#kpi-reference-1">[주 1]</a></sup><br><small>상관계수로서 절대 %p 차이와는 다른 지표</small> | 동일 초기상태·반복수로 짝지은 Sim–Real 성공률 차이 공개치 미확인 | 같은 작업·조건에서 가상환경과 실제 로봇의 성공률 차이 |
-| 4 | **주요 실패유형별 복구 데이터 확보율** | **≥ 80 %** | **중국·캐나다** · Current Robotics·Tsinghua·Peking·Toronto — Hi-WM rollback·branching 후 실제 성공률 **+37.9 %p** <sup><a href="#kpi-reference-2">[주 2]</a></sup><br><small>실패유형 coverage는 미공개</small> | 성공 시연 중심이며 Failure Taxonomy별 Recovery Coverage 공개치 미확인 | 사전에 정한 주요 실패유형 중 유효한 복구 시나리오와 데이터가 확보된 비율 |
-| 5 | **엣지 케이스 데이터 검수 완료율** | **≥ 90 %** | **중국** · Shanghai AI Lab 연구팀 — SIM1의 궤적 품질 필터링 공개, 동일 검수 완료율은 미공개 <sup><a href="#kpi-reference-3">[주 3]</a></sup> | 기관별 내부 검수 중심이며 생성 전체 대비 검수 완료율 공개치 미확인 | 생성 데이터 중 검수가 완료된 비율 |
-| 6 | **실제 주요 실패의 가상환경 재현율** | **≥ 70 %** | **미국** · Columbia Univ.·SceniX·Google DeepMind — 실제–가상 정책 성능 상관 **r > 0.9** <sup><a href="#kpi-reference-1">[주 1]</a></sup><br><small>실패 재현율과는 다른 지표</small> | 고장주입·HILS 개별 검증 중심이며 실제 실패목록 대비 재현율 공개치 미확인 | 실제로 발생한 주요 실패를 가상환경에서 다시 만들어 낸 비율 |
-| 7 | **학습하지 않은 물체·배치·물성조건 성능 유지율** | **≥ 70 %** | **중국** · Shanghai Jiao Tong Univ.·Horizon Robotics·Style3D — SimWeaver 5개 변형 작업 Zero-shot 실물 성공률 **91.30 %** <sup><a href="#kpi-reference-4">[주 4]</a></sup><br><small>기준환경 대비 유지율과는 다른 지표</small> | 개별 Sim-to-Real 실증은 있으나 미학습 물체·배치·물성 유지율 공개치 미확인 | 미학습 조건에서 기준환경 대비 작업성공률 |
-| 8 | **엣지 케이스·복구 데이터 적용 후 실제 성공률 향상** | **+ 10 %p 이상** | **중국·캐나다** · Current Robotics·Tsinghua·Peking·Toronto — Hi-WM 실제 성공률 **+37.9 %p** <sup><a href="#kpi-reference-2">[주 2]</a></sup><br>**중국** · Shanghai AI Lab 연구팀 — SIM1 일반화 성능 **+50 %** <sup><a href="#kpi-reference-3">[주 3]</a></sup> | Edge/Recovery 재학습 전후 동일 실물시험의 성공률 개선 공개치 미확인 | 생성 데이터로 재학습한 모델의 실제 로봇 성공률 변화 |
+### 제안서 기입용 현재 기준값과 최종목표
+
+| # | 평가항목 | 비중 | 현재 국제 공개 기준값·근거 유형 | 연구개발 전 국내 수준 | 4차년도 최종목표 |
+|:--:|---|:--:|---|---|:--:|
+| 1 | **접촉력 재현오차** | 12 % | **2.75 %** · 중국 SUSTech의 단일 로봇 연마공정 평균 상대오차 <sup><a href="#kpi-reference-1">[주 1]</a></sup><br><small>유사 선도사례: 본 과제 NRMSE 및 6대 공정 통합조건과는 다름</small> | 동일 F/T 곡선 NRMSE 공개치 미확인 | **≤ 20 %** |
+| 2 | **잔류변형 재현오차** | 8 % | 동일 반복하중·정규화 산식의 공개값 미확인 <sup><a href="#kpi-reference-2">[주 2]</a></sup><br><small>과제 자체지표</small> | 동일 지표 공개치 미확인 | **≤ 25 %** |
+| 3 | **실제–가상 작업 성공률 차이** | 12 % | 미국 Columbia Univ.·SceniX·Google DeepMind의 성공률 상관 **r = 0.901~0.944**, MMRV **0.076~0.174** <sup><a href="#kpi-reference-2">[주 2]</a></sup><br><small>유사 선도사례: 절대 %p 차이와 다른 지표</small> | 짝지은 Sim–Real 성공률 차이 공개치 미확인 | **≤ 20 %p** |
+| 4 | **주요 실패유형별 복구 데이터 확보율** | 10 % | Hi-WM의 rollback·branching 및 실제 성공률 **+37.9 %p** <sup><a href="#kpi-reference-3">[주 3]</a></sup><br><small>유사 선도사례: Failure Taxonomy coverage는 미공개</small> | Failure Taxonomy별 Recovery Coverage 공개치 미확인 | **≥ 80 %** |
+| 5 | **Edge Case 데이터 검수 완료율** | 8 % | SIM1의 합성궤적 Quality Filtering·Pass Rate 공개 <sup><a href="#kpi-reference-4">[주 4]</a></sup><br><small>과제 자체지표: 생성 전체 대비 검수 완료율은 미공개</small> | 동일 지표 공개치 미확인 | **≥ 90 %** |
+| 6 | **실제 주요 실패의 가상환경 재현율** | 12 % | **82.9 %** · Real-to-Sim replay confusion matrix에서 본 과제 산식으로 환산 <sup><a href="#kpi-reference-2">[주 2]</a></sup><br><small><span class="nowrap">공개 원자료 환산</span>: 논문 직접 기재값이 아님</small> | 실제 실패목록 대비 가상 재현율 공개치 미확인 | **≥ 70 %** |
+| 7 | **미학습조건 성능 유지율** | 12 % | SimWeaver의 5개 변형 작업 Zero-shot 실물 성공률 **91.30 %** <sup><a href="#kpi-reference-5">[주 5]</a></sup> · SIM1 Zero-shot 성공률 **90 %** <sup><a href="#kpi-reference-4">[주 4]</a></sup><br><small>유사 선도사례: 기준조건 대비 유지율과는 다른 지표</small> | 미학습 물체·배치·물성 유지율 공개치 미확인 | **≥ 70 %** |
+| 8 | **Edge/Recovery 데이터 적용 후 실제 성공률 향상** | 10 % | 미국 MERL ReCoVLA: 무복구 base 대비 **+35 %p**, 최우수 비교기법 대비 **+18.3 %p** <sup><a href="#kpi-reference-6">[주 6]</a></sup><br><small class="nowrap">공개 원자료 환산</small> | 한국생산기술연구원·성균관대학교: **+14.4 %p** <sup><a href="#kpi-reference-7">[주 7]</a></sup> | **≥ +15 %p** |
+| 9 | **Tele-operation 유효 실로봇 데이터 확보량** | 16 % | 국제 SOTA 비교 대상이 아닌 RFP·기관 책임물량 기반 구축성과<br><small>과제 자체지표</small> | 동일 산정규칙의 공개치 미확인 | **누적 ≥ 7,000시간** |
+
+### 연차별 개발 목표치
+
+| # | 평가항목 | 1차년도 | 2차년도 | 3차년도 | 4차년도 |
+|:--:|---|:--:|:--:|:--:|:--:|
+| 1 | 접촉력 재현오차 | — | **≤ 30 %** | **≤ 25 %** | **≤ 20 %** |
+| 2 | 잔류변형 재현오차 | — | **≤ 35 %** | **≤ 30 %** | **≤ 25 %** |
+| 3 | 실제–가상 작업 성공률 차이 | — | — | **≤ 25 %p** | **≤ 20 %p** |
+| 4 | 주요 실패유형별 복구 데이터 확보율 | — | — | **≥ 70 %** | **≥ 80 %** |
+| 5 | Edge Case 데이터 검수 완료율 | — | — | **≥ 85 %** | **≥ 90 %** |
+| 6 | 실제 주요 실패의 가상환경 재현율 | — | — | **≥ 60 %** | **≥ 70 %** |
+| 7 | 미학습조건 성능 유지율 | — | **≥ 60 %** | **≥ 65 %** | **≥ 70 %** |
+| 8 | Edge/Recovery 데이터 적용 후 실제 성공률 향상 | — | — | — | **≥ +15 %p** |
+| 9 | Tele-operation 유효 실로봇 데이터 확보량 | **≥ 1,000시간** | **누적 ≥ 3,000시간** | **누적 ≥ 6,000시간** | **누적 ≥ 7,000시간** |
 
 ### 제안서 주석용 출처
 
-<a id="kpi-reference-1"></a>**[주 1] KPI 1·2·3·6.** Zhang, Kaifeng, et al. “Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions.” *arXiv preprint* arXiv:2511.04665 (2025). [DOI](https://doi.org/10.48550/arXiv.2511.04665) · [arXiv](https://arxiv.org/abs/2511.04665) · <a class="nowrap" href="https://real2sim-eval.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 4.).</span>
+<a id="kpi-reference-1"></a>**[주 1] KPI 1.** Zhou, Yongcan, et al. “Variable Time-Step Physics Engine with Continuous Compliance Contact Model for Optimal Robotic Grinding Trajectory Planning.” *Sensors* 24.5 (2024): 1415. [DOI](https://doi.org/10.3390/s24051415) · [원문](https://www.mdpi.com/1424-8220/24/5/1415) <span class="nowrap">(접속일: 2026. 9. 7.).</span>
 
-<a id="kpi-reference-2"></a>**[주 2] KPI 4·8.** Li, Yaxuan, et al. “Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training.” *arXiv preprint* arXiv:2604.21741 (2026). [DOI](https://doi.org/10.48550/arXiv.2604.21741) · [arXiv](https://arxiv.org/abs/2604.21741) · <a class="nowrap" href="https://hi-wm.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 4.).</span>
+<a id="kpi-reference-2"></a>**[주 2] KPI 2·3·6.** Zhang, Kaifeng, et al. “Real-to-Sim Robot Policy Evaluation with Gaussian Splatting Simulation of Soft-Body Interactions.” *arXiv preprint* arXiv:2511.04665 (2025). [DOI](https://doi.org/10.48550/arXiv.2511.04665) · [arXiv](https://arxiv.org/abs/2511.04665) · <a class="nowrap" href="https://real2sim-eval.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 7.).</span>
 
-<a id="kpi-reference-3"></a>**[주 3] KPI 5·8.** Zhou, Yunsong, et al. “SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds.” *arXiv preprint* arXiv:2604.08544 (2026). [DOI](https://doi.org/10.48550/arXiv.2604.08544) · [arXiv](https://arxiv.org/abs/2604.08544) · <a class="nowrap" href="https://internrobotics.github.io/sim1.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 4.).</span>
+<a id="kpi-reference-3"></a>**[주 3] KPI 4.** Li, Yaxuan, et al. “Hi-WM: Human-in-the-World-Model for Scalable Robot Post-Training.” *arXiv preprint* arXiv:2604.21741 (2026). [DOI](https://doi.org/10.48550/arXiv.2604.21741) · [arXiv](https://arxiv.org/abs/2604.21741) · <a class="nowrap" href="https://hi-wm.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 7.).</span>
 
-<a id="kpi-reference-4"></a>**[주 4] KPI 7.** Hu, Wenkang, et al. “SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation.” *arXiv preprint* arXiv:2606.15338 (2026). [DOI](https://doi.org/10.48550/arXiv.2606.15338) · [arXiv](https://arxiv.org/abs/2606.15338) · <a class="nowrap" href="https://simweaver.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 4.).</span>
+<a id="kpi-reference-4"></a>**[주 4] KPI 5·7.** Zhou, Yunsong, et al. “SIM1: Physics-Aligned Simulator as Zero-Shot Data Scaler in Deformable Worlds.” *arXiv preprint* arXiv:2604.08544 (2026). [DOI](https://doi.org/10.48550/arXiv.2604.08544) · [arXiv](https://arxiv.org/abs/2604.08544) · <a class="nowrap" href="https://internrobotics.github.io/sim1.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 7.).</span>
+
+<a id="kpi-reference-5"></a>**[주 5] KPI 7.** Hu, Wenkang, et al. “SimWeaver: Zero-Shot RGB Sim-to-Real for Deformable Manipulation.” *arXiv preprint* arXiv:2606.15338 (2026). [DOI](https://doi.org/10.48550/arXiv.2606.15338) · [arXiv](https://arxiv.org/abs/2606.15338) · <a class="nowrap" href="https://simweaver.github.io/">프로젝트 페이지</a> <span class="nowrap">(접속일: 2026. 9. 7.).</span>
+
+<a id="kpi-reference-6"></a>**[주 6] KPI 8.** Hu, Haodi, et al. “ReCoVLA: VLM-Guided Reward Compilation for Failure Recovery in Vision-Language-Action Policies.” *arXiv preprint* arXiv:2606.09630 (2026). [DOI](https://doi.org/10.48550/arXiv.2606.09630) · [arXiv](https://arxiv.org/abs/2606.09630) <span class="nowrap">(접속일: 2026. 9. 7.).</span>
+
+<a id="kpi-reference-7"></a>**[주 7] KPI 8 국내 수준.** Im, Subin, and Jaeseon Lee. “Unified Sim-and-Real Scoring Methods for Robot Policy Selection.” *Journal of Korea Robotics Society* 20.3 (2025): 371–380. [DOI](https://doi.org/10.7746/jkros.2025.20.3.371) · [원문 PDF](https://jkros.org/xml/46105/46105.pdf) <span class="nowrap">(접속일: 2026. 9. 7.).</span>
+
+!!! note "SOTA 수치의 환산·비교 방법"
+    - **KPI 3:** 인용 논문이 직접 보고한 값은 Pearson 상관계수와 MMRV입니다. 절대 성공률 차이
+      `0.99~8.33 %p`는 원자료·대상 Task·산식이 함께 제시되지 않으면 SOTA 값으로 사용하지 않습니다.
+    - **KPI 6:** Table VIII의 실제 실패 386건 중 가상환경에서도 실패로 재현된 320건을 사용해
+      `320 ÷ 386 × 100 = 82.9 %`로 환산했습니다. 논문 직접 기재값이 아닌 **본 과제 산출값**입니다.
+    - **KPI 7:** 90 %·91.30 %는 각각 논문의 Zero-shot 성공률이며, 본 과제의
+      <code class="nowrap">미학습 성공률 ÷ 기준환경 성공률</code>과는 다른 유사지표입니다.
+    - **KPI 8:** ReCoVLA 실로봇 평균 `27 % → 62 %`에서 **+35 %p**, 최우수 비교기법 대비
+      **+18.3 %p**를 구분합니다. 국내 Illy-Net은 `77.3 % → 91.7 %`에서 **+14.4 %p**입니다.
 
 !!! note "국내 수준 표기의 주석 작성 기준"
-    `공개치 미확인`은 **국내 기술 부재를 의미하지 않습니다.** 2026년 9월 4일 현재 공개 접근이
+    `공개치 미확인`은 **국내 기술 부재를 의미하지 않습니다.** 2026년 9월 7일 현재 공개 접근이
     가능한 자료에서 <span class="nowrap">본 과제와</span> 동일한 분모·시험조건·산식의 정량값을
     <span class="nowrap">확인하지 못했다는</span> 뜻입니다. 기업 내부자료와 비공개 실증결과는
     조사 범위에서 제외했으며, 제안서에는 <span class="nowrap">이 한계를</span> 함께
     주석으로 밝히고 1차년도 동일 프로토콜 기준선 실측값으로 대체합니다.
 
-**6·7·8번은 새로 제안하는 지표입니다.**
+**6·7·8번은 최종 효과지표이고, 9번은 한성대학교 책임 구축성과입니다.**
 6번은 실환경–가상환경 연계와 엣지 케이스 생성 능력을 직접 보여주고,
 7번은 확정 역할 ② **Zero-shot Transfer** 를 그대로 평가하며,
-8번은 **만든 데이터가 실제 성능 개선으로 이어졌는지**를 보는 최종 성과지표입니다.
+8번은 **만든 데이터가 실제 성능 개선으로 이어졌는지**를 보며,
+9번은 Quality Gate를 통과한 Tele-operation 실로봇 채널시간을 누적 관리합니다.
 
 ### KPI 측정 정의 — 분모 · 산식 · 반복 · 통계
 
@@ -969,6 +1007,7 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
 | 6 | 실제 발생 실패 로그 | **1차년도에 고정한 실패유형 수·로그 수** 안의 승인된 주요 실패만 | 건별 5회 이상 | 가상 재현 성공 건수 ÷ 실제 실패 건수. **성공** = 동일 Failure Type 발생 · Trigger 조건 일치 · 핵심 물리량 허용오차 내 · 실패 발생 단계와 결과 일치 | 비율 | 4차 |
 | 7 | 기준환경 작업성공률 | **미학습 물체 / 배치 / 물성 / 복합조건을 각각 분리** | 조건당 30회 이상 | 미학습 성공률 ÷ 기준환경 성공률 — **조건별 Macro-average 와 최소값을 함께 보고**, 측정은 경량 적응 **전** | 평균 ± 95 % CI | 3·4차 |
 | 8 | 재학습 전 실제 성공률 | 동일 실물 시험 조건 | 전후 각 50회 이상 | 재학습 후 − 재학습 전 (%p) — **동일 모델·초기 Checkpoint·학습예산·Epoch·Batch**, 바뀌는 것은 Edge/Recovery 증강 데이터뿐. 성공률과 함께 **안전위반·Recovery Rate** 보고 | Wilson 95 % CI | 4차 |
+| 9 | ROS 2·LeRobot 기록과 Quality Gate | **검수 통과 실로봇 Episode의 채널시간** | 전수 | 유효 채널시간 합계 — 준비·대기·정비·중복 Episode·Simulation·자율수집 제외 | 누적 시간 | 1~4차 |
 
 !!! warning "검수 완료율과 유효 데이터 비율은 다른 지표입니다"
     네 지표가 비슷해 보이지만 분모가 각각 다릅니다.
@@ -1005,7 +1044,7 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
 | **① Real-to-Sim-to-Real** | KPI 1 접촉력 **≤ 20 %** · KPI 2 잔류변형 **≤ 25 %** · KPI 3 실제–가상 성공률 차이 **≤ 20 %p** · KPI 6 실제 실패 재현율 **≥ 70 %** |
 | **② Zero-shot Transfer** | KPI 7 미학습조건 성능 유지율 **≥ 70 %** · 적응 후 성능 회복률 **≥ 90 %** · 전이 판정 일치도 **≥ 80 %** |
 | **③ 엣지 케이스 시뮬레이션** | KPI 4 복구 데이터 확보율 **≥ 80 %** · KPI 5 검수 완료율 **≥ 90 %** · KPI 6 실패 재현율 **≥ 70 %** |
-| **② + ③ 최종성과** | Edge/Recovery 데이터 적용 후 실제 성공률 **+ 10 %p 이상** |
+| **② + ③ 최종성과** | Edge/Recovery 데이터 적용 후 실제 성공률 **+ 15 %p 이상** |
 | **④ 학술·자문** | 논문·특허·SW·표준·기술문서와 제3자 절차 재현성 **≥ 90 %** |
 
 !!! note "KPI 7·8 의 주관은 한성대학교입니다"
