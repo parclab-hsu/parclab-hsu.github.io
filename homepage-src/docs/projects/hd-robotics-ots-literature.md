@@ -197,3 +197,6 @@ RoboDK는 Creaform C-Track을 이용하는 로봇 보정 절차를 공식 문서
 ---
 
 [:octicons-arrow-left-24: 연구개발 계획서로 돌아가기](hd-robotics-ots-calibration.md) · [프로젝트 목록](../projects.md)
+
+
+[개발 컨셉·세부 사양 및 설계 시뮬레이션](hd-robotics-ots-concept.md)에서 문헌 검토를 반영한 시제품 후보와 합성 데이터 분석을 확인할 수 있다.

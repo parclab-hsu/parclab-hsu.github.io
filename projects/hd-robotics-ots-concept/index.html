@@ -1,0 +1,1316 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PARC Lab · Physical AI Real-Time Control for Mobility & Robotics · 한성대학교 미래모빌리티학과">
+      
+      
+        <meta name="author" content="KyungBok Lee">
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/projects/hd-robotics-ots-concept/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>HD로보틱스 — 개발 컨셉·세부 사양·설계 시뮬레이션 - PARC Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hd" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="PARC Lab" class="md-header__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PARC Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HD로보틱스 — 개발 컨셉·세부 사양·설계 시뮬레이션
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연구분야
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  프로젝트
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../people/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  구성원
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  논문·성과
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../courses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  강의
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../news/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  소식
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연락처
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PARC Lab" class="md-nav__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    PARC Lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구분야
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../people/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    구성원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    논문·성과
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소식
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연락처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 시스템 개발 컨셉
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 카메라·광학·동기화 사양안
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 마커 툴 상세 설계
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 정밀도와 오차 예산 설계
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 시뮬레이션 방법과 재현 조건
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 시뮬레이션 방법과 재현 조건">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기하학적 민감도
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        몬테카를로 계산
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 실행 결과
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 실행 결과">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계에 반영할 결론
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 시제품 시험과 다음 시뮬레이션
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 다운로드와 재현
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hd">HD로보틱스 — 개발 컨셉·세부 사양·설계 시뮬레이션<a class="headerlink" href="#hd" title="Permanent link">&para;</a></h1>
+<p><strong>계획 중 · 설계 후보 및 수치 시뮬레이션</strong> · 검토일 2026-09-07</p>
+<p><a href="../hd-robotics-ots-calibration/">개발 계획서</a> · <a href="../hd-robotics-ots-literature/">핵심 논문·기술 동향</a></p>
+<div class="admonition abstract">
+<p class="admonition-title">설계 방향</p>
+<p><strong>정지 측정용 적외선 스테레오 헤드 + 비대칭 6점 강체 마커 + 자동 보정 SW</strong>를 기본 구조로 제안한다. 2~3 m 거리, 600 mm 카메라 기준선, 12 mm 렌즈를 출발점으로 삼고, 16 mm 렌즈와 확대 마커를 비교한다. 실측 센서 데이터가 없는 단계이므로 아래 결과는 설계 민감도 분석이며, OTS 또는 로봇의 달성 성능이 아니다.</p>
+</div>
+<h2 id="1">1. 시스템 개발 컨셉<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    R[로봇 플랜지·TCP] --- M[비대칭 적외선 강체 마커]
+    M --&gt; L[좌측 글로벌 셔터 카메라]
+    M --&gt; C[우측 글로벌 셔터 카메라]
+    S[공통 트리거·마커 구동] --&gt; L
+    S --&gt; C
+    S --&gt; M
+    L --&gt; P[검출·ID·스테레오 복원]
+    C --&gt; P
+    P --&gt; T[강체 자세·TCP 변환·품질 판정]
+    T --&gt; A[기존 보정 알고리즘]
+    Q[로봇 관절값·취득 시각] --&gt; A
+    A --&gt; V[보정값 검토·적용·복원 관리]
+    V --&gt; R
+    R --&gt; I[독립 기준 계측·최종 검증]</code></pre>
+<p>초기 시제품은 검증된 산업용 카메라·렌즈를 활용하고, 스테레오 하우징, 마커 툴, 트리거·구동 회로, 교정·추적·연동 SW를 개발하는 안이다. 이미지 센서 및 카메라 전자회로 자체 설계는 별도 범위로 둔다. 2대 구성으로 가시성과 정확도를 먼저 확인하고, 추가 카메라 도입은 가려짐 시험 결과에 따라 판단한다.</p>
+<p>측정 헤드는 로봇 베이스와 독립된 강성 지지대에 설치한다. 카메라 사이의 상대 위치·각도가 유지되도록 초점·조리개·체결을 고정하고 온도를 기록한다. 마커가 보이지 않는 구간에서는 측정을 중단·재시도하며, 추정값을 검수용 실측값으로 대체하지 않는다.</p>
+<h2 id="2">2. 카메라·광학·동기화 사양안<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>다음은 구매 확정 사양이 아닌 <strong>시제품 설계 요구안</strong>이다. 제품의 공개 사양과 본 과제의 설계 목표를 구분한다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>1차 설계 후보</th>
+<th>선정·검증 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>카메라</td>
+<td>흑백 글로벌 셔터 2대, 2448 × 2048급</td>
+<td>두 카메라 동시 노출, 영상 누락·노출 편차 확인</td>
+</tr>
+<tr>
+<td>픽셀 크기</td>
+<td>계산 기준 3.45 μm</td>
+<td>센서 교체 시 픽셀 단위 초점거리와 시야 재계산</td>
+</tr>
+<tr>
+<td>렌즈</td>
+<td>C-mount, 2/3인치 센서 대응, 12 mm 기본·16 mm 비교</td>
+<td>선택 파장에서 초점·투과율·왜곡·주변부 중심 검출 성능 평가</td>
+</tr>
+<tr>
+<td>기준선</td>
+<td>600 mm 기본, 400 mm 비교</td>
+<td>기준선을 늘리면 깊이 민감도는 개선되지만 공통 시야가 감소</td>
+</tr>
+<tr>
+<td>측정 거리</td>
+<td>초기 2~3 m, 4 m는 확장 시험</td>
+<td>마커 전체의 공통 시야·유효 계측률로 영역 판정</td>
+</tr>
+<tr>
+<td>촬영·출력</td>
+<td>촬영 60 fps 목표, 정지 측정 30프레임 평균 후보</td>
+<td>평균화 취득만 약 0.5초; 이동·안정화·ID·연산 시간은 별도</td>
+</tr>
+<tr>
+<td>노출</td>
+<td>0.2~2 ms 탐색 범위</td>
+<td>광량 시험으로 확정; 포화·번짐·잔류 진동 억제</td>
+</tr>
+<tr>
+<td>영상</td>
+<td>원시 흑백, 지원되는 10/12 bit 취득 모드 검토</td>
+<td>감마·자동 노출·자동 게인은 계측 시 고정, 유효 비트수 확인</td>
+</tr>
+<tr>
+<td>파장·필터</td>
+<td>850 nm 능동 마커 우선 검토, 대역폭 20~40 nm 후보</td>
+<td>LED 스펙트럼·필터 입사각·렌즈 투과율·센서 감도를 함께 실측</td>
+</tr>
+<tr>
+<td>중심 검출</td>
+<td>단일 프레임·각 영상축 잡음 σ = 0.03 px를 설계 가정</td>
+<td>실제 달성 여부 미확인; σ = 0.10 px 조건도 계산</td>
+</tr>
+<tr>
+<td>동기화</td>
+<td>공통 하드웨어 트리거, 노출 시작 차이 10 μs 이하 목표</td>
+<td>오실로스코프·노출 신호로 지터와 지연 검증; PC 수신시각으로 대체하지 않음</td>
+</tr>
+<tr>
+<td>전송</td>
+<td>카메라별 독립 USB3 경로 또는 동등 대역폭</td>
+<td>5 MP × 2대 × 60 fps × 8 bit ≈ 602 MB/s 원시 데이터; 16 bit 저장 시 약 1.20 GB/s, 오버헤드 별도</td>
+</tr>
+<tr>
+<td>열·기구 안정성</td>
+<td>카메라·프레임 온도 기록, 워밍업 후 교정</td>
+<td>온도 변화·재체결 후 기준 길이·기준 자세로 재확인</td>
+</tr>
+</tbody>
+</table>
+<p>하드웨어급 비교 사례로 Basler acA2440-75um은 공식 문서에 5 MP, 기본 2448 × 2048, 3.45 μm 픽셀, 글로벌 셔터, 기본 75 fps 및 하드웨어 트리거를 제시한다. <strong>해당 문서의 Spectrum 표기는 Visible</strong>이므로, 이 모델을 850 nm OTS용으로 선정한 것은 아니다. 근적외선 감도·광량·중심 검출 시험을 통과하는 센서와 광학계를 최종 선정한다. <a href="https://docs.baslerweb.com/aca2440-75um">제조사 사양</a></p>
+<p>60 fps 목표는 데이터 전송·노출·처리 시간을 포함해 검증한다. LED의 연속·펄스 전류, 발열, 구동 듀티는 부품 선정 후 결정한다. 광출력 수치나 0.03 px 성능을 부품 사양만으로 확정하지 않는다.</p>
+<h2 id="3">3. 마커 툴 상세 설계<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설계 후보</th>
+<th>개발 항목</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기본 형상</td>
+<td>비대칭·비공면 6점, 중심점 배치 외곽 약 210 × 145 × 90 mm</td>
+<td>유사 거리 패턴·좌우 대응 모호성·가려짐 검사</td>
+</tr>
+<tr>
+<td>크기 비교</td>
+<td>기본의 0.5배 / 1배 / 1.5배</td>
+<td>확대안 외곽 약 315 × 217.5 × 135 mm; 충돌·관성·장착 공간과 비교</td>
+</tr>
+<tr>
+<td>발광부</td>
+<td>850 nm LED와 확산부, 유효 발광 지름 6~10 mm 후보</td>
+<td>12 mm 렌즈에서 2~3 m 거리의 이상적 투영 지름 약 7~17 px; 실제 광점은 광학계·포화에 따라 변함</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>강체의 비대칭 기하 패턴 기본, 점멸 코드 보조 후보</td>
+<td>코드 길이에 따른 재인식 지연·동기·잘못된 ID 비율 검증</td>
+</tr>
+<tr>
+<td>관측 점수</td>
+<td>정상 6점, 검수용 최소 4점 제안</td>
+<td>점 수와 함께 배치·잔차·공분산 확인; 3점 이하이면 제안 정책상 재측정</td>
+</tr>
+<tr>
+<td>TCP 이격</td>
+<td>마커 중심에서 300 mm 이하 우선, 가능한 한 단축</td>
+<td>실제 툴 형상 기준; 회전 오차에 따른 TCP 오차를 별도 평가</td>
+</tr>
+<tr>
+<td>장착</td>
+<td>위치결정 핀·강성 체결, 케이블 하중 분리</td>
+<td>반복 장착과 부하별 휨 측정, 마커–TCP 재정합</td>
+</tr>
+<tr>
+<td>형상 교정</td>
+<td>각 발광 중심의 3차원 좌표를 실측해 모델 저장</td>
+<td>CAD 좌표를 참값으로 사용하지 않음; 중심의 관측각 의존성 평가</td>
+</tr>
+<tr>
+<td>질량·무게중심</td>
+<td>대상 로봇과 툴의 잔여 허용 하중으로 결정</td>
+<td>구조 설계 후 질량·관성·처짐 계산; 현 단계 확정 질량 없음</td>
+</tr>
+</tbody>
+</table>
+<p>대응 관계를 알고 있는 비공선 3점으로도 강체 자세를 구할 수 있지만, 이 계획은 중복 관측과 품질 판단을 위해 <strong>검수용 4점 이상</strong>을 제안한다. 4점 관측만으로 정확도가 보장되지는 않는다. 카메라별 관측 가능 점과 강체 조건을 함께 확인한다.</p>
+<p><img alt="6점 마커와 TCP 이격의 시뮬레이션 형상" src="../../assets/ots/marker.png" /></p>
+<p>그림의 점은 발광 중심이며 제작 도면이 아니다. 시뮬레이션은 코드에 공개한 6개 좌표를 무게중심 원점으로 옮겨 사용한다. 4점 조건은 M1~M4만 남기는 한 가지 누락 패턴이다. 모든 가려짐 조합이나 실제 로봇 구조물의 차폐를 계산한 결과는 아니다.</p>
+<p>능동 마커를 우선 검토하되, 수동 반사 마커와의 비교시험도 수행한다. 능동형은 전원·동기·발열·발광각을, 수동형은 카메라 근접 조명·입사각·주변 반사체 오검출을 평가한다. 확산부·반사구의 크기가 곧 중심 위치 정확도를 의미하지 않는다.</p>
+<h2 id="4">4. 정밀도와 오차 예산 설계<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>최종 로봇 목표는 기존 계획의 <strong>위치 0.5 mm, 자세 0.1° 이하</strong>이다. OTS에는 별도의 초기 설계 배분안으로 <strong>TCP 위치 오차 P95 0.15 mm 이하, 자세 오차 P95 0.03° 이하</strong>를 제안한다. 이는 논문 실적이나 확정 검수 규격이 아니며, 아래 합성 데이터 민감도 분석과 실측 오차 예산을 바탕으로 조정할 내부 설계 기준이다.</p>
+<table>
+<thead>
+<tr>
+<th>오차 항목</th>
+<th>관리 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>영상 중심 검출 잡음</td>
+<td>거리·광량·마커 각도별 반복 측정, 시간 상관 확인</td>
+</tr>
+<tr>
+<td>카메라 내부·외부 교정</td>
+<td>독립 기준물로 공간 오차 검사; 재투영 잔차만으로 합격 판정하지 않음</td>
+</tr>
+<tr>
+<td>기준선·초점거리 변화</td>
+<td>온도·진동·장착 상태 추적, 교정 파라미터 버전 관리</td>
+</tr>
+<tr>
+<td>마커 자세와 TCP 이격</td>
+<td>실제 TCP에서 오차 계산; 위치와 회전의 상관 포함</td>
+</tr>
+<tr>
+<td>마커 형상·체결·TCP 교정</td>
+<td>실측 형상, 반복 장착, 기준 TCP 교정</td>
+</tr>
+<tr>
+<td>로봇 모델·베이스 정합</td>
+<td>별도 검증 자세, 최종 도달 시험과 분리 보고</td>
+</tr>
+</tbody>
+</table>
+<p>P95는 표본의 95백분위수이며 최대 오차 보증이 아니다. 각 항목의 P95를 단순 더하거나 제곱합하여 최종 최대값을 보증하지 않는다. 상관·편향·불확도를 포함한 실측 평가가 필요하다. <strong>0.05 mm 공간 분해능 목표도 잡음 시뮬레이션만으로 검증되지 않는다.</strong></p>
+<h2 id="5">5. 시뮬레이션 방법과 재현 조건<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="_1">기하학적 민감도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>평행·정류된 핀홀 카메라를 가정한다. <code>f_px = 초점거리 / 픽셀 크기</code>, <code>B = 기준선</code>, <code>d = 좌우 시차</code>, <code>Z = 깊이</code>일 때 다음 관계를 사용한다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Z = f_px × B / d
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>σ_Z ≈ Z² / (f_px × B) × √2 × σ_pixel
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>σ_Z,mean ≈ σ_Z / √N        (프레임 잡음이 독립일 때만)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>공통 수평 시야 ≈ max(0, 영상폭_px × Z / f_px − B)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>TCP 회전 기여 ≈ 수직 이격 거리 × 작은 회전 오차_rad
+</code></pre></div>
+<p>12 mm / 3.45 μm의 <code>f_px</code>는 약 3478 px이다. 기준선 600 mm, σ_pixel = 0.03 px이면 단일 점의 깊이 표준편차는 2 m에서 약 <strong>0.081 mm</strong>, 3 m에서 약 <strong>0.183 mm</strong>이다. 독립 30프레임 평균 시 3 m 값은 약 <strong>0.033 mm</strong>로 감소하지만, 이는 3차원 TCP 오차나 분해능을 의미하지 않는다. 핀홀 투영·교정·삼각측량의 구현 기준은 <a href="https://docs.opencv.org/4.13.0/d9/d0c/group__calib3d.html">OpenCV 공식 문서</a>를 참고하였다. 본 계산 코드는 해당 특수 기하의 식을 직접 구현한다.</p>
+<p><img alt="거리별 깊이 잡음과 공통 시야" src="../../assets/ots/geometry.png" /></p>
+<p>12 mm / 600 mm 구성의 2 m 평면 공통 시야는 약 <strong>0.808 × 1.178 m</strong>, 3 m에서는 <strong>1.511 × 1.766 m</strong>이다. 16 mm 렌즈로 바꾸면 2 m의 공통 수평 시야가 약 <strong>0.456 m</strong>로 줄어든다. 마커 크기·회전·시야 여유를 제외하기 전 값이므로 그대로 로봇 작업 체적으로 사용하지 않는다.</p>
+<h3 id="_2">몬테카를로 계산<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>시나리오별 3,000회, 난수 시드 <code>20260907</code>; 비교 조건에는 같은 난수열을 사용한다.</li>
+<li>강체 원점은 카메라 기준선 중점 기준 X·Y 각각 ±100 mm, Z는 시나리오 거리로 고정한다. xyz 오일러 각을 각각 ±30°에서 균등 추출한다. 전체 SO(3) 균등 분포나 로봇 가동 영역을 의미하지 않는다.</li>
+<li>6점 형상을 좌우 카메라에 투영하고, 각 영상 좌표에 독립 가우시안 잡음을 더한다. 정지 30프레임 평균은 <code>σ/√30</code>인 잡음으로 계산한다.</li>
+<li>좌우 영상에서 삼각측량 후 <strong>가중치 없는 SVD 강체 정합</strong>으로 자세를 추정한다. TCP = 마커 좌표의 <code>[0, 0, 300] mm</code>를 변환하고 참 TCP와 3차원 거리·상대 회전각을 비교한다.</li>
+<li>영상 경계 10 px 여유를 검사하며, 선택 점이 모두 시야에 있고 4점 이상인 경우만 계산한다. 3점 조건은 정책에 따라 거부한다.</li>
+<li>고정 시차 편향 +0.03 px, 기준선 교정값 +50 ppm 오류를 각각 별도 시나리오로 추가한다. 편향은 평균화로 줄이지 않는다.</li>
+</ul>
+<p><strong>포함하지 않은 항목:</strong> 광원·센서의 영상 생성과 광자 잡음, 렌즈 왜곡 잔차의 공간 분포, 잘못된 ID, 실제 차폐·발광각, 마커 제작 오차, 열 변형의 시간 변화, 베이스 정합, 로봇 기구학·제어기·진동·충돌. 따라서 이번 작업은 <strong>OTS 기하·잡음 설계 시뮬레이션</strong>이며 로봇 보정 성능의 디지털 트윈 검증은 아니다. 실제 알고리즘에서는 삼각측량의 방향별 불확도를 반영한 가중 정합 또는 영상 재투영 기반 자세 추정도 비교한다.</p>
+<h2 id="6">6. 실행 결과<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>기본 조건은 <strong>3 m / 12 mm / 기준선 600 mm / 6점 / 30프레임 / σ 0.03 px / TCP 300 mm</strong>이다. 각 행은 표시된 조건만 바꾼다. 위치·자세 통계는 유효 표본 기준이며, CSV에는 표본 최대값·원점 오차·유효 표본 수도 포함한다.</p>
+<table>
+<thead>
+<tr>
+<th>변경 조건</th>
+<th>TCP 위치 RMS (mm)</th>
+<th>TCP 위치 P95 (mm)</th>
+<th>자세 P95 (°)</th>
+<th>유효 / 전체</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>거리 2 m</td>
+<td>0.031</td>
+<td>0.055</td>
+<td>0.011</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>기본 조건 3 m</td>
+<td>0.071</td>
+<td>0.124</td>
+<td>0.024</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>거리 4 m</td>
+<td>0.126</td>
+<td>0.219</td>
+<td>0.043</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>평균화 없음, 1프레임</td>
+<td>0.387</td>
+<td>0.677</td>
+<td>0.131</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>중심 검출 σ 0.10 px</td>
+<td>0.236</td>
+<td>0.412</td>
+<td>0.080</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>기준선 400 mm</td>
+<td>0.106</td>
+<td>0.184</td>
+<td>0.036</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>렌즈 16 mm</td>
+<td>0.053</td>
+<td>0.093</td>
+<td>0.018</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>마커 0.5배</td>
+<td>0.140</td>
+<td>0.247</td>
+<td>0.048</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>마커 1.5배</td>
+<td>0.048</td>
+<td>0.082</td>
+<td>0.016</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>TCP 이격 600 mm</td>
+<td>0.140</td>
+<td>0.247</td>
+<td>0.024</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>M1~M4만 관측</td>
+<td>0.084</td>
+<td>0.149</td>
+<td>0.029</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>3점 관측, 정책상 거부</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>0 / 3000</td>
+</tr>
+<tr>
+<td>고정 시차 편향 +0.03 px</td>
+<td>0.146</td>
+<td>0.190</td>
+<td>0.024</td>
+<td>3000 / 3000</td>
+</tr>
+<tr>
+<td>기준선 교정값 +50 ppm</td>
+<td>0.166</td>
+<td>0.209</td>
+<td>0.024</td>
+<td>3000 / 3000</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="조건별 TCP 오차 민감도" src="../../assets/ots/tcp-sensitivity.png" /></p>
+<h3 id="_3">설계에 반영할 결론<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>기본 조건의 합성 TCP 위치 P95는 약 0.124 mm</strong>로 초기 OTS 배분안 0.15 mm 아래이지만, 교정·형상·정합 오차에 대한 여유가 충분하다고 볼 수 없다. 표본 최대값도 약 0.249 mm이므로 P95를 최대값으로 해석하면 안 된다.</li>
+<li><strong>마커 크기와 TCP 이격이 중요하다.</strong> 마커를 절반으로 줄이거나 TCP 이격을 600 mm로 늘리면 P95가 약 0.247 mm로 커진다. 마커 확대안과 툴 가까이 배치하는 구조를 함께 검토한다.</li>
+<li><strong>단일 프레임 또는 중심 검출 악화는 성능을 크게 낮춘다.</strong> 단일 프레임의 P95는 약 0.677 mm이다. 정지 안정화와 영상 품질을 먼저 확보하고, 평균화 효과는 시간 상관을 측정해 검증한다.</li>
+<li><strong>평균화로 교정 편향을 해결할 수 없다.</strong> 고정 시차 0.03 px 또는 기준선 50 ppm 오류를 주면 P95가 각각 약 0.190 / 0.209 mm로 증가한다. 기준선 600 mm의 50 ppm은 0.03 mm에 해당한다.</li>
+<li><strong>4 m를 기본 성능 영역으로 확정하지 않는다.</strong> 4 m의 P95는 약 0.219 mm이며, 우선 2~3 m에서 실측 검증한다. 16 mm 렌즈는 오차를 낮추지만 근거리 공통 시야를 줄인다.</li>
+</ol>
+<p>표의 100% 유효율은 제한된 합성 자세가 시야·점 수 검사에 모두 통과했다는 뜻이다. 실제 추적 성공률, 인라인 자동 완료율 또는 가려짐 대응률이 아니다. 3점 조건의 0%는 실패 확률의 추정이 아니라 명시한 거부 정책의 결과다.</p>
+<h2 id="7">7. 시제품 시험과 다음 시뮬레이션<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>수행 내용</th>
+<th>의사결정 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>광학 벤치</td>
+<td>카메라·12/16 mm 렌즈·LED·필터 조합 시험, 거리·노출·각도별 중심 검출</td>
+<td>0.03 px 가정의 타당성, 포화·편향·프레임 상관 측정</td>
+</tr>
+<tr>
+<td>스테레오 교정</td>
+<td>기준선·내부 파라미터 교정, 별도 기준물 검증</td>
+<td>깊이별 편향·열 변화 확인, 공통 시야와 유효 영역 확정</td>
+</tr>
+<tr>
+<td>마커 비교</td>
+<td>기본·축소·확대 형상, 모든 4점 부분집합, 반복 체결</td>
+<td>실제 TCP 오차·ID 모호성·가려짐·충돌 여유</td>
+</tr>
+<tr>
+<td>시뮬레이션 확장</td>
+<td>실측 잡음·왜곡·온도 데이터를 입력, 카메라 배치·시야 최적화</td>
+<td>합성 가정을 계측 데이터로 교체하고 모델 예측과 실측 비교</td>
+</tr>
+<tr>
+<td>로봇 연동</td>
+<td>대상 로봇 DH/URDF·툴 CAD·관절 범위·API 확보 후 자세 생성</td>
+<td>가시성·충돌·식별성·경로와 소요시간 검증</td>
+</tr>
+<tr>
+<td>최종 성능</td>
+<td>기존 보정 연동 후 별도 지령·독립 기준 계측</td>
+<td>개발 계획서에 합의한 위치·자세·자동화 기준으로 판정</td>
+</tr>
+</tbody>
+</table>
+<p>현재는 대상 로봇 모델·셀 CAD·실측 카메라 교정값이 제공되지 않아 물리 로봇 동작·충돌·보정 전후 성능 시뮬레이션까지 수행하지 않았다. 해당 입력을 확보하면 이번 기하 모델을 실제 셀 설계와 연결한다.</p>
+<h2 id="8">8. 다운로드와 재현<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p><a href="../../assets/ots/simulate_ots.py">실행 코드</a> · <a href="../../assets/ots/results.csv">전체 결과 CSV</a> · <a href="../../assets/ots/results.json">조건·마커 좌표·검증 결과 JSON</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>simulate_ots.py<span class="w"> </span>--out<span class="w"> </span>results
+</code></pre></div>
+<p>Python과 NumPy·SciPy·Matplotlib이 필요하다. 실행에 사용한 라이브러리 버전은 JSON에 기록했다. 코드는 잡음이 없는 경우 TCP 복원 오차가 1e-7 mm 미만인지, 독립 20만 표본의 깊이 표준편차가 해석식과 1% 이내로 일치하는지 자동 검사한 후 결과와 그래프를 생성한다. 이 검사는 수치 구현의 일관성 검사이며 실제 계측 성능 검증은 아니다.</p>
+<hr />
+<p><a href="../hd-robotics-ots-calibration/">개발 계획서로 돌아가기</a> · <a href="../">프로젝트 목록</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 PARC Lab · Hansung University
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/parclab-hsu" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:kblee@hansung.ac.kr" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hansung.ac.kr" target="_blank" rel="noopener" title="한성대학교" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-prepare.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-render.js"></script>
+      
+    
+  </body>
+</html>
