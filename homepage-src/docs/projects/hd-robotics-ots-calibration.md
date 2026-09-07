@@ -4,7 +4,7 @@ noindex: true
 
 # HD로보틱스 — 적외선 광학 추적 기반 로봇 캘리브레이션
 
-:material-circle-outline:{ style="color:#e0a800" } **연구개발 계획** · Infrared Optical Tracking for Robot Calibration
+:material-circle-outline:{ style="color:#e0a800" } **계획 중** · Infrared Optical Tracking for Robot Calibration
 
 !!! abstract "프로젝트 한눈에 보기"
     적외선 스테레오 카메라와 로봇 장착형 강체 마커를 활용하여 로봇 말단의 **3차원 위치·자세**를 측정하고, 기존 로봇 보정 알고리즘과 연계하는 **자동 캘리브레이션 시스템**을 개발합니다. 광학 추적 시스템(Optical Tracking System, OTS)의 하드웨어·소프트웨어와 로봇 인터페이스를 통합하여 생산라인 적용 가능성을 검증합니다.

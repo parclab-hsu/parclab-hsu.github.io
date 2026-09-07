@@ -82,7 +82,7 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
 <div class="grid cards" markdown>
 
--   :material-circle-outline:{ style="color:#e0a800" } [__연구개발 계획 · HD로보틱스 적외선 광학 추적 기반 로봇 캘리브레이션__](projects/hd-robotics-ots-calibration.md)
+-   :material-circle-outline:{ style="color:#e0a800" } [__계획 중 · HD로보틱스 적외선 광학 추적 기반 로봇 캘리브레이션__](projects/hd-robotics-ots-calibration.md)
 
     ---
 
