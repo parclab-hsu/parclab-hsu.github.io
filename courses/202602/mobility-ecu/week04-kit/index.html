@@ -629,6 +629,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        교안 정보
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습목표
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 질문
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지도 중점
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1939,6 +1983,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        교안 정보
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습목표
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 질문
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지도 중점
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2083,6 +2171,51 @@
 
 
 <h1 id="4">4주차 운영 키트 — 전원회로와 변환기<a class="headerlink" href="#4" title="Permanent link">¶</a></h1>
+<h3 id="_1">교안 정보<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>교과목</td>
+<td>모빌리티 전자제어유닛 실습 (3학점 · 전공)</td>
+</tr>
+<tr>
+<td>대상</td>
+<td>미래모빌리티학과 3~4학년</td>
+</tr>
+<tr>
+<td>차시</td>
+<td>4주차 / 15주차 · 180분</td>
+</tr>
+<tr>
+<td>강의실</td>
+<td>Physical AI 실습실</td>
+</tr>
+<tr>
+<td>관련 자료</td>
+<td>상세 강의자료 04번 · 과제집 17번 · 배포용 워크시트 I·J</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">학습목표<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+<p>이 시간이 끝났을 때 학생은 다음을 수행할 수 있다.</p>
+<ol>
+<li>배터리 전원에서 MCU·센서·게이트드라이버 전원을 나누는 전원 트리를 설계한다.</li>
+<li>리니어 레귤레이터, 벅컨버터, 부스트컨버터의 차이를 설명한다.</li>
+<li>전원 노이즈와 리턴 경로가 ADC와 MCU 동작에 미치는 영향을 이해한다.</li>
+</ol>
+<h3 id="_3">핵심 질문<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<ul>
+<li>왜 배터리 24V를 바로 MCU에 넣을 수 없는가?</li>
+<li>LDO와 벅컨버터는 언제 각각 유리한가?</li>
+<li>전원 노이즈는 어디로 돌아가는가?</li>
+</ul>
+<h3 id="_4">지도 중점<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>3주차가 "소자 하나를 조건으로 고른다"였다면, 4주차는 <strong>"시스템 전체의 전류를 장부로 관리한다"</strong> 를 처음 시키는 시간이다. 이 주차의 목표는 회로도 그리기가 아니라 <strong>전원을 예산과 시퀀스로 보는 눈</strong>이다.</p>
 <blockquote>
 <p>이 주차의 산출물(전원 트리·전력 예산)은 <strong>8주차 중간 설계 리뷰에 그대로 제출</strong>된다. 학생에게 미리 알린다.</p>
@@ -2208,7 +2341,7 @@
 </tbody>
 </table>
 <blockquote>
-<p>✅ <strong>이 블록이 끝났을 때</strong> — 학생이 "LDO는 차이를 열로 버린다"를 손으로 만져 본(만지지 않고 온도로 확인한) 상태.</p>
+<p>✅ <strong>이 블록이 끝났을 때</strong> — 학생이 "LDO는 입출력 전압 차이를 열로 버린다"를 온도 측정으로 확인한 상태.</p>
 </blockquote>
 <hr>
 <h4 id="2-4090-12">블록 2 · 40~90분 — 전력 예산과 벅 계산 (활동 1·2)<a class="headerlink" href="#2-4090-12" title="Permanent link">¶</a></h4>
@@ -2227,7 +2360,7 @@
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Iin(24V) = 10.26 / 24               = 0.43A
 </code></pre></div>
 <blockquote>
-<p>⚠️ <strong>출력 전류 = 입력 전류가 아니다.</strong> 효율을 나누는 단계를 빠뜨리는 학생이 매년 나온다. 여기서 못 박는다.</p>
+<p>⚠️ <strong>출력 전류 = 입력 전류가 아니다.</strong> 효율을 나누는 단계를 빠뜨리는 사례가 매 학기 반복된다. 이 지점을 분명히 짚는다.</p>
 </blockquote>
 <ol>
 <li>(10분) <strong>활동 2 — LDO 발열 계산</strong> (워크시트 I 하단)</li>
@@ -2268,7 +2401,7 @@
 <ol>
 <li>(25분) <strong>추가 실습 — 전원 계측</strong></li>
 </ol>
-<p>먼저 <strong>가짜 링잉 시연</strong>을 한다. 이 주차에서 가장 인상에 남는 장면이다.</p>
+<p>먼저 <strong>가짜 링잉 시연</strong>을 한다. 이 주차에서 교육 효과가 가장 큰 시연이다.</p>
 <blockquote>
 <p>같은 지점을 ① 긴 GND 리드 ② 짧은 ground spring 두 방식으로 재서 파형을 나란히 보여 준다.</p>
 <p>🗣️ "회로는 바꾸지 않았습니다. <strong>프로브만 바꿨습니다.</strong> 어느 쪽이 진짜입니까?"</p>
@@ -2304,7 +2437,7 @@
 <li>(15분) <strong>부하 과도 시험.</strong> 5V 레일을 100mA → 500mA로 급변시키고 전압 강하와 회복 시간을 잰다.</li>
 </ol>
 <blockquote>
-<p>⚠️ 저항 부하를 쓸 때는 <strong>전력 정격과 표면 온도를 먼저 계산</strong>하게 한다. 계산 없이 꽂으면 저항이 탄다.</p>
+<p>⚠️ 저항 부하를 쓸 때는 <strong>전력 정격과 표면 온도를 먼저 계산</strong>하게 한다. 계산 없이 연결하면 저항이 소손된다.</p>
 </blockquote>
 <p><strong>교수는 돌아다니며 두 가지만 확인한다</strong>
 - 측정 조건(프로브 종류·커플링·대역폭 제한)을 적었는가
@@ -2333,7 +2466,7 @@
 </tr>
 <tr>
 <td>역극성 보호</td>
-<td>거꾸로 꽂아도 뒤가 안 죽게</td>
+<td>역방향으로 연결해도 후단 회로가 손상되지 않게 한다</td>
 </tr>
 <tr>
 <td>TVS</td>
@@ -2375,7 +2508,7 @@
 <li>(3분) <strong>다음 주 예고</strong></li>
 </ol>
 <blockquote>
-<p>"다음 주부터 모터입니다. 오늘 만든 전력 예산에 <strong>가장 큰 부하</strong>가 들어옵니다. 로버가 경사를 오르려면 토크가 얼마나 필요한지 역산합니다."</p>
+<p>🗣️ "다음 주부터 모터입니다. 오늘 만든 전력 예산에 <strong>가장 큰 부하</strong>가 들어옵니다. 로버가 경사를 오르려면 토크가 얼마나 필요한지 역산합니다."</p>
 </blockquote>
 <hr>
 <h3 id="2">2. 판서 목록<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
