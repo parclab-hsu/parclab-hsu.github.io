@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1800" viewBox="0 0 720 1800" role="img" aria-labelledby="title desc">
+  <title id="title">제조환경 RFM 지식재산권 및 표준화 대응 전략</title>
+  <desc id="desc">한성대학교 기반특허, 국내외 선행기술, 본 과제의 신규 권리화 영역과 적용 표준을 모바일 화면에 맞춰 세로로 배치한 전략도</desc>
+  <defs>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#004d40"/>
+      <stop offset="1" stop-color="#00695c"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#263238" flood-opacity=".14"/>
+    </filter>
+    <style>
+      .ko{font-family:"Noto Sans KR","Malgun Gothic",sans-serif;fill:#263238}
+      .eyebrow{font-size:27px;font-weight:700;letter-spacing:1px;fill:#fff}
+      .title{font-size:38px;font-weight:800;fill:#fff}
+      .subtitle{font-size:27px;font-weight:500;fill:#fff}
+      .section{font-size:30px;font-weight:800}
+      .section-light{font-size:30px;font-weight:800;fill:#fff}
+      .body{font-size:27px;font-weight:500}
+      .body-light{font-size:27px;font-weight:500;fill:#fff}
+      .small{font-size:27px;font-weight:500;fill:#455a64}
+      .note{font-size:27px;font-weight:500;fill:#455a64}
+      .pill{font-size:27px;font-weight:700;fill:#004d40}
+      .ip{font-size:27px;font-weight:800;fill:#fff}
+      .footer-note{font-size:27px;font-weight:500;fill:#455a64}
+    </style>
+  </defs>
+
+  <rect width="720" height="1800" rx="28" fill="#f5f8f8"/>
+  <rect width="720" height="210" rx="28" fill="url(#header)"/>
+  <rect y="180" width="720" height="30" fill="url(#header)"/>
+  <text x="42" y="52" class="ko eyebrow">INTELLECTUAL PROPERTY · STANDARDIZATION</text>
+  <text x="42" y="102" class="ko title">제조환경 RFM 지식재산 전략</text>
+  <text x="42" y="142" class="ko subtitle">기반역량은 정확히 구분하고, 차별기술은 신규 권리화</text>
+  <text x="42" y="177" class="ko subtitle">표준은 적용범위에 맞춰 시험·검증 기준으로 활용</text>
+
+  <g filter="url(#shadow)">
+    <rect x="28" y="238" width="664" height="290" rx="22" fill="#fff" stroke="#80cbc4" stroke-width="2"/>
+  </g>
+  <circle cx="67" cy="281" r="23" fill="#00695c"/><text x="67" y="290" text-anchor="middle" class="ko ip">1</text>
+  <text x="104" y="290" class="ko section" fill="#00695c">한성대학교 보유 기반특허</text>
+  <text x="52" y="340" class="ko body">자연어 기반 로봇 제어</text>
+  <text x="668" y="340" text-anchor="end" class="ko small">KR 10-1997072</text>
+  <line x1="52" y1="363" x2="668" y2="363" stroke="#e0eeee"/>
+  <text x="52" y="405" class="ko body">센서 기반 위험상태 감지</text>
+  <text x="668" y="405" text-anchor="end" class="ko small">KR 10-2201831</text>
+  <line x1="52" y1="428" x2="668" y2="428" stroke="#e0eeee"/>
+  <text x="52" y="470" class="ko body">자기조직 생성망 학습</text>
+  <text x="668" y="470" text-anchor="end" class="ko small">KR 10-2228128</text>
+  <rect x="52" y="488" width="616" height="22" rx="11" fill="#e0f2f1"/>
+  <text x="360" y="505" text-anchor="middle" class="ko note" fill="#00695c">직접 선행성과가 아닌 로봇·AI 간접 기반역량으로 활용</text>
+
+  <g filter="url(#shadow)">
+    <rect x="28" y="556" width="664" height="290" rx="22" fill="#fff" stroke="#4db6ac" stroke-width="2"/>
+  </g>
+  <circle cx="67" cy="599" r="23" fill="#00796b"/><text x="67" y="608" text-anchor="middle" class="ko ip">2</text>
+  <text x="104" y="608" class="ko section" fill="#00695c">국내 경쟁기관 선행기술</text>
+  <text x="52" y="658" class="ko body">KETI · AAS 기반 Digital Twin</text>
+  <text x="668" y="658" text-anchor="end" class="ko small">KR 10-2659118</text>
+  <line x1="52" y1="681" x2="668" y2="681" stroke="#e0eeee"/>
+  <text x="52" y="723" class="ko body">ETRI · 가상센서 기반 검증</text>
+  <text x="668" y="754" text-anchor="end" class="ko small">KR 10-2025-0062670 A</text>
+  <line x1="52" y1="765" x2="668" y2="765" stroke="#e0eeee"/>
+  <text x="52" y="799" class="ko body">모빌리오 · 버추얼 커미셔닝 로봇학습</text>
+  <text x="668" y="830" text-anchor="end" class="ko small">KR 10-2026-0038847 A</text>
+
+  <g filter="url(#shadow)">
+    <rect x="28" y="874" width="664" height="290" rx="22" fill="#fff" stroke="#26a69a" stroke-width="2"/>
+  </g>
+  <circle cx="67" cy="917" r="23" fill="#00695c"/><text x="67" y="926" text-anchor="middle" class="ko ip">3</text>
+  <text x="104" y="926" class="ko section" fill="#004d40">국외 경쟁기관 선행기술</text>
+  <text x="52" y="976" class="ko body">NVIDIA · 시뮬레이션 데이터 생성</text>
+  <text x="668" y="1007" text-anchor="end" class="ko small">US 2026/0073096 A1</text>
+  <line x1="52" y1="1016" x2="668" y2="1016" stroke="#e0eeee"/>
+  <text x="52" y="1045" class="ko body">Google · Vision 기반 Reality Gap 완화</text>
+  <text x="668" y="1076" text-anchor="end" class="ko small">US 12,498,677 B2</text>
+  <line x1="52" y1="1085" x2="668" y2="1085" stroke="#e0eeee"/>
+  <text x="52" y="1114" class="ko body">MERL · Cross-domain 궤적 전이</text>
+  <text x="668" y="1145" text-anchor="end" class="ko small">US 11,921,492 B2</text>
+
+  <g filter="url(#shadow)">
+    <rect x="28" y="1192" width="664" height="330" rx="22" fill="#004d40"/>
+  </g>
+  <text x="52" y="1240" class="ko section-light">본 과제 신규 권리화 영역</text>
+  <rect x="52" y="1272" width="616" height="62" rx="14" fill="#00796b"/>
+  <text x="72" y="1311" class="ko ip">IP 1</text><text x="143" y="1311" class="ko body-light">Manufacturing Deformation Engine</text>
+  <rect x="52" y="1350" width="616" height="62" rx="14" fill="#00695c"/>
+  <text x="72" y="1389" class="ko ip">IP 2</text><text x="143" y="1389" class="ko body-light">Failure Checkpoint · Recovery Branching</text>
+  <rect x="52" y="1428" width="616" height="62" rx="14" fill="#00564d"/>
+  <text x="72" y="1467" class="ko ip">IP 3</text><text x="143" y="1467" class="ko body-light">ODD 기반 Closed-loop RFM</text>
+
+  <rect x="28" y="1550" width="664" height="174" rx="22" fill="#e0f2f1" stroke="#80cbc4" stroke-width="2"/>
+  <text x="52" y="1594" class="ko section" fill="#00695c">적용 표준·검증기준</text>
+  <g class="ko pill">
+    <rect x="52" y="1618" width="154" height="40" rx="20" fill="#b2dfdb"/><text x="129" y="1645" text-anchor="middle">ISO 23247</text>
+    <rect x="220" y="1618" width="166" height="40" rx="20" fill="#b2dfdb"/><text x="303" y="1645" text-anchor="middle">IEC 63278-1</text>
+    <rect x="400" y="1618" width="268" height="40" rx="20" fill="#b2dfdb"/><text x="534" y="1645" text-anchor="middle">ISO/IEC 5259-2</text>
+    <rect x="52" y="1670" width="154" height="40" rx="20" fill="#b2dfdb"/><text x="129" y="1697" text-anchor="middle">ISO 10218</text>
+    <rect x="220" y="1670" width="154" height="40" rx="20" fill="#b2dfdb"/><text x="297" y="1697" text-anchor="middle">ISO 9283</text>
+    <rect x="388" y="1670" width="280" height="40" rx="20" fill="#ffecb3"/><text x="528" y="1697" text-anchor="middle" fill="#795548">ISO 21448 · 논리 준용</text>
+  </g>
+  <text x="360" y="1748" text-anchor="middle" class="ko footer-note">목표: 특허 3건 · 등록추진 1건 · 표준안 1건</text>
+  <text x="360" y="1780" text-anchor="middle" class="ko footer-note">출원 전 청구항·FTO 검토</text>
+</svg>

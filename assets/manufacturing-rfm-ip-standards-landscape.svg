@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1080" viewBox="0 0 1800 1080" role="img" aria-labelledby="title desc">
+  <title id="title">한성대학교 제조 Physical AI 지식재산·표준화 전략</title>
+  <desc id="desc">한성대학교 기반특허, 국내 경쟁기술, 국외 경쟁기술을 비교하고 본 과제에서 신규 출원할 Deformation Engine, Failure Recovery Data, ODD 기반 Closed-loop RFM 기술과 대응 국제표준을 연결한 도식</desc>
+  <defs>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#004d40"/>
+      <stop offset="0.55" stop-color="#00695c"/>
+      <stop offset="1" stop-color="#00796b"/>
+    </linearGradient>
+    <linearGradient id="response" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecf8f6"/>
+      <stop offset="1" stop-color="#edf8fb"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="145%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#004d40" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#00796b"/>
+    </marker>
+    <style>
+      text { font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif; }
+      .eyebrow { font-size: 20px; font-weight: 800; fill: #ffffff; letter-spacing: 1.6px; }
+      .title { font-size: 42px; font-weight: 800; fill: #ffffff; }
+      .subtitle { font-size: 22px; font-weight: 500; fill: #ffffff; }
+      .card-head { font-size: 26px; font-weight: 800; fill: #ffffff; }
+      .card-sub { font-size: 18px; font-weight: 700; fill: #e0f2f1; }
+      .item-title { font-size: 22px; font-weight: 800; fill: #123f3a; }
+      .item-body { font-size: 18px; font-weight: 500; fill: #374b48; }
+      .patent { font-size: 17px; font-weight: 700; fill: #00695c; }
+      .tag { font-size: 16px; font-weight: 800; fill: #00564d; }
+      .response-head { font-size: 28px; font-weight: 800; fill: #004d40; }
+      .response-sub { font-size: 18px; font-weight: 600; fill: #374b48; }
+      .ip-number { font-size: 18px; font-weight: 800; fill: #ffffff; }
+      .ip-title { font-size: 22px; font-weight: 800; fill: #123f3a; }
+      .ip-body { font-size: 17px; font-weight: 500; fill: #374b48; }
+      .standard { font-size: 17px; font-weight: 700; fill: #004d40; }
+      .footer { font-size: 21px; font-weight: 800; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1080" fill="#f7fbfa"/>
+  <rect width="1800" height="140" fill="url(#header)"/>
+  <circle cx="1640" cy="20" r="180" fill="#ffffff" opacity="0.06"/>
+  <circle cx="1700" cy="80" r="94" fill="#ffffff" opacity="0.05"/>
+  <text x="64" y="40" class="eyebrow">IP · PRIOR ART · STANDARDIZATION</text>
+  <text x="64" y="84" class="title">한성대학교 제조 Physical AI 지식재산·표준화 전략</text>
+  <text x="64" y="116" class="subtitle">기존 기반특허와 국내외 선행기술을 구분하고, 본 과제의 신규 권리화 영역을 명확화</text>
+
+  <!-- ① 한성대학교 기반특허 -->
+  <g filter="url(#shadow)">
+    <rect x="54" y="178" width="526" height="454" rx="18" fill="#ffffff" stroke="#b2dfdb" stroke-width="2"/>
+  </g>
+  <path d="M54 196 Q54 178 72 178 H562 Q580 178 580 196 V258 H54 Z" fill="#00796b"/>
+  <text x="82" y="216" class="card-head">① 한성대학교 기반특허</text>
+  <text x="82" y="244" class="card-sub">대학 보유 기반역량 · 본 과제에는 간접 관련</text>
+
+  <circle cx="90" cy="310" r="20" fill="#00796b"/><text x="90" y="317" text-anchor="middle" class="ip-number">1</text>
+  <text x="124" y="304" class="item-title">자연어 기반 로봇 제어</text>
+  <text x="124" y="330" class="item-body">작업 명령 해석 · 로봇 동작 인터페이스</text>
+  <text x="124" y="354" class="patent">KR 10-1997072</text>
+  <path d="M82 378 H552" stroke="#d8e5e2" stroke-width="1.5"/>
+
+  <circle cx="90" cy="426" r="20" fill="#00796b"/><text x="90" y="433" text-anchor="middle" class="ip-number">2</text>
+  <text x="124" y="420" class="item-title">센서 기반 위험상태 감지</text>
+  <text x="124" y="446" class="item-body">관성·압력·자세·각도 기반 Edge Condition</text>
+  <text x="124" y="470" class="patent">KR 10-2201831</text>
+  <path d="M82 494 H552" stroke="#d8e5e2" stroke-width="1.5"/>
+
+  <circle cx="90" cy="542" r="20" fill="#00796b"/><text x="90" y="549" text-anchor="middle" class="ip-number">3</text>
+  <text x="124" y="536" class="item-title">자기조직 생성망 학습</text>
+  <text x="124" y="562" class="item-body">잠재공간 구성 · 생성형 AI 학습 기반</text>
+  <text x="124" y="586" class="patent">KR 10-2228128</text>
+  <rect x="82" y="600" width="470" height="22" rx="11" fill="#e0f2f1"/>
+  <text x="317" y="616" text-anchor="middle" class="tag">직접 선행성과가 아닌 연구기관 기반역량으로 기재</text>
+
+  <!-- ② 국내 경쟁기술 -->
+  <g filter="url(#shadow)">
+    <rect x="637" y="178" width="526" height="454" rx="18" fill="#ffffff" stroke="#b2dfdb" stroke-width="2"/>
+  </g>
+  <path d="M637 196 Q637 178 655 178 H1145 Q1163 178 1163 196 V258 H637 Z" fill="#00695c"/>
+  <text x="665" y="216" class="card-head">② 국내 경쟁기관</text>
+  <text x="665" y="244" class="card-sub">정보모델 · 가상센서 · 버추얼 커미셔닝</text>
+
+  <circle cx="673" cy="310" r="20" fill="#00796b"/><text x="673" y="317" text-anchor="middle" class="ip-number">1</text>
+  <text x="707" y="304" class="item-title">KETI · AAS 기반 Digital Twin</text>
+  <text x="707" y="330" class="item-body">정보모델 기반 실·가상 로봇 프로그래밍</text>
+  <text x="707" y="354" class="patent">KR 10-2659118</text>
+  <path d="M665 378 H1135" stroke="#d8e5e2" stroke-width="1.5"/>
+
+  <circle cx="673" cy="426" r="20" fill="#00796b"/><text x="673" y="433" text-anchor="middle" class="ip-number">2</text>
+  <text x="707" y="420" class="item-title">ETRI · Digital Twin 가상센서 검증</text>
+  <text x="707" y="446" class="item-body">가상센서 학습 · 도메인 기반 성능 검증</text>
+  <text x="707" y="470" class="patent">KR 10-2025-0062670 A</text>
+  <path d="M665 494 H1135" stroke="#d8e5e2" stroke-width="1.5"/>
+
+  <circle cx="673" cy="542" r="20" fill="#00796b"/><text x="673" y="549" text-anchor="middle" class="ip-number">3</text>
+  <text x="707" y="536" class="item-title">모빌리오 · 로봇 AI 트레이닝</text>
+  <text x="707" y="562" class="item-body">문제상황 모사 · 실·가상 데이터 융합</text>
+  <text x="707" y="586" class="patent">KR 10-2026-0038847 A</text>
+  <rect x="665" y="600" width="470" height="22" rx="11" fill="#e0f2f1"/>
+  <text x="900" y="616" text-anchor="middle" class="tag">개별 기능 중심 · 통합 Recovery 폐루프는 미확인</text>
+
+  <!-- ③ 국외 경쟁기술 -->
+  <g filter="url(#shadow)">
+    <rect x="1220" y="178" width="526" height="454" rx="18" fill="#ffffff" stroke="#b2dfdb" stroke-width="2"/>
+  </g>
+  <path d="M1220 196 Q1220 178 1238 178 H1728 Q1746 178 1746 196 V258 H1220 Z" fill="#00564d"/>
+  <text x="1248" y="216" class="card-head">③ 국외 경쟁기관</text>
+  <text x="1248" y="244" class="card-sub">합성데이터 · Reality Gap · Cross-domain Transfer</text>
+
+  <circle cx="1256" cy="310" r="20" fill="#00695c"/><text x="1256" y="317" text-anchor="middle" class="ip-number">1</text>
+  <text x="1290" y="304" class="item-title">NVIDIA · Robotics Data Pipeline</text>
+  <text x="1290" y="330" class="item-body">시뮬레이션 행동·환경 데이터 반복 생성</text>
+  <text x="1290" y="354" class="patent">US 2026/0073096 A1</text>
+  <path d="M1248 378 H1718" stroke="#d8e5e2" stroke-width="1.5"/>
+
+  <circle cx="1256" cy="426" r="20" fill="#00695c"/><text x="1256" y="433" text-anchor="middle" class="ip-number">2</text>
+  <text x="1290" y="420" class="item-title">Google · Reality Gap 완화</text>
+  <text x="1290" y="446" class="item-body">Vision Task Model 기반 Sim-to-Real 적응</text>
+  <text x="1290" y="470" class="patent">US 12,498,677 B2</text>
+  <path d="M1248 494 H1718" stroke="#d8e5e2" stroke-width="1.5"/>
+
+  <circle cx="1256" cy="542" r="20" fill="#00695c"/><text x="1256" y="549" text-anchor="middle" class="ip-number">3</text>
+  <text x="1290" y="536" class="item-title">MERL · Cross-domain Transfer</text>
+  <text x="1290" y="562" class="item-body">Sim·Real Subgoal 궤적 대응관계 학습</text>
+  <text x="1290" y="586" class="patent">US 11,921,492 B2</text>
+  <rect x="1248" y="600" width="470" height="22" rx="11" fill="#e0f7fa"/>
+  <text x="1483" y="616" text-anchor="middle" class="tag">범용 Sim·Vision·Transfer 중심의 선행기술</text>
+
+  <!-- 선행기술에서 본 과제 대응으로 연결 -->
+  <path d="M317 636 V666 H900" fill="none" stroke="#80cbc4" stroke-width="3"/>
+  <path d="M900 636 V684" fill="none" stroke="#80cbc4" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1483 636 V666 H900" fill="none" stroke="#80cbc4" stroke-width="3"/>
+
+  <!-- 본 과제 신규 IP·표준화 대응 -->
+  <g filter="url(#shadow)">
+    <rect x="54" y="692" width="1692" height="326" rx="20" fill="url(#response)" stroke="#80cbc4" stroke-width="2"/>
+  </g>
+  <text x="86" y="738" class="response-head">본 과제의 신규 권리화·표준화 영역</text>
+  <text x="86" y="768" class="response-sub">실패가 실제로 발생한 조건을 물리적으로 재현하고, 검증된 Recovery Episode로 RFM 재학습까지 닫는 통합 구조</text>
+
+  <rect x="86" y="794" width="510" height="116" rx="14" fill="#ffffff" stroke="#b2dfdb"/>
+  <circle cx="122" cy="830" r="22" fill="#00796b"/><text x="122" y="837" text-anchor="middle" class="ip-number">IP 1</text>
+  <text x="160" y="826" class="ip-title">Manufacturing Deformation Engine</text>
+  <text x="160" y="854" class="ip-body">F/T·접촉·마찰·강성·잔류변형 기반 Physics Calibration</text>
+  <text x="160" y="880" class="ip-body">실측 오차와 불확실성을 함께 판정하는 Consistency Gate</text>
+
+  <rect x="645" y="794" width="510" height="116" rx="14" fill="#ffffff" stroke="#b2dfdb"/>
+  <circle cx="681" cy="830" r="22" fill="#00695c"/><text x="681" y="837" text-anchor="middle" class="ip-number">IP 2</text>
+  <text x="719" y="826" class="ip-title">Failure Checkpoint · Recovery Branching</text>
+  <text x="719" y="854" class="ip-body">실패 직전 상태 저장·복원 · 복수 복구행동 다중분기</text>
+  <text x="719" y="880" class="ip-body">물리정합·재현성·안전·데이터 품질·Provenance 검증</text>
+
+  <rect x="1204" y="794" width="510" height="116" rx="14" fill="#ffffff" stroke="#b2dfdb"/>
+  <circle cx="1240" cy="830" r="22" fill="#00564d"/><text x="1240" y="837" text-anchor="middle" class="ip-number">IP 3</text>
+  <text x="1278" y="826" class="ip-title">ODD 기반 Closed-loop RFM</text>
+  <text x="1278" y="854" class="ip-body">Zero-shot 평가 → Few-shot·LoRA 경량적응 → 재검증</text>
+  <text x="1278" y="880" class="ip-body">Edge Case Compiler · Sim–HIL–실로봇 Feedback</text>
+
+  <text x="86" y="950" class="tag">대응 표준</text>
+  <g class="standard">
+    <rect x="178" y="928" width="146" height="34" rx="17" fill="#d7efec"/><text x="251" y="950" text-anchor="middle">ISO 23247</text>
+    <rect x="336" y="928" width="166" height="34" rx="17" fill="#d7efec"/><text x="419" y="950" text-anchor="middle">IEC 63278-1</text>
+    <rect x="514" y="928" width="188" height="34" rx="17" fill="#d7efec"/><text x="608" y="950" text-anchor="middle">ISO/IEC 5259-2</text>
+    <rect x="714" y="928" width="150" height="34" rx="17" fill="#d7efec"/><text x="789" y="950" text-anchor="middle">ISO 10218</text>
+    <rect x="876" y="928" width="140" height="34" rx="17" fill="#d7efec"/><text x="946" y="950" text-anchor="middle">ISO 9283</text>
+    <rect x="1028" y="928" width="308" height="34" rx="17" fill="#d7efec"/><text x="1182" y="950" text-anchor="middle">ISO 21448 · SOTIF 논리 준용</text>
+  </g>
+  <text x="86" y="990" class="item-body">※ ISO 21448은 도로차량용 표준이므로 산업로봇 인증기준이 아니라 위험분류·검증논리로만 활용</text>
+
+  <rect x="54" y="1036" width="1692" height="44" fill="#00796b"/>
+  <text x="900" y="1065" text-anchor="middle" class="footer">특허 출원 3건 · 등록 추진 1건 · 표준 제안 1건  |  Claim 차별화·FTO 검토·산학협력단 권리상태 확인</text>
+</svg>

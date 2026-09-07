@@ -925,6 +925,34 @@ Simulation·자율수집 시간과 중복 계상하지 않습니다.
 | 기술문서 · 자문 의견서 | 1 | 1 | 1 | 1 | **4** |
 | Tele-operation 유효 데이터(시간) | **1,000** | **2,000** | **3,000** | **1,000** | **7,000** |
 
+
+## 지식재산권·표준화 대응
+
+<figure class="concept-diagram ip-landscape ip-landscape--desktop">
+  <img src="../../../assets/manufacturing-rfm-ip-standards-landscape.svg" width="1800" height="1080" loading="lazy" decoding="async" alt="한성대학교 기반특허, 국내 경쟁기관, 국외 경쟁기관의 주요 선행기술과 본 과제의 신규 특허·표준화 대응영역을 비교한 지식재산 전략도">
+  <figcaption>한성대학교의 기존 특허는 <span class="nowrap"><strong>간접 기반역량</strong>으로 구분하고</span>, 본 과제는 ① <span class="nowrap">Manufacturing Deformation Engine</span> ② <span class="nowrap">Failure Checkpoint·Recovery Branching</span> ③ <span class="nowrap">ODD 기반 Closed-loop RFM</span>을 <span class="nowrap">신규 권리화합니다.</span> <a class="nowrap" href="../../../assets/manufacturing-rfm-ip-standards-landscape.svg" target="_blank" rel="noopener">가로형 원본 보기</a></figcaption>
+</figure>
+
+<figure class="concept-diagram ip-landscape ip-landscape--mobile">
+  <img src="../../../assets/manufacturing-rfm-ip-standards-landscape-mobile.svg" width="720" height="1800" loading="lazy" decoding="async" alt="한성대학교 기반특허, 국내외 경쟁기관 선행기술, 본 과제 신규 특허 및 표준화 대응영역을 모바일용 세로 구성으로 정리한 전략도">
+  <figcaption>한성대학교의 기존 특허는 <span class="nowrap"><strong>간접 기반역량</strong>으로 구분하고</span>, 본 과제는 <span class="nowrap">Deformation Engine</span>, <span class="nowrap">Recovery Branching</span>, <span class="nowrap">Closed-loop RFM</span>을 <span class="nowrap">신규 권리화합니다.</span> <a class="nowrap" href="../../../assets/manufacturing-rfm-ip-standards-landscape.svg" target="_blank" rel="noopener">가로형 원본 보기</a></figcaption>
+</figure>
+
+| 구분 | 확인된 선행기술의 중심 | 본 과제의 차별화 방향 |
+|---|---|---|
+| **한성대학교** | 자연어 로봇 제어 · 센서 기반 위험상태 감지 · 생성망 학습 | 기존 특허를 직접성과로 과장하지 않고 로봇·AI 기반역량으로 활용 |
+| **국내 경쟁기관** | AAS 기반 Digital Twin · 가상센서 검증 · 버추얼 커미셔닝 기반 로봇학습 | 접촉·변형 물리보정과 실제 실패상태 복원·Recovery 다중분기를 결합 |
+| **국외 경쟁기관** | 시뮬레이션 데이터 생성 · Vision 기반 Reality Gap 완화 · Cross-domain 궤적 전이 | 멀티모달 Physics Grounding과 5대 Validation Gate를 거친 데이터만 RFM 재학습에 투입 |
+
+!!! info "표준·인증기준 적용 원칙"
+    제조 Digital Twin은 **ISO 23247·IEC 63278-1**, AI 학습데이터 품질은
+    **ISO/IEC 5259-2**, 산업용 로봇 안전·성능평가는 **ISO 10218·ISO 9283**을
+    대응기준으로 사용합니다. **ISO 21448은 도로차량용 SOTIF 표준**이므로 산업로봇
+    인증기준으로 기재하지 않고, 위험 시나리오 분류와 검증논리만 준용합니다.
+    ROS 2와 LeRobot은 국제표준이 아니라 구현 프레임워크·데이터 형식으로 구분합니다.
+
+<small>특허번호와 권리상태는 공개 특허자료 기준의 1차 조사결과입니다. 제출 직전 한성대학교 산학협력단과 KIPRIS를 통해 현재 권리자·연차료 유지상태를 재확인하고, 신규 출원 전에는 청구항 중심 선행기술조사와 FTO 검토를 수행합니다.</small>
+
 ## 핵심 KPI
 
 측정 대상과 방법이 드러나도록 정의했습니다. **<span class="nowrap">본 목표값은</span> 제안 기준**이며, 1차년도에
