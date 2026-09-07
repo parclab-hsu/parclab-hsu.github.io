@@ -790,10 +790,38 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 기대 효과
+        5. 정량 목표
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="5. 정량 목표">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 무엇을 재서 성공을 판정하는가
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-123" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 1·2·3 번 목표치를 지금 정하지 않는 이유
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -801,7 +829,7 @@
   <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 확인되지 않은 것
+        6. 추진 단계
       
     </span>
   </a>
@@ -812,7 +840,29 @@
   <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. 준비된 것
+        7. 기대 효과
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 확인되지 않은 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 준비된 것
       
     </span>
   </a>
@@ -847,7 +897,8 @@
 <strong>침하(deformation) 엔진</strong>과, 견인력·주행 저항을 계산하는 <strong>견인(terramechanics)
 솔버</strong>입니다. 실측해 보니 <strong>전자는 아무 일도 하지 않고, 후자는 아예 꺼져 있으며,
 무엇보다 둘이 서로 연결되어 있지 않습니다.</strong></p>
-<p>이 둘을 <strong>하나의 모델로 통합하고 실측으로 검증하는 것</strong>을 차년도 과제로 제안합니다.</p>
+<p>이 둘을 <strong>하나의 모델로 통합하고 실측으로 검증하는 것</strong>을 차년도 과제로 제안합니다.
+작업 범위는 10 개 WP(4절), 판정 지표는 7 개(5절), 추진은 3 단계(6절)입니다.</p>
 </div>
 <p><a href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 프로젝트 상세</a> ·
 <a href="../l-project-interim/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 중간 보고</a> ·
@@ -855,7 +906,8 @@
 <hr />
 <h2 id="1">1. 왜 필요한가<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>달 탐사 로버의 주행 성능은 <strong>토양이 어떻게 꺼지고, 꺼진 상태에서 얼마나 밀어주는가</strong>로
-결정됩니다. 아폴로·VIPER 기록이 공통으로 말하는 것이 이것입니다.</p>
+결정됩니다. 바퀴가 꺼진 만큼 주행 저항이 늘고, 토양이 전단되는 방식에 따라 견인력이
+정해지기 때문입니다.</p>
 <p>현재 저희 플랜트는 그 층이 없는 <strong>단단한 달</strong> 위에서 돕니다. 거기서 얻은 슬립·견인·
 등판 한계·자세 수치는 전부 강체 지형의 값입니다. 차년도에 자율 주행이나 크레이터 탈출
 거동을 다루려면 이 층을 먼저 세워야 합니다.</p>
@@ -1123,7 +1175,7 @@ Bekker–Wong 계열의 고전적 차륜–지반 모델입니다. 상태를 확
 <div class="admonition danger">
 <p class="admonition-title">WP7·WP10 이 이 과제의 성패를 가릅니다</p>
 <p>나머지가 모두 끝나도 <strong>비교할 실측 자료가 없으면</strong>, 「수치는 나오는데 근거가 없는」
-상태가 하나 더 생길 뿐입니다. 이번 분석에서 확인된 원인 ② 가 정확히 그 모양이었고,
+상태가 하나 더 생길 뿐입니다. 이번 분석에서 확인된 원인 ②(3절)가 정확히 그 모양이었고,
 그것이 이 과제를 제안하는 이유이기도 합니다.</p>
 <p><strong>월면토 시뮬런트 시험 자료 확보를 과제 범위에 포함</strong>해 주시기를 요청드립니다.
 필요한 항목은 아래와 같습니다.</p>
@@ -1167,7 +1219,117 @@ Bekker–Wong 계열의 고전적 차륜–지반 모델입니다. 상태를 확
 <p><strong>그라우저 휠 조건이 맞아야 합니다</strong> — 저희 휠은 그라우저 24 개, 높이 19.1 mm 입니다.
 평활 휠 시험 자료만으로는 전단 거동이 맞지 않습니다.</p>
 <hr />
-<h2 id="5">5. 기대 효과<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h2 id="5">5. 정량 목표<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 무엇을 재서 성공을 판정하는가<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>지표</th>
+<th>측정 방법</th>
+<th>목표</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>침하 깊이 재현오차</strong></td>
+<td>동일 하중·동일 그라우저 조건의 시험 바퀴자국 깊이 대비 상대오차</td>
+<td>WP7 자료 확보 후 확정</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>바퀴자국 형상 재현오차</strong></td>
+<td>자국 폭·단면 형상의 정규화 오차</td>
+<td>〃</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>슬립–견인력 곡선 재현오차</strong></td>
+<td>슬립비별 drawbar pull 곡선의 RMSE</td>
+<td>〃</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>하중 추정 정확도</strong></td>
+<td>서스펜션 기반 코너 하중 대 기준값(정적 자중 배분) 오차</td>
+<td><strong>≤ 10 %</strong> <br><small>현재 네 축 합 기준 1.08 배(오차 8.3 %)</small></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>침하 ↔ 견인 연결 성립</strong></td>
+<td>침하량 변화가 견인력 변화로 이어지는지 (현재 연결 없음)</td>
+<td><strong>성립 / 미성립</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>실시간 배율 저하</strong></td>
+<td>모델 적용 전후 시뮬레이션 시간 배율(RTF) 비교</td>
+<td><strong>저하 ≤ 20 %</strong> <br><small>침하 엔진 단독이 −11.7 % 실측 — 견인 계산 몫을 더한 값</small></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>회귀 통과</strong></td>
+<td>기존 12축 계약·기구학 회귀가 그대로 통과하는지</td>
+<td><strong>전 항목 통과</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-123">5.2 1·2·3 번 목표치를 지금 정하지 않는 이유<a class="headerlink" href="#52-123" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">의도적으로 비워 둡니다</p>
+<p>비교할 시험 자료를 손에 넣기 전에 「재현오차 ≤ 20 %」 같은 숫자를 적으면, <strong>근거 없는
+수치를 하나 더 만드는 일</strong>이 됩니다. 그것이 바로 이 과제가 해결하려는 문제
+(3절 원인 ②, 힘–침하 계수의 출처 없음)와 <strong>같은 종류의 실수</strong>입니다.</p>
+<p>1·2·3 번은 <strong>WP7 자료가 들어온 시점에 그 자료의 산포를 보고 확정</strong>합니다. 확정 전까지는
+「목표 미정」으로 두고, 정할 때 근거를 함께 남깁니다.</p>
+</div>
+<p>4·6·7 번은 <strong>지금 확정할 수 있습니다.</strong> 기준이 외부 자료가 아니라 내부 값이기 때문입니다 —
+정적 자중(729.0 N), 현재 실시간 배율, 기존 회귀 항목이 모두 측정되어 있습니다.</p>
+<p>5 번은 수치가 아니라 <strong>성립 여부</strong>입니다. 지금은 침하량이 견인 계산에 0 으로 들어가므로
+<strong>무조건 미성립</strong>입니다. 이 항목이 이 과제의 핵심을 가장 짧게 요약합니다.</p>
+<hr />
+<h2 id="6">6. 추진 단계<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>WP 사이 선행 관계에서 나오는 순서입니다. 기간이 아니라 <strong>의존 관계</strong>로 묶었습니다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>내용</th>
+<th>산출</th>
+<th>외부 의존</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1단계</strong> 기반 정비</td>
+<td>WP1 하중 계측 · WP4 시작 조건 · WP5 솔버 활성화 · WP6 제원 반영</td>
+<td>검증된 하중 신호, 정상 동작하는 솔버</td>
+<td>없음</td>
+</tr>
+<tr>
+<td><strong>2단계</strong> 모델 수립</td>
+<td>WP2 힘–침하 관계 · WP3 접지 형상 · <strong>WP8 침하 ↔ 견인 연결</strong></td>
+<td>통합 모델 초판</td>
+<td>없음</td>
+</tr>
+<tr>
+<td><strong>3단계</strong> 정합·검증</td>
+<td>WP7 계수 반영 · WP9 성능 · WP10 검증</td>
+<td>검증된 모델, 목표 1·2·3 확정</td>
+<td><strong>토질 시험 자료</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">1·2단계는 외부 자료 없이 진행됩니다</p>
+<p>토질 시험 자료가 늦어져도 <strong>1·2단계는 멈추지 않습니다.</strong> 하중 계측 교체와 두 엔진 연결은
+내부 작업이고, 그때까지는 문헌값으로 모델을 세워 둡니다.</p>
+<p>다만 <strong>3단계 없이는 「검증된 모델」이 되지 않습니다.</strong> 자료 확보 시점이 이 과제의
+결과물 성격을 가릅니다 — 「문헌 기반 정식화」로 끝날지, 「실측 검증 모델」이 될지입니다.</p>
+</div>
+<hr />
+<h2 id="7">7. 기대 효과<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>주행 성능 예측의 근거 확보</strong> — 슬립–견인력 곡선, 등판 한계, 주행 저항을 강체 지형이
   아닌 조건에서 산출</li>
@@ -1178,7 +1340,7 @@ Bekker–Wong 계열의 고전적 차륜–지반 모델입니다. 상태를 확
 <li><strong>누적 주행 영향 평가</strong> — 반복 통과로 다져진 자국이 이후 주행에 미치는 영향</li>
 </ul>
 <hr />
-<h2 id="6">6. 확인되지 않은 것<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h2 id="8">8. 확인되지 않은 것<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">이 절을 함께 읽어 주십시오</p>
 <p>아래는 이 과제로도 <strong>확인할 수 없는 범위</strong>입니다. 과제 종료 시 무엇이 남는지를
@@ -1191,13 +1353,17 @@ Bekker–Wong 계열의 고전적 차륜–지반 모델입니다. 상태를 확
   시험 자료와의 대조로만 수행합니다.</li>
 <li><strong>토질 시험 자료가 확보되지 않으면 WP7·WP10 이 성립하지 않습니다.</strong> 그 경우 결과물은
   「문헌 기반 정식화」까지이며, <strong>검증된 모델이라고 부를 수 없습니다.</strong></li>
+<li><strong>정량 목표 1·2·3 번은 아직 수치가 없습니다</strong>(5.2절). 비교 자료를 갖기 전에 목표치를
+  적는 것은 이 과제가 고치려는 문제를 되풀이하는 일이라, 의도적으로 비워 두었습니다.
+  <strong>평가 기준을 착수 전에 확정해야 한다면 그 사실을 먼저 알려 주십시오</strong> — 문헌값을
+  잠정 기준으로 삼는 방식으로 바꿀 수 있으나, 그 경우 잠정임을 명시해야 합니다.</li>
 <li><strong>연산 시간 여유가 크지 않습니다.</strong> 현재 플랜트는 실시간의 약 절반 속도로 동작하며,
   침하·견인 계산은 부하를 더합니다. 실시간성 확보는 별도 사안이나, 이 과제의 설계
   제약으로 작용합니다.</li>
 <li>시뮬레이터 상류(OmniLRS) 구조 변경이 포함되어 포크 유지 부담이 늘어납니다.</li>
 </ul>
 <hr />
-<h2 id="7">7. 준비된 것<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h2 id="9">9. 준비된 것<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p>과제 착수 시 바로 사용할 수 있는 상태로 정리되어 있습니다.</p>
 <table>
 <thead>
