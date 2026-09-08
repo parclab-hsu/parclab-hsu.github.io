@@ -998,6 +998,31 @@
 아니라 정확히 0이며 <strong>오류도 보고되지 않아</strong>, 기능이 동작 중인 것으로 오인될 수 있습니다.
 접지 폭을 실측값으로 조정하면 변형은 발생하지만, 이번에는 침하량이 과대하여 <strong>로버의
 주행이 사실상 불가능해집니다.</strong></p>
+<p><strong>실행 파라미터 13개를 전수 점검한 결과</strong>(2026-09-08), 출처가 분명한 것은 지형
+해상도·폭·높이 <strong>3개뿐</strong>이며 나머지는 예제값이거나 출처가 확인되지 않습니다. 그중 세
+항목은 별도 조치가 필요합니다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>gravity</code></strong></td>
+<td>설정에 자리가 있으나 <strong>코드에서 참조되지 않음</strong> — 견인 솔버의 중력 하드코딩과 같은 계열</td>
+</tr>
+<tr>
+<td><strong><code>footprint.shape</code></strong></td>
+<td><strong>미사용</strong> — 접지면이 항상 직사각형으로 생성됩니다. 실제 접지는 진입각~이탈각 사이의 원호입니다</td>
+</tr>
+<tr>
+<td><strong><code>num_links</code></strong></td>
+<td>대상 링크 설정과 <strong>연결되어 있지 않음</strong>. 기본값 4로 동작하며 현재 휠 수와 우연히 일치합니다</td>
+</tr>
+</tbody>
+</table>
 <h3 id="22">2.2 견인 모델 — 비활성 상태 및 대상 로버·토양 파라미터 정합 필요<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>견인력(Drawbar Pull)·주행 저항·조향 저항 토크를 산출하는 솔버가 별도로 구현되어
 있습니다. Bekker–Wong 계열의 차륜–토양 상호작용 모델입니다. 확인 결과입니다.</p>
@@ -1130,6 +1155,17 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition info">
+<p class="admonition-title">안식각(<code>angle_of_repose</code>)에 대한 확인 결과</p>
+<p>현행 값은 <strong>60°</strong>이며, 월면토에 대해 통상 보고되는 <strong>30~45°보다 높습니다.</strong> 출처는
+설정에도 상류 문서에도 없습니다.</p>
+<p><strong>원인 1번을 이 값으로 해결할 수는 없음을 확인했습니다.</strong> 접지 폭이 격자 2셀일 때는
+두 표본점이 모두 경계에 위치하여, <strong>안식각과 무관하게 분포가 0</strong>이 됩니다. 폭을
+조정해 3셀 이상으로 만드는 것 외의 방법이 없습니다.</p>
+<p>다만 <strong>폭을 조정한 뒤에는 침하 깊이를 최대 2.6배까지 좌우합니다</strong>(폭 0.159 m 기준
+60° 대 30°). 2.1절에서 확인된 과대 침하에 이 값이 기여하고 있을 가능성이 있어
+WP2에서 함께 검토합니다.</p>
+</div>
 <p>3번에 대해서는 <strong>대체 계측 경로를 확인</strong>하였습니다. 접지력이 0으로 계측되는 동일 상태에서
 서스펜션 하중 신호는 유효하였으며(표준편차 0.000), 네 바퀴 합이 <strong>정적 자중의 1.083배</strong>로
 산출되었습니다.</p>
@@ -1158,7 +1194,7 @@
 </tr>
 <tr>
 <td><strong>WP2</strong></td>
-<td><strong>힘–침하 관계 재정립</strong> — Bekker 압력–침하 이론 기반. 달 중력·그라우저 휠 조건 명시</td>
+<td><strong>힘–침하 관계 재정립</strong> — Bekker 압력–침하 이론 기반. 달 중력·그라우저 휠 조건 명시. <strong>안식각 출처 확보</strong>(현행 60°, 침하 깊이를 2.6배까지 좌우)</td>
 <td>WP1</td>
 </tr>
 <tr>
@@ -1168,12 +1204,12 @@
 </tr>
 <tr>
 <td><strong>WP4</strong></td>
-<td><strong>접지 형상 산정</strong> — 접지 폭·길이를 접지 역학으로 결정. 길이는 침하량의 함수이므로 상수 가정 불가</td>
+<td><strong>접지 형상 산정</strong> — 접지 폭·길이를 접지 역학으로 결정. 길이는 침하량의 함수이므로 상수 가정 불가. <strong>접지면 형상을 직사각형에서 실제 접지 형상으로</strong>(<code>footprint.shape</code> 미사용 상태 해소)</td>
 <td>WP2</td>
 </tr>
 <tr>
 <td><strong>WP5</strong></td>
-<td><strong>초기 조건 정비</strong> — 낙하·안착 완료 후 변형 개시</td>
+<td><strong>초기 조건 및 설정 정합</strong> — 낙하·안착 완료 후 변형 개시. <strong><code>gravity</code> 미사용·<code>num_links</code> 미연결 해소</strong></td>
 <td>—</td>
 </tr>
 </tbody>
