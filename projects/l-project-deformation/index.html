@@ -799,7 +799,29 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#4656" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실제 접지면과의 유사도는 지금 46~56 % 입니다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        그런데 그 해상도에서 변형을 켜면 시뮬레이션이 멈춥니다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         그래서 지금 적용되어 있는가
@@ -921,9 +943,10 @@
   4륜 모두 0으로 읽히기 때문입니다. 2026-09-09에 하중 입력을 서스펜션
   조인트 토크로 바꿔 <strong>정지 상태에서도 파이도록</strong> 연결했습니다.</li>
 </ul>
-<p>접지면도 메시에서 직접 쟀습니다. <strong>폭은 침하 5 mm를 넘으면 포화</strong>해 상수로 둬도
-되지만, <strong>접지 길이는 침하의 함수인데 설정은 상수이고 엔진이 갱신조차 하지
-않습니다</strong> — 접지 면적이 고정된 채 하중만 늘면 압력이 과대평가됩니다.</p>
+<p>접지면도 메시에서 직접 쟀습니다. <strong>실제 접지면과의 면적 유사도는 지금 46~56 %</strong>
+입니다. 90 % 이상으로 올리려면 지형 해상도를 0.025 m/px로 높여야 하는데,
+<strong>그 해상도에서 변형을 켜면 시뮬레이션이 멈춥니다</strong>(심 시간 3.8 s에서 동결,
+토픽은 계속 나와 살아 있는 것처럼 보입니다).</p>
 <p>실행 파라미터 13개 중 <strong>출처가 분명한 값은 3개</strong>뿐입니다. 그래서 현재도
 <code>enable: False</code> 입니다 — 이 문서는 그 판단의 근거입니다.</p>
 </div>
@@ -1237,7 +1260,133 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <code>wave_frequency</code> 를 3.58(길이 0.200 기준)로 맞추면 최소한 서로 모순이지는 않게 되지만,
 그건 <strong>일관성을 맞추는 것이지 옳게 만드는 것이 아닙니다.</strong> 옳게 하려면 길이가 침하를
 따라가야 합니다.</p>
-<h3 id="_5">그래서 지금 적용되어 있는가<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="4656">실제 접지면과의 유사도는 지금 46~56 % 입니다<a class="headerlink" href="#4656" title="Permanent link">&para;</a></h3>
+<p>"폭·길이가 맞는가"로는 부족합니다. <strong>DEM에 실제로 찍히는 면적</strong>으로 봐야 합니다 —
+엔진은 발자국 표본점을 <code>int(좌표/해상도)</code> 로 격자 셀에 매핑하므로, 설정값이 아니라
+<strong>이산화된 결과</strong>가 지형을 깎습니다.</p>
+<p>발자국 생성이 <code>linspace(−w/2, w/2, int(w/res)+1)</code> 이라 <strong>표본 간격이 지형 해상도와
+다릅니다</strong>(폭 0.159 → 4점, 간격 0.053). 그래서 셀이 겹치거나 건너뛰고,
+<strong>덮는 면적이 설정값보다 부풀어 오릅니다.</strong></p>
+<table>
+<thead>
+<tr>
+<th>설정 (폭 × 길이)</th>
+<th>표본점</th>
+<th>찍힌 셀</th>
+<th>덮는 폭</th>
+<th>덮는 길이</th>
+<th>찍힌 면적</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0.090 × 0.200 (현행)</strong></td>
+<td>10</td>
+<td>8.0</td>
+<td><strong>0.141</strong></td>
+<td>0.200</td>
+<td>0.0200 m²</td>
+</tr>
+<tr>
+<td>0.159 × 0.200</td>
+<td>20</td>
+<td>16.0</td>
+<td>0.210</td>
+<td>0.200</td>
+<td>0.0400 m²</td>
+</tr>
+<tr>
+<td>0.159 × 0.275</td>
+<td>24</td>
+<td>20.8</td>
+<td>0.210</td>
+<td>0.274</td>
+<td>0.0519 m²</td>
+</tr>
+</tbody>
+</table>
+<p>셀 위상에 따라 달라지므로 무작위 위상 300~400회 평균입니다.
+<strong>현행 폭 0.090이 실제로는 0.141 m를 덮습니다 — 설정값의 1.57배입니다.</strong></p>
+<p>실제 접지 면적은 침하 0.032 m에서 <strong>0.0358 m²</strong>, 0.050 m에서 <strong>0.0437 m²</strong> 입니다.</p>
+<table>
+<thead>
+<tr>
+<th>조건</th>
+<th>면적 유사도 (z=0.032)</th>
+<th>(z=0.050)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>현행 0.090 × 0.200</strong></td>
+<td><strong>56 %</strong></td>
+<td><strong>46 %</strong></td>
+</tr>
+<tr>
+<td>폭·길이를 실제값으로, 해상도 0.05</td>
+<td>114 %</td>
+<td>119 %</td>
+</tr>
+<tr>
+<td>폭·길이를 실제값으로, <strong>해상도 0.025</strong></td>
+<td><strong>99 %</strong></td>
+<td><strong>101 %</strong></td>
+</tr>
+<tr>
+<td>〃 해상도 0.02</td>
+<td>99 %</td>
+<td>96 %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>90 % 이상을 만들려면 지형 해상도를 0.025 m/px로 올려야 합니다.</strong> 현행 0.05에서는
+폭·길이를 정확히 넣어도 이산화가 <strong>14~19 % 과대</strong>로 만듭니다 — 휠 폭 0.159가 격자
+3.2칸이라 양자화 오차가 원리적으로 ±0.5칸(±15 %)이기 때문입니다.</p>
+<h3 id="_5">그런데 그 해상도에서 변형을 켜면 시뮬레이션이 멈춥니다<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>해상도만 올리는 것은 <strong>런타임 비용이 없습니다</strong> — tick 29.959 Hz, RTF 0.4994로
+현행과 같습니다(기동만 40 s → 118 s로 늘어납니다).</p>
+<table>
+<thead>
+<tr>
+<th>조건</th>
+<th>tick</th>
+<th>RTF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.05 · 변형 OFF</td>
+<td>29.96 Hz</td>
+<td>0.4994</td>
+</tr>
+<tr>
+<td>0.05 · 변형 ON</td>
+<td>27.88 Hz</td>
+<td>0.4725</td>
+</tr>
+<tr>
+<td>0.025 · 변형 OFF</td>
+<td>29.96 Hz</td>
+<td>0.4994</td>
+</tr>
+<tr>
+<td><strong>0.025 · 변형 ON</strong></td>
+<td><strong>5.61 Hz</strong></td>
+<td><strong>0.0000</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">RTF 0은 반올림이 아닙니다 — 심 시간이 3.8 s에서 그대로 멈춥니다</p>
+<p>그런데 관절 상태 토픽은 5.6 Hz로 계속 나옵니다(20초간 115건 수신, 스탬프는
+전부 3.8000). <strong>밖에서 보면 살아 있는 것처럼 보입니다.</strong></p>
+</div>
+<p>원인은 변형 함수가 <strong>깊이가 0이든 아니든 매 스텝 정점 배열 전체를 다시 쓰는</strong>
+구조입니다. 배열이 2.6 M → 10.2 M으로 4배가 되면서 한 스텝을 못 끝냅니다.</p>
+<p><strong>즉 유사도 90 %는 지금 구현으로는 도달할 수 없습니다.</strong> 해상도를 올리는 것이
+조건인데 그 해상도에서 엔진이 서기 때문입니다. <strong>바뀐 셀만 갱신하도록 고치는 것이
+선행 조건</strong>입니다.</p>
+<h3 id="_6">그래서 지금 적용되어 있는가<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><strong>아니오.</strong> 설정은 여전히 폭 0.090 · 길이 0.200 입니다. 폭 0.090은 격자 2점이라
 <strong>변형이 정확히 0</strong> 인 상태 그대로입니다. 분석과 적용은 별개이고, 적용 순서는
 10절에 있습니다 — 폭만 먼저 고치면 로버가 파묻힙니다.</p>
@@ -1411,9 +1560,9 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
   시뮬런트(모사토) 시험도 아직 없습니다.</li>
 <li><strong>하중 교정 계수 1.78은 산포 ±18 %</strong> 입니다. 평균은 맞지만 자세별 오차가
   남고, 그 오차가 침하에 어떻게 전달되는지는 아직 정량화하지 않았습니다.</li>
-<li><strong>접지면 형상은 여전히 직사각형이고, 길이가 침하를 따라가지 않습니다.</strong> 5절에서
-  얼마나 어긋나는지(12~37 % 과소)는 재었지만, <strong>그 오차가 침하 깊이에 얼마나
-  전달되는지는 재지 않았습니다.</strong> 형상 자체(원호 대 사각형)의 영향도 미측정입니다.</li>
+<li><strong>접지면 유사도가 46~56 %이고, 90 %로 올리는 경로가 아직 막혀 있습니다.</strong> 얼마나
+  어긋나는지는 재었지만(5절), <strong>그 오차가 침하 깊이에 얼마나 전달되는지는 재지
+  않았습니다.</strong> 형상 자체(원호 대 사각형)의 영향도 미측정입니다.</li>
 <li><strong>경사면 처리를 확인하지 않았습니다.</strong> 참조점이 yaw만 쓰므로 경사에서 발자국이
   지형에 눕지 않는데, 그 오차 크기를 재지 않았습니다.</li>
 <li><strong>성능 손실이 있습니다.</strong> 켜고 주행하면 30 → <strong>26.5 Hz</strong>(−12 %)입니다. 깊이가
@@ -1432,7 +1581,9 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
    <code>wave_frequency</code> 와 <strong>같은 침하를 가정</strong>해야 합니다 — 지금은 둘이 15.6 % 어긋나 있습니다.</li>
 <li><strong><code>wave_frequency</code> 를 접지 길이에 맞춰</strong> — 현행 길이 0.200 m 기준이면 3.58입니다.
    <strong>다만 이는 일관성을 맞추는 것이지 옳게 만드는 것이 아닙니다</strong> — 4번이 먼저입니다.</li>
-<li><strong>지형 해상도 재검토</strong> — 0.05 m/px에서 휠 폭 0.159 m는 4칸이라 형상이 매우 거칩니다.</li>
+<li><strong>엔진이 바뀐 셀만 갱신하도록</strong> — 이것이 해상도를 올리기 위한 선행 조건입니다.
+   지금은 매 스텝 정점 배열 전체를 다시 써서, 0.025 m/px에서 시뮬레이션이 멈춥니다.</li>
+<li><strong>지형 해상도를 0.025 m/px로</strong> — 접지면 유사도가 56 % → 99 %가 됩니다. 6번 없이는 못 합니다.</li>
 <li><strong>경계 검사 추가</strong> — 야드 밖으로 나가면 반대쪽 끝을 팝니다.</li>
 <li><strong>안식각 출처 확보</strong> — 현행 60°는 통상값 30~45°보다 높아 침하를 과대평가하는 방향입니다.</li>
 </ol>

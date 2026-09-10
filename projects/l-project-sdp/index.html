@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.81</td>
+<td>1.82</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1423,6 +1423,11 @@
 <td>1.81</td>
 <td>2026-09-10</td>
 <td><strong>접지면(footprint) 정밀 실측 — 「휠 폭 0.159」 하나로 이야기할 문제가 아니었고, 아직 적용도 안 돼 있다.</strong> 신설 <code>tools/isaac/analyze_wheel_footprint.py</code> 로 휠 메시(정점 453 만)에서 직접 쟀다. <strong>① 접지 폭은 하나가 아니다.</strong> 그라우저 팁대(반경 99~100 %)는 <strong>0.1297 m</strong> 로 전체 폭보다 <strong>18 % 좁다.</strong> 다만 침하가 <strong>5 mm 만 넘으면 0.1575 → 0.1592 로 포화</strong>하므로, 실제 침하 범위에서는 항상 전체 폭이 걸린다 — <strong>폭을 상수 0.159 로 두는 것은 타당하다</strong>(팁대는 첫 2 mm 에서만 유효). 축방향 중심이 <strong>−0.0031 m</strong> 로 완전 대칭이 아닌 것도 확인했다(격자 0.05 대비 6 %, 해상도를 올리면 보이게 된다). <strong>② 접지 길이는 상수로 두면 안 된다.</strong> 강체 휠 기하 <code>L = 2√(2Rz − z²)</code>(R 실측 0.2134)로 계산하면 실측 침하 범위 0.032~0.05 m 에서 <strong>0.225~0.275 m</strong> 다. 현행 0.200 m 는 <strong>침하 0.0249 m 에 해당</strong>하는 길이라 <strong>12~37 % 과소</strong>다. <strong>③ 더 나쁜 것은 엔진이 갱신하지 않는다는 점이다</strong> — <code>create_profile()</code> 이 <code>__init__</code> 에서 <strong>한 번만</strong> 불린다(<code>deformation_engine.py</code> 574행). 침하가 깊어져도 접지면이 넓어지지 않으므로 <strong>압력이 과대평가되는 방향</strong>이다. <strong>④ 설정 두 값이 서로 어긋나 있다</strong> — <code>footprint.height</code> 0.200 은 침하 0.0249 m 를, <code>wave_frequency</code> 4.14 는 침하 <strong>0.0339 m</strong>(길이 0.231 m)를 가정한다. 같은 접지면을 두 곳에서 다르게 잡고 있고 <strong>길이 기준 15.6 % 차이</strong>다. 4.14 를 3.58 로 맞추면 모순은 없어지지만 <strong>그건 일관성을 맞추는 것이지 옳게 만드는 것이 아니다.</strong> <strong>⑤ 그리고 아직 적용되지 않았다</strong> — 설정은 여전히 폭 0.090(격자 2 점)이라 <strong>변형이 정확히 0</strong> 인 상태 그대로다. 분석과 적용은 별개다. <code>DEFORMATION.md</code> §4c 신설, 켜는 순서 4 번을 실측으로 다시 썼다. 공개 페이지에도 5 절로 반영했다(절 번호 재정렬)</td>
+</tr>
+<tr>
+<td>1.82</td>
+<td>2026-09-10</td>
+<td><strong>접지면 유사도를 재니 46~56 % 였다. 90 % 로 올리는 경로는 막혀 있다 — D-46 신설.</strong> 「폭·길이가 맞는가」로는 부족하고 <strong>DEM 에 실제로 찍히는 면적</strong>으로 봐야 한다. 엔진이 표본점을 <code>int(좌표/해상도)</code> 로 셀에 매핑하므로 설정값이 아니라 <strong>이산화된 결과</strong>가 지형을 깎는다. <code>create_profile()</code> 이 <code>linspace(−w/2, w/2, int(w/res)+1)</code> 이라 <strong>표본 간격이 지형 해상도와 다르고</strong>(폭 0.159 → 4 점, 간격 0.053) 셀이 겹치거나 건너뛴다 — <strong>현행 폭 0.090 이 실제로는 0.141 m 를 덮는다(설정값의 1.57 배).</strong> 무작위 셀 위상 300~400 회 평균으로 쟀다. <strong>유사도(면적):</strong> 현행 <strong>56 %/46 %</strong>(z=0.032/0.050) · 폭·길이를 실제값으로 넣어도 해상도 0.05 에서는 <strong>114 %/119 %</strong>(이번엔 과대) · <strong>해상도 0.025 에서 99 %/101 %</strong>. 휠 폭이 격자 3.2 칸이라 양자화 오차가 원리적으로 ±0.5 칸(±15 %)이다 — <strong>90 % 이상은 해상도 0.025 가 조건이다.</strong> <strong>해상도만 올리는 것은 런타임 비용이 없다</strong> — tick 29.96 Hz · RTF 0.4994 로 현행과 같다(기동만 40 → 118 s). <strong>D-46 — 그런데 0.025 에서 변형을 켜면 시뮬이 멈춘다.</strong> tick 5.61 Hz · <strong>RTF 0.0000</strong> 이고, RTF 0 은 반올림이 아니라 <strong>심 시간이 3.8 s 에서 동결</strong>된 것이다(20 초간 115 건 수신, 스탬프 전부 3.8000). <strong>그런데 토픽은 계속 나와 밖에서는 살아 있는 것처럼 보인다</strong> — D-38·D-42 와 같은 함정을 세 번째로 만났다. 원인은 <code>deform()</code> 이 <strong>깊이가 0 이든 아니든 매 스텝 정점 배열 전체를 다시 쓰는</strong> 구조이고, 배열이 2.6 M → 10.2 M 으로 4 배가 되면서 한 스텝을 못 끝낸다. <strong>즉 유사도 90 % 는 지금 구현으로 도달할 수 없고, 「바뀐 셀만 갱신」이 선행 조건</strong>이다 — 차년도 과제의 성능 항목이 되어야 한다. 참고: 0.05 에서 변형 ON 은 tick 27.88 Hz · RTF 0.4725 로 정상 범위다. <code>DEFORMATION.md</code> 와 공개 페이지에 반영, 켜는 순서에 「바뀐 셀만 갱신」을 <strong>해상도 상향의 선행 조건</strong>으로 넣었다</td>
 </tr>
 <tr>
 <td>1.46</td>
