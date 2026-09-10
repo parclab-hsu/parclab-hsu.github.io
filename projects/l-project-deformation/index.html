@@ -754,15 +754,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-3" class="md-nav__link">
+  <a href="#5-footprint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐
+        5. 접지면(Footprint) 정밀 실측 — 폭 하나로 이야기할 문제가 아니었다
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐">
+    <nav class="md-nav" aria-label="5. 접지면(Footprint) 정밀 실측 — 폭 하나로 이야기할 문제가 아니었다">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0159" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        폭은 상수로 둬도 됩니다 — 값은 0.159가 맞습니다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        길이는 상수로 두면 안 되고, 엔진이 갱신하지도 않습니다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설정 두 값이 서로 어긋나 있습니다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        그래서 지금 적용되어 있는가
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -782,21 +843,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-3" class="md-nav__link">
+  <a href="#7-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 상류 소스 결함 3건
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. 함께 확인한 것 — 견인 솔버는 한 번도 돌아본 적이 없었다
+        7. 상류 소스 결함 3건
       
     </span>
   </a>
@@ -807,7 +857,7 @@
   <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. 확인되지 않은 것
+        8. 함께 확인한 것 — 견인 솔버는 한 번도 돌아본 적이 없었다
       
     </span>
   </a>
@@ -818,7 +868,18 @@
   <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. 켠다면 이 순서로
+        9. 확인되지 않은 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 켠다면 이 순서로
       
     </span>
   </a>
@@ -860,6 +921,9 @@
   4륜 모두 0으로 읽히기 때문입니다. 2026-09-09에 하중 입력을 서스펜션
   조인트 토크로 바꿔 <strong>정지 상태에서도 파이도록</strong> 연결했습니다.</li>
 </ul>
+<p>접지면도 메시에서 직접 쟀습니다. <strong>폭은 침하 5 mm를 넘으면 포화</strong>해 상수로 둬도
+되지만, <strong>접지 길이는 침하의 함수인데 설정은 상수이고 엔진이 갱신조차 하지
+않습니다</strong> — 접지 면적이 고정된 채 하중만 늘면 압력이 과대평가됩니다.</p>
 <p>실행 파라미터 13개 중 <strong>출처가 분명한 값은 3개</strong>뿐입니다. 그래서 현재도
 <code>enable: False</code> 입니다 — 이 문서는 그 판단의 근거입니다.</p>
 </div>
@@ -1049,7 +1113,136 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <p>따라서 고칠 문제가 아니라 <strong>계수로 보정할 문제</strong>이고, 교정 계수는 <strong>1.78</strong>,
 <strong>산포 ±18 %</strong> 입니다. 평균은 맞고 자세별 오차는 남습니다.</p>
 <hr />
-<h2 id="5-3">5. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐<a class="headerlink" href="#5-3" title="Permanent link">&para;</a></h2>
+<h2 id="5-footprint">5. 접지면(Footprint) 정밀 실측 — 폭 하나로 이야기할 문제가 아니었다<a class="headerlink" href="#5-footprint" title="Permanent link">&para;</a></h2>
+<p>여기까지는 "휠 폭 0.159 m"라는 값 하나로 이야기했습니다. 휠 메시에서 직접 재 보니
+<strong>접지 폭은 하나가 아니고, 접지 길이는 상수가 아닙니다.</strong> (기준일 2026-09-10)</p>
+<p>접지 길이는 강체 휠 기하로 계산합니다 — 진입각 <code>θ_f = arccos(1 − z/R)</code> 의 현 길이이고,
+이탈각을 진입각과 같다고 본 값입니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>L = 2·√(2Rz − z²)          R = 0.2134 m (팁 반경 실측)
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>침하 z [m]</th>
+<th>걸리는 폭 [m]</th>
+<th>접지 길이 L [m]</th>
+<th>폭 격자점</th>
+<th>길이 격자점</th>
+<th><code>wave_frequency</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.0020</td>
+<td><strong>0.1297</strong></td>
+<td>0.0583</td>
+<td>3</td>
+<td>2</td>
+<td>1.04</td>
+</tr>
+<tr>
+<td>0.0050</td>
+<td>0.1575</td>
+<td>0.0918</td>
+<td>4</td>
+<td>2</td>
+<td>1.64</td>
+</tr>
+<tr>
+<td>0.0100</td>
+<td>0.1589</td>
+<td>0.1291</td>
+<td>4</td>
+<td>3</td>
+<td>2.31</td>
+</tr>
+<tr>
+<td>0.0200</td>
+<td>0.1592</td>
+<td>0.1804</td>
+<td>4</td>
+<td>4</td>
+<td>3.23</td>
+</tr>
+<tr>
+<td><strong>0.0320</strong></td>
+<td>0.1592</td>
+<td><strong>0.2248</strong></td>
+<td>4</td>
+<td>5</td>
+<td>4.02</td>
+</tr>
+<tr>
+<td><strong>0.0500</strong></td>
+<td>0.1592</td>
+<td><strong>0.2745</strong></td>
+<td>4</td>
+<td>6</td>
+<td>4.91</td>
+</tr>
+<tr>
+<td>0.0906</td>
+<td>0.1592</td>
+<td>0.3490</td>
+<td>4</td>
+<td>7</td>
+<td>6.25</td>
+</tr>
+</tbody>
+</table>
+<p>굵게 표시한 두 줄이 이 프로젝트의 실측 침하 범위입니다.</p>
+<h3 id="0159">폭은 상수로 둬도 됩니다 — 값은 0.159가 맞습니다<a class="headerlink" href="#0159" title="Permanent link">&para;</a></h3>
+<p><strong>그라우저 팁대(반경 99~100 %)의 폭은 0.1297 m</strong> 로 전체 폭보다 <strong>18 % 좁습니다.</strong>
+그런데 침하가 <strong>5 mm만 넘으면 0.1575 → 0.1592로 포화</strong>합니다. 실제 침하 범위에서는
+항상 전체 폭이 걸리므로 <strong>폭을 상수 0.159로 두는 것은 타당합니다</strong> — 팁대가 좁은 것은
+첫 2 mm에서만 유효합니다.</p>
+<p>축방향 중심이 <strong>−0.0031 m</strong> 로 완전 대칭이 아닌 것도 확인했습니다. 발자국이 휠
+중심선 기준으로 생성되므로 3 mm만큼 한쪽으로 치우칩니다 — 격자 0.05 m 대비 6 %라
+지금은 무시할 수 있지만, 해상도를 올리면 보이게 됩니다.</p>
+<h3 id="_3">길이는 상수로 두면 안 되고, 엔진이 갱신하지도 않습니다<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">접지면은 초기화 때 한 번만 만들어집니다</p>
+<p>발자국 생성 함수가 엔진 <code>__init__</code> 에서 한 번만 호출됩니다. <strong>침하가 깊어져도
+접지면이 넓어지지 않습니다.</strong> 접지 면적이 고정된 채 하중만 늘면
+<strong>압력이 과대평가되는 방향</strong>입니다.</p>
+</div>
+<p>현행 설정 0.200 m는 <strong>침하 0.0249 m에 해당하는 길이</strong>입니다. 실측 침하 범위
+0.032~0.05 m에서는 0.225~0.275 m여야 하므로 <strong>12~37 % 과소</strong>입니다.</p>
+<h3 id="_4">설정 두 값이 서로 어긋나 있습니다<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>값</th>
+<th>그 값이 가정하는 침하</th>
+<th>그때의 접지 길이</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>footprint.height</code></td>
+<td>0.200</td>
+<td>0.0249 m</td>
+<td>0.200 m</td>
+</tr>
+<tr>
+<td><code>wave_frequency</code></td>
+<td>4.14</td>
+<td><strong>0.0339 m</strong></td>
+<td><strong>0.231 m</strong></td>
+</tr>
+</tbody>
+</table>
+<p>같은 접지면을 두 곳에서 다르게 가정하고 있습니다 — 길이 기준 <strong>15.6 % 차이</strong>입니다.
+<code>wave_frequency</code> 를 3.58(길이 0.200 기준)로 맞추면 최소한 서로 모순이지는 않게 되지만,
+그건 <strong>일관성을 맞추는 것이지 옳게 만드는 것이 아닙니다.</strong> 옳게 하려면 길이가 침하를
+따라가야 합니다.</p>
+<h3 id="_5">그래서 지금 적용되어 있는가<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>아니오.</strong> 설정은 여전히 폭 0.090 · 길이 0.200 입니다. 폭 0.090은 격자 2점이라
+<strong>변형이 정확히 0</strong> 인 상태 그대로입니다. 분석과 적용은 별개이고, 적용 순서는
+10절에 있습니다 — 폭만 먼저 고치면 로버가 파묻힙니다.</p>
+<hr />
+<h2 id="6-3">6. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐<a class="headerlink" href="#6-3" title="Permanent link">&para;</a></h2>
 <p><strong>값이 적혀 있다고 쓰이는 것은 아닙니다.</strong> 설정에 자리가 있는데 코드가 한 번도 읽지
 않는 항목이 있고, 설정과 대상이 연결되지 않은 항목도 있습니다. 둘 다 겉으로는 정상으로
 보입니다. (기준일 2026-09-08, 13개 항목 전수)</p>
@@ -1119,7 +1312,7 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 우리는 아닙니다. 일반식 <code>L·N / (2πR)</code> 로 계산하면 현재 접지 길이 0.20 m에서 <strong>3.58</strong> 이고,
 그 접지 길이 자체도 아직 근거가 없습니다.</p>
 <hr />
-<h2 id="6-3">6. 상류 소스 결함 3건<a class="headerlink" href="#6-3" title="Permanent link">&para;</a></h2>
+<h2 id="7-3">7. 상류 소스 결함 3건<a class="headerlink" href="#7-3" title="Permanent link">&para;</a></h2>
 <p>우리가 만든 것이 아니라 OmniLRS 원본의 문제입니다. 앞의 둘은 패치로 고쳐 두었습니다.</p>
 <table>
 <thead>
@@ -1148,7 +1341,7 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tbody>
 </table>
 <hr />
-<h2 id="7">7. 함께 확인한 것 — 견인 솔버는 한 번도 돌아본 적이 없었다<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h2 id="8">8. 함께 확인한 것 — 견인 솔버는 한 번도 돌아본 적이 없었다<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <p>변형 엔진과 짝을 이루는 <strong>Terramechanics 견인 솔버</strong>도 같이 점검했습니다. 이 둘은
 "지형의 모양을 바꾸는 쪽"과 "로버가 받는 힘을 바꾸는 쪽"으로 나뉘는데, 연결이
 끊겨 있었습니다. (기준일 2026-09-10)</p>
@@ -1208,7 +1401,7 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <strong>견인력과 저항 토크</strong>입니다.</p>
 </div>
 <hr />
-<h2 id="8">8. 확인되지 않은 것<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h2 id="9">9. 확인되지 않은 것<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p>이 절을 줄이지 않습니다. 위의 수치가 어디까지를 말하는지가 여기에 있습니다.</p>
 <ul>
 <li><strong>토양 계수의 출처가 없습니다.</strong> 침하 회귀 4개, Bekker/Wong 계수 9개가 전부
@@ -1218,23 +1411,27 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
   시뮬런트(모사토) 시험도 아직 없습니다.</li>
 <li><strong>하중 교정 계수 1.78은 산포 ±18 %</strong> 입니다. 평균은 맞지만 자세별 오차가
   남고, 그 오차가 침하에 어떻게 전달되는지는 아직 정량화하지 않았습니다.</li>
-<li><strong>접지면 형상은 여전히 직사각형</strong>입니다. 실제 휠 접지는 진입각~이탈각 사이의
-  원호이고, 그 차이가 깊이에 미치는 영향은 측정하지 않았습니다.</li>
+<li><strong>접지면 형상은 여전히 직사각형이고, 길이가 침하를 따라가지 않습니다.</strong> 5절에서
+  얼마나 어긋나는지(12~37 % 과소)는 재었지만, <strong>그 오차가 침하 깊이에 얼마나
+  전달되는지는 재지 않았습니다.</strong> 형상 자체(원호 대 사각형)의 영향도 미측정입니다.</li>
 <li><strong>경사면 처리를 확인하지 않았습니다.</strong> 참조점이 yaw만 쓰므로 경사에서 발자국이
   지형에 눕지 않는데, 그 오차 크기를 재지 않았습니다.</li>
 <li><strong>성능 손실이 있습니다.</strong> 켜고 주행하면 30 → <strong>26.5 Hz</strong>(−12 %)입니다. 깊이가
   0이든 아니든 엔진이 매 스텝 정점 배열 전체를 다시 쓰기 때문입니다.</li>
 </ul>
 <hr />
-<h2 id="9">9. 켠다면 이 순서로<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h2 id="10">10. 켠다면 이 순서로<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <p>앞에서부터 하지 않으면 뒤가 무의미하거나 해롭습니다.</p>
 <ol>
 <li><strong><code>delay</code> 확대</strong> — 스폰 낙하 충격이 지형에 새겨집니다(주행 전에 이미 21 cm 구덩이).</li>
 <li><strong>힘–깊이 모델 재수립</strong> — 하중 입력 연결은 끝났고(4절), 남은 것은 <strong>회귀 계수의 출처</strong>입니다.</li>
 <li><strong>발자국 폭을 0.159 m로</strong> — 안 그러면 변형이 0인데 0인 줄 모릅니다. <strong>단 1·2를 먼저
    하지 않으면 로버가 파묻힙니다.</strong></li>
-<li><strong>발자국 길이·형상의 근거 확보</strong> — 접지 길이는 침하량의 함수라 상수로 두는 것 자체가 근사입니다.</li>
-<li><strong><code>wave_frequency</code> 를 3.58로</strong> — 접지 길이를 정한 뒤 일반식으로 재계산합니다.</li>
+<li><strong>발자국 길이를 침하의 함수로</strong> — 현행 0.200 m는 침하 0.0249 m에 해당하는 길이인데
+   실측 침하 범위에서는 0.225~0.275 m여야 합니다(5절). 상수로 둘 거면 최소한
+   <code>wave_frequency</code> 와 <strong>같은 침하를 가정</strong>해야 합니다 — 지금은 둘이 15.6 % 어긋나 있습니다.</li>
+<li><strong><code>wave_frequency</code> 를 접지 길이에 맞춰</strong> — 현행 길이 0.200 m 기준이면 3.58입니다.
+   <strong>다만 이는 일관성을 맞추는 것이지 옳게 만드는 것이 아닙니다</strong> — 4번이 먼저입니다.</li>
 <li><strong>지형 해상도 재검토</strong> — 0.05 m/px에서 휠 폭 0.159 m는 4칸이라 형상이 매우 거칩니다.</li>
 <li><strong>경계 검사 추가</strong> — 야드 밖으로 나가면 반대쪽 끝을 팝니다.</li>
 <li><strong>안식각 출처 확보</strong> — 현행 60°는 통상값 30~45°보다 높아 침하를 과대평가하는 방향입니다.</li>

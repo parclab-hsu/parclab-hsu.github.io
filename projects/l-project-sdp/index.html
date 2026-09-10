@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.79</td>
+<td>1.81</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1413,6 +1413,16 @@
 <td>1.79</td>
 <td>2026-09-10</td>
 <td><strong>D-40 — 견인 솔버를 연결했다. 켜 보니 결함이 3 개가 아니라 7 개였다.</strong> 알고 있던 셋(호출부 주석 처리 · 기본 인자 20 kg·0.09 m · 힘 2 회 적용) 말고, <strong>켜야만 드러나는 넷이 더 있었다.</strong> <strong>④ <code>get_velocities()</code> 가 없는 API 를 부른다</strong> — Isaac 5.0 의 <code>SingleRigidPrim</code> 에는 <code>get_linear_velocity()</code>/<code>get_angular_velocity()</code> 뿐이다. <strong>주석을 풀었어도 첫 스텝에서 죽었다.</strong> <strong>⑤ 솔버는 휠당 스칼라를 받는데 (n,3) 월드 벡터를 넘긴다</strong> — <code>compute_slip_ratio</code> 가 배열을 비교해 예외가 난다. 휠 좌표계로 투영해(전진 = local +x, 회전 = 차축 +y) 스칼라로 넘기게 했다. <strong>⑥ <code>integ.quad</code> 결과를 튜플째 쓴다</strong> — scipy 는 <code>(값, 오차)</code> 를 돌려주는데 그대로 더하고 뺀다. <strong><code>compute_fx</code>·<code>compute_fz</code>·<code>compute_my</code> 는 한 번도 실행된 적이 없다</strong>(10 곳에 <code>[0]</code>). <strong>⑦ <code>compute_sigma_max</code> 가 중력을 9.81 로 하드코딩</strong> — 달 시뮬레이터에서 σ_max 가 <strong>6 배</strong> 부푼다(D-41 이 변형 엔진에서 지적한 것과 <strong>같은 실수가 솔버에도</strong> 있었다). 설정으로 뺐고 1.62 를 준다. 덤으로 정지 시 <code>v=ω=0</code> 이면 슬립비가 <strong>0/0 → NaN</strong> 이라 뒤의 모든 힘을 오염시킨다 — 서 있는 것은 슬립이 아니므로 0 으로 뒀다. <strong>켰더니 로버가 날아갔다.</strong> σ_max 가 약 44 kPa 라 휠당 1.5 kN 급이 나오는데 자중은 729 N 이다. 더 근본적으로 <strong><code>fz</code> 를 PhysX 접촉력 위에 더하면 지지력이 이중 계상</strong>된다 — 이 솔버로 볼 것은 <strong>견인력(fx)과 저항 토크(my)</strong> 다. 그래서 <code>apply_normal_force: False</code>(기본), 휠당 <code>max_force</code> 상한, <strong>비유한 값이면 적용하지 않는다</strong>(NaN 하나가 들어가면 진단할 것도 없이 끝난다)를 넣었다. 침하는 <code>sinkage_source: bekker</code> 로 <strong>변형 엔진과 같은 하중</strong>에서 만든다(<code>z = (N/(b(k_c/b+k_φ)))^(1/n)</code>) — <code>zero</code> 면 솔버가 내는 힘이 전부 0 이라 도는 것과 꺼진 것이 구별되지 않는다. 신설 <code>tools/isaac/verify_terramechanics.py</code> 로 실측: 제원 450 kg·0.2133·b 0.159, 침하 0.032~0.05 m, 슬립비 0.846 → −0.189, fx −48~+4 N, my −2~+6 N·m, <strong>NaN 없음·폭발 없음.</strong> <strong><code>enable: False</code> 유지</strong> — 토양 계수 아홉 개가 전부 출처 없는 상류 기본값이고, <code>max_sinkage</code> 클램프가 실제로 걸리고 있다(<code>k_φ=100</code> 으로는 침하가 과하다). <strong>크기를 믿을 단계가 아니다.</strong> <strong><code>wheel_base</code> 는 축거가 아니라 Bekker 접지 폭 b</strong> 임을 설정 주석에 못박았다. 함께 <strong><code>setup-omnilrs.sh --check</code> 를 고쳤다</strong> — 패치를 하나씩 역적용해 보는 방식은 순차 패치에 맞지 않는다(뒤 패치가 앞 패치의 문맥을 건드리면 멀쩡한 패치가 「미적용」으로 뒤집힌다. 두 번 겪었다). 고정 커밋에서 트리를 재구성해 <strong>순서대로 전부 얹고 파일 내용을 통째로 비교</strong>한다 — 원래 확인하려던 것이 그것이다</td>
+</tr>
+<tr>
+<td>1.80</td>
+<td>2026-09-10</td>
+<td><strong>지형 변형 엔진 정밀 분석을 공개 페이지로 신설 — 공개 5종 → 6종.</strong> <code>DEFORMATION.md</code> 는 저장소 안에만 있어 분석 결과가 밖에서 읽히지 않았다. <a href="https://parclab-hsu.github.io/projects/l-project-deformation/">projects/l-project-deformation</a> 에 기능 구조(참조점이 yaw 만 쓴다는 한계 포함) · 현행 설정에서 변형이 <strong>정확히 0</strong> 인 이유 · 폭만 고치면 로버가 파묻히는 것(12.156 m 대 0.054 m) · <strong>하중 입력을 서스펜션 토크로 바꾼 연결</strong>(정지 상태 148.85 N · DEM 40 칸 · 이동 0.0 m) · 파라미터 13 개 전수 점검(근거 있는 값 3 개) · 그라우저 24 개 실측 · 상류 소스 결함 3 건 · <strong>견인 솔버 결함 7 건</strong> · 켠다면 밟을 순서 8 단계를 담았다. PG-001 작성 규칙에 따라 <strong>「확인되지 않은 것」을 절로 두었다</strong> — 토양 계수 출처 없음 · 실제 월면토 검증 아님 · 교정 계수 산포 ±18 % · 접지면이 직사각형 · 경사면 미확인 · 성능 손실 12 %. <strong>PG-001 을 1.2 로 올려</strong> 공개 범위표에 등재하고, 작성 규칙 적용 대상에 <strong>기술 분석 페이지</strong>를 추가했다 — 분석 노트는 「확인한 것」과 「확인 못 한 것」의 경계가 특히 흐려지기 쉽다. 배포 검산: 원격 동기 0 · material 9.7.7 자산 해시 <code>d7400e89</code> 동일 · 삭제 0 건 · sitemap 6 · noindex 적용 · Pages 빌드 <code>7ccea3a</code> built · 게시본 HTTP 200. 부수 변경으로 SDP 공개본이 1.71~1.79 로 갱신됐다(<code>sync-l-project-docs.py</code> 가 원문에서 다시 만든다)</td>
+</tr>
+<tr>
+<td>1.81</td>
+<td>2026-09-10</td>
+<td><strong>접지면(footprint) 정밀 실측 — 「휠 폭 0.159」 하나로 이야기할 문제가 아니었고, 아직 적용도 안 돼 있다.</strong> 신설 <code>tools/isaac/analyze_wheel_footprint.py</code> 로 휠 메시(정점 453 만)에서 직접 쟀다. <strong>① 접지 폭은 하나가 아니다.</strong> 그라우저 팁대(반경 99~100 %)는 <strong>0.1297 m</strong> 로 전체 폭보다 <strong>18 % 좁다.</strong> 다만 침하가 <strong>5 mm 만 넘으면 0.1575 → 0.1592 로 포화</strong>하므로, 실제 침하 범위에서는 항상 전체 폭이 걸린다 — <strong>폭을 상수 0.159 로 두는 것은 타당하다</strong>(팁대는 첫 2 mm 에서만 유효). 축방향 중심이 <strong>−0.0031 m</strong> 로 완전 대칭이 아닌 것도 확인했다(격자 0.05 대비 6 %, 해상도를 올리면 보이게 된다). <strong>② 접지 길이는 상수로 두면 안 된다.</strong> 강체 휠 기하 <code>L = 2√(2Rz − z²)</code>(R 실측 0.2134)로 계산하면 실측 침하 범위 0.032~0.05 m 에서 <strong>0.225~0.275 m</strong> 다. 현행 0.200 m 는 <strong>침하 0.0249 m 에 해당</strong>하는 길이라 <strong>12~37 % 과소</strong>다. <strong>③ 더 나쁜 것은 엔진이 갱신하지 않는다는 점이다</strong> — <code>create_profile()</code> 이 <code>__init__</code> 에서 <strong>한 번만</strong> 불린다(<code>deformation_engine.py</code> 574행). 침하가 깊어져도 접지면이 넓어지지 않으므로 <strong>압력이 과대평가되는 방향</strong>이다. <strong>④ 설정 두 값이 서로 어긋나 있다</strong> — <code>footprint.height</code> 0.200 은 침하 0.0249 m 를, <code>wave_frequency</code> 4.14 는 침하 <strong>0.0339 m</strong>(길이 0.231 m)를 가정한다. 같은 접지면을 두 곳에서 다르게 잡고 있고 <strong>길이 기준 15.6 % 차이</strong>다. 4.14 를 3.58 로 맞추면 모순은 없어지지만 <strong>그건 일관성을 맞추는 것이지 옳게 만드는 것이 아니다.</strong> <strong>⑤ 그리고 아직 적용되지 않았다</strong> — 설정은 여전히 폭 0.090(격자 2 점)이라 <strong>변형이 정확히 0</strong> 인 상태 그대로다. 분석과 적용은 별개다. <code>DEFORMATION.md</code> §4c 신설, 켜는 순서 4 번을 실측으로 다시 썼다. 공개 페이지에도 5 절로 반영했다(절 번호 재정렬)</td>
 </tr>
 <tr>
 <td>1.46</td>
