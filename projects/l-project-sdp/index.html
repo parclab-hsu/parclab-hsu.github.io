@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.82</td>
+<td>1.83</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1428,6 +1428,11 @@
 <td>1.82</td>
 <td>2026-09-10</td>
 <td><strong>접지면 유사도를 재니 46~56 % 였다. 90 % 로 올리는 경로는 막혀 있다 — D-46 신설.</strong> 「폭·길이가 맞는가」로는 부족하고 <strong>DEM 에 실제로 찍히는 면적</strong>으로 봐야 한다. 엔진이 표본점을 <code>int(좌표/해상도)</code> 로 셀에 매핑하므로 설정값이 아니라 <strong>이산화된 결과</strong>가 지형을 깎는다. <code>create_profile()</code> 이 <code>linspace(−w/2, w/2, int(w/res)+1)</code> 이라 <strong>표본 간격이 지형 해상도와 다르고</strong>(폭 0.159 → 4 점, 간격 0.053) 셀이 겹치거나 건너뛴다 — <strong>현행 폭 0.090 이 실제로는 0.141 m 를 덮는다(설정값의 1.57 배).</strong> 무작위 셀 위상 300~400 회 평균으로 쟀다. <strong>유사도(면적):</strong> 현행 <strong>56 %/46 %</strong>(z=0.032/0.050) · 폭·길이를 실제값으로 넣어도 해상도 0.05 에서는 <strong>114 %/119 %</strong>(이번엔 과대) · <strong>해상도 0.025 에서 99 %/101 %</strong>. 휠 폭이 격자 3.2 칸이라 양자화 오차가 원리적으로 ±0.5 칸(±15 %)이다 — <strong>90 % 이상은 해상도 0.025 가 조건이다.</strong> <strong>해상도만 올리는 것은 런타임 비용이 없다</strong> — tick 29.96 Hz · RTF 0.4994 로 현행과 같다(기동만 40 → 118 s). <strong>D-46 — 그런데 0.025 에서 변형을 켜면 시뮬이 멈춘다.</strong> tick 5.61 Hz · <strong>RTF 0.0000</strong> 이고, RTF 0 은 반올림이 아니라 <strong>심 시간이 3.8 s 에서 동결</strong>된 것이다(20 초간 115 건 수신, 스탬프 전부 3.8000). <strong>그런데 토픽은 계속 나와 밖에서는 살아 있는 것처럼 보인다</strong> — D-38·D-42 와 같은 함정을 세 번째로 만났다. 원인은 <code>deform()</code> 이 <strong>깊이가 0 이든 아니든 매 스텝 정점 배열 전체를 다시 쓰는</strong> 구조이고, 배열이 2.6 M → 10.2 M 으로 4 배가 되면서 한 스텝을 못 끝낸다. <strong>즉 유사도 90 % 는 지금 구현으로 도달할 수 없고, 「바뀐 셀만 갱신」이 선행 조건</strong>이다 — 차년도 과제의 성능 항목이 되어야 한다. 참고: 0.05 에서 변형 ON 은 tick 27.88 Hz · RTF 0.4725 로 정상 범위다. <code>DEFORMATION.md</code> 와 공개 페이지에 반영, 켜는 순서에 「바뀐 셀만 갱신」을 <strong>해상도 상향의 선행 조건</strong>으로 넣었다</td>
+</tr>
+<tr>
+<td>1.83</td>
+<td>2026-09-10</td>
+<td><strong>기구학·동역학·실시간 축 제어를 HILS 보드로 옮긴다 — 상위는 의도(v, ω)만 말한다.</strong> 근거는 부하가 아니라 <strong>경계</strong>다. 기구학은 실측 <strong>4.2 μs · 50 Hz 에서 CPU 0.02 %</strong> 라 옮겨도 Jetson 이 가벼워지지 않는다. 옮기는 이유는 ① <strong>12축이 이더넷을 건너다니면 보드가 소유한 Drive Interface 추상화가 새고</strong>(상위가 차량 제원을 알아야 하고, 상위를 갈아끼울 때마다 기구학을 다시 구현해야 한다) ② <strong>축 폐루프·폴트 반응·워치독은 지연이 결과를 바꾸므로</strong> 액추에이터 옆에 있어야 하는데, 기구학이 떨어져 있으면 한 주기 안에서 닫히지 않는다. <strong>SRS 2.1 을 계층별 소유·주기 성격 표로 다시 썼다.</strong> <strong>선행 조건인 계약 사본 문제를 먼저 막았다</strong> — 사본 관리는 이 프로젝트에서 세 번 실패했고(D-33·D-34·D-36), 특히 D-34 는 자산 교체 후 제원 재측정 누락이었다. 신설 <code>tools/gen_axes_contract_h.py</code> 가 <code>axes.py</code> 에서 <code>axes_contract.h</code> 를 <strong>생성</strong>하고(손으로 안 적는다), 신설 <code>tools/test_firmware_kinematics.py</code> 가 <strong>C 구현과 파이썬 정본의 출력을 직접 대조</strong>한다 — C 파일이 STM32 의존 없는 순수 C99 라 호스트 gcc(<code>-Werror</code>)로 그대로 빌드된다. <strong>113 조건에서 최대 차 1.8e-15 rad/s</strong>(순수 반올림), 요레이트·조향각·잘림 플래그 전부 일치. 회귀 러너에 등록(11 → <strong>12 종</strong>). 펌웨어에 <code>kinematics.c/h</code> 신설(파이썬 정본 이식), <code>rover_mcu.c</code> 가 <strong><code>/cmd_vel</code> 을 구독</strong>해 기구학을 돌린다. <code>/rover/axes_cmd</code> 는 과도기 경로로 남기고 <strong>단위 변환을 <code>roverMcuApplyAxes()</code> 한 곳으로 묶어</strong> 두 경로가 갈라지지 않게 했다. 서스펜션 4축은 이 경로가 건드리지 않는다 — 자세 제어는 별도 지령이고 주행 의도에 딸려 움직이면 안 된다. <strong>한계: ARM 툴체인이 이 머신에 없어 펌웨어 전체 빌드는 못 했다</strong> — 검증된 것은 기구학 부분의 호스트 빌드와 값 일치까지다. 실물 보드 동작·주기·인터럽트 지연은 확인되지 않았다. 홈페이지 프로젝트 페이지의 배치도와 「어디에 무엇을 두는가」 절도 같이 고쳤다</td>
 </tr>
 <tr>
 <td>1.46</td>

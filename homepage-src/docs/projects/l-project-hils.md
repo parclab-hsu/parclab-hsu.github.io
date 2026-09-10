@@ -81,16 +81,20 @@ noindex: true
 
 ```mermaid
 flowchart TB
-    subgraph J["Navigation — NVIDIA Jetson (ROS2 Humble)"]
-        NAV[Nav2 / Isaac ROS] -- /cmd_vel --> RC[rover_control<br/>4WS 기구학 · 명령 중재]
-        JOY[조이스틱<br/>rover_teleop] -- "/cmd_vel_joy (우선)" --> RC
-        RC -- "/rover/axes_cmd [12]" --> AG[micro_ros_agent]
+    subgraph J["Navigation — NVIDIA Jetson (ROS2 Humble) · 비실시간"]
+        NAV[Nav2 / Isaac ROS] -- /cmd_vel --> ARB[명령 중재<br/>rover_teleop]
+        JOY[조이스틱] -- "우선권" --> ARB
         RS[rover_state<br/>오도메트리] -- /odom + TF --> NAV
         HM[health_monitor<br/>/diagnostics]
     end
 
-    subgraph B["HILS 보드 — STM32H7 (FreeRTOS + micro-ROS)"]
-        MCU[rover_mcu] --- DIF{{Drive Interface}}
+    ARB -- "/cmd_vel (v, ω) — 의도만" --> AG[micro_ros_agent]
+
+    subgraph B["HILS 보드 — STM32H7 (FreeRTOS + micro-ROS) · 경성 실시간"]
+        MCU[rover_mcu] --> KIN[4WS 기구학<br/>v, ω → 12축<br/>선회 포락선]
+        KIN --> DYN[동역학<br/>토크 배분 · 슬립 반응]
+        DYN --> RT[실시간 축 제어<br/>폐루프 · 폴트 차단 · 워치독]
+        RT --- DIF{{Drive Interface}}
         DIF -- real --> EPOS[CANopen 마스터<br/>EPOS4 ×12]
         DIF -- sim --> DSIM[DDS 백엔드]
     end
@@ -120,6 +124,34 @@ flowchart TB
 - **4WS 기구학**: 스워브 정/역기구학(강체 최소자승) — 제자리 회전·crab 주행 지원
 - **주행 입력**: 자율(Nav2)과 수동(조이스틱) 이중 경로 — 수동이 자율을 선점
 - **안전**: `rover_control`·보드 drive 계층 워치독 + 노드 헬스 모니터링. EPOS4 RPDO 타임아웃과 STO는 N5 실기 과제
+
+### 어디에 무엇을 두는가 — 실시간성이 경계를 정한다
+
+**HILS 보드가 「차량」을 소유합니다.** Navigation은 **의도(v, ω)만** 말하고 차량 제원을
+알지 않습니다.
+
+| 계층 | 소유 | 주기 성격 |
+|---|---|---|
+| Navigation (Jetson) | 경로·행동 결정. **의도(v, ω)** 를 낸다 | 비실시간, 계획 주기 |
+| **HILS 보드 (STM32H7)** | **기구학**(v, ω → 12축) · **동역학**(토크 배분·슬립 반응) · **실시간 축 제어**(폐루프·폴트 즉시 차단·명령 워치독) | **경성 실시간**, FreeRTOS 고정 주기 |
+| 시뮬레이션 PC | 플랜트(Isaac Sim/OmniLRS) 또는 실 구동계 대역 | 비실시간 |
+
+**왜 이렇게 나누는가.** 12축이 이더넷을 건너다니면 보드가 가진 추상화가 새는 것입니다 —
+상위가 차량 제원을 알아야 하고, 상위를 갈아끼울 때마다 기구학을 다시 구현해야 합니다.
+
+더 중요한 것은 **실시간성**입니다. 축 폐루프·폴트 반응·워치독은 **지연이 결과를 바꾸므로**
+액추에이터 옆에 있어야 하고, 이더넷과 비실시간 OS를 거치는 경로에 두면 최악 지연을
+보증할 수 없습니다. 기구학 자체는 대수(algebra)라 어디서 돌든 결과가 같지만
+(실측 4.2 μs, 50 Hz에서 CPU 0.02 %), **동역학·축 제어와 같은 곳에 있어야 한 주기 안에서
+닫힙니다.** 옮긴 이유는 부하가 아니라 **경계**입니다.
+
+!!! note "제원은 보드에 손으로 적지 않습니다"
+    `axes.py` 가 정본이고 생성기가 C 헤더를 만듭니다. 그리고 **C 구현과 파이썬 정본의
+    출력을 직접 대조하는 시험**이 회귀 러너에 들어 있습니다 — 113개 조건에서
+    최대 차 1.8×10⁻¹⁵ rad/s(순수 부동소수 반올림)입니다.
+
+    이 프로젝트에서 계약 사본 관리는 **세 번 실패**했습니다. 같은 계산이 두 곳에
+    생기는 이상, 갈라지는 것을 사람이 아니라 시험이 잡아야 합니다.
 
 ### ROS2 노드·토픽 그래프
 

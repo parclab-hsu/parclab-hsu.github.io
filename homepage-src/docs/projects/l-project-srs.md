@@ -91,7 +91,21 @@ noindex: true
 
 ### 2.1 시스템 구성 (목표 아키텍처 v2 — 상세는 LPJ-HILS-AD-002)
 
-Ethernet Hub 단일망(UDP)에 3노드: Navigation(NVIDIA Jetson, Humble), 시뮬레이션 PC(Ubuntu 22.04, Humble), HILS 보드(STM32H7, micro-ROS/XRCE-DDS). **HILS 보드가 Drive Interface 추상 계층을 소유**하여 실 구동(drv_epos: CANopen→EPOS4)과 시뮬레이션(drv_sim: DDS→시뮬 PC)을 백엔드 교체로 전환하고, Navigation은 모드와 무관하게 동일한 `/rover/*` 인터페이스를 본다.
+Ethernet Hub 단일망(UDP)에 3노드: Navigation(NVIDIA Jetson, Humble), 시뮬레이션 PC(Ubuntu 22.04, Humble), HILS 보드(STM32H7, micro-ROS/XRCE-DDS).
+
+**HILS 보드가 「차량」을 소유한다.** Drive Interface 추상 계층(실 구동 `drv_epos`: CANopen→EPOS4 / 시뮬레이션 `drv_sim`: DDS→시뮬 PC)에 더해, **기구학·동역학·실시간 축 제어**가 모두 보드에 있다. 상위는 **의도(`/cmd_vel` 의 v, ω)만** 말하고 차량 제원을 알지 않는다.
+
+| 계층 | 소유 | 주기 성격 |
+|---|---|---|
+| Navigation (Jetson) | 경로·행동 결정. **의도(v, ω)** 를 낸다 | 비실시간, 계획 주기 |
+| **HILS 보드 (STM32H7)** | **기구학**(v, ω → 12축) · **동역학**(토크 배분·슬립 반응) · **실시간 축 제어**(폐루프·폴트 즉시 차단·명령 워치독) | **경성 실시간**, FreeRTOS 고정 주기 |
+| 시뮬레이션 PC | 플랜트(Isaac Sim/OmniLRS) 또는 실 구동계 대역 | 비실시간 |
+
+**왜 이렇게 나누는가.** 12축이 이더넷을 건너다니면 보드가 가진 추상화가 새는 것이다 — 상위가 차량 제원을 알아야 하고, 상위를 갈아끼울 때마다 기구학을 다시 구현해야 한다. 더 중요한 것은 **실시간성**이다. 축 폐루프·폴트 반응·워치독은 지연이 결과를 바꾸므로 액추에이터 옆에 있어야 하고, 이더넷과 비실시간 OS 를 거치는 경로에 두면 최악 지연을 보증할 수 없다. 기구학은 대수(algebra)라 어디서 돌든 결과가 같지만(실측 4.2 μs, 50 Hz 에서 CPU 0.02 %), **동역학·축 제어와 같은 곳에 있어야 한 주기 안에서 닫힌다.**
+
+**제원은 보드에 손으로 적지 않는다.** `axes.py` 가 정본이고 `tools/gen_axes_contract_h.py` 가 `axes_contract.h` 를 생성하며, `tools/test_firmware_kinematics.py` 가 C 구현과 파이썬 정본의 출력을 직접 대조한다(회귀 러너 등록). 사본 관리는 이 프로젝트에서 세 번 실패했다(D-33·D-34·D-36).
+
+Navigation은 구동 모드와 무관하게 동일한 인터페이스를 본다.
 
 ```mermaid
 flowchart TB
