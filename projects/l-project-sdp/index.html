@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.83</td>
+<td>1.89</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1435,9 +1435,34 @@
 <td><strong>기구학·동역학·실시간 축 제어를 HILS 보드로 옮긴다 — 상위는 의도(v, ω)만 말한다.</strong> 근거는 부하가 아니라 <strong>경계</strong>다. 기구학은 실측 <strong>4.2 μs · 50 Hz 에서 CPU 0.02 %</strong> 라 옮겨도 Jetson 이 가벼워지지 않는다. 옮기는 이유는 ① <strong>12축이 이더넷을 건너다니면 보드가 소유한 Drive Interface 추상화가 새고</strong>(상위가 차량 제원을 알아야 하고, 상위를 갈아끼울 때마다 기구학을 다시 구현해야 한다) ② <strong>축 폐루프·폴트 반응·워치독은 지연이 결과를 바꾸므로</strong> 액추에이터 옆에 있어야 하는데, 기구학이 떨어져 있으면 한 주기 안에서 닫히지 않는다. <strong>SRS 2.1 을 계층별 소유·주기 성격 표로 다시 썼다.</strong> <strong>선행 조건인 계약 사본 문제를 먼저 막았다</strong> — 사본 관리는 이 프로젝트에서 세 번 실패했고(D-33·D-34·D-36), 특히 D-34 는 자산 교체 후 제원 재측정 누락이었다. 신설 <code>tools/gen_axes_contract_h.py</code> 가 <code>axes.py</code> 에서 <code>axes_contract.h</code> 를 <strong>생성</strong>하고(손으로 안 적는다), 신설 <code>tools/test_firmware_kinematics.py</code> 가 <strong>C 구현과 파이썬 정본의 출력을 직접 대조</strong>한다 — C 파일이 STM32 의존 없는 순수 C99 라 호스트 gcc(<code>-Werror</code>)로 그대로 빌드된다. <strong>113 조건에서 최대 차 1.8e-15 rad/s</strong>(순수 반올림), 요레이트·조향각·잘림 플래그 전부 일치. 회귀 러너에 등록(11 → <strong>12 종</strong>). 펌웨어에 <code>kinematics.c/h</code> 신설(파이썬 정본 이식), <code>rover_mcu.c</code> 가 <strong><code>/cmd_vel</code> 을 구독</strong>해 기구학을 돌린다. <code>/rover/axes_cmd</code> 는 과도기 경로로 남기고 <strong>단위 변환을 <code>roverMcuApplyAxes()</code> 한 곳으로 묶어</strong> 두 경로가 갈라지지 않게 했다. 서스펜션 4축은 이 경로가 건드리지 않는다 — 자세 제어는 별도 지령이고 주행 의도에 딸려 움직이면 안 된다. <strong>한계: ARM 툴체인이 이 머신에 없어 펌웨어 전체 빌드는 못 했다</strong> — 검증된 것은 기구학 부분의 호스트 빌드와 값 일치까지다. 실물 보드 동작·주기·인터럽트 지연은 확인되지 않았다. 홈페이지 프로젝트 페이지의 배치도와 「어디에 무엇을 두는가」 절도 같이 고쳤다</td>
 </tr>
 <tr>
-<td>1.46</td>
+<td>1.84</td>
+<td>2026-09-10</td>
+<td><strong>1.83 의 배선에 결함이 있었다 — 보드가 원본 <code>/cmd_vel</code> 을 받으면 안전 기능을 통째로 건너뛴다. 그리고 회귀가 3 주 가까이 낡은 설치본을 검사하고 있었다.</strong> <strong>① 중재를 건너뛰는 결함.</strong> 보드가 <code>/cmd_vel</code> 을 직접 구독하게 해 두었는데, 그 토픽은 <strong>Nav2 의 원본</strong>이다. <code>rover_control</code> 이 <code>cmd_vel</code> 과 <code>cmd_vel_joy</code> 를 받아 중재하는데 보드가 원본을 직접 보면 <strong>조이스틱 우선권(FR-005)과 패드 링크 워치독(FR-076)이 무력화된다.</strong> 보드가 받는 토픽을 <strong>중재가 끝난 <code>/rover/cmd_vel</code></strong> 로 바꿨다. <strong>중재는 상위에 남는다.</strong> <strong>② 명령원이 둘이 되는 문제.</strong> 과도기에는 상위 기구학과 보드 기구학이 같은 축에 쓸 수 있다 — 값이 그럴듯해 화면으로 안 보인다. <code>rover_control</code> 에 **<code>kinematics_owner</code>(<code>host</code></td>
+</tr>
+<tr>
+<td>1.85</td>
+<td>2026-09-10</td>
+<td><strong>펌웨어가 실제로 빌드된다 — 「툴체인이 없다」고 한 것은 틀렸다. 통합 빌드 시험 신설.</strong> 1.83·1.84 에 「ARM 툴체인이 이 머신에 없어 펌웨어 빌드를 못 했다」고 적었는데 <strong>틀렸다</strong> — <code>~/opt/arm-gnu-13.3/bin</code> 에 있고 PATH 에 없어 <code>which</code> 가 못 찾은 것뿐이었다. <strong>없다고 결론짓기 전에 찾아봤어야 했다.</strong> 빌드 결과: <strong>text 465,648 · data 3,472 · bss 363,540</strong>, 플래시 <strong>458.1 / 893.0 KB(51 %)</strong>. 기구학 모듈은 text <strong>998 B</strong> · bss 68 B 다. <strong>새 경고 0 건</strong>(기존 경고는 그대로). <strong>빌드하면서 통합 결함이 하나 드러났다</strong> — <code>rover_mcu.c</code> 가 <code>#include "kinematics.h"</code> 로 되어 있었는데 include 경로가 <code>src/ap/modules</code> 라 <strong><code>drive/kinematics.h</code></strong> 여야 한다. <strong>호스트 대조 시험은 이걸 못 잡는다</strong> — 그건 <code>kinematics.c</code> 하나만 빌드해 값을 보기 때문이다. 그래서 신설 <code>tools/test_firmware_build.py</code> 가 <strong>통합 빌드</strong>를 돌리고 플래시 여유까지 본다(툴체인이 없으면 스스로 SKIP). 회귀 13 → <strong>14 종</strong>. <strong>그리고 새 시험이 다음 시험을 무너뜨리는 것을 잡았다.</strong> <code>test_kinematics_owner.py</code> 가 <code>ros2 run</code> 래퍼만 죽이고 끝내 노드가 남았고, TP-002 가 「(요약 없음)」으로 조기 중단, IG-001 이 12/14 로 무너졌다. <strong>격리해 돌리면 TP-002 가 15/15 로 두 번 연속 통과</strong>해 회귀가 아니라 오염임을 확인했다 — 정리 로직을 <strong>패턴으로 조회해 0 이 될 때까지 기다리도록</strong> 고쳤다. 「죽였다」와 「죽었다」는 다르다. 최종 <strong>14 종 전부 통과</strong></td>
+</tr>
+<tr>
+<td>1.86</td>
 <td>2026-08-22</td>
-<td><strong>Jetson 실기 브링업 절차를 5.4 절로 요약 등재</strong>하고 2.1 도구표에 Navigation 머신(Orin 계열 + JetPack 6.x)을 추가했다. 배포 절차가 DP-001·<code>BRINGUP.md</code> 에만 있어 SDP 5 장 운영 절차에는 실물 로버 명령 두 줄뿐이었다. 저장소는 <strong>git clone 으로 내려받는다</strong>(NAS 마운트는 CIFS 심링크 미지원으로 <code>~/hils_ws/src</code> 구조가 깨진다), 워크스페이스가 개발 PC 와 다르다(<code>~/hils_ws</code>), Nav2 는 별도 apt 설치라는 세 가지를 명시했다. 플랫폼 요건은 SRS v1.18 6 장에 등재</td>
+<td><em>(번호 정정 — 같은 날 다른 세션이 1.46 을 먼저 썼다)</em> <strong>Jetson 실기 브링업 절차를 5.4 절로 요약 등재</strong>하고 2.1 도구표에 Navigation 머신(Orin 계열 + JetPack 6.x)을 추가했다. 배포 절차가 DP-001·<code>BRINGUP.md</code> 에만 있어 SDP 5 장 운영 절차에는 실물 로버 명령 두 줄뿐이었다. 저장소는 <strong>git clone 으로 내려받는다</strong>(NAS 마운트는 CIFS 심링크 미지원으로 <code>~/hils_ws/src</code> 구조가 깨진다), 워크스페이스가 개발 PC 와 다르다(<code>~/hils_ws</code>), Nav2 는 별도 apt 설치라는 세 가지를 명시했다. 플랫폼 요건은 SRS v1.18 6 장에 등재</td>
+</tr>
+<tr>
+<td>1.87</td>
+<td>2026-09-11</td>
+<td><strong>조이 장치 지정 결함 수정과 텔레옵 오탐 재확인.</strong> ① <code>teleop_remote.launch.py</code> 만 고쳐져 있던 조이 장치 지정이 <code>rover_control.launch.py</code>(Jetson 직결 <code>use_joy:=true</code> 경로)에는 옛 방식 그대로였다 — 경로 <code>/dev/input/js0</code> 을 joy_node 의 <code>device_name</code> 에 넘겨 패드가 붙어도 열리지 않는다. <code>joy_device_id</code>(정수 인덱스)+<code>joy_device_name</code> 으로 교체하고 <code>/joy_node</code> 파라미터로 확인했다(OP-002 v1.4, 커밋 <code>e66cc25</code>). ② 회귀에서 난 3 건의 FAIL 은 <strong>다른 세션이 같은 PC 에서 시험을 돌리고 있었기 때문</strong>이었다 — 패드 링크 워치독은 단독 실행에서 통과했고, <code>test_teleop</code> 의 <code>release → Nav2 복귀</code> 는 도메인 55·56 격리 재수행에서 <strong>5 PASS / 0 FAIL</strong>. 시험의 stale-node 가드가 <strong>프로세스 이름만 보고 도메인을 안 본다</strong>는 한계를 여기 남긴다 — 세션 간 정리(<code>pkill -f</code>)는 남의 시험 노드까지 죽인다. 요구사항 쪽 기록은 SRS v1.22. ③ <strong>노션 자산 허브 동기화</strong>(PG-001 6절) — SRS 페이지 콜아웃을 v1.19 → <strong>v1.22</strong>, SDP 페이지를 v1.68 → <strong>v1.87</strong> 로 맞추고 v1.69\~v1.87 요약 콜아웃(보드 이관·카메라 지연·하중 입력·견인 솔버·접지면)을 신설했다</td>
+</tr>
+<tr>
+<td>1.88</td>
+<td>2026-09-11</td>
+<td><strong>변형 엔진을 켰다 — 다만 화면 확인은 못 했다(GPU 드라이버 차단).</strong> 켜기 전에 막고 있던 것들을 각각 처리했다: 폭 0.09 → <strong>0.159</strong>(격자 2 점이라 변형이 정확히 0 이었다) · 길이 0.20 → <strong>0.1804</strong>(설계 침하 0.020 m 의 접지 길이 <code>2√(2Rz−z²)</code>) · <code>wave_frequency</code> 4.14 → <strong>3.229</strong>(<code>N·L/2πR</code>) · 안식각 1.047 → <strong>0.7854</strong>(60° 는 통상값 30~45° 위라 침하 과대) · <code>delay</code> 2.0 → <strong>10.0</strong>(스폰 낙하가 출발점에 21 cm 를 팠다) · <strong>회귀 절편 0</strong>(무하중에서 5.3 mm 가 파였다) · 기울기 재교정. <strong>넷이 서로 어긋나 있었다</strong> — 길이는 침하 0.0249 를, <code>wave_frequency</code> 는 0.0339 를 가정했다. 이제 <strong>길이·wave·회귀·안식각이 모두 침하 0.020 m 를 가정하는 한 세트</strong>다. <strong>깊이:</strong> 종전 정상 하중에서 휠 반경의 <strong>44 %</strong>(0.0946 m)라 로버가 자기 구덩이에 갇혔는데(12.156 m 대 0.054 m), 지금은 <strong>−0.0201 m = 반경 9 %</strong> 다. 오프라인 재현으로 맞췄다 — <strong>손으로 계산한 계수는 11 % 낮게 나온다</strong>(경계·깊이 분포의 실제 형상 때문). 무하중 <strong>0.0000 m</strong>. <strong>근거는 목표값이지 토질 자료가 아니다</strong>(접지 압력 6.4 kPa 에 2 cm 는 그럴듯하나 미검증). <strong>§1 의 문장을 정정했다</strong> — 「PhysX 콜라이더가 DEM 에서 다시 만들어지므로 파인 자국이 이후 주행에 영향을 준다」는 <strong>틀렸다.</strong> <code>deformTerrain</code> 이 <code>update(update_collider=False)</code> 로 부른다 — <code>renderMesh</code> 가 시각 메시는 매 호출 갱신하지만(<code>GetPointsAttr().Set</code>) <strong>콜라이더는 그대로라 로버가 자국을 밟지 못한다.</strong> 확인 없이 옮겨 적은 문장이었다. <code>DEFORMATION.md</code> §5a 신설. <strong>재현 도구가 옛 설정을 물고 있던 것도 고쳤다</strong> — 기본값이 하드코딩돼 있으면서 docstring 은 「현행 설정과 같다」고 말했다. 이제 정본에서 읽고 못 읽으면 멈춘다. <strong>미확인: 화면에서 자국이 보이는가.</strong> 작업 중 NVIDIA 드라이버가 자동 업데이트돼(모듈 580.173.02 / 라이브러리 580.178.04) Isaac 컨테이너가 안 뜬다 — 재부팅 또는 gdm3 정지 후 모듈 재적재가 필요하고 sudo 가 막혀 사용자 조치 사항이다. <strong>2 cm 는 격자 0.05 m 에서 자국 폭 4 칸이라 멀리서는 안 보일 수 있으니, 「안 보인다」가 나오면 DEM 델타를 숫자로 먼저 가를 것</strong></td>
+</tr>
+<tr>
+<td>1.89</td>
+<td>2026-09-11</td>
+<td><strong>그라우저 환산이 틀려 있었다 — <code>wave_frequency × π</code> 는 개수가 아니다.</strong> 엔진은 발자국 길이 방향 <code>t = linspace(−1, 1)</code> 에 주기 <code>2/wf</code> 를 걸므로 <code>wave_frequency</code> 는 <strong>발자국 길이 안의 주기 수 = 접지 내 그라우저 수</strong>이고, 한 바퀴 개수는 <code>wf·2πR/L</code> 이다. <code>× π</code>(OmniLRS 주석 <code>num_grouser/pi</code>)는 <strong>L = 2R 일 때만</strong> 맞는다. 그런데 <code>analyze_deformation.py</code>·<code>analyze_wheel_footprint.py</code> 가 <code>wf × π</code> 를 「그라우저 N 개」로 출력했고(현행 설정에서 <strong>10.1 개</strong> — 실측은 24), <code>DEFORMATION.md</code> §5a·§7 표·<code>NEXT-PHASE.md</code>·<code>count_grousers.py</code> 가 「4.14 는 그라우저 13 개분」을 실제 개수처럼 적고 있었다. §4a 는 그 식의 한계를 이미 설명하고 있었으나 「13개」라는 수만 옮겨졌다. 도구 두 개는 이제 접지 내 개수와 한 바퀴 환산을 함께 내고 실행으로 확인했다 — 현행 3.229 → <strong>한 바퀴 24.0 개</strong>(실측 24), 종전 4.14·L 0.20 → <strong>27.7~27.8 개</strong>(R 0.2133/0.2134). 설정값 자체는 바뀌지 않는다. 같은 문구가 홈페이지 공개 페이지(<code>l-project-deformation</code>·<code>l-project-terramechanics</code>)에도 있으나 배포는 따로 한다</td>
 </tr>
 </tbody>
 </table>

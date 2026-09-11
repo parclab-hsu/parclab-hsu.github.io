@@ -1015,7 +1015,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.20</td>
+<td>1.22</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1147,9 +1147,14 @@
 <td><strong>FR-076 구현·검증 — 안전 공백을 닫았다.</strong> 판정 신호로 적어 두었던 「헤더 타임스탬프 정체」는 <strong>실측으로 기각</strong>했다(autorepeat 중에도 스탬프가 정상 갱신된다). 대신 <strong>페이로드 정체</strong>를 쓴다 — 같은 실측에서 111 표본의 axes·buttons 가 전부 bit-identical 이었다. <code>pad_link_timeout</code>(기본 2.0 s) 동안 한 비트도 안 바뀐 채 주행 지령이 나가면 구동을 세우고, 입력이 바뀌면 자동 해제한다. 알려진 오검출(스틱 끝까지 밀어 붙인 채 유지)을 명시했다. 회귀 <code>tools/test_pad_link_watchdog.py</code> 신설</td>
 </tr>
 <tr>
-<td>1.18</td>
+<td>1.21</td>
 <td>2026-08-22</td>
-<td><strong>Navigation 머신 플랫폼 요건을 6장 설계 제약에 등재</strong> — DP-001·IG-003 에만 있던 온보드 컴퓨터 전제(Orin 계열 + JetPack 6.x = Ubuntu 22.04)를 요구사항 쪽에 명시했다. Humble 이 22.04 를 요구하므로 <strong>구형 Jetson Nano(JetPack 4.6.x = 18.04)는 제외</strong>되며 Isaac ROS 지원 대상도 아니다. 무맵 1단계는 Orin Nano 8 GB 로도 되지만 비전 2단계는 Orin NX 16 GB 이상이다</td>
+<td><em>(번호 정정 — 같은 날 다른 세션이 1.18 을 먼저 썼다)</em> <strong>Navigation 머신 플랫폼 요건을 6장 설계 제약에 등재</strong> — DP-001·IG-003 에만 있던 온보드 컴퓨터 전제(Orin 계열 + JetPack 6.x = Ubuntu 22.04)를 요구사항 쪽에 명시했다. Humble 이 22.04 를 요구하므로 <strong>구형 Jetson Nano(JetPack 4.6.x = 18.04)는 제외</strong>되며 Isaac ROS 지원 대상도 아니다. 무맵 1단계는 Orin Nano 8 GB 로도 되지만 비전 2단계는 Orin NX 16 GB 이상이다</td>
+</tr>
+<tr>
+<td>1.22</td>
+<td>2026-09-11</td>
+<td><strong>FR-073 을 격리 환경에서 재확인 — 회귀의 FAIL 은 오탐이었다.</strong> <code>test_teleop.py</code> 의 <code>release 버튼 → Nav2 복귀</code> 가 구동 <code>None</code> 으로 FAIL 났는데, 원인은 제품이 아니라 <strong>같은 PC 의 다른 세션이 띄운 노드</strong>였다. 시험의 stale-node 가드는 프로세스 이름만 보므로 <strong>도메인이 다른 남의 노드를 못 걸러낸다</strong> — 남의 <code>rover_teleop</code> 이 <code>/cmd_vel_joy</code> 를 계속 내면 우선권이 만료되지 않는다. <code>ROS_DOMAIN_ID</code> 55·56 으로 분리해 두 번 재수행한 결과 <strong>5 PASS / 0 FAIL</strong>, FR-073 정상. SDP 1.42 의 D-28 철회와 같은 항목이 같은 계열의 이유로 두 번째 오탐이 된 것이다. 아울러 <code>rover_control.launch.py</code> 의 조이 장치 지정 결함(경로를 <code>device_name</code> 에 전달)을 고쳤다 — 요구사항 변경은 아니고 OP-002 v1.4 다</td>
 </tr>
 </tbody>
 </table>
@@ -1752,7 +1757,7 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
 <td>SRS-FR-073</td>
 <td>데드맨 해제 시 우선권을 유지하여 정지 상태를 지키고, 자율 주행 복귀는 release 버튼(Start, <code>button_release</code>=7)으로 명시적으로 반납할 때만 이루어진다 (손을 떼자마자 자율 주행이 재개되는 것을 방지). 반납 시 <code>rover_teleop</code> 은 <code>/cmd_vel_joy</code> <strong>발행 자체를 멈추고</strong>, <code>rover_control</code> 은 FR-072 타임아웃 만료 후 <code>/cmd_vel</code> 을 다시 받는다</td>
 <td>T</td>
-<td><strong>검증완료 (2026-08-22 실기 실측)</strong> — 반납 전 <code>/cmd_vel</code> 무시(로그 <code>cmd_vel ignored - joystick has priority</code>), Start 발행 후 <code>/cmd_vel_joy</code> 중단·<code>/cmd_vel</code> 0.5 m/s → <code>/rover/axes_cmd</code> 2.347</td>
+<td><strong>검증완료 (2026-08-22 실기 실측)</strong> — 반납 전 <code>/cmd_vel</code> 무시(로그 <code>cmd_vel ignored - joystick has priority</code>), Start 발행 후 <code>/cmd_vel_joy</code> 중단·<code>/cmd_vel</code> 0.5 m/s → <code>/rover/axes_cmd</code> 2.347. <strong>2026-09-11 격리 재확인</strong> — 도메인 분리 후 <code>test_teleop.py</code> 5 PASS / 0 FAIL</td>
 </tr>
 <tr>
 <td>SRS-FR-074</td>
