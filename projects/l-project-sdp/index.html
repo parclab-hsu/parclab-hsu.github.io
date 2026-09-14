@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.89</td>
+<td>1.92</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1463,6 +1463,21 @@
 <td>1.89</td>
 <td>2026-09-11</td>
 <td><strong>그라우저 환산이 틀려 있었다 — <code>wave_frequency × π</code> 는 개수가 아니다.</strong> 엔진은 발자국 길이 방향 <code>t = linspace(−1, 1)</code> 에 주기 <code>2/wf</code> 를 걸므로 <code>wave_frequency</code> 는 <strong>발자국 길이 안의 주기 수 = 접지 내 그라우저 수</strong>이고, 한 바퀴 개수는 <code>wf·2πR/L</code> 이다. <code>× π</code>(OmniLRS 주석 <code>num_grouser/pi</code>)는 <strong>L = 2R 일 때만</strong> 맞는다. 그런데 <code>analyze_deformation.py</code>·<code>analyze_wheel_footprint.py</code> 가 <code>wf × π</code> 를 「그라우저 N 개」로 출력했고(현행 설정에서 <strong>10.1 개</strong> — 실측은 24), <code>DEFORMATION.md</code> §5a·§7 표·<code>NEXT-PHASE.md</code>·<code>count_grousers.py</code> 가 「4.14 는 그라우저 13 개분」을 실제 개수처럼 적고 있었다. §4a 는 그 식의 한계를 이미 설명하고 있었으나 「13개」라는 수만 옮겨졌다. 도구 두 개는 이제 접지 내 개수와 한 바퀴 환산을 함께 내고 실행으로 확인했다 — 현행 3.229 → <strong>한 바퀴 24.0 개</strong>(실측 24), 종전 4.14·L 0.20 → <strong>27.7~27.8 개</strong>(R 0.2133/0.2134). 설정값 자체는 바뀌지 않는다. 같은 문구가 홈페이지 공개 페이지(<code>l-project-deformation</code>·<code>l-project-terramechanics</code>)에도 있으나 배포는 따로 한다</td>
+</tr>
+<tr>
+<td>1.90</td>
+<td>2026-09-14</td>
+<td><strong>변형을 켜고 주행하면 물리가 멈췄다 — 원인은 충돌 메시 재쿠킹이었고 OmniLRS 패치 0006 으로 고쳤다(D-47).</strong> 증상: 로버가 안 가는데 <code>/rover/joint_states_pub</code> 은 24 Hz 로 나오고 <strong>스탬프만 반복</strong>된다. 대조(보드 EPOS, 2.0 rad/s 직접 주입, 5 s 창 스탬프 RTF): 변형 ON 주행 <strong>0.008 · 멈춤 8/9 · 0.08 m</strong> 대 OFF <strong>0.497 · 0/9 · 5.86 m</strong>. 한 컨테이너 안에서 쓰는 곳만 바꾸니 <strong>정점 쓰기 생략·충돌 없는 별도 메시 쓰기는 안 멈추고, 암석 믹서를 빼도 원래 메시에 쓰면 멈췄다</strong> — <code>renderMesh</code> 가 정점을 쓰는 <code>terrain_mesh</code> 가 기동 때 <code>meshSimplification</code> 충돌이 붙은 <strong>바로 그 프림</strong>이다. 멈춘 동안 루프·렌더·ROS 는 돌고 <strong>PhysX 물리 스텝 이벤트만 0</strong> 이며, 쿠킹 캐시(<code>DerivedDataCache</code>, 2 GiB 조각)가 <strong>약 65 s 에 한 조각</strong> 찼다(사흘 정지 동안 0 조각). <strong>패치 0006:</strong> 렌더 전용 메시(<code>terrain_visual_N</code>, 충돌 없음)를 따로 두고 변형은 거기만 쓴다 · 정점이 안 바뀌면 쓰지 않는다(첫 판은 float64 DEM 과 float32 정점을 비교해 한 번도 같지 않았다 — 고침). <strong>검증:</strong> 정지 0.424 → <strong>0.478</strong> · 주행 <strong>0.222 · 멈춤 0/9 · 4.26 m</strong> · 멈춘 뒤 <strong>0.474</strong> · 정지 중 정점 쓰기 <strong>0 회</strong> · 쿠킹 캐시 증가 <strong>0</strong>. <strong>§1 의 2026-09-11 정정(「콜라이더는 그대로」)은 틀렸다</strong> — 패치 전에는 실제로 다시 구워지고 있었고, 이제는 설계상 렌더 메시만 바뀐다(<code>DEFORMATION.md</code> §1 재정정·§5b). <strong>남는 것:</strong> 주행 중 RTF 0.22 — 256 만 정점 렌더 메시 재업로드(반복당 약 31 ms), D-46 과 같은 뿌리의 차년도 성능 항목. <code>measure_sim_rate.py</code> 는 수신 시각만 재서 이 멈춤을 못 본다. 원자료 <code>results/deformation-stall-20260914/</code></td>
+</tr>
+<tr>
+<td>1.91</td>
+<td>2026-09-14</td>
+<td><strong>발자국 폭은 휠 폭이 아니었다 — <code>footprint.width</code> 0.159 → 0.21, 회귀 기울기 ×2/3.</strong> 「발자국이 USD 대로 안 맞는다」는 지적을 받고 시뮬이 여는 <code>Rover_hyundai_omnilrs.usd</code> 를 직접 쟀다: 휠 폭 0.1592 · 반경 0.2134 · 링크 원점 = 휠 중심(가로 ∓3.1 mm) · 정지 시 휠은 곧게 선다(조인트 ±10° 는 킹핀 경사를 되돌리는 값, 프레임 불일치 0) · 지형 메시 원점·무회전 — <strong>USD 는 설정과 맞았다.</strong> 틀린 것은 매핑이다. 경계 분포 <code>mask·(tan|y| − tan + 1) − 1</code> 이 <strong>양 끝 횡 표본을 안식각과 무관하게 늘 0</strong> 으로 만들어 파이는 칸은 「횡 표본 − 2」다. 실제 OmniLRS 엔진으로 직진 자국을 찍어 위상 10 단계로 재니 <strong>0.159 는 2 칸 = 0.10 m(휠의 63 %)</strong> · 0.21 은 3 칸 = 0.150 m(94 %) · 0.265 는 4 칸 = 0.200 m(126 %). 09-08 DEM 덤프 그림도 가로 2 행이었다. <strong>§4c 의 「덮는 폭 0.210, 14~19 % 과대」는 깊이 0 인 표본까지 센 계산이라 틀렸다(37 % 과소였다) — 정정.</strong> 0.21 로 바꾸며 경계 최댓값이 −0.667 → −1.0 이 되어 회귀 기울기 둘을 ×2/3(2.46599e-05 / −1.11080e-04) — 정상 182.2 N 에서 −0.0201 m 유지. <strong>실제 Isaac 검증</strong>(<code>verify_deformation.py</code> DEM 덤프, 보드 EPOS, 3.9 m 직진): 좌 <strong>0.158 m (100 %)</strong> · 우 <strong>0.155 m (97 %)</strong>, 최대 깊이 중앙값 0.016~0.019 m, 주행 중 멈춤 없음. <strong>미확인:</strong> 두 줄 모두 USD 정지 위치보다 안쪽으로 약 1.5 cm — 하중 아래 휠 위치로 보이나 휠별 위치 기록이 없다. 앞서 「휠 roll 10° 면 방위에 따라 발자국이 19 % 줄고 뒤집힌다」고 한 분석은 정지 roll 이 0 이라 <strong>해당 없음</strong>(큰 조향에서만). <code>analyze_deformation.py</code> 가 「실제로 파이는 폭」을 함께 내도록 고쳤다. <code>DEFORMATION.md</code> §4c 정정·§5a·§5c. 원자료 <code>results/footprint-width-20260914/</code></td>
+</tr>
+<tr>
+<td>1.92</td>
+<td>2026-09-14</td>
+<td><strong>자국이 끊긴 점선 구덩이였다 — OmniLRS 패치 0007(하중 저역통과 + 최대 깊이 채택).</strong> 렌더는 되는데(후방 카메라에 두 줄) 이어진 홈이 아니라 구덩이가 띄엄띄엄이었다. 칸 깊이는 <strong>처음 밟는 순간의 하중 하나</strong>로 정해졌다(상류 규칙이 뒤따르는 통과를 0.01^n 으로 줄여 더한다). 그 하중(서스펜션 토크)이 주행 중 137~662 N(4 륜 최대, 정상 182 N)으로 출렁여, 약한 순간에 밟힌 칸이 얕게 굳고 뒷바퀴가 못 채웠다 — 자국을 따라간 열별 깊이 변동계수 0.74~0.88, 거의 안 파인 열 38~42 %. <strong>패치 0007</strong> — <code>force_filter_tau</code>(시뮬 시간 EMA, <code>lunaryard.deform_terrain</code>)와 <code>deform_constrain.accumulation: max_depth</code>(같은 칸은 가장 깊은 값) 를 설정으로 추가, 기본값은 상류 동작. 설정 <code>force_filter_tau: 0.3</code> · <code>accumulation: max_depth</code>. 오프라인(실제 엔진 + 합성 하중): 변동계수 원래 0.37~0.53 → A+C 0.09. <strong>실제 Isaac 검증</strong>(같은 방법·같은 분석 스크립트): 변동계수 <strong>0.74 → 0.37 · 0.88 → 0.27</strong>, 거의 안 파인 열 <strong>38 → 8 % · 42 → 14 %</strong>, 최소 깊이 0.0003~0.0006 → 0.0074~0.0150 m, 튀는 최대 0.053~0.073 → 0.042~0.044 m, 폭 98~104 %, 주행 중 멈춤 없음. <strong>남는 것:</strong> 주행 중 깊이 중앙값 0.028~0.035 m — 정지 교정값 0.020 m 의 1.4~1.7 배(주행 중 하중이 크게 읽히고 최대값을 남긴다), 주행 깊이는 미교정. 0.3 s 보다 짧은 충격은 안 남는다. <code>DEFORMATION.md</code> §5d. 원자료 <code>results/track-continuity-20260914/</code></td>
 </tr>
 </tbody>
 </table>
