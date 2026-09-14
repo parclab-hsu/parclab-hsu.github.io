@@ -988,11 +988,11 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.92</td>
+<td>1.95</td>
 </tr>
 <tr>
 <td>작성일</td>
-<td>2026-07-28 (개정 2026-08-14)</td>
+<td>2026-07-28 (개정 2026-09-14)</td>
 </tr>
 <tr>
 <td>과제</td>
@@ -1479,6 +1479,21 @@
 <td>2026-09-14</td>
 <td><strong>자국이 끊긴 점선 구덩이였다 — OmniLRS 패치 0007(하중 저역통과 + 최대 깊이 채택).</strong> 렌더는 되는데(후방 카메라에 두 줄) 이어진 홈이 아니라 구덩이가 띄엄띄엄이었다. 칸 깊이는 <strong>처음 밟는 순간의 하중 하나</strong>로 정해졌다(상류 규칙이 뒤따르는 통과를 0.01^n 으로 줄여 더한다). 그 하중(서스펜션 토크)이 주행 중 137~662 N(4 륜 최대, 정상 182 N)으로 출렁여, 약한 순간에 밟힌 칸이 얕게 굳고 뒷바퀴가 못 채웠다 — 자국을 따라간 열별 깊이 변동계수 0.74~0.88, 거의 안 파인 열 38~42 %. <strong>패치 0007</strong> — <code>force_filter_tau</code>(시뮬 시간 EMA, <code>lunaryard.deform_terrain</code>)와 <code>deform_constrain.accumulation: max_depth</code>(같은 칸은 가장 깊은 값) 를 설정으로 추가, 기본값은 상류 동작. 설정 <code>force_filter_tau: 0.3</code> · <code>accumulation: max_depth</code>. 오프라인(실제 엔진 + 합성 하중): 변동계수 원래 0.37~0.53 → A+C 0.09. <strong>실제 Isaac 검증</strong>(같은 방법·같은 분석 스크립트): 변동계수 <strong>0.74 → 0.37 · 0.88 → 0.27</strong>, 거의 안 파인 열 <strong>38 → 8 % · 42 → 14 %</strong>, 최소 깊이 0.0003~0.0006 → 0.0074~0.0150 m, 튀는 최대 0.053~0.073 → 0.042~0.044 m, 폭 98~104 %, 주행 중 멈춤 없음. <strong>남는 것:</strong> 주행 중 깊이 중앙값 0.028~0.035 m — 정지 교정값 0.020 m 의 1.4~1.7 배(주행 중 하중이 크게 읽히고 최대값을 남긴다), 주행 깊이는 미교정. 0.3 s 보다 짧은 충격은 안 남는다. <code>DEFORMATION.md</code> §5d. 원자료 <code>results/track-continuity-20260914/</code></td>
 </tr>
+<tr>
+<td>1.93</td>
+<td>2026-09-14</td>
+<td><strong>깊이를 하중^(2/3) 로 — OmniLRS 패치 0008.</strong> 상류 회귀는 깊이가 하중에 선형이라 주행 중 하중 피크가 그대로 깊이에 실렸다. 강성륜 Bekker 침하는 z ∝ W^(2/(2n+1)), 달 표토 기준값 n = 1 이면 W^(2/3). <code>ForceDepthRegressionConf</code> 에 <code>load_exponent</code>·<code>reference_load</code> 를 추가(기본 1.0 = 상류), 엔진이 회귀 전에 하중을 F_ref·(F/F_ref)^p 로 바꾼다. 설정 0.6667 · 182.2 N(정지 자중 ÷ 4) — <strong>기준하중에서 0.0201 m 그대로라 기존 교정 유지.</strong> 오프라인(실제 엔진): 364 N 1.587 배(선형 2 배). <strong>실제 Isaac 검증</strong>(0007 과 같은 방법, 약 4 m 직진): 변동계수 <strong>0.37 → 0.22 · 0.27 → 0.20</strong>, 거의 안 파인 열 <strong>8 → 0 % · 14 → 0 %</strong>, 깊이 중앙값 0.028~0.035 → <strong>0.025~0.030 m</strong>, 최대 0.042~0.044 → <strong>0.034 m</strong>, 폭 98~106 %, 주행 RTF 0.21~0.25 · 멈춤 없음. <strong>남는 것:</strong> 주행 깊이는 정지 교정의 1.2~1.5 배(미교정), 토양 계수 출처 없음, 0.05 m 격자 한계. <strong>다음 단계 계획:</strong> 로버 주변만 1~1.5 cm 로 그리는 이동 패치(<code>DEFORMATION-HIRES-PLAN.md</code>, 코드 미변경 — P0 측정으로 USD/Fabric 경로 결정). <code>analyze_deformation.py</code> 가 지수를 반영. <code>DEFORMATION.md</code> §5e. 원자료 <code>results/load-exponent-20260914/</code></td>
+</tr>
+<tr>
+<td>1.94</td>
+<td>2026-09-14</td>
+<td><strong>고해상도 자국 — OmniLRS 패치 0009 <code>track_tiles</code>(1.5 cm, 실제 휠 단면, 먼 자국 유지).</strong> 사용자 결정: 해상도 1.5 cm · 먼 자국 유지 · 극사실 우선. <strong>P0 측정:</strong> 야드 장면에 격자 메시를 두고 매 반복 점을 바꿔 쓰니 USD <code>Set</code> 은 28 만 정점부터 RTF 0.30, <strong>Fabric(usdrt) 64 만 정점 0.487 · warp GPU 0.499(기준과 같음)</strong>, 정적 타일 185 만 정점 0.481, <code>holeIndices</code> 는 화면 반영 없음 — 느린 원인은 정점 수가 아니라 USD 경로였다. <strong>구조:</strong> 휠 근처 1 m 타일(67 × 67 = 1.49 cm)을 만들어 끝까지 남기고, 휠 메시에서 뽑은 단면(<code>tools/isaac/extract_wheel_profile.py</code> — 림 194.2 · 팁 213.3 mm · 그라우저 24 · 높이 19.1 mm · 플랜지 200.4 mm)을 <strong>회전각 위상</strong>으로 3 mm 간격 쓸어 찍는다(슬립이면 간격이 줄고 크면 뭉개진다). 흙에 남는 그라우저 몫 0.40 · 둔덕 0.10(추정) · 벽 60°. 표시 지면 = 충돌면 + 0.027 m(휠이 자국 안에 앉아 보인다). 점 갱신은 Fabric, 켜면 0.05 m DEM 변형은 쓰지 않는다. 렌더 전용. <strong>오프라인(실제 모듈):</strong> 깊이 22.0 mm · 그라우저 7.7 mm · 주기 50.1 mm(슬립 0.1, 이론 50.3) · 폭 0.164 m · 호출 3.4 ms · 쓰기 누락 0 · 이음매 0. <strong>Isaac 실측:</strong> 주행 RTF <strong>0.483~0.500(종전 0.21~0.24)</strong>, 후방 카메라에 그라우저 무늬 연속 자국, 깊이 24~27 mm · 그라우저 9.0~10.1 mm · 주기 55.8~56.4 mm · 폭 0.164 m · 벽 51~57°. <strong>A/B 로 잡은 결함 둘:</strong> ① 타일 영역 경계 밝은 선 — Fabric·USD 쓰기 모두 같았다(쓰기 경로 아님), 첫 줄 정점을 0.2 m 내린 급경사가 경계 법선을 기울였다 → 첫 줄 2 mm 만 내림, 선 사라짐 ② 깊이 출렁임 — 휠 팁·지형 메시 간격(직진 평균 6 mm·p95 15 mm, 선회 p95 300 mm)과 하중 침하(±16 mm) → 렌더 지형 기준 찍기·4 cm 이상 뜬 휠 제외·침하 ±10 mm, 변동계수 0.35~0.38 → 0.25~0.30. <strong>남는 것:</strong> 하중 추정 잡음, 둔덕·임계각 추정, 렌더 전용, 긴 주행 정점 누적. <code>DEFORMATION.md</code> §5f · <code>DEFORMATION-HIRES-PLAN.md</code>. 원자료 <code>results/track-tiles-20260914/</code></td>
+</tr>
+<tr>
+<td>1.95</td>
+<td>2026-09-14</td>
+<td><strong>SRS 1.23 동기화 — 지형 변형·바퀴 자국을 요구사항으로 올리고 SDP 본문을 갱신했다.</strong> 8월부터 이 개정 이력에만 쌓였고 본문(단계·위험·시험 실적·추적)에는 없었다. 3.2b 에 <strong>P6(Isaac 지형 변형·바퀴 자국, 완료)</strong>, 3.3 에 위험 4건(렌더 전용 자국 · OmniLRS 패치 충돌 · 자국 타일 누적 · 하중 추정 산포), 4.2 에 실적 4행(D-47 수정 · 자국 연속성 · 고해상도 P0 · <code>track_tiles</code>), 4.3 에 커밋 추적을 넣었다. 요구사항: SRS-FR-083(하중에 따른 자국) · 084(물리 스텝 멈춤 금지, 렌더 전용 한계 명시) · 085(1.5 cm 실측 휠 단면, 먼 자국 유지) · 086(재현 가능한 플랜트 소스) · NF-007(변형 켠 주행 RTF ≥ 끈 상태 90 %, 실측 97~100 %) · NF-008(자국 형상 문헌 범위)</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1662,6 +1677,21 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>Nav2 스모크 시험 <code>test_nav2_smoke.py</code></td>
 <td><code>tools/</code></td>
 <td>완료 (10항목 통과, IG-002 4절 자동화)</td>
+</tr>
+<tr>
+<td>OmniLRS 고정·패치 체계 (<code>PINNED</code>·패치 0001~0009·오버레이·<code>setup-omnilrs.sh --check</code>)</td>
+<td><code>third_party/omnilrs/</code></td>
+<td>완료 — 상류 결함 2건 수정, 하중 입력, 렌더 전용 변형(D-47), 자국 연속성·하중^(2/3), 고해상도 자국 (SRS-FR-086)</td>
+</tr>
+<tr>
+<td>고해상도 바퀴 자국 <code>track_tiles</code> + 휠 단면 추출 <code>extract_wheel_profile.py</code></td>
+<td>OmniLRS 패치 0009, <code>tools/isaac/</code>, <code>config/isaac/wheel_profile_final_rover_HH.npz</code></td>
+<td>완료 (2026-09-14, Isaac 실측) — 1.5 cm, 실측 휠 단면, 먼 자국 유지, 주행 RTF 0.48~0.50 (SRS-FR-085, NF-007·008)</td>
+</tr>
+<tr>
+<td>변형 엔진 분석·검증 도구 (<code>analyze_deformation.py</code>·<code>verify_deformation.py</code>·<code>audit_deformation_params.py</code>) + 분석 문서 <code>DEFORMATION.md</code>·<code>DEFORMATION-HIRES-PLAN.md</code></td>
+<td><code>tools/isaac/</code>, 저장소 루트</td>
+<td>유지 관리 중 — 원자료는 <code>results/*-202609*/</code></td>
 </tr>
 </tbody>
 </table>
@@ -1971,6 +2001,11 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>Isaac Sim 12축 연동 검증</td>
 <td><strong>조건부 완료(2026-08-21)</strong> — 드라이버 다운그레이드로 실행 차단이 풀린 뒤 TP-IG-1~6 을 두 회차 수행했다. 1회차에서 실행으로만 드러나는 결함 5건(D-20~D-24)을 잡았고, 그중 브리지 QoS(D-21)와 자산 물리 특성(D-23)·중력(D-24 ①)을 수정한 뒤 <strong>2회차에서 전 항목이 통과했다</strong> — 구동 추종 오차 0.75 %, 조향 1.6 %, 서스펜션 좌우 편차 ±8 %, <code>/cmd_vel</code> 0.5·0.2 → <code>/odom</code> 0.4992·0.1993, 명령 두절 시 워치독 정상(SRS-FR-005). <strong>완료로 단정하지 않는 이유</strong>: 자산 제원이 NASA VIPER 참조 <strong>추정치</strong>이고(기구팀 실측 대체 대상), 지면이 월면토가 아닌 무한 평면이며 마찰 재질이 미바인딩이다(D-24 ②③). 따라서 <strong>이 플랜트의 주행·슬립 수치는 IG-002 Nav2 파라미터 입력으로 쓰지 않는다.</strong> 상세는 IG-001 2b·2d·2e, 결함은 RR-001 R6</td>
 </tr>
+<tr>
+<td>P6</td>
+<td><strong>Isaac 지형 변형·바퀴 자국 (SRS-FR-083~086, NF-007·008)</strong></td>
+<td><strong>완료 (2026-09-14, Isaac 실측).</strong> 켜고 주행하면 물리가 멈추던 결함(D-47)을 렌더 전용 메시로 고치고(패치 0006), 발자국 폭(0.21)·점선 자국(0007)·하중^(2/3)(0008)을 맞춘 뒤, <strong>1.5 cm 실측 휠 단면 자국</strong>(0009 <code>track_tiles</code> — 그라우저가 회전각을 따르고 먼 자국이 남는다)으로 바꿨다. 주행 RTF 0.48~0.50 으로 <strong>변형을 끈 상태와 같다</strong>(0.05 m 방식은 0.22). <strong>렌더 전용이다</strong> — 휠이 자국을 밟지 않으므로 이 플랜트의 슬립·견인 수치에는 반영되지 않는다(차년도 과제). 상세 <code>DEFORMATION.md</code> §5a~§5f</td>
+</tr>
 </tbody>
 </table>
 <p>P1~P4로 A6·N4의 소프트웨어 측 위험은 상당 부분 제거되었다. 남은 것은 <strong>하드웨어가 있어야만
@@ -2024,6 +2059,26 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>에뮬레이터-실물 동작 차이 (전류/토크 물리, 튜닝, 비실시간 PC 타이밍)</td>
 <td>실물 도입 시 재작업</td>
 <td>벤치 마스터↔에뮬레이터 내부 정합만 test_master_12axis로 회귀시험, 보드·실물 조합은 TP-001/N2로 별도 검증</td>
+</tr>
+<tr>
+<td>바퀴 자국이 렌더 전용 (휠이 자국을 밟지 않음)</td>
+<td>자국 위 재주행·슬립–침하 연성이 물리에 반영되지 않음</td>
+<td>SRS-FR-084 에 한계 명시, 플랜트 주행·슬립 수치를 설계 입력으로 쓰지 않음. 충돌 반영은 차년도 과제(D-46·D-47 과 같은 뿌리 — 충돌 메시 재쿠킹 비용)</td>
+</tr>
+<tr>
+<td>OmniLRS 상류 변경 시 패치 충돌</td>
+<td>플랜트 재현 불가</td>
+<td>커밋 고정(<code>third_party/omnilrs/PINNED</code>) + <code>setup-omnilrs.sh --check</code> 로 설치본 대조, 버전을 올리면 IG-001 확인 항목 재수행 (SRS-FR-086)</td>
+</tr>
+<tr>
+<td>긴 주행에서 자국 타일 누적</td>
+<td>렌더 부하 증가</td>
+<td>정적 185 만 정점에서 RTF 0.481 실측. 1 km 주행이면 약 600 만 정점 — 필요 시 먼 타일 해상도를 낮춘다(계획서 P4)</td>
+</tr>
+<tr>
+<td>하중 추정 산포 (서스펜션 토크, ±18 %)</td>
+<td>자국 깊이가 줄을 따라 출렁임</td>
+<td>0.3 s 저역통과 + 침하 ±10 mm 제한. 변동계수 0.25~0.30 잔존 — 하중 추정 개선 전까지 수용</td>
 </tr>
 </tbody>
 </table>
@@ -2193,6 +2248,22 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>조이스틱 수동 주행 (2026-08-03)</td>
 <td>test_teleop <strong>5 PASS / 0 FAIL</strong> — Nav2 단독 반영 · 조이스틱 선점(2.35 vs Nav2 0.94) · crab 전 축 조향 90.0° · 데드맨 해제 시 정지 유지 · release 후 Nav2 복귀</td>
 </tr>
+<tr>
+<td><strong>변형 켠 주행 멈춤 수정 (D-47, 패치 0006)</strong> (2026-09-14, Isaac 실측)</td>
+<td>보드 EPOS · <code>/sim/axes_cmd</code> 2.0 rad/s · 5 s 창 스탬프 RTF: 주행 <strong>0.008 · 멈춤 8/9 → 0.222 · 멈춤 0/9</strong>(4.26 m), 정지 중 정점 쓰기 0 회, 쿠킹 캐시 증가 0 (SRS-FR-084)</td>
+</tr>
+<tr>
+<td><strong>자국 연속성 (패치 0007·0008)</strong> (2026-09-14, Isaac 실측)</td>
+<td>0.05 m 지형 열별 깊이 변동계수 0.74·0.88 → 0.37·0.27(0007) → <strong>0.22·0.20</strong>(0008), 거의 안 파인 열 38·42 % → <strong>0 %</strong>, 폭 98~106 % (SRS-FR-083)</td>
+</tr>
+<tr>
+<td><strong>고해상도 자국 P0 — 렌더 갱신 비용</strong> (2026-09-14, Isaac)</td>
+<td>격자 메시 매 반복 갱신: USD <code>Set</code> 28 만 정점 RTF <strong>0.294</strong> · Fabric 64 만 <strong>0.487</strong> · warp GPU <strong>0.499</strong>(기준 0.499) · 정적 타일 185 만 0.481 · <code>holeIndices</code> 화면 반영 없음</td>
+</tr>
+<tr>
+<td><strong>고해상도 자국 <code>track_tiles</code> (패치 0009)</strong> (2026-09-14)</td>
+<td>오프라인(실제 모듈): 쓰기 누락 0 · 이음매 0 · 호출 3.4 ms · 그라우저 주기 이론 대비 0.4 % 이내. Isaac: 주행 RTF <strong>0.480~0.500</strong>, 깊이 24~27 mm, 그라우저 9.0~10.1 mm · 주기 55.8~56.4 mm, 폭 0.164 m, 벽 51~57°, 줄 변동계수 0.25~0.30, 후방 카메라 경계선 없음(A/B/C 결정적 대조) (SRS-FR-085, NF-007·008)</td>
+</tr>
 </tbody>
 </table>
 <h3 id="43">4.3 요구사항 추적<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
@@ -2202,6 +2273,9 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <code>9c765c7</code>(12축 v3 전면 개정) → <code>dd293d2</code>(B1: 에뮬레이터 12노드·PPM) → <code>8a37c90</code>(B2: TP-001/002 v1.1) →
 <code>43d65f0</code>(전체 정합성 검토) → <code>2c2f76d</code>(SRS/SDP 흐름 검증) → <code>421f240</code>(RR-001 검토 보고서) →
 <code>45b219f</code>(헬스 모니터링) → <code>d756c3e</code>(B5 서스펜션 정책) → <code>3fb5614</code>·<code>7c08ce4</code>(벤치 에뮬레이터 프로토콜 시험).</p>
+<p>지형 변형·바퀴 자국(SRS-FR-083~086, NF-007·008): <code>30a2f80</code>(패치 0006 렌더 전용 변형, D-47) →
+<code>8e40436</code>(그라우저 환산 정정) → <code>a14b315</code>(발자국 폭 0.21) → <code>9ce2a95</code>(패치 0007 자국 연속성) →
+<code>146e626</code>(패치 0008 하중^(2/3)) → <code>cf8dbeb</code>(패치 0009 <code>track_tiles</code> 고해상도 자국).</p>
 <hr />
 <h2 id="5">5. 운영 절차 요약<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <h3 id="51-ros2-sim">5.1 ROS2 폐루프 시뮬레이션 (실물 없음 — sim 모드)<a class="headerlink" href="#51-ros2-sim" title="Permanent link">&para;</a></h3>

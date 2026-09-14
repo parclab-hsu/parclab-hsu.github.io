@@ -991,6 +991,183 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#15-23-2026-09-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. 깊이가 하중에 선형이었다 — 하중의 2/3제곱으로 (기준일 2026-09-14)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-15-cm-2026-09-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. 고해상도 자국 — 1.5 cm 타일에 실제 휠 단면을 찍는다 (기준일 2026-09-14)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. 고해상도 자국 — 1.5 cm 타일에 실제 휠 단면을 찍는다 (기준일 2026-09-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        먼저 잰 것 — 느린 원인은 정점 수가 아니라 쓰는 경로였다
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        교정 — 실제 모듈을 가짜 지형에서 4륜 주행 (오프라인)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isaac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실제 Isaac에서 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실측에서 나온 결함 둘 — 같은 지령을 다시 돌려 원인을 갈랐다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-2026-09-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. 파라미터 조정 가이드 (기준일 2026-09-14)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. 파라미터 조정 가이드 (기준일 2026-09-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        먼저 — 지금 쓰이는 값과 안 쓰이는 값
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A — 공통
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-track_tiles-15-cm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C — track_tiles (지금 켜진 1.5 cm 자국)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-005-m-track_tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B — 0.05 m 지형 경로 (track_tiles 를 끌 때만)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        목적별 조정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        바꾸는 절차
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. 왜 처음에 안 됐나 — 경과 한눈에
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1015,8 +1192,8 @@
 <p>달 탐사 로버 HILS의 플랜트(NVIDIA Isaac Sim + OmniLRS)에는 바퀴자국을 만드는
 <strong>지형 변형(Deformation/Sinkage) 엔진</strong>이 들어 있습니다. 이 문서는 그 엔진을
 <strong>우리 설정으로 재현해 계산하고, 실제로 켜서 측정한</strong> 기록입니다.</p>
-<p><strong>지금 상태 (2026-09-14): 켜져 있고, 주행하면 휠 폭에 맞는 이어진 자국이 남습니다.</strong>
-거기까지 오면서 확인한 것은 이렇습니다.</p>
+<p><strong>지금 상태 (2026-09-14): 켜져 있고, 휠 근처를 1.5 cm 격자로 따로 그려 실제 휠 모양 —
+그라우저 24개의 무늬까지 — 이 이어진 자국으로 남습니다.</strong> 거기까지 오면서 확인한 것은 이렇습니다.</p>
 <ul>
 <li><strong>처음 설정으로 켜면 변형이 정확히 0이었습니다</strong>(2절). 발자국 폭만 휠 폭으로 고치면
   <strong>로버가 파묻혔고</strong>(3절), 깊이가 하중이 아니라 <strong>충격</strong>에 비례해 하중 입력을 서스펜션
@@ -1032,10 +1209,17 @@
 <li><strong>자국이 끊긴 점선 구덩이였습니다.</strong> 칸 깊이가 처음 밟는 순간의 하중 하나로 정해지는데,
   주행 중 하중이 몇 배씩 출렁였습니다. 하중 저역통과와 최대 깊이 채택으로 자국을 따라간
   깊이 변동계수가 <strong>0.74~0.88 → 0.27~0.37</strong> 이 됐습니다(14절).</li>
+<li><strong>깊이가 하중에 비례(선형)했습니다.</strong> 강성륜 Bekker 식(n = 1)대로 <strong>하중의 2/3제곱</strong>으로
+  바꿨습니다 — 하중이 두 배면 깊이는 1.59배입니다(15절).</li>
+<li><strong>5 cm 격자로는 그라우저 무늬를 원리상 그릴 수 없었고, 지형 전체를 다시 쓰느라 주행 중
+  RTF가 0.22였습니다.</strong> 느린 원인은 정점 수가 아니라 쓰는 경로였습니다(64만 정점을 GPU 경로로
+  매 반복 바꿔도 RTF 0.499). 휠 근처를 1 m 타일(1.5 cm)로 덮고 <strong>휠 메시에서 잰 단면을 회전각에
+  맞춰 찍게</strong> 바꿨더니 주행 중 RTF <strong>0.48~0.50</strong>(변형을 끈 상태와 같음), 자국 깊이 24~27 mm ·
+  그라우저 주기 55.8~56.4 mm(휠 기준 55.9) · 폭 0.164 m가 됐습니다(16절).</li>
 </ul>
-<p><strong>남은 것:</strong> 토양 계수와 깊이는 시험 자료가 아니라 <strong>목표값</strong>에 맞춘 것이고(주행 중 깊이
-0.028~0.035 m는 정지 교정값 0.020 m의 1.4~1.7배), 자국은 <strong>보이기만 하고 밟히지는 않으며</strong>,
-주행 중 시뮬레이션이 실시간의 약 0.22배로 느립니다(9절).</p>
+<p><strong>남은 것:</strong> 토양 계수와 깊이는 시험 자료가 아니라 <strong>목표값</strong>(Bekker 21.6 mm · Lunokhod
+21~24 mm 범위)에 맞춘 것이고, 둔덕·벽 경사는 <strong>추정</strong>이며, 자국은 <strong>보이기만 하고 밟히지는
+않습니다</strong>(9절). 파라미터를 고치려면 <strong>17절</strong>, 처음에 왜 안 됐는지는 <strong>18절</strong>에 한눈에 정리했습니다.</p>
 </div>
 <p><a href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 프로젝트 상세</a> ·
 <a href="../l-project-interim/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 중간 보고</a> ·
@@ -1044,6 +1228,12 @@
 <h2 id="1">1. 무엇을 하는 기능인가<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>로버 휠이 지나간 자리의 <strong>DEM(높이맵)을 직접 깎습니다.</strong> 깎인 높이는 <strong>렌더 전용 메시</strong>에만
 반영됩니다 — 물리 충돌 메시는 그대로라, 자국은 <strong>보이지만 로버가 밟지는 않습니다</strong>(12절).</p>
+<div class="admonition info">
+<p class="admonition-title">2026-09-14부터 자국은 고해상도 타일이 만듭니다</p>
+<p>아래 그림은 0.05 m 지형 격자를 직접 깎는 <strong>원래 경로</strong>입니다. 지금은 휠 근처만 1.5 cm 타일로
+따로 그리고 실제 휠 단면을 찍는 경로(16절)가 자국을 만들며, 이 그림의 발자국·분포·회귀 계수는
+그 경로를 끌 때만 쓰입니다(17절). 두 경로 모두 <strong>물리 충돌 메시는 바꾸지 않습니다.</strong></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">정정 (2026-09-11 · 2026-09-14)</p>
 <p>이 절에는 원래 "PhysX 콜라이더가 그 DEM에서 다시 생성되므로 파인 자국이 이후 주행에
@@ -1498,7 +1688,8 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <h3 id="_6">그래서 지금 적용되어 있는가<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><strong>2026-09-10 기준으로는 아니었습니다</strong> — 설정이 폭 0.090 · 길이 0.200이라 변형이 정확히 0인
 상태였습니다. <strong>2026-09-11에 켰고</strong>(11절), 2026-09-14 현재 설정은 <strong>폭 0.21 · 길이 0.1804</strong> 입니다.
-해상도는 여전히 0.05 m/px이고, 0.025로 올리는 경로(바뀐 셀만 갱신)는 아직 열리지 않았습니다.</p>
+지형 해상도는 여전히 0.05 m/px입니다. <strong>해상도를 올리는 대신 휠 근처만 1.5 cm 타일로 따로 그리는
+방식으로 풀었습니다(16절)</strong> — 실측 자국 폭 0.164 m(휠 0.159 m의 103 %).</p>
 <hr />
 <h2 id="6-3">6. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐<a class="headerlink" href="#6-3" title="Permanent link">&para;</a></h2>
 <p><strong>값이 적혀 있다고 쓰이는 것은 아닙니다.</strong> 설정에 자리가 있는데 코드가 한 번도 읽지
@@ -1662,29 +1853,28 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <h2 id="9">9. 확인되지 않은 것<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p>이 절을 줄이지 않습니다. 위의 수치가 어디까지를 말하는지가 여기에 있습니다.</p>
 <ul>
-<li><strong>토양 계수의 출처가 없습니다.</strong> 하중-깊이 회귀는 시험 자료가 아니라 <strong>목표값</strong>(정지
-  하중 182 N에서 0.020 m)에 맞췄고, Bekker/Wong 계수 9개도 출처가 없습니다. <strong>월면토 시험
-  자료 없이는 크기를 믿을 수 없습니다</strong> — 확인한 것은 경향과 연결 여부입니다.</li>
-<li><strong>주행 중 깊이는 교정하지 않았습니다.</strong> 주행하면 자국 깊이 중앙값이 <strong>0.028~0.035 m</strong>로
-  정지 교정값의 1.4~1.7배입니다. 주행 중 서스펜션 토크가 크게 읽히고, 같은 칸에서는 가장
-  깊은 값을 남기기 때문입니다(14절).</li>
+<li><strong>토양 계수의 출처가 없습니다.</strong> 깊이는 시험 자료가 아니라 <strong>목표값</strong>에 맞췄습니다 — 정지
+  하중 182 N에서 약 20 mm(Bekker 21.6 mm · Lunokhod 21~24 mm 범위), 그 밖에서는 하중^(2/3).
+  Bekker/Wong 계수 9개도 출처가 없습니다. <strong>월면토 시험 자료 없이는 크기를 믿을 수 없습니다</strong> —
+  확인한 것은 경향과 연결 여부입니다.</li>
 <li><strong>실제 월면토로 검증한 것이 아닙니다.</strong> 전부 시뮬레이션 내부 계측이며,
   시뮬런트(모사토) 시험도 아직 없습니다.</li>
-<li><strong>하중 교정 계수 1.78은 산포 ±18 %</strong> 입니다. 평균은 맞지만 자세별 오차가
-  남고, 그 오차가 침하에 어떻게 전달되는지는 아직 정량화하지 않았습니다.</li>
-<li><strong>자국 모양이 단순합니다.</strong> 수직으로만 깎을 뿐 <strong>옆으로 밀려난 흙(둔덕)·그라우저 무늬·
-  자국 벽의 경사</strong>는 모델에 없습니다. 0.3 s보다 짧은 충격은 자국에 남지 않고, 솟는 변형은
-  표현하지 못합니다.</li>
-<li><strong>자국은 보이기만 하고 밟히지 않습니다</strong>(12절). 반복 통과로 깊어지는 거동이나 슬립–침하
+<li><strong>하중 추정의 산포가 ±18 %</strong> 입니다(교정 계수 1.78). 이것이 자국을 따라가는 깊이 출렁임으로
+  남습니다 — 변동계수 0.25~0.30(16절).</li>
+<li><strong>둔덕·벽 경사는 추정입니다.</strong> 옆으로 밀려난 흙의 비율(10 %)과 벽 임계각(60°)에는 정량
+  문헌이 없고, 그라우저 자국 진폭(9~10 mm)은 단륜 시험의 6.09 mm보다 큽니다. 0.3 s보다 짧은
+  충격은 자국에 남지 않습니다.</li>
+<li><strong>자국은 보이기만 하고 밟히지 않습니다</strong>(12·16절). 반복 통과로 깊어지는 거동이나 슬립–침하
   연성은 충돌 메시가 갱신돼야 의미가 있습니다.</li>
-<li><strong>자국 중심이 휠 위치보다 안쪽으로 약 1.5 cm 치우쳤습니다</strong>(13절). 하중 아래 휠이 안쪽으로
-  온 것일 수 있으나, 휠별 실제 위치를 기록하지 않아 확인하지 못했습니다.</li>
-<li><strong>접지면 면적 유사도(5절, 46~56 %)는 다시 재야 합니다.</strong> 그 계산이 깊이 0인 표본까지 셌기
-  때문입니다. 90 %로 올리는 경로(해상도 0.025)도 아직 막혀 있습니다.</li>
-<li><strong>경사면 처리를 확인하지 않았습니다.</strong> 참조점이 yaw만 쓰므로 경사에서 발자국이
-  지형에 눕지 않는데, 그 오차 크기를 재지 않았습니다.</li>
-<li><strong>주행 중 시뮬레이션이 느립니다.</strong> 정지 시 RTF 0.48, 주행 시 <strong>0.22</strong> 입니다. 256만 정점
-  렌더 메시를 매번 다시 올리는 비용(반복당 약 31 ms)이며, 로버 주변만 갱신해야 줄어듭니다.</li>
+<li><strong>휠과 자국 바닥 사이가 몇 mm 어긋날 수 있습니다.</strong> 자국은 렌더 지형을 기준으로 찍지만 휠은
+  근사된 충돌 메시 위에 서 있어, 휠 팁과 지형 사이가 직진 중 평균 6 mm · p95 15 mm 차이 납니다(16절).</li>
+<li><strong>경사면 처리를 확인하지 않았습니다.</strong> 자국은 휠의 수평 방향(진행·차축)만 써서 수직으로
+  찍으므로 경사에서 오차가 생기는데, 그 크기를 재지 않았습니다.</li>
+<li><strong>제자리 선회·큰 슬립 자국의 사실감은 보지 않았습니다.</strong> 직진과 완만한 선회 구간만 쟀습니다.</li>
+<li><strong>긴 주행에서 타일이 쌓입니다.</strong> 185만 정점까지는 RTF 0.481로 쟀고, 1 km 주행(약 600만 정점)은
+  재지 않았습니다.</li>
+<li><em>(0.05 m 경로에만 해당)</em> 자국 중심이 휠보다 안쪽으로 약 1.5 cm 치우쳤던 것(13절)과 접지면 면적
+  유사도 재계산(5절)은 확인하지 못한 채 남았습니다 — 지금 자국은 16절 경로가 만듭니다.</li>
 </ul>
 <hr />
 <h2 id="10-2026-09-14">10. 켠 순서와 남은 일 (2026-09-14 갱신)<a class="headerlink" href="#10-2026-09-14" title="Permanent link">&para;</a></h2>
@@ -1706,52 +1896,62 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <tr>
 <td>2</td>
 <td><strong>힘–깊이 모델 재수립</strong></td>
-<td><strong>일부</strong> — 하중 입력 연결(4절)·절편 0 재교정(11절). 계수의 <strong>출처(시험 자료)는 없음</strong></td>
+<td><strong>일부</strong> — 하중 입력 연결(4절)·절편 0 재교정(11절)·하중^(2/3)(15절). 계수의 <strong>출처(시험 자료)는 없음</strong></td>
 </tr>
 <tr>
 <td>3</td>
 <td><strong>발자국 폭</strong></td>
-<td><strong>완료</strong> — 휠 폭 0.159가 아니라 <strong>0.21</strong> 이어야 휠 폭만큼 파임(13절)</td>
+<td><strong>완료</strong> — 0.05 m 경로는 <strong>0.21</strong>(13절). 16절 경로는 휠 메시 폭을 그대로 씀(실측 0.164 m)</td>
 </tr>
 <tr>
 <td>4</td>
 <td><strong>발자국 길이를 침하의 함수로</strong></td>
-<td><strong>일부</strong> — 상수 0.1804 m(침하 0.020 m)로 한 세트만 맞춤. 엔진이 갱신하지 않음</td>
+<td><strong>완료(16절 경로)</strong> — 실제 휠 형상을 찍으므로 접지 길이가 침하에서 저절로 나옴. 0.05 m 경로는 상수 0.1804 m</td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong><code>wave_frequency</code> 를 접지 길이에 맞춰</strong></td>
-<td><strong>완료</strong> 3.229 (11절)</td>
+<td><strong>완료</strong> 3.229 (11절). 16절 경로는 이 값을 쓰지 않고 휠 회전각에서 그라우저 위치를 구함</td>
 </tr>
 <tr>
 <td>6</td>
 <td><strong>엔진이 바뀐 셀만 갱신</strong></td>
-<td><strong>일부</strong> — 정점이 안 바뀌면 쓰지 않게 했음(12절). 바뀌면 여전히 전체를 다시 씀</td>
+<td><strong>완료(16절 경로)</strong> — 바뀐 타일만 Fabric으로 갱신</td>
 </tr>
 <tr>
 <td>7</td>
 <td><strong>지형 해상도 0.025 m/px</strong></td>
-<td>남음 — 6번이 먼저</td>
+<td><strong>대체</strong> — 휠 근처만 1.5 cm 타일(16절). 지형 자체는 0.05 m</td>
 </tr>
 <tr>
 <td>8</td>
 <td><strong>경계 검사 추가</strong></td>
-<td>남음</td>
+<td><strong>일부</strong> — 16절 경로는 야드 안으로 자름(코드상, 실측 확인 안 함). 0.05 m 경로는 미조치</td>
 </tr>
 <tr>
 <td>9</td>
 <td><strong>안식각</strong></td>
-<td><strong>완료</strong> 60° → 45° (통상값 30~45°의 상한, 시험 근거 아님)</td>
+<td><strong>완료</strong> 60° → 45° (0.05 m 경로, 시험 근거 아님). 16절 경로는 벽 임계각 60°(추정)</td>
 </tr>
 <tr>
 <td>10</td>
 <td>주행 중 깊이 교정 <em>(신규)</em></td>
-<td>남음 — 지금 정지 교정값의 1.4~1.7배(14절)</td>
+<td><strong>일부</strong> — 하중^(2/3)·하중 침하 ±10 mm로 24~27 mm(문헌 범위 안). 시험 근거 없음</td>
 </tr>
 <tr>
 <td>11</td>
 <td>자국 모양 — 둔덕·벽 경사·그라우저 무늬 <em>(신규)</em></td>
-<td>남음</td>
+<td><strong>완료(16절)</strong> — 실측 휠 단면·둔덕·벽 무너짐. 둔덕 비율·임계각은 추정</td>
+</tr>
+<tr>
+<td>12</td>
+<td>자국을 충돌에 반영(휠이 자국을 밟게) <em>(신규)</em></td>
+<td>남음 — 충돌 메시 재쿠킹 비용(12절)이 막고 있음</td>
+</tr>
+<tr>
+<td>13</td>
+<td>긴 주행의 타일 누적 대책 <em>(신규)</em></td>
+<td>남음 — 먼 타일 해상도 낮추기</td>
 </tr>
 </tbody>
 </table>
@@ -1929,7 +2129,8 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tr>
 </tbody>
 </table>
-<p>주행 중 RTF가 0.22로 남는 것은 256만 정점 렌더 메시를 매번 다시 올리는 비용입니다(9절).</p>
+<p>주행 중 RTF가 0.22로 남은 것은 256만 정점 렌더 메시를 매번 다시 쓰는 비용이었고, 휠 근처만
+Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 풀었습니다.</p>
 <hr />
 <h2 id="13-0159-021-2026-09-14">13. 발자국 폭은 휠 폭이 아니었다 — 0.159 → 0.21 (기준일 2026-09-14)<a class="headerlink" href="#13-0159-021-2026-09-14" title="Permanent link">&para;</a></h2>
 <p><strong>자산 USD는 설정과 맞았습니다.</strong> 시뮬레이션이 여는 로버 USD를 직접 쟀습니다.</p>
@@ -2079,8 +2280,684 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <p class="admonition-title">대가 — 주행 중 깊이가 목표보다 깊습니다</p>
 <p>주행 중 깊이 중앙값 0.028~0.035 m는 정지 교정값 0.020 m의 1.4~1.7배입니다. 주행 중 하중이
 크게 읽히고 가장 깊은 값을 남기기 때문입니다. 회귀는 정지 하중 기준으로만 맞췄으므로,
-<strong>주행 중 깊이는 교정되지 않았습니다.</strong></p>
+<strong>주행 중 깊이는 교정되지 않았습니다.</strong> → 하중^(2/3)(15절)과 고해상도 자국(16절)으로 이어졌습니다.</p>
 </div>
+<hr />
+<h2 id="15-23-2026-09-14">15. 깊이가 하중에 선형이었다 — 하중의 2/3제곱으로 (기준일 2026-09-14)<a class="headerlink" href="#15-23-2026-09-14" title="Permanent link">&para;</a></h2>
+<p><strong>문제.</strong> 하중-깊이 회귀가 원점을 지나는 직선이라 하중이 두 배면 깊이도 두 배였습니다. 14절의
+「주행 중 깊이가 1.4~1.7배」 가운데 일부가 이 선형성입니다 — 주행 중 크게 읽히는 하중 피크가 그대로
+깊이에 실렸습니다.</p>
+<p><strong>근거.</strong> 강성륜 Bekker 침하는</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>z = [ 3W / ((3 − n)·(k_c + b·k_φ)·√D) ]^(2/(2n+1))      →      z ∝ W^(2/(2n+1))
+</code></pre></div>
+<p>이고, 달 표토 기준값(Lunar Sourcebook, Soil B) n = 1이면 <strong>W^(2/3)</strong> 입니다. 같은 식이 우리 휠(폭 0.159 m ·
+지름 0.427 m)과 하중 182 N에서 <strong>21.6 mm</strong>를 내, 11절의 교정값 0.020 m와 맞습니다.</p>
+<p><strong>고친 것.</strong> 회귀에 넣기 전에 하중을 <code>F_ref · (F / F_ref)^(2/3)</code> 로 바꿉니다(F_ref = 182.2 N = 자중 ÷ 4).
+기준하중에서는 값이 그대로라 11절 교정이 유지됩니다 — 182.2 N에서 0.0201 m 그대로, 364 N에서 <strong>1.587배</strong>
+(선형이면 2배).</p>
+<p><strong>실제 Isaac에서 확인</strong> — 14절과 같은 조건·같은 스크립트.</p>
+<table>
+<thead>
+<tr>
+<th>줄</th>
+<th></th>
+<th>깊이 변동계수</th>
+<th>거의 안 파인 구간</th>
+<th>깊이 중앙값 · 최소 · 최대</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>좌</td>
+<td>14절 후</td>
+<td>0.37</td>
+<td>8 %</td>
+<td>0.028 · 0.0074 · 0.044 m</td>
+</tr>
+<tr>
+<td>좌</td>
+<td><strong>하중^(2/3)</strong></td>
+<td><strong>0.22</strong></td>
+<td><strong>0 %</strong></td>
+<td><strong>0.025</strong> · 0.0140 · <strong>0.034</strong> m</td>
+</tr>
+<tr>
+<td>우</td>
+<td>14절 후</td>
+<td>0.27</td>
+<td>14 %</td>
+<td>0.035 · 0.0150 · 0.042 m</td>
+</tr>
+<tr>
+<td>우</td>
+<td><strong>하중^(2/3)</strong></td>
+<td><strong>0.20</strong></td>
+<td><strong>0 %</strong></td>
+<td><strong>0.030</strong> · 0.0163 · <strong>0.034</strong> m</td>
+</tr>
+</tbody>
+</table>
+<p>주행 RTF 0.21~0.25, 멈춤 없음 — 성능 영향은 없습니다. 주행 중 깊이는 정지 교정의 1.2~1.5배로 줄었지만
+여전히 시험 자료로 교정한 것은 아닙니다.</p>
+<hr />
+<h2 id="16-15-cm-2026-09-14">16. 고해상도 자국 — 1.5 cm 타일에 실제 휠 단면을 찍는다 (기준일 2026-09-14)<a class="headerlink" href="#16-15-cm-2026-09-14" title="Permanent link">&para;</a></h2>
+<p><strong>왜.</strong> 0.05 m 격자에서는 휠 폭이 3칸이라 자국 단면이 V자가 되고, 그라우저 무늬(주기 약 56 mm)는
+원리상 나오지 않습니다. 해상도를 0.025 m로 올리면 시뮬레이션이 멈췄고(5절), 지금 해상도에서도 256만 정점
+지형을 매번 다시 쓰느라 주행 중 RTF가 0.22였습니다(12절). 지형 전체를 1.5 cm로 올리면 6,400만 정점이라
+불가능합니다. 방향은 <strong>해상도 1.5 cm · 먼 자국도 유지 · 사실감 우선</strong>으로 정했습니다.</p>
+<h3 id="_10">먼저 잰 것 — 느린 원인은 정점 수가 아니라 쓰는 경로였다<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>실제 야드 장면(로버 정지)에 격자 메시를 두고, 매 반복 전 정점을 바꿔 쓰며 RTF를 쟀습니다.</p>
+<table>
+<thead>
+<tr>
+<th>정점</th>
+<th>USD 경로</th>
+<th>Fabric 경로 (CPU)</th>
+<th>GPU(warp) → Fabric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>없음 (기준)</td>
+<td>RTF 0.499</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7만 (4 m)</td>
+<td>0.475</td>
+<td>0.493</td>
+<td><strong>0.499</strong></td>
+</tr>
+<tr>
+<td>28만 (8 m)</td>
+<td><strong>0.294</strong></td>
+<td>0.485</td>
+<td><strong>0.499</strong></td>
+</tr>
+<tr>
+<td>64만 (12 m)</td>
+<td><strong>0.302</strong></td>
+<td>0.487</td>
+<td><strong>0.499</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>USD로 쓰면 28만 정점부터 RTF가 0.30</strong> 으로 떨어집니다 — 주행 RTF 0.22와 같은 기전입니다.</li>
+<li><strong>Fabric(Omniverse 런타임 데이터 계층)으로 쓰면 64만 정점도 비용이 거의 없고</strong>, 화면 캡처로 재질·그림자까지
+  반영되는 것을 확인했습니다.</li>
+<li>1 m 타일 400개(185만 정점)를 <strong>정적으로</strong> 두면 RTF 0.481 — 먼 자국을 고해상도로 남겨도 됩니다.</li>
+<li>메시 구멍(<code>holeIndices</code>)으로 기존 지형을 가리는 방법은 화면에 반영되지 않아 쓰지 않았습니다.</li>
+</ul>
+<h3 id="_11">구조<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart LR
+    A["휠 링크 4개&lt;br/&gt;위치·차축·회전각"] --&gt; C["휠 근처 1 m 타일&lt;br/&gt;(1.5 cm, 없으면 생성)"]
+    P["휠 메시 실측 단면&lt;br/&gt;그라우저 24 · 높이 19.1 mm"] --&gt; D["휠 최저면을&lt;br/&gt;3 mm 간격으로 쓸어 찍기"]
+    B["하중&lt;br/&gt;(서스펜션 토크, 하중^(2/3))"] --&gt; D
+    C --&gt; D
+    D --&gt; E["둔덕 · 벽 무너짐"]
+    E --&gt; F["바뀐 타일만&lt;br/&gt;Fabric 갱신"]
+    F -.-&gt;|"충돌 메시는 그대로"| G["PhysX 지형 충돌"]</code></pre>
+<ul>
+<li><strong>실측 휠 단면</strong> — 휠 메시에서 반경을 축방향 32칸 × 그라우저 위상 120칸으로 쟀습니다. 넓은 면에는 정점이
+  모서리에만 있어 정점만 보면 그라우저 높이가 90 mm로 나오므로, 삼각형 내부를 채워 쟀습니다:
+  림 194.2 mm · 팁 213.3 mm · <strong>직선 그라우저 24개 · 높이 19.1 mm</strong> · 가장자리 플랜지 200.4 mm.</li>
+<li><strong>그라우저 위치는 휠 회전각을 따릅니다.</strong> 그래서 자국 간격이 슬립 s에 따라 <code>55.9 mm × (1 − s)</code> 로 줄고,
+  슬립이 크면 무늬가 뭉개집니다 — 따로 모델링하지 않아도 나옵니다.</li>
+<li><strong>흙에 남는 몫</strong> — 휠 형상의 그라우저 틈 중 40 %만 남깁니다(흙이 되흘러 듭니다). 판 흙의 10 %는 옆
+  둔덕으로 보내고(추정), 휠 밖 벽은 60°를 넘으면 무너뜨립니다.</li>
+<li><strong>표시 지면 = 충돌면 + 27 mm.</strong> 휠은 바뀌지 않은 충돌면 위에 서므로 그라우저 팁이 27 mm 잠긴 모습이
+  됩니다 — 휠이 자국 안에 앉아 보입니다.</li>
+<li>타일은 주행 내내 <strong>남습니다</strong>(먼 자국 유지). 타일 아래의 기존 지형은 가라앉혀 가립니다.</li>
+</ul>
+<h3 id="4">교정 — 실제 모듈을 가짜 지형에서 4륜 주행 (오프라인)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>흙에 남는 그라우저 몫</th>
+<th>평균 깊이</th>
+<th>그라우저 자국 진폭</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.35</td>
+<td>21.6 mm</td>
+<td>6.7 mm</td>
+</tr>
+<tr>
+<td><strong>0.40 (채택)</strong></td>
+<td><strong>20.9 mm</strong></td>
+<td><strong>7.7 mm</strong></td>
+</tr>
+<tr>
+<td>0.45</td>
+<td>20.3 mm</td>
+<td>8.6 mm</td>
+</tr>
+</tbody>
+</table>
+<p>목표는 깊이 Bekker 21.6 mm · Lunokhod 21~24 mm, 그라우저 자국 6~9 mm(단륜 시험 6.09 mm)입니다.
+모듈 시험에서 슬립 0.1의 주기 <strong>50.1 mm</strong>(이론 50.3) · 슬립 0.3의 <strong>39.0 mm</strong>(이론 39.1) · 폭 0.164 m ·
+타일 쓰기 누락 0 · 이음매 오차 0 · 호출당 3.4 ms를 확인했습니다.</p>
+<h3 id="isaac">실제 Isaac에서 확인<a class="headerlink" href="#isaac" title="Permanent link">&para;</a></h3>
+<p>보드 EPOS, 구동 2.0 rad/s 직진, 5 s 창 스탬프 RTF.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>주행 RTF</td>
+<td><strong>0.48~0.50</strong> (0.05 m 방식 0.21~0.24, 변형 OFF 0.497)</td>
+</tr>
+<tr>
+<td>자국 계산 · 타일 갱신</td>
+<td>호출당 1.0~1.9 ms · 0.1~0.3 ms</td>
+</tr>
+<tr>
+<td>평균 깊이</td>
+<td>24~27 mm</td>
+</tr>
+<tr>
+<td>그라우저 자국 진폭 · 주기</td>
+<td>9.0~10.1 mm · 55.8~56.4 mm (휠 기준 55.9)</td>
+</tr>
+<tr>
+<td>폭 · 벽 경사 · 둔덕</td>
+<td>0.164 m (휠 0.159) · 51~57° · 2~2.5 mm</td>
+</tr>
+<tr>
+<td>후방 카메라</td>
+<td>그라우저 무늬가 보이는 이어진 자국 두 줄</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">실측에서 나온 결함 둘 — 같은 지령을 다시 돌려 원인을 갈랐다<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>같은 지령이면 시뮬레이션이 결정적이라, 판을 바꿔도 자국과 카메라 위치가 같습니다. 이것을 대조 실험으로 썼습니다.</p>
+<ol>
+<li><strong>타일 영역 경계를 따라 밝은 선.</strong> 처음에는 기존 지형 가리기가 화면에 안 먹은 것으로 의심했지만, 쓰는
+   경로를 바꿔도(Fabric · USD) <strong>똑같이 보였고</strong> 되읽은 값도 맞았습니다 — 가설이 틀렸습니다. 원인은 경계
+   첫 줄 정점을 0.2 m 한꺼번에 내려 생긴 급경사가 <strong>경계 정점의 부드러운 법선을 기울인 것</strong>이었습니다.
+   첫 줄만 2 mm 내리자 선이 사라졌습니다.</li>
+<li><strong>자국 깊이가 줄을 따라 10~35 mm로 출렁임.</strong> 휠의 물리 높이를 기준으로 찍었는데, 충돌 메시가 렌더 지형의
+   근사라 휠 팁과 지형 사이가 직진 중에도 평균 6 mm · p95 15 mm 떴고(돌 위·선회 중에는 수백 mm), 하중 추정도
+   ±16 mm 폭으로 출렁였습니다. <strong>렌더 지형을 기준으로 찍고, 4 cm 넘게 뜬 휠은 찍지 않고, 하중 침하를 ±10 mm로
+   묶어</strong> 깊이 변동계수가 0.35~0.38 → <strong>0.25~0.30</strong>이 됐습니다.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">남는 것</p>
+<ul>
+<li>남은 깊이 출렁임은 대부분 하중 추정 잡음입니다(서스펜션 토크 하중 산포 ±18 %).</li>
+<li>그라우저 자국 진폭 9~10 mm는 단륜 시험(6.09 mm)보다 큽니다.</li>
+<li>둔덕 비율과 벽 임계각은 정량 문헌이 없는 추정입니다.</li>
+<li><strong>렌더 전용입니다</strong> — 휠이 자국을 밟지 않으므로 슬립·견인 수치에는 반영되지 않습니다.</li>
+<li>타일이 계속 남으므로 아주 긴 주행에서는 정점이 쌓입니다(1 km에 약 600만 정점 추정).</li>
+</ul>
+</div>
+<hr />
+<h2 id="17-2026-09-14">17. 파라미터 조정 가이드 (기준일 2026-09-14)<a class="headerlink" href="#17-2026-09-14" title="Permanent link">&para;</a></h2>
+<p>설정은 lunaryard 환경 설정의 <code>terrain_manager.moon_yard.deformation_engine</code> 아래에 있습니다.
+<strong>무엇을 고치면 무엇이 바뀌는지</strong>를 한곳에 모았습니다.</p>
+<h3 id="_13">먼저 — 지금 쓰이는 값과 안 쓰이는 값<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>묶음</th>
+<th>지금 동작에 영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. 공통 (켜기 · 지연 · 하중 입력)</td>
+<td>항상</td>
+</tr>
+<tr>
+<td>B. 0.05 m 지형 경로 (<code>footprint</code> · 분포 · 회귀)</td>
+<td><code>track_tiles.enable: False</code> 일 때만</td>
+</tr>
+<tr>
+<td>C. <code>track_tiles</code> (1.5 cm 자국, 16절)</td>
+<td><strong>지금 자국을 만드는 것</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title"><code>track_tiles</code> 가 켜진 상태에서 B를 고치면 화면에 아무 변화가 없습니다</p>
+<p>B로 되돌리려면 <code>track_tiles.enable: False</code> 로 둡니다 — 이때 주행 RTF는 0.22로 떨어집니다(12절).</p>
+</div>
+<h3 id="a">A — 공통<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>현재</th>
+<th>의미</th>
+<th>조정 시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enable</code></td>
+<td>True</td>
+<td>변형 전체 스위치</td>
+<td>False면 자국 없음</td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td>10.0 s (시뮬레이션 시간)</td>
+<td>시작 후 변형 시작까지</td>
+<td>짧으면 스폰 낙하 충격이 구덩이로 남습니다(2 s일 때 21 cm)</td>
+</tr>
+<tr>
+<td><code>force_source</code></td>
+<td>suspension</td>
+<td>휠 하중을 어디서 읽나</td>
+<td><code>contact</code> 는 정지 시 0으로 읽혀 <strong>서 있으면 안 파이고 부딪히면 파입니다</strong>(4절)</td>
+</tr>
+<tr>
+<td><code>suspension_joints</code></td>
+<td>FL · FR · RL · RR</td>
+<td>하중 토크를 읽을 조인트</td>
+<td><strong>휠 링크 목록과 순서가 같아야 합니다</strong> — 틀려도 값이 그럴듯합니다</td>
+</tr>
+<tr>
+<td><code>suspension_lever_arm</code></td>
+<td>0.4908 m</td>
+<td>토크 → 힘 환산 팔 길이</td>
+<td>로버 자산을 바꾸면 다시 계산</td>
+</tr>
+<tr>
+<td><code>suspension_gain</code></td>
+<td>1.78</td>
+<td>4절 링크 보정(실측 교정)</td>
+<td>네 휠 합이 자중과 맞도록. 산포 ±18 %</td>
+</tr>
+<tr>
+<td><code>force_filter_tau</code></td>
+<td>0.3 s</td>
+<td>하중 저역통과</td>
+<td>늘리면 깊이가 고르고 충격에 둔해지고, 줄이면 출렁입니다</td>
+</tr>
+<tr>
+<td>지형 크기·해상도</td>
+<td>야드 설정 참조</td>
+<td>자동</td>
+<td>직접 고치지 않습니다 — 해상도 0.025에서 멈췄습니다(5절)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-track_tiles-15-cm">C — <code>track_tiles</code> (지금 켜진 1.5 cm 자국)<a class="headerlink" href="#c-track_tiles-15-cm" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>표시 지면       = 지형 + surface_offset
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>휠이 찍는 면     = 지형 + R + [원 + κ·(실측 휠 단면 − 원)] − δ
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>하중 침하 δ     = surface_offset · ((F / reference_load)^load_exponent − 1)
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>                  → [−max_less_sinkage, +max_extra_sinkage] 로 자름
+</code></pre></div>
+<p>그라우저 팁 깊이 ≈ <code>surface_offset + δ</code>, 그라우저 사이 둔턱은 ≈ <code>κ × 19.1 mm</code> 만큼 얕습니다.</p>
+<p><strong>모양 (사실감 — 주로 여기를 만집니다)</strong></p>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>현재</th>
+<th>의미 · 효과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>surface_offset</code></td>
+<td>0.027 m</td>
+<td>자국 깊이의 기준. <strong>+1 mm → 평균 깊이 약 +1 mm</strong>(오프라인 0.024 → 18.0 mm, 0.027 → 20.9 mm). 크게 하면 휠·암석이 묻혀 보입니다</td>
+</tr>
+<tr>
+<td><code>grouser_transfer</code> (κ)</td>
+<td>0.40</td>
+<td>흙에 남는 그라우저 몫. <strong>그라우저 무늬 깊이 ≈ κ × 19.1 mm</strong>(0.35 → 6.7 · 0.40 → 7.7 · 0.45 → 8.6 mm, Isaac 실측 9~10 mm). 0 = 매끈한 홈, 1 = 휠 모양 그대로</td>
+</tr>
+<tr>
+<td><code>berm_fraction</code></td>
+<td>0.10</td>
+<td>판 흙 중 옆 둔덕 비율 — <strong>정량 문헌 없는 추정</strong>. 0.25면 둔덕 약 11 mm로 과했습니다. 0 = 둔덕 없음</td>
+</tr>
+<tr>
+<td><code>berm_width</code></td>
+<td>0.03 m</td>
+<td>둔덕 폭</td>
+</tr>
+<tr>
+<td><code>critical_angle_deg</code></td>
+<td>60</td>
+<td>휠 밖 벽 최대 경사. 낮추면 완만한 V, 높이면 날카로운 벽</td>
+</tr>
+<tr>
+<td><code>relax_iterations</code></td>
+<td>2</td>
+<td>벽 무너뜨림 반복 수. 늘리면 임계각에 더 가깝게 수렴</td>
+</tr>
+<tr>
+<td><code>wheel_profile</code></td>
+<td>휠 단면 표</td>
+<td><strong>로버 자산을 바꾸면 휠 메시에서 다시 뽑습니다</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>하중 반응</strong></p>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>현재</th>
+<th>의미 · 효과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reference_load</code></td>
+<td>182.2 N</td>
+<td>이 하중(자중 ÷ 4)에서 δ = 0</td>
+</tr>
+<tr>
+<td><code>load_exponent</code></td>
+<td>0.6667</td>
+<td>깊이 ∝ 하중^p (Bekker n = 1, 15절). 1이면 선형 — 하중 피크에서 과대</td>
+</tr>
+<tr>
+<td><code>max_extra_sinkage</code> / <code>max_less_sinkage</code></td>
+<td>0.010 / 0.010 m</td>
+<td>δ의 한계. 넓히면 하중 차가 더 드러나지만 <strong>하중 추정 잡음으로 줄을 따라 출렁입니다</strong>(±16 mm로 풀었을 때 변동계수 0.35~0.38)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>높이 기준 · 예외</strong></p>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>현재</th>
+<th>의미 · 효과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>height_reference</code></td>
+<td>terrain</td>
+<td><code>terrain</code> = 렌더 지형 기준(권장). <code>wheel</code> = 물리 휠 높이 기준 — 충돌 메시 근사 오차(평균 6 mm · p95 15 mm)가 그대로 깊이 출렁임이 됩니다</td>
+</tr>
+<tr>
+<td><code>lift_threshold</code></td>
+<td>0.04 m</td>
+<td>지형에서 이보다 뜬 휠은 찍지 않습니다(돌 위·들림). 낮추면 요철에서 끊기고, 높이면 뜬 휠이 끌린 자국을 남깁니다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>해상도 · 타일</strong></p>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>현재</th>
+<th>의미 · 효과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>samples_per_tile</code></td>
+<td>67</td>
+<td>1 m ÷ 67 = 1.49 cm. 100이면 1 cm — 정점 2.2배</td>
+</tr>
+<tr>
+<td><code>tile_size</code></td>
+<td>1.0 m</td>
+<td><strong>지형 해상도(0.05 m)의 정수배여야 합니다</strong></td>
+</tr>
+<tr>
+<td><code>activation_margin</code></td>
+<td>0.6 m</td>
+<td>휠에서 이 거리 안의 타일을 만듭니다. 너무 작으면 자국이 타일 영역 경계에 닿아 끊깁니다</td>
+</tr>
+<tr>
+<td><code>max_substep</code></td>
+<td>0.003 m</td>
+<td>쓸어 찍는 간격. 키우면 그라우저 팁(약 5 mm)을 건너뛰어 점무늬가 됩니다</td>
+</tr>
+<tr>
+<td><code>max_jump</code></td>
+<td>0.3 m</td>
+<td>한 번에 이보다 많이 움직이면(리셋·순간이동) 홈을 끌지 않습니다</td>
+</tr>
+</tbody>
+</table>
+<p><strong>렌더 경로 (보통 건드리지 않습니다)</strong></p>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>현재</th>
+<th>주의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>use_fabric</code></td>
+<td>True</td>
+<td>False면 USD 경로 — 28만 정점부터 RTF 0.30</td>
+</tr>
+<tr>
+<td><code>base_write</code></td>
+<td>fabric</td>
+<td><code>usd</code> 도 결과는 같고 25~28 ms(Fabric 9 ms)</td>
+</tr>
+<tr>
+<td><code>usd_write_calls</code></td>
+<td>3</td>
+<td>새 타일은 이 호출 수 동안 USD로 씁니다</td>
+</tr>
+<tr>
+<td><code>base_hide_depth</code></td>
+<td>0.2 m</td>
+<td>타일 아래 기존 지형을 가라앉히는 깊이</td>
+</tr>
+<tr>
+<td><code>base_hide_edge_depth</code></td>
+<td>0.002 m</td>
+<td>경계 첫 줄만 이만큼. <strong>크게 하면 타일 영역 경계에 밝은 선이 다시 생깁니다</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-005-m-track_tiles">B — 0.05 m 지형 경로 (<code>track_tiles</code> 를 끌 때만)<a class="headerlink" href="#b-005-m-track_tiles" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>현재</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>footprint.width</code></td>
+<td>0.21</td>
+<td>횡 표본 수 = int(폭 / 0.05) + 1. <strong>양 끝 표본은 늘 0</strong>이라 파이는 칸 = 표본 − 2 → 0.21은 3칸(0.15 m) (13절)</td>
+</tr>
+<tr>
+<td><code>footprint.height</code></td>
+<td>0.1804</td>
+<td>접지 길이 L = 2√(2Rz − z²), z = 0.020 m</td>
+</tr>
+<tr>
+<td><code>wave_frequency</code></td>
+<td>3.229</td>
+<td><strong>접지 길이 안의 그라우저 수</strong> = N·L / (2πR). 한 바퀴 개수가 아닙니다 (6절)</td>
+</tr>
+<tr>
+<td><code>angle_of_repose</code></td>
+<td>0.7854 (45°)</td>
+<td>가장자리 경사. 깊이를 최대 2.6배 좌우</td>
+</tr>
+<tr>
+<td>회귀 기울기 · 절편</td>
+<td>2.466×10⁻⁵ / −1.111×10⁻⁴ · 0</td>
+<td>깊이 = 경계 × (진폭/2 × 파형 − 평균). 182.2 N에서 −0.0201 m. <strong>절편은 0이어야 합니다</strong></td>
+</tr>
+<tr>
+<td><code>load_exponent</code> / <code>reference_load</code></td>
+<td>0.6667 / 182.2</td>
+<td>15절</td>
+</tr>
+<tr>
+<td><code>accumulation</code></td>
+<td>max_depth</td>
+<td>같은 칸은 가장 깊은 값. <code>decay_sum</code> 일 때만 감쇠 비율을 씁니다 (14절)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">폭 · 안식각 · 회귀 기울기 · 길이 · <code>wave_frequency</code> 는 한 세트입니다</p>
+<p>모두 침하 0.020 m를 가정합니다. 하나만 바꾸면 서로 어긋나므로 오프라인 재현 계산으로 다시 맞춥니다.
+설정에 있지만 <strong>읽히지 않는 값</strong>도 있습니다 — <code>gravity</code>, <code>footprint.shape</code>, <code>num_links</code> (6절).</p>
+</div>
+<h3 id="_14">목적별 조정<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>원하는 것</th>
+<th>조정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>그라우저 무늬를 더 선명하게</td>
+<td><code>grouser_transfer</code> ↑ (0.5)</td>
+</tr>
+<tr>
+<td>자국 전체를 더 깊게</td>
+<td><code>surface_offset</code> ↑</td>
+</tr>
+<tr>
+<td>벽을 더 날카롭게</td>
+<td><code>critical_angle_deg</code> ↑ (70)</td>
+</tr>
+<tr>
+<td>둔덕 없애기</td>
+<td><code>berm_fraction: 0</code></td>
+</tr>
+<tr>
+<td>깊이를 더 고르게</td>
+<td><code>force_filter_tau</code> ↑ 또는 <code>max_extra/less_sinkage</code> ↓</td>
+</tr>
+<tr>
+<td>하중에 따른 차이를 크게</td>
+<td><code>max_extra/less_sinkage</code> ↑ (출렁임 감수)</td>
+</tr>
+<tr>
+<td>더 촘촘하게</td>
+<td><code>samples_per_tile: 100</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">바꾸는 절차<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>설정 파일을 고치지 않고 시험</strong> — 실행 명령 뒤에 Hydra 덮어쓰기를 붙입니다.
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>++environment.terrain_manager.moon_yard.deformation_engine.track_tiles.grouser_transfer=0.35
+</code></pre></div></li>
+<li><strong>확정</strong> — 설정 파일을 고치고, <strong>시뮬레이터가 실제로 읽는 OmniLRS 설치본의 설정도 같은 파일인지</strong> 확인합니다.
+   저장소 쪽만 고치면 조용히 옛 값으로 돕니다.</li>
+<li><strong>검증</strong> — 오프라인 시험(수 초: 깊이 · 주기 · 폭 · 이음매)을 먼저 보고, Isaac에서 직진 주행 → 후방 카메라 →
+   깊이 · 그라우저 · 폭 · RTF를 잽니다. <strong>같은 지령이면 시뮬레이션이 결정적</strong>이라 전후 사진을 그대로 비교할 수
+   있습니다. RTF는 <strong>헤더 스탬프</strong>로 잽니다 — 수신 주기로 재면 물리가 멈춘 상태를 정상으로 봅니다(12절).</li>
+</ol>
+<hr />
+<h2 id="18">18. 왜 처음에 안 됐나 — 경과 한눈에<a class="headerlink" href="#18" title="Permanent link">&para;</a></h2>
+<p><strong>OmniLRS 변형 엔진은 반경 0.09 m 소형 휠 · 3~18 N 하중으로 교정된 코드이고, 450 kg 로버에서 돌아간 적이
+없었습니다.</strong> 그리고 대부분 <strong>오류 없이 조용히 틀렸습니다</strong> — 한 겹을 고치면 다음 겹이 드러났습니다.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>증상</th>
+<th>원인</th>
+<th>조치</th>
+<th>절</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>켜도 아무 일 없음</td>
+<td>폭 0.09 → 횡 표본 2개가 모두 가장자리(늘 0). 12 m 달려도 격자 0칸, 오류 없음</td>
+<td>폭 확대</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>폭만 고치니 로버가 파묻힘</td>
+<td>회귀 계수 출처 없음 — 정상 하중 침하 0.0946 m(반경 44 %), 무하중에서도 5.3 mm. 이동 0.054 m</td>
+<td>절편 0 · 182 N에서 0.020 m로 재교정</td>
+<td>3 · 11</td>
+</tr>
+<tr>
+<td>3</td>
+<td>스폰 자리에 21 cm 구덩이</td>
+<td>상류 결함 — <code>delay</code> 단위 변환이 반대(2 s → 0.067 스텝), <code>y_deform_offset</code> 이 x 값을 받음</td>
+<td>패치 · <code>delay</code> 10 s</td>
+<td>7 · 11</td>
+</tr>
+<tr>
+<td>4</td>
+<td>서 있으면 안 파이고 부딪히면 파임</td>
+<td>물리 엔진 접지력이 정지 시 0</td>
+<td>서스펜션 토크 하중, 4절 링크라 보정 1.78</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>켜고 주행하면 물리가 멈춤</td>
+<td>변형 점을 <strong>충돌 메시</strong>에 써서 256만 정점 콜라이더를 계속 재쿠킹 → 물리 스텝 건너뜀. 토픽은 나오고 스탬프만 멈춤</td>
+<td>렌더 전용 메시 → RTF 0.008 → 0.22</td>
+<td>12</td>
+</tr>
+<tr>
+<td>6</td>
+<td>자국이 가늘다</td>
+<td>폭에 휠 폭 0.159를 넣었는데 가장자리 표본 0이라 실제 0.10 m(63 %). <code>wave_frequency</code> 를 개수로 착각(4.14)</td>
+<td>폭 0.21 · 3.229</td>
+<td>13 · 6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>끊긴 점선 구덩이</td>
+<td>칸 깊이가 처음 밟는 순간 하중으로 굳고, 하중이 137~662 N으로 출렁. 깊이가 하중에 선형</td>
+<td>저역통과 + 최대 깊이, 하중^(2/3)</td>
+<td>14 · 15</td>
+</tr>
+<tr>
+<td>8</td>
+<td>그라우저 무늬 없음 · 주행 RTF 0.22</td>
+<td>5 cm 격자는 휠 폭 3칸이라 원리상 불가, 256만 정점 USD 재기록이 느림, 0.025로 올리면 멈춤</td>
+<td>1.5 cm 타일 + 실측 휠 단면 + Fabric → RTF 0.48~0.50</td>
+<td>5 · 16</td>
+</tr>
+<tr>
+<td>9</td>
+<td>타일 경계에 밝은 선 · 깊이 출렁임</td>
+<td>경계 첫 줄 급경사가 법선을 기울임. 휠 팁 − 지형 간격과 하중 잡음</td>
+<td>첫 줄 2 mm · 지형 기준 찍기 · 들린 휠 제외 · 침하 ±10 mm</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>원인은 세 갈래였습니다.</strong></p>
+<ol>
+<li><strong>다른 규모의 로버용으로 교정된 값</strong> — 폭 · 회귀 계수 · 발자국 길이 · <code>wave_frequency</code> 가 소형 휠 기준이었습니다.</li>
+<li><strong>조용히 틀리는 설계</strong> — 변형이 0이어도, 하중이 틀린 신호여도, 물리가 멈춰도 오류가 나지 않았습니다.
+   그래서 <strong>숫자로 먼저 가르는 계측</strong>(지형 데이터 덤프 · 스탬프 RTF · 같은 지령 대조)이 매번 필요했습니다.</li>
+<li><strong>렌더와 물리를 한 메시에 묶은 구조</strong> — 자국을 그리는 일이 콜라이더 재쿠킹과 지형 전체 재기록을 불렀습니다.
+   지금은 둘을 떼어 <strong>자국은 보이기만 하고 휠은 밟지 않습니다.</strong> 충돌 반영은 차년도 과제입니다.</li>
+</ol>
 
 
 
