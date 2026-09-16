@@ -881,7 +881,11 @@ Jetson 실기 배포와 조이패드 수동 주행까지 명령 경로 전 구�
 않습니다</strong>(계수를 80 % 올려도 측정값이 소수점까지 동일). 원인 규명 전까지 이 플랜트의
 주행·슬립 수치는 설계 입력으로 쓰지 않습니다. 실물 모터드라이버는 여전히 버스에 없으며,
 조종 패드 링크 두절 감지는 열린 안전 항목입니다.</p>
-<p>상세는 <a href="../l-project-srs/">SRS</a> v1.17 · <a href="../l-project-sdp/">SDP</a> v1.45 개정 이력을 참조하십시오.</p>
+<p>상세는 <a href="../l-project-srs/">SRS</a> v1.32 · <a href="../l-project-sdp/">SDP</a> v2.08 개정 이력을 참조하십시오.</p>
+<p><strong>2026-09-16 갱신</strong> — 조향에 <strong>운용 정책 한계</strong>(코너별 거울 −30~+60°)를 두고, 선회 포락선에
+조향 조건을 더했습니다. 보드 스탬프는 µs 해상도로 올렸습니다. 실기에서 축 클램프·제자리 회전·
+포락선 절삭·사선 이동을 확인했습니다. 대가는 <strong>연속 선회 최소 선회반경 1.81 m</strong> 와 <strong>사선 ±30°</strong>
+이며, 제자리 회전은 그대로 됩니다.</p>
 </div>
 <blockquote>
 <p><strong>핵심 설계 원칙</strong> — HILS 보드가 항상 루프 안에 있다. 실 구동/시뮬레이션 어느 모드든 Navigation의 명령은 보드의 Drive Interface 추상 계층을 거치므로, 제어 주기·안전 로직·인터페이스를 두 모드에서 동일하게 검증할 수 있도록 설계했습니다. 3머신 통합 검증은 A6 시험으로 남아 있습니다.</p>
@@ -918,10 +922,10 @@ Jetson 실기 배포와 조이패드 수동 주행까지 명령 경로 전 구�
         HM[health_monitor&lt;br/&gt;/diagnostics]
     end
 
-    ARB -- "/cmd_vel (v, ω) — 의도만" --&gt; AG[micro_ros_agent]
+    ARB -- "/rover/cmd_vel (중재된 v, ω) — 의도만" --&gt; AG[micro_ros_agent]
 
     subgraph B["HILS 보드 — STM32H7 (FreeRTOS + micro-ROS) · 경성 실시간"]
-        MCU[rover_mcu] --&gt; KIN[4WS 기구학&lt;br/&gt;v, ω → 12축&lt;br/&gt;선회 포락선]
+        MCU[rover_mcu&lt;br/&gt;µs 해상도 샘플 스탬프] --&gt; KIN[4WS 기구학&lt;br/&gt;v, ω → 12축&lt;br/&gt;선회 포락선&lt;br/&gt;휠 속도·횡가속·조향 정책]
         KIN --&gt; DYN[동역학&lt;br/&gt;토크 배분 · 슬립 반응]
         DYN --&gt; RT[실시간 축 제어&lt;br/&gt;폐루프 · 폴트 차단 · 워치독]
         RT --- DIF{{Drive Interface}}
@@ -948,8 +952,8 @@ Jetson 실기 배포와 조이패드 수동 주행까지 명령 경로 전 구�
 완료되지 않았습니다.</p>
 <ul>
 <li><strong>통신</strong>: Ethernet Hub 단일망(UDP) — MCU는 XRCE-DDS(W5300 커스텀 UDP 전송), Linux 간은 Fast DDS(도메인 통일)</li>
-<li><strong>12축 계약(v3)</strong>: 구동 4축(속도, PVM) + 조향 4축(±90°, PPM) + 서스펜션 4축(±30°, PPM)</li>
-<li><strong>4WS 기구학</strong>: 스워브 정/역기구학(강체 최소자승) — 제자리 회전·crab 주행 지원</li>
+<li><strong>12축 계약(v3)</strong>: 구동 4축(속도, PVM) + 조향 4축(PPM — 조인트 한계 ±90°, <strong>운용 정책은 코너별 −30~+60°</strong>) + 서스펜션 4축(±0.35 rad = ±20.05°, PPM)</li>
+<li><strong>4WS 기구학</strong>: 스워브 정/역기구학(강체 최소자승) — <strong>제자리 회전</strong>(조향 ∓55.30°)과 사선(crab) 주행 지원. 조향 운용 정책 때문에 연속 선회에는 <strong>최소 선회반경 1.81 m</strong> 가 있고, 사선 이동은 네 축 공통 구간인 <strong>±30°</strong> 까지입니다</li>
 <li><strong>주행 입력</strong>: 자율(Nav2)과 수동(조이스틱) 이중 경로 — 수동이 자율을 선점</li>
 <li><strong>안전</strong>: <code>rover_control</code>·보드 drive 계층 워치독 + 노드 헬스 모니터링. EPOS4 RPDO 타임아웃과 STO는 N5 실기 과제</li>
 </ul>
@@ -1016,9 +1020,9 @@ Jetson 실기 배포와 조이패드 수동 주행까지 명령 경로 전 구�
     JOYD -- "/joy" --&gt; TELE
     TELE -- "/cmd_vel_joy" --&gt; RC
     NAV -- "/cmd_vel" --&gt; RC
-    TELE -- "/rover/suspension_cmd" --&gt; RC
+    TELE -- "/rover/suspension_cmd" --&gt; MCU
 
-    RC -- "/rover/axes_cmd [12]" --&gt; MCU
+    RC -- "/rover/cmd_vel (중재된 v, ω)" --&gt; MCU
     MCU -- "CANopen RPDO" --&gt; EPOS
     EPOS -- "TPDO" --&gt; MCU
     MCU -. "/sim/axes_cmd [12]" .-&gt; PLANT
@@ -1075,9 +1079,10 @@ CycloneDDS가 필요해지면 <strong>에이전트와 Linux 노드의 RMW만 교
 <p>자율 주행(Nav2)과 별개로 <strong>조이스틱 수동 주행</strong>을 지원합니다. 4WS 로버라 스워브 관례를 따라
 <strong>왼쪽 스틱은 병진(전후 + 게걸음), 오른쪽 스틱은 제자리 회전</strong>에 대응하고, 버튼으로 서스펜션
 자세 프리셋(level/lift/drop)을 함께 조작합니다.</p>
-<p><strong>게걸음(crab) 주행</strong> — 네 바퀴가 모두 같은 방향으로 90° 조향해 차체 방향을 유지한 채 옆으로
+<p><strong>게걸음(crab) 주행</strong> — 네 바퀴가 <strong>모두 같은 각으로</strong> 조향해 차체 방향을 유지한 채 사선으로
 이동하는 기동입니다. 4WS 로버만 할 수 있고 비홀로노믹 자율 주행 스택은 명령하지 않으므로,
-사실상 수동 주행에서만 쓰이는 능력입니다.</p>
+사실상 수동 주행에서만 쓰이는 능력입니다. 조향 운용 정책이 코너별 비대칭(−30~+60°)이라 네 축이
+같이 낼 수 있는 범위는 <strong>±30°</strong> 이고, 90° 조향이 필요한 <strong>순수 옆걸음은 하지 않습니다</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -1372,7 +1377,7 @@ STO 하드웨어, 실시간 타이밍은 에뮬레이터로 확인할 수 없으
 실물 도입 시 원 벤치 절차(TP-001)를 재수행하도록 계획했습니다.</p>
 <hr />
 <h2 id="_7">검증 현황<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>아래 결과는 저장소에 기록된 2026-08-04 기준 시험 실적입니다. 소프트웨어 시험 결과와
+<p>아래 결과는 저장소에 기록된 <strong>2026-09-16 기준</strong> 시험 실적입니다. 소프트웨어 시험 결과와
 실기 검증 상태를 구분해 표시합니다.</p>
 <table>
 <thead>
@@ -1404,7 +1409,7 @@ STO 하드웨어, 실시간 타이밍은 에뮬레이터로 확인할 수 없으
 </tr>
 <tr>
 <td>조이스틱 수동 주행 (합성 입력)</td>
-<td><strong>5 PASS / 0 FAIL</strong> — 자율 주행 선점, 게걸음 시 네 축 조향 90.0°, 데드맨 해제 시 정지 유지, 반납 후 자율 복귀</td>
+<td><strong>5 PASS / 0 FAIL</strong> (2026-09-16 재확인) — 자율 주행 선점, 게걸음 시 네 축 조향 <strong>30.0°</strong>(조향 정책의 공통 구간 <code>crab_limit</code> 을 노드에서 읽어 대조), 데드맨 해제 시 정지 유지, 반납 후 자율 복귀</td>
 </tr>
 <tr>
 <td>3머신 통합 시험 사전 리허설 (보드 대역)</td>
@@ -1416,7 +1421,7 @@ STO 하드웨어, 실시간 타이밍은 에뮬레이터로 확인할 수 없으
 </tr>
 <tr>
 <td>Isaac Sim 연동 계약 리허설</td>
-<td><strong>15 PASS / 0 FAIL</strong> — 정식 USD에 12축 조인트명 전부 실재, 명령·피드백 양방향 변환, 역순·잡조인트 피드백에서 12조인트 복원(60.0 Hz), 폐루프 <code>/odom</code> 0.500·0.200, 게걸음 네 축 +90.0°. <strong>Isaac 자리는 대역 노드이며 물리·접촉·슬립·GPU는 범위 밖</strong></td>
+<td><strong>15 PASS / 0 FAIL</strong> (2026-08-04 기준) — 정식 USD에 12축 조인트명 전부 실재, 명령·피드백 양방향 변환, 역순·잡조인트 피드백에서 12조인트 복원(60.0 Hz), 폐루프 <code>/odom</code> 0.500·0.200. <strong>Isaac 자리는 대역 노드이며 물리·접촉·슬립·GPU는 범위 밖</strong>. 게걸음 항목은 조향 운용 정책 도입(2026-09-16)으로 기대값이 90° → 30° 로 바뀌어 <strong>재실행 대기</strong> — 이 시험은 라이브 브리지가 떠 있으면 오염을 피해 스스로 중단합니다</td>
 </tr>
 <tr>
 <td>통합 회귀 시험 (<code>run_all_tests.sh</code>)</td>
@@ -1424,7 +1429,19 @@ STO 하드웨어, 실시간 타이밍은 에뮬레이터로 확인할 수 없으
 </tr>
 <tr>
 <td>펌웨어 (FreeRTOS + micro-ROS + 12축 CANopen 마스터)</td>
-<td>2026-08-03 Arm GNU 13.3.Rel1 빌드 통과 — FLASH 461,460 B / 894 KB; 실기 HILS 검증은 A6 대기</td>
+<td>2026-09-16 Arm GNU 13.3.Rel1 빌드 통과 — FLASH 469,980 B / 894 KB(51%), 이미지 472,028 B. <strong>보드 플래시·실기 동작 확인 완료</strong></td>
+</tr>
+<tr>
+<td><strong>HILS 실기 — 조향 운용 정책 (2026-09-16)</strong></td>
+<td><strong>확인</strong> — 축 클램프(네 축 45° 지령 → FL·RR 29.97°, FR·RL 44.98°), 제자리 회전(조향 ∓55.30° · 구동 ±2.42 rad/s, 잘림 없음), 사선 이동 30°(네 축 동일), 주행 2.37 m 후 정지·자세 복원</td>
+</tr>
+<tr>
+<td><strong>HILS 실기 — 선회 포락선 (2026-09-16)</strong></td>
+<td><strong>확인</strong> — v 0.3 · wz 0.8 지령에서 조향 ±30.0°, 구동 1.06/2.00 rad/s. 요레이트가 그대로였다면 2.84/4.36 이어야 하므로 보드가 wz 를 약 0.17(= v/1.81, 최소 선회반경)로 낮춘 것이 확인됩니다</td>
+</tr>
+<tr>
+<td><strong>HILS 실기 — 경로 지연·스탬프 (2026-09-16)</strong></td>
+<td>명령 왕복 p50 <strong>14.0~16.4 ms</strong>(p95 20.9), 피드백 중계 p50 13.2~14.5 ms, <code>/rover/joint_states</code> 50.01 Hz. 보드 스탬프는 µs 해상도(간격 0.019918 s), <code>/odom</code> 스탬프−수신 3 ms. <strong>「스탬프가 도착보다 덜 흔들린다」는 판정 보류</strong> — 방향은 4회 일치하나 차가 0.02~0.32 ms 로 불안정</td>
 </tr>
 <tr>
 <td>3머신 A6 · 실물 EPOS4 · STO</td>
