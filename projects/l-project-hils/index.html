@@ -1441,7 +1441,7 @@ STO 하드웨어, 실시간 타이밍은 에뮬레이터로 확인할 수 없으
 </tr>
 <tr>
 <td><strong>HILS 실기 — 경로 지연·스탬프 (2026-09-16)</strong></td>
-<td>명령 왕복 p50 <strong>14.0~16.4 ms</strong>(p95 20.9), 피드백 중계 p50 13.2~14.5 ms, <code>/rover/joint_states</code> 50.01 Hz. 보드 스탬프는 µs 해상도(간격 0.019918 s), <code>/odom</code> 스탬프−수신 3 ms. <strong>「스탬프가 도착보다 덜 흔들린다」는 판정 보류</strong> — 방향은 4회 일치하나 차가 0.02~0.32 ms 로 불안정</td>
+<td>명령 왕복 p50 <strong>14.0~16.4 ms</strong>(p95 20.9), 피드백 중계 p50 13.2~14.5 ms, <code>/rover/joint_states</code> 50.01 Hz. 보드 스탬프는 µs 해상도(간격 0.019918 s), <code>/odom</code> 스탬프−수신 3 ms. <strong>「스탬프가 도착보다 덜 흔들린다」는 지표에서 보류합니다</strong> — µs 해상도로 올리고 카메라 4종 <strong>215.7 MB/s</strong> 부하까지 걸어도 차이가 0.02 ms 이하입니다. 그 부하가 <strong>보드 경로에 닿지 않기</strong> 때문입니다(같은 구간에서 <code>/sim/joint_states</code> 도착 흔들림은 10배 악화되는데 보드 경로는 불변 — 보드 피드백은 XRCE/UDP 로 에이전트를 거칩니다). 판정하려면 보드 경로에 직접 부하를 주어야 합니다</td>
 </tr>
 <tr>
 <td>3머신 A6 · 실물 EPOS4 · STO</td>
