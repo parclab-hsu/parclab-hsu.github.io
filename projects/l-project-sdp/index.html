@@ -988,7 +988,7 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>2.08</td>
+<td>2.09</td>
 </tr>
 <tr>
 <td>작성일</td>
@@ -1558,6 +1558,11 @@
 <td>2.08</td>
 <td>2026-09-16</td>
 <td><strong>문서 동기화 — 조향 정책·포락선·µs 스탬프를 상위 문서와 홈페이지에 반영.</strong> SRS 1.32(FR-001 서술·5.2 축 배치), AD-002 2.13(구성도 보드 블록에 선회 포락선·조향 정책·µs 스탬프), README 축 배치(서스 <code>±30°</code> → <strong>±0.35 rad = ±20.05°</strong> 로 정정 — 자산 실측과 어긋나 있었다), PROJECT_MEMORY 최신 리비전. 홈페이지 공개 페이지는 아키텍처 도식이 <strong>9-15 기구학 보드 이관 이전 상태</strong>(rover_control 이 12축을 내는 그림)로 남아 있어 함께 갱신·재배포</td>
+</tr>
+<tr>
+<td>2.09</td>
+<td>2026-09-16</td>
+<td><strong>Isaac 계약 리허설 재실행 — 27 PASS / 0 FAIL.</strong> 조향 정책 반영 후 기대값이 바뀐 게걸음 항목을 다시 쟀다: 네 축 <strong>+30.0° 동일</strong>, 그리고 <strong>순수 옆걸음(90°)은 정책 밖이라 네 축이 −60/+60/+60/−60 로 갈린다</strong>는 것을 별도 검사로 등재(<code>test_isaac_bridge.py</code>). 라이브 <code>sim_isaac_bridge</code> 를 내렸다 올려야 돌아가므로 정지·시험·복구를 한 스크립트로 묶었다. <strong>밟은 함정 둘</strong> — ① <code>pgrep -f 'sim_isaac_bridge.py'</code> 가 <strong>명령줄에 그 문자열이 든 자기 셸을 잡아</strong> 정지·시험이 모두 어긋났다(대괄호 표기 <code>[s]im_...</code> 로 해결, 시험의 오염 감시도 같은 이유로 중단했다) ② 스크립트에 <code>set -u</code> 를 켠 채 ROS <code>setup.bash</code> 를 source 해 <code>AMENT_TRACE_SETUP_FILES: unbound variable</code> 로 죽었고 <strong>복구까지 실패해 브리지가 내려간 채로 남았다</strong> — 저장소 문서에 이미 등재된 함정이다. 재실행 후 <code>/sim/joint_states</code> 30.00 Hz · <code>/rover/joint_states</code> 50.10 Hz 복구 확인</td>
 </tr>
 </tbody>
 </table>
