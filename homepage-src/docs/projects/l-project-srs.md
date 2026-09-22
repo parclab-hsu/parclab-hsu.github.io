@@ -18,8 +18,8 @@ noindex: true
 | 항목 | 내용 |
 |---|---|
 | 문서 번호 | LPJ-HILS-SRS-001 |
-| 버전 | 1.23 |
-| 작성일 | 2026-07-28 (개정 2026-09-14) |
+| 버전 | 1.34 |
+| 작성일 | 2026-07-28 (개정 2026-09-22) |
 | 과제 | 현대자동차 L-Project팀 과제 — HILS 시스템 개발 |
 | 적용 표준 | IEEE 830 준용 |
 
@@ -51,6 +51,17 @@ noindex: true
 | 1.21 | 2026-08-22 | *(번호 정정 — 같은 날 다른 세션이 1.18 을 먼저 썼다)* **Navigation 머신 플랫폼 요건을 6장 설계 제약에 등재** — DP-001·IG-003 에만 있던 온보드 컴퓨터 전제(Orin 계열 + JetPack 6.x = Ubuntu 22.04)를 요구사항 쪽에 명시했다. Humble 이 22.04 를 요구하므로 **구형 Jetson Nano(JetPack 4.6.x = 18.04)는 제외**되며 Isaac ROS 지원 대상도 아니다. 무맵 1단계는 Orin Nano 8 GB 로도 되지만 비전 2단계는 Orin NX 16 GB 이상이다 |
 | 1.22 | 2026-09-11 | **FR-073 을 격리 환경에서 재확인 — 회귀의 FAIL 은 오탐이었다.** `test_teleop.py` 의 `release 버튼 → Nav2 복귀` 가 구동 `None` 으로 FAIL 났는데, 원인은 제품이 아니라 **같은 PC 의 다른 세션이 띄운 노드**였다. 시험의 stale-node 가드는 프로세스 이름만 보므로 **도메인이 다른 남의 노드를 못 걸러낸다** — 남의 `rover_teleop` 이 `/cmd_vel_joy` 를 계속 내면 우선권이 만료되지 않는다. `ROS_DOMAIN_ID` 55·56 으로 분리해 두 번 재수행한 결과 **5 PASS / 0 FAIL**, FR-073 정상. SDP 1.42 의 D-28 철회와 같은 항목이 같은 계열의 이유로 두 번째 오탐이 된 것이다. 아울러 `rover_control.launch.py` 의 조이 장치 지정 결함(경로를 `device_name` 에 전달)을 고쳤다 — 요구사항 변경은 아니고 OP-002 v1.4 다 |
 | 1.23 | 2026-09-14 | **3.9절 신설 — 시뮬레이션 플랜트의 지형 변형·바퀴 자국 요구사항(FR-083~086)과 NF-007·008, CSCI-12(OmniLRS 플랜트 패치) 등재.** 지형 변형은 8월부터 SDP 개정 이력과 `DEFORMATION.md` 에서만 다뤄 **요구사항 근거가 없었다.** 구현과 Isaac 실측이 끝난 것만 올렸다: 하중에 따른 자국(서스펜션 토크 하중, 하중^(2/3)) · 물리 스텝 멈춤 금지(D-47 — 렌더 전용) · 1.5 cm 실측 휠 단면 자국과 먼 자국 유지(패치 0009) · 재현 가능한 플랜트 소스(`setup-omnilrs.sh --check`) · 변형 켠 주행 RTF 가 끈 상태의 90 % 이상(실측 97~100 %) · 자국 형상의 문헌 범위. **렌더 전용이라 휠이 자국을 밟지 않는 한계를 요구사항 본문에 명시**했다 — 슬립·견인 수치에 반영되지 않으며 차년도 과제 범위다. SDP 1.95 |
+| 1.24 | 2026-09-14 | **FR-001 에 기구학 소유 경로 명시 · 5.3a 에 `/rover/cmd_vel`·`/rover/suspension_cmd` 계약 등재.** 「상위(Navigation·조이패드)는 v, ω 만 내고 기구학은 HILS 보드가 처리」를 요구사항 문구로 고정했다. HILS 보드가 붙는 **real 모드에서는 보드가 기구학을 소유**한다 — `rover_control` 은 중재된 twist 만 `/rover/cmd_vel` 로 내고 12축은 보드가 만든다. launch 인자 `kinematics_owner` 기본값 `auto`(real→board · sim→host). sim 모드(보드 없이 시뮬레이터 직결)는 상위 기구학을 유지한다. 보드 모드에서 서스펜션 프리셋이 축 지령으로 새던 결함을 고쳤다(명령원 둘). SDP 1.96 |
+| 1.25 | 2026-09-15 | **2.1 구성도를 기구학 보드 소유로 정정** — 본문 표는 1.83 부터 「보드가 차량을 소유」였는데 그림은 여전히 `rover_control(기구학) → /rover/axes_cmd` 였다. `rover_control(중재) → /rover/cmd_vel(v, ω) → rover_mcu(4WS 기구학 → 12축)` 로 고쳤다. 요구사항 변경 없음(FR-001 은 1.24). AD-002 2.12 · ND-001 1.8 · README 동기화, SDP 1.97 |
+| 1.26 | 2026-09-15 | **FR-023 신설 — 타임스탬프 기준(REALTIME-REVIEW T1).** 라이브 실측에서 보드가 `/rover/joint_states` 에 부팅 후 경과 시간(`millis()`, 1,809,497 s)을 찍고 `rover_state` 가 그대로 `/odom`·TF 에 써 **TF 가 1970 년대 시각**이었다(값은 멀쩡해 폐루프 점검으로는 안 보였다). 보드는 에이전트와 시간 동기해 **피드백 샘플 시각(epoch)** 을 찍고 동기 전에는 0, `rover_state` 는 어긋난 스탬프를 출력에 쓰지 않되 적분은 입력 스탬프로 한다. 상태 부분검증 — 보드 재플래시 후 실측. SDP 1.98 |
+| 1.27 | 2026-09-15 | **FR-023 개정 — 보드 스탬프는 보드 시계.** 에이전트 epoch 동기판(T1) 펌웨어를 실기에 올리자 보드 개체는 에이전트에 생겼으나 `/rover/status`·`/rover/joint_states` 가 0 건이었다(원인 미확정). 사용자 결정으로 시간 동기를 빼고 보드가 자기 시계의 샘플 시각을 찍는다. ②(`rover_state` 규칙)는 그대로이고 「부팅 시간 스탬프」 경우가 정상 경로가 됐다. 동기판은 `ROVER_MCU_TIME_SYNC 1` 로 남긴다(l-project-hils 82f60b8) |
+| 1.28 | 2026-09-15 | **FR-023 확인 칸 정정** — 1.27 의 「epoch 동기판 발행 0 건(원인 미확정)」은 동기 탓이 아니었다. 보드 시계판도 같았고, 원인은 executor 핸들 부족·메시지 메모리 누수(REALTIME-REVIEW §10). 요구사항 본문은 그대로 |
+| 1.29 | 2026-09-16 | **FR-023 실기 검증** — 수정 펌웨어(executor 핸들·메시지 메모리) 플래시 후 `/rover/joint_states` 50.01 Hz, 보드 시계 스탬프, `/odom` 스탬프−수신 3 ms. 부분검증 → 검증. 원자료 `results/realtime-t1-20260916/` |
+| 1.30 | 2026-09-16 | **FR-006 개정 — 조향에 운용 정책 한계를 둔다(코너별 비대칭·거울).** 자산 조인트 한계 ±90° 는 그대로 두고, 운용 범위를 −30~+60° 로 좁히되 코너마다 부호를 뒤집는다(FR·RL [−30°,+60°] · FL·RR [−60°,+30°]). 근거: 제자리 회전에 필요한 조향각은 코너별로 부호가 고정(FL·RR −55.30° · FR·RL +55.30°)이고 회전 방향을 바꿔도 각은 그대로다. 55.30° 는 조향축(킹핀) 기준값이며 휠 위치 기준 49.21° 가 아니다. 여유 4.70°. **대가**: crab steering은 네 축이 같은 각이라 ±30° 까지, 저속 급선회(예 v 0.1 · wz 0.8 → 62.3° 필요)는 잘린다 |
+| 1.31 | 2026-09-16 | **FR-081 개정 — 선회 포락선에 조향각 조건 신설(③).** 정책 한계(1.30)를 넣자 저속 급선회가 축에서 잘려 강체 정합이 깨지는 구간이 생겼다. 이제 `limit_twist` 가 twist 단계에서 요레이트를 낮춘다. **요청값에서 아래로만** 낮춘다 — 조향 가능 여부가 `|wz|` 에 단조가 아니라(0 가능 → 중간 불가 → 준제자리 회전 다시 가능) 0 에서 위로 훑으면 준제자리 회전을 통째로 막는다(처음 구현이 그랬다). 결과: 연속 선회에 **최소 선회반경 1.81 m**(v 0.5 · wz 0.8 → 0.277 rad/s), 제자리·준제자리 회전 유지, **순수 횡이동 불가**(조향 90° 필요) |
+| 1.32 | 2026-09-16 | **본문 정정 — 조향 서술을 정책 한계 기준으로.** FR-001 의 「조향각은 ±π/2 랩」은 정책 한계(FR-006) 도입 전 표현이었다. 두 후보각(δ, δ∓π) 중 코너 범위에 드는 쪽을 쓰고, 둘 다 밖이면 경계로 자르되 그 전에 포락선(FR-081)이 요레이트를 낮춘다로 고쳤다. 5.2 축 배치의 조향 `±90°` 에 운용 정책(코너별 거울 −30~+60°)을 병기 |
+| 1.33 | 2026-09-17 | **FR-078 개정 — 구동 백엔드를 `rover_control` 이 발행한다.** 이 토픽은 **저장소 어디에서도 발행되지 않았다** — 사람이 `ros2 topic pub` 을 쳐야만 존재했고, 실측하니 발행자 0 · 구독자 1 이었다(보드는 그날 두 번 리셋됐다). 보드는 EPOS 로 부팅하며 모드를 저장하지 않으므로 **리셋될 때마다 sim 지령 경로가 아무 오류 없이 끊긴다.** 파라미터 `board_drive_mode`(`none`·`epos`·`sim`, 기본 `none` = 종전과 동일)와 launch 인자를 두고, 기동 직후 `board_drive_mode_bursts` 회 발행한다(Best-effort 라 1 회는 디스커버리 전에 버려진다). 그 뒤에는 **보드 재부팅을 감지했을 때만** 다시 낸다 — 판정은 `/rover/joint_states` 스탬프 역행이며, 보드 스탬프가 부팅 후 경과 시간이라(FR-023) 감소는 재부팅밖에 없다. **주기 발행은 금지** — 플랜트 측정 시 운영자가 내린 EPOS 전환을 덮어써 측정을 오염시킨다(D-30). 회귀 `test_drive_mode_publish.py` 6 PASS. 문서: ND-001 1.11 · AD-002 2.14 · `BRINGUP.md` C1 |
+| 1.34 | 2026-09-22 | 문서 정비: ground truth·simulation time·crab steering 용어 통일, FR-001 중복 문장 제거 및 2026-09-16 보드 검증 기록 연결. 요구사항 ID·수치·인터페이스는 유지 |
 
 ---
 
@@ -116,9 +127,9 @@ Navigation은 구동 모드와 무관하게 동일한 인터페이스를 본다.
 
 ```mermaid
 flowchart TB
-    NAV[Nav2 · Jetson] -- /cmd_vel --> RC[rover_control · Jetson<br/>기구학 · 명령 중재]
+    NAV[Nav2 · Jetson] -- /cmd_vel --> RC[rover_control · Jetson<br/>명령 중재 · 워치독]
     JOY[joy_node + rover_teleop] -- "/cmd_vel_joy (우선)" --> RC
-    RC -- "/rover/axes_cmd [12]" --> MCU[rover_mcu · HILS 보드<br/>Drive Interface]
+    RC -- "/rover/cmd_vel (중재된 v, ω)" --> MCU[rover_mcu · HILS 보드<br/>4WS 기구학 → 12축 · Drive Interface]
     MCU -- "real: CANopen RPDO3/4 x12" --> EPOS[EPOS4 x12<br/>1~4 PVM / 5~12 PPM]
     EPOS -- TPDO3/TPDO4 --> MCU
     MCU -. "sim: /sim/axes_cmd" .-> SIM[시뮬레이터 · 시뮬 PC]
@@ -171,12 +182,12 @@ flowchart TB
 
 | ID | 요구사항 | V | 상태 |
 |---|---|---|---|
-| SRS-FR-001 | `/cmd_vel`(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 ±π/2 랩(속도 부호 반전)하며, **linear.y(crab)를 지원**한다(자율 주행 소스는 0, 수동 주행에서만 사용) | T | 검증완료 |
+| SRS-FR-001 | `/cmd_vel`(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 **코너별 운용 정책 한계**(FR-006) 안에서 정한다 — 같은 방향을 내는 두 각(δ, δ∓π) 중 범위에 드는 쪽을 쓰고 δ∓π 를 쓰면 휠 속도 부호를 반전한다. 둘 다 밖이면 가까운 경계로 자른다(그 전에 선회 포락선 FR-081 이 요레이트를 낮춰 막는다). **linear.y(crab)를 지원**한다(자율 주행 소스는 0, 수동 주행에서만 사용). **기구학 소유자는 하나다** — HILS 보드가 붙는 real 모드에서는 **보드가 기구학을 돈다**: `rover_control` 은 조이스틱·자율 주행 중재가 끝난 twist(v, ω, v_y)만 `/rover/cmd_vel` 로 내고 **축 지령은 한 건도 내지 않으며**, 보드가 같은 기구학(`kinematics.c`, 파이썬 정본과 대조)으로 12축을 만든다. sim 모드(보드 없이 시뮬레이터 직결)는 `rover_control` 이 12축을 낸다. launch 인자 `kinematics_owner`(기본 `auto`: real→board · sim→host, 명시값 우선) | T | 검증완료 (host 경로) · **board 경로의 자동 시험은 상위 계약·host 대조 범위**(`tools/test_kinematics_owner.py` 10 PASS, 보드 기구학은 호스트 대조 `test_firmware_kinematics.py`) — 보드·Jetson 적용 및 HILS 경로 확인은 2026-09-16 `REALTIME-REVIEW.md` §10 참조. 실물 EPOS4·로버 검증은 별도 |
 | SRS-FR-002 | 구동 모드는 `real`(CAN 실 구동)과 `sim`(시뮬레이터 전달) 2종을 제공하며 런타임 파라미터로 전환 가능하다 | T | 검증완료 |
 | SRS-FR-003 | `sim` 모드에서 12축 명령을 `/sim/axes_cmd`(Float64MultiArray×12)로 발행한다 | T | 검증완료 |
 | SRS-FR-004 | `real` 모드에서 12축 명령을 `/rover/axes_cmd`로 HILS 보드에 전달한다 (rpm·counts 변환은 보드 drv_epos가 수행) | T | 검증완료 |
 | SRS-FR-005 | cmd_vel이 `cmd_timeout`(기본 0.5s) 내 미수신 시 구동축(0~3) 명령만 0으로 강제한다 — 조향·서스펜션 각은 유지 (급정지 중 조향 복귀 금지) | T | 검증완료 |
-| SRS-FR-006 | 구동 휠 속도는 `max_wheel_speed`로, 조향각은 **±π/2(±90°)**, 서스펜션각은 **±0.35 rad(±20.05°)** 로 제한(클램프)한다. 두 값 모두 **자산 조인트 한계 실측값**이며 클램프가 조인트 스톱을 넘지 않는다 | T | **검증완료** — `tools/test_urdf_contract.py` U4 |
+| SRS-FR-006 | 구동 휠 속도는 `max_wheel_speed`로, 서스펜션각은 **±0.35 rad(±20.05°)** 로 제한(클램프)한다. 조향은 두 겹이다 — **조인트 한계 ±π/2(자산 실측, 바깥 울타리)** 와 **운용 정책 한계(코너별 비대칭)**. 정책은 `steer_policy_lo`/`hi`(−30°/+60°)를 `axes.STEER_MIRROR` 부호로 코너에 배분한다: FR·RL [−30°,+60°] · FL·RR [−60°,+30°]. 정책은 조인트 한계를 넘을 수 없고, **제자리 회전 각(±55.30°)을 담아야 한다** | T | **검증완료** — `tools/test_urdf_contract.py` U4(상·하한) · U4b(정책 ⊂ 조인트, 제자리 회전 각 수용) |
 | SRS-FR-007 | 기구학 파라미터(휠 반경, 트랙 폭, 축거, **조향축 오프셋**)는 ROS 파라미터로 설정 가능하다 (기본값은 `axes.py` 단일 정의) | I | 검증완료 |
 
 ### 3.2 EPOS4 CANopen 제어 (CSCI-3, CSCI-6)
@@ -205,6 +216,7 @@ flowchart TB
 | SRS-FR-020 | 모터 피드백은 `/rover/joint_states`(JointState 12조인트, USD 조인트명 — 구동: velocity·effort, 조향·서스: position)로 일원화하여 발행한다 | T | 검증완료 |
 | SRS-FR-021 | joint_states(12조인트)를 구독해 4WS 강체 최소자승 정기구학(vx·vy·wz)으로 오도메트리를 적분한다 | T | 검증완료 |
 | SRS-FR-022 | 오도메트리를 `/odom`(nav_msgs/Odometry)과 TF(odom→base_link)로 발행한다 (TF는 파라미터로 비활성화 가능) | T | 검증완료 |
+| SRS-FR-023 | **피드백 스탬프는 샘플 시각이고, 시계 기준은 받는 쪽이 가린다.** ① 보드는 `/rover/joint_states` 헤더에 **피드백을 읽은 순간의 보드 시계 시각**(부팅 후 경과, 1 ms)을 찍는다 — 에이전트와 시간 동기하지 않는다 ② `rover_state` 는 입력 스탬프가 자기 시계와 `max_stamp_skew`(기본 1 s) 넘게 다르면 `/odom`·TF 스탬프에 **수신 시각**을 쓰고, **적분 간격은 입력 스탬프 차**로 잡는다(네트워크 지터·시뮬 시간이 거리에 섞이지 않게) | T | **검증(2026-09-16)** — ② `tools/test_rover_state_stamp.py` 8 PASS(epoch·부팅 시간·시뮬 시간·스탬프 없음) ① 실기 60 s 계측: `/rover/joint_states` 50.01 Hz(3151 건) 스탬프 = 보드 가동시간, `/odom` 스탬프−수신 3 ms(`results/realtime-t1-20260916/`). 2026-09-15 의 보드 발행 0 건은 동기가 아니라 executor 핸들 부족·메시지 메모리 누수였고 수정 펌웨어에서 해소됐다. 주행 폐루프(`/sim/axes_cmd`)는 sim 백엔드 전환 후 재측정 |
 
 ### 3.4 모터드라이버 에뮬레이터 / 모니터 GUI (CSCI-5)
 
@@ -262,10 +274,10 @@ flowchart TB
 | SRS-FR-074 | **rover_teleop 프로세스** 두절 시 `/cmd_vel_joy` 발행이 끊기며, 구동축 정지는 FR-005 워치독이, 자율 주행 복귀는 FR-072 타임아웃이 담당한다 | A | 검증완료 (범위 한정 — 아래 FR-076 참조) |
 | SRS-FR-076 | **패드 링크 두절**(절전·무선 단절·케이블 분리)을 감지해 구동축을 정지시킨다. 판정 신호는 **`/joy` 페이로드 정체**이며, 정지는 **주행 지령이 나가고 있을 때만** 건다. 입력이 하나라도 바뀌면 자동 해제된다 | T | **검증완료 (2026-08-25)** — `tools/test_pad_link_watchdog.py` |
 | SRS-FR-075 | 버튼으로 서스펜션 프리셋(level/lift/drop)을 `/rover/suspension_cmd`로 발행한다 (OP-001 정책 준수, 상승 엣지에서만 1회) | T | 검증완료 |
-| SRS-FR-078 | 보드는 `/rover/drive_mode`(std_msgs/UInt8, 0=EPOS·1=sim)를 구독해 **런타임에 구동 백엔드를 전환**한다. 범위를 벗어난 값과 현재 모드와 같은 값은 무시한다. 기본 부팅 모드는 EPOS 다 | T | 검증완료 |
+| SRS-FR-078 | 보드는 `/rover/drive_mode`(std_msgs/UInt8, 0=EPOS·1=sim)를 구독해 **런타임에 구동 백엔드를 전환**한다. 범위를 벗어난 값과 현재 모드와 같은 값은 무시한다. 기본 부팅 모드는 EPOS 다. **발행은 `rover_control` 이 맡는다** — `board_drive_mode`(`none`·`epos`·`sim`) 파라미터가 `none` 이 아니면 기동 직후 `board_drive_mode_bursts` 회 낸다(계약 QoS 가 Best-effort 라 1 회로는 디스커버리 전에 버려진다). 그 뒤에는 **보드 재부팅을 감지했을 때만** 다시 낸다 — 판정은 `/rover/joint_states` 스탬프가 뒤로 가는 것이며, 보드 스탬프는 부팅 후 경과 시간이라(FR-023) 감소는 재부팅밖에 없다. **주기 발행은 금지한다** — 플랜트를 측정할 때 운영자가 EPOS 로 내린 것을 덮어써 측정을 오염시킨다(RR-001 D-30). 기본값 `none` 은 아무도 발행하지 않던 종전 상태다 | T | **검증완료** — `tools/test_drive_mode_publish.py` 6 PASS / 0 FAIL |
 | SRS-FR-079 | rover_teleop 은 **동위상(in-phase)·역위상(anti-phase) 조향 모드**를 지원한다. 역위상은 조종간 좌우를 **요레이트**로 읽어 앞뒤 바퀴를 반대로 꺾고(선회), 동위상은 **이동 방향각**으로 읽어 네 바퀴를 같은 각으로 꺾는다(자세 유지 사선 이동). 두 모드 모두 `FourWheelSteering` 이 이미 표현하며(각각 `angular_z`·`linear_y`) **기구학은 바뀌지 않는다** | T | **검증완료** — `tools/check_steer_modes.py` |
 | SRS-FR-080 | 조종 배치는 **왼쪽 스틱 좌우 = 방향, 오른쪽 스틱 상하 = 스로틀**이다. 모드 전환은 X 버튼이며, 전환 즉시 명령을 0 으로 떨어뜨린다 — 같은 스틱 입력이 모드에 따라 회전과 사선 이동으로 전혀 다르게 해석되므로 이어가면 의도하지 않은 방향으로 튄다. 현재 모드는 `rover/steer_mode`(UInt8)로 낸다 | T | 검증완료 |
-| SRS-FR-081 | rover_control 은 **선회 포락선**으로 요레이트를 제한한다 — ① 바깥쪽 휠이 `max_wheel_speed` 를 넘지 않을 것 ② 횡가속 `|v|·|wz|` 가 `lat_accel_limit` 를 넘지 않을 것. **축별 클램프보다 먼저** 적용해 강체 정합을 지킨다(클램프는 휠마다 따로 잘라 지령과 다른 운동을 만든다). 병진 속도는 줄이지 않고 요레이트만 줄이며, 정지 근처에서는 횡가속 조건이 구속하지 않아 제자리 회전이 막히지 않는다 | T | **검증완료** — `tools/check_turn_envelope.py`, 회귀 K7 |
+| SRS-FR-081 | rover_control(·보드) 은 **선회 포락선**으로 요레이트를 제한한다 — ① 바깥쪽 휠이 `max_wheel_speed` 를 넘지 않을 것 ② 횡가속 `|v|·|wz|` 가 `lat_accel_limit` 를 넘지 않을 것 ③ **네 조향각이 모두 운용 정책 한계(FR-006) 안일 것**. **축별 클램프보다 먼저** 적용해 강체 정합을 지킨다(클램프는 휠마다 따로 잘라 지령과 다른 운동을 만든다). 병진 속도는 줄이지 않고 요레이트만 줄이며, 정지 근처에서는 횡가속 조건이 구속하지 않아 제자리 회전이 막히지 않는다. ③ 은 **요청값에서 아래로만** 낮춘다(가능 구간이 |wz| 에 단조가 아니다) — 준제자리 회전은 막지 않는다. 대가: 연속 선회 **최소 선회반경 1.81 m**, 순수 횡이동 불가 | T | **검증완료** — `tools/check_turn_envelope.py`, 회귀 K7(잘린 뒤 조향 가능·준제자리 회전 통과 포함), `test_firmware_kinematics`(C·파이썬 요레이트 차 0) |
 | SRS-FR-082 | 로버 기술서(URDF)는 **정식 자산에서 생성**한다(`tools/isaac/make_rover_urdf.py`) — 손으로 관리하면 자산 교체 시 조용히 낡는다(D-34 가 그 사례다). 생성물은 12축 계약 조인트명·영점 기하·축 한계가 `axes.py` 와 일치해야 하며, **서스펜션 4절 링크는 URDF(트리)로 표현할 수 없어 루프를 끊는다** — 그 결과 RViz 에서 서스펜션 구동 시 휠이 함께 기우는 것은 시각화 한계이지 결함이 아니다 | T | **검증완료** — `check_urdf` + `tools/test_urdf_contract.py` |
 
 > **FR-074 의 범위를 좁히고 FR-076 을 신설한 이유 (2026-08-22 실기 확인).**
@@ -354,7 +366,7 @@ flowchart TB
 
 ```
 노드ID :  1~4  구동(drive)  PVM — 모터 rpm      (휠 반경 0.213 m, 감속비 15:1 가정)
-          5~8  조향(steer)  PPM — 조인트 rad ±90°
+          5~8  조향(steer)  PPM — 조인트 rad ±90° (운용 정책은 코너별 거울 −30~+60°)
           9~12 서스(sus)    PPM — 조인트 rad ±0.35 (±20.05°, 자산 실측)
 축 인덱스: axes_cmd[0..3]=구동 rad/s, [4..7]=조향 rad, [8..11]=서스 rad
 ```
@@ -375,7 +387,9 @@ flowchart TB
 
 | 토픽 | 타입 | 발행→구독 | 주기 | QoS |
 |---|---|---|---|---|
-| `/rover/axes_cmd` | Float64MultiArray[12] (구동 rad/s + 조향·서스 rad) | rover_control→rover_mcu | 20~50 Hz | Best-effort, depth 1 |
+| `/rover/cmd_vel` | Twist — **중재가 끝난** v, ω, v_y (원본 `/cmd_vel` 이 아니다) | rover_control→rover_mcu (**기구학 보드 소유 시 기본 경로**) | 지령 주기 (20~50 Hz) | 발행 Reliable depth 1 / 보드 구독 Best-effort |
+| `/rover/suspension_cmd` | Float64MultiArray[4] (서스 rad) | 운영자·자동화 노드→rover_mcu (보드 소유 시 보드가 직접 받아 유지) | 이벤트 | 기본 |
+| `/rover/axes_cmd` | Float64MultiArray[12] (구동 rad/s + 조향·서스 rad) | rover_control→rover_mcu (**상위 기구학 소유 시만** — 과도기 경로) | 20~50 Hz | Best-effort, depth 1 |
 | `/rover/joint_states` | JointState ×12 (USD 조인트명) | rover_mcu→rover_state 외 | 50 Hz | Best-effort, depth 1 |
 | `/rover/status` | UInt16MultiArray[24] (sw ×12 + emcy ×12) | rover_mcu→health_monitor·진단 | 2 Hz | Reliable |
 
