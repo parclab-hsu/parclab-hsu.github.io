@@ -668,7 +668,7 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 무엇을 하는 기능인가
+        1. 지형 변형 기능과 적용 범위
       
     </span>
   </a>
@@ -679,19 +679,19 @@
   <a href="#2-0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 현행 설정으로는 변형이 정확히 0 이다
+        2. 초기 설정의 변형 미발생 원인 (2026-08-25)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 현행 설정으로는 변형이 정확히 0 이다">
+    <nav class="md-nav" aria-label="2. 초기 설정의 변형 미발생 원인 (2026-08-25)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        원인 — 발자국 폭이 격자 두 칸보다 좁다
+        원인: 접지면 폭과 격자 해상도의 불일치
       
     </span>
   </a>
@@ -707,7 +707,7 @@
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 폭을 고치면 이번엔 로버가 파묻힌다
+        3. 접지면 폭 변경 후 과도한 침하 발생
       
     </span>
   </a>
@@ -718,19 +718,19 @@
   <a href="#4-0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 하중 입력을 바꿨다 — 접지력은 정지 시 0으로 읽힌다
+        4. 정지 접촉력의 계측 한계와 하중 입력 전환
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. 하중 입력을 바꿨다 — 접지력은 정지 시 0으로 읽힌다">
+    <nav class="md-nav" aria-label="4. 정지 접촉력의 계측 한계와 하중 입력 전환">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#2026-09-09" class="md-nav__link">
     <span class="md-ellipsis">
       
-        서스펜션 조인트 토크로 하중을 만든다 (기준일 2026-09-09)
+        서스펜션 조인트 토크 기반 수직 하중 추정 (2026-09-09)
       
     </span>
   </a>
@@ -741,7 +741,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        다만 자중의 절반만 읽힙니다 — 결함이 아니라 기구입니다
+        링크 구조에 따른 하중 추정 오차와 보정
       
     </span>
   </a>
@@ -757,19 +757,19 @@
   <a href="#5-footprint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 접지면(Footprint) 정밀 실측 — 폭 하나로 이야기할 문제가 아니었다
+        5. 접지면(Footprint) 형상과 이산화 오차 분석
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. 접지면(Footprint) 정밀 실측 — 폭 하나로 이야기할 문제가 아니었다">
+    <nav class="md-nav" aria-label="5. 접지면(Footprint) 형상과 이산화 오차 분석">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#0159" class="md-nav__link">
     <span class="md-ellipsis">
       
-        휠 폭은 상수로 둬도 됩니다 — 값은 0.159가 맞습니다
+        관측된 침하 범위에서의 휠 폭 근사
       
     </span>
   </a>
@@ -780,7 +780,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        길이는 상수로 두면 안 되고, 엔진이 갱신하지도 않습니다
+        침하에 따른 접지 길이 변화와 초기화 방식의 한계
       
     </span>
   </a>
@@ -791,7 +791,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        설정 두 값이 서로 어긋나 있습니다
+        접지 길이와 그라우저 주기 설정의 불일치
       
     </span>
   </a>
@@ -802,7 +802,7 @@
   <a href="#4656" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실제 접지면과의 유사도는 지금 46~56 % 입니다
+        초기 접지면 면적비와 격자 표본화의 영향
       
     </span>
   </a>
@@ -813,7 +813,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        그런데 그 해상도에서 변형을 켜면 시뮬레이션이 멈춥니다
+        해상도 0.025 m에서 관측된 물리 스텝 중단
       
     </span>
   </a>
@@ -824,7 +824,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        그래서 지금 적용되어 있는가
+        이후 적용 상태
       
     </span>
   </a>
@@ -840,19 +840,19 @@
   <a href="#6-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐
+        6. 실행 파라미터의 사용 여부와 선정 근거 점검
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐">
+    <nav class="md-nav" aria-label="6. 실행 파라미터의 사용 여부와 선정 근거 점검">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#24-2026-08-26" class="md-nav__link">
     <span class="md-ellipsis">
       
-        그라우저는 24개다 (기준일 2026-08-26)
+        휠 자산의 그라우저 형상 측정 (2026-08-26)
       
     </span>
   </a>
@@ -868,7 +868,7 @@
   <a href="#7-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. 상류 소스 결함 3건
+        7. OmniLRS upstream 결함과 조치 상태
       
     </span>
   </a>
@@ -879,7 +879,7 @@
   <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. 함께 확인한 것 — 견인 솔버는 한 번도 돌아본 적이 없었다
+        8. Traction solver 연결 및 실행 경로 검증
       
     </span>
   </a>
@@ -890,7 +890,7 @@
   <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. 확인되지 않은 것
+        9. 검증 범위와 한계
       
     </span>
   </a>
@@ -901,7 +901,7 @@
   <a href="#10-2026-09-14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. 켠 순서와 남은 일 (2026-09-14 갱신)
+        10. 개선 항목별 진행 상태 (2026-09-14)
       
     </span>
   </a>
@@ -912,7 +912,7 @@
   <a href="#11-2026-09-11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. 켰다 — 한 세트로 맞춘 값 (기준일 2026-09-11)
+        11. 변형 기능 활성화와 파라미터 정합 (2026-09-11)
       
     </span>
   </a>
@@ -923,19 +923,19 @@
   <a href="#12-2026-09-14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12. 켜고 주행하면 물리가 멈췄다 — 충돌 메시 재쿠킹 (기준일 2026-09-14)
+        12. Collision mesh re-cooking에 따른 물리 스텝 중단 (2026-09-14)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="12. 켜고 주행하면 물리가 멈췄다 — 충돌 메시 재쿠킹 (기준일 2026-09-14)">
+    <nav class="md-nav" aria-label="12. Collision mesh re-cooking에 따른 물리 스텝 중단 (2026-09-14)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        변형 엔진이 원인이다 — 켜고 끄기 대조
+        변형 기능 활성화·비활성화 대조 시험
       
     </span>
   </a>
@@ -946,7 +946,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        무엇이 멈추게 하나 — 한 컨테이너 안에서 쓰는 곳만 바꿔 봄
+        동일 컨테이너에서 메시 갱신 경로 비교
       
     </span>
   </a>
@@ -957,7 +957,7 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        고친 것과 확인
+        수정 내용과 검증 결과
       
     </span>
   </a>
@@ -973,7 +973,7 @@
   <a href="#13-0159-021-2026-09-14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13. 발자국 폭은 휠 폭이 아니었다 — 0.159 → 0.21 (기준일 2026-09-14)
+        13. 경계 표본을 고려한 접지면 폭 보정: 0.159 → 0.21 m (2026-09-14)
       
     </span>
   </a>
@@ -984,7 +984,7 @@
   <a href="#14-2026-09-14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14. 자국이 끊긴 점선 구덩이였다 — 하중 저역통과와 최대 깊이 채택 (기준일 2026-09-14)
+        14. 자국 연속성 개선: 하중 필터와 최대 깊이 유지 (2026-09-14)
       
     </span>
   </a>
@@ -995,7 +995,7 @@
   <a href="#15-23-2026-09-14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        15. 깊이가 하중에 선형이었다 — 하중의 2/3제곱으로 (기준일 2026-09-14)
+        15. 하중–침하 비선형 관계 적용: 하중의 2/3제곱 (2026-09-14)
       
     </span>
   </a>
@@ -1006,19 +1006,19 @@
   <a href="#16-15-cm-2026-09-14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        16. 고해상도 자국 — 1.5 cm 타일에 실제 휠 단면을 찍는다 (기준일 2026-09-14)
+        16. 휠 단면 기반 고해상도 타일 자국 생성 (2026-09-14)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="16. 고해상도 자국 — 1.5 cm 타일에 실제 휠 단면을 찍는다 (기준일 2026-09-14)">
+    <nav class="md-nav" aria-label="16. 휠 단면 기반 고해상도 타일 자국 생성 (2026-09-14)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        먼저 잰 것 — 느린 원인은 정점 수가 아니라 쓰는 경로였다
+        정점 수와 메시 갱신 경로에 따른 성능 비교
       
     </span>
   </a>
@@ -1040,7 +1040,7 @@
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        교정 — 실제 모듈을 가짜 지형에서 4륜 주행 (오프라인)
+        오프라인 검증: 합성 지형에서 4륜 주행 모듈 실행
       
     </span>
   </a>
@@ -1051,7 +1051,7 @@
   <a href="#isaac" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실제 Isaac에서 확인
+        Isaac Sim 실행 검증
       
     </span>
   </a>
@@ -1062,7 +1062,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        실측에서 나온 결함 둘 — 같은 지령을 다시 돌려 원인을 갈랐다
+        반복 주행 대조 시험으로 확인한 두 가지 결함
       
     </span>
   </a>
@@ -1090,7 +1090,7 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        먼저 — 지금 쓰이는 값과 안 쓰이는 값
+        경로별 파라미터 적용 범위
       
     </span>
   </a>
@@ -1112,7 +1112,7 @@
   <a href="#c-track_tiles-15-cm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        C — track_tiles (지금 켜진 1.5 cm 자국)
+        C — track_tiles: 최종 확인된 1.5 cm 자국 생성 경로
       
     </span>
   </a>
@@ -1134,7 +1134,7 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        목적별 조정
+        조정 목적별 파라미터
       
     </span>
   </a>
@@ -1145,7 +1145,7 @@
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        바꾸는 절차
+        파라미터 변경 및 검증 절차
       
     </span>
   </a>
@@ -1161,7 +1161,7 @@
   <a href="#18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        18. 왜 처음에 안 됐나 — 경과 한눈에
+        18. 문제 원인과 개선 이력
       
     </span>
   </a>
@@ -1189,83 +1189,93 @@
 <p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>기술 분석 노트</strong> · 현대자동차 L-Project · 기준일 <strong>2026-09-14</strong> (최초 2026-09-10)</p>
 <div class="admonition abstract">
 <p class="admonition-title">요약</p>
-<p>달 탐사 로버 HILS의 플랜트(NVIDIA Isaac Sim + OmniLRS)에는 바퀴자국을 만드는
-<strong>지형 변형(Deformation/Sinkage) 엔진</strong>이 들어 있습니다. 이 문서는 그 엔진을
-<strong>우리 설정으로 재현해 계산하고, 실제로 켜서 측정한</strong> 기록입니다.</p>
-<p><strong>지금 상태 (2026-09-14): 켜져 있고, 휠 근처를 1.5 cm 격자로 따로 그려 실제 휠 모양 —
-그라우저 24개의 무늬까지 — 이 이어진 자국으로 남습니다.</strong> 거기까지 오면서 확인한 것은 이렇습니다.</p>
+<p>달 탐사 로버 HILS의 플랜트(NVIDIA Isaac Sim + OmniLRS)에는 휠 통과에 따른 자국을 생성하는
+<strong>지형 변형(Deformation/Sinkage) 엔진</strong>이 포함되어 있습니다. 이 문서는 L-Project 설정을
+적용한 오프라인 계산과 <strong>시뮬레이터 실행 중 계측 결과</strong>를 정리합니다. 실물 로버·토양 시험 결과는 아닙니다.</p>
+<p><strong>최종 확인 상태(2026-09-14): 휠 주변에 1.5 cm 격자의 타일을 생성하고, 자산에서 추출한
+휠 단면과 회전각을 반영해 24개 그라우저의 연속적인 자국을 표현합니다.</strong> 주요 개선 이력은 다음과 같습니다.</p>
 <ul>
-<li><strong>처음 설정으로 켜면 변형이 정확히 0이었습니다</strong>(2절). 발자국 폭만 휠 폭으로 고치면
-  <strong>로버가 파묻혔고</strong>(3절), 깊이가 하중이 아니라 <strong>충격</strong>에 비례해 하중 입력을 서스펜션
-  조인트 토크로 바꿨습니다(4절).</li>
-<li><strong>2026-09-11에 켰습니다.</strong> 접지 길이·그라우저 주기·하중-깊이 회귀·안식각을 설계 침하
-  0.020 m 한 세트로 맞추고, 스폰 충격이 새겨지지 않도록 시작 지연을 늘렸습니다(11절).</li>
-<li><strong>켜고 주행하면 물리 시뮬레이션이 멈췄습니다.</strong> 변형된 정점을 <strong>충돌이 붙은 지형 메시</strong>에
-  그대로 써서, 물리 엔진이 256만 정점 충돌 메시를 다시 굽는 동안 물리 스텝을 건너뛰었습니다.
-  렌더 전용 메시를 분리해 고쳤습니다 — 주행 중 RTF <strong>0.008 → 0.22</strong>, 멈춤 0(12절).</li>
-<li><strong>발자국 폭을 휠 폭(0.159 m)으로 넣으면 0.10 m만 파였습니다.</strong> 엔진이 양 끝 표본을 늘
-  0으로 만들기 때문입니다. 0.21로 바꿔 실제 Isaac에서 <strong>자국 폭 0.155~0.158 m(휠의
-  97~100 %)</strong> 가 됐습니다(13절).</li>
-<li><strong>자국이 끊긴 점선 구덩이였습니다.</strong> 칸 깊이가 처음 밟는 순간의 하중 하나로 정해지는데,
-  주행 중 하중이 몇 배씩 출렁였습니다. 하중 저역통과와 최대 깊이 채택으로 자국을 따라간
-  깊이 변동계수가 <strong>0.74~0.88 → 0.27~0.37</strong> 이 됐습니다(14절).</li>
-<li><strong>깊이가 하중에 비례(선형)했습니다.</strong> 강성륜 Bekker 식(n = 1)대로 <strong>하중의 2/3제곱</strong>으로
-  바꿨습니다 — 하중이 두 배면 깊이는 1.59배입니다(15절).</li>
-<li><strong>5 cm 격자로는 그라우저 무늬를 원리상 그릴 수 없었고, 지형 전체를 다시 쓰느라 주행 중
-  RTF가 0.22였습니다.</strong> 느린 원인은 정점 수가 아니라 쓰는 경로였습니다(64만 정점을 GPU 경로로
-  매 반복 바꿔도 RTF 0.499). 휠 근처를 1 m 타일(1.5 cm)로 덮고 <strong>휠 메시에서 잰 단면을 회전각에
-  맞춰 찍게</strong> 바꿨더니 주행 중 RTF <strong>0.48~0.50</strong>(변형을 끈 상태와 같음), 자국 깊이 24~27 mm ·
-  그라우저 주기 55.8~56.4 mm(휠 기준 55.9) · 폭 0.164 m가 됐습니다(16절).</li>
+<li><strong>초기 설정에서는 변형량이 0이었습니다</strong>(2절). 접지면 폭만 실제 휠 폭으로 변경하자
+  과도한 침하가 발생했습니다(3절). 정지 상태의 접촉력이 0으로 계측되는 문제를 보완하기 위해
+  하중 입력을 서스펜션 조인트 토크 기반 추정값으로 전환했습니다(4절).</li>
+<li><strong>2026-09-11에 변형 기능을 활성화했습니다.</strong> 접지 길이·그라우저 주기·하중–침하 회귀·안식각을
+  설계 침하량 0.020 m 기준으로 조정하고, 초기 낙하 충격을 제외하도록 시작 지연을 늘렸습니다(11절).</li>
+<li><strong>주행 중 물리 스텝이 중단되는 문제를 해결했습니다.</strong> 변형 정점을 collision mesh에 기록하면서
+  256만 정점의 충돌 데이터가 반복 재생성(re-cooking)되었습니다. 렌더 전용 메시를 분리한 뒤
+  주행 RTF는 <strong>0.008 → 0.22</strong>로 개선되었고, 시험 구간에서 중단이 관측되지 않았습니다(12절).</li>
+<li><strong>접지면 폭 설정의 이산화 오차를 보정했습니다.</strong> 휠 폭 0.159 m를 입력해도 경계 표본의 깊이가
+  0이 되어 실제 자국 폭은 0.10 m에 그쳤습니다. 설정을 0.21 m로 조정한 뒤 Isaac Sim 계측에서
+  <strong>0.155~0.158 m(휠 폭의 97~100 %)</strong>를 확인했습니다(13절).</li>
+<li><strong>자국의 연속성을 개선했습니다.</strong> 최초 통과 하중에 깊이가 고정되는 문제에 하중 low-pass filter와
+  최대 깊이 유지 규칙을 적용했습니다. 주행 경로를 따른 깊이의 변동계수는
+  <strong>0.74~0.88 → 0.27~0.37</strong>로 감소했습니다(14절).</li>
+<li><strong>하중–침하 관계를 비선형으로 변경했습니다.</strong> 강체 휠의 Bekker 식에 n = 1을 적용해
+  침하량이 <strong>하중의 2/3제곱</strong>에 비례하도록 했습니다. 하중이 두 배이면 침하량은 약 1.59배입니다(15절).</li>
+<li><strong>고해상도 타일과 Fabric 갱신 경로를 도입했습니다.</strong> 기존 5 cm 격자의 표현 한계와 전체 메시
+  갱신 비용을 줄이기 위해 휠 주변의 1 m 타일만 갱신합니다. 주행 RTF <strong>0.48~0.50</strong>,
+  자국 깊이 <strong>24~27 mm</strong>, 그라우저 주기 <strong>55.8~56.4 mm</strong>(휠 기하 기준 55.9 mm),
+  자국 폭 <strong>0.164 m</strong>를 확인했습니다(16절). RTF가 약 0.5이므로 실시간 실행을 달성한 것은 아닙니다.</li>
 </ul>
-<p><strong>남은 것:</strong> 토양 계수와 깊이는 시험 자료가 아니라 <strong>목표값</strong>(Bekker 21.6 mm · Lunokhod
-21~24 mm 범위)에 맞춘 것이고, 둔덕·벽 경사는 <strong>추정</strong>이며, 자국은 <strong>보이기만 하고 밟히지는
-않습니다</strong>(9절). 파라미터를 고치려면 <strong>17절</strong>, 처음에 왜 안 됐는지는 <strong>18절</strong>에 한눈에 정리했습니다.</p>
+<p><strong>검증 한계:</strong> 깊이는 토양 시험 자료가 아닌 목표값(Bekker 계산값 21.6 mm·Lunokhod 참고 범위
+21~24 mm)에 맞췄습니다. 둔덕 비율과 벽 경사는 추정값이며, <strong>변형은 렌더 전용으로
+collision geometry와 휠–토양 상호작용에 반영되지 않습니다</strong>(9절).
+파라미터 조정은 <strong>17절</strong>, 문제 원인과 개선 이력은 <strong>18절</strong>을 참조하십시오.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">문서의 기준 시점과 용어</p>
+<p>이 문서의 실험·설정 기준일은 <strong>2026-09-14</strong>, 문장·용어 정비일은 <strong>2026-09-29</strong>입니다.
+2~8절은 초기 분석, 11~16절은 개선 과정, 17절은 최종 확인 설정을 설명합니다.
+초기 설정의 문제를 현재 구현의 미해결 문제로 해석하지 않도록 각 절의 기준일을 함께 확인하십시오.</p>
+<p><strong>실측·계측</strong>은 별도 표시가 없으면 USD 자산 분석 또는 시뮬레이터 내부 측정을 의미합니다.
+<strong>Footprint</strong>는 접지면 또는 엔진의 접지면 표본 영역, <strong>collision mesh</strong>는 물리 충돌 판정용 메시,
+<strong>re-cooking</strong>은 변경된 메시로부터 충돌 데이터를 다시 생성하는 과정입니다.
+<strong>RTF(real-time factor)</strong>는 simulation time 증가량을 wall-clock time 경과량으로 나눈 값입니다.</p>
 </div>
 <p><a href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 프로젝트 상세</a> ·
 <a href="../l-project-interim/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 중간 보고</a> ·
 <a href="../l-project-terramechanics/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 차년도 과제 제안</a></p>
 <hr />
-<h2 id="1">1. 무엇을 하는 기능인가<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>로버 휠이 지나간 자리의 <strong>DEM(높이맵)을 직접 깎습니다.</strong> 깎인 높이는 <strong>렌더 전용 메시</strong>에만
-반영됩니다 — 물리 충돌 메시는 그대로라, 자국은 <strong>보이지만 로버가 밟지는 않습니다</strong>(12절).</p>
+<h2 id="1">1. 지형 변형 기능과 적용 범위<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>로버 휠이 통과한 영역의 <strong>DEM(Digital Elevation Model, 높이맵)을 갱신합니다.</strong> 변경된 높이는 <strong>렌더 전용 메시</strong>에만
+반영됩니다. 물리 충돌 메시는 유지되므로 <strong>변형된 자국이 휠 접촉에 영향을 주지는 않습니다</strong>(12절).</p>
 <div class="admonition info">
-<p class="admonition-title">2026-09-14부터 자국은 고해상도 타일이 만듭니다</p>
-<p>아래 그림은 0.05 m 지형 격자를 직접 깎는 <strong>원래 경로</strong>입니다. 지금은 휠 근처만 1.5 cm 타일로
-따로 그리고 실제 휠 단면을 찍는 경로(16절)가 자국을 만들며, 이 그림의 발자국·분포·회귀 계수는
-그 경로를 끌 때만 쓰입니다(17절). 두 경로 모두 <strong>물리 충돌 메시는 바꾸지 않습니다.</strong></p>
+<p class="admonition-title">2026-09-14부터 고해상도 타일 경로 적용</p>
+<p>아래 그림은 0.05 m 지형 격자를 갱신하는 <strong>기존 경로</strong>입니다. 최종 확인 설정에서는 휠 주변에 1.5 cm 타일을
+생성하고 휠 단면을 투영하는 경로(16절)가 자국을 생성합니다. 그림의 접지면·분포·회귀 계수는
+고해상도 경로를 비활성화할 때만 적용됩니다(17절). 두 경로 모두 <strong>물리 충돌 메시는 갱신하지 않습니다.</strong></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">정정 (2026-09-11 · 2026-09-14)</p>
 <p>이 절에는 원래 "PhysX 콜라이더가 그 DEM에서 다시 생성되므로 파인 자국이 이후 주행에
-영향을 준다"고 적혀 있었습니다. 소스를 따라가 보니 틀렸습니다. 그리고 그 뒤에 적은
-"콜라이더는 그대로다"도 반만 맞았습니다 — 정점을 쓰던 메시가 <strong>충돌이 붙은 바로 그
-메시</strong>여서, 실제로는 충돌 메시가 계속 다시 구워지며 시뮬레이션을 멈추고 있었습니다(12절).
-지금은 렌더 메시와 충돌 메시를 분리해 <strong>설계상</strong> 충돌 메시가 바뀌지 않습니다.</p>
+영향을 준다"고 기술했으나, 소스 분석과 실행 시험으로 해당 설명을 정정했습니다. 이후의
+"콜라이더는 그대로다"라는 설명도 불완전했습니다. 정점을 갱신하던 대상이 <strong>충돌 속성이 적용된
+메시</strong>였기 때문에, 반복적인 re-cooking으로 물리 스텝이 중단되었습니다(12절).
+이후 렌더 메시와 collision mesh를 분리해 변형 시 충돌 데이터를 갱신하지 않도록 수정했습니다.</p>
 </div>
 <pre class="mermaid"><code>flowchart LR
-    A["휠 링크 4개&lt;br/&gt;월드 포즈"] --&gt; C["발자국 격자를&lt;br/&gt;월드 좌표로 투영"]
+    A["휠 링크 4개&lt;br/&gt;월드 포즈"] --&gt; C["접지면 격자를&lt;br/&gt;월드 좌표로 투영"]
     B["하중&lt;br/&gt;(서스펜션 토크,&lt;br/&gt;0.3 s 저역통과)"] --&gt; D["하중 → 침하 깊이&lt;br/&gt;회귀"]
     C --&gt; E["DEM[y, x] =&lt;br/&gt;가장 깊은 값"]
     D --&gt; E
     E --&gt; F["렌더 전용 메시 갱신&lt;br/&gt;(바뀐 경우만)"]
     E -.-&gt;|"충돌 메시는 그대로"| G["PhysX 지형 충돌"]</code></pre>
-<p>참조점은 <strong>휠 링크의 월드 원점(x, y)</strong> 이고 방향은 <strong>쿼터니언 yaw 하나</strong>입니다.
-따라서 조향은 반영되지만 <strong>z·roll·pitch는 버려집니다</strong> — 경사면에서 발자국이
-지형에 눕지 않고 수평 격자로 찍힌다는 뜻입니다.</p>
+<p>참조점은 <strong>휠 링크의 월드 원점(x, y)</strong> 이고 방향은 <strong>쿼터니언에서 추출한 yaw</strong>입니다.
+따라서 조향은 반영되지만 <strong>z·roll·pitch는 계산에서 제외됩니다.</strong> 경사면에서도 접지면이
+지형의 기울기를 따르지 않고 수평 격자에 투영됩니다. 이 설명은 기존 0.05 m 경로를 기준으로 합니다.</p>
 <hr />
-<h2 id="2-0">2. 현행 설정으로는 변형이 정확히 0 이다<a class="headerlink" href="#2-0" title="Permanent link">&para;</a></h2>
-<p>가장 중요한 결과입니다. 현행 설정으로 <code>enable: True</code> 로 바꾸면 <strong>아무 일도 일어나지
-않고, 오류도 나지 않습니다.</strong></p>
+<h2 id="2-0">2. 초기 설정의 변형 미발생 원인 (2026-08-25)<a class="headerlink" href="#2-0" title="Permanent link">&para;</a></h2>
+<p>초기 설정에서 <code>enable: True</code>로 변경해도 <strong>지형 변형이 발생하지
+않았으며 오류도 보고되지 않았습니다.</strong></p>
 <div class="admonition warning">
-<p class="admonition-title">실동작으로 확인 (기준일 2026-08-25)</p>
-<p>오프라인 계산이 아니라 실제로 켜서 확인했습니다. <strong>12.156 m를 새 지형 위로 달려도
-격자가 한 칸도 바뀌지 않았습니다.</strong> 접지력은 최대 <strong>907 N</strong> 으로 충분히 들어오는데도
-깊이가 0입니다 — 막히는 곳이 접지력도 좌표도 아니고 <strong>경계 분포</strong>임이 확정됐습니다.</p>
+<p class="admonition-title">시뮬레이터 실행 시험 결과 (2026-08-25)</p>
+<p>변형 기능을 활성화한 상태에서 실행 시험을 수행했습니다. <strong>새 지형에서 12.156 m를 주행했지만
+갱신된 격자 셀은 0개였습니다.</strong> 접촉력 입력이 최대 <strong>907 N</strong>에 도달했음에도
+변형 깊이는 0이었습니다. 원인은 하중 입력이나 좌표 변환이 아닌 <strong>경계 분포의 표본화</strong>로 확인했습니다.</p>
 </div>
-<h3 id="_1">원인 — 발자국 폭이 격자 두 칸보다 좁다<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="_1">원인: 접지면 폭과 격자 해상도의 불일치<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>지형 해상도    0.05 m/px
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>발자국 폭      0.09 m   →  int(0.09/0.05)+1 = 2 점
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>발자국 길이    0.20 m   →  int(0.20/0.05)+1 = 5 점
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>접지면 폭      0.09 m   →  int(0.09/0.05)+1 = 2 점
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>접지면 길이    0.20 m   →  int(0.20/0.05)+1 = 5 점
 </code></pre></div>
 <p>경계 분포(안식각) 함수는 <strong>가장자리에서 정확히 0</strong>, 안쪽에서 −1입니다. 그런데 폭에
 2점만 잡히면 그 둘이 <strong>모두 가장자리</strong>(<code>y = −1</code>, <code>+1</code>)가 되어 <code>boundary = [0, 0]</code> 이고,
@@ -1273,15 +1283,15 @@
 <table>
 <thead>
 <tr>
-<th>발자국 폭</th>
-<th>격자 점수</th>
+<th>접지면 폭</th>
+<th>격자 표본 수</th>
 <th>경계 분포</th>
 <th>결과</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>0.090 m (현행)</strong></td>
+<td><strong>0.090 m (초기 설정)</strong></td>
 <td>2</td>
 <td><code>[0, 0]</code></td>
 <td><strong>변형 없음</strong></td>
@@ -1306,18 +1316,18 @@
 </tr>
 </tbody>
 </table>
-<p>폭이 <code>2 × 지형해상도</code>(= 0.10 m)보다 작으면 <strong>무조건 0</strong> 입니다.</p>
-<p>우리 휠 폭은 자산 실측 <strong>0.159 m</strong> 이고, 설정의 0.09는 그 <strong>57 %</strong> 입니다.
-OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p>
+<p>이 표본화·경계 분포 방식에서는 폭이 <code>2 × 지형해상도</code>(= 0.10 m)보다 작을 때 변형량이 <strong>0</strong>이 됩니다.</p>
+<p>대상 휠의 자산 측정 폭은 <strong>0.159 m</strong>이며, 초기 설정 0.09 m는 그 <strong>57 %</strong>입니다.
+0.09 m의 선정 근거는 확인되지 않았으며, OmniLRS 예제값을 유지한 것으로 추정합니다.</p>
 <div class="admonition note">
-<p class="admonition-title">안식각을 낮춰서 풀 수 있는 문제가 아닙니다</p>
+<p class="admonition-title">안식각 조정만으로는 변형 미발생을 해소할 수 없습니다</p>
 <p>폭이 2점이면 두 표본점이 모두 가장자리이고 거기서 식이 정확히 0이므로,
-<strong>안식각 값과 무관하게 항상 0</strong> 입니다. 폭을 늘려 점수를 3 이상으로 만드는 것
-외에 방법이 없습니다.</p>
+<strong>안식각 값과 무관하게 0</strong>입니다. 표본 수를 3개 이상 확보하도록 폭 또는 해상도를 조정하거나
+표본화 방식을 변경해야 합니다.</p>
 </div>
 <hr />
-<h2 id="3">3. 폭을 고치면 이번엔 로버가 파묻힌다<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<p><code>width: 0.159</code> 로 바꾸면 변형은 발생합니다. 그런데 깊이가 문제입니다.</p>
+<h2 id="3">3. 접지면 폭 변경 후 과도한 침하 발생<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>초기 회귀 계수를 유지한 채 <code>width: 0.159</code>로 변경하면 변형이 발생하지만 침하량이 과도하게 계산됩니다.</p>
 <table>
 <thead>
 <tr>
@@ -1336,7 +1346,7 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tr>
 <tr>
 <td><strong>정상</strong></td>
-<td><strong>182 N</strong> (450 kg ÷ 4, 달 중력)</td>
+<td><strong>182 N</strong> (450 kg × 1.62 m/s² ÷ 4)</td>
 <td><strong>−0.0946 m</strong></td>
 <td><strong>44 %</strong></td>
 </tr>
@@ -1348,33 +1358,33 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tr>
 </tbody>
 </table>
-<p><strong>정상 주행에서 휠 반경의 44 % 가 파입니다.</strong> 실측에서는 같은 지령·같은 시간에
-<strong>12.156 m 대 0.054 m</strong> 였습니다 — 로버가 제자리에서 자기 구덩이를 파고 갇힙니다.</p>
-<p>그리고 <strong>무하중에서도 5.3 mm가 파입니다.</strong> 회귀식의 절편이 0이 아니기 때문입니다.</p>
+<p><strong>기준 하중에서 침하량이 휠 반경의 44 %에 달합니다.</strong> 동일한 명령·시간 조건의 실행 시험에서 이동 거리는
+기존 설정 <strong>12.156 m</strong>, 폭 변경 설정 <strong>0.054 m</strong>였습니다. 과도한 지형 변형과 주행 정체가 관측되었습니다.</p>
+<p>또한 회귀식의 절편이 0이 아니므로 <strong>무하중에서도 5.3 mm의 침하가 계산됩니다.</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>amplitude = 0.00006·F + 0.008     ← F = 0 에서 0.008
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mean      = −0.00046·F − 0.0013   ← F = 0 에서 −0.0013
 </code></pre></div>
-<p>접촉력이 없어도 깊이가 나온다는 것은, <strong>회귀가 맞춰진 구간 밖에서 물리적으로 말이
-안 되는 값을 낸다</strong>는 신호입니다. 그리고 이 네 계수가 <strong>어떤 흙·어떤 휠·어떤 중력에서
-맞춰진 것인지</strong> 상류 문서에도 우리 설정에도 없습니다.</p>
+<p>무하중에서 침하가 계산되는 결과는 <strong>회귀식의 적용 범위를 벗어난 외삽에서 물리적으로 타당하지
+않은 값이 발생할 수 있음</strong>을 보여줍니다. 네 회귀 계수의 <strong>토양·휠·중력 조건과 교정 자료</strong>는
+OmniLRS upstream 문서와 프로젝트 설정에서 확인하지 못했습니다.</p>
 <hr />
-<h2 id="4-0">4. 하중 입력을 바꿨다 — 접지력은 정지 시 0으로 읽힌다<a class="headerlink" href="#4-0" title="Permanent link">&para;</a></h2>
-<p>실측 과정에서 더 근본적인 문제가 드러났습니다. <strong>PhysX 접지력이 정지·안착 상태에서
+<h2 id="4-0">4. 정지 접촉력의 계측 한계와 하중 입력 전환<a class="headerlink" href="#4-0" title="Permanent link">&para;</a></h2>
+<p>실행 시험에서 <strong>PhysX 접촉력 조회값이 정지·안착 상태에서
 4륜 모두 0으로 읽힙니다</strong>(1,680회 연속 확인). 움직이거나 충격이 있을 때만 수백 N이
 나옵니다.</p>
 <div class="admonition danger">
-<p class="admonition-title">진짜 바퀴자국은 무거울수록 깊어야 하는데, 이 모델은 충격이 클수록 깊었습니다</p>
-<p>서 있으면 안 파이고 부딪히면 파입니다. <strong>발자국 폭을 고쳐도 남는 문제</strong>입니다.</p>
+<p class="admonition-title">정적 하중 대신 과도 접촉력이 침하량을 결정하는 문제</p>
+<p>정지 상태에서는 변형이 없고 충격이 발생할 때 침하량이 증가했습니다. <strong>접지면 폭 보정만으로 해결되지 않는 문제</strong>입니다.</p>
 </div>
-<h3 id="2026-09-09">서스펜션 조인트 토크로 하중을 만든다 (기준일 2026-09-09)<a class="headerlink" href="#2026-09-09" title="Permanent link">&para;</a></h3>
-<p>서스펜션 조인트 토크는 <strong>정지 상태에서도 살아 있고 지령에 반응합니다.</strong> 조인트 축이
-차량 종축(x)이므로, 수직력이 만드는 토크는 접지점까지의 <strong>y 오프셋</strong>에만 걸립니다.</p>
+<h3 id="2026-09-09">서스펜션 조인트 토크 기반 수직 하중 추정 (2026-09-09)<a class="headerlink" href="#2026-09-09" title="Permanent link">&para;</a></h3>
+<p>서스펜션 조인트 토크는 <strong>정지 상태에서도 계측되며 명령에 따라 변화합니다.</strong> 조인트 축이
+차량 종축(x)이므로, 수직력에 의한 해당 축 토크는 접지점까지의 <strong>y 오프셋</strong>으로 계산합니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>F = (0, 0, −N),  r = 접지점 − 조인트 원점
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>(r × F)_x = −N · r_y      →      N = |τ| / |Δy|
 </code></pre></div>
 <p>레버 암은 하드코딩하지 않고 <strong>URDF 체인에서 회전까지 합성해 계산</strong>합니다. 중간에
 0.1745 rad 회전이 있어 좌표를 단순히 더하면 5.7 mm 어긋나는데, 회전을 넣으면 휠 y가
-<strong>0.6433 m</strong> 로 계약 윤거의 절반 <strong>0.64335 m</strong> 와 맞습니다 — 이것이 자기 검산이 됩니다.
+<strong>0.6433 m</strong>로 계약 윤거의 절반인 <strong>0.64335 m</strong>와 일치합니다. 이를 좌표 변환의 교차 검증에 사용했습니다.
 레버 암 <strong>0.4908 m</strong>.</p>
 <table>
 <thead>
@@ -1412,18 +1422,18 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tr>
 </tbody>
 </table>
-<p><strong>로버가 서 있는데 파입니다.</strong> 이것이 이 연결의 목표였습니다.</p>
-<h3 id="_2">다만 자중의 절반만 읽힙니다 — 결함이 아니라 기구입니다<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>야드 다섯 자리에서 재면 네 휠 하중의 합이 자중(729 N)의 <strong>51.6 ~ 66.1 %</strong>, 평균
+<p><strong>정지 상태에서도 하중에 따른 변형이 발생함을 확인했습니다.</strong> 이는 하중 입력 연결의 검증이며, 침하량의 물리적 정확성을 검증한 것은 아닙니다.</p>
+<h3 id="_2">링크 구조에 따른 하중 추정 오차와 보정<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>지형 내 다섯 위치에서 측정한 네 휠의 추정 하중 합은 자중(729 N)의 <strong>51.6 ~ 66.1 %</strong>, 평균
 <strong>56.2 %</strong> 입니다. 원인은 서스펜션이 <strong>4절 평행링크</strong>라는 데 있습니다 — 아래 팔이
-<strong>2력 부재</strong>라 큰 힘을 나르면서도 자기 축 토크는 0입니다(실측 0.004 N·m).
-<strong>위 팔 토크만으로는 원리적으로 전체 하중을 볼 수 없습니다.</strong></p>
-<p>따라서 고칠 문제가 아니라 <strong>계수로 보정할 문제</strong>이고, 교정 계수는 <strong>1.78</strong>,
-<strong>산포 ±18 %</strong> 입니다. 평균은 맞고 자세별 오차는 남습니다.</p>
+<strong>2력 부재(two-force member)</strong>로 하중을 전달하지만 해당 축 토크는 거의 0입니다(계측값 0.004 N·m).
+<strong>Upper arm 토크만을 이용한 단순 환산으로는 전체 하중을 산정할 수 없습니다.</strong></p>
+<p>이 구현에서는 미계측 하중 전달 경로의 영향을 <strong>보정 계수 1.78</strong>로 보완했습니다.
+보정 후에도 <strong>산포 ±18 %</strong>가 남으므로, 평균 하중의 정합이 개별 자세의 정확성을 보장하지는 않습니다.</p>
 <hr />
-<h2 id="5-footprint">5. 접지면(Footprint) 정밀 실측 — 폭 하나로 이야기할 문제가 아니었다<a class="headerlink" href="#5-footprint" title="Permanent link">&para;</a></h2>
-<p>여기까지는 "휠 폭 0.159 m"라는 값 하나로 이야기했습니다. 휠 메시에서 직접 재 보니
-<strong>접지 폭은 하나가 아니고, 접지 길이는 상수가 아닙니다.</strong> (기준일 2026-09-10)</p>
+<h2 id="5-footprint">5. 접지면(Footprint) 형상과 이산화 오차 분석<a class="headerlink" href="#5-footprint" title="Permanent link">&para;</a></h2>
+<p>휠 폭 0.159 m의 적용 타당성을 확인하기 위해 자산 메시를 분석했습니다. 그 결과
+<strong>유효 접지 폭과 길이는 침하량에 따라 달라집니다.</strong> 아래 분석은 2026-09-10의 기존 0.05 m 경로를 기준으로 합니다.</p>
 <p>접지 길이는 강체 휠 기하로 계산합니다 — 진입각 <code>θ_f = arccos(1 − z/R)</code> 의 현 길이이고,
 이탈각을 진입각과 같다고 본 값입니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>L = 2·√(2Rz − z²)          R = 0.2134 m (팁 반경 실측)
@@ -1499,30 +1509,30 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tbody>
 </table>
 <p>굵게 표시한 두 줄이 이 프로젝트의 실측 침하 범위입니다.</p>
-<h3 id="0159">휠 폭은 상수로 둬도 됩니다 — 값은 0.159가 맞습니다<a class="headerlink" href="#0159" title="Permanent link">&para;</a></h3>
-<p><strong>그라우저 팁대(반경 99~100 %)의 폭은 0.1297 m</strong> 로 전체 폭보다 <strong>18 % 좁습니다.</strong>
+<h3 id="0159">관측된 침하 범위에서의 휠 폭 근사<a class="headerlink" href="#0159" title="Permanent link">&para;</a></h3>
+<p><strong>그라우저 tip 영역(반경 99~100 %)의 폭은 0.1297 m</strong> 로 전체 폭보다 <strong>18 % 좁습니다.</strong>
 그런데 침하가 <strong>5 mm만 넘으면 0.1575 → 0.1592로 포화</strong>합니다. 실제 침하 범위에서는
-항상 전체 폭이 걸리므로 <strong>휠 폭을 상수 0.159로 보는 것은 타당합니다</strong> — 팁대가 좁은 것은
+항상 전체 폭이 걸리므로 <strong>휠 폭을 상수 0.159로 보는 것은 타당합니다</strong> — Tip 영역의 폭이 좁은 영향은
 첫 2 mm에서만 유효합니다.</p>
 <div class="admonition warning">
-<p class="admonition-title">정정 (2026-09-14) — 휠 폭을 발자국 폭 설정에 그대로 넣으면 안 됩니다</p>
-<p>휠 폭 값 자체는 맞지만, 엔진은 발자국의 <strong>양 끝 표본을 늘 깊이 0으로</strong> 만듭니다.
+<p class="admonition-title">정정 (2026-09-14): 휠 폭과 엔진 접지면 폭 설정의 구분</p>
+<p>휠 폭 값 자체는 맞지만, 엔진은 접지면의 <strong>양 끝 표본을 늘 깊이 0으로</strong> 만듭니다.
 <code>footprint.width</code> 에 0.159를 넣으면 가운데 2칸 = <strong>0.10 m(휠의 63 %)</strong> 만 파입니다.
-지금은 0.21로 두어 0.150 m가 파이도록 했습니다(13절).</p>
+기존 0.05 m 경로의 설정은 0.21 m로 조정해 유효 변형 폭 0.150 m를 확보했습니다(13절).</p>
 </div>
-<p>축방향 중심이 <strong>−0.0031 m</strong> 로 완전 대칭이 아닌 것도 확인했습니다. 발자국이 휠
+<p>축방향 중심이 <strong>−0.0031 m</strong> 로 완전 대칭이 아닌 것도 확인했습니다. 접지면이 휠
 중심선 기준으로 생성되므로 3 mm만큼 한쪽으로 치우칩니다 — 격자 0.05 m 대비 6 %라
-지금은 무시할 수 있지만, 해상도를 올리면 보이게 됩니다.</p>
-<h3 id="_3">길이는 상수로 두면 안 되고, 엔진이 갱신하지도 않습니다<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+기존 해상도에서는 영향이 작지만, 고해상도에서는 검토가 필요합니다.</p>
+<h3 id="_3">침하에 따른 접지 길이 변화와 초기화 방식의 한계<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="admonition danger">
 <p class="admonition-title">접지면은 초기화 때 한 번만 만들어집니다</p>
-<p>발자국 생성 함수가 엔진 <code>__init__</code> 에서 한 번만 호출됩니다. <strong>침하가 깊어져도
+<p>접지면 생성 함수가 엔진 <code>__init__</code> 에서 한 번만 호출됩니다. <strong>침하가 깊어져도
 접지면이 넓어지지 않습니다.</strong> 접지 면적이 고정된 채 하중만 늘면
 <strong>압력이 과대평가되는 방향</strong>입니다.</p>
 </div>
-<p>현행 설정 0.200 m는 <strong>침하 0.0249 m에 해당하는 길이</strong>입니다. 실측 침하 범위
+<p>초기 설정 0.200 m는 <strong>침하 0.0249 m에 해당하는 길이</strong>입니다. 실측 침하 범위
 0.032~0.05 m에서는 0.225~0.275 m여야 하므로 <strong>12~37 % 과소</strong>입니다.</p>
-<h3 id="_4">설정 두 값이 서로 어긋나 있습니다<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_4">접지 길이와 그라우저 주기 설정의 불일치<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1549,29 +1559,29 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </table>
 <p>같은 접지면을 두 곳에서 다르게 가정하고 있습니다 — 길이 기준 <strong>15.6 % 차이</strong>입니다.
 <code>wave_frequency</code> 를 3.58(길이 0.200 기준)로 맞추면 최소한 서로 모순이지는 않게 되지만,
-그건 <strong>일관성을 맞추는 것이지 옳게 만드는 것이 아닙니다.</strong> 옳게 하려면 길이가 침하를
-따라가야 합니다.</p>
-<h3 id="4656">실제 접지면과의 유사도는 지금 46~56 % 입니다<a class="headerlink" href="#4656" title="Permanent link">&para;</a></h3>
-<p>"폭·길이가 맞는가"로는 부족합니다. <strong>DEM에 실제로 찍히는 면적</strong>으로 봐야 합니다 —
-엔진은 발자국 표본점을 <code>int(좌표/해상도)</code> 로 격자 셀에 매핑하므로, 설정값이 아니라
-<strong>이산화된 결과</strong>가 지형을 깎습니다.</p>
-<p>발자국 생성이 <code>linspace(−w/2, w/2, int(w/res)+1)</code> 이라 <strong>표본 간격이 지형 해상도와
+이는 <strong>파라미터 간 일관성을 확보하는 조치</strong>입니다. 접지 길이의 물리적 타당성을 확보하려면 침하량을
+반영해 길이를 갱신해야 합니다.</p>
+<h3 id="4656">초기 접지면 면적비와 격자 표본화의 영향<a class="headerlink" href="#4656" title="Permanent link">&para;</a></h3>
+<p>설정한 폭·길이와 함께 <strong>DEM 셀에 매핑되는 면적</strong>을 확인해야 합니다.
+엔진은 접지면 표본점을 <code>int(좌표/해상도)</code> 로 격자 셀에 매핑하므로, 설정값이 아니라
+<strong>이산화 결과와 각 표본의 깊이</strong>가 실제 변형 영역을 결정합니다.</p>
+<p>접지면 생성이 <code>linspace(−w/2, w/2, int(w/res)+1)</code> 이라 <strong>표본 간격이 지형 해상도와
 다릅니다</strong>(폭 0.159 → 4점, 간격 0.053). 그래서 셀이 겹치거나 건너뛰고,
-<strong>덮는 면적이 설정값보다 부풀어 오릅니다.</strong></p>
+<strong>격자에 매핑된 면적이 설정값보다 커질 수 있습니다.</strong></p>
 <table>
 <thead>
 <tr>
 <th>설정 (폭 × 길이)</th>
 <th>표본점</th>
-<th>찍힌 셀</th>
+<th>매핑된 셀</th>
 <th>덮는 폭</th>
 <th>덮는 길이</th>
-<th>찍힌 면적</th>
+<th>매핑 면적</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>0.090 × 0.200 (현행)</strong></td>
+<td><strong>0.090 × 0.200 (초기 설정)</strong></td>
 <td>10</td>
 <td>8.0</td>
 <td><strong>0.141</strong></td>
@@ -1597,19 +1607,19 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tbody>
 </table>
 <p>셀 위상에 따라 달라지므로 무작위 위상 300~400회 평균입니다.
-<strong>현행 폭 0.090이 실제로는 0.141 m를 덮습니다 — 설정값의 1.57배입니다.</strong></p>
+<strong>초기 설정 폭 0.090 m의 표본이 매핑되는 셀의 폭은 평균 0.141 m로, 설정값의 1.57배입니다.</strong></p>
 <p>실제 접지 면적은 침하 0.032 m에서 <strong>0.0358 m²</strong>, 0.050 m에서 <strong>0.0437 m²</strong> 입니다.</p>
 <table>
 <thead>
 <tr>
 <th>조건</th>
-<th>면적 유사도 (z=0.032)</th>
+<th>기하 기준 대비 매핑 면적비 (z=0.032)</th>
 <th>(z=0.050)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>현행 0.090 × 0.200</strong></td>
+<td><strong>초기 설정 0.090 × 0.200</strong></td>
 <td><strong>56 %</strong></td>
 <td><strong>46 %</strong></td>
 </tr>
@@ -1630,20 +1640,20 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tr>
 </tbody>
 </table>
-<p><strong>90 % 이상을 만들려면 지형 해상도를 0.025 m/px로 올려야 합니다.</strong> 현행 0.05에서는
+<p>시험한 설정 중 해상도 0.025 m/px에서 면적비가 <strong>99~101 %</strong>로 계산되었습니다. 0.05 m/px에서는
 폭·길이를 정확히 넣어도 이산화가 <strong>14~19 % 과대</strong>로 만듭니다 — 휠 폭 0.159가 격자
 3.2칸이라 양자화 오차가 원리적으로 ±0.5칸(±15 %)이기 때문입니다.</p>
 <div class="admonition warning">
 <p class="admonition-title">정정 (2026-09-14) — 위 두 표는 깊이가 0인 표본까지 셌습니다</p>
-<p>"찍힌 셀·덮는 폭"은 발자국 표본이 떨어지는 셀을 모두 센 값입니다. 그런데 엔진의 경계
+<p>"매핑된 셀·덮는 폭"은 접지면 표본이 떨어지는 셀을 모두 센 값입니다. 그런데 엔진의 경계
 분포는 <strong>양 끝 표본의 깊이를 늘 0으로</strong> 만들어, 그 셀은 실제로는 파이지 않습니다.
-실제 엔진으로 자국을 찍어 재면 폭 0.159는 <strong>2칸 = 0.10 m</strong> 만 파였습니다 —
-「14~19 % 과대」가 아니라 <strong>37 % 과소</strong>였습니다. 파이는 칸 수는 「횡 표본 수 − 2」이고,
-발자국 폭 0.21에서 3칸 = 0.150 m가 됩니다(13절).</p>
+엔진으로 자국을 생성해 측정한 결과, 설정 폭 0.159 m의 실제 변형 폭은 <strong>2칸 = 0.10 m</strong>였습니다.
+따라서 비영(非零) 변형 영역은 휠 폭 대비 <strong>37 % 작았습니다.</strong> 유효 변형 셀 수는 「횡 표본 수 − 2」이며,
+접지면 폭 0.21에서 3칸 = 0.150 m가 됩니다(13절).</p>
 </div>
-<h3 id="_5">그런데 그 해상도에서 변형을 켜면 시뮬레이션이 멈춥니다<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>해상도만 올리는 것은 <strong>런타임 비용이 없습니다</strong> — tick 29.959 Hz, RTF 0.4994로
-현행과 같습니다(기동만 40 s → 118 s로 늘어납니다).</p>
+<h3 id="_5">해상도 0.025 m에서 관측된 물리 스텝 중단<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>변형이 비활성화된 시험에서는 해상도를 높여도 tick 29.959 Hz, RTF 0.4994로
+기준 조건과 유사했습니다. 다만 기동 시간은 40 s에서 118 s로 증가했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -1676,25 +1686,25 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tbody>
 </table>
 <div class="admonition danger">
-<p class="admonition-title">RTF 0은 반올림이 아닙니다 — simulation time이 3.8 s에서 그대로 멈춥니다</p>
-<p>그런데 관절 상태 토픽은 5.6 Hz로 계속 나옵니다(20초간 115건 수신, 스탬프는
-전부 3.8000). <strong>밖에서 보면 살아 있는 것처럼 보입니다.</strong></p>
+<p class="admonition-title">물리 스텝 중단: simulation time이 3.8 s에서 정체</p>
+<p>해당 구간에서도 관절 상태 토픽은 5.6 Hz로 계속 발행되었습니다(20초간 115건 수신, 스탬프는
+전부 3.8000). <strong>메시지 수신 빈도만으로는 물리 시뮬레이션의 중단을 판별할 수 없습니다.</strong></p>
 </div>
-<p>원인은 변형 함수가 <strong>깊이가 0이든 아니든 매 스텝 정점 배열 전체를 다시 쓰는</strong>
-구조입니다. 배열이 2.6 M → 10.2 M으로 4배가 되면서 한 스텝을 못 끝냅니다.</p>
-<p><strong>즉 유사도 90 %는 지금 구현으로는 도달할 수 없습니다.</strong> 해상도를 올리는 것이
-조건인데 그 해상도에서 엔진이 서기 때문입니다. <strong>바뀐 셀만 갱신하도록 고치는 것이
-선행 조건</strong>입니다.</p>
-<h3 id="_6">그래서 지금 적용되어 있는가<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p><strong>2026-09-10 기준으로는 아니었습니다</strong> — 설정이 폭 0.090 · 길이 0.200이라 변형이 정확히 0인
-상태였습니다. <strong>2026-09-11에 켰고</strong>(11절), 2026-09-14 현재 설정은 <strong>폭 0.21 · 길이 0.1804</strong> 입니다.
+<p>물리 스텝 중단은 변형 함수가 <strong>깊이가 0이든 아니든 매 스텝 정점 배열 전체를 다시 쓰는</strong>
+구조와 관련이 있습니다. 정점 수는 2.6 M에서 10.2 M으로 약 4배 증가했습니다. 이후 대조 시험에서 충돌 데이터의 반복 재생성이 물리 스텝 중단의 원인으로 확인되었습니다(12절).</p>
+<p>따라서 당시 구현에서는 해상도 증가만으로 접지면 표현과 실행 성능을 함께 개선하기 어려웠습니다.
+<strong>렌더·충돌 경로를 분리하고 변경된 영역만 갱신하는 구조</strong>가
+필요했습니다.</p>
+<h3 id="_6">이후 적용 상태<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><strong>2026-09-10에는 미적용 상태였습니다.</strong> 설정 폭 0.090 m·길이 0.200 m에서 변형량이 0인
+상태였으며, <strong>2026-09-11에 기능을 활성화했습니다</strong>(11절). 2026-09-14의 기존 경로 설정은 <strong>폭 0.21 m·길이 0.1804 m</strong>입니다.
 지형 해상도는 여전히 0.05 m/px입니다. <strong>해상도를 올리는 대신 휠 근처만 1.5 cm 타일로 따로 그리는
-방식으로 풀었습니다(16절)</strong> — 실측 자국 폭 0.164 m(휠 0.159 m의 103 %).</p>
+방식으로 개선했습니다(16절)</strong> — 실측 자국 폭 0.164 m(휠 0.159 m의 103 %).</p>
 <hr />
-<h2 id="6-3">6. 실행 파라미터 전수 점검 — 근거 있는 값은 3개뿐<a class="headerlink" href="#6-3" title="Permanent link">&para;</a></h2>
-<p><strong>값이 적혀 있다고 쓰이는 것은 아닙니다.</strong> 설정에 자리가 있는데 코드가 한 번도 읽지
-않는 항목이 있고, 설정과 대상이 연결되지 않은 항목도 있습니다. 둘 다 겉으로는 정상으로
-보입니다. (기준일 2026-09-08, 13개 항목 전수)</p>
+<h2 id="6-3">6. 실행 파라미터의 사용 여부와 선정 근거 점검<a class="headerlink" href="#6-3" title="Permanent link">&para;</a></h2>
+<p><strong>파라미터 정의와 실제 참조 여부를 구분해야 합니다.</strong> 설정에 존재하지만 코드가 읽지
+않는 항목과 적용 대상에 연결되지 않은 항목을 확인했습니다. 두 경우 모두 별도 오류 없이 실행될 수
+있습니다. 아래는 2026-09-08에 13개 항목을 점검한 결과 중 주요 항목입니다.</p>
 <table>
 <thead>
 <tr>
@@ -1707,7 +1717,7 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <tr>
 <td><strong><code>gravity</code></strong></td>
 <td>설정에 있으나 엔진 소스에서 <strong>참조 0회</strong></td>
-<td>값을 고쳐도 아무 일이 없다</td>
+<td>설정 변경이 엔진 계산에 반영되지 않음</td>
 </tr>
 <tr>
 <td><strong><code>footprint.shape</code></strong></td>
@@ -1717,23 +1727,23 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <tr>
 <td><strong><code>num_links</code></strong></td>
 <td><code>target_links</code> 로부터 채워지지 않음</td>
-<td>기본값 4로 돌고, 휠이 4개라 <strong>우연히 맞다</strong></td>
+<td>기본값 4가 사용되며 대상 휠 수와의 연계 없음</td>
 </tr>
 <tr>
 <td><strong><code>angle_of_repose</code></strong></td>
-<td>현행 60°, 출처 없음</td>
+<td>초기 설정 60°, 출처 미확인</td>
 <td>폭을 고친 뒤 <strong>깊이를 2.6배까지 좌우</strong></td>
 </tr>
 <tr>
 <td><strong><code>wave_frequency</code></strong></td>
-<td>현행 4.14 = 접지 길이 0.20 m 기준 한 바퀴 27.8개분</td>
+<td>초기 설정 4.14 = 접지 길이 0.20 m 기준 한 바퀴 27.8개분</td>
 <td>실측은 <strong>24개</strong></td>
 </tr>
 </tbody>
 </table>
-<h3 id="24-2026-08-26">그라우저는 24개다 (기준일 2026-08-26)<a class="headerlink" href="#24-2026-08-26" title="Permanent link">&para;</a></h3>
+<h3 id="24-2026-08-26">휠 자산의 그라우저 형상 측정 (2026-08-26)<a class="headerlink" href="#24-2026-08-26" title="Permanent link">&para;</a></h3>
 <p>휠 메시에서 실측했습니다 — 방위각 히스토그램의 이산 푸리에 변환으로 지배 주파수를
-보는 방식이며, 반경 문턱 98/95/92 %에서 모두 같은 답이 나왔습니다.</p>
+확인하는 방식입니다. 반경 threshold 98/95/92 %에서 동일한 개수를 얻었습니다.</p>
 <table>
 <thead>
 <tr>
@@ -1758,11 +1768,11 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </table>
 <p>설정 주석은 <code>num_grouser/pi</code> 라고 적혀 있는데, <strong>그 식은 접지 길이 L이 휠 지름과 같을
 때만 성립합니다.</strong> OmniLRS 기본값(반경 0.09, 길이 0.18)은 정확히 <code>L = 2R</code> 이라 맞았지만
-우리는 아닙니다. 일반식 <code>L·N / (2πR)</code> 로 계산하면 현재 접지 길이 0.20 m에서 <strong>3.58</strong> 이고,
-그 접지 길이 자체도 아직 근거가 없습니다.</p>
+대상 로버는 이 조건에 해당하지 않습니다. 일반식 <code>L·N / (2πR)</code>를 적용하면 초기 접지 길이 0.20 m에서 <strong>3.58</strong>이며,
+해당 접지 길이의 선정 근거도 당시에는 확인되지 않았습니다.</p>
 <hr />
-<h2 id="7-3">7. 상류 소스 결함 3건<a class="headerlink" href="#7-3" title="Permanent link">&para;</a></h2>
-<p>우리가 만든 것이 아니라 OmniLRS 원본의 문제입니다. 앞의 둘은 패치로 고쳐 두었습니다.</p>
+<h2 id="7-3">7. OmniLRS upstream 결함과 조치 상태<a class="headerlink" href="#7-3" title="Permanent link">&para;</a></h2>
+<p>초기 분석에서 OmniLRS upstream의 결함 세 건을 확인했습니다. 아래 상태는 기존 0.05 m 경로 기준이며, 첫 두 항목에는 패치를 적용했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -1790,7 +1800,7 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tbody>
 </table>
 <hr />
-<h2 id="8">8. 함께 확인한 것 — 견인 솔버는 한 번도 돌아본 적이 없었다<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h2 id="8">8. Traction solver 연결 및 실행 경로 검증<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <p>변형 엔진과 짝을 이루는 <strong>Terramechanics 견인 솔버</strong>도 같이 점검했습니다. 이 둘은
 "지형의 모양을 바꾸는 쪽"과 "로버가 받는 힘을 바꾸는 쪽"으로 나뉘는데, 연결이
 끊겨 있었습니다. (기준일 2026-09-10)</p>
@@ -1806,22 +1816,22 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <tr>
 <td>①</td>
 <td>호출부가 주석 처리</td>
-<td>로버가 토양 반력을 안 받아도 화면은 정상</td>
+<td>토양 반력이 누락되어도 시각적 이상이 뚜렷하지 않음</td>
 </tr>
 <tr>
 <td>②</td>
 <td>기본 인자 <strong>20 kg · 휠 반경 0.09 m</strong> (실제 450 kg · 0.2133 m)</td>
-<td>값이 그럴듯했다</td>
+<td>실행 여부·대상 제원과의 대조가 누락됨</td>
 </tr>
 <tr>
 <td>③</td>
 <td>힘을 <strong>2회 연속</strong> 적용</td>
-<td>두 줄이 나란히 있어 눈에 띄지 않는다</td>
+<td>연속된 중복 호출을 검출하지 못함</td>
 </tr>
 <tr>
 <td>④</td>
 <td>없는 API 호출(<code>get_velocities</code>)</td>
-<td>유일한 호출자가 주석이라</td>
+<td>호출 경로가 비활성화되어 실행되지 않음</td>
 </tr>
 <tr>
 <td>⑤</td>
@@ -1836,49 +1846,49 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <tr>
 <td>⑦</td>
 <td>중력 <strong>9.81 하드코딩</strong></td>
-<td>달 시뮬레이터에서 σ_max가 <strong>6배</strong> 부푼다</td>
+<td>달 시뮬레이터에서 σ_max가 <strong>약 6배</strong> 과대 계산됨</td>
 </tr>
 </tbody>
 </table>
 <p>일곱 건을 고쳐 연결한 뒤 실측하면 침하 0.032~0.05 m, 슬립비 0.846 → −0.189,
-견인력 −48 ~ +4 N 범위에서 <strong>NaN 없이 안정적으로</strong> 돕니다.</p>
+견인력 −48 ~ +4 N 범위에서 <strong>해당 시험 구간에서 NaN 없이</strong> 실행되었습니다.</p>
 <div class="admonition warning">
 <p class="admonition-title">다만 수직 반력은 더하지 않습니다</p>
-<p>PhysX가 접촉으로 이미 지지력을 줍니다. 거기에 솔버의 수직 반력을 얹으면
-<strong>이중 계상</strong>이고, 출처 없는 계수로는 그것만으로 로버가 날아갑니다
-(σ_max 약 44 kPa → 휠당 1.5 kN 급, 자중은 729 N). 이 솔버로 보려는 것은
-<strong>견인력과 저항 토크</strong>입니다.</p>
+<p>PhysX의 접촉 계산이 이미 수직 지지력을 제공합니다. Solver의 수직 반력을 추가하면
+<strong>동일 지지력을 이중 계상</strong>할 수 있으며, 검증되지 않은 계수는 과도한 수직 가속을 유발할 수 있습니다
+(σ_max 약 44 kPa → 휠당 1.5 kN 수준, 로버 자중 729 N). 이 구성에서 solver의 적용 대상은
+<strong>견인력과 저항 토크</strong>로 제한합니다.</p>
 </div>
 <hr />
-<h2 id="9">9. 확인되지 않은 것<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
-<p>이 절을 줄이지 않습니다. 위의 수치가 어디까지를 말하는지가 여기에 있습니다.</p>
+<h2 id="9">9. 검증 범위와 한계<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p>앞 절의 결과는 구현의 동작과 시뮬레이션 내 계측값을 확인한 것입니다. 물리적 정확성과 실물 적용 가능성에는 다음 한계가 있습니다.</p>
 <ul>
 <li><strong>토양 계수의 출처가 없습니다.</strong> 깊이는 시험 자료가 아니라 <strong>목표값</strong>에 맞췄습니다 — 정지
   하중 182 N에서 약 20 mm(Bekker 21.6 mm · Lunokhod 21~24 mm 범위), 그 밖에서는 하중^(2/3).
-  Bekker/Wong 계수 9개도 출처가 없습니다. <strong>월면토 시험 자료 없이는 크기를 믿을 수 없습니다</strong> —
+  Bekker/Wong 계수 9개도 출처가 없습니다. <strong>월면토 시험 자료 없이는 계산값의 정량적 정확성을 보장할 수 없습니다</strong> —
   확인한 것은 경향과 연결 여부입니다.</li>
 <li><strong>실제 월면토로 검증한 것이 아닙니다.</strong> 전부 시뮬레이션 내부 계측이며,
   시뮬런트(모사토) 시험도 아직 없습니다.</li>
-<li><strong>하중 추정의 산포가 ±18 %</strong> 입니다(교정 계수 1.78). 이것이 자국을 따라가는 깊이 출렁임으로
+<li><strong>하중 추정의 산포가 ±18 %</strong> 입니다(교정 계수 1.78). 이것이 주행 경로를 따른 깊이 변동으로
   남습니다 — 변동계수 0.25~0.30(16절).</li>
 <li><strong>둔덕·벽 경사는 추정입니다.</strong> 옆으로 밀려난 흙의 비율(10 %)과 벽 임계각(60°)에는 정량
   문헌이 없고, 그라우저 자국 진폭(9~10 mm)은 단륜 시험의 6.09 mm보다 큽니다. 0.3 s보다 짧은
   충격은 자국에 남지 않습니다.</li>
-<li><strong>자국은 보이기만 하고 밟히지 않습니다</strong>(12·16절). 반복 통과로 깊어지는 거동이나 슬립–침하
-  연성은 충돌 메시가 갱신돼야 의미가 있습니다.</li>
-<li><strong>휠과 자국 바닥 사이가 몇 mm 어긋날 수 있습니다.</strong> 자국은 렌더 지형을 기준으로 찍지만 휠은
+<li><strong>자국 변형은 collision geometry에 반영되지 않습니다</strong>(12·16절). 반복 통과에 따른 침하와 slip–sinkage
+  coupling을 물리 거동으로 검증하려면 변형 지형과 휠 접촉을 연결해야 합니다.</li>
+<li><strong>휠과 자국 바닥 사이가 몇 mm 어긋날 수 있습니다.</strong> 자국은 렌더 지형을 기준으로 생성하지만 휠은
   근사된 충돌 메시 위에 서 있어, 휠 팁과 지형 사이가 직진 중 평균 6 mm · p95 15 mm 차이 납니다(16절).</li>
 <li><strong>경사면 처리를 확인하지 않았습니다.</strong> 자국은 휠의 수평 방향(진행·차축)만 써서 수직으로
-  찍으므로 경사에서 오차가 생기는데, 그 크기를 재지 않았습니다.</li>
-<li><strong>제자리 선회·큰 슬립 자국의 사실감은 보지 않았습니다.</strong> 직진과 완만한 선회 구간만 쟀습니다.</li>
-<li><strong>긴 주행에서 타일이 쌓입니다.</strong> 185만 정점까지는 RTF 0.481로 쟀고, 1 km 주행(약 600만 정점)은
-  재지 않았습니다.</li>
+  투영하므로 경사면에서 오차가 발생할 수 있으나, 크기를 정량화하지 않았습니다.</li>
+<li><strong>제자리 선회·고슬립 조건의 자국 형상은 검증하지 않았습니다.</strong> 검증 범위는 직진과 완만한 선회 구간입니다.</li>
+<li><strong>장거리 주행 시 타일과 정점 수가 누적됩니다.</strong> 185만 정점에서 RTF 0.481을 확인했으며, 1 km 주행(약 600만 정점)은
+  측정하지 않았습니다.</li>
 <li><em>(0.05 m 경로에만 해당)</em> 자국 중심이 휠보다 안쪽으로 약 1.5 cm 치우쳤던 것(13절)과 접지면 면적
-  유사도 재계산(5절)은 확인하지 못한 채 남았습니다 — 지금 자국은 16절 경로가 만듭니다.</li>
+  면적비 재계산(5절)은 미확인 항목입니다. 최종 확인 설정에서는 16절 경로가 자국을 생성합니다.</li>
 </ul>
 <hr />
-<h2 id="10-2026-09-14">10. 켠 순서와 남은 일 (2026-09-14 갱신)<a class="headerlink" href="#10-2026-09-14" title="Permanent link">&para;</a></h2>
-<p>2026-09-10에 적은 순서를 그대로 두고, 무엇을 했는지 표시했습니다.</p>
+<h2 id="10-2026-09-14">10. 개선 항목별 진행 상태 (2026-09-14)<a class="headerlink" href="#10-2026-09-14" title="Permanent link">&para;</a></h2>
+<p>2026-09-10에 정리한 작업 순서에 2026-09-14까지의 적용 결과와 잔여 과제를 반영했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -1900,13 +1910,13 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tr>
 <tr>
 <td>3</td>
-<td><strong>발자국 폭</strong></td>
+<td><strong>접지면 폭</strong></td>
 <td><strong>완료</strong> — 0.05 m 경로는 <strong>0.21</strong>(13절). 16절 경로는 휠 메시 폭을 그대로 씀(실측 0.164 m)</td>
 </tr>
 <tr>
 <td>4</td>
-<td><strong>발자국 길이를 침하의 함수로</strong></td>
-<td><strong>완료(16절 경로)</strong> — 실제 휠 형상을 찍으므로 접지 길이가 침하에서 저절로 나옴. 0.05 m 경로는 상수 0.1804 m</td>
+<td><strong>접지면 길이를 침하의 함수로</strong></td>
+<td><strong>완료(16절 경로)</strong> — 휠 형상 투영 시 침하량에 따른 접지 길이가 기하적으로 결정됨. 0.05 m 경로는 상수 0.1804 m</td>
 </tr>
 <tr>
 <td>5</td>
@@ -1926,7 +1936,7 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <tr>
 <td>8</td>
 <td><strong>경계 검사 추가</strong></td>
-<td><strong>일부</strong> — 16절 경로는 야드 안으로 자름(코드상, 실측 확인 안 함). 0.05 m 경로는 미조치</td>
+<td><strong>일부</strong> — 16절 경로는 야드 안으로 제한(코드상, 실측 확인 안 함). 0.05 m 경로는 미조치</td>
 </tr>
 <tr>
 <td>9</td>
@@ -1941,31 +1951,31 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <tr>
 <td>11</td>
 <td>자국 모양 — 둔덕·벽 경사·그라우저 무늬 <em>(신규)</em></td>
-<td><strong>완료(16절)</strong> — 실측 휠 단면·둔덕·벽 무너짐. 둔덕 비율·임계각은 추정</td>
+<td><strong>완료(16절)</strong> — 자산에서 추출한 휠 단면·둔덕·벽 무너짐. 둔덕 비율·임계각은 추정</td>
 </tr>
 <tr>
 <td>12</td>
-<td>자국을 충돌에 반영(휠이 자국을 밟게) <em>(신규)</em></td>
-<td>남음 — 충돌 메시 재쿠킹 비용(12절)이 막고 있음</td>
+<td>자국 변형의 collision geometry 반영 <em>(신규)</em></td>
+<td>미완료 — 충돌 데이터 re-cooking 비용 검토 필요(12절)</td>
 </tr>
 <tr>
 <td>13</td>
 <td>긴 주행의 타일 누적 대책 <em>(신규)</em></td>
-<td>남음 — 먼 타일 해상도 낮추기</td>
+<td>미완료 — 원거리 타일 해상도 축소 검토</td>
 </tr>
 </tbody>
 </table>
 <p>이 목록이 <a href="../l-project-terramechanics/">차년도 과제 제안</a>의 출발점입니다.</p>
 <hr />
-<h2 id="11-2026-09-11">11. 켰다 — 한 세트로 맞춘 값 (기준일 2026-09-11)<a class="headerlink" href="#11-2026-09-11" title="Permanent link">&para;</a></h2>
+<h2 id="11-2026-09-11">11. 변형 기능 활성화와 파라미터 정합 (2026-09-11)<a class="headerlink" href="#11-2026-09-11" title="Permanent link">&para;</a></h2>
 <p>2·3·4절의 원인을 각각 처리한 뒤 <code>enable: True</code> 로 바꿨습니다.</p>
 <table>
 <thead>
 <tr>
 <th>항목</th>
 <th>종전</th>
-<th>켤 때</th>
-<th>이유</th>
+<th>활성화 시 설정</th>
+<th>선정 근거</th>
 </tr>
 </thead>
 <tbody>
@@ -1997,13 +2007,13 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <td><code>delay</code></td>
 <td>2.0 s</td>
 <td><strong>10.0 s</strong></td>
-<td>스폰 낙하 충격이 출발점에 21 cm 구덩이를 팠음</td>
+<td>초기 낙하 충격으로 시작 위치에 21 cm 침하 발생</td>
 </tr>
 <tr>
 <td>회귀 절편</td>
 <td>0.008 / −0.0013</td>
 <td><strong>0 / 0</strong></td>
-<td>무하중에서 5.3 mm가 파였음</td>
+<td>무하중에서 5.3 mm 침하가 계산됨</td>
 </tr>
 <tr>
 <td>회귀 기울기</td>
@@ -2016,16 +2026,16 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <p><strong>길이·<code>wave_frequency</code>·회귀·안식각은 한 세트입니다</strong> — 모두 침하 0.020 m를 가정합니다.
 종전에는 길이가 0.0249 m를, <code>wave_frequency</code> 가 0.0339 m를 가정해 서로 어긋나 있었습니다.</p>
 <div class="admonition note">
-<p class="admonition-title">근거는 목표값입니다</p>
-<p>접지 압력 182 N / (0.159 × 0.180 m) ≈ 6.4 kPa에서 2 cm 침하는 월면 로버로 그럴듯한 범위이지만,
-<strong>시험 자료로 확인한 값이 아닙니다.</strong> 자료가 들어오면 다시 맞춥니다.</p>
+<p class="admonition-title">목표 침하량 기준 조정이며 토양 시험 기반 교정은 아닙니다</p>
+<p>접지 압력 182 N / (0.159 × 0.180 m) ≈ 6.4 kPa에서 침하량 2 cm를 설계 목표로 설정했습니다.
+<strong>시험 자료로 확인한 값은 아닙니다.</strong> 토양·휠 시험 자료 확보 후 재교정해야 합니다.</p>
 </div>
 <hr />
-<h2 id="12-2026-09-14">12. 켜고 주행하면 물리가 멈췄다 — 충돌 메시 재쿠킹 (기준일 2026-09-14)<a class="headerlink" href="#12-2026-09-14" title="Permanent link">&para;</a></h2>
-<p><strong>증상.</strong> 로버에 주행 지령을 줘도 가지 않았습니다. 관절 상태 토픽은 24 Hz로 계속 나오는데
-<strong>헤더 스탬프만 반복</strong>됐습니다. 정지해 있으면 멀쩡했고, 주행을 멈춰도 한동안 풀리지 않았습니다.</p>
-<h3 id="_7">변형 엔진이 원인이다 — 켜고 끄기 대조<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>보드는 EPOS 백엔드로 내리고, 구동 4축 2.0 rad/s를 직접 주입했습니다. RTF는 스탬프 차 ÷ 벽시계, 5 s 창입니다.</p>
+<h2 id="12-2026-09-14">12. Collision mesh re-cooking에 따른 물리 스텝 중단 (2026-09-14)<a class="headerlink" href="#12-2026-09-14" title="Permanent link">&para;</a></h2>
+<p><strong>증상:</strong> 주행 명령에도 로버가 이동하지 않았습니다. 관절 상태 토픽은 24 Hz로 계속 발행되었으나
+<strong>헤더 타임스탬프가 동일한 값을 반복</strong>했습니다. 정지 상태에서는 정상 동작했지만, 주행 중 문제가 발생하면 정지 명령 후에도 즉시 회복되지 않았습니다.</p>
+<h3 id="_7">변형 기능 활성화·비활성화 대조 시험<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>보드를 EPOS backend로 전환해 시뮬레이션 명령 발행을 중지하고, 구동 4축에 2.0 rad/s 명령을 직접 입력했습니다. RTF는 5 s 측정 구간마다 simulation timestamp 증가량을 wall-clock time 경과량으로 나누어 계산했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2050,7 +2060,7 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tr>
 </tbody>
 </table>
-<h3 id="_8">무엇이 멈추게 하나 — 한 컨테이너 안에서 쓰는 곳만 바꿔 봄<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_8">동일 컨테이너에서 메시 갱신 경로 비교<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2063,12 +2073,12 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 <tr>
 <td>정점 쓰기 생략</td>
 <td>변형 계산만</td>
-<td><strong>RTF 0.499, 안 멈춤</strong></td>
+<td><strong>RTF 0.499, 중단 없음</strong></td>
 </tr>
 <tr>
 <td>충돌 없는 별도 메시에 쓰기</td>
 <td>렌더만 갱신</td>
-<td><strong>안 멈춤</strong> (RTF 0.23)</td>
+<td><strong>중단 없음</strong> (RTF 0.23)</td>
 </tr>
 <tr>
 <td>암석 배치 갱신 생략</td>
@@ -2082,23 +2092,23 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tr>
 </tbody>
 </table>
-<p><strong>바뀐 정점이 충돌이 붙은 메시에 쓰일 때만 멈춥니다.</strong> 멈춘 동안에도 시뮬레이션 루프는 돌고
-(5 s에 약 125회, 한 번 8.5 ms) <strong>물리 스텝 이벤트만 0</strong> 이었습니다 — 느려진 게 아니라 건너뛴 것입니다.
-물리 엔진의 쿠킹 결과가 쌓이는 캐시가 <strong>충돌 메시에 쓸 때만 약 65 s마다 2 GiB씩</strong> 찼고,
-사흘 정지해 있는 동안에는 전혀 늘지 않았습니다.</p>
+<p><strong>변경된 정점을 collision mesh에 기록할 때만 물리 스텝이 중단되었습니다.</strong> 해당 구간에도 시뮬레이션 루프는 실행되었으나
+(5 s에 약 125회, 회당 8.5 ms), <strong>물리 스텝 이벤트는 0회</strong>였습니다. 단순한 연산 지연과 구분되는 결과입니다.
+충돌 데이터 캐시는 <strong>collision mesh를 갱신할 때만 약 65 s마다 2 GiB씩</strong> 증가했으며,
+사흘간의 정지 구간에서는 증가하지 않았습니다. 캐시 증가와 대조 시험 결과를 원인 판단의 근거로 사용했습니다.</p>
 <div class="admonition danger">
-<p class="admonition-title">수신 주기로 재면 정상으로 보입니다</p>
-<p>토픽은 계속 나오기 때문에 수신 Hz만 보면 멀쩡합니다. 멈춤은 <strong>스탬프가 바뀌는지</strong>로 봐야 합니다.</p>
+<p class="admonition-title">메시지 수신 빈도와 물리 스텝 진행을 구분해야 합니다</p>
+<p>물리 스텝이 중단되어도 메시지는 계속 수신될 수 있습니다. <strong>Simulation timestamp의 증가 여부</strong>를 함께 확인해야 합니다.</p>
 </div>
-<h3 id="_9">고친 것과 확인<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>지형을 만들 때 <strong>렌더 전용 메시</strong>(충돌 없음)를 따로 두고, 변형은 거기에만 씁니다. 충돌 메시는
-숨깁니다(숨겨도 충돌은 유지됩니다). 정점이 바뀌지 않으면 아예 쓰지 않습니다.</p>
+<h3 id="_9">수정 내용과 검증 결과<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>지형 생성 시 <strong>렌더 전용 메시</strong>를 별도로 만들고 변형 정점은 해당 메시만 갱신합니다. Collision mesh는
+비표시 상태로 유지하되 충돌 기능은 유지합니다. 정점 값이 바뀌지 않으면 갱신을 생략합니다.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>고치기 전</th>
-<th><strong>고친 뒤</strong></th>
+<th>항목</th>
+<th>수정 전</th>
+<th><strong>수정 후</strong></th>
 <th>변형 OFF</th>
 </tr>
 </thead>
@@ -2130,10 +2140,10 @@ OmniLRS 예제값으로 보이며 근거가 문서 어디에도 없습니다.</p
 </tbody>
 </table>
 <p>주행 중 RTF가 0.22로 남은 것은 256만 정점 렌더 메시를 매번 다시 쓰는 비용이었고, 휠 근처만
-Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 풀었습니다.</p>
+Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 개선했습니다.</p>
 <hr />
-<h2 id="13-0159-021-2026-09-14">13. 발자국 폭은 휠 폭이 아니었다 — 0.159 → 0.21 (기준일 2026-09-14)<a class="headerlink" href="#13-0159-021-2026-09-14" title="Permanent link">&para;</a></h2>
-<p><strong>자산 USD는 설정과 맞았습니다.</strong> 시뮬레이션이 여는 로버 USD를 직접 쟀습니다.</p>
+<h2 id="13-0159-021-2026-09-14">13. 경계 표본을 고려한 접지면 폭 보정: 0.159 → 0.21 m (2026-09-14)<a class="headerlink" href="#13-0159-021-2026-09-14" title="Permanent link">&para;</a></h2>
+<p><strong>실행에 사용한 로버 USD 자산을 측정해 설정과의 정합을 확인했습니다.</strong></p>
 <table>
 <thead>
 <tr>
@@ -2160,9 +2170,9 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </tr>
 </tbody>
 </table>
-<p><strong>틀린 것은 매핑이었습니다.</strong> 엔진의 경계 분포 <code>mask·(tan|y| − tan + 1) − 1</code> 은 발자국 가장자리
+<p><strong>불일치의 원인은 격자 매핑 방식이었습니다.</strong> 엔진의 경계 분포 <code>mask·(tan|y| − tan + 1) − 1</code> 은 접지면 가장자리
 (|y| = 1)에서 <strong>안식각과 무관하게 0</strong> 입니다. 그래서 <strong>양 끝 횡 표본은 늘 파지 않고</strong>, 파이는 칸은
-「횡 표본 수 − 2」가 됩니다. 실제 엔진으로 직진 자국을 찍어 바퀴와 격자의 위상을 10단계로 바꿔 쟀습니다.</p>
+「횡 표본 수 − 2」가 됩니다. 엔진으로 직진 자국을 생성하고 휠과 격자의 상대 위상을 10단계로 변경해 측정했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2180,7 +2190,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <td><strong>63 %</strong></td>
 </tr>
 <tr>
-<td><strong>0.21 (지금)</strong></td>
+<td><strong>0.21 (보정 후)</strong></td>
 <td>5</td>
 <td><strong>3칸 = 0.150 m</strong></td>
 <td><strong>94 %</strong></td>
@@ -2195,7 +2205,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </table>
 <p>폭을 바꾸면 경계 분포의 최댓값이 −0.667 → −1.0이 되어 같은 계수로는 깊이가 1.5배가 됩니다.
 회귀 기울기 두 개를 ×2/3로 줄여 정상 하중 깊이 0.020 m를 유지했습니다.</p>
-<p><strong>실제 Isaac에서 확인</strong> — 3.9 m 직진 뒤 지형 데이터를 덤프해 쟀습니다.</p>
+<p><strong>Isaac Sim 검증:</strong> 3.9 m 직진 후 지형 데이터를 추출해 측정했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2221,19 +2231,19 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </tbody>
 </table>
 <hr />
-<h2 id="14-2026-09-14">14. 자국이 끊긴 점선 구덩이였다 — 하중 저역통과와 최대 깊이 채택 (기준일 2026-09-14)<a class="headerlink" href="#14-2026-09-14" title="Permanent link">&para;</a></h2>
-<p><strong>증상.</strong> 자국은 렌더됐지만 이어진 홈이 아니라 <strong>구덩이가 띄엄띄엄</strong> 이어지고 까만 조각이 섞였습니다.</p>
+<h2 id="14-2026-09-14">14. 자국 연속성 개선: 하중 필터와 최대 깊이 유지 (2026-09-14)<a class="headerlink" href="#14-2026-09-14" title="Permanent link">&para;</a></h2>
+<p><strong>증상:</strong> 렌더링된 자국에 불연속적인 침하 영역과 어두운 패치가 나타났습니다.</p>
 <p><strong>원인.</strong> 한 칸의 깊이는 <strong>처음 밟는 순간의 하중 하나</strong>로 정해졌습니다. 상류 규칙이 뒤따르는
 통과를 <code>0.01^통과횟수</code> 로 줄여 더하기 때문입니다. 그런데 서스펜션 토크에서 얻는 하중이 주행 중
-<strong>137~662 N</strong>(4륜 최대, 정상 182 N)으로 출렁여, 약한 순간에 밟힌 칸이 얕게 굳고 뒷바퀴가 지나가도
-채워지지 않았습니다.</p>
-<p><strong>고친 것</strong> (둘 다 설정으로 켜고, 기본값은 상류 동작)</p>
+<strong>137~662 N</strong>(4륜 최대, 기준 182 N)으로 변동해, 낮은 하중에서 최초 접촉한 셀의 깊이가 작게 고정되고 후륜 통과 시에도 충분히
+갱신되지 않았습니다.</p>
+<p><strong>수정 내용:</strong> 두 기능 모두 설정으로 활성화하며, 기본값에서는 upstream 동작을 유지합니다.</p>
 <ul>
 <li><strong>하중 저역통과</strong> — 수직 하중을 <strong>시뮬레이션 시간</strong> 기준 0.3 s 지수이동평균으로 거릅니다.
   0.43 m/s에서 약 13 cm, 격자 2~3칸입니다.</li>
 <li><strong>최대 깊이 채택</strong> — 같은 칸을 여러 번 밟으면 <strong>가장 깊은 값</strong>을 남깁니다.</li>
 </ul>
-<p><strong>실제 Isaac에서 확인</strong> — 같은 조건으로 직진하고 같은 스크립트로 쟀습니다.</p>
+<p><strong>Isaac Sim 검증:</strong> 동일 조건의 직진 주행을 같은 분석 스크립트로 평가했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2275,27 +2285,27 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </tr>
 </tbody>
 </table>
-<p>후방 카메라에서도 끊긴 구덩이 대신 <strong>이어진 홈 두 줄</strong>이 보입니다.</p>
+<p>후방 카메라 영상에서도 <strong>연속적인 두 줄의 자국</strong>을 확인했습니다.</p>
 <div class="admonition warning">
-<p class="admonition-title">대가 — 주행 중 깊이가 목표보다 깊습니다</p>
+<p class="admonition-title">잔여 오차: 주행 중 침하량이 정지 기준 목표를 초과</p>
 <p>주행 중 깊이 중앙값 0.028~0.035 m는 정지 교정값 0.020 m의 1.4~1.7배입니다. 주행 중 하중이
 크게 읽히고 가장 깊은 값을 남기기 때문입니다. 회귀는 정지 하중 기준으로만 맞췄으므로,
 <strong>주행 중 깊이는 교정되지 않았습니다.</strong> → 하중^(2/3)(15절)과 고해상도 자국(16절)으로 이어졌습니다.</p>
 </div>
 <hr />
-<h2 id="15-23-2026-09-14">15. 깊이가 하중에 선형이었다 — 하중의 2/3제곱으로 (기준일 2026-09-14)<a class="headerlink" href="#15-23-2026-09-14" title="Permanent link">&para;</a></h2>
-<p><strong>문제.</strong> 하중-깊이 회귀가 원점을 지나는 직선이라 하중이 두 배면 깊이도 두 배였습니다. 14절의
+<h2 id="15-23-2026-09-14">15. 하중–침하 비선형 관계 적용: 하중의 2/3제곱 (2026-09-14)<a class="headerlink" href="#15-23-2026-09-14" title="Permanent link">&para;</a></h2>
+<p><strong>문제:</strong> 하중-깊이 회귀가 원점을 지나는 직선이라 하중이 두 배면 깊이도 두 배였습니다. 14절의
 「주행 중 깊이가 1.4~1.7배」 가운데 일부가 이 선형성입니다 — 주행 중 크게 읽히는 하중 피크가 그대로
 깊이에 실렸습니다.</p>
-<p><strong>근거.</strong> 강성륜 Bekker 침하는</p>
+<p><strong>적용 모델:</strong> 강체 휠의 Bekker 침하식은</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>z = [ 3W / ((3 − n)·(k_c + b·k_φ)·√D) ]^(2/(2n+1))      →      z ∝ W^(2/(2n+1))
 </code></pre></div>
-<p>이고, 달 표토 기준값(Lunar Sourcebook, Soil B) n = 1이면 <strong>W^(2/3)</strong> 입니다. 같은 식이 우리 휠(폭 0.159 m ·
-지름 0.427 m)과 하중 182 N에서 <strong>21.6 mm</strong>를 내, 11절의 교정값 0.020 m와 맞습니다.</p>
-<p><strong>고친 것.</strong> 회귀에 넣기 전에 하중을 <code>F_ref · (F / F_ref)^(2/3)</code> 로 바꿉니다(F_ref = 182.2 N = 자중 ÷ 4).
+<p>이며, 달 표토 참고값(Lunar Sourcebook, Soil B) n = 1이면 <strong>W^(2/3)</strong> 관계를 얻습니다. 대상 휠(폭 0.159 m·
+지름 0.427 m)과 하중 182 N의 계산값은 <strong>21.6 mm</strong>로, 11절의 설계값 0.020 m와 유사합니다.</p>
+<p><strong>수정 내용:</strong> 회귀에 넣기 전에 하중을 <code>F_ref · (F / F_ref)^(2/3)</code> 로 바꿉니다(F_ref = 182.2 N = 자중 ÷ 4).
 기준하중에서는 값이 그대로라 11절 교정이 유지됩니다 — 182.2 N에서 0.0201 m 그대로, 364 N에서 <strong>1.587배</strong>
 (선형이면 2배).</p>
-<p><strong>실제 Isaac에서 확인</strong> — 14절과 같은 조건·같은 스크립트.</p>
+<p><strong>Isaac Sim 검증:</strong> 14절과 동일한 시험 조건과 분석 스크립트를 적용했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2337,16 +2347,16 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </tr>
 </tbody>
 </table>
-<p>주행 RTF 0.21~0.25, 멈춤 없음 — 성능 영향은 없습니다. 주행 중 깊이는 정지 교정의 1.2~1.5배로 줄었지만
+<p>주행 RTF는 0.21~0.25였고 물리 스텝 중단은 없었습니다. 해당 시험 범위에서 뚜렷한 성능 저하는 관측되지 않았습니다. 주행 중 깊이는 정지 교정의 1.2~1.5배로 줄었지만
 여전히 시험 자료로 교정한 것은 아닙니다.</p>
 <hr />
-<h2 id="16-15-cm-2026-09-14">16. 고해상도 자국 — 1.5 cm 타일에 실제 휠 단면을 찍는다 (기준일 2026-09-14)<a class="headerlink" href="#16-15-cm-2026-09-14" title="Permanent link">&para;</a></h2>
-<p><strong>왜.</strong> 0.05 m 격자에서는 휠 폭이 3칸이라 자국 단면이 V자가 되고, 그라우저 무늬(주기 약 56 mm)는
-원리상 나오지 않습니다. 해상도를 0.025 m로 올리면 시뮬레이션이 멈췄고(5절), 지금 해상도에서도 256만 정점
-지형을 매번 다시 쓰느라 주행 중 RTF가 0.22였습니다(12절). 지형 전체를 1.5 cm로 올리면 6,400만 정점이라
-불가능합니다. 방향은 <strong>해상도 1.5 cm · 먼 자국도 유지 · 사실감 우선</strong>으로 정했습니다.</p>
-<h3 id="_10">먼저 잰 것 — 느린 원인은 정점 수가 아니라 쓰는 경로였다<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>실제 야드 장면(로버 정지)에 격자 메시를 두고, 매 반복 전 정점을 바꿔 쓰며 RTF를 쟀습니다.</p>
+<h2 id="16-15-cm-2026-09-14">16. 휠 단면 기반 고해상도 타일 자국 생성 (2026-09-14)<a class="headerlink" href="#16-15-cm-2026-09-14" title="Permanent link">&para;</a></h2>
+<p><strong>도입 배경:</strong> 0.05 m 격자에서는 휠 폭이 3칸이라 자국 단면이 V자가 되고, 그라우저 무늬(주기 약 56 mm)는
+충분히 표현되지 않습니다. 해상도를 0.025 m로 올리면 시뮬레이션이 멈췄고(5절), 기존 0.05 m 해상도에서도 256만 정점
+지형을 매번 갱신하면서 주행 중 RTF가 0.22로 제한되었습니다(12절). 80 × 80 m 지형 전체를 1.5 cm 격자로 구성하면 약 2,844만 정점(1 cm에서는 6,400만 정점)이 필요하므로,
+전체 메시 갱신 방식은 연산·전송 부담이 큽니다. 설계 목표는 <strong>해상도 1.5 cm·기존 자국 유지·휠 형상 기반 표현</strong>으로 정했습니다.</p>
+<h3 id="_10">정점 수와 메시 갱신 경로에 따른 성능 비교<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>Lunaryard 장면에서 로버를 정지시킨 뒤 격자 메시의 정점을 매 반복 갱신하며 RTF를 측정했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2385,7 +2395,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </table>
 <ul>
 <li><strong>USD로 쓰면 28만 정점부터 RTF가 0.30</strong> 으로 떨어집니다 — 주행 RTF 0.22와 같은 기전입니다.</li>
-<li><strong>Fabric(Omniverse 런타임 데이터 계층)으로 쓰면 64만 정점도 비용이 거의 없고</strong>, 화면 캡처로 재질·그림자까지
+<li><strong>64만 정점에서 Fabric CPU 경로의 RTF는 0.487, GPU 경로는 0.499</strong>였습니다. 화면 캡처로 재질·그림자까지
   반영되는 것을 확인했습니다.</li>
 <li>1 m 타일 400개(185만 정점)를 <strong>정적으로</strong> 두면 RTF 0.481 — 먼 자국을 고해상도로 남겨도 됩니다.</li>
 <li>메시 구멍(<code>holeIndices</code>)으로 기존 지형을 가리는 방법은 화면에 반영되지 않아 쓰지 않았습니다.</li>
@@ -2393,29 +2403,29 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <h3 id="_11">구조<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <pre class="mermaid"><code>flowchart LR
     A["휠 링크 4개&lt;br/&gt;위치·차축·회전각"] --&gt; C["휠 근처 1 m 타일&lt;br/&gt;(1.5 cm, 없으면 생성)"]
-    P["휠 메시 실측 단면&lt;br/&gt;그라우저 24 · 높이 19.1 mm"] --&gt; D["휠 최저면을&lt;br/&gt;3 mm 간격으로 쓸어 찍기"]
+    P["휠 메시 실측 단면&lt;br/&gt;그라우저 24 · 높이 19.1 mm"] --&gt; D["휠 최저면을&lt;br/&gt;3 mm 간격으로 연속 투영"]
     B["하중&lt;br/&gt;(서스펜션 토크, 하중^(2/3))"] --&gt; D
     C --&gt; D
-    D --&gt; E["둔덕 · 벽 무너짐"]
+    D --&gt; E["둔덕 생성 · 벽 경사 완화"]
     E --&gt; F["바뀐 타일만&lt;br/&gt;Fabric 갱신"]
     F -.-&gt;|"충돌 메시는 그대로"| G["PhysX 지형 충돌"]</code></pre>
 <ul>
-<li><strong>실측 휠 단면</strong> — 휠 메시에서 반경을 축방향 32칸 × 그라우저 위상 120칸으로 쟀습니다. 넓은 면에는 정점이
-  모서리에만 있어 정점만 보면 그라우저 높이가 90 mm로 나오므로, 삼각형 내부를 채워 쟀습니다:
+<li><strong>자산에서 추출한 휠 단면</strong> — 휠 메시에서 반경을 축방향 32개 구간·그라우저 위상 120개 구간으로 나누어 측정했습니다. 넓은 면에는 정점이
+  모서리에만 있어 정점만 보면 그라우저 높이가 90 mm로 나오므로, 삼각형 내부에도 표본을 생성해 측정했습니다:
   림 194.2 mm · 팁 213.3 mm · <strong>직선 그라우저 24개 · 높이 19.1 mm</strong> · 가장자리 플랜지 200.4 mm.</li>
 <li><strong>그라우저 위치는 휠 회전각을 따릅니다.</strong> 그래서 자국 간격이 슬립 s에 따라 <code>55.9 mm × (1 − s)</code> 로 줄고,
-  슬립이 크면 무늬가 뭉개집니다 — 따로 모델링하지 않아도 나옵니다.</li>
-<li><strong>흙에 남는 몫</strong> — 휠 형상의 그라우저 틈 중 40 %만 남깁니다(흙이 되흘러 듭니다). 판 흙의 10 %는 옆
-  둔덕으로 보내고(추정), 휠 밖 벽은 60°를 넘으면 무너뜨립니다.</li>
-<li><strong>표시 지면 = 충돌면 + 27 mm.</strong> 휠은 바뀌지 않은 충돌면 위에 서므로 그라우저 팁이 27 mm 잠긴 모습이
-  됩니다 — 휠이 자국 안에 앉아 보입니다.</li>
-<li>타일은 주행 내내 <strong>남습니다</strong>(먼 자국 유지). 타일 아래의 기존 지형은 가라앉혀 가립니다.</li>
+  Slip이 커질수록 무늬가 중첩됩니다. 이 효과는 휠 회전각과 이동량의 기하 관계에서 발생합니다.</li>
+<li><strong>그라우저 형상 반영률</strong> — 되메움 효과를 시각적으로 근사하기 위해 그라우저 높이 차의 40 %를 반영합니다. 제거된 토양의 10 %를 측면
+  둔덕으로 재분배하는 것으로 가정하고, 자국 측벽의 경사가 60°를 넘으면 경사를 완화합니다. 이 비율과 임계각은 추정값입니다.</li>
+<li><strong>표시 지면 = 기준 렌더 지형 + 27 mm.</strong> 휠은 유지된 collision mesh와 접촉하고 표시 지면은 위로 이동하므로, 그라우저 팁이 지면에 잠긴 형태로
+  표현됩니다. 렌더 지형과 collision mesh의 근사 오차로 실제 표시 깊이는 달라질 수 있습니다.</li>
+<li><strong>생성된 타일을 유지해 이전 주행 자국을 보존합니다.</strong> 타일 아래의 기존 지형 메시를 낮춰 중복 표시를 방지합니다.</li>
 </ul>
-<h3 id="4">교정 — 실제 모듈을 가짜 지형에서 4륜 주행 (오프라인)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<h3 id="4">오프라인 검증: 합성 지형에서 4륜 주행 모듈 실행<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>흙에 남는 그라우저 몫</th>
+<th>그라우저 형상 반영률</th>
 <th>평균 깊이</th>
 <th>그라우저 자국 진폭</th>
 </tr>
@@ -2441,8 +2451,8 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <p>목표는 깊이 Bekker 21.6 mm · Lunokhod 21~24 mm, 그라우저 자국 6~9 mm(단륜 시험 6.09 mm)입니다.
 모듈 시험에서 슬립 0.1의 주기 <strong>50.1 mm</strong>(이론 50.3) · 슬립 0.3의 <strong>39.0 mm</strong>(이론 39.1) · 폭 0.164 m ·
 타일 쓰기 누락 0 · 이음매 오차 0 · 호출당 3.4 ms를 확인했습니다.</p>
-<h3 id="isaac">실제 Isaac에서 확인<a class="headerlink" href="#isaac" title="Permanent link">&para;</a></h3>
-<p>보드 EPOS, 구동 2.0 rad/s 직진, 5 s 창 스탬프 RTF.</p>
+<h3 id="isaac">Isaac Sim 실행 검증<a class="headerlink" href="#isaac" title="Permanent link">&para;</a></h3>
+<p>보드를 EPOS backend로 전환한 상태에서 구동 2.0 rad/s 직진 명령을 직접 입력했습니다. RTF는 5 s 구간의 simulation timestamp와 wall-clock time으로 계산했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2477,44 +2487,44 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </tr>
 </tbody>
 </table>
-<h3 id="_12">실측에서 나온 결함 둘 — 같은 지령을 다시 돌려 원인을 갈랐다<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>같은 지령이면 시뮬레이션이 결정적이라, 판을 바꿔도 자국과 카메라 위치가 같습니다. 이것을 대조 실험으로 썼습니다.</p>
+<h3 id="_12">반복 주행 대조 시험으로 확인한 두 가지 결함<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>해당 시험에서는 초기 상태·장면·카메라·명령을 동일하게 유지해 자국을 비교했습니다. 모든 환경에서 결정성이 보장된다는 의미는 아닙니다.</p>
 <ol>
-<li><strong>타일 영역 경계를 따라 밝은 선.</strong> 처음에는 기존 지형 가리기가 화면에 안 먹은 것으로 의심했지만, 쓰는
-   경로를 바꿔도(Fabric · USD) <strong>똑같이 보였고</strong> 되읽은 값도 맞았습니다 — 가설이 틀렸습니다. 원인은 경계
-   첫 줄 정점을 0.2 m 한꺼번에 내려 생긴 급경사가 <strong>경계 정점의 부드러운 법선을 기울인 것</strong>이었습니다.
-   첫 줄만 2 mm 내리자 선이 사라졌습니다.</li>
-<li><strong>자국 깊이가 줄을 따라 10~35 mm로 출렁임.</strong> 휠의 물리 높이를 기준으로 찍었는데, 충돌 메시가 렌더 지형의
-   근사라 휠 팁과 지형 사이가 직진 중에도 평균 6 mm · p95 15 mm 떴고(돌 위·선회 중에는 수백 mm), 하중 추정도
-   ±16 mm 폭으로 출렁였습니다. <strong>렌더 지형을 기준으로 찍고, 4 cm 넘게 뜬 휠은 찍지 않고, 하중 침하를 ±10 mm로
-   묶어</strong> 깊이 변동계수가 0.35~0.38 → <strong>0.25~0.30</strong>이 됐습니다.</li>
+<li><strong>타일 경계의 밝은 선:</strong> 기존 지형의 비표시 처리가 반영되지 않았다는 가설을 검토했습니다. 그러나 갱신
+   경로(Fabric·USD)를 바꿔도 <strong>동일한 현상</strong>이 발생했고, 기록값을 다시 조회한 결과도 일치해 해당 가설을 배제했습니다. 원인은 경계
+   첫 행의 정점을 0.2 m 낮추면서 형성된 급경사가 <strong>보간된 vertex normal의 방향을 변화시킨 것</strong>이었습니다.
+   첫 행의 하강량을 2 mm로 제한한 뒤 밝은 선이 사라졌습니다.</li>
+<li><strong>주행 경로를 따른 자국 깊이 변동(10~35 mm):</strong> 휠의 물리 높이를 기준으로 자국을 생성했으나, collision mesh가 렌더 지형의
+   근사이므로 휠 팁과 지형 사이에 직진 중 평균 6 mm·p95 15 mm의 간격이 발생했습니다(암석 위·선회 중에는 수백 mm). 하중에 따른 침하 보정량도
+   ±16 mm 범위에서 변동했습니다. <strong>렌더 지형 기준으로 자국을 생성하고, 지형과의 간격이 4 cm를 넘는 휠은 제외하며, 하중 침하량을 ±10 mm로
+   제한한 뒤</strong> 깊이 변동계수가 0.35~0.38에서 <strong>0.25~0.30</strong>으로 감소했습니다.</li>
 </ol>
 <div class="admonition note">
-<p class="admonition-title">남는 것</p>
+<p class="admonition-title">추가 검증이 필요한 항목</p>
 <ul>
-<li>남은 깊이 출렁임은 대부분 하중 추정 잡음입니다(서스펜션 토크 하중 산포 ±18 %).</li>
+<li>잔여 깊이 변동의 주요 원인은 하중 추정 잡음입니다(서스펜션 토크 하중 산포 ±18 %).</li>
 <li>그라우저 자국 진폭 9~10 mm는 단륜 시험(6.09 mm)보다 큽니다.</li>
 <li>둔덕 비율과 벽 임계각은 정량 문헌이 없는 추정입니다.</li>
-<li><strong>렌더 전용입니다</strong> — 휠이 자국을 밟지 않으므로 슬립·견인 수치에는 반영되지 않습니다.</li>
+<li><strong>렌더 전용입니다.</strong> 변형된 자국이 휠 접촉을 바꾸지 않으므로 자국에 의한 slip·견인 변화는 반영되지 않습니다.</li>
 <li>타일이 계속 남으므로 아주 긴 주행에서는 정점이 쌓입니다(1 km에 약 600만 정점 추정).</li>
 </ul>
 </div>
 <hr />
 <h2 id="17-2026-09-14">17. 파라미터 조정 가이드 (기준일 2026-09-14)<a class="headerlink" href="#17-2026-09-14" title="Permanent link">&para;</a></h2>
 <p>설정은 lunaryard 환경 설정의 <code>terrain_manager.moon_yard.deformation_engine</code> 아래에 있습니다.
-<strong>무엇을 고치면 무엇이 바뀌는지</strong>를 한곳에 모았습니다.</p>
-<h3 id="_13">먼저 — 지금 쓰이는 값과 안 쓰이는 값<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+각 파라미터의 적용 경로와 조정 영향을 정리했습니다. 표의 값은 <strong>2026-09-14에 확인한 설정</strong>입니다.</p>
+<h3 id="_13">경로별 파라미터 적용 범위<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>묶음</th>
-<th>지금 동작에 영향</th>
+<th>구분</th>
+<th>적용 조건</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>A. 공통 (켜기 · 지연 · 하중 입력)</td>
-<td>항상</td>
+<td>A. 공통 (활성화·지연·하중 입력)</td>
+<td>전체 변형 경로</td>
 </tr>
 <tr>
 <td>B. 0.05 m 지형 경로 (<code>footprint</code> · 분포 · 회귀)</td>
@@ -2522,12 +2532,12 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </tr>
 <tr>
 <td>C. <code>track_tiles</code> (1.5 cm 자국, 16절)</td>
-<td><strong>지금 자국을 만드는 것</strong></td>
+<td><strong>최종 확인 설정의 활성 경로</strong></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title"><code>track_tiles</code> 가 켜진 상태에서 B를 고치면 화면에 아무 변화가 없습니다</p>
+<p class="admonition-title"><code>track_tiles</code> 활성 상태에서는 B 경로의 파라미터가 자국에 적용되지 않습니다</p>
 <p>B로 되돌리려면 <code>track_tiles.enable: False</code> 로 둡니다 — 이때 주행 RTF는 0.22로 떨어집니다(12절).</p>
 </div>
 <h3 id="a">A — 공통<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
@@ -2556,19 +2566,19 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tr>
 <td><code>force_source</code></td>
 <td>suspension</td>
-<td>휠 하중을 어디서 읽나</td>
-<td><code>contact</code> 는 정지 시 0으로 읽혀 <strong>서 있으면 안 파이고 부딪히면 파입니다</strong>(4절)</td>
+<td>휠 하중 입력 경로</td>
+<td><code>contact</code> 는 정지 시 0으로 읽혀 <strong>정적 하중보다 충격에 따른 변형이 지배적입니다</strong>(4절)</td>
 </tr>
 <tr>
 <td><code>suspension_joints</code></td>
 <td>FL · FR · RL · RR</td>
 <td>하중 토크를 읽을 조인트</td>
-<td><strong>휠 링크 목록과 순서가 같아야 합니다</strong> — 틀려도 값이 그럴듯합니다</td>
+<td><strong>휠 링크 목록과 순서가 같아야 합니다</strong> — 순서 불일치가 수치만으로 드러나지 않을 수 있습니다</td>
 </tr>
 <tr>
 <td><code>suspension_lever_arm</code></td>
 <td>0.4908 m</td>
-<td>토크 → 힘 환산 팔 길이</td>
+<td>토크–힘 환산용 lever arm</td>
 <td>로버 자산을 바꾸면 다시 계산</td>
 </tr>
 <tr>
@@ -2581,7 +2591,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <td><code>force_filter_tau</code></td>
 <td>0.3 s</td>
 <td>하중 저역통과</td>
-<td>늘리면 깊이가 고르고 충격에 둔해지고, 줄이면 출렁입니다</td>
+<td>증가 시 고주파 변동 억제·응답 지연 증가, 감소 시 하중 변동 반영 증가</td>
 </tr>
 <tr>
 <td>지형 크기·해상도</td>
@@ -2591,14 +2601,14 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </tr>
 </tbody>
 </table>
-<h3 id="c-track_tiles-15-cm">C — <code>track_tiles</code> (지금 켜진 1.5 cm 자국)<a class="headerlink" href="#c-track_tiles-15-cm" title="Permanent link">&para;</a></h3>
+<h3 id="c-track_tiles-15-cm">C — <code>track_tiles</code>: 최종 확인된 1.5 cm 자국 생성 경로<a class="headerlink" href="#c-track_tiles-15-cm" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>표시 지면       = 지형 + surface_offset
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>휠이 찍는 면     = 지형 + R + [원 + κ·(실측 휠 단면 − 원)] − δ
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>휠 투영면     = 지형 + R + [원 + κ·(자산에서 추출한 휠 단면 − 원)] − δ
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>하중 침하 δ     = surface_offset · ((F / reference_load)^load_exponent − 1)
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>                  → [−max_less_sinkage, +max_extra_sinkage] 로 자름
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>                  → [−max_less_sinkage, +max_extra_sinkage] 로 제한
 </code></pre></div>
 <p>그라우저 팁 깊이 ≈ <code>surface_offset + δ</code>, 그라우저 사이 둔턱은 ≈ <code>κ × 19.1 mm</code> 만큼 얕습니다.</p>
-<p><strong>모양 (사실감 — 주로 여기를 만집니다)</strong></p>
+<p><strong>자국 형상과 시각적 표현</strong></p>
 <table>
 <thead>
 <tr>
@@ -2616,12 +2626,12 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tr>
 <td><code>grouser_transfer</code> (κ)</td>
 <td>0.40</td>
-<td>흙에 남는 그라우저 몫. <strong>그라우저 무늬 깊이 ≈ κ × 19.1 mm</strong>(0.35 → 6.7 · 0.40 → 7.7 · 0.45 → 8.6 mm, Isaac 실측 9~10 mm). 0 = 매끈한 홈, 1 = 휠 모양 그대로</td>
+<td>그라우저 형상 반영률. <strong>그라우저 무늬 깊이 ≈ κ × 19.1 mm</strong>(0.35 → 6.7 · 0.40 → 7.7 · 0.45 → 8.6 mm, Isaac 실측 9~10 mm). 0 = 매끈한 홈, 1 = 휠 모양 그대로</td>
 </tr>
 <tr>
 <td><code>berm_fraction</code></td>
 <td>0.10</td>
-<td>판 흙 중 옆 둔덕 비율 — <strong>정량 문헌 없는 추정</strong>. 0.25면 둔덕 약 11 mm로 과했습니다. 0 = 둔덕 없음</td>
+<td>제거된 토양 중 측면 둔덕에 재분배하는 비율 — <strong>정량 문헌 없는 추정</strong>. 0.25면 둔덕 약 11 mm로 과했습니다. 0 = 둔덕 없음</td>
 </tr>
 <tr>
 <td><code>berm_width</code></td>
@@ -2636,12 +2646,12 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tr>
 <td><code>relax_iterations</code></td>
 <td>2</td>
-<td>벽 무너뜨림 반복 수. 늘리면 임계각에 더 가깝게 수렴</td>
+<td>벽 경사 완화 연산의 반복 횟수. 늘리면 임계각에 더 가깝게 수렴</td>
 </tr>
 <tr>
 <td><code>wheel_profile</code></td>
 <td>휠 단면 표</td>
-<td><strong>로버 자산을 바꾸면 휠 메시에서 다시 뽑습니다</strong></td>
+<td><strong>로버 자산 변경 시 휠 메시에서 다시 추출합니다</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2668,7 +2678,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tr>
 <td><code>max_extra_sinkage</code> / <code>max_less_sinkage</code></td>
 <td>0.010 / 0.010 m</td>
-<td>δ의 한계. 넓히면 하중 차가 더 드러나지만 <strong>하중 추정 잡음으로 줄을 따라 출렁입니다</strong>(±16 mm로 풀었을 때 변동계수 0.35~0.38)</td>
+<td>δ의 한계. 넓히면 하중 차가 더 드러나지만 <strong>하중 추정 잡음에 따른 깊이 변동도 증가합니다</strong>(±16 mm로 풀었을 때 변동계수 0.35~0.38)</td>
 </tr>
 </tbody>
 </table>
@@ -2685,12 +2695,12 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tr>
 <td><code>height_reference</code></td>
 <td>terrain</td>
-<td><code>terrain</code> = 렌더 지형 기준(권장). <code>wheel</code> = 물리 휠 높이 기준 — 충돌 메시 근사 오차(평균 6 mm · p95 15 mm)가 그대로 깊이 출렁임이 됩니다</td>
+<td><code>terrain</code> = 렌더 지형 기준(권장). <code>wheel</code> = 물리 휠 높이 기준 — 충돌 메시 근사 오차(평균 6 mm · p95 15 mm)가 그대로 깊이 변동이 됩니다</td>
 </tr>
 <tr>
 <td><code>lift_threshold</code></td>
 <td>0.04 m</td>
-<td>지형에서 이보다 뜬 휠은 찍지 않습니다(돌 위·들림). 낮추면 요철에서 끊기고, 높이면 뜬 휠이 끌린 자국을 남깁니다</td>
+<td>지형과의 간격이 이 값을 넘는 휠은 자국 생성에서 제외합니다. 감소 시 요철에서 자국이 단절될 수 있고, 증가 시 비접촉 휠의 자국이 생성될 수 있습니다</td>
 </tr>
 </tbody>
 </table>
@@ -2722,16 +2732,16 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tr>
 <td><code>max_substep</code></td>
 <td>0.003 m</td>
-<td>쓸어 찍는 간격. 키우면 그라우저 팁(약 5 mm)을 건너뛰어 점무늬가 됩니다</td>
+<td>휠 형상을 연속 투영하는 공간 간격. 키우면 그라우저 팁(약 5 mm)을 건너뛰어 점무늬가 됩니다</td>
 </tr>
 <tr>
 <td><code>max_jump</code></td>
 <td>0.3 m</td>
-<td>한 번에 이보다 많이 움직이면(리셋·순간이동) 홈을 끌지 않습니다</td>
+<td>한 번에 이보다 많이 움직이면(리셋·순간이동) 이동 전후 위치 사이의 연속 자국 생성을 생략합니다</td>
 </tr>
 </tbody>
 </table>
-<p><strong>렌더 경로 (보통 건드리지 않습니다)</strong></p>
+<p><strong>렌더링 경로: 성능 검증 후 변경</strong></p>
 <table>
 <thead>
 <tr>
@@ -2759,7 +2769,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tr>
 <td><code>base_hide_depth</code></td>
 <td>0.2 m</td>
-<td>타일 아래 기존 지형을 가라앉히는 깊이</td>
+<td>타일 아래 기존 지형 메시를 낮추는 깊이</td>
 </tr>
 <tr>
 <td><code>base_hide_edge_depth</code></td>
@@ -2820,7 +2830,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <p>모두 침하 0.020 m를 가정합니다. 하나만 바꾸면 서로 어긋나므로 오프라인 재현 계산으로 다시 맞춥니다.
 설정에 있지만 <strong>읽히지 않는 값</strong>도 있습니다 — <code>gravity</code>, <code>footprint.shape</code>, <code>num_links</code> (6절).</p>
 </div>
-<h3 id="_14">목적별 조정<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_14">조정 목적별 파라미터<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2838,11 +2848,11 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <td><code>surface_offset</code> ↑</td>
 </tr>
 <tr>
-<td>벽을 더 날카롭게</td>
+<td>자국 측벽 경사 증가</td>
 <td><code>critical_angle_deg</code> ↑ (70)</td>
 </tr>
 <tr>
-<td>둔덕 없애기</td>
+<td>측면 둔덕 생성 비활성화</td>
 <td><code>berm_fraction: 0</code></td>
 </tr>
 <tr>
@@ -2851,29 +2861,31 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </tr>
 <tr>
 <td>하중에 따른 차이를 크게</td>
-<td><code>max_extra/less_sinkage</code> ↑ (출렁임 감수)</td>
+<td><code>max_extra/less_sinkage</code> ↑ (깊이 변동 증가 가능)</td>
 </tr>
 <tr>
-<td>더 촘촘하게</td>
+<td>격자 해상도 증가</td>
 <td><code>samples_per_tile: 100</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="_15">바꾸는 절차<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h3 id="_15">파라미터 변경 및 검증 절차<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>설정 파일을 고치지 않고 시험</strong> — 실행 명령 뒤에 Hydra 덮어쓰기를 붙입니다.
+<li><strong>설정 파일을 고치지 않고 시험</strong> — 실행 명령에 Hydra override를 추가합니다.
    <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>++environment.terrain_manager.moon_yard.deformation_engine.track_tiles.grouser_transfer=0.35
 </code></pre></div></li>
 <li><strong>확정</strong> — 설정 파일을 고치고, <strong>시뮬레이터가 실제로 읽는 OmniLRS 설치본의 설정도 같은 파일인지</strong> 확인합니다.
-   저장소 쪽만 고치면 조용히 옛 값으로 돕니다.</li>
+   저장소만 변경하면 설치본의 이전 설정이 계속 적용될 수 있습니다.</li>
 <li><strong>검증</strong> — 오프라인 시험(수 초: 깊이 · 주기 · 폭 · 이음매)을 먼저 보고, Isaac에서 직진 주행 → 후방 카메라 →
-   깊이 · 그라우저 · 폭 · RTF를 잽니다. <strong>같은 지령이면 시뮬레이션이 결정적</strong>이라 전후 사진을 그대로 비교할 수
-   있습니다. RTF는 <strong>헤더 스탬프</strong>로 잽니다 — 수신 주기로 재면 물리가 멈춘 상태를 정상으로 봅니다(12절).</li>
+   깊이·그라우저 형상·폭·RTF를 측정합니다. <strong>초기 상태·장면·카메라·명령을 동일하게 유지한 대조 시험</strong>으로 전후 영상을 비교할 수
+   있습니다. RTF는 <strong>simulation timestamp 증가량과 wall-clock time 경과량</strong>으로 계산합니다. 수신 빈도만으로는 물리 스텝 중단을 판별할 수 없습니다(12절).</li>
 </ol>
 <hr />
-<h2 id="18">18. 왜 처음에 안 됐나 — 경과 한눈에<a class="headerlink" href="#18" title="Permanent link">&para;</a></h2>
-<p><strong>OmniLRS 변형 엔진은 반경 0.09 m 소형 휠 · 3~18 N 하중으로 교정된 코드이고, 450 kg 로버에서 돌아간 적이
-없었습니다.</strong> 그리고 대부분 <strong>오류 없이 조용히 틀렸습니다</strong> — 한 겹을 고치면 다음 겹이 드러났습니다.</p>
+<h2 id="18">18. 문제 원인과 개선 이력<a class="headerlink" href="#18" title="Permanent link">&para;</a></h2>
+<p>초기 설정은 반경 0.09 m의 소형 휠과 낮은 하중 범위를 전제로 작성되어,
+450 kg 로버에 적용하려면 제원·하중·격자 해상도의 정합을 확인해야 했습니다.
+회귀 계수의 원 교정 자료는 확인되지 않았습니다. 실행 오류가 보고되지 않아도
+변형량·하중·물리 시간 진행이 부정확할 수 있으므로 각 경로를 분리해 계측했습니다.</p>
 <table>
 <thead>
 <tr>
@@ -2887,76 +2899,74 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tbody>
 <tr>
 <td>1</td>
-<td>켜도 아무 일 없음</td>
-<td>폭 0.09 → 횡 표본 2개가 모두 가장자리(늘 0). 12 m 달려도 격자 0칸, 오류 없음</td>
-<td>폭 확대</td>
+<td>변형 미발생</td>
+<td>폭 0.09 m의 횡방향 표본 2개가 모두 경계에 위치해 깊이 0. 12 m 주행 후에도 변경 셀 0개</td>
+<td>접지면 폭 확대</td>
 <td>2</td>
 </tr>
 <tr>
 <td>2</td>
-<td>폭만 고치니 로버가 파묻힘</td>
-<td>회귀 계수 출처 없음 — 정상 하중 침하 0.0946 m(반경 44 %), 무하중에서도 5.3 mm. 이동 0.054 m</td>
-<td>절편 0 · 182 N에서 0.020 m로 재교정</td>
-<td>3 · 11</td>
+<td>폭 변경 후 과도한 침하</td>
+<td>교정 근거가 없는 회귀 계수. 기준 하중 침하 0.0946 m(반경 44 %), 무하중 침하 5.3 mm, 이동 거리 0.054 m</td>
+<td>절편 0·하중 182 N에서 침하 0.020 m로 조정</td>
+<td>3·11</td>
 </tr>
 <tr>
 <td>3</td>
-<td>스폰 자리에 21 cm 구덩이</td>
-<td>상류 결함 — <code>delay</code> 단위 변환이 반대(2 s → 0.067 스텝), <code>y_deform_offset</code> 이 x 값을 받음</td>
-<td>패치 · <code>delay</code> 10 s</td>
-<td>7 · 11</td>
+<td>초기 배치 위치에 21 cm 침하</td>
+<td><code>delay</code> 단위 변환 오류(2 s → 0.067 스텝), <code>y_deform_offset</code>에 x 값 할당</td>
+<td>Upstream 패치·<code>delay</code> 10 s</td>
+<td>7·11</td>
 </tr>
 <tr>
 <td>4</td>
-<td>서 있으면 안 파이고 부딪히면 파임</td>
-<td>물리 엔진 접지력이 정지 시 0</td>
-<td>서스펜션 토크 하중, 4절 링크라 보정 1.78</td>
+<td>정지 시 변형 없음·충격 시 과도한 변형</td>
+<td>정지 상태의 물리 엔진 접촉력 조회값이 0</td>
+<td>서스펜션 토크 기반 하중 추정·링크 보정 계수 1.78</td>
 <td>4</td>
 </tr>
 <tr>
 <td>5</td>
-<td>켜고 주행하면 물리가 멈춤</td>
-<td>변형 점을 <strong>충돌 메시</strong>에 써서 256만 정점 콜라이더를 계속 재쿠킹 → 물리 스텝 건너뜀. 토픽은 나오고 스탬프만 멈춤</td>
-<td>렌더 전용 메시 → RTF 0.008 → 0.22</td>
+<td>주행 중 물리 스텝 중단</td>
+<td>Collision mesh의 256만 정점 갱신으로 반복 re-cooking 발생. 토픽은 발행되지만 타임스탬프 정체</td>
+<td>렌더 전용 메시 분리·RTF 0.008 → 0.22</td>
 <td>12</td>
 </tr>
 <tr>
 <td>6</td>
-<td>자국이 가늘다</td>
-<td>폭에 휠 폭 0.159를 넣었는데 가장자리 표본 0이라 실제 0.10 m(63 %). <code>wave_frequency</code> 를 개수로 착각(4.14)</td>
-<td>폭 0.21 · 3.229</td>
-<td>13 · 6</td>
+<td>자국 폭 부족</td>
+<td>설정 폭 0.159 m의 경계 표본 깊이가 0이므로 실제 변형 폭은 0.10 m(63 %). <code>wave_frequency</code> 환산 오류</td>
+<td>폭 0.21 m·<code>wave_frequency</code> 3.229</td>
+<td>13·6</td>
 </tr>
 <tr>
 <td>7</td>
-<td>끊긴 점선 구덩이</td>
-<td>칸 깊이가 처음 밟는 순간 하중으로 굳고, 하중이 137~662 N으로 출렁. 깊이가 하중에 선형</td>
-<td>저역통과 + 최대 깊이, 하중^(2/3)</td>
-<td>14 · 15</td>
+<td>자국의 불연속적 깊이</td>
+<td>최초 통과 하중에 깊이가 고정되고 하중은 137~662 N으로 변동. 선형 하중–침하 관계가 피크를 과도하게 반영</td>
+<td>Low-pass filter·최대 깊이 유지·하중^(2/3)</td>
+<td>14·15</td>
 </tr>
 <tr>
 <td>8</td>
-<td>그라우저 무늬 없음 · 주행 RTF 0.22</td>
-<td>5 cm 격자는 휠 폭 3칸이라 원리상 불가, 256만 정점 USD 재기록이 느림, 0.025로 올리면 멈춤</td>
-<td>1.5 cm 타일 + 실측 휠 단면 + Fabric → RTF 0.48~0.50</td>
-<td>5 · 16</td>
+<td>그라우저 무늬 표현 한계·RTF 0.22</td>
+<td>5 cm 격자는 휠 폭을 약 3개 셀로 표현. 256만 정점의 USD 갱신 비용과 0.025 m 해상도에서의 중단 문제</td>
+<td>1.5 cm 타일·휠 단면·Fabric 적용, RTF 0.48~0.50</td>
+<td>5·16</td>
 </tr>
 <tr>
 <td>9</td>
-<td>타일 경계에 밝은 선 · 깊이 출렁임</td>
-<td>경계 첫 줄 급경사가 법선을 기울임. 휠 팁 − 지형 간격과 하중 잡음</td>
-<td>첫 줄 2 mm · 지형 기준 찍기 · 들린 휠 제외 · 침하 ±10 mm</td>
+<td>타일 경계의 밝은 선·깊이 변동</td>
+<td>경계 급경사에 따른 vertex normal 변화, 휠 팁–렌더 지형 간격과 하중 추정 잡음</td>
+<td>경계 첫 행 하강량 2 mm·렌더 지형 기준 투영·비접촉 휠 제외·침하 보정 ±10 mm</td>
 <td>16</td>
 </tr>
 </tbody>
 </table>
-<p><strong>원인은 세 갈래였습니다.</strong></p>
+<p>주요 원인은 다음 세 범주로 정리됩니다.</p>
 <ol>
-<li><strong>다른 규모의 로버용으로 교정된 값</strong> — 폭 · 회귀 계수 · 발자국 길이 · <code>wave_frequency</code> 가 소형 휠 기준이었습니다.</li>
-<li><strong>조용히 틀리는 설계</strong> — 변형이 0이어도, 하중이 틀린 신호여도, 물리가 멈춰도 오류가 나지 않았습니다.
-   그래서 <strong>숫자로 먼저 가르는 계측</strong>(지형 데이터 덤프 · 스탬프 RTF · 같은 지령 대조)이 매번 필요했습니다.</li>
-<li><strong>렌더와 물리를 한 메시에 묶은 구조</strong> — 자국을 그리는 일이 콜라이더 재쿠킹과 지형 전체 재기록을 불렀습니다.
-   지금은 둘을 떼어 <strong>자국은 보이기만 하고 휠은 밟지 않습니다.</strong> 충돌 반영은 차년도 과제입니다.</li>
+<li><strong>대상 로버와 파라미터의 불일치:</strong> 접지면 폭·길이·회귀 계수·그라우저 주기 설정이 대상 로버의 제원과 하중에 맞지 않았습니다.</li>
+<li><strong>실행 상태와 물리 유효성의 구분 부족:</strong> 프로세스 실행이나 토픽 수신만으로는 변형 미발생, 하중 오차, 물리 스텝 중단을 검출할 수 없었습니다. DEM 데이터·타임스탬프·대조 시험을 함께 사용했습니다.</li>
+<li><strong>렌더링과 충돌 처리의 결합:</strong> 자국 표현을 위한 정점 갱신이 충돌 데이터 재생성을 유발했습니다. 두 경로를 분리해 실행 성능을 개선했으며, 변형 지형과 휠 접촉의 물리적 연계는 후속 과제로 남아 있습니다.</li>
 </ol>
 
 
