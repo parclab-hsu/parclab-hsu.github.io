@@ -25,7 +25,7 @@
     
     
       
-        <title>달 탐사 로버 USD 자산 매뉴얼 - PARC Lab</title>
+        <title>달 탐사 로버 USD 설명 - PARC Lab</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              달 탐사 로버 USD 자산 매뉴얼
+              달 탐사 로버 USD 설명
             
           </span>
         </div>
@@ -673,6 +673,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. 자산 구조">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 레이어 합성 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 합성 결과 stage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 생성기가 추가하는 Action Graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -902,7 +941,7 @@
 
 
 
-<h1 id="usd">달 탐사 로버 USD 자산 매뉴얼<a class="headerlink" href="#usd" title="Permanent link">&para;</a></h1>
+<h1 id="usd">달 탐사 로버 USD 설명<a class="headerlink" href="#usd" title="Permanent link">&para;</a></h1>
 <p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>기술 매뉴얼</strong> · 현대자동차 L-Project · 기준일 <strong>2026-09-29</strong> (최초 2026-09-22)</p>
 <div class="admonition abstract">
 <p class="admonition-title">목적 및 적용 범위</p>
@@ -932,15 +971,172 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    └ stereo_camera/…           Camera
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>SubUSDs/  Rover_hyundai{,_base,_physics,_robot,_sensor}.usd · IMU_sensor.usd · stereo_camera.usd
 </code></pre></div>
-<p>로버의 articulation root 링크 이름은 <code>world</code>입니다. 단위는 m, 상향축은 Z입니다.
-원본 구조의 2026-08-20 분석에서는 revolute joint <strong>24개</strong>, drive 보유 조인트 <strong>20개</strong>가
-보고되었습니다. 2026-09-29 정식 플랜트의 합성 stage에서 확인한 drive 보유 조인트는
-<strong>12개</strong>입니다(6절). 두 기록은 검사 시점과 대상이 다르므로, 현재 파일을 점검할 때는
-파일 경로와 버전을 기록하고 합성 stage의 조인트 구성을 확인하십시오.</p>
+<p>로버의 articulation root 링크 이름은 <code>world</code>입니다. 단위는 m, 상향축은 Z입니다.</p>
 <p>OmniLRS용 자산은 생성기가 <code>World0.usd</code>를 참조하여 만든
 <code>Rover_hyundai_omnilrs.usd</code>입니다. 원본에 직접 변경 사항을 누적하지 않고,
 생성된 자산에 필요한 override를 적용합니다. 센서 배치와 Action Graph 등 반복 적용할
 변경은 생성기에 반영해야 재생성 후에도 유지됩니다.</p>
+<h3 id="1-1">1.1 레이어 합성 구조<a class="headerlink" href="#1-1" title="Permanent link">&para;</a></h3>
+<p><img alt="USD 합성 구조: 레이어 참조 사슬과 합성 결과 stage의 최상위 계층" src="../../assets/l-project-usd-composition.png" /></p>
+<p>본 자산은 <strong>sublayer를 사용하지 않습니다.</strong> 합성은 전적으로 <strong>reference</strong>로 이루어지며,
+생성 레이어에서 자산 원본까지 두 단계를 거칩니다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>레이어</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>Rover_hyundai_omnilrs.usd</code></td>
+<td>생성 레이어. <code>defaultPrim</code>은 <strong><code>rover_hyundai</code></strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>World0.usd</code></td>
+<td>자산 루트. 질량·관성 override가 기록되는 위치</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>SubUSDs/Rover_hyundai.usd</code></td>
+<td>링크 트리</td>
+</tr>
+</tbody>
+</table>
+<p>생성 레이어는 <code>World0.usd</code>의 <strong><code>/World/Rover_hyundai</code> 서브트리 하나만</strong> reference하여
+<code>/rover_hyundai/Rover_hyundai</code>에 배치합니다. 3단계 아래는 역할별로 분리되어 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>SubUSD</th>
+<th>저작 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Rover_hyundai_base.usd</code></td>
+<td>형상(메시)</td>
+</tr>
+<tr>
+<td><code>Rover_hyundai_physics.usd</code></td>
+<td>질량·관성 등 물리 속성</td>
+</tr>
+<tr>
+<td><code>Rover_hyundai_robot.usd</code></td>
+<td>조인트 정의</td>
+</tr>
+<tr>
+<td><code>Rover_hyundai_sensor.usd</code></td>
+<td>센서 마운트</td>
+</tr>
+<tr>
+<td><code>IMU_sensor.usd</code> · <code>stereo_camera.usd</code></td>
+<td>센서 본체</td>
+</tr>
+</tbody>
+</table>
+<p>합성에 참여하는 레이어는 <strong>총 10개</strong>입니다(session layer 포함).</p>
+<div class="admonition note">
+<p class="admonition-title">override는 레이어 스택으로 확인합니다</p>
+<p>동일 속성이 여러 레이어에 기록된 경우 상위 레이어 값이 적용됩니다. 예를 들어
+<code>physics:diagonalInertia</code>는 <code>Rover_hyundai_physics.usd</code>에 초기값이 있고
+<strong><code>World0.usd</code>가 자동 계산 sentinel로 덮어씁니다.</strong> 값을 점검할 때는 합성 결과와
+함께 <strong>어느 레이어가 저작했는지</strong>를 확인하십시오. 하위 레이어만 교체하면 상위
+override가 그대로 남습니다.</p>
+</div>
+<h3 id="1-2">1.2 합성 결과 stage<a class="headerlink" href="#1-2" title="Permanent link">&para;</a></h3>
+<p>합성 결과 stage의 prim 수는 <strong>173개</strong>입니다. 최상위 구성은 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>경로</th>
+<th>구성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/rover_hyundai</code></td>
+<td><code>defaultPrim</code>. 로버와 graph를 하나의 prim 아래에 둡니다</td>
+</tr>
+<tr>
+<td><code>/rover_hyundai/Rover_hyundai</code></td>
+<td>reference된 로버 서브트리</td>
+</tr>
+<tr>
+<td><code>…/Rover_hyundai/world</code></td>
+<td>ArticulationRoot</td>
+</tr>
+<tr>
+<td><code>…/Rover_hyundai/joints/</code></td>
+<td>revolute joint <strong>24개</strong></td>
+</tr>
+<tr>
+<td><code>…/&lt;link&gt;/visuals</code></td>
+<td>링크별 형상. <code>/visuals/&lt;link&gt;</code>를 <strong>내부 reference</strong>로 재사용</td>
+</tr>
+<tr>
+<td><code>/rover_hyundai/Graphs</code></td>
+<td>Scope. OmniGraph <strong>7개</strong></td>
+</tr>
+</tbody>
+</table>
+<p>조인트는 <code>Rover_hyundai_robot.usd</code>에서 정의되고, <code>Rover_hyundai_physics.usd</code>와
+<code>World0.usd</code>가 차례로 속성을 덮어씁니다. 조인트 하나의 최종값을 확인할 때는 이 세
+레이어를 함께 보아야 합니다.</p>
+<div class="admonition info">
+<p class="admonition-title">조인트 24개와 drive 12개는 서로 다른 값입니다</p>
+<p>조인트는 <strong>24개</strong>이고 그중 <strong>drive를 보유한 것이 12개</strong>입니다(구동 4 + 조향 4 +
+상부 서스펜션 4). 나머지는 하부 서스펜션 암과 4절 링크의 loop closure joint이며
+drive가 없습니다. 두 숫자를 같은 항목으로 비교하지 마십시오.</p>
+</div>
+<p><code>/rover_hyundai</code>를 단일 최상위 prim으로 두는 이유는 OmniLRS가 로봇을 <code>usd_path</code>로 받아
+<code>/Robots/&lt;robot_name&gt;</code> 아래에 reference하기 때문입니다. 로버와 graph가 서로 다른 최상위
+prim에 있으면 graph가 함께 따라오지 않습니다.</p>
+<h3 id="1-3">1.3 생성기가 추가하는 Action Graph<a class="headerlink" href="#1-3" title="Permanent link">&para;</a></h3>
+<p><code>Graphs</code> Scope의 OmniGraph 7개 중 <strong>5개는 자산에서 복사</strong>하고 <strong>2개는 생성기가 신설</strong>합니다.</p>
+<table>
+<thead>
+<tr>
+<th>Graph</th>
+<th>출처</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wheel_graph</code> · <code>steering_graph</code></td>
+<td>자산 복사</td>
+<td>구동·조향 명령 수신</td>
+</tr>
+<tr>
+<td><code>Encoder_sensor</code> · <code>IMU_sensor</code> · <code>Camera_sensor</code></td>
+<td>자산 복사</td>
+<td>피드백·센서 발행</td>
+</tr>
+<tr>
+<td><code>Rear_camera_sensor</code></td>
+<td><strong>생성기 신설</strong></td>
+<td>후방 카메라(전방 spec 복사 후 재배선)</td>
+</tr>
+<tr>
+<td><code>ROS_Odometry</code></td>
+<td><strong>생성기 신설</strong></td>
+<td>ground truth odometry 발행</td>
+</tr>
+</tbody>
+</table>
+<p>기존 graph를 재작성하지 않고 복사하는 이유는, 과거 수정한 배선을 다시 구성할 경우 동일한
+결함이 재현될 수 있기 때문입니다. 복사 후에는 <code>/World/…</code> 경로를 <code>/rover_hyundai/…</code>로
+치환하며, relationship target과 attribute connection을 모두 대상으로 합니다.</p>
+<div class="admonition warning">
+<p class="admonition-title">센서 배치는 경로 치환 이후에 적용합니다</p>
+<p>순서를 바꾸면 새로 생성한 graph가 경로 치환 대상에 포함되어, 명시적으로 지정한
+배선이 다시 덮어써집니다. 카메라 해상도 지정은 후방 graph 생성 이후에 적용해야
+두 <code>RenderProduct</code>가 모두 반영됩니다.</p>
+</div>
 <hr />
 <h2 id="2">2. 설정 계층 및 기준 파일<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>아래 경로는 <code>l-project-hils-ros2</code> 저장소 기준입니다. 자산 경로는 실제 설치 위치를 사용합니다.</p>
@@ -1451,9 +1647,9 @@ collider가 자산에 이미 정의되어 있을 수 있습니다. 코드·합�
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">SOURCE_USD</span><span class="o">=</span>/path/to/final_rover_HH/World0.usd
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">OUTPUT_USD</span><span class="o">=</span>/path/to/final_rover_HH/Rover_hyundai_omnilrs.usd
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s2">"</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">"</span><span class="w"> </span>tools/isaac/make_omnilrs_robot_usd.py<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">"</span><span class="nv">$SOURCE_USD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--out<span class="w"> </span><span class="s2">"</span><span class="nv">$OUTPUT_USD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s2">&quot;</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">&quot;</span><span class="w"> </span>tools/isaac/make_omnilrs_robot_usd.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SOURCE_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUTPUT_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--report<span class="w"> </span>/path/to/generation-report.json
 </code></pre></div>
 <p>생성기는 기본 프림·단위·상향축, 로버 참조, Action Graph 5종, 경로 치환, 센서 배치,
@@ -1465,16 +1661,16 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
 처리를 생략한 결과를 전체 기능 검증 완료로 기록하지 마십시오.</p>
 <h3 id="103">10.3 물리 설정 확인 및 기록<a class="headerlink" href="#103" title="Permanent link">&para;</a></h3>
 <p>먼저 <code>--write</code> 없이 변경 예정값과 경고를 확인합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="s2">"</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">"</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="s2">&quot;</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">&quot;</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--config<span class="w"> </span>config/isaac/final_rover_HH_physics.yaml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">"</span><span class="nv">$OUTPUT_USD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUTPUT_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--report<span class="w"> </span>/path/to/physics-dry-run.json
 </code></pre></div>
 <p>대상 파일과 설정값을 확인한 후 <code>--write</code>로 적용합니다. 도구는 적용 전에 대상 USD의
 백업을 생성합니다. 참조 자산 전체의 백업을 대신하지는 않습니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="s2">"</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">"</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="s2">&quot;</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">&quot;</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--config<span class="w"> </span>config/isaac/final_rover_HH_physics.yaml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">"</span><span class="nv">$OUTPUT_USD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUTPUT_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--write<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--report<span class="w"> </span>/path/to/physics-applied.json
 </code></pre></div>

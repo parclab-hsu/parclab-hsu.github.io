@@ -2,7 +2,7 @@
 noindex: true
 ---
 
-# 달 탐사 로버 USD 자산 매뉴얼 { #usd }
+# 달 탐사 로버 USD 설명 { #usd }
 
 :material-circle:{ style="color:#2e9e44" } **기술 매뉴얼** · 현대자동차 L-Project · 기준일 **2026-09-29** (최초 2026-09-22)
 
@@ -40,15 +40,90 @@ SubUSDs/  Rover_hyundai{,_base,_physics,_robot,_sensor}.usd · IMU_sensor.usd ·
 ```
 
 로버의 articulation root 링크 이름은 `world`입니다. 단위는 m, 상향축은 Z입니다.
-원본 구조의 2026-08-20 분석에서는 revolute joint **24개**, drive 보유 조인트 **20개**가
-보고되었습니다. 2026-09-29 정식 플랜트의 합성 stage에서 확인한 drive 보유 조인트는
-**12개**입니다(6절). 두 기록은 검사 시점과 대상이 다르므로, 현재 파일을 점검할 때는
-파일 경로와 버전을 기록하고 합성 stage의 조인트 구성을 확인하십시오.
 
 OmniLRS용 자산은 생성기가 `World0.usd`를 참조하여 만든
 `Rover_hyundai_omnilrs.usd`입니다. 원본에 직접 변경 사항을 누적하지 않고,
 생성된 자산에 필요한 override를 적용합니다. 센서 배치와 Action Graph 등 반복 적용할
 변경은 생성기에 반영해야 재생성 후에도 유지됩니다.
+
+### 1.1 레이어 합성 구조 { #1-1 }
+
+![USD 합성 구조: 레이어 참조 사슬과 합성 결과 stage의 최상위 계층](../assets/l-project-usd-composition.png)
+
+본 자산은 **sublayer를 사용하지 않습니다.** 합성은 전적으로 **reference**로 이루어지며,
+생성 레이어에서 자산 원본까지 두 단계를 거칩니다.
+
+| 단계 | 레이어 | 역할 |
+|---|---|---|
+| 1 | `Rover_hyundai_omnilrs.usd` | 생성 레이어. `defaultPrim`은 **`rover_hyundai`** |
+| 2 | `World0.usd` | 자산 루트. 질량·관성 override가 기록되는 위치 |
+| 3 | `SubUSDs/Rover_hyundai.usd` | 링크 트리 |
+
+생성 레이어는 `World0.usd`의 **`/World/Rover_hyundai` 서브트리 하나만** reference하여
+`/rover_hyundai/Rover_hyundai`에 배치합니다. 3단계 아래는 역할별로 분리되어 있습니다.
+
+| SubUSD | 저작 내용 |
+|---|---|
+| `Rover_hyundai_base.usd` | 형상(메시) |
+| `Rover_hyundai_physics.usd` | 질량·관성 등 물리 속성 |
+| `Rover_hyundai_robot.usd` | 조인트 정의 |
+| `Rover_hyundai_sensor.usd` | 센서 마운트 |
+| `IMU_sensor.usd` · `stereo_camera.usd` | 센서 본체 |
+
+합성에 참여하는 레이어는 **총 10개**입니다(session layer 포함).
+
+!!! note "override는 레이어 스택으로 확인합니다"
+    동일 속성이 여러 레이어에 기록된 경우 상위 레이어 값이 적용됩니다. 예를 들어
+    `physics:diagonalInertia`는 `Rover_hyundai_physics.usd`에 초기값이 있고
+    **`World0.usd`가 자동 계산 sentinel로 덮어씁니다.** 값을 점검할 때는 합성 결과와
+    함께 **어느 레이어가 저작했는지**를 확인하십시오. 하위 레이어만 교체하면 상위
+    override가 그대로 남습니다.
+
+### 1.2 합성 결과 stage { #1-2 }
+
+합성 결과 stage의 prim 수는 **173개**입니다. 최상위 구성은 다음과 같습니다.
+
+| 경로 | 구성 |
+|---|---|
+| `/rover_hyundai` | `defaultPrim`. 로버와 graph를 하나의 prim 아래에 둡니다 |
+| `/rover_hyundai/Rover_hyundai` | reference된 로버 서브트리 |
+| `…/Rover_hyundai/world` | ArticulationRoot |
+| `…/Rover_hyundai/joints/` | revolute joint **24개** |
+| `…/<link>/visuals` | 링크별 형상. `/visuals/<link>`를 **내부 reference**로 재사용 |
+| `/rover_hyundai/Graphs` | Scope. OmniGraph **7개** |
+
+조인트는 `Rover_hyundai_robot.usd`에서 정의되고, `Rover_hyundai_physics.usd`와
+`World0.usd`가 차례로 속성을 덮어씁니다. 조인트 하나의 최종값을 확인할 때는 이 세
+레이어를 함께 보아야 합니다.
+
+!!! info "조인트 24개와 drive 12개는 서로 다른 값입니다"
+    조인트는 **24개**이고 그중 **drive를 보유한 것이 12개**입니다(구동 4 + 조향 4 +
+    상부 서스펜션 4). 나머지는 하부 서스펜션 암과 4절 링크의 loop closure joint이며
+    drive가 없습니다. 두 숫자를 같은 항목으로 비교하지 마십시오.
+
+`/rover_hyundai`를 단일 최상위 prim으로 두는 이유는 OmniLRS가 로봇을 `usd_path`로 받아
+`/Robots/<robot_name>` 아래에 reference하기 때문입니다. 로버와 graph가 서로 다른 최상위
+prim에 있으면 graph가 함께 따라오지 않습니다.
+
+### 1.3 생성기가 추가하는 Action Graph { #1-3 }
+
+`Graphs` Scope의 OmniGraph 7개 중 **5개는 자산에서 복사**하고 **2개는 생성기가 신설**합니다.
+
+| Graph | 출처 | 역할 |
+|---|---|---|
+| `wheel_graph` · `steering_graph` | 자산 복사 | 구동·조향 명령 수신 |
+| `Encoder_sensor` · `IMU_sensor` · `Camera_sensor` | 자산 복사 | 피드백·센서 발행 |
+| `Rear_camera_sensor` | **생성기 신설** | 후방 카메라(전방 spec 복사 후 재배선) |
+| `ROS_Odometry` | **생성기 신설** | ground truth odometry 발행 |
+
+기존 graph를 재작성하지 않고 복사하는 이유는, 과거 수정한 배선을 다시 구성할 경우 동일한
+결함이 재현될 수 있기 때문입니다. 복사 후에는 `/World/…` 경로를 `/rover_hyundai/…`로
+치환하며, relationship target과 attribute connection을 모두 대상으로 합니다.
+
+!!! warning "센서 배치는 경로 치환 이후에 적용합니다"
+    순서를 바꾸면 새로 생성한 graph가 경로 치환 대상에 포함되어, 명시적으로 지정한
+    배선이 다시 덮어써집니다. 카메라 해상도 지정은 후방 graph 생성 이후에 적용해야
+    두 `RenderProduct`가 모두 반영됩니다.
 
 ---
 

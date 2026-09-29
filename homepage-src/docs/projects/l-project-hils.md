@@ -379,7 +379,7 @@ software/
 | 요구사항 | **[SRS-001](l-project-srs.md)** | 소프트웨어 요구사항 명세서 (IEEE 830 준용) |
 | 계획 | **[SDP-001](l-project-sdp.md)** | 소프트웨어 개발 계획서 |
 | 설계 | AD-002 | 시스템 아키텍처 v2 — XRCE-DDS 3계층, Drive Interface, 헬스 모니터링 |
-| 분석 | AN-001 | USD 자산 분석 — 제원 실측·조인트 계약과 **설정 정본**(네 층·물리·마찰·장면·드라이브 게인). 공개본 **[로버 USD 자산 설명서](l-project-usd-asset.md)** |
+| 분석 | AN-001 | USD 자산 분석 — 제원 실측·조인트 계약과 **설정 정본**(네 층·물리·마찰·장면·드라이브 게인). 공개본 **[로버 USD 설명](l-project-usd-asset.md)** |
 | 시험 | TP-001 / TP-002 | EPOS4 벤치 시험 절차 / 3머신 통합 시험 절차 |
 | 배포 | DP-001 / DP-002 | Jetson 배포 절차 / 시뮬레이션 PC 배포 절차 |
 | 연동 | IG-001 / IG-002 / IG-003 | Isaac Sim / Nav2 / NVIDIA Isaac ROS Navigation |
