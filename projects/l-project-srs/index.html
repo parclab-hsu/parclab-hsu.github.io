@@ -1026,11 +1026,11 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.32</td>
+<td>1.34</td>
 </tr>
 <tr>
 <td>작성일</td>
-<td>2026-07-28 (개정 2026-09-14)</td>
+<td>2026-07-28 (개정 2026-09-22)</td>
 </tr>
 <tr>
 <td>과제</td>
@@ -1205,7 +1205,7 @@
 <tr>
 <td>1.30</td>
 <td>2026-09-16</td>
-<td><strong>FR-006 개정 — 조향에 운용 정책 한계를 둔다(코너별 비대칭·거울).</strong> 자산 조인트 한계 ±90° 는 그대로 두고, 운용 범위를 −30~+60° 로 좁히되 코너마다 부호를 뒤집는다(FR·RL [−30°,+60°] · FL·RR [−60°,+30°]). 근거: 제자리 회전에 필요한 조향각은 코너별로 부호가 고정(FL·RR −55.30° · FR·RL +55.30°)이고 회전 방향을 바꿔도 각은 그대로다. 55.30° 는 조향축(킹핀) 기준값이며 휠 위치 기준 49.21° 가 아니다. 여유 4.70°. <strong>대가</strong>: 게걸음은 네 축이 같은 각이라 ±30° 까지, 저속 급선회(예 v 0.1 · wz 0.8 → 62.3° 필요)는 잘린다</td>
+<td><strong>FR-006 개정 — 조향에 운용 정책 한계를 둔다(코너별 비대칭·거울).</strong> 자산 조인트 한계 ±90° 는 그대로 두고, 운용 범위를 −30~+60° 로 좁히되 코너마다 부호를 뒤집는다(FR·RL [−30°,+60°] · FL·RR [−60°,+30°]). 근거: 제자리 회전에 필요한 조향각은 코너별로 부호가 고정(FL·RR −55.30° · FR·RL +55.30°)이고 회전 방향을 바꿔도 각은 그대로다. 55.30° 는 조향축(킹핀) 기준값이며 휠 위치 기준 49.21° 가 아니다. 여유 4.70°. <strong>대가</strong>: crab steering은 네 축이 같은 각이라 ±30° 까지, 저속 급선회(예 v 0.1 · wz 0.8 → 62.3° 필요)는 잘린다</td>
 </tr>
 <tr>
 <td>1.31</td>
@@ -1216,6 +1216,16 @@
 <td>1.32</td>
 <td>2026-09-16</td>
 <td><strong>본문 정정 — 조향 서술을 정책 한계 기준으로.</strong> FR-001 의 「조향각은 ±π/2 랩」은 정책 한계(FR-006) 도입 전 표현이었다. 두 후보각(δ, δ∓π) 중 코너 범위에 드는 쪽을 쓰고, 둘 다 밖이면 경계로 자르되 그 전에 포락선(FR-081)이 요레이트를 낮춘다로 고쳤다. 5.2 축 배치의 조향 <code>±90°</code> 에 운용 정책(코너별 거울 −30~+60°)을 병기</td>
+</tr>
+<tr>
+<td>1.33</td>
+<td>2026-09-17</td>
+<td><strong>FR-078 개정 — 구동 백엔드를 <code>rover_control</code> 이 발행한다.</strong> 이 토픽은 <strong>저장소 어디에서도 발행되지 않았다</strong> — 사람이 <code>ros2 topic pub</code> 을 쳐야만 존재했고, 실측하니 발행자 0 · 구독자 1 이었다(보드는 그날 두 번 리셋됐다). 보드는 EPOS 로 부팅하며 모드를 저장하지 않으므로 <strong>리셋될 때마다 sim 지령 경로가 아무 오류 없이 끊긴다.</strong> 파라미터 <code>board_drive_mode</code>(<code>none</code>·<code>epos</code>·<code>sim</code>, 기본 <code>none</code> = 종전과 동일)와 launch 인자를 두고, 기동 직후 <code>board_drive_mode_bursts</code> 회 발행한다(Best-effort 라 1 회는 디스커버리 전에 버려진다). 그 뒤에는 <strong>보드 재부팅을 감지했을 때만</strong> 다시 낸다 — 판정은 <code>/rover/joint_states</code> 스탬프 역행이며, 보드 스탬프가 부팅 후 경과 시간이라(FR-023) 감소는 재부팅밖에 없다. <strong>주기 발행은 금지</strong> — 플랜트 측정 시 운영자가 내린 EPOS 전환을 덮어써 측정을 오염시킨다(D-30). 회귀 <code>test_drive_mode_publish.py</code> 6 PASS. 문서: ND-001 1.11 · AD-002 2.14 · <code>BRINGUP.md</code> C1</td>
+</tr>
+<tr>
+<td>1.34</td>
+<td>2026-09-22</td>
+<td>문서 정비: ground truth·simulation time·crab steering 용어 통일, FR-001 중복 문장 제거 및 2026-09-16 보드 검증 기록 연결. 요구사항 ID·수치·인터페이스는 유지</td>
 </tr>
 </tbody>
 </table>
@@ -1459,9 +1469,9 @@
 <tbody>
 <tr>
 <td>SRS-FR-001</td>
-<td><code>/cmd_vel</code>(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 <strong>코너별 운용 정책 한계</strong>(FR-006) 안에서 정한다 — 같은 방향을 내는 두 각(δ, δ∓π) 중 범위에 드는 쪽을 쓰고 δ∓π 를 쓰면 휠 속도 부호를 반전한다. 둘 다 밖이면 가까운 경계로 자른다(그 전에 선회 포락선 FR-081 이 요레이트를 낮춰 막는다). <strong>linear.y(crab)를 지원</strong>한다, <strong>linear.y(crab)를 지원</strong>한다(자율 주행 소스는 0, 수동 주행에서만 사용). <strong>기구학 소유자는 하나다</strong> — HILS 보드가 붙는 real 모드에서는 <strong>보드가 기구학을 돈다</strong>: <code>rover_control</code> 은 조이스틱·자율 주행 중재가 끝난 twist(v, ω, v_y)만 <code>/rover/cmd_vel</code> 로 내고 <strong>축 지령은 한 건도 내지 않으며</strong>, 보드가 같은 기구학(<code>kinematics.c</code>, 파이썬 정본과 대조)으로 12축을 만든다. sim 모드(보드 없이 시뮬레이터 직결)는 <code>rover_control</code> 이 12축을 낸다. launch 인자 <code>kinematics_owner</code>(기본 <code>auto</code>: real→board · sim→host, 명시값 우선)</td>
+<td><code>/cmd_vel</code>(geometry_msgs/Twist)을 구독하여 4WS(swerve) 역기구학으로 12축 명령(구동 rad/s ×4 + 조향 rad ×4 + 서스펜션 rad ×4)을 산출한다. 조향각은 <strong>코너별 운용 정책 한계</strong>(FR-006) 안에서 정한다 — 같은 방향을 내는 두 각(δ, δ∓π) 중 범위에 드는 쪽을 쓰고 δ∓π 를 쓰면 휠 속도 부호를 반전한다. 둘 다 밖이면 가까운 경계로 자른다(그 전에 선회 포락선 FR-081 이 요레이트를 낮춰 막는다). <strong>linear.y(crab)를 지원</strong>한다(자율 주행 소스는 0, 수동 주행에서만 사용). <strong>기구학 소유자는 하나다</strong> — HILS 보드가 붙는 real 모드에서는 <strong>보드가 기구학을 돈다</strong>: <code>rover_control</code> 은 조이스틱·자율 주행 중재가 끝난 twist(v, ω, v_y)만 <code>/rover/cmd_vel</code> 로 내고 <strong>축 지령은 한 건도 내지 않으며</strong>, 보드가 같은 기구학(<code>kinematics.c</code>, 파이썬 정본과 대조)으로 12축을 만든다. sim 모드(보드 없이 시뮬레이터 직결)는 <code>rover_control</code> 이 12축을 낸다. launch 인자 <code>kinematics_owner</code>(기본 <code>auto</code>: real→board · sim→host, 명시값 우선)</td>
 <td>T</td>
-<td>검증완료 (host 경로) · <strong>board 경로는 상위 계약만 검증</strong>(<code>tools/test_kinematics_owner.py</code> 10 PASS, 보드 기구학은 호스트 대조 <code>test_firmware_kinematics.py</code>) — 보드 실기 적용은 펌웨어 재플래시·Jetson 갱신 후</td>
+<td>검증완료 (host 경로) · <strong>board 경로의 자동 시험은 상위 계약·host 대조 범위</strong>(<code>tools/test_kinematics_owner.py</code> 10 PASS, 보드 기구학은 호스트 대조 <code>test_firmware_kinematics.py</code>) — 보드·Jetson 적용 및 HILS 경로 확인은 2026-09-16 <code>REALTIME-REVIEW.md</code> §10 참조. 실물 EPOS4·로버 검증은 별도</td>
 </tr>
 <tr>
 <td>SRS-FR-002</td>
@@ -1857,9 +1867,9 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
 </tr>
 <tr>
 <td>SRS-FR-078</td>
-<td>보드는 <code>/rover/drive_mode</code>(std_msgs/UInt8, 0=EPOS·1=sim)를 구독해 <strong>런타임에 구동 백엔드를 전환</strong>한다. 범위를 벗어난 값과 현재 모드와 같은 값은 무시한다. 기본 부팅 모드는 EPOS 다</td>
+<td>보드는 <code>/rover/drive_mode</code>(std_msgs/UInt8, 0=EPOS·1=sim)를 구독해 <strong>런타임에 구동 백엔드를 전환</strong>한다. 범위를 벗어난 값과 현재 모드와 같은 값은 무시한다. 기본 부팅 모드는 EPOS 다. <strong>발행은 <code>rover_control</code> 이 맡는다</strong> — <code>board_drive_mode</code>(<code>none</code>·<code>epos</code>·<code>sim</code>) 파라미터가 <code>none</code> 이 아니면 기동 직후 <code>board_drive_mode_bursts</code> 회 낸다(계약 QoS 가 Best-effort 라 1 회로는 디스커버리 전에 버려진다). 그 뒤에는 <strong>보드 재부팅을 감지했을 때만</strong> 다시 낸다 — 판정은 <code>/rover/joint_states</code> 스탬프가 뒤로 가는 것이며, 보드 스탬프는 부팅 후 경과 시간이라(FR-023) 감소는 재부팅밖에 없다. <strong>주기 발행은 금지한다</strong> — 플랜트를 측정할 때 운영자가 EPOS 로 내린 것을 덮어써 측정을 오염시킨다(RR-001 D-30). 기본값 <code>none</code> 은 아무도 발행하지 않던 종전 상태다</td>
 <td>T</td>
-<td>검증완료</td>
+<td><strong>검증완료</strong> — <code>tools/test_drive_mode_publish.py</code> 6 PASS / 0 FAIL</td>
 </tr>
 <tr>
 <td>SRS-FR-079</td>

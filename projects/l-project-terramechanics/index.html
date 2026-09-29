@@ -691,7 +691,7 @@
   <a href="#21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 침하 모델 — 현행 설정에서 지형 변형 미발생 및 파라미터 정합 필요
+        2.1 초기 침하 모델 — 지형 변형 미발생 및 파라미터 정합 필요
       
     </span>
   </a>
@@ -702,7 +702,7 @@
   <a href="#22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 견인 모델 — 비활성 상태 및 대상 로버·토양 파라미터 정합 필요
+        2.2 초기 견인 모델 — 비활성 상태 및 대상 로버·토양 파라미터 정합 필요
       
     </span>
   </a>
@@ -945,9 +945,9 @@
 침하하고 침하 상태에 따라 견인력이 달라지는데, 그 층이 비어 있습니다.</p>
 <p>관련 기능은 시뮬레이터(OmniLRS)에 <strong>두 가지</strong>가 존재합니다 — 바퀴자국을 생성하는
 <strong>지형 변형(Deformation/Sinkage) 엔진</strong>과, 견인력·주행 저항을 산출하는
-<strong>Terramechanics 기반 차륜–토양 상호작용 솔버</strong>입니다. 계측 결과 전자는 현행 설정에서
-변형이 발생하지 않고, 후자는 비활성 상태이며, 무엇보다 <strong>두 모델을 잇는 물리 경로가 양방향 모두 끊겨
-있습니다.</strong></p>
+<strong>Terramechanics 기반 차륜–토양 상호작용 solver</strong>입니다. 초기 분석에서는 변형 미발생과
+solver 비활성 문제가 확인되었습니다. 이후 render-only 변형과 solver 연결을 구현했으나,
+<strong>침하–견인의 양방향 물리 coupling과 실측 정합은 미완료</strong>입니다.</p>
 <p>이 둘을 <strong>침하–견인 연성(Coupled) 모델로 통합하고 실측 자료로 검증하는 것</strong>을 차년도
 과제로 제안합니다. 아울러 침하·견인의 입력인 <strong>휠 하중</strong>을 만드는 서스펜션을
 <strong>쿼터카(1/4 차량) 시험으로 실측한 파라미터·응답 자료와 정합</strong>합니다(4.4절).
@@ -982,7 +982,7 @@
 </div>
 <hr />
 <h2 id="2">2. 현재 상태 — 침하·견인 모델의 기능적 한계 및 통합 필요성<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<h3 id="21">2.1 침하 모델 — 현행 설정에서 지형 변형 미발생 및 파라미터 정합 필요<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<h3 id="21">2.1 초기 침하 모델 — 지형 변형 미발생 및 파라미터 정합 필요<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
 <p>기능을 활성화하고 로버를 주행시키며 계측했습니다(2026-08-26). 동일 지령·동일 시간
 조건입니다.</p>
 <table>
@@ -1045,7 +1045,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="22">2.2 견인 모델 — 비활성 상태 및 대상 로버·토양 파라미터 정합 필요<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<h3 id="22">2.2 초기 견인 모델 — 비활성 상태 및 대상 로버·토양 파라미터 정합 필요<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>견인력(Drawbar Pull)·주행 저항·조향 저항 토크를 산출하는 솔버가 별도로 구현되어
 있습니다. Bekker–Wong 계열의 차륜–토양 상호작용 모델입니다. 확인 결과입니다.</p>
 <table>
@@ -1399,7 +1399,7 @@ WP2에서 함께 검토합니다.</p>
 <tbody>
 <tr>
 <td><strong>WP13</strong></td>
-<td><strong>쿼터카 파라미터 기반 서스펜션 동역학 정합</strong> — ① <strong>등가 변환</strong>: 4절 링크 레버비로 조인트 기준 강성·감쇠를 <strong>휠 기준</strong> 스프링 상수 <code>k_s</code>·감쇠 계수 <code>c_s</code> 로 환산하고, 링크 질량을 스프렁 <code>m_s</code>·언스프렁 <code>m_u</code> 로 분리 ② <strong>플랜트 반영</strong>: 링크 질량(추정치 교체) · 서스펜션 조인트 드라이브 강성·감쇠 · 휠 반경 방향 강성 <code>k_t</code> ③ <strong>정합 시험</strong>: 정적 처짐·코너 하중, 스텝·드롭 응답(고유진동수·감쇠비), 필요 시 정현 스윕 전달률 ④ <strong>하중 역산 재교정</strong>: 보정 계수 1.78을 코너 하중 실측으로 다시 맞추고 자세별 산포를 줄임</td>
+<td><strong>쿼터카 파라미터 기반 서스펜션 동역학 정합</strong> — ① <strong>등가 변환</strong>: 4절 링크 레버비로 조인트 기준 강성·감쇠를 <strong>휠 기준</strong> 스프링 상수 <code>k_s</code>·감쇠 계수 <code>c_s</code> 로 환산하고, 링크 질량을 sprung <code>m_s</code>·unsprung <code>m_u</code> 로 분리 ② <strong>플랜트 반영</strong>: 링크 질량(추정치 교체) · 서스펜션 조인트 드라이브 강성·감쇠 · 휠 반경 방향 강성 <code>k_t</code> ③ <strong>정합 시험</strong>: 정적 처짐·코너 하중, 스텝·드롭 응답(고유진동수·감쇠비), 필요 시 정현 스윕 전달률 ④ <strong>하중 역산 재교정</strong>: 보정 계수 1.78을 코너 하중 실측으로 다시 맞추고 자세별 산포를 줄임</td>
 <td>WP1 · WP8 · <strong>쿼터카 시험 자료</strong></td>
 </tr>
 </tbody>
@@ -1451,7 +1451,7 @@ WP2에서 함께 검토합니다.</p>
 <tbody>
 <tr>
 <td>질량</td>
-<td>스프렁 <code>m_s</code> · 언스프렁 <code>m_u</code> (코너별)</td>
+<td>sprung <code>m_s</code> · unsprung <code>m_u</code> (코너별)</td>
 <td>계량 · 분해 부품 질량</td>
 </tr>
 <tr>
