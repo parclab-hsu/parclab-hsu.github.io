@@ -728,6 +728,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. 물리 — 중력·질량·구동 드라이브">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2026-09-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        드라이브 게인 (2026-09-29 실측)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -803,7 +820,7 @@
 
 
 <h1 id="usd">달 탐사 로버 USD 자산 설명서<a class="headerlink" href="#usd" title="Permanent link">&para;</a></h1>
-<p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>기술 문서</strong> · 현대자동차 L-Project · 기준일 <strong>2026-09-22</strong></p>
+<p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>기술 문서</strong> · 현대자동차 L-Project · 기준일 <strong>2026-09-29</strong> (최초 2026-09-22)</p>
 <div class="admonition abstract">
 <p class="admonition-title">요약</p>
 <p>달 탐사 로버 HILS의 플랜트(NVIDIA Isaac Sim + OmniLRS)에서 로버는 <strong>USD 자산</strong>으로
@@ -1068,6 +1085,55 @@
 <p><strong>구동 stiffness를 0으로 둔 이유</strong>는 속도 지령과 싸우지 않기 위해서입니다. 자산은 10이었고,
 PhysX에서는 180/π가 곱해져 <strong>kp 572.96</strong> 으로 들어갑니다. 감쇠 20은 속도 추종용이므로
 그대로 둡니다.</p>
+<h3 id="2026-09-29">드라이브 게인 (2026-09-29 실측)<a class="headerlink" href="#2026-09-29" title="Permanent link">&para;</a></h3>
+<p>드라이브를 가진 조인트는 <strong>12개</strong>이며 전부 회전축입니다.</p>
+<table>
+<thead>
+<tr>
+<th>축</th>
+<th>stiffness</th>
+<th>damping</th>
+<th>maxForce</th>
+<th>목표</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>구동 ×4</td>
+<td><strong>0.0</strong></td>
+<td><strong>20.0</strong></td>
+<td>FL 1.0e6 · 나머지 1.0e14</td>
+<td>속도</td>
+</tr>
+<tr>
+<td>조향 ×4</td>
+<td><strong>50.0</strong></td>
+<td><strong>20.0</strong></td>
+<td>FL 1.0e4 · 나머지 1.0e5</td>
+<td>위치</td>
+</tr>
+<tr>
+<td>서스펜션 ×4</td>
+<td><strong>50.0</strong></td>
+<td><strong>20.0</strong></td>
+<td>1.0e3 (네 축 동일)</td>
+<td>위치</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">USD 값과 물리 엔진 값은 다릅니다</p>
+<p>회전 드라이브는 물리 엔진으로 들어갈 때 <strong>180/π가 곱해집니다.</strong> stiffness 50은
+<strong>kp 2864.79</strong>, damping 20은 <strong>kd 1145.92</strong> 가 됩니다. USD에 적힌 숫자를 그대로
+게인으로 읽으면 안 됩니다.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">FL 코너만 maxForce가 다릅니다</p>
+<p>조향은 <strong>10배</strong>(1.0e4 대 1.0e5), 구동은 <strong>1e8배</strong>(1.0e6 대 1.0e14) 차이입니다.
+자산을 코너별로 저작하면서 FL만 다른 기본값이 남은 것으로 보입니다.</p>
+<p><strong>지금 거동에 드러나지는 않을 것으로 봅니다</strong> — 우리 하중에서 필요한 조향 토크는
+1.0e4보다 한참 작습니다. 다만 <strong>근거 없이 비대칭인 상태</strong>이므로 기록해 둡니다.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">질량은 실측이 아닙니다</p>
 <p>총질량은 NASA VIPER 공개 제원(surface operations mass 450 kg)을 따르고, 링크별
@@ -1198,11 +1264,11 @@ Action Graph 5종 <strong>복사</strong>, 경로 치환, 센서 배치, 루프 
 <h2 id="11">11. 확인되지 않은 것<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
 <p>PG-001 작성 규칙에 따라, <strong>확인하지 못한 것을 줄이지 않고 그대로 적습니다.</strong></p>
 <ul>
-<li><strong>조향·서스펜션 드라이브 게인의 실측값이 없습니다.</strong> 문서에 남아 있는
-  <code>stiffness 10000 / damping 1000</code> 은 <strong>구 자산</strong>의 값이고, 정식 플랜트의 값은
-  저장소 어디에도 기록되어 있지 않습니다.</li>
-<li><strong>카메라 시야각(FOV)이 어느 파일에도 없습니다.</strong> 렌즈 제원(초점거리·조리개)은 문서
-  기재로만 남아 있고, 생성기는 그 값을 읽거나 쓰지 않습니다. <strong>채택 해상도도 아직 정하지
+<li><strong>FL 코너의 <code>maxForce</code>가 다른 이유를 모릅니다</strong>(6절). 거동에 드러나지 않을 것으로
+  보지만 근거가 없는 비대칭이고, 맞출지 여부를 정하지 못했습니다.</li>
+<li><strong>카메라 수직 시야각이 확정되지 않았습니다.</strong> 수평은 자산에서 계산됩니다(<strong>108.05°</strong>).
+  수직은 조리개 비(3.27:1)와 렌더 해상도(1.78:1)가 서로 맞지 않아 렌더러의 조리개 정합
+  정책에 달려 있는데, <strong>그 정책을 확인하지 못했습니다.</strong> <strong>채택 해상도도 아직 정하지
   않았습니다</strong> — 1280×720에서 수신 22.3 Hz, 640×360에서 29.3 Hz로 측정만 해 두었습니다.</li>
 <li><strong>카메라가 아래로 기울어져 있는데 그 각도가 기록되어 있지 않습니다.</strong> 전후 카메라의
   시선 내적이 −0.747로, 순수한 ±x 방향이 아닙니다.</li>
