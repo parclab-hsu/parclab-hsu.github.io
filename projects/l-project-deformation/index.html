@@ -852,7 +852,7 @@
   <a href="#24-2026-08-26" class="md-nav__link">
     <span class="md-ellipsis">
       
-        휠 자산의 그라우저 형상 측정 (2026-08-26)
+        휠 asset의 그라우저 형상 측정 (2026-08-26)
       
     </span>
   </a>
@@ -1192,7 +1192,7 @@
 <p>달 탐사 로버 HILS의 플랜트(NVIDIA Isaac Sim + OmniLRS)에는 휠 통과에 따른 자국을 생성하는
 <strong>지형 변형(Deformation/Sinkage) 엔진</strong>이 포함되어 있습니다. 이 문서는 L-Project 설정을
 적용한 오프라인 계산과 <strong>시뮬레이터 실행 중 계측 결과</strong>를 정리합니다. 실물 로버·토양 시험 결과는 아닙니다.</p>
-<p><strong>최종 확인 상태(2026-09-14): 휠 주변에 1.5 cm 격자의 타일을 생성하고, 자산에서 추출한
+<p><strong>최종 확인 상태(2026-09-14): 휠 주변에 1.5 cm 격자의 타일을 생성하고, asset에서 추출한
 휠 단면과 회전각을 반영해 24개 그라우저의 연속적인 자국을 표현합니다.</strong> 주요 개선 이력은 다음과 같습니다.</p>
 <ul>
 <li><strong>초기 설정에서는 변형량이 0이었습니다</strong>(2절). 접지면 폭만 실제 휠 폭으로 변경하자
@@ -1226,7 +1226,7 @@ collision geometry와 휠–토양 상호작용에 반영되지 않습니다</st
 <p>이 문서의 실험·설정 기준일은 <strong>2026-09-14</strong>, 문장·용어 정비일은 <strong>2026-09-29</strong>입니다.
 2~8절은 초기 분석, 11~16절은 개선 과정, 17절은 최종 확인 설정을 설명합니다.
 초기 설정의 문제를 현재 구현의 미해결 문제로 해석하지 않도록 각 절의 기준일을 함께 확인하십시오.</p>
-<p><strong>실측·계측</strong>은 별도 표시가 없으면 USD 자산 분석 또는 시뮬레이터 내부 측정을 의미합니다.
+<p><strong>실측·계측</strong>은 별도 표시가 없으면 USD asset 분석 또는 시뮬레이터 내부 측정을 의미합니다.
 <strong>Footprint</strong>는 접지면 또는 엔진의 접지면 표본 영역, <strong>collision mesh</strong>는 물리 충돌 판정용 메시,
 <strong>re-cooking</strong>은 변경된 메시로부터 충돌 데이터를 다시 생성하는 과정입니다.
 <strong>RTF(real-time factor)</strong>는 simulation time 증가량을 wall-clock time 경과량으로 나눈 값입니다.</p>
@@ -1317,7 +1317,7 @@ collision geometry와 휠–토양 상호작용에 반영되지 않습니다</st
 </tbody>
 </table>
 <p>이 표본화·경계 분포 방식에서는 폭이 <code>2 × 지형해상도</code>(= 0.10 m)보다 작을 때 변형량이 <strong>0</strong>이 됩니다.</p>
-<p>대상 휠의 자산 측정 폭은 <strong>0.159 m</strong>이며, 초기 설정 0.09 m는 그 <strong>57 %</strong>입니다.
+<p>대상 휠의 asset 측정 폭은 <strong>0.159 m</strong>이며, 초기 설정 0.09 m는 그 <strong>57 %</strong>입니다.
 0.09 m의 선정 근거는 확인되지 않았으며, OmniLRS 예제값을 유지한 것으로 추정합니다.</p>
 <div class="admonition note">
 <p class="admonition-title">안식각 조정만으로는 변형 미발생을 해소할 수 없습니다</p>
@@ -1432,7 +1432,7 @@ OmniLRS upstream 문서와 프로젝트 설정에서 확인하지 못했습니�
 보정 후에도 <strong>산포 ±18 %</strong>가 남으므로, 평균 하중의 정합이 개별 자세의 정확성을 보장하지는 않습니다.</p>
 <hr />
 <h2 id="5-footprint">5. 접지면(Footprint) 형상과 이산화 오차 분석<a class="headerlink" href="#5-footprint" title="Permanent link">&para;</a></h2>
-<p>휠 폭 0.159 m의 적용 타당성을 확인하기 위해 자산 메시를 분석했습니다. 그 결과
+<p>휠 폭 0.159 m의 적용 타당성을 확인하기 위해 asset 메시를 분석했습니다. 그 결과
 <strong>유효 접지 폭과 길이는 침하량에 따라 달라집니다.</strong> 아래 분석은 2026-09-10의 기존 0.05 m 경로를 기준으로 합니다.</p>
 <p>접지 길이는 강체 휠 기하로 계산합니다 — 진입각 <code>θ_f = arccos(1 − z/R)</code> 의 현 길이이고,
 이탈각을 진입각과 같다고 본 값입니다.</p>
@@ -1741,7 +1741,7 @@ OmniLRS upstream 문서와 프로젝트 설정에서 확인하지 못했습니�
 </tr>
 </tbody>
 </table>
-<h3 id="24-2026-08-26">휠 자산의 그라우저 형상 측정 (2026-08-26)<a class="headerlink" href="#24-2026-08-26" title="Permanent link">&para;</a></h3>
+<h3 id="24-2026-08-26">휠 asset의 그라우저 형상 측정 (2026-08-26)<a class="headerlink" href="#24-2026-08-26" title="Permanent link">&para;</a></h3>
 <p>휠 메시에서 실측했습니다 — 방위각 히스토그램의 이산 푸리에 변환으로 지배 주파수를
 확인하는 방식입니다. 반경 threshold 98/95/92 %에서 동일한 개수를 얻었습니다.</p>
 <table>
@@ -1951,7 +1951,7 @@ OmniLRS upstream 문서와 프로젝트 설정에서 확인하지 못했습니�
 <tr>
 <td>11</td>
 <td>자국 모양 — 둔덕·벽 경사·그라우저 무늬 <em>(신규)</em></td>
-<td><strong>완료(16절)</strong> — 자산에서 추출한 휠 단면·둔덕·벽 무너짐. 둔덕 비율·임계각은 추정</td>
+<td><strong>완료(16절)</strong> — asset에서 추출한 휠 단면·둔덕·벽 무너짐. 둔덕 비율·임계각은 추정</td>
 </tr>
 <tr>
 <td>12</td>
@@ -2143,7 +2143,7 @@ OmniLRS upstream 문서와 프로젝트 설정에서 확인하지 못했습니�
 Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 개선했습니다.</p>
 <hr />
 <h2 id="13-0159-021-2026-09-14">13. 경계 표본을 고려한 접지면 폭 보정: 0.159 → 0.21 m (2026-09-14)<a class="headerlink" href="#13-0159-021-2026-09-14" title="Permanent link">&para;</a></h2>
-<p><strong>실행에 사용한 로버 USD 자산을 측정해 설정과의 정합을 확인했습니다.</strong></p>
+<p><strong>실행에 사용한 로버 USD asset을 측정해 설정과의 정합을 확인했습니다.</strong></p>
 <table>
 <thead>
 <tr>
@@ -2410,7 +2410,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
     E --&gt; F["바뀐 타일만&lt;br/&gt;Fabric 갱신"]
     F -.-&gt;|"충돌 메시는 그대로"| G["PhysX 지형 충돌"]</code></pre>
 <ul>
-<li><strong>자산에서 추출한 휠 단면</strong> — 휠 메시에서 반경을 축방향 32개 구간·그라우저 위상 120개 구간으로 나누어 측정했습니다. 넓은 면에는 정점이
+<li><strong>asset에서 추출한 휠 단면</strong> — 휠 메시에서 반경을 축방향 32개 구간·그라우저 위상 120개 구간으로 나누어 측정했습니다. 넓은 면에는 정점이
   모서리에만 있어 정점만 보면 그라우저 높이가 90 mm로 나오므로, 삼각형 내부에도 표본을 생성해 측정했습니다:
   림 194.2 mm · 팁 213.3 mm · <strong>직선 그라우저 24개 · 높이 19.1 mm</strong> · 가장자리 플랜지 200.4 mm.</li>
 <li><strong>그라우저 위치는 휠 회전각을 따릅니다.</strong> 그래서 자국 간격이 슬립 s에 따라 <code>55.9 mm × (1 − s)</code> 로 줄고,
@@ -2579,7 +2579,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <td><code>suspension_lever_arm</code></td>
 <td>0.4908 m</td>
 <td>토크–힘 환산용 lever arm</td>
-<td>로버 자산을 바꾸면 다시 계산</td>
+<td>로버 asset을 바꾸면 다시 계산</td>
 </tr>
 <tr>
 <td><code>suspension_gain</code></td>
@@ -2603,7 +2603,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 </table>
 <h3 id="c-track_tiles-15-cm">C — <code>track_tiles</code>: 최종 확인된 1.5 cm 자국 생성 경로<a class="headerlink" href="#c-track_tiles-15-cm" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>표시 지면       = 지형 + surface_offset
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>휠 투영면     = 지형 + R + [원 + κ·(자산에서 추출한 휠 단면 − 원)] − δ
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>휠 투영면     = 지형 + R + [원 + κ·(asset에서 추출한 휠 단면 − 원)] − δ
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>하중 침하 δ     = surface_offset · ((F / reference_load)^load_exponent − 1)
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>                  → [−max_less_sinkage, +max_extra_sinkage] 로 제한
 </code></pre></div>
@@ -2651,7 +2651,7 @@ Fabric으로 갱신하는 16절 방식으로 <strong>0.48~0.50</strong>까지 �
 <tr>
 <td><code>wheel_profile</code></td>
 <td>휠 단면 표</td>
-<td><strong>로버 자산 변경 시 휠 메시에서 다시 추출합니다</strong></td>
+<td><strong>로버 asset 변경 시 휠 메시에서 다시 추출합니다</strong></td>
 </tr>
 </tbody>
 </table>

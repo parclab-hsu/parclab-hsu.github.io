@@ -668,12 +668,12 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 자산 구조
+        1. asset 구조
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. 자산 구조">
+    <nav class="md-nav" aria-label="1. asset 구조">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -845,12 +845,12 @@
   <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. 자산 재생성 및 적용 절차
+        10. asset 재생성 및 적용 절차
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10. 자산 재생성 및 적용 절차">
+    <nav class="md-nav" aria-label="10. asset 재생성 및 적용 절차">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -945,25 +945,25 @@
 <p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>기술 매뉴얼</strong> · 현대자동차 L-Project · 기준일 <strong>2026-09-29</strong> (최초 2026-09-22)</p>
 <div class="admonition abstract">
 <p class="admonition-title">목적 및 적용 범위</p>
-<p>NVIDIA Isaac Sim + OmniLRS 환경에서 사용하는 <code>final_rover_HH</code> USD 자산의 구성,
-설정 파일, 재생성 절차 및 검증 기준을 설명합니다. 자산을 변경하거나 플랜트 설정을
+<p>NVIDIA Isaac Sim + OmniLRS 환경에서 사용하는 <code>final_rover_HH</code> USD asset의 구성,
+설정 파일, 재생성 절차 및 검증 기준을 설명합니다. asset을 변경하거나 플랜트 설정을
 점검하는 개발자와 시험 담당자를 대상으로 합니다.</p>
-<p>실행 시 적용되는 설정은 <strong>자산·물리·마찰·장면의 네 계층</strong>으로 구성됩니다.
-변경할 항목의 기준 파일을 먼저 확인하고, 자산 생성 → 물리 설정 적용 → 런타임 설정
+<p>실행 시 적용되는 설정은 <strong>asset·물리·마찰·장면의 네 계층</strong>으로 구성됩니다.
+변경할 항목의 기준 파일을 먼저 확인하고, asset 생성 → 물리 설정 적용 → 런타임 설정
 확인 → 동작 검증 순서로 진행하십시오.</p>
-<p>수치는 <strong>자산에서 추출한 값</strong>, <strong>설정값</strong>, <strong>시뮬레이션 측정값</strong>, <strong>계산 추정값</strong>을
+<p>수치는 <strong>asset에서 추출한 값</strong>, <strong>설정값</strong>, <strong>시뮬레이션 측정값</strong>, <strong>계산 추정값</strong>을
 구분하여 제시합니다. 본 문서의 시뮬레이션 결과는 실제 로버 하드웨어의 검증 결과가 아닙니다.</p>
 </div>
 <p><strong>문서 사용 순서</strong></p>
 <ol>
-<li>처음 사용하는 경우: 1~2절에서 자산 구조와 설정 파일을 확인합니다.</li>
+<li>처음 사용하는 경우: 1~2절에서 asset 구조와 설정 파일을 확인합니다.</li>
 <li>제원과 제어 인터페이스를 확인하는 경우: 3~6절을 참조합니다.</li>
 <li>접촉·지형·암석 설정을 변경하는 경우: 7~9절을 참조합니다.</li>
-<li>자산을 재생성하는 경우: 10절의 절차와 완료 기준을 따릅니다.</li>
+<li>asset을 재생성하는 경우: 10절의 절차와 완료 기준을 따릅니다.</li>
 <li>시험 결과를 해석하는 경우: 11절의 미확정 항목과 검증 범위를 함께 확인합니다.</li>
 </ol>
 <hr />
-<h2 id="1">1. 자산 구조<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h2 id="1">1. asset 구조<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>World0.usd                      defaultPrim /World · Z-up · metersPerUnit 1.0
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└ /World/Rover_hyundai          ← SubUSDs/Rover_hyundai.usd 참조
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  └ world                       ← ArticulationRoot
@@ -972,14 +972,14 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>SubUSDs/  Rover_hyundai{,_base,_physics,_robot,_sensor}.usd · IMU_sensor.usd · stereo_camera.usd
 </code></pre></div>
 <p>로버의 articulation root 링크 이름은 <code>world</code>입니다. 단위는 m, 상향축은 Z입니다.</p>
-<p>OmniLRS용 자산은 생성기가 <code>World0.usd</code>를 참조하여 만든
+<p>OmniLRS용 asset은 생성기가 <code>World0.usd</code>를 참조하여 만든
 <code>Rover_hyundai_omnilrs.usd</code>입니다. 원본에 직접 변경 사항을 누적하지 않고,
-생성된 자산에 필요한 override를 적용합니다. 센서 배치와 Action Graph 등 반복 적용할
+생성된 asset에 필요한 override를 적용합니다. 센서 배치와 Action Graph 등 반복 적용할
 변경은 생성기에 반영해야 재생성 후에도 유지됩니다.</p>
 <h3 id="1-1">1.1 레이어 합성 구조<a class="headerlink" href="#1-1" title="Permanent link">&para;</a></h3>
 <p><img alt="USD 합성 구조: 레이어 참조 사슬과 합성 결과 stage의 최상위 계층" src="../../assets/l-project-usd-composition.png" /></p>
-<p>본 자산은 <strong>sublayer를 사용하지 않습니다.</strong> 합성은 전적으로 <strong>reference</strong>로 이루어지며,
-생성 레이어에서 자산 원본까지 두 단계를 거칩니다.</p>
+<p>본 asset은 <strong>sublayer를 사용하지 않습니다.</strong> 합성은 전적으로 <strong>reference</strong>로 이루어지며,
+생성 레이어에서 asset 원본까지 두 단계를 거칩니다.</p>
 <table>
 <thead>
 <tr>
@@ -997,7 +997,7 @@
 <tr>
 <td>2</td>
 <td><code>World0.usd</code></td>
-<td>자산 루트. 질량·관성 override가 기록되는 위치</td>
+<td>asset 루트. 질량·관성 override가 기록되는 위치</td>
 </tr>
 <tr>
 <td>3</td>
@@ -1096,7 +1096,7 @@ drive가 없습니다. 두 숫자를 같은 항목으로 비교하지 마십시�
 <code>/Robots/&lt;robot_name&gt;</code> 아래에 reference하기 때문입니다. 로버와 graph가 서로 다른 최상위
 prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 <h3 id="1-3">1.3 생성기가 추가하는 Action Graph<a class="headerlink" href="#1-3" title="Permanent link">&para;</a></h3>
-<p><code>Graphs</code> Scope의 OmniGraph 7개 중 <strong>5개는 자산에서 복사</strong>하고 <strong>2개는 생성기가 신설</strong>합니다.</p>
+<p><code>Graphs</code> Scope의 OmniGraph 7개 중 <strong>5개는 asset에서 복사</strong>하고 <strong>2개는 생성기가 신설</strong>합니다.</p>
 <table>
 <thead>
 <tr>
@@ -1108,12 +1108,12 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 <tbody>
 <tr>
 <td><code>wheel_graph</code> · <code>steering_graph</code></td>
-<td>자산 복사</td>
+<td>asset 복사</td>
 <td>구동·조향 명령 수신</td>
 </tr>
 <tr>
 <td><code>Encoder_sensor</code> · <code>IMU_sensor</code> · <code>Camera_sensor</code></td>
-<td>자산 복사</td>
+<td>asset 복사</td>
 <td>피드백·센서 발행</td>
 </tr>
 <tr>
@@ -1139,7 +1139,7 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 </div>
 <hr />
 <h2 id="2">2. 설정 계층 및 기준 파일<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>아래 경로는 <code>l-project-hils-ros2</code> 저장소 기준입니다. 자산 경로는 실제 설치 위치를 사용합니다.</p>
+<p>아래 경로는 <code>l-project-hils-ros2</code> 저장소 기준입니다. asset 경로는 실제 설치 위치를 사용합니다.</p>
 <table>
 <thead>
 <tr>
@@ -1151,16 +1151,16 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 </thead>
 <tbody>
 <tr>
-<td>자산</td>
+<td>asset</td>
 <td><code>final_rover_HH/Rover_hyundai_omnilrs.usd</code></td>
 <td>링크·조인트·메시·센서 배치·Action Graph</td>
-<td>자산 생성</td>
+<td>asset 생성</td>
 </tr>
 <tr>
 <td>물리</td>
 <td><code>config/isaac/final_rover_HH_physics.yaml</code></td>
 <td>중력·질량·관성·구동 drive</td>
-<td>자산 파일에 기록</td>
+<td>asset 파일에 기록</td>
 </tr>
 <tr>
 <td>마찰</td>
@@ -1176,12 +1176,12 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 </tr>
 </tbody>
 </table>
-<p>물리 설정은 <code>tools/isaac/apply_asset_physics.py</code>로 적용하며, 자산을 재생성한 뒤에는
+<p>물리 설정은 <code>tools/isaac/apply_asset_physics.py</code>로 적용하며, asset을 재생성한 뒤에는
 다시 적용해야 합니다. 마찰과 장면 설정은 실행 중인 stage에 적용됩니다.
 절차적으로 생성되는 지형은 프림이 교체될 수 있으므로 material binding의 상속 관계도
 확인해야 합니다(7절).</p>
 <p>ROS 2 bridge 설정은 <code>config/isaac/final_rover_HH.yaml</code>에서 관리합니다.
-이 파일은 12축 명령 배열과 자산 Action Graph의 토픽을 연결합니다.</p>
+이 파일은 12축 명령 배열과 asset Action Graph의 토픽을 연결합니다.</p>
 <hr />
 <h2 id="3">3. 기하 제원 및 센서 배치<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p><img alt="로버 상면도와 측면도: wheelbase, track width, scrub radius, 휠 반경 및 기준 무게중심 높이" src="../../assets/l-project-usd-dimensions.png" /></p>
@@ -1240,7 +1240,7 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 <thead>
 <tr>
 <th>항목</th>
-<th>자산 메시에서 추출한 값</th>
+<th>asset 메시에서 추출한 값</th>
 </tr>
 </thead>
 <tbody>
@@ -1281,9 +1281,9 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 변경되면 축 선택 결과도 확인해야 합니다.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">참조 자산과의 구분</p>
+<p class="admonition-title">참조 asset과의 구분</p>
 <p>프로젝트에서 참조한 NASA VIPER 제원의 grouser 높이는 <strong>26 mm</strong>입니다.
-본 자산 메시에서 추출한 <strong>19.13 mm</strong>와 구분하여 사용하십시오. 메시 추출값은
+본 asset 메시에서 추출한 <strong>19.13 mm</strong>와 구분하여 사용하십시오. 메시 추출값은
 실제 제작 휠의 치수 측정값을 의미하지 않습니다.</p>
 </div>
 <hr />
@@ -1295,7 +1295,7 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 전달되지 않을 수 있으므로 명령과 피드백을 축별로 대조해야 합니다.</p>
 <p>조향 한계는 다음 두 기준을 별도로 적용합니다.</p>
 <ul>
-<li><strong>자산 joint limit:</strong> ±90°.</li>
+<li><strong>asset joint limit:</strong> ±90°.</li>
 <li><strong>운용 한계:</strong> FL·RR은 −60°~+30°, FR·RL은 −30°~+60°.</li>
 </ul>
 <p>제자리 회전의 기준 조향각은 kingpin(조향축) 위치에서 계산한 <strong>55.30°</strong>입니다.
@@ -1371,7 +1371,7 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 <div class="admonition warning">
 <p class="admonition-title">자동 계산 sentinel과 명시값 구분</p>
 <p>관성 <code>(0,0,0)</code>과 무게중심 <code>(-inf,-inf,-inf)</code>는 자동 계산을 위한 sentinel입니다.
-초기 자산의 21개 강체에는 질량 1~2 kg과 관성 <code>(1e-4,1e-4,1e-4)</code>가 명시되어
+초기 asset의 21개 강체에는 질량 1~2 kg과 관성 <code>(1e-4,1e-4,1e-4)</code>가 명시되어
 있었으며, 중력은 기본값 <strong>9.81 m/s²</strong>가 적용되는 상태였습니다.
 이들 초기 설정과 구동 위치 복원 항은 기존 구동 이상 분석에서 수정 대상이었습니다.
 재생성 후에는 합성 stage와 런타임의 최종 적용값을 확인하십시오.</p>
@@ -1629,15 +1629,15 @@ prim에 있으면 graph가 함께 따라오지 않습니다.</p>
 <div class="admonition warning">
 <p class="admonition-title">검증 대상</p>
 <p>소스 코드의 collider 생성 호출 유무만으로 충돌 설정을 판단하지 마십시오.
-collider가 자산에 이미 정의되어 있을 수 있습니다. 코드·합성 자산·런타임 접촉 결과를
+collider가 asset에 이미 정의되어 있을 수 있습니다. 코드·합성 asset·런타임 접촉 결과를
 함께 확인해야 하며, 성능 변화가 없다는 사실만으로 기능 적용 여부를 판단할 수 없습니다.</p>
 </div>
 <hr />
-<h2 id="10">10. 자산 재생성 및 적용 절차<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h2 id="10">10. asset 재생성 및 적용 절차<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <h3 id="101">10.1 준비 사항<a class="headerlink" href="#101" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Isaac Sim Python 환경과 원본 <code>World0.usd</code> 및 참조 <code>SubUSDs/</code>에 대한 접근을 준비합니다.</li>
-<li>원본 자산 버전, 생성기 버전, 물리·마찰·장면 설정 버전을 기록합니다.</li>
+<li>원본 asset 버전, 생성기 버전, 물리·마찰·장면 설정 버전을 기록합니다.</li>
 <li>기존 출력 USD와 보고서를 보존하고, 원본과 다른 출력 경로를 지정합니다.</li>
 <li>아래 명령은 <code>l-project-hils-ros2</code> 저장소 루트에서 실행합니다. 경로는 설치 환경에 맞게 바꿉니다.</li>
 </ul>
@@ -1667,7 +1667,7 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--report<span class="w"> </span>/path/to/physics-dry-run.json
 </code></pre></div>
 <p>대상 파일과 설정값을 확인한 후 <code>--write</code>로 적용합니다. 도구는 적용 전에 대상 USD의
-백업을 생성합니다. 참조 자산 전체의 백업을 대신하지는 않습니다.</p>
+백업을 생성합니다. 참조 asset 전체의 백업을 대신하지는 않습니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="s2">&quot;</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">&quot;</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--config<span class="w"> </span>config/isaac/final_rover_HH_physics.yaml<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUTPUT_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -1684,7 +1684,7 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
 </thead>
 <tbody>
 <tr>
-<td>자산 참조</td>
+<td>asset 참조</td>
 <td>생성 USD와 모든 참조 레이어가 정상적으로 열림</td>
 </tr>
 <tr>
@@ -1717,7 +1717,7 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
 </tr>
 </tbody>
 </table>
-<p>생성 보고서 통과는 자산 구조 검증입니다. 센서 데이터 수신과 로버 동작은 시뮬레이션에서
+<p>생성 보고서 통과는 asset 구조 검증입니다. 센서 데이터 수신과 로버 동작은 시뮬레이션에서
 별도로 확인하고, 시험 조건·관찰 결과·미확인 항목을 함께 기록하십시오.</p>
 <h3 id="105">10.5 증상별 점검 순서<a class="headerlink" href="#105" title="Permanent link">&para;</a></h3>
 <table>
@@ -1742,7 +1742,7 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
 </tr>
 <tr>
 <td>로버가 암석을 통과함</td>
-<td>자산 collider → 배치 방식 → 런타임 접촉 → 이동 궤적</td>
+<td>asset collider → 배치 방식 → 런타임 접촉 → 이동 궤적</td>
 </tr>
 <tr>
 <td>재생성 후 거동이 달라짐</td>
@@ -1755,7 +1755,7 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
 <p>다음 항목은 추가 확인이 필요합니다.</p>
 <ul>
 <li><strong>코너별 maxForce 비대칭:</strong> FL 설정이 다른 이유와 통일 여부가 확정되지 않았습니다.</li>
-<li><strong>카메라 수직 FOV 및 채택 해상도:</strong> 자산에서 계산한 수평 FOV는 <strong>108.05°</strong>입니다.
+<li><strong>카메라 수직 FOV 및 채택 해상도:</strong> asset에서 계산한 수평 FOV는 <strong>108.05°</strong>입니다.
   조리개 비 <strong>3.27:1</strong>과 렌더 해상도 비 <strong>1.78:1</strong>이 달라 수직 FOV는 renderer의
   aperture fitting 정책 확인이 필요합니다. 기존 수신율은 1280×720에서 <strong>22.3 Hz</strong>,
   640×360에서 <strong>29.3 Hz</strong>이며 최종 채택 해상도는 미정입니다.</li>
@@ -1766,7 +1766,7 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
 <li><strong>PointInstancer 충돌 원인:</strong> 배치 방식에 따른 차이는 시뮬레이션 A/B 시험에서
   확인했지만, 해당 환경의 내부 처리 원인은 확정되지 않았습니다.</li>
 <li><strong>중복 상수:</strong> 기준 무게중심 높이와 휠 반경이 인터페이스 정의와 생성기에 중복되어 있습니다.
-  변경 시 양쪽을 대조하십시오. 도식 생성 스크립트는 인터페이스 기준값과 자산 추출값을 사용합니다.</li>
+  변경 시 양쪽을 대조하십시오. 도식 생성 스크립트는 인터페이스 기준값과 asset 추출값을 사용합니다.</li>
 <li><strong>조인트 수의 기록 차이:</strong> 2026-08-20과 2026-09-29 분석의 drive 수가 다릅니다.
   버전 간 변경 원인은 별도 추적 대상이며, 운용 대상의 합성 stage를 기준으로 점검해야 합니다.</li>
 </ul>

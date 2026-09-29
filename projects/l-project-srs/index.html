@@ -1105,7 +1105,7 @@
 <tr>
 <td>1.10</td>
 <td>2026-08-21</td>
-<td>6장 정식 플랜트를 <strong><code>final_rover_HH</code></strong> 로 교체(AN-001 8절), 자산별 토픽 계약은 플랜트 프로파일이 담당함을 명시(AD-002 3d)</td>
+<td>6장 정식 플랜트를 <strong><code>final_rover_HH</code></strong> 로 교체(AN-001 8절), asset별 토픽 계약은 플랜트 프로파일이 담당함을 명시(AD-002 3d)</td>
 </tr>
 <tr>
 <td>1.11</td>
@@ -1135,22 +1135,22 @@
 <tr>
 <td>1.16</td>
 <td>2026-08-22</td>
-<td><strong>조향축 오프셋(스크럽 반경 0.1271 m)을 기구학에 반영.</strong> 참조 코드 <code>VehicleKinematicsCode</code> 의 WHEELOFFSET 에 해당하며, 기구 도면이 없어 <code>final_rover_HH</code> 자산의 조인트 좌표에서 실측했다. 조향각은 <strong>조향축 위치</strong>에서 정하고 휠 속도는 조향각만큼 돌아간 <strong>휠 접지점</strong>에서 다시 구한다. 직진·동위상은 결과가 같고, 선회에서 조향각 최대 8.2°·휠속도 9.3 % 달라진다. 6장 제원과 FR-007 에 반영했고, TP-002·ND-001·BRINGUP 의 기대값(cmd_vel 0.5/0.2 → 구동 [1.884, 3.026] · 조향 [0.359, 0.245])을 함께 갱신했다</td>
+<td><strong>조향축 오프셋(스크럽 반경 0.1271 m)을 기구학에 반영.</strong> 참조 코드 <code>VehicleKinematicsCode</code> 의 WHEELOFFSET 에 해당하며, 기구 도면이 없어 <code>final_rover_HH</code> asset의 조인트 좌표에서 실측했다. 조향각은 <strong>조향축 위치</strong>에서 정하고 휠 속도는 조향각만큼 돌아간 <strong>휠 접지점</strong>에서 다시 구한다. 직진·동위상은 결과가 같고, 선회에서 조향각 최대 8.2°·휠속도 9.3 % 달라진다. 6장 제원과 FR-007 에 반영했고, TP-002·ND-001·BRINGUP 의 기대값(cmd_vel 0.5/0.2 → 구동 [1.884, 3.026] · 조향 [0.359, 0.245])을 함께 갱신했다</td>
 </tr>
 <tr>
 <td>1.17</td>
 <td>2026-08-22</td>
-<td><strong>FR-081 신설 — 선회 포락선.</strong> 참조 코드의 <code>Vr ≤ 0.339·Vl + 0.0205</code> 는 <strong>쓰지 않는다</strong> — 조향각이 제한된 애커먼 차량의 최소 선회반경 식이라 속도에 비례해 커지는데, 우리 로버는 조향 ±90°(자산 실측)라 최소 선회반경이 없고 포락선이 속도에 따라 <strong>좁아진다</strong>. 구속은 ① 휠 각속도 한계(저속에서 구속, 제자리 회전 2.07 rad/s) ② 횡가속 한계(중속에서 구속, 0.55 m/s² — 견인 μ 0.70×g 1.62 의 절반. 전도 한계 3.24 m/s² 보다 엄격하다). 6장에 무게중심 높이 0.3153 m 를 등재했다</td>
+<td><strong>FR-081 신설 — 선회 포락선.</strong> 참조 코드의 <code>Vr ≤ 0.339·Vl + 0.0205</code> 는 <strong>쓰지 않는다</strong> — 조향각이 제한된 애커먼 차량의 최소 선회반경 식이라 속도에 비례해 커지는데, 우리 로버는 조향 ±90°(asset 실측)라 최소 선회반경이 없고 포락선이 속도에 따라 <strong>좁아진다</strong>. 구속은 ① 휠 각속도 한계(저속에서 구속, 제자리 회전 2.07 rad/s) ② 횡가속 한계(중속에서 구속, 0.55 m/s² — 견인 μ 0.70×g 1.62 의 절반. 전도 한계 3.24 m/s² 보다 엄격하다). 6장에 무게중심 높이 0.3153 m 를 등재했다</td>
 </tr>
 <tr>
 <td>1.18</td>
 <td>2026-08-23</td>
-<td><strong>6장 제원을 정식 자산 <code>final_rover_HH</code> 실측으로 갱신하고 주요 치수표를 신설.</strong> 종전 값은 <strong>구 자산 viper_v4 에서 온 반올림값</strong>이었고, 플랜트 교체(2026-08-20) 때 재측정이 누락돼 있었다(RR-001 D-34). 윤거 1.26 → <strong>1.2867</strong>(+2.1 %), 축거 1.50 → <strong>1.4910</strong>, 휠 반경 0.213 → <strong>0.2133</strong>. 전장·전폭·전고·지상고·서스펜션 암 길이를 표로 추가했다. 하류 기대값도 함께 갱신 — <code>cmd_vel(0.5, 0.2)</code> → 구동 <code>[1.868, 3.032]</code> · 조향 <code>[0.359, 0.242]</code></td>
+<td><strong>6장 제원을 정식 asset <code>final_rover_HH</code> 실측으로 갱신하고 주요 치수표를 신설.</strong> 종전 값은 <strong>구 asset viper_v4 에서 온 반올림값</strong>이었고, 플랜트 교체(2026-08-20) 때 재측정이 누락돼 있었다(RR-001 D-34). 윤거 1.26 → <strong>1.2867</strong>(+2.1 %), 축거 1.50 → <strong>1.4910</strong>, 휠 반경 0.213 → <strong>0.2133</strong>. 전장·전폭·전고·지상고·서스펜션 암 길이를 표로 추가했다. 하류 기대값도 함께 갱신 — <code>cmd_vel(0.5, 0.2)</code> → 구동 <code>[1.868, 3.032]</code> · 조향 <code>[0.359, 0.242]</code></td>
 </tr>
 <tr>
 <td>1.19</td>
 <td>2026-08-24</td>
-<td><strong>FR-082 신설(URDF 는 자산에서 생성)·FR-006 서스펜션 한계 정정.</strong> URDF 를 만들면서 대조하니 <strong>서스펜션 클램프가 자산 조인트 한계보다 50 % 넓었다</strong> — 계약 ±π/6(±30°) 인데 자산은 네 모서리 모두 <strong>±0.35 rad(±20.05°)</strong> 다. 주석에는 "(USD 조인트 한계)" 라고 적혀 있었으나 사실이 아니었다(RR-001 D-35). 최대 지령이 조인트 스톱을 밀고 있었고, 수직 스트로크도 0.245 m 가 아니라 <strong>0.168 m</strong> 다. 5장 축 배치와 6장 제원표도 함께 정정했다</td>
+<td><strong>FR-082 신설(URDF 는 asset에서 생성)·FR-006 서스펜션 한계 정정.</strong> URDF 를 만들면서 대조하니 <strong>서스펜션 클램프가 asset 조인트 한계보다 50 % 넓었다</strong> — 계약 ±π/6(±30°) 인데 asset은 네 모서리 모두 <strong>±0.35 rad(±20.05°)</strong> 다. 주석에는 "(USD 조인트 한계)" 라고 적혀 있었으나 사실이 아니었다(RR-001 D-35). 최대 지령이 조인트 스톱을 밀고 있었고, 수직 스트로크도 0.245 m 가 아니라 <strong>0.168 m</strong> 다. 5장 축 배치와 6장 제원표도 함께 정정했다</td>
 </tr>
 <tr>
 <td>1.20</td>
@@ -1205,7 +1205,7 @@
 <tr>
 <td>1.30</td>
 <td>2026-09-16</td>
-<td><strong>FR-006 개정 — 조향에 운용 정책 한계를 둔다(코너별 비대칭·거울).</strong> 자산 조인트 한계 ±90° 는 그대로 두고, 운용 범위를 −30~+60° 로 좁히되 코너마다 부호를 뒤집는다(FR·RL [−30°,+60°] · FL·RR [−60°,+30°]). 근거: 제자리 회전에 필요한 조향각은 코너별로 부호가 고정(FL·RR −55.30° · FR·RL +55.30°)이고 회전 방향을 바꿔도 각은 그대로다. 55.30° 는 조향축(킹핀) 기준값이며 휠 위치 기준 49.21° 가 아니다. 여유 4.70°. <strong>대가</strong>: crab steering은 네 축이 같은 각이라 ±30° 까지, 저속 급선회(예 v 0.1 · wz 0.8 → 62.3° 필요)는 잘린다</td>
+<td><strong>FR-006 개정 — 조향에 운용 정책 한계를 둔다(코너별 비대칭·거울).</strong> asset 조인트 한계 ±90° 는 그대로 두고, 운용 범위를 −30~+60° 로 좁히되 코너마다 부호를 뒤집는다(FR·RL [−30°,+60°] · FL·RR [−60°,+30°]). 근거: 제자리 회전에 필요한 조향각은 코너별로 부호가 고정(FL·RR −55.30° · FR·RL +55.30°)이고 회전 방향을 바꿔도 각은 그대로다. 55.30° 는 조향축(킹핀) 기준값이며 휠 위치 기준 49.21° 가 아니다. 여유 4.70°. <strong>대가</strong>: crab steering은 네 축이 같은 각이라 ±30° 까지, 저속 급선회(예 v 0.1 · wz 0.8 → 62.3° 필요)는 잘린다</td>
 </tr>
 <tr>
 <td>1.31</td>
@@ -1499,7 +1499,7 @@
 </tr>
 <tr>
 <td>SRS-FR-006</td>
-<td>구동 휠 속도는 <code>max_wheel_speed</code>로, 서스펜션각은 <strong>±0.35 rad(±20.05°)</strong> 로 제한(클램프)한다. 조향은 두 겹이다 — <strong>조인트 한계 ±π/2(자산 실측, 바깥 울타리)</strong> 와 <strong>운용 정책 한계(코너별 비대칭)</strong>. 정책은 <code>steer_policy_lo</code>/<code>hi</code>(−30°/+60°)를 <code>axes.STEER_MIRROR</code> 부호로 코너에 배분한다: FR·RL [−30°,+60°] · FL·RR [−60°,+30°]. 정책은 조인트 한계를 넘을 수 없고, <strong>제자리 회전 각(±55.30°)을 담아야 한다</strong></td>
+<td>구동 휠 속도는 <code>max_wheel_speed</code>로, 서스펜션각은 <strong>±0.35 rad(±20.05°)</strong> 로 제한(클램프)한다. 조향은 두 겹이다 — <strong>조인트 한계 ±π/2(asset 실측, 바깥 울타리)</strong> 와 <strong>운용 정책 한계(코너별 비대칭)</strong>. 정책은 <code>steer_policy_lo</code>/<code>hi</code>(−30°/+60°)를 <code>axes.STEER_MIRROR</code> 부호로 코너에 배분한다: FR·RL [−30°,+60°] · FL·RR [−60°,+30°]. 정책은 조인트 한계를 넘을 수 없고, <strong>제자리 회전 각(±55.30°)을 담아야 한다</strong></td>
 <td>T</td>
 <td><strong>검증완료</strong> — <code>tools/test_urdf_contract.py</code> U4(상·하한) · U4b(정책 ⊂ 조인트, 제자리 회전 각 수용)</td>
 </tr>
@@ -1891,7 +1891,7 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
 </tr>
 <tr>
 <td>SRS-FR-082</td>
-<td>로버 기술서(URDF)는 <strong>정식 자산에서 생성</strong>한다(<code>tools/isaac/make_rover_urdf.py</code>) — 손으로 관리하면 자산 교체 시 조용히 낡는다(D-34 가 그 사례다). 생성물은 12축 계약 조인트명·영점 기하·축 한계가 <code>axes.py</code> 와 일치해야 하며, <strong>서스펜션 4절 링크는 URDF(트리)로 표현할 수 없어 루프를 끊는다</strong> — 그 결과 RViz 에서 서스펜션 구동 시 휠이 함께 기우는 것은 시각화 한계이지 결함이 아니다</td>
+<td>로버 기술서(URDF)는 <strong>정식 asset에서 생성</strong>한다(<code>tools/isaac/make_rover_urdf.py</code>) — 손으로 관리하면 asset 교체 시 조용히 낡는다(D-34 가 그 사례다). 생성물은 12축 계약 조인트명·영점 기하·축 한계가 <code>axes.py</code> 와 일치해야 하며, <strong>서스펜션 4절 링크는 URDF(트리)로 표현할 수 없어 루프를 끊는다</strong> — 그 결과 RViz 에서 서스펜션 구동 시 휠이 함께 기우는 것은 시각화 한계이지 결함이 아니다</td>
 <td>T</td>
 <td><strong>검증완료</strong> — <code>check_urdf</code> + <code>tools/test_urdf_contract.py</code></td>
 </tr>
@@ -2116,7 +2116,7 @@ bit-identical 이 되어 정지가 걸린다. 스틱을 조금만 움직이면 �
 <h3 id="52-v3-fl-fr-rl-rr">5.2 축 배치 (v3 계약 — 순서 FL, FR, RL, RR)<a class="headerlink" href="#52-v3-fl-fr-rl-rr" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>노드ID :  1~4  구동(drive)  PVM — 모터 rpm      (휠 반경 0.213 m, 감속비 15:1 가정)
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>          5~8  조향(steer)  PPM — 조인트 rad ±90° (운용 정책은 코너별 거울 −30~+60°)
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>          9~12 서스(sus)    PPM — 조인트 rad ±0.35 (±20.05°, 자산 실측)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>          9~12 서스(sus)    PPM — 조인트 rad ±0.35 (±20.05°, asset 실측)
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>축 인덱스: axes_cmd[0..3]=구동 rad/s, [4..7]=조향 rad, [8..11]=서스 rad
 </code></pre></div>
 <h3 id="53-canopen-epos4-cia-301402">5.3 CANopen (EPOS4, CiA 301/402)<a class="headerlink" href="#53-canopen-epos4-cia-301402" title="Permanent link">&para;</a></h3>
@@ -2238,7 +2238,7 @@ bit-identical 이 되어 정지가 걸린다. 스틱을 조금만 움직이면 �
 <hr />
 <h2 id="6">6. 설계 제약<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>로버 주요 치수 — <code>final_rover_HH</code> 자산 실측 (2026-08-23)</strong></li>
+<li><strong>로버 주요 치수 — <code>final_rover_HH</code> asset 실측 (2026-08-23)</strong></li>
 </ul>
 <table>
 <thead>
@@ -2301,18 +2301,18 @@ bit-identical 이 되어 정지가 걸린다. 스틱을 조금만 움직이면 �
 </tr>
 </tbody>
 </table>
-<p><strong>종전 값(r 0.213 · 트랙 1.26 · 축거 1.50)은 구 자산 <code>HSU_Rover_viper_v4</code> 의 반올림값이었다.</strong>
+<p><strong>종전 값(r 0.213 · 트랙 1.26 · 축거 1.50)은 구 asset <code>HSU_Rover_viper_v4</code> 의 반올림값이었다.</strong>
   2026-08-20 에 정식 플랜트를 <code>final_rover_HH</code> 로 교체하면서 제원을 다시 재지 않아,
-  기구학이 <strong>쓰지 않는 자산의 치수</strong>로 돌고 있었다(RR-001 D-34). 트랙이 2.1 % 어긋나
+  기구학이 <strong>쓰지 않는 asset의 치수</strong>로 돌고 있었다(RR-001 D-34). 트랙이 2.1 % 어긋나
   선회에서 휠 속도 1.4 % 오차를 만들었고, <strong>직진에서는 차이가 정확히 0</strong> 이라 직진
-  시험으로는 드러나지 않았다. <strong>이 값들도 시뮬레이션 자산 기준이며 기구 도면 실측 대체 대상이다.</strong>
-  <strong>조향축 오프셋(스크럽 반경) 0.1271 m</strong> — <code>final_rover_HH</code> 자산 조인트 좌표 실측(2026-08-22).
+  시험으로는 드러나지 않았다. <strong>이 값들도 시뮬레이션 asset 기준이며 기구 도면 실측 대체 대상이다.</strong>
+  <strong>조향축 오프셋(스크럽 반경) 0.1271 m</strong> — <code>final_rover_HH</code> asset 조인트 좌표 실측(2026-08-22).
   휠 접지점이 조향축 접지점보다 <strong>바깥쪽</strong>에 있어, 조향하면 휠이 조향축 둘레로 돈다.
   캐스터 트레일 0, 킹핀 경사 10.0°(기구학 미사용 — 차고·캠버 변화만 만든다).
-  <strong>합성 무게중심 높이 0.3153 m</strong>(접지면 기준) — 자산 질량 분포 실측(총 450 kg, CG z 1.7503).
+  <strong>합성 무게중심 높이 0.3153 m</strong>(접지면 기준) — asset 질량 분포 실측(총 450 kg, CG z 1.7503).
   전도 한계 <code>(t/2)/h = 1.998</code> → 횡가속 3.237 m/s²(달 중력 1.62). 견인 한계 μ·g = 1.134 m/s² 가
   더 엄격하므로 <strong>선회 포락선의 횡가속 한계는 견인 기준 0.55 m/s²</strong> 로 둔다(마찰 타원 절반 배분).
-  기구 도면이 없어 자산 USD 에서 쟀다 — <strong>이 자산이 시뮬레이션 기하의 정본이다.</strong>
+  기구 도면이 없어 asset USD 에서 쟀다 — <strong>이 asset이 시뮬레이션 기하의 정본이다.</strong>
   <strong>가정값(실측 필요)</strong>:
   감속비 15:1, 정격토크 0.5 Nm, 위치축 65188.9 counts/rad (백로그 B3).
   갱신 지점(전체) <strong>4곳</strong>: ① 펌웨어 <code>drive.h</code>(단일 정의 — epos/rover_mcu가 참조)
@@ -2322,11 +2322,11 @@ bit-identical 이 되어 정지가 걸린다. 스틱을 조금만 움직이면 �
   ③을 빠뜨리면 코드 상수만 바뀌고 <strong>실행 중인 노드는 옛 제원 그대로 돈다</strong> — 런치 3종
   (<code>rover_control</code>·<code>nav2_hils</code>·<code>teleop_remote</code>)이 모두 이 yaml을 적재하며, yaml 값이
   <code>axes.py</code> 기본값을 덮어쓴다. <code>tools/isaac/rover.urdf</code>(8륜)은 레거시 — <strong>정식 플랜트는 <code>final_rover_HH</code> USD</strong>
-  (2026-08-21 채택, AN-001 8절). 구 <code>HSU_Rover_viper_v4</code> 도 레거시이며, 자산별 Isaac 토픽 계약은
-  플랜트 프로파일 <code>config/isaac/&lt;자산&gt;.yaml</code> 로 지정한다(AD-002 3d절)
+  (2026-08-21 채택, AN-001 8절). 구 <code>HSU_Rover_viper_v4</code> 도 레거시이며, asset별 Isaac 토픽 계약은
+  플랜트 프로파일 <code>config/isaac/&lt;asset&gt;.yaml</code> 로 지정한다(AD-002 3d절)
 - 플랜트의 <strong>물리 특성</strong>(링크 질량·관성·중력·구동 드라이브)은 위 기구 제원과 별개로
   <code>config/isaac/final_rover_HH_physics.yaml</code> 에 있고 <code>tools/isaac/apply_asset_physics.py</code> 로
-  자산에 반영한다. <strong>현재 값은 NASA VIPER 공개 제원(총질량 450 kg)을 참조한 추정치이며 실측이
+  asset에 반영한다. <strong>현재 값은 NASA VIPER 공개 제원(총질량 450 kg)을 참조한 추정치이며 실측이
   아니다</strong> — 기구팀 제원이 오면 이 yaml 만 교체한다. 기구학(위 4곳)과 달리 이 값들은 ROS2
   소프트웨어 동작에 직접 들어가지 않지만, <strong>시뮬레이션 주행 결과의 대표성을 좌우한다.</strong>
   달 지형(OmniLRS lunaryard, IG-001 2f)과 월면토 마찰(D-24 ②)은 반영했으나, <strong>바퀴 자국은 렌더

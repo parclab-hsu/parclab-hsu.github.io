@@ -1157,17 +1157,17 @@
 <tr>
 <td>1.28</td>
 <td>2026-08-20</td>
-<td><strong>정식 플랜트를 <code>final_rover_HH</code> 로 채택</strong>(AN-001 8.6) — 자산은 수정하지 않고 브리지에 <code>command_mode: split</code> 을 신설해 자산의 두 그래프(wheel/steering) 계약에 맞췄다. 플랜트 프로파일 <code>config/isaac/*.yaml</code> 도입, IG-6 시험 신설. <strong>기구학·모션 모델 검증 시험</strong>(31항목)을 회귀에 편입해 8종으로 확장</td>
+<td><strong>정식 플랜트를 <code>final_rover_HH</code> 로 채택</strong>(AN-001 8.6) — asset은 수정하지 않고 브리지에 <code>command_mode: split</code> 을 신설해 asset의 두 그래프(wheel/steering) 계약에 맞췄다. 플랜트 프로파일 <code>config/isaac/*.yaml</code> 도입, IG-6 시험 신설. <strong>기구학·모션 모델 검증 시험</strong>(31항목)을 회귀에 편입해 8종으로 확장</td>
 </tr>
 <tr>
 <td>1.29</td>
 <td>2026-08-21</td>
-<td><strong>자산 배선 결함 D-18 수정</strong> — 정식 자산 <code>final_rover_HH</code> 의 두 Action Graph 가 컨트롤러·구독자 입력 전부를 양쪽에 교차 연결하고 있었고 없는 노드 참조도 있었다(14건 수정, 원본 백업 보존). <code>test_isaac_bridge.py</code> 에 <strong>IG-0 자산 배선 검사</strong>를 신설해 회귀에서 자동 검출(리허설 22항목). AD-002 v2.8 3d절「플랜트 프로파일」신설, SRS v1.10 정식 플랜트 교체</td>
+<td><strong>asset 배선 결함 D-18 수정</strong> — 정식 asset <code>final_rover_HH</code> 의 두 Action Graph 가 컨트롤러·구독자 입력 전부를 양쪽에 교차 연결하고 있었고 없는 노드 참조도 있었다(14건 수정, 원본 백업 보존). <code>test_isaac_bridge.py</code> 에 <strong>IG-0 asset 배선 검사</strong>를 신설해 회귀에서 자동 검출(리허설 22항목). AD-002 v2.8 3d절「플랜트 프로파일」신설, SRS v1.10 정식 플랜트 교체</td>
 </tr>
 <tr>
 <td>1.30</td>
 <td>2026-08-21</td>
-<td><strong>자산 ROS 도메인 결함 D-19</strong> — <code>ROS2Context</code> 5개가 도메인 10 이었다(계약 42). 기동은 되는데 토픽이 안 보이는 종류라 IG-0 검사에 도메인 항목을 추가하고 자산을 42 로 정정. <strong>sim↔real 전주기 대응 명시</strong> — AD-002 v2.9 3e절에 필드 대응표(특히 구동축 토크: 실기 TPDO3 0x6077 ↔ Isaac effort→<code>drv_sim</code> 역산)와 Isaac 끝단이 비어 있을 수 있다는 한계를 기술. IG-7 토크 대칭 시험 신설 (리허설 26항목), TP-IG-5 에 effort 확인 단계 추가</td>
+<td><strong>asset ROS 도메인 결함 D-19</strong> — <code>ROS2Context</code> 5개가 도메인 10 이었다(계약 42). 기동은 되는데 토픽이 안 보이는 종류라 IG-0 검사에 도메인 항목을 추가하고 asset을 42 로 정정. <strong>sim↔real 전주기 대응 명시</strong> — AD-002 v2.9 3e절에 필드 대응표(특히 구동축 토크: 실기 TPDO3 0x6077 ↔ Isaac effort→<code>drv_sim</code> 역산)와 Isaac 끝단이 비어 있을 수 있다는 한계를 기술. IG-7 토크 대칭 시험 신설 (리허설 26항목), TP-IG-5 에 effort 확인 단계 추가</td>
 </tr>
 <tr>
 <td>1.31</td>
@@ -1187,12 +1187,12 @@
 <tr>
 <td>1.34</td>
 <td>2026-08-21</td>
-<td><strong>P5 차단 해소, TP-IG 1회차 수행</strong> — 드라이버를 580.173.02-open 으로 내려 Isaac Sim 정상 기동 확인. TP-IG-1~4·effort 관문 통과, <strong>TP-IG-5 구동축 FAIL</strong>. 실행으로만 드러난 결함 4건 등재(RR-001 R6: D-20 점검 스크립트 재발 · D-21 브리지 명령 QoS 비호환 · D-22 컨테이너 SHM 권한 · <strong>D-23 자산 구동 드라이브 — 미해결</strong>). D-21 수정으로 명령 경로 성립. P5 는 D-23 때문에 <strong>완료로 올리지 않는다</strong></td>
+<td><strong>P5 차단 해소, TP-IG 1회차 수행</strong> — 드라이버를 580.173.02-open 으로 내려 Isaac Sim 정상 기동 확인. TP-IG-1~4·effort 관문 통과, <strong>TP-IG-5 구동축 FAIL</strong>. 실행으로만 드러난 결함 4건 등재(RR-001 R6: D-20 점검 스크립트 재발 · D-21 브리지 명령 QoS 비호환 · D-22 컨테이너 SHM 권한 · <strong>D-23 asset 구동 드라이브 — 미해결</strong>). D-21 수정으로 명령 경로 성립. P5 는 D-23 때문에 <strong>완료로 올리지 않는다</strong></td>
 </tr>
 <tr>
 <td>1.35</td>
 <td>2026-08-21</td>
-<td><strong>D-23 원인 확정</strong> — 자산의 ① 질량 특성 플레이스홀더(전 강체 관성 1e-4, COM -inf) ② 구동 조인트 위치 스프링(stiffness 10 → PhysX kp 572.96) 두 가지이며 <strong>둘 다 풀어야 한다.</strong> 인과 격리 실험으로 확인 — 둘 다 교정 시 지령 추종 오차 1.2 %, 계약 경로 선회 성립(IG-001 2e). 조치는 자산 쪽이고 실제 제원이 필요해 기구팀 확인 대기. P5 는 여전히 완료 아님</td>
+<td><strong>D-23 원인 확정</strong> — asset의 ① 질량 특성 플레이스홀더(전 강체 관성 1e-4, COM -inf) ② 구동 조인트 위치 스프링(stiffness 10 → PhysX kp 572.96) 두 가지이며 <strong>둘 다 풀어야 한다.</strong> 인과 격리 실험으로 확인 — 둘 다 교정 시 지령 추종 오차 1.2 %, 계약 경로 선회 성립(IG-001 2e). 조치는 asset 쪽이고 실제 제원이 필요해 기구팀 확인 대기. P5 는 여전히 완료 아님</td>
 </tr>
 <tr>
 <td>1.36</td>
@@ -1202,17 +1202,17 @@
 <tr>
 <td>1.37</td>
 <td>2026-08-21</td>
-<td><strong>D-23 자산 반영 완료 — TP-IG 전 항목 통과.</strong> NASA VIPER 공개 제원을 참조해 총질량 450 kg 을 링크별로 배분하고(이동계 33 %), 관성은 <code>(0,0,0)</code> 자동 계산으로 되돌리고, 달 중력 1.62 와 구동 stiffness 0 을 함께 반영했다(<code>config/isaac/final_rover_HH_physics.yaml</code> + <code>tools/isaac/apply_asset_physics.py</code>, 산출물 등재). 오버라이드 없이 재수행한 결과 구동 오차 0.75 % · 조향 1.6 % · <code>/cmd_vel</code> → <code>/odom</code> 0.4992/0.1993 · 워치독 정상. <strong>P5 는 조건부 완료</strong> — 제원이 VIPER 참조 추정치이고 지형·마찰(D-24 ②③)이 미반영이다</td>
+<td><strong>D-23 asset 반영 완료 — TP-IG 전 항목 통과.</strong> NASA VIPER 공개 제원을 참조해 총질량 450 kg 을 링크별로 배분하고(이동계 33 %), 관성은 <code>(0,0,0)</code> 자동 계산으로 되돌리고, 달 중력 1.62 와 구동 stiffness 0 을 함께 반영했다(<code>config/isaac/final_rover_HH_physics.yaml</code> + <code>tools/isaac/apply_asset_physics.py</code>, 산출물 등재). 오버라이드 없이 재수행한 결과 구동 오차 0.75 % · 조향 1.6 % · <code>/cmd_vel</code> → <code>/odom</code> 0.4992/0.1993 · 워치독 정상. <strong>P5 는 조건부 완료</strong> — 제원이 VIPER 참조 추정치이고 지형·마찰(D-24 ②③)이 미반영이다</td>
 </tr>
 <tr>
 <td>1.38</td>
 <td>2026-08-21</td>
-<td><strong>월면토 지형 전환(D-24 ③)</strong> — 무한 평면에서 <strong>OmniLRS lunaryard</strong> 로 옮겼다. 자산의 Action Graph 가 로버 바깥에 있어 OmniLRS 스폰 규약(defaultPrim 하나 아래)에 맞지 않으므로 <code>tools/isaac/make_omnilrs_robot_usd.py</code> 로 로봇 USD 를 재구성한다(D-18 배선 복사·대조 보존, 차이 0). 환경 설정 <code>config/isaac/lunaryard_lproject.yaml</code> 등재. 월면 지형 위 구동 추종 오차 약 0.1 %. <strong>마찰(② )은 lunaryard 로도 미해결</strong>이고 <strong>로봇 USD 에 odometry 그래프가 없어 월면토 슬립은 미측정</strong>이다 — P5 조건부 완료 유지</td>
+<td><strong>월면토 지형 전환(D-24 ③)</strong> — 무한 평면에서 <strong>OmniLRS lunaryard</strong> 로 옮겼다. asset의 Action Graph 가 로버 바깥에 있어 OmniLRS 스폰 규약(defaultPrim 하나 아래)에 맞지 않으므로 <code>tools/isaac/make_omnilrs_robot_usd.py</code> 로 로봇 USD 를 재구성한다(D-18 배선 복사·대조 보존, 차이 0). 환경 설정 <code>config/isaac/lunaryard_lproject.yaml</code> 등재. 월면 지형 위 구동 추종 오차 약 0.1 %. <strong>마찰(② )은 lunaryard 로도 미해결</strong>이고 <strong>로봇 USD 에 odometry 그래프가 없어 월면토 슬립은 미측정</strong>이다 — P5 조건부 완료 유지</td>
 </tr>
 <tr>
 <td>1.39</td>
 <td>2026-08-21</td>
-<td><strong>ground truth 오도메트리 신설 · 월면토 슬립 첫 측정.</strong> 자산에 없던 오도메트리 그래프를 <code>make_omnilrs_robot_usd.py</code> 가 husky <code>ROS_Odometry</code> 구성으로 만들어 넣고, <code>/rover/odom_gt</code> 로 낸다(<code>/odom</code> 은 조인트 역산이라 슬립이 정의상 0 이므로 쓰지 않는다). <code>tools/isaac/measure_slip.py</code> 등재. 월면토 평탄 정상상태 <strong>슬립 49.1 %</strong>(무한 평면 31.2 % 대비), ω≥2 에서는 지형에 걸려 80 % 이상. <strong>설계 입력으로는 아직 쓰지 않는다</strong> — 마찰이 월면토 계수가 아니고(D-24 ②) 지형 변형이 꺼져 있으며 제원이 VIPER 참조 추정치다</td>
+<td><strong>ground truth 오도메트리 신설 · 월면토 슬립 첫 측정.</strong> asset에 없던 오도메트리 그래프를 <code>make_omnilrs_robot_usd.py</code> 가 husky <code>ROS_Odometry</code> 구성으로 만들어 넣고, <code>/rover/odom_gt</code> 로 낸다(<code>/odom</code> 은 조인트 역산이라 슬립이 정의상 0 이므로 쓰지 않는다). <code>tools/isaac/measure_slip.py</code> 등재. 월면토 평탄 정상상태 <strong>슬립 49.1 %</strong>(무한 평면 31.2 % 대비), ω≥2 에서는 지형에 걸려 80 % 이상. <strong>설계 입력으로는 아직 쓰지 않는다</strong> — 마찰이 월면토 계수가 아니고(D-24 ②) 지형 변형이 꺼져 있으며 제원이 VIPER 참조 추정치다</td>
 </tr>
 <tr>
 <td>1.40</td>
@@ -1237,12 +1237,12 @@
 <tr>
 <td>1.44</td>
 <td>2026-08-22</td>
-<td><strong>조향축 오프셋 반영 — 백로그 B7 완료.</strong> 기구 도면이 없어 자산 USD 조인트 좌표에서 실측했다(스크럽 반경 0.1271 m). 기구학 3곳을 고쳤다: 조향각은 조향축에서, 휠 속도는 조향각만큼 돌아간 휠 접지점에서, 역기구학은 일반 최소자승으로. <strong>에뮬레이터 GUI 자세 적분 사본도 같이 고쳤다</strong> — 안 고치면 GUI 궤적만 조용히 어긋난다. 회귀를 배포 구성(오프셋 포함)으로 돌리도록 바꾸고 K2b(오프셋 전용 6항목)를 신설했다 — <strong>49 PASS / 0 FAIL</strong>. 하류 기대값(TP-002·ND-001·BRINGUP·test_isaac_bridge)을 함께 갱신했고, 과거 측정 기록은 고치지 않고 주석만 달았다. 문서: SRS v1.16, RR-001 v1.17</td>
+<td><strong>조향축 오프셋 반영 — 백로그 B7 완료.</strong> 기구 도면이 없어 asset USD 조인트 좌표에서 실측했다(스크럽 반경 0.1271 m). 기구학 3곳을 고쳤다: 조향각은 조향축에서, 휠 속도는 조향각만큼 돌아간 휠 접지점에서, 역기구학은 일반 최소자승으로. <strong>에뮬레이터 GUI 자세 적분 사본도 같이 고쳤다</strong> — 안 고치면 GUI 궤적만 조용히 어긋난다. 회귀를 배포 구성(오프셋 포함)으로 돌리도록 바꾸고 K2b(오프셋 전용 6항목)를 신설했다 — <strong>49 PASS / 0 FAIL</strong>. 하류 기대값(TP-002·ND-001·BRINGUP·test_isaac_bridge)을 함께 갱신했고, 과거 측정 기록은 고치지 않고 주석만 달았다. 문서: SRS v1.16, RR-001 v1.17</td>
 </tr>
 <tr>
 <td>1.45</td>
 <td>2026-08-22</td>
-<td><strong>선회 포락선 신설(SRS FR-081) — 백로그 B8 완료.</strong> 참조 코드 식을 그대로 쓰지 않고 우리 구속에서 다시 유도했다. 축별 클램프보다 <strong>먼저</strong> twist 를 줄여 강체 정합을 지킨다 — 클램프는 휠마다 따로 잘라 지령과 다른 운동을 만든다. 평시 주행(0.5 m/s · 0.8 rad/s)은 걸리지 않고, 터보(1.0 m/s)에서 wz 1.6 → 0.55 로 잘린다. 제자리 회전은 막지 않는다. 회귀 <strong>58 PASS / 0 FAIL</strong>(K7 신설 9항목). 무게중심 높이 0.3153 m 를 자산 질량 분포에서 실측해 SRS 6장에 등재했다. 문서: SRS v1.17, ND-001 v1.4</td>
+<td><strong>선회 포락선 신설(SRS FR-081) — 백로그 B8 완료.</strong> 참조 코드 식을 그대로 쓰지 않고 우리 구속에서 다시 유도했다. 축별 클램프보다 <strong>먼저</strong> twist 를 줄여 강체 정합을 지킨다 — 클램프는 휠마다 따로 잘라 지령과 다른 운동을 만든다. 평시 주행(0.5 m/s · 0.8 rad/s)은 걸리지 않고, 터보(1.0 m/s)에서 wz 1.6 → 0.55 로 잘린다. 제자리 회전은 막지 않는다. 회귀 <strong>58 PASS / 0 FAIL</strong>(K7 신설 9항목). 무게중심 높이 0.3153 m 를 asset 질량 분포에서 실측해 SRS 6장에 등재했다. 문서: SRS v1.17, ND-001 v1.4</td>
 </tr>
 <tr>
 <td>1.46</td>
@@ -1272,12 +1272,12 @@
 <tr>
 <td>1.51</td>
 <td>2026-08-23</td>
-<td><strong>제원을 정식 자산 실측으로 갱신 (RR-001 D-34).</strong> 주요 치수를 물어 대조하다 <strong>기구학이 쓰지 않는 자산(구 viper_v4)의 치수로 돌고 있었다</strong>는 것이 드러났다 — 플랜트를 <code>final_rover_HH</code> 로 교체(08-20)하면서 재측정이 누락됐다. 윤거 1.26 → <strong>1.2867</strong>(+2.1 %), 축거 1.50 → <strong>1.4910</strong>, 휠 반경 → <strong>0.2133</strong>. 갱신 지점은 <strong>검색으로 찾아</strong> 5개 파일 6블록을 동시에 고쳤다(D-33 교훈). SRS 6장에 <strong>주요 치수표를 신설</strong>했다 — 전장·전폭·전고·지상고·서스펜션 암 길이까지 한 표에 모았다(종전에는 세 파일에 흩어져 있었다). 회귀 58 PASS / 0 FAIL. <strong>펌웨어 재플래시 필요.</strong> 문서: SRS v1.18, RR-001 v1.19, ND-001·TP-002·IG-001·BRINGUP 기대값</td>
+<td><strong>제원을 정식 asset 실측으로 갱신 (RR-001 D-34).</strong> 주요 치수를 물어 대조하다 <strong>기구학이 쓰지 않는 asset(구 viper_v4)의 치수로 돌고 있었다</strong>는 것이 드러났다 — 플랜트를 <code>final_rover_HH</code> 로 교체(08-20)하면서 재측정이 누락됐다. 윤거 1.26 → <strong>1.2867</strong>(+2.1 %), 축거 1.50 → <strong>1.4910</strong>, 휠 반경 → <strong>0.2133</strong>. 갱신 지점은 <strong>검색으로 찾아</strong> 5개 파일 6블록을 동시에 고쳤다(D-33 교훈). SRS 6장에 <strong>주요 치수표를 신설</strong>했다 — 전장·전폭·전고·지상고·서스펜션 암 길이까지 한 표에 모았다(종전에는 세 파일에 흩어져 있었다). 회귀 58 PASS / 0 FAIL. <strong>펌웨어 재플래시 필요.</strong> 문서: SRS v1.18, RR-001 v1.19, ND-001·TP-002·IG-001·BRINGUP 기대값</td>
 </tr>
 <tr>
 <td>1.52</td>
 <td>2026-08-24</td>
-<td><strong>12축 URDF 신설 — 자산에서 생성한다 (SRS FR-082).</strong> 기존 <code>tools/isaac/rover.urdf</code> 는 <strong>레거시 8륜 스키드스티어</strong>(휠 반경 0.1 m·트랙 0.6 m)로 현행 계약과 무관했다. <code>tools/isaac/make_rover_urdf.py</code> 가 정식 자산에서 뽑아 만든다 — <strong>손으로 관리하면 자산 교체 시 조용히 낡는다</strong>(D-34 가 그 사례다). 산출물 <code>config/description/lproject_rover.urdf</code>(링크 22·조인트 21). <strong>서스펜션 4절 링크는 URDF(트리)로 표현할 수 없어</strong> 루프를 끊었고 그 한계를 파일과 생성기에 명시했다. 검증 2단: <code>check_urdf</code>(파싱) + <strong><code>tools/test_urdf_contract.py</code></strong>(계약 정합 — 조인트명·영점 기하·축 한계·루프 부재). 만들면서 <strong>D-35</strong>(서스 클램프가 자산 한계보다 50 % 넓음)를 찾아 고쳤다. 생성기 자체 결함도 하나 잡았다 — <strong>USD 는 행벡터 규약</strong>이라 회전행렬을 전치해 읽어야 하는데 빼먹어 킹핀 10° 아래 좌표가 1.6 cm 어긋났다</td>
+<td><strong>12축 URDF 신설 — asset에서 생성한다 (SRS FR-082).</strong> 기존 <code>tools/isaac/rover.urdf</code> 는 <strong>레거시 8륜 스키드스티어</strong>(휠 반경 0.1 m·트랙 0.6 m)로 현행 계약과 무관했다. <code>tools/isaac/make_rover_urdf.py</code> 가 정식 asset에서 뽑아 만든다 — <strong>손으로 관리하면 asset 교체 시 조용히 낡는다</strong>(D-34 가 그 사례다). 산출물 <code>config/description/lproject_rover.urdf</code>(링크 22·조인트 21). <strong>서스펜션 4절 링크는 URDF(트리)로 표현할 수 없어</strong> 루프를 끊었고 그 한계를 파일과 생성기에 명시했다. 검증 2단: <code>check_urdf</code>(파싱) + <strong><code>tools/test_urdf_contract.py</code></strong>(계약 정합 — 조인트명·영점 기하·축 한계·루프 부재). 만들면서 <strong>D-35</strong>(서스 클램프가 asset 한계보다 50 % 넓음)를 찾아 고쳤다. 생성기 자체 결함도 하나 잡았다 — <strong>USD 는 행벡터 규약</strong>이라 회전행렬을 전치해 읽어야 하는데 빼먹어 킹핀 10° 아래 좌표가 1.6 cm 어긋났다</td>
 </tr>
 <tr>
 <td>1.53</td>
@@ -1302,7 +1302,7 @@
 <tr>
 <td>1.57</td>
 <td>2026-08-25</td>
-<td><strong>D-37 — 명령원이 사라져도 Isaac 은 마지막 속도 목표대로 계속 달린다.</strong> 변형 엔진 측정을 끝내고 절차대로 보드를 EPOS 로 내리자 <code>/sim/axes_cmd</code> 가 멎었는데, ArticulationController 는 직전 지령 2.0 rad/s 를 유지해 <strong>로버가 무인으로 계속 달려 크레이터에 빠졌다</strong>(실측 슬립 100 %). SRS FR-076 의 sim 쪽 짝이 통째로 비어 있었다. <code>sim_isaac_bridge.py</code> 에 <strong>명령 워치독</strong>(기본 0.5 s)을 신설했고 크레이터 안에서 실제로 휠이 서는 것까지 확인했다. <strong>슬립 조사 도구 신설</strong> — <code>wheel_feedback</code> 노드가 휠별 omega·torque·v_wheel·v_ref·slip 을 <code>/rover/wheel_feedback</code> 로 낸다(ground truth가 없으면 <strong>NaN</strong>, 0 으로 채우지 않는다). 자체시험 22 PASS. <strong>자산 센서 확장</strong> — 후방 카메라 신설(전방 스펙 복사, 요 180°)과 IMU 를 지붕(0.579 m)에서 <strong>무게중심(0.3153 m)</strong>으로 재배치, <code>make_omnilrs_robot_usd.py</code> 가 생성 시 배치하고 <strong>10항목을 다시 열어 검산</strong>한다. 생성기의 Isaac 의존을 오도메트리 경로로 한정해 <strong>시뮬레이터가 떠 있어도 센서 배치를 돌릴 수 있게</strong> 했다. <strong>GUI 탭 2종 신설</strong> — Wheels(속도·토크·슬립, v_wheel/v_ref 를 겹쳐 그린다)와 Rover State(인공수평의·방위·IMU·모드). 회귀 기구학 74 · 휠 피드백 22 · URDF 계약 · 에뮬레이터 20 전부 통과</td>
+<td><strong>D-37 — 명령원이 사라져도 Isaac 은 마지막 속도 목표대로 계속 달린다.</strong> 변형 엔진 측정을 끝내고 절차대로 보드를 EPOS 로 내리자 <code>/sim/axes_cmd</code> 가 멎었는데, ArticulationController 는 직전 지령 2.0 rad/s 를 유지해 <strong>로버가 무인으로 계속 달려 크레이터에 빠졌다</strong>(실측 슬립 100 %). SRS FR-076 의 sim 쪽 짝이 통째로 비어 있었다. <code>sim_isaac_bridge.py</code> 에 <strong>명령 워치독</strong>(기본 0.5 s)을 신설했고 크레이터 안에서 실제로 휠이 서는 것까지 확인했다. <strong>슬립 조사 도구 신설</strong> — <code>wheel_feedback</code> 노드가 휠별 omega·torque·v_wheel·v_ref·slip 을 <code>/rover/wheel_feedback</code> 로 낸다(ground truth가 없으면 <strong>NaN</strong>, 0 으로 채우지 않는다). 자체시험 22 PASS. <strong>asset 센서 확장</strong> — 후방 카메라 신설(전방 스펙 복사, 요 180°)과 IMU 를 지붕(0.579 m)에서 <strong>무게중심(0.3153 m)</strong>으로 재배치, <code>make_omnilrs_robot_usd.py</code> 가 생성 시 배치하고 <strong>10항목을 다시 열어 검산</strong>한다. 생성기의 Isaac 의존을 오도메트리 경로로 한정해 <strong>시뮬레이터가 떠 있어도 센서 배치를 돌릴 수 있게</strong> 했다. <strong>GUI 탭 2종 신설</strong> — Wheels(속도·토크·슬립, v_wheel/v_ref 를 겹쳐 그린다)와 Rover State(인공수평의·방위·IMU·모드). 회귀 기구학 74 · 휠 피드백 22 · URDF 계약 · 에뮬레이터 20 전부 통과</td>
 </tr>
 <tr>
 <td>1.58</td>
@@ -1322,7 +1322,7 @@
 <tr>
 <td>1.61</td>
 <td>2026-08-25</td>
-<td><strong>자산을 버전 관리에 넣었다 — <code>parclab-hsu/l-project-assets</code>(비공개, git-lfs).</strong> 정식 플랜트 자산이 지금까지 어느 저장소에도 없었다. <strong>제원의 정본이면서</strong>(<code>axes.py</code> 의 윤거·축거·휠 반경이 전부 여기 실측값이다) 파일은 NAS 에만 있어, 바뀌어도 언제 왜 바뀌었는지 남지 않았다 — <strong>D-34 가 정확히 그 구멍에서 나왔다</strong>(플랜트 교체 후 재측정 누락). USD 14 종이 전부 바이너리 crate 라 git diff 가 불가능하므로 LFS 로 보내도 잃는 것이 없다. <strong>본체와 저장소를 나눈 이유는 LFS 한도다</strong> — 자산 한 판이 약 <strong>280 MB</strong> 인데 무료 한도가 저장 1 GB · 대역 1 GB/월 이라 큰 메시 재업로드가 <strong>3 번 안팎</strong>이고, 한도가 바닥나도 코드 저장소 push 는 막히지 않아야 한다. 검증은 <strong>전체 clone 없이</strong> 했다 — 포인터만 받는 clone(14/14 추적 확인) + 작은 객체 1 개 실제 수신 + LFS batch API 로 270 MB 객체의 서버 존재 확인. 전체를 받으면 그것만으로 월 대역의 27 % 를 쓴다</td>
+<td><strong>asset을 버전 관리에 넣었다 — <code>parclab-hsu/l-project-assets</code>(비공개, git-lfs).</strong> 정식 플랜트 asset이 지금까지 어느 저장소에도 없었다. <strong>제원의 정본이면서</strong>(<code>axes.py</code> 의 윤거·축거·휠 반경이 전부 여기 실측값이다) 파일은 NAS 에만 있어, 바뀌어도 언제 왜 바뀌었는지 남지 않았다 — <strong>D-34 가 정확히 그 구멍에서 나왔다</strong>(플랜트 교체 후 재측정 누락). USD 14 종이 전부 바이너리 crate 라 git diff 가 불가능하므로 LFS 로 보내도 잃는 것이 없다. <strong>본체와 저장소를 나눈 이유는 LFS 한도다</strong> — asset 한 판이 약 <strong>280 MB</strong> 인데 무료 한도가 저장 1 GB · 대역 1 GB/월 이라 큰 메시 재업로드가 <strong>3 번 안팎</strong>이고, 한도가 바닥나도 코드 저장소 push 는 막히지 않아야 한다. 검증은 <strong>전체 clone 없이</strong> 했다 — 포인터만 받는 clone(14/14 추적 확인) + 작은 객체 1 개 실제 수신 + LFS batch API 로 270 MB 객체의 서버 존재 확인. 전체를 받으면 그것만으로 월 대역의 27 % 를 쓴다</td>
 </tr>
 <tr>
 <td>1.62</td>
@@ -1382,12 +1382,12 @@
 <tr>
 <td>1.73</td>
 <td>2026-09-09</td>
-<td><strong>D-42 ③ 발신 측 요인의 정체는 연산이다 — 그리고 카메라가 플랜트를 느리게 만들고 있었다.</strong> 생성기에 <code>--camera-resolution WxH</code> 를 넣고(주지 않으면 <strong>아무것도 안 바꾼다</strong> — 기존 산출물 불변), 해상도만 다르고 나머지가 같은 대조군까지 만들어 3 단으로 실측했다. 먼저 <strong>영상 스트림이 넷이었다</strong> — 전방·후방 그래프가 <strong>각각 RGB 와 깊이를 낸다.</strong> 지금까지 셋만 재고 있었으니 부하를 3/4 로 과소평가해 왔다. 한 프레임의 짐은 <strong>w×h×14 바이트</strong>다(RGB 3 + 깊이 4, 두 그래프). 실측(4 스트림 동시): <strong>1280×720</strong> 12.9 MB → 6.4~9.3 Hz · 106.1 MB/s · tick <strong>22.32</strong> Hz / <strong>640×360</strong> 3.23 MB → 15.2~16.3 Hz · 51.1 MB/s · tick <strong>29.28</strong> Hz / <strong>480×270</strong> 1.81 MB → 22.6~25.4 Hz · 42.8 MB/s · tick <strong>29.71</strong> Hz. <strong>① tick 이 22.32 → 29.71 로 회복된다.</strong> 이걸 「카메라가 시뮬레이션 자체를 느리게 한다」로 읽었는데 <strong>틀렸다 — 1.74 에서 RTF 를 조건별로 재어 뒤집혔다.</strong> 실제로는 <strong><code>joint_states</code> 도 같이 유실되고 있었다.</strong> <strong>② 짐을 7 배 줄여도 속도는 3 배만 는다</strong> → 전송이 아니라 <strong>연산 천장</strong>이다. 480×270 에서도 30 Hz 에 못 미친다. D-42 ③ 의 정체가 이것이고 배경은 <strong>D-43</strong>(가용 스레드의 1/4)이다. <strong>③ 단일 스트림이면 640×360 에서 사실상 해결된다</strong> — 27.07 Hz, 2 배 이상 간격 10 %. <strong>넷을 동시에 받을 때만</strong> 막힌다. <strong>④ 참가자 수 가설은 기각에 가깝다</strong> — 같은 3 스트림을 프로세스 3 개(참가자 3)로 내면 230.9 MB/s, 1 개(참가자 1)로 내면 176.9 MB/s 다. <strong>−23 % 페널티는 실재하나</strong> Isaac 의 106.1 MB/s 와의 격차를 설명하지 못한다. <strong>해상도 값은 아직 정하지 않는다</strong> — 산출물 성격을 바꾸는 결정이고, 어느 값으로도 이 하드웨어에서 넷 다 30 Hz 는 못 낸다. <code>tools/diag_image_transport.py</code> 에 <code>live</code>(4 스트림 + tick) 추가, <code>run_isaac_container.sh</code> 가 <strong>Hydra override를 받는다</strong>(정식 설정 파일을 고치지 않고 자산을 바꿔 대조했다). 시험용 임시 USD 3 종은 측정 후 지웠고 자산 저장소는 깨끗하다</td>
+<td><strong>D-42 ③ 발신 측 요인의 정체는 연산이다 — 그리고 카메라가 플랜트를 느리게 만들고 있었다.</strong> 생성기에 <code>--camera-resolution WxH</code> 를 넣고(주지 않으면 <strong>아무것도 안 바꾼다</strong> — 기존 산출물 불변), 해상도만 다르고 나머지가 같은 대조군까지 만들어 3 단으로 실측했다. 먼저 <strong>영상 스트림이 넷이었다</strong> — 전방·후방 그래프가 <strong>각각 RGB 와 깊이를 낸다.</strong> 지금까지 셋만 재고 있었으니 부하를 3/4 로 과소평가해 왔다. 한 프레임의 짐은 <strong>w×h×14 바이트</strong>다(RGB 3 + 깊이 4, 두 그래프). 실측(4 스트림 동시): <strong>1280×720</strong> 12.9 MB → 6.4~9.3 Hz · 106.1 MB/s · tick <strong>22.32</strong> Hz / <strong>640×360</strong> 3.23 MB → 15.2~16.3 Hz · 51.1 MB/s · tick <strong>29.28</strong> Hz / <strong>480×270</strong> 1.81 MB → 22.6~25.4 Hz · 42.8 MB/s · tick <strong>29.71</strong> Hz. <strong>① tick 이 22.32 → 29.71 로 회복된다.</strong> 이걸 「카메라가 시뮬레이션 자체를 느리게 한다」로 읽었는데 <strong>틀렸다 — 1.74 에서 RTF 를 조건별로 재어 뒤집혔다.</strong> 실제로는 <strong><code>joint_states</code> 도 같이 유실되고 있었다.</strong> <strong>② 짐을 7 배 줄여도 속도는 3 배만 는다</strong> → 전송이 아니라 <strong>연산 천장</strong>이다. 480×270 에서도 30 Hz 에 못 미친다. D-42 ③ 의 정체가 이것이고 배경은 <strong>D-43</strong>(가용 스레드의 1/4)이다. <strong>③ 단일 스트림이면 640×360 에서 사실상 해결된다</strong> — 27.07 Hz, 2 배 이상 간격 10 %. <strong>넷을 동시에 받을 때만</strong> 막힌다. <strong>④ 참가자 수 가설은 기각에 가깝다</strong> — 같은 3 스트림을 프로세스 3 개(참가자 3)로 내면 230.9 MB/s, 1 개(참가자 1)로 내면 176.9 MB/s 다. <strong>−23 % 페널티는 실재하나</strong> Isaac 의 106.1 MB/s 와의 격차를 설명하지 못한다. <strong>해상도 값은 아직 정하지 않는다</strong> — 산출물 성격을 바꾸는 결정이고, 어느 값으로도 이 하드웨어에서 넷 다 30 Hz 는 못 낸다. <code>tools/diag_image_transport.py</code> 에 <code>live</code>(4 스트림 + tick) 추가, <code>run_isaac_container.sh</code> 가 <strong>Hydra override를 받는다</strong>(정식 설정 파일을 고치지 않고 asset을 바꿔 대조했다). 시험용 임시 USD 3 종은 측정 후 지웠고 asset 저장소는 깨끗하다</td>
 </tr>
 <tr>
 <td>1.74</td>
 <td>2026-09-09</td>
-<td><strong>D-38 재측정 — RTF 는 카메라와 무관하다. 어제 세운 「카메라가 플랜트를 느리게 한다」는 해석이 틀렸고, 실제는 그보다 나쁘다.</strong> 카메라 구독 조건을 바꿔 가며 RTF 를 쟀다(<code>diag_image_transport.py rtf</code>, 구독만 하고 아무것도 발행하지 않는다): <strong>카메라 없음 0.4994 · 1 스트림 0.4993 · 2 스트림 0.4993 · 4 스트림 0.4994</strong>. 심 진행량도 16 s 벽시계에 7.95~7.98 s 로 같다 — <strong>시뮬레이션은 조금도 느려지지 않았다.</strong> 그런데 1.73 에서 tick 은 29.71 → 22.32 Hz 로 떨어졌다. <strong>둘이 모순이 아니다</strong> — RTF 는 받은 스탬프의 처음과 끝으로 계산하므로 중간이 유실돼도 그대로다. 즉 tick Hz 하락은 플랜트가 느려진 것이 아니라 <strong><code>/rover/joint_states_pub</code> 이 함께 유실된 것</strong>이다. <strong>정식 자산으로 다시 재니 더 나쁘다</strong> — 카메라를 안 받으면 <strong>29.96 Hz</strong>(2 회 일치), 4 스트림을 받으면 <strong>15.2~16.1 Hz</strong> 로 <strong>약 49 % 손실</strong>이다(1.73 의 22.32 는 오도메트리 그래프가 없는 대조용 자산에서 잰 값이라 부하가 가벼웠다. 회차 간 산포도 크다). <strong>이쪽이 더 나쁜 소식이다</strong> — 카메라는 화면이지만 <code>joint_states</code> 는 <strong>제어 피드백 경로</strong>다. D-42 의 영향 범위가 영상에 그치지 않는다. <strong>D-38 은 카메라와 무관하게 그대로 미해결이고, 원인은 여전히 물리 dt 와 페이싱 dt 의 불일치다</strong> — 재측정으로 배제된 것은 「카메라 부하」라는 후보 하나다. 교훈은 <strong>한 신호의 Hz 하락을 속도 저하로 읽지 말 것</strong> — 유실과 감속은 겉으로 같아 보이고, 가르려면 스탬프를 봐야 한다(D-42 에서 배운 것과 같은 함정을 바로 다음 날 반대 방향으로 다시 밟았다)</td>
+<td><strong>D-38 재측정 — RTF 는 카메라와 무관하다. 어제 세운 「카메라가 플랜트를 느리게 한다」는 해석이 틀렸고, 실제는 그보다 나쁘다.</strong> 카메라 구독 조건을 바꿔 가며 RTF 를 쟀다(<code>diag_image_transport.py rtf</code>, 구독만 하고 아무것도 발행하지 않는다): <strong>카메라 없음 0.4994 · 1 스트림 0.4993 · 2 스트림 0.4993 · 4 스트림 0.4994</strong>. 심 진행량도 16 s 벽시계에 7.95~7.98 s 로 같다 — <strong>시뮬레이션은 조금도 느려지지 않았다.</strong> 그런데 1.73 에서 tick 은 29.71 → 22.32 Hz 로 떨어졌다. <strong>둘이 모순이 아니다</strong> — RTF 는 받은 스탬프의 처음과 끝으로 계산하므로 중간이 유실돼도 그대로다. 즉 tick Hz 하락은 플랜트가 느려진 것이 아니라 <strong><code>/rover/joint_states_pub</code> 이 함께 유실된 것</strong>이다. <strong>정식 asset으로 다시 재니 더 나쁘다</strong> — 카메라를 안 받으면 <strong>29.96 Hz</strong>(2 회 일치), 4 스트림을 받으면 <strong>15.2~16.1 Hz</strong> 로 <strong>약 49 % 손실</strong>이다(1.73 의 22.32 는 오도메트리 그래프가 없는 대조용 asset에서 잰 값이라 부하가 가벼웠다. 회차 간 산포도 크다). <strong>이쪽이 더 나쁜 소식이다</strong> — 카메라는 화면이지만 <code>joint_states</code> 는 <strong>제어 피드백 경로</strong>다. D-42 의 영향 범위가 영상에 그치지 않는다. <strong>D-38 은 카메라와 무관하게 그대로 미해결이고, 원인은 여전히 물리 dt 와 페이싱 dt 의 불일치다</strong> — 재측정으로 배제된 것은 「카메라 부하」라는 후보 하나다. 교훈은 <strong>한 신호의 Hz 하락을 속도 저하로 읽지 말 것</strong> — 유실과 감속은 겉으로 같아 보이고, 가르려면 스탬프를 봐야 한다(D-42 에서 배운 것과 같은 함정을 바로 다음 날 반대 방향으로 다시 밟았다)</td>
 </tr>
 <tr>
 <td>1.75</td>
@@ -1397,7 +1397,7 @@
 <tr>
 <td>1.76</td>
 <td>2026-09-09</td>
-<td><strong>D-39 하중 신호를 확보했다 — 다만 자중의 절반만 읽힌다. 쫓다가 D-44·D-45 두 건이 나왔다.</strong> <strong>① 서스펜션 effort 는 살아 있다.</strong> 지령을 ±0.15 rad 로 흔드니 위치와 토크가 따라 움직인다 — 접지력과 달리 정지 상태에서도 값이 있다. 신설 <code>tools/isaac/wheel_load_from_suspension.py</code> 가 토크를 수직 하중으로 환산한다. <strong>레버 암은 URDF 에서 계산한다</strong> — 조인트 축이 x(종축)이라 수직력이 만드는 토크는 접지점까지의 y 오프셋에만 걸린다(<code>(r×F)_x = −N·r_y</code>). 체인 중간 rpy 회전(0.1745 rad)까지 합성해야 하며, 그냥 더하면 <strong>5.7 mm 틀린다</strong> — 회전을 넣으면 휠 y 가 0.6433 으로 <strong>계약 윤거의 절반 0.64335 와 맞는다</strong>(자기 검산이 된다). 레버 암 0.4908 m. <strong>② 그런데 네 휠의 합이 자중의 53~63 % 다.</strong> 야드 네 곳에서 재도, 40 초를 더 기다려도 값이 소수점까지 같다(과도 상태가 아니라 <strong>안정된 평형</strong>이다). 그리고 하중이 <strong>언제나 대각선으로</strong> 갈린다 — 지형 탓이라기엔 너무 규칙적이다. <strong>즉 effort 는 신호로는 쓸 수 있으나 그대로 먹이면 안 된다.</strong> <strong>③ D-45 신설 — 이유가 자산에 있었다.</strong> USD 에는 <strong>URDF 에 없는 루프 폐쇄 조인트</strong>(<code>under_arm_sus_*_to_hub_*</code>)가 있어 서스펜션이 <strong>4 절 평행링크</strong>인데, <strong>넷 중 셋(FL·FR·RL)이 강체가 아니라 시각 메시</strong>(<code>…/visuals/…/mesh</code>, <code>RigidBody=False</code>)<strong>에 붙어 있다.</strong> RR 만 강체 두 개를 제대로 잡는다. 코너마다 하중 경로가 달라진다. <strong>다만 「절반만 읽히는 것」의 원인으로 본 것은 1.78 에서 뒤집혔다</strong> — 고쳐도 비율은 그대로였고, 진짜 이유는 4 절 링크의 아래 팔이 2 력 부재라는 기구적 성질이었다. URDF↔USD 불일치이기도 하다(URDF 는 열린 사슬로 적혀 있다). <strong>④ D-44 신설 — <code>/OmniLRS/Robots/Teleport</code>·<code>Reset</code> 이 조용히 죽어 있었다.</strong> <code>dc.get_articulation(robot_path)</code> 가 로봇 프림에서 아티큘레이션을 찾는데 <strong>우리 자산은 한 단계 아래</strong>(<code>…/Rover_hyundai/world</code>)라 실패한다. 그런데 <strong>Isaac 로그에만 남고 ROS 쪽에는 아무 신호가 없다</strong> — 발행은 성공한 것처럼 보인다. <strong>D-37 에서 「탈출은 컨테이너 재기동뿐」이었던 이유가 이것이다.</strong> 패치 <code>0003-fix-articulation-root-lookup</code> 으로 자손을 훑어 아티큘레이션 루트를 찾게 했다. 확인: odom_gt 가 정확히 (−10, −10) 이동, articulation 오류 0 건, <code>setup-omnilrs.sh --check</code> 전 항목 OK. 이 수정이 <strong>D-39 측정 자체를 가능하게 했다</strong> — 여러 자리에서 재려면 텔레포트가 필요했다</td>
+<td><strong>D-39 하중 신호를 확보했다 — 다만 자중의 절반만 읽힌다. 쫓다가 D-44·D-45 두 건이 나왔다.</strong> <strong>① 서스펜션 effort 는 살아 있다.</strong> 지령을 ±0.15 rad 로 흔드니 위치와 토크가 따라 움직인다 — 접지력과 달리 정지 상태에서도 값이 있다. 신설 <code>tools/isaac/wheel_load_from_suspension.py</code> 가 토크를 수직 하중으로 환산한다. <strong>레버 암은 URDF 에서 계산한다</strong> — 조인트 축이 x(종축)이라 수직력이 만드는 토크는 접지점까지의 y 오프셋에만 걸린다(<code>(r×F)_x = −N·r_y</code>). 체인 중간 rpy 회전(0.1745 rad)까지 합성해야 하며, 그냥 더하면 <strong>5.7 mm 틀린다</strong> — 회전을 넣으면 휠 y 가 0.6433 으로 <strong>계약 윤거의 절반 0.64335 와 맞는다</strong>(자기 검산이 된다). 레버 암 0.4908 m. <strong>② 그런데 네 휠의 합이 자중의 53~63 % 다.</strong> 야드 네 곳에서 재도, 40 초를 더 기다려도 값이 소수점까지 같다(과도 상태가 아니라 <strong>안정된 평형</strong>이다). 그리고 하중이 <strong>언제나 대각선으로</strong> 갈린다 — 지형 탓이라기엔 너무 규칙적이다. <strong>즉 effort 는 신호로는 쓸 수 있으나 그대로 먹이면 안 된다.</strong> <strong>③ D-45 신설 — 이유가 asset에 있었다.</strong> USD 에는 <strong>URDF 에 없는 루프 폐쇄 조인트</strong>(<code>under_arm_sus_*_to_hub_*</code>)가 있어 서스펜션이 <strong>4 절 평행링크</strong>인데, <strong>넷 중 셋(FL·FR·RL)이 강체가 아니라 시각 메시</strong>(<code>…/visuals/…/mesh</code>, <code>RigidBody=False</code>)<strong>에 붙어 있다.</strong> RR 만 강체 두 개를 제대로 잡는다. 코너마다 하중 경로가 달라진다. <strong>다만 「절반만 읽히는 것」의 원인으로 본 것은 1.78 에서 뒤집혔다</strong> — 고쳐도 비율은 그대로였고, 진짜 이유는 4 절 링크의 아래 팔이 2 력 부재라는 기구적 성질이었다. URDF↔USD 불일치이기도 하다(URDF 는 열린 사슬로 적혀 있다). <strong>④ D-44 신설 — <code>/OmniLRS/Robots/Teleport</code>·<code>Reset</code> 이 조용히 죽어 있었다.</strong> <code>dc.get_articulation(robot_path)</code> 가 로봇 프림에서 아티큘레이션을 찾는데 <strong>우리 asset은 한 단계 아래</strong>(<code>…/Rover_hyundai/world</code>)라 실패한다. 그런데 <strong>Isaac 로그에만 남고 ROS 쪽에는 아무 신호가 없다</strong> — 발행은 성공한 것처럼 보인다. <strong>D-37 에서 「탈출은 컨테이너 재기동뿐」이었던 이유가 이것이다.</strong> 패치 <code>0003-fix-articulation-root-lookup</code> 으로 자손을 훑어 아티큘레이션 루트를 찾게 했다. 확인: odom_gt 가 정확히 (−10, −10) 이동, articulation 오류 0 건, <code>setup-omnilrs.sh --check</code> 전 항목 OK. 이 수정이 <strong>D-39 측정 자체를 가능하게 했다</strong> — 여러 자리에서 재려면 텔레포트가 필요했다</td>
 </tr>
 <tr>
 <td>1.77</td>
@@ -1407,7 +1407,7 @@
 <tr>
 <td>1.78</td>
 <td>2026-09-09</td>
-<td><strong>D-45 를 고쳤다 — 그런데 절반만 읽히던 원인은 그게 아니었다. 원인은 결함이 아니라 기구다.</strong> <code>make_omnilrs_robot_usd.py</code> 가 생성할 때 루프 폐쇄 조인트 타깃을 강체로 되돌린다(<strong>원본 자산은 안 건드리고 레퍼런스 위에 관계만 덮어쓴다</strong> — 자산은 LFS 라 되돌리기가 비싸고, 여기서 고치면 생성할 때마다 따라온다). 교정 6 건(FL·FR·RL 각 body0·body1), RR 2 건은 이미 정상, 미해결 0. 검산 항목을 추가해 <strong>다시 열어 네 조인트가 전부 강체를 잡는지</strong> 본다(11 항목 전부 통과). <strong>그런데 하중 비율이 0.545 → 0.531 로 그대로다.</strong> 1.76 에서 「D-45 가 절반 부족을 설명한다」고 적은 것은 <strong>틀렸다</strong> — 고칠 값어치는 있었지만 원인이 아니었다. <strong>진짜 이유는 4 절 평행링크다.</strong> 루프를 제대로 닫은 뒤에도 <code>body_to_under_arm_sus_*</code> 토크가 <strong>0.004 N·m</strong> 다 — 아래 팔이 <strong>2 력 부재</strong>라 큰 힘을 나르면서도 자기 축 토크는 0 이기 때문이다. <strong>위 팔 토크만으로는 원리적으로 전체 하중을 볼 수 없다.</strong> 결함이 아니라 기구의 성질이므로, 고치는 것이 아니라 <strong>계수로 보정할 문제</strong>다. 신설 <code>calibrate</code> 모드로 야드 다섯 자리에서 재어 <strong>비율 평균 0.562(0.516~0.661), <code>suspension_gain = 1.78</code>, 산포 ±18 %</strong> 를 얻었다. 설정에 넣되 <strong>산포를 함께 적었다</strong> — 평균은 맞고 자세별 오차는 남는다. 자산을 재생성해 반영했다(오도메트리 포함, 검산 11/11, 리그 재기동 후 로버·odom 토픽 17 종). <strong>여전히 <code>enable: False</code> 다</strong> — gain 을 올리면 침하는 더 깊어지고, 휠 반경의 42 % 라는 문제는 <code>force_depth_regression</code> 계수 쪽이라 그대로다</td>
+<td><strong>D-45 를 고쳤다 — 그런데 절반만 읽히던 원인은 그게 아니었다. 원인은 결함이 아니라 기구다.</strong> <code>make_omnilrs_robot_usd.py</code> 가 생성할 때 루프 폐쇄 조인트 타깃을 강체로 되돌린다(<strong>원본 asset은 안 건드리고 레퍼런스 위에 관계만 덮어쓴다</strong> — asset은 LFS 라 되돌리기가 비싸고, 여기서 고치면 생성할 때마다 따라온다). 교정 6 건(FL·FR·RL 각 body0·body1), RR 2 건은 이미 정상, 미해결 0. 검산 항목을 추가해 <strong>다시 열어 네 조인트가 전부 강체를 잡는지</strong> 본다(11 항목 전부 통과). <strong>그런데 하중 비율이 0.545 → 0.531 로 그대로다.</strong> 1.76 에서 「D-45 가 절반 부족을 설명한다」고 적은 것은 <strong>틀렸다</strong> — 고칠 값어치는 있었지만 원인이 아니었다. <strong>진짜 이유는 4 절 평행링크다.</strong> 루프를 제대로 닫은 뒤에도 <code>body_to_under_arm_sus_*</code> 토크가 <strong>0.004 N·m</strong> 다 — 아래 팔이 <strong>2 력 부재</strong>라 큰 힘을 나르면서도 자기 축 토크는 0 이기 때문이다. <strong>위 팔 토크만으로는 원리적으로 전체 하중을 볼 수 없다.</strong> 결함이 아니라 기구의 성질이므로, 고치는 것이 아니라 <strong>계수로 보정할 문제</strong>다. 신설 <code>calibrate</code> 모드로 야드 다섯 자리에서 재어 <strong>비율 평균 0.562(0.516~0.661), <code>suspension_gain = 1.78</code>, 산포 ±18 %</strong> 를 얻었다. 설정에 넣되 <strong>산포를 함께 적었다</strong> — 평균은 맞고 자세별 오차는 남는다. asset을 재생성해 반영했다(오도메트리 포함, 검산 11/11, 리그 재기동 후 로버·odom 토픽 17 종). <strong>여전히 <code>enable: False</code> 다</strong> — gain 을 올리면 침하는 더 깊어지고, 휠 반경의 42 % 라는 문제는 <code>force_depth_regression</code> 계수 쪽이라 그대로다</td>
 </tr>
 <tr>
 <td>1.79</td>
@@ -1417,7 +1417,7 @@
 <tr>
 <td>1.80</td>
 <td>2026-09-10</td>
-<td><strong>지형 변형 엔진 정밀 분석을 공개 페이지로 신설 — 공개 5종 → 6종.</strong> <code>DEFORMATION.md</code> 는 저장소 안에만 있어 분석 결과가 밖에서 읽히지 않았다. <a href="https://parclab-hsu.github.io/projects/l-project-deformation/">projects/l-project-deformation</a> 에 기능 구조(참조점이 yaw 만 쓴다는 한계 포함) · 현행 설정에서 변형이 <strong>정확히 0</strong> 인 이유 · 폭만 고치면 로버가 파묻히는 것(12.156 m 대 0.054 m) · <strong>하중 입력을 서스펜션 토크로 바꾼 연결</strong>(정지 상태 148.85 N · DEM 40 칸 · 이동 0.0 m) · 파라미터 13 개 전수 점검(근거 있는 값 3 개) · 그라우저 24 개 실측 · 상류 소스 결함 3 건 · <strong>견인 솔버 결함 7 건</strong> · 켠다면 밟을 순서 8 단계를 담았다. PG-001 작성 규칙에 따라 <strong>「확인되지 않은 것」을 절로 두었다</strong> — 토양 계수 출처 없음 · 실제 월면토 검증 아님 · 교정 계수 산포 ±18 % · 접지면이 직사각형 · 경사면 미확인 · 성능 손실 12 %. <strong>PG-001 을 1.2 로 올려</strong> 공개 범위표에 등재하고, 작성 규칙 적용 대상에 <strong>기술 분석 페이지</strong>를 추가했다 — 분석 노트는 「확인한 것」과 「확인 못 한 것」의 경계가 특히 흐려지기 쉽다. 배포 검산: 원격 동기 0 · material 9.7.7 자산 해시 <code>d7400e89</code> 동일 · 삭제 0 건 · sitemap 6 · noindex 적용 · Pages 빌드 <code>7ccea3a</code> built · 게시본 HTTP 200. 부수 변경으로 SDP 공개본이 1.71~1.79 로 갱신됐다(<code>sync-l-project-docs.py</code> 가 원문에서 다시 만든다)</td>
+<td><strong>지형 변형 엔진 정밀 분석을 공개 페이지로 신설 — 공개 5종 → 6종.</strong> <code>DEFORMATION.md</code> 는 저장소 안에만 있어 분석 결과가 밖에서 읽히지 않았다. <a href="https://parclab-hsu.github.io/projects/l-project-deformation/">projects/l-project-deformation</a> 에 기능 구조(참조점이 yaw 만 쓴다는 한계 포함) · 현행 설정에서 변형이 <strong>정확히 0</strong> 인 이유 · 폭만 고치면 로버가 파묻히는 것(12.156 m 대 0.054 m) · <strong>하중 입력을 서스펜션 토크로 바꾼 연결</strong>(정지 상태 148.85 N · DEM 40 칸 · 이동 0.0 m) · 파라미터 13 개 전수 점검(근거 있는 값 3 개) · 그라우저 24 개 실측 · 상류 소스 결함 3 건 · <strong>견인 솔버 결함 7 건</strong> · 켠다면 밟을 순서 8 단계를 담았다. PG-001 작성 규칙에 따라 <strong>「확인되지 않은 것」을 절로 두었다</strong> — 토양 계수 출처 없음 · 실제 월면토 검증 아님 · 교정 계수 산포 ±18 % · 접지면이 직사각형 · 경사면 미확인 · 성능 손실 12 %. <strong>PG-001 을 1.2 로 올려</strong> 공개 범위표에 등재하고, 작성 규칙 적용 대상에 <strong>기술 분석 페이지</strong>를 추가했다 — 분석 노트는 「확인한 것」과 「확인 못 한 것」의 경계가 특히 흐려지기 쉽다. 배포 검산: 원격 동기 0 · material 9.7.7 asset 해시 <code>d7400e89</code> 동일 · 삭제 0 건 · sitemap 6 · noindex 적용 · Pages 빌드 <code>7ccea3a</code> built · 게시본 HTTP 200. 부수 변경으로 SDP 공개본이 1.71~1.79 로 갱신됐다(<code>sync-l-project-docs.py</code> 가 원문에서 다시 만든다)</td>
 </tr>
 <tr>
 <td>1.81</td>
@@ -1432,7 +1432,7 @@
 <tr>
 <td>1.83</td>
 <td>2026-09-10</td>
-<td><strong>기구학·동역학·실시간 축 제어를 HILS 보드로 옮긴다 — 상위는 의도(v, ω)만 말한다.</strong> 근거는 부하가 아니라 <strong>경계</strong>다. 기구학은 실측 <strong>4.2 μs · 50 Hz 에서 CPU 0.02 %</strong> 라 옮겨도 Jetson 이 가벼워지지 않는다. 옮기는 이유는 ① <strong>12축이 이더넷을 건너다니면 보드가 소유한 Drive Interface 추상화가 새고</strong>(상위가 차량 제원을 알아야 하고, 상위를 갈아끼울 때마다 기구학을 다시 구현해야 한다) ② <strong>축 폐루프·폴트 반응·워치독은 지연이 결과를 바꾸므로</strong> 액추에이터 옆에 있어야 하는데, 기구학이 떨어져 있으면 한 주기 안에서 닫히지 않는다. <strong>SRS 2.1 을 계층별 소유·주기 성격 표로 다시 썼다.</strong> <strong>선행 조건인 계약 사본 문제를 먼저 막았다</strong> — 사본 관리는 이 프로젝트에서 세 번 실패했고(D-33·D-34·D-36), 특히 D-34 는 자산 교체 후 제원 재측정 누락이었다. 신설 <code>tools/gen_axes_contract_h.py</code> 가 <code>axes.py</code> 에서 <code>axes_contract.h</code> 를 <strong>생성</strong>하고(손으로 안 적는다), 신설 <code>tools/test_firmware_kinematics.py</code> 가 <strong>C 구현과 파이썬 정본의 출력을 직접 대조</strong>한다 — C 파일이 STM32 의존 없는 순수 C99 라 호스트 gcc(<code>-Werror</code>)로 그대로 빌드된다. <strong>113 조건에서 최대 차 1.8e-15 rad/s</strong>(순수 반올림), 요레이트·조향각·잘림 플래그 전부 일치. 회귀 러너에 등록(11 → <strong>12 종</strong>). 펌웨어에 <code>kinematics.c/h</code> 신설(파이썬 정본 이식), <code>rover_mcu.c</code> 가 <strong><code>/cmd_vel</code> 을 구독</strong>해 기구학을 돌린다. <code>/rover/axes_cmd</code> 는 과도기 경로로 남기고 <strong>단위 변환을 <code>roverMcuApplyAxes()</code> 한 곳으로 묶어</strong> 두 경로가 갈라지지 않게 했다. 서스펜션 4축은 이 경로가 건드리지 않는다 — 자세 제어는 별도 지령이고 주행 의도에 딸려 움직이면 안 된다. <strong>한계: ARM 툴체인이 이 머신에 없어 펌웨어 전체 빌드는 못 했다</strong> — 검증된 것은 기구학 부분의 호스트 빌드와 값 일치까지다. 실물 보드 동작·주기·인터럽트 지연은 확인되지 않았다. 홈페이지 프로젝트 페이지의 배치도와 「어디에 무엇을 두는가」 절도 같이 고쳤다</td>
+<td><strong>기구학·동역학·실시간 축 제어를 HILS 보드로 옮긴다 — 상위는 의도(v, ω)만 말한다.</strong> 근거는 부하가 아니라 <strong>경계</strong>다. 기구학은 실측 <strong>4.2 μs · 50 Hz 에서 CPU 0.02 %</strong> 라 옮겨도 Jetson 이 가벼워지지 않는다. 옮기는 이유는 ① <strong>12축이 이더넷을 건너다니면 보드가 소유한 Drive Interface 추상화가 새고</strong>(상위가 차량 제원을 알아야 하고, 상위를 갈아끼울 때마다 기구학을 다시 구현해야 한다) ② <strong>축 폐루프·폴트 반응·워치독은 지연이 결과를 바꾸므로</strong> 액추에이터 옆에 있어야 하는데, 기구학이 떨어져 있으면 한 주기 안에서 닫히지 않는다. <strong>SRS 2.1 을 계층별 소유·주기 성격 표로 다시 썼다.</strong> <strong>선행 조건인 계약 사본 문제를 먼저 막았다</strong> — 사본 관리는 이 프로젝트에서 세 번 실패했고(D-33·D-34·D-36), 특히 D-34 는 asset 교체 후 제원 재측정 누락이었다. 신설 <code>tools/gen_axes_contract_h.py</code> 가 <code>axes.py</code> 에서 <code>axes_contract.h</code> 를 <strong>생성</strong>하고(손으로 안 적는다), 신설 <code>tools/test_firmware_kinematics.py</code> 가 <strong>C 구현과 파이썬 정본의 출력을 직접 대조</strong>한다 — C 파일이 STM32 의존 없는 순수 C99 라 호스트 gcc(<code>-Werror</code>)로 그대로 빌드된다. <strong>113 조건에서 최대 차 1.8e-15 rad/s</strong>(순수 반올림), 요레이트·조향각·잘림 플래그 전부 일치. 회귀 러너에 등록(11 → <strong>12 종</strong>). 펌웨어에 <code>kinematics.c/h</code> 신설(파이썬 정본 이식), <code>rover_mcu.c</code> 가 <strong><code>/cmd_vel</code> 을 구독</strong>해 기구학을 돌린다. <code>/rover/axes_cmd</code> 는 과도기 경로로 남기고 <strong>단위 변환을 <code>roverMcuApplyAxes()</code> 한 곳으로 묶어</strong> 두 경로가 갈라지지 않게 했다. 서스펜션 4축은 이 경로가 건드리지 않는다 — 자세 제어는 별도 지령이고 주행 의도에 딸려 움직이면 안 된다. <strong>한계: ARM 툴체인이 이 머신에 없어 펌웨어 전체 빌드는 못 했다</strong> — 검증된 것은 기구학 부분의 호스트 빌드와 값 일치까지다. 실물 보드 동작·주기·인터럽트 지연은 확인되지 않았다. 홈페이지 프로젝트 페이지의 배치도와 「어디에 무엇을 두는가」 절도 같이 고쳤다</td>
 </tr>
 <tr>
 <td>1.84</td>
@@ -1557,7 +1557,7 @@
 <tr>
 <td>2.08</td>
 <td>2026-09-16</td>
-<td><strong>문서 동기화 — 조향 정책·포락선·µs 스탬프를 상위 문서와 홈페이지에 반영.</strong> SRS 1.32(FR-001 서술·5.2 축 배치), AD-002 2.13(구성도 보드 블록에 선회 포락선·조향 정책·µs 스탬프), README 축 배치(서스 <code>±30°</code> → <strong>±0.35 rad = ±20.05°</strong> 로 정정 — 자산 실측과 어긋나 있었다), PROJECT_MEMORY 최신 리비전. 홈페이지 공개 페이지는 아키텍처 도식이 <strong>9-15 기구학 보드 이관 이전 상태</strong>(rover_control 이 12축을 내는 그림)로 남아 있어 함께 갱신·재배포</td>
+<td><strong>문서 동기화 — 조향 정책·포락선·µs 스탬프를 상위 문서와 홈페이지에 반영.</strong> SRS 1.32(FR-001 서술·5.2 축 배치), AD-002 2.13(구성도 보드 블록에 선회 포락선·조향 정책·µs 스탬프), README 축 배치(서스 <code>±30°</code> → <strong>±0.35 rad = ±20.05°</strong> 로 정정 — asset 실측과 어긋나 있었다), PROJECT_MEMORY 최신 리비전. 홈페이지 공개 페이지는 아키텍처 도식이 <strong>9-15 기구학 보드 이관 이전 상태</strong>(rover_control 이 12축을 내는 그림)로 남아 있어 함께 갱신·재배포</td>
 </tr>
 <tr>
 <td>2.09</td>
@@ -1582,7 +1582,7 @@
 <tr>
 <td>2.13</td>
 <td>2026-09-17</td>
-<td><strong>기준선 로그를 찾아 고장의 실체를 좁혔다 — 「그래프가 없다」가 아니라 렌더 후처리가 안 뜬다. track_tiles 도 배제.</strong> ① <strong>정상 판 로그가 스크래치패드에 있었다</strong>(<code>isaac_hils_prev_20260915.log</code>, 10,120 줄 · <code>SDGPipeline</code> <strong>855</strong>, 실행 09-14 19:17). 그동안 <code>results/</code> 만 뒤지고 「비교 불가」라고 적은 것이 틀렸다. 현재 판(955 줄)과의 실차이는 <strong><code>IsaacReadSimulationTime</code> 855 → 0 · <code>PostProcessDispatch</code> 256 → 0 · <code>Replicator</code> 865 → 9 · <code>camera_info</code> 12(3 회차) → 4(1 회차)</strong> 이고, <strong>오류는 오히려 정상 판이 1 건, 현재 0 건</strong>이다. 즉 카메라 그래프는 만들어지되 <strong>SDG 파이프라인이 한 번도 뜨지 않는다.</strong> ② <strong>track_tiles 배제</strong> — <code>enable=False</code> 로 유효한 A/B 를 돌렸다(기동 성공, 덮어쓰기 실제 반영 <code>track_tiles</code> 407 → 1). 그럼에도 SDG 계열 <strong>전부 0</strong>, <code>world/visuals</code> 경고도 그대로. 정상 판도 track_tiles 를 <strong>켜고</strong> 돌았다(초기화 파라미터·기준면 결과까지 동일). ③ <strong>함께 배제된 것</strong>: 호스트 OmniLRS 트리(<code>--check</code> 로 커밋·패치 9·파일 10·오버레이 전부 일치), 자산(<code>Rover_hyundai_omnilrs.usd</code> 09-09 이후 무변경), 드라이버·GPU(Xid·OOM 없음, 09-11 부팅 이후 패키지 변경 없음), 저장소 코드(09-14 19:19 이후 isaac 설정·패치 커밋 없음). ④ ⚠️ <strong>하이드라 키 경로를 세 번 틀렸다</strong> — 두 번은 <strong>설정 파일의 들여쓰기로 유도</strong>해 <code>not in struct</code> 로 거부됐고, 그때마다 컨테이너가 <strong>뜨지도 못한 채 지표가 0 으로 찍혔다</strong>(5.1.0 판과 같은 형태). 정답은 <code>--cfg job</code> 으로 <strong>Isaac 을 띄우지 않고</strong> 합성 트리를 받아 기계로 뽑는 것이다(<code>environment.terrain_manager.moon_yard.deformation_engine.track_tiles.enable</code>). 러너 주석에 방법을 남겼다. ⑤ <strong>A/B 마다 「먼저 떴는지」를 코드로 검사한다</strong> — <code>friction_verified</code> 가 없으면 지표를 판정에 쓰지 않고 정본으로 복구하는 가드를 넣었고, 실패한 두 판에서 그 가드가 살아 있는 리그를 지켰다</td>
+<td><strong>기준선 로그를 찾아 고장의 실체를 좁혔다 — 「그래프가 없다」가 아니라 렌더 후처리가 안 뜬다. track_tiles 도 배제.</strong> ① <strong>정상 판 로그가 스크래치패드에 있었다</strong>(<code>isaac_hils_prev_20260915.log</code>, 10,120 줄 · <code>SDGPipeline</code> <strong>855</strong>, 실행 09-14 19:17). 그동안 <code>results/</code> 만 뒤지고 「비교 불가」라고 적은 것이 틀렸다. 현재 판(955 줄)과의 실차이는 <strong><code>IsaacReadSimulationTime</code> 855 → 0 · <code>PostProcessDispatch</code> 256 → 0 · <code>Replicator</code> 865 → 9 · <code>camera_info</code> 12(3 회차) → 4(1 회차)</strong> 이고, <strong>오류는 오히려 정상 판이 1 건, 현재 0 건</strong>이다. 즉 카메라 그래프는 만들어지되 <strong>SDG 파이프라인이 한 번도 뜨지 않는다.</strong> ② <strong>track_tiles 배제</strong> — <code>enable=False</code> 로 유효한 A/B 를 돌렸다(기동 성공, 덮어쓰기 실제 반영 <code>track_tiles</code> 407 → 1). 그럼에도 SDG 계열 <strong>전부 0</strong>, <code>world/visuals</code> 경고도 그대로. 정상 판도 track_tiles 를 <strong>켜고</strong> 돌았다(초기화 파라미터·기준면 결과까지 동일). ③ <strong>함께 배제된 것</strong>: 호스트 OmniLRS 트리(<code>--check</code> 로 커밋·패치 9·파일 10·오버레이 전부 일치), asset(<code>Rover_hyundai_omnilrs.usd</code> 09-09 이후 무변경), 드라이버·GPU(Xid·OOM 없음, 09-11 부팅 이후 패키지 변경 없음), 저장소 코드(09-14 19:19 이후 isaac 설정·패치 커밋 없음). ④ ⚠️ <strong>하이드라 키 경로를 세 번 틀렸다</strong> — 두 번은 <strong>설정 파일의 들여쓰기로 유도</strong>해 <code>not in struct</code> 로 거부됐고, 그때마다 컨테이너가 <strong>뜨지도 못한 채 지표가 0 으로 찍혔다</strong>(5.1.0 판과 같은 형태). 정답은 <code>--cfg job</code> 으로 <strong>Isaac 을 띄우지 않고</strong> 합성 트리를 받아 기계로 뽑는 것이다(<code>environment.terrain_manager.moon_yard.deformation_engine.track_tiles.enable</code>). 러너 주석에 방법을 남겼다. ⑤ <strong>A/B 마다 「먼저 떴는지」를 코드로 검사한다</strong> — <code>friction_verified</code> 가 없으면 지표를 판정에 쓰지 않고 정본으로 복구하는 가드를 넣었고, 실패한 두 판에서 그 가드가 살아 있는 리그를 지켰다</td>
 </tr>
 <tr>
 <td>2.14</td>
@@ -1637,7 +1637,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>지그 펌웨어/부트로더 <code>hils-fw</code>, <code>hils-boot</code></td>
 <td><code>l-project-hils/firmware/</code> (NAS)</td>
-<td>기존 자산 (리네이밍 완료)</td>
+<td>기존 asset (리네이밍 완료)</td>
 </tr>
 <tr>
 <td>테스트 인프라 (vcan systemd, SIL/통합 테스트)</td>
@@ -1765,12 +1765,12 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <td>완료 (2026-08-22) — <code>/cmd_vel_joy</code> 대 <code>/rover/axes_cmd</code> 를 <strong>독립 구현한 역기구학</strong>으로 대조. <code>kinematics.py</code> 를 쓰지 않아 구현 오류가 상쇄되지 않는다</td>
 </tr>
 <tr>
-<td>자산 물리 특성 정의 <code>final_rover_HH_physics.yaml</code></td>
+<td>asset 물리 특성 정의 <code>final_rover_HH_physics.yaml</code></td>
 <td><code>config/isaac/</code></td>
 <td>완료 — 질량·관성·중력·구동 드라이브. <strong>VIPER 참조 추정치</strong>이며 기구팀 실측 대체 대상 (IG-001 2e절)</td>
 </tr>
 <tr>
-<td>자산 물리 특성 적용 도구 <code>apply_asset_physics.py</code></td>
+<td>asset 물리 특성 적용 도구 <code>apply_asset_physics.py</code></td>
 <td><code>tools/isaac/</code></td>
 <td>완료 — 기본 dry-run, <code>--write</code> 시 <code>.bak-&lt;타임스탬프&gt;</code> 자동 백업. 제원이 바뀌면 yaml 만 고쳐 재실행한다</td>
 </tr>
@@ -1910,7 +1910,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 </thead>
 <tbody>
 <tr>
-<td>P1. 자산 분석</td>
+<td>P1. asset 분석</td>
 <td>기존 wiznet-iot-speaker 기반 지그 펌웨어/도구 전체 분석, 리네이밍</td>
 <td>코드 리뷰</td>
 </tr>
@@ -2056,12 +2056,12 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>B7</td>
 <td><strong>조향축 오프셋(WHEELOFFSET) 보정</strong></td>
-<td><strong>완료 (2026-08-22).</strong> 기구 도면이 없어 <code>final_rover_HH</code> 자산의 조인트 좌표에서 실측했다 — <strong>스크럽 반경 0.1271 m</strong>(캐스터 트레일 0, 킹핀 경사 10.0°). 참조 코드의 0.1125 m 는 다른 차량 값이다. <code>FourWheelSteering</code> 이 조향각을 조향축에서 정하고 휠 속도를 옮겨진 접지점에서 다시 구하도록 고쳤고, 역기구학도 배치 대칭 전제를 버리고 일반 최소자승으로 바꿨다(오프셋이 들어가면 sum(py)≠0 이다). 에뮬레이터 GUI 의 자세 적분 사본도 같이 고쳤다. 참조 코드의 <strong>선회 포락선 제한</strong>(<code>Vr ≤ 0.339·Vl + 0.0205</code>)은 여전히 없다 — 그 계수는 참조 차량 것이라 우리 값이 따로 필요하다(B8)</td>
+<td><strong>완료 (2026-08-22).</strong> 기구 도면이 없어 <code>final_rover_HH</code> asset의 조인트 좌표에서 실측했다 — <strong>스크럽 반경 0.1271 m</strong>(캐스터 트레일 0, 킹핀 경사 10.0°). 참조 코드의 0.1125 m 는 다른 차량 값이다. <code>FourWheelSteering</code> 이 조향각을 조향축에서 정하고 휠 속도를 옮겨진 접지점에서 다시 구하도록 고쳤고, 역기구학도 배치 대칭 전제를 버리고 일반 최소자승으로 바꿨다(오프셋이 들어가면 sum(py)≠0 이다). 에뮬레이터 GUI 의 자세 적분 사본도 같이 고쳤다. 참조 코드의 <strong>선회 포락선 제한</strong>(<code>Vr ≤ 0.339·Vl + 0.0205</code>)은 여전히 없다 — 그 계수는 참조 차량 것이라 우리 값이 따로 필요하다(B8)</td>
 </tr>
 <tr>
 <td>B8</td>
 <td><strong>선회 포락선 우리 값 산정</strong></td>
-<td><strong>완료 (2026-08-22).</strong> 참조 코드의 <code>Vr ≤ 0.339·Vl + 0.0205</code> 는 조향각이 제한된 애커먼 차량의 <strong>최소 선회반경</strong>(2.95 m)에서 나온 식이라 속도에 <strong>비례해 커진다</strong>. 우리는 조향 ±90°(자산 실측)라 최소 선회반경이 없어 그 식이 성립하지 않는다 — 포락선이 속도에 따라 <strong>좁아진다</strong>. 구속을 다시 유도했다: ① 휠 각속도 한계(저속 구속, 제자리 회전 2.07 rad/s) ② 횡가속 한계 0.55 m/s²(중속 구속) — 전도 3.24 m/s²(CG 높이 0.3153 m 실측)보다 <strong>견인 1.134 m/s² 가 엄격</strong>해 그 절반을 횡방향에 배분했다. <code>SRS-FR-081</code>, <code>tools/check_turn_envelope.py</code>, 회귀 K7</td>
+<td><strong>완료 (2026-08-22).</strong> 참조 코드의 <code>Vr ≤ 0.339·Vl + 0.0205</code> 는 조향각이 제한된 애커먼 차량의 <strong>최소 선회반경</strong>(2.95 m)에서 나온 식이라 속도에 <strong>비례해 커진다</strong>. 우리는 조향 ±90°(asset 실측)라 최소 선회반경이 없어 그 식이 성립하지 않는다 — 포락선이 속도에 따라 <strong>좁아진다</strong>. 구속을 다시 유도했다: ① 휠 각속도 한계(저속 구속, 제자리 회전 2.07 rad/s) ② 횡가속 한계 0.55 m/s²(중속 구속) — 전도 3.24 m/s²(CG 높이 0.3153 m 실측)보다 <strong>견인 1.134 m/s² 가 엄격</strong>해 그 절반을 횡방향에 배분했다. <code>SRS-FR-081</code>, <code>tools/check_turn_envelope.py</code>, 회귀 K7</td>
 </tr>
 <tr>
 <td>B9</td>
@@ -2105,7 +2105,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>P5</td>
 <td>Isaac Sim 12축 연동 검증</td>
-<td><strong>조건부 완료(2026-08-21)</strong> — 드라이버 다운그레이드로 실행 차단이 풀린 뒤 TP-IG-1~6 을 두 회차 수행했다. 1회차에서 실행으로만 드러나는 결함 5건(D-20~D-24)을 잡았고, 그중 브리지 QoS(D-21)와 자산 물리 특성(D-23)·중력(D-24 ①)을 수정한 뒤 <strong>2회차에서 전 항목이 통과했다</strong> — 구동 추종 오차 0.75 %, 조향 1.6 %, 서스펜션 좌우 편차 ±8 %, <code>/cmd_vel</code> 0.5·0.2 → <code>/odom</code> 0.4992·0.1993, 명령 두절 시 워치독 정상(SRS-FR-005). <strong>완료로 단정하지 않는 이유</strong>: 자산 제원이 NASA VIPER 참조 <strong>추정치</strong>이고(기구팀 실측 대체 대상), 지면이 월면토가 아닌 무한 평면이며 마찰 재질이 미바인딩이다(D-24 ②③). 따라서 <strong>이 플랜트의 주행·슬립 수치는 IG-002 Nav2 파라미터 입력으로 쓰지 않는다.</strong> 상세는 IG-001 2b·2d·2e, 결함은 RR-001 R6</td>
+<td><strong>조건부 완료(2026-08-21)</strong> — 드라이버 다운그레이드로 실행 차단이 풀린 뒤 TP-IG-1~6 을 두 회차 수행했다. 1회차에서 실행으로만 드러나는 결함 5건(D-20~D-24)을 잡았고, 그중 브리지 QoS(D-21)와 asset 물리 특성(D-23)·중력(D-24 ①)을 수정한 뒤 <strong>2회차에서 전 항목이 통과했다</strong> — 구동 추종 오차 0.75 %, 조향 1.6 %, 서스펜션 좌우 편차 ±8 %, <code>/cmd_vel</code> 0.5·0.2 → <code>/odom</code> 0.4992·0.1993, 명령 두절 시 워치독 정상(SRS-FR-005). <strong>완료로 단정하지 않는 이유</strong>: asset 제원이 NASA VIPER 참조 <strong>추정치</strong>이고(기구팀 실측 대체 대상), 지면이 월면토가 아닌 무한 평면이며 마찰 재질이 미바인딩이다(D-24 ②③). 따라서 <strong>이 플랜트의 주행·슬립 수치는 IG-002 Nav2 파라미터 입력으로 쓰지 않는다.</strong> 상세는 IG-001 2b·2d·2e, 결함은 RR-001 R6</td>
 </tr>
 <tr>
 <td>P6</td>
