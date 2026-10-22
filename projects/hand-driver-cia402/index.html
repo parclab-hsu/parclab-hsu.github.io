@@ -1,0 +1,2256 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PARC Lab · Physical AI Real-Time Control for Mobility & Robotics · 한성대학교 미래모빌리티학과">
+      
+      
+        <meta name="author" content="KyungBok Lee">
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/projects/hand-driver-cia402/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>CiA 402 오브젝트 딕셔너리 메모리 맵 — 10축 로보틱 핸드 드라이버 - PARC Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cia-402-10" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="PARC Lab" class="md-header__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PARC Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CiA 402 오브젝트 딕셔너리 메모리 맵 — 10축 로보틱 핸드 드라이버
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연구분야
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  프로젝트
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../people/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  구성원
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  논문·성과
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../courses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  강의
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../news/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  소식
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연락처
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PARC Lab" class="md-nav__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    PARC Lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구분야
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../people/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    구성원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    논문·성과
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소식
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연락처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 주소 공간이 축 수의 상한을 정한다
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 주소 공간이 축 수의 상한을 정한다">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 영역 배치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 축별 기준 주소
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 오브젝트 딕셔너리 — 전수
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 오브젝트 딕셔너리 — 전수">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 실측 세 객체는 제어 주기로 발행되고, 못 읽으면 그렇게 말한다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 「구현되었다」의 정의 — 표에 적는 것과 지원하는 것은 다르다
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-c28x-16-char" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 전송 형과 C28x 의 16비트 char
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-1010h1011h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 파라미터 저장 — 1010h/1011h 와 물리 저장 배치
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 파라미터 저장 — 1010h/1011h 와 물리 저장 배치">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 내부 플래시 배치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-fram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 외부 FRAM 배치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 저장 대상과 오브젝트의 대응
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-0-2026-10-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 기동 시 위치는 0 에서 시작한다 (2026-10-21 요구 개정)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 상태·지령 워드
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 상태·지령 워드">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 고장 상태 두 가지를 가르는 사실은 하나다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 하드웨어가 정하는 기능 제약
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 전송 계층 채택 시 남는 작업
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 전송 계층 채택 시 남는 작업">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        버스 구성 — 분리한 채로 쓰는 것이 유리하다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 갱신 내역
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cia-402-10">CiA 402 오브젝트 딕셔너리 메모리 맵 — 10축 로보틱 핸드 드라이버<a class="headerlink" href="#cia-402-10" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">문서 정보</p>
+<p>산업체 수탁 과제 「10축 로보틱 핸드 모터 드라이버 제어 펌웨어」의 CiA 402 프로파일
+계층 중 <strong>주소 배치(오브젝트 딕셔너리)와 저장 영역 배치</strong>를 정리한 공개 요약입니다.</p>
+<p>근거는 비공개 저장소 <code>LGEHandDriver</code> 의 <code>docs/CIA402-REVIEW.md</code>(문서 ID
+LGEHD-CIA402-001)이며, 오브젝트 표는 서술표 정본인
+<code>firmware/common/source/cia402.c</code> 의 <code>cia402OdTbl[]</code> 에서 추출했습니다.
+기준 커밋은 <code>01b4808</code>(2026-10-22)입니다. 초판은 <code>9d39ebc</code>(2026-10-05)이며,
+그 뒤 확인된 사실로 3·4·6·8 절을 갱신했습니다(갱신 내역은 10 절).</p>
+<p>상위 통신 규약(자체 CAN 규약 및 고객사 CAN-FD 규약)의 프레임 배치는 공개 대상이
+아니므로 수록하지 않았습니다.</p>
+</div>
+<hr />
+<h2 id="1">1. 요약<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>대상 장치</td>
+<td>10축 로보틱 핸드 모터 드라이버 — TI TMS320F28P650DK <strong>×2</strong>(MCU 당 5축), 축당 3상 GaN 파워스테이지 1개</td>
+</tr>
+<tr>
+<td>적용 프로파일</td>
+<td>CiA 402(드라이브·모션 제어) + CiA 301 통신 영역</td>
+</tr>
+<tr>
+<td>채택 범위</td>
+<td><strong>단계 1 — 프로파일 의미 채용.</strong> 축 계층의 상태·모드·오브젝트 의미를 CiA 402 에 맞췄으며, 전송 계층(CANopen·CoE)은 상위 시스템 구성 확정 후 결정</td>
+</tr>
+<tr>
+<td>노드 구성</td>
+<td>MCU 당 1 노드 · 노드 당 5축</td>
+</tr>
+<tr>
+<td>축 인덱스 오프셋</td>
+<td><code>0x800</code> — <code>CIA402_index(base, axis)</code> 한 곳이 계산</td>
+</tr>
+<tr>
+<td>서술표 규모</td>
+<td><strong>37 항목</strong> — 구현 27(모델 자리 23 · 핸들러 4) · 이름만 10</td>
+</tr>
+<tr>
+<td>저장 매체</td>
+<td>내부 플래시 bank 3(프로파일 파라미터, 교대 2섹터) · 외부 FRAM CY15B104Q(위치·정렬·부트블록)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>프로파일 모드는 <code>pp</code>/<code>pv</code>/<code>tq</code> 가 아니라 주기 동기 모드(<code>csp</code>/<code>csv</code>/<code>cst</code>)를
+채택했다.</strong> 10축을 상위가 함께 계획해야 하므로 궤적 생성을 드라이브에 두면 손가락
+간 협조가 깨진다. 원점 확정 절차는 <code>hm</code>(6) 모드로 표현한다.</p>
+<div class="admonition warning">
+<p class="admonition-title">INDEX 탐색(방식 33·34)은 이 장치에서 거절된다</p>
+<p>채용한 엔코더에 <strong>Z(INDEX) 상이 없다.</strong> 그래서 표준 방식 33·34(INDEX 탐색)는
+받아들이지 않고 지원 목록을 돌려준다. 실제로 쓸 수 있는 방식은 다음 둘이다.</p>
+<table>
+<thead>
+<tr>
+<th><code>6098h</code></th>
+<th>방식</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>35</strong> 또는 <strong>37</strong></td>
+<td>현재 위치를 원점으로</td>
+<td>축이 움직이지 않는다</td>
+</tr>
+<tr>
+<td><strong>−1</strong> / <strong>−2</strong></td>
+<td>음/양 방향 <strong>기계 스토퍼</strong>까지 눌러 그 자리를 원점으로</td>
+<td><strong>제조사 영역</strong>(표준 아님)</td>
+</tr>
+</tbody>
+</table>
+<p>INDEX 가 없는 장치에서 「지금 여기가 원점」만 가능하다는 사실은 가동범위의
+절대 기준이 <strong>기구 조립에 의존한다</strong>는 뜻이다 — 스토퍼 방식이 그 의존을
+줄이는 유일한 길이고, 그래서 제조사 영역을 쓴다.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>본 장치의 축 모드</th>
+<th><code>6060h</code> 코드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AXIS_MODE_POSITION</code></td>
+<td>8 (<code>csp</code>)</td>
+</tr>
+<tr>
+<td><code>AXIS_MODE_SPEED</code></td>
+<td>9 (<code>csv</code>)</td>
+</tr>
+<tr>
+<td><code>AXIS_MODE_TORQUE</code></td>
+<td>10 (<code>cst</code>)</td>
+</tr>
+<tr>
+<td>강제 정렬 + INDEX 탐색</td>
+<td>6 (<code>hm</code>)</td>
+</tr>
+<tr>
+<td><code>AXIS_MODE_IDLE</code></td>
+<td>0 (no mode)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2">2. 주소 공간이 축 수의 상한을 정한다<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>CANopen 오브젝트 딕셔너리에서 표준 장치 프로파일 영역은 <code>6000h</code>~<code>9FFFh</code> 하나뿐이고,
+다축 장치는 축마다 <code>0x800</code> 씩 띄워 같은 오브젝트를 반복한다. 따라서</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>0xA000 - 0x6000 = 0x4000      표준 장치 프로파일 영역의 크기
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>0x4000 ÷ 0x800  = 8           표준 배치가 담을 수 있는 축 수
+</code></pre></div>
+<p><strong>한 노드에 10축을 표준 주소 배치로 담을 수 없다.</strong> 9·10축을 제조사 영역
+(<code>2000h</code>~<code>5FFFh</code>)에 두는 방법은 있으나, 그 두 축은 표준 마스터가 축으로 인식하지
+못하므로 표준 툴을 그대로 쓴다는 채택 이유가 사라진다.</p>
+<p>그래서 <strong>노드를 둘로 나눈다.</strong> MCU 마다 CAN 트랜시버와 종단이 따로 있는 이 보드의
+하드웨어 구성과도 일치하며, 손가락이 MCU 경계에 걸치지 않으므로 <strong>노드 경계와
+손가락 경계가 일치</strong>한다 — 한 노드가 중단되면 그 노드가 담당하는 손가락 단위로
+정지한다.</p>
+<table>
+<thead>
+<tr>
+<th>노드</th>
+<th>MCU</th>
+<th>담당 축</th>
+<th>프로파일 축 번호</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>MCU_A</td>
+<td>1 ~ 5 (엄지 4 + 약지 1)</td>
+<td>1 ~ 5</td>
+</tr>
+<tr>
+<td>B</td>
+<td>MCU_B</td>
+<td>6 ~ 10 (검지 3 + 중지 2)</td>
+<td>1 ~ 5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21">2.1 영역 배치<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>인덱스 영역</th>
+<th>용도</th>
+<th>본 장치의 사용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1000h</code> ~ <code>1FFFh</code></td>
+<td>CiA 301 통신 영역</td>
+<td><code>1001h</code> error register · <code>1010h</code>/<code>1011h</code> 파라미터 저장·복원</td>
+</tr>
+<tr>
+<td><code>2000h</code> ~ <code>5FFFh</code></td>
+<td>제조사 영역</td>
+<td><strong>미사용</strong>(장래 확장 여지). 제조사 고유 정보는 <code>6041h</code> 의 제조사 비트로만 표현</td>
+</tr>
+<tr>
+<td><code>6000h</code> ~ <code>9FFFh</code></td>
+<td>표준 장치 프로파일</td>
+<td>축 1 ~ 5, 축마다 <code>0x800</code></td>
+</tr>
+<tr>
+<td><code>A000h</code> 이상</td>
+<td>다른 용도로 배정</td>
+<td><strong>사용하지 않는다</strong> — 9·10축을 여기에 둘 수 없는 것이 2노드 구성의 근거다</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22">2.2 축별 기준 주소<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p><code>0x800</code> 오프셋이 적용되는 것은 서술표에서 <strong>축별</strong>로 표시된 항목뿐이며, 장치 수준
+항목(<code>1001h</code>·<code>1010h</code>·<code>1011h</code>)은 노드에 하나씩만 존재한다.</p>
+<table>
+<thead>
+<tr>
+<th>프로파일 축</th>
+<th>기준 오프셋</th>
+<th><code>6040h</code> controlword</th>
+<th><code>6041h</code> statusword</th>
+<th><code>607Ah</code> target position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>+0x0000</code></td>
+<td><code>6040h</code></td>
+<td><code>6041h</code></td>
+<td><code>607Ah</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>+0x0800</code></td>
+<td><code>6840h</code></td>
+<td><code>6841h</code></td>
+<td><code>687Ah</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>+0x1000</code></td>
+<td><code>7040h</code></td>
+<td><code>7041h</code></td>
+<td><code>707Ah</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>+0x1800</code></td>
+<td><code>7840h</code></td>
+<td><code>7841h</code></td>
+<td><code>787Ah</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>+0x2000</code></td>
+<td><code>8040h</code></td>
+<td><code>8041h</code></td>
+<td><code>807Ah</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3">3. 오브젝트 딕셔너리 — 전수<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>아래 표는 서술표 정본에서 생성한 것이며, <strong>「구현」 열은 손으로 적지 않는다</strong>(§4).</p>
+<table>
+<thead>
+<tr>
+<th>인덱스</th>
+<th>오브젝트</th>
+<th>전송 형</th>
+<th>접근</th>
+<th>PDO</th>
+<th>범위</th>
+<th>구현</th>
+<th>근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1001h</code></td>
+<td>error_register</td>
+<td>UNSIGNED8</td>
+<td>RO</td>
+<td>—</td>
+<td>장치</td>
+<td><strong>동작</strong></td>
+<td>model <code>errorRegister</code></td>
+</tr>
+<tr>
+<td><code>1010h</code></td>
+<td>store_params_count</td>
+<td>UNSIGNED8</td>
+<td>RO</td>
+<td>—</td>
+<td>장치</td>
+<td><strong>동작</strong></td>
+<td>handler <code>CIA402_storeRead()</code></td>
+</tr>
+<tr>
+<td><code>1010h:1</code></td>
+<td>store_params_all</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>장치</td>
+<td><strong>동작</strong></td>
+<td>handler <code>CIA402_storeWrite()</code></td>
+</tr>
+<tr>
+<td><code>1011h</code></td>
+<td>restore_params_count</td>
+<td>UNSIGNED8</td>
+<td>RO</td>
+<td>—</td>
+<td>장치</td>
+<td><strong>동작</strong></td>
+<td>handler <code>CIA402_storeRead()</code></td>
+</tr>
+<tr>
+<td><code>1011h:1</code></td>
+<td>restore_params_all</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>장치</td>
+<td><strong>동작</strong></td>
+<td>handler <code>CIA402_storeWrite()</code></td>
+</tr>
+<tr>
+<td><code>6040h</code></td>
+<td>controlword</td>
+<td>UNSIGNED16</td>
+<td>RW</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>controlword</code></td>
+</tr>
+<tr>
+<td><code>6041h</code></td>
+<td>statusword</td>
+<td>UNSIGNED16</td>
+<td>RO</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>statusword</code></td>
+</tr>
+<tr>
+<td><code>603Fh</code></td>
+<td>error_code</td>
+<td>UNSIGNED16</td>
+<td>RO</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>errorCode</code></td>
+</tr>
+<tr>
+<td><code>605Ah</code></td>
+<td>quick_stop_option</td>
+<td>INTEGER16</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>605Eh</code></td>
+<td>fault_option</td>
+<td>INTEGER16</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>6060h</code></td>
+<td>modes_of_op</td>
+<td>INTEGER8</td>
+<td>RW</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>modesOfOperation</code></td>
+</tr>
+<tr>
+<td><code>6061h</code></td>
+<td>modes_display</td>
+<td>INTEGER8</td>
+<td>RO</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>modesDisplay</code></td>
+</tr>
+<tr>
+<td><code>6064h</code></td>
+<td>position_actual</td>
+<td>INTEGER32</td>
+<td>RO</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>positionActual</code></td>
+</tr>
+<tr>
+<td><code>606Ch</code></td>
+<td>velocity_actual</td>
+<td>INTEGER32</td>
+<td>RO</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>velocityActual</code></td>
+</tr>
+<tr>
+<td><code>6077h</code></td>
+<td>torque_actual</td>
+<td>INTEGER16</td>
+<td>RO</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>torqueActual</code></td>
+</tr>
+<tr>
+<td><code>60F4h</code></td>
+<td>follow_err_actual</td>
+<td>INTEGER32</td>
+<td>RO</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>followErrActual</code></td>
+</tr>
+<tr>
+<td><code>6065h</code></td>
+<td>follow_err_window</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>6066h</code></td>
+<td>follow_err_timeout</td>
+<td>UNSIGNED16</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>607Ah</code></td>
+<td>target_position</td>
+<td>INTEGER32</td>
+<td>RW</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>targetPosition</code></td>
+</tr>
+<tr>
+<td><code>60FFh</code></td>
+<td>target_velocity</td>
+<td>INTEGER32</td>
+<td>RW</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>targetVelocity</code></td>
+</tr>
+<tr>
+<td><code>6071h</code></td>
+<td>target_torque</td>
+<td>INTEGER16</td>
+<td>RW</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>targetTorque</code></td>
+</tr>
+<tr>
+<td><code>6072h</code></td>
+<td>max_torque</td>
+<td>UNSIGNED16</td>
+<td>RW</td>
+<td>○</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>maxTorque</code></td>
+</tr>
+<tr>
+<td><code>607Dh:1</code></td>
+<td>sw_pos_limit_min</td>
+<td>INTEGER32</td>
+<td>RO</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>swPosLimitMin</code></td>
+</tr>
+<tr>
+<td><code>607Dh:2</code></td>
+<td>sw_pos_limit_max</td>
+<td>INTEGER32</td>
+<td>RO</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>swPosLimitMax</code></td>
+</tr>
+<tr>
+<td><code>6080h</code></td>
+<td>max_motor_speed</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>6091h:1</code></td>
+<td>gear_motor_rev</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>6091h:2</code></td>
+<td>gear_shaft_rev</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>6402h</code></td>
+<td>motor_type</td>
+<td>UNSIGNED16</td>
+<td>RO</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>6502h</code></td>
+<td>supported_modes</td>
+<td>UNSIGNED32</td>
+<td>RO</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>6098h</code></td>
+<td>homing_method</td>
+<td>INTEGER8</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>homingMethod</code></td>
+</tr>
+<tr>
+<td><code>607Ch</code></td>
+<td>home_offset</td>
+<td>INTEGER32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>homeOffset</code></td>
+</tr>
+<tr>
+<td><code>6099h:2</code></td>
+<td>homing_speed_zero</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>homingSpeed</code></td>
+</tr>
+<tr>
+<td><code>6086h</code></td>
+<td>motion_profile_type</td>
+<td>INTEGER16</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>motionProfileType</code></td>
+</tr>
+<tr>
+<td><code>6081h</code></td>
+<td>profile_velocity</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>profileVelocity</code></td>
+</tr>
+<tr>
+<td><code>6083h</code></td>
+<td>profile_accel</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>profileAccel</code></td>
+</tr>
+<tr>
+<td><code>6084h</code></td>
+<td>profile_decel</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>이름만</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>60A4h:1</code></td>
+<td>profile_jerk</td>
+<td>UNSIGNED32</td>
+<td>RW</td>
+<td>—</td>
+<td>축별</td>
+<td><strong>동작</strong></td>
+<td>model <code>profileJerk</code></td>
+</tr>
+</tbody>
+</table>
+<p>전송 형은 CoE 표준 자료형 인덱스로 선언한다 — INTEGER8 <code>0x0002</code> · INTEGER16
+<code>0x0003</code> · INTEGER32 <code>0x0004</code> · UNSIGNED8 <code>0x0005</code> · UNSIGNED16 <code>0x0006</code> ·
+UNSIGNED32 <code>0x0007</code>.</p>
+<hr />
+<h3 id="31">3.1 실측 세 객체는 제어 주기로 발행되고, 못 읽으면 그렇게 말한다<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p><code>6064h</code>·<code>606Ch</code>·<code>6077h</code> 는 <strong>제어 ISR(16.67 kHz)이 한 묶음으로 발행</strong>하고 읽는 쪽은
+<strong>시퀀스 잠금</strong>으로 가져간다.</p>
+<ul>
+<li>그 전에는 1 ms 프로파일 갱신 주기의 사본을 실었다 — 상위가 1 ms 로 물으면
+  <strong>한 주기 묵은 값</strong>이 제어 루프에 들어간다. 세 값이 <strong>같은 순간</strong>의 것이어야
+  상위가 미분·보간을 할 수 있다.</li>
+<li>잠금이 <strong>확정된 한 판을 못 주면</strong> 읽기는 <strong>실패를 돌려준다.</strong> 그때 상태 응답은
+  이전 정상값을 유지하거나(프로파일 경로) 0 으로 채우고 <strong>그 횟수를 센다</strong>(전송
+  경로) — 「오래된 값」과 「아무 값」을 <strong>호출자가 고르게</strong> 한다. 조용히 섞지 않는다.</li>
+<li>발행 비용을 제어 주기 안에 두기 위해 <strong>나눗셈은 1 ms 경로에 둔다</strong>(정격 대비 ‰
+  환산 계수를 캐시). 16.67 kHz 안에서 나눗셈을 돌리면 같은 일을 하고도 명령 수가
+  <strong>1.6 배</strong>가 된다.</li>
+</ul>
+<h2 id="4">4. 「구현되었다」의 정의 — 표에 적는 것과 지원하는 것은 다르다<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>서술표의 항목은 <strong>모델(<code>CIA402_Axis_t</code>)에 자리가 있거나 <code>handler</code> 가 있는 것</strong>과
+<strong>이름만 있는 것</strong>으로 갈린다. 자리가 없으면 SDO 로 써도 <strong>닿을 곳이 없고</strong>, 읽어도
+돌려줄 것이 없다.</p>
+<p>이 구분을 문서가 아니라 <strong>코드에서 파생</strong>시키는 것이 이 과제의 규율이다. 분류를
+손으로 적었던 기간에 양방향 오류가 모두 발생했다.</p>
+<table>
+<thead>
+<tr>
+<th>방향</th>
+<th>발생한 오류</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>있다고 적고 없었다</td>
+<td><code>6072h</code> max torque — 상위가 쓴 값을 받아 두고 매 틱 <code>1000</code> 으로 덮어써, <strong>읽으면 반영된 것처럼 보였다</strong></td>
+</tr>
+<tr>
+<td>없다고 적고 있었다</td>
+<td><code>1001h</code> · <code>607Dh:1/2</code> · <code>6081h</code> · <code>6083h</code> · <code>60A4h:1</code> — 매 틱 채워지거나 소비되고 있었다</td>
+</tr>
+</tbody>
+</table>
+<p>현재는 <strong>모델 필드 이름 또는 핸들러 이름</strong>만 표에 두고, 구현 여부는 거기서
+파생시킨다. 문서 검사기(<code>check_docs</code> 5d)가 네 가지를 함께 본다.</p>
+<ol>
+<li>적은 필드가 구조체에 <strong>실재하는가</strong></li>
+<li>초기화 밖에서 <strong>만져지는가</strong> — 자리는 있으나 죽어 있는 항목을 가린다</li>
+<li>RW 로 선언했다면 <strong>읽는 코드가 있는가</strong> — 쓰기가 사라지는 결함(<code>6072h</code> 형태)을 막는다</li>
+<li>핸들러를 적었다면 정의가 있고 <strong>누군가 부르는가</strong> — 「코드가 있다 ≠ 도달한다」</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">기능이 있는 것과 오브젝트로 닿는 것은 다른 사실이다</p>
+<p><code>6065h</code>/<code>6066h</code>(추종 오차 창·시간창)는 <strong>기능이 동작한다.</strong> 그러나 값이
+축 설정(<code>AXIS_Config_t</code>)에 있어 이 모델에는 자리가 없고, 콘솔과 설정 경로로만
+닿는다. 마스터가 헛되이 SDO 를 보내지 않도록 그 사실이 표에 보여야 한다.</p>
+<p><code>607Dh</code>(소프트웨어 위치 한계)는 <strong>읽기 전용으로 정정</strong>했다. 가동범위는 좌/우
+형상에서 나오며 매 틱 설정에서 채워지므로, RW 로 선언하면 상위가 쓴 값이 다음
+틱에 사라지는데 읽으면 반영된 것처럼 보인다 — <code>6072h</code> 와 같은 형태가 된다.</p>
+</div>
+<p>ESI(EtherCAT Slave Information) 파일을 생성할 때 <strong>미구현 항목을 지원 항목으로
+내보내지 않는 것</strong>이 이 구분의 목적이다. 마스터는 ESI 를 믿고 SDO 를 보내며,
+장치가 「받았다」고 답하면 설정이 반영된 것으로 간주한다.</p>
+<hr />
+<h2 id="5-c28x-16-char">5. 전송 형과 C28x 의 16비트 char<a class="headerlink" href="#5-c28x-16-char" title="Permanent link">&para;</a></h2>
+<p>C28x 는 <code>char</code> 가 16비트이고 8비트 타입이 없다(<code>uint8_t</code> 도 16비트, <code>sizeof(uint32_t) == 2</code>).
+CANopen·CoE 는 오브젝트 딕셔너리·SDO 분할전송·PDO 매핑을 <strong>바이트 단위</strong>로 다루므로,
+전송 계층을 채택할 때 가장 큰 위험은 프로토콜이 아니라 이 자료형 폭이다.</p>
+<table>
+<thead>
+<tr>
+<th>오브젝트</th>
+<th>표준 전송 형</th>
+<th>내부 저장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>6060h</code> modes of operation</td>
+<td>INTEGER8</td>
+<td><code>int16_t</code></td>
+</tr>
+<tr>
+<td><code>6061h</code> modes of operation display</td>
+<td>INTEGER8</td>
+<td><code>int16_t</code></td>
+</tr>
+<tr>
+<td><code>6098h</code> homing method</td>
+<td>INTEGER8</td>
+<td><code>int16_t</code></td>
+</tr>
+</tbody>
+</table>
+<p>서술표에는 <strong>전송 형</strong>을 적어 두었으므로 표 자체는 옳다. 다만 형을 좁히는 변환이
+전송 어댑터마다 흩어져 있어 두 가지 위험이 남는다.</p>
+<ul>
+<li><code>6098h</code> 의 스토퍼 방식은 <strong>음수</strong>(<code>-1</code>/<code>-2</code>)다. 8비트로 줄일 때 부호 확장을
+  놓치면 <code>-1</code> 이 <code>255</code> 가 되어 「지원하지 않는 방식」으로 거절되거나, 더 나쁘게는
+  <strong>다른 표준 방식 번호로 해석</strong>된다</li>
+<li>1바이트만 담는 SDO 응답을 만들 때 16비트 워드의 어느 절반을 보내는지가
+  컴파일러·정렬에 의존하는 것처럼 보인다</li>
+</ul>
+<p>처방은 <strong>형을 좁히는 자리를 한 곳으로 모으고 시험으로 고정</strong>하는 것이다. 자체
+규약에서는 전용 시험(<code>canfd_test</code>·<code>wirecmd_test</code>)이 그 역할을 하며, CoE 를 넣을 때
+같은 형태의 시험을 먼저 만든다.</p>
+<hr />
+<h2 id="6-1010h1011h">6. 파라미터 저장 — <code>1010h</code>/<code>1011h</code> 와 물리 저장 배치<a class="headerlink" href="#6-1010h1011h" title="Permanent link">&para;</a></h2>
+<p><code>1010h</code>(store parameters)·<code>1011h</code>(restore default parameters)는 <strong>값을 담는 객체가
+아니라 동작을 일으키는 객체</strong>다. 그래서 모델에 자리가 없고 핸들러가 구현을 가리킨다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>규약</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>하위 <code>0</code></td>
+<td><strong>읽기 전용</strong> — 따라오는 하위 항목 수</td>
+</tr>
+<tr>
+<td>하위 <code>1</code></td>
+<td>「전체」 저장·복원</td>
+</tr>
+<tr>
+<td>하위 <code>2</code>~<code>4</code></td>
+<td>그룹별 저장·복원은 <strong>제공하지 않는다고 거부한다</strong> — 받아들이고 전체를 저장하면 상위는 자기가 요청한 범위가 반영된 것으로 믿는다</td>
+</tr>
+<tr>
+<td>서명</td>
+<td><code>1010h</code> = <code>"save"</code>(<code>0x65766173</code>) · <code>1011h</code> = <code>"load"</code>(<code>0x64616F6C</code>). 서명이 관문이며, 없으면 재전송된 프레임 하나가 플래시를 쓴다</td>
+</tr>
+</tbody>
+</table>
+<p>거부는 CoE 가 전선에 싣는 abort 코드로 답한다 — <code>0x06010000</code>(지원하지 않는 접근) ·
+<code>0x06010002</code>(읽기 전용에 쓰기) · <code>0x06090011</code>(하위 항목 없음) ·
+<code>0x06090030</code>(값 범위 초과).</p>
+<div class="admonition warning">
+<p class="admonition-title">핸들러는 저장하지 않는다 — 요청만 세운다</p>
+<p>저장은 구동이 멈춘 시점에 파라미터 관리자가 수행한다. 플래시 소거·기록은 수 ms
+단위로 코어를 점유하므로 제어 주기 안에서 수행할 수 없다. 콘솔 명령도 <strong>같은
+핸들러를 지난다</strong> — 경로가 둘이면 콘솔은 동작하는데 객체는 깨져 있어도 마스터가
+접속할 때까지 드러나지 않는다.</p>
+<p><strong>저장한 값은 다음 리셋에 적용된다.</strong> 살아 있는 동안 적용하려면 엔코더 설정과
+전류 루프 이득을 구동 중에 다시 계산해야 하고, 기어비가 두 ISR 틱 사이에 바뀌면
+위치 루프가 <strong>뜻이 달라진 목표</strong>를 그대로 쓴다. 그래서 진단 출력은 <strong>active
+(하드웨어가 초기화된 값)와 stored(다음 리셋에 쓸 값)를 두 열로</strong> 보인다.</p>
+</div>
+<h3 id="61">6.1 내부 플래시 배치<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<p>섹터는 1024 워드, 뱅크는 128 k 워드다(<code>0x080000</code> ~ <code>0x11FFFF</code>).</p>
+<table>
+<thead>
+<tr>
+<th>뱅크</th>
+<th>시작 주소</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>0x080000</code></td>
+<td>부트로더(<code>0x080000</code>, <code>0x08000</code> 워드) + 예비(<code>0x088000</code>, <code>0x18000</code> 워드)</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>0x0A0000</code></td>
+<td>애플리케이션 이미지 슬롯 A</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>0x0C0000</code></td>
+<td>애플리케이션 이미지 슬롯 B</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong><code>0x0E0000</code></strong></td>
+<td><strong>프로파일 파라미터 — 교대 2섹터</strong>(<code>0x0E0000</code> / <code>0x0E0400</code>)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>0x100000</code></td>
+<td>CPU2 이미지</td>
+</tr>
+</tbody>
+</table>
+<p><strong>뱅크 3 을 쓰는 근거는 둘이다.</strong> ① 부트로더의 뱅크가 아니므로 이 영역의 결함이
+현장에서 복구 불가능한 로더를 손상시킬 수 없다. ② 실행 중인 이미지의 뱅크(1·2)가
+아니므로 소거가 명령어 가져오기를 멈추지 않는다.</p>
+<p><strong>두 섹터를 교대로 쓴다.</strong> 섹터가 하나면 소거 중 전원이 끊길 때 직전 정상 사본을
+잃고, 소거된 섹터는 전부 <code>1</code> 로 읽혀 레코드가 아니다. 교대하면 어느 순간에도 한
+사본이 온전하다 — 부트블록 A/B 와 엔코더 누적 2슬롯과 같은 형태다.</p>
+<p>레코드는 <code>magic</code>(<code>0x504D</code>) · <code>version</code> · <code>seq</code>(큰 쪽이 최신) · payload · <code>crc</code> 로
+구성한다. <strong>필드가 이동하면 <code>version</code> 을 올린다</strong> — 틀린 배치로 읽은 레코드는 모든
+필드에 그럴듯한 틀린 값을 주며, 모터 파라미터에서 그것이 최악이다.</p>
+<h3 id="62-fram">6.2 외부 FRAM 배치<a class="headerlink" href="#62-fram" title="Permanent link">&para;</a></h3>
+<p>CY15B104Q 4 Mbit = 512 KByte이며, <strong>C28x 워드 하나가 FRAM 2바이트</strong>이므로 워드로는
+262,144 워드다. 쓰기 지연이 짧아 <strong>전원이 끊기는 중에 써야 하는 것</strong>을 둔다.</p>
+<table>
+<thead>
+<tr>
+<th>주소(워드)</th>
+<th>크기(워드)</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x0000</code></td>
+<td>256</td>
+<td>손 구성 레코드(좌/우 형상 등)</td>
+</tr>
+<tr>
+<td><code>0x0100</code></td>
+<td>15,872</td>
+<td>위치 저널 링버퍼 — 레코드가 작고 많다. <strong>기동 시 자동 복원은 하지 않는다</strong>(아래)</td>
+</tr>
+<tr>
+<td><code>0x4000</code></td>
+<td>20,480</td>
+<td>텔레메트리 링버퍼 — 사후 분석용</td>
+</tr>
+<tr>
+<td><code>0x9000</code></td>
+<td>32</td>
+<td>부트블록 A</td>
+</tr>
+<tr>
+<td><code>0x9020</code></td>
+<td>32</td>
+<td>부트블록 B</td>
+</tr>
+<tr>
+<td><code>0x9040</code></td>
+<td>32</td>
+<td>전기각 정렬 레코드(INDEX 기준)</td>
+</tr>
+<tr>
+<td><code>0x9060</code></td>
+<td>32</td>
+<td>엔코더 누적 카운트 슬롯 A</td>
+</tr>
+<tr>
+<td><code>0x9080</code></td>
+<td>32</td>
+<td>엔코더 누적 카운트 슬롯 B</td>
+</tr>
+<tr>
+<td><code>0x90A0</code> 이상</td>
+<td>—</td>
+<td>미사용</td>
+</tr>
+</tbody>
+</table>
+<p><strong>프로파일 파라미터를 FRAM 에 두지 않은 이유</strong>는 이 배치가 설명한다. FRAM 은 벌크
+커패시터가 비는 동안 기록해야 하는 안전 관련 데이터(위치 저널·엔코더 누적)가 쓰는
+버스이며, 시운전 시점에만 쓰이는 파라미터 한 벌을 그 버스에 얹을 이유가 없다.</p>
+<h3 id="63">6.3 저장 대상과 오브젝트의 대응<a class="headerlink" href="#63" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>payload 항목</th>
+<th>대응 오브젝트</th>
+<th>서술표</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>상저항 · d/q 인덕턴스 · 정격 전압 · 최대 전류 · 최대 주파수 · 극쌍수</td>
+<td><code>6410h</code> motor data</td>
+<td><strong>행 없음</strong></td>
+</tr>
+<tr>
+<td>모터 종류</td>
+<td><code>6402h</code> motor type</td>
+<td>이름만</td>
+</tr>
+<tr>
+<td>최대 속도</td>
+<td><code>6080h</code> max motor speed</td>
+<td>이름만</td>
+</tr>
+<tr>
+<td>엔코더 분해능(4체배 후 카운트 · 라인 수)</td>
+<td><code>608Fh</code> position encoder resolution</td>
+<td><strong>행 없음</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">저장되는 값과 오브젝트로 닿는 값이 아직 일치하지 않는다</p>
+<p>위 네 묶음은 <strong>플래시에 저장되고 다음 리셋에 적용되지만</strong>, <code>6410h</code>·<code>608Fh</code> 는
+서술표에 행이 없고 <code>6402h</code>·<code>6080h</code> 는 이름만 있다. 즉 현재 이 값들에 닿는
+길은 콘솔과 설정 경로뿐이며, <strong>CoE 마스터가 쓸 수 있는 길은 아직 없다.</strong> 전송
+계층을 채택할 때 이 네 항목을 서술표에 올리는 것이 선행 작업이다.</p>
+<p>⛔ <strong>이 펌웨어가 값을 갖고 있지 않은 오브젝트는 저장 대상에서 제외했다</strong> —
+<code>6075h</code> 정격 전류, <code>6076h</code> 정격 토크, 토크 상수에는 기준값이 없다. 자리를 만들면
+<strong>모터 상수 셋을 발명</strong>하는 셈이고, 발명된 상수는 없는 오브젝트보다 나쁘다 —
+상위가 읽어 가서 믿는다.</p>
+</div>
+<hr />
+<h3 id="64-0-2026-10-21">6.4 기동 시 위치는 0 에서 시작한다 (2026-10-21 요구 개정)<a class="headerlink" href="#64-0-2026-10-21" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title"><code>6064h</code> 는 전원 재투입 뒤 0 이고, 원점 확정 전까지 위치 모드를 거절한다</p>
+<p>초판에는 「기동 시 최신 유효 레코드로 위치를 복원한다」로 적혀 있었다. 그 요구를
+<strong>개정했다.</strong></p>
+<p>채용한 엔코더는 증분형이고 <strong>Z(INDEX) 상이 없다.</strong> 전원이 꺼진 사이 관절이 손으로
+움직여도 장치는 그것을 알 방법이 없으므로, 복원한 수는 <strong>아무도 책임질 수 없는
+값</strong>이 된다. 그 값을 위치로 내보내면 상위는 그것을 믿고 궤적을 만든다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>개정 전</th>
+<th><strong>현재</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기동 시 <code>6064h</code></td>
+<td>저장된 값으로 복원</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>저장 레코드</td>
+<td>복원에 사용</td>
+<td><strong>기록으로 남기고 적용하지 않는다</strong> — 진단으로 조회 가능</td>
+</tr>
+<tr>
+<td>위치 모드(<code>csp</code>)</td>
+<td>복원값으로 허가</td>
+<td><strong>원점 확정(<code>hm</code>) 전까지 거절</strong></td>
+</tr>
+</tbody>
+</table>
+<p>복원값을 쓰려면 <strong>명시적 요청</strong>이 필요하다. 그 경로는 적용 시점에 <strong>현재 기계각을
+기준으로</strong> 계산하므로, 축이 이미 움직인 뒤에 요청해도 결과가 어긋나지 않는다.</p>
+<p>「오래된 값」과 「아무 값」은 다른 사실이고, 둘 중 무엇을 쓸지는 <strong>상위가 고를
+일</strong>이다 — 장치가 조용히 고르지 않는다.</p>
+</div>
+<h2 id="7">7. 상태·지령 워드<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p><code>6041h</code> statusword 는 <strong>독립 상태머신이 아니라 축 상태(<code>AXIS_Status_e</code>)의 번역</strong>이다.
+축 상태의 기준을 하나로 유지해야 statusword 와 실제 축 상태가 어긋나지 않는다 —
+상위는 statusword 를 근거로 지령을 보내므로 그 불일치는 안전 판단에 직접 영향한다.</p>
+<table>
+<thead>
+<tr>
+<th>비트</th>
+<th>의미</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Ready to switch on</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Switched on</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Operation enabled</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fault</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Voltage enabled</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Quick stop</td>
+<td><strong>0 이 활성</strong>이다</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Switch on disabled</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Warning</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Remote</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Target reached</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Internal limit active</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>hm</code>: homing attained</td>
+<td>모드별 정의 비트</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>hm</code>: homing error</td>
+<td>모드별 정의 비트</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>접촉 활성</strong></td>
+<td>제조사 정의 비트</td>
+</tr>
+</tbody>
+</table>
+<p><code>6040h</code> controlword 해석에서 확인한 네 가지를 함께 적어 둔다 — ① <strong>bit2(quick stop)와
+bit5 는 0 이 활성</strong>이며 이 반전을 놓치면 정지 지령이 상시 걸린 것처럼 보인다,
+② <strong>Disable voltage(bit1=0)가 최우선</strong>으로 다른 비트와 무관하게 적용된다,
+③ fault reset(bit7)·halt(bit8)는 전원 수준을 바꾸지 않는다, ④ <strong>fault reset 은
+상승엣지에서만</strong> 동작한다(레벨로 처리하면 비트를 세워 둔 동안 고장이 반복 해제되어
+재발 상태를 확인할 수 없다).</p>
+<h3 id="71">7.1 고장 상태 두 가지를 가르는 사실은 하나다<a class="headerlink" href="#71" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>CiA 402 상태</th>
+<th>본 장치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Switch on disabled</td>
+<td>정지·대기</td>
+</tr>
+<tr>
+<td>Ready to switch on</td>
+<td>부트스트랩 충전 전</td>
+</tr>
+<tr>
+<td>Switched on</td>
+<td>충전 완료</td>
+</tr>
+<tr>
+<td>Operation enabled</td>
+<td>제어 구동 · 폐루프 · 개루프 기동 · 강제 정렬 · 원점 탐색</td>
+</tr>
+<tr>
+<td>Fault reaction active (6)</td>
+<td>고장이 래치됐고 <strong>출력이 아직 살아 있다</strong></td>
+</tr>
+<tr>
+<td>Fault (7)</td>
+<td>고장이 래치됐고 <strong>출력이 없다</strong></td>
+</tr>
+<tr>
+<td>Quick stop active</td>
+<td><strong>대응 없음</strong>(§8)</td>
+</tr>
+</tbody>
+</table>
+<p>두 고장 상태를 가르는 사실은 <strong>출력이 아직 살아 있는가</strong> 하나이며, 판정 자리는
+함수 하나다(Operation enabled 판정도 같은 함수를 쓴다 — 목록이 두 벌이면 상태를
+하나 더할 때 한쪽만 고쳐진다). 고장은 래치만 즉시 이루어지고 차단은 그다음 제어
+틱이 수행하므로 <strong>반응 진행 구간은 최대 한 틱</strong>이다.</p>
+<div class="admonition warning">
+<p class="admonition-title">거꾸로 두면 두 가지가 동시에 깨진다</p>
+<p>출력이 차단된 상태를 <code>Fault reaction active</code>(6)로 보고하면 ① 상위는 <code>Fault</code>(7)를
+<strong>영원히 보지 못해</strong> fault reset 을 보낼 시점을 얻지 못하고, ② <code>6</code> 의
+statusword 에는 <strong>Operation enabled(bit2)가 서 있어</strong> 출력이 없는 축을 상위가
+「구동 중」으로 읽는다.</p>
+</div>
+<hr />
+<h2 id="8">8. 하드웨어가 정하는 기능 제약<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p><strong>Quick stop 을 프로파일이 정의한 대로 구현할 수 없다.</strong> <code>605Ah</code>(quick stop option
+code)의 대부분 옵션은 <strong>제어된 감속</strong>을 요구하지만, 이 보드는 게이트 드라이버의
+셧다운 입력이 MCU 에 연결되어 있지 않아 소프트웨어가 축을 세우는 수단이 <strong>ePWM
+트립존(출력 차단)뿐</strong>이다. 차단은 프리런이다.</p>
+<p>따라서 <code>605Ah</code> 는 「전압 차단 후 Switch on disabled 로 전이」에 해당하는 옵션만
+지원한다고 선언해야 하며, <strong>CiA 402 를 채택해도 제동 기능이 추가되지는 않는다.</strong>
+<code>605Ah</code>·<code>605Eh</code> 가 이름만 적혀 있는 것은 이 제약을 반영한 결과다.</p>
+<hr />
+<h2 id="9">9. 전송 계층 채택 시 남는 작업<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CANopen·CoE 스택의 C28x 이식(16비트 char)</td>
+<td><strong>미확인</strong> — 프로토콜 설계는 수일이나 스택 이식은 수 주가 될 수 있어, 일정 수립 전에 확인해야 하는 항목</td>
+</tr>
+<tr>
+<td>ESI 생성기</td>
+<td>서술표에서 생성. <strong>미구현 항목을 지원으로 내보내지 않는 것</strong>이 요구사항</td>
+</tr>
+<tr>
+<td>형 좁히기 단일화</td>
+<td>§5 — 시험을 먼저 만든다</td>
+</tr>
+<tr>
+<td>동기 지령 적용</td>
+<td>분산 클록(DC)을 쓰더라도 각 노드 제어 루프를 그 시점에 맞춰야 한다. 한 노드가 MCU 간 링크로 5축을 중계하는 구성이므로 <strong>수신·처리 위상차를 실측</strong>해야 하며 고정 한 틱 지연으로 단정할 수 없다</td>
+</tr>
+<tr>
+<td>factor group(<code>6093h</code> 등)</td>
+<td>위치 단위를 내부 스케일 정의에 고정해 두었으므로, 표준 마스터를 붙이려면 factor group 으로 선언해야 한다</td>
+</tr>
+<tr>
+<td><code>6098h</code> 방식 분기</td>
+<td>현재는 축 상태머신이 원점 절차를 수행하고 진행 상태만 bit12 에 반영한다</td>
+</tr>
+<tr>
+<td><code>6410h</code>·<code>608Fh</code> 서술표 등재</td>
+<td>§6.3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_1">버스 구성 — 분리한 채로 쓰는 것이 유리하다<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><code>csp</code> 기준으로 축당 <code>controlword</code>(2 B) + target position(4 B) = 6 B, 회신도 6 B이며
+5축이면 8바이트 PDO 4개, 송·수신 합쳐 노드당 8 PDO다. 표준 프레임 8바이트는 스터핑
+포함 약 135 bit 이므로 1 Mbit/s 에서 7,407 frame/s 가 100 %다.</p>
+<table>
+<thead>
+<tr>
+<th>배치</th>
+<th>프레임/s</th>
+<th>버스 부하</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>한 버스에 2노드, 전항목 500 Hz</td>
+<td>8,000</td>
+<td><strong>108.0 %</strong> — 성립하지 않는다</td>
+</tr>
+<tr>
+<td>한 버스에 2노드, 250 Hz</td>
+<td>4,000</td>
+<td>54.0 %</td>
+</tr>
+<tr>
+<td><strong>버스 분리</strong>(MCU 당 1버스), 전항목 500 Hz</td>
+<td>4,000</td>
+<td><strong>54.0 %</strong></td>
+</tr>
+<tr>
+<td>버스 분리, 위치만 매주기 500 Hz</td>
+<td>3,000</td>
+<td>40.5 %</td>
+</tr>
+</tbody>
+</table>
+<p>버스를 분리하면 SYNC 가 노드마다 따로 오는데, 두 MCU 의 PWM 을 이미 MCU 간 링크로
+하드웨어 동기시키고 있으므로 <strong>같은 경로로 동기 시점을 전달</strong>하면 CAN 버스가
+분리되어도 제어 시점은 하나로 묶인다. 수신 메일박스 용량은 제약이 아니다 — 모듈당
+32개 중 CiA 402 구성이 쓰는 것은 13개다.</p>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">표기 규약</p>
+<ul>
+<li>이 페이지의 「구현」 열과 §4 의 분류는 <strong>소스 서술표에서 파생</strong>되며 손으로 적지 않는다.</li>
+<li><strong>항목 수는 표에서 센다.</strong> 본문 산문에 총계를 적으면 서술표가 늘어날 때 낡는다.</li>
+<li>「구현」은 <strong>호스트 시험 기준</strong>이다. 보드에서 확인했다는 뜻이 아니다.</li>
+</ul>
+</div>
+<hr />
+<h2 id="10">10. 갱신 내역<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>기준 커밋</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-10-05</td>
+<td><code>9d39ebc</code></td>
+<td>초판</td>
+</tr>
+<tr>
+<td><strong>2026-10-22</strong></td>
+<td><strong><code>01b4808</code></strong></td>
+<td>① <strong>INDEX 탐색(33·34)은 거절된다</strong>는 사실을 명시(초판은 원점 절차를 「강제 정렬 + INDEX 탐색」으로 적었다 — 채용 엔코더에 Z 상이 없다) ② <strong>기동 시 위치 복원을 하지 않는다</strong>는 요구 개정 반영(6.4 절 신설) ③ 실측 세 객체가 <strong>제어 주기로 발행</strong>되고 <strong>못 읽으면 실패를 돌려준다</strong>는 계약 추가(3.1 절 신설) ④ 위치 저널의 「복원용」 표현 정정</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">서술표 규모는 초판과 같다</p>
+<p>오브젝트 서술표는 <strong>37 항목</strong>(모델 자리 23 · 핸들러 4 · 이름만 10)으로 초판과
+같다. 3 절의 표는 서술표 정본에서 <strong>추출</strong>한 것이고, 손으로 옮겨 적지 않는다.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 PARC Lab · Hansung University
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/parclab-hsu" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:kblee@hansung.ac.kr" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hansung.ac.kr" target="_blank" rel="noopener" title="한성대학교" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-prepare.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-render.js"></script>
+      
+    
+  </body>
+</html>

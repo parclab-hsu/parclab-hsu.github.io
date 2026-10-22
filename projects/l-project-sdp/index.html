@@ -988,11 +988,11 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>2.14</td>
+<td>2.15</td>
 </tr>
 <tr>
 <td>작성일</td>
-<td>2026-07-28 (개정 2026-09-22)</td>
+<td>2026-07-28 (개정 2026-09-30)</td>
 </tr>
 <tr>
 <td>과제</td>
@@ -1588,6 +1588,11 @@
 <td>2.14</td>
 <td>2026-09-22</td>
 <td>문서 정비: 기술 용어 통일, SRS 1.34·OP-001 1.1·SG-001 1.1 반영, roadmap의 과거·현재 상태 구분, Git LFS 현행 정책·ROS 2 지원 기간·LeRobotDataset v3 참고 추가. 과거 시험 수치와 검증 한계 유지</td>
+</tr>
+<tr>
+<td>2.15</td>
+<td>2026-09-30</td>
+<td><strong>전원을 껐다 켜면 조용히 풀리던 설정을 배포 기본값으로 고정했다, 그리고 설정 사본 하나가 일주일 넘게 낡아 있었다.</strong> ① <strong><code>board_drive_mode</code> 배포 기본값 <code>none</code> → <code>sim</code></strong> (SRS 1.35 FR-078). 보드는 EPOS 로 부팅하고 모드를 저장하지 않아, <strong>전원만 다시 넣어도 sim 지령 경로가 아무 오류 없이 끊긴다</strong> — 보드 피드백 50.001 Hz, 브리지·Isaac 정상인데 <code>/sim/axes_cmd</code> 만 0 Hz 라 「로버만 안 움직인다」로 보인다. 바꾼 곳은 <code>config/rover_params.yaml</code> 과 <code>rover_control.launch.py</code> 두 곳이고 <strong>노드 선언 기본값 <code>none</code> 은 그대로</strong> 두었다(맨노드 무발행 계약은 <code>case_default</code> 가 고정, yaml 없이 띄우므로 영향 없음). <code>nav2_hils.launch.py</code> 는 일부러 인자를 노출하지 않는다 — 같은 기본값이 세 곳에 생기면 따로 낡는다. ② <strong>월석 콜라이더가 꺼진 채로 돌고 있었다.</strong> <code>use_point_instancer: False</code> + <code>class: rock</code> 은 2026-09-22 에 저장소 <code>config/isaac/</code> 와 <code>third_party/omnilrs/overlay/</code> <strong>두 사본에만</strong> 반영됐고, <strong>컨테이너가 실제로 읽는 <code>~/OmniLRS/cfg/</code> 설치본은 09-14 자 그대로</strong>였다. 그래서 로버가 암석을 통과했다. <code>setup-omnilrs.sh --check</code> 는 이것을 <code>NG: 오버레이 다름</code> 으로 <strong>정확히 찾아내지만 종료코드 0 을 낸다</strong> — 게이트로 쓰면 그냥 통과하므로 불일치가 오래 안 걸렸다(검사 자체의 결함, 별도 조치 대상). ③ <strong>Isaac GUI 창이 안 뜨던 원인은 X 접근이었다</strong> — 컨테이너는 root 로 도는데 호스트 X 는 <code>SI:localuser:ejarobotics</code> 만 허용하고 마운트된 <code>.Xauthority</code> 는 09-11 자였다. 로그에 <code>GLFW initialization failed</code> · <code>failed to open the default display</code> 가 남는데 <strong>물리는 계속 돌아 RTF·토픽·기동 가드가 전부 정상으로 보인다.</strong> <code>xhost +SI:localuser:root</code> 로 열었고, <strong>이 조치는 영속화하지 않았다</strong>(재부팅하면 다시 필요). ⚠️ 창이 실제로 렌더되면서 정지 RTF 가 0.4889 → 0.4575 로 내려갔다 — <strong>두 값은 조건이 다르므로 같은 기준선으로 쓰면 안 된다.</strong></td>
 </tr>
 </tbody>
 </table>

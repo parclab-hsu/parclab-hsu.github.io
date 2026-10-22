@@ -1026,11 +1026,11 @@
 </tr>
 <tr>
 <td>버전</td>
-<td>1.34</td>
+<td>1.35</td>
 </tr>
 <tr>
 <td>작성일</td>
-<td>2026-07-28 (개정 2026-09-22)</td>
+<td>2026-07-28 (개정 2026-09-30)</td>
 </tr>
 <tr>
 <td>과제</td>
@@ -1226,6 +1226,11 @@
 <td>1.34</td>
 <td>2026-09-22</td>
 <td>문서 정비: ground truth·simulation time·crab steering 용어 통일, FR-001 중복 문장 제거 및 2026-09-16 보드 검증 기록 연결. 요구사항 ID·수치·인터페이스는 유지</td>
+</tr>
+<tr>
+<td>1.35</td>
+<td>2026-09-30</td>
+<td><strong>FR-078 배포 기본값을 <code>sim</code> 으로 바꿨다 — 「전원만 껐다 켜도 끊긴다」를 막는다.</strong> 보드는 EPOS 로 부팅하고 모드를 저장하지 않으므로, <code>board_drive_mode</code> 가 <code>none</code> 이면 <strong>보드 전원을 다시 넣을 때마다 sim 지령 경로가 아무 오류 없이 끊긴다.</strong> 실측으로 두 번 확인했다 — 보드 피드백 <code>/rover/joint_states</code> 는 50.001 Hz 로 멀쩡하고 브리지·Isaac 도 정상인데 <code>/sim/axes_cmd</code> 만 0 Hz 라 「로버만 안 움직인다」로 보인다(부팅 후 38 s 시점 실측). 바꾼 곳은 <strong>배포 설정 두 곳</strong>이다 — <code>config/rover_params.yaml</code> 의 <code>board_drive_mode: sim</code> 과 <code>rover_control.launch.py</code> 의 launch 인자 기본값. <strong>노드 선언 기본값은 <code>none</code> 그대로 둔다</strong> — 맨노드가 아무것도 발행하지 않는다는 계약은 <code>test_drive_mode_publish.py</code> 의 <code>case_default</code> 가 고정하며, 그 시험은 yaml 없이 <code>ros2 run</code> 으로 띄우므로 이번 변경에 영향받지 않는다(6 PASS 유지). 주기 발행 금지(D-30)와 재부팅 감지 규칙은 그대로다. ⚠️ <strong>실물 EPOS4 드라이브를 붙이면 <code>epos</code> 로 다시 정할 것</strong> — 지금 <code>sim</code> 이 안전한 이유는 실물 구동계가 아직 없기 때문이다(Jetson <code>can0</code> DOWN). 문서: ND-001 1.13 · AD-002 2.15 · <code>BRINGUP.md</code> C1</td>
 </tr>
 </tbody>
 </table>
@@ -1867,7 +1872,7 @@ EPOS4 사양서에 따라 구현한 양측이 같은 프로토콜 해석을 공�
 </tr>
 <tr>
 <td>SRS-FR-078</td>
-<td>보드는 <code>/rover/drive_mode</code>(std_msgs/UInt8, 0=EPOS·1=sim)를 구독해 <strong>런타임에 구동 백엔드를 전환</strong>한다. 범위를 벗어난 값과 현재 모드와 같은 값은 무시한다. 기본 부팅 모드는 EPOS 다. <strong>발행은 <code>rover_control</code> 이 맡는다</strong> — <code>board_drive_mode</code>(<code>none</code>·<code>epos</code>·<code>sim</code>) 파라미터가 <code>none</code> 이 아니면 기동 직후 <code>board_drive_mode_bursts</code> 회 낸다(계약 QoS 가 Best-effort 라 1 회로는 디스커버리 전에 버려진다). 그 뒤에는 <strong>보드 재부팅을 감지했을 때만</strong> 다시 낸다 — 판정은 <code>/rover/joint_states</code> 스탬프가 뒤로 가는 것이며, 보드 스탬프는 부팅 후 경과 시간이라(FR-023) 감소는 재부팅밖에 없다. <strong>주기 발행은 금지한다</strong> — 플랜트를 측정할 때 운영자가 EPOS 로 내린 것을 덮어써 측정을 오염시킨다(RR-001 D-30). 기본값 <code>none</code> 은 아무도 발행하지 않던 종전 상태다</td>
+<td>보드는 <code>/rover/drive_mode</code>(std_msgs/UInt8, 0=EPOS·1=sim)를 구독해 <strong>런타임에 구동 백엔드를 전환</strong>한다. 범위를 벗어난 값과 현재 모드와 같은 값은 무시한다. 기본 부팅 모드는 EPOS 다. <strong>발행은 <code>rover_control</code> 이 맡는다</strong> — <code>board_drive_mode</code>(<code>none</code>·<code>epos</code>·<code>sim</code>) 파라미터가 <code>none</code> 이 아니면 기동 직후 <code>board_drive_mode_bursts</code> 회 낸다(계약 QoS 가 Best-effort 라 1 회로는 디스커버리 전에 버려진다). 그 뒤에는 <strong>보드 재부팅을 감지했을 때만</strong> 다시 낸다 — 판정은 <code>/rover/joint_states</code> 스탬프가 뒤로 가는 것이며, 보드 스탬프는 부팅 후 경과 시간이라(FR-023) 감소는 재부팅밖에 없다. <strong>주기 발행은 금지한다</strong> — 플랜트를 측정할 때 운영자가 EPOS 로 내린 것을 덮어써 측정을 오염시킨다(RR-001 D-30). 노드 선언 기본값은 <code>none</code>(맨노드는 아무것도 발행하지 않는다)이나, <strong>이 리그의 배포 기본값은 <code>sim</code> 이다</strong> — <code>config/rover_params.yaml</code> 과 <code>rover_control.launch.py</code> 의 launch 인자 기본값이 둘 다 <code>sim</code> 이다(1.35). 실물 EPOS4 드라이브를 붙이면 <code>epos</code> 로 다시 정한다</td>
 <td>T</td>
 <td><strong>검증완료</strong> — <code>tools/test_drive_mode_publish.py</code> 6 PASS / 0 FAIL</td>
 </tr>
