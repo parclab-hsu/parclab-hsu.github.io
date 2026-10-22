@@ -698,10 +698,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-isaac-sim" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 개발 단계
+        4. Isaac Sim 가압 장면 — 소재별 비교
       
     </span>
   </a>
@@ -712,7 +712,18 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 연구 산출물 계획
+        5. 개발 단계
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 연구 산출물 계획
       
     </span>
   </a>
@@ -746,7 +757,8 @@ L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 
 <ul>
 <li><strong>대상</strong> — 금속·수지·포장재·탄성체 부품 표면의 접촉 변형과 누적 이력</li>
 <li><strong>산출</strong> — 변형된 형상, 그리고 학습용 Ground Truth(접촉·변형량·정상/실패 이벤트)</li>
-<li><strong>현황</strong> — OmniLRS 기준선(v0) 재현을 완료했고, 제조 소재용 응답 모델을 구현해 실계측 보정을 준비하고 있습니다.</li>
+<li><strong>현황</strong> — OmniLRS 기준선(v0) 재현을 완료했고, 제조 소재용 응답 모델을 구현해 Isaac Sim의 Allegro Hand 가압
+  장면에서 소재 5종을 비교했습니다. 실계측 보정을 준비하고 있습니다.</li>
 </ul>
 <p>특허 출원과 논문 투고를 준비하고 있어, 이 페이지는 구조와 진행 현황만 다룹니다.</p>
 </div>
@@ -806,7 +818,94 @@ L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 
 <li><strong>변형 상태·이력</strong> — 부품별 누적 상태를 저장해 다음 시뮬레이션이 이전 사용 이력에서 출발할 수 있게 합니다.</li>
 <li><strong>Ground Truth</strong> — 접촉 개시·해제, 영구변형 발생, 작업 실패 같은 이벤트를 자동으로 기록합니다.</li>
 </ul>
-<h2 id="4">4. 개발 단계<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h2 id="4-isaac-sim">4. Isaac Sim 가압 장면 — 소재별 비교<a class="headerlink" href="#4-isaac-sim" title="Permanent link">&para;</a></h2>
+<p>연구용으로 가장 널리 쓰이는 다지 핸드인 <strong>Allegro Hand</strong>(Wonik Robotics, 16자유도)가 160 × 160 mm 패드를 세 손가락으로
+세 번 눌렀다 떼는 장면입니다. 손끝 접촉력을 PhysX에서 읽어 MDE가 패드 표면 변형을 계산하고, 눌린 깊이를 청색 농도로 표시합니다.
+패드는 소재에 맞춘 강성으로 실제로 눌리고, 손끝이 들어간 자리와 깊이가 그대로 자국이 됩니다
+(손끝과 자국 바닥 사이 간격 약 0.04 mm).
+핸드 asset은 Isaac Sim 5.0 공식 asset을 그대로 사용합니다.</p>
+<figure>
+<p><img alt="Allegro Hand가 점토 패드를 누른 순간" loading="lazy" src="../../assets/mde-allegro-scene.jpg" />
+  </p>
+<figcaption>Allegro Hand 가압 장면 (점토 Profile, 눌린 상태)</figcaption>
+</figure>
+<figure>
+<p><img alt="가압 사이클 애니메이션" loading="lazy" src="../../assets/mde-press-clay.gif" />
+  </p>
+<figcaption>세 번의 가압 사이클 — 점토는 손가락을 뗀 뒤에도 자국이 남습니다</figcaption>
+</figure>
+<p>같은 핸드·같은 동작에서 <strong>패드의 Material Profile만 바꿔</strong> 다섯 소재를 비교했습니다.</p>
+<figure>
+<p><img alt="소재 5종의 가압·해제 화면" loading="lazy" src="../../assets/mde-material-grid.png" />
+  </p>
+<figcaption>위: 누르고 있는 상태, 아래: 손가락을 뗀 뒤. 청색이 짙을수록 깊습니다</figcaption>
+</figure>
+<figure>
+<p><img alt="소재별 눌린 깊이와 남은 자국" loading="lazy" src="../../assets/mde-material-depth.png" />
+  </p>
+<figcaption>소재별 최대 눌림 깊이와 해제 후 남은 자국 깊이</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>소재 Profile</th>
+<th>계열</th>
+<th>눌린 깊이</th>
+<th>해제 후 남은 자국</th>
+<th>거동</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silicone rubber (soft)</td>
+<td>탄성체</td>
+<td>2.3 mm</td>
+<td>0.0 mm</td>
+<td>깊게 눌리고 완전히 복원</td>
+</tr>
+<tr>
+<td>Elastomer pad</td>
+<td>탄성체</td>
+<td>1.2 mm</td>
+<td>0.0 mm</td>
+<td>단단해 얕게 눌리고 복원</td>
+</tr>
+<tr>
+<td>Soft foam</td>
+<td>폴리머 폼</td>
+<td>2.3 mm</td>
+<td>0.7 mm</td>
+<td>일부 영구변형</td>
+</tr>
+<tr>
+<td>Dense foam</td>
+<td>폴리머 폼</td>
+<td>2.0 mm</td>
+<td>0.7 mm</td>
+<td>일부 영구변형</td>
+</tr>
+<tr>
+<td>Clay / plasticine</td>
+<td>점토</td>
+<td>2.4 mm</td>
+<td>2.3 mm</td>
+<td>대부분 영구변형</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>소재 차이는 코드가 아니라 <strong>Profile 파일 교체</strong>만으로 만들어집니다.</li>
+<li>영구변형이 생긴 폼·점토에서는 항복 개시 이벤트가, 자국이 한도(1 mm)를 넘은 점토에서는 한도 초과 이벤트가 Ground Truth로 자동 기록되었습니다.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">해석 시 주의</p>
+<ul>
+<li>물성값은 문헌 범위에서 고른 <strong>잠정값</strong>입니다. 위 수치는 특정 제품의 예측이 아니라 파이프라인 동작을 보여 주는 예시입니다.</li>
+<li>손가락은 목표 각도까지 움직이는 위치 제어라, 소재가 달라도 눌린 깊이는 비슷하고 차이는 해제 후 자국에 드러납니다.</li>
+<li>접촉력은 근사입니다. 패드의 무름은 반영하지만 소재 모델의 힘–깊이 관계와 정확히 일치하지는 않습니다.</li>
+</ul>
+</div>
+<h2 id="5">5. 개발 단계<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -848,17 +947,17 @@ L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 
 <p class="admonition-title">확인되지 않은 것</p>
 <ul>
 <li>제조 소재의 물성값은 아직 실측 보정 전입니다. 현재 값은 파이프라인 동작 확인용 잠정값입니다.</li>
-<li>Isaac Sim 물리 시뮬레이션과 결합한 실행 성능은 측정 전입니다.</li>
+<li>Isaac Sim 결합 실행 성능의 정량 평가 결과는 특허 출원 후 공개합니다.</li>
 <li>곡면 부품 표면과 체적 변형체 결합은 미구현입니다.</li>
 </ul>
 </div>
-<h2 id="5">5. 연구 산출물 계획<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h2 id="6">6. 연구 산출물 계획<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>특허 출원 1건 (준비 중)</li>
 <li>학술대회 논문 1편 (특허 출원 후 투고)</li>
 <li>대표 작업: 탄성체 삽입(가스켓·O-ring) — 실계측 보정과 함께 진행</li>
 </ul>
-<p><code>Isaac Sim</code> · <code>OmniLRS</code> · <code>Deformation</code> · <code>Contact Mechanics</code> · <code>Digital Twin</code> · <code>Robot Learning Data</code> · <code>Manufacturing</code></p>
+<p><code>Isaac Sim</code> · <code>Allegro Hand</code> · <code>OmniLRS</code> · <code>Deformation</code> · <code>Contact Mechanics</code> · <code>Digital Twin</code> · <code>Robot Learning Data</code> · <code>Manufacturing</code></p>
 
 
 
