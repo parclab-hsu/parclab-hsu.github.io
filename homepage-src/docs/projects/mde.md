@@ -13,7 +13,8 @@ noindex: true
 
     - **대상** — 금속·수지·포장재·탄성체 부품 표면의 접촉 변형과 누적 이력
     - **산출** — 변형된 형상, 그리고 학습용 Ground Truth(접촉·변형량·정상/실패 이벤트)
-    - **현황** — OmniLRS 기준선(v0) 재현을 완료했고, 제조 소재용 응답 모델을 구현해 실계측 보정을 준비하고 있습니다.
+    - **현황** — OmniLRS 기준선(v0) 재현을 완료했고, 제조 소재용 응답 모델을 구현해 Isaac Sim의 Allegro Hand 가압
+      장면에서 소재 5종을 비교했습니다. 실계측 보정을 준비하고 있습니다.
 
     특허 출원과 논문 투고를 준비하고 있어, 이 페이지는 구조와 진행 현황만 다룹니다.
 
@@ -60,7 +61,51 @@ flowchart LR
 - **변형 상태·이력** — 부품별 누적 상태를 저장해 다음 시뮬레이션이 이전 사용 이력에서 출발할 수 있게 합니다.
 - **Ground Truth** — 접촉 개시·해제, 영구변형 발생, 작업 실패 같은 이벤트를 자동으로 기록합니다.
 
-## 4. 개발 단계
+## 4. Isaac Sim 가압 장면 — 소재별 비교
+
+연구용으로 가장 널리 쓰이는 다지 핸드인 **Allegro Hand**(Wonik Robotics, 16자유도)가 160 × 160 mm 패드를 세 손가락으로
+세 번 눌렀다 떼는 장면입니다. 손끝 접촉력을 PhysX에서 읽어 MDE가 패드 표면 변형을 계산하고, 눌린 깊이를 청색 농도로 표시합니다.
+핸드 asset은 Isaac Sim 5.0 공식 asset을 그대로 사용합니다.
+
+<figure markdown>
+  ![Allegro Hand가 점토 패드를 누른 순간](../assets/mde-allegro-scene.jpg){ loading=lazy }
+  <figcaption>Allegro Hand 가압 장면 (점토 Profile, 눌린 상태)</figcaption>
+</figure>
+
+<figure markdown>
+  ![가압 사이클 애니메이션](../assets/mde-press-clay.gif){ loading=lazy }
+  <figcaption>세 번의 가압 사이클 — 점토는 손가락을 뗀 뒤에도 자국이 남습니다</figcaption>
+</figure>
+
+같은 핸드·같은 동작에서 **패드의 Material Profile만 바꿔** 다섯 소재를 비교했습니다.
+
+<figure markdown>
+  ![소재 5종의 가압·해제 화면](../assets/mde-material-grid.png){ loading=lazy }
+  <figcaption>위: 누르고 있는 상태, 아래: 손가락을 뗀 뒤. 청색이 짙을수록 깊습니다</figcaption>
+</figure>
+
+<figure markdown>
+  ![소재별 눌린 깊이와 남은 자국](../assets/mde-material-depth.png){ loading=lazy }
+  <figcaption>소재별 최대 눌림 깊이와 해제 후 남은 자국 깊이</figcaption>
+</figure>
+
+| 소재 Profile | 계열 | 눌린 깊이 | 해제 후 남은 자국 | 거동 |
+|---|---|---|---|---|
+| Silicone rubber (soft) | 탄성체 | 3.3 mm | 0.0 mm | 깊게 눌리고 완전히 복원 |
+| Elastomer pad | 탄성체 | 0.2 mm | 0.0 mm | 단단해 거의 눌리지 않음 |
+| Soft foam | 폴리머 폼 | 3.1 mm | 1.0 mm | 일부 영구변형 |
+| Dense foam | 폴리머 폼 | 0.7 mm | 0.1 mm | 얕은 영구변형 |
+| Clay / plasticine | 점토 | 5.1 mm | 4.8 mm | 대부분 영구변형 |
+
+- 소재 차이는 코드가 아니라 **Profile 파일 교체**만으로 만들어집니다.
+- 영구변형이 생긴 소재에서는 항복 개시·자국 한도 초과 이벤트가 Ground Truth로 자동 기록되었습니다.
+
+!!! warning "해석 시 주의"
+    - 물성값은 문헌 범위에서 고른 **잠정값**입니다. 위 수치는 특정 제품의 예측이 아니라 파이프라인 동작을 보여 주는 예시입니다.
+    - 현재 장면에서 손끝 힘은 소재와 무관하게 같습니다(중지 약 12 N). 패드의 무름이 접촉력에 되먹임되는 결합은 다음 단계입니다.
+    - 손끝 접촉 영역은 12 × 12 mm 사각형으로 근사했습니다(자국이 사각형인 이유).
+
+## 5. 개발 단계
 
 | 단계 | 재현 범위 | 검증 방법 | 현황 |
 |---|---|---|---|
@@ -73,13 +118,13 @@ flowchart LR
 
 !!! note "확인되지 않은 것"
     - 제조 소재의 물성값은 아직 실측 보정 전입니다. 현재 값은 파이프라인 동작 확인용 잠정값입니다.
-    - Isaac Sim 물리 시뮬레이션과 결합한 실행 성능은 측정 전입니다.
+    - Isaac Sim 결합 실행 성능의 정량 평가 결과는 특허 출원 후 공개합니다.
     - 곡면 부품 표면과 체적 변형체 결합은 미구현입니다.
 
-## 5. 연구 산출물 계획
+## 6. 연구 산출물 계획
 
 - 특허 출원 1건 (준비 중)
 - 학술대회 논문 1편 (특허 출원 후 투고)
 - 대표 작업: 탄성체 삽입(가스켓·O-ring) — 실계측 보정과 함께 진행
 
-`Isaac Sim` · `OmniLRS` · `Deformation` · `Contact Mechanics` · `Digital Twin` · `Robot Learning Data` · `Manufacturing`
+`Isaac Sim` · `Allegro Hand` · `OmniLRS` · `Deformation` · `Contact Mechanics` · `Digital Twin` · `Robot Learning Data` · `Manufacturing`
