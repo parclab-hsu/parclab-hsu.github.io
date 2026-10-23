@@ -676,10 +676,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-omnilrs-mde" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. OmniLRS에서 MDE로
+        2. 구성
       
     </span>
   </a>
@@ -687,10 +687,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#3-isaac-sim-2026-10-22-10-23" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 구성
+        3. Isaac Sim 실험 결과 (2026-10-22 ~ 10-23)
       
     </span>
   </a>
@@ -698,10 +698,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-isaac-sim" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Isaac Sim 가압 장면 — 소재별 비교
+        4. 개발 단계
       
     </span>
   </a>
@@ -709,10 +709,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#5-mde" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 개발 단계
+        5. 초기 MDE 단위연구의 공개 계획
       
     </span>
   </a>
@@ -723,7 +723,7 @@
   <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 연구 산출물 계획
+        6. 컨소시엄 휴머노이드 통합 방향
       
     </span>
   </a>
@@ -748,102 +748,64 @@
 
 
 <h1 id="manufacturing-deformation-engine-mde">Manufacturing Deformation Engine (MDE)<a class="headerlink" href="#manufacturing-deformation-engine-mde" title="Permanent link">&para;</a></h1>
-<p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>진행 중 · 자체 연구</strong> · 한성대학교 PARC Lab · 기준일 <strong>2026-10-22</strong></p>
+<p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>연구개발 진행 중</strong> · 한성대학교 PARC Lab · 기준일 <strong>2026-10-23</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">실험 결과 사이트</p>
+<p>영상·이미지·접촉력·관절 토크 등 시뮬레이션 실험 결과는 <strong><a href="https://parclab-hsu.github.io/hsu-mde/">MDE 실험 결과 사이트</a></strong>에 모아 두었습니다.</p>
+</div>
 <div class="admonition abstract">
 <p class="admonition-title">요약</p>
-<p>MDE는 NVIDIA Isaac Sim 위에서 <strong>제조 로봇의 접촉으로 부품이 어떻게 변형되고, 그 변형이 무엇을 남기는지</strong>를
-계산하는 엔진입니다. 달 탐사 로버 시뮬레이터 OmniLRS의 지형 변형 엔진에서 출발하며, PARC Lab이 현대자동차
-L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 환경으로 확장합니다.</p>
+<p>MDE는 RFM 정부과제의 <strong>컨소시엄 휴머노이드 통합을 준비하는 제조 접촉·변형 엔진</strong>입니다.
+NVIDIA Isaac Sim 위에서 <strong>로봇의 접촉으로 부품이 어떻게 변형되고, 그 변형이 무엇을 남기는지</strong>를
+계산하는 엔진입니다. PARC Lab이 로봇 시뮬레이션에서 접촉·변형을 직접 구동·계측해 온 경험을 제조 환경으로 확장합니다.</p>
 <ul>
 <li><strong>대상</strong> — 금속·수지·포장재·탄성체 부품 표면의 접촉 변형과 누적 이력</li>
-<li><strong>산출</strong> — 변형된 형상, 그리고 학습용 Ground Truth(접촉·변형량·정상/실패 이벤트)</li>
-<li><strong>현황</strong> — OmniLRS 기준선(v0) 재현을 완료했고, 제조 소재용 응답 모델을 구현해 Isaac Sim의 Allegro Hand 가압
-  장면에서 소재 5종을 비교했습니다. 실계측 보정을 준비하고 있습니다.</li>
+<li><strong>산출</strong> — 변형된 형상과 모델 상태에서 산출한 학습용 라벨(접촉·변형량·설정 한계 초과 이벤트)</li>
+<li><strong>현황</strong> — 기준 모델(v0) 재현을 완료했고, 제조 소재용 응답 모델을 구현해 Isaac Sim의 Allegro Hand 장면에서
+  소재 5종 가압과 종이컵 쥐기를 시험했습니다. 실제 컨소시엄 로봇 모델은 미확정이며,
+  실측 보정과 단계별 통합 검증을 계획하고 있습니다.</li>
 </ul>
-<p>특허 출원과 논문 투고를 준비하고 있어, 이 페이지는 구조와 진행 현황만 다룹니다.</p>
+<p>특허 출원과 논문 투고를 준비하는 단계이며, 실제 출원·등록 완료는 확인되지 않았습니다. 이 페이지는 기존 공개 수준의 구조와 진행 현황만 다룹니다.</p>
 </div>
 <hr />
 <h2 id="1">1. 왜 필요한가<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>로봇이 부품을 누르고, 끼우고, 집을 때 대상물은 변형됩니다. 가스켓은 눌린 만큼 복원되지 않고, 포장재는 접힌 자국이
 남으며, 반복 사용된 부품은 공차가 달라집니다. 이러한 <strong>접촉에 의한 상태 변화</strong>가 시뮬레이션에 없으면
 파지 실패·삽입 실패 같은 사건이 데이터에 나타나지 않고, 그 사건을 학습할 기회도 사라집니다.</p>
-<p>범용 물리엔진은 변형 계산 자체를 제공합니다. MDE가 다루는 것은 그 위의 계층입니다 — 소재별 물성의 관리와
-실측 보정, 세션을 넘는 누적 이력, 그리고 변형 결과를 <strong>로봇 학습 데이터의 정답</strong>으로 바꾸는 일입니다.</p>
-<h2 id="2-omnilrs-mde">2. OmniLRS에서 MDE로<a class="headerlink" href="#2-omnilrs-mde" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>OmniLRS 지형 변형</th>
-<th>MDE</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>바퀴 접지면(footprint)</td>
-<td>그리퍼·공구·부품의 Contact Patch</td>
-</tr>
-<tr>
-<td>하중–침하 회귀</td>
-<td>소재별로 교체 가능한 Response Model</td>
-</tr>
-<tr>
-<td>월면토 고정 물성</td>
-<td>단위·범위·출처를 함께 관리하는 Material Profile</td>
-</tr>
-<tr>
-<td>지형 높이맵</td>
-<td>부품 표면의 변형 상태와 누적 이력</td>
-</tr>
-<tr>
-<td>시각적 자국</td>
-<td>형상 갱신 + 접촉·변형·실패 이벤트 Ground Truth</td>
-</tr>
-</tbody>
-</table>
-<p>OmniLRS는 BSD-3-Clause 오픈소스이며, MDE의 v0 단계는 OmniLRS 원본 엔진의 출력과 <strong>표본 단위로 일치</strong>하는 것을
-확인했습니다. L-Project에서의 실측 경험은 <a href="../l-project-deformation/">OmniLRS 지형 변형 엔진 정밀 분석</a>에 정리되어 있습니다.</p>
-<h2 id="3">3. 구성<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>범용 물리엔진은 변형 계산 자체를 제공합니다. MDE는 소재별 물성 관리와 교정 절차, 누적 이력,
+그리고 변형 결과를 <strong>로봇 학습용 모델 상태 라벨</strong>로 제공하는 계층을 연구합니다. 모델 상태 라벨은 실측 정답과 구분합니다.</p>
+<h2 id="2">2. 구성<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
     SIM["Isaac Sim&lt;br/&gt;로봇·접촉"] --&gt; CP["Contact Patch"]
     MP["Material Profile"] --&gt; RM["Response Model"]
     CP --&gt; RM
     RM --&gt; ST["변형 상태·이력"]
     ST --&gt; GEO["형상 갱신"]
-    ST --&gt; GT["Ground Truth&lt;br/&gt;접촉·변형·이벤트"]
-    GT --&gt; EP["학습 Episode"]</code></pre>
+    ST --&gt; GT["모델 상태 라벨&lt;br/&gt;접촉·변형·이벤트"]
+    GT -.-&gt; EP["학습 Episode 활용"]</code></pre>
 <ul>
-<li><strong>Material Profile</strong> — 소재군의 물성값을 단위·허용 범위·출처·확정 여부와 함께 보관합니다. 새 소재군은 코드가 아니라 Profile 추가로 확장합니다.</li>
+<li><strong>Material Profile</strong> — 소재군의 물성값을 단위·허용 범위·출처·확정 여부와 함께 보관합니다. 지원 응답 모델의 범위에서는 Profile을 바꿔 소재 조건을 구성합니다.</li>
 <li><strong>Contact Patch</strong> — 접촉 위치·방향·하중을 대상 표면의 국소 좌표로 표본화합니다.</li>
 <li><strong>Response Model</strong> — 접촉에 대한 변형 응답입니다. 단계별로 교체됩니다.</li>
-<li><strong>변형 상태·이력</strong> — 부품별 누적 상태를 저장해 다음 시뮬레이션이 이전 사용 이력에서 출발할 수 있게 합니다.</li>
-<li><strong>Ground Truth</strong> — 접촉 개시·해제, 영구변형 발생, 작업 실패 같은 이벤트를 자동으로 기록합니다.</li>
+<li><strong>변형 상태·이력</strong> — 변형과 일부 누적 이력 배열을 저장·불러옵니다. 로봇·제어기까지 포함한 전체 시뮬레이션을 그대로 재개하는 기능은 아닙니다.</li>
+<li><strong>모델 상태 라벨</strong> — 접촉 개시·해제, 모델상 영구변형 발생, 설정한 잔류 한계 초과를 기록합니다. 실제 재료의 항복이나 일반적인 작업 실패를 검증한 정답은 아닙니다.</li>
 </ul>
-<h2 id="4-isaac-sim">4. Isaac Sim 가압 장면 — 소재별 비교<a class="headerlink" href="#4-isaac-sim" title="Permanent link">&para;</a></h2>
-<p>연구용으로 가장 널리 쓰이는 다지 핸드인 <strong>Allegro Hand</strong>(Wonik Robotics, 16자유도)가 160 × 160 mm 패드를 세 손가락으로
-세 번 눌렀다 떼는 장면입니다. 손끝 접촉력을 PhysX에서 읽어 MDE가 패드 표면 변형을 계산하고, 눌린 깊이를 청색 농도로 표시합니다.
-패드는 소재에 맞춘 강성으로 실제로 눌리고, 손끝이 들어간 자리와 깊이가 그대로 자국이 됩니다
-(손끝과 자국 바닥 사이 간격 약 0.04 mm).
-핸드 asset은 Isaac Sim 5.0 공식 asset을 그대로 사용합니다.</p>
+<p>점선은 라벨의 학습 episode 활용 방향을 나타내며, 모든 이벤트와 출처 정보가 학습 데이터셋에 포함되었다는 뜻은 아닙니다.</p>
+<h2 id="3-isaac-sim-2026-10-22-10-23">3. Isaac Sim 실험 결과 (2026-10-22 ~ 10-23)<a class="headerlink" href="#3-isaac-sim-2026-10-22-10-23" title="Permanent link">&para;</a></h2>
+<p><strong>Allegro Hand</strong>(Wonik Robotics, 16자유도)의 Isaac Sim 5.0 시뮬레이션 asset으로 세 가지 장면을 시험했습니다.
+모든 결과는 시뮬레이션이며 실물 시편·실제 로봇 시험이 아닙니다. 물성은 잠정값입니다. 영상과 데이터는
+<a href="https://parclab-hsu.github.io/hsu-mde/">MDE 실험 결과 사이트</a>에 있습니다.
+핸드는 시험 장면용 asset이며, 컨소시엄 휴머노이드 모델의 선정·전신 제어·실물 동작 검증을 나타내지 않습니다.</p>
 <figure>
-<p><img alt="Allegro Hand가 점토 패드를 누른 순간" loading="lazy" src="../../assets/mde-allegro-scene.jpg" />
+<p><img alt="Allegro Hand가 종이컵을 빠르게 쥐었다 놓치는 장면" loading="lazy" src="../../assets/mde-cup-quick.gif" />
   </p>
-<figcaption>Allegro Hand 가압 장면 (점토 Profile, 눌린 상태)</figcaption>
+<figcaption>대표 데모 — 종이컵을 빠르게 쥐고 들었다가 놓쳐 떨어뜨리기(4.8 s, 실제 시간)</figcaption>
 </figure>
+<p><strong>소재별 손가락 가압.</strong> 같은 손·같은 동작으로 패드의 Material Profile만 바꿔 세 손가락으로 세 번 눌렀다 뗐습니다.</p>
 <figure>
-<p><img alt="가압 사이클 애니메이션" loading="lazy" src="../../assets/mde-press-clay.gif" />
+<p><img alt="소재 5종의 누른 상태와 뗀 뒤" loading="lazy" src="../../assets/mde-fingers-material-grid.png" />
   </p>
-<figcaption>세 번의 가압 사이클 — 점토는 손가락을 뗀 뒤에도 자국이 남습니다</figcaption>
-</figure>
-<p>같은 핸드·같은 동작에서 <strong>패드의 Material Profile만 바꿔</strong> 다섯 소재를 비교했습니다.</p>
-<figure>
-<p><img alt="소재 5종의 가압·해제 화면" loading="lazy" src="../../assets/mde-material-grid.png" />
-  </p>
-<figcaption>위: 누르고 있는 상태, 아래: 손가락을 뗀 뒤. 청색이 짙을수록 깊습니다</figcaption>
-</figure>
-<figure>
-<p><img alt="소재별 눌린 깊이와 남은 자국" loading="lazy" src="../../assets/mde-material-depth.png" />
-  </p>
-<figcaption>소재별 최대 눌림 깊이와 해제 후 남은 자국 깊이</figcaption>
+<figcaption>위: 누르고 있는 상태, 아래: 손가락을 뗀 뒤</figcaption>
 </figure>
 <table>
 <thead>
@@ -851,7 +813,7 @@ L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 
 <th>소재 Profile</th>
 <th>계열</th>
 <th>눌린 깊이</th>
-<th>해제 후 남은 자국</th>
+<th>뗀 뒤 남은 자국</th>
 <th>거동</th>
 </tr>
 </thead>
@@ -859,53 +821,77 @@ L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 
 <tr>
 <td>Silicone rubber (soft)</td>
 <td>탄성체</td>
-<td>2.3 mm</td>
+<td>3.0 mm</td>
 <td>0.0 mm</td>
 <td>깊게 눌리고 완전히 복원</td>
 </tr>
 <tr>
 <td>Elastomer pad</td>
 <td>탄성체</td>
-<td>1.2 mm</td>
+<td>0.8 mm</td>
 <td>0.0 mm</td>
 <td>단단해 얕게 눌리고 복원</td>
 </tr>
 <tr>
 <td>Soft foam</td>
 <td>폴리머 폼</td>
-<td>2.3 mm</td>
-<td>0.7 mm</td>
+<td>3.1 mm</td>
+<td>1.1 mm</td>
 <td>일부 영구변형</td>
 </tr>
 <tr>
 <td>Dense foam</td>
 <td>폴리머 폼</td>
-<td>2.0 mm</td>
-<td>0.7 mm</td>
+<td>1.7 mm</td>
+<td>0.5 mm</td>
 <td>일부 영구변형</td>
 </tr>
 <tr>
 <td>Clay / plasticine</td>
 <td>점토</td>
-<td>2.4 mm</td>
-<td>2.3 mm</td>
+<td>4.4 mm</td>
+<td>4.1 mm</td>
 <td>대부분 영구변형</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>소재 차이는 코드가 아니라 <strong>Profile 파일 교체</strong>만으로 만들어집니다.</li>
-<li>영구변형이 생긴 폼·점토에서는 항복 개시 이벤트가, 자국이 한도(1 mm)를 넘은 점토에서는 한도 초과 이벤트가 Ground Truth로 자동 기록되었습니다.</li>
-</ul>
+<p><strong>종이컵 쥐기.</strong> 관절 토크 0.10 N·m로 쥐면 접촉력 합 17 N, 테두리 변형 5.6 mm로 들어 올리고, 0.35 N·m로 꽉 쥐면
+77 N에서 테두리가 타원(안쪽 9.1 mm·바깥 8.0 mm)이 되며, 놓으면 원래 모양으로 돌아옵니다. 컵 벽은 탄성만 표현해
+실제 컵의 주름·찌그러짐은 나타나지 않습니다.</p>
+<p><strong>대표 데모 — 빠르게 쥐었다 놓치기.</strong> 한 스텝을 1/30 s로 두고 쥐기·60 mm 들기·놓치기를 4.8 s에 수행했습니다. 손가락을 여는 첫
+스텝에 접촉이 끊기고 컵은 0.13 s 만에 탁자로 떨어집니다. 스텝당 계산 시간을 함께 기록했으며, 손이 컵에 닿아 있는 동안은
+스텝당 100–146 ms로 <strong>아직 실시간(33 ms)이 아닙니다</strong>(접촉 구간 실시간 대비 약 0.23–0.33배).</p>
+<table>
+<thead>
+<tr>
+<th>실험</th>
+<th>관절 토크 (시뮬레이션 계산값)</th>
+<th>Allegro 한계 0.7 N·m 대비</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>종이컵 쥐기 0.10 N·m 설정</td>
+<td>최대 0.38 N·m</td>
+<td>안</td>
+</tr>
+<tr>
+<td>종이컵 꽉 쥐기 0.35 N·m 설정</td>
+<td>순간 최대 1.11 N·m</td>
+<td>초과(순간)</td>
+</tr>
+</tbody>
+</table>
+<p>관절 토크는 관절 센서로 잰 값이 아니라 시뮬레이션의 접촉 법선력에서 계산한 값입니다(마찰 제외).</p>
 <div class="admonition warning">
 <p class="admonition-title">해석 시 주의</p>
 <ul>
-<li>물성값은 문헌 범위에서 고른 <strong>잠정값</strong>입니다. 위 수치는 특정 제품의 예측이 아니라 파이프라인 동작을 보여 주는 예시입니다.</li>
-<li>손가락은 목표 각도까지 움직이는 위치 제어라, 소재가 달라도 눌린 깊이는 비슷하고 차이는 해제 후 자국에 드러납니다.</li>
-<li>접촉력은 근사입니다. 패드의 무름은 반영하지만 소재 모델의 힘–깊이 관계와 정확히 일치하지는 않습니다.</li>
+<li>물성값은 추정값·미확인 값을 포함한 <strong>잠정값</strong>입니다. 위 수치는 특정 제품의 예측이 아니라 모델 동작을 보여 주는 예시입니다.</li>
+<li>손가락 가압은 목표 각도까지 움직이는 위치 제어라, 소재가 달라도 손가락 힘은 비슷하고 차이는 눌린 깊이와 남은 자국에 드러납니다.</li>
+<li>2026-10-22 이전 공개판의 「간격 약 0.04 mm」는 당시 손끝 장면의 첫 가압 중앙값이며, 현재 구현의 오차 상한이 아닙니다.</li>
 </ul>
 </div>
-<h2 id="5">5. 개발 단계<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h2 id="4">4. 개발 단계<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -918,9 +904,9 @@ L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 
 <tbody>
 <tr>
 <td><strong>v0</strong> 기준선</td>
-<td>OmniLRS 하중–변형 모델</td>
-<td>OmniLRS 원본 출력 대조</td>
-<td><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> 완료 (2026-10)</td>
+<td>기준 하중–변형 모델</td>
+<td>고정 참조 fixture 대조</td>
+<td><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span> 기준선 재현 (2026-10)</td>
 </tr>
 <tr>
 <td><strong>v1</strong> 탄성·항복</td>
@@ -929,8 +915,8 @@ L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 
 <td>모델 구현, 실계측 보정 준비</td>
 </tr>
 <tr>
-<td><strong>v2</strong> 소성·잔류변형</td>
-<td>영구변형·반복하중</td>
+<td><strong>v2</strong> 소성·잔류·구조</td>
+<td>영구변형·반복하중, 얇은 벽 용기</td>
 <td>반복하중 시험·형상 스캔 대조</td>
 <td>일부 구현</td>
 </tr>
@@ -942,22 +928,29 @@ L-Project에서 이 엔진을 직접 구동·계측·개선한 경험을 제조 
 </tr>
 </tbody>
 </table>
-<p>단계 구성과 검증 기준은 <a href="../manufacturing-data-factory-rfm/technical/">Robot RFM 데이터팩토리 과제 제안</a>의 Deformation Engine 계획과 같습니다.</p>
+<p>개발 방향의 초기 공개 배경은 <a href="../manufacturing-data-factory-rfm/technical/">Robot RFM 데이터팩토리 과제 제안</a>의 Deformation Engine 계획에서 확인할 수 있습니다. 이 페이지의 기술 단계는 과제의 연차별 승인 목표나 달성 실적을 뜻하지 않습니다.</p>
 <div class="admonition note">
 <p class="admonition-title">확인되지 않은 것</p>
 <ul>
 <li>제조 소재의 물성값은 아직 실측 보정 전입니다. 현재 값은 파이프라인 동작 확인용 잠정값입니다.</li>
-<li>Isaac Sim 결합 실행 성능의 정량 평가 결과는 특허 출원 후 공개합니다.</li>
+<li>추가 실행 성능 자료의 공개 여부와 범위는 출원·공개 검토 후 정합니다.</li>
 <li>곡면 부품 표면과 체적 변형체 결합은 미구현입니다.</li>
 </ul>
 </div>
-<h2 id="6">6. 연구 산출물 계획<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h2 id="5-mde">5. 초기 MDE 단위연구의 공개 계획<a class="headerlink" href="#5-mde" title="Permanent link">&para;</a></h2>
+<p>아래는 초기 MDE 단위연구에서 공개한 계획입니다. RFM 정부과제의 전체 성과목표, 최종 협약 목표 또는 달성 실적과 구분합니다.</p>
 <ul>
-<li>특허 출원 1건 (준비 중)</li>
-<li>학술대회 논문 1편 (특허 출원 후 투고)</li>
-<li>대표 작업: 탄성체 삽입(가스켓·O-ring) — 실계측 보정과 함께 진행</li>
+<li>특허 출원 목표 1건 (준비 계획이며, 출원 접수·등록 완료의 확인이 아님)</li>
+<li>학술대회 논문 목표 1편 (출원·공개 범위 확인 후 투고 계획)</li>
+<li>대표 작업 검토 후보: 탄성체 삽입(가스켓·O-ring) — 과제 대표 공정 확정과 실계측 보정은 별도 확인</li>
 </ul>
-<p><code>Isaac Sim</code> · <code>Allegro Hand</code> · <code>OmniLRS</code> · <code>Deformation</code> · <code>Contact Mechanics</code> · <code>Digital Twin</code> · <code>Robot Learning Data</code> · <code>Manufacturing</code></p>
+<h2 id="6">6. 컨소시엄 휴머노이드 통합 방향<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>실제 모델·작업·제어 및 센서 인터페이스를 확정한 뒤, robot asset 수용, 부분 접촉 simulation,
+전신 simulation, HILS, 제한된 실물 시험과 RFM 데이터 인수 순으로 검증할 계획입니다.
+각 단계에서 원자료·시간 동기·물성 및 데이터 출처·품질 판정을 연결하고, 실물 안전 책임과 시험 조건을 관계 기관과 확정합니다.
+현재 접촉 시험 장면이나 학습 adapter가 전신 동작·실물 안전·RFM 성능 향상을 입증하는 것은 아닙니다.
+새 기술·결과의 공개 범위는 별도 검토합니다.</p>
+<p><code>Isaac Sim</code> · <code>Allegro Hand</code> · <code>Deformation</code> · <code>Contact Mechanics</code> · <code>Digital Twin</code> · <code>Robot Learning Data</code> · <code>Manufacturing</code></p>
 
 
 

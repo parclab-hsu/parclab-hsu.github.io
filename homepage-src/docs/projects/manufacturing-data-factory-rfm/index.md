@@ -82,7 +82,7 @@ noindex: true
 |---|---|
 | RFP·품목 부합성 | 데이터팩토리(데이터 생성·정제·관리)와 RFM(학습·평가) 사이의 **제조 물리·의미 계층**을 담당 |
 | 목표의 도전성 | 시각 중심 Digital Twin 을 **접촉·변형·누적상태가 반영되는 Physics Twin** 으로 전환 |
-| 연구조직 역량 | OmniLRS 기반 Isaac Sim·ROS 2 시뮬레이션과 변형지형·HILS 수행실적, HSU-PAC 인프라 |
+| 연구조직 역량 | Isaac Sim·ROS 2 시뮬레이션과 접촉·변형·HILS 수행실적, HSU-PAC 인프라 |
 | 연구 인프라 | GPU·Isaac Sim·ROS 2·NAS·실물 로봇을 갖춘 [HSU-PAC](../hsu-pac.md) 을 **참여기업 공동 Testbed** 로 개방 |
 | 지역·인력 파급 | Physical AI 마이크로디그리 과정으로 데이터 생산과 인력양성을 동시 수행 |
 
@@ -139,9 +139,9 @@ noindex: true
 
 ### 기술축 A · Manufacturing Deformation Engine
 
-**물리엔진을 새로 개발하지 않습니다.** Isaac Sim 과 OmniLRS 위에서 동작하는
-**제조 변형·물성 보정 모듈**을 개발합니다. OmniLRS 변형지형 연구에서 축적한 접촉·변형 구동과
-계측 경험을 제조환경의 Contact–Material–State 모델로 파생시키는 작업입니다.
+**물리엔진을 새로 개발하지 않습니다.** Isaac Sim 위에서 동작하는
+**제조 변형·물성 보정 모듈**을 개발합니다. 시뮬레이션에서 접촉·변형을 구동하고 계측해 온
+경험을 제조환경의 Contact–Material–State 모델로 구현하는 작업입니다.
 
 6대 대표공정 트윈에는 공정별 기본 물리 프로파일을 적용하되, 실측 대조를 통한 정밀 검증은
 범용 엔진이 아니라 **대표 작업 1~2개의 접촉력·변형·잔류상태를 실측과 대조해 검증하는

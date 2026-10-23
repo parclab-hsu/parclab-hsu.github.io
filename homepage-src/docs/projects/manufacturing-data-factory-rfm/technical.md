@@ -57,54 +57,31 @@ HSU-1~7 과 Versioned Episode Factory·HSU-PAC 이 그 경로를 어떻게 떠�
 
 ---
 
-## 핵심 기술: OmniLRS에서 Manufacturing Deformation Engine으로
+## 핵심 기술: Manufacturing Deformation Engine
 
-[OmniLRS](https://github.com/OmniLRS/OmniLRS)는 NVIDIA Isaac Sim 기반의 오픈소스 달 탐사
-로봇 시뮬레이터로, 절차적·무작위 지형 생성, ROS 2 연계, 합성데이터 생성과 함께 로버 주행에
-따른 지형 변형을 지원합니다. 한성대학교는 OmniLRS 기반 달 로버 시뮬레이션과 HILS 연구에서
-확보한 경험을 토대로, 변형지형 엔진의 개념을 제조 로봇의 **접촉–물성–상태 변화** 문제로
-파생·고도화합니다.
+한성대학교는 Isaac Sim 기반 로봇 시뮬레이션과 HILS 연구에서 접촉·변형 계산을 직접 구동·계측한
+경험을 토대로, 제조 로봇의 **접촉–물성–상태 변화** 문제를 다루는 엔진을 개발합니다.
+소재·형상·온도·속도·시간 의존성과 접촉 이력을 포함할 수 있도록 모델을 모듈화하고,
+실제 계측 데이터로 파라미터를 보정합니다.
 
-### OmniLRS 기반 기술의 제조환경 전환
+### 기반이 되는 시뮬레이션 수행실적
 
-| OmniLRS 변형지형 개념 | 제조환경 Deformation Engine으로의 확장 |
-|---|---|
-| Wheel Footprint | 바퀴·그리퍼·공구·부품의 Contact Patch |
-| 접촉력–변형깊이 회귀 | 힘·토크·접촉시간·속도에 따른 변위·변형 응답 |
-| 반복 통과 시 변형 누적·감쇠 | 반복 하중, 마찰, 마모, 히스테리시스, 영구변형 상태 |
-| Depth·Boundary Distribution | 접촉부 변형 형상과 영향영역 분포 |
-| 지형·조명·Asset Randomization | 재질·공차·마찰·강성·배치·센서·작업조건 Randomization |
-| ROS 2와 합성데이터 | 로봇 상태·행동·접촉·성공/실패가 시간 동기화된 학습 Episode |
-
-OmniLRS의 기존 Deformation Engine은 접촉력으로부터 변형 깊이를 계산하는 비교적 단순한
-모델을 사용합니다. 제조환경 확장에서는 소재·형상·온도·속도·시간 의존성과 접촉 이력을
-포함할 수 있도록 모델을 모듈화하고, 실제 계측 데이터로 파라미터를 보정합니다.
-
-### 파생의 근거가 되는 OmniLRS 수행실적
-
-Deformation Engine 파생은 개념 차용이 아니라, 한성대학교가 직접 구동·계측·확장해 본 환경에서
-출발합니다. 아래는 확보된 수행실적이며, 그대로 제조환경 요소로 치환할 대상입니다.
+아래는 한성대학교가 직접 구동·계측·확장해 본 시뮬레이션 환경의 수행실적과, 각 실적을 옮겨 쓸
+제조환경 요소입니다.
 
 | 수행 항목 | 확보된 실적 | 제조환경 전환 대상 |
 |---|---|---|
-| 실행환경 | **Isaac Sim 5.0.0 + OmniLRS + ROS 2 Humble** Docker 통합 구동 | 제조 Cell·Line Simulation 실행환경 |
+| 실행환경 | **Isaac Sim 5.0.0 + ROS 2 Humble** Docker 통합 구동 | 제조 Cell·Line Simulation 실행환경 |
 | 환경 구성 | Hydra 기반 단일 yaml로 환경·모드·렌더링·물리엔진 통합 제어 | 설비·공정·Robot·Sensor 조건의 Scenario 파라미터화 |
-| 환경 종류 | `lunalab`(Digital Twin) · `lunaryard_20m/40m`(절차생성) · `largescale`, 각각 `_deformable` 변형지형 | 실측 기반 제조 Cell Twin과 절차생성 Layout, 변형 대상물 |
+| 환경 종류 | 실측 기반 Digital Twin 환경과 절차생성 환경 | 실측 기반 제조 Cell Twin과 절차생성 Layout |
 | 실시간 제어 | 조명·태양광·렌즈·렌더·지형·로봇 6개 카테고리 **ROS 2 토픽 제어** (조명 on/off·세기, 광원 위치·자세, 암석 배치 랜덤화, 로봇 Spawn·Reset·Teleport) | 조명·설비·부품 배치·로봇 초기상태의 Randomization 제어면 |
 | 합성데이터 | 조명·지형 자동 변화 + 카메라 랜덤 시점, **1회 Run당 약 1,000 프레임 자동 생성 후 종료** | 제조 Task Episode의 자동 대량 생성 |
 | 자동 Annotation | Bounding Box · Instance Segmentation · Pixel-level Labeling | 6D Pose·Collision·접촉·변형·이벤트 Ground Truth |
-| Sim-to-Real 효과 | **암석 Instance Segmentation** 에서 합성데이터 사전학습 후 실물 Fine-tuning 한 모델이 실물 단독 학습 대비 **Average Precision 약 14% 향상**(OmniLRS 문헌 보고값, 자체 재현 예정) | 제조 부품·결함 인식의 사전학습 기여도 검증 |
-| 접촉물리 | Grouser Wheel 지형변형 모델 이식 — 슬립·침하, Mesh 실시간 변형, 접촉력·저항력 모델링 | 그리퍼·공구·부품 접촉의 변형·미끄럼·잔류변형 |
 
 !!! note "무엇이 새로 개발되는가"
-    OmniLRS의 변형 모델은 **접촉력에서 변형 깊이를 얻는 단일 경로**이며, 대상 물성이 월면토로
-    고정되어 있습니다. 제조환경에서는 대상이 금속·수지·포장재·탄성체로 바뀌고 온도·속도·반복이력에
-    따라 응답이 달라지므로, **물성 Profile 분리 · 응답 모델 교체 가능 구조 · 실계측 파라미터 보정**이
-    새로 개발되어야 할 범위입니다.
-
-    변형지형 참조 구현: Kamohara, J., Ares, V. E., Hurrell, J., Takehana, K., Richard, A., Santra, S.,
-    Uno, K., Rohmer, E., & Yoshida, K. (2024). *Modeling of terrain deformation by a grouser wheel for
-    lunar rover simulation.* Proc. 21st Int'l & 12th Asia-Pacific Regional Conf. of the ISTVS, 283–289.
+    접촉력에서 변형 깊이를 얻는 단일 경로의 변형 모델은 대상 물성이 하나로 고정됩니다. 제조환경에서는
+    대상이 금속·수지·포장재·탄성체로 바뀌고 온도·속도·반복이력에 따라 응답이 달라지므로,
+    **물성 Profile 분리 · 응답 모델 교체 가능 구조 · 실계측 파라미터 보정**이 새로 개발되어야 할 범위입니다.
 
 ### Manufacturing Deformation Engine의 구성
 
@@ -154,12 +131,12 @@ flowchart TB
     입니다. 범용 엔진의 변형 계산 위에 **실측 보정된 물성 · 반복이력 · 자동 Ground Truth ·
     Ontology·Provenance** 를 결합하는 것이 본 과제의 개발 범위입니다.
 
-| 구분 | OmniLRS 원형 | 본 과제 신규 개발 |
+| 구분 | 단일 경로 변형 모델 | 본 과제 신규 개발 |
 |---|---|---|
-| 대상 물성 | 월면토 고정 | **제조 소재군 Profile (금속·수지·포장재·탄성체)** |
+| 대상 물성 | 단일 물성 고정 | **제조 소재군 Profile (금속·수지·포장재·탄성체)** |
 | 응답 경로 | 접촉력 → 변형깊이 단일 경로 | **교체형 Response Model, 온도·속도·이력 의존** |
-| 파라미터 | 논문값 고정 | **Calibration Tool 로 실계측 보정** |
-| 산출 | 지형 변형 | **Engine Module · Material Library · Calibration Tool · Data Labeler** |
+| 파라미터 | 문헌값 고정 | **Calibration Tool 로 실계측 보정** |
+| 산출 | 표면 변형 | **Engine Module · Material Library · Calibration Tool · Data Labeler** |
 
 ### 개발 단계와 버전별 검증목표
 
@@ -168,7 +145,7 @@ flowchart TB
 
 | 버전 | 시기 | 재현 범위 | 검증 방법 | 완료 판정 |
 |---|---|---|---|---|
-| **v0** 기준선 | 1차년도 | OmniLRS 원형 이식 — 단일 접촉력→변형깊이 | 월면토 조건 재현 재확인 | 기존 결과와 동일 재현 |
+| **v0** 기준선 | 1차년도 | 기준 하중–변형 모델 — 단일 접촉력→변형깊이 | 기준 조건 재현 확인 | 참조 결과와 동일 재현 |
 | **v1** 탄성·강체 접촉 | 2차년도 | 마찰·반발·강성·감쇠, 그리퍼 파지와 미끄럼 | 기준 시편 접촉력–변위 시험 | 접촉력 NRMSE ≤ 20 % |
 | **v2** 소성·잔류변형 | 3차년도 | 영구변형, 반복하중, 히스테리시스, 포장재·연성부품 | 반복하중 시험, 형상 스캔 대조 | 잔류변형량 오차 ≤ 25 % |
 | **v3** 이력·마모 | 4차년도 | 누적 사용상태, 표면 마모, 공차 변화의 장기 영향 | 장시간 반복운전 로그 대조 | 추세 상관계수 **≥ 0.8**, 기울기 오차 **≤ 30 %** |
@@ -180,10 +157,9 @@ flowchart TB
 
 | 관점 | 근거 |
 |---|---|
-| 코드 수준 경험 | OmniLRS 변형지형 엔진을 **직접 구동·수정·계측**해 봤다. 논문 구현을 이식해 슬립·침하와 Mesh 실시간 변형을 재현한 이력이 있다 |
+| 코드 수준 경험 | Isaac Sim 시뮬레이션의 접촉·변형 계산을 **직접 구동·수정·계측**해 봤다(로버 슬립·침하, Mesh 실시간 변형) |
 | 역할 분담상의 위치 | **현재 협의안 기준** 모빌테크는 3D Asset, 타 기관은 데이터 플랫폼·모델·Robot HW 를 맡는다. 접촉물리·물성 계층은 **한성대가 주도 제안하는 영역**이며 최종 분담은 컨소시엄 협약으로 확정한다 |
 | 검증 수단 보유 | HSU-PAC 의 Manipulation Cell·F/T·Tactile 센서로 시뮬레이션 값과 실측을 같은 자리에서 대조할 수 있다 |
-| 확장 경로 | 달 지형이라는 극단 조건에서 출발했기 때문에, 물성 범위를 넓히는 방향의 일반화가 자연스럽다 |
 
 !!! note "이 계층이 다른 산출물과 어떻게 연결되는가"
     Deformation Engine 은 독립 산출물이 아니라 **다른 산출물의 입력**입니다. 접촉으로 상태가 변하는
@@ -290,7 +266,7 @@ flowchart TB
 
 | 계층 | 확보한 실적 | 본 과제에서 새로 구축할 것 |
 |---|---|---|
-| **Physics Grounding** | **Isaac Sim 5.0.0 + OmniLRS + ROS 2 Humble** Docker 통합 구동. Hydra 단일 yaml 로 환경·모드·렌더링·물리엔진 통합 제어. **Grouser Wheel 지형변형 모델 이식** — 슬립·침하, Mesh 실시간 변형, 접촉력·저항력 모델링을 **직접 구동·계측** | 제조 접촉·물성 파라미터로의 치환, **생성결과를 반증하는 Physics Consistency Evaluator** |
+| **Physics Grounding** | **Isaac Sim 5.0.0 + ROS 2 Humble** Docker 통합 구동. Hydra 단일 yaml 로 환경·모드·렌더링·물리엔진 통합 제어. **로버 바퀴–지형 변형 모델 이식** — 슬립·침하, Mesh 실시간 변형, 접촉력·저항력 모델링을 **직접 구동·계측** | 제조 접촉·물성 파라미터로의 치환, **생성결과를 반증하는 Physics Consistency Evaluator** |
 | **World Prediction** | Isaac Sim 기반 합성데이터 자동 생성(1회 Run 약 1,000 프레임), 자동 Annotation 3종(Bounding Box·Instance Segmentation·Pixel-level) | **WFM 연계 자체가 신규 범위입니다.** Cosmos Adapter, Prompt·Condition Compiler |
 | **Scenario Exploration** | 조명·태양광·렌즈·렌더·지형·로봇 6개 카테고리의 **ROS 2 토픽 실시간 제어**(조명 세기, 광원 자세, 배치 랜덤화, 로봇 Spawn·Reset·Teleport) | Scenario DSL, Edge Case Compiler |
 | **HIL Validation** | **HILS 폐루프 구성 실적** — 제어기·통신·실시간성 연계 경험 | 제조 로봇 대상 HIL Gate 기준 수립 |
@@ -310,9 +286,8 @@ flowchart TB
     봤어야 합니다.** WFM 을 쓰는 기관은 많지만, 그 출력이 물리적으로 말이 되는지 판정할
     수 있는 쪽은 시뮬레이터를 열어 본 곳입니다.
 
-    앞 절의 OmniLRS Instance Segmentation AP 약 14 % 향상은 **문헌 보고값이며 자체 재현
-    수치가 아닙니다.** 합성데이터 사전학습의 기여도를 제조 대상으로 재현하는 것은 본 과제
-    범위에 포함됩니다.
+    합성데이터 사전학습의 기여도는 문헌 보고값이 아니라 **제조 대상의 자체 재현시험**으로
+    확인하며, 이는 본 과제 범위에 포함됩니다.
 
 ### 실행환경 적합성 대조 (2026-08-29 확인)
 
@@ -473,7 +448,7 @@ RFM 기관이 매번 변환기를 만들어야 합니다. **모든 출처를 LeR
     — 문서상 호환과 실제 동작은 다를 수 있습니다.
 
 !!! warning "도입 상태를 정확히 씁니다"
-    Isaac Sim · ROS 2 · OmniLRS 는 **이미 구동해 본 환경**이고, LeRobot 은 HSU-PAC 소프트웨어
+    Isaac Sim · ROS 2 는 **이미 구동해 본 환경**이고, LeRobot 은 HSU-PAC 소프트웨어
     스택에 포함되어 있습니다. **Cosmos 연계는 본 과제에서 새로 구축할 범위**이며 현재 수행실적이
     아닙니다.
 
@@ -840,7 +815,7 @@ Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감�
 | **Engine** | **Calibration 소요** | 신규 소재 1종의 파라미터 식별에 드는 **시험 횟수 · 소요시간 · 반복자 간 편차** | **≤ 5회 · ≤ 40시간**, 반복자 간 파라미터 편차 **≤ 15 %** | 절차서·도구 제공 전제. 2인 이상이 독립 수행해 편차 측정 |
 | Physics | Cycle Time 편차 | 동일 Task의 실물–시뮬레이션 소요시간 차 | **≤ 15 %** | Task별 SOP 고정 시 달성 가능 범위 |
 | Physics | 실패 발생조건 일치 | 실물에서 관측된 실패조건의 시뮬레이션 재현율 | **≥ 70 %** | Edge Case 재생 구조 전제 |
-| Data | Episode 생성 처리량 | **GPU-hour당 유효 Episode 수**와 프레임 수 (Scenario·해상도·Sensor 구성 고정 조건) | 기준 구성에서 **GPU-hour당 Episode 수 기준선 대비 유지** | OmniLRS에서 1 Run ≈ 1,000 프레임 자동 생성·종료 확인 |
+| Data | Episode 생성 처리량 | **GPU-hour당 유효 Episode 수**와 프레임 수 (Scenario·해상도·Sensor 구성 고정 조건) | 기준 구성에서 **GPU-hour당 Episode 수 기준선 대비 유지** | 기존 시뮬레이션 환경에서 1 Run ≈ 1,000 프레임 자동 생성·종료 확인 |
 | Data | Schema 완전성 | 필수 필드(Task·Observation·Action·Physics·GT·Outcome·Provenance) 충족률 | **100 %** | 자동 검증 Gate로 강제 |
 | Data | **Dataset 호환성** | 표준 LeRobot 도구로 무변환 로드 성공률 (확장 필드 무시 조건) | **100 %** | 필수 필드는 표준 그대로, 확장은 별도 네임스페이스 |
 | Data | **Metadata 연결 완전성** | Cosmos 생성물이 Asset ID·Scenario·Task·Material Profile 버전을 Isaac Sim Episode 와 공유하고 추적 가능한 비율 | **100 %** | 자동 검증 Gate로 강제. 기록만으로 달성되므로 아래 지표와 함께 본다 |
@@ -852,7 +827,7 @@ Randomization 대상에는 조명·시점·배치·공차·마찰·강성·감�
 | Edge Case | 후보 정밀도 | 자동 후보 중 전문가가 확정한 비율 — **분기당 무작위 표본 100건 이상, 판정 기준은 Ontology 규칙 위반·재현 가능성·안전 영향 3항목 합의** | **≥ 50 %** | Human-in-the-loop 검수 전제, 오탐 허용 설계 |
 | Edge Case | Recovery Coverage | 실패유형 대비 복구 Episode 보유 비율 | **≥ 80 %** | 실패–복구 쌍 수집 Protocol 적용 |
 | Model | Sim-to-Real Gap | 동일 Task의 시뮬레이션–실물 성공률 차 | **≤ 20 %p** | 합성 사전학습 + 소량 실데이터 Fine-tuning 전략 |
-| Model | 합성데이터 기여도 | 합성 사전학습 유무에 따른 **ΔmAP(인식) · Δ성공률(조작)** — 동일 평가 Dataset·동일 학습예산 조건 | **ΔmAP ≥ +5 %p 또는 Δ성공률 ≥ +5 %p** | OmniLRS 문헌 보고값(Instance Segmentation AP 약 14%) 참고. 자체 재현시험으로 기준선 확정 |
+| Model | 합성데이터 기여도 | 합성 사전학습 유무에 따른 **ΔmAP(인식) · Δ성공률(조작)** — 동일 평가 Dataset·동일 학습예산 조건 | **ΔmAP ≥ +5 %p 또는 Δ성공률 ≥ +5 %p** | 자체 재현시험으로 기준선 확정 |
 | **학생 Data** | **Tele-operation 유효 데이터시간** | ROS 2 시간동기·필수 Metadata·QC를 통과한 실로봇 Episode 채널시간 합계 | **1,000→2,000→3,000→1,000시간<br>4년 누적 7,000시간** | 전체 60,000시간 중 한성대 책임물량. 준비·대기·정비 및 중복 Episode 제외 |
 | **학생 Data** | **유효 Demonstration** | QC 통과 Episode 수, 작업자 다양성, 조별 Coverage | 조·Task별 **균등 분포 유지** | 연차별 유급 참여 풀 6→12→18→6명이 Dataset 생산 담당 |
 | **학생 Data** | **Edge Case 검수 처리량** | 자동 후보 대비 학생이 재생 확인·판정한 비율 (월별 후보 건수 ÷ 유급 참여자 처리용량으로 검증) | **≥ 90 %** | 연차별 참여 풀을 순환 운영. 후보 유입이 처리용량을 넘으면 우선순위 큐로 운영 |
@@ -1212,7 +1187,7 @@ flowchart LR
 | 대상 | 귀속·이용 원칙(제안) |
 |---|---|
 | **Background IP** | 각 기관이 과제 이전부터 보유한 기술·자산. 소유권 변동 없음. 모빌테크 취득 기술, RFM 기관 기존 모델, 한성대 기존 연구성과가 여기 해당 |
-| **제3자 SW·모델** | **OmniLRS(BSD-3-Clause) · Isaac Sim · PhysX · Cosmos · LeRobot 등은 제3자 자산**이며 각 라이선스와 표시(attribution) 의무를 준수한다. 한성대가 권리를 갖는 것은 **원본이 아니라 자체 수정분·신규 모듈·Calibration·Ontology 계층**이다 |
+| **제3자 SW·모델** | **Isaac Sim · PhysX · Cosmos · LeRobot 등은 제3자 자산**이며 각 라이선스와 표시(attribution) 의무를 준수한다. 한성대가 권리를 갖는 것은 **원본이 아니라 자체 수정분·신규 모듈·Calibration·Ontology 계층**이다 |
 | Manufacturing Deformation Engine | 한성대 개발분(Foreground)은 한성대 귀속. 컨소시엄 참여기관에 **과제 목적 범위의 실시권** 부여 |
 | Manufacturing Ontology·Schema | **공개 표준 지향** — 컨소시엄 공통 자산. 과제 종료 후 규격 공개를 원칙으로 함 |
 | Simulation-ready Asset | 모빌테크 원저작물 기반. 한성대가 부가한 물성·Collision·Sensor Metadata 는 **공동개발분(Joint Foreground)** |
@@ -1265,12 +1240,7 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 
 **시뮬레이션·물리**
 
-- [OmniLRS — Omniverse Lunar Robotics Simulator](https://github.com/OmniLRS/OmniLRS) (BSD-3-Clause)
-- Richard, A., et al. (2024). *OmniLRS: A Photorealistic Simulator for Lunar Robotics.* IEEE ICRA 2024. — **AP 약 14% 향상 수치의 출처**
-- [OmniLRS Deformation Engine](https://github.com/OmniLRS/OmniLRS/wiki/deformation_engine)
-- [OmniLRS 설치·실행 매뉴얼](https://github.com/OmniLRS/OmniLRS/wiki)
 - [NVIDIA Isaac Sim Container 설치 문서](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_container.html)
-- Kamohara, J., Ares, V. E., Hurrell, J., Takehana, K., Richard, A., Santra, S., Uno, K., Rohmer, E., & Yoshida, K. (2024). *Modeling of terrain deformation by a grouser wheel for lunar rover simulation.* Proc. 21st Int'l & 12th Asia-Pacific Regional Conf. of the ISTVS, 283–289.
 - [산업통상부 공고 제2026-549호 — 2026년도 제2차 로봇산업기술개발사업 신규지원 대상과제](https://www.motir.go.kr/kor/article/ATCLc01b2801b/71273/view)
 - [한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC](../hsu-pac.md)
 

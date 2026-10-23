@@ -41,7 +41,7 @@
   <text x="1360" y="79" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">제조 데이터팩토리 기술 인터페이스</text>
 
   <rect x="472" y="164" width="656" height="58" rx="29" fill="#ffffff" stroke="#74c0ec" stroke-width="2"/>
-  <text x="800" y="200" text-anchor="middle" font-size="22" font-weight="800" fill="#0b7bb8">OmniLRS 연구경험 → 제조용 Deformation Engine 파생</text>
+  <text x="800" y="200" text-anchor="middle" font-size="22" font-weight="800" fill="#0b7bb8">접촉·변형 시뮬레이션 연구경험 → 제조용 Deformation Engine</text>
   <path d="M800 222 L800 252" stroke="#0295d5" stroke-width="4" marker-end="url(#arrow)"/>
 
   <!-- Real to Digital -->

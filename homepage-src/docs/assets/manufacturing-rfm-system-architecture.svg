@@ -75,7 +75,7 @@
 
   <!-- ① 대표성과 -->
   <rect x="380" y="218" width="533" height="152" fill="#F5FAFD" stroke="#0295D5" stroke-width="2.5"/>
-  <text x="404" y="248" class="tag">OmniLRS-derived</text>
+  <text x="404" y="248" class="tag">Isaac Sim-based</text>
   <rect x="795" y="228" width="98" height="28" rx="4" fill="#DAEFF8"/>
   <text x="844" y="248" text-anchor="middle" class="badge">대표 성과</text>
   <text x="404" y="282" class="cardN" fill="#0295D5">①</text>

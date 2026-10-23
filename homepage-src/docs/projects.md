@@ -34,11 +34,11 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     ---
 
-    제조 로봇의 접촉으로 부품이 어떻게 변형되고 무엇을 남기는지를 계산하는 Isaac Sim 기반 엔진. OmniLRS 지형 변형 엔진에서 출발해 L-Project에서 직접 구동·계측한 경험을 제조 환경으로 확장합니다. 소재별 Material Profile, 교체형 Response Model, 부품별 누적 이력, 학습용 Ground Truth(접촉·변형·실패 이벤트) 자동 생성. OmniLRS 기준선(v0) 재현 완료, 실계측 보정 준비 중. 특허·논문 준비 중.
+    로봇의 접촉으로 부품이 어떻게 변형되고 무엇을 남기는지를 계산하는 Isaac Sim 기반 엔진. 소재별 Material Profile, 교체형 Response Model, 부품별 누적 이력, 학습용 Ground Truth(접촉·변형·실패 이벤트) 자동 생성. Allegro Hand로 소재 5종 가압·종이컵 쥐기 시뮬레이션 실험, 실계측 보정 준비 중. 특허·논문 준비 중.
 
-    `Isaac Sim` · `OmniLRS` · `Deformation` · `Contact Mechanics` · `Digital Twin` · `Robot Learning Data`
+    `Isaac Sim` · `Allegro Hand` · `Deformation` · `Contact Mechanics` · `Digital Twin` · `Robot Learning Data`
 
-    [:octicons-arrow-right-24: 자세히 보기](projects/mde.md)
+    [:octicons-arrow-right-24: 자세히 보기](projects/mde.md) · [:octicons-arrow-right-24: 실험 결과(영상·토크)](https://parclab-hsu.github.io/hsu-mde/)
 
 -   :material-circle:{ style="color:#2e9e44" } [__산학협력 · Connecteve 의료·수술로봇 핵심부품 기술협력__](projects/connecteve-shenzhen-partnership.md)
 
