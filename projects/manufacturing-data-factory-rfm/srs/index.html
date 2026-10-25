@@ -1,0 +1,3134 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PARC Lab · Physical AI Real-Time Control for Mobility & Robotics · 한성대학교 미래모빌리티학과">
+      
+      
+        <meta name="author" content="KyungBok Lee">
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/projects/manufacturing-data-factory-rfm/srs/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>SRS — MDE·Edge Case 로봇 데이터팩토리 시스템 요구사항 명세서 - PARC Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#srs-mdeedge-case" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../.." title="PARC Lab" class="md-header__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PARC Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SRS — MDE·Edge Case 로봇 데이터팩토리 시스템 요구사항 명세서
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연구분야
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  프로젝트
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../people/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  구성원
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  논문·성과
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../courses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  강의
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../news/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  소식
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연락처
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PARC Lab" class="md-nav__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    PARC Lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구분야
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../people/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    구성원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    논문·성과
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소식
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연락처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 문서 관리
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. 문서 관리">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1 개정 이력
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.2 요구사항 표기 규칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 개요
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 시스템 목적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 범위
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 용어
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 참조 기준
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 시스템 개요
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 시스템 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 시스템 컨텍스트
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 사용자 역할
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 설계 원칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 전제 및 제약
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 목표 아키텍처와 기준 기술
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 목표 아키텍처와 기준 기술">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 논리 계층
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 데이터 배치 원칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 기능 요구사항
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 기능 요구사항">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 데이터 수집·등록
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 품질검사·시간 동기화
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 카탈로그·검색·재생
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-ontology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Ontology와 의미 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-edge-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Edge Case 추출·검수
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-mde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 MDE 재현·생성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-dataset-releaserfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Dataset Release·RFM 연계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 관리·감사
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 데이터 요구사항
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 데이터 요구사항">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-entity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 핵심 Entity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 필수 Table과 식별자
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-episode-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Episode 필수 Field
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 상태 전이
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-object-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Object Key 규칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-manifest-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Manifest 최소 Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 계보·버전 규칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 외부 인터페이스 요구사항
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 외부 인터페이스 요구사항">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 주요 API 자원
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 비기능 요구사항
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 비기능 요구사항">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 성능·확장성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 데이터 무결성·재현성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 가용성·복구
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 보안·개인정보
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 유지보수·관측성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 업무 규칙
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 인수 기준과 추적성
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 인수 기준과 추적성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-end-to-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 End-to-End 인수 시나리오
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-definition-of-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Definition of Done
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 기준선 확정 전 미결항목
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 문서 승인란
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        관련 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="srs-mdeedge-case">SRS — MDE·Edge Case 로봇 데이터팩토리 시스템 요구사항 명세서<a class="headerlink" href="#srs-mdeedge-case" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">문서 목적</p>
+<p>본 문서는 한성대학교가 주도하는 <strong>Manufacturing Deformation Engine(MDE)</strong>, Ontology 기반
+Edge Case 추출·생성, 학생 Teleoperation, 제조환경 Digital Twin 및 RFM 학습데이터 운영을
+하나의 시스템으로 연결하기 위한 <strong>Software Requirements Specification(SRS)</strong> 기준안입니다.</p>
+<p>구현팀은 본 문서의 요구사항 ID를 Issue, 설계, 시험성적서와 연결해야 합니다. <code>TBC</code>는 협의 후
+확정할 항목, <code>TBD</code>는 근거 데이터 확보 후 결정할 항목입니다.</p>
+</div>
+<h2 id="0">0. 문서 관리<a class="headerlink" href="#0" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>문서 ID</td>
+<td>HSU-RDF-SRS-001</td>
+</tr>
+<tr>
+<td>문서명</td>
+<td>MDE·Edge Case 로봇 데이터팩토리 시스템 요구사항 명세서</td>
+</tr>
+<tr>
+<td>버전</td>
+<td>v0.9 Draft Baseline</td>
+</tr>
+<tr>
+<td>기준일</td>
+<td>2026-10-25</td>
+</tr>
+<tr>
+<td>작성 주체</td>
+<td>한성대학교 PARC Lab</td>
+</tr>
+<tr>
+<td>검토 주체</td>
+<td>컨소시엄 PMO, 제조·로봇·RFM·Digital Twin 참여기관</td>
+</tr>
+<tr>
+<td>승인 주체</td>
+<td>컨소시엄 기술책임자 및 데이터 거버넌스 책임자(TBC)</td>
+</tr>
+<tr>
+<td>적용 단계</td>
+<td>Pilot → 통합개발 → 실증 → 운영</td>
+</tr>
+</tbody>
+</table>
+<h3 id="01">0.1 개정 이력<a class="headerlink" href="#01" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>버전</th>
+<th>일자</th>
+<th>변경 내용</th>
+<th>상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.9</td>
+<td>2026-10-25</td>
+<td>DB·Portal·MDE·Edge Case 요구사항 최초 기준안</td>
+<td>검토 요청</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>TBC</td>
+<td>컨소시엄 Use Case, KPI, 보안등급 반영</td>
+<td>기준선 예정</td>
+</tr>
+</tbody>
+</table>
+<h3 id="02">0.2 요구사항 표기 규칙<a class="headerlink" href="#02" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>접두어</th>
+<th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기능 요구사항</td>
+<td>FR</td>
+<td>FR-ING-001</td>
+</tr>
+<tr>
+<td>데이터 요구사항</td>
+<td>DR</td>
+<td>DR-EPI-001</td>
+</tr>
+<tr>
+<td>외부 인터페이스</td>
+<td>IF</td>
+<td>IF-MDE-001</td>
+</tr>
+<tr>
+<td>비기능 요구사항</td>
+<td>NFR</td>
+<td>NFR-PERF-001</td>
+</tr>
+<tr>
+<td>업무 규칙</td>
+<td>BR</td>
+<td>BR-REL-001</td>
+</tr>
+<tr>
+<td>인수 기준</td>
+<td>AC</td>
+<td>AC-E2E-001</td>
+</tr>
+</tbody>
+</table>
+<p>우선순위는 <code>Must</code>, <code>Should</code>, <code>Could</code>로 관리하며, <code>Must</code> 미충족 항목은 해당 Release의 인수를
+제한합니다. 각 요구사항의 검증 방법은 <code>시험</code>, <code>분석</code>, <code>검사</code>, <code>시연</code> 중 하나 이상을 사용합니다.</p>
+<hr />
+<h2 id="1">1. 개요<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 시스템 목적<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>시스템은 실환경 로봇, 학생 Teleoperation, 모빌테크 Digital Twin, MDE 및 RFM 기관에서 발생하는
+멀티모달 데이터를 Episode 단위로 수집·검증·검색·재생하고, Edge Case를 추출·승인·재현·생성하여
+버전화된 RFM Dataset으로 제공해야 합니다.</p>
+<h3 id="12">1.2 범위<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<p><strong>포함 범위</strong></p>
+<ul>
+<li>ROS 2/MCAP, 영상, 시계열 센서, Digital Twin Asset, MDE Ground Truth 수집</li>
+<li>Object Storage와 PostgreSQL 기반 데이터 카탈로그</li>
+<li>Episode 중심 영상·센서 동기 재생 Portal</li>
+<li>Manufacturing Ontology 및 데이터 제약조건 관리</li>
+<li>규칙·희소성·상태전이·모델 불확실성·Sim-to-Real Gap 기반 Edge Case 후보 추출</li>
+<li>학생 1차 검수, 전문가 승인, 반려 및 재검수 Workflow</li>
+<li>확정 Edge Case의 MDE Replay, 조건 변형, 합성 Episode 생성</li>
+<li>LeRobotDataset 계열 Dataset Release와 RFM 평가 연계</li>
+<li>기관별 접근통제, 감사, 반출승인, 계보 및 버전 관리</li>
+</ul>
+<p><strong>제외 범위</strong></p>
+<ul>
+<li>RFM 자체의 범용 사전학습 모델 개발</li>
+<li>제조기업의 MES·PLM·ERP 전체 기능 대체</li>
+<li>원본 제조데이터의 임의 공개 또는 소유권 이전</li>
+<li>MDE가 사용하지 않는 범용 CAD 저작·편집 기능</li>
+<li>로봇 Safety PLC나 비상정지 장치의 기능 대체</li>
+</ul>
+<h3 id="13">1.3 용어<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>정의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Episode</td>
+<td>하나의 Task 시도에 포함된 관측·상태·행동·이벤트·결과의 시간 동기화 단위</td>
+</tr>
+<tr>
+<td>MDE</td>
+<td>로봇 접촉에 의한 물체·표면의 변형·복원·누적상태를 재현하고 Ground Truth를 생성하는 엔진</td>
+</tr>
+<tr>
+<td>Edge Case</td>
+<td>빈도가 낮거나 위험도가 높고, 모델 실패·불확실성·Domain Gap을 유발하는 조건 또는 상태전이</td>
+</tr>
+<tr>
+<td>Scenario Version</td>
+<td>Asset, Material, 환경, Task, 로봇, Sensor, Random Seed의 고정된 조합</td>
+</tr>
+<tr>
+<td>Dataset Release</td>
+<td>승인된 Episode 집합, Schema, Split, Manifest, Checksum을 동결한 학습·평가 배포 단위</td>
+</tr>
+<tr>
+<td>Ground Truth</td>
+<td>Simulation 또는 실측·검수로 확정한 상태, 접촉, 변형, 성공·실패 등의 기준값</td>
+</tr>
+<tr>
+<td>Provenance</td>
+<td>데이터의 원천, 변환, 승인, 생성, 학습 사용 이력을 추적하는 계보 정보</td>
+</tr>
+<tr>
+<td>ODD</td>
+<td>로봇 기능이 의도대로 작동해야 하는 환경·작업·물성·설비·운영 조건의 범위</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14">1.4 참조 기준<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../">대표 프로젝트 페이지</a></li>
+<li><a href="../technical/">기술 상세</a></li>
+<li><a href="https://huggingface.co/docs/lerobot/lerobot-dataset-v3">LeRobotDataset v3</a></li>
+<li><a href="https://mcap.dev/guides/getting-started/ros-2">MCAP ROS 2 가이드</a></li>
+<li><a href="https://www.w3.org/TR/shacl/">W3C SHACL</a></li>
+<li><a href="https://docs.isaacsim.omniverse.nvidia.com/latest/">NVIDIA Isaac Sim</a></li>
+</ul>
+<hr />
+<h2 id="2">2. 시스템 개요<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 시스템 컨텍스트<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart LR
+    REAL["실제 로봇·Sensor"] --&gt; ING["Ingest &amp; QC"]
+    TELE["학생 Teleoperation"] --&gt; ING
+    DT["모빌테크 Digital Twin·Asset"] --&gt; ING
+    MDE["한성대 MDE·Physics GT"] --&gt; ING
+    ING --&gt; OBJ["S3 Object Storage"]
+    ING --&gt; META["PostgreSQL Metadata DB"]
+    META --&gt; EDGE["Ontology·Edge Case Engine"]
+    OBJ --&gt; EDGE
+    EDGE --&gt; REVIEW["학생 검수·전문가 승인"]
+    REVIEW --&gt; GEN["MDE Replay·Perturbation"]
+    GEN --&gt; RELEASE["Dataset Release"]
+    RELEASE --&gt; RFM["RFM 학습·평가"]
+    RFM -. "실패·불확실성" .-&gt; EDGE
+    PORTAL["Web Portal·OpenAPI"] --- ING
+    PORTAL --- META
+    PORTAL --- EDGE
+    PORTAL --- RELEASE</code></pre>
+<h3 id="22">2.2 사용자 역할<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>역할</th>
+<th>주요 권한</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform Administrator</td>
+<td>전역 설정, 기관·사용자·정책 관리, 장애 대응</td>
+</tr>
+<tr>
+<td>Organization Administrator</td>
+<td>소속기관 사용자, Namespace, 반출승인 관리</td>
+</tr>
+<tr>
+<td>Data Engineer</td>
+<td>수집 Connector, Schema, 변환·품질 Job 운영</td>
+</tr>
+<tr>
+<td>MDE Engineer</td>
+<td>Material·Scenario·Engine 버전 및 생성 Job 관리</td>
+</tr>
+<tr>
+<td>Student Reviewer</td>
+<td>할당 Episode 재생, 후보 태깅, 1차 확인·반려 요청</td>
+</tr>
+<tr>
+<td>Expert Reviewer</td>
+<td>Edge Case 최종 승인, 병합, 재현 요청, 품질 판정</td>
+</tr>
+<tr>
+<td>RFM Engineer</td>
+<td>Dataset 조회·승인본 Export, 모델 평가결과 등록</td>
+</tr>
+<tr>
+<td>Auditor/Viewer</td>
+<td>허용된 Metadata·Report 열람, 감사증적 조회</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23">2.3 설계 원칙<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>원본 불변</strong> — 수집된 Raw Object는 덮어쓰지 않는다.</li>
+<li><strong>Episode 중심</strong> — 폴더가 아니라 Episode ID가 검색·검수·학습의 기준이다.</li>
+<li><strong>Metadata와 Payload 분리</strong> — 대용량 영상·MCAP·Parquet은 Object Storage, 관계와 상태는 DB에 둔다.</li>
+<li><strong>재현 가능성</strong> — Asset·Material·Scenario·Model·Schema·Seed 버전을 모두 고정한다.</li>
+<li><strong>사람이 최종 승인</strong> — 자동 탐지 결과는 후보이며 전문가 승인 전 확정 데이터로 사용하지 않는다.</li>
+<li><strong>기관 격리</strong> — 소유기관과 데이터 등급에 따라 열람·다운로드·생성을 분리한다.</li>
+<li><strong>표준 우선</strong> — REST/OpenAPI, S3, ROS 2/MCAP, Parquet, MP4, USD, LeRobotDataset을 우선 사용한다.</li>
+</ol>
+<h3 id="24">2.4 전제 및 제약<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<ul>
+<li>HSU-PAC은 개발·검증 Seed Platform이며, Production 규모는 컨소시엄 인프라 확정 후 산정한다.</li>
+<li>대상 로봇·센서·Use Case·초기 저장용량은 <code>TBC</code>이다.</li>
+<li>제조사 원본 데이터의 외부 반출·공개는 소유기관 승인 없이는 금지한다.</li>
+<li>학생 교육 데이터와 과제 Dataset 생산 데이터는 사용자·품질·비용·승인 흐름을 구분한다.</li>
+<li>안전제어는 로봇 제어기와 현장 안전시스템이 담당하고 Portal은 이를 대체하지 않는다.</li>
+</ul>
+<hr />
+<h2 id="3">3. 목표 아키텍처와 기준 기술<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 논리 계층<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>계층</th>
+<th>책임</th>
+<th>기준 기술</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Source</td>
+<td>실물·Teleoperation·Simulation·Asset 생성</td>
+<td>ROS 2, MCAP, Isaac Sim, MDE, USD</td>
+</tr>
+<tr>
+<td>Ingest</td>
+<td>등록, Upload URL, Manifest, Checksum, 변환 Job</td>
+<td>FastAPI, Worker Queue</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>대용량 Payload·Metadata·검색 Index</td>
+<td>S3 호환 Storage, PostgreSQL, pgvector</td>
+</tr>
+<tr>
+<td>Intelligence</td>
+<td>Ontology 검증, 후보 탐지, Score, 유사검색</td>
+<td>Rule Engine, SHACL, ML Inference</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>검색, Timeline 재생, 검수, 생성, Release</td>
+<td>Web Portal, REST/OpenAPI</td>
+</tr>
+<tr>
+<td>MLOps</td>
+<td>학습·평가 Run과 Model 계보</td>
+<td>MLflow 또는 동등 기능</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>인증, 감사, 관측성, Backup</td>
+<td>OIDC, RBAC, Metrics, Log, Trace</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 데이터 배치 원칙<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>데이터</th>
+<th>저장 위치</th>
+<th>DB 저장 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MP4·RGB-D·Image</td>
+<td>Object Storage</td>
+<td>URI, Codec, FPS, 시간범위, Checksum</td>
+</tr>
+<tr>
+<td>ROS Bag·MCAP</td>
+<td>Object Storage</td>
+<td>URI, Topic 목록, 시작·종료, Checksum</td>
+</tr>
+<tr>
+<td>Joint·Action·F/T·Tactile</td>
+<td>Parquet/Object Storage</td>
+<td>Schema, 단위, Sampling Rate, Row Range</td>
+</tr>
+<tr>
+<td>USD·GLB·Texture</td>
+<td>Object Storage</td>
+<td>Asset ID, Version, Semantic, License</td>
+</tr>
+<tr>
+<td>Episode·Event·Edge Case</td>
+<td>PostgreSQL</td>
+<td>관계, 상태, 점수, 승인, 계보</td>
+</tr>
+<tr>
+<td>유사검색 Embedding</td>
+<td>pgvector</td>
+<td>Model Version, 차원, 대상 ID, Vector</td>
+</tr>
+<tr>
+<td>Model·Checkpoint</td>
+<td>Object Storage/Registry</td>
+<td>Run, Dataset Release, Metric, Artifact URI</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4">4. 기능 요구사항<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 데이터 수집·등록<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th style="text-align: right;">우선순위</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-ING-001</td>
+<td>시스템은 모든 수집 시도에 전역 고유 <code>episode_id</code>를 발급해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ING-002</td>
+<td>Client는 Episode Metadata를 먼저 등록하고 Payload용 제한시간 Upload URL을 받아야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ING-003</td>
+<td>시스템은 MP4, MCAP, Parquet, JSON, USD/GLB와 승인된 확장자를 수집해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ING-004</td>
+<td>수집 단위는 <code>manifest.json</code>을 포함하고 Schema Version을 명시해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-ING-005</td>
+<td>시스템은 업로드 완료 시 파일별 크기와 SHA-256 Checksum을 검증해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ING-006</td>
+<td>중복 Checksum 또는 동일 Source Event ID가 입력되면 중복 후보로 표시해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ING-007</td>
+<td>수집 실패 시 완료된 Object를 삭제하지 않고 재개 가능한 상태로 보존해야 한다.</td>
+<td style="text-align: right;">Should</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ING-008</td>
+<td>로봇·Sensor·Calibration·Task·Scenario의 미등록 Version 참조를 거부하거나 격리해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ING-009</td>
+<td>시스템은 Real, Teleoperation, MDE, Isaac Sim, Generated Source를 구분해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-ING-010</td>
+<td>수집 완료 후 QC·Thumbnail·Preview·Parquet 변환 Job을 비동기로 실행해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시연</td>
+</tr>
+<tr>
+<td>FR-ING-011</td>
+<td>실패한 Job은 원인·재시도 횟수·최종 상태를 기록해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-ING-012</td>
+<td>관리자는 Source별 동시 Upload와 Job 우선순위를 설정할 수 있어야 한다.</td>
+<td style="text-align: right;">Should</td>
+<td>시험</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42">4.2 품질검사·시간 동기화<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th style="text-align: right;">우선순위</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-QC-001</td>
+<td>필수 Stream 존재 여부를 Task Profile 기준으로 검사해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-QC-002</td>
+<td>영상·센서 Timestamp의 단조 증가, Gap, 중복, Drift를 검사해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-QC-003</td>
+<td>단위·좌표계·Sampling Rate·Calibration Version을 검사해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-QC-004</td>
+<td>NaN, Infinity, 물리범위 이탈 및 비정상 고정값을 검출해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-QC-005</td>
+<td>QC 결과는 Rule ID, 결과, 측정값, 임계값, 증거 URI로 기록해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-QC-006</td>
+<td>QC 상태는 <code>PENDING/VALID/WARNING/REJECTED</code>로 관리해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-QC-007</td>
+<td>QC Rule과 임계값은 Version으로 관리되고 과거 결과의 적용 Version을 보존해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-QC-008</td>
+<td>권한 보유자는 사유를 남기고 WARNING을 승인할 수 있으나 REJECTED를 직접 VALID로 변경할 수 없어야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43">4.3 카탈로그·검색·재생<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th style="text-align: right;">우선순위</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-CAT-001</td>
+<td>Project, 기관, Cell, Robot, Task, Source, 성공 여부, 날짜로 Episode를 검색해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-CAT-002</td>
+<td>Asset, Material, Scenario, Edge Type, Review 상태, Score 범위로 복합 검색해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-CAT-003</td>
+<td>검색 결과는 권한이 없는 Episode의 존재·Metadata·Thumbnail을 노출하지 않아야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>보안시험</td>
+</tr>
+<tr>
+<td>FR-CAT-004</td>
+<td>Episode 상세에서 다중 영상과 시계열을 하나의 Timeline으로 탐색해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시연</td>
+</tr>
+<tr>
+<td>FR-CAT-005</td>
+<td>Event와 Edge Case 구간을 Timeline Marker로 표시해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시연</td>
+</tr>
+<tr>
+<td>FR-CAT-006</td>
+<td>원본·파생·생성 Episode 간 Parent/Child 계보를 표시해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시연</td>
+</tr>
+<tr>
+<td>FR-CAT-007</td>
+<td>승인된 사용자는 Metadata와 Annotation을 CSV/JSON으로 내보낼 수 있어야 한다.</td>
+<td style="text-align: right;">Should</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-CAT-008</td>
+<td>사용자는 자연어·Tag·Embedding 기반 유사 Episode 검색을 수행할 수 있어야 한다.</td>
+<td style="text-align: right;">Could</td>
+<td>시연</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-ontology">4.4 Ontology와 의미 검증<a class="headerlink" href="#44-ontology" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th style="text-align: right;">우선순위</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-ONT-001</td>
+<td>Asset, Process, Task, State, Material, Failure, Recovery 용어를 전역 ID로 관리해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-ONT-002</td>
+<td>용어의 한·영 명칭, 정의, 상위개념, 동의어, 폐기 상태를 관리해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ONT-003</td>
+<td>Ontology Term과 Relation 변경은 Version과 변경 사유를 보존해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-ONT-004</td>
+<td>Episode·Event·Edge Case는 승인된 Ontology Term을 참조해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ONT-005</td>
+<td>필수 속성·허용 관계·금지 상태전이를 기계 검증 가능한 Rule로 관리해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ONT-006</td>
+<td>Rule 위반 결과를 Episode QC 및 Edge Case Evidence와 연결해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시연</td>
+</tr>
+<tr>
+<td>FR-ONT-007</td>
+<td>RDF/JSON-LD 등 교환 형식 Export를 지원해야 한다.</td>
+<td style="text-align: right;">Should</td>
+<td>시험</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-edge-case">4.5 Edge Case 추출·검수<a class="headerlink" href="#45-edge-case" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th style="text-align: right;">우선순위</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-EDGE-001</td>
+<td>규칙 위반, 희소 조합, 상태전이 이상, RFM 불확실성, Sim-to-Real Gap을 후보 근거로 사용해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-EDGE-002</td>
+<td>후보는 Episode 내 시작·종료 Timestamp와 Evidence를 가져야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-EDGE-003</td>
+<td>Score 계산식과 가중치는 Version으로 관리해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-EDGE-004</td>
+<td>동일 시간대·유형의 중복 후보를 병합하되 원 Evidence를 보존해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-EDGE-005</td>
+<td>Student Reviewer는 확인, 수정제안, 병합제안, 기각제안을 수행할 수 있어야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-EDGE-006</td>
+<td>Expert Reviewer만 최종 승인·기각·재현요청을 할 수 있어야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>권한시험</td>
+</tr>
+<tr>
+<td>FR-EDGE-007</td>
+<td>모든 상태 변경은 Actor, 시각, 이전·이후 상태, 사유를 기록해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-EDGE-008</td>
+<td>승인 Edge Case는 Ontology Tag와 Risk·Rarity·Reproducibility를 가져야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-EDGE-009</td>
+<td>모델별 False Positive·False Negative 검수 결과를 탐지기 개선 데이터로 축적해야 한다.</td>
+<td style="text-align: right;">Should</td>
+<td>시연</td>
+</tr>
+<tr>
+<td>FR-EDGE-010</td>
+<td>유사 Edge Case와 기존 Recovery Demonstration을 제시해야 한다.</td>
+<td style="text-align: right;">Should</td>
+<td>시연</td>
+</tr>
+<tr>
+<td>FR-EDGE-011</td>
+<td>탐지 Job은 Detector, Code, Model, Parameter, Input Dataset Version을 기록해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+</tbody>
+</table>
+<h3 id="46-mde">4.6 MDE 재현·생성<a class="headerlink" href="#46-mde" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th style="text-align: right;">우선순위</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-MDE-001</td>
+<td>승인 Edge Case로부터 재현 가능한 Scenario Package를 생성해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-MDE-002</td>
+<td>Package는 Asset, Material, Robot, Sensor, Task, 초기상태, Seed Version을 포함해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-MDE-003</td>
+<td>MDE Job은 Queue, 실행, 성공, 실패, 취소, 검수대기 상태를 지원해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-MDE-004</td>
+<td>MDE 출력은 접촉력, Contact Patch, 변형량, 잔류상태, 실패 Event Ground Truth를 저장해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-MDE-005</td>
+<td>동일 Version·Seed·실행환경으로 재실행했을 때 허용오차 내 결과를 재현해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-MDE-006</td>
+<td>승인된 Parameter Range 내에서 물성·형상·Pose·속도·Sensor 조건을 변형 생성해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-MDE-007</td>
+<td>생성 Episode는 원본 Edge Case와 Generation Job을 Parent로 연결해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-MDE-008</td>
+<td>Physics Ground Truth와 외관 증강 데이터의 Source를 구분해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+</tbody>
+</table>
+<h3 id="47-dataset-releaserfm">4.7 Dataset Release·RFM 연계<a class="headerlink" href="#47-dataset-releaserfm" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th style="text-align: right;">우선순위</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-REL-001</td>
+<td>승인 사용자는 Query 결과를 Dataset 후보로 저장해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-REL-002</td>
+<td>Release 전 QC, 권한, 중복, Split Leakage, 필수 Field를 검사해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-REL-003</td>
+<td>Dataset은 Train/Validation/Test Split과 분할 근거를 저장해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-REL-004</td>
+<td>동일 작업자·동일 원천 Episode의 파생물이 서로 다른 Split에 섞이지 않도록 해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-REL-005</td>
+<td>Release는 Manifest, Schema, 통계, License, Checksum, Episode 목록을 포함해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-REL-006</td>
+<td>Release 후 내용 변경을 금지하고 변경 시 새 Version을 생성해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-REL-007</td>
+<td>표준 Field를 보존한 LeRobotDataset 계열 Export를 지원해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-REL-008</td>
+<td>접촉력·변형·물성·Edge Case ID는 확장 Field로 제공해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-RFM-001</td>
+<td>Model Evaluation은 Model Version과 Dataset Release Version을 함께 기록해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-RFM-002</td>
+<td>평가결과에서 실패 Episode와 신규 Edge Case 후보를 역추적해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시연</td>
+</tr>
+<tr>
+<td>FR-RFM-003</td>
+<td>Metric 정의·계산 Code·Threshold를 Version 관리해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+</tbody>
+</table>
+<h3 id="48">4.8 관리·감사<a class="headerlink" href="#48" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th style="text-align: right;">우선순위</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-ADM-001</td>
+<td>OIDC 기반 사용자 인증과 Role/기관/Project 기반 접근통제를 지원해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>보안시험</td>
+</tr>
+<tr>
+<td>FR-ADM-002</td>
+<td>데이터마다 소유기관과 <code>PUBLIC/CONSORTIUM/ORGANIZATION/RESTRICTED</code> 등급을 가져야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ADM-003</td>
+<td>열람·다운로드·승인·반출·정책변경을 감사 Log로 기록해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>검사</td>
+</tr>
+<tr>
+<td>FR-ADM-004</td>
+<td>감사 Log는 일반 사용자가 수정·삭제할 수 없어야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>보안시험</td>
+</tr>
+<tr>
+<td>FR-ADM-005</td>
+<td>반출 제한 데이터의 다운로드는 승인 Workflow를 거쳐야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ADM-006</td>
+<td>관리자는 보존·Archive·삭제 정책을 Project별로 설정할 수 있어야 한다.</td>
+<td style="text-align: right;">Should</td>
+<td>시험</td>
+</tr>
+<tr>
+<td>FR-ADM-007</td>
+<td>삭제는 Soft Delete와 승인된 물리삭제를 구분하고 계보 참조를 검사해야 한다.</td>
+<td style="text-align: right;">Must</td>
+<td>시험</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5">5. 데이터 요구사항<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51-entity">5.1 핵심 Entity<a class="headerlink" href="#51-entity" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>erDiagram
+    ORGANIZATION ||--o{ PROJECT : participates
+    PROJECT ||--o{ FACTORY_CELL : contains
+    FACTORY_CELL ||--o{ EPISODE : generates
+    ROBOT ||--o{ EPISODE : performs
+    TASK ||--o{ EPISODE : defines
+    SCENARIO_VERSION ||--o{ EPISODE : configures
+    EPISODE ||--o{ DATA_STREAM : contains
+    EPISODE ||--o{ EVENT : records
+    EPISODE ||--o{ QUALITY_RESULT : validates
+    EPISODE ||--o{ EDGE_CASE : yields
+    EDGE_CASE ||--o{ EDGE_EVIDENCE : supports
+    EDGE_CASE ||--o{ GENERATION_JOB : triggers
+    GENERATION_JOB ||--o{ EPISODE : generates
+    DATASET_RELEASE ||--o{ DATASET_EPISODE : includes
+    EPISODE ||--o{ DATASET_EPISODE : selected
+    MODEL_VERSION ||--o{ MODEL_EVALUATION : evaluated
+    DATASET_RELEASE ||--o{ MODEL_EVALUATION : uses</code></pre>
+<h3 id="52-table">5.2 필수 Table과 식별자<a class="headerlink" href="#52-table" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>PK</th>
+<th>주요 필드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>organization</td>
+<td>organization_id</td>
+<td>name, type, status</td>
+</tr>
+<tr>
+<td>project</td>
+<td>project_id</td>
+<td>owner, security_policy, retention_policy</td>
+</tr>
+<tr>
+<td>factory_cell</td>
+<td>cell_id</td>
+<td>project_id, site, line, coordinate_frame</td>
+</tr>
+<tr>
+<td>robot</td>
+<td>robot_id</td>
+<td>embodiment, manufacturer, model, controller_version</td>
+</tr>
+<tr>
+<td>sensor</td>
+<td>sensor_id</td>
+<td>modality, model, serial_alias, calibration_version</td>
+</tr>
+<tr>
+<td>task</td>
+<td>task_id</td>
+<td>ontology_term, instruction, required_stream_profile</td>
+</tr>
+<tr>
+<td>asset_version</td>
+<td>asset_version_id</td>
+<td>asset_id, version, uri, semantic_id, license, checksum</td>
+</tr>
+<tr>
+<td>material_profile</td>
+<td>material_profile_id</td>
+<td>version, parameter, unit, uncertainty, evidence_uri</td>
+</tr>
+<tr>
+<td>scenario_version</td>
+<td>scenario_version_id</td>
+<td>task, asset/material/robot/sensor version, seed</td>
+</tr>
+<tr>
+<td>episode</td>
+<td>episode_id</td>
+<td>source, time range, result, QC/review state, parent</td>
+</tr>
+<tr>
+<td>data_stream</td>
+<td>stream_id</td>
+<td>modality, uri, format, rate, time offset, checksum</td>
+</tr>
+<tr>
+<td>event</td>
+<td>event_id</td>
+<td>type, timestamp range, severity, state_before/after</td>
+</tr>
+<tr>
+<td>edge_case</td>
+<td>edge_case_id</td>
+<td>time range, type, scores, status, ontology tags</td>
+</tr>
+<tr>
+<td>generation_job</td>
+<td>job_id</td>
+<td>engine/environment version, parameter set, seed, status</td>
+</tr>
+<tr>
+<td>dataset_release</td>
+<td>dataset_release_id</td>
+<td>version, manifest, schema, split policy, checksum</td>
+</tr>
+<tr>
+<td>model_evaluation</td>
+<td>evaluation_id</td>
+<td>model, dataset, metric version, result</td>
+</tr>
+<tr>
+<td>audit_log</td>
+<td>audit_id</td>
+<td>actor, action, resource, before/after, time, result</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-episode-field">5.3 Episode 필수 Field<a class="headerlink" href="#53-episode-field" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>형식</th>
+<th style="text-align: right;">필수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>episode_id</td>
+<td>UUID</td>
+<td style="text-align: right;">Y</td>
+<td>전역 고유 ID</td>
+</tr>
+<tr>
+<td>project_id</td>
+<td>UUID</td>
+<td style="text-align: right;">Y</td>
+<td>소속 Project</td>
+</tr>
+<tr>
+<td>owner_organization_id</td>
+<td>UUID</td>
+<td style="text-align: right;">Y</td>
+<td>원본 소유기관</td>
+</tr>
+<tr>
+<td>task_id</td>
+<td>UUID</td>
+<td style="text-align: right;">Y</td>
+<td>수행 Task</td>
+</tr>
+<tr>
+<td>source_type</td>
+<td>Code</td>
+<td style="text-align: right;">Y</td>
+<td>REAL/TELEOP/MDE/ISAAC_SIM/GENERATED</td>
+</tr>
+<tr>
+<td>scenario_version_id</td>
+<td>UUID</td>
+<td style="text-align: right;">조건부</td>
+<td>Simulation·재현 데이터는 필수</td>
+</tr>
+<tr>
+<td>robot_id</td>
+<td>UUID</td>
+<td style="text-align: right;">Y</td>
+<td>로봇 기준정보</td>
+</tr>
+<tr>
+<td>started_at/ended_at</td>
+<td>UTC timestamp</td>
+<td style="text-align: right;">Y</td>
+<td>수집 시간범위</td>
+</tr>
+<tr>
+<td>result</td>
+<td>Code</td>
+<td style="text-align: right;">Y</td>
+<td>SUCCESS/FAILURE/ABORTED/UNKNOWN</td>
+</tr>
+<tr>
+<td>quality_status</td>
+<td>Code</td>
+<td style="text-align: right;">Y</td>
+<td>PENDING/VALID/WARNING/REJECTED</td>
+</tr>
+<tr>
+<td>review_status</td>
+<td>Code</td>
+<td style="text-align: right;">Y</td>
+<td>UNREVIEWED/STUDENT_REVIEWED/EXPERT_APPROVED/REJECTED</td>
+</tr>
+<tr>
+<td>parent_episode_id</td>
+<td>UUID</td>
+<td style="text-align: right;">조건부</td>
+<td>파생·생성 데이터의 원천</td>
+</tr>
+<tr>
+<td>schema_version</td>
+<td>SemVer</td>
+<td style="text-align: right;">Y</td>
+<td>Manifest·Dataset Schema</td>
+</tr>
+<tr>
+<td>raw_manifest_uri</td>
+<td>S3 URI</td>
+<td style="text-align: right;">Y</td>
+<td>원본 Manifest</td>
+</tr>
+<tr>
+<td>security_level</td>
+<td>Code</td>
+<td style="text-align: right;">Y</td>
+<td>접근 등급</td>
+</tr>
+<tr>
+<td>checksum</td>
+<td>SHA-256</td>
+<td style="text-align: right;">Y</td>
+<td>Manifest 또는 Package Hash</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54">5.4 상태 전이<a class="headerlink" href="#54" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; REGISTERED
+    REGISTERED --&gt; UPLOADING
+    UPLOADING --&gt; UPLOADED
+    UPLOADING --&gt; UPLOAD_FAILED
+    UPLOAD_FAILED --&gt; UPLOADING
+    UPLOADED --&gt; QC_RUNNING
+    QC_RUNNING --&gt; VALID
+    QC_RUNNING --&gt; WARNING
+    QC_RUNNING --&gt; REJECTED
+    WARNING --&gt; VALID: 승인
+    REJECTED --&gt; UPLOADING: 보완 수집
+    VALID --&gt; REVIEW_READY
+    REVIEW_READY --&gt; RELEASED: Dataset 승인</code></pre>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; CANDIDATE
+    CANDIDATE --&gt; STUDENT_CONFIRMED
+    CANDIDATE --&gt; STUDENT_REJECTED
+    STUDENT_CONFIRMED --&gt; EXPERT_APPROVED
+    STUDENT_CONFIRMED --&gt; REWORK_REQUIRED
+    STUDENT_CONFIRMED --&gt; REJECTED
+    REWORK_REQUIRED --&gt; STUDENT_CONFIRMED
+    EXPERT_APPROVED --&gt; REPRODUCTION_REQUESTED
+    REPRODUCTION_REQUESTED --&gt; REPRODUCED
+    REPRODUCTION_REQUESTED --&gt; REPRODUCTION_FAILED</code></pre>
+<h3 id="55-object-key">5.5 Object Key 규칙<a class="headerlink" href="#55-object-key" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>s3://{bucket}/projects/{project_id}/raw/{source_type}/{episode_id}/...
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>s3://{bucket}/projects/{project_id}/derived/{episode_id}/{pipeline_version}/...
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>s3://{bucket}/projects/{project_id}/assets/{asset_id}/{version}/...
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>s3://{bucket}/projects/{project_id}/scenarios/{scenario_version_id}/...
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>s3://{bucket}/projects/{project_id}/datasets/{release_id}/{version}/...
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>s3://{bucket}/projects/{project_id}/models/{model_id}/{version}/...
+</code></pre></div>
+<p>Object Key는 표시용 이름이 아니라 불변 ID와 Version을 사용해야 하며, 사람 친화적 이름은 DB Metadata로
+관리합니다.</p>
+<h3 id="56-manifest-schema">5.6 Manifest 최소 Schema<a class="headerlink" href="#56-manifest-schema" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;episode_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;project_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">&quot;owner_organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">&quot;source_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TELEOP&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">&quot;task_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">&quot;robot_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">&quot;scenario_version_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">&quot;started_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-10-25T01:00:00Z&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">&quot;ended_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-10-25T01:01:12Z&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="nt">&quot;streams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;front_rgb&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">      </span><span class="nt">&quot;modality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RGB&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;video/front.mp4&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mp4&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">      </span><span class="nt">&quot;fps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">      </span><span class="nt">&quot;checksum&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256:...&quot;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;joint_state&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">      </span><span class="nt">&quot;modality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JOINT_STATE&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;signals/joint_state.parquet&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">      </span><span class="nt">&quot;sampling_rate_hz&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">      </span><span class="nt">&quot;checksum&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256:...&quot;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="57">5.7 계보·버전 규칙<a class="headerlink" href="#57" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Schema, Detector, Ontology, QC Rule, Asset, Material, Scenario, Dataset, Model은 Version을 갖는다.</li>
+<li>코드 Release는 Git Commit SHA와 Container Image Digest를 기록한다.</li>
+<li>Simulation은 Engine Version, GPU/Driver, Physics Step, Seed, Parameter Set을 기록한다.</li>
+<li>Dataset Release는 Episode 목록과 파일 Hash를 포함한 불변 Manifest를 갖는다.</li>
+<li>Metadata 수정은 현재 값뿐 아니라 변경 전·후와 변경자를 감사 Log에 남긴다.</li>
+</ul>
+<hr />
+<h2 id="6">6. 외부 인터페이스 요구사항<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Interface</th>
+<th>요구사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IF-API-001</td>
+<td>REST/OpenAPI</td>
+<td>API는 Versioned Path(<code>/api/v1</code>)와 OpenAPI 명세를 제공해야 한다.</td>
+</tr>
+<tr>
+<td>IF-AUTH-001</td>
+<td>OIDC/OAuth 2.0</td>
+<td>사용자 인증은 기관 SSO 또는 독립 IdP와 연동해야 한다.</td>
+</tr>
+<tr>
+<td>IF-OBJ-001</td>
+<td>S3 API</td>
+<td>Payload Upload·Download는 S3 호환 API와 서명 URL을 사용해야 한다.</td>
+</tr>
+<tr>
+<td>IF-ROS-001</td>
+<td>ROS 2/MCAP</td>
+<td>ROS Topic 원본을 MCAP으로 수집하고 Topic·Schema Index를 등록해야 한다.</td>
+</tr>
+<tr>
+<td>IF-MDE-001</td>
+<td>MDE Job API</td>
+<td>Scenario Package, Parameter Range, Seed, Resource Profile을 입력받아야 한다.</td>
+</tr>
+<tr>
+<td>IF-MDE-002</td>
+<td>MDE Result</td>
+<td>Ground Truth, Event, Log, Output Episode Manifest를 반환해야 한다.</td>
+</tr>
+<tr>
+<td>IF-ASSET-001</td>
+<td>Digital Twin</td>
+<td>USD/GLB, Coordinate Frame, Scale, Semantic ID, Collision, License Metadata를 교환해야 한다.</td>
+</tr>
+<tr>
+<td>IF-RFM-001</td>
+<td>Dataset Export</td>
+<td>LeRobot 표준 Field와 제조 확장 Field를 분리해 제공해야 한다.</td>
+</tr>
+<tr>
+<td>IF-RFM-002</td>
+<td>Evaluation</td>
+<td>Model Version, Run ID, Metric, Failure Episode를 수신해야 한다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="61-api">6.1 주요 API 자원<a class="headerlink" href="#61-api" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>POST   /api/v1/episodes
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>POST   /api/v1/episodes/{id}/upload-complete
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>GET    /api/v1/episodes
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>GET    /api/v1/episodes/{id}
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>GET    /api/v1/episodes/{id}/timeline
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>GET    /api/v1/episodes/{id}/streams/{stream_id}/signed-url
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>POST   /api/v1/edge-cases/detection-jobs
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>GET    /api/v1/edge-cases
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>PATCH  /api/v1/edge-cases/{id}/review
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>POST   /api/v1/edge-cases/{id}/reproduction-jobs
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>POST   /api/v1/generation-jobs
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>GET    /api/v1/generation-jobs/{id}
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>POST   /api/v1/dataset-releases
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>POST   /api/v1/dataset-releases/{id}/validate
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>POST   /api/v1/dataset-releases/{id}/publish
+</code></pre></div>
+<hr />
+<h2 id="7">7. 비기능 요구사항<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>아래 수치는 Pilot 기준선 제안이며 실증 인프라 Benchmark 후 v1.0에서 확정합니다.</p>
+<h3 id="71">7.1 성능·확장성<a class="headerlink" href="#71" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>목표</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-PERF-001</td>
+<td>Metadata 단순 검색 응답</td>
+<td>Pilot 데이터 기준 p95 2초 이내</td>
+<td>부하시험</td>
+</tr>
+<tr>
+<td>NFR-PERF-002</td>
+<td>Episode 상세 Metadata 응답</td>
+<td>p95 2초 이내</td>
+<td>부하시험</td>
+</tr>
+<tr>
+<td>NFR-PERF-003</td>
+<td>영상 재생 시작</td>
+<td>내부망·Preview 기준 p95 3초 이내</td>
+<td>부하시험</td>
+</tr>
+<tr>
+<td>NFR-PERF-004</td>
+<td>업로드</td>
+<td>Multipart와 중단 후 재개 지원</td>
+<td>장애시험</td>
+</tr>
+<tr>
+<td>NFR-PERF-005</td>
+<td>동시 사용자</td>
+<td>Pilot 30명, Production TBC</td>
+<td>부하시험</td>
+</tr>
+<tr>
+<td>NFR-PERF-006</td>
+<td>용량</td>
+<td>연간 Episode·평균 크기·복제계수 기반 산정, TBC</td>
+<td>용량분석</td>
+</tr>
+<tr>
+<td>NFR-PERF-007</td>
+<td>수평 확장</td>
+<td>API·Worker는 Stateless 확장 가능해야 함</td>
+<td>설계검사</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72">7.2 데이터 무결성·재현성<a class="headerlink" href="#72" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>목표</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-DATA-001</td>
+<td>수집 파일 Checksum 검증률</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>NFR-DATA-002</td>
+<td>Release Manifest 포함 파일 Hash</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>NFR-DATA-003</td>
+<td>영상–센서 정렬 허용오차</td>
+<td>Profile별 설정, 기본 33.3 ms 이하</td>
+</tr>
+<tr>
+<td>NFR-DATA-004</td>
+<td>MDE 재현 허용오차</td>
+<td>지표별 Baseline 시험으로 TBC</td>
+</tr>
+<tr>
+<td>NFR-DATA-005</td>
+<td>원본 Object 덮어쓰기</td>
+<td>0건</td>
+</tr>
+<tr>
+<td>NFR-DATA-006</td>
+<td>승인·생성·학습 계보 연결률</td>
+<td>Release 포함 데이터 100%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73">7.3 가용성·복구<a class="headerlink" href="#73" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+<th>Pilot 목표</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-AVL-001</td>
+<td>계획정지 제외 운영시간 가용성</td>
+<td>99.5%/월, Production TBC</td>
+</tr>
+<tr>
+<td>NFR-AVL-002</td>
+<td>Metadata DB RPO</td>
+<td>24시간 이하, Production TBC</td>
+</tr>
+<tr>
+<td>NFR-AVL-003</td>
+<td>Metadata DB RTO</td>
+<td>4시간 이하, Production TBC</td>
+</tr>
+<tr>
+<td>NFR-AVL-004</td>
+<td>Object Storage 복구</td>
+<td>Versioning/Replication 정책에 따라 TBC</td>
+</tr>
+<tr>
+<td>NFR-AVL-005</td>
+<td>Backup 복원시험</td>
+<td>분기 1회 이상</td>
+</tr>
+</tbody>
+</table>
+<h3 id="74">7.4 보안·개인정보<a class="headerlink" href="#74" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-SEC-001</td>
+<td>전 구간 TLS 1.2 이상을 적용해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-002</td>
+<td>저장 데이터는 플랫폼이 지원하는 서버측 암호화를 적용해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-003</td>
+<td>서명 URL의 기본 유효기간은 15분 이내이며 정책으로 단축할 수 있어야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-004</td>
+<td>최소권한 원칙과 기관·Project·Role·데이터 등급을 함께 평가해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-005</td>
+<td>학생·작업자 식별자는 가명화하고 원 식별정보와 분리해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-006</td>
+<td>Secret은 코드·Manifest·Log에 저장하지 않고 Secret Store로 관리해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-007</td>
+<td>관리자·반출승인자 계정에 다중요소 인증을 적용해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-008</td>
+<td>감사 Log 보존기간과 접근자는 데이터 거버넌스 정책으로 확정해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-009</td>
+<td>취약점 Scan 결과 Critical은 Release 전 0건이어야 한다.</td>
+</tr>
+<tr>
+<td>NFR-SEC-010</td>
+<td>제조 원본 데이터는 승인 없이 공용 AI 서비스로 전송하지 않아야 한다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="75">7.5 유지보수·관측성<a class="headerlink" href="#75" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>요구사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-MNT-001</td>
+<td>API, DB Migration, Schema는 자동시험과 Version을 가져야 한다.</td>
+</tr>
+<tr>
+<td>NFR-MNT-002</td>
+<td>서비스 Log는 Correlation ID, Episode ID, Job ID를 포함해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-MNT-003</td>
+<td>Metric은 API 지연, Error율, Queue 길이, Job 시간, Storage 사용량을 포함해야 한다.</td>
+</tr>
+<tr>
+<td>NFR-MNT-004</td>
+<td>분산 Job은 실행환경·입력·출력·오류를 추적할 수 있어야 한다.</td>
+</tr>
+<tr>
+<td>NFR-MNT-005</td>
+<td>장애 Alert는 담당자·심각도·대응 Runbook과 연결되어야 한다.</td>
+</tr>
+<tr>
+<td>NFR-MNT-006</td>
+<td>DB Migration은 순방향과 Rollback 또는 Roll-forward 절차를 제공해야 한다.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8">8. 업무 규칙<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>규칙</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BR-RAW-001</td>
+<td>Raw Object는 교체하지 않고 보완 수집 시 새 Episode 또는 새 Object Version을 만든다.</td>
+</tr>
+<tr>
+<td>BR-EDGE-001</td>
+<td>자동 탐지 결과는 <code>CANDIDATE</code>이며 Expert 승인 전 Gold Label로 사용할 수 없다.</td>
+</tr>
+<tr>
+<td>BR-EDGE-002</td>
+<td>학생은 자신이 직접 생성한 Episode의 최종 전문가 승인을 수행할 수 없다.</td>
+</tr>
+<tr>
+<td>BR-MDE-001</td>
+<td>Material Parameter가 실측인지 추정인지 출처를 구분해야 한다.</td>
+</tr>
+<tr>
+<td>BR-MDE-002</td>
+<td>동일 Edge Case에서 생성한 파생 Episode는 원본과 Dataset Split을 공유한다.</td>
+</tr>
+<tr>
+<td>BR-REL-001</td>
+<td>RELEASED Dataset은 수정할 수 없고 변경 시 새 Version을 생성한다.</td>
+</tr>
+<tr>
+<td>BR-REL-002</td>
+<td>권한·License가 다른 데이터를 하나의 Release에 포함할 경우 가장 제한적인 정책을 적용한다.</td>
+</tr>
+<tr>
+<td>BR-SEC-001</td>
+<td>데이터 소유기관의 반출 금지 조건은 Platform 관리자도 우회할 수 없다.</td>
+</tr>
+<tr>
+<td>BR-AUD-001</td>
+<td>승인·기각·반출·삭제 행위는 사유 없이 완료할 수 없다.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9">9. 인수 기준과 추적성<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h3 id="91-end-to-end">9.1 End-to-End 인수 시나리오<a class="headerlink" href="#91-end-to-end" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>인수 시나리오</th>
+<th>성공 기준</th>
+<th>연결 요구사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC-E2E-001</td>
+<td>실물/Teleoperation Episode 등록</td>
+<td>Manifest·Payload 등록, Checksum·QC 완료, Portal 재생</td>
+<td>FR-ING, FR-QC, FR-CAT</td>
+</tr>
+<tr>
+<td>AC-E2E-002</td>
+<td>Edge Case 후보 검수</td>
+<td>자동 후보가 Timeline에 표시되고 학생·전문가 이력이 남음</td>
+<td>FR-EDGE, FR-ADM</td>
+</tr>
+<tr>
+<td>AC-E2E-003</td>
+<td>MDE 재현</td>
+<td>승인 Edge Case에서 Scenario Package 생성 후 결과 Episode 계보 연결</td>
+<td>FR-MDE</td>
+</tr>
+<tr>
+<td>AC-E2E-004</td>
+<td>조건 변형 생성</td>
+<td>Parameter 범위와 Seed를 기록한 다수 파생 Episode 생성</td>
+<td>FR-MDE-006~008</td>
+</tr>
+<tr>
+<td>AC-E2E-005</td>
+<td>Dataset Release</td>
+<td>QC·권한·Split 검사 후 불변 Manifest와 LeRobot Export 생성</td>
+<td>FR-REL</td>
+</tr>
+<tr>
+<td>AC-E2E-006</td>
+<td>RFM Feedback</td>
+<td>평가 실패 Episode가 신규 후보로 환류되고 Model·Dataset Version 추적</td>
+<td>FR-RFM</td>
+</tr>
+<tr>
+<td>AC-SEC-001</td>
+<td>기관 격리</td>
+<td>타 기관 Restricted Episode 검색·재생·URL 발급 차단</td>
+<td>FR-CAT-003, FR-ADM</td>
+</tr>
+<tr>
+<td>AC-REC-001</td>
+<td>Backup 복원</td>
+<td>격리환경에서 DB와 Release Manifest 복원 성공</td>
+<td>NFR-AVL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-definition-of-done">9.2 Definition of Done<a class="headerlink" href="#92-definition-of-done" title="Permanent link">&para;</a></h3>
+<p>하나의 요구사항은 다음을 모두 만족해야 완료로 판정합니다.</p>
+<ul>
+<li>요구사항 ID가 Issue와 Pull Request에 연결됨</li>
+<li>설계 또는 ADR이 필요한 경우 승인됨</li>
+<li>Unit·Integration·권한·오류경로 시험이 자동화됨</li>
+<li>API/Schema 문서와 Migration이 갱신됨</li>
+<li>운영 Metric·Log·Alert가 추가됨</li>
+<li>보안·개인정보 영향이 검토됨</li>
+<li>Product Owner 또는 지정 검수자의 인수 결과가 기록됨</li>
+</ul>
+<hr />
+<h2 id="10">10. 기준선 확정 전 미결항목<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>미결항목</th>
+<th>결정 주체</th>
+<th>결정 시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TBC-001</td>
+<td>Pilot 대상 Robot·Task·Sensor 구성</td>
+<td>컨소시엄 기술위원회</td>
+<td>요구사항 기준선 전</td>
+</tr>
+<tr>
+<td>TBC-002</td>
+<td>연간 Episode 수, 평균 크기, 보존기간, 복제계수</td>
+<td>데이터 거버넌스/인프라</td>
+<td>상세설계 전</td>
+</tr>
+<tr>
+<td>TBC-003</td>
+<td>기관별 데이터 등급·반출승인 절차</td>
+<td>데이터 소유기관/PMO</td>
+<td>Pilot 수집 전</td>
+</tr>
+<tr>
+<td>TBC-004</td>
+<td>Production 동시사용자·가용성·RPO/RTO</td>
+<td>운영기관</td>
+<td>Production 설계 전</td>
+</tr>
+<tr>
+<td>TBC-005</td>
+<td>Edge Score 가중치와 승인 Threshold</td>
+<td>한성대·RFM·수요기업</td>
+<td>Detector 검증 전</td>
+</tr>
+<tr>
+<td>TBC-006</td>
+<td>MDE 지표별 재현 허용오차</td>
+<td>한성대·실증기관</td>
+<td>Calibration Baseline 후</td>
+</tr>
+<tr>
+<td>TBC-007</td>
+<td>Dataset License와 외부 공개범위</td>
+<td>컨소시엄/IP 담당</td>
+<td>Release 전</td>
+</tr>
+<tr>
+<td>TBC-008</td>
+<td>개인정보·연구윤리 검토 필요 범위</td>
+<td>한성대 담당부서</td>
+<td>학생 수집 전</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11_1">11. 문서 승인란<a class="headerlink" href="#11_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>소속/성명</th>
+<th>검토 결과</th>
+<th>일자</th>
+<th>서명/승인 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>작성</td>
+<td>한성대학교 PARC Lab</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>데이터 검토</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MDE 검토</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RFM 검토</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>보안·IP 검토</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>최종 승인</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_1">관련 문서<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../sdp/">SDP — 소프트웨어 개발계획서</a></strong></li>
+<li><a href="../">대표 프로젝트 페이지</a></li>
+<li><a href="../technical/">기술 상세</a></li>
+</ul>
+<p><a href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 대표 프로젝트로</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 PARC Lab · Hansung University
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/parclab-hsu" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:kblee@hansung.ac.kr" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hansung.ac.kr" target="_blank" rel="noopener" title="한성대학교" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-prepare.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-render.js"></script>
+      
+    
+  </body>
+</html>
