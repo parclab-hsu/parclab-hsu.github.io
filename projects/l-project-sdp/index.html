@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2071,7 +2071,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>B9</td>
 <td><strong>경로 생성기가 최소 선회반경을 모른다</strong></td>
-<td>조향 정책(FR-006)으로 연속 선회 최소 반경 1.81 m 가 생겼는데, <code>planner_server</code> 는 NavFn(격자)이라 그보다 급한 곡률의 경로를 낸다. 추종 중에는 보드 포락선이 요레이트를 낮춰 <strong>언더턴 → 방향 오차 0.5 rad 초과 → 제자리 회전 보정</strong> 순으로 간다(주행은 되나 매끄럽지 않다). <code>regulated_linear_scaling_min_radius</code> 로는 못 막는다 — 그건 속도를 줄이는 설정이고 우리 최소 반경은 조향각으로 정해져 <strong>속도와 무관</strong>하다. 2026-09-16 결정: 지금은 그대로 두고 <strong>Nav2 실기 주행 때 Smac Hybrid-A*(<code>minimum_turning_radius: 1.81</code>, DUBIN)와 비교</strong>해 정한다</td>
+<td>조향 정책(FR-006)으로 연속 선회 최소 반경 1.81 m 가 생겼는데, <code>planner_server</code> 는 NavFn(격자)이라 그보다 급한 곡률의 경로를 낸다. 추종 중에는 보드 포락선이 요레이트를 낮춰 <strong>언더턴 → 방향 오차 0.5 rad 초과 → 제자리 회전 보정</strong> 순으로 간다(주행은 되나 매끄럽지 않다). <code>regulated_linear_scaling_min_radius</code> 로는 못 막는다 — 그건 속도를 줄이는 설정이고 우리 최소 반경은 조향각으로 정해져 <strong>속도와 무관</strong>하다. 2026-09-16 결정: 지금은 그대로 두고 **Nav2 실기 주행 때 Smac Hybrid-A*(<code>minimum_turning_radius: 1.81</code>, DUBIN)와 비교**해 정한다</td>
 </tr>
 </tbody>
 </table>
@@ -2403,7 +2403,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 터미널 2: 제어·상태 노드 (sim 모드)</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ros2<span class="w"> </span>launch<span class="w"> </span>hils_rover_control<span class="w"> </span>rover_control.launch.py<span class="w"> </span>mode:<span class="o">=</span>sim
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 터미널 3: Navigation 또는 수동 명령</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/msg/Twist<span class="w"> </span><span class="s1">&#39;{linear: {x: 0.5}, angular: {z: 0.2}}&#39;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/msg/Twist<span class="w"> </span><span class="s1">'{linear: {x: 0.5}, angular: {z: 0.2}}'</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 확인: /sim/axes_cmd 구동 1.89/3.02 rad/s·조향 ±21.9/13.5° → /odom 0.5/0.2 복원</span>
 </code></pre></div>
 <h3 id="52-can-sil">5.2 CAN 레벨 SIL (실물 없음 — 에뮬레이터 + 벤치 도구)<a class="headerlink" href="#52-can-sil" title="Permanent link">&para;</a></h3>
@@ -2529,10 +2529,10 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../javascripts/mermaid-prepare.js"></script>
       

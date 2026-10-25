@@ -1,0 +1,1460 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PARC Lab · Physical AI Real-Time Control for Mobility & Robotics · 한성대학교 미래모빌리티학과">
+      
+      
+        <meta name="author" content="KyungBok Lee">
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/projects/manufacturing-data-factory-rfm/odd-sotif/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>제조 ODD·SOTIF Episode 데이터 시스템 - PARC Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#oddsotif-episode" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../.." title="PARC Lab" class="md-header__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PARC Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              제조 ODD·SOTIF Episode 데이터 시스템
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연구분야
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  프로젝트
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../people/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  구성원
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  논문·성과
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../courses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  강의
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../news/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  소식
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연락처
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PARC Lab" class="md-nav__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    PARC Lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구분야
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../people/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    구성원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    논문·성과
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소식
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연락처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#oddsotif-episode_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        왜 ODD·SOTIF Episode가 필요한가
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        전체 시스템 아키텍처
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="전체 시스템 아키텍처">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Site 분리 원칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oddm-odd-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        제조 ODD(M-ODD) 9개 차원
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sotif-episode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SOTIF Episode 인과사슬
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#episode-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Episode Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Episode Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        저장 원칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Portal 주요 화면
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computing 기준안
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computing 기준안">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lg-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LG전자 Production
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hsu-pac-pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        한성대학교 HSU-PAC Pilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        구축 순서
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="구축 순서">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#end-to-end-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        첫 번째 End-to-End Demo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        한성대학교의 기여
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        상세 개발 문서
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="oddsotif-episode">제조 ODD·SOTIF Episode 데이터 시스템<a class="headerlink" href="#oddsotif-episode" title="Permanent link">&para;</a></h1>
+<p><span class="twemoji" style="color:#e0a800"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>LG전자 Production × 한성대 HSU-PAC Pilot</strong> · ODD-aware Safety Evidence Data Platform</p>
+<div class="admonition abstract">
+<p class="admonition-title">한눈에 보기</p>
+<p>제조 로봇이 <strong>어떤 조건에서 정상 동작하고, 어떤 경계조건과 기능불충분에서 실패·위험행동을
+보이는지</strong> Episode 단위로 저장·분석·재현하는 데이터 시스템입니다.</p>
+<p>실제 Robot·Teleoperation·Digital Twin·Manufacturing Deformation Engine(MDE)·RFM 평가 데이터를
+동일 시간축으로 정렬하고, 제조 ODD(M-ODD) 조건과 SOTIF 분석결과를 연결합니다. LG전자에는
+Production급 HA·대용량 인프라를, 한성대 HSU-PAC에는 교육·연구·Pilot 환경을 두고 승인된
+Dataset·Algorithm Package만 양 Site 사이에서 교환합니다.</p>
+</div>
+<blockquote>
+<p><strong>핵심 목표</strong> — <code>조건을 저장하는 ODD</code>와 <code>실패 원인을 설명하는 SOTIF</code>, <code>재현·생성하는 MDE</code>,
+<code>학습·평가하는 RFM</code>을 하나의 Versioned Episode 계보로 연결합니다.</p>
+</blockquote>
+<hr />
+<h2 id="oddsotif-episode_1">왜 ODD·SOTIF Episode가 필요한가<a class="headerlink" href="#oddsotif-episode_1" title="Permanent link">&para;</a></h2>
+<p>같은 Robot과 Model도 조명, 가림, 부품 공차, 물성, 접촉상태, 작업자 동선, Network 지연,
+Calibration 상태에 따라 결과가 달라집니다. 성공·실패 Label만 저장하면 원인을 다시 찾거나 같은
+조건을 재현하기 어렵습니다.</p>
+<p>본 시스템은 각 Episode에 다음 질문의 답을 함께 저장합니다.</p>
+<ol>
+<li><strong>어디서 무엇을 수행했는가?</strong> — Site·Cell·Task·Robot·Tool·Object</li>
+<li><strong>실제 조건은 무엇이었는가?</strong> — 물성·조명·가림·사람·Sensor·Network·Model</li>
+<li><strong>승인된 ODD 안이었는가?</strong> — <code>IN / BOUNDARY / OUT / UNRESOLVED</code></li>
+<li><strong>무엇이 Trigger가 되었는가?</strong> — 기능불충분·상태전이·환경·합리적으로 예견 가능한 오사용</li>
+<li><strong>어떤 위험행동과 결과가 발생했는가?</strong> — Near Miss·Intervention·Safety Stop·Failure</li>
+<li><strong>어떻게 완화하고 다시 검증했는가?</strong> — Model·Rule·ODD 축소·Fallback·MDE 재현</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">표준 적용범위</p>
+<p><a href="https://www.iso.org/standard/77490.html">ISO 21448:2022</a>와
+<a href="https://www.iso.org/standard/78952.html">ISO 34503:2023</a>는 도로차량용 표준입니다. 본 시스템은
+두 표준의 <strong>기능불충분–Trigger–Validation 논리와 계층형 ODD 표현 방법을 제조 로봇 데이터
+엔지니어링에 참조 적용</strong>하며 해당 표준 인증을 직접 주장하지 않습니다.</p>
+<p>산업용 Robot과 Cell 안전은 <a href="https://www.iso.org/standard/73933.html">ISO 10218-1:2025</a>,
+<a href="https://www.iso.org/standard/73934.html">ISO 10218-2:2025</a>를 우선 준거로 사용합니다.</p>
+</div>
+<hr />
+<h2 id="_1">전체 시스템 아키텍처<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph LG["LG전자 Production Zone"]
+        CELL["Robot Cell·Sensor"] --&gt; EDGE["Cell Edge Gateway&lt;br/&gt;MCAP·Buffer·Clock"]
+        EDGE --&gt; ING["Ingest·QC·ODD 평가"]
+        ING --&gt; OBJ["S3 Object Storage&lt;br/&gt;Raw·Derived·Release"]
+        ING --&gt; DB["PostgreSQL HA&lt;br/&gt;ODD·SOTIF·계보"]
+        DB --&gt; PORTAL["Secure Data Portal"]
+        GPU["MDE·RFM GPU Cluster"] --- OBJ
+    end
+
+    subgraph X["승인 교환구간"]
+        PKG["Dataset / Algorithm Package&lt;br/&gt;정책·Manifest·Hash·Signature"]
+        VERIFY["비식별·검역·승인"]
+    end
+
+    subgraph HSU["한성대 HSU-PAC Pilot Zone"]
+        HDB["Pilot PostgreSQL"] --&gt; HPORTAL["Research Portal"]
+        HOBJ["NAS·S3 Storage"] --- HDB
+        HGPU["RTX PRO 6000 Server&lt;br/&gt;DGX Spark ×5"] --- HOBJ
+        LAB["Robot·Teleoperation Lab"] --&gt; HEDGE["Lab Edge Gateway"]
+        HEDGE --&gt; HOBJ
+    end
+
+    OBJ --&gt;|"승인 Dataset만"| PKG --&gt; VERIFY --&gt; HOBJ
+    HOBJ --&gt;|"Ontology·Detector·MDE 결과"| PKG</code></pre>
+<h3 id="site">Site 분리 원칙<a class="headerlink" href="#site" title="Permanent link">&para;</a></h3>
+<ul>
+<li>LG Production 원본 DB를 한성대 DB와 직접 복제하지 않습니다.</li>
+<li>제조 원본 영상·Layout·실측 물성은 기본적으로 LG Site에 보관합니다.</li>
+<li>한성대에는 승인된 합성·비식별·제한 Dataset만 전달합니다.</li>
+<li>한성대에서 개발한 Ontology·Detector·MDE·Model Package는 시험증적과 함께 LG로 전달합니다.</li>
+<li>모든 Package는 Version, License, Manifest, Checksum, Signature와 이용조건을 가집니다.</li>
+</ul>
+<hr />
+<h2 id="oddm-odd-9">제조 ODD(M-ODD) 9개 차원<a class="headerlink" href="#oddm-odd-9" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>차원</th>
+<th>저장하는 조건</th>
+<th>대표 Edge Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Site·Cell</td>
+<td>공장, Line, Cell, Zone, Layout, 좌표계, 바닥</td>
+<td>Zone 침범, Layout 변경</td>
+</tr>
+<tr>
+<td>Process·Task</td>
+<td>공정, 단계, 순서, Cycle Time, 성공·실패 정의</td>
+<td>단계 누락, 시간초과</td>
+</tr>
+<tr>
+<td>Robot·Tool</td>
+<td>Robot, Controller, Payload, Gripper, TCP, Firmware</td>
+<td>Payload 초과, TCP 오차</td>
+</tr>
+<tr>
+<td>Object·Material</td>
+<td>형상, 공차, 질량, 마찰, 강성, 변형·복원</td>
+<td>미끄러짐, 영구변형</td>
+</tr>
+<tr>
+<td>Sensor·Perception</td>
+<td>FoV, 해상도, Calibration, 가림, Noise</td>
+<td>가림, Calibration Drift</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>조도, 반사, 온습도, 먼지, 진동, 바닥마찰</td>
+<td>역광, 반사, 진동</td>
+</tr>
+<tr>
+<td>Human·Dynamic Agent</td>
+<td>작업자·Forklift·다른 Robot의 위치·속도</td>
+<td>비정상 접근, 동선 교차</td>
+</tr>
+<tr>
+<td>Control·Compute·Network</td>
+<td>Control Rate, Latency, Jitter, GPU·Model</td>
+<td>Packet Loss, 추론지연</td>
+</tr>
+<tr>
+<td>Operation·Policy</td>
+<td>Mode, Shift, Maintenance, Fallback, 금지조건</td>
+<td>잘못된 Mode, 미점검</td>
+</tr>
+</tbody>
+</table>
+<p>Episode 전체를 하나의 판정으로 끝내지 않고, 시간구간별로 ODD 관측값과 판정을 저장합니다.
+예를 들어 정상 접근 중 Camera 가림이 증가하면 같은 Episode 안에서 <code>IN → BOUNDARY → OUT</code>으로
+변하는 구간을 영상·Robot Signal 위에 표시할 수 있습니다.</p>
+<hr />
+<h2 id="sotif-episode">SOTIF Episode 인과사슬<a class="headerlink" href="#sotif-episode" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    ODD["M-ODD 조건"] --&gt; TRIGGER["Trigger Condition"]
+    INSUFF["기능불충분&lt;br/&gt;Specification / Performance"] --&gt; BEHAVIOR["Hazardous Behavior"]
+    TRIGGER --&gt; BEHAVIOR
+    BEHAVIOR --&gt; HAZARD["Hazard·Consequence"]
+    HAZARD --&gt; RISK["Risk 평가"]
+    RISK --&gt; MIT["Mitigation"]
+    MIT --&gt; RETEST["동일 Scenario 재검증"]
+    RETEST --&gt; EVIDENCE["Evidence·잔여 Risk"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>데이터 예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기능불충분</td>
+<td>투명·반사부품 Pose 인식 불안정, 유연물체 물성 미반영</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>역광+가림, 낮은 강성+높은 마찰, Network Jitter</td>
+</tr>
+<tr>
+<td>위험행동</td>
+<td>잘못된 파지, 비정상 힘 증가, 정지거리 증가</td>
+</tr>
+<tr>
+<td>Hazard</td>
+<td>부품 낙하, 설비 충돌, 작업자 접근 중 비정상 이동</td>
+</tr>
+<tr>
+<td>Mitigation</td>
+<td>Model 개선, ODD 축소, Sensor 추가, Fallback·속도 제한</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>실물 재시험, MDE Replay, Teleoperation Recovery, RFM 평가</td>
+</tr>
+</tbody>
+</table>
+<p>자동 Detector는 후보를 추천하지만, 최종 Case·Risk·Mitigation 판정은 지정된 전문가가 승인합니다.</p>
+<hr />
+<h2 id="episode-package">Episode Package<a class="headerlink" href="#episode-package" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Episode
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├─ Raw: MCAP·MP4·Depth·Point Cloud
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├─ Signals: Robot State·Action·F/T·Tactile·Network
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├─ Context: Task·Robot·Asset·Material·Model Version
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├─ ODD Snapshot: 실제 조건·허용범위·구간별 판정
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├─ Events: Intervention·Safety Stop·Failure·Recovery
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├─ SOTIF Case: 기능불충분·Trigger·Hazard·Mitigation
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├─ Provenance: Parent·Pipeline·Code·Container·Seed
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└─ Evidence: 검수·시험·MDE·RFM 결과
+</code></pre></div>
+<h3 id="_2">저장 원칙<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>데이터</th>
+<th>저장소</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MP4·MCAP·Parquet·USD·Model</td>
+<td>S3 호환 Object Storage</td>
+<td>대용량·Versioning·Streaming</td>
+</tr>
+<tr>
+<td>Episode·ODD·SOTIF·Workflow</td>
+<td>PostgreSQL</td>
+<td>관계·Transaction·검색·감사</td>
+</tr>
+<tr>
+<td>Cell Zone·Robot Workspace</td>
+<td>PostGIS</td>
+<td>공간조건·위치·구간 검색</td>
+</tr>
+<tr>
+<td>유사 Scene·Case Embedding</td>
+<td>pgvector</td>
+<td>유사 실패·Recovery 검색</td>
+</tr>
+<tr>
+<td>Model Run·Metric</td>
+<td>MLflow/동등 Registry</td>
+<td>Dataset–Model–평가 계보</td>
+</tr>
+</tbody>
+</table>
+<p>고주파 Raw Signal을 DB Row로 넣지 않고 MCAP/Parquet에 저장하며, DB에는 파일 URI·시간범위·통계·
+Checksum을 둡니다. 이 구조는 DB 비대화 없이 영상과 Robot 데이터를 확장할 수 있습니다.</p>
+<hr />
+<h2 id="portal">Portal 주요 화면<a class="headerlink" href="#portal" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>화면</th>
+<th>핵심 기능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dashboard</td>
+<td>Site·공정·ODD Coverage·미해결 SOTIF Case·Storage/GPU 현황</td>
+</tr>
+<tr>
+<td>ODD Manager</td>
+<td>9개 차원, Constraint, Version Diff, 승인, 적용 Robot Function</td>
+</tr>
+<tr>
+<td>Episode Explorer</td>
+<td>Site·Task·Robot·Material·ODD 판정·Risk·Source 복합검색</td>
+</tr>
+<tr>
+<td>Episode Viewer</td>
+<td>다중 영상·Robot/F-T/Tactile·Inference·ODD Marker 동기재생</td>
+</tr>
+<tr>
+<td>SOTIF Review</td>
+<td>기능불충분·Trigger·Hazard Chain·Evidence·Mitigation 승인</td>
+</tr>
+<tr>
+<td>Coverage Map</td>
+<td>미관측·희소·Boundary·Known Unsafe 영역 시각화</td>
+</tr>
+<tr>
+<td>Scenario Generator</td>
+<td>Coverage Gap·Case를 MDE Replay/Mutation Job으로 전환</td>
+</tr>
+<tr>
+<td>Dataset Release</td>
+<td>권한·Split·Schema·Checksum·Site 반출 검증</td>
+</tr>
+<tr>
+<td>Model Evaluation</td>
+<td>Model·Dataset·ODD Version별 실패와 강건성 비교</td>
+</tr>
+<tr>
+<td>Admin/Audit</td>
+<td>기관·Role·정책·반출·접속·다운로드·승인 이력</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="computing">Computing 기준안<a class="headerlink" href="#computing" title="Permanent link">&para;</a></h2>
+<h3 id="lg-production">LG전자 Production<a class="headerlink" href="#lg-production" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>구성</th>
+<th>기준안</th>
+<th style="text-align: right;">수량</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API/Control Node</td>
+<td>24~32 Core, ECC 256GB, OS NVMe RAID1, 25GbE×2</td>
+<td style="text-align: right;">2대</td>
+</tr>
+<tr>
+<td>PostgreSQL Node</td>
+<td>32 Core+, ECC 512GB, DB NVMe RAID10, 25GbE×2</td>
+<td style="text-align: right;">3대</td>
+</tr>
+<tr>
+<td>Object Storage</td>
+<td>HDD 16~22TB×12+, Metadata NVMe, 25/100GbE</td>
+<td style="text-align: right;">4노드+</td>
+</tr>
+<tr>
+<td>MDE/GPU Node</td>
+<td>Dual CPU 64 Core+, ECC 1TB, RTX PRO 6000 96GB×4, 100GbE</td>
+<td style="text-align: right;">1대 시작</td>
+</tr>
+<tr>
+<td>Cell Edge Gateway</td>
+<td>16 Core, ECC 64GB, NVMe 3.84TB×2 RAID1, PTP, 10/25GbE</td>
+<td style="text-align: right;">Cell별</td>
+</tr>
+<tr>
+<td>Backup</td>
+<td>별도 장애 Domain, Immutable Snapshot/Object Lock 또는 Tape</td>
+<td style="text-align: right;">1식</td>
+</tr>
+</tbody>
+</table>
+<p>초기 Object Storage는 <strong>사용가능 500TB급 적정성을 실측 후 확정</strong>하고, 사용률 70%부터 증설 Gate를
+운영합니다. <a href="https://www.nvidia.com/en-us/data-center/rtx-pro-6000-blackwell-server-edition/">RTX PRO 6000 Blackwell Server Edition</a>은
+GPU당 96GB GDDR7 ECC와 최대 600W 사양이므로 4GPU Server의 전원·냉각은 Vendor 인증과 현장실사를
+거쳐야 합니다.</p>
+<h3 id="hsu-pac-pilot">한성대학교 HSU-PAC Pilot<a class="headerlink" href="#hsu-pac-pilot" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>구성</th>
+<th>기준안</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>공용 GPU Server</td>
+<td>기존 RTX PRO 6000 96GB급 활용</td>
+<td>Isaac Sim·MDE·중형학습</td>
+</tr>
+<tr>
+<td>DGX Spark</td>
+<td>128GB Unified Memory ×5 계획기준</td>
+<td>조별 VLM/VLA·대형모델 실험</td>
+</tr>
+<tr>
+<td>DB/API Server</td>
+<td>24~32 Core, ECC 256GB, DB NVMe RAID10</td>
+<td>Pilot DB·Portal·Queue</td>
+</tr>
+<tr>
+<td>Standby/Utility</td>
+<td>16~24 Core, ECC 128GB, NVMe RAID1</td>
+<td>DB Standby·Monitoring·Backup</td>
+</tr>
+<tr>
+<td>Object Storage/NAS</td>
+<td>사용가능 80TB+, Snapshot, 10GbE×2</td>
+<td>Raw·Derived·Dataset</td>
+</tr>
+<tr>
+<td>Backup</td>
+<td>운영 Storage와 분리된 80TB+ 또는 Cloud Archive</td>
+<td>복구·장기보존</td>
+</tr>
+<tr>
+<td>Lab Edge Gateway</td>
+<td>16 Core, RAM 64GB, NVMe RAID1, 10GbE</td>
+<td>Teleoperation·Sensor 수집</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://docs.nvidia.com/dgx/dgx-spark/hardware.html">DGX Spark 공식 사양</a>의 128GB Unified Memory,
+10GbE·ConnectX-7을 활용하되, 대규모 고속 Multi-GPU 학습은 공용 GPU Server 또는 승인된 Cloud
+Burst로 분리합니다. 실제 GPU 수량·NAS 가용용량·NIC는 자산대장과 부하시험으로 확정합니다.</p>
+<hr />
+<h2 id="_3">구축 순서<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>기간 기준</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 현황실사·기준선</td>
+<td>M0~M2</td>
+<td>Pilot Task, ODD, Sample Episode, 보안·용량·BOM</td>
+</tr>
+<tr>
+<td>2. HSU-PAC Pilot</td>
+<td>M3~M6</td>
+<td>DB·Storage·Portal·Episode Viewer·ODD 판정</td>
+</tr>
+<tr>
+<td>3. SOTIF·MDE Closed Loop</td>
+<td>M6~M10</td>
+<td>Case·Coverage·Replay·Mitigation Pair·RFM Export</td>
+</tr>
+<tr>
+<td>4. LG Production 설계·조달</td>
+<td>M9~M13</td>
+<td>HA DB·Object Cluster·GPU·Network·Backup</td>
+</tr>
+<tr>
+<td>5. Site 통합·운영이관</td>
+<td>M13~M15</td>
+<td>교환 Gateway, HA/DR·보안·부하시험, 교육·Runbook</td>
+</tr>
+<tr>
+<td>6. 공정 확대</td>
+<td>2~4차년도</td>
+<td>6대 대표공정 누적, Unknown Mining, LTS·기술이전</td>
+</tr>
+</tbody>
+</table>
+<h3 id="end-to-end-demo">첫 번째 End-to-End Demo<a class="headerlink" href="#end-to-end-demo" title="Permanent link">&para;</a></h3>
+<ol>
+<li>실제 또는 Teleoperation Episode를 MCAP·영상·Sensor와 함께 수집</li>
+<li>ODD 구간별 <code>IN→BOUNDARY→OUT</code> 판정</li>
+<li>기능불충분·Trigger·위험행동 후보 등록과 전문가 승인</li>
+<li>MDE에서 동일 Asset·Material·Seed로 Replay</li>
+<li>Boundary 주변 Parameter를 변형해 Edge Episode 생성</li>
+<li>Mitigation 적용 전·후 동일 Scenario 비교</li>
+<li>ODD/SOTIF 확장정보를 포함한 Dataset Release와 RFM 평가</li>
+</ol>
+<p>이 한 바퀴를 먼저 완성한 뒤 Robot·공정·소재·Site를 확대합니다.</p>
+<hr />
+<h2 id="_4">한성대학교의 기여<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>한성대 핵심역할</th>
+<th>시스템 기여</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-ODD·Manufacturing Ontology</td>
+<td>기관 간 조건·Task·Failure·Recovery 의미 통일</td>
+</tr>
+<tr>
+<td>OmniLRS 파생 MDE</td>
+<td>접촉·물성·변형 Ground Truth와 Edge Case 재현·생성</td>
+</tr>
+<tr>
+<td>Edge/SOTIF Intelligence</td>
+<td>규칙·희소성·불확실성·Domain Gap 기반 후보 발굴</td>
+</tr>
+<tr>
+<td>Human Data Engine</td>
+<td>학생 Teleoperation 성공·실패·Recovery Demonstration</td>
+</tr>
+<tr>
+<td>HSU-PAC Shared Testbed</td>
+<td>LG·참여기업 Asset·Model·Robot의 사전 통합·검증</td>
+</tr>
+<tr>
+<td>Dataset·RFM Interface</td>
+<td>Versioned Episode, LeRobot Export, Model Failure 환류</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>차별점</strong> — 한성대는 단순 영상 저장소가 아니라, ODD 조건·기능불충분·접촉변형·사람의 복구행동을
+연결하여 <strong>“왜 실패했고 어떻게 다시 검증했는지”가 남는 Episode Factory</strong>를 구축합니다.</p>
+</blockquote>
+<hr />
+<h2 id="_5">상세 개발 문서<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../odd-sotif-srs/">ODD·SOTIF SRS</a></strong> — 요구사항 138개, DB·DDL·API·Hardware·인수시험</li>
+<li><strong><a href="../odd-sotif-sdp/">ODD·SOTIF SDP</a></strong> — 2-Site 구축, 단계조달, DB Migration, 시험·HA/DR·운영</li>
+<li><a href="../srs/">통합 데이터팩토리 SRS</a></li>
+<li><a href="../sdp/">통합 데이터팩토리 SDP</a></li>
+<li><a href="../technical/">기술 상세</a></li>
+<li><a href="../roadmap/">연차별 목표</a></li>
+</ul>
+<p><a href="../"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"/></svg></span> 대표 프로젝트로</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 PARC Lab · Hansung University
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/parclab-hsu" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:kblee@hansung.ac.kr" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hansung.ac.kr" target="_blank" rel="noopener" title="한성대학교" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-prepare.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-render.js"></script>
+      
+    
+  </body>
+</html>

@@ -910,6 +910,7 @@ Threshold는 4주 Pilot Baseline 후 Site별로 확정합니다.
 
 ## 관련 문서
 
+- **[ODD·SOTIF Episode 시스템 개요](odd-sotif.md)**
 - **[ODD·SOTIF SRS — 시스템 요구사항 명세서](odd-sotif-srs.md)**
 - [통합 데이터팩토리 SRS](srs.md)
 - [통합 데이터팩토리 SDP](sdp.md)

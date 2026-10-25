@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1038,6 +1038,10 @@
 <p>데이터팩토리 소프트웨어의 구현 기준은 <strong><a href="srs/">SRS</a></strong> 와 <strong><a href="sdp/">SDP</a></strong> 에 있습니다.
 Episode 중심 DB, Object Storage, Portal, Edge Case 검수, MDE 재현·생성, Dataset Release
 요구사항과 개발·시험·배포 계획을 담았습니다.</p>
+<p>제조 ODD·SOTIF Episode와 LG전자–한성대 2-Site Computing 구축 기준은
+<strong><a href="odd-sotif/">ODD·SOTIF 시스템 개요</a></strong> 에 정리했습니다. 상세 기준은
+<strong><a href="odd-sotif-srs/">ODD·SOTIF SRS</a></strong> 와 <strong><a href="odd-sotif-sdp/">ODD·SOTIF SDP</a></strong> 에 있으며,
+Server·GPU·PostgreSQL HA·Object Storage·Network·Backup까지 포함합니다.</p>
 </div>
 <h3 id="_2">공고 정합성<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
@@ -1879,6 +1883,12 @@ Zero-shot 성공률로서 본 과제의 유지율과는 다른 유사지표입�
   MDE·Dataset Release 기능 및 비기능 요구사항, 데이터 모델, API, 인수 기준</li>
 <li><strong><a href="sdp/">SDP — 소프트웨어 개발계획서</a></strong> — Work Package, 43개월 일정, Sprint·Gate,
   RACI, 형상관리, CI/CD, 시험·보안·운영·위험관리</li>
+<li><strong><a href="odd-sotif/">ODD·SOTIF Episode 시스템 개요</a></strong> — 제조 M-ODD 9개 차원, SOTIF 인과사슬,
+  LG전자 Production·한성대 HSU-PAC 2-Site 아키텍처와 Computing 기준안</li>
+<li><strong><a href="odd-sotif-srs/">ODD·SOTIF SRS</a></strong> — 제조 M-ODD·기능불충분·Trigger·Hazard·Coverage·
+  Episode DB와 LG/HSU Server·GPU·Storage 요구사항</li>
+<li><strong><a href="odd-sotif-sdp/">ODD·SOTIF SDP</a></strong> — 2-Site 인프라, 단계조달, DB 개발·Migration,
+  MDE·RFM Closed Loop, 시험·HA/DR·운영이관 계획</li>
 <li><a href="../hsu-pac/">한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC</a></li>
 </ul>
 <hr />
@@ -1971,10 +1981,10 @@ Zero-shot 성공률로서 본 과제의 유지율과는 다른 유사지표입�
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../javascripts/mermaid-prepare.js"></script>
       

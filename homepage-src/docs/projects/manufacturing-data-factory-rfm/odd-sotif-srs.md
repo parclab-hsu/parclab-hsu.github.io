@@ -670,6 +670,7 @@ Derived 비율, 보존기간을 측정한 뒤 HSU 80TB 및 LG 500TB급 초기 �
 
 ## 관련 문서
 
+- **[ODD·SOTIF Episode 시스템 개요](odd-sotif.md)**
 - **[ODD·SOTIF SDP — 개발·구축계획서](odd-sotif-sdp.md)**
 - [통합 데이터팩토리 SRS](srs.md)
 - [통합 데이터팩토리 SDP](sdp.md)

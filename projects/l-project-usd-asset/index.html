@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1647,9 +1647,9 @@ collider가 asset에 이미 정의되어 있을 수 있습니다. 코드·합성
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">SOURCE_USD</span><span class="o">=</span>/path/to/final_rover_HH/World0.usd
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">OUTPUT_USD</span><span class="o">=</span>/path/to/final_rover_HH/Rover_hyundai_omnilrs.usd
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s2">&quot;</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">&quot;</span><span class="w"> </span>tools/isaac/make_omnilrs_robot_usd.py<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SOURCE_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--out<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUTPUT_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s2">"</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">"</span><span class="w"> </span>tools/isaac/make_omnilrs_robot_usd.py<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">"</span><span class="nv">$SOURCE_USD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--out<span class="w"> </span><span class="s2">"</span><span class="nv">$OUTPUT_USD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--report<span class="w"> </span>/path/to/generation-report.json
 </code></pre></div>
 <p>생성기는 기본 프림·단위·상향축, 로버 참조, Action Graph 5종, 경로 치환, 센서 배치,
@@ -1661,16 +1661,16 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
 처리를 생략한 결과를 전체 기능 검증 완료로 기록하지 마십시오.</p>
 <h3 id="103">10.3 물리 설정 확인 및 기록<a class="headerlink" href="#103" title="Permanent link">&para;</a></h3>
 <p>먼저 <code>--write</code> 없이 변경 예정값과 경고를 확인합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="s2">&quot;</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">&quot;</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="s2">"</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">"</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--config<span class="w"> </span>config/isaac/final_rover_HH_physics.yaml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUTPUT_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">"</span><span class="nv">$OUTPUT_USD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--report<span class="w"> </span>/path/to/physics-dry-run.json
 </code></pre></div>
 <p>대상 파일과 설정값을 확인한 후 <code>--write</code>로 적용합니다. 도구는 적용 전에 대상 USD의
 백업을 생성합니다. 참조 asset 전체의 백업을 대신하지는 않습니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="s2">&quot;</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">&quot;</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="s2">"</span><span class="nv">$ISAAC_PYTHON</span><span class="s2">"</span><span class="w"> </span>tools/isaac/apply_asset_physics.py<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--config<span class="w"> </span>config/isaac/final_rover_HH_physics.yaml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OUTPUT_USD</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--stage<span class="w"> </span><span class="s2">"</span><span class="nv">$OUTPUT_USD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--write<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--report<span class="w"> </span>/path/to/physics-applied.json
 </code></pre></div>
@@ -1868,10 +1868,10 @@ Action Graph는 기존 연결 수정 14건을 유지하기 위해 원본에서 �
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../javascripts/mermaid-prepare.js"></script>
       

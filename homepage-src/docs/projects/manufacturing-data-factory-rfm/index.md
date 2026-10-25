@@ -68,8 +68,9 @@ noindex: true
     요구사항과 개발·시험·배포 계획을 담았습니다.
 
     제조 ODD·SOTIF Episode와 LG전자–한성대 2-Site Computing 구축 기준은
-    **[ODD·SOTIF SRS](odd-sotif-srs.md)** 와 **[ODD·SOTIF SDP](odd-sotif-sdp.md)** 에
-    별도로 정의했습니다. Server·GPU·PostgreSQL HA·Object Storage·Network·Backup까지 포함합니다.
+    **[ODD·SOTIF 시스템 개요](odd-sotif.md)** 에 정리했습니다. 상세 기준은
+    **[ODD·SOTIF SRS](odd-sotif-srs.md)** 와 **[ODD·SOTIF SDP](odd-sotif-sdp.md)** 에 있으며,
+    Server·GPU·PostgreSQL HA·Object Storage·Network·Backup까지 포함합니다.
 
 ### 공고 정합성
 
@@ -451,6 +452,8 @@ flowchart TB
   MDE·Dataset Release 기능 및 비기능 요구사항, 데이터 모델, API, 인수 기준
 - **[SDP — 소프트웨어 개발계획서](sdp.md)** — Work Package, 43개월 일정, Sprint·Gate,
   RACI, 형상관리, CI/CD, 시험·보안·운영·위험관리
+- **[ODD·SOTIF Episode 시스템 개요](odd-sotif.md)** — 제조 M-ODD 9개 차원, SOTIF 인과사슬,
+  LG전자 Production·한성대 HSU-PAC 2-Site 아키텍처와 Computing 기준안
 - **[ODD·SOTIF SRS](odd-sotif-srs.md)** — 제조 M-ODD·기능불충분·Trigger·Hazard·Coverage·
   Episode DB와 LG/HSU Server·GPU·Storage 요구사항
 - **[ODD·SOTIF SDP](odd-sotif-sdp.md)** — 2-Site 인프라, 단계조달, DB 개발·Migration,
