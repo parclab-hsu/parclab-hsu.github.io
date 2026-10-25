@@ -642,6 +642,8 @@ POST   /api/v1/dataset-releases/{id}/publish
 ## 관련 문서
 
 - **[SDP — 소프트웨어 개발계획서](sdp.md)**
+- **[ODD·SOTIF SRS — 제조 ODD·SOTIF Episode 전용 요구사항](odd-sotif-srs.md)**
+- [ODD·SOTIF SDP — LG·한성대 2-Site 개발·구축계획](odd-sotif-sdp.md)
 - [대표 프로젝트 페이지](index.md)
 - [기술 상세](technical.md)
 

@@ -834,6 +834,8 @@ Parameter·원본 경로·Credential은 공개 문서에 포함하지 않습니�
 ## 관련 문서
 
 - **[SRS — 시스템 요구사항 명세서](srs.md)**
+- [ODD·SOTIF SRS — 제조 ODD·SOTIF Episode 전용 요구사항](odd-sotif-srs.md)
+- **[ODD·SOTIF SDP — LG·한성대 2-Site 개발·구축계획](odd-sotif-sdp.md)**
 - [대표 프로젝트 페이지](index.md)
 - [기술 상세](technical.md)
 

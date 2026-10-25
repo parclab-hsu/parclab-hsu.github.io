@@ -67,6 +67,10 @@ noindex: true
     Episode 중심 DB, Object Storage, Portal, Edge Case 검수, MDE 재현·생성, Dataset Release
     요구사항과 개발·시험·배포 계획을 담았습니다.
 
+    제조 ODD·SOTIF Episode와 LG전자–한성대 2-Site Computing 구축 기준은
+    **[ODD·SOTIF SRS](odd-sotif-srs.md)** 와 **[ODD·SOTIF SDP](odd-sotif-sdp.md)** 에
+    별도로 정의했습니다. Server·GPU·PostgreSQL HA·Object Storage·Network·Backup까지 포함합니다.
+
 ### 공고 정합성
 
 | 항목 | 공고 기준 |
@@ -447,6 +451,10 @@ flowchart TB
   MDE·Dataset Release 기능 및 비기능 요구사항, 데이터 모델, API, 인수 기준
 - **[SDP — 소프트웨어 개발계획서](sdp.md)** — Work Package, 43개월 일정, Sprint·Gate,
   RACI, 형상관리, CI/CD, 시험·보안·운영·위험관리
+- **[ODD·SOTIF SRS](odd-sotif-srs.md)** — 제조 M-ODD·기능불충분·Trigger·Hazard·Coverage·
+  Episode DB와 LG/HSU Server·GPU·Storage 요구사항
+- **[ODD·SOTIF SDP](odd-sotif-sdp.md)** — 2-Site 인프라, 단계조달, DB 개발·Migration,
+  MDE·RFM Closed Loop, 시험·HA/DR·운영이관 계획
 - [한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC](../hsu-pac.md)
 
 ---

@@ -1244,6 +1244,8 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 
 - [SRS — MDE·Edge Case 로봇 데이터팩토리 시스템 요구사항 명세서](srs.md)
 - [SDP — MDE·Edge Case 로봇 데이터팩토리 소프트웨어 개발계획서](sdp.md)
+- [ODD·SOTIF SRS — 제조 ODD·SOTIF Episode·Computing 시스템 요구사항](odd-sotif-srs.md)
+- [ODD·SOTIF SDP — LG전자·한성대 2-Site 개발·구축계획](odd-sotif-sdp.md)
 
 **시뮬레이션·물리**
 
