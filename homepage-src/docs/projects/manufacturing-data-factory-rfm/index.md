@@ -62,6 +62,11 @@ noindex: true
 6대 대표공정의 트윈은 전량 구축하되, 심화 대상 작업을 정해 한 바퀴를 완주해야 각 단계의
 수치가 서로 연결되어 검증됩니다.
 
+!!! tip "시스템 개발 문서"
+    데이터팩토리 소프트웨어의 구현 기준은 **[SRS](srs.md)** 와 **[SDP](sdp.md)** 에 있습니다.
+    Episode 중심 DB, Object Storage, Portal, Edge Case 검수, MDE 재현·생성, Dataset Release
+    요구사항과 개발·시험·배포 계획을 담았습니다.
+
 ### 공고 정합성
 
 | 항목 | 공고 기준 |
@@ -438,6 +443,10 @@ flowchart TB
 - <strong><a class="nowrap" href="roadmap.md">연차별 목표</a></strong> — 차년도별 목표·완료 Gate·결과물 28건·KPI 측정 정의
 - **[기술 상세](technical.md)** — Work Package HSU-1~7 · Deformation Engine 상세 ·
   Ontology·Edge Case · MD 과정 운영 · Cosmos·LeRobot 구축 최적화 · 검증 체계
+- **[SRS — 시스템 요구사항 명세서](srs.md)** — DB·Object Storage·Portal·Ontology·Edge Case·
+  MDE·Dataset Release 기능 및 비기능 요구사항, 데이터 모델, API, 인수 기준
+- **[SDP — 소프트웨어 개발계획서](sdp.md)** — Work Package, 43개월 일정, Sprint·Gate,
+  RACI, 형상관리, CI/CD, 시험·보안·운영·위험관리
 - [한성대학교 Physical AI 교육·연구 플랫폼 HSU-PAC](../hsu-pac.md)
 
 ---

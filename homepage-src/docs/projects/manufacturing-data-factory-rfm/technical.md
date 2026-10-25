@@ -16,6 +16,8 @@ noindex: true
     과제 개요·대표 성과·일정·예산 요약은 **[대표 페이지](index.md)** 에 있습니다.
     여기는 그 주장을 뒷받침하는 **기술 근거와 운영 규약**입니다.
 
+    구현 기준선은 **[SRS](srs.md)**, 개발·시험·배포·운영 계획은 **[SDP](sdp.md)** 에 있습니다.
+
 ---
 
 ## 왜 제조환경에는 물리적으로 반응하는 Digital Twin이 필요한가
@@ -1237,6 +1239,11 @@ Ontology·Algorithm·Scenario·Teleoperation Dataset 검증과 참여기업 사�
 ---
 
 ## 기술 참고
+
+**시스템 개발 문서**
+
+- [SRS — MDE·Edge Case 로봇 데이터팩토리 시스템 요구사항 명세서](srs.md)
+- [SDP — MDE·Edge Case 로봇 데이터팩토리 소프트웨어 개발계획서](sdp.md)
 
 **시뮬레이션·물리**
 
