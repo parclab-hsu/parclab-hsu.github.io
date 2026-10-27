@@ -679,10 +679,60 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 무엇을 고쳤나
+        2. 기존 코드 대비 차이
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="2. 기존 코드 대비 차이">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 비교한 세 판
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 처리 단계별 변경
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 열화 없는 실측 녹화
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 사용상 차이
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -751,7 +801,18 @@
   <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 한계
+        6. 검증 범위와 결과
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 한계
       
     </span>
   </a>
@@ -782,10 +843,10 @@
 <p>고정 camera 하나와 도어에 붙인 <strong>쌍 ArUco marker</strong> 로 도어의 위치·속도·가속도 profile 을
 30 fps 로 잰다. 대상은 회전 도어(각도)와 슬라이드 서랍(직선)이다.</p>
 <p>이 페이지는 <strong>추가 보정 없이 알고리즘만으로</strong> 나쁜 촬영 조건(반사 띠·어두움·저대비·모션 블러)에서
-얼마나 개선되는지를 정리한 공개 요약이다. 그림은 <strong>합성 영상</strong>과 수치만 싣는다.
+얼마나 개선되는지를 <strong>기존 코드와 비교해</strong> 정리한 공개 요약이다. 그림은 <strong>합성 영상</strong>과 수치만 싣는다.
 실측 녹화는 수치로만 인용한다.</p>
-<p>기준일 2026-10-27. 목표 플랫폼은 PC 와 Jetson Nano 급 CPU 다.
-<strong>Jetson Nano 실기에서의 처리 시간은 아직 재지 않았다</strong>(5 절).</p>
+<p>기준일 2026-10-28. 목표 플랫폼은 PC 와 Jetson Nano 급 CPU 다.
+<strong>Jetson Nano 실기에서의 처리 시간은 아직 재지 않았다</strong>(6 절).</p>
 </div>
 <hr />
 <h2 id="1">1. 측정 방식<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
@@ -793,18 +854,52 @@
 <li>도어 바디마다 marker 2개를 붙인다. 두 marker 의 corner 8개로 바디 자세를 푼다.</li>
 <li>도어는 자유도가 하나(회전축 또는 직선 레일)이므로, 자세를 프레임마다 따로 푸는 대신
   <strong>1-DOF 모델에 corner 를 직접 맞춘다.</strong> rolling shutter 의 행별 시간차도 이 맞춤에 넣는다.</li>
-<li>출력은 프레임별 위치·속도·가속도 CSV 와 stroke 별 요약(최고 속도, 등속 구간 평균 등)이다.</li>
+<li>출력은 프레임별 위치·속도·가속도 CSV 와 stroke 별 요약(최고 속도, 이동량, 등속 구간 평균 등)이다.</li>
 </ul>
-<h2 id="2">2. 무엇을 고쳤나<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h2 id="2">2. 기존 코드 대비 차이<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 비교한 세 판<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>판</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>기존 코드</strong></td>
+<td>2026-10-27 개선 작업 전 측정 앱 폴더에 있던 코드(1-DOF 분석 포함). 회전 도어의 marker 배치 설정이 실물과 달라 회전 도어를 거의 잡지 못한다</td>
+</tr>
+<tr>
+<td><strong>중간 판</strong></td>
+<td>기존 코드 + 배치 설정 수정 + corner 변 정제</td>
+</tr>
+<tr>
+<td><strong>현재 판</strong></td>
+<td>중간 판 + corner 직접 맞춤, ROI 추적 검출, 블러 추적, 반사 띠 해독, 프레임 시간 예산</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22">2.2 처리 단계별 변경<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>문제</th>
 <th>원인</th>
-<th>개선</th>
+<th>현재 판의 처리</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>회전 도어를 못 잡음</td>
+<td>marker 배치 설정이 실물과 다름</td>
+<td>실물 배치로 등록(중간 판부터)</td>
+</tr>
+<tr>
+<td>corner 가 안쪽으로 치우침</td>
+<td>SUBPIX 창이 marker 안쪽 bit 무늬에 끌림</td>
+<td>변 전체로 직선을 맞춰 교점을 corner 로(중간 판부터)</td>
+</tr>
 <tr>
 <td>고속에서 위치·peak 오차</td>
 <td>프레임마다 PnP, rolling shutter 무시</td>
@@ -822,7 +917,7 @@
 </tr>
 <tr>
 <td><strong>반사 띠(glare)가 marker 를 덮으면 0 %</strong></td>
-<td>아래 3 절</td>
+<td>3 절</td>
 <td>경계(Canny) 사각형 + 띠 밝기장 보정 해독</td>
 </tr>
 <tr>
@@ -831,12 +926,75 @@
 <td>표본별 가산광 보정 → 0.16~0.20 px</td>
 </tr>
 <tr>
-<td>프레임 시간 30 fps 초과 위험</td>
-<td>추가 처리마다 비용</td>
+<td>추가 처리로 30 fps 초과 위험</td>
+<td>처리마다 비용</td>
 <td>블러 추적·glare 해독에 <strong>벽시계 예산</strong>(프레임 시작부터 20 ms). 느린 기기에서는 저절로 덜 돈다</td>
 </tr>
 </tbody>
 </table>
+<h3 id="23">2.3 열화 없는 실측 녹화<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>같은 녹화(회전 도어 2, 슬라이드 4)를 같은 camera 파라미터로 돌렸다. 이 표의 기존 코드는 1-DOF 분석을 넣기 전 판(10/21)이고, 위치는 같은 방식(주축 투영)으로 재서 비교했다. 회전 도어는 배치 설정만 고친 값이다. 마지막 줄만 2.1 절의 기존 코드다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>기존 코드</th>
+<th>현재 판</th>
+<th>비</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>회전 도어 데이터 확보율(설정 그대로)</td>
+<td>0~7 %</td>
+<td>100 %</td>
+<td>—</td>
+</tr>
+<tr>
+<td>정지 위치 σ, 슬라이드 4개</td>
+<td>0.17~0.31 mm</td>
+<td>0.05~0.08 mm</td>
+<td>2.8~5.4배</td>
+</tr>
+<tr>
+<td>정지 위치 σ, 회전 도어 2개</td>
+<td>0.49~0.64 mm</td>
+<td>0.04 mm</td>
+<td>12~16배</td>
+</tr>
+<tr>
+<td>정지 속도 RMS, 슬라이드 4개</td>
+<td>3.5~5.3 mm/s</td>
+<td>0.34~0.41 mm/s</td>
+<td>9.6~14배</td>
+</tr>
+<tr>
+<td>정지 속도 RMS, 회전 도어 2개</td>
+<td>0.62~0.85 deg/s</td>
+<td>0.04~0.05 deg/s</td>
+<td>15~17배</td>
+</tr>
+<tr>
+<td>슬라이드 이동량 8회 반복</td>
+<td>σ 5.93 mm</td>
+<td>σ 0.70 mm</td>
+<td>8.5배</td>
+</tr>
+<tr>
+<td>움직이는 동안 확보율, 슬라이드 70·100</td>
+<td>86 %, 93 %</td>
+<td>100 %</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24">2.4 사용상 차이<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>추가 파일</strong>: <code>dof_corner_fit.py</code>(corner 직접 맞춤). 측정 앱 폴더에 함께 둔다.</li>
+<li><strong>CSV</strong>: 기존 열은 그대로 두고 <code>dof_fit_*</code>(맞춤 잔차·readout·쌍 배치 보정)와 <code>dof_pos_source</code> 열을 더했다.</li>
+<li><strong>설정</strong>: <code>ROI_TRACKING</code>, <code>BLUR_TRACK</code>, <code>GLARE_DECODE</code> 와 각 시간 예산 상수를 더했다. 모두 기본값이 켜짐이고, 끄면 그 단계만 빠진다.</li>
+<li><strong>필요 환경은 그대로다</strong>: Python ≥ 3.7, OpenCV(contrib) ≥ 4.7.</li>
+</ul>
 <h2 id="3-glare">3. 반사 띠(glare) 해독<a class="headerlink" href="#3-glare" title="Permanent link">&para;</a></h2>
 <p><img alt="반사 띠가 marker 를 덮은 합성 프레임, ArUco 가 보는 이진화, 경계 기반 해독 결과" src="../../assets/door-aruco/glare_mechanism.png" /></p>
 <p>밝은 반사 띠가 marker 위를 지나가면 두 가지가 깨진다.</p>
@@ -859,141 +1017,208 @@
 <h2 id="4">4. 결과<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <h3 id="41">4.1 실측 녹화 + 합성 열화<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
 <p>실측 녹화 6개(회전 도어 2, 슬라이드 4: 구동 속도 설정 10·40·70·100)에 같은 열화를 입혀 <strong>움직이는 동안 측정값이 나온
-프레임 비율</strong>을 비교했다. Before 는 납품 원본 코드, After 는 현재판이다.</p>
-<p><img alt="실측 녹화 6개에 열화 4종을 입혔을 때 확보율 비교" src="../../assets/door-aruco/availability_real.png" /></p>
+프레임 비율</strong>을 세 판에서 비교했다. 기존 코드의 회전 도어 0 % 는 열화가 아니라 배치 설정 때문이다.</p>
+<p><img alt="실측 녹화 6개에 열화를 입혔을 때 세 판의 확보율" src="../../assets/door-aruco/availability_real.png" /></p>
 <table>
 <thead>
 <tr>
 <th>열화</th>
-<th>Before</th>
-<th>After</th>
+<th>기존 코드</th>
+<th>중간 판</th>
+<th>현재 판</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>열화 없음, 슬라이드 4개</td>
+<td>86~100 %</td>
+<td>100 %</td>
+<td>100 %</td>
+</tr>
+<tr>
 <td>반사 띠, 슬라이드 4개</td>
+<td>0 %</td>
 <td>0 %</td>
 <td>59~100 %</td>
 </tr>
 <tr>
 <td>반사 띠, 회전 도어 2개</td>
+<td>0 %</td>
 <td>61~67 %</td>
 <td>94~100 %</td>
 </tr>
 <tr>
 <td>어둡게(×0.25 + 잡음), 슬라이드</td>
+<td>0~34 %</td>
 <td>0~36 %</td>
 <td>98~100 %</td>
 </tr>
 <tr>
 <td>대비 35 %, 슬라이드</td>
+<td>31~50 %</td>
 <td>34~53 %</td>
 <td>100 %</td>
 </tr>
 <tr>
-<td>블러 + 어둡게 + JPEG</td>
-<td>0~73 %</td>
-<td>42~100 %</td>
+<td>블러 + 어둡게 + JPEG, 슬라이드</td>
+<td>0~18 %</td>
+<td>0~24 %</td>
+<td>75~100 %</td>
 </tr>
 <tr>
-<td>열화 없음</td>
-<td>100 %</td>
-<td>100 %</td>
+<td>블러 + 어둡게 + JPEG, 회전 도어</td>
+<td>0~16 %</td>
+<td>30~73 %</td>
+<td>42~100 %</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>잡음 σ10·가림 조건은 Before 와 같은 수준이다(실행마다 몇 % 흔들린다).</li>
-<li>가장 나쁜 칸은 「슬라이드 100 + 반사 띠」(59 %)와 「회전 도어 빠르게 + 블러·어둡게·JPEG」(42 %)다.</li>
+<li>잡음 σ10·가림 조건은 중간 판과 같은 수준이다(실행마다 몇 % 흔들린다).</li>
+<li>가장 나쁜 칸은 「슬라이드 100 + 반사 띠」(59~71 %)와 「회전 도어 빠르게 + 블러·어둡게·JPEG」(42 %)다.</li>
 </ul>
 <h3 id="42">4.2 합성 녹화(참값 있음)<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
-<p>실측 장면 위에 참값 궤적으로 marker 를 다시 그려 만든 합성 녹화 36개(속도 3종 + 회전 도어 × 조건 9종)로 참값 대비 오차를 쟀다.</p>
-<p><img alt="합성 녹화 세 경우의 속도 profile: 참값, Before, After 와 결측 프레임" src="../../assets/door-aruco/profile_synthetic.png" /></p>
+<p>실측 장면 위에 참값 궤적으로 marker 를 다시 그려 만든 합성 녹화 36개(슬라이드 속도 3종 + 회전 도어 × 조건 9종)로 참값 대비 오차를 쟀다.</p>
+<p><img alt="합성 녹화 세 경우의 속도 profile: 참값과 세 판, 결측 프레임" src="../../assets/door-aruco/profile_synthetic.png" /></p>
 <table>
 <thead>
 <tr>
 <th>경우</th>
-<th>Before</th>
-<th>After</th>
+<th>기존 코드</th>
+<th>중간 판</th>
+<th>현재 판</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>슬라이드 1 m/s, 정상 노출</td>
-<td>위치 2.34 mm, peak +2.7 %</td>
-<td>위치 0.31 mm, peak +0.1 %</td>
+<td>확보 70 %, 위치 2.32 mm, peak −12 %</td>
+<td>확보 100 %, 2.34 mm, +2.7 %</td>
+<td>확보 100 %, <strong>0.31 mm</strong>, +0.1 %</td>
 </tr>
 <tr>
 <td>회전 도어, 정상 노출</td>
+<td>확보 0 %</td>
 <td>0.61°</td>
-<td>0.026°</td>
+<td><strong>0.026°</strong></td>
 </tr>
 <tr>
 <td>슬라이드 1 m/s, 장노출(블러)</td>
+<td>확보 43 %, peak −24 %</td>
 <td>확보 60 %, peak −24 %</td>
-<td>확보 95 %, peak −0.4 %</td>
+<td>확보 <strong>95 %</strong>, peak −0.4 %</td>
 </tr>
 <tr>
 <td>회전 도어, 장노출</td>
-<td>확보 85 %, peak −47 %</td>
-<td>확보 88 %, peak −18 %</td>
+<td>확보 0 %</td>
+<td>확보 85 %, 닫힘 peak −47 %</td>
+<td>확보 88 %, 닫힘 peak −18 %</td>
 </tr>
 <tr>
 <td>반사 띠, 슬라이드 0.4 m/s</td>
-<td>확보 85 %, 위치 1.32 mm</td>
-<td>확보 98 %, 위치 0.15 mm</td>
+<td>확보 85 %, 위치 1.31 mm</td>
+<td>확보 85 %, 1.32 mm</td>
+<td>확보 <strong>98 %</strong>, <strong>0.15 mm</strong></td>
 </tr>
 <tr>
 <td>반사 띠, 회전 도어</td>
-<td>확보 91 %, 위치 0.62°</td>
-<td>확보 97 %, 위치 0.060°</td>
+<td>확보 18 %</td>
+<td>확보 91 %, 0.62°</td>
+<td>확보 <strong>97 %</strong>, <strong>0.060°</strong></td>
 </tr>
 </tbody>
 </table>
-<p>나머지 조건(광량 15 %, 대비 25 %, 가림, 지터)에서 회귀는 없었다.</p>
+<p>나머지 조건(광량 15 %, 대비 25 %, 가림, 지터)에서 현재 판의 회귀는 없었다.</p>
 <h2 id="5-30-fps">5. 처리 시간과 30 fps<a class="headerlink" href="#5-30-fps" title="Permanent link">&para;</a></h2>
-<p>30 fps 의 프레임 예산은 33.3 ms 다. 아래는 데스크톱 1 스레드에서 1080p 실측 녹화를 처리한 시간이다.</p>
+<p>30 fps 의 프레임 예산은 33.3 ms 다. 아래는 데스크톱 1 스레드에서 1080p 실측 녹화 6개를 하나씩 처리한 시간(중앙값 / p99)이다.</p>
 <table>
 <thead>
 <tr>
-<th>조건</th>
-<th>중앙값</th>
-<th>p99</th>
+<th>판</th>
+<th>열화 없음</th>
+<th>반사 띠</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>원본 코드, 열화 없음</td>
-<td>4.2~4.6 ms</td>
+<td>기존 코드</td>
+<td>3.1~3.7 / 3.7~4.6 ms</td>
 <td>—</td>
 </tr>
 <tr>
-<td>현재판, 열화 없음</td>
-<td>2.3~2.8 ms</td>
-<td>6.9~9.1 ms</td>
+<td>중간 판</td>
+<td>4.0~4.5 / 4.6~5.4 ms</td>
+<td>—</td>
 </tr>
 <tr>
-<td>현재판, 반사 띠</td>
-<td>4.8~4.9 ms</td>
-<td>8.6~12.1 ms</td>
+<td>현재 판</td>
+<td><strong>2.2~2.5</strong> / 3.3~5.0 ms</td>
+<td>4.2~4.6 / 6.0~7.6 ms</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>직전 위치 주변만 검출하므로, 추가 처리를 넣고도 열화 없는 녹화는 원본보다 빠르다.</li>
+<li>직전 위치 주변만 검출하므로, 추가 처리를 넣고도 열화 없는 녹화는 기존 코드보다 빠르다.</li>
 <li>블러 추적과 glare 해독은 프레임 시작부터 20 ms 를 넘을 것 같으면 건너뛴다. 예산을 1/10 로 줄인 시험에서 프레임 시간은 예산 안에
   묶였지만, 반사 띠 확보율은 0 % 로 떨어졌다. <strong>느린 기기에서는 30 fps 를 지키는 대신 확보율이 PC 결과보다 낮을 수 있다.</strong></li>
-<li><strong>Jetson Nano 실기 시간은 아직 재지 않았다.</strong> 실기에서 경고 로그와 두 예산 값을 먼저 확인할 예정이다.</li>
-<li>필요 환경: Python ≥ 3.7, OpenCV(contrib) ≥ 4.7 — 원본 코드와 같고 이번 개선으로 늘지 않았다. Python 3.8 + numpy 1.19 + OpenCV 4.7.0 과
-  Python 3.13 + OpenCV 5.0 에서 시험 5종과 bench 를 돌려 같은 결과를 확인했다. JetPack 4.x 기본 구성(Python 3.6, OpenCV 4.1.1)은
-  원본과 마찬가지로 조건에 맞지 않으므로 Python 3.8 과 OpenCV ≥ 4.7 을 따로 설치해야 한다.</li>
 </ul>
-<h2 id="6">6. 한계<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h2 id="6">6. 검증 범위와 결과<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>범위</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>단위 시험 5종(검출·1-DOF·stroke·calibration·corner 정제)</td>
+<td>Python 3.8 + OpenCV 4.7.0(numpy 1.19.5·1.24.4), Python 3.13 + OpenCV 5.0</td>
+<td>전부 통과</td>
+</tr>
+<tr>
+<td>실측 열화 bench</td>
+<td>녹화 6개 × 조건 10종</td>
+<td>4.1 절. 오검출 0</td>
+</tr>
+<tr>
+<td>합성 bench(참값)</td>
+<td>녹화 36개</td>
+<td>4.2 절. 회귀 없음</td>
+</tr>
+<tr>
+<td>그림 생성·bench 실행</td>
+<td>Python 3.8 + OpenCV 4.7.0 + matplotlib 3.7.5</td>
+<td>통과(x86_64. Nano 설치 절차와 같은 package 판, aarch64 wheel 존재 확인)</td>
+</tr>
+<tr>
+<td>배포본 일치</td>
+<td>개발본 · 측정 앱 폴더 · 공유 폴더 · 비공개 저장소</td>
+<td>바이트 단위 일치</td>
+</tr>
+<tr>
+<td>Jetson Nano 실기</td>
+<td>—</td>
+<td><strong>미실측</strong>. 설치·측정 절차서만 준비했다</td>
+</tr>
+</tbody>
+</table>
+<p>재검증에서 새로 확인한 것:</p>
+<ul>
+<li><strong>「슬라이드 100 + 반사 띠」는 stroke 요약값도 틀릴 수 있다.</strong> 두 번째 stroke 의 결측 위치가 실행마다 달라서, 같은 녹화에서
+  peak 0.872 → 0.518 m/s(−41 %)가 나오거나 측정이 일찍 끊겨 이동량 0.433 → 0.289 m 가 나왔다. 앞선 실행에서는 peak 차이가
+  3 % 였다. 확보율만 보면 이 위험이 드러나지 않으므로, 결측이 많은 stroke(<code>n_samples</code> &lt; <code>duration_s</code> × 30 의 대부분)는 요약값을 쓰지 않는다.</li>
+<li>OpenCV 4.7.0 의 Python <code>cv2.aruco.Board</code> 생성자에 결함이 있어, 그 판에서는 짝 marker 복구만 빠진다. 측정 경로에는 영향이 없다.</li>
+</ul>
+<h2 id="7">7. 한계<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <ul>
 <li>반사 띠 해독은 <strong>합성한 띠</strong>(가우시안 모양)로만 검증했다. 실제 반사로는 아직 확인하지 않았다.</li>
-<li>띠가 marker 경계까지 포화시켜 경계 기울기가 사라지면 읽지 못한다(슬라이드 100 + 반사 띠 59 %).</li>
+<li>띠가 marker 경계까지 포화시켜 경계 기울기가 사라지면 읽지 못한다(슬라이드 100 + 반사 띠 59~71 %, 6 절의 stroke 요약값 문제).</li>
 <li>블러 추적은 이미 한 번 잡은 marker 만 잇는다. 처음부터 심하게 번진 녹화에서는 효과가 없다.</li>
 <li>회전 도어 장노출의 빠른 닫힘 stroke 는 peak 가 여전히 −18 % 낮다.</li>
+<li>Jetson Nano 기본 구성(JetPack 4.x: Python 3.6, OpenCV 4.1.1)은 기존 코드와 마찬가지로 조건에 맞지 않는다. Python 3.8 과 OpenCV ≥ 4.7 을
+  따로 설치해야 하며, 실기 처리 시간은 그 뒤에 잰다.</li>
 </ul>
 
 
