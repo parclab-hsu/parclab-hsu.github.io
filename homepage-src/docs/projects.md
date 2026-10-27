@@ -84,6 +84,16 @@ PARC Lab에서 진행 중인 정부과제, 산학협력, 자체 연구 프로젝
 
     `Wearable Robot` · `Clinical Study` · `10MWT` · `Data Analysis`
 
+-   :material-circle:{ style="color:#2e9e44" } [__진행중 · 가전 도어 속도 측정 (ArUco)__](projects/door-motion-aruco.md)
+
+    ---
+
+    고정 카메라와 쌍 ArUco 마커로 회전 도어·슬라이드 서랍의 위치·속도 profile 을 30 fps 로 계측. 추가 보정 없이 알고리즘만으로 반사 띠·어두움·저대비·모션 블러 조건 확보율 개선(반사 띠 0 → 59~100 %), PC·Jetson Nano 급 CPU 대상 프레임 시간 예산.
+
+    `OpenCV` · `ArUco` · `Pose Estimation` · `Rolling Shutter` · `Jetson Nano`
+
+    [:octicons-arrow-right-24: 결과 보고 보기](projects/door-motion-aruco.md)
+
 </div>
 
 ---

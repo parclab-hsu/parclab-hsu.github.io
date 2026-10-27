@@ -2071,7 +2071,7 @@ HILS로 구축한다. 실물 모터드라이버(EPOS4 ×12) 없이도 CANopen �
 <tr>
 <td>B9</td>
 <td><strong>경로 생성기가 최소 선회반경을 모른다</strong></td>
-<td>조향 정책(FR-006)으로 연속 선회 최소 반경 1.81 m 가 생겼는데, <code>planner_server</code> 는 NavFn(격자)이라 그보다 급한 곡률의 경로를 낸다. 추종 중에는 보드 포락선이 요레이트를 낮춰 <strong>언더턴 → 방향 오차 0.5 rad 초과 → 제자리 회전 보정</strong> 순으로 간다(주행은 되나 매끄럽지 않다). <code>regulated_linear_scaling_min_radius</code> 로는 못 막는다 — 그건 속도를 줄이는 설정이고 우리 최소 반경은 조향각으로 정해져 <strong>속도와 무관</strong>하다. 2026-09-16 결정: 지금은 그대로 두고 **Nav2 실기 주행 때 Smac Hybrid-A*(<code>minimum_turning_radius: 1.81</code>, DUBIN)와 비교**해 정한다</td>
+<td>조향 정책(FR-006)으로 연속 선회 최소 반경 1.81 m 가 생겼는데, <code>planner_server</code> 는 NavFn(격자)이라 그보다 급한 곡률의 경로를 낸다. 추종 중에는 보드 포락선이 요레이트를 낮춰 <strong>언더턴 → 방향 오차 0.5 rad 초과 → 제자리 회전 보정</strong> 순으로 간다(주행은 되나 매끄럽지 않다). <code>regulated_linear_scaling_min_radius</code> 로는 못 막는다 — 그건 속도를 줄이는 설정이고 우리 최소 반경은 조향각으로 정해져 <strong>속도와 무관</strong>하다. 2026-09-16 결정: 지금은 그대로 두고 <strong>Nav2 실기 주행 때 Smac Hybrid-A*(<code>minimum_turning_radius: 1.81</code>, DUBIN)와 비교</strong>해 정한다</td>
 </tr>
 </tbody>
 </table>
