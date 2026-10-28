@@ -909,6 +909,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#64-1024" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 혼합 달 지형 1024 환경 — 안정 주행 구조 검증
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-omnilrs-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 OmniLRS 변형 엔진 활성 — 31° 크레이터 탈출
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1036,6 +1058,10 @@ PPO 정책은 832회 모두 올랐습니다. 저접지 비율(정적 하중 10 %
 서스펜션만 학습한 ablation도 30°를 100 % 올랐습니다. 휠 속도 보정은 등판 속도(속도 비율 0.86 → 0.97)를 높이는 데 기여했습니다.
 학습 환경 밖인 OmniLRS lunaryard 플랜트에서 중력을 기울인 등가 경사(꺾임 없는 경사면)로 시험하면, 20°·30°는 두 제어 모두 4/4로 올랐고
 PPO는 30°에서 더 빨리(4 m 도달 평균 12.6 대 15.1 s), 차체를 약 7° 덜 기울인 채(기울기 RMS 평균 22.6 대 29.3°) 올랐습니다. 60°는 둘 다 미끄러져 내려갔습니다.</p>
+<p>경사로·크레이터 밀집·암석·평지를 섞은 <strong>혼합 달 지형</strong>(6.4절, 1024 환경)에서는 최고 난도 성공률이 고정 서스펜션 0.507,
+<strong>차체만 올려 고정한 기준선 0.877</strong>, 학습한 정책 0.894였습니다. 이득의 대부분은 차고에서 나오며, 정책이 기준선보다 나은 것은 암석 지형뿐입니다.
+관절 좌표 그대로 학습하면 정책이 상수 기울임 자세(roll 9°)에 갇혀, 행동을 heave·pitch·roll·twist 모드로 바꾸고 차체 올림 자세를 기준으로 한 잔차를 학습했습니다.
+OmniLRS <strong>지형 변형 엔진을 켠</strong> 31° 크레이터 탈출(6.5절, 자국은 렌더링 전용)에서는 세 제어 모두 4/4로 탈출했습니다.</p>
 <p><strong>모든 결과는 강체 지형 시뮬레이션 결과이며 실물 로버·월면토 검증이 아닙니다.</strong> 한계는 8절에 정리했습니다.</p>
 </div>
 <p><a href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 프로젝트 상세</a> ·
@@ -1768,6 +1794,41 @@ arctan(2·0.247·sin 0.35 / 1.491) ≈ 6.5°), 이것이 곧 하중을 앞쪽으
 카메라는 전체 지형 조감(16 m × 8 m 타일 10줄 × 16열)에서 경사로 쪽으로 다가갑니다.</p>
 <video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/ramp30_parallel_compare.mp4"></video>
 
+<p><strong>학습 과정 — 0·50·100·300회.</strong> 같은 Ramp30 과제를 50회마다 체크포인트를 남기도록 다시 학습하고(<code>--save_interval 50</code>, seed 동일),
+0·50·100·300회 체크포인트를 위와 같은 조건으로 1024대씩 돌려 2×2로 붙였습니다(왼쪽 위부터 0, 50, 100, 300회).
+0회 정책은 위 영상의 0회와 같은 728대입니다. 다만 GPU 물리의 비결정성 때문에 별도 학습의 50·100·300회 정책이 1499회 정책의 중간 상태와 같다고 볼 수는 없습니다.</p>
+<table>
+<thead>
+<tr>
+<th>학습 횟수</th>
+<th>0</th>
+<th>50</th>
+<th>100</th>
+<th>300</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>상단 도달(첫 에피소드, /1024)</td>
+<td>728</td>
+<td>721</td>
+<td>692</td>
+<td><strong>1024</strong></td>
+</tr>
+<tr>
+<td>전도·이탈</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>0~100회 구간은 <strong>오히려 조금 나빠집니다.</strong> 초기 정책은 행동 평균이 0에 가까워 사실상 고정 서스펜션이고,
+50~100회 정책은 탐색 중인 서스펜션 움직임이 아직 등판에 도움이 되지 않는 단계입니다.
+300회에서는 1024대 전부가 오릅니다. 그 뒤 학습이 무엇을 더 바꿨는지는 이 영상의 도달 수로는 보이지 않으므로 6.1절의 기울기 지표로 판단해야 합니다.</p>
+<video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/ramp30_progress_2x2.mp4"></video>
+
 <hr />
 <h2 id="6">6. 평가<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <h3 id="61-isaac-lab">6.1 Isaac Lab 평가 — 목표 경사 고정<a class="headerlink" href="#61-isaac-lab" title="Permanent link">&para;</a></h3>
@@ -2219,6 +2280,249 @@ PPO는 이 상태에서 최대 기울기 p95 57.0°(고정 60.9°), IMU 동가�
 이 판정의 일부는 실제로 뒤집힌 것이 아니라 옆으로 돌아 미끄러진 것일 수 있습니다. 고정 서스펜션 두 건은 기울기가 85°를 넘어, 경사(60°)보다 25° 더 넘어간 상태에서 끝났습니다.</p>
 <p><strong>검증의 범위.</strong> 이 시험은 학습 지형(Isaac Lab 경사로)과 다른 플랜트·지형 격자·주기(30 Hz)·관측 경로(ROS 2 토픽)에서도 정책이 등판 자세를 만들고
 지령 속도를 지킨다는 것을 보여 줍니다. 정상 꺾임 통과는 등가 경사로는 시험할 수 없어 Isaac Lab 평가로만 확인했습니다.</p>
+<h3 id="64-1024">6.4 혼합 달 지형 1024 환경 — 안정 주행 구조 검증<a class="headerlink" href="#64-1024" title="Permanent link">&para;</a></h3>
+<p>경사로 하나만으로는 「달 환경에서 안정적으로 주행하는 구조」라고 말할 수 없으므로, 네 가지 지형을 한 장면에 섞은 과제 <code>LRover-MixedLunar-v0</code>를 만들어
+1024 환경에서 학습·평가했습니다. 타일은 16 m × 8 m, 10줄(난도 레벨 0~9) × 16열이며 지형 유형마다 4열씩 배정했습니다(지형 seed 13).
+모든 유형에서 타일 중앙에서 출발해 +x로 <strong>6.5 m</strong>를 주행하면 성공입니다.</p>
+<table>
+<thead>
+<tr>
+<th>지형 유형</th>
+<th>내용 (레벨 0 → 9로 커짐)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ramp</td>
+<td>경사로 10° → 30°</td>
+</tr>
+<tr>
+<td>crater_field</td>
+<td>반경 0.5~2.0 m 크레이터 3 → 8개, 벽 경사 상한 10° → 30°</td>
+</tr>
+<tr>
+<td>rocky</td>
+<td>표면 거칠기 2 → 5 cm, 암석 높이 상한 5 → 20 cm, 8 → 30개</td>
+</tr>
+<tr>
+<td>plain</td>
+<td>소형 크레이터(반경 0.25~0.5 m) 2~8개가 있는 평지</td>
+</tr>
+</tbody>
+</table>
+<p><strong>구조를 세 번 바꿨습니다.</strong> 처음 세 번의 학습은 모두 지형과 무관한 <strong>상수 자세 하나</strong>로 수렴했고, 다음에 나오는 「차체 올림 고정」 기준선보다 나은 것이 없었습니다.</p>
+<table>
+<thead>
+<tr>
+<th>시도</th>
+<th>행동 구조</th>
+<th>수렴한 자세</th>
+<th>평지 기울기</th>
+<th>폐기 이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>관절 좌표, 행동 클립 ±1</td>
+<td>서스펜션 행동 평균 −2.3(클립에 걸림)</td>
+<td>roll −9°</td>
+<td>클립 밖에서는 모든 표본의 보상이 같아 기울기(gradient)가 사라짐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>관절 좌표 + 행동 한계 초과 벌점(<code>action_bound</code>)</td>
+<td>네 관절 모두 +0.8~1</td>
+<td>roll +9°</td>
+<td>좌우 관절이 거울 배치라 「네 관절 같은 부호」가 차체 <strong>roll</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>모드 좌표</strong>(heave·pitch·roll·twist)</td>
+<td>pitch 모드 1.9</td>
+<td>pitch 7.9°</td>
+<td>성공률이 차체 올림 고정과 같음(레벨 9 0.879 vs 0.877)</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>모드 좌표 + 차체 올림 기준 잔차</strong></td>
+<td>잔차 0.23 이하</td>
+<td><strong>pitch 0.1°, roll −0.2°</strong></td>
+<td>채택</td>
+</tr>
+</tbody>
+</table>
+<p>2차 결과를 보고 상수 관절 행동으로 자세를 따로 재 보니, 네 관절 +0.8은 차고 변화 없이 roll 8.1°를 만들었고 (+, −, +, −)는 차체를 8.7 cm 내렸습니다.
+그래서 3차부터는 정책이 관절 네 개 대신 <strong>heave(차체 상하)·pitch·roll·twist 모드</strong>를 출력하고 고정 행렬로 관절 지령을 만듭니다.
+이 행렬은 선형이라 내보낼 때 정책의 마지막 층에 접어 넣으므로, 배포되는 제어기의 입출력(관절 행동 4 + 휠 4)은 바뀌지 않습니다.
+4차에서는 <strong>행동 0이 「차체 올림(heave 0.8)」 자세</strong>가 되도록 기준을 옮기고, 자세 벌점(<code>sus_pose</code>)도 그 자세를 기준으로 계산했습니다.
+정책은 기준선에서 출발해 지형에 따른 보정만 배웁니다. 보상 가중치는 바꾸지 않았습니다.</p>
+<p><strong>평가.</strong> 무작위화를 끄고(마찰 0.90/0.70, 공칭 질량) 레벨을 고정해, 유형마다 256 환경씩 1024 환경에서 환경당 한 에피소드를 수행했습니다.
+「차체 올림 고정」은 서스펜션을 heave 0.8 자세에 고정하고 휠은 공칭 속도로 돌린 것으로, 학습 없이 얻을 수 있는 기준선입니다.
+Ramp30 정책은 6.1절의 경사로 전용 정책을 그대로 옮긴 것입니다.</p>
+<table>
+<thead>
+<tr>
+<th>레벨 9 (최고 난도) 성공률</th>
+<th>ramp</th>
+<th>crater_field</th>
+<th>rocky</th>
+<th>plain</th>
+<th>전체</th>
+<th>평지 기울기 RMS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>고정 서스펜션</td>
+<td>0.008</td>
+<td>0.945</td>
+<td>0.074</td>
+<td>1.0</td>
+<td>0.507</td>
+<td>0.30°</td>
+</tr>
+<tr>
+<td>Ramp30 정책</td>
+<td>1.0</td>
+<td>0.906</td>
+<td>0.027</td>
+<td>1.0</td>
+<td>0.733</td>
+<td>0.94°</td>
+</tr>
+<tr>
+<td>차체 올림 고정 (기준선)</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.508</td>
+<td>1.0</td>
+<td>0.877</td>
+<td>0.29°</td>
+</tr>
+<tr>
+<td><strong>혼합 지형 정책(4차)</strong></td>
+<td>1.0</td>
+<td>1.0</td>
+<td><strong>0.574</strong></td>
+<td>1.0</td>
+<td><strong>0.894</strong></td>
+<td>0.85°</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>레벨 5 (중간 난도) 성공률</th>
+<th>ramp</th>
+<th>crater_field</th>
+<th>rocky</th>
+<th>plain</th>
+<th>전체</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>고정 서스펜션</td>
+<td>0.492</td>
+<td>1.0</td>
+<td>0.695</td>
+<td>1.0</td>
+<td>0.797</td>
+</tr>
+<tr>
+<td>Ramp30 정책</td>
+<td>1.0</td>
+<td>0.996</td>
+<td>0.375</td>
+<td>1.0</td>
+<td>0.843</td>
+</tr>
+<tr>
+<td>차체 올림 고정 (기준선)</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.984</td>
+<td>1.0</td>
+<td>0.996</td>
+</tr>
+<tr>
+<td><strong>혼합 지형 정책(4차)</strong></td>
+<td>1.0</td>
+<td>1.0</td>
+<td><strong>1.0</strong></td>
+<td>1.0</td>
+<td><strong>1.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>모든 평가에서 전도·이탈은 0이었습니다(Ramp30 정책의 레벨 9 crater_field 1건 제외). 실패는 모두 시간 안에 6.5 m를 못 간 경우입니다.</p>
+<p><strong>혼합 지형에서 얻은 이득은 대부분 차고(지상고)에서 나옵니다.</strong> 레벨 9에서 고정 서스펜션 0.507 → 차체 올림 고정 0.877의 차이가 정책 없이 생기며,
+경사로(0.008 → 1.0)와 암석(0.074 → 0.508)이 그 차이의 대부분입니다. 낮은 차체가 경사로 정상 꺾임과 암석에 걸리던 것이 차고를 올리자 사라졌습니다.
+경사로 전용 Ramp30 정책은 암석 지형에서 오히려 고정 서스펜션보다 나빠(0.027), 한 지형에서 배운 정책이 다른 지형으로 그대로 옮겨 가지 않음을 보여 줍니다.</p>
+<p><strong>학습한 정책이 기준선보다 나은 것은 암석 지형뿐이고, 차이도 작습니다.</strong> 레벨 9 rocky 성공률은 정책 0.574, 기준선 0.508입니다.
+평가 seed를 바꿔(7) 다시 재면 0.832 vs 0.758로 방향이 같아, 두 seed를 합치면 0.703 vs 0.633(각 512 에피소드, 차이 약 2.4 표준오차)입니다.
+그 대가로 평지 기울기 RMS는 0.29° → 0.85°로 커졌습니다. 경사로 위 기울기 RMS는 22.6° → 21.4°로 약간 낮습니다.
+따라서 이 결과는 「능동 서스펜션 정책이 혼합 지형 주행을 크게 개선했다」가 아니라, <strong>「차고를 올린 자세가 혼합 지형 안정 주행의 대부분을 정하고,
+학습된 잔차가 거친 암석 지형에서 그 위에 조금 더한다」</strong>로 읽어야 합니다.</p>
+<p><strong>영상.</strong> 혼합 지형 정책으로 1024대를 동시에 출발시킨 장면입니다(시작 레벨을 10줄 전체에 분포, 32 s). 화면의 숫자는 각 로버의 첫 에피소드만 셉니다.
+1019대가 에피소드를 마쳤고 1019대 모두 성공했으며 전도는 0입니다(나머지 5대는 32 s 안에 에피소드가 끝나지 않았습니다).</p>
+<video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/mixed_lunar_parallel.mp4"></video>
+
+<h3 id="65-omnilrs-31">6.5 OmniLRS 변형 엔진 활성 — 31° 크레이터 탈출<a class="headerlink" href="#65-omnilrs-31" title="Permanent link">&para;</a></h3>
+<p>HILS 플랜트인 OmniLRS lunaryard에서 <strong>지형 변형 엔진(deformation engine)을 켜고</strong> 세 제어기로 크레이터 탈출을 시험했습니다.
+크레이터는 lunaryard의 (45.79, 38.44) 크레이터를 <code>z_scale</code> 0.78로 키운 것으로 벽 최대 경사는 31.2°입니다. 바닥(z 0.190)에서 출발해 네 방위(0·90·180·270°)로
+40 s 동안 주행하며, 출발점에서 <strong>4 m</strong> 벗어나면 탈출입니다. 정책은 numpy로 내보내 ROS 2 노드(30 Hz)로 구동했습니다(6.3절과 같은 경로).</p>
+<p><strong>변형 엔진이 실제로 무엇을 하는지.</strong> 이 구성에서 변형 엔진은 바퀴 그라우저 무늬의 자국(<code>track_tiles</code>, 1 m 타일, 표본 간격 1.49 cm)을 <strong>렌더링 메시에만</strong> 찍습니다.
+PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하에 영향을 주지 않습니다. 실행 스크립트는 <code>track_tiles</code> 활성 로그를 확인한 뒤에만 시험을 시작합니다.
+엔진 내부 통계는 자국 찍기 약 1.3 ms/회, 바퀴 끝–메시 간격 평균 약 20~50 mm(방위별), 하중 침하 평균 −1 mm 내외였습니다.
+고정 서스펜션·Ramp30 정책은 같은 컨테이너 세션에서 차례로 돌았으므로 뒤의 시험 화면에는 앞 시험의 자국이 남아 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>제어</th>
+<th>탈출</th>
+<th>탈출 시간 (0 · 90 · 180 · 270°)</th>
+<th>평균</th>
+<th>기울기 RMS 평균</th>
+<th>최대 기울기 평균</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>고정 서스펜션</td>
+<td>4/4</td>
+<td>15.9 · 13.6 · 21.0 · 13.6 s</td>
+<td>16.0 s</td>
+<td>5.7°</td>
+<td>10.0°</td>
+</tr>
+<tr>
+<td>Ramp30 정책</td>
+<td>4/4</td>
+<td>13.4 · 13.9 · 14.6 · 13.4 s</td>
+<td>13.8 s</td>
+<td>3.7°</td>
+<td>6.9°</td>
+</tr>
+<tr>
+<td>혼합 지형 정책(4차)</td>
+<td>4/4</td>
+<td>13.5 · 13.3 · 13.6 · 13.7 s</td>
+<td>13.5 s</td>
+<td>5.0°</td>
+<td>9.6°</td>
+</tr>
+</tbody>
+</table>
+<p>세 제어 모두 네 방위에서 탈출했습니다. 고정 서스펜션은 180° 방위에서 21.0 s가 걸려 방위에 따른 편차가 컸고, 두 정책은 13.3~14.6 s로 고르게 지령 속도(0.3 m/s → 4 m 13.3 s)에 가까웠습니다.
+차체 기울기는 경사로 과제로 학습한 Ramp30 정책이 가장 낮고, 혼합 지형 정책은 고정 서스펜션과 Ramp30 사이입니다.
+혼합 지형 정책은 차체를 올린 자세를 기본으로 하므로 무게중심이 높아진 만큼 기울기 이득이 줄어든 것으로 봅니다(확인하지 않은 해석입니다).</p>
+<p>아래 영상은 180° 방위의 세 시험을 위에서부터 고정 서스펜션 · Ramp30 · 혼합 지형 정책 순으로 쌓은 것입니다. 각 줄의 왼쪽은 전방, 오른쪽은 후방 카메라이며,
+후방 카메라에 그라우저 무늬가 이어진 바퀴 자국이 보입니다. 먼저 끝난 시험은 마지막 화면에서 멈춥니다.</p>
+<video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/omnilrs_deform_h180.mp4"></video>
+
 <hr />
 <h2 id="7">7. 논의<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <p><strong>서스펜션이 바꾼 것은 「꺾임 통과」입니다.</strong> 30° 고정 서스펜션의 실패는 견인 부족이 아니라 정상 꺾임에 걸리는 기하 문제였고, 능동 서스펜션은
@@ -2247,6 +2551,11 @@ PPO는 이 상태에서 최대 기울기 p95 57.0°(고정 60.9°), IMU 동가�
 <li><strong>OmniLRS 검증은 등가 경사입니다.</strong> 중력을 기울인 평면에는 경사로 발·정상의 꺾임이 없습니다. 꺾임 통과는 Isaac Lab 평가로만 확인했습니다.
   또 시험 수가 경사당 네 방위라 통계적 일반화를 주장할 표본 수가 아닙니다.</li>
 <li><strong>보드 경로를 거치지 않았습니다.</strong> OmniLRS 검증에서 지령은 HILS 보드가 아니라 PC의 ROS 2 노드가 냈습니다.</li>
+<li><strong>변형 엔진은 렌더링만 바꿉니다(6.5절).</strong> 바퀴 자국은 화면 메시에만 찍히고 충돌면은 강체입니다. 변형 엔진을 켠 시험은 「자국이 생기는 장면에서도
+  정책이 같은 경로로 돈다」는 것까지만 보여 주며, 월면토 침하가 주행에 주는 영향은 시험하지 않았습니다. 시험 중 실시간 배율(RTF)도 재지 않았습니다.
+  또 크레이터 하나·네 방위의 표본입니다.</li>
+<li><strong>혼합 지형 정책의 이득은 작습니다(6.4절).</strong> 차체 올림 고정 기준선 대비 이득은 레벨 9 암석 지형에서만 보이고(두 seed 합산 0.703 vs 0.633),
+  평지 기울기는 오히려 커졌습니다. 학습 seed는 하나이며, 4차 구조는 1~3차의 실패를 보고 정한 것이라 같은 평가 지형에 맞춰졌을 가능성이 있습니다.</li>
 </ul>
 <hr />
 <h2 id="9">9. 재현 방법<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
@@ -2259,6 +2568,14 @@ PPO는 이 상태에서 최대 기울기 p95 57.0°(고정 60.9°), IMU 동가�
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>python<span class="w"> </span>scripts/record_video.py<span class="w"> </span>--headless<span class="w"> </span>--enable_cameras<span class="w"> </span>--task<span class="w"> </span>LRover-Ramp30-v0<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--max_s<span class="w"> </span><span class="m">40</span><span class="w"> </span>--out<span class="w"> </span>r30.mp4
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># 전체 파이프라인 / OmniLRS 등가 경사 검증</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>scripts/run_ramp.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>scripts/omnilrs_ramp.sh
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># 혼합 달 지형 (6.4절): 학습 → 유형별 평가 · 1024 영상 · OmniLRS 변형 엔진</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>python<span class="w"> </span>scripts/train.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-MixedLunar-v0<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">1024</span><span class="w"> </span>--max_iterations<span class="w"> </span><span class="m">1500</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>python<span class="w"> </span>scripts/evaluate.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-MixedLunar-v0<span class="w"> </span>--level<span class="w"> </span><span class="m">9</span><span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--out<span class="w"> </span>eval_mixed.json
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>python<span class="w"> </span>scripts/evaluate.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-MixedLunar-v0<span class="w"> </span>--level<span class="w"> </span><span class="m">9</span><span class="w"> </span>--const_sus<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>--out<span class="w"> </span>heave_up.json<span class="w">   </span><span class="c1"># 차체 올림 기준선</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>scripts/mixed_post.sh<span class="w"> </span>&lt;run<span class="w"> </span>dir&gt;
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1"># 학습 과정 영상 (5절): 50회마다 저장 후 체크포인트별 녹화</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>python<span class="w"> </span>scripts/train.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-Ramp30-v0<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">1024</span><span class="w"> </span>--max_iterations<span class="w"> </span><span class="m">300</span><span class="w"> </span>--save_interval<span class="w"> </span><span class="m">50</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>python<span class="w"> </span>scripts/record_parallel.py<span class="w"> </span>--headless<span class="w"> </span>--enable_cameras<span class="w"> </span>--task<span class="w"> </span>LRover-Ramp30-v0<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model_50.pt&gt;<span class="w"> </span>--label<span class="w"> </span><span class="s2">"iteration 50"</span><span class="w"> </span>--out<span class="w"> </span>it50.mp4
 </code></pre></div>
 <hr />
 <h2 id="a">부록 A. 앞선 연구 — 크레이터 탈출<a class="headerlink" href="#a" title="Permanent link">&para;</a></h2>
