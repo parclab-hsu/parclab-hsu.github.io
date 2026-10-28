@@ -814,6 +814,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 구현 — 보상 함수와 학습 스크립트
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1546,6 +1557,201 @@ spline 프로파일 29종</strong>을 그대로 사용하고, 벽 최대 경사�
 <p>기울기 항을 <strong>기울기 각에 선형</strong>(가중치 3/rad)으로 바꾸고, 서스펜션 각의 제곱 평균에 작은 자세 항(0.2)을 더해
 다시 학습했습니다. 같은 500회 시점의 학습 중 기울기 RMS가 5.1°에서 0.86°로 줄었습니다. 이하 결과는 모두 수정한 보상의 결과입니다.
 첫 학습의 평가 결과는 저장소 <code>results/v1_reward</code>에 보존했습니다.</p>
+<h3 id="48">4.8 구현 — 보상 함수와 학습 스크립트<a class="headerlink" href="#48" title="Permanent link">&para;</a></h3>
+<p>환경은 Isaac Lab <code>DirectRLEnv</code>를 상속한 <code>ActiveSuspensionEnv</code>(<code>lrover_rl/env.py</code>)이고, 학습 진입점은 <code>scripts/train.py</code>입니다.
+아래 코드는 비공개 저장소 <code>l-project-rl</code>에서 핵심 부분만 발췌했습니다(로깅·통계 집계 줄은 생략).</p>
+<p><strong>보상 함수 — <code>_get_rewards()</code>.</strong> 제어 주기(20 ms)마다 호출됩니다. 각 항은 4.5절 표와 1:1로 대응하고, 가중치는 <code>env_cfg.py</code>의
+<code>w_*</code> 필드입니다. 연속 항에는 제어 주기 <code>dt</code>를 곱하고, 성공·실패는 한 번만 주는 항이라 곱하지 않습니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">_get_rewards</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">d</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_robot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_dt</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">v_cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_cmd</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">v_fwd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_forward</span><span class="p">()</span>                        <span class="c1"># 출발 방위로 투영한 수평 속도</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">progress</span> <span class="o">=</span> <span class="n">v_fwd</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">v_cmd</span><span class="p">)</span> <span class="o">/</span> <span class="n">v_cmd</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">overspeed</span> <span class="o">=</span> <span class="p">(</span><span class="n">v_fwd</span> <span class="o">-</span> <span class="mf">1.05</span> <span class="o">*</span> <span class="n">v_cmd</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">v_cmd</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">tilt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">acos</span><span class="p">((</span><span class="o">-</span><span class="n">d</span><span class="o">.</span><span class="n">projected_gravity_b</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>   <span class="c1"># 차체 기울기 [rad], 선형</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">imu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_imu</span><span class="o">.</span><span class="n">data</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">ang_rate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">imu</span><span class="o">.</span><span class="n">ang_vel_b</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># IMU 자이로 roll·pitch</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">v_w</span> <span class="o">=</span> <span class="n">math_utils</span><span class="o">.</span><span class="n">quat_apply</span><span class="p">(</span><span class="n">imu</span><span class="o">.</span><span class="n">quat_w</span><span class="p">,</span> <span class="n">imu</span><span class="o">.</span><span class="n">lin_vel_b</span><span class="p">)</span>               <span class="c1"># IMU 동가속도: 20 ms 속도차</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_imu_acc_dyn</span> <span class="o">=</span> <span class="n">math_utils</span><span class="o">.</span><span class="n">quat_apply_inverse</span><span class="p">(</span><span class="n">imu</span><span class="o">.</span><span class="n">quat_w</span><span class="p">,</span> <span class="p">(</span><span class="n">v_w</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_imu_v_prev</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">_imu_v_prev</span> <span class="o">=</span> <span class="n">v_w</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">settled</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">episode_length_buf</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>        <span class="c1"># 스폰 착지 1 s 제외</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">imu_accel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_imu_acc_dyn</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">settled</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wheel_forces</span><span class="p">()</span>                       <span class="c1"># 휠 4개 접촉력 크기, 최근 물리 서브스텝 평균</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">lift</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_weight</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">load_cv</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">f</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">slip</span> <span class="o">=</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">joint_vel</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drive_ids</span><span class="p">]</span> <span class="o">*</span> <span class="n">WHEEL_RADIUS</span> <span class="o">-</span> <span class="n">d</span><span class="o">.</span><span class="n">root_lin_vel_b</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">v_cmd</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="o">...</span>                                                                   <span class="c1"># body_contact, action_rate, sus_* 동일 형식</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">terms</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="s2">"progress"</span><span class="p">:</span>  <span class="n">c</span><span class="o">.</span><span class="n">w_progress</span> <span class="o">*</span> <span class="n">progress</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span>       <span class="c1"># +2.0</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="s2">"goal"</span><span class="p">:</span>      <span class="n">c</span><span class="o">.</span><span class="n">w_goal</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_success</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span>   <span class="c1"># +20, 1회</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="s2">"overspeed"</span><span class="p">:</span> <span class="o">-</span><span class="n">c</span><span class="o">.</span><span class="n">w_overspeed</span> <span class="o">*</span> <span class="n">overspeed</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span>    <span class="c1"># −10</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="s2">"tilt"</span><span class="p">:</span>      <span class="o">-</span><span class="n">c</span><span class="o">.</span><span class="n">w_tilt</span> <span class="o">*</span> <span class="n">tilt</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span>              <span class="c1"># −3.0</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="s2">"ang_rate"</span><span class="p">:</span>  <span class="o">-</span><span class="n">c</span><span class="o">.</span><span class="n">w_ang_rate</span> <span class="o">*</span> <span class="n">ang_rate</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span>      <span class="c1"># −0.5</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="s2">"imu_accel"</span><span class="p">:</span> <span class="o">-</span><span class="n">c</span><span class="o">.</span><span class="n">w_imu_accel</span> <span class="o">*</span> <span class="n">imu_accel</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span>    <span class="c1"># −0.2</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="s2">"lift_off"</span><span class="p">:</span>  <span class="o">-</span><span class="n">c</span><span class="o">.</span><span class="n">w_lift_off</span> <span class="o">*</span> <span class="n">lift</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span>          <span class="c1"># −1.0</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="s2">"load_cv"</span><span class="p">:</span>   <span class="o">-</span><span class="n">c</span><span class="o">.</span><span class="n">w_load_cv</span> <span class="o">*</span> <span class="n">load_cv</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span>        <span class="c1"># −0.5</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="s2">"slip"</span><span class="p">:</span>      <span class="o">-</span><span class="n">c</span><span class="o">.</span><span class="n">w_slip</span> <span class="o">*</span> <span class="n">slip</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        <span class="o">...</span>                                               <span class="c1"># body_contact, action_rate, sus_torque, sus_pose, sus_limit</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        <span class="s2">"fail"</span><span class="p">:</span>      <span class="o">-</span><span class="n">c</span><span class="o">.</span><span class="n">w_fail</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_failed</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span>   <span class="c1"># −20, 1회</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="p">}</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">terms</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>이 코드에서 짚어 둘 설계 결정은 네 가지입니다. 모두 앞선 학습에서 실제로 문제가 된 것을 고친 결과입니다.</p>
+<ul>
+<li><strong>진행 항은 v_cmd에서 자르고, 과속은 따로 벌합니다.</strong> 성공 보상은 할인되므로 일찍 도착할수록 커집니다. 과속 항이 없던 첫 학습에서는
+  정책이 최대 지령 0.4 m/s에 대해 평지에서 0.43 m/s로 달렸습니다.</li>
+<li><strong>기울기는 각도에 선형으로 벌합니다.</strong> 처음 쓴 sin²θ 형태는 10° 아래에서 거의 0이 되어, 하중 편차 항과의 경쟁에서 졌습니다(4.7절).</li>
+<li><strong>IMU 가속도는 20 ms 속도차로 다시 계산합니다.</strong> Isaac Lab IMU의 <code>lin_acc_b</code>는 5 ms 서브스텝 미분값이라 휠 접촉 채터가 섞여,
+  고정 서스펜션이 평지에서 기울기 0.3°로 달려도 4.8 m/s² RMS가 나왔습니다. 스폰 낙하(0.15 m) 착지 충격 때문에 첫 1 s는 제외합니다.</li>
+<li><strong>IMU 중력 기준은 달 중력입니다.</strong> <code>ImuCfg.gravity_bias = (0, 0, 1.62)</code>로 두어, 정지 상태 출력이 OmniLRS <code>/rover/imu_pub</code>의
+  proper acceleration(정지 시 z ≈ +1.6 m/s²)과 같은 규약이 되게 했습니다.</li>
+</ul>
+<p><strong>종료 조건과 커리큘럼 — <code>_get_dones()</code>, <code>_reset_idx()</code>.</strong> 경사로 위에서는 차체가 경사만큼 기울어 있는 것이 정상이므로,
+경사로 모드의 전도 판정은 전체 기울기가 아니라 roll(옆으로 넘어감)을 봅니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">tilted</span> <span class="o">=</span> <span class="p">(</span><span class="n">roll</span> <span class="o">&gt;</span> <span class="n">radians</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="o">-</span><span class="n">g_b</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="mi">85</span><span class="p">)))</span>   <span class="c1"># 옆 전도 또는 거의 뒤집힘</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">fell</span> <span class="o">=</span> <span class="n">root_z</span> <span class="o">&lt;</span> <span class="n">env_origin_z</span> <span class="o">-</span> <span class="mf">3.0</span>                                   <span class="c1"># 지형 밖으로 이탈</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">_failed</span> <span class="o">=</span> <span class="n">tilted</span> <span class="o">|</span> <span class="n">fell</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="bp">self</span><span class="o">.</span><span class="n">_success</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_distance</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mf">6.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">_failed</span>           <span class="c1"># 접근 1 m + 경사 4 m + 상단 1.5 m</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 커리큘럼: 성공하면 다음 경사 레벨, 3 m(경사로 중간)도 못 가면 한 레벨 아래</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">move_up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_success</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">move_down</span> <span class="o">=</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">_success</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_distance</span><span class="p">()[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">3.0</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="bp">self</span><span class="o">.</span><span class="n">_terrain</span><span class="o">.</span><span class="n">update_env_origins</span><span class="p">(</span><span class="n">env_ids</span><span class="p">,</span> <span class="n">move_up</span><span class="p">,</span> <span class="n">move_down</span><span class="p">)</span>
+</code></pre></div>
+<p>거리 <code>_distance()</code>는 출발 방위로 투영한 전진 거리입니다. 미끄러져 내려간 거리는 진행으로 치지 않습니다.</p>
+<p><strong>보상 항별 기여 — 학습 마지막 반복.</strong> 아래 값은 학습 로그의 <code>Episode_Reward/*</code>를 에피소드 합으로 환산한 것입니다
+(로그 값 × 에피소드 길이 40 s). 마지막 반복에서 끝난 에피소드의 평균입니다.</p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>Ramp20</th>
+<th>Ramp30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>진행</td>
+<td>+38.88</td>
+<td>+39.93</td>
+</tr>
+<tr>
+<td>성공</td>
+<td>+20.00</td>
+<td>+20.00</td>
+</tr>
+<tr>
+<td>과속</td>
+<td>−0.30</td>
+<td>−0.24</td>
+</tr>
+<tr>
+<td>기울기</td>
+<td>−6.14</td>
+<td><strong>−11.02</strong></td>
+</tr>
+<tr>
+<td>하중 편차</td>
+<td>−5.88</td>
+<td>−6.68</td>
+</tr>
+<tr>
+<td>충격·진동 (IMU 가속도)</td>
+<td>−1.96</td>
+<td>−2.35</td>
+</tr>
+<tr>
+<td>접지 상실</td>
+<td>−1.58</td>
+<td>−2.26</td>
+</tr>
+<tr>
+<td>자세</td>
+<td>−0.16</td>
+<td>−1.54</td>
+</tr>
+<tr>
+<td>슬립</td>
+<td>−1.02</td>
+<td>−1.04</td>
+</tr>
+<tr>
+<td>서스펜션 토크</td>
+<td>−0.88</td>
+<td>−0.97</td>
+</tr>
+<tr>
+<td>행동 변화</td>
+<td>−0.51</td>
+<td>−0.41</td>
+</tr>
+<tr>
+<td>한계 근접</td>
+<td>0.00</td>
+<td>−0.16</td>
+</tr>
+<tr>
+<td>각속도 (IMU 자이로)</td>
+<td>−0.03</td>
+<td>−0.04</td>
+</tr>
+<tr>
+<td>차체 접지</td>
+<td>−0.03</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>전도·이탈</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td><strong>합계</strong></td>
+<td><strong>+40.40</strong></td>
+<td><strong>+33.22</strong></td>
+</tr>
+</tbody>
+</table>
+<p>경사가 20°에서 30°로 커지면 기울기 벌점은 −6.1에서 −11.0으로 거의 두 배가 되고, 자세 벌점은 −0.16에서 −1.54로 열 배가 됩니다.
+30°에서는 정책이 서스펜션을 중립에서 크게 벗어나게 쓴다는 뜻이고, 이는 정상 꺾임을 넘을 때 서스펜션을 쓰는 영상의 모습과 일치합니다.
+안정 항 가운데 가장 큰 것은 기울기와 하중 편차입니다. 각속도·차체 접지·전도 항은 학습이 끝난 시점에 거의 0입니다.</p>
+<p><strong>학습 스크립트 — <code>scripts/train.py</code>.</strong> 과제 이름 하나로 환경 설정과 PPO 설정을 함께 불러와 <code>rsl_rl</code>의 <code>OnPolicyRunner</code>로 학습합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppLauncher</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">app</span> <span class="o">=</span> <span class="n">AppLauncher</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">app</span>                 <span class="c1"># Isaac Sim을 먼저 띄운다. isaaclab 모듈 import는 이 뒤에만 가능하다</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">lrover_rl</span>                            <span class="c1"># gym 등록: LRover-Ramp20/30/60-v0, LRover-Ramp30-SusOnly-v0 …</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">env_cfg</span>   <span class="o">=</span> <span class="n">load_cfg_from_registry</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">task</span><span class="p">,</span> <span class="s2">"env_cfg_entry_point"</span><span class="p">)</span>      <span class="c1"># 지형·보상 가중치·커리큘럼</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">agent_cfg</span> <span class="o">=</span> <span class="n">load_cfg_from_registry</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">task</span><span class="p">,</span> <span class="s2">"rsl_rl_cfg_entry_point"</span><span class="p">)</span>   <span class="c1"># PPO 설정(4.6절)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">env_cfg</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">num_envs</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">num_envs</span>      <span class="c1"># 1024</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">env_cfg</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">agent_cfg</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">seed</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">env</span> <span class="o">=</span> <span class="n">RslRlVecEnvWrapper</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">task</span><span class="p">,</span> <span class="n">cfg</span><span class="o">=</span><span class="n">env_cfg</span><span class="p">),</span> <span class="n">clip_actions</span><span class="o">=</span><span class="n">agent_cfg</span><span class="o">.</span><span class="n">clip_actions</span><span class="p">)</span>   <span class="c1"># a ∈ [−1, 1]</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">runner</span> <span class="o">=</span> <span class="n">OnPolicyRunner</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">agent_cfg</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span> <span class="n">log_dir</span><span class="o">=</span><span class="n">log_dir</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">agent_cfg</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">dump_yaml</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">log_dir</span><span class="si">}</span><span class="s2">/params/env.yaml"</span><span class="p">,</span> <span class="n">env_cfg</span><span class="p">)</span>        <span class="c1"># 재현용으로 설정 전체를 실행 폴더에 남긴다</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">dump_yaml</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">log_dir</span><span class="si">}</span><span class="s2">/params/agent.yaml"</span><span class="p">,</span> <span class="n">agent_cfg</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">runner</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">num_learning_iterations</span><span class="o">=</span><span class="n">agent_cfg</span><span class="o">.</span><span class="n">max_iterations</span><span class="p">,</span> <span class="n">init_at_random_ep_len</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ActiveSuspensionPPORunnerCfg</span><span class="p">(</span><span class="n">RslRlOnPolicyRunnerCfg</span><span class="p">):</span>           <span class="c1"># lrover_rl/agents/rsl_rl_ppo_cfg.py</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">num_steps_per_env</span> <span class="o">=</span> <span class="mi">24</span>                                             <span class="c1"># 1024 × 24 = 24,576 샘플/반복</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">save_interval</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">obs_groups</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"policy"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"policy"</span><span class="p">],</span> <span class="s2">"critic"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"critic"</span><span class="p">]}</span>          <span class="c1"># 비대칭 actor-critic (4.3절)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">clip_actions</span> <span class="o">=</span> <span class="mf">1.0</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">policy</span> <span class="o">=</span> <span class="n">RslRlPpoActorCriticCfg</span><span class="p">(</span><span class="n">init_noise_std</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">actor_hidden_dims</span><span class="o">=</span><span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>                                    <span class="n">critic_hidden_dims</span><span class="o">=</span><span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                                    <span class="n">actor_obs_normalization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">critic_obs_normalization</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">algorithm</span> <span class="o">=</span> <span class="n">RslRlPpoAlgorithmCfg</span><span class="p">(</span><span class="n">clip_param</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">entropy_coef</span><span class="o">=</span><span class="mf">0.004</span><span class="p">,</span> <span class="n">num_learning_epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>                                     <span class="n">num_mini_batches</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">5.0e-4</span><span class="p">,</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">"adaptive"</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>                                     <span class="n">desired_kl</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">max_grad_norm</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>                                     <span class="n">value_loss_coef</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">use_clipped_value_loss</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>init_at_random_ep_len=True</code>는 첫 에피소드 길이를 환경마다 무작위로 잘라, 1024개 환경이 한꺼번에 리셋되지 않게 합니다.
+  환경 쪽 <code>_reset_idx()</code>도 첫 전체 리셋 때 <code>episode_length_buf</code>를 무작위로 흩어 둡니다.</li>
+<li>반복 수는 실행 인자 <code>--max_iterations</code>로 과제마다 정합니다(20°: 1000, 30°: 1500, 60°: 2000). 실행 예:
+  <code>python scripts/train.py --headless --task LRover-Ramp30-v0 --num_envs 1024 --max_iterations 1500 --run_name ppo1024</code></li>
+<li><strong>PhysX 충돌 버퍼.</strong> 시뮬레이션 설정에서 <code>gpu_collision_stack_size = 2**28</code>로 둡니다. 기본값 2²⁶으로는 1024개 환경이
+  20~60° 경사로를 달릴 때 최대 약 2.3억 바이트가 필요해 버퍼가 넘쳤습니다. 넘치면 접촉이 버려져 로버가 경사로를 뚫고 떨어집니다.
+  첫 Ramp60 학습은 이 때문에 실패 88 %, 행동 표준편차 0.6 → 2.7로 발산해 폐기했습니다. 20°·30° 학습 로그에는 이 오류가 0건이었습니다.</li>
+</ul>
 <hr />
 <h2 id="5">5. 학습 결과<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <p><img alt="학습 곡선" src="../../assets/l-project-rl/training_curves.png" /></p>
@@ -1961,17 +2167,17 @@ PPO는 네 방위 모두 9.2~9.5 s에 탈출했습니다. Isaac Lab 평가에서
 <hr />
 <h2 id="9">9. 재현 방법<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
 <p>저장소 <code>parclab-hsu/l-project-rl</code>(비공개).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 학습 (1024 환경, 과제당 약 25~45분 / RTX 5080)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python<span class="w"> </span>scripts/train.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">1024</span><span class="w"> </span>--max_iterations<span class="w"> </span><span class="m">1500</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 평가 (목표 경사 고정, 고정 서스펜션 기준선은 --passive)</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>python<span class="w"> </span>scripts/evaluate.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--out<span class="w"> </span>eval.json
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 영상</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python<span class="w"> </span>scripts/record_video.py<span class="w"> </span>--headless<span class="w"> </span>--enable_cameras<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--out<span class="w"> </span>s30.mp4
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># OmniLRS lunaryard 검증 (HILS 저장소의 컨테이너 기동 후)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">HEADLESS</span><span class="o">=</span>True<span class="w"> </span>tools/isaac/run_isaac_container.sh<span class="w"> </span>fastdds_profile.xml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span>environment.terrain_manager.moon_yard.crater_generator.z_scale<span class="o">=</span><span class="m">0</span>.78
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>/usr/bin/python3<span class="w"> </span>tools/omnilrs_trial.py<span class="w"> </span>--crater<span class="w"> </span><span class="m">45</span>.79<span class="w"> </span><span class="m">38</span>.44<span class="w"> </span>--floor_z<span class="w"> </span><span class="m">0</span>.190<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>--policy<span class="w"> </span>results/policy_ppo_slope30.npz<span class="w"> </span>--out<span class="w"> </span>slope30_ppo.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 학습 (1024 환경, 과제당 약 25~45분 / RTX 5080)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>python<span class="w"> </span>scripts/train.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">1024</span><span class="w"> </span>--max_iterations<span class="w"> </span><span class="m">1500</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># 평가 (목표 경사 고정, 고정 서스펜션 기준선은 --passive)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>python<span class="w"> </span>scripts/evaluate.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--out<span class="w"> </span>eval.json
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># 영상</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>python<span class="w"> </span>scripts/record_video.py<span class="w"> </span>--headless<span class="w"> </span>--enable_cameras<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--out<span class="w"> </span>s30.mp4
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># OmniLRS lunaryard 검증 (HILS 저장소의 컨테이너 기동 후)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nv">HEADLESS</span><span class="o">=</span>True<span class="w"> </span>tools/isaac/run_isaac_container.sh<span class="w"> </span>fastdds_profile.xml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span>environment.terrain_manager.moon_yard.crater_generator.z_scale<span class="o">=</span><span class="m">0</span>.78
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>/usr/bin/python3<span class="w"> </span>tools/omnilrs_trial.py<span class="w"> </span>--crater<span class="w"> </span><span class="m">45</span>.79<span class="w"> </span><span class="m">38</span>.44<span class="w"> </span>--floor_z<span class="w"> </span><span class="m">0</span>.190<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span>--policy<span class="w"> </span>results/policy_ppo_slope30.npz<span class="w"> </span>--out<span class="w"> </span>slope30_ppo.json
 </code></pre></div>
 <h2 id="_1">참고 문헌<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ol>

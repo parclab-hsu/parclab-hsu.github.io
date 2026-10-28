@@ -250,6 +250,144 @@ a ∈ [−1, 1]. 서스펜션 변화율 1 rad/s는 액추에이터 사양이 없
 다시 학습했습니다. 같은 500회 시점의 학습 중 기울기 RMS가 5.1°에서 0.86°로 줄었습니다. 이하 결과는 모두 수정한 보상의 결과입니다.
 첫 학습의 평가 결과는 저장소 `results/v1_reward`에 보존했습니다.
 
+### 4.8 구현 — 보상 함수와 학습 스크립트
+
+환경은 Isaac Lab `DirectRLEnv`를 상속한 `ActiveSuspensionEnv`(`lrover_rl/env.py`)이고, 학습 진입점은 `scripts/train.py`입니다.
+아래 코드는 비공개 저장소 `l-project-rl`에서 핵심 부분만 발췌했습니다(로깅·통계 집계 줄은 생략).
+
+**보상 함수 — `_get_rewards()`.** 제어 주기(20 ms)마다 호출됩니다. 각 항은 4.5절 표와 1:1로 대응하고, 가중치는 `env_cfg.py`의
+`w_*` 필드입니다. 연속 항에는 제어 주기 `dt`를 곱하고, 성공·실패는 한 번만 주는 항이라 곱하지 않습니다.
+
+```python
+def _get_rewards(self) -> torch.Tensor:
+    d, dt = self._robot.data, self.step_dt
+    v_cmd = self._v_cmd.clamp(min=0.05)
+    v_fwd = self._v_forward()                        # 출발 방위로 투영한 수평 속도
+    progress = v_fwd.clamp(-0.5, 1.0).minimum(v_cmd) / v_cmd
+    overspeed = (v_fwd - 1.05 * v_cmd).clamp(min=0.0) / v_cmd
+    tilt = torch.acos((-d.projected_gravity_b[:, 2]).clamp(-1.0, 1.0))   # 차체 기울기 [rad], 선형
+    imu = self._imu.data
+    ang_rate = torch.sum(torch.square(imu.ang_vel_b[:, :2]), dim=1)      # IMU 자이로 roll·pitch
+    v_w = math_utils.quat_apply(imu.quat_w, imu.lin_vel_b)               # IMU 동가속도: 20 ms 속도차
+    self._imu_acc_dyn = math_utils.quat_apply_inverse(imu.quat_w, (v_w - self._imu_v_prev) / dt)
+    self._imu_v_prev = v_w
+    settled = (self.episode_length_buf.float() * dt > 1.0).float()        # 스폰 착지 1 s 제외
+    imu_accel = torch.sum(torch.square(self._imu_acc_dyn), dim=1) * settled
+    f = self._wheel_forces()                       # 휠 4개 접촉력 크기, 최근 물리 서브스텝 평균
+    lift = (f < 0.1 * (self._weight / 4.0).unsqueeze(1)).float().mean(dim=1)
+    load_cv = f.std(dim=1) / f.mean(dim=1).clamp(min=1.0)
+    slip = (d.joint_vel[:, self._drive_ids] * WHEEL_RADIUS - d.root_lin_vel_b[:, :1]).abs().mean(dim=1) / v_cmd
+    ...                                                                   # body_contact, action_rate, sus_* 동일 형식
+    c = self.cfg
+    terms = {
+        "progress":  c.w_progress * progress * dt,       # +2.0
+        "goal":      c.w_goal * self._success.float(),   # +20, 1회
+        "overspeed": -c.w_overspeed * overspeed * dt,    # −10
+        "tilt":      -c.w_tilt * tilt * dt,              # −3.0
+        "ang_rate":  -c.w_ang_rate * ang_rate * dt,      # −0.5
+        "imu_accel": -c.w_imu_accel * imu_accel * dt,    # −0.2
+        "lift_off":  -c.w_lift_off * lift * dt,          # −1.0
+        "load_cv":   -c.w_load_cv * load_cv * dt,        # −0.5
+        "slip":      -c.w_slip * slip.clamp(max=2.0) * dt,
+        ...                                               # body_contact, action_rate, sus_torque, sus_pose, sus_limit
+        "fail":      -c.w_fail * self._failed.float(),   # −20, 1회
+    }
+    return torch.stack(list(terms.values())).sum(dim=0)
+```
+
+이 코드에서 짚어 둘 설계 결정은 네 가지입니다. 모두 앞선 학습에서 실제로 문제가 된 것을 고친 결과입니다.
+
+- **진행 항은 v_cmd에서 자르고, 과속은 따로 벌합니다.** 성공 보상은 할인되므로 일찍 도착할수록 커집니다. 과속 항이 없던 첫 학습에서는
+  정책이 최대 지령 0.4 m/s에 대해 평지에서 0.43 m/s로 달렸습니다.
+- **기울기는 각도에 선형으로 벌합니다.** 처음 쓴 sin²θ 형태는 10° 아래에서 거의 0이 되어, 하중 편차 항과의 경쟁에서 졌습니다(4.7절).
+- **IMU 가속도는 20 ms 속도차로 다시 계산합니다.** Isaac Lab IMU의 `lin_acc_b`는 5 ms 서브스텝 미분값이라 휠 접촉 채터가 섞여,
+  고정 서스펜션이 평지에서 기울기 0.3°로 달려도 4.8 m/s² RMS가 나왔습니다. 스폰 낙하(0.15 m) 착지 충격 때문에 첫 1 s는 제외합니다.
+- **IMU 중력 기준은 달 중력입니다.** `ImuCfg.gravity_bias = (0, 0, 1.62)`로 두어, 정지 상태 출력이 OmniLRS `/rover/imu_pub`의
+  proper acceleration(정지 시 z ≈ +1.6 m/s²)과 같은 규약이 되게 했습니다.
+
+**종료 조건과 커리큘럼 — `_get_dones()`, `_reset_idx()`.** 경사로 위에서는 차체가 경사만큼 기울어 있는 것이 정상이므로,
+경사로 모드의 전도 판정은 전체 기울기가 아니라 roll(옆으로 넘어감)을 봅니다.
+
+```python
+tilted = (roll > radians(50)) | (-g_b[:, 2] < cos(radians(85)))   # 옆 전도 또는 거의 뒤집힘
+fell = root_z < env_origin_z - 3.0                                   # 지형 밖으로 이탈
+self._failed = tilted | fell
+self._success = (self._distance() >= 6.5) & ~self._failed           # 접근 1 m + 경사 4 m + 상단 1.5 m
+# 커리큘럼: 성공하면 다음 경사 레벨, 3 m(경사로 중간)도 못 가면 한 레벨 아래
+move_up = self._success[env_ids]
+move_down = ~self._success[env_ids] & (self._distance()[env_ids] < 3.0)
+self._terrain.update_env_origins(env_ids, move_up, move_down)
+```
+
+거리 `_distance()`는 출발 방위로 투영한 전진 거리입니다. 미끄러져 내려간 거리는 진행으로 치지 않습니다.
+
+**보상 항별 기여 — 학습 마지막 반복.** 아래 값은 학습 로그의 `Episode_Reward/*`를 에피소드 합으로 환산한 것입니다
+(로그 값 × 에피소드 길이 40 s). 마지막 반복에서 끝난 에피소드의 평균입니다.
+
+| 항 | Ramp20 | Ramp30 |
+|---|---|---|
+| 진행 | +38.88 | +39.93 |
+| 성공 | +20.00 | +20.00 |
+| 과속 | −0.30 | −0.24 |
+| 기울기 | −6.14 | **−11.02** |
+| 하중 편차 | −5.88 | −6.68 |
+| 충격·진동 (IMU 가속도) | −1.96 | −2.35 |
+| 접지 상실 | −1.58 | −2.26 |
+| 자세 | −0.16 | −1.54 |
+| 슬립 | −1.02 | −1.04 |
+| 서스펜션 토크 | −0.88 | −0.97 |
+| 행동 변화 | −0.51 | −0.41 |
+| 한계 근접 | 0.00 | −0.16 |
+| 각속도 (IMU 자이로) | −0.03 | −0.04 |
+| 차체 접지 | −0.03 | 0.00 |
+| 전도·이탈 | 0.00 | 0.00 |
+| **합계** | **+40.40** | **+33.22** |
+
+경사가 20°에서 30°로 커지면 기울기 벌점은 −6.1에서 −11.0으로 거의 두 배가 되고, 자세 벌점은 −0.16에서 −1.54로 열 배가 됩니다.
+30°에서는 정책이 서스펜션을 중립에서 크게 벗어나게 쓴다는 뜻이고, 이는 정상 꺾임을 넘을 때 서스펜션을 쓰는 영상의 모습과 일치합니다.
+안정 항 가운데 가장 큰 것은 기울기와 하중 편차입니다. 각속도·차체 접지·전도 항은 학습이 끝난 시점에 거의 0입니다.
+
+**학습 스크립트 — `scripts/train.py`.** 과제 이름 하나로 환경 설정과 PPO 설정을 함께 불러와 `rsl_rl`의 `OnPolicyRunner`로 학습합니다.
+
+```python
+from isaaclab.app import AppLauncher
+app = AppLauncher(args).app                 # Isaac Sim을 먼저 띄운다. isaaclab 모듈 import는 이 뒤에만 가능하다
+
+import lrover_rl                            # gym 등록: LRover-Ramp20/30/60-v0, LRover-Ramp30-SusOnly-v0 …
+env_cfg   = load_cfg_from_registry(args.task, "env_cfg_entry_point")      # 지형·보상 가중치·커리큘럼
+agent_cfg = load_cfg_from_registry(args.task, "rsl_rl_cfg_entry_point")   # PPO 설정(4.6절)
+env_cfg.scene.num_envs = args.num_envs      # 1024
+env_cfg.seed = agent_cfg.seed = args.seed
+env = RslRlVecEnvWrapper(gym.make(args.task, cfg=env_cfg), clip_actions=agent_cfg.clip_actions)   # a ∈ [−1, 1]
+runner = OnPolicyRunner(env, agent_cfg.to_dict(), log_dir=log_dir, device=agent_cfg.device)
+dump_yaml(f"{log_dir}/params/env.yaml", env_cfg)        # 재현용으로 설정 전체를 실행 폴더에 남긴다
+dump_yaml(f"{log_dir}/params/agent.yaml", agent_cfg)
+runner.learn(num_learning_iterations=agent_cfg.max_iterations, init_at_random_ep_len=True)
+```
+
+```python
+class ActiveSuspensionPPORunnerCfg(RslRlOnPolicyRunnerCfg):           # lrover_rl/agents/rsl_rl_ppo_cfg.py
+    num_steps_per_env = 24                                             # 1024 × 24 = 24,576 샘플/반복
+    save_interval = 100
+    obs_groups = {"policy": ["policy"], "critic": ["critic"]}          # 비대칭 actor-critic (4.3절)
+    clip_actions = 1.0
+    policy = RslRlPpoActorCriticCfg(init_noise_std=0.6, actor_hidden_dims=[256, 128, 64],
+                                    critic_hidden_dims=[256, 128, 64], activation="elu",
+                                    actor_obs_normalization=True, critic_obs_normalization=True)
+    algorithm = RslRlPpoAlgorithmCfg(clip_param=0.2, entropy_coef=0.004, num_learning_epochs=5,
+                                     num_mini_batches=4, learning_rate=5.0e-4, schedule="adaptive",
+                                     desired_kl=0.01, gamma=0.99, lam=0.95, max_grad_norm=1.0,
+                                     value_loss_coef=1.0, use_clipped_value_loss=True)
+```
+
+- `init_at_random_ep_len=True`는 첫 에피소드 길이를 환경마다 무작위로 잘라, 1024개 환경이 한꺼번에 리셋되지 않게 합니다.
+  환경 쪽 `_reset_idx()`도 첫 전체 리셋 때 `episode_length_buf`를 무작위로 흩어 둡니다.
+- 반복 수는 실행 인자 `--max_iterations`로 과제마다 정합니다(20°: 1000, 30°: 1500, 60°: 2000). 실행 예:
+  `python scripts/train.py --headless --task LRover-Ramp30-v0 --num_envs 1024 --max_iterations 1500 --run_name ppo1024`
+- **PhysX 충돌 버퍼.** 시뮬레이션 설정에서 `gpu_collision_stack_size = 2**28`로 둡니다. 기본값 2²⁶으로는 1024개 환경이
+  20~60° 경사로를 달릴 때 최대 약 2.3억 바이트가 필요해 버퍼가 넘쳤습니다. 넘치면 접촉이 버려져 로버가 경사로를 뚫고 떨어집니다.
+  첫 Ramp60 학습은 이 때문에 실패 88 %, 행동 표준편차 0.6 → 2.7로 발산해 폐기했습니다. 20°·30° 학습 로그에는 이 오류가 0건이었습니다.
+
 ---
 
 ## 5. 학습 결과
