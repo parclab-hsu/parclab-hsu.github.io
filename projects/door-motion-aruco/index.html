@@ -745,6 +745,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. 반사 띠(glare) 해독">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-2026-10-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 여러 모양의 반사에 맞추기 (2026-10-28 추가)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1073,7 +1090,7 @@
 <li><strong>추가 파일</strong>: <code>dof_corner_fit.py</code>(corner 직접 맞춤). 측정 앱 폴더에 함께 둔다.</li>
 <li><strong>CSV</strong>: 기존 열은 그대로 두고 <code>dof_fit_*</code>(맞춤 잔차·readout·쌍 배치 보정)와 <code>dof_pos_source</code> 열을 더했다.</li>
 <li><strong>설정</strong>: <code>ROI_TRACKING</code>, <code>BLUR_TRACK</code>, <code>GLARE_DECODE</code> 와 각 시간 예산 상수를 더했다. 모두 기본값이 켜짐이고, 끄면 그 단계만 빠진다.</li>
-<li><strong>필요 환경은 그대로다</strong>: Python ≥ 3.7, OpenCV(contrib) ≥ 4.7.</li>
+<li><strong>필요 환경</strong>: Python ≥ 3.7, OpenCV(contrib) ≥ 4.7, <strong>권장 4.11 이상</strong>. 4.7~4.10 은 빠른 구간 검출이 약하다(6 절). 현장 측정 PC 는 OpenCV 5.0.0 이다.</li>
 </ul>
 <h2 id="3-glare">3. 반사 띠(glare) 해독<a class="headerlink" href="#3-glare" title="Permanent link">&para;</a></h2>
 <p><img alt="반사 띠가 marker 를 덮은 합성 프레임, ArUco 가 보는 이진화, 경계 기반 해독 결과" src="../../assets/door-aruco/glare_mechanism.png" /></p>
@@ -1094,6 +1111,110 @@
 <li><strong>corner</strong>: 윤곽 corner 는 3 px 안팎 틀리므로 변 직선 맞춤으로 다듬는다. 다듬지 못한 marker 는 버린다.</li>
 </ul>
 <p>시험한 열화 녹화 전체에서 오검출은 0 건이었다.</p>
+<h3 id="31-2026-10-28">3.1 여러 모양의 반사에 맞추기 (2026-10-28 추가)<a class="headerlink" href="#31-2026-10-28" title="Permanent link">&para;</a></h3>
+<p>위 해독은 한 가지 띠로만 맞췄다. 실제 반사는 폭·방향·세기·움직임이 제각각이므로 시험 반사를 9종으로 넓혔다.
+폭은 marker module(한 변 / 7) 단위다.</p>
+<p><img alt="합성 marker 쌍에 입힌 반사 9종: 가는·세로·가로·사선·넓은·포화·멈춘 띠, 도는 반점, 깜박이는 띠" src="../../assets/door-aruco/glare_zoo.png" /></p>
+<p>이 9종에서 실패는 세 가지였다.</p>
+<ol>
+<li><strong>고정 경계 문턱이 작은 marker 에서 윤곽을 끊는다.</strong> module 이 10 px 안팎이면 띠 옆면의 기울기가 경계 검출 문턱을 넘어
+   사각형이 닫히지 않았다. 고정 문턱으로 못 찾으면 그 영역의 경계 세기(기울기 99 백분위)에 비례한 문턱으로 다시 찾는다.
+   고정 문턱이 먼저다. 비례 문턱을 먼저 쓰면 고정 문턱으로 찾던 넓은 띠에서 다른 사각형을 먼저 받아 자세가 버려졌다.</li>
+<li><strong>블러 추적의 상관이 반사에 끌려간다.</strong> 반사는 빛을 더하기만 하므로, 그 marker 가 직접 잡혔을 때의 흰색보다 대비 1배
+   넘게 밝은 화소와 포화 화소를 상관에서 뺀다. 예전 상관이 실패하고 움직임이 느릴 때만 쓰므로 열화 없는 녹화의 결과는 같다.
+   대비 0.3배로 두었을 때는 도어가 움직이며 바뀌는 조명만으로 켜졌다.</li>
+<li><strong>0 위치가 열린 자세로 잡힌다.</strong> 닫힌 자세를 반사 때문에 못 보고 열리는 도중에 처음 잡으면, 처음 샘플을 0 으로 삼아
+   각도 전체가 33~37° 밀렸고 경고도 없었다. 이제 <strong>첫 정지 구간</strong>을 0 으로 삼고, 그것이 처음 샘플이 아니면 저장 로그에
+   경고를 남긴다.</li>
+</ol>
+<p>실측 녹화 9개(슬라이드 4, 회전 도어 2, 작은 회전 도어 3: 40 mm marker)에 반사 9종을 입혀 움직이는 동안의 확보율을 비교했다
+(열화 seed 고정, 녹화 범위, 이전 판 → 현재 판).</p>
+<table>
+<thead>
+<tr>
+<th>반사</th>
+<th>슬라이드</th>
+<th>회전 도어</th>
+<th>작은 회전 도어</th>
+<th>작은 회전 도어 위치 RMS 최대</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>가는 띠</td>
+<td>22~52 → 22~80 %</td>
+<td>72~83 → 72~89 %</td>
+<td>41~67 → 29~80 %</td>
+<td>13.1 → 1.19°</td>
+</tr>
+<tr>
+<td>세로 띠</td>
+<td>67~100 → 67~100 %</td>
+<td>95~99 → 95~99 %</td>
+<td>35~82 → 47~85 %</td>
+<td>1.70 → 0.92°</td>
+</tr>
+<tr>
+<td>가로 띠</td>
+<td>89~100 → 89~100 %</td>
+<td>88~95 → 94~95 %</td>
+<td>64~94 → 81~94 %</td>
+<td>1.60 → 0.34°</td>
+</tr>
+<tr>
+<td>사선 띠</td>
+<td>56~93 → 56~93 %</td>
+<td>95~100 → 97~100 %</td>
+<td>80~93 → 82~95 %</td>
+<td>1.81 → 0.28°</td>
+</tr>
+<tr>
+<td>넓은 띠</td>
+<td>95~100 %</td>
+<td>100 %</td>
+<td>65~100 %</td>
+<td>0.30°</td>
+</tr>
+<tr>
+<td>포화 띠</td>
+<td>0~2 → 0~3 %</td>
+<td>51~52 %</td>
+<td>0~41 → 0~43 %</td>
+<td>19.7 → 5.9°</td>
+</tr>
+<tr>
+<td>멈춘 띠</td>
+<td>71~100 → 71~100 %</td>
+<td>60~79 → 62~85 %</td>
+<td>0~23 → <strong>6~90 %</strong></td>
+<td>35.8 → <strong>0.62°</strong></td>
+</tr>
+<tr>
+<td>도는 반점</td>
+<td>49~91 %</td>
+<td>88~98 %</td>
+<td>76~96 → 76~97 %</td>
+<td>1.00°</td>
+</tr>
+<tr>
+<td>깜박이는 띠</td>
+<td>76~100 → 76~100 %</td>
+<td>88~97 → 89~97 %</td>
+<td>65~81 → 82~91 %</td>
+<td>0.11 → 0.27°</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>열화 18종 전체 평균 확보율은 79.5 → 81.8 % 다. 1 %p 넘게 좋아진 조합이 33개, 나빠진 조합이 4개다.
+  열화 없는 녹화와 반사가 아닌 열화(어둡게·잡음·대비·JPEG·블러)는 결과가 같다.</li>
+<li><strong>나빠진 곳</strong>: 슬라이드 70 의 기존 반사 띠 98.5 → 95.5 %(비례 문턱이 거친 corner 로 marker 를 먼저 받아 그 프레임이 재투영
+  기준에서 빠진다), 같은 녹화의 가림 조건 위치 RMS 0.057 → 0.277 mm(흰색보다 밝은 가림판을 반사로 본다).</li>
+<li><strong>포화 띠는 고치지 못했다.</strong> 띠 안이 255 라 marker 정보가 없다.</li>
+<li>반사가 있는 프레임은 처리 시간이 중앙값 1.3~1.5 ms 늘었다(PC). 열화 없는 프레임은 같다.</li>
+<li>비교 도중 bench 자체의 결함을 찾았다. 열화 seed 가 실행마다 바뀌어서(문자열 hash), 같은 판을 다시 돌려도 가림·누락
+  조건이 몇~수십 % 흔들렸다. 고친 뒤에는 같은 판을 두 번 돌리면 결과가 같다. 위 표는 고친 bench 의 결과다.</li>
+</ul>
 <h2 id="4">4. 결과<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <h3 id="41">4.1 실측 녹화 + 합성 열화<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
 <p>실측 녹화 6개(회전 도어 2, 슬라이드 4: 구동 속도 설정 10·40·70·100)에 같은 열화를 입혀 <strong>움직이는 동안 측정값이 나온
@@ -1174,7 +1295,7 @@
 <td>슬라이드 1 m/s, 정상 노출</td>
 <td>확보 70 %, 위치 2.32 mm, peak −12 %</td>
 <td>확보 100 %, 2.34 mm, +2.7 %</td>
-<td>확보 100 %, <strong>0.31 mm</strong>, +0.1 %</td>
+<td>확보 100 %, <strong>0.31 mm</strong>, +0.1 %(OpenCV ≥ 4.11)</td>
 </tr>
 <tr>
 <td>회전 도어, 정상 노출</td>
@@ -1209,6 +1330,10 @@
 </tbody>
 </table>
 <p>나머지 조건(광량 15 %, 대비 25 %, 가림, 지터)에서 현재 판의 회귀는 없었다.</p>
+<ul>
+<li>「현재 판」 값은 OpenCV 4.11 이상(4.14·5.0 포함)에서 잰 것이다. <strong>4.7~4.10 은 빠른 구간 검출이 약해</strong> 슬라이드 1 m/s 확보율이
+  57 %, peak 오차가 −36 % 였다. 0.1·0.4 m/s 와 회전 도어는 판과 상관없이 같다.</li>
+</ul>
 <h2 id="5-30-fps">5. 처리 시간과 30 fps<a class="headerlink" href="#5-30-fps" title="Permanent link">&para;</a></h2>
 <p>30 fps 의 프레임 예산은 33.3 ms 다. 아래는 데스크톱 1 스레드에서 1080p 실측 녹화 6개를 하나씩 처리한 시간(중앙값 / p99)이다.</p>
 <table>
@@ -1253,14 +1378,19 @@
 </thead>
 <tbody>
 <tr>
-<td>단위 시험 8종(검출·1-DOF·stroke·calibration·corner 정제·rolling shutter 보정 자세·속도 구간·캡처 대기열)</td>
-<td>Python 3.8 + OpenCV 4.7.0(numpy 1.19.5·1.24.4), Python 3.13 + OpenCV 5.0</td>
-<td>전부 통과</td>
+<td>단위 시험 9종(검출·1-DOF·stroke·calibration·corner 정제·rolling shutter 보정 자세·속도 구간·캡처 대기열·반사 적응)</td>
+<td>Python 3.8 + OpenCV 4.11, Python 3.13 + OpenCV 5.0</td>
+<td><strong>자동 판정 133건 전부 PASS</strong>. 판정마다 PASS/FAIL/SKIP 을 찍고 종료 코드로 낸다(SKIP 은 통과가 아니다)</td>
+</tr>
+<tr>
+<td>합성 bench 자동 판정</td>
+<td>요구사항(처리 시간·확보율·위치·peak) 57건</td>
+<td>OpenCV 4.11·5.0 전부 PASS, 4.7 은 고속 5건 FAIL</td>
 </tr>
 <tr>
 <td>실측 열화 bench</td>
-<td>녹화 6개 × 조건 10종</td>
-<td>4.1 절. 오검출 0</td>
+<td>녹화 9개 × 열화 9종 + 반사 9종</td>
+<td>3.1·4.1 절. 오검출 0</td>
 </tr>
 <tr>
 <td>합성 bench(참값)</td>
@@ -1269,7 +1399,7 @@
 </tr>
 <tr>
 <td>그림 생성·bench 실행</td>
-<td>Python 3.8 + OpenCV 4.7.0 + matplotlib 3.7.5</td>
+<td>Python 3.8 + OpenCV 4.11.0 + matplotlib 3.7.5</td>
 <td>통과(x86_64. Nano 설치 절차와 같은 package 판, aarch64 wheel 존재 확인)</td>
 </tr>
 <tr>
@@ -1488,7 +1618,8 @@
 </ul>
 <h2 id="7">7. 한계<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <ul>
-<li>반사 띠 해독은 <strong>합성한 띠</strong>(가우시안 모양)로만 검증했다. 실제 반사로는 아직 확인하지 않았다.</li>
+<li>반사 해독은 <strong>합성한 반사 10종</strong>(3·3.1 절)으로만 검증했다. 실제 반사로는 아직 확인하지 않았다.</li>
+<li>포화 띠는 읽지 못한다. 흰색보다 밝은 가림판을 반사로 보아 가림 조건의 위치가 나빠진 경우가 있다(3.1 절).</li>
 <li>띠가 marker 경계까지 포화시켜 경계 기울기가 사라지면 읽지 못한다(슬라이드 100 + 반사 띠 59~71 %). 이때 틀린 stroke 요약값은 <strong>고쳐지지 않고 표시만 된다</strong>(6.1 절) — 재측정이 필요하다.</li>
 <li>블러 추적은 이미 한 번 잡은 marker 만 잇는다. 처음부터 심하게 번진 녹화에서는 효과가 없다.</li>
 <li>회전 도어 장노출의 빠른 닫힘 stroke 는 peak 가 여전히 −18 % 낮다.</li>
@@ -1498,7 +1629,7 @@
   심한 열화에서 readout 추정이 틀리면 보정도 틀린다.</li>
 <li>캡처 대기열은 0.4 s 보다 긴 main loop 멈춤은 막지 못한다. 카메라 드라이버·USB 쪽에서 빠진 프레임도 대기열과 무관하다(따로 센다).
   현장 카메라로는 아직 다시 재지 않았다(8.1 절).</li>
-<li>Jetson Nano 기본 구성(JetPack 4.x: Python 3.6, OpenCV 4.1.1)은 기존 코드와 마찬가지로 조건에 맞지 않는다. Python 3.8 과 OpenCV ≥ 4.7 을
+<li>Jetson Nano 기본 구성(JetPack 4.x: Python 3.6, OpenCV 4.1.1)은 기존 코드와 마찬가지로 조건에 맞지 않는다. Python 3.8 과 OpenCV 4.11 을
   따로 설치해야 하며, 실기 처리 시간은 그 뒤에 잰다.</li>
 </ul>
 <h2 id="8-2026-10-28">8. 처리 구조와 설계 결정 (2026-10-28 추가)<a class="headerlink" href="#8-2026-10-28" title="Permanent link">&para;</a></h2>
@@ -1554,6 +1685,21 @@
 <td>반사 띠 해독은 띠 증거가 있을 때만</td>
 <td>늘 해독</td>
 <td>블러·가림 marker 를 받아 peak −0.4 → −12 %</td>
+</tr>
+<tr>
+<td>경계 문턱은 고정 먼저, 못 찾으면 비례</td>
+<td>비례 문턱만</td>
+<td>비례 먼저면 넓은 띠에서 자세 버림. 고정만이면 작은 marker 반사 0 %</td>
+</tr>
+<tr>
+<td>반사 화소를 뺀 상관은 예전 상관 실패·느린 움직임일 때만</td>
+<td>늘 / 문턱 대비 0.3배</td>
+<td>늘 쓰면 열화 없는 고속 녹화가 바뀜(100 → 96 %). 0.3배는 조명 변화만으로 켜짐</td>
+</tr>
+<tr>
+<td>0 위치는 첫 정지 구간</td>
+<td>처음 15 샘플</td>
+<td>열리는 도중 처음 보면 각도 전체가 33~37° 밀림</td>
 </tr>
 <tr>
 <td>보정 자세의 화면 속도는 1-DOF 맞춤의 미분</td>
