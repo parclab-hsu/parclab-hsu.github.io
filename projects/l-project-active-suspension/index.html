@@ -1,0 +1,2038 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PARC Lab · Physical AI Real-Time Control for Mobility & Robotics · 한성대학교 미래모빌리티학과">
+      
+      
+        <meta name="author" content="KyungBok Lee">
+      
+      
+        <link rel="canonical" href="https://parclab-hsu.github.io/projects/l-project-active-suspension/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>달 크레이터 탈출을 위한 PPO 기반 능동 서스펜션 제어 - PARC Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ppo" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="PARC Lab" class="md-header__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PARC Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              달 크레이터 탈출을 위한 PPO 기반 능동 서스펜션 제어
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="다크 모드로"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="라이트 모드로"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  홈
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연구분야
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  프로젝트
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../people/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  구성원
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  논문·성과
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../courses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  강의
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../news/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  소식
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  연락처
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PARC Lab" class="md-nav__button md-logo" aria-label="PARC Lab" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    PARC Lab
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/parclab-hsu/parclab-hsu.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    parclab-hsu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    홈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구분야
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    프로젝트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../people/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    구성원
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    논문·성과
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    강의
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소식
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연락처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 서론
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 서론">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 배경 — 고정 서스펜션과 크레이터 고착
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 목표와 기여
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 대상 시스템
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 문제 정의
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 학습 환경 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 학습 환경 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-omnilrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 OmniLRS 크레이터 지형의 경사 지정형 재현
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 시뮬레이션 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-actor-critic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 관측 — 비대칭 actor-critic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 행동
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 보상 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-ppo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 PPO 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 첫 학습의 실패 — 기울기 항이 작동하지 않았다
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 학습 결과
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 평가
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 평가">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-isaac-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Isaac Lab 평가 — 목표 경사 고정
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Isaac Lab 평가 — 목표 경사 고정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        경사 한계 — 60° 과제 정책의 경사별 평가
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 결과 영상
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-omnilrs-lunaryard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 OmniLRS lunaryard 검증 — 학습 환경 밖 플랜트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 논의
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 확인되지 않은 것과 한계
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 재현 방법
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        참고 문헌
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ppo">달 크레이터 탈출을 위한 PPO 기반 능동 서스펜션 제어<a class="headerlink" href="#ppo" title="Permanent link">&para;</a></h1>
+<p><strong>1024 병렬 환경 강화학습과 OmniLRS lunaryard 검증</strong></p>
+<p><span class="twemoji" style="color:#2e9e44"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> <strong>연구 보고</strong> · 현대자동차 L-Project · 기준일 <strong>2026-10-28</strong></p>
+<div class="admonition abstract">
+<p class="admonition-title">요약</p>
+<p>L-Project 달 탐사 로버는 4륜 독립 조향과 4축 능동 서스펜션을 갖춘 12축 차량입니다. 그러나 현재
+주행 제어는 서스펜션 지령을 0으로 고정하며, 2026-08-25 시뮬레이션에서는 크레이터 안에서
+같은 휠 속도 지령만으로 탈출하지 못한 사례(slip ratio 약 100 %)가 기록되었습니다.</p>
+<p>본 연구는 서스펜션 4축과 휠 속도 보정 4축을 출력하는 정책을 <strong>PPO</strong>로 학습해, 크레이터 탈출과
+안정 주행을 함께 달성하는 것을 목표로 합니다. 학습 지형은 <strong>OmniLRS lunaryard의 크레이터
+spline 프로파일 29종</strong>을 그대로 사용하고, 벽 최대 경사를 <strong>20°·30°·60°</strong>로 맞춘 세 과제를
+<strong>1024개 병렬 환경</strong>(Isaac Lab, RTX 5080, 약 22,300 step/s)에서 각각 학습했습니다.</p>
+<p>목표 경사 고정 평가(과제당 크레이터 832 에피소드)에서 고정 서스펜션 대비 결과는 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>벽 경사</th>
+<th>탈출률 (고정 → PPO)</th>
+<th>전도율 (고정 → PPO)</th>
+<th>차체 기울기 RMS (고정 → PPO)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20°</td>
+<td>100.0 % → <strong>100.0 %</strong></td>
+<td>0.0 % → 0.0 %</td>
+<td>2.6° → <strong>0.7°</strong></td>
+</tr>
+<tr>
+<td>30°</td>
+<td>53.5 % → <strong>99.2 %</strong></td>
+<td>0.0 % → 0.0 %</td>
+<td>5.2° → <strong>2.4°</strong></td>
+</tr>
+<tr>
+<td>60°</td>
+<td>0.0 % → <strong>0.0 %</strong></td>
+<td>1.1 % → 37.7 %</td>
+<td>30.1° → <strong>26.6°</strong></td>
+</tr>
+</tbody>
+</table>
+<p>벽 경사를 35~50°로 나눈 평가에서 60° 과제 정책은 고정 서스펜션이 0~8 %에 그친 구간을 각각 <strong>100 % · 99 % · 78 % · 13 %</strong>로
+탈출해, 탈출률 50 %가 되는 경사를 약 31°에서 약 47°로 넓혔습니다. 반면 <strong>60°에서는 두 조건 모두 탈출하지 못했고, PPO는 전도율이 37.7 %로
+고정 서스펜션(1.1 %)보다 높았습니다.</strong> 학습 환경 밖인 OmniLRS lunaryard 플랜트에서는 30° 크레이터에서 고정 서스펜션 3/4, PPO 4/4가
+탈출했고, 20°에서는 둘 다 4/4가 탈출하되 PPO가 기울기 RMS를 절반 수준으로 낮췄습니다.</p>
+<p><strong>모든 결과는 강체 지형 시뮬레이션 결과이며 실물 로버·월면토 검증이 아닙니다.</strong> 한계는 8절에 정리했습니다.</p>
+</div>
+<p><a href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 프로젝트 상세</a> ·
+<a href="../l-project-usd-asset/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 로버 USD 설명</a> ·
+<a href="../l-project-deformation/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 지형 변형 엔진 분석</a> ·
+<a href="../l-project-terramechanics/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 차년도 과제 제안</a></p>
+<hr />
+<h2 id="1">1. 서론<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 배경 — 고정 서스펜션과 크레이터 고착<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>로버의 서스펜션은 축당 상·하부 암으로 구성된 4절 평행 링크이며, 상부 암 조인트
+(<code>body_to_upper_arm_sus_*</code>)가 위치 지령을 받는 액추에이터입니다. 12축 계약상 서스펜션은
+±0.35 rad(±20.05°) 범위의 위치 제어 축이지만, 현행 주행 제어(텔레옵·Nav2 경로)는 이 축에
+<strong>항상 0을 지령</strong>합니다. 본 문서에서 「고정 서스펜션」은 이 상태를 의미합니다.</p>
+<p>2026-08-25 Isaac Sim 시험에서 로버가 크레이터에 진입한 뒤 네 휠을 +2.0 rad/s로 구동해도 이동 속도가
+0.01 cm/s에 그쳤습니다(차체 pitch −11.2°, 서스펜션 토크 RL −41.3 N·m, 나머지 약 −13 N·m).
+하중이 한 휠에 편중된 상태에서 같은 휠 속도 지령만으로는 탈출하지 못한 사례입니다.</p>
+<h3 id="12">1.2 목표와 기여<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>크레이터 탈출</strong> — 크레이터 바닥에서 출발해 벽을 넘어 4 m 밖으로 나갑니다.</li>
+<li><strong>안정 주행</strong> — 탈출 과정과 평지 주행에서 차체 기울기·각속도·휠 하중 편차를 줄입니다.</li>
+</ol>
+<p>본 연구의 기여는 다음과 같습니다.</p>
+<ul>
+<li>OmniLRS 크레이터 생성기를 <strong>경사 지정형 Isaac Lab 지형</strong>으로 이식해 1024개 환경을 병렬화했습니다(4.1절).</li>
+<li>실기에 있는 신호(IMU·조인트 상태·서스펜션 토크)만 쓰는 정책과, 지상 진실을 쓰는 critic의
+  <strong>비대칭 actor-critic</strong> 구조와 보상 설계를 제시합니다(4.3~4.5절).</li>
+<li>경사 20°·30°·60° 세 과제의 학습 결과와 <strong>서스펜션 단독 ablation</strong>, 그리고 학습 환경 밖인
+  <strong>OmniLRS lunaryard 실제 플랜트</strong>에서의 검증 결과를 보고합니다(5~6절).</li>
+</ul>
+<hr />
+<h2 id="2">2. 대상 시스템<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>축 구성</td>
+<td>구동 4(속도) · 조향 4(위치) · 서스펜션 4(위치), 순서 FL·FR·RL·RR</td>
+<td>12축 계약 <code>axes.py</code></td>
+</tr>
+<tr>
+<td>윤거 / 축거 / 휠 반경</td>
+<td>1.2867 / 1.4910 / 0.2133 m</td>
+<td><code>final_rover_HH</code> asset 실측</td>
+</tr>
+<tr>
+<td>총질량 / 차체</td>
+<td>450 / 302 kg</td>
+<td>NASA VIPER 공개 제원 참조 <strong>추정</strong></td>
+</tr>
+<tr>
+<td>서스펜션 한계</td>
+<td>±0.35 rad (암 길이 0.247 m)</td>
+<td>asset 조인트 한계</td>
+</tr>
+<tr>
+<td>서스펜션 drive</td>
+<td>kp 2865 N·m/rad · kd 1146 N·m·s/rad · 최대 1000 N·m</td>
+<td>asset (PhysX 환산값)</td>
+</tr>
+<tr>
+<td>휠 속도 한계</td>
+<td>10 rad/s</td>
+<td>12축 계약</td>
+</tr>
+<tr>
+<td>중력</td>
+<td>1.62 m/s²</td>
+<td>달</td>
+</tr>
+<tr>
+<td>휠–지면 마찰</td>
+<td>정지 0.90 / 동 0.70</td>
+<td>HILS 월면토 마찰 설정</td>
+</tr>
+</tbody>
+</table>
+<p>정책은 HILS와 같은 asset(<code>Rover_hyundai_omnilrs.usd</code>)과 같은 조인트 drive 값을 사용합니다.
+4절 링크의 종동 조인트 drive도 asset 값을 유지했습니다. 이 drive가 서스펜션을 잠그는지 확인하기 위해
+0.28 rad 지령을 asset drive와 자유 힌지 두 조건으로 비교했으며, 두 조건 모두 0.25~0.30 rad에 도달해
+<strong>서스펜션 운동을 구속하지 않음</strong>을 확인했습니다(2026-10-28).</p>
+<hr />
+<h2 id="3">3. 문제 정의<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>정의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>초기 상태</td>
+<td>크레이터 중심 바닥(±1 m 최고 지점 + 0.15 m)에서 정지, <strong>방위각 무작위</strong></td>
+</tr>
+<tr>
+<td>주행 지령</td>
+<td>지면 속도 v_cmd ~ U(0.2, 0.4) m/s, 조향 0(직진)</td>
+</tr>
+<tr>
+<td>성공</td>
+<td>출발점에서 수평 거리 <strong>4.0 m 이상</strong>(크레이터 림 반경 최대 1.74 m, 후륜이 림을 넘는 거리)</td>
+</tr>
+<tr>
+<td>실패</td>
+<td>차체 기울기 <strong>50° 초과</strong>(전도) 또는 지형 이탈</td>
+</tr>
+<tr>
+<td>시간 제한</td>
+<td>30 s (시뮬레이션 시간)</td>
+</tr>
+</tbody>
+</table>
+<p>크레이터 중심에서 직진하면 진행 방향이 곧 반경 방향이므로 조향을 0으로 고정했습니다. 조향을 함께
+학습하는 경우는 8절의 범위 밖 항목입니다.</p>
+<hr />
+<h2 id="4">4. 학습 환경 설계<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41-omnilrs">4.1 OmniLRS 크레이터 지형의 경사 지정형 재현<a class="headerlink" href="#41-omnilrs" title="Permanent link">&para;</a></h3>
+<p>OmniLRS lunaryard는 크레이터를 <strong>반경 방향 spline 프로파일</strong>(29종) × 반경으로 생성하고,
+0.85~1.0의 타원 비, 0.95~1.0의 각도별 반경 변형, 무작위 회전을 더합니다. 본 환경은 이 생성 절차를
+그대로 따르되 깊이 정의만 바꿨습니다.</p>
+<ul>
+<li><strong>OmniLRS</strong>: 깊이 = 프로파일 × 반경 × <code>z_scale</code> — 벽 경사가 프로파일에 따라 15~35°로 흩어집니다.</li>
+<li><strong>본 환경</strong>: 프로파일의 최대 기울기가 <strong>목표 경사</strong>와 같아지도록 깊이를 스케일합니다.
+  같은 「30°」 과제 안에서도 29종 프로파일의 형상 차이는 유지됩니다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>크레이터 반경</td>
+<td>2.5 m (lunaryard 최대 등급, 2026-08-25 고착 사례와 같은 등급)</td>
+</tr>
+<tr>
+<td>림 반경</td>
+<td>0.49~0.59 R (프로파일별)</td>
+</tr>
+<tr>
+<td>지형 격자</td>
+<td>0.1 m, 타일 10 × 10 m, 10단계 × 16열 = 160 타일</td>
+</tr>
+<tr>
+<td>기저 잡음</td>
+<td>OmniLRS 고주파 잡음 방식, ±1 cm</td>
+</tr>
+<tr>
+<td>타일 구성</td>
+<td>크레이터 80 % · 평지 20 %(소형 크레이터 r 0.25~0.5 m, 2~8개 — 안정 주행 학습용)</td>
+</tr>
+<tr>
+<td>커리큘럼</td>
+<td>20° 과제 5→20°, 30° 과제 10→30°, 60° 과제 20→60°(레벨 0→9)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>벽 경사</th>
+<th>깊이(대표, R 2.5 m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20°</td>
+<td>0.30 (0.14~0.35) m</td>
+</tr>
+<tr>
+<td>30°</td>
+<td>0.47 (0.22~0.56) m</td>
+</tr>
+<tr>
+<td>60°</td>
+<td>1.40 (0.67~1.67) m</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="벽 경사 30° 크레이터, 출발 6 s 시점 — 왼쪽 고정 서스펜션(차체 기울기 9.3°), 오른쪽 PPO(0.2°)" src="../../assets/l-project-rl/s30_compare_t6.jpg" /></p>
+<h3 id="42">4.2 시뮬레이션 설정<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>시뮬레이터</td>
+<td>Isaac Sim 5.0 + Isaac Lab 0.54 (PhysX GPU)</td>
+</tr>
+<tr>
+<td>물리 / 정책 주기</td>
+<td>200 Hz / <strong>50 Hz</strong> (HILS <code>/sim/axes_cmd</code> 주기와 같음)</td>
+</tr>
+<tr>
+<td>병렬 환경</td>
+<td><strong>1024</strong></td>
+</tr>
+<tr>
+<td>도메인 무작위화</td>
+<td>휠 마찰 정지 0.75~1.0·동 0.55~0.80, 차체 질량 ×0.85~1.15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-actor-critic">4.3 관측 — 비대칭 actor-critic<a class="headerlink" href="#43-actor-critic" title="Permanent link">&para;</a></h3>
+<p>정책(actor)은 <strong>실기 로버에 있는 신호만</strong> 받습니다. 지상 진실이 필요한 값은 학습 중 가치 함수(critic)에만 줍니다.</p>
+<table>
+<thead>
+<tr>
+<th>관측</th>
+<th>차원</th>
+<th>actor</th>
+<th>critic</th>
+<th>실기 출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>중력 방향(차체 좌표)</td>
+<td>3</td>
+<td>✓</td>
+<td>✓</td>
+<td>IMU 자세</td>
+</tr>
+<tr>
+<td>차체 각속도</td>
+<td>3</td>
+<td>✓</td>
+<td>✓</td>
+<td>IMU</td>
+</tr>
+<tr>
+<td>서스펜션 각 / 각속도</td>
+<td>4 + 4</td>
+<td>✓</td>
+<td>✓</td>
+<td>엔코더</td>
+</tr>
+<tr>
+<td>휠 각속도</td>
+<td>4</td>
+<td>✓</td>
+<td>✓</td>
+<td>엔코더</td>
+</tr>
+<tr>
+<td>서스펜션 토크</td>
+<td>4</td>
+<td>✓</td>
+<td>✓</td>
+<td>드라이버 전류</td>
+</tr>
+<tr>
+<td>속도 지령 / 직전 행동</td>
+<td>1 + 8</td>
+<td>✓</td>
+<td>✓</td>
+<td>제어기 내부</td>
+</tr>
+<tr>
+<td>차체 선속도</td>
+<td>3</td>
+<td></td>
+<td>✓</td>
+<td>(지상 진실)</td>
+</tr>
+<tr>
+<td>휠 수직 하중</td>
+<td>4</td>
+<td></td>
+<td>✓</td>
+<td>(지상 진실)</td>
+</tr>
+<tr>
+<td>출발점 거리 · 진행 속도 · 차체 접촉 · 지형 레벨</td>
+<td>4</td>
+<td></td>
+<td>✓</td>
+<td>(지상 진실)</td>
+</tr>
+<tr>
+<td><strong>합계</strong></td>
+<td></td>
+<td><strong>31</strong></td>
+<td><strong>42</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="44">4.4 행동<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>행동</th>
+<th>차원</th>
+<th>변환</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>서스펜션 각 지령</td>
+<td>4</td>
+<td>0.35·a [rad], 변화율 1 rad/s 제한</td>
+</tr>
+<tr>
+<td>휠 속도 보정</td>
+<td>4</td>
+<td>(v_cmd / r)·(1 + 0.75·a), 0~10 rad/s</td>
+</tr>
+<tr>
+<td>조향</td>
+<td>—</td>
+<td>0 고정</td>
+</tr>
+</tbody>
+</table>
+<p>a ∈ [−1, 1]. 서스펜션 변화율 1 rad/s는 액추에이터 사양이 없어 둔 <strong>가정값</strong>입니다.
+<strong>ablation(서스펜션 단독)</strong>은 휠 보정 계수를 0으로 두어 휠이 항상 공칭 속도로 돕니다.</p>
+<h3 id="45">4.5 보상 설계<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<p>보상은 「탈출」 항과 「안정」 항, 그리고 정규화 항으로 구성되며, 매 스텝 값에 제어 주기(0.02 s)를 곱해
+합산합니다(일회성 항 제외).</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>항</th>
+<th>식</th>
+<th>가중치</th>
+<th>설계 의도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>탈출</td>
+<td>진행</td>
+<td>clip(v_fwd, −0.5, v_cmd) / v_cmd</td>
+<td>+2.0</td>
+<td>출발 방위 방향 수평 속도. v_cmd 초과분은 보상하지 않아 과속을 막습니다</td>
+</tr>
+<tr>
+<td>탈출</td>
+<td>성공</td>
+<td>4 m 도달 시 1회</td>
+<td>+20</td>
+<td>탈출 자체를 목표로 고정합니다</td>
+</tr>
+<tr>
+<td>안정</td>
+<td>기울기</td>
+<td>차체 기울기 각 θ [rad] (선형)</td>
+<td>−3.0</td>
+<td>차체를 수평으로 유지합니다. 5°에서 0.26/s로 진행 항과 같은 자릿수입니다</td>
+</tr>
+<tr>
+<td>안정</td>
+<td>각속도</td>
+<td>ω_x² + ω_y²</td>
+<td>−0.5</td>
+<td>roll·pitch 흔들림을 억제합니다</td>
+</tr>
+<tr>
+<td>안정</td>
+<td>접지 상실</td>
+<td>정적 하중 10 % 미만인 휠 비율</td>
+<td>−1.0</td>
+<td>네 휠 접지를 유지합니다</td>
+</tr>
+<tr>
+<td>안정</td>
+<td>하중 편차</td>
+<td>휠 하중의 변동계수(std/mean)</td>
+<td>−0.5</td>
+<td>고착 사례의 하중 편중을 직접 겨냥합니다</td>
+</tr>
+<tr>
+<td>안정</td>
+<td>슬립</td>
+<td>평균 |ω·r − v_x| / v_cmd</td>
+<td>−0.5</td>
+<td>헛바퀴를 억제합니다</td>
+</tr>
+<tr>
+<td>안정</td>
+<td>차체 접지</td>
+<td>차체–지면 접촉 시 1</td>
+<td>−2.0</td>
+<td>하부 걸림을 피합니다</td>
+</tr>
+<tr>
+<td>정규화</td>
+<td>행동 변화</td>
+<td>Σ(Δa)²</td>
+<td>−0.02</td>
+<td>지령 떨림 억제</td>
+</tr>
+<tr>
+<td>정규화</td>
+<td>서스펜션 토크</td>
+<td>Σ τ²</td>
+<td>−2×10⁻⁶</td>
+<td>에너지</td>
+</tr>
+<tr>
+<td>정규화</td>
+<td>자세</td>
+<td>mean((q / 0.35)²)</td>
+<td>−0.2</td>
+<td>필요할 때만 중립에서 벗어나게 합니다</td>
+</tr>
+<tr>
+<td>정규화</td>
+<td>한계 근접</td>
+<td>Σ max(|q| − 0.32, 0) / 0.03</td>
+<td>−0.5</td>
+<td>조인트 스톱 충돌 방지</td>
+</tr>
+<tr>
+<td>종료</td>
+<td>전도·이탈</td>
+<td>1회</td>
+<td>−20</td>
+<td>실패 회피</td>
+</tr>
+</tbody>
+</table>
+<p><strong>설계 근거.</strong> 진행 항만 두면 정책은 차체를 크게 기울이거나 휠을 헛돌려서라도 전진하려 합니다.
+안정 항은 그 경로를 막는 제약으로 작동하며, 특히 하중 편차 항은 1.1절의 고착 원인 가설(하중 편중)을
+보상에 직접 반영합니다. 기울기 항과 자세 항은 첫 학습의 실패를 고친 결과입니다(4.7절). 휠 하중과 출발점 거리는 실기에서 직접 측정할 수 없지만 보상 계산은 학습 중에만
+필요하므로 문제가 되지 않습니다.</p>
+<h3 id="46-ppo">4.6 PPO 설정<a class="headerlink" href="#46-ppo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>구현</td>
+<td>rsl_rl 3.0.1 <code>OnPolicyRunner</code></td>
+</tr>
+<tr>
+<td>네트워크</td>
+<td>actor·critic 각각 MLP 256-128-64, ELU, 관측 정규화</td>
+</tr>
+<tr>
+<td>수집</td>
+<td>1024 환경 × 24 step = <strong>24,576 샘플/반복</strong></td>
+</tr>
+<tr>
+<td>갱신</td>
+<td>5 epoch × 4 미니배치, clip 0.2, 적응 학습률 5×10⁻⁴(목표 KL 0.01)</td>
+</tr>
+<tr>
+<td>할인 / GAE</td>
+<td>γ 0.99, λ 0.95</td>
+</tr>
+<tr>
+<td>탐색</td>
+<td>초기 표준편차 0.6, 엔트로피 0.004</td>
+</tr>
+<tr>
+<td>반복 수</td>
+<td>20°·30°: 1500, 60°: 2000 (서스펜션 단독 30°: 1500)</td>
+</tr>
+<tr>
+<td>학습 시간</td>
+<td>20° 25분(1500회) · 30° 27분(1500회) · 60° 45분(2000회) · 30° 서스펜션 단독 27분(1500회)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="47">4.7 첫 학습의 실패 — 기울기 항이 작동하지 않았다<a class="headerlink" href="#47" title="Permanent link">&para;</a></h3>
+<p>첫 학습(2026-10-28 오전)에서는 기울기 항을 중력 벡터의 차체 수평 성분 제곱(g_x² + g_y², 가중치 2)으로 두었습니다.
+20° 과제 정책은 탈출 성공률 100 %, 탈출 시간 중앙값 9.5 s로 고정 서스펜션(13.3 s)보다 빨랐지만,
+<strong>차체 기울기 RMS는 2.6° → 5.8°로 오히려 커졌고 평지에서도 0.3° → 4.7°였습니다</strong>(크레이터 832·평지 192 에피소드).</p>
+<p>진단 결과 정책은 평지에서도 서스펜션을 약 ±0.2 rad 비대칭으로 둔 채 자세를 계속 바꾸고 있었습니다.
+원인은 항의 크기였습니다. g_x² + g_y² = sin²θ 이므로 5°에서 0.0076에 불과하고, 에피소드 합 기준 기울기 항은
+−0.006으로 하중 편차 항(−0.11)·서스펜션 토크 항(−0.029)보다 한 자릿수 작았습니다. 정책에게 수평 유지는
+사실상 목표가 아니었고, 하중 편차를 줄이려 차체를 기울이는 쪽이 이득이었습니다.</p>
+<p>기울기 항을 <strong>기울기 각에 선형</strong>(가중치 3/rad)으로 바꾸고, 서스펜션 각의 제곱 평균에 작은 자세 항(0.2)을 더해
+다시 학습했습니다. 같은 500회 시점의 학습 중 기울기 RMS가 5.1°에서 0.86°로 줄었습니다. 이하 결과는 모두 수정한 보상의 결과입니다.
+첫 학습의 평가 결과는 저장소 <code>results/v1_reward</code>에 보존했습니다.</p>
+<hr />
+<h2 id="5">5. 학습 결과<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p><img alt="학습 곡선" src="../../assets/l-project-rl/training_curves.png" /></p>
+<p>네 과제 모두 1024 환경으로 학습했으며 처리량 중앙값은 약 2.0만~2.4만 step/s였습니다.
+20°·30° 과제와 서스펜션 단독 과제는 약 100회 반복 안에 학습 중 탈출 성공률 1.0에 도달했고, 커리큘럼 레벨이 최고 단계에 닿은 뒤
+평균 약 6에서 머뭅니다. 이는 최고 레벨을 넘긴 환경을 Isaac Lab 커리큘럼이 무작위 레벨로 되돌리기 때문이며, 정체가 아니라 포화입니다.
+학습 중 기울기 RMS는 20° 0.74°, 30° 1.47°, 서스펜션 단독 1.83°로 수렴했습니다.</p>
+<p><strong>60° 과제는 수렴하지 못했습니다.</strong> 학습 중 성공률은 0.6~0.75 사이에서 진동했고, 정책 행동 잡음의 표준편차가 학습 종료 시점
+2.56이었습니다(다른 과제 0.06~0.33). 행동을 [−1, 1]로 자르기 때문에 이 정도 잡음에서는 탐색 행동 대부분이 포화되며,
+학습 중 통계는 커리큘럼으로 섞인 20~60° 지형의 평균이라 60° 자체의 성능을 나타내지 않습니다. 60° 성능은 6.1절의 고정 경사 평가를 따릅니다.</p>
+<hr />
+<h2 id="6">6. 평가<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="61-isaac-lab">6.1 Isaac Lab 평가 — 목표 경사 고정<a class="headerlink" href="#61-isaac-lab" title="Permanent link">&para;</a></h3>
+<p>평가는 학습과 같은 지형 생성기를 쓰되 모든 크레이터의 벽 경사를 <strong>목표값으로 고정</strong>하고, 무작위화를 끄고
+(마찰 0.90/0.70, 공칭 질량), 1024개 환경에서 환경당 한 에피소드를 수행했습니다(크레이터 832 ·
+평지 192). 학습과 다른 seed를 사용했습니다.</p>
+<p><img alt="평가 결과" src="../../assets/l-project-rl/evaluation.png" /></p>
+<table>
+<thead>
+<tr>
+<th>벽 경사</th>
+<th>제어</th>
+<th>탈출률</th>
+<th>전도율</th>
+<th>탈출 시간 중앙값</th>
+<th>평균 이동 거리</th>
+<th>기울기 RMS</th>
+<th>최대 기울기 p95</th>
+<th>저접지 비율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20°</td>
+<td>고정 서스펜션</td>
+<td>100.0 %</td>
+<td>0.0 %</td>
+<td>13.3 s</td>
+<td>4.00 m</td>
+<td>2.6°</td>
+<td>7.8°</td>
+<td>0.132</td>
+</tr>
+<tr>
+<td>20°</td>
+<td><strong>PPO</strong></td>
+<td>100.0 %</td>
+<td>0.0 %</td>
+<td>9.6 s</td>
+<td>4.01 m</td>
+<td>0.7°</td>
+<td>2.7°</td>
+<td>0.144</td>
+</tr>
+<tr>
+<td>30°</td>
+<td>고정 서스펜션</td>
+<td>53.5 %</td>
+<td>0.0 %</td>
+<td>15.9 s</td>
+<td>2.69 m</td>
+<td>5.2°</td>
+<td>12.4°</td>
+<td>0.437</td>
+</tr>
+<tr>
+<td>30°</td>
+<td><strong>PPO</strong></td>
+<td>99.2 %</td>
+<td>0.0 %</td>
+<td>9.3 s</td>
+<td>3.98 m</td>
+<td>2.4°</td>
+<td>9.3°</td>
+<td>0.189</td>
+</tr>
+<tr>
+<td>30°</td>
+<td>PPO 서스펜션 단독</td>
+<td>98.3 %</td>
+<td>0.1 %</td>
+<td>13.4 s</td>
+<td>3.96 m</td>
+<td>3.0°</td>
+<td>10.0°</td>
+<td>0.083</td>
+</tr>
+<tr>
+<td>60°</td>
+<td>고정 서스펜션</td>
+<td>0.0 %</td>
+<td>1.1 %</td>
+<td>—</td>
+<td>0.90 m</td>
+<td>30.1°</td>
+<td>42.3°</td>
+<td>0.569</td>
+</tr>
+<tr>
+<td>60°</td>
+<td><strong>PPO</strong></td>
+<td>0.0 %</td>
+<td>37.7 %</td>
+<td>—</td>
+<td>0.77 m</td>
+<td>26.6°</td>
+<td>61.7°</td>
+<td>0.384</td>
+</tr>
+</tbody>
+</table>
+<p>평지 타일(소형 크레이터 지대, 4 m 주행) 결과입니다.</p>
+<table>
+<thead>
+<tr>
+<th>과제</th>
+<th>제어</th>
+<th>완주율</th>
+<th>기울기 RMS</th>
+<th>최대 기울기 p95</th>
+<th>저접지 비율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20°</td>
+<td>고정 서스펜션</td>
+<td>100.0 %</td>
+<td>0.3°</td>
+<td>0.7°</td>
+<td>0.101</td>
+</tr>
+<tr>
+<td>20°</td>
+<td>PPO</td>
+<td>100.0 %</td>
+<td>1.0°</td>
+<td>3.0°</td>
+<td>0.165</td>
+</tr>
+<tr>
+<td>30°</td>
+<td>고정 서스펜션</td>
+<td>100.0 %</td>
+<td>0.3°</td>
+<td>0.7°</td>
+<td>0.105</td>
+</tr>
+<tr>
+<td>30°</td>
+<td>PPO</td>
+<td>100.0 %</td>
+<td>1.0°</td>
+<td>2.7°</td>
+<td>0.162</td>
+</tr>
+<tr>
+<td>60°</td>
+<td>고정 서스펜션</td>
+<td>100.0 %</td>
+<td>0.3°</td>
+<td>0.7°</td>
+<td>0.115</td>
+</tr>
+<tr>
+<td>60°</td>
+<td>PPO</td>
+<td>100.0 %</td>
+<td>1.0°</td>
+<td>3.0°</td>
+<td>0.331</td>
+</tr>
+</tbody>
+</table>
+<p>저접지 비율 = 정적 하중의 10 % 미만을 받는 휠의 시간 평균 비율(0 = 네 휠 항상 접지).</p>
+<p><strong>20°·30°.</strong> PPO는 탈출률을 유지하거나 높이면서(30°: 53.5 % → 99.2 %) 기울기 RMS를 크게 낮췄습니다(20°: 2.6° → 0.7°,
+30°: 5.2° → 2.4°). 탈출 시간 중앙값도 13.3 s → 9.6 s(20°), 15.9 s → 9.3 s(30°)로 줄었습니다. 휠 보정으로 휠 속도를 공칭보다 높여 쓰기 때문입니다.</p>
+<p><strong>속도 지령을 지키지 않습니다.</strong> 평지에서 PPO는 4 m를 9.1~9.4 s에 주행해 평균 약 0.43 m/s였습니다. 지령 속도 범위(0.2~0.4 m/s)의 상한보다도 빠르며,
+고정 서스펜션의 평균 약 0.30 m/s(지령 평균과 일치)와 대비됩니다. 진행 보상은 지령 초과분을 보상하지 않지만, 성공 보상이 할인율(γ 0.99, 0.02 s당)로
+깎이므로 일찍 도착할수록 이득입니다. 정책은 이 차이를 학습했습니다. 탈출 시간 단축의 일부는 이 과속이며, 운용 속도 지령을 따르게 하려면
+지령 초과 속도에 벌점을 두거나 성공 보상을 시간과 무관하게 바꿔야 합니다.</p>
+<p><strong>서스펜션 단독(30°).</strong> 휠을 공칭 속도로 고정하고 서스펜션만 학습해도 탈출률은 98.3 %였습니다. 탈출 개선의 대부분은 서스펜션에서 오며,
+휠 보정은 주로 탈출 시간(13.4 s → 9.3 s)에 기여합니다. 서스펜션 단독 정책은 저접지 비율이 0.083으로 세 조건 중 가장 낮았습니다.</p>
+<p><strong>평지.</strong> PPO의 평지 기울기 RMS는 약 1.0°로 고정 서스펜션(0.3°)보다 약간 큽니다. 저접지 비율도 0.10 → 0.16~0.33으로 늘었습니다.
+크레이터용 자세 변화가 평지에서도 일부 남는 것이며, 평지 안정성만 놓고 보면 고정 서스펜션이 낫습니다(7절).</p>
+<h4 id="60">경사 한계 — 60° 과제 정책의 경사별 평가<a class="headerlink" href="#60" title="Permanent link">&para;</a></h4>
+<p>60° 과제 정책과 고정 서스펜션을 벽 경사 35~60°에서 같은 조건으로 평가했습니다(경사당 크레이터 832 에피소드).</p>
+<table>
+<thead>
+<tr>
+<th>벽 경사</th>
+<th>고정: 탈출률</th>
+<th>고정: 전도율</th>
+<th>고정: 기울기 RMS</th>
+<th>PPO(60° 정책): 탈출률</th>
+<th>PPO: 전도율</th>
+<th>PPO: 기울기 RMS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>35°</td>
+<td>8.1 %</td>
+<td>0.0 %</td>
+<td>8.5°</td>
+<td>100.0 %</td>
+<td>0.0 %</td>
+<td>4.9°</td>
+</tr>
+<tr>
+<td>40°</td>
+<td>0.1 %</td>
+<td>0.0 %</td>
+<td>11.9°</td>
+<td>99.0 %</td>
+<td>0.0 %</td>
+<td>5.9°</td>
+</tr>
+<tr>
+<td>45°</td>
+<td>0.0 %</td>
+<td>0.2 %</td>
+<td>15.7°</td>
+<td>78.4 %</td>
+<td>0.0 %</td>
+<td>8.6°</td>
+</tr>
+<tr>
+<td>50°</td>
+<td>0.0 %</td>
+<td>0.1 %</td>
+<td>19.8°</td>
+<td>12.9 %</td>
+<td>0.0 %</td>
+<td>16.0°</td>
+</tr>
+<tr>
+<td>60°</td>
+<td>0.0 %</td>
+<td>1.1 %</td>
+<td>30.1°</td>
+<td>0.0 %</td>
+<td>37.7 %</td>
+<td>26.6°</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="경사별 탈출률과 전도율" src="../../assets/l-project-rl/slope_sweep.png" /></p>
+<p>60° 과제 정책은 35~45°에서 고정 서스펜션을 크게 앞섭니다. 고정 서스펜션은 35°부터 사실상 탈출하지 못하지만(8.1 %),
+PPO는 40°까지 99 %, 45°에서 78 %를 탈출했고 이 구간의 전도율은 0 %였습니다. 50°에서 13 %로 떨어지고,
+<strong>60°에서는 탈출하지 못한 채 전도율만 37.7 %로 올랐습니다.</strong> 60° 벽에서 정책은 차체를 크게 기울이며 오르려다 뒤집히는 반면,
+고정 서스펜션은 벽 아래에서 미끄러진 채 머무릅니다. 강체 마찰 정지 0.90(마찰각 약 42°)에서 정면으로 오를 수 있는 경사에는 물리적 상한이 있으며,
+PPO가 그 근처(45~50°)까지 탈출 한계를 끌어올린 것으로 해석합니다. 크레이터 벽의 최대 경사는 한 구간의 값이므로 평균 경사는 이보다 낮습니다. 60° 크레이터를 정면으로 오르는 것은 이 행동 공간(조향 0)으로는 성립하지 않습니다.</p>
+<h3 id="62">6.2 결과 영상<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<p>같은 크레이터·같은 출발 방위에서 고정 서스펜션(왼쪽)과 PPO 정책(오른쪽)을 비교한 영상입니다.
+화면 위 숫자는 시뮬레이션 시간, 출발점 거리, 차체 기울기, 서스펜션 각입니다.</p>
+<p><strong>벽 경사 20°</strong></p>
+<video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/s20_compare.mp4"></video>
+
+<p><strong>벽 경사 30°</strong></p>
+<video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/s30_compare.mp4"></video>
+
+<p><strong>벽 경사 60°</strong></p>
+<video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/s60_compare.mp4"></video>
+
+<h3 id="63-omnilrs-lunaryard">6.3 OmniLRS lunaryard 검증 — 학습 환경 밖 플랜트<a class="headerlink" href="#63-omnilrs-lunaryard" title="Permanent link">&para;</a></h3>
+<p>학습된 정책을 numpy로 내보내 ROS 2 노드로 구동하고, HILS가 쓰는 <strong>OmniLRS lunaryard 플랜트</strong>
+(Isaac Sim 5.0 컨테이너, 브리지 <code>sim_isaac_bridge</code> 경유)에 <code>/sim/axes_cmd</code>로 지령했습니다.
+학습 환경과 다른 점은 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Isaac Lab 학습</th>
+<th>OmniLRS lunaryard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>물리 / 정책 주기</td>
+<td>200 Hz / 50 Hz</td>
+<td><strong>30 Hz / 30 Hz</strong> (<code>/sim/joint_states</code> 한 건마다 한 스텝, 서스펜션 변화율 제한은 시뮬레이션 시간 간격 기준)</td>
+</tr>
+<tr>
+<td>지형</td>
+<td>경사 지정형 재현, 격자 0.1 m</td>
+<td>lunaryard 생성 결과 그대로(<code>z_scale</code>로 경사 조정), 격자 0.05 m</td>
+</tr>
+<tr>
+<td>지형 모델</td>
+<td>강체</td>
+<td>강체 + 지형 변형 엔진 설정 활성(본 시험에서 변형량은 측정하지 않음), terramechanics solver <strong>비활성</strong></td>
+</tr>
+<tr>
+<td>관측 경로</td>
+<td>시뮬레이터 내부 값</td>
+<td>ROS 2 토픽(<code>/sim/joint_states</code>, <code>/rover/imu_pub</code>), DDS 경유</td>
+</tr>
+</tbody>
+</table>
+<p>야드 중앙 부근 크레이터(중심 x 45.79 · y 38.44 m, R 2.43 m)를 대상으로 OmniLRS 설정
+<code>crater_generator.z_scale</code>을 조정해 벽 최대 경사를 맞췄습니다. 지형은 OmniLRS 생성기로 오프라인 재생성해
+확인했으며, 로버를 25개 지점에 떨어뜨려 잰 차체 높이와 재생성 DEM의 상관이 <strong>0.984</strong>(잔차 1.8 cm)였습니다.</p>
+<table>
+<thead>
+<tr>
+<th>벽 경사 (z_scale)</th>
+<th>제어</th>
+<th>탈출</th>
+<th>방위별 결과 (0° · 90° · 180° · 270°)</th>
+<th>기울기 RMS 평균</th>
+<th>최대 기울기</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20° (0.45)</td>
+<td>고정 서스펜션</td>
+<td>4/4</td>
+<td>탈출 13.3 s · 탈출 13.3 s · 탈출 13.4 s · 탈출 13.4 s</td>
+<td>3.8°</td>
+<td>7.8°</td>
+</tr>
+<tr>
+<td>20° (0.45)</td>
+<td><strong>PPO</strong></td>
+<td>4/4</td>
+<td>탈출 9.6 s · 탈출 9.1 s · 탈출 11.2 s · 탈출 11.5 s</td>
+<td>1.9°</td>
+<td>3.6°</td>
+</tr>
+<tr>
+<td>30° (0.78)</td>
+<td>고정 서스펜션</td>
+<td>3/4</td>
+<td>탈출 15.5 s · 탈출 13.5 s · 시간 초과 (1.11 m) · 탈출 13.8 s</td>
+<td>6.4°</td>
+<td>11.6°</td>
+</tr>
+<tr>
+<td>30° (0.78)</td>
+<td><strong>PPO</strong></td>
+<td>4/4</td>
+<td>탈출 9.5 s · 탈출 9.4 s · 탈출 9.3 s · 탈출 9.2 s</td>
+<td>3.3°</td>
+<td>8.2°</td>
+</tr>
+<tr>
+<td>60° (2.25)</td>
+<td>고정 서스펜션</td>
+<td>0/4</td>
+<td>시간 초과 (0.92 m) · 시간 초과 (0.97 m) · 시간 초과 (0.99 m) · 시간 초과 (0.85 m)</td>
+<td>29.3°</td>
+<td>40.5°</td>
+</tr>
+<tr>
+<td>60° (2.25)</td>
+<td><strong>PPO</strong></td>
+<td>0/4</td>
+<td>시간 초과 (0.85 m) · 시간 초과 (0.97 m) · 시간 초과 (0.89 m) · 시간 초과 (0.85 m)</td>
+<td>26.8°</td>
+<td>39.4°</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="OmniLRS 시험 궤적" src="../../assets/l-project-rl/omnilrs_trials.png" /></p>
+<p><strong>20°.</strong> 두 조건 모두 네 방위에서 탈출했습니다. 고정 서스펜션의 탈출 시간 13.3~13.4 s는 Isaac Lab 평가의 중앙값 13.3 s와 같았고,
+PPO는 9.1~11.5 s로 빨랐으며 기울기 RMS를 3.0~4.2°에서 1.4~2.2°로 낮췄습니다.</p>
+<p><strong>30°.</strong> 고정 서스펜션은 180° 방위에서 벽 1.1 m 지점에 고착되어 30 s 동안 빠져나오지 못했습니다(나머지 세 방위는 13.5~15.5 s).
+PPO는 네 방위 모두 9.2~9.5 s에 탈출했습니다. Isaac Lab 평가에서 고정 서스펜션이 30°에서 절반가량 고착된 것과 같은 현상이 학습 환경 밖에서도 나타났고,
+정책은 그 사례를 풀었습니다.</p>
+<p><strong>60°.</strong> 두 조건 모두 네 방위에서 0.85~0.99 m 지점에 머물렀습니다. Isaac Lab 평가와 달리 PPO도 전도하지 않았으며,
+기울기 RMS는 네 방위 중 세 방위에서 고정 서스펜션보다 낮았습니다(23.5~31.1° 대 26.2~30.9°).</p>
+<p>정책은 학습보다 낮은 30 Hz로 실행됐고 관측이 ROS 2 토픽을 거쳤지만 20°·30°에서 학습 환경과 같은 경향을 보였습니다.
+시험 중 <code>/sim/axes_cmd</code>를 다른 노드가 발행한 건수는 모든 시험에서 0이었습니다(보드 <code>rover_mcu</code>와 <code>rover_control</code>이 발행자로 등록돼 있었으나 지령을 내지 않음).
+시험 수가 크레이터 하나·방위 넷이라 통계적 일반화는 주장하지 않습니다.</p>
+<hr />
+<h2 id="7">7. 논의<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p><strong>탈출과 안정은 같은 수단으로 얻어졌습니다.</strong> 30° 영상의 6 s 시점에서 정책은 뒤쪽 서스펜션을 크게 움직여(RL +8.2°, RR −10.6° — 좌우 조인트 부호 규약이 서로 반대)
+차체 기울기를 0.2°로 유지했고, 같은 시점의 고정 서스펜션은 9.3°였습니다. 서스펜션 단독 ablation이 98.3 %를 탈출한 것은 탈출 개선의 주된 수단이
+서스펜션 자세임을 보여 줍니다. 다만 자세 변화가 휠 하중을 어떻게 재분배해 견인을 늘리는지는 휠별 하중으로 측정하지 않았으므로, 1.1절의 고착 가설(하중 편중)을
+확인했다고 말할 수는 없습니다.</p>
+<p><strong>보상 항의 크기는 이름보다 중요합니다.</strong> 첫 학습은 「기울기 벌점」을 두었지만 그 항이 다른 항보다 한 자릿수 작아, 정책은 기울기를 오히려 키웠습니다(4.7절).
+보상을 설계할 때는 항마다 에피소드 합의 크기를 먼저 비교해야 합니다.</p>
+<p><strong>정책은 속도 지령을 따르지 않습니다.</strong> 평지 평균 속도가 지령 상한을 넘었습니다(6.1절). 할인된 성공 보상이 빠른 도착을 보상한 결과이며, 다음 학습에서 고칠 첫 항목입니다.</p>
+<p><strong>평지와 급경사에서는 고정 서스펜션이 더 안전한 경우가 있습니다.</strong> 평지에서 PPO의 기울기와 저접지 비율은 고정 서스펜션보다 약간 나빴고,
+60°에서는 전도가 늘었습니다. 실운용에는 (1) 지형 경사로 정책 사용을 켜고 끄는 상위 판단, (2) 전도 위험에 대한 별도 안전 감시
+(예: 기울기 한계 접근 시 서스펜션 중립 복귀)가 필요합니다. 60° 과제의 수렴 실패(행동 잡음 발산)는 엔트로피 계수·전도 벌점·커리큘럼 상한을
+조정해 다시 다뤄야 할 과제입니다.</p>
+<p><strong>다음 단계.</strong> 조향을 행동에 포함한 비스듬한 등판, 변형 지형(terramechanics) 위 학습, 실제 액추에이터 속도·토크 사양 반영, HILS 보드 경로에서의
+실행 지연 검증 순으로 진행할 계획입니다.</p>
+<hr />
+<h2 id="8">8. 확인되지 않은 것과 한계<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>실물 검증이 없습니다.</strong> 모든 결과는 강체 지형 시뮬레이션입니다. 월면토의 침하·전단에 따른 견인 한계는
+  모델에 없습니다(차년도 과제 제안의 범위). 강체 마찰 0.9에서의 등판 한계를 실제 월면토 등판 한계로 읽으면 안 됩니다.</li>
+<li><strong>제원이 추정치입니다.</strong> 질량 450 kg은 VIPER 참조 추정이며, 서스펜션 액추에이터의 속도·토크 한계(1 rad/s,
+  1000 N·m)도 사양이 아니라 asset 값과 가정값입니다. 실제 액추에이터가 더 느리면 정책 성능이 달라집니다.</li>
+<li><strong>정책이 속도 지령을 넘깁니다.</strong> 평지 평균 약 0.43 m/s로 지령 상한 0.4 m/s를 넘었습니다. 탈출 시간 비교는 이 과속을 포함한 값입니다.</li>
+<li><strong>조향을 학습하지 않았습니다.</strong> 크레이터 중심 직진만 다루며, 비스듬히 오르는 경로(switchback)나 측면 진입은
+  범위 밖입니다. 60° 과제의 결과는 이 제약 아래의 결과입니다.</li>
+<li><strong>크레이터 형상이 한 등급입니다.</strong> 반경 2.5 m 크레이터 중심 출발만 학습했습니다. 더 큰 크레이터·벽면 중간 정지·
+  암석 장애물은 평가하지 않았습니다.</li>
+<li><strong>휠 하중 신호의 차이.</strong> 학습에서는 PhysX 접촉력으로 보상을 계산했고, HILS의 휠 하중 계측은 서스펜션 토크
+  환산값(평균 0.562배, 산포 ±18 %)입니다. 정책은 하중을 직접 관측하지 않으므로 실행에는 영향이 없지만,
+  두 환경의 하중 지표를 같은 값으로 비교할 수는 없습니다.</li>
+<li><strong>서스펜션 토크 관측의 차이.</strong> 학습 환경의 토크는 implicit drive의 계산 토크이고, OmniLRS <code>joint_states</code>의
+  effort는 PhysX 조인트 힘 보고값입니다. 두 값의 정의 차이를 정량 비교하지 않았습니다.</li>
+<li><strong>OmniLRS 검증은 한 크레이터·네 방위입니다.</strong> 통계적 일반화를 주장할 표본 수가 아닙니다.</li>
+<li><strong>보드 경로를 거치지 않았습니다.</strong> OmniLRS 검증에서 지령은 HILS 보드가 아니라 PC의 ROS 2 노드가 냈습니다.
+  보드 펌웨어에 정책을 이식하는 일은 수행하지 않았습니다.</li>
+</ul>
+<hr />
+<h2 id="9">9. 재현 방법<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p>저장소 <code>parclab-hsu/l-project-rl</code>(비공개).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 학습 (1024 환경, 과제당 약 25~45분 / RTX 5080)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python<span class="w"> </span>scripts/train.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">1024</span><span class="w"> </span>--max_iterations<span class="w"> </span><span class="m">1500</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 평가 (목표 경사 고정, 고정 서스펜션 기준선은 --passive)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>python<span class="w"> </span>scripts/evaluate.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--out<span class="w"> </span>eval.json
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 영상</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python<span class="w"> </span>scripts/record_video.py<span class="w"> </span>--headless<span class="w"> </span>--enable_cameras<span class="w"> </span>--task<span class="w"> </span>LRover-ActiveSus-Slope30-v0<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--out<span class="w"> </span>s30.mp4
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># OmniLRS lunaryard 검증 (HILS 저장소의 컨테이너 기동 후)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">HEADLESS</span><span class="o">=</span>True<span class="w"> </span>tools/isaac/run_isaac_container.sh<span class="w"> </span>fastdds_profile.xml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span>environment.terrain_manager.moon_yard.crater_generator.z_scale<span class="o">=</span><span class="m">0</span>.78
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>/usr/bin/python3<span class="w"> </span>tools/omnilrs_trial.py<span class="w"> </span>--crater<span class="w"> </span><span class="m">45</span>.79<span class="w"> </span><span class="m">38</span>.44<span class="w"> </span>--floor_z<span class="w"> </span><span class="m">0</span>.190<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>--policy<span class="w"> </span>results/policy_ppo_slope30.npz<span class="w"> </span>--out<span class="w"> </span>slope30_ppo.json
+</code></pre></div>
+<h2 id="_1">참고 문헌<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>J. Schulman et al., "Proximal Policy Optimization Algorithms," arXiv:1707.06347, 2017.</li>
+<li>N. Rudin et al., "Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning," CoRL 2022.</li>
+<li>M. Mittal et al., "Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments," IEEE RA-L, 2023 (Isaac Lab).</li>
+<li>A. Richard et al., "OmniLRS: A Photorealistic Simulator for Lunar Robotics," IEEE ICRA 2024.</li>
+<li>NASA, VIPER Mobility System — surface operations mass 450 kg (제원 추정 근거).</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 PARC Lab · Hansung University
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/parclab-hsu" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:kblee@hansung.ac.kr" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hansung.ac.kr" target="_blank" rel="noopener" title="한성대학교" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.footer", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-prepare.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-render.js"></script>
+      
+    
+  </body>
+</html>
