@@ -392,6 +392,15 @@ class ActiveSuspensionPPORunnerCfg(RslRlOnPolicyRunnerCfg):           # lrover_r
 
 ## 5. 학습 결과
 
+**1024개 병렬 학습 환경.** 아래 영상은 학습과 같은 지형·도메인 무작위화로 로버 1024대를 한꺼번에 돌린 장면입니다(Ramp30 과제, 경사 레벨 0~9 = 10~30°).
+왼쪽은 학습 0회(초기화 직후) 정책, 오른쪽은 1499회 학습한 정책입니다. 영상에서는 비교가 잘 보이도록 두 가지를 학습과 다르게 두었습니다.
+시작 레벨을 10줄 전체에 고르게 퍼뜨렸고(학습 후반 커리큘럼의 분포), 1024개 에피소드를 동시에 시작했습니다.
+화면의 `climbed` 숫자는 각 로버의 첫 에피소드만 셉니다. 31.6 s 시점에 학습 0회 정책은 1024대 중 728대, 1499회 정책은 1024대 전부가 상단에 올랐고,
+전도·이탈은 둘 다 0입니다.
+카메라는 전체 지형 조감(16 m × 8 m 타일 10줄 × 16열)에서 경사로 쪽으로 다가갑니다.
+
+<video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/ramp30_parallel_compare.mp4"></video>
+
 ![학습 곡선](../assets/l-project-rl/training_curves.png)
 
 네 과제 모두 1024 환경으로 학습했으며 처리량 중앙값은 약 2.0만~2.4만 step/s였습니다.
