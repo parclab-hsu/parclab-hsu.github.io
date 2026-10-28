@@ -33,6 +33,15 @@ noindex: true
 
     **모든 결과는 강체 지형 시뮬레이션 결과이며 실물 로버·월면토 검증이 아닙니다.** 한계는 8절에 정리했습니다.
 
+!!! note "진행 중 — 달 경사로 20° · 30° · 60° 등판 (2026-10-28)"
+    과제를 크레이터 탈출에서 **직선 경사로 등판**으로 넓히고 있습니다. 평지 접근 → 경사로(수평 4 m) → 상단 평지 지형에서
+    경사로 발 1 m 앞에서 출발해, 로버 전체가 상단에 올라서면 성공입니다. 보상은 본문의 v3(과속 벌점 + IMU)을 그대로 씁니다.
+    아래는 **학습이 끝난 20° 정책의 중간 결과 영상**입니다(옆에서 본 경사 단면, 왼쪽 고정 서스펜션 · 오른쪽 PPO).
+    이 에피소드에서 고정 서스펜션은 정상 꺾임(5 m 지점) 직전에서 멈춰 40 s 안에 오르지 못했고, PPO는 23.8 s에 상단에 올랐습니다.
+    영상 한 편은 한 에피소드이며, 고정 경사 평가(경사당 약 820 에피소드)·30°·60° 결과·OmniLRS 등가 경사 검증은 학습이 끝나는 대로 이 페이지에 반영합니다.
+
+    <video controls preload="metadata" muted playsinline width="100%" src="../../assets/l-project-rl/ramp_s20_compare.mp4"></video>
+
 [:octicons-arrow-right-24: 프로젝트 상세](l-project-hils.md) ·
 [:octicons-arrow-right-24: 로버 USD 설명](l-project-usd-asset.md) ·
 [:octicons-arrow-right-24: 지형 변형 엔진 분석](l-project-deformation.md) ·
