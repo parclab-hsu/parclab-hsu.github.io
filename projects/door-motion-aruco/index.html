@@ -820,6 +820,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#62-2026-10-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 속도 구간: 가속 · 등속 · 감속 (2026-10-28 추가)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1191,7 +1202,7 @@
 </thead>
 <tbody>
 <tr>
-<td>단위 시험 5종(검출·1-DOF·stroke·calibration·corner 정제)</td>
+<td>단위 시험 7종(검출·1-DOF·stroke·calibration·corner 정제·rolling shutter 보정 자세·속도 구간)</td>
 <td>Python 3.8 + OpenCV 4.7.0(numpy 1.19.5·1.24.4), Python 3.13 + OpenCV 5.0</td>
 <td>전부 통과</td>
 </tr>
@@ -1298,12 +1309,71 @@
 <li>위 「슬라이드 100 + 반사 띠」 사례(측정이 일찍 끊겨 이동량이 짧게 나온 경우)는 「잘림」으로 잡혔다.</li>
 <li>단위 시험에 이 표시의 자동 판정 3건(결측 없음 · peak 창 결손 · 끝 잘림)을 넣었다.</li>
 </ul>
+<h3 id="62-2026-10-28">6.2 속도 구간: 가속 · 등속 · 감속 (2026-10-28 추가)<a class="headerlink" href="#62-2026-10-28" title="Permanent link">&para;</a></h3>
+<p>stroke 마다 속도 profile 을 <strong>가속 → 등속 → 감속</strong>으로 나누고, 저장할 때 구간 그림을 따로 만든다.
+가로로 긴 그림의 위 칸은 기록 전체의 속도다. 아래 칸은 stroke 마다 앞뒤 0.3 s 를 붙여 확대한 진행 방향 속도와 가속도다.
+구간마다 시간, 평균 가속·감속(구간 양 끝 속도 차 / 시간), 이동량을 적는다. 등속 구간에는 평균 ± σ 띠를 그린다.</p>
+<p><img alt="합성 슬라이드(0.4 m/s) 녹화의 속도 구간 그림: 열림·닫힘 모두 가속-등속-감속 사다리꼴" src="../../assets/door-aruco/velocity_phases_slide.png" /></p>
+<p><img alt="합성 회전 도어 녹화의 속도 구간 그림: 열림은 짧은 등속이 있는 사다리꼴, 닫힘은 등속 없는 삼각형" src="../../assets/door-aruco/velocity_phases_rot.png" /></p>
+<p><strong>나누는 기준</strong></p>
+<ul>
+<li>등속은 진행 방향 속도가 <strong>처음 0.9·peak 에 닿은 때부터 마지막으로 그 위에 있던 때까지</strong>다. 그 사이에 잠깐 내려간 것은
+  등속 중 리플로 보고 σ 에 남긴다. 연속 구간으로 자르면 저속 녹화의 4.0 s 등속이 리플 때문에 0.43 s 로 끊겼다.</li>
+<li>등속이 0.25 s 보다 짧으면 등속 없는 <strong>삼각형</strong> profile 로 보고 peak 에서 가속·감속을 나눈다.</li>
+<li>peak 둘레에 0.20 s 넘는 속도 공백이 있으면 구간을 나누지 않는다(<code>unknown</code>). 공백을 건너 경계를 이으면
+  <strong>없는 등속이 생긴다</strong>. 합성 1 m/s 블러 녹화에서 0.37 s 공백이 「0.62 m/s 등속」으로 나왔던 것을 게시 전에 고쳤다.</li>
+</ul>
+<p><strong>참값 대비 (합성 녹화)</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>슬라이드 0.4 m/s</th>
+<th>회전 도어</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사다리꼴 / 삼각형 판정</td>
+<td>참값과 같음</td>
+<td>참값과 같음</td>
+</tr>
+<tr>
+<td>등속 시작·끝 시각</td>
+<td>±1 frame (0.033 s)</td>
+<td>±1 frame</td>
+</tr>
+<tr>
+<td>등속 속도</td>
+<td>0.397 / 참값 0.398 m/s</td>
+<td>169.9 / 참값 172.1 deg/s</td>
+</tr>
+<tr>
+<td>가속 시간</td>
+<td>0.37 / 참값 0.23 s</td>
+<td>0.53 / 참값 0.50 s</td>
+</tr>
+<tr>
+<td>평균 가속</td>
+<td>1.02 / 참값 1.40 m/s² (−27 %)</td>
+<td>297 / 참값 318 deg/s² (−7 %)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>등속 경계와 등속 속도는 참값에 맞는다. <strong>가속·감속 시간은 길고 평균 가속·감속은 작게</strong> 나온다. 속도 미분 창(±0.10 s)이
+  급출발·급정지를 번지게 해서 stroke 시작이 0.03~0.10 s 앞당겨지기 때문이다. 합성 슬라이드는 가속이 계단처럼 바뀌어 이 효과가 가장 크다.</li>
+<li>실측 녹화 6개 × 열화 9종에서 열화 없는 실행과 짝지은 정상 stroke 82개는 판정이 모두 같았고, 등속 경계는 최대 1 frame 움직였다.</li>
+<li>실측 슬라이드는 저속·중속에서 사다리꼴(등속 3.97 s · 0.63 s), 고속 두 단계에서 삼각형으로 나뉜다. 열림·닫힘이 대칭이다.</li>
+</ul>
 <h2 id="7">7. 한계<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <ul>
 <li>반사 띠 해독은 <strong>합성한 띠</strong>(가우시안 모양)로만 검증했다. 실제 반사로는 아직 확인하지 않았다.</li>
 <li>띠가 marker 경계까지 포화시켜 경계 기울기가 사라지면 읽지 못한다(슬라이드 100 + 반사 띠 59~71 %). 이때 틀린 stroke 요약값은 <strong>고쳐지지 않고 표시만 된다</strong>(6.1 절) — 재측정이 필요하다.</li>
 <li>블러 추적은 이미 한 번 잡은 marker 만 잇는다. 처음부터 심하게 번진 녹화에서는 효과가 없다.</li>
 <li>회전 도어 장노출의 빠른 닫힘 stroke 는 peak 가 여전히 −18 % 낮다.</li>
+<li>속도 구간은 가속 → 등속 → 감속을 한 번씩만 나눈다. 사람이 연 도어처럼 속도가 중간에 여러 번 머물면 그 머묾이 가속·감속 구간에 들어간다.
+  평균 가속·감속은 미분 창 때문에 작게 나온다(6.2 절, 급출발 합성 −27 %).</li>
 <li>Jetson Nano 기본 구성(JetPack 4.x: Python 3.6, OpenCV 4.1.1)은 기존 코드와 마찬가지로 조건에 맞지 않는다. Python 3.8 과 OpenCV ≥ 4.7 을
   따로 설치해야 하며, 실기 처리 시간은 그 뒤에 잰다.</li>
 </ul>
