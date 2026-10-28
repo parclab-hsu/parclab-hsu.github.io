@@ -806,6 +806,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. 검증 범위와 결과">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-stroke-2026-10-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Stroke 결측 표시 (2026-10-28 추가)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -854,7 +871,8 @@
 <li>도어 바디마다 marker 2개를 붙인다. 두 marker 의 corner 8개로 바디 자세를 푼다.</li>
 <li>도어는 자유도가 하나(회전축 또는 직선 레일)이므로, 자세를 프레임마다 따로 푸는 대신
   <strong>1-DOF 모델에 corner 를 직접 맞춘다.</strong> rolling shutter 의 행별 시간차도 이 맞춤에 넣는다.</li>
-<li>출력은 프레임별 위치·속도·가속도 CSV 와 stroke 별 요약(최고 속도, 이동량, 등속 구간 평균 등)이다.</li>
+<li>출력은 프레임별 위치·속도·가속도 CSV 와 stroke 별 요약(최고 속도, 이동량, 등속 구간 평균 등)이다.
+  stroke 마다 <strong>결측 표시</strong>(<code>ok</code> / <code>incomplete</code>)와 그 이유가 함께 나간다(6.1 절).</li>
 </ul>
 <h2 id="2">2. 기존 코드 대비 차이<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <h3 id="21">2.1 비교한 세 판<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
@@ -1208,13 +1226,82 @@
 <ul>
 <li><strong>「슬라이드 100 + 반사 띠」는 stroke 요약값도 틀릴 수 있다.</strong> 두 번째 stroke 의 결측 위치가 실행마다 달라서, 같은 녹화에서
   peak 0.872 → 0.518 m/s(−41 %)가 나오거나 측정이 일찍 끊겨 이동량 0.433 → 0.289 m 가 나왔다. 앞선 실행에서는 peak 차이가
-  3 % 였다. 확보율만 보면 이 위험이 드러나지 않으므로, 결측이 많은 stroke(<code>n_samples</code> &lt; <code>duration_s</code> × 30 의 대부분)는 요약값을 쓰지 않는다.</li>
+  3 % 였다. 확보율만 보면 이 위험이 드러나지 않는다. → 6.1 절의 결측 표시로 대응했다.</li>
 <li>OpenCV 4.7.0 의 Python <code>cv2.aruco.Board</code> 생성자에 결함이 있어, 그 판에서는 짝 marker 복구만 빠진다. 측정 경로에는 영향이 없다.</li>
+</ul>
+<h3 id="61-stroke-2026-10-28">6.1 Stroke 결측 표시 (2026-10-28 추가)<a class="headerlink" href="#61-stroke-2026-10-28" title="Permanent link">&para;</a></h3>
+<p>틀린 요약값을 고칠 수는 없으므로, <strong>믿으면 안 되는 stroke 를 표시</strong>한다. 값은 바꾸지 않는다.
+아래 넷 중 하나라도 걸리면 그 stroke 는 <code>incomplete</code> 이고, 이유가 같은 행에 적힌다.</p>
+<table>
+<thead>
+<tr>
+<th>기준</th>
+<th>문턱</th>
+<th>잡는 경우</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>확보율(속도 샘플 / 구간 프레임)</td>
+<td>&lt; 80 %</td>
+<td>전체적으로 성긴 stroke</td>
+</tr>
+<tr>
+<td>샘플 사이 최대 빈틈</td>
+<td>&gt; 0.20 s</td>
+<td>한 구간이 통째로 빠짐</td>
+</tr>
+<tr>
+<td>잘림</td>
+<td>움직이는 중에 구간이 시작·끝나고, 그 너머 0.10 s 에 샘플 없음</td>
+<td>추적이 끊겨 이동량·지속 시간이 짧게 나옴</td>
+</tr>
+<tr>
+<td>peak 창(최고 속도 ±0.10 s) 확보율</td>
+<td>&lt; 80 %</td>
+<td>peak 근처만 성김</td>
+</tr>
+</tbody>
+</table>
+<p>peak 창 기준이 핵심이었다. 처음에는 앞의 셋만 두었는데, <strong>전체 확보율이 83~90 % 로 정상인데 peak 가 +9~12 % 틀린 stroke</strong> 를
+놓쳤다. peak 는 최대값이라 그 주변이 성기면 잡음이 값을 끌어올린다.</p>
+<p>실측 녹화 6개 × 열화 9종에서, 열화 실행의 stroke 를 열화 없는 실행의 같은 stroke 와 짝지어 대조했다
+(「틀림」 = peak 5 % 초과 또는 이동량 3 % 초과 차이).</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>틀린 stroke 중 표시된 것</td>
+<td><strong>6 / 6</strong> (놓침 0)</td>
+</tr>
+<tr>
+<td>열화 없는 실행에서 잘못 표시된 것</td>
+<td>0</td>
+</tr>
+<tr>
+<td>값이 맞는데 표시된 것</td>
+<td>16 / 102 (데이터가 성겨 근거가 약한 경우)</td>
+</tr>
+<tr>
+<td>반복성(슬라이드 100, 전 조건) 이동량 CV</td>
+<td>표시된 stroke 제외 <strong>0.1 %</strong> · 포함 24.8 %</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>그림에서는 표시된 stroke 에 빗금과 「!」를 붙이고, 반복성 리포트는 기본으로 뺀다(옵션으로 포함 가능).</li>
+<li>위 「슬라이드 100 + 반사 띠」 사례(측정이 일찍 끊겨 이동량이 짧게 나온 경우)는 「잘림」으로 잡혔다.</li>
+<li>단위 시험에 이 표시의 자동 판정 3건(결측 없음 · peak 창 결손 · 끝 잘림)을 넣었다.</li>
 </ul>
 <h2 id="7">7. 한계<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <ul>
 <li>반사 띠 해독은 <strong>합성한 띠</strong>(가우시안 모양)로만 검증했다. 실제 반사로는 아직 확인하지 않았다.</li>
-<li>띠가 marker 경계까지 포화시켜 경계 기울기가 사라지면 읽지 못한다(슬라이드 100 + 반사 띠 59~71 %, 6 절의 stroke 요약값 문제).</li>
+<li>띠가 marker 경계까지 포화시켜 경계 기울기가 사라지면 읽지 못한다(슬라이드 100 + 반사 띠 59~71 %). 이때 틀린 stroke 요약값은 <strong>고쳐지지 않고 표시만 된다</strong>(6.1 절) — 재측정이 필요하다.</li>
 <li>블러 추적은 이미 한 번 잡은 marker 만 잇는다. 처음부터 심하게 번진 녹화에서는 효과가 없다.</li>
 <li>회전 도어 장노출의 빠른 닫힘 stroke 는 peak 가 여전히 −18 % 낮다.</li>
 <li>Jetson Nano 기본 구성(JetPack 4.x: Python 3.6, OpenCV 4.1.1)은 기존 코드와 마찬가지로 조건에 맞지 않는다. Python 3.8 과 OpenCV ≥ 4.7 을
