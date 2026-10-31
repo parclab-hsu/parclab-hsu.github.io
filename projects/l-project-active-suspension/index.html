@@ -1135,7 +1135,7 @@ PPO는 30°에서 더 빨리(4 m 도달 평균 12.6 대 15.1 s), 차체를 약 7
 관절 좌표 그대로 학습하면 정책이 상수 기울임 자세(roll 9°)에 갇혀, 행동을 heave·pitch·roll·twist 모드로 바꾸고 차체 올림 자세를 기준으로 한 잔차를 학습했습니다.
 OmniLRS <strong>지형 변형 엔진을 켠</strong> 31° 크레이터 탈출(6.5절, 자국은 렌더링 전용)에서는 세 제어 모두 4/4로 탈출했습니다.
 충격·진동과 과속 벌점을 키워 다시 학습한 정책(6.6절)은 30° 성공률 100 %를 유지하며 과속 시간을 7.8 → 1.4 %, 등판 중 IMU 동가속도를
-0.82 → 0.72 m/s²로 줄였지만, 35° 성공률이 69.7 → 41.0 %로 떨어졌습니다(학습 seed 하나).</p>
+0.82 → 0.72 m/s²로 줄였습니다(두 seed 재현). 대가는 평지 최대 기울기 증가(p95 2.7 → 4.1~5.1°)입니다.</p>
 <p><strong>모든 결과는 강체 지형 시뮬레이션 결과이며 실물 로버·월면토 검증이 아닙니다.</strong> 한계는 8절에 정리했습니다.</p>
 </div>
 <p><a href="../l-project-hils/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> 프로젝트 상세</a> ·
@@ -2609,16 +2609,17 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 
 <h3 id="66">6.6 보상 재조정 — 충격·진동과 과속 가중치<a class="headerlink" href="#66" title="Permanent link">&para;</a></h3>
 <p>6.1절의 불리한 지표 두 가지(등판 중 IMU 동가속도, 평지 과속)를 줄이려고 보상 가중치 두 개만 바꿔 30° 과제를 다시 학습했습니다
-(<code>LRover-Ramp30-Smooth-v0</code>). 충격·진동(IMU 가속도) −0.2 → <strong>−1.0</strong>, 과속 −10 → <strong>−40</strong>이며, 나머지 항·PPO 설정·학습 seed(42)·1500회는
-기존 Ramp30 정책과 같습니다. 평가 조건은 6.1절과 같습니다. 판정 기준은 학습 전에 「30° 등판 성공률을 유지하면서 두 지표가 모두 줄어드는가」로 정했습니다.</p>
+(<code>LRover-Ramp30-Smooth-v0</code>). 충격·진동(IMU 가속도) −0.2 → <strong>−1.0</strong>, 과속 −10 → <strong>−40</strong>이며, 나머지 항·PPO 설정·1500회는
+기존 Ramp30 정책과 같습니다. 학습 seed는 기존 정책과 같은 42와, 편차를 보려고 추가한 7 두 개입니다. 평가 조건은 6.1절과 같습니다. 판정 기준은 학습 전에 「30° 등판 성공률을 유지하면서 두 지표가 모두 줄어드는가」로 정했습니다.</p>
 <table>
 <thead>
 <tr>
 <th>구간</th>
 <th>지표</th>
 <th>고정 서스펜션</th>
-<th>기존 PPO</th>
-<th>재조정 PPO</th>
+<th>기존 PPO (seed 42)</th>
+<th>재조정 (seed 42)</th>
+<th>재조정 (seed 7)</th>
 </tr>
 </thead>
 <tbody>
@@ -2628,12 +2629,14 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>0.2 %</td>
 <td>100.0 %</td>
 <td><strong>100.0 %</strong></td>
+<td><strong>99.9 %</strong></td>
 </tr>
 <tr>
 <td>30° 경사로</td>
 <td>IMU 동가속도 RMS</td>
 <td>0.62 m/s²</td>
 <td>0.82 m/s²</td>
+<td><strong>0.72 m/s²</strong></td>
 <td><strong>0.72 m/s²</strong></td>
 </tr>
 <tr>
@@ -2642,6 +2645,7 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>0.0 %</td>
 <td>7.8 %</td>
 <td><strong>1.4 %</strong></td>
+<td><strong>1.7 %</strong></td>
 </tr>
 <tr>
 <td>30° 경사로</td>
@@ -2649,6 +2653,7 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>32.8 s</td>
 <td>20.2 s</td>
 <td>21.1 s</td>
+<td>21.2 s</td>
 </tr>
 <tr>
 <td>30° 경사로</td>
@@ -2656,6 +2661,7 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>0.37</td>
 <td>0.97</td>
 <td>0.93</td>
+<td>0.92</td>
 </tr>
 <tr>
 <td>30° 경사로</td>
@@ -2663,6 +2669,7 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>30.7°</td>
 <td>24.4°</td>
 <td>25.7°</td>
+<td>24.7°</td>
 </tr>
 <tr>
 <td>평지</td>
@@ -2670,6 +2677,7 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>0.81 m/s²</td>
 <td>0.71 m/s²</td>
 <td><strong>0.64 m/s²</strong></td>
+<td><strong>0.61 m/s²</strong></td>
 </tr>
 <tr>
 <td>평지</td>
@@ -2677,6 +2685,7 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>0.8 %</td>
 <td>12.5 %</td>
 <td><strong>1.7 %</strong></td>
+<td><strong>1.2 %</strong></td>
 </tr>
 <tr>
 <td>평지</td>
@@ -2684,6 +2693,7 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>0.9°</td>
 <td>2.7°</td>
 <td>4.1°</td>
+<td>5.1°</td>
 </tr>
 </tbody>
 </table>
@@ -2693,11 +2703,12 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <tr>
 <th>경사</th>
 <th>기존 PPO: 성공률</th>
-<th>재조정: 성공률</th>
+<th>재조정 seed 42: 성공률</th>
+<th>재조정 seed 7: 성공률</th>
 <th>기존: IMU 동가속도</th>
-<th>재조정: IMU 동가속도</th>
+<th>재조정 42 / 7: IMU 동가속도</th>
 <th>기존: 과속</th>
-<th>재조정: 과속</th>
+<th>재조정 42 / 7: 과속</th>
 </tr>
 </thead>
 <tbody>
@@ -2705,37 +2716,43 @@ PhysX 충돌면은 강체 DEM 그대로라, 자국이 바퀴의 견인·침하�
 <td>20°</td>
 <td>100.0 %</td>
 <td>100.0 %</td>
+<td>100.0 %</td>
 <td>0.72 m/s²</td>
-<td>0.66 m/s²</td>
+<td>0.66 / 0.65 m/s²</td>
 <td>6.4 %</td>
-<td>1.7 %</td>
+<td>1.7 / 1.3 %</td>
 </tr>
 <tr>
 <td>25°</td>
 <td>100.0 %</td>
 <td>100.0 %</td>
+<td>100.0 %</td>
 <td>0.76 m/s²</td>
-<td>0.69 m/s²</td>
+<td>0.69 / 0.68 m/s²</td>
 <td>6.9 %</td>
-<td>1.7 %</td>
+<td>1.7 / 1.8 %</td>
 </tr>
 <tr>
 <td>35°</td>
 <td>69.7 %</td>
 <td><strong>41.0 %</strong></td>
+<td><strong>75.8 %</strong></td>
 <td>0.90 m/s²</td>
-<td>0.74 m/s²</td>
+<td>0.74 / 0.76 m/s²</td>
 <td>3.0 %</td>
-<td>0.2 %</td>
+<td>0.2 / 0.5 %</td>
 </tr>
 </tbody>
 </table>
-<p><strong>기준은 충족했습니다.</strong> 30° 성공률 100 %를 유지한 채 과속은 경사로 7.8 → 1.4 %, 평지 12.5 → 1.7 %로 사실상 사라졌고,
-IMU 동가속도는 경사로 0.82 → 0.72 m/s², 평지 0.71 → 0.64 m/s²로 줄었습니다. 다만 경사로 IMU 동가속도는 여전히 고정 서스펜션(0.62 m/s²)보다 높아,
-이 지표는 개선이지 해소가 아닙니다.</p>
-<p><strong>대가는 둘입니다.</strong> (1) 학습 범위 밖인 35°에서 성공률이 69.7 %에서 41.0 %로 떨어졌습니다. 오른 높이는 같고(2.57 m) 속도 비율이 0.65 → 0.53으로 낮아,
-한계 경사에서 덜 공격적으로 오르다 시간 초과로 끝나는 것으로 봅니다(확인하지 않은 해석입니다). (2) 평지 최대 기울기 p95가 2.7° → 4.1°로 커졌습니다.
-등판 시간은 0.9 s 늘었습니다. <strong>학습 seed가 하나(42)</strong>이므로 두 정책의 차이 중 일부는 학습 편차일 수 있습니다.</p>
+<p><strong>기준은 충족했고, 두 seed에서 재현됐습니다.</strong> 30° 성공률 100 %(seed 7은 832회 중 831회)를 유지한 채 과속은 경사로 7.8 → 1.4~1.7 %,
+평지 12.5 → 1.2~1.7 %로 사실상 사라졌고, IMU 동가속도는 경사로 0.82 → 0.72 m/s², 평지 0.71 → 0.61~0.64 m/s²로 줄었습니다.
+다만 경사로 IMU 동가속도는 여전히 고정 서스펜션(0.62 m/s²)보다 높아, 이 지표는 개선이지 해소가 아닙니다.</p>
+<p><strong>35° 하락은 재현되지 않았습니다.</strong> seed 42에서는 35° 성공률이 69.7 %에서 41.0 %로 떨어졌지만, seed 7은 75.8 %로 기존 정책보다 높았습니다.
+학습 범위 밖 경사의 성공률은 seed에 따라 크게 흔들리며, 이 하락을 가중치의 대가로 볼 근거는 없습니다. 기존 정책도 seed 하나라
+두 정책의 35° 성능 차이는 이 표본으로 판단할 수 없습니다.</p>
+<p><strong>재현된 대가는 평지 기울기입니다.</strong> 평지 최대 기울기 p95가 2.7°에서 4.1°(seed 42)·5.1°(seed 7)로 두 seed 모두 커졌습니다.
+원인은 확인하지 않았습니다.
+등판 시간은 약 1 s 늘었습니다.</p>
 <hr />
 <h2 id="7">7. 논의<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <p><strong>서스펜션이 바꾼 것은 「꺾임 통과」입니다.</strong> 30° 고정 서스펜션의 실패는 견인 부족이 아니라 정상 꺾임에 걸리는 기하 문제였고, 능동 서스펜션은
@@ -2745,9 +2762,9 @@ IMU 동가속도는 경사로 0.82 → 0.72 m/s², 평지 0.71 → 0.64 m/s²로
 유도합니다(4.5절). 실제로 PPO 정책의 최대 기울기(p95)는 경사보다 1~6° 작았습니다(20° 18.9°, 30° 24.4°, 35° 34.5°). 차체 앞을 낮추는 이 자세는 후륜으로 쏠린 하중을 앞쪽으로 옮기는 방향입니다.
 보상 항별 기여(4.7절)에서도 30° 과제에서 기울기·자세 벌점이 20° 과제보다 커, 정책이 서스펜션을 실제로 쓰고 있음이 드러납니다.</p>
 <p><strong>안정 주행의 대가.</strong> 등판 성공과 접지 유지는 크게 좋아졌지만, 등판 중 IMU 동가속도는 오히려 높아졌고 평지에서 속도 지령을 넘는 시간도 남았습니다.
-두 가중치를 키운 재조정(6.6절)은 과속을 거의 없애고 IMU 동가속도를 0.82 → 0.72 m/s²로 줄였지만, 고정 서스펜션 수준(0.62 m/s²)에는 못 미쳤고
-35° 등판 성공률을 69.7 → 41.0 %로 잃었습니다. 승차감과 등판 여유가 맞바뀌는 관계이므로, 실기 후보 정책은 쓰임새(평지 주행 위주인지, 한계 경사 등판이
-필요한지)에 따라 골라야 합니다.</p>
+두 가중치를 키운 재조정(6.6절)은 과속을 거의 없애고 IMU 동가속도를 0.82 → 0.72 m/s²로 줄였지만, 고정 서스펜션 수준(0.62 m/s²)에는 못 미쳤습니다.
+두 seed 모두 같은 결과였고, 첫 seed에서 보인 35° 성공률 하락은 두 번째 seed에서 재현되지 않았습니다. 남은 대가는 평지 기울기 증가(p95 최대 5.1°)이므로,
+실기 후보 정책은 재조정 정책이 낫다고 봅니다. 다만 평지 기울기 허용치는 정해 두어야 합니다.</p>
 <p><strong>다음 단계.</strong> (1) 월면토 침하·전단을 넣은 견인 모델(차년도 과제)에서 등판 한계를 다시 측정합니다. (2) 서스펜션 액추에이터의 실제 속도·토크
 한계를 반영해 재학습합니다. (3) 측면 경사·경사로 위 암석과 비스듬한 등판 경로를 과제에 넣습니다. (4) 학습한 정책을 HILS 보드 경로에
 올립니다. 보드 펌웨어 구조와 단계별 탑재 설계는 부록 B에 정리했습니다.</p>
@@ -2770,7 +2787,8 @@ IMU 동가속도는 경사로 0.82 → 0.72 m/s², 평지 0.71 → 0.64 m/s²로
 <li><strong>변형 엔진은 렌더링만 바꿉니다(6.5절).</strong> 바퀴 자국은 화면 메시에만 찍히고 충돌면은 강체입니다. 변형 엔진을 켠 시험은 「자국이 생기는 장면에서도
   정책이 같은 경로로 돈다」는 것까지만 보여 주며, 월면토 침하가 주행에 주는 영향은 시험하지 않았습니다. 시험 중 실시간 배율(RTF)도 재지 않았습니다.
   또 크레이터 하나·네 방위의 표본입니다.</li>
-<li><strong>보상 재조정은 seed 하나입니다(6.6절).</strong> 35° 성공률 하락(69.7 → 41.0 %)이 가중치 때문인지 학습 편차인지는 다른 seed로 다시 학습해야 가릴 수 있습니다.</li>
+<li><strong>seed 수가 적습니다(6.6절).</strong> 재조정 정책은 seed 두 개, 기존 정책은 하나입니다. 학습 범위 밖 35°의 성공률은 재조정 정책 두 seed 사이에서 41.0 %와 75.8 %로 갈려,
+  한계 경사 성능을 비교하려면 seed를 더 늘려야 합니다.</li>
 <li><strong>혼합 지형 정책의 이득은 작습니다(6.4절).</strong> 차체 올림 고정 기준선 대비 이득은 레벨 9 암석 지형에서만 보이고(두 seed 합산 0.703 vs 0.633),
   평지 기울기는 오히려 커졌습니다. 학습 seed는 하나이며, 4차 구조는 1~3차의 실패를 보고 정한 것이라 같은 평가 지형에 맞춰졌을 가능성이 있습니다.</li>
 </ul>
@@ -2786,7 +2804,7 @@ IMU 동가속도는 경사로 0.82 → 0.72 m/s², 평지 0.71 → 0.64 m/s²로
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># 전체 파이프라인 / OmniLRS 등가 경사 검증</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>scripts/run_ramp.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>scripts/omnilrs_ramp.sh
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># 보상 재조정 (6.6절): 학습 → 30° 평가 · 20/25/35° 비교</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>scripts/run_smooth.sh
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>scripts/run_smooth.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>scripts/run_smooth_seed.sh<span class="w"> </span><span class="m">7</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># 혼합 달 지형 (6.4절): 학습 → 유형별 평가 · 1024 영상 · OmniLRS 변형 엔진</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>python<span class="w"> </span>scripts/train.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-MixedLunar-v0<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">1024</span><span class="w"> </span>--max_iterations<span class="w"> </span><span class="m">1500</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>python<span class="w"> </span>scripts/evaluate.py<span class="w"> </span>--headless<span class="w"> </span>--task<span class="w"> </span>LRover-MixedLunar-v0<span class="w"> </span>--level<span class="w"> </span><span class="m">9</span><span class="w"> </span>--checkpoint<span class="w"> </span>&lt;model.pt&gt;<span class="w"> </span>--out<span class="w"> </span>eval_mixed.json
