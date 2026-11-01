@@ -54,6 +54,11 @@ flowchart LR
 
 점선은 라벨의 학습 episode 활용 방향을 나타내며, 모든 이벤트와 출처 정보가 학습 데이터셋에 포함되었다는 뜻은 아닙니다.
 
+<figure markdown>
+  ![MDE 아키텍처 — 입력·시뮬레이터·MDE 코어·출력과 강화학습 데모 루프](../assets/mde-architecture.png){ loading=lazy }
+  <figcaption>MDE 아키텍처 — 위: 위 구성의 데이터 흐름, 아래: 강화학습 데모도 같은 엔진·같은 Profile로 매 스텝 판정합니다</figcaption>
+</figure>
+
 ## 3. Isaac Sim 실험 결과 (2026-10-22 ~ 10-23)
 
 **Allegro Hand**(Wonik Robotics, 16자유도)의 Isaac Sim 5.0 시뮬레이션 asset으로 세 가지 장면을 시험했습니다.
