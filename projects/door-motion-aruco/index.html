@@ -969,6 +969,100 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 알고리즘 수식 (2026-11-04 추가)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 알고리즘 수식 (2026-11-04 추가)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-1-dof-corner-122" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 1-DOF 운동 모형과 corner 직접 맞춤 (1·2.2 절)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-0-31-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 축 초기값, 운동 종류, 0 위치 (3.1 절 ③)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-6264" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 시간축과 미분 (6.2·6.4 절)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-peak-6569" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 꼭짓점 모형의 peak 속도 (6.5·6.9 절)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 반사 띠 해독 (3 절)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96-2231-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6 블러 추적과 반사를 뺀 상관 (2.2·3.1 절 ②)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 시험용 합성 반사 (3.1 절)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -997,6 +1091,7 @@
 실측 녹화는 수치로만 인용한다.</p>
 <p>기준일 2026-10-29. 목표 플랫폼은 PC 와 Jetson Nano 급 CPU 다.
 <strong>Jetson Nano 실기에서의 처리 시간은 아직 재지 않았다</strong>(6 절).</p>
+<p>측정·해독·추적에 쓰는 식과 상수는 <a href="#equations">9 절</a>에 모았다(2026-11-04 추가).</p>
 </div>
 <hr />
 <h2 id="1">1. 측정 방식<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
@@ -2029,7 +2124,10 @@ camera 쪽 frame 번호는 이어져 있으므로 앱 안에서 빠진 것이다
   합성으로 재현하면 혹이 0.80 × peak 일 때 잡음 seed 에 따라 −12.9 % 와 −2.3 % 를 오간다.</li>
 <li><strong>고친 방법:</strong> 등속 있음으로 분류돼도, 다항식 peak 가 등속 구간 평균의 1.05 배를 넘으면 꼭짓점 모형으로 잰다. 받는 조건(잔차·배율)은 6.5 절과 같다.</li>
 <li>평평한 등속은 이 비가 1.00~1.03 이라 바뀌지 않는다. 합성 사다리꼴은 리플 0·3 %, 실측 로봇 구동 슬라이드는 1.013~1.023 이다.</li>
-<li>합성 「뾰족한 peak 뒤 혹」(0.80~0.88 × peak)은 −5.8 ~ −1.6 % 가 되고, seed 에 따라 뒤집히지 않는다.</li>
+<li>합성 「뾰족한 peak 뒤 혹」에서 혹 0.80·0.84 × peak 는 전부 꼭짓점 모형으로 재서 −5.7 ~ −1.6 % 가 된다.
+    혹 0.88 × peak 는 12 stroke 중 1개가 아직 다항식으로 재져 −12.5 % 다. 그 stroke 의 다항식 peak / 등속 평균이 1.049 로 문턱 바로 아래였다.
+    나머지 11개는 1.052~1.061 이고 −5.8 ~ −2.0 % 다. 문턱으로 나누는 한, 문턱 근처에서는 방식이 바뀌어 값이 크게 달라질 수 있다.
+    (2026-11-04 정정: 10-29 판은 「0.80~0.88 은 −5.8 ~ −1.6 %, seed 에 따라 뒤집히지 않는다」로 이 1개를 빠뜨렸다.)</li>
 <li><strong>해 보고 버린 방법 두 가지:</strong></li>
 <li>꼭짓점 모형에 등속 길이를 더하는 방법. 짧은 등속의 넘침은 +0.3 % 로 줄었지만, 뾰족한 peak 에서는 잡음에 등속을 맞춰 −9 ~ −11 % 깎았다.</li>
 <li>등속 있는 stroke 전부에 꼭짓점 모형을 쓰는 방법. 진짜 등속(0.5~0.9 s)에서 +4 ~ +6 % 넘쳤다.</li>
@@ -2053,7 +2151,7 @@ camera 쪽 frame 번호는 이어져 있으므로 앱 안에서 빠진 것이다
 </tbody>
 </table>
 <ul>
-<li>남는 한계: 등속이 0.2~0.3 s 로 짧은 stroke 에서는 꼭짓점 모형이 최대 +7 % 넘칠 수 있다. 위치만으로는 짧은 등속과 뾰족한 peak 를 가르지 못하므로, 엔코더 동시 측정으로 확인할 예정이다.</li>
+<li>남는 한계: 다항식 peak / 등속 평균이 문턱 바로 아래(1.04~1.05)인 뾰족한 peak 는 여전히 다항식으로 재져 −12 % 안팎 깎일 수 있다. 또 등속이 0.2~0.3 s 로 짧은 stroke 에서는 꼭짓점 모형이 최대 +7 % 넘칠 수 있다. 위치만으로는 짧은 등속과 뾰족한 peak 를 가르지 못하므로, 엔코더 동시 측정으로 확인할 예정이다.</li>
 <li>단위 시험에 6건을 더했다. 같은 합성 녹화에 이전 규칙을 쓰면 −12 % 가 나오는지도 함께 확인한다.</li>
 </ul>
 <h2 id="7">7. 한계<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
@@ -2208,6 +2306,426 @@ camera 쪽 frame 번호는 이어져 있으므로 앱 안에서 빠진 것이다
   누락이 아니라 「측정 안 함」으로 따로 센다. 재현에서 녹화가 세 벌로 나뉘었고, 덮어쓴 파일과 누락은 없었다.</li>
 <li>녹화 영상에서 빠진 frame 은 원인별로 따로 남긴다(6.5 절 ②).</li>
 <li>현장 카메라로는 아직 다시 재지 않았다.</li>
+</ul>
+<h2 id="equations">9. 알고리즘 수식 (2026-11-04 추가)<a class="headerlink" href="#equations" title="Permanent link">&para;</a></h2>
+<script>
+window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]], tags: "none" },
+                   chtml: { displayAlign: "center" } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+
+<p>앞 절에서 말로 적은 계산을 식으로 정리한다. 식과 상수는 측정 코드(<code>Camera.py</code>, <code>dof_corner_fit.py</code>, 시험 bench)의
+2026-10-29 판에서 그대로 옮겼다. 픽셀 단위 상수는 1920×1080 기준이다. 식 번호는 이 절 안에서만 쓴다.</p>
+<h3 id="91-1-dof-corner-122">9.1 1-DOF 운동 모형과 corner 직접 맞춤 (1·2.2 절)<a class="headerlink" href="#91-1-dof-corner-122" title="Permanent link">&para;</a></h3>
+<p>바디의 기준 자세를 \(R_0, t_0\), 운동 축을 단위 벡터 \(a\), 회전축 위의 한 점을 \(c\) 라 하자.
+프레임마다 남는 미지수는 \(q\) 하나다(슬라이드는 m, 회전 도어는 각도).</p>
+<div class="math">
+\[
+\begin{aligned}
+&\text{slide:} && R(q) = R_0, && t(q) = t_0 + q\,a \\
+&\text{hinge:} && R(q) = \mathrm{Rot}(a,q)\,R_0, && t(q) = \mathrm{Rot}(a,q)\,(t_0 - c) + c
+\end{aligned}
+\tag{1}
+\]
+\[
+\mathrm{Rot}(a,q) = \cos q\, I + \sin q\, [a]_\times + (1-\cos q)\, a a^\top
+\tag{2}
+\]
+</div>
+
+<p>marker \(m\) 의 corner \(j\) 는 바디 좌표에서 \(X_{mj}\) 다. 쌍 marker 의 실제 배치는 설정값과 몇 mm·1° 안팎 다르므로,
+첫 marker 를 고정하고 나머지 marker 에 작은 보정 \((\Delta R_m, \Delta t_m)\) 을 둔다. 스케일은 고정한 첫 marker 의 한 변에서 온다.
+rolling shutter 는 corner 가 찍힌 행 \(v\) 에 따라 노광 시각이 다르다는 것으로 넣는다. 프레임 시각은 가운데 행 기준이고,
+\(\tau\) 는 한 프레임을 읽는 시간(readout), \(H\) 는 영상 높이다.</p>
+<div class="math">
+\[
+q_{ij} = q_i + \dot q_i \left(\frac{v_{ij}}{H} - \frac12\right)\tau
+\tag{3}
+\]
+\[
+\hat u_{ij} = \pi\!\left(K, d;\; R(q_{ij})\,(\Delta R_m X_{mj} + \Delta t_m) + t(q_{ij})\right)
+\tag{4}
+\]
+</div>
+
+<p>\(\pi\) 는 camera 행렬 \(K\) 와 왜곡 계수 \(d\) 로 투영하는 함수(OpenCV <code>projectPoints</code> 와 같다)다. 전체 녹화의 재투영 오차를
+Huber 손실로 줄인다. 반사·가림으로 틀린 corner 의 영향을 줄이기 위해서다.</p>
+<div class="math">
+\[
+\min_{\{q_i\},\,R_0,\,t_0,\,a,\,c,\,\{\Delta R_m,\Delta t_m\},\,\tau}\;
+\sum_{i}\sum_{j} \rho_k\!\left(\lVert \hat u_{ij} - u_{ij} \rVert\right),
+\qquad
+w(r) = \min\!\left(1, \frac{k}{r}\right),\quad k = 1.5\ \text{px}
+\tag{5}
+\]
+</div>
+
+<p>한꺼번에 풀지 않고 세 단계를 3번 번갈아 돈다.</p>
+<ol>
+<li>기하를 고정하고 프레임마다 \(q_i\) 를 가중 Gauss–Newton 으로 푼다. \(\dot q_i\) 는 직전 \(q\) 의 미분(9.3 절)이다.</li>
+<li>\(q\) 를 고정하고 기하·배치 보정을 Levenberg–Marquardt 로 푼다. 녹화 전체에서 고르게 고른 150 프레임을 쓴다.</li>
+<li>\(\tau\) 는 LM 변수로 두지 않는다. 축 기울기·배치 보정과 맞바꿔져 틀린 값이 나왔기 때문이다. 대신
+   \(\tau \in [0, \min(60\ \text{ms}, T)]\) 를 1차원 격자로 훑어 빠른 프레임의 잔차가 가장 작은 값을 고른다. \(T\) 는 프레임 주기다.
+   빠른 프레임은 corner 화면 속도가 300 px/s 를 넘는 프레임이고, 10개 이상 있어야 추정한다. 블러 추적(9.6 절) 프레임은 뺀다.
+   최소가 상한에 붙으면 추정을 버리고 기본값을 쓴다.</li>
+</ol>
+<p>맞춘 뒤 프레임 잔차 \(e_i\)(RMS, px)가 크면 그 샘플을 버린다. \(\tilde e_i\) 는 ±0.25 s 안에서 같은 종류(직접 검출 / 블러 추적) 샘플의 중앙값이다.</p>
+<div class="math">
+\[
+e_i \gt \max\!\left(6\ \text{px},\; 4\,\tilde e_i\right) \;\Rightarrow\; \text{reject}
+\tag{6}
+\]
+</div>
+
+<h3 id="92-0-31-3">9.2 축 초기값, 운동 종류, 0 위치 (3.1 절 ③)<a class="headerlink" href="#92-0-31-3" title="Permanent link">&para;</a></h3>
+<p>PnP 자세 \((R_i, P_i)\) 로 9.1 절의 초기값을 만든다. 기준 자세 \(R_0\) 은 정지 구간 자세의 chordal 평균,
+\(P_0\) 는 위치 평균이다. 기준 자세에 대한 상대 회전 벡터는 축이 고정이면 한 직선 위에 놓인다.</p>
+<div class="math">
+\[
+r_i = \log\!\left(R_i R_0^\top\right)^\vee,\qquad
+a_h = \operatorname{PC}_1\{\, r_i : \lVert r_i\rVert \gt 2^\circ \,\},\qquad
+\theta_i = r_i^\top a_h,\qquad
+\epsilon_i = \lVert r_i - \theta_i a_h \rVert
+\tag{7}
+\]
+\[
+a_s = \operatorname{PC}_1\{\, (P_i - P_0) - \overline{(P - P_0)} \,\},\qquad
+s_i = (P_i - P_0)^\top a_s
+\tag{8}
+\]
+</div>
+
+<p>\(\operatorname{PC}_1\) 은 SVD 첫 주축이다. 주축을 구한 뒤 축에서 \(\max(3\cdot\text{median}, \text{문턱}/2)\) 보다 먼 점을 빼고 한 번 더 구한다.
+\(\max_i\lvert\theta_i\rvert \ge 10^\circ\) 이면 회전 도어, 아니고 \(\max_i\lVert P_i - P_0\rVert \ge 20\) mm 이면 슬라이드로 본다.
+축 밖 성분이 회전 15°, 슬라이드 30 mm 를 넘는 샘플은 버린다. 부호는 0 에서 가장 크게 벗어난 쪽을 + 로 둔다.
+회전각은 180° 를 넘어도 이어지게 펼친다(6.6 절).</p>
+<p><strong>0 위치</strong>는 처음부터 훑어 만나는 첫 정지 구간이다. 연속 15 샘플 \(\mathcal W\) 가 다음을 만족하면 정지로 본다.
+샘플이 띄엄띄엄 잡힌 구간(프레임 수 &gt; 2 × 샘플 수)은 쓰지 않는다.</p>
+<div class="math">
+\[
+P_{90}\!\left\{\lVert P_i - \bar P_{\mathcal W}\rVert\right\}_{i\in\mathcal W} \le 5\ \text{mm},
+\qquad
+P_{90}\!\left\{\angle\!\left(R_i \bar R_{\mathcal W}^\top\right)\right\}_{i\in\mathcal W} \le 2^\circ
+\tag{9}
+\]
+</div>
+
+<h3 id="93-6264">9.3 시간축과 미분 (6.2·6.4 절)<a class="headerlink" href="#93-6264" title="Permanent link">&para;</a></h3>
+<p>프레임 번호 \(f_i\) 를 호스트 시각 \(t^{\text{host}}_i\) 에 직선으로 맞춰 시간축을 만든다. USB·스케줄링 지터가 빠진다.
+camera 가 고정 주기로 찍지 않아 맞춤 잔차가 크면 호스트 시각을 그대로 쓴다.</p>
+<div class="math">
+\[
+(\hat t_0, T) = \arg\min \sum_i \left(t^{\text{host}}_i - \hat t_0 - T\,(f_i - f_0)\right)^2,
+\qquad t_i = \hat t_0 + T\,(f_i - f_0)
+\tag{10}
+\]
+</div>
+
+<p>속도·가속도는 샘플마다 대칭 창 안에서 2차 다항식을 최소제곱으로 맞춰 낸다(불균일 시간 간격의 Savitzky–Golay).
+창이 대칭이므로 위상 지연이 없다. 결측(nan)과 추적 공백을 넘는 점은 쓰지 않고, 한쪽에만 점이 있으면 값을 내지 않는다.</p>
+<div class="math">
+\[
+\hat\beta = \arg\min_\beta \sum_{\lvert t_k - t_i\rvert \le h'} \Big(y_k - \sum_{p=0}^{2} \beta_p (t_k - t_i)^p\Big)^2,
+\qquad \dot y_i = \hat\beta_1,\quad \ddot y_i = 2\hat\beta_2
+\tag{11}
+\]
+</div>
+
+<p>\(h' = h + T/4\) 이고 \(h\) 는 속도 0.10 s, 가속도 0.15 s 다. \(T/4\) 여유가 없으면 창 경계가 프레임 주기의 정수배에 걸려,
+주기 추정값의 끝자리에 따라 녹화마다 5점 또는 7점이 들어갔다.</p>
+<h3 id="94-peak-6569">9.4 꼭짓점 모형의 peak 속도 (6.5·6.9 절)<a class="headerlink" href="#94-peak-6569" title="Permanent link">&para;</a></h3>
+<p>±0.10 s 다항식 미분(식 11)은 뾰족한 peak 를 깎는다. 삼각형 profile 은 꼭짓점 시각 \(t_p\) 앞뒤를 직선 속도 둘로 보고,
+그것을 너비 \(w\) 상자로 둥글린 모형을 위치 샘플에 맞춘다. \(u = t - t_p\) 다.</p>
+<div class="math">
+\[
+v(u) = c_1 + \begin{cases} c_2\,u, & u \lt 0 \\ -c_3\,u, & u \ge 0 \end{cases}
+\qquad c_2,\,c_3 \ge 0
+\tag{12}
+\]
+\[
+\bar v_w(u) = \frac{1}{w}\int_{u-w/2}^{u+w/2} v(s)\,ds,
+\qquad
+x(u) = c_0 + \int_0^u \bar v_w(s)\,ds
+\tag{13}
+\]
+</div>
+
+<p>\(x(u)\) 는 \(c\) 에 대해 선형이다. 그래서 \((w, t_p)\) 격자마다 최소제곱 한 번으로 \(c\) 를 구하고, 평균 제곱 잔차가 가장 작은 조합을 고른다.</p>
+<ul>
+<li>\(w \in \{0, 0.02, \dots, 0.40\}\) s, \(t_p\) 는 다항식 peak 시각 ±0.10 s 를 4 ms 간격으로 훑는다.</li>
+<li>맞춤 창은 \(\lvert u\rvert \le \min(0.25\ \text{s},\, 0.4 \times \text{stroke 길이})\) 이다. 8 샘플 이상이 있어야 하고, 창 안 샘플 간격이 공백 한도를 넘으면 안 된다.</li>
+<li>peak 는 \(\max_u \bar v_w(u)\) 다. 다음 두 조건을 모두 만족할 때만 받는다.</li>
+</ul>
+<div class="math">
+\[
+\mathrm{RMS}(x - \hat x) \le 0.01 \times \text{travel},
+\qquad
+0.98 \le \frac{\max_u \bar v_w(u)}{v^{\text{poly}}_{\max}} \le 1.25
+\tag{14}
+\]
+</div>
+
+<p>적용 대상은 삼각형 profile 이다. 등속 구간이 있는 사다리꼴도 다항식 peak 가 등속 구간 평균의 1.05 배를 넘으면 적용한다(6.9 절).</p>
+<div class="math">
+\[
+v^{\text{poly}}_{\max} \gt 1.05\,\bar v_{\text{cruise}}
+\tag{14a}
+\]
+</div>
+
+<h3 id="95-3">9.5 반사 띠 해독 (3 절)<a class="headerlink" href="#95-3" title="Permanent link">&para;</a></h3>
+<p>사각형 후보를 marker 격자 \((n+2)\times(n+2)\) 칸으로 펼친다. \(n\) 은 비트 수이고, 바깥 한 줄은 늘 검정인 테두리다.
+칸마다 8×8 px 로 펼쳐, 가운데 절반 화소의 평균 \(V_{rs}\) 와 최대값으로 포화 여부 \(S_{rs}\) 를 잰다(최대 ≥ 250 이면 포화).
+포화 칸은 값이 하한일 뿐이다.</p>
+<p>반사 띠는 매끄럽게 더해지는 빛이다. 그래서 테두리 네 변의 밝기로 안쪽 「검정」 밝기장을 Coons 보간한다.
+테두리의 포화 칸은 같은 변의 이웃 칸으로 보간해 메운다.
+\(L, R\) 은 왼쪽·오른쪽 변을 행 좌표 \(\eta\) 의 함수로, \(U, B\) 는 위·아래 변을 열 좌표 \(\xi\) 의 함수로 본 것이다.
+\(\xi, \eta \in [0,1]\) 이다.</p>
+<div class="math">
+\[
+\begin{aligned}
+F(\eta,\xi) = {}& (1-\xi)L(\eta) + \xi R(\eta) + (1-\eta)U(\xi) + \eta B(\xi) \\
+& - \big[(1-\xi)(1-\eta)U(0) + \xi(1-\eta)U(1) + (1-\xi)\eta B(0) + \xi\eta B(1)\big]
+\end{aligned}
+\tag{15}
+\]
+\[
+D_{rs} = V_{rs} - F_{rs},\qquad
+h = P_{90}(D),\qquad
+b_{rs} = \big[D_{rs} \gt h/2\big],\qquad
+\kappa_{rs} = \neg\big(S_{rs} \wedge D_{rs} \le h/2\big)
+\tag{16}
+\]
+</div>
+
+<p>\(b\) 는 읽은 비트, \(\kappa\) 는 「아는 칸」이다. 포화 칸이 흰색 문턱을 못 넘으면 실제 값을 알 수 없으므로 지운다.
+사전의 모든 ID \(m\) 과 방향 \(k \in \{0,1,2,3\}\) 의 비트 \(B_{m,k}\) 와 대조한다.</p>
+<div class="math">
+\[
+E_{m,k} = \sum_{r,s} \kappa_{rs}\,\big[B_{m,k,rs} \ne b_{rs}\big],
+\qquad N_\kappa = \sum_{r,s}\kappa_{rs}
+\tag{17}
+\]
+</div>
+
+<p>오류가 가장 작은 후보 \(E_{(1)}\) 과 두 번째 후보 \(E_{(2)}\) 에 대해 다음을 모두 만족할 때만 받는다.</p>
+<div class="math">
+\[
+h \ge 20,\quad N_\kappa \ge 12,\quad E_{(1)} \le 0.12\,N_\kappa,\quad E_{(2)} - E_{(1)} \ge 3,\quad
+\Big(\textstyle\bigvee_{\partial} S \;\;\lor\;\; \max F - \min F \ge h\Big)
+\tag{18}
+\]
+</div>
+
+<p>마지막 항이 「띠의 증거」다. 테두리 칸 중 하나가 포화됐거나, 테두리 밝기장의 폭이 대비 이상이어야 한다.
+그리고 등록된 바디의 ID 여야 한다.</p>
+<p><strong>비례 경계 문턱 (3.1 절 ①).</strong> 사각형 후보는 Canny 경계의 닫힌 볼록 사각형이다. 문턱 \((\lambda_{\text{lo}}, \lambda_{\text{hi}})\) 은
+고정값 (40, 80)으로 먼저 쓴다(칸 훑기는 ½ 축소 영상에서 (60, 120)). 기대 ID 를 다 못 찾으면 영역의 기울기 크기 99 백분위 \(P\) 에 비례한 문턱을
+높은 쪽부터 쓴다. \(P\) 는 2 화소마다 솎은 Sobel 크기로 잰다. 앞 문턱과 \(\lambda_{\text{hi}}\) 가 10 % 안으로 같으면 건너뛴다.</p>
+<div class="math">
+\[
+(\lambda_{\text{lo}}, \lambda_{\text{hi}}) \in
+\begin{aligned}
+\Big\{&(40, 80),\;\; \big(\max(40, 0.35P),\, \max(80, 0.7P)\big),\\
+&\big(\max(40, 0.25P),\, \max(80, 0.5P)\big)\Big\},
+\qquad P = P_{99}\,\lVert\nabla I\rVert
+\end{aligned}
+\tag{19}
+\]
+</div>
+
+<h3 id="96-2231-2">9.6 블러 추적과 반사를 뺀 상관 (2.2·3.1 절 ②)<a class="headerlink" href="#96-2231-2" title="Permanent link">&para;</a></h3>
+<p><strong>3D 등속 외삽.</strong> 직전 두 자세 \((R_0, t_0)\) 와 \((R_1, t_1)\) 가 \(d\) 프레임 떨어져 있으면(\(1 \le d \le 3\)),
+\(k\) 프레임 뒤의 자세는 다음과 같다. 이 자세로 corner 를 투영해 예측 corner 를 만든다.</p>
+<div class="math">
+\[
+\omega = \frac{1}{d}\log\!\left(R_1 R_0^\top\right)^\vee,\qquad
+R(k) = \exp\!\left(k\,[\omega]_\times\right) R_1,\qquad
+t(k) = t_1 + \frac{k}{d}\,(t_1 - t_0)
+\tag{20}
+\]
+</div>
+
+<p>예측 corner 자리에 그 ID 의 이상 marker(흰 여백 1 module 포함)를 그리고, 예측 화면 속도 방향으로 노출 비율
+\(e \in \{0.15, 0.30, 0.45, 0.60\}\) 만큼 번지게 해 템플릿 \(T\) 를 만든다. 예측 둘레 ±2.5 module 에서 평균을 뺀 정규화 상관(NCC)이
+가장 큰 이동을 찾는다. 최고점은 축마다 포물선으로 부화소 위치를 낸다.</p>
+<div class="math">
+\[
+\delta^\ast = k + \frac{\rho_{k-1} - \rho_{k+1}}{2\,(\rho_{k-1} - 2\rho_k + \rho_{k+1})}
+\tag{21}
+\]
+</div>
+
+<p>받는 조건은 \(\rho \ge 0.55\)(예측 블러가 1 module 보다 짧으면 0.8)이다. 또 marker ID 를 맞바꿔 그린 템플릿보다 0.05 이상 높아야 한다.</p>
+<p><strong>반사를 뺀 상관.</strong> 반사는 빛을 더하기만 한다. 그래서 그 marker 가 직접 잡혔을 때의 흰색보다 크게 밝은 화소에는 marker 정보가 없다고 본다.
+직접 검출된 marker 의 비트 영역 화소를 10·90 백분위의 중점에서 둘로 나누고, 각 쪽의 중앙값으로 검정 \(\ell_b\)·흰색 \(\ell_w\) 을 5 프레임마다 잰다.
+반사가 걸린 채 잰 값은 흰색을 부풀리므로, 내려갈 때는 빨리, 올라갈 때는 천천히 따라간다.</p>
+<div class="math">
+\[
+\ell \leftarrow \ell + \alpha\,(\hat\ell - \ell),\qquad
+\alpha = \begin{cases} 0.5, & \hat\ell \lt \ell \\ 0.05, & \hat\ell \ge \ell \end{cases}
+\tag{22}
+\]
+\[
+\vartheta = \min\!\big(\ell_w + K(\ell_w - \ell_b),\; 249\big),\quad K = 1
+\tag{23}
+\]
+\[
+\omega(x) = 1 - \big[x \in \operatorname{dilate}_{r}\{\, I \gt \vartheta \,\}\big],\quad r = 0.5\ \text{module}
+\tag{23a}
+\]
+</div>
+
+<p>템플릿 지지 영역 \(\Omega\) 에서 이동 \(\delta\) 마다 가중 합을 낸다. 여기서 \(I\) 는 영상, \(T\) 는 템플릿이다.</p>
+<div class="math">
+\[
+\begin{gathered}
+N = \sum_\Omega \omega,\quad
+S_1 = \sum_\Omega \omega I,\quad
+S_2 = \sum_\Omega \omega I^2,\quad
+\\
+T_1 = \sum_\Omega \omega T,\quad
+T_2 = \sum_\Omega \omega T^2,\quad
+X = \sum_\Omega \omega I T
+\end{gathered}
+\tag{24}
+\]
+\[
+\rho_\omega(\delta) = \frac{X - S_1 T_1 / N}{\sqrt{\left(S_2 - S_1^2/N\right)\left(T_2 - T_1^2/N\right)}},
+\qquad
+\rho_\omega(\delta) = -1 \;\;\text{if}\;\; N \lt 0.35\,\lvert\Omega\rvert
+\tag{25}
+\]
+</div>
+
+<p>\(\omega \equiv 1\) 이면 식 25 는 보통의 NCC 와 같다. 각 합은 <code>matchTemplate</code>(TM_CCORR) 여섯 번으로 낸다. 반사를 뺀 상관은 다음을 모두 만족할 때만 쓴다.</p>
+<ul>
+<li>예전 상관(\(\omega \equiv 1\))으로 못 찾았다.</li>
+<li>예측 이동이 1 module/프레임보다 작다. 빠른 블러에서는 틀린 자리를 받았다.</li>
+<li>흰색이 포화보다 15 이상 낮다: \(\ell_w \le 235\). 흰색이 이미 포화 근처이면 밝기로 반사를 가를 수 없다.</li>
+<li>예측 marker 자리(흰 여백까지, 한 변 × 9/7) 안에서 \(I &gt; \vartheta\) 인 화소가 3 % 이상이다.</li>
+<li>같은 바디에서 2번 잇달아 실패하면 한동안 쉰다.</li>
+</ul>
+<h3 id="97-31">9.7 시험용 합성 반사 (3.1 절)<a class="headerlink" href="#97-31" title="Permanent link">&para;</a></h3>
+<p><strong>반사는 시험용 합성이다.</strong> 학습에 쓰는 데이터 증강이 아니다. 측정 경로는 고전적 영상 처리이고 학습하는 모델이 없다.
+합성 반사는 두 군데에 쓴다. 실측 녹화에 반사를 더해 확보율을 비교하는 bench(3.1·4.1 절)와, 참값 궤적으로 다시 그린 합성 녹화(4.2 절)다.
+<strong>실제 반사가 있는 녹화로는 아직 검증하지 않았다</strong>(7 절).</p>
+<p>반사는 가우시안 밝기를 더하고 0~255 로 자른다. 띠는 화면 전체를 가로지르는 직선 띠, 반점은 둥근 점이다.</p>
+<div class="math">
+\[
+I'(x) = \operatorname{clip}_{[0,255]}\!\Big(I(x) + A_i \exp\!\Big(-\frac{\delta_i(x)^2}{2\sigma^2}\Big)\Big),
+\qquad
+\delta_i(x) = \begin{cases} n^\top\big(x - p_i\big), & \text{band} \\ \lVert x - p_i\rVert, & \text{spot} \end{cases}
+\tag{26}
+\]
+</div>
+
+<p>\(n = (\cos\alpha, \sin\alpha)\) 는 띠의 법선이다(\(\alpha = 0^\circ\) 이면 세로 띠). 폭은 \(\sigma = \sigma_{\text{mod}}\cdot s/7\) 이고,
+\(s\) 는 그 프레임 marker 한 변의 평균 길이(px)다. 따라서 폭이 marker 크기를 따라간다.
+\(\bar c\) 를 marker corner 중심, \(S = \tfrac12\operatorname{ptp}(n^\top q) + s/7\) 을 띠가 marker 묶음을 법선 방향으로 넘나드는 진폭이라 하면,
+프레임 \(i\) 의 위치와 세기는 다음과 같다.</p>
+<div class="math">
+\[
+\text{sweep: } p_i = \bar c + S\sin(0.15\,i)\,n,\qquad
+\text{static: } p_i = \bar c,\qquad
+\text{orbit: } p_i = \bar c + 0.6\,S\,(\cos 0.15\,i,\; \sin 0.15\,i)
+\]
+\[
+\text{flicker: } p_i = \bar c,\quad A_i = \tfrac12 A_0\big(1 + \sin 0.4\,i\big);\qquad \text{그 밖에는 } A_i = A_0
+\tag{27}
+\]
+</div>
+
+<table>
+<thead>
+<tr>
+<th>반사</th>
+<th>모양</th>
+<th>\(\alpha\)</th>
+<th>\(\sigma_{\text{mod}}\)</th>
+<th>\(A_0\)</th>
+<th>움직임</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>가는 띠</td>
+<td>band</td>
+<td>0°</td>
+<td>0.5</td>
+<td>200</td>
+<td>sweep</td>
+</tr>
+<tr>
+<td>세로 띠</td>
+<td>band</td>
+<td>0°</td>
+<td>1.0</td>
+<td>180</td>
+<td>sweep</td>
+</tr>
+<tr>
+<td>가로 띠</td>
+<td>band</td>
+<td>90°</td>
+<td>1.0</td>
+<td>180</td>
+<td>sweep</td>
+</tr>
+<tr>
+<td>사선 띠</td>
+<td>band</td>
+<td>45°</td>
+<td>1.5</td>
+<td>180</td>
+<td>sweep</td>
+</tr>
+<tr>
+<td>넓은 띠</td>
+<td>band</td>
+<td>20°</td>
+<td>4.0</td>
+<td>150</td>
+<td>sweep</td>
+</tr>
+<tr>
+<td>포화 띠</td>
+<td>band</td>
+<td>0°</td>
+<td>1.5</td>
+<td>400</td>
+<td>sweep</td>
+</tr>
+<tr>
+<td>멈춘 띠</td>
+<td>band</td>
+<td>0°</td>
+<td>1.0</td>
+<td>180</td>
+<td>static</td>
+</tr>
+<tr>
+<td>도는 반점</td>
+<td>spot</td>
+<td>—</td>
+<td>1.5</td>
+<td>250</td>
+<td>orbit</td>
+</tr>
+<tr>
+<td>깜박이는 띠</td>
+<td>band</td>
+<td>0°</td>
+<td>1.0</td>
+<td>180</td>
+<td>flicker</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>4.1 절의 「반사 띠」는 9종을 만들기 전의 조건이다. marker 묶음 상자 안에만 가우시안 띠(최대 +180)를 그린다. 비교를 위해 남겨 두었다.</li>
+<li>4.2 절의 합성 녹화는 화면에 고정된 가우시안 띠(식 26 의 band, 움직이지 않음)를 장면에 더한다. 광택 표면의 정반사처럼 판이 지나갈 때만 판 위에 얹힌다.</li>
+<li>열화 seed 는 조건 이름의 CRC32 로 정한다. 같은 판을 다시 돌리면 결과가 같다(3.1 절).</li>
 </ul>
 
 
