@@ -964,6 +964,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#82-fps-2026-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 카메라 공급 fps 와 끊긴 속도 그래프 (2026-11-11 추가)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-windows-2026-11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Windows 에서 실행 (2026-11-12 추가)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1089,7 +1111,7 @@
 <p>이 페이지는 <strong>추가 보정 없이 알고리즘만으로</strong> 나쁜 촬영 조건(반사 띠·어두움·저대비·모션 블러)에서
 얼마나 개선되는지를 <strong>기존 코드와 비교해</strong> 정리한 공개 요약이다. 그림은 <strong>합성 영상</strong>과 수치만 싣는다.
 실측 녹화는 수치로만 인용한다.</p>
-<p>기준일 2026-10-29. 목표 플랫폼은 PC 와 Jetson Nano 급 CPU 다.
+<p>기준일 2026-10-29, 8.2·8.3 절은 2026-11-12. 목표 플랫폼은 PC(Linux·Windows)와 Jetson Nano 급 CPU 다.
 <strong>Jetson Nano 실기에서의 처리 시간은 아직 재지 않았다</strong>(6 절).</p>
 <p>측정·해독·추적에 쓰는 식과 상수는 <a href="#equations">9 절</a>에 모았다(2026-11-04 추가).</p>
 </div>
@@ -1528,9 +1550,9 @@
 </thead>
 <tbody>
 <tr>
-<td>단위 시험 11종(검출·1-DOF·stroke·calibration·corner 정제·rolling shutter 보정 자세·속도 구간·캡처 대기열·반사 적응·외부 검토 회귀·빠른 구간 빈틈 채우기)</td>
+<td>단위 시험 12종(검출·1-DOF·stroke·calibration·corner 정제·rolling shutter 보정 자세·속도 구간·캡처 대기열·반사 적응·외부 검토 회귀·빠른 구간 빈틈 채우기·성긴 frame 미분)</td>
 <td>Python 3.8 + OpenCV 4.11, Python 3.13 + OpenCV 5.0</td>
-<td><strong>자동 판정 208건 전부 PASS</strong>(OpenCV 4.7 은 FAIL 0·SKIP 8). 판정마다 PASS/FAIL/SKIP 을 찍고 종료 코드로 낸다(SKIP 은 통과가 아니다)</td>
+<td><strong>자동 판정 219건 전부 PASS</strong>(성긴 frame 미분 11건은 2026-11-11 추가, OpenCV 5.0 에서 확인)(OpenCV 4.7 은 FAIL 0·SKIP 8). 판정마다 PASS/FAIL/SKIP 을 찍고 종료 코드로 낸다(SKIP 은 통과가 아니다)</td>
 </tr>
 <tr>
 <td>합성 bench 자동 판정</td>
@@ -2171,6 +2193,8 @@ camera 쪽 frame 번호는 이어져 있으므로 앱 안에서 빠진 것이다
   심한 열화에서 readout 추정이 틀리면 보정도 틀린다.</li>
 <li>캡처 대기열은 0.4 s 보다 긴 main loop 멈춤은 막지 못한다. 카메라 드라이버·USB 쪽에서 빠진 프레임도 대기열과 무관하다(따로 센다).
   현장 카메라로는 아직 다시 재지 않았다(8.1 절).</li>
+<li>카메라가 30 fps 를 고르게 주지 못한 구간은 속도·가속도를 더 짧은 맞춤으로 채운다(8.2 절). 값은 이어지지만 그 구간의 peak 는 덜 확실하다(「peak window」 결측 표시는 그대로 남는다). 카메라 설정 변경(MJPG·수동 노출)으로 30 fps 가 나오는지는 현장 카메라로 아직 확인하지 않았다.</li>
+<li>Windows 휴대용 판(8.3 절)은 실제 Windows PC 에서 아직 실행하지 않았다.</li>
 <li>Jetson Nano 기본 구성(JetPack 4.x: Python 3.6, OpenCV 4.1.1)은 기존 코드와 마찬가지로 조건에 맞지 않는다. Python 3.8 과 OpenCV 4.11 을
   따로 설치해야 하며, 실기 처리 시간은 그 뒤에 잰다.</li>
 </ul>
@@ -2307,6 +2331,133 @@ camera 쪽 frame 번호는 이어져 있으므로 앱 안에서 빠진 것이다
 <li>녹화 영상에서 빠진 frame 은 원인별로 따로 남긴다(6.5 절 ②).</li>
 <li>현장 카메라로는 아직 다시 재지 않았다.</li>
 </ul>
+<h3 id="82-fps-2026-11-11">8.2 카메라 공급 fps 와 끊긴 속도 그래프 (2026-11-11 추가)<a class="headerlink" href="#82-fps-2026-11-11" title="Permanent link">&para;</a></h3>
+<p>다른 회전 도어(11-11 현장)를 한 번 열고 닫은 녹화에서 속도 그래프가 중간중간 끊겼다. marker 검출은 정상이었다. 원본 629 frame 전부에서 두 marker 를 잡았다.</p>
+<p><strong>원인은 카메라 공급 fps 였다.</strong></p>
+<ul>
+<li>공급은 평균 21.6 fps 였다. 33 ms 간격과 약 100 ms 간격(10 fps)이 몰려서 번갈아 나왔다. 1.3~1.5 s 마다 0.7~0.9 s 동안 10 fps 였다.</li>
+<li>70~90 ms 나 20 ms 미만 간격은 없었다. 처리 지연이 아니라 frame 이 처음부터 오지 않은 모양이다. 앱의 대기열 손실은 0 이었다.</li>
+<li>당시 설정은 픽셀 포맷 미지정(드라이버가 무압축 YUYV 를 고름, 1080p30 에 약 995 Mbps)에 자동 노출이었다. 자동 노출은 어두우면 노출을 늘리려고 fps 를 낮춘다.</li>
+<li>속도 미분(9.3 절 식 11)은 ±0.11 s 창에 점이 4개 이상 있어야 값을 낸다. 10 fps 구간에는 3점뿐이라 속도가 비었고, 한 번의 왕복이 stroke 7개로 쪼개졌다.</li>
+</ul>
+<p><strong>대응은 두 가지다.</strong> 원인을 막는 것과, 그래도 frame 이 빠졌을 때 그래프가 끊기지 않게 하는 것이다.</p>
+<ol>
+<li>카메라 설정: 픽셀 포맷을 MJPG 로 요청하고 노출을 수동(Linux 5 ms, Windows 2^-7 s ≈ 7.8 ms)으로 고정한다. 시작 로그에 첫 frame 밝기를 찍는다.
+   현장에서 포맷 × 노출 조합마다 공급 fps·frame 간격·밝기를 재고 설정값을 추천하는 점검 스크립트를 함께 넣었다.</li>
+<li>성긴 frame 미분: 창 안 점이 모자라는 frame 만 다르게 계산한다. 속도는 3점 1차 맞춤(중심 차분)으로, 가속도는 앞뒤로 점이 2개씩 들 때까지 창을 대칭으로 넓혀(최대 2배) 낸다. 30 fps 로 다 찬 창과 원래 값이 있던 frame 은 결과가 바뀌지 않는다.</li>
+</ol>
+<p><img alt="합성 회전 도어: 33 ms 와 104 ms 간격이 번갈아 오는 구간에서 보완 전에는 속도가 비고, 보완 후에는 참값을 따라 이어진다" src="../../assets/door-aruco/sparse_derivative.png" /></p>
+<table>
+<thead>
+<tr>
+<th>합성 참값(같은 간격 패턴, 110° 열림 6 s)</th>
+<th>보완 전</th>
+<th>보완 후</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>움직이는 108 frame 중 속도 빈 frame</td>
+<td>22</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>움직이는 108 frame 중 가속도 빈 frame</td>
+<td>15</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>속도 RMS (20°/s 동작)</td>
+<td>0.09°/s (빈 frame 제외)</td>
+<td>0.11°/s</td>
+</tr>
+<tr>
+<td>가속도 RMS (보통 속도 동작)</td>
+<td>6.3 deg/s² (빈 frame 제외)</td>
+<td>5.5 deg/s²</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>실측(다른 회전 도어, 11-11 녹화를 저장 영상 분석으로 다시)</th>
+<th>보완 전</th>
+<th>보완 후</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>속도 빈 frame</td>
+<td>110 / 629</td>
+<td>2 (녹화 양 끝)</td>
+</tr>
+<tr>
+<td>가속도 빈 frame</td>
+<td>56 / 629</td>
+<td>2 (녹화 양 끝)</td>
+</tr>
+<tr>
+<td>stroke</td>
+<td>7개, 전부 결측</td>
+<td>2개 (열림 110.9°, 닫힘 111.2°)</td>
+</tr>
+<tr>
+<td>원래 값이 있던 frame 의 값 차이</td>
+<td>—</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>기각한 안: 가속도 창을 「가장 가까운 4번째 점」까지 비대칭으로 넓히면 RMS 가 6.3 → 12.3 deg/s² 로 두 배가 됐다. 대칭으로 넓혀야 한다.</li>
+<li>두 stroke 에는 「peak window」 결측 표시가 남는다. peak 근처에 30 fps 기준 frame 의 43~57 % 만 있다는 뜻이고, 맞는 표시다. 이 표시는 카메라가 30 fps 를 주어야 없어진다.</li>
+<li>현장 카메라에서 MJPG·수동 노출로 30 fps 가 나오는지는 아직 확인하지 않았다(점검 결과 대기).</li>
+</ul>
+<h3 id="83-windows-2026-11-12">8.3 Windows 에서 실행 (2026-11-12 추가)<a class="headerlink" href="#83-windows-2026-11-12" title="Permanent link">&para;</a></h3>
+<p>측정 앱은 원래 Linux(V4L2)와 Windows(DirectShow) 캡처를 모두 지원한다. Windows PC 에서 설치 없이 돌리도록 휴대용 폴더를 만들었다.</p>
+<ul>
+<li>폴더 안에 Python 3.12(창 라이브러리 tkinter 포함), OpenCV 5.0, NumPy, matplotlib 이 들어 있다. 압축을 풀고 시작 bat 를 실행하면 된다. 관리자 권한과 인터넷이 필요 없다.</li>
+<li>실행 파일은 시작 창, 카메라 분석 바로 실행, 카메라 점검, 설치 확인, 바탕화면 바로가기다.</li>
+<li>Windows 기본 카메라 설정: MJPG, 수동 노출 -7. DirectShow 의 노출 값은 log2(초) 단계라 -8 ≈ 3.9 ms, -7 ≈ 7.8 ms, -6 ≈ 15.6 ms 다. 5 ms 에 해당하는 값이 없다. -5(31 ms)부터는 30 fps 한도에 닿는다.</li>
+<li>카메라 점검 스크립트는 Windows 에서 카메라 번호 찾기(노트북 내장·IR 카메라가 0 번일 때), 드라이버 설정 창 열기, DirectShow/Media Foundation 비교를 더 한다.</li>
+<li>폴더는 Linux 에서 만든다. 고정한 판의 Windows용 wheel 과 SHA256 을 확인한 휴대용 Python 을 쓴다. DLL 의존성은 정적으로 확인했다. OpenCV 는 Windows 기본 DLL 과 Media Foundation 만, 나머지는 함께 든 <code>vcruntime140.dll</code> 만 쓴다.</li>
+</ul>
+<p><strong>디바이스 드라이버</strong></p>
+<table>
+<thead>
+<tr>
+<th>경우</th>
+<th>할 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>일반 USB 카메라(UVC)</td>
+<td><strong>설치하지 않는다.</strong> Windows 기본 드라이버(<code>usbvideo.sys</code>)를 그대로 쓴다. 장치 관리자 → 카메라 속성 → 드라이버 세부 정보에서 확인한다. camera 내부 파라미터는 코드 안 배열에서 읽으므로 제조사 SDK·DLL 도 필요 없다</td>
+</tr>
+<tr>
+<td>「기타 장치」에 노란 느낌표</td>
+<td>포트·케이블을 바꿔 본다. 그래도 같으면 UVC 가 아닌 카메라다. 이때만 제조사 드라이버를 쓴다</td>
+</tr>
+<tr>
+<td>제조사 드라이버를 깐 뒤 MJPG·노출이 안 먹음</td>
+<td>드라이버를 「USB 비디오 장치」(Microsoft 기본)로 되돌린다</td>
+</tr>
+<tr>
+<td><code>import cv2</code> 가 DLL 오류로 실패</td>
+<td>Windows N/KN 에디션은 Media Foundation 이 없다. 미디어 기능 팩을 설치한다</td>
+</tr>
+</tbody>
+</table>
+<p>드라이버는 아니지만 자주 막히는 것:</p>
+<ul>
+<li>개인 정보 설정의 「데스크톱 앱이 카메라에 액세스」가 꺼져 있다.</li>
+<li>다른 화상 앱이 카메라를 점유하고 있다.</li>
+<li>USB 허브를 거치거나 USB 선택적 절전이 켜져 있다.</li>
+<li>드라이버 창의 「저조도 보정」이 켜져 있다. 이 기능은 어두울 때 fps 를 스스로 낮춘다. 8.2 절과 같은 증상이 난다.</li>
+</ul>
+<p><strong>검증 상태</strong>: 점검 스크립트의 Windows 경로(노출 단위·추천값·번호 찾기)는 가짜 카메라로 시험했다. 실제 Windows PC 와 카메라에서는 아직 실행하지 않았다.</p>
 <h2 id="equations">9. 알고리즘 수식 (2026-11-04 추가)<a class="headerlink" href="#equations" title="Permanent link">&para;</a></h2>
 <script>
 window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]], tags: "none" },
@@ -2422,7 +2573,8 @@ camera 가 고정 주기로 찍지 않아 맞춤 잔차가 크면 호스트 시�
 </div>
 
 <p>속도·가속도는 샘플마다 대칭 창 안에서 2차 다항식을 최소제곱으로 맞춰 낸다(불균일 시간 간격의 Savitzky–Golay).
-창이 대칭이므로 위상 지연이 없다. 결측(nan)과 추적 공백을 넘는 점은 쓰지 않고, 한쪽에만 점이 있으면 값을 내지 않는다.</p>
+창이 대칭이므로 위상 지연이 없다. 결측(nan)과 추적 공백을 넘는 점은 쓰지 않고, 한쪽에만 점이 있으면 값을 내지 않는다.
+창 안 점이 4개 미만이면 속도는 1차 맞춤으로, 가속도는 앞뒤 2점씩 들 때까지 창을 대칭으로(최대 \(2h'\)) 넓혀 낸다(2026-11-11, 8.2 절).</p>
 <div class="math">
 \[
 \hat\beta = \arg\min_\beta \sum_{\lvert t_k - t_i\rvert \le h'} \Big(y_k - \sum_{p=0}^{2} \beta_p (t_k - t_i)^p\Big)^2,
